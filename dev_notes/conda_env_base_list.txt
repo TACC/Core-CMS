@@ -1,0 +1,47 @@
+# packages in environment at /Users/jgentle/miniconda3:
+#
+# Name                    Version                   Build  Channel
+asn1crypto                0.24.0                py37_1003    conda-forge
+bzip2                     1.0.8                h01d97ff_1    conda-forge
+ca-certificates           2019.9.11            hecc5488_0    conda-forge
+certifi                   2019.9.11                py37_0    conda-forge
+cffi                      1.12.3           py37hccf1714_0    conda-forge
+chardet                   3.0.4                 py37_1003    conda-forge
+conda                     4.7.12                   py37_0    conda-forge
+conda-package-handling    1.4.1                    py37_0    conda-forge
+cryptography              2.7              py37h212c5bf_0    conda-forge
+icu                       64.2                 h6de7cb9_1    conda-forge
+idna                      2.8                   py37_1000    conda-forge
+libarchive                3.3.3             h5c473cc_1006    conda-forge
+libcxx                    8.0.1                         0    conda-forge
+libcxxabi                 8.0.1                         0    conda-forge
+libedit                   3.1.20170329      hcfe32e1_1001    conda-forge
+libffi                    3.2.1             h6de7cb9_1006    conda-forge
+libiconv                  1.15              h01d97ff_1005    conda-forge
+libxml2                   2.9.9                h12c6b28_5    conda-forge
+lz4-c                     1.8.3             h6de7cb9_1001    conda-forge
+lzo                       2.10              h1de35cc_1000    conda-forge
+ncurses                   6.1               h0a44026_1002    conda-forge
+openssl                   1.1.1c               h01d97ff_0    conda-forge
+peppercorn                0.6                      pypi_0    pypi
+pip                       19.2.3                   py37_0    conda-forge
+pycosat                   0.6.3           py37h1de35cc_1001    conda-forge
+pycparser                 2.19                     py37_1    conda-forge
+pyopenssl                 19.0.0                   py37_0    conda-forge
+pysocks                   1.7.0                    py37_0    conda-forge
+python                    3.7.2                haf84260_0  
+python-libarchive-c       2.8                   py37_1004    conda-forge
+readline                  7.0               hcfe32e1_1001    conda-forge
+requests                  2.22.0                   py37_1    conda-forge
+ruamel_yaml               0.15.71         py37h1de35cc_1000    conda-forge
+setuptools                41.2.0                   py37_0    conda-forge
+six                       1.12.0                py37_1000    conda-forge
+sqlite                    3.26.0               ha441bb4_0  
+tk                        8.6.9             h2573ce8_1003    conda-forge
+tqdm                      4.35.0                     py_0    conda-forge
+urllib3                   1.25.3                   py37_0    conda-forge
+wheel                     0.33.6                   py37_0    conda-forge
+xz                        5.2.4             h1de35cc_1001    conda-forge
+yaml                      0.1.7             h1de35cc_1001    conda-forge
+zlib                      1.2.11            h01d97ff_1006    conda-forge
+zstd                      1.4.0                ha9f0a20_0    conda-forge

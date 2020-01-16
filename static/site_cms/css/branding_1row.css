@@ -1,0 +1,21 @@
+/* Singlerow Layout (v1) */
+
+.nav-logo-single {
+  float: left;
+  height: 30px;
+  margin: 7px 20px 0 0;
+  padding: 0;
+  border: none;
+}
+
+.nav-logo-nsf-single {
+  height: 40px;
+  margin: 2px 20px 0 0;
+}
+
+/* .nav-logo-tacc-single {} */
+/* .nav-logo-lccf-single {} */
+/* .nav-logo-utaustin-single {} */
+/* .nav-logo-uhawaii-single {} */
+/* .nav-logo-frontera-single {} */
+/* .nav-logo-tapisio-single {} */

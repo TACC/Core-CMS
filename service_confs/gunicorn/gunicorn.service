@@ -1,0 +1,12 @@
+[Unit]
+Description=TACC CMS Gunicorn Daemon
+After=network.target
+
+[Service]
+User=root
+Group=nginx
+WorkingDirectory=/srv/taccsite
+ExecStart=/srv/.taccsite_env/bin/gunicorn --workers 5 --bind unix:/srv/taccsite/taccsite_cms.sock taccsite_cms.wsgi:application
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,41 @@
+version: "3"
+services:
+  cms:
+    build: .
+    image: taccwma/taccsite-cms:initial
+    links:
+      - postgres:postgres
+    volumes:
+      - .:/code
+    ports:
+      - 8000:8000
+    command: ['python3', 'manage.py', 'runserver', '0.0.0.0:8000']
+    container_name: taccsite_cms
+    hostname: taccsite_cms
+    networks:
+      - taccsite_cms_net
+
+  postgres:
+    image: postgres:11.5
+    environment:
+      - POSTGRES_PASSWORD=taccsite
+      - POSTGRES_USER=taccsite
+      - POSTGRES_DB=taccsite
+      - PGDATA=/var/lib/postgresql/data/taccsite
+    volumes:
+      - taccsite_postgres_data:/var/lib/postgresql/data
+      - ./conf/postgres/pg_db.secret:/var/lib/postgresql/pg_db.secret
+      - ./conf/postgres/pg_user.secret:/var/lib/postgresql/pg_user.secret
+      - ./conf/postgres/pg_password.secret:/var/lib/postgresql/pg_password.secret
+    ports:
+      - 5432:5432
+    hostname: taccsite_postgres
+    container_name: taccsite_postgres
+    networks:
+      - taccsite_cms_net
+
+volumes:
+  taccsite_postgres_data:
+
+networks:
+  taccsite_cms_net:
