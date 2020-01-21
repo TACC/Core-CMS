@@ -24,7 +24,7 @@ body {
 - `h4` = in-story header two
 - `h5` = in-story header three
 - `h6` = byline/category header
-​*/
+*/
 /* NOTE: If scope classes are implemented, then these would be nested under a `.s-cms-content` */
 
 h1, h3 {
@@ -67,7 +67,7 @@ h6 {
 	margin: 35px 15px 15px 15px; 
 	padding: 0px;
 }
-​
+
 /* COMPONENTS */
 
 /* Navigation (Nav & NavBar) */
@@ -94,7 +94,7 @@ h6 {
 	margin: 0px 15px 0px 15px; 
 	font-size: 12px;
 }
-​
+
 /* Caption */
 
 .caption-text {
@@ -108,7 +108,7 @@ h6 {
 	border: solid 1px #333333; 
 	margin: 10px 0px 5px 0px;
 }
-​
+
 /* Quote */
 
 .quote-box {
