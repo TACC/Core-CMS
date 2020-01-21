@@ -1,0 +1,16 @@
+We are using miniconda to manage virtual environments.
+
+Miniconda installer: https://repo.continuum.io/miniconda/
+
+Recreate the development environment by following these steps:
+
+   $ conda create --name $NEW_ENV --file $ENV_spec.txt
+   $ conda activate $NEW_ENV
+   $ pip install -r $ENV_pip.txt
+   $ npm install package.json
+       - **!!!  Don't forget to rename the file back to package.json first !!!**
+
+If you prefer another method, setup your venv in that manner and install the dependencies in the above files.
+
+Then follow the steps in Confluence:
+   - https://confluence.tacc.utexas.edu/pages/viewpage.action?spaceKey=UP&title=DjangoCMS+Stand+Alone+Site
