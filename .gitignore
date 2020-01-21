@@ -95,6 +95,3 @@ publish
 # build script local files
 web/build/buildinfo.properties
 web/build/config/buildinfo.properties
-
-# dev cruft.
-dev_notes/
