@@ -34,15 +34,15 @@ h1, h3 {
 	text-transform: uppercase;
 }
 h1 {
-	font-size: 50px; 
-	margin: 28px 0px 5px 0px; 
+	font-size: 50px;
+	margin: 28px 0px 5px 0px;
 	padding: 0px;
 }
 h2 {
 	font-family: kepler-std-subhead, serif;
 	font-weight: 700;
 	font-style: normal;
-	font-size: 25px; 
+	font-size: 25px;
 	margin: 0px 0px 25px 0px;
 }
 h3 {
@@ -59,12 +59,12 @@ h4 {
 	font-size: 25px;
 }
 h5 {
-	font-size: 20px; 
+	font-size: 20px;
 }
 h6 {
-	font-size: 20px; 
-	color: #999999; 
-	margin: 35px 15px 15px 15px; 
+	font-size: 20px;
+	color: #999999;
+	margin: 35px 15px 15px 15px;
 	padding: 0px;
 }
 
@@ -85,13 +85,13 @@ h6 {
 /* Byline */
 
 .byline {
-	color: #999999; 
-	margin: 10px 15px 3px 15px; 
+	color: #999999;
+	margin: 10px 15px 3px 15px;
 	font-size: 14px;
 }
 .byline-title {
-	color: #999999; 
-	margin: 0px 15px 0px 15px; 
+	color: #999999;
+	margin: 0px 15px 0px 15px;
 	font-size: 12px;
 }
 
@@ -101,30 +101,30 @@ h6 {
 	font-family: kepler-std-caption, serif;
 	font-weight: 500;
 	font-style: italic;
-	font-size: 12px; 
+	font-size: 12px;
 	margin: 0px 0px 20px 0px;
 }
 .caption-hr {
-	border: solid 1px #333333; 
+	border: solid 1px #333333;
 	margin: 10px 0px 5px 0px;
 }
 
 /* Quote */
 
 .quote-box {
-	border-top: solid 1px #ff9c00; 
-	border-bottom: solid 3px #ff9c00; 
-	padding: 20px 0px 0px 0px; 
-	margin: 5px 0px 20px 0px; 
+	border-top: solid 1px #ff9c00;
+	border-bottom: solid 3px #ff9c00;
+	padding: 20px 0px 0px 0px;
+	margin: 5px 0px 20px 0px;
 	color: #999999;
 }
 .quote-text {
-	font-size: 18px; 
-	font-style: italic; 
+	font-size: 18px;
+	font-style: italic;
 	margin-bottom: 5px;
 }
 .quote-attribution {
-	text-align: right; 
-	font-size: 16px; 
+	text-align: right;
+	font-size: 16px;
 	margin-top: 0px;
 }
