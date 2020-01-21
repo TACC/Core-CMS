@@ -6,18 +6,14 @@
   <title>{% block title %}This is my new project home page{% endblock title %}</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="icon" href="{% static 'site_cms/images/favicons/favicon.ico' %}" type="image/x-icon"/>
+  <link rel="icon" href="{% static 'site_cms/images/favicons/favicon.ico' %}" type="image/x-icon" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="{% static 'site_cms/css/styles.css' %}">
   <link rel="stylesheet" href="{% static 'site_cms/css/nav_branding_styles/branding_logos.css' %}">
   <!-- Custom <head> Markup per Site to Customize the Site <head> Content. -->
-  <!-- Style in use. -->
-  <link class="cms-branded-stylesheet" rel="stylesheet" href="{% static 'site_cms/css/nav_branding_styles/nav.branding.texascale.v2.css' %}">
-  <!-- GL-1: When Hedda and Matt are ready, in 2020, these will become global stylesheets -->
-  <!-- NOTE: Should actually load `@font-face` code before other resources; see https://confluence.tacc.utexas.edu/x/TwBgBQ -->
-  <link class="cms-branded-stylesheet" rel="stylesheet" href="https://use.typekit.net/xnr7bof.css">
-
+  <!-- No custom markup in base template. -->
   {% render_block "css" %}
+  <!-- In-line Styles -->
   {% block custom_css %}
   <style>
     /* Styles are overridden by template inheritance in fullwidth.html. */
@@ -35,7 +31,7 @@
     {% include "nav_branding_partials/nav.branding.frontera.v2.html" %}
   </div>
 
-  <!--Experimenting with a sticky footer placeholder.  -->
+  <!-- Page content. -->
   <div id="cms-content">
     <div id="content-wrap">
       <!-- This block used regardless. -->
@@ -46,6 +42,8 @@
       {% endblock content %}
       <!-- End of Block. -->
     </div>
+
+    <!-- Footer block. -->
     <footer id="footer">
       <center>
         <div id="footer-content">
@@ -57,12 +55,6 @@
     </footer>
   </div>
 
-  <!-- Creates a div that fills the space below the content and can be styled to match the navigation and footer. -->
-  <!-- <div class="flex-footer-fill"> -->
-  <!-- <div class="footer-width-fix"></div> -->
-  <!-- <div class="footer-fill"></div> -->
-  <!-- </div> -->
-
   <!-- Vendor Scripts -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -71,12 +63,14 @@
   <!-- Custom Scripts -->
   <script src="{% static 'site_cms/scripts/base.js' %}" crossorigin="anonymous"></script>
   <script>
-    console.log("--> FILE: taccsite_cms.templates.base.html");
+    // console.log("--> FILE: taccsite_cms.templates.base.html");
   </script>
   {% render_block "js" %}
+
+  <!-- In-line Scripts  -->
   {% block "custom_js" %}
   <script>
-    console.log("--> FILE: taccsite_cms.templates.base.html custom_js block ::OVERRIDDEN");
+    // console.log("--> FILE: taccsite_cms.templates.base.html custom_js block ::OVERRIDDEN");
   </script>
   {% endblock "custom_js" %}
 </body>
