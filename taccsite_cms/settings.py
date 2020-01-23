@@ -20,7 +20,7 @@ if CONSOLE_LOG_ENABLED:
 # Boolean check to see if ldap is being used by the site.
 # Ensure the django-auth-ldap==2.0.0 package is uncommented
 # in the requirements.txt file or installed if using ldap.
-LDAP_ENABLED = False
+LDAP_ENABLED = True
 if CONSOLE_LOG_ENABLED:
     print("--> Variable LDAP_ENABLED: ", LDAP_ENABLED)
 
@@ -171,7 +171,7 @@ INSTALLED_APPS = [
 
 # Comment the LDAPBackend to use local django auth
 AUTHENTICATION_BACKENDS = [
-    # "django_auth_ldap.backend.LDAPBackend",
+    "django_auth_ldap.backend.LDAPBackend",
     "django.contrib.auth.backends.ModelBackend",
 ]
 

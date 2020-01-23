@@ -8,6 +8,7 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from django.contrib.sitemaps.views import sitemap
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.views.generic.base import TemplateView
 from django.views.static import serve
 
 admin.autodiscover()
@@ -19,6 +20,7 @@ urlpatterns = [
 
 urlpatterns += [
     url(r'^admin/', admin.site.urls),  # NOQA
+    url(r'^frontera-top-nav/$', TemplateView.as_view(template_name='top_nav_only.html'), name='top_nav_only'),
     url(r'^', include('cms.urls')),
 ]
 

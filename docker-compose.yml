@@ -2,7 +2,7 @@ version: "3"
 services:
   cms:
     build: .
-    image: taccwma/taccsite-cms:initial
+    image: taccwma/frontera-cms:latest
     links:
       - postgres:postgres
     volumes:
@@ -27,8 +27,6 @@ services:
       - ./conf/postgres/pg_db.secret:/var/lib/postgresql/pg_db.secret
       - ./conf/postgres/pg_user.secret:/var/lib/postgresql/pg_user.secret
       - ./conf/postgres/pg_password.secret:/var/lib/postgresql/pg_password.secret
-    ports:
-      - 5432:5432
     hostname: taccsite_postgres
     container_name: taccsite_postgres
     networks:
