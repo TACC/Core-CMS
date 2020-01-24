@@ -1,0 +1,54 @@
+
+/* NAVIGATION */
+/* TODO: Create a navigation component (if easier, then start with a
+         specific header navigation component, until shared code is obvious.) */
+
+/* TODO: Confirm whether to make these styles global */
+.navbar {
+  font-family: 'benton-sans';
+}
+
+.navbar {
+  /* TODO: Use universal font-size variable */
+  font-size: 0.8125rem; /* 13px */
+  text-transform: uppercase;
+}
+
+/* WARNING: Overwrite Bootstrap */
+.nav-link {
+  /* CAVEAT: From Bootstrap's `.navbar-brand` vertical
+             padding of `.3125rem`, which is equal to `5px`. */
+  --space--available: 5px;
+  --space--offset: calc( var(--space--available) - var(--width) );
+  --width: 4px;
+
+  /* CAVEAT: From `.nav-logo-double` */
+  --navbar-content-height: 40px;
+  /* CAVEAT: From Bootstrap `.navbar-expand-md .navbar-nav .nav-link`
+             vertical padding of `0.5rem`, which is equal to `8px` */
+  --padding: 8px;
+  --height: calc( var(--navbar-content-height) - var(--padding) );
+
+  line-height: calc( var(--height) - var(--space--available) );
+}
+
+/* NOTE: These styles aren't awful; migrate to be Frontera skin of future component */
+.nav-link:hover,
+.nav-link:focus {
+  /* WARNING: Non-standard property (but the only maintainable way to do this) */
+  -webkit-text-stroke: 0.0625em rgb(255, 255, 255);
+}
+.nav-link:hover,
+.nav-link:focus,
+.nav-link:active,
+.nav-item.active .nav-link {
+  border-width: 0 0 var(--width);
+  border-style: solid;
+  border-color: rgb(213, 181, 124);
+  margin-bottom: calc( var(--width) * -1 );
+}
+/* WARNING: Overwrite Bootstrap */
+.navbar-expand-md .navbar-nav .nav-link {
+  padding-right: 15px;
+  padding-left: 15px;
+}
