@@ -17,16 +17,6 @@ body {
   height: 100%;
 }
 
-/* ELEMENTS */
-
-/* Inline Text Semantics */
-
-small,
-/* Override Bootstrap */
-.small {
-  font-size: 0.8125rem; /* 13px */
-}
-
 /* MISCELLANEOUS */
 
 /* Navigation */
