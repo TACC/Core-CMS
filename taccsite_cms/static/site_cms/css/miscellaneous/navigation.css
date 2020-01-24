@@ -1,12 +1,12 @@
 
 /* NAVIGATION */
-/* TODO: Create a navigation component (if easier, then start with a
-         specific header navigation component, until shared code is obvious.) */
 
-/* TODO: Confirm whether to make these styles global */
-.navbar {
-  font-family: 'benton-sans';
-}
+/* TODO:
+- Create a navigation component.
+    - If easier, then start with a specific header navigation component,
+      until it become obviosu what code can be shred ebtween navigations.
+- Extract font icon styles when a standard font icon solution is available
+*/
 
 .navbar {
   /* TODO: Use universal font-size variable */
@@ -14,40 +14,90 @@
   text-transform: uppercase;
 }
 
-/* WARNING: Overwrite Bootstrap */
-.nav-link {
-  /* CAVEAT: From Bootstrap's `.navbar-brand` vertical
-             padding of `.3125rem`, which is equal to `5px`. */
-  --space--available: 5px;
-  --space--offset: calc( var(--space--available) - var(--width) );
-  --width: 4px;
-
-  /* CAVEAT: From `.nav-logo-double` */
-  --navbar-content-height: 40px;
-  /* CAVEAT: From Bootstrap `.navbar-expand-md .navbar-nav .nav-link`
-             vertical padding of `0.5rem`, which is equal to `8px` */
-  --padding: 8px;
-  --height: calc( var(--navbar-content-height) - var(--padding) );
-
-  line-height: calc( var(--height) - var(--space--available) );
-}
-
-/* NOTE: These styles aren't awful; migrate to be Frontera skin of future component */
+/* TODO: Migrate to be Frontera skin of future component */
 .nav-link:hover,
 .nav-link:focus {
-  /* WARNING: Non-standard property (but the only maintainable way to do this) */
+  /* CAVEAT: Non-standard property (but the only maintainable way to do this) */
   -webkit-text-stroke: 0.0625em rgb(255, 255, 255);
 }
 .nav-link:hover,
 .nav-link:focus,
 .nav-link:active,
 .nav-item.active .nav-link {
-  border-width: 0 0 var(--width);
+  /* NOTE: See "NAVIGATION: Hacks & Overrides" at `.nav-link` for variables */
+  border-width: 0 0 var(--border-width);
   border-style: solid;
-  border-color: rgb(213, 181, 124);
-  margin-bottom: calc( var(--width) * -1 );
+  border-color: var(--border-color);
+  margin-bottom: calc( var(--border-width) * -1 );
 }
+
+
+
+/* NAVIGATION: Hacks & Overrides */
+
+/* TODO: Confirm whether to make these styles global */
+.navbar {
+  font-family: 'benton-sans';
+}
+
+/* HACK: Select homepage by position, because CMS admin can not
+         assign ID's, nor classes, to navigation links */
+.navbar-nav .nav-item:first-child .nav-link {
+  /* HACK: Manually copy `.fa` styles from FontAwesome, because
+           no CSS processing is available to compose the styles into here */
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.navbar-nav .nav-item:first-child .nav-link::before {
+  /* HACK: Manually copy `.fa-home` styles from FontAwesome, because
+           no CSS processing is available to compose the styles into here */
+  content: "\f015";
+
+  /* Copied from `li.nav-item.active a.nav-link span` in `…/css/styles.css` */
+  color: rgb(255, 255, 255);
+
+  /* NOTE: This rule should be unnecessary with official font icon solution */
+  font-size: 24px;
+}
+.navbar-nav .nav-item:first-child .nav-link span {
+  /* HACK: Manually copy `.sr-only` styles from FontAwesome, because
+           no CSS processing is available to compose the styles into here */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
 /* WARNING: Overwrite Bootstrap */
+.nav-link {
+  --border-width: 4px;
+  --border-color: rgb(213, 181, 124);
+
+  /* CAVEAT: From Bootstrap's `.navbar-brand` vertical
+             padding of `.3125rem`, which is equal to `5px`. */
+  --space--available: 5px;
+  --space--offset: calc( var(--space--available) - var(--border-width));
+
+  /* CAVEAT: From `.nav-logo-double` */
+  --navbar-content-height: 40px;
+  /* CAVEAT: From Bootstrap `.navbar-expand-md .navbar-nav .nav-link`
+             vertical padding of `0.5rem`, which is equal to `8px` */
+  --padding: 8px;
+  --height: calc( var(--navbar-content-height) - var(--padding));
+}
+.nav-link,
+/* NOTE: This selector should be unnecessary with official font icon solution */
+.navbar-nav .nav-item:first-child .nav-link::before {
+  line-height: calc( var(--height) - var(--space--available));
+}
 .navbar-expand-md .navbar-nav .nav-link {
   padding-right: 15px;
   padding-left: 15px;
