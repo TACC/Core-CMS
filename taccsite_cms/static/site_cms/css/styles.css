@@ -17,9 +17,59 @@ body {
   height: 100%;
 }
 
+/* ELEMENTS */
+
+/* Inline Text Semantics */
+
+small,
+/* Override Bootstrap */
+.small {
+  font-size: 0.8125rem; /* 13px */
+}
+
 /* MISCELLANEOUS */
 
 /* Navigation */
+
+.navbar {
+  font-family: 'benton-sans';
+  font-size: 0.8125rem; /* 13px */
+  text-transform: uppercase;
+}
+.nav-link {
+  /* CAVEAT: From Bootstrap's `.navbar-brand` vertical
+             padding of `.3125rem`, which is equal to `5px`. */
+  --space--available: 5px;
+  --space--offset: calc( var(--space--available) - var(--width) );
+  --width: 4px;
+
+  /* CAVEAT: From `.nav-logo-double` */
+  --navbar-content-height: 40px;
+  /* CAVEAT: From Bootstrap `.navbar-expand-md .navbar-nav .nav-link`
+             vertical padding of `0.5rem`, which is equal to `8px` */
+  --padding: 8px;
+  --height: calc( var(--navbar-content-height) - var(--padding) );
+
+  line-height: calc( var(--height) - var(--space--available) );
+}
+.nav-link:hover,
+.nav-link:focus {
+  -webkit-text-stroke: 0.0625em rgb(255, 255, 255);
+}
+.nav-link:hover,
+.nav-link:focus,
+.nav-link:active,
+.nav-item.active .nav-link {
+  border-width: 0 0 var(--width);
+  border-style: solid;
+  border-color: rgb(213, 181, 124);
+  margin-bottom: calc( var(--width) * -1 );
+}
+.navbar-expand-md .navbar-nav .nav-link {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
 /* RFE: Revisit the use of tags in these selectors */
 
 ul.dropdown-menu,
