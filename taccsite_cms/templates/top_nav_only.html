@@ -8,20 +8,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="icon" href="{% static 'site_cms/images/favicons/favicon.ico' %}" type="image/x-icon" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link id="css-core" rel="stylesheet" href="{% static 'site_cms/css/styles.css' %}">
+  <link id="core-css" class="core-css" rel="stylesheet" href="{% static 'site_cms/css/styles.css' %}">
 
-  <!-- CUSTOM -->
-
-  <!-- CUSTOM: CSS -->
-  <!-- CUSTOM: CSS: Files -->
-  <link id="css-font"
-        class="css-file" rel="stylesheet" href="https://use.typekit.net/xnr7bof.css">
-  <link class="css-file" rel="stylesheet" href="{% static 'site_cms/css/nav_branding_styles/branding_logos.css' %}">
+  <link id="project-font"
+        class="project-css" rel="stylesheet" href="https://use.typekit.net/xnr7bof.css">
+  <link class="project-css" rel="stylesheet" href="{% static 'site_cms/css/nav_branding_styles/branding_logos.css' %}">
+  <link class="project-css" rel="stylesheet" href="{% static 'site_cms/css/nav_branding_styles/navigation.css' %}">
 
   <!-- CUSTOM: CSS: Inline -->
   {% render_block "css" %}
   {% block custom_css %}
-  <style>
+  <style >
     /* Styles are overridden by template inheritance in fullwidth.html. */
     /* Better to keep all CSS styles in external css files --> static/taccsite_cms/static/site_cms/css/styles.css (linked above). */
   </style>
