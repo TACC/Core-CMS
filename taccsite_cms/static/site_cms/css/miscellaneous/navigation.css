@@ -42,9 +42,11 @@
 /* HACK: Select homepage by position, because CMS admin can not
          assign ID's, nor classes, to navigation links */
 .navbar-nav .nav-item:first-child .nav-link {
+  /* TODO: Perform this in Core via Issue #5 */
   /* HACK: Manually copy `.fa` styles from FontAwesome, because
            no CSS processing is available to compose the styles into here */
-  display: inline-block;
+  display: none;
+  /* display: inline-block; */
   font: normal normal normal 14px/1 FontAwesome;
   font-size: inherit;
   text-rendering: auto;
