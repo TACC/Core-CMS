@@ -32,16 +32,21 @@
 
 
 
-/* NAVIGATION: Hacks & Overrides */
+/* NAVIGATION: Portal */
 
 /* TODO: Confirm whether to make these styles global */
-.navbar {
+.s-portal-nav {
   font-family: 'benton-sans';
+  /* Override `.navbar` */
+  text-transform: none;
+  font-size: 16px;
 }
+
+/* NAVIGATION: CMS */
 
 /* HACK: Select homepage by position, because CMS admin can not
          assign ID's, nor classes, to navigation links */
-.navbar-nav .nav-item:first-child .nav-link {
+.s-cms-nav .nav-item:first-child .nav-link {
   /* TODO: Perform this in Core via Issue #5 */
   /* HACK: Manually copy `.fa` styles from FontAwesome, because
            no CSS processing is available to compose the styles into here */
@@ -53,7 +58,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.navbar-nav .nav-item:first-child .nav-link::before {
+.s-cms-nav .nav-item:first-child .nav-link::before {
   /* HACK: Manually copy `.fa-home` styles from FontAwesome, because
            no CSS processing is available to compose the styles into here */
   content: "\f015";
@@ -64,7 +69,7 @@
   /* NOTE: This rule should be unnecessary with official font icon solution */
   font-size: 24px;
 }
-.navbar-nav .nav-item:first-child .nav-link span {
+.s-cms-nav .nav-item:first-child .nav-link span {
   /* HACK: Manually copy `.sr-only` styles from FontAwesome, because
            no CSS processing is available to compose the styles into here */
   position: absolute;
@@ -77,7 +82,8 @@
   border: 0;
 }
 
-/* WARNING: Overwrite Bootstrap */
+/* NAVIGATION: Override Bootstrap */
+
 .nav-link {
   --border-width: 4px;
   --border-color: rgb(213, 181, 124);
