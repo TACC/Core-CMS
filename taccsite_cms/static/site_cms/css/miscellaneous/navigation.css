@@ -11,6 +11,9 @@
   /* TODO: Use universal font-size variable */
   font-size: 0.8125rem; /* 13px */
   text-transform: uppercase;
+
+  /* TODO: Confirm whether to make these styles global */
+  font-family: 'benton-sans';
 }
 
 /* TODO: Migrate to be Frontera skin of future component */
@@ -34,9 +37,7 @@
 
 /* NAVIGATION: Portal */
 
-/* TODO: Confirm whether to make these styles global */
 .s-portal-nav {
-  font-family: 'benton-sans';
   /* Override `.navbar` */
   text-transform: none;
   font-size: 16px;
