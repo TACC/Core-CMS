@@ -20,30 +20,17 @@ body {
 /* MISCELLANEOUS */
 
 /* Navigation */
-/* RFE: Revisit the use of tags in these selectors */
 
-ul.dropdown-menu,
-ul.dropdown-menu.show,
-li.nav-item,
-a.dropdown-toggle,
-a.navbar-brand,
-a.nav-link span,
-li.nav-item.active a.nav-link,
-li.nav-item.active a.nav-link span {
+/* HACK: Using an ID selector, because Bootstrap has overspecific selectors */
+#s-bootstrap-nav .navbar-brand,
+#s-bootstrap-nav .nav-link {
   color: rgb(255, 255, 255);
-  background-color: rgb(51, 51, 51);
   text-decoration: none;
 }
 
-.nav-item.dropdown {
-  padding: 8px 10px;
-}
+/* Dropdown */
 
-ul.dropdown-menu {
-  margin-left: 10px;
-}
-
-.dropdown-menu li {
+.dropdown-item {
   padding-left: 10px;
 }
 
