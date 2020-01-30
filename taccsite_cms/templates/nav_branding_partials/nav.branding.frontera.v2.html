@@ -31,6 +31,7 @@
     </ul>
 
     {# HACK: Duplication of https://bitbucket.org/taccaci/frontera-portal/src/master/server/portal/templates/includes/header.html #}
+    {# NOTE: The `{% url '…' %}` values have been replaced with hard-coded URLs from relevant `urls.py` files #}
     <ul class="navbar-nav navbar-right  ml-auto  s-portal-nav">
       {% if user.is_authenticated %}
       <div class="navbar-nav">
@@ -40,28 +41,28 @@
             <span class="sr-only">Toggle Dropdown</span>
           </a>
           <div class="dropdown-menu dropdown-menu-right">
-            <a class="dropdown-item" href="{# {% url 'workbench:index' %} #}">
+            <a class="dropdown-item" href="/workbench/">
               <i class="fas fa-desktop nav-icon"></i> My Dashboard
             </a>
-            <a class="dropdown-item" href="{# {% url 'portal_accounts:manage_profile' %} #}">
+            <a class="dropdown-item" href="/accounts/profile/">
               <i class="fas fa-user-circle nav-icon"></i> My Account
             </a>
-            <a class="dropdown-item" href="{# {% url 'tickets:mytickets' %} #}">
+            <a class="dropdown-item" href="/tickets/">
               <i class="fas fa-ticket-alt nav-icon"></i> My Tickets
             </a>
             {% if user.is_staff %}
-            <a class="dropdown-item" href="{# {% url 'portal_onboarding:admin' %} #}">
+            <a class="dropdown-item" href="/onboarding/">
               <i class="fas fa-users"></i> Onboarding
             </a>
             {% endif %}
-            <a class="dropdown-item" href="{# {% url 'portal_accounts:logout' %} #}">
+            <a class="dropdown-item" href="/accounts/logout/">
               <i class="fas fa-sign-out-alt nav-icon"></i> Log Out
             </a>
             {% if user.is_impersonate %}
             <div class="dropdown-divider"></div>
             <div class="dropdown-item">
               <i class="fas fa-user-secret nav-icon"></i>
-              <a href="{% url 'impersonate-stop' %}">Stop impersonating {{user}}</a>
+              <a href="/impersonate/stop/">Stop impersonating {{user}}</a>
             </div>
             {% endif %}
             <!-- end of impersonate -->
@@ -79,14 +80,14 @@
       </li>
       {% endif %}
       <li class="nav-item {% if request.get_full_path == '/accounts/login' %} active {% endif %}">
-        <a class="nav-link" role="button" href="/admin">
-        <!-- <a href="{# {% url 'portal_auth:agave_oauth' %} #}" class="btn btn-link-alt"> -->
+        <a class="nav-link" role="button" href="/auth/agave/">
+        <!-- <a href="/auth/agave/" class="btn btn-link-alt"> -->
           <i class="fas fa-sign-in-alt nav-icon"></i> Log in
         </a>
       </li>
       <!-- Hidden until auth flow is properly implemented and MFA impact is determined.  -->
       <!-- <li class="right-nav-links">
-        <a href="{# {% url 'portal_accounts:register' %} #}" class="btn btn-link-alt">
+        <a href="/accounts/register/" class="btn btn-link-alt">
           <i class="fas fa-user-plus nav-icon"></i> Register
         </a>
       </li> -->
