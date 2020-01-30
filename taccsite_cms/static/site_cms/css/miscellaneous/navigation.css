@@ -1,26 +1,31 @@
 /* NAVIGATION */
 
-/* TODO:
-- Create a navigation component.
-    - If easier, then start with a specific header navigation component,
-      until it become obviosu what code can be shred ebtween navigations.
-- Extract font icon styles when a standard font icon solution is available
-*/
+
 
 .navbar {
   /* TODO: Use universal font-size variable */
   font-size: 0.8125rem; /* 13px */
+  /* TODO: Confirm whether this style is actually desired */
+  /* SEE: https://tacc-team.slack.com/archives/CQUA4D5KJ/p1580399450057400 */
   text-transform: uppercase;
 
-  /* TODO: Confirm whether to make these styles global */
   font-family: 'benton-sans';
 }
 
-/* TODO: Migrate to be Frontera skin of future component */
 .nav-link:hover,
 .nav-link:focus {
   /* CAVEAT: Non-standard property (but the only maintainable way to do this) */
   -webkit-text-stroke: 0.0625em rgb(255, 255, 255);
+}
+/* HACK: The Portal nav neglects to use `.nav-link` for links.
+         Do not fix until Portal uses the CMS repositories
+         (otherwise we must duplicate markup changes) */
+/* ???: Should this be for `.s-portal-nav` or for `.dropdown`? */
+a.dropdown-item:hover,
+a.dropdown-item:focus {
+  /* CAVEAT: Non-standard property (but the only maintainable way to do this) */
+  /* Color is from Bootstrap `.dropdown-item` in `_dropdown.scss` */
+  -webkit-text-stroke: 0.0625em rgb(33, 37, 41);
 }
 .nav-link:hover,
 .nav-link:focus,
@@ -35,7 +40,7 @@
 
 
 
-/* NAVIGATION: Portal */
+/* Portal */
 
 .s-portal-nav {
   /* Override `.navbar` */
@@ -43,47 +48,24 @@
   font-size: 16px;
 }
 
-/* NAVIGATION: CMS */
 
-/* HACK: Select homepage by position, because CMS admin can not
-         assign ID's, nor classes, to navigation links */
+
+/* CMS */
+
+/* REQ: This link is hidden intentionally by CMD, but may still be wanted */
 .s-cms-nav .nav-item:first-child .nav-link {
-  /* TODO: Perform this in Core via Issue #5 */
-  /* HACK: Manually copy `.fa` styles from FontAwesome, because
-           no CSS processing is available to compose the styles into here */
   display: none;
-  /* display: inline-block; */
-  font: normal normal normal 14px/1 FontAwesome;
-  font-size: inherit;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 .s-cms-nav .nav-item:first-child .nav-link::before {
-  /* HACK: Manually copy `.fa-home` styles from FontAwesome, because
-           no CSS processing is available to compose the styles into here */
-  content: "\f015";
-
-  /* Copied from `li.nav-item.active a.nav-link span` in `…/css/styles.css` */
+  /* Copied from `.nav-link` in `…/css/styles.css` */
   color: rgb(255, 255, 255);
-
   /* NOTE: This rule should be unnecessary with official font icon solution */
   font-size: 24px;
 }
-.s-cms-nav .nav-item:first-child .nav-link span {
-  /* HACK: Manually copy `.sr-only` styles from FontAwesome, because
-           no CSS processing is available to compose the styles into here */
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
-}
 
-/* NAVIGATION: Override Bootstrap */
+
+
+/* Override Bootstrap */
 
 .nav-link {
   --border-width: 4px;

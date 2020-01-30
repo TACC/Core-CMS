@@ -1,18 +1,62 @@
 /* FONT ICONS */
 
-/* TODO:
-- Implement a standard font icon solution.
-*/
+/* WARNING: Using FontAwesome as placeholder */
+/* TODO: Use custom icon font, when available */
 
-/* HACK: Manually copy `@font-face` styles from FontAwesome 4.7.0, because
-         no CSS processing is available to compose the styles into here,
-         we don't need all the font icons that Font Awesome has to offer;
-         only do this until a standard font icon solution is available */
-/* SEE: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css */
-@font-face {
-  font-family: 'FontAwesome';
-  src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.eot?v=4.7.0');
-  src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'), url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2'), url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.woff?v=4.7.0') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.ttf?v=4.7.0') format('truetype'), url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg');
-  font-weight: normal;
+
+
+/* With Classes */
+
+[class*="fa-"] {
+    width: 1.25em;
+    text-align: center;
+}
+:hover > [class*="fa-"],
+:focus > [class*="fa-"] {
+  /* Overwrite `a.dropdown-item:focus` in `./navigation.css` */
+  -webkit-text-stroke-width: 0px;
+}
+
+
+
+/* Sans Classes */
+
+/* TODO: Perform this in Core via Issue #5 */
+/* SEE: https://fontawesome.com/v5.0.13/how-to-use/on-the-web/advanced/css-pseudo-elements#define */
+/* HACK: Select some icons by position, because:
+         - Home Link: CMS admin can not define Markup attributes for navigation links */
+/* HACK: Manually copy styles from FontAwesome, because:
+          1. no CSS processing is available to compose the styles into here
+          2. CMS user and front-end dev have no way to add class to link */
+
+/* FontAwesome: "Step 1. Common Properties" */
+/* .some-other-foreign-element, */
+.s-cms-nav .nav-item:first-child .nav-link::before {
+  display: inline-block;
   font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* FontAwesome: "Step 2. Reference Individual Icons" */
+.s-cms-nav .nav-item:first-child .nav-link::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f015";
+}
+
+/* FontAwesome: Hide Text from Screen Readers */
+/* .some-other-foreign-element span, */
+.s-cms-nav .nav-item:first-child .nav-link span {
+  /* HACK: Manually copy `.sr-only` styles from FontAwesome, because
+           no CSS processing is available to compose the styles into here */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }
