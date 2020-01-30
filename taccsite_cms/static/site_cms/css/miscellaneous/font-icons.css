@@ -22,12 +22,12 @@
 /* Sans Classes */
 
 /* TODO: Perform this in Core via Issue #5 */
-/* SEE: https://fontawesome.com/v5.0.13/how-to-use/on-the-web/advanced/css-pseudo-elements#define */
 /* HACK: Select some icons by position, because:
          - Home Link: CMS admin can not define Markup attributes for navigation links */
 /* HACK: Manually copy styles from FontAwesome, because:
           1. no CSS processing is available to compose the styles into here
           2. CMS user and front-end dev have no way to add class to link */
+/* SEE: https://fontawesome.com/v5.0.13/how-to-use/on-the-web/advanced/css-pseudo-elements#define */
 
 /* FontAwesome: "Step 1. Common Properties" */
 /* .some-other-foreign-element, */
