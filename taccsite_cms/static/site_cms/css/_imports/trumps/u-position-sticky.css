@@ -1,5 +1,3 @@
-/* UTILITIES */
-
 /*
 Sticky
 
@@ -11,7 +9,7 @@ A minimal utility to apply `position: sticky` (and relevant styles) to an elemen
 Reference:
 - [CSS Position Sticky - How It Really Works!](https://medium.com/@elad/css-position-sticky-how-it-really-works-54cd01dc2d46)
 
-Style guide: utilities.position-sticky
+Style guide: trumps.utilities.position-sticky
 */
 
 .u-position-sticky,
