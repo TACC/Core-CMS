@@ -31,11 +31,11 @@
     </ul>
 
     {# HACK: Duplication of https://bitbucket.org/taccaci/frontera-portal/src/master/server/portal/templates/includes/header.html #}
-    {# NOTE: The `{% url '…' %}` values have been replaced with hard-coded URLs from relevant `urls.py` files #}
+    {# NOTE: The `{% url '…' %}` values have been replaced with hard-coded URLs from (except for `/login/`) relevant `urls.py` files #}
     <ul class="navbar-nav navbar-right  ml-auto  s-portal-nav">
       {% if user.is_authenticated %}
       <div class="navbar-nav">
-        <li class="nav-item dropdown active">
+        <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-user-circle fa-lg nav-icon"></i> {{ user.get_username }}
             <span class="sr-only">Toggle Dropdown</span>
@@ -79,9 +79,9 @@
         </a>
       </li>
       {% endif %}
-      <li class="nav-item {% if request.get_full_path == '/accounts/login' %} active {% endif %}">
-        <a class="nav-link" role="button" href="/auth/agave/">
-        <!-- <a href="/auth/agave/" class="btn btn-link-alt"> -->
+      <li class="nav-item {% if request.get_full_path == '/login/' %} active {% endif %}">
+        <a class="nav-link" role="button" href="/login/">
+        <!-- <a href="/login/" class="btn btn-link-alt"> -->
           <i class="fas fa-sign-in-alt nav-icon"></i> Log in
         </a>
       </li>
