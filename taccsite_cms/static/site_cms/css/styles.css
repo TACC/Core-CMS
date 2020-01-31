@@ -19,20 +19,14 @@ body {
 
 /* MISCELLANEOUS */
 
-/* Navigation */
-
-/* HACK: Using an ID selector, because Bootstrap has overspecific selectors */
+/* TODO: Remove comment during nav cleanup */
+/* FAQ: Moved to `miscellaneous/navigation.css` */
+/*
 #s-bootstrap-nav .navbar-brand,
-#s-bootstrap-nav .nav-link {
-  color: rgb(255, 255, 255);
-  text-decoration: none;
-}
+#s-bootstrap-nav .nav-link { … }
+*/
 
 /* Class & ID Selectors */
-
-/*
-.cms-branded-navigation {}
-*/
 
 #cms-content {
   position: relative;
