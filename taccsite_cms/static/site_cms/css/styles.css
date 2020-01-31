@@ -19,39 +19,14 @@ body {
 
 /* MISCELLANEOUS */
 
-/* Navigation */
-/* RFE: Revisit the use of tags in these selectors */
-
-ul.dropdown-menu,
-ul.dropdown-menu.show,
-li.nav-item,
-a.dropdown-toggle,
-a.navbar-brand,
-a.nav-link span,
-li.nav-item.active a.nav-link,
-li.nav-item.active a.nav-link span {
-  color: rgb(255, 255, 255);
-  background-color: rgb(51, 51, 51);
-  text-decoration: none;
-}
-
-.nav-item.dropdown {
-  padding: 8px 10px;
-}
-
-ul.dropdown-menu {
-  margin-left: 10px;
-}
-
-.dropdown-menu li {
-  padding-left: 10px;
-}
+/* TODO: Remove comment during nav cleanup */
+/* FAQ: Moved to `miscellaneous/navigation.css` */
+/*
+#s-bootstrap-nav .navbar-brand,
+#s-bootstrap-nav .nav-link { … }
+*/
 
 /* Class & ID Selectors */
-
-/*
-.cms-branded-navigation {}
-*/
 
 #cms-content {
   position: relative;
@@ -87,10 +62,6 @@ ul.dropdown-menu {
 /* Media Query */
 
 @media only screen and (max-width: 640px) {
-  .nav-item.dropdown {
-    padding: 8px 0 0;
-  }
-
   #content-wrap {
     padding-bottom: 6rem;
   }
@@ -105,10 +76,6 @@ ul.dropdown-menu {
 }
 
 @media only screen and (min-width: 641px) and (max-width: 767px) {
-  .nav-item.dropdown {
-    padding: 8px 0 0;
-  }
-
   #content-wrap {
     padding-bottom: 5.5rem;
   }
@@ -123,10 +90,6 @@ ul.dropdown-menu {
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-  .nav-item.dropdown {
-    padding: 8px 0 0;
-  }
-
   #content-wrap {
     padding-bottom: 5.1rem;
   }
@@ -141,10 +104,6 @@ ul.dropdown-menu {
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
-  .nav-item.dropdown {
-    padding: 8px 0 0;
-  }
-
   #content-wrap {
     padding-bottom: 4.8rem;
   }
@@ -159,10 +118,6 @@ ul.dropdown-menu {
 }
 
 @media only screen and (min-width: 1200px) {
-  .nav-item.dropdown {
-    padding: 8px 0 0;
-  }
-
   #content-wrap {
     padding-bottom: 4.6rem;
   }
