@@ -30,7 +30,7 @@
       {% show_menu 0 100 1 100 "cms_menu.html" %}
     </ul>
 
-    {# HACK: Duplication of https://bitbucket.org/taccaci/frontera-portal/src/master/server/portal/templates/includes/header.html #}
+    {# Duplicated from https://bitbucket.org/taccaci/frontera-portal/src/master/server/portal/templates/includes/header.html #}
     {# NOTE: The `{% url '…' %}` values have been replaced with hard-coded URLs from (except for `/login/`) relevant `urls.py` files #}
     <ul class="navbar-nav navbar-right  ml-auto  s-portal-nav">
       {% if user.is_authenticated %}
@@ -50,35 +50,14 @@
             <a class="dropdown-item" href="/tickets/">
               <i class="fas fa-ticket-alt nav-icon"></i> My Tickets
             </a>
-            {% if user.is_staff %}
-            <a class="dropdown-item" href="/onboarding/">
-              <i class="fas fa-users"></i> Onboarding
-            </a>
-            {% endif %}
             <a class="dropdown-item" href="/accounts/logout/">
               <i class="fas fa-sign-out-alt nav-icon"></i> Log Out
             </a>
-            {% if user.is_impersonate %}
-            <div class="dropdown-divider"></div>
-            <div class="dropdown-item">
-              <i class="fas fa-user-secret nav-icon"></i>
-              <a href="/impersonate/stop/">Stop impersonating {{user}}</a>
-            </div>
-            {% endif %}
             <!-- end of impersonate -->
           </div>
         </li>
       </div>
       {% else %}
-      <!-- if user is not logged in -->
-      {% if request_access %}
-      <li class="nav-item {% if request.get_full_path == '/about/' %} active {% endif %}">
-        <a class="nav-link" role="button" href="/accounts/request-access/">
-        <!-- <a class="nav-link btn btn-link-alt" role="button" href="/accounts/request-access/"> -->
-          <i class="fas fa-users nav-icon"></i> Request Access
-        </a>
-      </li>
-      {% endif %}
       <li class="nav-item {% if request.get_full_path == '/login/' %} active {% endif %}">
         <a class="nav-link" role="button" href="/login/">
         <!-- <a href="/login/" class="btn btn-link-alt"> -->
