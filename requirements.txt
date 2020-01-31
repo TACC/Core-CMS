@@ -13,7 +13,7 @@ certifi==2019.6.16
 Django==1.11.22
 # Comment out ldap if you are not using
 # TACC auth (eg. stand alone sites).
-#django-auth-ldap==2.1.0
+django-auth-ldap==2.1.0
 django-classy-tags==0.9.0
 django-cms==3.6.0
 django-filer==1.5.0
