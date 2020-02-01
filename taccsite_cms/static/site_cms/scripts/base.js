@@ -20,8 +20,8 @@ window.onload = function() {
 
   loadJSON('/api/users/auth/',
            function(data) { console.log(data);
-               jQuery('.frontera-core-username').text(data['username']);
-               jQuery('.frontera-core-dropdown').removeClass('d-none');
+               jQuery('#frontera-core-username').text(data['username']);
+               jQuery('#frontera-core-dropdown').removeClass('d-none');
            },
            function(xhr) { console.error(xhr); }
   );
