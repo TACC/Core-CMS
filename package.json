@@ -1,0 +1,29 @@
+{
+  "name": "frontera-cms",
+  "scripts": {
+    "build": "npm run build:css",
+    "build:css": "postcss src/styles/site/header.css > taccsite_cms/static/site_cms/css/header.css"
+  },
+  "// scripts": {
+    "build:css": "Compile files locally, to be committed to repo (the architecture is a WIP)"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.tacc.utexas.edu:wma-cms/frontera-cms.git"
+  },
+  "devDependencies": {
+    "cssnano": "^4.1.10",
+    "postcss-cli": "^7.1.0"
+  },
+  "dependencies": {
+    "postcss-import": "^12.0.1"
+  },
+  "postcss": {
+    "plugins": {
+      "postcss-import": {},
+      "cssnano": {
+        "preset": "default"
+      }
+    }
+  }
+}

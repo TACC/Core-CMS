@@ -19,20 +19,14 @@ body {
 
 /* MISCELLANEOUS */
 
-/* Navigation */
-
-/* HACK: Using an ID selector, because Bootstrap has overspecific selectors */
+/* TODO: Remove comment during nav cleanup */
+/* FAQ: Moved to `miscellaneous/navigation.css` */
+/*
 #s-bootstrap-nav .navbar-brand,
-#s-bootstrap-nav .nav-link {
-  color: rgb(255, 255, 255);
-  text-decoration: none;
-}
+#s-bootstrap-nav .nav-link { … }
+*/
 
 /* Class & ID Selectors */
-
-/*
-.cms-branded-navigation {}
-*/
 
 #cms-content {
   position: relative;
@@ -68,10 +62,6 @@ body {
 /* Media Query */
 
 @media only screen and (max-width: 640px) {
-  .nav-item.dropdown {
-    padding: 8px 0 0;
-  }
-
   #content-wrap {
     padding-bottom: 6rem;
   }
@@ -86,10 +76,6 @@ body {
 }
 
 @media only screen and (min-width: 641px) and (max-width: 767px) {
-  .nav-item.dropdown {
-    padding: 8px 0 0;
-  }
-
   #content-wrap {
     padding-bottom: 5.5rem;
   }
@@ -104,10 +90,6 @@ body {
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-  .nav-item.dropdown {
-    padding: 8px 0 0;
-  }
-
   #content-wrap {
     padding-bottom: 5.1rem;
   }
@@ -122,10 +104,6 @@ body {
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
-  .nav-item.dropdown {
-    padding: 8px 0 0;
-  }
-
   #content-wrap {
     padding-bottom: 4.8rem;
   }
@@ -140,10 +118,6 @@ body {
 }
 
 @media only screen and (min-width: 1200px) {
-  .nav-item.dropdown {
-    padding: 8px 0 0;
-  }
-
   #content-wrap {
     padding-bottom: 4.6rem;
   }

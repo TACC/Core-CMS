@@ -1,28 +1,58 @@
 /* NAVIGATION */
 
-/* TODO:
-- Create a navigation component.
-    - If easier, then start with a specific header navigation component,
-      until it become obviosu what code can be shred ebtween navigations.
-- Extract font icon styles when a standard font icon solution is available
-*/
+/* IDEA: Rename file to reflect intent for all of site header, not just nav. */
+/* FAQ: The (scope) `.s-` classes are used to qualify external class to prevent
+        propogation to other instances of external class (like in Portal) */
 
-.navbar {
+
+
+/* Common */
+
+/* Common: Affiliation */
+
+
+/* Common: Navigation */
+
+.s-header.navbar {
+  background-color: rgb(51, 51, 51);
+  padding: 0 9%;
+
   /* TODO: Use universal font-size variable */
   font-size: 0.8125rem; /* 13px */
+  /* TODO: Confirm whether this style is actually desired */
+  /* SEE: https://tacc-team.slack.com/archives/CQUA4D5KJ/p1580399450057400 */
   text-transform: uppercase;
+
+  font-family: 'benton-sans';
+}
+@media only screen and (max-width: 640px) {
+  .s-header.navbar {
+    padding-left: 5%;
+    padding-right: 5%;
+
+    background-color: rgb(51, 51, 51);
+  }
 }
 
-/* TODO: Migrate to be Frontera skin of future component */
-.nav-link:hover,
-.nav-link:focus {
+.s-header .nav-link:hover,
+.s-header .nav-link:focus {
   /* CAVEAT: Non-standard property (but the only maintainable way to do this) */
   -webkit-text-stroke: 0.0625em rgb(255, 255, 255);
 }
-.nav-link:hover,
-.nav-link:focus,
-.nav-link:active,
-.nav-item.active .nav-link {
+/* HACK: The Portal nav neglects to use `.nav-link` for links.
+         Do not fix until Portal uses the CMS repositories
+         (otherwise we must duplicate markup changes) */
+/* ???: Should this be for `.s-portal-nav` or for `.dropdown`? */
+.s-header a.dropdown-item:hover,
+.s-header a.dropdown-item:focus {
+  /* CAVEAT: Non-standard property (but the only maintainable way to do this) */
+  /* Color is from Bootstrap `.dropdown-item` in `_dropdown.scss` */
+  -webkit-text-stroke: 0.0625em rgb(33, 37, 41);
+}
+.s-header .nav-link:hover,
+.s-header .nav-link:focus,
+.s-header .nav-link:active,
+.s-header .nav-item.active .nav-link {
   /* NOTE: See "NAVIGATION: Hacks & Overrides" at `.nav-link` for variables */
   border-width: 0 0 var(--border-width);
   border-style: solid;
@@ -32,39 +62,84 @@
 
 
 
-/* NAVIGATION: Hacks & Overrides */
+/* Common: Icons */
 
-/* TODO: Confirm whether to make these styles global */
-.navbar {
-  font-family: 'benton-sans';
+/* HACK: Using FontAwesome as placeholder */
+.s-header [class*="fa-"] {
+    width: 1.25em;
+    text-align: center;
+}
+.s-header :hover > [class*="fa-"],
+.s-header :focus > [class*="fa-"] {
+  /* Overwrite `a.dropdown-item:focus` in `./navigation.css` */
+  -webkit-text-stroke-width: 0px;
 }
 
-/* HACK: Select homepage by position, because CMS admin can not
-         assign ID's, nor classes, to navigation links */
-.navbar-nav .nav-item:first-child .nav-link {
-  /* TODO: Perform this in Core via Issue #5 */
-  /* HACK: Manually copy `.fa` styles from FontAwesome, because
-           no CSS processing is available to compose the styles into here */
+
+
+
+/* Portal */
+
+/* Portal: Navigation */
+
+.s-portal-nav {
+  /* Override `.navbar` */
+  text-transform: none;
+  font-size: 16px;
+}
+
+
+
+
+
+/* CMS */
+
+/* CMS: Navigation */
+
+/* REQ: This link is hidden intentionally by CMD, but may still be wanted */
+.s-cms-nav .nav-item:first-child .nav-link {
   display: none;
-  /* display: inline-block; */
-  font: normal normal normal 14px/1 FontAwesome;
-  font-size: inherit;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
-.navbar-nav .nav-item:first-child .nav-link::before {
-  /* HACK: Manually copy `.fa-home` styles from FontAwesome, because
-           no CSS processing is available to compose the styles into here */
-  content: "\f015";
-
-  /* Copied from `li.nav-item.active a.nav-link span` in `…/css/styles.css` */
+.s-cms-nav .nav-item:first-child .nav-link::before {
+  /* Copied from `.nav-link` in `…/css/styles.css` */
   color: rgb(255, 255, 255);
-
   /* NOTE: This rule should be unnecessary with official font icon solution */
   font-size: 24px;
 }
-.navbar-nav .nav-item:first-child .nav-link span {
+
+
+
+/* CMS: Icons */
+
+/* HACK: Using FontAwesome as placeholder */
+/* TODO: Perform this in Core via Issue #5 */
+/* HACK: Select some icons by position, because:
+         - Home Link: CMS admin can not define Markup attributes for navigation links */
+/* HACK: Manually copy styles from FontAwesome, because:
+          1. no CSS processing is available to compose the styles into here
+          2. CMS user and front-end dev have no way to add class to link */
+/* SEE: https://fontawesome.com/v5.0.13/how-to-use/on-the-web/advanced/css-pseudo-elements#define */
+
+/* FontAwesome: "Step 1. Common Properties" */
+/* .some-other-foreign-element, */
+.s-cms-nav .nav-item:first-child .nav-link::before {
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* FontAwesome: "Step 2. Reference Individual Icons" */
+.s-cms-nav .nav-item:first-child .nav-link::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f015";
+}
+
+/* FontAwesome: Hide Text from Screen Readers */
+/* .some-other-foreign-element span, */
+.s-cms-nav .nav-item:first-child .nav-link span {
   /* HACK: Manually copy `.sr-only` styles from FontAwesome, because
            no CSS processing is available to compose the styles into here */
   position: absolute;
@@ -77,8 +152,22 @@
   border: 0;
 }
 
-/* WARNING: Overwrite Bootstrap */
-.nav-link {
+
+
+
+
+/* Override Bootstrap */
+
+/* Override Bootstrap: Navigation */
+
+/* HACK: Using an ID selector, because Bootstrap has overspecific selectors */
+#s-header .navbar-brand,
+#s-header .nav-link {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+
+#s-header .nav-link {
   --border-width: 4px;
   --border-color: rgb(213, 181, 124);
 
@@ -94,12 +183,12 @@
   --padding: 8px;
   --height: calc( var(--navbar-content-height) - var(--padding));
 }
-.nav-link,
+#s-header .nav-link,
 /* NOTE: This selector should be unnecessary with official font icon solution */
-.navbar-nav .nav-item:first-child .nav-link::before {
+#s-header .navbar-nav .nav-item:first-child .nav-link::before {
   line-height: calc( var(--height) - var(--space--available));
 }
-.navbar-expand-md .navbar-nav .nav-link {
+#s-header.navbar-expand-md .navbar-nav .nav-link {
   padding-right: 15px;
   padding-left: 15px;
 }
