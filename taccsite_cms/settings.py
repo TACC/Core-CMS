@@ -14,6 +14,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 # Boolean check to turn on/off console logging statements.
 CONSOLE_LOG_ENABLED = False
+# Verifying console logging is on.
 if CONSOLE_LOG_ENABLED:
     print("--> Variable CONSOLE_LOG_ENABLED: ", CONSOLE_LOG_ENABLED)
 
@@ -308,6 +309,8 @@ SETTINGS_EXPORT = [
     'GOOGLE_ANALYTICS_PROPERTY_ID',
     'GOOGLE_ANALYTICS_PRELOAD'
 ]
-# print(SETTINGS_EXPORT[1])
-# print(SETTINGS_EXPORT[2])
-print(SETTINGS_EXPORT[3])
+
+if CONSOLE_LOG_ENABLED:
+    print(SETTINGS_EXPORT[1])
+    print(SETTINGS_EXPORT[2])
+    print(SETTINGS_EXPORT[3])
