@@ -46,6 +46,9 @@ atlassian-ide-plugin.xml
 # Version file for source distribution
 RELEASE-VERSION
 
+# Dependencies
+node_modules
+
 #######################################
 #####   From HTML5 Boilerplate   ######
 

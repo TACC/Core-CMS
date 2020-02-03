@@ -1,8 +1,20 @@
 # Codebase History
 
-_Last Updated: 2020.02.16_
+## 2020.02.03
 
-## Background
+### Added
+
+- CSS processing (minimal)
+- NPM `package.json` file
+
+### Changed
+
+- Move location of source CSS files.
+
+
+## 2020.01.16
+
+### Background
 
 The initial cms-template01-setup codebase was intended to be a stopgap solution for sites that required only static content rather than a complete portal infrastructure. However, due to the timetables for transitioning the full portals into a parallel architecture (for the CMS portions) several sites have been deployed using this stop gap codebase.
 
@@ -22,7 +34,7 @@ The following forks will be created from the root codebase for each site deploye
     - pending
     - This is a special case where this version of the CMS will be the one leveraged by the CEP v2 Portals (the new React based Fronterra portal is PoC) going forward.
 
-## Caveats
+### Caveats
 
 After forking the root codebase, we will need to update each fork's secret settings, settings and template files. Most of this should be purging the content from the other sites that are no longer relevant to the fork.
 
