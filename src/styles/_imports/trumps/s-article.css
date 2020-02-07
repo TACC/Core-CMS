@@ -8,4 +8,7 @@ Markup: s-article.html
 Style guide: trumps.scopes.article
 */
 
+/* TODO: Extract code from `.../taccsite_cms/.../nav.branding.texascale.v2.css`
+         when CSS processing is available; see upstream `task/11-support…`. */
+
 .s-article {}
