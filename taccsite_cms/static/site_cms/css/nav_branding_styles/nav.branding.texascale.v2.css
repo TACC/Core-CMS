@@ -95,36 +95,127 @@ h6 {
 	font-size: 12px;
 }
 
-/* Caption */
+/* Figure */
 
-.caption-text {
+/*
+TODO: Make this code modular, but still DRY.
+NOTE: We need CSS processsing to make this happen, like will be provided by
+      the upstream branch `task/11-support-css-processing` (pending approval).
+
+1. Separate `.s-article` and `.figure-caption` rulesets (so code is modular).
+2. Make `.s-article figure` extend/mixin/compose the figure-caption code (so code is not repeated).
+*/
+
+.s-article figure ~ h1,
+.s-article figure ~ h2,
+.s-article figure ~ h3,
+.s-article figure ~ h4,
+.s-article figure ~ h5,
+.s-article figure ~ h6 {
+	clear: both;
+}
+
+.s-article figure,
+.figure {
+	/* Overwrite Bootstrap `_reboot.scss` */
+	margin-bottom: 20px;
+}
+.s-article figcaption,
+.figure-caption {
+	margin-top: 10px;
+	padding-top: 5px;
+
+	border-top: solid 3px rgb(51, 51, 51);
+	/* Overwrite Bootstrap `_images.scss` */
+	color: unset;
+
 	font-family: kepler-std-caption, serif;
-	font-weight: 500;
 	font-style: italic;
 	font-size: 12px;
-	margin: 0px 0px 20px 0px;
-}
-.caption-hr {
-	border: solid 1px #333333;
-	margin: 10px 0px 5px 0px;
 }
 
 /* Quote */
 
-.quote-box {
+.blockquote {
+	--top-padding: 20px;
+	--bottom-padding: 1rem; /* from Bootstrap `p` (via `reboot.scss`) */
+	--text-color: rgb(153, 153, 153);
+	--decorator-width: 100px;
+	--decorator-height: 80px;
+	--decorator-buffer: 30px; /* double Bootstrap `.col` padding */
+
+	position: relative;
+
+	margin-top: 5px;
+	margin-bottom: 20px;
+	padding-top: var(--top-padding);
+	padding-bottom: var(--bottom-padding);
+	padding-left: calc(var(--decorator-width) + var(--decorator-buffer));
+
+	color: var(--text-color);
+
 	border-top: solid 1px #ff9c00;
 	border-bottom: solid 3px #ff9c00;
-	padding: 20px 0px 0px 0px;
-	margin: 5px 0px 20px 0px;
-	color: #999999;
-}
-.quote-text {
+
 	font-size: 18px;
 	font-style: italic;
-	margin-bottom: 5px;
 }
-.quote-attribution {
+.blockquote::before {
+	content: '';
+	position: absolute;
+	top: var(--top-padding);
+	left: 0;
+
+	width: var(--decorator-width);
+	height: var(--decorator-height);
+
+	background-image: url('/media/filer_public/cb/10/cb10191b-4e43-435b-9d7f-81b5f4d132ef/font-awesome-quotes.png');
+	background-size: 100% 100%;
+}
+
+.blockquote-footer {
 	text-align: right;
 	font-size: 16px;
-	margin-top: 0px;
+	margin-top: 5px;
+
+	/* Overwrite Bootstrap `_reboot.scss` */
+	color: var(--text-color);
+}
+.blockquote-footer cite {
+	font-style: normal;
+}
+
+/* Offset Content */
+
+@media only screen and (max-width: 991px) {
+	[class*="offset-content--"] {
+		display: block;
+	}
+}
+@media only screen and (min-width: 992px) {
+	[class*="offset-content--"] {
+		--width: 34vw;
+		--offset-distance: calc(var(--width) / 2 * -1);
+		--buffer: 30px; /* double Bootstrap `.col` padding */
+	}
+	figure[class*="offset-content--"] > *,
+	blockquote[class*="offset-content--"] {
+		max-width: var(--width);
+	}
+	.offset-content--right {
+		float: right;
+		margin-left: var(--buffer);
+	}
+	.offset-content--left {
+		float: left;
+		padding-right: var(--buffer);
+	}
+}
+@media only screen and (min-width: 992px) and (max-width: 2400px) {
+	.offset-content--right {
+		margin-right: var(--offset-distance);
+	}
+	.offset-content--left {
+		margin-left: var(--offset-distance);
+	}
 }
