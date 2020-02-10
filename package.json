@@ -24,7 +24,9 @@
   },
   "postcss": {
     "plugins": {
-      "postcss-import": {}
+      "postcss-import": {
+        "path": "./"
+      }
     }
   },
   "// postcss": {
