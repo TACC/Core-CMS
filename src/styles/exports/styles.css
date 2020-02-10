@@ -22,7 +22,6 @@ body {
 /* Navigation */
 
 /* HACK: Using an ID selector, because Bootstrap has overspecific selectors */
-
 #s-bootstrap-nav .navbar-brand,
 #s-bootstrap-nav .nav-link {
   color: rgb(255, 255, 255);
@@ -62,7 +61,6 @@ body {
 }
 
 /* Behavioral */
-
 .taccsite-sticky {
   position: sticky;
 }
