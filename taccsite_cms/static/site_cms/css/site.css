@@ -1,12 +1,8 @@
-/*
-CUSTOM SELECTORS FOR TACCSITE CMS - TEXASCALE BRAND
+/* SITE */
 
-TODO: Use `@import` powered by a pre-processor to compose this file from different files
-*/
+/* GENERICS */
 
-/* ELEMENTS */
-
-/* Roots */
+/* GENERICS: Roots */
 
 /* GL-1: When Hedda and Matt are ready, in 2020, these may be moved to global styles */
 
@@ -18,7 +14,9 @@ body {
     font-style: normal;
 }
 
-/* Headings
+/* ELEMENTS */
+
+/* ELEMENTS: Headings
 
 - `h1` = story titles
 - `h2` = story subtitles
@@ -77,9 +75,9 @@ h6 {
 	padding: 0px;
 }
 
-/* COMPONENTS */
+/* WIP COMPONENTS */
 
-/* Navigation (Nav & NavBar) */
+/* WIP COMPONENTS: Navigation (Nav & NavBar) */
 
 /* FAQ: Some of these styles appear in media queries,
         but are not moved to here until we have custom media queries
@@ -92,9 +90,9 @@ h6 {
 	font-style: normal;
 }
 
-/* TACC COMPONENTS (WIP) */
+/* WIP COMPONENTS */
 
-/* TACC: COMPONENTS (WIP): Byline */
+/* WIP COMPONENTS: Byline */
 
 /* TODO: Determine if suitable Django CMS or Bootstrap Component exists,
          Otherwise, namespace this. */
@@ -191,6 +189,8 @@ NOTE: We need CSS processsing to make this happen, like will be provided by
 	font-style: italic;
 	font-size: 12px;
 }
+
+/* BOOTSTRAP COMPONENTS */
 
 /* BOOTSTRAP COMPONENTS: Quote */
 
