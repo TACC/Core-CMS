@@ -14,10 +14,8 @@
 /* Common: Navigation */
 
 .s-header.navbar {
-  --navbar-padding: 5px;
-
   background-color: rgb(51, 51, 51);
-  padding: var(--navbar-padding);
+  padding: 5px;
 
   /* TODO: Use universal font-size variable */
   font-size: 0.8125rem; /* 13px */
@@ -50,10 +48,11 @@
 .s-header .nav-link:focus,
 .s-header .nav-link:active,
 .s-header .nav-item.active .nav-link {
-  /* NOTE: See "NAVIGATION: Hacks & Overrides" at `.nav-link` for variables */
+  --border-width: 4px;
+
   border-width: 0 0 var(--border-width);
   border-style: solid;
-  border-color: var(--border-color);
+  border-color: rgb(213, 181, 124);
   margin-bottom: calc( var(--border-width) * -1 );
 }
 
@@ -166,22 +165,6 @@
   text-decoration: none;
 }
 
-#s-header .nav-link {
-  --border-width: 4px;
-  --border-color: rgb(213, 181, 124);
-
-  /* CAVEAT: From Bootstrap's `.navbar-brand` vertical
-             padding of `.3125rem`, which is equal to `5px`. */
-  --space--available: var(--navbar-padding);
-  --space--offset: calc( var(--space--available) - var(--border-width));
-
-  /* CAVEAT: From `.nav-logo-double` */
-  --navbar-content-height: 40px;
-  /* CAVEAT: From Bootstrap `.navbar-expand-lg .navbar-nav .nav-link`
-             vertical padding of `0.5rem`, which is equal to `8px` */
-  --padding: 8px;
-  --height: calc( var(--navbar-content-height) - var(--padding));
-}
 #s-header.navbar-expand-md .navbar-nav .nav-link {
   padding-right: 15px;
   padding-left: 15px;
