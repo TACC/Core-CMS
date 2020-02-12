@@ -26,6 +26,9 @@
     "plugins": {
       "postcss-import": {
         "path": "./"
+      },
+      "cssnano": {
+        "preset": "default"
       }
     }
   }
