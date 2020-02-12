@@ -14,8 +14,10 @@
 /* Common: Navigation */
 
 .s-header.navbar {
+  --navbar-padding: 5px;
+
   background-color: rgb(51, 51, 51);
-  padding: 0 9%;
+  padding: var(--navbar-padding);
 
   /* TODO: Use universal font-size variable */
   font-size: 0.8125rem; /* 13px */
@@ -25,13 +27,8 @@
 
   font-family: 'benton-sans';
 }
-@media only screen and (max-width: 640px) {
-  .s-header.navbar {
-    padding-left: 5%;
-    padding-right: 5%;
-
-    background-color: rgb(51, 51, 51);
-  }
+.s-header .navbar-brand {
+  padding: 0;
 }
 
 .s-header .nav-link:hover,
@@ -96,7 +93,8 @@
 
 /* CMS: Navigation */
 
-/* REQ: This link is hidden intentionally by CMD, but may still be wanted */
+/* Hide the "Home" icon */
+/* REQ: This link is hidden intentionally by CMD, but may be revived */
 .s-cms-nav .nav-item:first-child .nav-link {
   display: none;
 }
@@ -111,6 +109,7 @@
 
 /* CMS: Icons */
 
+/* Implement icon for the "Home" icon */
 /* HACK: Using FontAwesome as placeholder */
 /* TODO: Perform this in Core via Issue #5 */
 /* HACK: Select some icons by position, because:
@@ -173,22 +172,28 @@
 
   /* CAVEAT: From Bootstrap's `.navbar-brand` vertical
              padding of `.3125rem`, which is equal to `5px`. */
-  --space--available: 5px;
+  --space--available: var(--navbar-padding);
   --space--offset: calc( var(--space--available) - var(--border-width));
 
   /* CAVEAT: From `.nav-logo-double` */
   --navbar-content-height: 40px;
-  /* CAVEAT: From Bootstrap `.navbar-expand-md .navbar-nav .nav-link`
+  /* CAVEAT: From Bootstrap `.navbar-expand-lg .navbar-nav .nav-link`
              vertical padding of `0.5rem`, which is equal to `8px` */
   --padding: 8px;
   --height: calc( var(--navbar-content-height) - var(--padding));
 }
-#s-header .nav-link,
-/* NOTE: This selector should be unnecessary with official font icon solution */
-#s-header .navbar-nav .nav-item:first-child .nav-link::before {
-  line-height: calc( var(--height) - var(--space--available));
-}
 #s-header.navbar-expand-md .navbar-nav .nav-link {
   padding-right: 15px;
   padding-left: 15px;
+}
+#s-header .nav-link,
+/* NOTE: This selector should be unnecessary with official font icon solution */
+#s-header .navbar-nav .nav-item:first-child .nav-link::before {
+  /* Value determined by increasing until just before header height changes */
+  line-height: 24px;
+}
+/* Reduce the padding (compared to other links) of the "Home" icon link */
+#s-header .navbar-nav .nav-item:first-child .nav-link {
+  padding-top: 6px;
+  padding-bottom: 6px;
 }
