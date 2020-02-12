@@ -26,16 +26,10 @@
     "plugins": {
       "postcss-import": {
         "path": "./"
+      },
+      "cssnano": {
+        "preset": "default"
       }
-    }
-  },
-  "// postcss": {
-    "plugins": {
-      "postcss-import": "This will be used after `task/11-support-css-processing` is merged ino `frontera-cms`",
-      "// postcss-import": "Because, `frontera-cms` is the only repo to use this plugin, yet. More to come.",
-      "cssnano": { "preset": "default" },
-      "// cssnano": "Activate plugin only after `task/11-support-css-processing` is merged into `frontera-cms`",
-      "//// cssnano": "Otherwise, the testing and diff management may be an unwanted time suck during a merge"
     }
   }
 }
