@@ -8,6 +8,15 @@
 
 /* Common */
 
+.s-header {
+  /* HACK: Bootstrap SASS is not available yet (do we want it?) */
+  --bootstrap-font-family-sans-serif: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  /* font-size: 1rem; /\* 16px */
+  font-family: Roboto, var(--bootstrap-font-family-sans-serif);
+}
+
+
+
 /* Common: Affiliation */
 
 
@@ -20,9 +29,6 @@
   /* `16px` = `1rem` from Portal (via `#sidebar .nav-content`) */
   /* `20px` from Portal (via `.nav-link`) */
   padding: 5px calc(16px + 20px);
-
-  /* HACK: Reminder to use this size (already comes from `body` on Portal) */
-  /* font-size: 1rem; /\* 16px */
 }
 .s-header .navbar-brand {
   padding: 0;
@@ -36,21 +42,6 @@
   }
 }
 
-.s-header .nav-link:hover,
-.s-header .nav-link:focus {
-  /* CAVEAT: Non-standard property (but the only maintainable way to do this) */
-  -webkit-text-stroke: 0.0625em rgb(255, 255, 255);
-}
-/* HACK: The Portal nav neglects to use `.nav-link` for links.
-         Do not fix until Portal uses the CMS repositories
-         (otherwise we must duplicate markup changes) */
-/* ???: Should this be for `.s-portal-nav` or for `.dropdown`? */
-.s-header a.dropdown-item:hover,
-.s-header a.dropdown-item:focus {
-  /* CAVEAT: Non-standard property (but the only maintainable way to do this) */
-  /* Color is from Bootstrap `.dropdown-item` in `_dropdown.scss` */
-  -webkit-text-stroke: 0.0625em rgb(33, 37, 41);
-}
 .s-header .nav-link:hover,
 .s-header .nav-link:focus,
 .s-header .nav-link:active,
@@ -72,11 +63,7 @@
     width: 1.25em;
     text-align: center;
 }
-.s-header :hover > [class*="fa-"],
-.s-header :focus > [class*="fa-"] {
-  /* Overwrite `a.dropdown-item:focus` in `./navigation.css` */
-  -webkit-text-stroke-width: 0px;
-}
+
 
 
 
