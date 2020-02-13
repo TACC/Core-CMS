@@ -12,7 +12,11 @@
   /* HACK: Bootstrap SASS is not available yet (do we want it?) */
   --bootstrap-font-family-sans-serif: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   /* font-size: 1rem; /\* 16px */
-  font-family: Roboto, var(--bootstrap-font-family-sans-serif);
+
+  /* Copied from Portal (via `body`) */
+  font-family: Roboto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 
