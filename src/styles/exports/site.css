@@ -4,6 +4,10 @@ CUSTOM SELECTORS FOR TACCSITE CMS - TEXASCALE BRAND
 TODO: Use `@import` powered by a pre-processor to compose this file from different files
 */
 
+/* TODO: Move this to bottom after code for task GL-2 is merged
+         (which updates this file to use only `@import` tags). */
+@import url("src/styles/_imports/trumps/s-article.css");
+
 /* ELEMENTS */
 
 /* Roots */
