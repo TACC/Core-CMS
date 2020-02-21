@@ -27,12 +27,15 @@
 /* Common: Navigation */
 
 .s-header.navbar {
-  background-color: rgb(51, 51, 51);
   /* Make horizontal padding match the horizontal content buffer in Portal */
   /* FAQ: The `calc()` keeps track of disparate source of space values */
   /* `16px` = `1rem` from Portal (via `#sidebar .nav-content`) */
   /* `20px` from Portal (via `.nav-link`) */
-  padding: 5px calc(16px + 20px);
+  --nav-buffer-vert: 5px;
+  --nav-buffer-horz: calc(16px + 20px);
+
+  background-color: rgb(51, 51, 51);
+  padding: var(--nav-buffer-vert) var(--nav-buffer-horz);
 }
 .s-header .navbar-brand {
   padding: 0;
@@ -46,15 +49,21 @@
   }
 }
 
+.s-header .nav-link {
+  --border-width: 4px;
+  --border-offset: calc(var(--nav-buffer-vert) - var(--border-width));
+  --border-color: rgb(213, 181, 124);
+
+  position: relative;
+  top: var(--border-offset);
+}
 .s-header .nav-link:hover,
 .s-header .nav-link:focus,
 .s-header .nav-link:active,
 .s-header .nav-item.active .nav-link {
-  --border-width: 4px;
-
   border-width: 0 0 var(--border-width);
   border-style: solid;
-  border-color: rgb(213, 181, 124);
+  border-color: var(--border-color);
   margin-bottom: calc( var(--border-width) * -1 );
 }
 
@@ -175,12 +184,12 @@
 }
 #s-header .nav-link,
 /* NOTE: This selector should be unnecessary with official font icon solution */
-#s-header .navbar-nav .nav-item:first-child .nav-link::before {
+.s-cms-nav .nav-item:first-child .nav-link::before {
   /* Value determined by increasing until just before header height changes */
   line-height: 24px;
 }
 /* Reduce the padding (compared to other links) of the "Home" icon link */
-#s-header .navbar-nav .nav-item:first-child .nav-link {
+.s-cms-nav .nav-item:first-child .nav-link {
   padding-top: 6px;
   padding-bottom: 6px;
 }
