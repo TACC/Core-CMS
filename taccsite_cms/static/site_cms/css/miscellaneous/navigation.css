@@ -31,11 +31,11 @@
   /* FAQ: The `calc()` keeps track of disparate source of space values */
   /* `16px` = `1rem` from Portal (via `#sidebar .nav-content`) */
   /* `20px` from Portal (via `.nav-link`) */
-  --nav-buffer-vert: 5px;
-  --nav-buffer-horz: calc(16px + 20px);
+  --nav-padding-vert: 5px;
+  --nav-padding-horz: calc(16px + 20px);
 
   background-color: rgb(51, 51, 51);
-  padding: var(--nav-buffer-vert) var(--nav-buffer-horz);
+  padding: var(--nav-padding-vert) var(--nav-padding-horz);
 }
 .s-header .navbar-brand {
   padding: 0;
@@ -51,9 +51,11 @@
 
 .s-header .nav-link {
   --border-width: 4px;
-  --border-offset: calc(var(--nav-buffer-vert) - var(--border-width));
+  --border-offset: calc(var(--nav-padding-vert) - var(--border-width));
   --border-color: rgb(213, 181, 124);
 
+  /* The nav vertical padding does not match the link border, so the alignment
+     of the link border with the bottom of the header is off by small amount */
   position: relative;
   top: var(--border-offset);
 }
