@@ -34,9 +34,31 @@ body {
 .cms-branded-navigation {}
 */
 
+/* SETTINGS */
+
+/* Custom Properties */
+
+/* TODO: Organize the following selectors/elements to be of one module:
+         `#cms-content`, `#content-wrap`, `#footer`, `#footer-content` */
 #cms-content {
-  position: relative;
-  min-height: 92vh;
+  /* WARNING: These values are _manually_ calculated.
+              - If they are smaller than is inaccurate (too short),
+                and content is too short to vertically fill viewport,
+                then an unnecessary scrollbar will appear.
+              - If they are larger than is accurate (too tall),
+                and content is too short to vertically fill viewport,
+                then footer will be positioned above the bottom of the page */
+  --footer-height: 4.5rem;
+  --header-height: 99px;
+  --cms-toolbar-height: 46px;
+}
+#content-wrap {
+  /* FAQ: The `1px` was necessary to avoid scrollbar */
+  min-height: calc(100vh - var(--footer-height) - var(--header-height) - 1px);
+}
+.cms-ready #content-wrap {
+  /* FAQ: The `1px` was necessary to avoid scrollbar */
+  min-height: calc(100vh - var(--footer-height) - var(--header-height) - var(--cms-toolbar-height) - 1px);
 }
 
 #footer {
