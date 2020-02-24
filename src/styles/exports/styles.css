@@ -34,10 +34,9 @@ body {
 .cms-branded-navigation {}
 */
 
-/* SETTINGS */
-
-/* Custom Properties */
-
+/* Let footer pretend to be sticky when there is not enough content to
+   vertically fill the viewport, so that empty CMS installations do not
+   look strange (i.e. a footer appears directly beneath header) */
 /* TODO: Organize the following selectors/elements to be of one module:
          `#cms-content`, `#content-wrap`, `#footer`, `#footer-content` */
 #cms-content {
