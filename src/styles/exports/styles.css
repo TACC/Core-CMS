@@ -50,15 +50,16 @@ body {
                 then footer will be positioned above the bottom of the page */
   --footer-height: 4.5rem;
   --header-height: 99px;
+  --unknown-height: 1px;
   --cms-toolbar-height: 46px;
 }
 #content-wrap {
   /* FAQ: The `1px` was necessary to avoid scrollbar */
-  min-height: calc(100vh - var(--footer-height) - var(--header-height) - 1px);
+  min-height: calc(100vh - var(--footer-height) - var(--header-height) - var(--unknown-height));
 }
 .cms-ready #content-wrap {
   /* FAQ: The `1px` was necessary to avoid scrollbar */
-  min-height: calc(100vh - var(--footer-height) - var(--header-height) - var(--cms-toolbar-height) - 1px);
+  min-height: calc(100vh - var(--footer-height) - var(--header-height) - var(--cms-toolbar-height) - var(--unknown-height));
 }
 
 #footer {
