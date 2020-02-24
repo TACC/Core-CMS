@@ -1,11 +1,15 @@
 {
   "name": "frontera-cms",
+  "// version": "undefined",
+  "// license": "undefined",
+  "description": "The master CMS codebase for all downstream TACC stand alone CMS sites.",
   "scripts": {
     "build": "npm run build:css",
-    "build:css": "postcss src/styles/site/header.css > taccsite_cms/static/site_cms/css/header.css"
+    "build:css": "postcss \"src/styles/exports/**/*.css\" --base src/styles/exports --dir taccsite_cms/static/site_cms/css"
   },
   "// scripts": {
-    "build:css": "Compile files locally, to be committed to repo (the architecture is a WIP)"
+    "build:css": "Compile files locally, to be committed to repo (quote glob to prevent OS parse)",
+    "build:css // SEE": "https://github.com/postcss/postcss-cli/issues/142#issuecomment-310681302"
   },
   "repository": {
     "type": "git",
@@ -20,7 +24,9 @@
   },
   "postcss": {
     "plugins": {
-      "postcss-import": {},
+      "postcss-import": {
+        "path": "./"
+      },
       "cssnano": {
         "preset": "default"
       }

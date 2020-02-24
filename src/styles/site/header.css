@@ -1,5 +1,0 @@
-/* TODO: Migrate static CSS into `src`, and compile static files from `src` */
-/* TODO: Support path that assumes `/src/` prefix */
-
-@import url("../../../taccsite_cms/static/site_cms/css/miscellaneous/navigation.css");
-@import url("../../../taccsite_cms/static/site_cms/css/nav_branding_styles/branding_logos.css");
