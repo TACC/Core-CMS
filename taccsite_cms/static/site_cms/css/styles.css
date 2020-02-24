@@ -1,1 +1,106 @@
-body{width:100%;height:100%}#s-bootstrap-nav .nav-link,#s-bootstrap-nav .navbar-brand{color:#fff;text-decoration:none}#cms-content{position:relative;min-height:92vh}#content-wrap{padding-bottom:4.5rem}#footer{position:fixed;bottom:0;width:100%;height:4.5rem;color:#fff;background-color:#333;font-size:11px;margin:0;padding:12px}#footer-content{width:75%}.taccsite-sticky{position:sticky}@media only screen and (max-width:640px){.nav-item.dropdown{padding:8px 0 0}#content-wrap{padding-bottom:6rem}#footer{height:6rem}#footer-content{width:90%}}@media only screen and (min-width:641px) and (max-width:767px){.nav-item.dropdown{padding:8px 0 0}#content-wrap{padding-bottom:5.5rem}#footer{height:5.5rem}#footer-content{width:85%}}@media only screen and (min-width:768px) and (max-width:991px){.nav-item.dropdown{padding:8px 0 0}#content-wrap{padding-bottom:5.1rem}#footer{height:5.1rem}#footer-content{width:80%}}@media only screen and (min-width:992px) and (max-width:1199px){.nav-item.dropdown{padding:8px 0 0}#content-wrap{padding-bottom:4.8rem}#footer{height:4.8rem}#footer-content{width:75%}}@media only screen and (min-width:1200px){.nav-item.dropdown{padding:8px 0 0}#content-wrap{padding-bottom:4.6rem}#footer{height:4.6rem}#footer-content{width:70%}}
+
+/*
+CUSTOM SELECTORS FOR TACCSITE CMS
+
+Note: Best practice is to keep all custom cms style selectors aggregated in external files like this one.
+This ensures they are consistently applied and available throughout the site.
+
+TODO: Organize with ITCSS
+TODO: Use `@import` powered by a pre-processor to compose this file from different files
+*/
+
+/* ELEMENTS */
+
+/* Roots */
+
+body {
+  width: 100%;
+  height: 100%;
+}
+
+/* MISCELLANEOUS */
+
+/* TODO: Remove comment during nav cleanup */
+/* FAQ: Moved to `miscellaneous/navigation.css` */
+/*
+#s-bootstrap-nav .navbar-brand,
+#s-bootstrap-nav .nav-link { … }
+*/
+
+/* Class & ID Selectors */
+
+#cms-content {
+  position: relative;
+  min-height: 92vh;
+}
+
+#footer {
+  height: 4.5rem;
+  padding: 12px;
+
+  color: rgb(255, 255, 255);
+  background-color: rgb(51, 51, 51);
+
+  font-size: 11px;
+}
+
+#footer-content {
+  width: 75%;
+}
+
+/* Behavioral */
+.taccsite-sticky {
+  position: sticky;
+}
+
+/* Media Query */
+
+@media only screen and (max-width: 640px) {
+  #footer {
+    height: 6rem;
+  }
+
+  #footer-content {
+    width: 90%;
+  }
+}
+
+@media only screen and (min-width: 641px) and (max-width: 767px) {
+  #footer {
+    height: 5.5rem;
+  }
+
+  #footer-content {
+    width: 85%;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  #footer {
+    height: 5.1rem;
+  }
+
+  #footer-content {
+    width: 80%;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  #footer {
+    height: 4.8rem;
+  }
+
+  #footer-content {
+    width: 75%;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  #footer {
+    height: 4.6rem;
+  }
+
+  #footer-content {
+    width: 70%;
+  }
+}
