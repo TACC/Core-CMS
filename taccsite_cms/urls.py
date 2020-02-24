@@ -21,7 +21,7 @@ urlpatterns = [
 urlpatterns += [
     url(r'^admin/', admin.site.urls),  # NOQA
     url(r'^frontera-top-nav/$', TemplateView.as_view(template_name='top_nav_only.html'), name='top_nav_only'),
-    url(r'^api/menu/pages/markup/$', TemplateView.as_view(template_name='menu_only.html'), name='menu_pages_markup'),
+    url(r'^cms/nav/pages/markup/$', TemplateView.as_view(template_name='menu_only.html'), name='menu_pages_markup'),
     url(r'^', include('cms.urls')),
 ]
 
