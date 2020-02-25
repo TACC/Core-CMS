@@ -8,52 +8,61 @@
 
 /* Common */
 
+.s-header {
+  /* HACK: Bootstrap SASS is not available yet (do we want it?) */
+  --bootstrap-font-family-sans-serif: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  /* font-size: 1rem; /\* 16px */
+
+  /* Copied from Portal (via `body`) */
+  font-family: Roboto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+
 /* Common: Affiliation */
 
 
 /* Common: Navigation */
 
 .s-header.navbar {
+  /* Make horizontal padding match the horizontal content buffer in Portal */
+  /* FAQ: The `calc()` keeps track of disparate source of space values */
+  /* `16px` = `1rem` from Portal (via `#sidebar .nav-content`) */
+  /* `20px` from Portal (via `.nav-link`) */
+  --nav-padding-vert: 5px;
+  --nav-padding-horz: calc(16px + 20px);
+
   background-color: rgb(51, 51, 51);
-  padding: 0 9%;
-
-  /* TODO: Use universal font-size variable */
-  font-size: 0.8125rem; /* 13px */
-  /* TODO: Confirm whether this style is actually desired */
-  /* SEE: https://tacc-team.slack.com/archives/CQUA4D5KJ/p1580399450057400 */
-  text-transform: uppercase;
-
-  font-family: 'benton-sans';
+  padding: var(--nav-padding-vert) var(--nav-padding-horz);
 }
-@media only screen and (max-width: 640px) {
-  .s-header.navbar {
-    padding-left: 5%;
-    padding-right: 5%;
+.s-header .navbar-brand {
+  padding: 0;
+}
 
-    background-color: rgb(51, 51, 51);
+/* Overwrite Bootstrap (which uses a media query) */
+@media (min-width:992px) {
+  .s-header.navbar-expand-lg .navbar-nav .nav-link {
+    padding-right: .875rem; /* 14px */
+    padding-left: .875rem; /* 14px */
   }
 }
 
-.s-header .nav-link:hover,
-.s-header .nav-link:focus {
-  /* CAVEAT: Non-standard property (but the only maintainable way to do this) */
-  -webkit-text-stroke: 0.0625em rgb(255, 255, 255);
-}
-/* HACK: The Portal nav neglects to use `.nav-link` for links.
-         Do not fix until Portal uses the CMS repositories
-         (otherwise we must duplicate markup changes) */
-/* ???: Should this be for `.s-portal-nav` or for `.dropdown`? */
-.s-header a.dropdown-item:hover,
-.s-header a.dropdown-item:focus {
-  /* CAVEAT: Non-standard property (but the only maintainable way to do this) */
-  /* Color is from Bootstrap `.dropdown-item` in `_dropdown.scss` */
-  -webkit-text-stroke: 0.0625em rgb(33, 37, 41);
+.s-header .nav-link {
+  --border-width: 4px;
+  --border-offset: calc(var(--nav-padding-vert) - var(--border-width));
+  --border-color: rgb(213, 181, 124);
+
+  /* The nav vertical padding does not match the link border, so the alignment
+     of the link border with the bottom of the header is off by small amount */
+  position: relative;
+  top: var(--border-offset);
 }
 .s-header .nav-link:hover,
 .s-header .nav-link:focus,
 .s-header .nav-link:active,
 .s-header .nav-item.active .nav-link {
-  /* NOTE: See "NAVIGATION: Hacks & Overrides" at `.nav-link` for variables */
   border-width: 0 0 var(--border-width);
   border-style: solid;
   border-color: var(--border-color);
@@ -69,11 +78,7 @@
     width: 1.25em;
     text-align: center;
 }
-.s-header :hover > [class*="fa-"],
-.s-header :focus > [class*="fa-"] {
-  /* Overwrite `a.dropdown-item:focus` in `./navigation.css` */
-  -webkit-text-stroke-width: 0px;
-}
+
 
 
 
@@ -96,7 +101,8 @@
 
 /* CMS: Navigation */
 
-/* REQ: This link is hidden intentionally by CMD, but may still be wanted */
+/* Hide the "Home" icon */
+/* REQ: This link is hidden intentionally by CMD, but may be revived */
 .s-cms-nav .nav-item:first-child .nav-link {
   display: none;
 }
@@ -107,10 +113,17 @@
   font-size: 24px;
 }
 
+/* Align position of first CMS nav link with Portal "Dashboard" header */
+/* REQ: This value is ONLY for Frontera; other brands have wider images… */
+/* HACK: This solution is dependent on dynamic and unrelated content */
+.s-cms-nav .nav-item:nth-child(2) {
+  margin-left: 4px;
+}
 
 
 /* CMS: Icons */
 
+/* Implement icon for the "Home" icon */
 /* HACK: Using FontAwesome as placeholder */
 /* TODO: Perform this in Core via Issue #5 */
 /* HACK: Select some icons by position, because:
@@ -167,28 +180,18 @@
   text-decoration: none;
 }
 
-#s-header .nav-link {
-  --border-width: 4px;
-  --border-color: rgb(213, 181, 124);
-
-  /* CAVEAT: From Bootstrap's `.navbar-brand` vertical
-             padding of `.3125rem`, which is equal to `5px`. */
-  --space--available: 5px;
-  --space--offset: calc( var(--space--available) - var(--border-width));
-
-  /* CAVEAT: From `.nav-logo-double` */
-  --navbar-content-height: 40px;
-  /* CAVEAT: From Bootstrap `.navbar-expand-md .navbar-nav .nav-link`
-             vertical padding of `0.5rem`, which is equal to `8px` */
-  --padding: 8px;
-  --height: calc( var(--navbar-content-height) - var(--padding));
-}
-#s-header .nav-link,
-/* NOTE: This selector should be unnecessary with official font icon solution */
-#s-header .navbar-nav .nav-item:first-child .nav-link::before {
-  line-height: calc( var(--height) - var(--space--available));
-}
 #s-header.navbar-expand-md .navbar-nav .nav-link {
   padding-right: 15px;
   padding-left: 15px;
+}
+#s-header .nav-link,
+/* NOTE: This selector should be unnecessary with official font icon solution */
+.s-cms-nav .nav-item:first-child .nav-link::before {
+  /* Value determined by increasing until just before header height changes */
+  line-height: 24px;
+}
+/* Reduce the padding (compared to other links) of the "Home" icon link */
+.s-cms-nav .nav-item:first-child .nav-link {
+  padding-top: 6px;
+  padding-bottom: 6px;
 }
