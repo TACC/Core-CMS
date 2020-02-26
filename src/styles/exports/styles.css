@@ -12,39 +12,26 @@ TODO: Use `@import` powered by a pre-processor to compose this file from differe
 
 /* Roots */
 
-body {
-  width: 100%;
-  height: 100%;
+/* Prevent excess scrollbar when CMS admin is logged in */
+/* NOTE: This code does NOT work */
+/*
+.cms-ready body {
+  /* FAQ: CMS dynamically adds `margin-top` to `head` to fit toolbar height *\/
+  /* WARNING: If the dynamic(!) header margin changes, then so should this *\/
+  /* RFC: Consider creating JavaScript snippet (via CMS?) to solve this *\/
+  --head-margin-top: 46px;
+
+  height: calc(100vh - var(--head-margin-top));
 }
+*/
+
+/* OBJECTS */
+
+@import url("src/styles/_imports/objects/o-site.css");
 
 /* MISCELLANEOUS */
 
-/* Class & ID Selectors */
-
-/* Let footer pretend to be sticky when there is not enough content to
-   vertically fill the viewport, so that empty CMS installations do not
-   look strange (i.e. a footer appears directly beneath header) */
-/* TODO: Organize the following selectors/elements to be of one module:
-         `#cms-content`, `#content-wrap`, `#footer`, `#footer-content` */
-#cms-content {
-  /* WARNING: These values are _manually_ calculated.
-              - If they are smaller than is inaccurate (too short),
-                and content is too short to vertically fill viewport,
-                then an unnecessary scrollbar will appear.
-              - If they are larger than is accurate (too tall),
-                and content is too short to vertically fill viewport,
-                then footer will be positioned above the bottom of the page */
-  --footer-height: 4.5rem;
-  --header-height: 99px;
-  --unknown-height: 1px;
-  --cms-toolbar-height: 46px;
-}
-#content-wrap {
-  min-height: calc(100vh - var(--footer-height) - var(--header-height) - var(--unknown-height));
-}
-.cms-ready #content-wrap {
-  min-height: calc(100vh - var(--footer-height) - var(--header-height) - var(--unknown-height) - var(--cms-toolbar-height));
-}
+/* Footer */
 
 #footer {
   min-height: 4.5rem;
@@ -59,11 +46,6 @@ body {
   width: 75%;
 
   font-size: 11px;
-}
-
-/* Behavioral */
-.taccsite-sticky {
-  position: sticky;
 }
 
 /* Media Query */

@@ -32,18 +32,18 @@
   {% endblock custom_css %}
 </head>
 
-<body>
+<body class="o-site">
   {% cms_toolbar %}
 
   <!-- Custom Navigation Block per Site to Customize the Site Header Branding. -->
-  <div class="cms-branded-navigation">
+  <div class="cms-branded-navigation" class="o-site__head">
     <!-- Template in use. -->
     {% include "nav_branding_partials/nav.branding.frontera.v2.html" %}
   </div>
 
   <!-- Page content. -->
-  <div id="cms-content">
-    <div id="content-wrap">
+  <div id="cms-content" class="o-site o-site__body">
+    <div id="content-wrap" class="o-site__body">
       <!-- This block used regardless. -->
       {% block content %}
       <div class="container">
@@ -54,7 +54,7 @@
     </div>
 
     <!-- Footer block. -->
-    <footer id="footer">
+    <footer id="footer" class="o-site__foot">
       <center>
         <div id="footer-content">
           {% block footer %}
