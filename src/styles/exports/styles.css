@@ -12,26 +12,26 @@ TODO: Use `@import` powered by a pre-processor to compose this file from differe
 
 /* Roots */
 
-body {
-  width: 100%;
-  height: 100%;
+/* Prevent excess scrollbar when CMS admin is logged in */
+/* NOTE: This code does NOT work */
+/*
+.cms-ready body {
+  /* FAQ: CMS dynamically adds `margin-top` to `head` to fit toolbar height *\/
+  /* WARNING: If the dynamic(!) header margin changes, then so should this *\/
+  /* RFC: Consider creating JavaScript snippet (via CMS?) to solve this *\/
+  --head-margin-top: 46px;
+
+  height: calc(100vh - var(--head-margin-top));
 }
+*/
+
+/* OBJECTS */
+
+@import url("src/styles/_imports/objects/o-site.css");
 
 /* MISCELLANEOUS */
 
-/* TODO: Remove comment during nav cleanup */
-/* FAQ: Moved to `miscellaneous/navigation.css` */
-/*
-#s-bootstrap-nav .navbar-brand,
-#s-bootstrap-nav .nav-link { … }
-*/
-
-/* Class & ID Selectors */
-
-#cms-content {
-  position: relative;
-  min-height: 92vh;
-}
+/* Footer */
 
 #footer {
   min-height: 4.5rem;
@@ -46,11 +46,6 @@ body {
   width: 75%;
 
   font-size: 11px;
-}
-
-/* Behavioral */
-.taccsite-sticky {
-  position: sticky;
 }
 
 /* Media Query */
