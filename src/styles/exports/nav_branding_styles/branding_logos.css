@@ -2,6 +2,11 @@
 
 /* Shared by All Templates */
 
+/* WARNING: No `em` nor `rem` allowed while `old-css` is used,
+            because the `rem` values assume `16px` (browser default),
+            yet `old-css` sets `body { font-size: 15px }` (changes `em` value),
+            and also sets `html { font-size: 10px }` (changes `rem` value) */
+
 /* .cms-branded-navigation {} */
 
 .navbar-tacc {
@@ -44,7 +49,7 @@
 
 .branding-header {
   margin: 0;
-  padding: 0.4rem 0 0.4rem;
+  padding: 6.4px 0 6.4px; /* 0.4rem 0 0.4rem */
   text-align: center;
   background-color: rgb(51, 51, 51);
   color: rgb(255, 255, 255);
