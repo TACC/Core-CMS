@@ -115,12 +115,14 @@ svg:not(:root) {
 figure {
  margin:1em 40px
 }
+*/
 hr {
  -webkit-box-sizing:content-box;
  -moz-box-sizing:content-box;
  box-sizing:content-box;
  height:0
 }
+/*
 pre {
  overflow:auto
 }
@@ -1171,12 +1173,14 @@ img {
 .img-circle {
  border-radius:50%
 }
+*/
 hr {
  margin-top:21px;
  margin-bottom:21px;
  border:0;
  border-top:1px solid #dddddd
 }
+/*
 .sr-only {
  position:absolute;
  width:1px;
@@ -4975,6 +4979,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
  background-color:transparent;
  cursor:not-allowed
 }
+*/
 .label {
  display:inline;
  padding:.2em .6em .3em;
@@ -4987,15 +4992,18 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
  vertical-align:baseline;
  border-radius:.25em
 }
+/*
 a.label:hover,
 a.label:focus {
  color:#ffffff;
  text-decoration:none;
  cursor:pointer
 }
+*/
 .label:empty {
  display:none
 }
+/*
 .btn .label {
  position:relative;
  top:-1px
@@ -5014,6 +5022,7 @@ a.label:focus {
 .label-primary[href]:focus {
  background-color:#006687
 }
+*/
 .label-success {
  background-color:#43ac6a
 }
@@ -5021,6 +5030,7 @@ a.label:focus {
 .label-success[href]:focus {
  background-color:#358753
 }
+/*
 .label-info {
  background-color:#5bc0de
 }
@@ -5042,36 +5052,6 @@ a.label:focus {
 .label-danger[href]:focus {
  background-color:#d32a0e
 }
-*/
-/* NOTE: Code cloned from `.label` (line 4973), but renamed to `.badge` */
-/* FAQ: Post 2020, the System Monitor (`single-system`/`sysmon-table`) uses:
-        - `badge`
-        - `badge-success`
-        instead of the classes that were used pre-2020:
-        - `label`
-        - `label-success`
-        The reason is NOT documented here (because author does not know).
-*/
-.badge {
- display:inline;
- padding:.2em .6em .3em;
- font-size:75%;
- font-weight:bold;
- line-height:1;
- color:#ffffff;
- text-align:center;
- white-space:nowrap;
- vertical-align:baseline;
- border-radius:.25em
-}
-.badge-success {
- background-color:#43ac6a
-}
-.badge-success[href]:hover,
-.badge-success[href]:focus {
- background-color:#358753
-}
-/*
 .badge {
  display:inline-block;
  min-width:10px;
@@ -7178,33 +7158,18 @@ input[type="checkbox"] {
  color:#fff;
  text-decoration:underline
 }
+*/
 .label {
  padding-left:1em;
  padding-right:1em;
  border-radius:0;
  font-weight:300
 }
+/*
 .label-default {
  background-color:#e7e7e7;
  color:#333333
 }
-*/
-/* NOTE: Code cloned from `.label` (line 7173), but renamed to `.badge` */
-/* FAQ: Post 2020, the System Monitor (`single-system`/`sysmon-table`) uses:
-        - `badge`
-        - `badge-success`
-        instead of the classes that were used pre-2020:
-        - `label`
-        - `label-success`
-        The reason is NOT documented here (because author does not know).
-*/
-.badge {
- padding-left:1em;
- padding-right:1em;
- border-radius:0;
- font-weight:300
-}
-/*
 .badge {
  font-weight:300
 }
