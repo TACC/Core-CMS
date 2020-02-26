@@ -94,7 +94,9 @@
 .s-portal-nav {
   /* Override `.navbar` */
   text-transform: none;
-  font-size: 16px;
+}
+.s-header .dropdown-menu {
+  font-size: 16px; /* 1rem (from Bootstrap via `.dropdown-menu`) */
 }
 
 
