@@ -3,7 +3,7 @@
 /* IDEA: Rename file to reflect intent for all of site header, not just nav. */
 /* FAQ: The (scope) `.s-` classes are used to qualify external class to prevent
         propogation to other instances of external class (like in Portal) */
-/* WARNING: No `em` nor `rem` allowed while `old-css` is used,
+/* WARNING: NO-R/EM: No `em` nor `rem` allowed while `old-css` is used,
             because the `rem` values assume `16px` (browser default),
             yet `old-css` sets `body { font-size: 15px }` (changes `em` value),
             and also sets `html { font-size: 10px }` (changes `rem` value) */
@@ -15,7 +15,7 @@
 .s-header {
   /* HACK: Bootstrap SASS is not available yet (do we want it?) */
   --bootstrap-font-family-sans-serif: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 16px; /* 1rem */
+  font-size: 16px; /* NO-R/EM: Overwrite `bootstrap.3.3.7.css` */
 
   /* Copied from Portal (via `body`) */
   font-family: Roboto;
@@ -42,14 +42,14 @@
   padding: var(--nav-padding-vert) var(--nav-padding-horz);
 }
 .s-header .navbar-brand {
-  margin-right: 16px; /* 1rem (from Bootstrap via `.navbar-brand`) */
+  margin-right: 16px; /* NO-R/EM: 1rem (from Bootstrap via `.navbar-brand`) */
   padding: 0;
 }
 
 /* Overwrite Bootstrap (which uses a media query) */
 @media (min-width:992px) {
   .s-header.navbar-expand-lg .navbar-nav .nav-link {
-    padding: 8px 14px; /* 0.5rem (Bootstrap value) .875rem */
+    padding: 8px 14px; /* NO-R/EM: 0.5rem (Bootstrap value) .875rem */
   }
 }
 
@@ -79,7 +79,7 @@
 
 /* HACK: Using FontAwesome as placeholder */
 .s-header [class*="fa-"] {
-    width: 27px; /* 1.25em (from Portal `.fa`, to be deprecated via FP-228) */
+    width: 27px; /* NO-R/EM: 1.25em (from Portal `.fa`—FP-228 will deprecate) */
     text-align: center;
 }
 
@@ -96,7 +96,7 @@
   text-transform: none;
 }
 .s-header .dropdown-menu {
-  font-size: 16px; /* 1rem (from Bootstrap via `.dropdown-menu`) */
+  font-size: 16px; /* NO-R/EM: 1rem (from Bootstrap via `.dropdown-menu`) */
 }
 
 
