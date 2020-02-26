@@ -1,0 +1,224 @@
+/*
+NOTE: Relevant styles for Pre-2020 AngularJS Material Design
+      - How: https://developers.google.com/web/tools/chrome-devtools/coverage
+      - How: Include code that _is being_ used
+      - How: Include code that _could be_ used (because it is generic enough)
+            - `[tabindex="-1"]:focus`
+      - Source CSS: https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.css
+*/
+
+/*!
+ * AngularJS Material Design
+ * https://github.com/angular/material
+ * @license MIT
+ * v1.1.8
+ */
+body,
+html {
+  height: 100%;
+  position: relative;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+[tabindex="-1"]:focus {
+  outline: none;
+}
+/*
+.inset {
+ padding:10px
+}
+a.md-no-style,
+button.md-no-style {
+ font-weight:400;
+ background-color:inherit;
+ text-align:left;
+ border:none;
+ padding:0;
+ margin:0
+}
+button,
+input,
+select,
+textarea {
+ vertical-align:baseline
+}
+button,
+html input[type=button],
+input[type=reset],
+input[type=submit] {
+ cursor:pointer;
+ -webkit-appearance:button
+}
+button[disabled],
+html input[type=button][disabled],
+input[type=reset][disabled],
+input[type=submit][disabled] {
+ cursor:default
+}
+textarea {
+ vertical-align:top;
+ overflow:auto
+}
+input[type=search] {
+ -webkit-appearance:textfield;
+ box-sizing:content-box;
+ -webkit-box-sizing:content-box
+}
+input[type=search]::-webkit-search-cancel-button,
+input[type=search]::-webkit-search-decoration {
+ -webkit-appearance:none
+}
+input:-webkit-autofill {
+ text-shadow:none
+}
+.md-visually-hidden {
+ border:0;
+ clip:rect(0 0 0 0);
+ height:1px;
+ margin:-1px;
+ overflow:hidden;
+ padding:0;
+ position:absolute;
+ text-transform:none;
+ width:1px
+}
+.md-shadow {
+ position:absolute;
+ top:0;
+ left:0;
+ bottom:0;
+ right:0;
+ border-radius:inherit;
+ pointer-events:none
+}
+.md-shadow-bottom-z-1 {
+ box-shadow:0 2px 5px 0 rgba(0,0,0,.26)
+}
+.md-shadow-bottom-z-2 {
+ box-shadow:0 4px 8px 0 rgba(0,0,0,.4)
+}
+.md-shadow-animated.md-shadow {
+ -webkit-transition:box-shadow .28s cubic-bezier(.4,0,.2,1);
+ transition:box-shadow .28s cubic-bezier(.4,0,.2,1)
+}
+.md-ripple-container {
+ pointer-events:none;
+ position:absolute;
+ overflow:hidden;
+ left:0;
+ top:0;
+ width:100%;
+ height:100%;
+ -webkit-transition:all .55s cubic-bezier(.25,.8,.25,1);
+ transition:all .55s cubic-bezier(.25,.8,.25,1)
+}
+.md-ripple {
+ position:absolute;
+ -webkit-transform:translate(-50%,-50%) scale(0);
+ transform:translate(-50%,-50%) scale(0);
+ -webkit-transform-origin:50% 50%;
+ transform-origin:50% 50%;
+ opacity:0;
+ border-radius:50%
+}
+.md-ripple.md-ripple-placed {
+ -webkit-transition:margin .9s cubic-bezier(.25,.8,.25,1),border .9s cubic-bezier(.25,.8,.25,1),width .9s cubic-bezier(.25,.8,.25,1),height .9s cubic-bezier(.25,.8,.25,1),opacity .9s cubic-bezier(.25,.8,.25,1),-webkit-transform .9s cubic-bezier(.25,.8,.25,1);
+ transition:margin .9s cubic-bezier(.25,.8,.25,1),border .9s cubic-bezier(.25,.8,.25,1),width .9s cubic-bezier(.25,.8,.25,1),height .9s cubic-bezier(.25,.8,.25,1),opacity .9s cubic-bezier(.25,.8,.25,1),-webkit-transform .9s cubic-bezier(.25,.8,.25,1);
+ transition:margin .9s cubic-bezier(.25,.8,.25,1),border .9s cubic-bezier(.25,.8,.25,1),width .9s cubic-bezier(.25,.8,.25,1),height .9s cubic-bezier(.25,.8,.25,1),opacity .9s cubic-bezier(.25,.8,.25,1),transform .9s cubic-bezier(.25,.8,.25,1);
+ transition:margin .9s cubic-bezier(.25,.8,.25,1),border .9s cubic-bezier(.25,.8,.25,1),width .9s cubic-bezier(.25,.8,.25,1),height .9s cubic-bezier(.25,.8,.25,1),opacity .9s cubic-bezier(.25,.8,.25,1),transform .9s cubic-bezier(.25,.8,.25,1),-webkit-transform .9s cubic-bezier(.25,.8,.25,1)
+}
+.md-ripple.md-ripple-scaled {
+ -webkit-transform:translate(-50%,-50%) scale(1);
+ transform:translate(-50%,-50%) scale(1)
+}
+.md-ripple.md-ripple-active,
+.md-ripple.md-ripple-full,
+.md-ripple.md-ripple-visible {
+ opacity:.2
+}
+.md-ripple.md-ripple-remove {
+ -webkit-animation:md-remove-ripple .9s cubic-bezier(.25,.8,.25,1);
+ animation:md-remove-ripple .9s cubic-bezier(.25,.8,.25,1)
+}
+@-webkit-keyframes md-remove-ripple {
+ 0% {
+  opacity:.15
+ }
+ to {
+  opacity:0
+ }
+}
+@keyframes md-remove-ripple {
+ 0% {
+  opacity:.15
+ }
+ to {
+  opacity:0
+ }
+}
+.md-padding {
+ padding:8px
+}
+.md-margin {
+ margin:8px
+}
+.md-scroll-mask {
+ position:absolute;
+ background-color:transparent;
+ top:0;
+ right:0;
+ bottom:0;
+ left:0;
+ z-index:50
+}
+.md-scroll-mask>.md-scroll-mask-bar {
+ display:block;
+ position:absolute;
+ background-color:#fafafa;
+ right:0;
+ top:0;
+ bottom:0;
+ z-index:65;
+ box-shadow:inset 0 0 1px rgba(0,0,0,.3)
+}
+.md-no-momentum {
+ -webkit-overflow-scrolling:auto
+}
+.md-no-flicker {
+ -webkit-filter:blur(0)
+}
+@media (min-width:960px) {
+ .md-padding {
+  padding:16px
+ }
+}
+body[dir=ltr],
+body[dir=rtl],
+html[dir=ltr],
+html[dir=rtl] {
+ unicode-bidi:embed
+}
+bdo[dir=rtl] {
+ direction:rtl
+}
+bdo[dir=ltr],
+bdo[dir=rtl] {
+ unicode-bidi:bidi-override
+}
+bdo[dir=ltr] {
+ direction:ltr
+}
+*/
+body,
+html {
+ -webkit-tap-highlight-color:transparent;
+ -webkit-touch-callout:none;
+ min-height:100%;
+ -webkit-text-size-adjust:100%;
+ -ms-text-size-adjust:100%;
+ -webkit-font-smoothing:antialiased;
+ -moz-osx-font-smoothing:grayscale
+}
+/* … */

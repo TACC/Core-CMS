@@ -44,8 +44,7 @@
 /* Overwrite Bootstrap (which uses a media query) */
 @media (min-width:992px) {
   .s-header.navbar-expand-lg .navbar-nav .nav-link {
-    padding-right: .875rem; /* 14px */
-    padding-left: .875rem; /* 14px */
+    padding: 8px 14px;
   }
 }
 

@@ -1,6 +1,9 @@
 /*
 NOTE: Relevant styles for Pre-2020 Bootstrap 3.3.7
       - How: https://developers.google.com/web/tools/chrome-devtools/coverage
+      - How: Include code that _is being_ used
+      - How: Include code that _could be_ used (because it includes used selector)
+            - `__selector_start__` `__used_selector__` `__selector_end__`
       - How: Did NOT incude code that is already in Bootstrap 4.0.0
       - How: Did NOT incude code that represents outdated web practices
             - `outline: none`
@@ -1293,6 +1296,7 @@ h6 .small,
 .h6 .small {
  font-size:75%
 }
+*/
 h1,
 .h1 {
  font-size:39px
@@ -1320,6 +1324,7 @@ h6,
 p {
  margin:0 0 10.5px
 }
+/*
 .lead {
  margin-bottom:21px;
  font-size:17px;
@@ -3578,6 +3583,7 @@ fieldset[disabled] .btn-link:focus {
  line-height:1.5;
  border-radius:0
 }
+*/
 .btn-block {
  display:block;
  width:100%
@@ -3590,6 +3596,7 @@ input[type="reset"].btn-block,
 input[type="button"].btn-block {
  width:100%
 }
+/*
 .fade {
  opacity:0;
  -webkit-transition:opacity 0.15s linear;
@@ -5035,6 +5042,36 @@ a.label:focus {
 .label-danger[href]:focus {
  background-color:#d32a0e
 }
+*/
+/* NOTE: Code cloned from `.label` (line 4973), but renamed to `.badge` */
+/* FAQ: Post 2020, the System Monitor (`single-system`/`sysmon-table`) uses:
+        - `badge`
+        - `badge-success`
+        instead of the classes that were used pre-2020:
+        - `label`
+        - `label-success`
+        The reason is NOT documented here (because author does not know).
+*/
+.badge {
+ display:inline;
+ padding:.2em .6em .3em;
+ font-size:75%;
+ font-weight:bold;
+ line-height:1;
+ color:#ffffff;
+ text-align:center;
+ white-space:nowrap;
+ vertical-align:baseline;
+ border-radius:.25em
+}
+.badge-success {
+ background-color:#43ac6a
+}
+.badge-success[href]:hover,
+.badge-success[href]:focus {
+ background-color:#358753
+}
+/*
 .badge {
  display:inline-block;
  min-width:10px;
@@ -7151,6 +7188,23 @@ input[type="checkbox"] {
  background-color:#e7e7e7;
  color:#333333
 }
+*/
+/* NOTE: Code cloned from `.label` (line 7173), but renamed to `.badge` */
+/* FAQ: Post 2020, the System Monitor (`single-system`/`sysmon-table`) uses:
+        - `badge`
+        - `badge-success`
+        instead of the classes that were used pre-2020:
+        - `label`
+        - `label-success`
+        The reason is NOT documented here (because author does not know).
+*/
+.badge {
+ padding-left:1em;
+ padding-right:1em;
+ border-radius:0;
+ font-weight:300
+}
+/*
 .badge {
  font-weight:300
 }
