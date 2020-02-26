@@ -2,13 +2,6 @@
 
 /* Shared by All Templates */
 
-/* .cms-branded-navigation {} */
-
-.navbar-tacc {
-  background-color: rgb(51, 51, 51);
-  padding: 0 9%;
-}
-
 .nav-logo-border-left {
   border-left: solid 2px #fff !important;
   padding: 0 15px 0 !important;
@@ -106,14 +99,4 @@
 .nav-logo-tapisio-double {
   margin: 0;
   /* height: 40px; */
-}
-
-/* Media Query Selectors */
-
-@media only screen and (max-width: 640px) {
-  .navbar-tacc {
-    background-color: rgb(51, 51, 51);
-    padding-left: 5%;
-    padding-right: 5%;
-  }
 }
