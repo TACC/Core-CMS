@@ -8,32 +8,32 @@ services:
     volumes:
       - .:/code
     ports:
-      - 8001:8001
-    command: ['python3', 'manage.py', 'runserver', '0.0.0.0:8001']
-    container_name: texascale_cms
-    hostname: texascale_cms
+      - 8000:8000
+    command: ['python3', 'manage.py', 'runserver', '0.0.0.0:8000']
+    container_name: taccsite_cms
+    hostname: taccsite_cms
     networks:
-      - texascale_cms_net
+      - taccsite_cms_net
 
   postgres:
     image: postgres:11.5
     environment:
-      - POSTGRES_PASSWORD=texascale
-      - POSTGRES_USER=texascale
-      - POSTGRES_DB=texascale
-      - PGDATA=/var/lib/postgresql/data/texascale
+      - POSTGRES_PASSWORD=taccsite
+      - POSTGRES_USER=taccsite
+      - POSTGRES_DB=taccsite
+      - PGDATA=/var/lib/postgresql/data/taccsite
     volumes:
-      - texascale_postgres_data:/var/lib/postgresql/data
+      - taccsite_postgres_data:/var/lib/postgresql/data
       - ./conf/postgres/pg_db.secret:/var/lib/postgresql/pg_db.secret
       - ./conf/postgres/pg_user.secret:/var/lib/postgresql/pg_user.secret
       - ./conf/postgres/pg_password.secret:/var/lib/postgresql/pg_password.secret
-    hostname: texascale_postgres
-    container_name: texascale_postgres
+    hostname: taccsite_postgres
+    container_name: taccsite_postgres
     networks:
-      - texascale_cms_net
+      - taccsite_cms_net
 
 volumes:
-  texascale_postgres_data:
+  taccsite_postgres_data:
 
 networks:
-  texascale_cms_net:
+  taccsite_cms_net:
