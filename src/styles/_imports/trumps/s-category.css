@@ -2,15 +2,17 @@
 
 /* TRUMPS: Category Scope */
 
-/* TODO: Add `postcss-css-next` plugin, so that we may:
-         - nest all styles within `.s-article` block */
+/* TODO: When `postcss-css-next` plugin is installed,
+         then nest all styles within `.s-article` block */
 
-/* !!!: Remove the spacing added via `style` attribute in the CMS on:
-        - all `.img-fluid`s on the page
-        - the `h2` in first row
+/* !!!: In  the CMS:
+        - remove the `style` attribute of:
+          - all `.img-fluid`s
+          - the `h2` in first row
+        - make all article category pages:
+          - use "Article Category" template
+          - add `class` attribute of `s-category` to the `.container`
 */
-/* !!!: Add the `s-category` class to the `.container` for every cateogry page
-        (ideally, instead, use page types and add this class to new template) */
 
 /* Add border between the two columns */
 /* FAQ: The border is aded to the right column,
