@@ -2,30 +2,10 @@
 
 /* BOOTSTRAP COMPONENTS: Figure */
 
-/*
-TODO: Make this code modular, but still DRY.
-NOTE: We need CSS processsing to make this happen, like will be provided by
-      the upstream branch `task/11-support-css-processing` (pending approval).
-
-1. Separate `.s-article` and `.figure-caption` rulesets (so code is modular).
-2. Make `.s-article figure` extend/mixin/compose the figure-caption code (so code is not repeated).
-*/
-
-.s-article figure ~ h1,
-.s-article figure ~ h2,
-.s-article figure ~ h3,
-.s-article figure ~ h4,
-.s-article figure ~ h5,
-.s-article figure ~ h6 {
-	clear: both;
-}
-
-.s-article figure,
 .figure {
 	/* Overwrite Bootstrap `_reboot.scss` */
 	margin-bottom: 20px;
 }
-.s-article figcaption,
 .figure-caption {
 	margin-top: 10px;
 	padding-top: 5px;

@@ -7,3 +7,9 @@
 @import url("src/styles/_imports/components/c-offset-content.css");
 @import url("src/styles/_imports/components/bootstrap/figure.css");
 @import url("src/styles/_imports/components/bootstrap/blockquote.css");
+
+/* TODO: Consider creating an `.s-article-page` instead,
+         and including it via a `page.article.css` stylesheet,
+         then adding the class and including the stylesheet
+        via a `page_type/article.html` template */
+@import url("src/styles/_imports/trumps/s-article.css");
