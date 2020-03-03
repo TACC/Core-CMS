@@ -5,8 +5,12 @@
 /* TODO: Add `postcss-css-next` plugin, so that we may:
          - nest all styles within `.s-article` block */
 
+/* Create drop-cap from first letter of first paragraph of second column */
 /* HACK: The `.col:nth-of-type(2)` is brittle:
          if sidebar is dropped, then drop-caps are lost! */
+/* TODO: When https://github.com/postcss/postcss-custom-selectors are supported,
+         then migrate `.col:nth-of-type(2)` into a custom selector,
+         so that the hack will be isolated */
 .s-article .col:nth-of-type(2) p:first-of-type::first-letter {
   /* Drop the letter */
   float: left;
