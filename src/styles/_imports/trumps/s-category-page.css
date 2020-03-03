@@ -3,23 +3,14 @@
 /* TRUMPS: Category Scope */
 
 /* TODO: When `postcss-css-next` plugin is installed,
-         then nest all styles within `.s-article` block */
-
-/* !!!: In  the CMS:
-        - remove the `style` attribute of:
-          - all `.img-fluid`s
-          - the `h2` in first row
-        - make all article category pages:
-          - use "Article Category" template
-          - add `class` attribute of `s-category` to the `.container`
-*/
+         then nest all styles within `.s-category-page` block */
 
 /* Add border between the two columns */
 /* FAQ: The border is aded to the right column,
         because the `.u-position-sticky…` on the left column
         shrinks the height of the left column (so, the border
         would not be tall enough, were it added to left column) */
-.s-category .row:nth-of-type(2) > .col:nth-of-type(2) {
+.s-category-page .row:nth-of-type(2) > .col:nth-of-type(2) {
   border-left-width: 2px;
   border-left-style: solid;
   /* TODO: Use a variable (when it exists) */
@@ -29,7 +20,7 @@
 /* The header needs more vertical buffer between header and content */
 /* FAQ: No, this header is not on any page (if this kind of header is added
         to another page, then this style must be moved to a broader layer) */
-.s-category .row:nth-of-type(1) h2 {
+.s-category-page .row:nth-of-type(1) h2 {
   margin-top: 35px;
   margin-bottom: 35px;
 }
@@ -37,6 +28,6 @@
 /* Every article summary needs space between it and the article summary above */
 /* FAQ: Article summaries do not have container,
         so add space to the image (their topmost element) */
-.s-category .row:nth-of-type(2) .col:nth-of-type(2) p:first-of-type + p {
+.s-category-page .row:nth-of-type(2) .col:nth-of-type(2) p:first-of-type + p {
   margin-top: 25px;
 }
