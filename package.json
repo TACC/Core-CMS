@@ -37,7 +37,9 @@
   },
   "watch": {
     "build:css": {
-      "patterns": ["src/styles"],
+      "patterns": [
+        "src/styles"
+      ],
       "extensions": "css",
       "runOnChangeOnly": false
     }
