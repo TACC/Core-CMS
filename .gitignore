@@ -101,3 +101,6 @@ publish
 # build script local files
 web/build/buildinfo.properties
 web/build/config/buildinfo.properties
+
+# ignore build artifacts when committing code.
+/taccsite_cms/static/build/styles/*
