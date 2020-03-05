@@ -7,7 +7,6 @@ services:
       - postgres:postgres
     volumes:
       - .:/code
-      - ./build/css:/code/taccsite_cms/static/site_cms/css
     ports:
       - 8000:8000
     command: ['python3', 'manage.py', 'runserver', '0.0.0.0:8000']
