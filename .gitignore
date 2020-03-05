@@ -10,6 +10,9 @@
 /fcgi/django.fcgi
 /static/css/*.css
 
+# Dynamic folders
+/build
+
 # Static and Media folders.
 /static
 /media
@@ -98,3 +101,6 @@ publish
 # build script local files
 web/build/buildinfo.properties
 web/build/config/buildinfo.properties
+
+# ignore build artifacts when committing code.
+/taccsite_cms/static/build/styles/*
