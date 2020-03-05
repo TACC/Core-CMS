@@ -66,14 +66,17 @@ Access CMS admin site at at http://localhost:8000/admin
 
 To log in with a TACC account using LDAP, create the account using the TACC username and assign staff and/or superuser privileges. The assigned password can be any password and doesn't need to be sent to the user. The CMS will not attempt to validate with the assigned password unless LDAP auth fails, creating a strong password is recommended for production.
 
-## Compiling CSS
+## Building Static Resources
 
-Any changes to CSS styles:
+Some static resources are built from source:
 
-- must be made in `/src/styles`
-- should be compiled via `npm run build``(:css)`
+- make changes to source in `/src`
+- compile changes to source via
+    - (manually, for any ready changes) `npm run build`
+    - (automatically, on source change) `npm run watch`
+- build output is in `/build`
+- docker loads that output as if it were in `/taccsite_cms/static/site_cms`
 
-Any compiled CSS styles:
+The following static resources are built:
 
-- should appear in `/taccsite_cms/static/site_cms/css`
-- should be committed to repo
+- CSS Stylesheets
