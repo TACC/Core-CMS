@@ -5,15 +5,11 @@
   "description": "The master CMS codebase for all downstream TACC stand alone CMS sites.",
   "scripts": {
     "build": "npm run build:css",
-    "build:css": "postcss \"src/styles/exports/**/*.css\" --base src/styles/exports --dir build/css",
-    "watch": "npm-watch"
+    "build:css": "postcss \"src/styles/exports/**/*.css\" --base src/styles/exports --dir taccsite_cms/static/site_cms/css"
   },
   "// scripts": {
     "build:css": "Compile files locally, to be committed to repo (quote glob to prevent OS parse)",
-    "build:css // SEE": "https://github.com/postcss/postcss-cli/issues/142#issuecomment-310681302",
-    "watch": "Compile files when they change",
-    "watch // NOTE": "The macOS operating system requires object-based conifguration",
-    "watch // NOTE // SEE": "https://github.com/M-Zuber/npm-watch/issues/35"
+    "build:css // SEE": "https://github.com/postcss/postcss-cli/issues/142#issuecomment-310681302"
   },
   "repository": {
     "type": "git",
@@ -21,25 +17,23 @@
   },
   "devDependencies": {
     "cssnano": "^4.1.10",
-    "npm-watch": "^0.6.0",
-    "postcss-cli": "^7.1.0",
+    "postcss-cli": "^7.1.0"
+  },
+  "dependencies": {
     "postcss-import": "^12.0.1"
   },
   "postcss": {
     "plugins": {
-      "postcss-import": {
-        "path": "./"
-      },
-      "cssnano": {
-        "preset": "default"
-      }
+      "postcss-import": {}
     }
   },
-  "watch": {
-    "build:css": {
-      "patterns": ["src/styles"],
-      "extensions": "css",
-      "runOnChangeOnly": false
+  "// postcss": {
+    "plugins": {
+      "postcss-import": "This will be used after `task/11-support-css-processing` is merged ino `frontera-cms`",
+      "// postcss-import": "Because, `frontera-cms` is the only repo to use this plugin, yet. More to come.",
+      "cssnano": { "preset": "default" },
+      "// cssnano": "Activate plugin only after `task/11-support-css-processing` is merged into `frontera-cms`",
+      "//// cssnano": "Otherwise, the testing and diff management may be an unwanted time suck during a merge"
     }
   }
 }

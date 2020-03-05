@@ -1,9 +1,5 @@
-# Intentionally Empty Directory
+# TACC CMS - Static CSS
 
-No files should be in this directory.
+Files in this directory **must only** be compiled from source code in `/src/styles/exports`.
 
-Stylesheets are built from source code entry point files at `/src/styles/exports`.
-
-Any stylesheets in this directory should be moved to `/src/styles/exports`.
-
-_To support loading files from here, also, see https://stackoverflow.com/a/45941813._
+To compile the CSS, run `npm run build:css`.

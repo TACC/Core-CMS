@@ -10,9 +10,6 @@
 /fcgi/django.fcgi
 /static/css/*.css
 
-# Dynamic folders
-/build
-
 # Static and Media folders.
 /static
 /media
