@@ -68,9 +68,14 @@ To log in with a TACC account using LDAP, create the account using the TACC user
 
 ## Building Static Resources
 
-These static resources are built from source files:
+Certain static resources are built
 
-- CSS Stylesheets
+- __from__ `/taccsite_cms/static/site_cms` source code entry point files, and populated
+- __to__ `/taccsite_cms/static/build` in a matching folder as build artifacts.
+
+Resources:
+
+- `…/styles` (CSS stylesheets)
 
 ### Setup
 
@@ -94,9 +99,13 @@ These static resources are built from source files:
 
 ### Usage
 
-1. Make changes to source files in `/src`.
+1. Make changes to source files.
 2. Compile changes to source via:
     - (manually, for any ready changes) `npm run build`
     - (automatically, on source change) `npm run watch`
-3. Notice that build output is in `/build`.
-    - Docker loads that output as if it were in `/taccsite_cms/static/site_cms`.
+3. Confirm that the build output has changed.
+
+Remember:
+
+- Templates must load files, that were built, from `…/build`
+- Templates must load files, that need __no__ build step, from `…/site_cms`

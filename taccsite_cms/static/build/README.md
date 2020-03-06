@@ -1,10 +1,15 @@
-DO NOT ADD STYLESHEETS HERE!
-These files are the minified output from the `npm run build` step.
+# TACC CMS - Minified & Processed Files
 
-All stylesheets are built from source code entry point files at `/taccsite_cms/static/site_cms/styles/exports/*`
-and populated in the directory located at at `/taccsite_cms/static/build/styles/exports/*`
+DO NOT ADD STYLESHEETS HERE!
+
+These files are the minified and processed output from the `npm run build` step.
+
+See [project `README.md` at "Building Static Resources"](/README.md#Building%20Static%20Resources).
+
+All stylesheets are built
+
+- __from__ `../site_cms/__FILE_TYPE__/exports/*` source code entry point files, and populated
+- __to__ `../build/__FILE_TYPE__/*` as matching build artifacts.
 
 Add new stylesheets into that directory, NEVER here!
 They will not be tracked in the repository and therefore unavailable to the portal.
-
-_To support loading files from here, also, see https://stackoverflow.com/a/45941813._
