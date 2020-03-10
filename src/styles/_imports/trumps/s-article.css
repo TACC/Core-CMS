@@ -1,0 +1,17 @@
+/* TRUMPS */
+
+/* TRUMPS: Article (Scope) */
+
+/* TODO: Add `postcss-css-next` plugin, so that we may:
+         - nest all styles within `[class…]` block, within `.s-article` block */
+
+/* Any headers following offset content should NOT be affected by float */
+/* FAQ: This style is scoped so heading can be affected in some other context */
+.s-article [class*="c-offset-content--"] ~ h1,
+.s-article [class*="c-offset-content--"] ~ h2,
+.s-article [class*="c-offset-content--"] ~ h3,
+.s-article [class*="c-offset-content--"] ~ h4,
+.s-article [class*="c-offset-content--"] ~ h5,
+.s-article [class*="c-offset-content--"] ~ h6 {
+	clear: both;
+}
