@@ -60,11 +60,6 @@ body {
   width: 75%;
 }
 
-/* Behavioral */
-.taccsite-sticky {
-  position: sticky;
-}
-
 /* Media Query */
 
 @media only screen and (max-width: 640px) {
