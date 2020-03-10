@@ -1,0 +1,36 @@
+/* TACC COMPONENTS */
+
+/* TACC COMPONENTS: Offset Content */
+
+@media only screen and (max-width: 991px) {
+	[class*="c-offset-content--"] {
+		display: block;
+	}
+}
+@media only screen and (min-width: 992px) {
+	[class*="c-offset-content--"] {
+		--width: 34vw;
+		--offset-distance: calc(var(--width) / 2 * -1);
+		--buffer: 30px; /* double Bootstrap `.col` padding */
+	}
+	figure[class*="c-offset-content--"] > *,
+	blockquote[class*="c-offset-content--"] {
+		max-width: var(--width);
+	}
+	.c-offset-content--right {
+		float: right;
+		margin-left: var(--buffer);
+	}
+	.c-offset-content--left {
+		float: left;
+		padding-right: var(--buffer);
+	}
+}
+@media only screen and (min-width: 992px) and (max-width: 2400px) {
+	.c-offset-content--right {
+		margin-right: var(--offset-distance);
+	}
+	.c-offset-content--left {
+		margin-left: var(--offset-distance);
+	}
+}
