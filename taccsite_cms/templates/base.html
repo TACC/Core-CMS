@@ -29,7 +29,7 @@
   {% endblock custom_css %}
 </head>
 
-<body>
+<body class="{% block page_type_class %}{% endblock page_type_class %}">
   {% cms_toolbar %}
 
   <!-- Custom Navigation Block per Site to Customize the Site Header Branding. -->
