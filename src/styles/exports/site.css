@@ -1,5 +1,9 @@
 /* SITE */
 
+/* Generics */
+
+@import url("src/styles/_imports/generics/roots.css");
+
 /* Elements */
 
 @import url("src/styles/_imports/elements/headings.css");
