@@ -2,11 +2,11 @@
 
 @import url("src/styles/_imports/elements/headings.css");
 
-@import url("src/styles/_imports/components/wip/navigation.css");
-@import url("src/styles/_imports/components/wip/byline.css");
-@import url("src/styles/_imports/components/c-offset-content.css");
-@import url("src/styles/_imports/components/bootstrap/figure.css");
-@import url("src/styles/_imports/components/bootstrap/blockquote.css");
+/* TODO: Move this to bottom after code for task GL-2 is merged
+         (which updates this file to use only `@import` tags). */
+@import url("src/styles/_imports/trumps/s-article.css");
+
+/* ELEMENTS */
 
 /* TODO: Consider creating an `.s-article-page` instead,
          and including it via a `page.article.css` stylesheet,
