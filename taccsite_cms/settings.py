@@ -145,6 +145,7 @@ INSTALLED_APPS = [
     # 'djangocms_audio',
     'djangocms_column',
     'djangocms_file',
+    'djangocms_forms',
     'djangocms_link',
     'djangocms_picture',
     'djangocms_style',
@@ -286,14 +287,40 @@ DJANGOCMS_PICTURE_RESPONSIVE_IMAGES = True
 DJANGOCMS_PICTURE_RATIO = 1.618
 # Custom picture templates - if required.
 # DJANGOCMS_PICTURE_TEMPLATES = [
-#     ('background', _('Background image')), # Need to design these first!
+#     ('background', ('Background image')), # Need to design these first!
 # ]
 
 DJANGOCMS_AUDIO_ALLOWED_EXTENSIONS = ['mp3', 'ogg', 'wav']
 # Custom audio templates - if required.
 # DJANGOCMS_AUDIO_TEMPLATES = [
-#     ('feature', _('Featured Version')),
+#     ('feature', ('Featured Version')),
 # ]
+
+# Djangocms Forms Settings.
+# Lots of configs required to use these.
+# https://github.com/mishbahr/djangocms-forms
+DJANGOCMS_FORMS_PLUGIN_MODULE = ('Generic')
+DJANGOCMS_FORMS_PLUGIN_NAME = ('Form')
+# DJANGOCMS_FORMS_DEFAULT_TEMPLATE = 'djangocms_forms/form_template/default.html'
+# Override the Form Template dropdown choices to have different template options:
+DJANGOCMS_FORMS_TEMPLATES = (
+    ('djangocms_forms/form_template/default.html', ('Default')),
+)
+# When set to True all required fields inputs will be rendered with HTML5 required=required attribute.
+DJANGOCMS_FORMS_USE_HTML5_REQUIRED = False
+# By default, djangocms-forms adds additional css classes to all form inputs.
+# You can override this to integrate your own CSS framework:
+# DJANGOCMS_FORMS_WIDGET_CSS_CLASSES = {'__all__': ('form-control', ) }
+DJANGOCMS_FORMS_REDIRECT_DELAY = 10000  # 10 seconds
+# or on a per-form basis via the redirect_delay field.
+# The order of precedence for the redirect value is always:
+#     instance.redirect_delay > DJANGOCMS_FORMS_REDIRECT_DELAY > 1000 (default)
+
+# RECAPTCHA for DJangocms Forms.
+# To use reCAPTCHA for spam protection, you need to sign up for an
+# API key pair for your site: https://www.google.com/recaptcha/admin/create
+DJANGOCMS_FORMS_RECAPTCHA_PUBLIC_KEY = secrets._DJANGOCMS_FORMS_RECAPTCHA_PUBLIC_KEY
+DJANGOCMS_FORMS_RECAPTCHA_SECRET_KEY = secrets._DJANGOCMS_FORMS_RECAPTCHA_SECRET_KEY
 
 # Google Analytics.
 GOOGLE_ANALYTICS_PROPERTY_ID = secrets._GOOGLE_ANALYTICS_PROPERTY_ID
@@ -311,6 +338,7 @@ SETTINGS_EXPORT = [
 ]
 
 if CONSOLE_LOG_ENABLED:
+    print(SETTINGS_EXPORT[0])
     print(SETTINGS_EXPORT[1])
     print(SETTINGS_EXPORT[2])
     print(SETTINGS_EXPORT[3])
