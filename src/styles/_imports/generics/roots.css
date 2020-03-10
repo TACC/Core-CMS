@@ -1,0 +1,11 @@
+/* GENERICS */
+
+/* GENERICS: Roots */
+
+/* GL-1: When Hedda and Matt are ready, in 2020, these may be moved to global styles */
+/* SEE: /taccsite_cms/templates/head_branding_partials/head.branding.texascale.v2.html */
+body {
+    font-family: benton-sans, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
