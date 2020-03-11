@@ -28,7 +28,7 @@
   "postcss": {
     "plugins": {
       "postcss-import": {
-        "path": "./"
+        "path": "./taccsite_cms/static/site_cms/styles"
       },
       "cssnano": {
         "preset": "default"
