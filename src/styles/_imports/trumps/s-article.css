@@ -5,32 +5,6 @@
 /* TODO: Add `postcss-css-next` plugin, so that we may:
          - nest all styles within `.s-article` block */
 
-/* Create drop-cap from first letter of first paragraph of second column */
-/* HACK: The `.col:nth-of-type(2)` is brittle:
-         if sidebar is dropped, then drop-caps are lost! */
-/* TODO: When `postcss-custom-selectors` are supported,
-         then migrate `.col:nth-of-type(2)` into a custom selector,
-         so that the hack will be isolated */
-.s-article .col:nth-of-type(2) p:first-of-type::first-letter {
-  /* Drop the letter */
-  float: left;
-  /* Estimate spacing to match magazine design */
-  padding-top: 0.0625em; /* tweak 'til top of letter meets top of normal text */
-  padding-right: 0.125em; /* approx. `1em` of normal text */
-
-  /* TODO: Add `postcss-css-next` plugin, so that we may:
-           - use font from variables i.e. (a `settings/properties.font.css`) */
-  font-family: kepler-std-condensed-subhead, serif;
-  /* The values are:
-      - 1.5 is `line-height` on `body` (from Bootstrap)
-      - 3.0 is the number of lines to drop (from magazine design)
-        (use because `initial-letter` support is poor)
-      - 1.5 is enough to actually reach three lines
-        (font change makes line-height less accurate)
-  */
-  font-size: calc(1.5 * 3em + 1.5em);
-}
-
 /* Any headers following offset content should NOT be affected by float */
 /* FAQ: This style is scoped so heading can be affected in some other context */
 .s-article [class*="c-offset-content--"] ~ h1,

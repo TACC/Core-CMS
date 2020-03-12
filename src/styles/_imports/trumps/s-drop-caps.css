@@ -1,0 +1,26 @@
+/* TRUMPS */
+
+/* TRUMPS: Drop-Caps (Scope) */
+
+/* FAQ: This is not a utility class, because it targets child HTML tags */
+
+/* Create drop-cap from first letter of first paragraph of second column */
+.s-drop-caps p:first-of-type::first-letter {
+  /* Drop the letter */
+  float: left;
+  /* Estimate spacing to match magazine design */
+  padding-top: 0.0625em; /* tweak 'til top of letter meets top of normal text */
+  padding-right: 0.125em; /* approx. `1em` of normal text */
+
+  /* TODO: Add `postcss-css-next` plugin, so that we may:
+           - use font from variables i.e. (a `settings/properties.font.css`) */
+  font-family: kepler-std-condensed-subhead, serif;
+  /* The values are:
+      - 1.5 is `line-height` on `body` (from Bootstrap)
+      - 3.0 is the number of lines to drop (from magazine design)
+        (use because `initial-letter` support is poor)
+      - 1.5 is enough to actually reach three lines
+        (font change makes line-height less accurate)
+  */
+  font-size: calc(1.5 * 3em + 1.5em);
+}
