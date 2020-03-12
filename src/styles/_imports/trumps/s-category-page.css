@@ -26,8 +26,8 @@
 }
 
 /* Every article summary needs space between it and the article summary above */
-/* FAQ: Article summaries do not have container,
-        so add space to the image (their topmost element) */
-.s-category-page .row:nth-of-type(2) .col:nth-of-type(2) p:first-of-type + p {
+/* FAQ: Article summaries do not have container, so add space to
+        the image container (topmost element of article summary) */
+.s-category-page .row:nth-of-type(2) .col:nth-of-type(2) p + p img {
   margin-top: 25px;
 }
