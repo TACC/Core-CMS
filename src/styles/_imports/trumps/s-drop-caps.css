@@ -5,7 +5,7 @@
 /* FAQ: This is not a utility class, because it targets child HTML tags */
 
 /* Create drop-cap from first letter of first paragraph of second column */
-.s-drop-caps p:first-of-type::first-letter {
+.s-drop-caps > p:first-of-type::first-letter {
   /* Drop the letter */
   float: left;
   /* Estimate spacing to match magazine design */
