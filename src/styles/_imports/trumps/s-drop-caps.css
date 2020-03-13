@@ -8,19 +8,28 @@
 .s-drop-caps > p:first-of-type::first-letter {
   /* Drop the letter */
   float: left;
-  /* Estimate spacing to match magazine design */
-  padding-top: 0.0625em; /* tweak 'til top of letter meets top of normal text */
-  padding-right: 0.125em; /* approx. `1em` of normal text */
+  /* Estimate horizontal spacing to match magazine design */
+  /* WARN: Firefox calculates `margin-…` differently here, so use `padding-…` */
+  padding-right: 0.125em; /* approx: `1em` of normal text */
 
   /* TODO: Add `postcss-css-next` plugin, so that we may:
            - use font from variables i.e. (a `settings/properties.font.css`) */
   font-family: kepler-std-condensed-subhead, serif;
-  /* The values are:
-      - 1.5 is `line-height` on `body` (from Bootstrap)
-      - 3.0 is the number of lines to drop (from magazine design)
-        (use because `initial-letter` support is poor)
-      - 1.5 is enough to actually reach three lines
-        (font change makes line-height less accurate)
-  */
-  font-size: calc(1.5 * 3em + 1.5em);
+  font-size: 6em; /* approx: 3 lines, of normal text, tall */
+
+  /* (Firefox) Nudge letter up until it meets top of normal text */
+  /* CAVEAT: Also has effect in Safari and Chrome/Edge, but not enough */
+  padding-top: 0.0625em;
+  /* (Safari, Chrome/Edge) Nudge letter up more until it meets top of normal text */
+  /* MAGIC: Firefox does not need this */
+  /* SEE: https://bugzilla.mozilla.org/show_bug.cgi?id=1233271 */
+  /* MAGIC: Has no effect on Firefox */
+  /* SEE: https://bugzilla.mozilla.org/show_bug.cgi?id=290125 */
+  line-height: 0.65;
+}
+/* Prevent short `p`'s from extending their drop-cap letter to content below */
+.s-drop-caps > p:first-of-type:first-of-type {
+  content: "";
+  display: block;
+  clear: both;
 }
