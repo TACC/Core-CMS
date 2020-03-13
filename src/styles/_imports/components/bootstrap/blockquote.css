@@ -3,7 +3,8 @@
 /* BOOTSTRAP COMPONENTS: Quote */
 
 .blockquote {
-  margin: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 .blockquote {
   color: #b75554;
