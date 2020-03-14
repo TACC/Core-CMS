@@ -1,0 +1,15 @@
+/* Trumps */
+
+/* FAQ: Because third-party CSS, and a rush to style the header in Frontera,
+        scope classes were used for the header, Portal nav, and CMS nav */
+
+@import url("_imports/trumps/s-header.css");
+@import url("_imports/trumps/s-portal-nav.css");
+@import url("_imports/trumps/s-cms-nav.css");
+
+/* Miscellaneous */
+
+/* TODO: Convert to a component */
+/* FAQ: Not moved to `_imports` because Wesley B is trying to reduce complexity
+        of controlled refactor by delaying all non-critical changes */
+@import url("exports/nav_branding_styles/branding_logos.css");

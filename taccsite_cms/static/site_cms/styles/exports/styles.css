@@ -27,7 +27,7 @@ TODO: Use `@import` powered by a pre-processor to compose this file from differe
 
 /* OBJECTS */
 
-@import url("src/styles/_imports/objects/o-site.css");
+@import url("_imports/objects/o-site.css");
 
 /* MISCELLANEOUS */
 

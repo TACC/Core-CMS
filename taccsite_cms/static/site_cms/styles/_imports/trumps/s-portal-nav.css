@@ -1,0 +1,32 @@
+/*
+Portal Navigation
+
+Styles for elements within Portal navigation that has third-party code:
+
+- Bootstrap 4.3.1
+
+Markup: s-portal-nav.html
+
+Styleguide Trumps.Scopes.PortalNav
+*/
+
+
+
+/* --- BASE STYLES --- */
+/* --- Do NOT edit, unless you are working on `cms-site-template`! --- */
+
+
+
+.s-portal-nav {
+  /* Override `.navbar` */
+  text-transform: none;
+}
+
+
+
+/* --- PROJECT STYLES --- */
+/* --- Styles for repos that are forks `cms-site-template` go here. --- */
+
+
+
+/* … */

@@ -1,0 +1,148 @@
+/*
+Header
+
+Styles for elements within a header that has third-party code:
+
+- FontAwesome icons
+  (for Portal navigation)
+- Bootstrap
+  (for CMS navigation)
+  (for Portal navigation)
+- a subset of Bootstrap 3.3.7
+  (for CMS body content, can affect navigation)
+
+Markup: s-header.html.twig
+
+Styleguide Trumps.Scopes.Header
+*/
+
+
+
+/* --- BASE STYLES --- */
+/* --- Do NOT edit, unless you are working on `cms-site-template`! --- */
+
+
+
+/* WARNING: NO-R/EM: No `em` nor `rem` allowed while `old-css` is used (on CMS),
+            because the `rem` values assume `16px` (browser default),
+            yet `old-css` sets `body { font-size: 15px }` (changes `em` value),
+            and also sets `html { font-size: 10px }` (changes `rem` value) */
+
+.s-header {
+  --text-color: rgb(255, 255, 255);
+
+  font-size: 16px; /* NO-R/EM: Overwrite `bootstrap.3.3.7.css` */
+
+  /* Copied from Portal (via `body`) */
+  font-family: Roboto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+
+/* Affiliation */
+
+/* (none) */
+
+
+
+/* Logo */
+
+.s-header .navbar-brand {
+  margin-right: 16px; /* NO-R/EM: 1rem (from Bootstrap via `.navbar-brand`) */
+  padding: 0;
+
+  color: var(--text-color);
+  /* text-decoration: none; *//* already provided by Bootstrap */
+}
+
+
+
+/* Navigation */
+
+.s-header.navbar {
+  /* Make horizontal padding match the horizontal content buffer in Portal */
+  /* FAQ: The `calc()` keeps track of disparate source of space values */
+  /* `16px` = `1rem` from Portal (via `#sidebar .nav-content`) */
+  /* `20px` from Portal (via `.nav-link`) */
+  --nav-padding-vert: 5px;
+  --nav-padding-horz: calc(16px + 20px);
+
+  background-color: rgb(51, 51, 51);
+  padding: var(--nav-padding-vert) var(--nav-padding-horz);
+}
+
+/* Overwrite Bootstrap (which uses a media query) */
+@media (min-width:992px) {
+  .s-header.navbar-expand-lg .navbar-nav .nav-link {
+    padding: 8px 14px; /* NO-R/EM: 0.5rem (Bootstrap value) .875rem */
+  }
+}
+
+.s-header .nav-link {
+  --border-width: 4px;
+  --border-offset: calc(var(--nav-padding-vert) - var(--border-width));
+  --border-color: rgb(213, 181, 124);
+
+  /* The nav vertical padding does not match the link border, so the alignment
+     of the link border with the bottom of the header is off by small amount */
+  position: relative;
+  top: var(--border-offset);
+}
+.s-header .nav-link:hover,
+.s-header .nav-link:focus,
+.s-header .nav-link:active,
+.s-header .nav-item.active .nav-link {
+  border-width: 0 0 var(--border-width);
+  border-style: solid;
+  border-color: var(--border-color);
+  margin-bottom: calc( var(--border-width) * -1 );
+}
+/* HACK: Using an ID selector, because Bootstrap has overspecific selectors */
+#s-header .nav-link {
+  color: var(--text-color);
+  /* text-decoration: none; *//* already provided by Bootstrap */
+}
+
+/* !!!: Seems useless… Frontera Portal, CMS, and User Guide use `expand-lg` */
+.s-header.navbar-expand-md .navbar-nav .nav-link {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.s-header .nav-link,
+/* NOTE: This selector should be unnecessary with official font icon solution */
+/* NOTE: The selector has its `s-header` part commented, because that part:
+          1. accurately describes the scope of the code
+          2. is overly-specific, so not required in final code */
+.s-header .s-cms-nav .nav-item:first-child .nav-link::before {
+  /* Value determined by increasing until just before header height changes */
+  line-height: 24px;
+}
+/* Reduce the padding (compared to other links) of the "Home" icon link */
+/* NOTE: The selector has its `s-header` part commented, because that part:
+          1. accurately describes the scope of the code
+          2. is overly-specific, so not required in final code */
+.s-header .s-cms-nav .nav-item:first-child .nav-link {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+
+
+/* Icons */
+
+/* HACK: Using FontAwesome as placeholder */
+.s-header [class*="fa-"] {
+    width: 27px; /* NO-R/EM: 1.25em (from Portal `.fa`—FP-228 will deprecate it) */
+    text-align: center;
+}
+
+
+
+/* --- PROJECT STYLES --- */
+/* --- Styles for repos that are forks `cms-site-template` go here. --- */
+
+
+
+/* … */
