@@ -10,7 +10,10 @@
 /fcgi/django.fcgi
 /static/css/*.css
 
-# Static and Media folders.
+# Build Artifacts
+/taccsite_cms/static/build/*
+
+# Static and Media folders
 /static
 /media
 

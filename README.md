@@ -66,14 +66,46 @@ Access CMS admin site at at http://localhost:8000/admin
 
 To log in with a TACC account using LDAP, create the account using the TACC username and assign staff and/or superuser privileges. The assigned password can be any password and doesn't need to be sent to the user. The CMS will not attempt to validate with the assigned password unless LDAP auth fails, creating a strong password is recommended for production.
 
-## Compiling CSS
+## Building Static Resources
 
-Any changes to CSS styles:
+Certain static resources are built
 
-- must be made in `/src/styles`
-- should be compiled via `npm run build``(:css)`
+- __from__ `/taccsite_cms/static/site_cms` source code entry point files, and populated
+- __to__ `/taccsite_cms/static/build` in a matching folder as build artifacts.
 
-Any compiled CSS styles:
+Resources:
 
-- should appear in `/taccsite_cms/static/site_cms/css`
-- should be committed to repo
+- `…/styles` (CSS stylesheets)
+
+### Setup
+
+1. Install the dependencies:
+
+    ```bash
+    npm install
+    ```
+
+2. Build the static dependencies:
+
+    ```bash
+    npm run build
+    ```
+
+3. (Optional) If you want the build to occur when you change source files, then run:
+
+    ```bash
+    npm run watch
+    ```
+
+### Usage
+
+1. Make changes to source files.
+2. Compile changes to source via:
+    - (manually, for any ready changes) `npm run build`
+    - (automatically, on source change) `npm run watch`
+3. Confirm that the build output has changed.
+
+Remember:
+
+- Templates must load files, that were built, from `…/build`
+- Templates must load files, that need __no__ build step, from `…/site_cms`
