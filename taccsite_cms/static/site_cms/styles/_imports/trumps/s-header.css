@@ -73,14 +73,10 @@ Styleguide Trumps.Scopes.Header
   padding: var(--nav-padding-vert) var(--nav-padding-horz);
 }
 
-/* Overwrite Bootstrap (which uses a media query) */
-@media (min-width:992px) {
-  .s-header.navbar-expand-lg .navbar-nav .nav-link {
-    padding: 8px 14px; /* NO-R/EM: 0.5rem (Bootstrap value) .875rem */
-  }
-}
+/* Navigation: Links */
 
 .s-header .nav-link {
+  --line-height: 24px;
   --border-width: 4px;
   --border-offset: calc(var(--nav-padding-vert) - var(--border-width));
   --border-color: rgb(213, 181, 124);
@@ -89,6 +85,8 @@ Styleguide Trumps.Scopes.Header
      of the link border with the bottom of the header is off by small amount */
   position: relative;
   top: var(--border-offset);
+
+  line-height: var(--line-height);
 }
 .s-header .nav-link:hover,
 .s-header .nav-link:focus,
@@ -105,24 +103,25 @@ Styleguide Trumps.Scopes.Header
   /* text-decoration: none; *//* already provided by Bootstrap */
 }
 
-/* !!!: Seems useless… Frontera Portal, CMS, and User Guide use `expand-lg` */
-.s-header.navbar-expand-md .navbar-nav .nav-link {
-  padding-right: 15px;
-  padding-left: 15px;
+/* Navigation: Links: Responsive Design */
+
+/* Tweak Bootstrap `_nav.scss` (which selects via `navbar-expand-` class) */
+.s-header[class*="navbar-expand-"] .navbar-nav .nav-link {
+  padding-top: 8px; /* NO-R/EM: 0.5rem (from Bootstrap) */
+  padding-bottom: 8px; /* NO-R/EM: 0.5rem (from Bootstrap) */
+
+  padding-right: 14px; /* NO-R/EM: .875rem (overwrite Bootstrap) */
+  padding-left: 14px; /* NO-R/EM: .875rem (overwrite Bootstrap) */
 }
-.s-header .nav-link,
+
+/* Navigation: Links: "Home" Icon */
+
 /* NOTE: This selector should be unnecessary with official font icon solution */
-/* NOTE: The selector has its `s-header` part commented, because that part:
-          1. accurately describes the scope of the code
-          2. is overly-specific, so not required in final code */
 .s-header .s-cms-nav .nav-item:first-child .nav-link::before {
   /* Value determined by increasing until just before header height changes */
-  line-height: 24px;
+  line-height: var(--line-height);
 }
 /* Reduce the padding (compared to other links) of the "Home" icon link */
-/* NOTE: The selector has its `s-header` part commented, because that part:
-          1. accurately describes the scope of the code
-          2. is overly-specific, so not required in final code */
 .s-header .s-cms-nav .nav-item:first-child .nav-link {
   padding-top: 6px;
   padding-bottom: 6px;
