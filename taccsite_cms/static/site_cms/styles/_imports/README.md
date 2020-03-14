@@ -55,7 +55,7 @@ Styleguide __StylesSection__.__StylesName__
 
 
 /* --- BASE STYLES --- */
-/* --- Do NOT edit, unless you are working `cms-site-template`! --- */
+/* --- Do NOT edit, unless you are working on `cms-site-template`! --- */
 
 
 

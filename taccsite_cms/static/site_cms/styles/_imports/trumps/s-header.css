@@ -19,7 +19,7 @@ Styleguide Trumps.Scopes.Header
 
 
 /* --- BASE STYLES --- */
-/* --- Do NOT edit, unless you are working `cms-site-template`! --- */
+/* --- Do NOT edit, unless you are working on `cms-site-template`! --- */
 
 
 
@@ -134,7 +134,7 @@ Styleguide Trumps.Scopes.Header
 
 /* HACK: Using FontAwesome as placeholder */
 .s-header [class*="fa-"] {
-    width: 27px; /* NO-R/EM: 1.25em (from Portal `.fa`—FP-228 will deprecate) */
+    width: 27px; /* NO-R/EM: 1.25em (from Portal `.fa`—FP-228 will deprecate it) */
     text-align: center;
 }
 
