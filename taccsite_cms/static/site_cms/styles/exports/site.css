@@ -23,3 +23,4 @@
          then adding the class and including the stylesheet
         via a `page_type/article.html` template */
 @import url("_imports/trumps/s-article.css");
+@import url("_imports/trumps/s-drop-caps.css");
