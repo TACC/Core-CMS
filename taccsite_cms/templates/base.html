@@ -55,14 +55,12 @@
     </div>
 
     <!-- Footer block. -->
-    <footer id="footer" class="o-site__foot">
-      <center>
-        <div id="footer-content">
-          {% block footer %}
-          {% static_placeholder "footer-content" %}
-          {% endblock footer %}
-        </div>
-      </center>
+    <footer class="c-footer" class="o-site__foot">
+    {% block footer %}
+      {% static_placeholder "footer-content" or %}
+      ©2020 Texas Advanced Computing Center, The University of Texas at Austin, Office of the Vice President for Research.
+      {% endstatic_placeholder %}
+    {% endblock footer %}
     </footer>
   </div>
 

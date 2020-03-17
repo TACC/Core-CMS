@@ -1,0 +1,55 @@
+/*
+Footer
+
+The website footer. Project customization should be minimal.
+
+Markup: c-footer.html
+
+Styleguide Components.Footer
+*/
+
+
+
+/* --- BASE STYLES --- */
+/* --- Do NOT edit, unless you are working on `cms-site-template`! --- */
+
+
+
+.c-footer {
+  /* TODO: Use global custom property when available */
+  --line-height: 1.5; /* value (not unit) from Bootstrap via `body` */
+  --min-line-count: 2;
+
+  /* The minimum height of the footer should be 2 lines of text, plus padding */
+  box-sizing: content-box;
+  min-height: calc(var(--line-height) * var(--min-line-count) * 1em);
+
+  /* Center content vertically and horizontall (assuming unknown height) */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  /* FAQ: Value was manually calculated, then rounded to nearest multiple of 5
+          i.e. `orig. value 12px` + `( total vertical padding of content / 2 )`
+          (vertical padding was added via `style` attributes on CMS markup) */
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  color: rgb(255, 255, 255);
+  background-color: rgb(51, 51, 51);
+
+  font-size: 12px;
+}
+
+
+
+/* --- PROJECT STYLES --- */
+/* --- Styles for repos that are forks `cms-site-template` go here. --- */
+
+
+
+.c-footer {
+  /* Mimic strange style from the 2020-02 launch design that was ported */
+  margin-top: 1em;
+}

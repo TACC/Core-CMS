@@ -8,71 +8,11 @@ TODO: Organize with ITCSS
 TODO: Use `@import` powered by a pre-processor to compose this file from different files
 */
 
-/* ELEMENTS */
-
-/* Roots */
-
-/* Prevent excess scrollbar when CMS admin is logged in */
-/* NOTE: This code does NOT work */
-/*
-.cms-ready body {
-  /* FAQ: CMS dynamically adds `margin-top` to `head` to fit toolbar height *\/
-  /* WARNING: If the dynamic(!) header margin changes, then so should this *\/
-  /* RFC: Consider creating JavaScript snippet (via CMS?) to solve this *\/
-  --head-margin-top: 46px;
-
-  height: calc(100vh - var(--head-margin-top));
-}
-*/
-
 /* OBJECTS */
 
 @import url("_imports/objects/o-site.css");
 
-/* MISCELLANEOUS */
+/* COMPONENTS */
 
-/* Footer */
-
-#footer {
-  padding: 12px;
-  margin-top: 1em; /* TODO: Move to project-specific code (when defined) */
-
-  color: rgb(255, 255, 255);
-  background-color: rgb(51, 51, 51);
-
-  text-align: center;
-}
-#footer-content {
-  font-size: 12px;
-}
-
-/* The minimum height of the footer should be 2 lines of text, plus padding */
-/* TODO: Update styles to match footer height minimum definition */
-/* WARNING: The 2020-03 styles instead set an arbritrary value for each standard
-            Bootstrap media query; this results in ranges of variable heights
-
-- from ~74px to 96px (given 1rem = 16px, as in most CMS's)
-- from 46px to 60px (given 1rem = 10px, as in Frontera CMS)
-*/
-/* FAQ: Frontera CMS has different `rem` values than other CMS's,
-        because it included old CMS styles for 2020-02 launch. */
-@media only screen and (max-width: 640px) {
-  #footer { min-height: 6.0rem; }
-  #footer-content { width: 90%; }
-}
-@media only screen and (min-width: 641px) and (max-width: 767px) {
-  #footer { min-height: 5.5rem; }
-  #footer-content { width: 85%; }
-}
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-  #footer { min-height: 5.1rem; }
-  #footer-content { width: 80%; }
-}
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
-  #footer { min-height: 4.8rem; }
-  #footer-content { width: 75%; }
-}
-@media only screen and (min-width: 1200px) {
-  #footer { min-height: 4.6rem; }
-  #footer-content { width: 70%; }
-}
+@import url("_imports/components/c-footer.css");
+@import url("_imports/components/django.cms.css");
