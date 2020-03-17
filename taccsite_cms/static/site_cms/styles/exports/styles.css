@@ -8,6 +8,10 @@ TODO: Organize with ITCSS
 TODO: Use `@import` powered by a pre-processor to compose this file from different files
 */
 
+/* ELEMENTS */
+
+@import url("_imports/elements/roots.css");
+
 /* OBJECTS */
 
 @import url("_imports/objects/o-site.css");
