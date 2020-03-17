@@ -1,0 +1,30 @@
+/*
+Footer
+
+Styles for elements within a footer that has WYSIWIG markup.
+
+Markup: s-footer.twig.html
+
+Styleguide Scope.Footer
+*/
+
+
+
+
+/* --- BASE STYLES --- */
+/* --- Do NOT edit, unless you are working on `cms-site-template`! --- */
+
+
+
+.s-footer > p {
+  margin: 0;
+}
+
+
+
+/* --- PROJECT STYLES --- */
+/* --- Styles for repos that are forks `cms-site-template` go here. --- */
+
+
+
+/* … */

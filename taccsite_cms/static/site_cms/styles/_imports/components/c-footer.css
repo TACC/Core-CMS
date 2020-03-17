@@ -3,7 +3,7 @@ Footer
 
 The website footer. Project customization should be minimal.
 
-Markup: c-footer.html
+Markup: c-footer.twig.html
 
 Styleguide Components.Footer
 */
@@ -72,7 +72,6 @@ Styleguide Components.Footer
     padding-right: 15%;
   }
 }
-
 
 
 

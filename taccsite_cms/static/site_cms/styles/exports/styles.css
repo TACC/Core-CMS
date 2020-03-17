@@ -16,3 +16,7 @@ TODO: Use `@import` powered by a pre-processor to compose this file from differe
 
 @import url("_imports/components/c-footer.css");
 @import url("_imports/components/django.cms.css");
+
+/* TRUMPS */
+
+@import url("_imports/trumps/s-footer.css");
