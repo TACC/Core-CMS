@@ -16,8 +16,11 @@ Styleguide Scope.Footer
 
 
 
-.s-footer > p {
+.s-footer > p:only-child {
   margin: 0;
+}
+.s-footer a {
+  color: #cccccc;
 }
 
 
