@@ -34,68 +34,45 @@ TODO: Use `@import` powered by a pre-processor to compose this file from differe
 /* Footer */
 
 #footer {
-  min-height: 4.5rem;
   padding: 12px;
-  margin-top: 1em;
+  margin-top: 1em; /* TODO: Move to project-specific code (when defined) */
 
   color: rgb(255, 255, 255);
   background-color: rgb(51, 51, 51);
-}
 
+  text-align: center;
+}
 #footer-content {
-  width: 75%;
-
-  font-size: 11px;
+  font-size: 12px;
 }
 
-/* Media Query */
+/* The minimum height of the footer should be 2 lines of text, plus padding */
+/* TODO: Update styles to match footer height minimum definition */
+/* WARNING: The 2020-03 styles instead set an arbritrary value for each standard
+            Bootstrap media query; this results in ranges of variable heights
 
+- from ~74px to 96px (given 1rem = 16px, as in most CMS's)
+- from 46px to 60px (given 1rem = 10px, as in Frontera CMS)
+*/
+/* FAQ: Frontera CMS has different `rem` values than other CMS's,
+        because it included old CMS styles for 2020-02 launch. */
 @media only screen and (max-width: 640px) {
-  #footer {
-    min-height: 6rem;
-  }
-
-  #footer-content {
-    width: 90%;
-  }
+  #footer { min-height: 6.0rem; }
+  #footer-content { width: 90%; }
 }
-
 @media only screen and (min-width: 641px) and (max-width: 767px) {
-  #footer {
-    min-height: 5.5rem;
-  }
-
-  #footer-content {
-    width: 85%;
-  }
+  #footer { min-height: 5.5rem; }
+  #footer-content { width: 85%; }
 }
-
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-  #footer {
-    min-height: 5.1rem;
-  }
-
-  #footer-content {
-    width: 80%;
-  }
+  #footer { min-height: 5.1rem; }
+  #footer-content { width: 80%; }
 }
-
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
-  #footer {
-    min-height: 4.8rem;
-  }
-
-  #footer-content {
-    width: 75%;
-  }
+  #footer { min-height: 4.8rem; }
+  #footer-content { width: 75%; }
 }
-
 @media only screen and (min-width: 1200px) {
-  #footer {
-    min-height: 4.6rem;
-  }
-
-  #footer-content {
-    width: 70%;
-  }
+  #footer { min-height: 4.6rem; }
+  #footer-content { width: 70%; }
 }

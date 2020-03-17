@@ -1,10 +1,16 @@
-/* OBJECTS: Site i.e. Website Layout */
+/*
+Site
 
-/* TODO: Document this object with a standard format (suggestion: KSS-Node) */
-/* NOTE: This can be used to create a "sticky footer", which
-         is NOT the same as `#footer: { position: sticky }` */
+Layout and class names that are applicable to most websites:
+
+- ["sticky footer"](https://css-tricks.com/couple-takes-sticky-footer/)
+
+Markup: o-site.html
+
+Styleguide Objects.Site
+*/
+
 /* SEE: https://css-tricks.com/couple-takes-sticky-footer/#article-header-id-3 */
-
 .o-site {
   display: flex;
   flex-direction: column;
