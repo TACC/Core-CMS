@@ -17,6 +17,11 @@ Styleguide Trumps.Scopes.PortalNav
 
 
 
+/* WARNING: NO-R/EM: No `em` nor `rem` allowed while `old-css` is used (on CMS),
+            because the `rem` values assume `16px` (browser default),
+            yet `old-css` sets `body { font-size: 15px }` (changes `em` value),
+            and also sets `html { font-size: 10px }` (changes `rem` value) */
+
 .s-portal-nav {
   /* Override `.navbar` */
   text-transform: none;
