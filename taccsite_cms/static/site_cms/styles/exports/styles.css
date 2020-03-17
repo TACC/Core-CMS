@@ -12,147 +12,66 @@ TODO: Use `@import` powered by a pre-processor to compose this file from differe
 
 /* Roots */
 
-body {
-  width: 100%;
-  height: 100%;
+/* Prevent excess scrollbar when CMS admin is logged in */
+/* NOTE: This code does NOT work */
+/*
+.cms-ready body {
+  /* FAQ: CMS dynamically adds `margin-top` to `head` to fit toolbar height *\/
+  /* WARNING: If the dynamic(!) header margin changes, then so should this *\/
+  /* RFC: Consider creating JavaScript snippet (via CMS?) to solve this *\/
+  --head-margin-top: 46px;
+
+  height: calc(100vh - var(--head-margin-top));
 }
+*/
+
+/* OBJECTS */
+
+@import url("_imports/objects/o-site.css");
 
 /* MISCELLANEOUS */
 
-/* Navigation */
-
-/* HACK: Using an ID selector, because Bootstrap has overspecific selectors */
-#s-bootstrap-nav .navbar-brand,
-#s-bootstrap-nav .nav-link {
-  color: rgb(255, 255, 255);
-  text-decoration: none;
-}
-
-/* Class & ID Selectors */
-
-/*
-.cms-branded-navigation {}
-*/
-
-#cms-content {
-  position: relative;
-  min-height: 92vh;
-}
-
-#content-wrap {
-  padding-bottom: 4.5rem;
-}
+/* Footer */
 
 #footer {
-  /* position: absolute; */
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  height: 4.5rem;
+  padding: 12px;
+
   color: rgb(255, 255, 255);
   background-color: rgb(51, 51, 51);
-  font-size: 11px;
-  margin: 0;
-  padding: 12px;
-}
 
+  text-align: center;
+}
 #footer-content {
-  width: 75%;
+  font-size: 12px;
 }
 
-/* Behavioral */
-.taccsite-sticky {
-  position: sticky;
-}
+/* The minimum height of the footer should be 2 lines of text, plus padding */
+/* TODO: Update styles to match footer height minimum definition */
+/* WARNING: The 2020-03 styles instead set an arbritrary value for each standard
+            Bootstrap media query; this results in ranges of variable heights
 
-/* Media Query */
-
+- from ~74px to 96px (given 1rem = 16px, as in most CMS's)
+- from 46px to 60px (given 1rem = 10px, as in Frontera CMS)
+*/
+/* FAQ: Frontera CMS has different `rem` values than other CMS's,
+        because it included old CMS styles for 2020-02 launch. */
 @media only screen and (max-width: 640px) {
-  .nav-item.dropdown {
-    padding: 8px 0 0;
-  }
-
-  #content-wrap {
-    padding-bottom: 6rem;
-  }
-
-  #footer {
-    height: 6rem;
-  }
-
-  #footer-content {
-    width: 90%;
-  }
+  #footer { min-height: 6.0rem; }
+  #footer-content { width: 90%; }
 }
-
 @media only screen and (min-width: 641px) and (max-width: 767px) {
-  .nav-item.dropdown {
-    padding: 8px 0 0;
-  }
-
-  #content-wrap {
-    padding-bottom: 5.5rem;
-  }
-
-  #footer {
-    height: 5.5rem;
-  }
-
-  #footer-content {
-    width: 85%;
-  }
+  #footer { min-height: 5.5rem; }
+  #footer-content { width: 85%; }
 }
-
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-  .nav-item.dropdown {
-    padding: 8px 0 0;
-  }
-
-  #content-wrap {
-    padding-bottom: 5.1rem;
-  }
-
-  #footer {
-    height: 5.1rem;
-  }
-
-  #footer-content {
-    width: 80%;
-  }
+  #footer { min-height: 5.1rem; }
+  #footer-content { width: 80%; }
 }
-
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
-  .nav-item.dropdown {
-    padding: 8px 0 0;
-  }
-
-  #content-wrap {
-    padding-bottom: 4.8rem;
-  }
-
-  #footer {
-    height: 4.8rem;
-  }
-
-  #footer-content {
-    width: 75%;
-  }
+  #footer { min-height: 4.8rem; }
+  #footer-content { width: 75%; }
 }
-
 @media only screen and (min-width: 1200px) {
-  .nav-item.dropdown {
-    padding: 8px 0 0;
-  }
-
-  #content-wrap {
-    padding-bottom: 4.6rem;
-  }
-
-  #footer {
-    height: 4.6rem;
-  }
-
-  #footer-content {
-    width: 70%;
-  }
+  #footer { min-height: 4.6rem; }
+  #footer-content { width: 70%; }
 }
