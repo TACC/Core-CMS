@@ -24,11 +24,10 @@ Styleguide Components.Footer
   box-sizing: content-box;
   min-height: calc(var(--line-height) * var(--min-line-count) * 1em);
 
-  /* Center content vertically and horizontall (assuming unknown height) */
+  /* Center content vertically (assuming unknown height) */
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
 
   /* FAQ: Value was manually calculated, then rounded to nearest multiple of 5
           i.e. `orig. value 12px` + `( total vertical padding of content / 2 )`
@@ -40,7 +39,40 @@ Styleguide Components.Footer
   background-color: rgb(51, 51, 51);
 
   font-size: 12px;
+  text-align: center;
 }
+/* TODO: Use "custom media query" for each standard Bootstrap media query */
+@media only screen and (max-width: 640px) {
+  .c-footer {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+}
+@media only screen and (min-width: 641px) and (max-width: 767px) {
+  .c-footer {
+    padding-left: 7.5%;
+    padding-right: 7.5%;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .c-footer {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .c-footer {
+    padding-left: 12.5%;
+    padding-right: 12.5%;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .c-footer {
+    padding-left: 15%;
+    padding-right: 15%;
+  }
+}
+
 
 
 
