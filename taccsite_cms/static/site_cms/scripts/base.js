@@ -37,17 +37,14 @@ function _isElement(entity) {
  * @return {boolean}
  */
 function _areMatchingURLs(locationA, locationB, propertiesToMatch) {
-    console.debug('Will compare URLs for similarity', locationA, locationB, propertiesToMatch);
     const doesPropertyMatch = (property) => (locationA[property] === locationB[property]);
 
     if (locationA.href && locationA.href === locationB.href) {
-        console.debug('URL match based on href string');
         return true;
     }
     /* FAQ: Do not save results, for condition, earlier into variable,
             because the logic could be unnecessary by this line */
     if (propertiesToMatch.every(doesPropertyMatch)) {
-        console.debug('URL match based on matching properties');
         return true;
     }
 
@@ -68,7 +65,6 @@ function flagLinkAsActive(activeClassname, linkSelector, scopeElement, ancestorA
     const linkElements = scopeElement.querySelectorAll(linkSelector);
 
     linkElements.forEach((linkElement) => {
-        console.debug('Will test whether link should be active', linkElement);
         const propertiesToMatch = ['pathname', 'hostname'];
         const shouldBeActive = _areMatchingURLs(linkElement, document.location, propertiesToMatch);
 
