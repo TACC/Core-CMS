@@ -2,7 +2,7 @@
 
 /* TRUMPS: Article (Scope) */
 
-/* Any content following an article should NOT wrap around floated content */
+/* Prevent content after article from wrapping around floated content in article */
 .s-article::after {
   /* from Bootstrap `clearfix` */
   display: block;
