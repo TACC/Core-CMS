@@ -5,10 +5,6 @@
 [class*="c-offset-content--"] {
 	--offset-distance: 8.5vw;
 	--buffer: 30px; /* double Bootstrap `.col` padding */
-
-	/* This is not necessary in combination with `.figure` nor `blockquote`,
-	   but any element should be allowed to use this component, not just those */
-	display: block;
 }
 @media only screen and (min-width: 992px) {
 	.c-offset-content--right {
