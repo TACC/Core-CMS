@@ -16,7 +16,6 @@
 
   color: #636466;
   font-size: 16px;
-  text-align: right;
 }
 .blockquote-footer cite {
   font-style: normal; /* overwrite browser `cite` */
