@@ -3,8 +3,11 @@
 /* TRUMPS: Article (Scope) */
 
 /* Any content following an article should NOT wrap around floated content */
-.s-article {
-    clear: both;
+.s-article::after {
+  /* from Bootstrap `clearfix` */
+  display: block;
+  content: "";
+  clear: both;
 }
 
 /* Do this only for those viewports when content is actually offset */
