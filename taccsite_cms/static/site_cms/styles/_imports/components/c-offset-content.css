@@ -2,35 +2,29 @@
 
 /* TACC COMPONENTS: Offset Content */
 
-@media only screen and (max-width: 991px) {
-	[class*="c-offset-content--"] {
-		display: block;
-	}
+[class*="c-offset-content--"] {
+	--offset-distance: 8.5vw;
+	--buffer: 30px; /* double Bootstrap `.col` padding */
 }
 @media only screen and (min-width: 992px) {
-	[class*="c-offset-content--"] {
-		--width: 34vw;
-		--offset-distance: calc(var(--width) / 2 * -1);
-		--buffer: 30px; /* double Bootstrap `.col` padding */
-	}
-	figure[class*="c-offset-content--"] > *,
-	blockquote[class*="c-offset-content--"] {
-		max-width: var(--width);
-	}
 	.c-offset-content--right {
 		float: right;
 		margin-left: var(--buffer);
 	}
+	.c-offset-content--right + .c-offset-content--right { clear: right; }
+
 	.c-offset-content--left {
 		float: left;
-		padding-right: var(--buffer);
+		margin-right: var(--buffer);
 	}
+	.c-offset-content--left + .c-offset-content--left { clear: left; }
 }
 @media only screen and (min-width: 992px) and (max-width: 2400px) {
+    /* Apply negative margin only when using offset value */
 	.c-offset-content--right {
-		margin-right: var(--offset-distance);
+		margin-right: calc( var(--offset-distance) * -1);
 	}
 	.c-offset-content--left {
-		margin-left: var(--offset-distance);
+		margin-left: calc( var(--offset-distance) * -1);
 	}
 }

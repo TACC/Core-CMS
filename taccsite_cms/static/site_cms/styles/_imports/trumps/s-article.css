@@ -13,5 +13,13 @@
 .s-article [class*="c-offset-content--"] ~ h4,
 .s-article [class*="c-offset-content--"] ~ h5,
 .s-article [class*="c-offset-content--"] ~ h6 {
-	clear: both;
+  clear: both;
+}
+
+/* Do this only for those viewports when content is actually offset */
+@media only screen and (min-width: 992px) and (max-width: 2400px) {
+  /* If element is too wide, then the offset is negligible */
+  .s-article [class*="c-offset-content--"] {
+    max-width: calc( var(--offset-distance) * 4 );
+  }
 }
