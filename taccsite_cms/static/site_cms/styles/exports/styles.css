@@ -1,0 +1,26 @@
+/*
+CUSTOM SELECTORS FOR TACCSITE CMS
+
+Note: Best practice is to keep all custom cms style selectors aggregated in external files like this one.
+This ensures they are consistently applied and available throughout the site.
+
+TODO: Organize with ITCSS
+TODO: Use `@import` powered by a pre-processor to compose this file from different files
+*/
+
+/* ELEMENTS */
+
+@import url("_imports/elements/roots.css");
+
+/* OBJECTS */
+
+@import url("_imports/objects/o-site.css");
+
+/* COMPONENTS */
+
+@import url("_imports/components/c-footer.css");
+@import url("_imports/components/django.cms.css");
+
+/* TRUMPS */
+
+@import url("_imports/trumps/s-footer.css");
