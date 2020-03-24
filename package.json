@@ -1,15 +1,19 @@
 {
-  "name": "frontera-cms",
+  "name": "texascale-org",
   "// version": "undefined",
   "// license": "undefined",
-  "description": "The master CMS codebase for all downstream TACC stand alone CMS sites.",
+  "description": "The CMS codebase for the Texascale stand alone CMS site.",
   "scripts": {
     "build": "npm run build:css",
-    "build:css": "postcss \"src/styles/exports/**/*.css\" --base src/styles/exports --dir taccsite_cms/static/site_cms/css"
+    "build:css": "postcss \"taccsite_cms/static/site_cms/styles/exports/**/*.css\" --base taccsite_cms/static/site_cms/styles/exports --dir taccsite_cms/static/build/styles",
+    "watch": "npm-watch"
   },
   "// scripts": {
     "build:css": "Compile files locally, to be committed to repo (quote glob to prevent OS parse)",
-    "build:css // SEE": "https://github.com/postcss/postcss-cli/issues/142#issuecomment-310681302"
+    "build:css // SEE": "https://github.com/postcss/postcss-cli/issues/142#issuecomment-310681302",
+    "watch": "Compile files when they change",
+    "watch // NOTE": "The macOS operating system requires object-based conifguration",
+    "watch // NOTE // SEE": "https://github.com/M-Zuber/npm-watch/issues/35"
   },
   "repository": {
     "type": "git",
@@ -17,19 +21,27 @@
   },
   "devDependencies": {
     "cssnano": "^4.1.10",
-    "postcss-cli": "^7.1.0"
-  },
-  "dependencies": {
+    "npm-watch": "^0.6.0",
+    "postcss-cli": "^7.1.0",
     "postcss-import": "^12.0.1"
   },
   "postcss": {
     "plugins": {
       "postcss-import": {
-        "path": "./"
+        "path": "./taccsite_cms/static/site_cms/styles"
       },
       "cssnano": {
         "preset": "default"
       }
+    }
+  },
+  "watch": {
+    "build:css": {
+      "patterns": [
+        "./taccsite_cms/static/site_cms/styles"
+      ],
+      "extensions": "css",
+      "runOnChangeOnly": false
     }
   }
 }
