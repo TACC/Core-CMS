@@ -21,7 +21,8 @@ _CMS_TEMPLATES =  (
     ('cms_menu.html', 'CMS Menu'),
     ('fullwidth.html', 'Fullwidth'),
     ('sidebar_left.html', 'Sidebar Left'),
-    ('sidebar_right.html', 'Sidebar Right')
+    ('sidebar_right.html', 'Sidebar Right'),
+    ('page_types/article_category.html', 'Article Category')
 )
 
 _DATABASE_ENGINE = 'django.db.backends.postgresql'
