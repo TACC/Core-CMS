@@ -9,8 +9,9 @@
   <link rel="icon" href="{% static 'site_cms/images/favicons/favicon.ico' %}" type="image/x-icon" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <!-- Requires `npm run build` step before running the django project. -->
-  <link rel="stylesheet" href="{% static 'build/styles/styles.css' %}">
-  <link rel="stylesheet" href="{% static 'build/styles/nav_branding_styles/branding_logos.css' %}">
+  <link id="css-core" rel="stylesheet" href="{% static 'build/styles/styles.css' %}">
+  <link id="css-site-header" rel="stylesheet" href="{% static 'build/styles/site.header.css' %}">
+  <link id="css-site-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
   <!-- Custom <head> Markup per Site to Customize the Site <head> Content. -->
   <!-- No custom markup in base template. -->
   {% render_block "css" %}
@@ -23,17 +24,17 @@
   {% endblock custom_css %}
 </head>
 
-<body>
+<body class="o-site">
   {% cms_toolbar %}
 
   <!-- Custom Navigation Block per Site to Customize the Site Header Branding. -->
-  <div class="cms-branded-navigation">
+  <div class="cms-branded-navigation" class="o-site__head">
     {% include "nav_branding_partials/nav.branding.tacc.v2.html" %}
   </div>
 
   <!-- Page content. -->
-  <div id="cms-content">
-    <div id="content-wrap">
+  <div id="cms-content" class="o-site o-site__body">
+    <div id="content-wrap" class="o-site__body">
       <!-- This block used regardless. -->
       {% block content %}
       <div class="container">
@@ -44,14 +45,12 @@
     </div>
 
     <!-- Footer block. -->
-    <footer id="footer">
-      <center>
-        <div id="footer-content">
-          {% block footer %}
-          {% static_placeholder "footer-content" %}
-          {% endblock footer %}
-        </div>
-      </center>
+    <footer class="c-footer  s-footer  o-site__foot">
+    {% block footer %}
+      {% static_placeholder "footer-content" or %}
+      <p>©2020 Texas Advanced Computing Center, The University of Texas at Austin, Office of the Vice President for Research.</p>
+      {% endstatic_placeholder %}
+    {% endblock footer %}
     </footer>
   </div>
 
