@@ -31,13 +31,6 @@ Styleguide Trumps.Scopes.CMSNav
   font-size: 24px;
 }
 
-/* Align position of first CMS nav link with Portal "Dashboard" header */
-/* REQ: This value is ONLY for Frontera; other brands have wider images… */
-/* HACK: This solution is dependent on dynamic and unrelated content */
-.s-cms-nav .nav-item:nth-child(2) {
-  margin-left: 4px;
-}
-
 
 
 /* Icons */
