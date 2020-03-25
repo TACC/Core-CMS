@@ -8,7 +8,7 @@
 
 /* --- BASE STYLES --- */
 /* --- Do NOT edit, unless you are working on `cms-site-template`! --- */
-/* WARNING: This is already imported in `site.css` */
+/* NOTE: This is already imported in `site.css` */
 /* TODO: Find a way to be modular, but not redundant */
 @import url("_imports/settings/props.font.css");
 
@@ -22,8 +22,12 @@
 
 /* --- BASE STYLES --- */
 /* --- Do NOT edit, unless you are working on `cms-site-template`! --- */
-/* FAQ: Because third-party CSS, and a rush to style the header in Frontera,
-        scope classes were used for the header, Portal nav, and CMS nav */
+/* FAQ: Because of third-party code and a rush to style the Frontera header
+        (which meant maintaining existing markup), scope classes were used for
+        - the header
+        - the Portal nav
+        - the CMS nav
+*/
 @import url("_imports/trumps/s-header.css");
 @import url("_imports/trumps/s-portal-nav.css");
 @import url("_imports/trumps/s-cms-nav.css");
