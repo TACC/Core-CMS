@@ -25,7 +25,7 @@ Styleguide Trumps
 /*
 Scopes
 
-Scope styles are functional overrides and styles that are scoped to a specific area. These are meant to be used sparingly. Examples of scopes are functional styles for third-party markup, WYSIWIG editor tags, form elements, components with a forced relationship.
+Scope styles are overrides and styles that are scoped to a specific area. These are meant to be used sparingly. Examples of scopes are styles for third-party markup, WYSIWIG editor tags, form elements, components with a forced relationship.
 
 Reference:
 
