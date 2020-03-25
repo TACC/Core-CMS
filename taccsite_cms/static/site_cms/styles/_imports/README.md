@@ -4,7 +4,7 @@ These styles are intended to be imported by other stylesheets.
 
 ## Directories
 
-These directories and files are based on ITCSS (see [CSS Organization][tacc-style-guide]).
+These directories and files are based on ITCSS (see [CSS Organization][tacc-css-org]).
 
     ./
         |_ settings     // global custom values
@@ -20,13 +20,13 @@ These directories and files are based on ITCSS (see [CSS Organization][tacc-styl
 ## Rules
 
 1. Stylesheets:
-    1. __must__ be in the appropriate directory (see "Directories").
-    1. __must__ follow the example styles format (see "Example Styles").
+    1. __must__ be in the appropriate directory (see "Directories")
+    1. __must__ follow the example styles format (see "Example Styles")
 2. Styles for `cms-site-template`:
     1. __must__ be _between_ `BASE STYLES` and `PROJECT STYLES`
-    2. __must only__ be styles that should be available to forks.
+    2. __must only__ be styles that should be available to forks
 3. Styles for forks of `cms-site-template`:
-    1. __must__ be _beneath_ `PROJECT STYLES`,
+    1. __must__ be _beneath_ `PROJECT STYLES`
     2. __may__ _append_ to _these_ sections of KSS documentation:
         - [description][kss-desc]
         - [modifiers][kss-mods]
