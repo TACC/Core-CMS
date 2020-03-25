@@ -29,6 +29,10 @@ body {
   height: 100%;
 }
 
+body {
+  font-family: var(--global-font-family);
+}
+
 
 
 /* --- PROJECT STYLES --- */
