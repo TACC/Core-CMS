@@ -61,7 +61,6 @@
 
 /* --- PROJECT STYLES --- */
 /* --- Styles for repos that fork `cms-site-template` go here. --- */
-@import url("_imports/components/wip/navigation.css");
 @import url("_imports/components/wip/byline.css");
 @import url("_imports/components/c-offset-content.css");
 @import url("_imports/components/bootstrap/figure.css");
