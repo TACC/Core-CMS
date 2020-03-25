@@ -14,7 +14,7 @@ These will be tracked in the repository and serve as files in which to import so
 
 ## Types of Stylesheets
 
-- `site.*.css`:      styles that apply to the entire website i.e. global styles
+- `site(.*).css`:    styles that apply to the entire website i.e. global styles
 - `page-type.*.css`: styles that apply only to certain types of pages
 - `*/*`:             styles that have not yet been organized
 
