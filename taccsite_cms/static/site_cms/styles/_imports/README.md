@@ -66,7 +66,7 @@ Styleguide __StylesSection__.__StylesName__
 
 
 /* --- PROJECT STYLES --- */
-/* --- Styles for repos that are forks `cms-site-template` go here. --- */
+/* --- Styles for repos that fork `cms-site-template` go here. --- */
 
 
 
