@@ -10,144 +10,17 @@ TODO: Use `@import` powered by a pre-processor to compose this file from differe
 
 /* ELEMENTS */
 
-/* Roots */
+@import url("_imports/elements/roots.css");
 
-body {
-  width: 100%;
-  height: 100%;
-}
+/* OBJECTS */
 
-/* MISCELLANEOUS */
+@import url("_imports/objects/o-site.css");
 
-/* Navigation */
+/* COMPONENTS */
 
-/* HACK: Using an ID selector, because Bootstrap has overspecific selectors */
-#s-bootstrap-nav .navbar-brand,
-#s-bootstrap-nav .nav-link {
-  color: rgb(255, 255, 255);
-  text-decoration: none;
-}
+@import url("_imports/components/c-footer.css");
+@import url("_imports/components/django.cms.css");
 
-/* Class & ID Selectors */
+/* TRUMPS */
 
-/*
-.cms-branded-navigation {}
-*/
-
-#cms-content {
-  position: relative;
-  min-height: 92vh;
-}
-
-#content-wrap {
-  padding-bottom: 4.5rem;
-}
-
-#footer {
-  /* position: absolute; */
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  height: 4.5rem;
-  color: rgb(255, 255, 255);
-  background-color: rgb(51, 51, 51);
-  font-size: 11px;
-  margin: 0;
-  padding: 12px;
-}
-
-#footer-content {
-  width: 75%;
-}
-
-/* Media Query */
-
-@media only screen and (max-width: 640px) {
-  .nav-item.dropdown {
-    padding: 8px 0 0;
-  }
-
-  #content-wrap {
-    padding-bottom: 6rem;
-  }
-
-  #footer {
-    height: 6rem;
-  }
-
-  #footer-content {
-    width: 90%;
-  }
-}
-
-@media only screen and (min-width: 641px) and (max-width: 767px) {
-  .nav-item.dropdown {
-    padding: 8px 0 0;
-  }
-
-  #content-wrap {
-    padding-bottom: 5.5rem;
-  }
-
-  #footer {
-    height: 5.5rem;
-  }
-
-  #footer-content {
-    width: 85%;
-  }
-}
-
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-  .nav-item.dropdown {
-    padding: 8px 0 0;
-  }
-
-  #content-wrap {
-    padding-bottom: 5.1rem;
-  }
-
-  #footer {
-    height: 5.1rem;
-  }
-
-  #footer-content {
-    width: 80%;
-  }
-}
-
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
-  .nav-item.dropdown {
-    padding: 8px 0 0;
-  }
-
-  #content-wrap {
-    padding-bottom: 4.8rem;
-  }
-
-  #footer {
-    height: 4.8rem;
-  }
-
-  #footer-content {
-    width: 75%;
-  }
-}
-
-@media only screen and (min-width: 1200px) {
-  .nav-item.dropdown {
-    padding: 8px 0 0;
-  }
-
-  #content-wrap {
-    padding-bottom: 4.6rem;
-  }
-
-  #footer {
-    height: 4.6rem;
-  }
-
-  #footer-content {
-    width: 70%;
-  }
-}
+@import url("_imports/trumps/s-footer.css");
