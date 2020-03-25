@@ -4,17 +4,40 @@
 /* SEE: https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/ */
 /* TODO: Summarize ITCSS in https://confluence.tacc.utexas.edu/x/DADMBQ */
 
-/* Trumps */
+/* SETTINGS */
 
+/* --- BASE STYLES --- */
+/* --- Do NOT edit, unless you are working on `cms-site-template`! --- */
+/* WARNING: This is already imported in `site.css` */
+/* TODO: Find a way to be modular, but not redundant */
+@import url("_imports/settings/props.font.css");
+
+/* --- PROJECT STYLES --- */
+/* --- Styles for repos that fork `cms-site-template` go here. --- */
+/* … */
+
+
+
+/* TRUMPS */
+
+/* --- BASE STYLES --- */
+/* --- Do NOT edit, unless you are working on `cms-site-template`! --- */
 /* FAQ: Because third-party CSS, and a rush to style the header in Frontera,
         scope classes were used for the header, Portal nav, and CMS nav */
-
 @import url("_imports/trumps/s-header.css");
 @import url("_imports/trumps/s-portal-nav.css");
 @import url("_imports/trumps/s-cms-nav.css");
 
-/* Miscellaneous */
+/* --- PROJECT STYLES --- */
+/* --- Styles for repos that fork `cms-site-template` go here. --- */
+/* … */
 
+
+
+/* UNORGANIZED */
+
+/* --- BASE STYLES --- */
+/* --- Do NOT edit, unless you are working on `cms-site-template`! --- */
 /* TODO: Convert to a component */
 /* FAQ: Not moved to `_imports` because Wesley B is trying to reduce complexity
         of controlled refactor by delaying all non-critical changes */

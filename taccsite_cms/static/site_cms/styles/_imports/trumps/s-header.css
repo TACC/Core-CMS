@@ -33,8 +33,13 @@ Styleguide Trumps.Scopes.Header
 
   font-size: 16px; /* NO-R/EM: Overwrite `bootstrap.3.3.7.css` */
 
+  /* FAQ: Currently, only necessary for the User Guides page/site,
+          because it has a different `body` font. Otherwise, this style
+          repeats the CMS and Portal `body` font. But, with this style,
+          the header may be moved to a future page/site without losing font */
+  /* TODO: Find a way to be safe, but not redundant */
+  font-family: var(--global-font-family);
   /* Copied from Portal (via `body`) */
-  font-family: Roboto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
