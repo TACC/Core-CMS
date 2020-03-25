@@ -1,0 +1,22 @@
+/*
+Object
+
+Object are repetitive, shared, and purely-structural parts of an interface. They are seldom modified. Changing these styles may unintentionally break many layouts.
+
+Reference:
+
+- [BEM with Namespaces: Object Namespaces](https://csswizardry.com/2015/03/more-transparent-ui-code-with-namespaces/#object-namespaces-o-)
+
+Guidelines:
+
+- Objects are abstract.
+- They are often used for high-level layout management.
+- Avoid modifying their styles.
+- Be careful around anything with a leading `o-`.
+
+Weight: 5
+
+Styleguide Functional.Objects
+*/
+
+/* DO NOT ADD STYLES HERE; ADD THEM INSIDE STYLESHEETS IN THIS DIRECTORY */
