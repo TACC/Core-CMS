@@ -1,3 +1,7 @@
+/* DO NOT ADD STYLES HERE; ADD GLOBAL SETTINGS INSIDE STYLESHEETS IN THIS DIRECTORY */
+
+/* FAQ: To use global settings, import them into any one global stylesheet */
+
 /* FAQ: Documenting colors, typography, and variables in KSS-Node is not standard, yet.
         If you want to support this in a custom manner, go for it. Here are some ideas:
 
@@ -59,7 +63,3 @@ Reference:
 
 Styleguide Settings.CustomSelectors
 */
-
-/* DO NOT ADD STYLES HERE; ADD GLOBAL SETTINGS INSIDE STYLESHEETS IN THIS DIRECTORY */
-
-/* TO USE GLOBAL SETTINGS, IMPORT THEM INTO ANY ONE GLOBAL STYLESHEET */
