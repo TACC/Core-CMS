@@ -1,5 +1,7 @@
 /* DO NOT ADD STYLES HERE; ONLY IMPORT OTHER STYLESHEETS */
 
+/* NOTE: This file exists so that the Portal and User Guide can load isolated header styles */
+
 /* FAQ: The organization in this file follows ITCSS methodologies */
 /* SEE: https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/ */
 /* TODO: Summarize ITCSS in https://confluence.tacc.utexas.edu/x/DADMBQ */

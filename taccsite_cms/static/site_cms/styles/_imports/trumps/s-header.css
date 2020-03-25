@@ -33,7 +33,7 @@ Styleguide Trumps.Scopes.Header
 
   font-size: 16px; /* NO-R/EM: Overwrite `bootstrap.3.3.7.css` */
 
-  /* FAQ: Asssigning this font is only necessary for the User Guides page/site,
+  /* FAQ: Asssigning this font is only necessary for the User Guide,
           because it has a different `body` font. Otherwise, this style
           repeats the CMS and Portal `body` font. But, with this style,
           the header may be moved to a future page/site without losing font */
