@@ -1,0 +1,17 @@
+/* DO NOT ADD STYLES HERE; ADD GLOBAL TOOLS INSIDE STYLESHEETS IN THIS DIRECTORY */
+
+/* FAQ: To use global tools, import them into any one global stylesheet */
+
+/*
+Tools
+
+Tools are global sets of properties e.g. mixins / `@extend`s / functional selectors, functions / `@plugin`s. They are not defined as Settings, because one may require one of the global Settings as a default parameter.
+
+Reference:
+
+- [Creative Bloq: Manage Large CSS Projects With ITCSS](https://www.creativebloq.com/web-design/manage-large-css-projects-itcss-101517528) (find "Tools")
+
+Weight: 2
+
+Styleguide Tools
+*/
