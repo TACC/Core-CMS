@@ -36,7 +36,7 @@
 
 /* --- PROJECT STYLES --- */
 /* --- Styles for repos that fork `cms-site-template` go here. --- */
-/* … */
+@import url("_imports/elements/headings.css");
 
 
 
@@ -61,7 +61,11 @@
 
 /* --- PROJECT STYLES --- */
 /* --- Styles for repos that fork `cms-site-template` go here. --- */
-/* … */
+@import url("_imports/components/wip/navigation.css");
+@import url("_imports/components/wip/byline.css");
+@import url("_imports/components/c-offset-content.css");
+@import url("_imports/components/bootstrap/figure.css");
+@import url("_imports/components/bootstrap/blockquote.css");
 
 
 
@@ -73,4 +77,8 @@
 
 /* --- PROJECT STYLES --- */
 /* --- Styles for repos that fork `cms-site-template` go here. --- */
-/* … */
+/* TODO: Consider creating an `.s-article-page` instead,
+         and including it via a `page.article.css` stylesheet,
+         then adding the class and including the stylesheet
+        via a `page_type/article.html` template */
+@import url("_imports/trumps/s-article.css");
