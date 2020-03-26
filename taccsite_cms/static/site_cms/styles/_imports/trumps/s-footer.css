@@ -16,7 +16,7 @@ Styleguide Scope.Footer
 
 
 
-.s-footer > p:only-child {
+.s-footer > p:last-of-type {
   margin: 0;
 }
 .s-footer a {

@@ -122,19 +122,6 @@ Styleguide Trumps.Scopes.Header
   padding-left: 14px; /* NO-R/EM: .875rem (overwrite Bootstrap) */
 }
 
-/* Navigation: Links: "Home" Icon */
-
-/* NOTE: This selector should be unnecessary with official font icon solution */
-.s-header .s-cms-nav .nav-item:first-child .nav-link::before {
-  /* Value determined by increasing until just before header height changes */
-  line-height: var(--line-height);
-}
-/* Reduce the padding (compared to other links) of the "Home" icon link */
-.s-header .s-cms-nav .nav-item:first-child .nav-link {
-  padding-top: 6px;
-  padding-bottom: 6px;
-}
-
 
 
 /* Icons */
