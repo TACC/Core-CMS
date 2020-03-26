@@ -1,23 +1,82 @@
-/* SITE */
+/* DO NOT ADD STYLES HERE; ONLY IMPORT OTHER STYLESHEETS */
 
-/* Generics */
+/* FAQ: The organization in this file follows ITCSS methodologies */
+/* SEE: https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/ */
+/* TODO: Summarize ITCSS in https://confluence.tacc.utexas.edu/x/DADMBQ */
 
-@import url("_imports/generics/roots.css");
+/* SETTINGS */
 
-/* Elements */
+/* --- BASE STYLES --- */
+/* --- Do NOT edit, unless you are working on `cms-site-template`! --- */
+@import url("_imports/settings/props.font.css");
 
+/* --- PROJECT STYLES --- */
+/* --- Styles for repos that fork `cms-site-template` go here. --- */
+/* … */
+
+
+
+/* GENERICS */
+
+/* --- BASE STYLES --- */
+/* --- Do NOT edit, unless you are working on `cms-site-template`! --- */
+/* … Bootstrap handles most of this … */
+
+/* --- PROJECT STYLES --- */
+/* --- Styles for repos that fork `cms-site-template` go here. --- */
+/* … */
+
+
+
+/* ELEMENTS */
+
+/* --- BASE STYLES --- */
+/* --- Do NOT edit, unless you are working on `cms-site-template`! --- */
+@import url("_imports/elements/roots.css");
+
+/* --- PROJECT STYLES --- */
+/* --- Styles for repos that fork `cms-site-template` go here. --- */
 @import url("_imports/elements/headings.css");
 
-/* Components */
 
+
+/* OBJECTS */
+
+/* --- BASE STYLES --- */
+/* --- Do NOT edit, unless you are working on `cms-site-template`! --- */
+@import url("_imports/objects/o-site.css");
+
+/* --- PROJECT STYLES --- */
+/* --- Styles for repos that fork `cms-site-template` go here. --- */
+/* … */
+
+
+
+/* COMPONENTS */
+
+/* --- BASE STYLES --- */
+/* --- Do NOT edit, unless you are working on `cms-site-template`! --- */
+@import url("_imports/components/c-footer.css");
+@import url("_imports/components/django.cms.css");
+
+/* --- PROJECT STYLES --- */
+/* --- Styles for repos that fork `cms-site-template` go here. --- */
 @import url("_imports/components/wip/navigation.css");
 @import url("_imports/components/wip/byline.css");
 @import url("_imports/components/c-offset-content.css");
 @import url("_imports/components/bootstrap/figure.css");
 @import url("_imports/components/bootstrap/blockquote.css");
 
-/* Trumps */
 
+
+/* TRUMPS */
+
+/* --- BASE STYLES --- */
+/* --- Do NOT edit, unless you are working on `cms-site-template`! --- */
+@import url("_imports/trumps/s-footer.css");
+
+/* --- PROJECT STYLES --- */
+/* --- Styles for repos that fork `cms-site-template` go here. --- */
 /* TODO: Consider creating an `.s-article-page` instead,
          and including it via a `page.article.css` stylesheet,
          then adding the class and including the stylesheet

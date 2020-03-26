@@ -11,7 +11,7 @@
 </div>
 
 <!-- Navigation Bar -->
-<nav id="s-bootstrap-nav" class="navbar navbar-expand-md navbar-dark navbar-tacc">
+<nav id="s-header" class="s-header  navbar navbar-expand-md navbar-dark">
   <!-- Branding Logos -->
   <a class="navbar-brand" href="/">
     <img src="{% static 'site_cms/images/org_logos/texascale-wordmark.png' %}" alt="Texascale Logo" class="nav-logo-double nav-logo-portal-double">
@@ -22,7 +22,7 @@
   </button>
   <!-- Navbar Links -->
   <div class="collapse navbar-collapse" id="navbarsExpandTarget">
-    <ul class="navbar-nav ml-auto">
+    <ul class="s-cms-nav  navbar-nav  ml-auto">
       <!-- All top-level CMS controlled nav elements handled here. -->
       {% show_menu 0 100 1 100 "cms_menu.html" %}
     </ul>
