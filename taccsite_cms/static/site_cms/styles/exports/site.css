@@ -33,6 +33,7 @@
 /* --- BASE STYLES --- */
 /* --- Do NOT edit, unless you are working on `cms-site-template`! --- */
 @import url("_imports/elements/roots.css");
+@import url("_imports/elements/sectioning.css");
 
 /* --- PROJECT STYLES --- */
 /* --- Styles for repos that fork `cms-site-template` go here. --- */
@@ -61,7 +62,6 @@
 
 /* --- PROJECT STYLES --- */
 /* --- Styles for repos that fork `cms-site-template` go here. --- */
-@import url("_imports/components/wip/navigation.css");
 @import url("_imports/components/wip/byline.css");
 @import url("_imports/components/c-offset-content.css");
 @import url("_imports/components/bootstrap/figure.css");
@@ -77,9 +77,9 @@
 
 /* --- PROJECT STYLES --- */
 /* --- Styles for repos that fork `cms-site-template` go here. --- */
+@import url("_imports/trumps/s-drop-caps.css");
 /* TODO: Consider creating an `.s-article-page` instead,
          and including it via a `page.article.css` stylesheet,
          then adding the class and including the stylesheet
         via a `page_type/article.html` template */
 @import url("_imports/trumps/s-article.css");
-@import url("_imports/trumps/s-drop-caps.css");

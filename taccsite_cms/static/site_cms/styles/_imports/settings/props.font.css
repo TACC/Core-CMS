@@ -28,4 +28,6 @@ Styleguide Settings.CustomProperties.Font
 
 
 
-/* … */
+:root {
+  --global-font-family: benton-sans, sans-serif
+}
