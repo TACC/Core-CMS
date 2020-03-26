@@ -1,0 +1,26 @@
+/* DO NOT ADD STYLES HERE; ADD THEM INSIDE STYLESHEETS IN THIS DIRECTORY */
+
+/*
+Components
+
+Components are finite, discrete, implementation-specific parts of an interface. Most people (users, designers, developers, stakeholders) would be able to identify them.
+
+Reference:
+
+- [BEM with Namespaces: Component Namespaces](https://csswizardry.com/2015/03/more-transparent-ui-code-with-namespaces/#component-namespaces-c-)
+
+Guidelines:
+
+- Components are implementation-specific bits of UI.
+- They are quite safe to modify.
+- Anything with a leading `c-` is a specific thing.
+
+Rules:
+
+- One element may be styled by many components.
+- One element may be styled by many modifiers of one component.
+
+Weight: 6
+
+Styleguide Components
+*/
