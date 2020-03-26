@@ -35,5 +35,5 @@ Styleguide Elements.Sectioning
 main,
 /* HACK: Using ID until upstream updates markup via `quick/create-and-document-element-stylesheets` */
 #content-wrap {
-  padding-bottom: 30px;
+  padding-bottom: 45px;
 }
