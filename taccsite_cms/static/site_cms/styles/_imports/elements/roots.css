@@ -1,0 +1,38 @@
+/*
+Root Elements
+
+Elements that represent the root of a document (`<html>`) or document content (`<body>`).
+
+Reference:
+
+- [HTML element reference: Main root | MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Main_root)
+- [HTML element reference: Sectioning root | MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Sectioning_root)
+
+Styleguide Elements.Roots
+*/
+
+
+
+/* --- BASE STYLES --- */
+/* --- Do NOT edit, unless you are working on `cms-site-template`! --- */
+
+
+
+/* The webpage must be at least as tall as the viewport */
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: var(--global-font-family);
+}
+
+
+
+/* --- PROJECT STYLES --- */
+/* --- Styles for repos that fork `cms-site-template` go here. --- */
+
+
+
+/* … */
