@@ -27,13 +27,13 @@
   {% cms_toolbar %}
 
   <!-- Custom Navigation Block per Site to Customize the Site Header Branding. -->
-  <div class="cms-branded-navigation">
+  <header class="cms-branded-navigation">
     {% include "nav_branding_partials/nav.branding.tacc.v2.html" %}
-  </div>
+  </header>
 
   <!-- Page content. -->
   <div id="cms-content">
-    <div id="content-wrap">
+    <main id="content-wrap">
       <!-- This block used regardless. -->
       {% block content %}
       <div class="container">
@@ -41,7 +41,7 @@
       </div>
       {% endblock content %}
       <!-- End of Block. -->
-    </div>
+    </main>
 
     <!-- Footer block. -->
     <footer id="footer">
