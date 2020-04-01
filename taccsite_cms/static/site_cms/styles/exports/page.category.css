@@ -1,6 +1,10 @@
-/* PAGE-TYPE: CATEGORY */
+/* DO NOT ADD STYLES HERE; ONLY IMPORT OTHER STYLESHEETS */
 
-/* Trumps */
+/* FAQ: The organization in this file follows ITCSS methodologies */
+/* SEE: https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/ */
+/* TODO: Summarize ITCSS in https://confluence.tacc.utexas.edu/x/DADMBQ */
+
+/* TRUMPS */
 
 @import url("_imports/trumps/s-category-page.css");
 @import url("_imports/trumps/u-position-sticky.css");
