@@ -1,0 +1,31 @@
+/* DO NOT ADD STYLES HERE; ADD CUSTOM PROPERTIES TO USE IN OTHER STYLESHEETS */
+
+/*
+Spacing
+
+These are global spacing values for a website.
+
+Weight: 0
+
+Styleguide Settings.CustomProperties.Space
+*/
+
+
+
+/* --- BASE STYLES --- */
+/* --- Do NOT edit, unless you are working on `cms-site-template`! --- */
+
+
+
+/* … */
+
+
+
+/* --- PROJECT STYLES --- */
+/* --- Styles for repos that fork `cms-site-template` go here. --- */
+
+
+
+:root {
+    --global-space-beneath-main-content: 45px;
+}

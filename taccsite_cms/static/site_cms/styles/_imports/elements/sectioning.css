@@ -35,8 +35,5 @@ Styleguide Elements.Sectioning
 main,
 /* HACK: Using ID until upstream updates markup via `quick/create-and-document-element-stylesheets` */
 #content-wrap {
-  /* WARNING: This does not have the desired result on an Article Category page */
-  /* SEE: https://tacc-team.slack.com/archives/C16DACT26/p1585253173023000 */
-  /* TODO: (Maybe) https://tacc-team.slack.com/archives/C16DACT26/p1585253377023300?thread_ts=1585253173.023000&cid=C16DACT26 */
-  padding-bottom: 45px;
+  padding-bottom: var(--global-space-beneath-main-content);
 }
