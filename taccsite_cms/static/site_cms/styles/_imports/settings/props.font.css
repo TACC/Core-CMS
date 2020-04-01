@@ -29,5 +29,5 @@ Styleguide Settings.CustomProperties.Font
 
 
 :root {
-  --global-font-family: benton-sans, sans-serif
+  --global-font-family: benton-sans, sans-serif; /* override Base */
 }
