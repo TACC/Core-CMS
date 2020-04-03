@@ -27,9 +27,3 @@
   /* SEE: https://bugzilla.mozilla.org/show_bug.cgi?id=290125 */
   line-height: 0.65;
 }
-/* Prevent short `p`'s from extending their drop-cap letter to content below */
-.s-drop-caps > p:first-of-type:first-of-type {
-  content: "";
-  display: block;
-  clear: both;
-}
