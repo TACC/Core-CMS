@@ -1,5 +1,5 @@
 {
-  "name": "portal-cms",
+  "name": "frontera-cms",
   "// version": "undefined",
   "// license": "undefined",
   "description": "The master CMS codebase for all downstream TACC stand alone CMS sites.",
@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@gitlab.tacc.utexas.edu:wma-cms/cms-site-template.git"
+    "url": "git@gitlab.tacc.utexas.edu:wma-cms/frontera-cms.git"
   },
   "devDependencies": {
     "cssnano": "^4.1.10",

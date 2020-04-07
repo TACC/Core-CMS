@@ -80,4 +80,7 @@ Styleguide Components.Footer
 
 
 
-/* … */
+.c-footer {
+  /* Mimic strange style from the 2020-02 launch design that was ported */
+  margin-top: 1em;
+}

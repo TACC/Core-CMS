@@ -1,0 +1,74 @@
+{% load i18n menu_tags cache static cms_tags %}
+
+<!-- Sponsor Logos -->
+<div class="branding-header">
+  <a href="https://www.nsf.gov/" target="_blank">
+    <img class="nav-logo-header nav-logo-nsf-double" src="{% static 'site_cms/images/org_logos/nsf-white.png' %}" crossorigin="anonymous">
+  </a>
+  <a href="https://www.tacc.utexas.edu/" target="_blank">
+    <img class="nav-logo-header nav-logo-border-left nav-logo-tacc-double" src="{% static 'site_cms/images/org_logos/tacc-white.png' %}" crossorigin="anonymous">
+  </a>
+  <a href="https://www.utexas.edu/">
+    <img class="nav-logo-header nav-logo-border-left nav-logo-utaustin-double" src="{% static 'site_cms/images/org_logos/utaustin-white.png' %}" crossorigin="anonymous">
+  </a>
+</div>
+
+<!-- Navigation Bar -->
+<nav id="s-header" class="s-header  navbar navbar-expand-lg navbar-dark">
+  <!-- Branding Logos -->
+  <a class="navbar-brand" href="/">
+    <img src="{% static 'site_cms/images/org_logos/frontera-white-solo.png' %}" alt="Frontera Logo" class="nav-logo-double nav-logo-frontera-double">
+  </a>
+  <!-- Navbar Accordian Toggle on Small Screens  -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExpandTarget" aria-controls="navbarsExpandTarget" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <!-- Navbar Links -->
+  <div class="collapse navbar-collapse" id="navbarsExpandTarget">
+    <ul class="s-cms-nav  navbar-nav">
+      <!-- All top-level CMS controlled nav elements handled here. -->
+      {% show_menu 0 100 1 100 "cms_menu.html" %}
+    </ul>
+
+    {# Duplicated from https://bitbucket.org/taccaci/frontera-portal/src/master/server/portal/templates/includes/header.html #}
+    {# NOTE: The `{% url '…' %}` values have been replaced with hard-coded URLs from (except for `/login/`) relevant `urls.py` files #}
+    <ul class="s-portal-nav  navbar-nav navbar-right  ml-auto">
+      
+      <div id="frontera-core-dropdown" class="navbar-nav d-none">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-user-circle fa-lg nav-icon"></i> <span id="frontera-core-username"></span>
+            <span class="sr-only">Toggle Dropdown</span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a class="dropdown-item" href="/workbench/dashboard">
+              <i class="fas fa-desktop nav-icon"></i> My Dashboard
+            </a>
+            <a class="dropdown-item" href="/accounts/profile/">
+              <i class="fas fa-user-circle nav-icon"></i> My Account
+            </a>
+            <a class="dropdown-item" href="/accounts/logout/">
+              <i class="fas fa-sign-out-alt nav-icon"></i> Log Out
+            </a>
+          </div>
+        </li>
+      </div>
+      
+      <li id="frontera-login-link" class="nav-item {% if request.get_full_path == '/login/' %} active {% endif %} d-none">
+        <a class="nav-link" role="button" href="/login/">
+        <!-- <a href="/login/" class="btn btn-link-alt"> -->
+          <i class="fas fa-sign-in-alt nav-icon"></i> Log in
+        </a>
+      </li>
+      <!-- Hidden until auth flow is properly implemented and MFA impact is determined.  -->
+      <!-- <li class="right-nav-links">
+        <a href="/accounts/register/" class="btn btn-link-alt">
+          <i class="fas fa-user-plus nav-icon"></i> Register
+        </a>
+      </li> -->
+      
+      <!-- end of user logged in/not logged in if -->
+    </ul>
+
+  </div>
+</nav>

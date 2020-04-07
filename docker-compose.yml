@@ -2,7 +2,7 @@ version: "3"
 services:
   cms:
     build: .
-    image: taccwma/taccsite-cms:initial
+    image: taccwma/frontera-cms:latest
     links:
       - postgres:postgres
     volumes:

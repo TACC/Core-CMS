@@ -28,6 +28,10 @@ _DATABASE_USERNAME = 'taccsite'
 _DATABASE_PASSWORD = 'taccsite'
 _DATABASE_HOST = 'taccsite_postgres'
 _DATABASE_PORT = 5432
+
+## Customize this
+_DJANGOCMS_FORMS_RECAPTCHA_PUBLIC_KEY = ''
+_DJANGOCMS_FORMS_RECAPTCHA_SECRET_KEY = ''
 ```
 
 ## Running the CMS with Docker
