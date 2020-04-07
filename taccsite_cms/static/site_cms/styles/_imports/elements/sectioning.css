@@ -1,0 +1,39 @@
+/*
+(Content) Sectioning Elements
+
+Elements that create a broad outline for page content, e.g.
+- `<main>`
+- `<nav>`
+- `<section>`
+- `<header>`
+- `<h1>`—`<h6>`
+- `<footer>`
+
+Reference:
+
+- [HTML element reference: Content sectioning | MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Content_sectioning)
+
+Styleguide Elements.Sectioning
+*/
+
+
+
+/* --- BASE STYLES --- */
+/* --- Do NOT edit, unless you are working on `cms-site-template`! --- */
+
+
+
+/* … */
+
+
+
+/* --- PROJECT STYLES --- */
+/* --- Styles for repos that fork `cms-site-template` go here. --- */
+
+
+
+main,
+/* HACK: Using ID until upstream updates markup via `quick/create-and-document-element-stylesheets` */
+#content-wrap {
+  padding-bottom: var(--global-space-beneath-main-content);
+}

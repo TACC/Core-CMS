@@ -1,13 +1,13 @@
 /* DO NOT ADD STYLES HERE; ADD CUSTOM PROPERTIES TO USE IN OTHER STYLESHEETS */
 
 /*
-Fonts
+Spacing
 
-These are standard fonts for an application.
+These are global spacing values for a website.
 
 Weight: 0
 
-Styleguide Settings.CustomProperties.Font
+Styleguide Settings.CustomProperties.Space
 */
 
 
@@ -17,9 +17,7 @@ Styleguide Settings.CustomProperties.Font
 
 
 
-:root {
-  --global-font-family: Roboto, sans-serif;
-}
+/* … */
 
 
 
@@ -29,5 +27,5 @@ Styleguide Settings.CustomProperties.Font
 
 
 :root {
-  --global-font-family: benton-sans, sans-serif; /* override Base */
+    --global-space-beneath-main-content: 45px;
 }

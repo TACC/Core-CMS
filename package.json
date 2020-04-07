@@ -1,8 +1,8 @@
 {
-  "name": "portal-cms",
+  "name": "texascale-org",
   "// version": "undefined",
   "// license": "undefined",
-  "description": "The master CMS codebase for all downstream TACC stand alone CMS sites.",
+  "description": "The CMS codebase for the Texascale stand alone CMS site.",
   "scripts": {
     "build": "npm run build:css",
     "build:css": "postcss \"taccsite_cms/static/site_cms/styles/exports/**/*.css\" --base taccsite_cms/static/site_cms/styles/exports --dir taccsite_cms/static/build/styles",
@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@gitlab.tacc.utexas.edu:wma-cms/cms-site-template.git"
+    "url": "git@gitlab.tacc.utexas.edu:wma-cms/texascale-org.git"
   },
   "devDependencies": {
     "cssnano": "^4.1.10",
