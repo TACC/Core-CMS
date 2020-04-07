@@ -13,7 +13,11 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 # Boolean check to turn on/off console logging statements.
+import taccsite_cms.secrets as secrets
+import logging
+import os  # isort:skip
 CONSOLE_LOG_ENABLED = False
+
 # Verifying console logging is on.
 if CONSOLE_LOG_ENABLED:
     print("--> Variable CONSOLE_LOG_ENABLED: ", CONSOLE_LOG_ENABLED)
@@ -22,21 +26,21 @@ if CONSOLE_LOG_ENABLED:
 # Ensure the django-auth-ldap==2.0.0 package is uncommented
 # in the requirements.txt file or installed if using ldap.
 LDAP_ENABLED = False
+
 if CONSOLE_LOG_ENABLED:
     print("--> Variable LDAP_ENABLED: ", LDAP_ENABLED)
-
-import os  # isort:skip
-import logging
-import taccsite_cms.secrets as secrets
 
 if LDAP_ENABLED:
     import ldap
     from django_auth_ldap.config \
         import LDAPSearch, GroupOfNamesType
 
+
 def gettext(s): return s
 
+
 DATA_DIR = os.path.dirname(os.path.dirname(__file__))
+
 if CONSOLE_LOG_ENABLED:
     print("--> Variable DATA_DIR: ", DATA_DIR)
 
@@ -64,6 +68,7 @@ ROOT_URLCONF = 'taccsite_cms.urls'
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(DATA_DIR, 'static')
+
 if CONSOLE_LOG_ENABLED:
     print("--> Variable STATIC_ROOT: ", STATIC_ROOT)
 
@@ -71,11 +76,13 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'taccsite_cms', 'static'),
     # os.path.join(BASE_DIR, 'taccsite_cms', 'en', 'static'),
 )
+
 if CONSOLE_LOG_ENABLED:
     print("--> Variable STATICFILES_DIRS: ", STATICFILES_DIRS)
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(DATA_DIR, 'media')
+
 if CONSOLE_LOG_ENABLED:
     print("--> Variable MEDIA_ROOT: ", MEDIA_ROOT)
 
@@ -107,6 +114,7 @@ TEMPLATES = [
         },
     },
 ]
+
 if CONSOLE_LOG_ENABLED:
     print("--> Variable TEMPLATES: ", TEMPLATES)
 
@@ -302,6 +310,7 @@ GOOGLE_ANALYTICS_PRELOAD = secrets._GOOGLE_ANALYTICS_PRELOAD
 # SETTINGS VARIABLE EXPORTS.
 # Use custom namespace instead of default settings.VARIABLE.
 SETTINGS_EXPORT_VARIABLE_NAME = 'portal_settings'
+
 # Exported settings.
 SETTINGS_EXPORT = [
     'DEBUG',
@@ -311,6 +320,4 @@ SETTINGS_EXPORT = [
 ]
 
 if CONSOLE_LOG_ENABLED:
-    print(SETTINGS_EXPORT[1])
-    print(SETTINGS_EXPORT[2])
-    print(SETTINGS_EXPORT[3])
+    print(SETTINGS_EXPORT)
