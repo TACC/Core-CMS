@@ -151,6 +151,18 @@ INSTALLED_APPS = [
     'filer',
     'easy_thumbnails',
     # 'djangocms_audio',
+
+    # Support `djangocms-blog`
+    # 'filer',              # Already added
+    # 'easy_thumbnails',    # Already added
+    'aldryn_apphooks_config',
+    'parler',
+    'taggit',
+    'taggit_autosuggest',
+    'meta',
+    'sortedm2m',
+    'djangocms_blog',
+
     'djangocms_column',
     'djangocms_file',
     'djangocms_link',
@@ -288,6 +300,10 @@ THUMBNAIL_PROCESSORS = (
     'filer.thumbnail_processors.scale_and_crop_with_subject_location',
     'easy_thumbnails.processors.filters'
 )
+
+# Support djangocms-blog
+META_SITE_PROTOCOL = 'http'
+META_USE_SITES = True
 
 DJANGOCMS_PICTURE_NESTING = True
 DJANGOCMS_PICTURE_RESPONSIVE_IMAGES = True

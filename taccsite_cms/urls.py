@@ -22,6 +22,11 @@ urlpatterns += [
     url(r'^', include('cms.urls')),
 ]
 
+# Support `djangocms-blog`
+urlpatterns += [
+    url(r'^taggit_autosuggest/', include('taggit_autosuggest.urls')),
+]
+
 # This is only needed when using runserver.
 if settings.DEBUG:
     urlpatterns += [

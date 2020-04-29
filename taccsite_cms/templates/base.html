@@ -1,11 +1,13 @@
-{% load cms_tags staticfiles menu_tags sekizai_tags cache i18n %}
+{% load cms_tags staticfiles menu_tags sekizai_tags meta cache i18n %}
 <!doctype html>
 <html>
 
-<head>
+<head {% meta_namespaces %}>
   <title>{% block title %}This is my new project home page{% endblock title %}</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  {% include "meta/meta.html" %}
+
   <link rel="icon" href="{% static 'site_cms/images/favicons/favicon.ico' %}" type="image/x-icon" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <!-- Requires `npm run build` step before running the django project. -->
@@ -26,6 +28,7 @@
 
 <body class="o-site">
   {% cms_toolbar %}
+  {% debug %}
 
   <!-- Custom Navigation Block per Site to Customize the Site Header Branding. -->
   <div class="cms-branded-navigation" class="o-site__head">
