@@ -1,0 +1,8 @@
+{# @var className #}
+
+{% load menu_tags %}
+
+<ul class="s-cms-nav  {{className}}">
+    {# All top-level CMS controlled nav elements handled here. #}
+    {% show_menu 0 100 1 100 "../cms_menu.html" %}
+</ul>

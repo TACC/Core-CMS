@@ -1,4 +1,4 @@
-{% load i18n menu_tags cache static cms_tags %}
+{% load static %}
 
 <!-- Sponsor Logos -->
 <div class="branding-header">
@@ -14,7 +14,7 @@
 <nav id="s-header" class="s-header  navbar navbar-expand-md navbar-dark">
   <!-- Branding Logos -->
   <a class="navbar-brand" href="/">
-    <img src="{% static 'site_cms/images/portal.png' %}" alt="Portal Logo" class="nav-logo-double nav-logo-portal-double">
+    <img src="{% static 'site_cms/images/portal.png' %}" alt="Portal Logo" class="nav-logo-double nav-logo-portal-double" crossorigin="anonymous">
   </a>
   <!-- Navbar Accordian Toggle on Small Screens  -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExpandTarget" aria-controls="navbarsExpandTarget" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,9 +22,8 @@
   </button>
   <!-- Navbar Links -->
   <div class="collapse navbar-collapse" id="navbarsExpandTarget">
-    <ul class="s-cms-nav  navbar-nav  ml-auto">
-      <!-- All top-level CMS controlled nav elements handled here. -->
-      {% show_menu 0 100 1 100 "cms_menu.html" %}
-    </ul>
+    {% include "../navigation/cms.html"
+        with className="navbar-nav  ml-auto"
+        only %}
   </div>
 </nav>
