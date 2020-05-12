@@ -152,7 +152,7 @@ INSTALLED_APPS = [
     # 'djangocms_audio',
     'djangocms_column',
     'djangocms_file',
-    'djangocms_forms',
+    # 'djangocms_forms', # FP-416: Pending full support
     'djangocms_link',
     'djangocms_picture',
     'djangocms_style',
