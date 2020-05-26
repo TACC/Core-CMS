@@ -16,6 +16,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 import taccsite_cms.secrets as secrets
 import logging
 import os  # isort:skip
+
 CONSOLE_LOG_ENABLED = False
 
 # Verifying console logging is on.
