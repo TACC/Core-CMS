@@ -16,6 +16,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 import taccsite_cms.secrets as secrets
 import logging
 import os  # isort:skip
+
 CONSOLE_LOG_ENABLED = False
 
 # Verifying console logging is on.
@@ -309,7 +310,7 @@ GOOGLE_ANALYTICS_PRELOAD = secrets._GOOGLE_ANALYTICS_PRELOAD
 
 # SETTINGS VARIABLE EXPORTS.
 # Use custom namespace instead of default settings.VARIABLE.
-SETTINGS_EXPORT_VARIABLE_NAME = 'portal_settings'
+SETTINGS_EXPORT_VARIABLE_NAME = 'settings'
 
 # Exported settings.
 SETTINGS_EXPORT = [
