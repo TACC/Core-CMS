@@ -23,7 +23,7 @@ urlpatterns += [
     url(r'^frontera-top-nav/$', TemplateView.as_view(template_name='top_nav_only.html'), name='top_nav_only'),
     url(r'^cms/nav/pages/markup/$', TemplateView.as_view(template_name='menu_only.html'), name='menu_pages_markup'),
     url(r'^', include('cms.urls')),
-    url(r'^', include('djangocms_forms.urls')),
+    # url(r'^', include('djangocms_forms.urls')), # FP-416: Pending full support
 ]
 
 # This is only needed when using runserver.
