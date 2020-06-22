@@ -7,7 +7,7 @@ TACC CMS can be run using Docker and Docker-Compose both locally or in productio
 
 ## Configuration
 
-Create `taccsite_cms/secrets.py` containing what is in `secret` field in the `TACC cms-template01 credentials` entry secured on [UT Stache](https://stache.security.utexas.edu)
+Create `taccsite_cms/secrets.py` containing what is in `secret` field, at the "DjangoCMS SECRETS.PY" section, in the `TACC cms-template01 credentials` entry secured on [UT Stache](https://stache.security.utexas.edu).
 
 ## Running the CMS with Docker
 
