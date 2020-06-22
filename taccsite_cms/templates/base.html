@@ -1,4 +1,4 @@
-{% load cms_tags staticfiles menu_tags sekizai_tags cache i18n %}
+{% load cms_tags staticfiles sekizai_tags cache i18n %}
 <!doctype html>
 <html>
 
@@ -38,7 +38,7 @@
 
     <!-- Custom Navigation Block per Site to Customize the Site Header Branding. -->
     <div class="cms-branded-navigation" class="o-site__head">
-        {% include "nav_partials/nav.branding.tacc.html" %}
+        {% include "./nav_partials/nav.branding.tacc.html" %}
     </div>
 
     <!-- Page content. -->
@@ -69,7 +69,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
     <!-- Custom Scripts -->
-    <script src="{% static 'site_cms/scripts/base.js' %}" crossorigin="anonymous"></script>
+    <script src="{% static "./site_cms/scripts/base.js" %}" crossorigin="anonymous"></script>
     <script>
     // console.log("--> FILE: taccsite_cms.templates.base.html");
     </script>
