@@ -1,7 +1,6 @@
 # TACC CMS
 
 ## Docker Setup
-TACC cms-template01 credentials
 
 TACC CMS can be run using Docker and Docker-Compose both locally or in production.
 
