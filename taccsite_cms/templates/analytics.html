@@ -1,0 +1,42 @@
+{% if settings.GOOGLE_ANALYTICS_PROPERTY_ID %}
+    {% if settings.DEBUG %}
+        <script>
+            console.log("Debug Mode: TRUE. No metrics will be collected for this user.");
+        </script>
+    {% else %}
+        <!-- Global site tag (gtag.js) & Google Analytics Code for SIte.  -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id={{ settings.GOOGLE_ANALYTICS_PROPERTY_ID }}"></script>
+
+        <!--  Analytics Code -->
+        <script>
+            var dntStatus = 0;
+            // console.log(debugState, dntStatus);
+
+            if (navigator.doNotTrack == "1" || window.doNotTrack == "1") {
+                // console.log('debug State TRUE');
+                dntStatus = 1;
+            } else {
+                // console.log('debug State FALSE');
+                dntStatus = 0;
+            }
+
+            if (dntStatus == 1) {
+                console.log("Do Not Track setting enabled. No metrics will be collected for this user.");
+            } else {
+                console.log("Tracking enabled. Google Analytics metrics will be collected for this user.");
+
+                // Prep gtag data.
+                window.dataLayer = window.dataLayer || [];
+
+                function gtag() {
+                    dataLayer.push(arguments);
+                }
+                gtag('js', new Date());
+                gtag('create', '{{ settings.GOOGLE_ANALYTICS_PROPERTY_ID }}', {
+                    'cookieDomain': 'none'
+                });
+                gtag('config', '{{ settings.GOOGLE_ANALYTICS_PROPERTY_ID }}');
+            }
+        </script>
+    {% endif %}
+{% endif %}
