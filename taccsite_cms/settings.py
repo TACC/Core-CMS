@@ -302,12 +302,18 @@ THUMBNAIL_PROCESSORS = (
     'easy_thumbnails.processors.filters'
 )
 
-# Support djangocms-blog
+# Support `djangocms-blog`
 META_SITE_PROTOCOL = 'http'
 META_USE_SITES = True
 META_USE_OG_PROPERTIES=True
 META_USE_TWITTER_PROPERTIES=True
 META_USE_GOOGLEPLUS_PROPERTIES=True
+
+# Configure `djangocms-blog`
+BLOG_PLUGIN_TEMPLATE_FOLDERS = (
+    ('plugins/default', 'Default template'),    # i.e. `templates/djangocms_blog/plugins/default/`
+    ('plugins/default-clone', 'Clone of default template'),  # i.e. `templates/djangocms_blog/plugins/default-clone/`
+)
 
 DJANGOCMS_PICTURE_NESTING = True
 DJANGOCMS_PICTURE_RESPONSIVE_IMAGES = True
