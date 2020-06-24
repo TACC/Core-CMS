@@ -22,7 +22,7 @@ urlpatterns += [
     url(r'^', include('cms.urls')),
 ]
 
-# Support `djangocms-blog`
+# Support `taggit_autosuggest` (from `djangocms-blog`)
 urlpatterns += [
     url(r'^taggit_autosuggest/', include('taggit_autosuggest.urls')),
 ]
