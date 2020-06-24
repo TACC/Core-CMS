@@ -107,3 +107,23 @@ Remember:
 
 - Templates must load files, that were built, from `…/build`
 - Templates must load files, that need __no__ build step, from `…/site_cms`
+
+## Configuring Apps
+
+### `djangocms_blog`
+
+This plugin supports, and claims to integrate well with, [several features vital for a site with a blog or news](https://djangocms-blog.readthedocs.io/en/latest/features/index.html).
+
+#### Troubleshooting
+
+##### NoReverseMatch: 'Blog' is not a registered namespace
+
+If you receive this error:
+
+> django.urls.exceptions.NoReverseMatch: 'Blog' is not a registered namespace
+
+Then, try these steps:
+
+1. Bring "down" the dockers (`ctrl+C` in live output, or `docker-compose down`)
+2. Bring "up" the dockers (`docker-compose up`)
+3. Reload the page.
