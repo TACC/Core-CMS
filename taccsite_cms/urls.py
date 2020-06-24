@@ -19,12 +19,11 @@ urlpatterns = [
 
 urlpatterns += [
     url(r'^admin/', admin.site.urls),  # NOQA
-    url(r'^', include('cms.urls')),
-]
 
-# Support `taggit_autosuggest` (from `djangocms-blog`)
-urlpatterns += [
+    # Support `taggit_autosuggest` (from `djangocms-blog`)
     url(r'^taggit_autosuggest/', include('taggit_autosuggest.urls')),
+
+    url(r'^', include('cms.urls')),
 ]
 
 # This is only needed when using runserver.
