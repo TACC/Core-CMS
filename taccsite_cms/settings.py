@@ -160,9 +160,11 @@ INSTALLED_APPS = [
     'parler',
     'taggit',
     'taggit_autosuggest',
-    'meta',
+    'meta',                 # also supports `djangocms_page_meta`
     'sortedm2m',
     'djangocms_blog',
+
+    'djangocms_page_meta',
 
     'djangocms_column',
     'djangocms_file',

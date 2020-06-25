@@ -28,6 +28,7 @@ djangocms-admin-style==1.4.0
 djangocms-attributes-field==1.1.0
 djangocms-bootstrap4==1.5.0
 djangocms-blog==1.1.1
+djangocms-page-meta==0.10.0
 djangocms-column==1.9.0
 djangocms-file==2.3.0
 djangocms-googlemap==1.3.0

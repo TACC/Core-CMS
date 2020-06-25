@@ -110,13 +110,21 @@ Remember:
 
 ## CMS Applications
 
+### `djangocms-page-meta`
+
+__For CMS pages__, this allows CMS users to configure (and add custom) `<meta>` tags in the `<head>` of the HTML.
+
+#### Known Issues
+
+- External documentation is unclear; [#121](https://github.com/nephila/djangocms-page-meta/issues/121)
+
 ### `meta`
 
-This allows `djangocms_blog` app to output `<meta>` tags (and related attributes) in the `<head>` of the HTML.
+__For blog articles__, this allows `djangocms_blog` app to output `<meta>` tags (and related attributes) in the `<head>` of the HTML.
 
 ### `djangocms_blog`
 
-This app supports, and claims to integrate well with, [several features vital for a site with a blog or news](https://djangocms-blog.readthedocs.io/en/latest/features/index.html).
+This app supports (and integrates well with) [several features vital for a site with a blog or news](https://djangocms-blog.readthedocs.io/en/latest/features/index.html).
 
 #### Known Issues
 

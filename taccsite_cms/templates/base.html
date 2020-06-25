@@ -1,4 +1,5 @@
-{% load cms_tags staticfiles menu_tags sekizai_tags meta cache i18n %}
+{% load cms_tags staticfiles menu_tags sekizai_tags meta page_meta_tags cache i18n %}
+{% page_meta request.current_page as page_meta %}
 <!doctype html>
 <html>
 
@@ -10,7 +11,7 @@
     <title>{% block title %} This is my new project home page {% endblock title %}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    {% include "meta/meta.html" %}
+    {% include 'djangocms_page_meta/meta.html' with meta=page_meta %}
 
     <!-- External Styles. -->
     <link rel="icon" href="{% static 'site_cms/images/favicons/favicon.ico' %}" type="image/x-icon" />
