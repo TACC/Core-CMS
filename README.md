@@ -110,6 +110,10 @@ Remember:
 
 ## CMS Applications
 
+### `meta`
+
+This allows `djangocms_blog` app to output `<meta>` tags (and related attributes) in the `<head>` of the HTML.
+
 ### `djangocms_blog`
 
 This app supports, and claims to integrate well with, [several features vital for a site with a blog or news](https://djangocms-blog.readthedocs.io/en/latest/features/index.html).
