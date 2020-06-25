@@ -13,4 +13,5 @@ To learn more, read the docs:
 
 ## Known Issues
 
-- The `{% block meta %}` blokc of code in `base.html` _seems_ ineffectual, [#613](https://github.com/nephila/djangocms-blog/issues/613)
+- The `{% block meta %}` blokc of code in `base.html` _seems_ ineffectual; [#613](https://github.com/nephila/djangocms-blog/issues/613)
+- The "Tags" entry requires a comma, not an enter key press, to commit a tag; [#614](https://github.com/nephila/djangocms-blog/issues/614)
