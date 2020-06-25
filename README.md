@@ -108,11 +108,16 @@ Remember:
 - Templates must load files, that were built, from `…/build`
 - Templates must load files, that need __no__ build step, from `…/site_cms`
 
-## Configuring Apps
+## CMS Applications
 
 ### `djangocms_blog`
 
-This plugin supports, and claims to integrate well with, [several features vital for a site with a blog or news](https://djangocms-blog.readthedocs.io/en/latest/features/index.html).
+This app supports, and claims to integrate well with, [several features vital for a site with a blog or news](https://djangocms-blog.readthedocs.io/en/latest/features/index.html).
+
+#### Known Issues
+
+- For a new article, the "Text" (not "Abstract") field content is **not** shown on the new article; [#607](https://github.com/nephila/djangocms-blog/issues/607)
+- Some blog plugins do **not** show "Plugin Template" option (if two or more sets are offerred); [#595](https://github.com/nephila/djangocms-blog/issues/595)
 
 #### Troubleshooting
 
