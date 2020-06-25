@@ -122,12 +122,13 @@ This app supports, and claims to integrate well with, [several features vital fo
 
 - For a new article, the "Text" (not "Abstract") field content is **not** shown on the new article; [#607](https://github.com/nephila/djangocms-blog/issues/607)
 - Some blog plugins do **not** show "Plugin Template" option (if two or more sets are offerred); [#595](https://github.com/nephila/djangocms-blog/issues/595)
+- The "Tags" field requires a comma key press, not an Enter key press, to assign a tag. (We may be able to add instruction via cusotmizing the app template.)
 
 #### Troubleshooting
 
 ##### NoReverseMatch: 'Blog' is not a registered namespace
 
-If you receive this error:
+If you receive this error (during initial CMS setup):
 
 > django.urls.exceptions.NoReverseMatch: 'Blog' is not a registered namespace
 
