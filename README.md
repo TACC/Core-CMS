@@ -6,29 +6,7 @@ TACC CMS can be run using Docker and Docker-Compose both locally or in productio
 
 ## Configuration
 
-Create a secrets file at taccsite_cms/secrets.py
-
-Set the secret settings like below:
-
-```python
-_SECRET_KEY = 'Change Me'
-_DEBUG = True
-_ALLOWED_HOSTS = ['*']
-_SITE_ID = 1
-_CMS_TEMPLATES =  (
-    ## Customized as necessary per fork
-    ('fullwidth.html', 'Fullwidth'),
-    ('sidebar_left.html', 'Sidebar Left'),
-    ('sidebar_right.html', 'Sidebar Right')
-)
-
-_DATABASE_ENGINE = 'django.db.backends.postgresql'
-_DATABASE_NAME = 'taccsite'
-_DATABASE_USERNAME = 'taccsite'
-_DATABASE_PASSWORD = 'taccsite'
-_DATABASE_HOST = 'taccsite_postgres'
-_DATABASE_PORT = 5432
-```
+Create `taccsite_cms/secrets.py` containing what is in `secret` field, at the "DjangoCMS SECRETS.PY" section, in the `TACC cms-template01 credentials` entry secured on [UT Stache](https://stache.security.utexas.edu).
 
 ## Running the CMS with Docker
 
