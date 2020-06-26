@@ -293,6 +293,15 @@ THUMBNAIL_PROCESSORS = (
 DJANGOCMS_PICTURE_NESTING = True
 DJANGOCMS_PICTURE_RESPONSIVE_IMAGES = True
 DJANGOCMS_PICTURE_RATIO = 1.618
+
+# FILE UPLOAD VALUES MUST BE SET!
+# Set in correlation with the `client_max_body_size    20m;` value in /etc/nginx/proxy.conf.
+# A problem comes from Django's usage of tempfile, which enforces new files to have permission
+# 0600 and Django doesn't fix it unless FILE_UPLOAD_PERMISSIONS is defined.
+# A tempfile is used when upload exceeds FILE_UPLOAD_MAX_MEMORY_SIZE.
+FILE_UPLOAD_PERMISSIONS = 0o644
+FILE_UPLOAD_MAX_MEMORY_SIZE = 20000000 # 20MB
+
 # Custom picture templates - if required.
 # DJANGOCMS_PICTURE_TEMPLATES = [
 #     ('background', _('Background image')), # Need to design these first!
