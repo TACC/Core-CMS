@@ -1,4 +1,4 @@
-{% load cms_tags staticfiles sekizai_tags cache i18n %}
+{% load cms_tags staticfiles sekizai_tags cache i18n custom_portal_settings %}
 <!doctype html>
 <html>
 
@@ -38,7 +38,7 @@
 
     <!-- Custom Navigation Block per Site to Customize the Site Header Branding. -->
     <div class="cms-branded-navigation" class="o-site__head">
-        {% include "./nav_partials/nav.branding.tacc.html" %}
+        {% include "branding.html" %}
     </div>
 
     <!-- Page content. -->

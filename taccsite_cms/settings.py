@@ -16,6 +16,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 import taccsite_cms.secrets as secrets
 import logging
 import os  # isort:skip
+import json
 
 CONSOLE_LOG_ENABLED = False
 
@@ -62,6 +63,13 @@ ALLOWED_HOSTS = secrets._ALLOWED_HOSTS
 # Custom Navigation Template.
 NAVIGATION_TEMPLATE = secrets._NAVIGATION_TEMPLATE
 
+# Custom Branding.
+TACC_BRANDING = secrets._TACC_BRANDING
+UTEXAS_BRANDING = secrets._UTEXAS_BRANDING
+PORTAL_BRANDING = secrets._PORTAL_BRANDING
+# ANORG_BRANDING = secrets._ANORG_BRANDING
+BRANDING = secrets._BRANDING
+
 # Application definition
 ROOT_URLCONF = 'taccsite_cms.urls'
 
@@ -91,7 +99,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'taccsite_cms', 'templates'), ],
-
+        # 'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.contrib.auth.context_processors.auth',
@@ -107,6 +115,9 @@ TEMPLATES = [
                 'cms.context_processors.cms_settings',
                 'django_settings_export.settings_export'
             ],
+            'libraries': {
+                'custom_portal_settings': 'taccsite_cms.templatetags.custom_portal_settings',
+            },
             'loaders': [
                 'django.template.loaders.filesystem.Loader',
                 'django.template.loaders.app_directories.Loader',
@@ -324,10 +335,17 @@ SETTINGS_EXPORT_VARIABLE_NAME = 'settings'
 # Exported settings.
 SETTINGS_EXPORT = [
     'DEBUG',
+    'TACC_BRANDING',
+    'UTEXAS_BRANDING',
+    'PORTAL_BRANDING',
+    # 'ANORG_BRANDING',
+    'BRANDING',
     'NAVIGATION_TEMPLATE',
     'GOOGLE_ANALYTICS_PROPERTY_ID',
     'GOOGLE_ANALYTICS_PRELOAD'
 ]
 
 if CONSOLE_LOG_ENABLED:
-    print(SETTINGS_EXPORT)
+    print("--> Variable SETTINGS_EXPORT: ")
+    for setting in SETTINGS_EXPORT:
+        print(setting)
