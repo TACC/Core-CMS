@@ -1,4 +1,4 @@
-{% load cms_tags staticfiles sekizai_tags cache i18n %}
+{% load cms_tags staticfiles sekizai_tags cache i18n  %}
 <!doctype html>
 <html>
 
@@ -35,10 +35,10 @@
 <body class="o-site  {% block page_type_class %}{% endblock page_type_class %}">
     {% cms_toolbar %}
 
-  <!-- Custom Navigation Block per Site to Customize the Site Header Branding. -->
-  <div class="cms-branded-navigation" class="o-site__head">
-    {% include "nav_partials/nav.branding.tacc.html" %}
-  </div>
+    <!-- Custom Navigation Block per Site to Customize the Site Header Branding. -->
+    <div class="cms-branded-navigation" class="o-site__head">
+        {% include "branding.html" %}
+    </div>
 
   <!-- Page content. -->
   <div id="cms-content" class="o-site o-site__body">

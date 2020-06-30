@@ -1,0 +1,48 @@
+{% load i18n cache static custom_portal_settings %}
+
+{# WARNING: Some markup is duplicated in other repositories #}
+{# SEE: https://confluence.tacc.utexas.edu/x/LoCnCQ #}
+
+{% with settings.BRANDING as branding %}
+<!-- Sponsor Logos -->
+<div class="branding-header">
+  {% with branding|index:0 as tacc %}
+    {% with filename=tacc|index:1  selectors=tacc|index:2  targeturl=tacc|index:3  targetType=tacc|index:4  accessibility=tacc|index:5  corstype=tacc|index:6 %}
+    <a href="{{ targeturl }}" target="{{ targettype }}">
+      <img class="{{ selectors }}" src="{% static filename %}" crossorigin="{{ corstype }}">
+    </a>
+    {% endwith %}
+  {% endwith %}
+
+  {% with branding|index:1 as utexas %}
+    {% with filename=utexas|index:1  selectors=utexas|index:2  targeturl=utexas|index:3  targetType=utexas|index:4  accessibility=utexas|index:5  corstype=utexas|index:6 %}
+    <a href="{{ targeturl }}" target="{{ targettype }}">
+      <img class="{{ selectors }}" src="{% static filename %}" crossorigin="{{ corstype }}">
+    </a>
+    {% endwith %}
+  {% endwith %}
+</div>
+
+<!-- Navigation Bar -->
+<nav id="s-header" class="s-header  navbar navbar-expand-md navbar-dark">
+  <!-- Portal Logo -->
+  {% with branding|index:2 as portal %}
+    {% with filename=portal|index:1  selectors=portal|index:2  targeturl=portal|index:3  targetType=portal|index:4  accessibility=portal|index:5  corstype=portal|index:6 %}
+    <a class="navbar-brand" href="{{ targeturl }}">
+      <img src="{% static filename %}" alt="{{ accessibility }}" class="{{ selectors }}" crossorigin="{{ corstype }}">
+    </a>
+    {% endwith %}
+  {% endwith %}
+
+  <!-- Navbar Accordian Toggle on Small Screens  -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExpandTarget" aria-controls="navbarsExpandTarget" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar Links -->
+  <div class="collapse navbar-collapse" id="navbarsExpandTarget">
+    {# FAQ: If template were included with `only`, then it would NOT render `show_menu` #}
+    {% include "cms.html" with className="navbar-nav  ml-auto" %}
+  </div>
+</nav>
+{% endwith %}
