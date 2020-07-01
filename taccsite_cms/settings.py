@@ -62,6 +62,8 @@ ALLOWED_HOSTS = secrets._ALLOWED_HOSTS
 
 # Custom Branding.
 BRANDING = secrets._BRANDING
+# BRANDING_VISIBLE  = secrets._BRANDING_VISIBLE
+LOGOS  = secrets._LOGOS
 
 # Application definition
 ROOT_URLCONF = 'taccsite_cms.urls'
@@ -329,6 +331,8 @@ SETTINGS_EXPORT_VARIABLE_NAME = 'settings'
 SETTINGS_EXPORT = [
     'DEBUG',
     'BRANDING',
+    # 'BRANDING_VISIBLE',
+    'LOGOS',
     'GOOGLE_ANALYTICS_PROPERTY_ID',
     'GOOGLE_ANALYTICS_PRELOAD'
 ]

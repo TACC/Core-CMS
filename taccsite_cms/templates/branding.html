@@ -6,43 +6,55 @@
 {% with settings.BRANDING as branding %}
 <!-- Sponsor Logos -->
 <div class="branding-header">
-  {% with branding|index:0 as tacc %}
-    {% with filename=tacc|index:1  selectors=tacc|index:2  targeturl=tacc|index:3  targetType=tacc|index:4  accessibility=tacc|index:5  corstype=tacc|index:6 %}
+    {% with branding|index:0 as org %}
+    {% with filename=org|index:1 selectors=org|index:2 targeturl=org|index:3 targetType=org|index:4 accessibility=org|index:5 corstype=org|index:6 visibility=org|index:7 %}
     <a href="{{ targeturl }}" target="{{ targettype }}">
-      <img class="{{ selectors }}" src="{% static filename %}" crossorigin="{{ corstype }}">
+      <img class="nav-logo-header {{ selectors }}" src="{% static filename %}" crossorigin="{{ corstype }}" alt="{{ accessibility }}" >
     </a>
     {% endwith %}
-  {% endwith %}
+    {% endwith %}
 
-  {% with branding|index:1 as utexas %}
-    {% with filename=utexas|index:1  selectors=utexas|index:2  targeturl=utexas|index:3  targetType=utexas|index:4  accessibility=utexas|index:5  corstype=utexas|index:6 %}
+    {% with branding|index:1 as org %}
+    {% with filename=org|index:1 selectors=org|index:2 targeturl=org|index:3 targetType=org|index:4 accessibility=org|index:5 corstype=org|index:6 visibility=org|index:7 %}
     <a href="{{ targeturl }}" target="{{ targettype }}">
-      <img class="{{ selectors }}" src="{% static filename %}" crossorigin="{{ corstype }}">
+      <img class="nav-logo-header {{ selectors }}" src="{% static filename %}" crossorigin="{{ corstype }}" alt="{{ accessibility }}" >
     </a>
     {% endwith %}
-  {% endwith %}
+    {% endwith %}
+
+    {% with branding|index:2 as org %}
+    {% with filename=org|index:1 selectors=org|index:2 targeturl=org|index:3 targetType=org|index:4 accessibility=org|index:5 corstype=org|index:6 visibility=org|index:7 %}
+    <a href="{{ targeturl }}" target="{{ targettype }}">
+      <img class="nav-logo-header {{ selectors }}" src="{% static filename %}" crossorigin="{{ corstype }}" alt="{{ accessibility }}" >
+    </a>
+    {% endwith %}
+    {% endwith %}
 </div>
+{% endwith %}
 
+{% with settings.LOGOS as logos %}
 <!-- Navigation Bar -->
 <nav id="s-header" class="s-header  navbar navbar-expand-md navbar-dark">
-  <!-- Portal Logo -->
-  {% with branding|index:2 as portal %}
-    {% with filename=portal|index:1  selectors=portal|index:2  targeturl=portal|index:3  targetType=portal|index:4  accessibility=portal|index:5  corstype=portal|index:6 %}
-    <a class="navbar-brand" href="{{ targeturl }}">
-      <img src="{% static filename %}" alt="{{ accessibility }}" class="{{ selectors }}" crossorigin="{{ corstype }}">
+    <!-- Portal Logo -->
+    {% for logo in logos %}
+    {% with filename=logo|index:1 selectors=logo|index:2 targeturl=logo|index:3 targetType=logo|index:4 accessibility=logo|index:5 corstype=logo|index:6 visibility=logo|index:7 %}
+    {% if visibility == "True" %}
+    <a class="navbar-brand" href="{{ targeturl }}" target="{{ targettype }}">
+      <img class="nav-logo-double {{ selectors }}" src="{% static filename %}" crossorigin="{{ corstype }}" alt="{{ accessibility }}" >
     </a>
+    {% endif %}
     {% endwith %}
-  {% endwith %}
+    {% endfor %}
 
-  <!-- Navbar Accordian Toggle on Small Screens  -->
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExpandTarget" aria-controls="navbarsExpandTarget" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <!-- Navbar Accordian Toggle on Small Screens  -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExpandTarget" aria-controls="navbarsExpandTarget" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <!-- Navbar Links -->
-  <div class="collapse navbar-collapse" id="navbarsExpandTarget">
-    {# FAQ: If template were included with `only`, then it would NOT render `show_menu` #}
-    {% include "cms.html" with className="navbar-nav  ml-auto" %}
-  </div>
+    <!-- Navbar Links -->
+    <div class="collapse navbar-collapse" id="navbarsExpandTarget">
+        {# FAQ: If template were included with `only`, then it would NOT render `show_menu` #}
+        {% include "cms.html" with className="navbar-nav ml-auto" %}
+    </div>
 </nav>
 {% endwith %}
