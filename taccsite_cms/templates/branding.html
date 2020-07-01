@@ -6,29 +6,13 @@
 {% with settings.BRANDING as branding %}
 <!-- Sponsor Logos -->
 <div class="branding-header">
-    {% with branding|index:0 as org %}
+    {% for org in branding %}
     {% with filename=org|index:1 selectors=org|index:2 targeturl=org|index:3 targetType=org|index:4 accessibility=org|index:5 corstype=org|index:6 visibility=org|index:7 %}
     <a href="{{ targeturl }}" target="{{ targettype }}">
       <img class="nav-logo-header {{ selectors }}" src="{% static filename %}" crossorigin="{{ corstype }}" alt="{{ accessibility }}" >
     </a>
     {% endwith %}
-    {% endwith %}
-
-    {% with branding|index:1 as org %}
-    {% with filename=org|index:1 selectors=org|index:2 targeturl=org|index:3 targetType=org|index:4 accessibility=org|index:5 corstype=org|index:6 visibility=org|index:7 %}
-    <a href="{{ targeturl }}" target="{{ targettype }}">
-      <img class="nav-logo-header {{ selectors }}" src="{% static filename %}" crossorigin="{{ corstype }}" alt="{{ accessibility }}" >
-    </a>
-    {% endwith %}
-    {% endwith %}
-
-    {% with branding|index:2 as org %}
-    {% with filename=org|index:1 selectors=org|index:2 targeturl=org|index:3 targetType=org|index:4 accessibility=org|index:5 corstype=org|index:6 visibility=org|index:7 %}
-    <a href="{{ targeturl }}" target="{{ targettype }}">
-      <img class="nav-logo-header {{ selectors }}" src="{% static filename %}" crossorigin="{{ corstype }}" alt="{{ accessibility }}" >
-    </a>
-    {% endwith %}
-    {% endwith %}
+    {% endfor %}
 </div>
 {% endwith %}
 

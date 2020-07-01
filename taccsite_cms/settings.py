@@ -16,7 +16,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 import taccsite_cms.secrets as secrets
 import logging
 import os  # isort:skip
-import json
+# import json
 
 CONSOLE_LOG_ENABLED = False
 
@@ -62,7 +62,6 @@ ALLOWED_HOSTS = secrets._ALLOWED_HOSTS
 
 # Custom Branding.
 BRANDING = secrets._BRANDING
-# BRANDING_VISIBLE  = secrets._BRANDING_VISIBLE
 LOGOS  = secrets._LOGOS
 
 # Application definition
@@ -331,7 +330,6 @@ SETTINGS_EXPORT_VARIABLE_NAME = 'settings'
 SETTINGS_EXPORT = [
     'DEBUG',
     'BRANDING',
-    # 'BRANDING_VISIBLE',
     'LOGOS',
     'GOOGLE_ANALYTICS_PROPERTY_ID',
     'GOOGLE_ANALYTICS_PRELOAD'
