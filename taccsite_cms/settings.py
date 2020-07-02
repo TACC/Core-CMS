@@ -12,16 +12,17 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
-# Boolean check to turn on/off console logging statements.
-import taccsite_cms.secrets as secrets
+
+import taccsite_cms.secrets_example as secrets             # Demo.
+# import taccsite_cms.secrets as secrets                        # Live/Dev.
 import logging
-import os  # isort:skip
-# import json
+import os
 
 
 def gettext(s): return s
 
 
+# Boolean check to turn on/off console logging statements.
 CONSOLE_LOG_ENABLED = False
 
 # Verifying console logging is on.
