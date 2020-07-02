@@ -9,14 +9,7 @@
   padding: 0 9%;
 }
 
-.nav-logo-border-left {
-  border-left: solid 2px #fff !important;
-  padding: 0 15px 0 !important;
-}
-
-.nav-logo-no-border-left {
-  padding: 0 16px 0 !important;
-}
+/* Branding Selectors  */
 
 .branding-header {
   margin: 0;
@@ -27,35 +20,44 @@
   border-bottom: 1px solid #aaa;
 }
 
-.nav-branding-logo {
+.branding-seperator {
+  width: 1px;
+  height: 100%;
+  border-left: solid 1px #fff;
+  margin: 0 15px;
+  vertical-align: middle;
+}
+
+.branding-logo {
   height: 30px;
   margin: 0;
   padding: 0;
   border: none;
 }
 
-.nav-logo-nsf-double {
+/* Specific Brand Logo Selectors  */
+
+.branding-nsf {
   height: 35px;
-  margin: 0 10px 0 0;
 }
 
-.nav-logo-tacc-double {
+.branding-tacc {
   height: 24px;
   margin: 3px 0 0 0;
 }
 
-.nav-logo-utaustin-double {
+.branding-utaustin {
   height: 24px;
   margin: 3px 0 0 0;
 }
 
-.nav-logo-uhawaii-double {
-  height: 35px;
+.branding-uhawaii {
+  height: 28px;
 }
 
 /* Logo Selectors  */
 
-.nav-portal-logo {
+.portal-logo {
   float: left;
   height: 40px;
   margin: 0;

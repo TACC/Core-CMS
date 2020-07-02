@@ -24,24 +24,14 @@ def index(indexable, i):
         <div>{{ settings_values|index:0|index:2 }}</div>
             # <div>c</div>
 
-    - Also works with for loops:
-        {% with settings.BRANDING as branding %}
-        <p><ul>
-            <li>{{ branding }}</li><br />
-            <li>{{ branding|index:0 }}</li><br />
-            <li>{{ branding|index:0|index:0 }}</li><br/>
-            {% for brand in branding %}
-                <li>{{ brand|index:forloop.counter0 }}</li>
-                <li>{{ brand|index:forloop.counter }}</li>
-                <!--### OR ###-->
-                <li>{{ brand|index:0 }}</li>
-                <li>{{ brand|index:1 }}</li>
-                <li>{{ brand|index:2 }}</li>
-                <li>{{ brand|index:3 }}</li>
-                <li>{{ brand|index:4 }}</li>
-                <li>{{ brand|index:5 }}</li>
-            {% endfor %}
-        </ul></p>
-        {% endwith %}
+    - Also works with for loops.
     """
     return indexable[i]
+
+
+@register.filter
+def get_at_index(list, index):
+    """
+    Gets the list element at the given index.
+    """
+    return list[index]
