@@ -1,9 +1,13 @@
-{% load cms_tags staticfiles menu_tags sekizai_tags cache i18n %}
+{% load cms_tags staticfiles sekizai_tags cache i18n %}
 <!doctype html>
 <html>
 
 <head>
-  <title>{% block title %}This is my new project home page{% endblock title %}</title>
+  <!-- Google Analytics partial. -->
+  {% include 'analytics.html' %}
+
+  <!-- Metadata. -->
+  <title>{% block title %} This is my new project home page {% endblock title %}</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="icon" href="{% static 'site_cms/images/favicons/favicon.ico' %}" type="image/x-icon" />
@@ -11,15 +15,17 @@
   <!-- Requires `npm run build` step before running the django project. -->
   <link id="css-site" rel="stylesheet" href="{% static 'build/styles/site.css' %}">
   <link id="css-site-header" rel="stylesheet" href="{% static 'build/styles/site.header.css' %}">
-  <!--
+
+  <!-- Web Fonts. -->
   <link id="css-site-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
-  -->
+
   <!-- Custom <head> Markup per Site to Customize the Site <head> Content. -->
   <!-- NOTE: Should actually load `@font-face` code before other resources; see https://confluence.tacc.utexas.edu/x/TwBgBQ -->
   <link id="css-site-font" rel="stylesheet" href="https://use.typekit.net/xnr7bof.css">
 
   <!-- No custom markup in base template. -->
   {% render_block "css" %}
+
   <!-- In-line Styles -->
   {% block custom_css %}
   <style>
@@ -30,12 +36,12 @@
 </head>
 
 <body class="o-site  {% block page_type_class %}{% endblock page_type_class %}">
-  {% cms_toolbar %}
+    {% cms_toolbar %}
 
-  <!-- Custom Navigation Block per Site to Customize the Site Header Branding. -->
-  <div class="cms-branded-navigation" class="o-site__head">
-    {% include "nav_branding_partials/nav.branding.texascale.v2.html" %}
-  </div>
+    <!-- Custom Navigation Block per Site to Customize the Site Header Branding. -->
+    <div class="cms-branded-navigation" class="o-site__head">
+        {% include "branding.html" %}
+    </div>
 
   <!-- Page content. -->
   <div id="cms-content" class="o-site o-site__body">
@@ -51,11 +57,11 @@
 
     <!-- Footer block. -->
     <footer class="c-footer  s-footer  o-site__foot">
-    {% block footer %}
+      {% block footer %}
       {% static_placeholder "footer-content" or %}
       <p>©2020 Texas Advanced Computing Center, The University of Texas at Austin, Office of the Vice President for Research.</p>
       {% endstatic_placeholder %}
-    {% endblock footer %}
+      {% endblock footer %}
     </footer>
   </div>
 

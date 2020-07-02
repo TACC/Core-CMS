@@ -12,10 +12,17 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
-# Boolean check to turn on/off console logging statements.
-import taccsite_cms.secrets as secrets
+
+import taccsite_cms.secrets_example as secrets             # Demo.
+# import taccsite_cms.secrets as secrets                        # Live/Dev.
 import logging
-import os  # isort:skip
+import os
+
+
+def gettext(s): return s
+
+
+# Boolean check to turn on/off console logging statements.
 CONSOLE_LOG_ENABLED = False
 
 # Verifying console logging is on.
@@ -35,10 +42,6 @@ if LDAP_ENABLED:
     from django_auth_ldap.config \
         import LDAPSearch, GroupOfNamesType
 
-
-def gettext(s): return s
-
-
 DATA_DIR = os.path.dirname(os.path.dirname(__file__))
 
 if CONSOLE_LOG_ENABLED:
@@ -56,10 +59,12 @@ SECRET_KEY = secrets._SECRET_KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = secrets._DEBUG
 
+# Host Access.
 ALLOWED_HOSTS = secrets._ALLOWED_HOSTS
 
-# Custom Navigation Template.
-NAVIGATION_TEMPLATE = secrets._NAVIGATION_TEMPLATE
+# Custom Branding.
+BRANDING = secrets._BRANDING
+LOGO  = secrets._LOGO
 
 # Application definition
 ROOT_URLCONF = 'taccsite_cms.urls'
@@ -80,6 +85,7 @@ STATICFILES_DIRS = (
 if CONSOLE_LOG_ENABLED:
     print("--> Variable STATICFILES_DIRS: ", STATICFILES_DIRS)
 
+# User Uploaded Files Location.
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(DATA_DIR, 'media')
 
@@ -90,7 +96,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'taccsite_cms', 'templates'), ],
-
+        # 'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.contrib.auth.context_processors.auth',
@@ -106,6 +112,9 @@ TEMPLATES = [
                 'cms.context_processors.cms_settings',
                 'django_settings_export.settings_export'
             ],
+            'libraries': {
+                'custom_portal_settings': 'taccsite_cms.templatetags.custom_portal_settings',
+            },
             'loaders': [
                 'django.template.loaders.filesystem.Loader',
                 'django.template.loaders.app_directories.Loader',
@@ -292,6 +301,15 @@ THUMBNAIL_PROCESSORS = (
 DJANGOCMS_PICTURE_NESTING = True
 DJANGOCMS_PICTURE_RESPONSIVE_IMAGES = True
 DJANGOCMS_PICTURE_RATIO = 1.618
+
+# FILE UPLOAD VALUES MUST BE SET!
+# Set in correlation with the `client_max_body_size    20m;` value in /etc/nginx/proxy.conf.
+# A problem comes from Django's usage of tempfile, which enforces new files to have permission
+# 0600 and Django doesn't fix it unless FILE_UPLOAD_PERMISSIONS is defined.
+# A tempfile is used when upload exceeds FILE_UPLOAD_MAX_MEMORY_SIZE.
+FILE_UPLOAD_PERMISSIONS = 0o644
+FILE_UPLOAD_MAX_MEMORY_SIZE = 20000000 # 20MB
+
 # Custom picture templates - if required.
 # DJANGOCMS_PICTURE_TEMPLATES = [
 #     ('background', _('Background image')), # Need to design these first!
@@ -309,15 +327,18 @@ GOOGLE_ANALYTICS_PRELOAD = secrets._GOOGLE_ANALYTICS_PRELOAD
 
 # SETTINGS VARIABLE EXPORTS.
 # Use custom namespace instead of default settings.VARIABLE.
-SETTINGS_EXPORT_VARIABLE_NAME = 'portal_settings'
+SETTINGS_EXPORT_VARIABLE_NAME = 'settings'
 
 # Exported settings.
 SETTINGS_EXPORT = [
     'DEBUG',
-    'NAVIGATION_TEMPLATE',
+    'BRANDING',
+    'LOGO',
     'GOOGLE_ANALYTICS_PROPERTY_ID',
     'GOOGLE_ANALYTICS_PRELOAD'
 ]
 
 if CONSOLE_LOG_ENABLED:
-    print(SETTINGS_EXPORT)
+    print("--> Variable SETTINGS_EXPORT: ")
+    for setting in SETTINGS_EXPORT:
+        print(setting)
