@@ -20,7 +20,6 @@
 repo_name.var
 
 # Secrets
-secrets.py
 taccsite_cms/secrets.py
 
 #Makefile var
