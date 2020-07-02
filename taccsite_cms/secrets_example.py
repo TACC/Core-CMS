@@ -1,5 +1,5 @@
 # TACC CMS SITE TEMPLATE SETTINGS.
-# DEFAULT VALUES.
+# DEFAULT VALUES - CHANGE FOR LIVE USE.
 
 ########################
 # DJANGO SETTINGS
@@ -10,6 +10,38 @@ _DEBUG = True       # False for Prod.
 # Specify allowed hosts or use an asterisk to allow any host and simplify the config.
 # _ALLOWED_HOSTS = ['hostname.tacc.utexas.edu', 'host.ip.v4.address', '0.0.0.0', 'localhost', '127.0.0.1']   # In production.
 _ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost', '*']   # In development.
+
+########################
+# DATABASE SETTINGS
+########################
+
+_DATABASE_ENGINE = 'django.db.backends.postgresql_psycopg2'
+_DATABASE_NAME = 'taccsite'
+_DATABASE_USERNAME = 'postgresadmin'
+_DATABASE_PASSWORD = 'taccforever'     # Change for live deployment.
+_DATABASE_HOST = 'localhost'
+_DATABASE_PORT = '5432'
+
+########################
+# DJANGO CMS SETTINGS
+########################
+
+# CMS Site (allows for multiple sites on a single CMS)
+_SITE_ID = 1
+_CMS_TEMPLATES = (
+    # Customize this
+    ('fullwidth.html', 'Fullwidth'),
+    ('sidebar_left.html', 'Sidebar Left'),
+    ('sidebar_right.html', 'Sidebar Right')
+)
+
+########################
+# GOOGLE ANALYTICS
+########################
+
+# To use during dev, Tracking Protection in browser needs to be turned OFF.
+_GOOGLE_ANALYTICS_PROPERTY_ID = "UA-123ABC@%$&-#"
+_GOOGLE_ANALYTICS_PRELOAD = True
 
 ########################
 # CUSTOM SITE SETTINGS
@@ -169,35 +201,3 @@ _LOGO = _PORTAL_LOGO                # Default Portal Logo.
 # _LOGO = _LCCF_LOGO
 # _LOGO = _TAPISIO_LOGO
 # _LOGO = _TEXASCALE_LOGO
-
-########################
-# DATABASE SETTINGS
-########################
-
-_DATABASE_ENGINE = 'django.db.backends.postgresql_psycopg2'
-_DATABASE_NAME = 'taccsite'
-_DATABASE_USERNAME = 'postgresadmin'
-_DATABASE_PASSWORD = 'taccforever'     # Change for live deployment.
-_DATABASE_HOST = 'localhost'
-_DATABASE_PORT = '5432'
-
-########################
-# DJANGO CMS SETTINGS
-########################
-
-# CMS Site (allows for multiple sites on a single CMS)
-_SITE_ID = 1
-_CMS_TEMPLATES = (
-    # Customize this
-    ('fullwidth.html', 'Fullwidth'),
-    ('sidebar_left.html', 'Sidebar Left'),
-    ('sidebar_right.html', 'Sidebar Right')
-)
-
-########################
-# GOOGLE ANALYTICS
-########################
-
-# To use during dev, Tracking Protection in browser needs to be turned OFF.
-_GOOGLE_ANALYTICS_PROPERTY_ID = "UA-123ABC@%$&-#"
-_GOOGLE_ANALYTICS_PRELOAD = True
