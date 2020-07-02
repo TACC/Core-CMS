@@ -18,30 +18,6 @@
   padding: 0 16px 0 !important;
 }
 
-/* Singlerow Layout (v1) */
-
-.nav-logo-single {
-  float: left;
-  height: 30px;
-  margin: 7px 20px 0 0;
-  padding: 0;
-  border: none;
-}
-
-.nav-logo-nsf-single {
-  height: 40px;
-  margin: 2px 20px 0 0;
-}
-
-/* .nav-logo-tacc-single {} */
-/* .nav-logo-lccf-single {} */
-/* .nav-logo-utaustin-single {} */
-/* .nav-logo-uhawaii-single {} */
-/* .nav-logo-frontera-single {} */
-/* .nav-logo-tapisio-single {} */
-
-/* Doublerow Layout (v2) */
-
 .branding-header {
   margin: 0;
   padding: 0.4rem 0 0.4rem;
@@ -51,19 +27,8 @@
   border-bottom: 1px solid #aaa;
 }
 
-.nav-logo-header {
+.nav-branding-logo {
   height: 30px;
-  margin: 0;
-  padding: 0;
-  border: none;
-}
-
-/* .navbar-logos {} */
-
-.nav-logo-double {
-  float: left;
-  /* height: 30px; */
-  height: 40px;
   margin: 0;
   padding: 0;
   border: none;
@@ -88,24 +53,14 @@
   height: 35px;
 }
 
-/* Branding Selectors  */
+/* Logo Selectors  */
 
-.nav-logo-portal-double {
+.nav-portal-logo {
+  float: left;
   height: 40px;
   margin: 0;
-}
-
-.nav-logo-lccf-double {
-  margin: 0;
-}
-
-.nav-logo-frontera-double {
-  margin: 0;
-}
-
-.nav-logo-tapisio-double {
-  margin: 0;
-  /* height: 40px; */
+  padding: 0;
+  border: none;
 }
 
 /* Media Query Selectors */

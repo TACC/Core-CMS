@@ -18,6 +18,10 @@ import logging
 import os  # isort:skip
 # import json
 
+
+def gettext(s): return s
+
+
 CONSOLE_LOG_ENABLED = False
 
 # Verifying console logging is on.
@@ -37,10 +41,6 @@ if LDAP_ENABLED:
     from django_auth_ldap.config \
         import LDAPSearch, GroupOfNamesType
 
-
-def gettext(s): return s
-
-
 DATA_DIR = os.path.dirname(os.path.dirname(__file__))
 
 if CONSOLE_LOG_ENABLED:
@@ -58,11 +58,12 @@ SECRET_KEY = secrets._SECRET_KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = secrets._DEBUG
 
+# Host Access.
 ALLOWED_HOSTS = secrets._ALLOWED_HOSTS
 
 # Custom Branding.
 BRANDING = secrets._BRANDING
-LOGOS  = secrets._LOGOS
+LOGO  = secrets._LOGO
 
 # Application definition
 ROOT_URLCONF = 'taccsite_cms.urls'
@@ -83,6 +84,7 @@ STATICFILES_DIRS = (
 if CONSOLE_LOG_ENABLED:
     print("--> Variable STATICFILES_DIRS: ", STATICFILES_DIRS)
 
+# User Uploaded Files Location.
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(DATA_DIR, 'media')
 
@@ -330,7 +332,7 @@ SETTINGS_EXPORT_VARIABLE_NAME = 'settings'
 SETTINGS_EXPORT = [
     'DEBUG',
     'BRANDING',
-    'LOGOS',
+    'LOGO',
     'GOOGLE_ANALYTICS_PROPERTY_ID',
     'GOOGLE_ANALYTICS_PRELOAD'
 ]
