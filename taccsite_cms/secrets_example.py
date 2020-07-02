@@ -47,6 +47,9 @@ _GOOGLE_ANALYTICS_PRELOAD = True
 # CUSTOM SITE SETTINGS
 ########################
 
+_DJANGOCMS_FORMS_RECAPTCHA_PUBLIC_KEY = ""
+_DJANGOCMS_FORMS_RECAPTCHA_SECRET_KEY = ""
+
 """
 Additional Branding and Portal Logos for Partner & Affiliate Organizations
 
