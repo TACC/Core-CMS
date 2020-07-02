@@ -13,8 +13,8 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 
-import taccsite_cms.secrets_example as secrets             # Demo.
-# import taccsite_cms.secrets as secrets                        # Live/Dev.
+# import taccsite_cms.secrets_example as secrets             # Demo.
+import taccsite_cms.secrets as secrets                        # Live/Dev.
 import logging
 import os
 
