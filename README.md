@@ -19,6 +19,7 @@ Skip configuration; you may use the default configuration.
 2. Edit `taccsite_cms/settings.py` to load new `taccsite_cms/secrets.py`:
     - Comment out `import taccsite_cms.secrets_example …` line.
     - Uncomment `import taccsite_cms.secrets …` line.
+3. Edit `docker-compose.yml` to use "Database Settings" from new secrets.
 
 ## Running the CMS with Docker
 
