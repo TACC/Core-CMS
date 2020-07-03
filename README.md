@@ -144,6 +144,23 @@ and populated
 > - Those that _need the build step_ __must__ be loaded from `…/build`.
 > - Those that _need __no__ build step_ __must__ be loaded from `…/site_cms`.
 
+## Linting and Formatting Conventions
+
+Markdown docments can be linted via [markdownlint][mdlint]. Known editor plugins:
+
+- [Atom: linter-node-markdownlint](https://atom.io/packages/linter-node-markdownlint)
+- [VS Code: vscode-markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint)
+
+Client-side and server-side code may be formatted via [EditorConfig][editorconfig]. Known editor plugins:
+
+- [Atom: editorconfig](https://atom.io/packages/editorconfig)
+- [VS Code: EditorConfig](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
+
+
+[mdlint]: https://github.com/DavidAnson/markdownlint
+[editorconfig]: https://editorconfig.org/
+
+
 ## Reference
 
 - [DjangoCMS Stand Alone Site](https://confluence.tacc.utexas.edu/x/G4G-Ag)
