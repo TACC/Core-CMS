@@ -6,7 +6,19 @@ TACC CMS can be run using Docker and Docker-Compose both locally or in productio
 
 ## Configuration
 
-Create `taccsite_cms/secrets.py` containing what is in `secret` field, at the "DjangoCMS SECRETS.PY" section, in the `TACC cms-template01 credentials` entry secured on [UT Stache](https://stache.security.utexas.edu).
+### To Support Indepenent Isolated Instance
+
+Skip configuration; you may use the default configuration.
+
+### To Support Instance Alongside Other CMS Project Instances
+
+1. Create new `taccsite_cms/secrets.py`:
+    1. In [UT Stache](https://stache.utexas.edu), open the __"SAD CMS 0N: […]"__ entry for this project.
+    2. Copy the value of the __"Secret"__ field.
+    3. Create `taccsite_cms/secrets.py` with that copied value.
+2. Edit `taccsite_cms/settings.py` to load new `taccsite_cms/secrets.py`:
+    - Comment out `import taccsite_cms.secrets_example …` line.
+    - Uncomment `import taccsite_cms.secrets …` line.
 
 ## Running the CMS with Docker
 
