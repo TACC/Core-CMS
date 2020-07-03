@@ -12,14 +12,18 @@ Skip configuration; you may use the default configuration.
 
 ### To Support Instance Alongside Other CMS Project Instances
 
-1. Create new `taccsite_cms/secrets.py`:
-    1. In [UT Stache](https://stache.utexas.edu), open the __"SAD CMS 0N: […]"__ entry for this project.
-    2. Copy the value of the __"Secret"__ field.
-    3. Create `taccsite_cms/secrets.py` with that copied value.
-2. Edit `taccsite_cms/settings.py` to load new `taccsite_cms/secrets.py`:
+1. Copy `docker-compose.custom.yml` as new `docker-compose.custom.yml` file:
+    - Edit new file to replace any `taccsite_` instance with a unique project identifier.
+2. Copy `taccsite_cms/secrets_example.py` as new `taccsite_cms/secrets.py` file:
+    - Edit new file to use unique value for `_DATABASE_HOST`.
+3. Edit `taccsite_cms/settings.py` to load new `taccsite_cms/secrets.py`:
     - Comment out `import taccsite_cms.secrets_example …` line.
     - Uncomment `import taccsite_cms.secrets …` line.
-3. Edit `docker-compose.yml` to use "Database Settings" from new secrets.
+4. Run any `docker-compose` with file argument, e.g.:
+
+    ```bash
+    docker-compose -f docker-compose.custom.yml …
+    ```
 
 ## Running the CMS with Docker
 
