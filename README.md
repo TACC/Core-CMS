@@ -2,7 +2,7 @@
 
 ## Docker Setup
 
-TACC CMS can be run using Docker and Docker-Compose both locally or in production.
+A TACC CMS can be run using Docker and Docker Compose both locally or in production.
 
 ## Configuration
 
@@ -25,54 +25,89 @@ Skip configuration; you may use the default configuration.
     docker-compose -f docker-compose.custom.yml …
     ```
 
-## Running the CMS with Docker
+## Run the CMS (via Docker)
 
-Use [Docker Compose](https://docs.docker.com/compose/)!
+> __Notice__: The `docker-compose.yml` file included in this repo is set up for running the instance locally.
 
-The docker-compose.yml file included in this repo is setup for running the composition locally.
+### Prerequisites
 
-First, build the CMS docker image:
+- Have [Docker Compose](https://docs.docker.com/compose/) on the host system.
 
-```bash
-docker-compose build
-```
-Create and run a docker container from the image.
+### Steps
 
-```bash
-docker-compose up
-```
-Exec into the container and run migrations then create a superuser account.
+1. [Build][docker-compose-build] the CMS and database images:
 
-```bash
-docker exec -it taccsite_cms /bin/bash
-python3 manage.py migrate
-```
+    ```bash
+    docker-compose build
+    ```
 
-Create a superuser account, TACC username is required for LDAP, but any password can be used, the pw will be validated against LDAP first, if that fails, it will be validated against the assigned password below.
+2. [Create and run][docker-compose-up] the CMS and database containers:
 
-```bash
-python3 manage.py createsuperuser
-```
-Create additional accounts as needed
+    ```bash
+    docker-compose up
+    ```
 
-Access CMS admin site at at http://localhost:8000/admin
+3. [Start a bash session][docker-exec-bash] into the CMS container:
 
-To log in with a TACC account using LDAP, create the account using the TACC username and assign staff and/or superuser privileges. The assigned password can be any password and doesn't need to be sent to the user. The CMS will not attempt to validate with the assigned password unless LDAP auth fails, creating a strong password is recommended for production.
+    ```bash
+    docker exec -it taccsite_cms /bin/bash
+    ```
+
+4. [Run migrations][django-cms-migrate] for Django CMS:
+
+    ```bash
+    python manage.py migrate
+    ```
+
+    _This is like a Django CMS wrapper around [Django migrations][django-cms-migrate]._
+
+5. [Create a superuser][django-cms-su] for Django CMS:
+
+    > __Notice__: A TACC username is required for LDAP access, but any password can be used. The password will be validated against LDAP first, if that fails, it will be validated against the password assigned during the following command's interface. __For production, create a strong password.__
+
+    ```bash
+    python manage.py createsuperuser
+    ```
+
+    _You may create additional accounts as needed._
+
+The CMS admin site should now be accessible at http://localhost:8000/admin.
+
+
+[docker-exec-bash]: https://docs.docker.com/engine/reference/commandline/exec/#run-docker-exec-on-a-running-container
+
+[docker-compose-up]: https://docs.docker.com/compose/reference/up/
+[docker-compose-build]: https://docs.docker.com/compose/reference/build/
+
+[django-migrate]: https://docs.djangoproject.com/en/3.0/topics/migrations/
+
+[django-cms-migrate]: http://docs.django-cms.org/en/latest/how_to/install.html#database-tables
+[django-cms-su]: http://docs.django-cms.org/en/latest/how_to/install.html#admin-user
+
+
+Log in with the user that was created via the `createsuperuser` step.
+
+> __Notice__: To log in with a TACC account using LDAP, create the account using the TACC username, then assign staff and/or superuser privileges. The assigned password can be any password and does __not__ need to be sent to the user. The CMS will __not__ attempt to validate with the assigned password unless LDAP authentication fails. __For production, create a strong password.__
+
+> __Warning__: The CMS install will be fresh i.e. the CMS will __not__ be populated with production content.
 
 ## Building Static Resources
 
 Certain static resources are built
 
-- __from__ `/taccsite_cms/static/site_cms` source code entry point files, and populated
+- __from__ `/taccsite_cms/static/site_cms` source code entry point files,
+
+and populated
+
 - __to__ `/taccsite_cms/static/build` in a matching folder as build artifacts.
 
-Resources:
+### Resources
 
 - `…/styles` (CSS stylesheets)
 
 ### Setup
 
-1. Install the dependencies:
+1. [Install][npm-cli-install] the dependencies:
 
     ```bash
     npm install
@@ -84,11 +119,16 @@ Resources:
     npm run build
     ```
 
-3. (Optional) If you want the build to occur when you change source files, then run:
+3. (Optional) [Watch][npm-pkg-watch] files, and re-build when source files change:
 
     ```bash
     npm run watch
     ```
+
+
+[npm-cli-install]: https://docs.npmjs.com/cli/install
+[npm-pkg-watch]: https://www.npmjs.com/package/npm-watch
+
 
 ### Usage
 
@@ -98,7 +138,29 @@ Resources:
     - (automatically, on source change) `npm run watch`
 3. Confirm that the build output has changed.
 
-Remember:
+> __Remember__:
+> Templates can load two kinds of static files.
+>
+> - Those that _need the build step_ __must__ be loaded from `…/build`.
+> - Those that _need __no__ build step_ __must__ be loaded from `…/site_cms`.
 
-- Templates must load files, that were built, from `…/build`
-- Templates must load files, that need __no__ build step, from `…/site_cms`
+## Linting and Formatting Conventions
+
+Markdown docments can be linted via [markdownlint][mdlint]. Known editor plugins:
+
+- [Atom: linter-node-markdownlint](https://atom.io/packages/linter-node-markdownlint)
+- [VS Code: vscode-markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint)
+
+Client-side and server-side code may be formatted via [EditorConfig][editorconfig]. Known editor plugins:
+
+- [Atom: editorconfig](https://atom.io/packages/editorconfig)
+- [VS Code: EditorConfig](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
+
+
+[mdlint]: https://github.com/DavidAnson/markdownlint
+[editorconfig]: https://editorconfig.org/
+
+
+## Reference
+
+- [DjangoCMS Stand Alone Site](https://confluence.tacc.utexas.edu/x/G4G-Ag)
