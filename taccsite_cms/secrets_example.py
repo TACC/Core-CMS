@@ -247,7 +247,7 @@ _ANY_UNAUTH_LINK = {
 """
 
 ########################
-# LINKS (for Portals).
+# LINKS (for Portal).
 
 _DASH_AUTH_LINK = {
     "name": "dash",
