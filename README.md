@@ -12,10 +12,11 @@ Skip configuration; you may use the default configuration.
 
 ### To Support Instance Alongside Other CMS Project Instances
 
-1. Copy `docker-compose.custom.yml` as new `docker-compose.custom.yml` file:
-    - Edit new file to replace any `taccsite_` instance with a unique project identifier.
-2. Copy `taccsite_cms/secrets_example.py` as new `taccsite_cms/secrets.py` file:
-    - Edit new file to use unique value for `_DATABASE_HOST`.
+1. Copy `docker-compose.yml` as new `docker-compose.custom.yml` file, and in the new file:
+    - Replace any `taccsite_` string partial with a unique identifier.
+    - Replace the first number in `ports` value with a unique port.
+2. Copy `taccsite_cms/secrets_example.py` as new `taccsite_cms/secrets.py` file, and in the new file:
+    - Change `_DATABASE_HOST` to equal `docker-compose.custom.yml`'s `postgres`: `hostname`.
 3. Edit `taccsite_cms/settings.py` to load new `taccsite_cms/secrets.py`:
     - Comment out `import taccsite_cms.secrets_example …` line.
     - Uncomment `import taccsite_cms.secrets …` line.
@@ -49,6 +50,8 @@ Skip configuration; you may use the default configuration.
 
 3. [Start a bash session][docker-exec-bash] into the CMS container:
 
+    > __Notice__: If you are using a `docker-compose.custom.yml`, then replace this command's `taccsite_cms` with that file's `cms`: `hostname`.
+
     ```bash
     docker exec -it taccsite_cms /bin/bash
     ```
@@ -71,7 +74,7 @@ Skip configuration; you may use the default configuration.
 
     _You may create additional accounts as needed._
 
-The CMS admin site should now be accessible at http://localhost:8000/admin.
+The CMS admin site should now be accessible at http://localhost:8000/admin (or at the port defined in a `docker-compose.custom.yml`).
 
 
 [docker-exec-bash]: https://docs.docker.com/engine/reference/commandline/exec/#run-docker-exec-on-a-running-container
