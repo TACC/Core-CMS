@@ -4,29 +4,46 @@
 {# SEE: https://confluence.tacc.utexas.edu/x/LoCnCQ #}
 {# NOTE: The `id` attr's are identified by a CMS script which changes markup #}
 <ul class="s-portal-nav  {{ className }}">
-  <div id="frontera-core-dropdown" class="navbar-nav  d-none">
+  <div id="auth-menu" class="navbar-nav  d-none">
     <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="fas fa-user-circle fa-lg nav-icon"></i>
-        <span id="frontera-core-username"></span>
+      <a class="nav-link dropdown-toggle"
+        id="auth-menu-button"
+        href="#"
+        role="button"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="fas fa-user-circle fa-lg  nav-icon"></i>
+        <span id="portal-username"></span>
         <span class="sr-only">Toggle Dropdown</span>
       </a>
-      <div class="dropdown-menu dropdown-menu-right">
-        <a class="dropdown-item" href="/workbench/dashboard">
-          <i class="fas fa-desktop nav-icon"></i> My Dashboard
-        </a>
-        <a class="dropdown-item" href="/accounts/profile/">
-          <i class="fas fa-user-circle nav-icon"></i> My Account
-        </a>
-        <a class="dropdown-item" href="/accounts/logout/">
-          <i class="fas fa-sign-out-alt nav-icon"></i> Log Out
-        </a>
+      <div class="dropdown-menu dropdown-menu-right"
+        aria-labelledby="auth-menu-button"
+        id="auth-menu-list">
+        {% for link in settings._AUTH_LINKS %}
+            <a id="auth-menu-link-{{ link.name }}"
+              class="dropdown-item"
+              href="{{ link.url }}"
+            >
+              <i class="fas fa-{{ link.icon }}  nav-icon"></i>
+              {{ link.text }}
+            </a>
+          {% endfor %}
+        {% endfor %}
       </div>
     </li>
   </div>
-  <li id="frontera-login-link" class="nav-item  d-none">
-    <a class="nav-link" href="/login/">
-      <i class="fas fa-sign-in-alt nav-icon"></i> Log in
-    </a>
+  <li id="unauth-menu" class="nav-item  d-none">
+    {% for link in settings._AUTH_LINKS %}
+        <a id="unauth-menu-link-{{ link.name }}"
+          class="nav-link"
+          href="{{ link.url }}"
+        >
+          <i class="fas fa-{{ link.icon }}  nav-icon"></i>
+          {{ link.text }}
+        </a>
+      {% endfor %}
+    {% endfor %}
   </li>
 </ul>
