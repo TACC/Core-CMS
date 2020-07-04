@@ -204,3 +204,10 @@ _LOGO = _PORTAL_LOGO                # Default Portal Logo.
 # _LOGO = _LCCF_LOGO
 # _LOGO = _TAPISIO_LOGO
 # _LOGO = _TEXASCALE_LOGO
+
+########################
+# PORTAL.
+
+# In the future, this could be more complex value.
+# For now, this value only describes whether a portal exists.
+_PORTAL = True

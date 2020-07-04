@@ -17,6 +17,11 @@ urlpatterns = [
         {'sitemaps': {'cmspages': CMSSitemap}}),
 ]
 
+if settings.PORTAL:
+    urlpatterns += [
+        url(r'^cms/nav/pages/markup/$', TemplateView.as_view(template_name='menu_only.html'), name='menu_pages_markup'),
+    ]
+
 urlpatterns += [
     url(r'^admin/', admin.site.urls),  # NOQA
     url(r'^', include('cms.urls')),

@@ -65,6 +65,7 @@ ALLOWED_HOSTS = secrets._ALLOWED_HOSTS
 # Custom Branding.
 BRANDING = secrets._BRANDING
 LOGO  = secrets._LOGO
+PORTAL = secrets._PORTAL
 
 # Application definition
 ROOT_URLCONF = 'taccsite_cms.urls'
