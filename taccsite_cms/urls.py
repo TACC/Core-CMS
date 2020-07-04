@@ -20,7 +20,8 @@ urlpatterns = [
 if settings.PORTAL:
     from django.views.generic.base import TemplateView
     urlpatterns += [
-        url(r'^cms/nav/pages/markup/$', TemplateView.as_view(template_name='menu_only.html'), name='menu_pages_markup'),
+        # FAQ: Allows direct access to isolated CMS menu markup for the Portal and User Guide to render
+        url(r'^cms/nav/pages/markup/$', TemplateView.as_view(template_name='cms_menu.html'), name='menu_pages_markup'),
     ]
 
 urlpatterns += [
