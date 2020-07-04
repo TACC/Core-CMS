@@ -205,14 +205,19 @@ _LOGO = _PORTAL_LOGO                # Default Portal Logo.
 # _LOGO = _TAPISIO_LOGO
 # _LOGO = _TEXASCALE_LOGO
 
+########################
+# PORTAL.
+
+_PORTAL = False     # True for any CMS that is part of a Portal.
+
 """
-Customizable Workbench and Login Menus
+Portal Links
 
 Usage:
 
-- For each menu customization, add new menu links (see example below).
-- New links must be added to the _AUTH_LINKS and _UNAUTH_LINKS lists.
-- The order of the […]_LINKS lists determine the rendering order of the elements.
+- For each link used in the templating, add new links values (see example below).
+- New links must be added to the _PORTAL_AUTH_LINKS and _PORTAL_UNAUTH_LINKS lists.
+- The order of the _PORTAL_[…]_LINKS lists determine the rendering order of the elements.
 
 Values to populate:
 
@@ -242,7 +247,7 @@ _ANY_UNAUTH_LINK = {
 """
 
 ########################
-# LINKS.
+# LINKS (for Portals).
 
 _DASH_AUTH_LINK = {
     "name": "dash",
@@ -270,5 +275,5 @@ _LOGIN_UNAUTH_LINK = {
     "icon": "sign-in-alt",
 }
 
-_AUTH_LINKS = [ _DASH_AUTH_LINK, _PROFILE_AUTH_LINK, _LOGOUT_AUTH_LINK ]       # Default TACC Portal.
-_UNAUTH_LINKS = [ _LOGIN_UNAUTH_LINK ]                                         # Default TACC Portal.
+_PORTAL_AUTH_LINKS = [ _DASH_AUTH_LINK, _PROFILE_AUTH_LINK, _LOGOUT_AUTH_LINK ]       # Default TACC Portal.
+_PORTAL_UNAUTH_LINKS = [ _LOGIN_UNAUTH_LINK ]                                         # Default TACC Portal.

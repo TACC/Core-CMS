@@ -64,8 +64,10 @@ ALLOWED_HOSTS = secrets._ALLOWED_HOSTS
 
 # Custom Branding.
 BRANDING = secrets._BRANDING
-LOGO  = secrets._LOGO
+LOGO = secrets._LOGO
 PORTAL = secrets._PORTAL
+PORTAL_AUTH_LINKS = secrets._PORTAL_AUTH_LINKS
+PORTAL_UNAUTH_LINKS = secrets._PORTAL_UNAUTH_LINKS
 
 # Application definition
 ROOT_URLCONF = 'taccsite_cms.urls'
@@ -335,6 +337,9 @@ SETTINGS_EXPORT = [
     'DEBUG',
     'BRANDING',
     'LOGO',
+    'PORTAL',
+    'PORTAL_AUTH_LINKS',
+    'PORTAL_UNAUTH_LINKS',
     'GOOGLE_ANALYTICS_PROPERTY_ID',
     'GOOGLE_ANALYTICS_PRELOAD'
 ]
