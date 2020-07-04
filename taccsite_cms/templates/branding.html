@@ -28,7 +28,7 @@
 
 {% with settings.LOGO as logo %}
 <!-- Navigation Bar -->
-<nav id="s-header" class="s-header  navbar navbar-expand-md navbar-dark">
+<nav id="s-header" class="s-header  navbar navbar-expand-lg navbar-dark">
   <!-- Portal Logo -->
   {% with filename=logo|index:1 selectors=logo|index:2 targeturl=logo|index:3 targetType=logo|index:4 accessibility=logo|index:5 corstype=logo|index:6 visibility=logo|index:7 %}
     {% if visibility == "True" %}
@@ -46,7 +46,9 @@
   <!-- Navbar Links -->
   <div class="collapse navbar-collapse" id="navbarsExpandTarget">
     {# FAQ: If template were included with `only`, then it would NOT render `show_menu` #}
-    {% include "nav_cms.html" with className="navbar-nav ml-auto" %}
+    {% include "nav_cms.html" with className="navbar-nav" %}
+
+    {% include "nav_portal.html" with className="navbar-nav navbar-right  ml-auto" only %}
   </div>
 </nav>
 {% endwith %}
