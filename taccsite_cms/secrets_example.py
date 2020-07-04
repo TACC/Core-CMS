@@ -19,7 +19,7 @@ _DATABASE_ENGINE = 'django.db.backends.postgresql_psycopg2'
 _DATABASE_NAME = 'taccsite'
 _DATABASE_USERNAME = 'postgresadmin'
 _DATABASE_PASSWORD = 'taccforever'     # Change for live deployment.
-_DATABASE_HOST = 'localhost'
+_DATABASE_HOST = 'taccsite_postgres'
 _DATABASE_PORT = '5432'
 
 ########################
