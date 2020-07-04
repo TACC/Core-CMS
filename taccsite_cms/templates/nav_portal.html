@@ -34,7 +34,7 @@
     </li>
   </div>
   <li id="unauth-menu" class="nav-item  d-none">
-    {% for link in settings.PORTAL_AUTH_LINKS %}
+    {% for link in settings.PORTAL_UNAUTH_LINKS %}
       <a id="unauth-menu-link-{{ link.name }}"
         class="nav-link"
         href="{{ link.url }}"

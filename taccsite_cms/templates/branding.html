@@ -50,7 +50,7 @@
       {# FAQ: If template were included with `only`, then it would NOT render `show_menu` #}
       {% include "nav_cms.html" with className="navbar-nav" %}
 
-      {% include "nav_portal.html" with className="navbar-nav navbar-right  ml-auto" only %}
+      {% include "nav_portal.html" with className="navbar-nav navbar-right  ml-auto" settings=settings only %}
     {% else %}
       {# FAQ: If template were included with `only`, then it would NOT render `show_menu` #}
       {% include "nav_cms.html" with className="navbar-nav  ml-auto" %}
