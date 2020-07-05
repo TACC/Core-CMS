@@ -7,7 +7,6 @@ RUN apt-get update && \
     lcov valgrind vim && \
     pip3 install uwsgi && \
     # Node
-    # GL-30: Also, run `npm ci` and `npm run build`
     curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
     apt-get install -y nodejs
 # Prepare Directories
@@ -16,3 +15,4 @@ COPY . /code
 WORKDIR /code
 # Install App Requirements
 RUN pip3 install -r requirements.txt
+    # GL-30: Also, run `npm ci` and `npm run build`
