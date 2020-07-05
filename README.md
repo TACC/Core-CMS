@@ -56,7 +56,15 @@ Skip configuration; you may use the default configuration.
     docker exec -it taccsite_cms /bin/bash
     ```
 
-4. [Run migrations][django-cms-migrate] for Django CMS:
+4. [Build static resources][#setup]:
+
+    ```bash
+    npm ci && npm run build
+    ```
+
+    _This installs Node packages and builds some resources via Node._
+
+5. [Run migrations][django-cms-migrate] for Django CMS:
 
     ```bash
     python manage.py migrate
@@ -64,7 +72,7 @@ Skip configuration; you may use the default configuration.
 
     _This is like a Django CMS wrapper around [Django migrations][django-cms-migrate]._
 
-5. [Create a superuser][django-cms-su] for Django CMS:
+6. [Create a superuser][django-cms-su] for Django CMS:
 
     > __Notice__: A TACC username is required for LDAP access, but any password can be used. The password will be validated against LDAP first, if that fails, it will be validated against the password assigned during the following command's interface. __For production, create a strong password.__
 
@@ -94,6 +102,7 @@ Log in with the user that was created via the `createsuperuser` step.
 
 > __Warning__: The CMS install will be fresh i.e. the CMS will __not__ be populated with production content.
 
+
 ## Building Static Resources
 
 Certain static resources are built
@@ -104,11 +113,9 @@ and populated
 
 - __to__ `/taccsite_cms/static/build` in a matching folder as build artifacts.
 
-### Resources
-
-- `…/styles` (CSS stylesheets)
-
 ### Setup
+
+> __Notice__: To ensure consistent behavior, these commands _should_ be run **inside** the Docker container (after [Run the CMS (via Docker)](#steps) step 3 `docker exec …`). See [GitLab issue #30][gl-30]. But, with a local Node installation of a version that matches that defined in the `Dockerfile`, _most_ static resource commands can be reliably executed locally.
 
 1. [Install][npm-cli-install] the dependencies:
 
@@ -117,6 +124,8 @@ and populated
     ```
 
 2. Build the static dependencies:
+
+    > __Notice__: This should already have been run once, during [Run the CMS (via Docker)](#run-the-cms-via-docker).
 
     ```bash
     npm run build
@@ -132,6 +141,8 @@ and populated
 [npm-cli-install]: https://docs.npmjs.com/cli/install
 [npm-pkg-watch]: https://www.npmjs.com/package/npm-watch
 
+[gl-30]: https://gitlab.tacc.utexas.edu/wma-cms/cms-site-template/issues/30
+
 
 ### Usage
 
@@ -146,6 +157,7 @@ and populated
 >
 > - Those that _need the build step_ __must__ be loaded from `…/build`.
 > - Those that _need __no__ build step_ __must__ be loaded from `…/site_cms`.
+
 
 ## Linting and Formatting Conventions
 

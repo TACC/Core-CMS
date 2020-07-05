@@ -1,6 +1,6 @@
 # TACC CMS - Minified & Processed Files
 
-DO NOT ADD STYLESHEETS HERE!
+DO NOT ADD SOURCE CODE HERE!
 
 These files are the minified and processed output from the `npm run build` step.
 
