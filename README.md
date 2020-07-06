@@ -56,7 +56,7 @@ Skip configuration; you may use the default configuration.
     docker exec -it taccsite_cms /bin/bash
     ```
 
-4. [Build static resources](#setup):
+4. [Build static resources][#setup]:
 
     ```bash
     npm ci && npm run build
