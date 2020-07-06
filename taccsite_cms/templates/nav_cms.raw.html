@@ -1,0 +1,7 @@
+{% load menu_tags %}
+<!-- FAQ: This template loads independently at a unique url (see `urls.py`)
+          so Portal and User Guide can render this markup into their markup. -->
+<!-- FAQ: This template lacks the `ul.s-cms-nav` tag because Portal usage—via
+          JavaScript—relies on `innerHTML` instead of `insertAdjacentHTML`. -->
+
+{% show_menu 0 100 1 100 "cms_menu.html" %}
