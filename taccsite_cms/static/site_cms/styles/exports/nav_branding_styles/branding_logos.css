@@ -17,6 +17,9 @@
   color: rgb(255, 255, 255);
   border-bottom: 1px solid #aaa;
 }
+.branding-header a {
+  display: inline-block;
+}
 
 .branding-seperator {
   width: 1px;
