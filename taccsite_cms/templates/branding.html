@@ -7,46 +7,46 @@
 <!-- Sponsor Logos -->
 <div class="branding-header">
   <!-- <p>{{ branding|first }}</p> -->
-    {% for brand in branding %}
-      {% with filename=brand|index:1 selectors=brand|index:2 targeturl=brand|index:3 targetType=brand|index:4 accessibility=brand|index:5 corstype=brand|index:6 visibility=brand|index:7 %}
-        {% if visibility == "True" %}
-          {% if brand == branding|first %}
-          <a href="{{ targeturl }}" target="{{ targettype }}">
-            <img class="branding-logo {{ selectors }}" src="{% static filename %}" crossorigin="{{ corstype }}" alt="{{ accessibility }}" >
-          </a>
-          {% elif brand != branding|first %}
-          <span class="branding-seperator"></span>
-          <a href="{{ targeturl }}" target="{{ targettype }}">
-            <img class="branding-logo {{ selectors }}" src="{% static filename %}" crossorigin="{{ corstype }}" alt="{{ accessibility }}" >
-          </a>
-          {% endif %}
+  {% for brand in branding %}
+    {% with filename=brand|index:1 selectors=brand|index:2 targeturl=brand|index:3 targetType=brand|index:4 accessibility=brand|index:5 corstype=brand|index:6 visibility=brand|index:7 %}
+      {% if visibility == "True" %}
+        {% if brand == branding|first %}
+        <a href="{{ targeturl }}" target="{{ targettype }}">
+          <img class="branding-logo {{ selectors }}" src="{% static filename %}" crossorigin="{{ corstype }}" alt="{{ accessibility }}" >
+        </a>
+        {% elif brand != branding|first %}
+        <span class="branding-seperator"></span>
+        <a href="{{ targeturl }}" target="{{ targettype }}">
+          <img class="branding-logo {{ selectors }}" src="{% static filename %}" crossorigin="{{ corstype }}" alt="{{ accessibility }}" >
+        </a>
         {% endif %}
-      {% endwith %}
-    {% endfor %}
+      {% endif %}
+    {% endwith %}
+  {% endfor %}
 </div>
 {% endwith %}
 
 {% with settings.LOGO as logo %}
 <!-- Navigation Bar -->
 <nav id="s-header" class="s-header  navbar navbar-expand-md navbar-dark">
-    <!-- Portal Logo -->
-    {% with filename=logo|index:1 selectors=logo|index:2 targeturl=logo|index:3 targetType=logo|index:4 accessibility=logo|index:5 corstype=logo|index:6 visibility=logo|index:7 %}
-      {% if visibility == "True" %}
-      <a class="navbar-brand" href="{{ targeturl }}" target="{{ targettype }}">
-        <img class="portal-logo {{ selectors }}" src="{% static filename %}" crossorigin="{{ corstype }}" alt="{{ accessibility }}" >
-      </a>
-      {% endif %}
-    {% endwith %}
+  <!-- Portal Logo -->
+  {% with filename=logo|index:1 selectors=logo|index:2 targeturl=logo|index:3 targetType=logo|index:4 accessibility=logo|index:5 corstype=logo|index:6 visibility=logo|index:7 %}
+    {% if visibility == "True" %}
+    <a class="navbar-brand" href="{{ targeturl }}" target="{{ targettype }}">
+      <img class="portal-logo {{ selectors }}" src="{% static filename %}" crossorigin="{{ corstype }}" alt="{{ accessibility }}" >
+    </a>
+    {% endif %}
+  {% endwith %}
 
-    <!-- Navbar Accordian Toggle on Small Screens  -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExpandTarget" aria-controls="navbarsExpandTarget" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+  <!-- Navbar Accordian Toggle on Small Screens  -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExpandTarget" aria-controls="navbarsExpandTarget" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-    <!-- Navbar Links -->
-    <div class="collapse navbar-collapse" id="navbarsExpandTarget">
-        {# FAQ: If template were included with `only`, then it would NOT render `show_menu` #}
-        {% include "cms.html" with className="navbar-nav ml-auto" %}
-    </div>
+  <!-- Navbar Links -->
+  <div class="collapse navbar-collapse" id="navbarsExpandTarget">
+    {# FAQ: If template were included with `only`, then it would NOT render `show_menu` #}
+    {% include "nav_cms.html" with className="navbar-nav ml-auto" %}
+  </div>
 </nav>
 {% endwith %}
