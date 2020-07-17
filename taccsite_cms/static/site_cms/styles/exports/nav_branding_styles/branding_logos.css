@@ -9,38 +9,7 @@
   padding: 0 9%;
 }
 
-.nav-logo-border-left {
-  border-left: solid 2px #fff !important;
-  padding: 0 15px 0 !important;
-}
-
-.nav-logo-no-border-left {
-  padding: 0 16px 0 !important;
-}
-
-/* Singlerow Layout (v1) */
-
-.nav-logo-single {
-  float: left;
-  height: 30px;
-  margin: 7px 20px 0 0;
-  padding: 0;
-  border: none;
-}
-
-.nav-logo-nsf-single {
-  height: 40px;
-  margin: 2px 20px 0 0;
-}
-
-/* .nav-logo-tacc-single {} */
-/* .nav-logo-lccf-single {} */
-/* .nav-logo-utaustin-single {} */
-/* .nav-logo-uhawaii-single {} */
-/* .nav-logo-frontera-single {} */
-/* .nav-logo-tapisio-single {} */
-
-/* Doublerow Layout (v2) */
+/* Branding Selectors  */
 
 .branding-header {
   margin: 0;
@@ -50,62 +19,53 @@
   color: rgb(255, 255, 255);
   border-bottom: 1px solid #aaa;
 }
+.branding-header a {
+  display: inline-block;
+}
 
-.nav-logo-header {
+.branding-seperator {
+  width: 1px;
+  height: 100%;
+  border-left: solid 1px #fff;
+  margin: 0 15px;
+  vertical-align: middle;
+}
+
+.branding-logo {
   height: 30px;
   margin: 0;
   padding: 0;
   border: none;
 }
 
-/* .navbar-logos {} */
+/* Specific Brand Logo Selectors  */
 
-.nav-logo-double {
+.branding-nsf {
+  height: 35px;
+}
+
+.branding-tacc {
+  height: 24px;
+  margin: 3px 0 0 0;
+}
+
+.branding-utaustin {
+  height: 24px;
+  margin: 3px 0 0 0;
+}
+
+.branding-uhawaii {
+  height: 28px;
+}
+
+/* Logo Selectors  */
+
+.portal-logo {
   float: left;
-  /* height: 30px; */
   height: 40px;
   margin: 0;
   padding: 0;
   border: none;
-}
-
-.nav-logo-nsf-double {
-  height: 35px;
-  margin: 0 10px 0 0;
-}
-
-.nav-logo-tacc-double {
-  height: 24px;
-  margin: 3px 0 0 0;
-}
-
-.nav-logo-utaustin-double {
-  height: 24px;
-  margin: 3px 0 0 0;
-}
-
-.nav-logo-uhawaii-double {
-  height: 35px;
-}
-
-/* Branding Selectors  */
-
-.nav-logo-portal-double {
-  height: 40px;
-  margin: 0;
-}
-
-.nav-logo-lccf-double {
-  margin: 0;
-}
-
-.nav-logo-frontera-double {
-  margin: 0;
-}
-
-.nav-logo-tapisio-double {
-  margin: 0;
-  /* height: 40px; */
 }
 
 /* Media Query Selectors */

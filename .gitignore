@@ -19,11 +19,11 @@
 
 repo_name.var
 
-# Secrets
-secrets.py
+# Secrets and Customizations
 taccsite_cms/secrets.py
+*.custom.yml
 
-#Makefile var
+# Makefile var
 cms_name.var
 
 # Common IDEs
