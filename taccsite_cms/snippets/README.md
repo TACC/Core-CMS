@@ -33,7 +33,7 @@ It is __dangerous__ because:
 
 ## Why a Snippet Is Allowed
 
-1. Support time-sensitive changes to the CMS.*
-2. Support ad-hoc changes by designer who codes.*
+1. Support time-sensitive changes to the CMS.\*
+2. Support ad-hoc changes by designer who codes.\*
 
 \* Until those changes can be appropriately integrated into the repository.
