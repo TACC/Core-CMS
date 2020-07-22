@@ -20,7 +20,7 @@ _DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'taccsite',
         'USER': 'postgresadmin',
-        'PASSWORD': 'taccforever' ,   # Change for deployments.
+        'PASSWORD': 'taccforever' ,   # Change for deployment configuration.
         'HOST': 'localhost',                # 'localhost' in demo/local-dev/SAD CMS deployments, 'taccsite_postgres' in containerized portal deployments.
         'PORT': '5432',
     }
