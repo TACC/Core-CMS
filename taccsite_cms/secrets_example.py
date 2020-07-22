@@ -15,12 +15,16 @@ _ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost', '*']   # In development.
 # DATABASE SETTINGS
 ########################
 
-_DATABASE_ENGINE = 'django.db.backends.postgresql_psycopg2'
-_DATABASE_NAME = 'taccsite'
-_DATABASE_USERNAME = 'postgresadmin'
-_DATABASE_PASSWORD = 'taccforever'     # Change for live deployment.
-_DATABASE_HOST = 'taccsite_postgres'
-_DATABASE_PORT = '5432'
+_DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'taccsite',
+        'USER': 'postgresadmin',
+        'PASSWORD': 'taccforever' ,   # Change for deployments.
+        'HOST': 'localhost',                # 'localhost' in demo/local-dev/SAD CMS deployments, 'taccsite_postgres' in containerized portal deployments.
+        'PORT': '5432',
+    }
+}
 
 ########################
 # DJANGO CMS SETTINGS
