@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import taccsite_cms.default_secrets as default_secrets              # Default demo values (work for local dev out of the box)
-import taccsite_cms.secrets as secrets                                       # Prod/Local Dev values (overwrite the default values if present)
+import taccsite_cms.secrets as secrets                                       # Prod/Local Dev values (used instead of the default values if present)
 import logging
 import os
 
