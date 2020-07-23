@@ -12,15 +12,27 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
-
-import taccsite_cms.secrets_example as secrets             # Demo.
-# import taccsite_cms.secrets as secrets                        # Live/Dev.
+import taccsite_cms.default_secrets as default_secrets              # Default demo values (work for local dev out of the box)
+import taccsite_cms.secrets as secrets                                       # Prod/Local Dev values (overwrite the default values if present)
 import logging
 import os
 
 
 def gettext(s): return s
 
+def getsecrets():
+    has_secrets = "secrets" in globals()
+    new_secrets = {};
+    if has_secrets:
+        new_secrets = secrets
+        print('secrets found, using updated values')
+    else:
+        new_secrets = default_secrets
+        print('no secrets found, using demo values')
+    return new_secrets
+
+# Assign secret settings values.
+current_secrets = getsecrets()
 
 # Boolean check to turn on/off console logging statements.
 CONSOLE_LOG_ENABLED = False
@@ -54,17 +66,17 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = secrets._SECRET_KEY
+SECRET_KEY = current_secrets._SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = secrets._DEBUG
+DEBUG = current_secrets._DEBUG
 
 # Host Access.
-ALLOWED_HOSTS = secrets._ALLOWED_HOSTS
+ALLOWED_HOSTS = current_secrets._ALLOWED_HOSTS
 
 # Custom Branding.
-BRANDING = secrets._BRANDING
-LOGO  = secrets._LOGO
+BRANDING = current_secrets._BRANDING
+LOGO  = current_secrets._LOGO
 
 # Application definition
 ROOT_URLCONF = 'taccsite_cms.urls'
@@ -227,23 +239,12 @@ if LDAP_ENABLED:
     '''
     ''' End LDAP Auth Settings '''
 
-if getattr(secrets, '_CACHES', None):
-    CACHES = secrets._CACHES
+if getattr(current_secrets, '_CACHES', None):
+    CACHES = secrets._CACHES                        # Are we actually using this setting?
 
-DATABASES = {
-    'default': {
-        'ENGINE': secrets._DATABASE_ENGINE,
-        'NAME': secrets._DATABASE_NAME,
-        'USER': secrets._DATABASE_USERNAME,
-        'PASSWORD': secrets._DATABASE_PASSWORD,
-        'HOST': secrets._DATABASE_HOST,
-        'PORT': secrets._DATABASE_PORT,
-    }
-}
+DATABASES = current_secrets._DATABASES
 
-MIGRATION_MODULES = {
-
-}
+MIGRATION_MODULES = { }
 
 # SSL Setup.
 # SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
@@ -261,7 +262,7 @@ USE_L10N = True
 USE_TZ = True
 
 # DjangoCMS Setup.
-SITE_ID = secrets._SITE_ID
+SITE_ID = current_secrets._SITE_ID
 
 LANGUAGES = (
     # Customize this
@@ -286,7 +287,7 @@ CMS_LANGUAGES = {
     },
 }
 
-CMS_TEMPLATES = secrets._CMS_TEMPLATES
+CMS_TEMPLATES = current_secrets._CMS_TEMPLATES
 CMS_PERMISSION = True
 CMS_PLACEHOLDER_CONF = {}
 
@@ -322,11 +323,11 @@ DJANGOCMS_AUDIO_ALLOWED_EXTENSIONS = ['mp3', 'ogg', 'wav']
 # ]
 
 # Google Analytics.
-GOOGLE_ANALYTICS_PROPERTY_ID = secrets._GOOGLE_ANALYTICS_PROPERTY_ID
-GOOGLE_ANALYTICS_PRELOAD = secrets._GOOGLE_ANALYTICS_PRELOAD
+GOOGLE_ANALYTICS_PROPERTY_ID  = current_secrets._GOOGLE_ANALYTICS_PROPERTY_ID
+GOOGLE_ANALYTICS_PRELOAD = current_secrets._GOOGLE_ANALYTICS_PRELOAD
 
 # SETTINGS VARIABLE EXPORTS.
-# Use custom namespace instead of default settings.VARIABLE.
+# Use a custom namespace (using default settings.VARIABLE configuration)
 SETTINGS_EXPORT_VARIABLE_NAME = 'settings'
 
 # Exported settings.
