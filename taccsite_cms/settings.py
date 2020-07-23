@@ -240,13 +240,11 @@ if LDAP_ENABLED:
     ''' End LDAP Auth Settings '''
 
 if getattr(current_secrets, '_CACHES', None):
-    CACHES = secrets._CACHES
+    CACHES = secrets._CACHES                        # Are we actually using this setting?
 
 DATABASES = current_secrets._DATABASES
 
-MIGRATION_MODULES = {
-
-}
+MIGRATION_MODULES = { }
 
 # SSL Setup.
 # SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
