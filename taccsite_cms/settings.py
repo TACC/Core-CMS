@@ -12,8 +12,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
-import taccsite_cms.default_secrets as default_secrets              # Default demo values (work for local dev out of the box).
-import taccsite_cms.secrets as secrets                                       # Prod/Local Dev values.
+import taccsite_cms.default_secrets as default_secrets              # Default demo values (work for local dev out of the box)
+import taccsite_cms.secrets as secrets                                       # Prod/Local Dev values (overwrite the default values if present)
 import logging
 import os
 
@@ -288,7 +288,6 @@ CMS_LANGUAGES = {
 }
 
 CMS_TEMPLATES = current_secrets._CMS_TEMPLATES
-
 CMS_PERMISSION = True
 CMS_PLACEHOLDER_CONF = {}
 
@@ -328,7 +327,7 @@ GOOGLE_ANALYTICS_PROPERTY_ID  = current_secrets._GOOGLE_ANALYTICS_PROPERTY_ID
 GOOGLE_ANALYTICS_PRELOAD = current_secrets._GOOGLE_ANALYTICS_PRELOAD
 
 # SETTINGS VARIABLE EXPORTS.
-# Use custom namespace instead of default settings.VARIABLE.
+# Use a custom namespace (using default settings.VARIABLE configuration)
 SETTINGS_EXPORT_VARIABLE_NAME = 'settings'
 
 # Exported settings.
