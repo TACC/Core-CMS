@@ -12,24 +12,42 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
-import taccsite_cms.default_secrets as default_secrets              # Default demo values (work for local dev out of the box)
-import taccsite_cms.secrets as secrets                                       # Prod/Local Dev values (used instead of the default values if present)
+# import taccsite_cms.default_secrets as default_secrets              # Default demo values (work for local dev out of the box)
+# import taccsite_cms.secrets as secrets                                       # Prod/Local Dev values (used instead of the default values if present)
 import logging
 import os
 
 
 def gettext(s): return s
 
+
+# Import secret values dynamically without breaking portal.
 def getsecrets():
-    has_secrets = "secrets" in globals()
+    # Var to hold secret values once imported succesfully.
     new_secrets = {};
-    if has_secrets:
+    # Check for production secrets.
+    try:
+        import taccsite_cms.secrets as secrets                                       # Prod/Staging/Local Dev values (used instead of the default values if present)
         new_secrets = secrets
-        print('secrets found, using updated values')
-    else:
-        new_secrets = default_secrets
-        print('no secrets found, using demo values')
-    return new_secrets
+        print('Secrets found, using production values')
+    except ModuleNotFoundError as err:
+        # Error handling
+        print(err)
+        print('No production secrets found')
+        pass
+        # Check for the default secret values.
+        try:
+            import taccsite_cms.default_secrets as default_secrets            # Default demo values (works for basic local dev out of the box)
+            new_secrets = default_secrets
+            print('Default secrets found, using demo values')
+        except ModuleNotFoundError as err:
+            # Error handling
+            print(err)
+            print('No default secrets found')
+            print('Check that you have secrets available.')
+    finally:
+        # Return the correct secrets.
+        return new_secrets
 
 # Assign secret settings values.
 current_secrets = getsecrets()
