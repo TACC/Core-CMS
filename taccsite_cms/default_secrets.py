@@ -7,9 +7,16 @@
 
 _SECRET_KEY = 'replacethiswithareallysecureandcomplexsecretkeystring'
 _DEBUG = True       # False for Prod.
+_CONSOLE_LOG_ENABLED = False    # Boolean check to turn on/off console logging statements.
+
 # Specify allowed hosts or use an asterisk to allow any host and simplify the config.
 # _ALLOWED_HOSTS = ['hostname.tacc.utexas.edu', 'host.ip.v4.address', '0.0.0.0', 'localhost', '127.0.0.1']   # In production.
 _ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost', '*']   # In development.
+
+# Boolean check to see if ldap is being used by the site.
+# Ensure the django-auth-ldap==2.0.0 package is uncommented
+# in the requirements.txt file or installed if using ldap.
+_LDAP_ENABLED = False
 
 ########################
 # DATABASE SETTINGS
