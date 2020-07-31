@@ -16,6 +16,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 # import taccsite_cms.secrets as secrets                                       # Prod/Local Dev values (used instead of the default values if present)
 import logging
 import os
+import  taccsite_cms.portal_branding as branding                                             # Settings to configure the apperaance of the portal.
 
 
 def gettext(s): return s
@@ -95,8 +96,8 @@ DEBUG = current_secrets._DEBUG
 ALLOWED_HOSTS = current_secrets._ALLOWED_HOSTS
 
 # Custom Branding.
-BRANDING = current_secrets._BRANDING
-LOGO  = current_secrets._LOGO
+BRANDING = branding._BRANDING
+LOGO  = branding._LOGO
 
 # Application definition
 ROOT_URLCONF = 'taccsite_cms.urls'
