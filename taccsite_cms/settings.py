@@ -27,9 +27,10 @@ def getsecrets():
     new_secrets = {};
     # Check for production secrets.
     try:
+        print('Checking for secret production values')
         import taccsite_cms.secrets as secrets                                       # Prod/Staging/Local Dev values (used instead of the default values if present)
         new_secrets = secrets
-        print('Secrets found, using production values')
+        print('Production secrets found, using values')
     except ModuleNotFoundError as err:
         # Error handling
         print(err)
@@ -37,14 +38,15 @@ def getsecrets():
         pass
         # Check for the default secret values.
         try:
+            print('Checking for default secret values')
             import taccsite_cms.default_secrets as default_secrets            # Default demo values (works for basic local dev out of the box)
             new_secrets = default_secrets
-            print('Default secrets found, using demo values')
+            print('Default secrets found, using default values')
         except ModuleNotFoundError as err:
             # Error handling
             print(err)
             print('No default secrets found')
-            print('Check that you have secrets available.')
+            print('Check that you have a secrets.py or default_secrets.py')
     finally:
         # Return the correct secrets.
         return new_secrets
