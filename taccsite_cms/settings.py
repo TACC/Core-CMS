@@ -12,8 +12,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
-# import taccsite_cms.default_secrets as default_secrets              # Default demo values (work for local dev out of the box)
-# import taccsite_cms.secrets as secrets                                       # Prod/Local Dev values (used instead of the default values if present)
 import logging
 import os
 import  taccsite_cms.portal_branding as branding                                             # Settings to configure the apperaance of the portal.
@@ -24,8 +22,7 @@ def gettext(s): return s
 
 # Import secret values dynamically without breaking portal.
 def getsecrets():
-    # Var to hold secret values once imported succesfully.
-    new_secrets = {};
+    new_secrets = {};                                                                           # Var to hold secret values once imported succesfully.
     # Check for production secrets.
     try:
         print('Checking for secret production values')
@@ -49,23 +46,20 @@ def getsecrets():
             print('No default secrets found')
             print('Check that you have a secrets.py or default_secrets.py')
     finally:
-        # Return the correct secrets.
+        # Return the secret values if they are found.
         return new_secrets
 
 # Assign secret settings values.
 current_secrets = getsecrets()
 
 # Boolean check to turn on/off console logging statements.
-CONSOLE_LOG_ENABLED = False
+CONSOLE_LOG_ENABLED = current_secrets._CONSOLE_LOG_ENABLED
 
 # Verifying console logging is on.
 if CONSOLE_LOG_ENABLED:
     print("--> Variable CONSOLE_LOG_ENABLED: ", CONSOLE_LOG_ENABLED)
 
-# Boolean check to see if ldap is being used by the site.
-# Ensure the django-auth-ldap==2.0.0 package is uncommented
-# in the requirements.txt file or installed if using ldap.
-LDAP_ENABLED = False
+LDAP_ENABLED = current_secrets._LDAP_ENABLED
 
 if CONSOLE_LOG_ENABLED:
     print("--> Variable LDAP_ENABLED: ", LDAP_ENABLED)
