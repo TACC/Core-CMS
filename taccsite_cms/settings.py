@@ -12,39 +12,53 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
-import taccsite_cms.default_secrets as default_secrets              # Default demo values (work for local dev out of the box)
-import taccsite_cms.secrets as secrets                                       # Prod/Local Dev values (used instead of the default values if present)
 import logging
 import os
 
 
 def gettext(s): return s
 
+
+# Import secret values dynamically without breaking portal.
 def getsecrets():
-    has_secrets = "secrets" in globals()
-    new_secrets = {};
-    if has_secrets:
+    new_secrets = {};                                                                           # Var to hold secret values once imported succesfully.
+    # Check for production secrets.
+    try:
+        print('Checking for secret production values')
+        import taccsite_cms.secrets as secrets                                       # Prod/Staging/Local Dev values (used instead of the default values if present)
         new_secrets = secrets
-        print('secrets found, using updated values')
-    else:
-        new_secrets = default_secrets
-        print('no secrets found, using demo values')
-    return new_secrets
+        print('Production secrets found, using values')
+    except ModuleNotFoundError as err:
+        # Error handling
+        print(err)
+        print('No production secrets found')
+        pass
+        # Check for the default secret values.
+        try:
+            print('Checking for default secret values')
+            import taccsite_cms.default_secrets as default_secrets            # Default demo values (works for basic local dev out of the box)
+            new_secrets = default_secrets
+            print('Default secrets found, using default values')
+        except ModuleNotFoundError as err:
+            # Error handling
+            print(err)
+            print('No default secrets found')
+            print('Check that you have a secrets.py or default_secrets.py')
+    finally:
+        # Return the secret values if they are found.
+        return new_secrets
 
 # Assign secret settings values.
 current_secrets = getsecrets()
 
 # Boolean check to turn on/off console logging statements.
-CONSOLE_LOG_ENABLED = False
+CONSOLE_LOG_ENABLED = current_secrets._CONSOLE_LOG_ENABLED
 
 # Verifying console logging is on.
 if CONSOLE_LOG_ENABLED:
     print("--> Variable CONSOLE_LOG_ENABLED: ", CONSOLE_LOG_ENABLED)
 
-# Boolean check to see if ldap is being used by the site.
-# Ensure the django-auth-ldap==2.0.0 package is uncommented
-# in the requirements.txt file or installed if using ldap.
-LDAP_ENABLED = False
+LDAP_ENABLED = current_secrets._LDAP_ENABLED
 
 if CONSOLE_LOG_ENABLED:
     print("--> Variable LDAP_ENABLED: ", LDAP_ENABLED)
