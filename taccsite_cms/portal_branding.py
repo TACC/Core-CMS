@@ -5,11 +5,13 @@ Additional Branding and Portal Logos for Partner & Affiliate Organizations
 
 Usage:
 
-- For each logo used in the templating, add new settings values (see example below).
-- New branding settings must be added to the _BRANDING list.
-- The order of the _BRANDING list determines the rendering order of the elements.
-- The portal _ANORG_LOGO settings must be assigned to the _LOGO variable.
-- The selector styles for new items set in the configuration objects should exist in the portal css.
+- For each beand used in the templating, add corresponding new settings values to this file  (see example below).
+- New branding settings must be added to the _BRANDING list to render in the template.
+- The order of the _BRANDING list determines the rendering order of the elements in the template.
+- The portal logo setting must be assigned to the _LOGO variable to render in the template.
+- The following VALUES for new elements set in the configuration object must exist in the portal css as well:
+    - Any new selectors or css styles (add to /taccsite_cms/static/site_cms/styles/exports/branding_logos.css)
+    - Image files being references (add to /taccsite_cms/static/site_cms/images/org_logos)
 
 Values to populate:
 
@@ -54,17 +56,6 @@ _ANORG_LOGO = [
 ########################
 # BRANDING.
 
-_NSF_BRANDING = [
-    "nsf",
-    "site_cms/images/org_logos/nsf-white.png",
-    "branding-nsf",
-    "https://www.nsf.gov/",
-    "_blank",
-    "NSF Logo",
-    "anonymous",
-    "True"
-]
-
 _TACC_BRANDING = [
     "tacc",
     "site_cms/images/org_logos/tacc-white.png",
@@ -87,21 +78,19 @@ _UTEXAS_BRANDING =  [
     "True"
 ]
 
-_UHAWAII_BRANDING = [
-    "uhawaii",
-    "site_cms/images/org_logos/hawaii-header-trimmed.png",
-    "branding-uhawaii",
-    "https://www.hawaii.edu/",
+_NSF_BRANDING = [
+    "nsf",
+    "site_cms/images/org_logos/nsf-white.png",
+    "branding-nsf",
+    "https://www.nsf.gov/",
     "_blank",
-    "University of Hawaii Logo",
+    "NSF Logo",
     "anonymous",
     "True"
 ]
 
 _BRANDING = [ _TACC_BRANDING, _UTEXAS_BRANDING ]        # Default TACC Portal.
 # _BRANDING = [ _NSF_BRANDING, _TACC_BRANDING, _UTEXAS_BRANDING ]       # NSF Funded TACC Portal.
-# _BRANDING = [ _TACC_BRANDING, _UTEXAS_BRANDING, _UHAWAII_BRANDING ]        # TACC Portal w/ Specific Partners.
-# _BRANDING = [ _NSF_BRANDING, _TACC_BRANDING, _UTEXAS_BRANDING, _UHAWAII_BRANDING ]        # NSF Funded Portal w/ Specific Partners.
 
 ########################
 # LOGOS.
@@ -113,39 +102,6 @@ _PORTAL_LOGO =  [
     "/",
     "_self",
     "Portal Logo",
-    "anonymous",
-    "True"
-]
-
-_LCCF_LOGO = [
-    "lccf",
-    "site_cms/images/org_logos/lccf-white.png",
-    "",
-    "/",
-    "_self",
-    "LCCF Logo",
-    "anonymous",
-    "True"
-]
-
-_TAPIS_LOGO =  [
-    "tapis",
-    "site_cms/images/org_logos/tapis-logo-navbar.png",
-    "",
-    "/",
-    "_self",
-    "Tapis Logo",
-    "anonymous",
-    "True"
-]
-
-_TEXASCALE_LOGO =  [
-    "texascale",
-    "site_cms/images/org_logos/texascale-wordmark.png",
-    "",
-    "/",
-    "_self",
-    "Texascale Logo",
     "anonymous",
     "True"
 ]
