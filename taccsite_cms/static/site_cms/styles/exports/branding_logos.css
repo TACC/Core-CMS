@@ -16,9 +16,10 @@
   padding: 0.4rem 0 0.4rem;
   text-align: center;
   background-color: rgb(51, 51, 51);
-  color: rgb(255, 255, 255);
+  color: #fff;
   border-bottom: 1px solid #aaa;
 }
+
 .branding-header a {
   display: inline-block;
 }
@@ -52,10 +53,6 @@
 .branding-utaustin {
   height: 24px;
   margin: 3px 0 0 0;
-}
-
-.branding-uhawaii {
-  height: 28px;
 }
 
 /* Logo Selectors  */
