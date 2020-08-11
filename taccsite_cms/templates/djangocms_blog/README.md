@@ -10,3 +10,9 @@ To learn more, read the docs:
 - [Settings](https://djangocms-blog.readthedocs.io/en/latest/settings.html)
 
 [^1]: The origin of the templates is [`nephila/djangocms-blog`:`/djangocms_blog/templates/djangocms_blog`](https://github.com/nephila/djangocms-blog/tree/7e147745e08ecf75630ad0df70d267e8515166cc/djangocms_blog/templates/djangocms_blog).
+
+## Notes
+
+For user/admin guidance on using DjangoCMS Blog, see [CMS Blog & News][cms-blog-news].
+
+[cms-blog-news]: https://confluence.tacc.utexas.edu/x/EwDeCg
