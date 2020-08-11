@@ -9,8 +9,4 @@ To learn more, read the docs:
 - [Templates](https://djangocms-blog.readthedocs.io/en/latest/features/templates.html)
 - [Settings](https://djangocms-blog.readthedocs.io/en/latest/settings.html)
 
-[^1]: The origin of the templates is [`nephila/djangocms-blog`:`/djangocms_blog/templates/djangocms_blog`](https://github.com/nephila/djangocms-blog/tree/1.1.1/djangocms_blog/templates/djangocms_blog).
-
-## Known Issues
-
-- The `{% block meta %}` block of code in `base.html` _seems_ ineffectual; [#613](https://github.com/nephila/djangocms-blog/issues/613)
+[^1]: The origin of the templates is [`nephila/djangocms-blog`:`/djangocms_blog/templates/djangocms_blog`](https://github.com/nephila/djangocms-blog/tree/7e147745e08ecf75630ad0df70d267e8515166cc/djangocms_blog/templates/djangocms_blog).
