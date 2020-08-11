@@ -13,6 +13,6 @@ To learn more, read the docs:
 
 ## Notes
 
-For user/admin guidance on using DjangoCMS Blog, see [CMS Blog & News][cms-blog-news].
+For user/admin guidance on using DjangoCMS Blog, see [User Guide - Blog & News][cms-admin-blog-news].
 
-[cms-blog-news]: https://confluence.tacc.utexas.edu/x/EwDeCg
+[cms-admin-blog-news]: https://confluence.tacc.utexas.edu/x/EwDeCg
