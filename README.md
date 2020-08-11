@@ -15,12 +15,9 @@ Skip configuration; you may use the default configuration.
 1. Copy `docker-compose.yml` as new `docker-compose.custom.yml` file, and in the new file:
     - Replace any `taccsite_` string partial with a unique identifier.
     - Replace the first number in `ports` value with a unique port.
-2. Copy `taccsite_cms/secrets_example.py` as new `taccsite_cms/secrets.py` file, and in the new file:
-    - Change `_DATABASE_HOST` to equal `docker-compose.custom.yml`'s `postgres`: `hostname`.
-3. Edit `taccsite_cms/settings.py` to load new `taccsite_cms/secrets.py`:
-    - Comment out `import taccsite_cms.secrets_example …` line.
-    - Uncomment `import taccsite_cms.secrets …` line.
-4. Run any `docker-compose` with file argument, e.g.:
+2. Copy `taccsite_cms/default_secrets.py` as new `taccsite_cms/secrets.py` file, and in the new file:
+    - Change `_DATABASES`:`default`:`HOST` to equal `docker-compose.custom.yml`'s `postgres`:`hostname`.
+3. Run any `docker-compose` with file argument, e.g.:
 
     ```bash
     docker-compose -f docker-compose.custom.yml …
