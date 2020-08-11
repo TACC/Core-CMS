@@ -27,7 +27,11 @@ django-treebeard==4.3
 djangocms-admin-style==1.4.0
 djangocms-attributes-field==1.1.0
 djangocms-bootstrap4==1.5.0
-djangocms-blog==1.1.1
+# Require the most recent TACC-tested commit with TACC-desired fixes (in liue of 1.2.0)
+# SEE: https://github.com/nephila/djangocms-blog/pull/626
+# SEE: https://github.com/nephila/djangocms-blog/issues/614
+# djangocms-blog==1.1.1
+-e git+https://github.com/nephila/djangocms-blog.git@1e51a42fdfe91a26624a9f74c421bfc049d20c97#egg=djangocms-blog
 djangocms-page-meta==0.10.0
 djangocms-column==1.9.0
 djangocms-file==2.3.0
