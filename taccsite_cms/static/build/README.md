@@ -1,6 +1,6 @@
 # TACC CMS - Minified & Processed Files
 
-DO NOT ADD STYLESHEETS HERE!
+DO NOT ADD SOURCE FILES HERE!
 
 These files are the minified and processed output from the `npm run build` step.
 
@@ -11,5 +11,5 @@ All stylesheets are built
 - __from__ `../site_cms/__FILE_TYPE__/exports/*` source code entry point files, and populated
 - __to__ `../build/__FILE_TYPE__/*` as matching build artifacts.
 
-Add new stylesheets into that directory, NEVER here!
-They will not be tracked in the repository and therefore unavailable to the portal.
+Add new stylesheets into that directory, __NEVER__ this directory!
+These will __not__ be tracked in the repository and therefore unavailable to the portal.

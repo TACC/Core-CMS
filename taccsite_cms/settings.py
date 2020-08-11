@@ -12,31 +12,64 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
+import logging
+import os
+
+
+def gettext(s): return s
+
+
+# Import secret values dynamically without breaking portal.
+def getsecrets():
+    new_secrets = {};                                                                           # Var to hold secret values once imported succesfully.
+    # Check for production secrets.
+    try:
+        print('Checking for secret production values')
+        import taccsite_cms.secrets as secrets                                       # Prod/Staging/Local Dev values (used instead of the default values if present)
+        new_secrets = secrets
+        print('Production secrets found, using values')
+    except ModuleNotFoundError as err:
+        # Error handling
+        print(err)
+        print('No production secrets found')
+        pass
+        # Check for the default secret values.
+        try:
+            print('Checking for default secret values')
+            import taccsite_cms.default_secrets as default_secrets            # Default demo values (works for basic local dev out of the box)
+            new_secrets = default_secrets
+            print('Default secrets found, using default values')
+        except ModuleNotFoundError as err:
+            # Error handling
+            print(err)
+            print('No default secrets found')
+            print('Check that you have a secrets.py or default_secrets.py')
+    finally:
+        # Return the secret values if they are found.
+        return new_secrets
+
+# Assign secret settings values.
+current_secrets = getsecrets()
+
 # Boolean check to turn on/off console logging statements.
-CONSOLE_LOG_ENABLED = False
+CONSOLE_LOG_ENABLED = current_secrets._CONSOLE_LOG_ENABLED
+
 # Verifying console logging is on.
 if CONSOLE_LOG_ENABLED:
     print("--> Variable CONSOLE_LOG_ENABLED: ", CONSOLE_LOG_ENABLED)
 
-# Boolean check to see if ldap is being used by the site.
-# Ensure the django-auth-ldap==2.0.0 package is uncommented
-# in the requirements.txt file or installed if using ldap.
-LDAP_ENABLED = False
+LDAP_ENABLED = current_secrets._LDAP_ENABLED
+
 if CONSOLE_LOG_ENABLED:
     print("--> Variable LDAP_ENABLED: ", LDAP_ENABLED)
-
-import os  # isort:skip
-import logging
-import taccsite_cms.secrets as secrets
 
 if LDAP_ENABLED:
     import ldap
     from django_auth_ldap.config \
         import LDAPSearch, GroupOfNamesType
 
-def gettext(s): return s
-
 DATA_DIR = os.path.dirname(os.path.dirname(__file__))
+
 if CONSOLE_LOG_ENABLED:
     print("--> Variable DATA_DIR: ", DATA_DIR)
 
@@ -47,15 +80,17 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = secrets._SECRET_KEY
+SECRET_KEY = current_secrets._SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = secrets._DEBUG
+DEBUG = current_secrets._DEBUG
 
-ALLOWED_HOSTS = secrets._ALLOWED_HOSTS
+# Host Access.
+ALLOWED_HOSTS = current_secrets._ALLOWED_HOSTS
 
-# Custom Navigation Template.
-NAVIGATION_TEMPLATE = secrets._NAVIGATION_TEMPLATE
+# Custom Branding.
+BRANDING = current_secrets._BRANDING
+LOGO  = current_secrets._LOGO
 
 # Application definition
 ROOT_URLCONF = 'taccsite_cms.urls'
@@ -64,6 +99,7 @@ ROOT_URLCONF = 'taccsite_cms.urls'
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(DATA_DIR, 'static')
+
 if CONSOLE_LOG_ENABLED:
     print("--> Variable STATIC_ROOT: ", STATIC_ROOT)
 
@@ -71,11 +107,14 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'taccsite_cms', 'static'),
     # os.path.join(BASE_DIR, 'taccsite_cms', 'en', 'static'),
 )
+
 if CONSOLE_LOG_ENABLED:
     print("--> Variable STATICFILES_DIRS: ", STATICFILES_DIRS)
 
+# User Uploaded Files Location.
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(DATA_DIR, 'media')
+
 if CONSOLE_LOG_ENABLED:
     print("--> Variable MEDIA_ROOT: ", MEDIA_ROOT)
 
@@ -83,7 +122,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'taccsite_cms', 'templates'), ],
-
+        # 'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.contrib.auth.context_processors.auth',
@@ -99,6 +138,9 @@ TEMPLATES = [
                 'cms.context_processors.cms_settings',
                 'django_settings_export.settings_export'
             ],
+            'libraries': {
+                'custom_portal_settings': 'taccsite_cms.templatetags.custom_portal_settings',
+            },
             'loaders': [
                 'django.template.loaders.filesystem.Loader',
                 'django.template.loaders.app_directories.Loader',
@@ -107,6 +149,7 @@ TEMPLATES = [
         },
     },
 ]
+
 if CONSOLE_LOG_ENABLED:
     print("--> Variable TEMPLATES: ", TEMPLATES)
 
@@ -210,23 +253,12 @@ if LDAP_ENABLED:
     '''
     ''' End LDAP Auth Settings '''
 
-if getattr(secrets, '_CACHES', None):
-    CACHES = secrets._CACHES
+if getattr(current_secrets, '_CACHES', None):
+    CACHES = secrets._CACHES                        # Are we actually using this setting?
 
-DATABASES = {
-    'default': {
-        'ENGINE': secrets._DATABASE_ENGINE,
-        'NAME': secrets._DATABASE_NAME,
-        'USER': secrets._DATABASE_USERNAME,
-        'PASSWORD': secrets._DATABASE_PASSWORD,
-        'HOST': secrets._DATABASE_HOST,
-        'PORT': secrets._DATABASE_PORT,
-    }
-}
+DATABASES = current_secrets._DATABASES
 
-MIGRATION_MODULES = {
-
-}
+MIGRATION_MODULES = { }
 
 # SSL Setup.
 # SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
@@ -244,7 +276,7 @@ USE_L10N = True
 USE_TZ = True
 
 # DjangoCMS Setup.
-SITE_ID = secrets._SITE_ID
+SITE_ID = current_secrets._SITE_ID
 
 LANGUAGES = (
     # Customize this
@@ -269,7 +301,7 @@ CMS_LANGUAGES = {
     },
 }
 
-CMS_TEMPLATES = secrets._CMS_TEMPLATES
+CMS_TEMPLATES = current_secrets._CMS_TEMPLATES
 CMS_PERMISSION = True
 CMS_PLACEHOLDER_CONF = {}
 
@@ -284,6 +316,15 @@ THUMBNAIL_PROCESSORS = (
 DJANGOCMS_PICTURE_NESTING = True
 DJANGOCMS_PICTURE_RESPONSIVE_IMAGES = True
 DJANGOCMS_PICTURE_RATIO = 1.618
+
+# FILE UPLOAD VALUES MUST BE SET!
+# Set in correlation with the `client_max_body_size    20m;` value in /etc/nginx/proxy.conf.
+# A problem comes from Django's usage of tempfile, which enforces new files to have permission
+# 0600 and Django doesn't fix it unless FILE_UPLOAD_PERMISSIONS is defined.
+# A tempfile is used when upload exceeds FILE_UPLOAD_MAX_MEMORY_SIZE.
+FILE_UPLOAD_PERMISSIONS = 0o644
+FILE_UPLOAD_MAX_MEMORY_SIZE = 20000000 # 20MB
+
 # Custom picture templates - if required.
 # DJANGOCMS_PICTURE_TEMPLATES = [
 #     ('background', _('Background image')), # Need to design these first!
@@ -296,21 +337,23 @@ DJANGOCMS_AUDIO_ALLOWED_EXTENSIONS = ['mp3', 'ogg', 'wav']
 # ]
 
 # Google Analytics.
-GOOGLE_ANALYTICS_PROPERTY_ID = secrets._GOOGLE_ANALYTICS_PROPERTY_ID
-GOOGLE_ANALYTICS_PRELOAD = secrets._GOOGLE_ANALYTICS_PRELOAD
+GOOGLE_ANALYTICS_PROPERTY_ID  = current_secrets._GOOGLE_ANALYTICS_PROPERTY_ID
+GOOGLE_ANALYTICS_PRELOAD = current_secrets._GOOGLE_ANALYTICS_PRELOAD
 
 # SETTINGS VARIABLE EXPORTS.
-# Use custom namespace instead of default settings.VARIABLE.
-SETTINGS_EXPORT_VARIABLE_NAME = 'portal_settings'
+# Use a custom namespace (using default settings.VARIABLE configuration)
+SETTINGS_EXPORT_VARIABLE_NAME = 'settings'
+
 # Exported settings.
 SETTINGS_EXPORT = [
     'DEBUG',
-    'NAVIGATION_TEMPLATE',
+    'BRANDING',
+    'LOGO',
     'GOOGLE_ANALYTICS_PROPERTY_ID',
     'GOOGLE_ANALYTICS_PRELOAD'
 ]
 
 if CONSOLE_LOG_ENABLED:
-    print(SETTINGS_EXPORT[1])
-    print(SETTINGS_EXPORT[2])
-    print(SETTINGS_EXPORT[3])
+    print("--> Variable SETTINGS_EXPORT: ")
+    for setting in SETTINGS_EXPORT:
+        print(setting)

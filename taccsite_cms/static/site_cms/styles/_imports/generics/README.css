@@ -1,0 +1,24 @@
+/* DO NOT ADD STYLES HERE; ADD THEM INSIDE STYLESHEETS IN THIS DIRECTORY */
+
+/*
+Generics
+
+Generic styles are very high-level, far-reaching styles. They are seldom modified.
+Examples are reset, normalize, box-sizing styles, and browser fixes.
+
+Reference:
+
+- [Creative Bloq: Manage Large CSS Projects With ITCSS](https://www.creativebloq.com/web-design/manage-large-css-projects-itcss-101517528) (find "Generic")
+
+Rules:
+
+- Classes and IDs must not be styled.
+- Opinionated high-level styles may be here.
+- Element tags may be styled.
+- Pseudo classes may be styled.
+- Pseudo elements may be styled.
+
+Weight: 3
+
+Styleguide Generics
+*/

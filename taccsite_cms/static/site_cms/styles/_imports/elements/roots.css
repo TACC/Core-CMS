@@ -1,12 +1,17 @@
 /*
 Root Elements
 
-Elements that represent the root of a document (`<html>`) or document content (`<body>`).
+Elements that represent the root of a document (`<html>`) or of document content (`<body>`).
 
 Reference:
 
-- [HTML element reference: Main root | MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Main_root)
-- [HTML element reference: Sectioning root | MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Sectioning_root)
+- [MDN: HTML element reference: Main root](https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Main_root)
+- [MDN: HTML element reference: Sectioning root](https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Sectioning_root)
+
+Markup:
+<body>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultricies dapibus sapien cursus luctus. Vivamus pulvinar diam sed tellus fringilla condimentum.</p>
+</body>
 
 Styleguide Elements.Roots
 */
