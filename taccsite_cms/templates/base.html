@@ -11,7 +11,9 @@
   <title>{% block title %} This is my new project home page {% endblock title %}</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  {% include 'djangocms_page_meta/meta.html' with meta=page_meta %}
+  {% block meta %}
+    {% include 'djangocms_page_meta/meta.html' with meta=page_meta %}
+  {% endblock meta %}
 
   <!-- External Styles. -->
   <link rel="icon" href="{% static 'site_cms/images/favicons/favicon.ico' %}" type="image/x-icon" />
@@ -46,6 +48,7 @@
 
   <!-- Page content. -->
   <div id="cms-content" class="o-site o-site__body">
+    {% include "debug.html" %}
     <div id="content-wrap" class="o-site__body">
       <!-- This block used regardless. -->
       {% block content %}
