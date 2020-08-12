@@ -340,6 +340,12 @@ BLOG_PLUGIN_TEMPLATE_FOLDERS = (
     ('plugins/default', 'Default template'),    # i.e. `templates/djangocms_blog/plugins/default/`
     ('plugins/default-clone', 'Clone of default template'),  # i.e. `templates/djangocms_blog/plugins/default-clone/`
 )
+# Change default values for the auto-setup `BlogConfig`
+# SEE: https://github.com/nephila/djangocms-blog/issues/629
+# BLOG_AUTO_SETUP: True
+# BLOG_AUTO_HOME_TITLE: 'Home'
+# BLOG_AUTO_BLOG_TITLE: 'News'
+# BLOG_AUTO_APP_TITLE: 'News'
 
 DJANGOCMS_PICTURE_NESTING = True
 DJANGOCMS_PICTURE_RESPONSIVE_IMAGES = True
