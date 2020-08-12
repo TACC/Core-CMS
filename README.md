@@ -179,12 +179,6 @@ __For blog articles__, this allows `djangocms_blog` app to output `<meta>` tags 
 
 This app supports (and integrates well with) [several features vital for a site with a blog or news](https://djangocms-blog.readthedocs.io/en/latest/features/index.html).
 
-#### Known Issues
-
-- For a new article, the "Text" (not "Abstract") field content is **not** shown on the new article; [#607](https://github.com/nephila/djangocms-blog/issues/607)
-- Some blog plugins do **not** show "Plugin Template" option (if two or more sets are offerred); [#595](https://github.com/nephila/djangocms-blog/issues/595)
-- The "Tags" field requires a comma key press, not an Enter key press, to assign a tag. (We may be able to add instruction via cusotmizing the app template.)
-
 #### Troubleshooting
 
 ##### NoReverseMatch: 'Blog' is not a registered namespace
