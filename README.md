@@ -105,12 +105,14 @@ and populated
 
 - `…/styles` (CSS stylesheets)
 
-### Setup
+### Build
 
-1. [Install][npm-cli-install] the dependencies:
+1. [Start a bash session][docker-exec-bash] into the CMS container:
+
+    > __Notice__: If you are using a `docker-compose.custom.yml`, then replace this command's `taccsite_cms` with that file's `cms`: `hostname`.
 
     ```bash
-    npm install
+    docker exec -it taccsite_cms /bin/bash
     ```
 
 2. Build the static dependencies:
@@ -133,7 +135,7 @@ and populated
 ### Usage
 
 1. Make changes to source files.
-2. Compile changes to source via:
+2. Build changes from source via:
     - (manually, for any ready changes) `npm run build`
     - (automatically, on source change) `npm run watch`
 3. Confirm that the build output has changed.
