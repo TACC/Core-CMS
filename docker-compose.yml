@@ -9,9 +9,7 @@ services:
       - .:/code
     ports:
       - 8000:8000
-    command: >
-      sh -c "npm ci && npm run build &&
-             python3 manage.py runserver 0.0.0.0:8000"
+    command: ['python3', 'manage.py', 'runserver', '0.0.0.0:8000']
     container_name: taccsite_cms
     hostname: taccsite_cms
     networks:
