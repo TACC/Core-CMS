@@ -107,7 +107,7 @@ and populated
 
 ### Build
 
-Resources are already built every time a Docker container is started via `docker-compose`. If you need to _either_ manually re-build _or_ re-build on source file edit, then follow these steps.
+Resources are already built every time a CMS Docker container is built. If you need to _either_ manually re-build _or_ re-build on source file edit, then follow these steps.
 
 1. [Start a bash session][docker-exec-bash] into the CMS container:
 
