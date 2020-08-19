@@ -121,6 +121,8 @@ and populated
     npm run build
     ```
 
+    _This is automatically performed every time a docker is started via `docker-compose`._
+
 3. (Optional) [Watch][npm-pkg-watch] files, and re-build when source files change:
 
     ```bash

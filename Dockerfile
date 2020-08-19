@@ -19,6 +19,3 @@ WORKDIR /code
 
 # install python packages
 RUN pip3 install -r requirements.txt
-
-# build assets
-RUN npm ci && npm run build
