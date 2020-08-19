@@ -107,6 +107,8 @@ and populated
 
 ### Build
 
+Resources are already built every time a Docker container is started via `docker-compose`. If you need to _either_ manually re-build _or_ re-build on source file edit, then follow these steps.
+
 1. [Start a bash session][docker-exec-bash] into the CMS container:
 
     > __Notice__: If you are using a `docker-compose.custom.yml`, then replace this command's `taccsite_cms` with that file's `cms`: `hostname`.
@@ -115,13 +117,13 @@ and populated
     docker exec -it taccsite_cms /bin/bash
     ```
 
-2. Build the static dependencies:
+    _It is __not__ necessary to run the next commands in the Docker container, but it does completely __isolate development__ and __mirror production__ representation._
+
+2. Build static resources:
 
     ```bash
     npm run build
     ```
-
-    _This is automatically performed every time a docker is started via `docker-compose`._
 
 3. (Optional) [Watch][npm-pkg-watch] files, and re-build when source files change:
 
@@ -143,7 +145,7 @@ and populated
 3. Confirm that the build output has changed.
 
 > __Remember__:
-> Templates can load two kinds of static files.
+> Templates can load two kinds of static resources.
 >
 > - Those that _need the build step_ __must__ be loaded from `…/build`.
 > - Those that _need __no__ build step_ __must__ be loaded from `…/site_cms`.
