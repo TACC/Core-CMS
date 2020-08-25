@@ -3,13 +3,13 @@
 {% else %}
   {% load cms_tags staticfiles menu_tags sekizai_tags meta page_meta_tags cache i18n %}
   {% page_meta request.current_page as page_meta %}
-{% endif }
+{% endif %}
 <!doctype html>
 <html>
 
 {% if settings.FEATURES.blog %}
 <head {% meta_namespaces %}>{% else %}<head>
-{% endif }
+{% endif %}
   <!-- Google Analytics partial. -->
   {% include 'analytics.html' %}
 
@@ -21,7 +21,7 @@
     {% block meta %}
       {% include 'djangocms_page_meta/meta.html' with meta=page_meta %}
     {% endblock meta %}
-  {% endif }
+  {% endif %}
 
   <!-- External Styles. -->
   <link rel="icon" href="{% static 'site_cms/images/favicons/favicon.ico' %}" type="image/x-icon" />
@@ -31,7 +31,7 @@
   <link id="css-site-header" rel="stylesheet" href="{% static 'build/styles/site.header.css' %}">
   {% if settings.FEATURES.blog %}
     <link id="css-site-blog" rel="stylesheet" href="{% static 'build/styles/site.blog.css' %}">
-  {% endif }
+  {% endif %}
 
   <!-- Web Fonts. -->
   <link id="css-site-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
