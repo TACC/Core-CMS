@@ -20,8 +20,9 @@ urlpatterns = [
 urlpatterns += [
     url(r'^admin/', admin.site.urls),  # NOQA
 
-    # Support `taggit_autosuggest` (from `djangocms-blog`)
-    url(r'^taggit_autosuggest/', include('taggit_autosuggest.urls')),
+    if settings.FEATURES['blog']:
+        # Support `taggit_autosuggest` (from `djangocms-blog`)
+        url(r'^taggit_autosuggest/', include('taggit_autosuggest.urls')),
 
     url(r'^', include('cms.urls')),
 ]
