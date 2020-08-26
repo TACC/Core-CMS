@@ -1,8 +1,8 @@
 {% extends CMS_TEMPLATE %}
 
-{# A certain code block should be here, but it would cause a bug. #}
-{# SEE: ./post_detail.html #}
-{# SEE: https://github.com/nephila/djangocms-blog/issues/613 #}
+{# FAQ: To ensure Blog page shows metadata, template logic was removed #}
+{# SEE: https://github.com/nephila/djangocms-blog/issues/613#issuecomment-680990375 #}
+{% include "meta/meta.html" %}
 
 {% block content %}
 <div class="app app-blog">
