@@ -66,13 +66,13 @@ Usage:
 - For baked-in features, update settings per website (see example below).
 - For optional features, enable features per website via _FEATURES list.
 
-Baked-In Feature Example.
+Baked-In Feature Setting Example.
 
 # Desctipion of feature X
 # SEE: [link to user/div guide about feature]
 _FEATURE_A = "someValue"
 
-Optional Feature Example.
+Optional Feature Toggle Example.
 
 _FEATURES = {
     # Desctipion of feature X
