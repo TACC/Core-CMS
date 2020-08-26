@@ -4,14 +4,6 @@
 {% block canonical_url %}<link rel="canonical" href="{{ meta.url }}"/>{% endblock canonical_url %}
 {% block title %}{{ post.get_title }}{% endblock %}
 
-{# FAQ: To ensure Blog page shows metadata, template logic was added from `./base.html` #}
-{# SEE: https://github.com/nephila/djangocms-blog/issues/613#issuecomment-680990375 #}
-{% if meta %}
-    {% block meta %}
-        {% include "meta/meta.html" with meta=meta %}
-    {% endblock meta %}
-{% endif %}
-
 {% block content_blog %}{% spaceless %}
 <article id="post-{{ post.slug }}" class="post-item post-detail">
     <header>
