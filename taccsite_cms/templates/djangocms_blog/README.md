@@ -1,8 +1,8 @@
 # TACC CMS - Templates - Plugins - DjangoCMS Blog
 
-The templates in this directory[^1] are used by _both_ the `djangocms_blog` app _and_ its plugins (that CMS users can use to add blog content to pages) in the `plugins/` directory.
+The templates in this directory[^1] are used by _both_ the `djangocms_blog` app _and_ its plugins (that CMS users can use to add blog content to pages) in the `./plugins` directory.
 
-More than one set of `plugins/` may exist, by _both_ adding a child directory within the `plugins/` directory _and_ updating the `BLOG_PLUGIN_TEMPLATE_FOLDERS` setting (in `settings.py`).
+More than one set of `./plugins` may exist, by _both_ adding a child directory within the `./plugins` directory _and_ updating the `BLOG_PLUGIN_TEMPLATE_FOLDERS` setting (in `settings.py`).
 
 To learn more, read the docs:
 
