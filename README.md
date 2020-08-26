@@ -161,39 +161,6 @@ Client-side and server-side code may be formatted via [EditorConfig][editorconfi
 [editorconfig]: https://editorconfig.org/
 
 
-## CMS Applications
-
-### `djangocms-page-meta`
-
-__For CMS pages__, this allows CMS users to configure (and add custom) `<meta>` tags in the `<head>` of the HTML.
-
-#### Known Issues
-
-- External documentation is unclear; [#121](https://github.com/nephila/djangocms-page-meta/issues/121)
-
-### `meta`
-
-__For blog articles__, this allows `djangocms_blog` app to output `<meta>` tags (and related attributes) in the `<head>` of the HTML.
-
-### `djangocms_blog`
-
-This app supports (and integrates well with) [several features vital for a site with a blog or news](https://djangocms-blog.readthedocs.io/en/latest/features/index.html).
-
-#### Troubleshooting
-
-##### NoReverseMatch: 'Blog' is not a registered namespace
-
-If you receive this error (during initial CMS setup):
-
-> django.urls.exceptions.NoReverseMatch: 'Blog' is not a registered namespace
-
-Then, try these steps:
-
-1. Bring "down" the dockers (`ctrl+C` in live output, or `docker-compose down`)
-2. Bring "up" the dockers (`docker-compose up`)
-3. Reload the page.
-
-
 ## Reference
 
 - [DjangoCMS Stand Alone Site](https://confluence.tacc.utexas.edu/x/G4G-Ag)
