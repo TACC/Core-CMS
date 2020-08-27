@@ -10,22 +10,6 @@ Weight: 0
 Styleguide Settings.CustomProperties.Font
 */
 
-
-
-/* --- BASE STYLES --- */
-/* --- Do NOT edit, unless you are working on `cms-site-template`! --- */
-
-
-
 :root {
   --global-font-family: Roboto, sans-serif;
 }
-
-
-
-/* --- PROJECT STYLES --- */
-/* --- Styles for repos that fork `cms-site-template` go here. --- */
-
-
-
-/* … */

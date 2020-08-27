@@ -10,13 +10,6 @@ Markup: o-site.html
 Styleguide Objects.Site
 */
 
-
-
-/* --- BASE STYLES --- */
-/* --- Do NOT edit, unless you are working on `cms-site-template`! --- */
-
-
-
 /* SEE: https://css-tricks.com/couple-takes-sticky-footer/#article-header-id-3 */
 .o-site {
   display: flex;
@@ -31,12 +24,3 @@ Styleguide Objects.Site
 .o-site__foot {
   flex-shrink: 0;
 }
-
-
-
-/* --- PROJECT STYLES --- */
-/* --- Styles for repos that fork `cms-site-template` go here. --- */
-
-
-
-/* … */

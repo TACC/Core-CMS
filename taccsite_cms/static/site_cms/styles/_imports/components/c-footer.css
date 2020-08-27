@@ -8,13 +8,6 @@ Markup: c-footer.twig.html
 Styleguide Components.Footer
 */
 
-
-
-/* --- BASE STYLES --- */
-/* --- Do NOT edit, unless you are working on `cms-site-template`! --- */
-
-
-
 .c-footer {
   /* TODO: Use global custom property when available */
   --line-height: 1.5; /* value (not unit) from Bootstrap via `body` */
@@ -72,12 +65,3 @@ Styleguide Components.Footer
     padding-right: 15%;
   }
 }
-
-
-
-/* --- PROJECT STYLES --- */
-/* --- Styles for repos that fork `cms-site-template` go here. --- */
-
-
-
-/* … */

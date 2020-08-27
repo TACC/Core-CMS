@@ -16,13 +16,6 @@ Markup: s-header.html.twig
 Styleguide Trumps.Scopes.Header
 */
 
-
-
-/* --- BASE STYLES --- */
-/* --- Do NOT edit, unless you are working on `cms-site-template`! --- */
-
-
-
 /* WARNING: NO-R/EM: No `em` nor `rem` allowed while `old-css` is used (on CMS),
             because the `rem` values assume `16px` (browser default),
             yet `old-css` sets `body { font-size: 15px }` (changes `em` value),
@@ -131,12 +124,3 @@ Styleguide Trumps.Scopes.Header
     width: 27px; /* NO-R/EM: 1.25em (from Portal `.fa`—FP-228 will deprecate it) */
     text-align: center;
 }
-
-
-
-/* --- PROJECT STYLES --- */
-/* --- Styles for repos that fork `cms-site-template` go here. --- */
-
-
-
-/* … */

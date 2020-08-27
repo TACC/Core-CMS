@@ -11,13 +11,6 @@ Reference:
 Styleguide Components.Django
 */
 
-
-
-/* --- BASE STYLES --- */
-/* --- Do NOT edit, unless you are working on `cms-site-template`! --- */
-
-
-
 /* Prevent excess scrollbar when CMS admin is logged in */
 /* NOTE: This code does NOT work */
 /*
@@ -30,12 +23,3 @@ Styleguide Components.Django
   height: calc(100vh - var(--head-margin-top));
 }
 */
-
-
-
-/* --- PROJECT STYLES --- */
-/* --- Styles for repos that fork `cms-site-template` go here. --- */
-
-
-
-/* … */

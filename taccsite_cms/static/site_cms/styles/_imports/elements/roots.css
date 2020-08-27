@@ -16,13 +16,6 @@ Markup:
 Styleguide Elements.Roots
 */
 
-
-
-/* --- BASE STYLES --- */
-/* --- Do NOT edit, unless you are working on `cms-site-template`! --- */
-
-
-
 /* The webpage must be at least as tall as the viewport */
 html,
 body {
@@ -32,12 +25,3 @@ body {
 body {
   font-family: var(--global-font-family);
 }
-
-
-
-/* --- PROJECT STYLES --- */
-/* --- Styles for repos that fork `cms-site-template` go here. --- */
-
-
-
-/* … */
