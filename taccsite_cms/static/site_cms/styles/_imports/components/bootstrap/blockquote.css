@@ -17,6 +17,7 @@
   color: #636466;
   font-size: 16px;
 }
+/* FP-439: Change selector to `.blockquote-cite` */
 .blockquote-footer cite {
   font-style: normal; /* overwrite browser `cite` */
 }
