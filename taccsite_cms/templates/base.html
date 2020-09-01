@@ -1,6 +1,8 @@
 {% load cms_tags staticfiles sekizai_tags cache i18n page_id %}
 <!doctype html>
-<html id="page-{% page_id %}" data-slug="{% page_attribute 'slug' %}">
+<html
+  id="page-{{ request.current_page.id }}"
+  data-page-id="{{ request.current_page.reverse_id }}">
 
 <head>
   <!-- Google Analytics partial. -->
