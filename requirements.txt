@@ -9,6 +9,9 @@
 # To purge the current venv packages before reinstalling fresh, use this command:
 #   pip freeze | xargs pip uninstall -y
 
+########################
+# STANDARD.
+
 certifi==2019.6.16
 Django==1.11.22
 # Comment out ldap if you are not using
@@ -47,3 +50,20 @@ pytz==2019.1
 six==1.12.0
 Unidecode==1.0.23
 webencodings==0.5.1
+
+########################
+# OPTIONAL.
+
+# NOTE: We should install optional features only as enabled, but
+#       it is not clear how to do this based on `secrets.py` values.
+
+# Blog/News & Social Media Metadata
+# FAQ: Require the most recent TACC-tested commit with TACC-desired fixes (in liue of 1.2.0)
+# SEE: https://github.com/nephila/djangocms-blog/pull/626
+# SEE: https://github.com/nephila/djangocms-blog/issues/614
+# WARNING: Late 2018-08, any GitHub commit URL freezes at "Cloning […]"
+# -e git+https://github.com/nephila/djangocms-blog.git@1e51a42fdfe91a26624a9f74c421bfc049d20c97#egg=djangocms-blog
+# WARNING: Temporarily using bleeding edge, so GH-24 can continue
+# -e git+https://github.com/nephila/djangocms-blog.git@develop#egg=djangocms-blog
+djangocms-blog==1.1.1
+djangocms-page-meta==0.10.0

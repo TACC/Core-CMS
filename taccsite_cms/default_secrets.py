@@ -55,11 +55,58 @@ _GOOGLE_ANALYTICS_PROPERTY_ID = "UA-123ABC@%$&-#"
 _GOOGLE_ANALYTICS_PRELOAD = True
 
 ########################
-# CUSTOM SITE SETTINGS
+# CUSTOM SITE
 ########################
 
+"""
+Custom Site
+
+Usage:
+
+- For baked-in features, update settings per website (see example below).
+- For optional features, enable features per website via _FEATURES list.
+
+Baked-In Feature Setting Example.
+
+# Desctipion of feature X
+# SEE: [link to user/div guide about feature]
+_FEATURE_A = "someValue"
+
+Optional Feature Toggle Example.
+
+_FEATURES = {
+    # Desctipion of feature X
+    # SEE: [link to user/dev guide about feature]
+    "X": True,
+
+    # Desctipion of feature Y
+    # SEE: [link to user/dev guide about feature]
+    "Y": False,
+
+    # Desctipion of feature Z
+    # SEE: [link to user/dev guide about feature]
+    "Z": True,
+}
+
+"""
+
+########################
+# SETTINGS.
+
+# Create CMS Forms
+# SEE: https://pypi.org/project/djangocms-forms/
 _DJANGOCMS_FORMS_RECAPTCHA_PUBLIC_KEY = ""
 _DJANGOCMS_FORMS_RECAPTCHA_SECRET_KEY = ""
+
+########################
+# FEATURES.
+
+_FEATURES = {
+    # Blog/News & Social Media Metadata
+    # SEE: https://confluence.tacc.utexas.edu/x/EwDeCg
+    # SEE: https://confluence.tacc.utexas.edu/x/FAA9Cw
+    "blog": False,
+}
 
 ########################
 # BRANDING & LOGOS

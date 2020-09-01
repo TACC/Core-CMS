@@ -1,0 +1,3 @@
+{# Utility for outputing data available in template context #}
+{# SEE: https://stackoverflow.com/a/21205925/11817077 #}
+<pre>{% filter force_escape %}{% debug %}{% endfilter %}</pre>
