@@ -92,6 +92,9 @@ ALLOWED_HOSTS = current_secrets._ALLOWED_HOSTS
 BRANDING = current_secrets._BRANDING
 LOGO  = current_secrets._LOGO
 
+# Optional features.
+FEATURES = current_secrets._FEATURES
+
 # Application definition
 ROOT_URLCONF = 'taccsite_cms.urls'
 
@@ -313,6 +316,53 @@ THUMBNAIL_PROCESSORS = (
     'easy_thumbnails.processors.filters'
 )
 
+
+# FEATURES.
+if CONSOLE_LOG_ENABLED:
+    print("--> Variable FEATURES: ")
+    for feature in FEATURES:
+        print(feature + ": ", FEATURES[feature])
+
+if current_secrets._FEATURES['blog']:
+    # Install required apps
+    INSTALLED_APPS += [
+        # Blog/News
+        # 'filer',              # Already added
+        # 'easy_thumbnails',    # Already added
+        'aldryn_apphooks_config',
+        'parler',
+        'taggit',
+        'taggit_autosuggest',
+        'meta',                 # also supports `djangocms_page_meta`
+        'sortedm2m',
+        'djangocms_blog',
+
+        # Metadata
+        'djangocms_page_meta',
+    ]
+
+    # Metadata: Configure
+    META_SITE_PROTOCOL = 'http'
+    META_USE_SITES = True
+    META_USE_OG_PROPERTIES = True
+    META_USE_TWITTER_PROPERTIES = True
+    META_USE_GOOGLEPLUS_PROPERTIES = True # django-meta 1.x+
+    # META_USE_SCHEMAORG_PROPERTIES=True  # django-meta 2.x+
+
+    # Blog/News: Set custom paths for templates
+    BLOG_PLUGIN_TEMPLATE_FOLDERS = (
+        ('plugins/default', 'Default template'),    # i.e. `templates/djangocms_blog/plugins/default/`
+        ('plugins/default-clone', 'Clone of default template'),  # i.e. `templates/djangocms_blog/plugins/default-clone/`
+    )
+
+    # Blog/News: Change default values for the auto-setup of one `BlogConfig`
+    # SEE: https://github.com/nephila/djangocms-blog/issues/629
+    BLOG_AUTO_SETUP = True
+    BLOG_AUTO_HOME_TITLE ='Home'
+    BLOG_AUTO_BLOG_TITLE = 'News'
+    BLOG_AUTO_APP_TITLE = 'News'
+
+
 DJANGOCMS_PICTURE_NESTING = True
 DJANGOCMS_PICTURE_RESPONSIVE_IMAGES = True
 DJANGOCMS_PICTURE_RATIO = 1.618
@@ -349,6 +399,7 @@ SETTINGS_EXPORT = [
     'DEBUG',
     'BRANDING',
     'LOGO',
+    'FEATURES',
     'GOOGLE_ANALYTICS_PROPERTY_ID',
     'GOOGLE_ANALYTICS_PRELOAD'
 ]
