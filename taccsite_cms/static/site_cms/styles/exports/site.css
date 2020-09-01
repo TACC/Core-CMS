@@ -58,6 +58,8 @@
 /* --- Do NOT edit, unless you are working on `cms-site-template`! --- */
 @import url("_imports/components/c-footer.css");
 @import url("_imports/components/django.cms.css");
+@import url("_imports/components/django.cms.blog.css");
+@import url("_imports/components/django.cms.post.css");
 
 /* --- PROJECT STYLES --- */
 /* --- Styles for repos that fork `cms-site-template` go here. --- */
