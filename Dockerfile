@@ -18,7 +18,7 @@ COPY . /code
 WORKDIR /code
 
 # install python packages
-RUN pip3 install -r requirements.txt
+RUN pip3 install --no-cache-dir -r requirements.txt
 
 # build assets
 RUN npm ci && npm run build
