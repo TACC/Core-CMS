@@ -1,8 +1,15 @@
+{# FAQ: Conditional includes are intentionally verbose #}
+{# SEE: https://confluence.tacc.utexas.edu/x/QwI9Cw #}
+
 {% load cms_tags staticfiles sekizai_tags cache i18n %}
 <!doctype html>
 <html>
 
+{% if settings.FEATURES.blog %}
+  {% with path="djangocms_blog_head.html" %}{% include path %}{% endwith %}
+{% else %}
 <head>
+{% endif %}
   <!-- Google Analytics partial. -->
   {% include 'analytics.html' %}
 
@@ -10,11 +17,21 @@
   <title>{% block title %} This is my new project home page {% endblock title %}</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  {% if settings.FEATURES.blog %}
+    {% block meta %}
+      {% with path="djangocms_page_meta.html" %}{% include path %}{% endwith %}
+    {% endblock meta %}
+  {% endif %}
+
+  <!-- External Styles. -->
   <link rel="icon" href="{% static 'site_cms/images/favicons/favicon.ico' %}" type="image/x-icon" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <!-- Requires `npm run build` step before running the django project. -->
   <link id="css-site" rel="stylesheet" href="{% static 'build/styles/site.css' %}">
   <link id="css-site-header" rel="stylesheet" href="{% static 'build/styles/site.header.css' %}">
+  {% if settings.FEATURES.blog %}
+    <link id="css-site-blog" rel="stylesheet" href="{% static 'build/styles/site.blog.css' %}">
+  {% endif %}
 
   <!-- Web Fonts. -->
   <link id="css-site-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
@@ -30,6 +47,11 @@
     /* Better to keep all CSS styles in external css files --> static/taccsite_cms/static/site_cms/css/styles.css (linked above). */
   </style>
   {% endblock custom_css %}
+
+  <!-- Pre-Render Scripts. -->
+  {% if settings.DEBUG %}
+  <script src="{% static 'site_cms/scripts/debug.css' %}"></script>
+  {% endif %}
 </head>
 
 <body class="o-site  {% block page_type_class %}{% endblock page_type_class %}">

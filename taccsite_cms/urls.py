@@ -15,10 +15,17 @@ admin.autodiscover()
 urlpatterns = [
     url(r'^sitemap\.xml$', sitemap,
         {'sitemaps': {'cmspages': CMSSitemap}}),
+
+    url(r'^admin/', admin.site.urls),  # NOQA
 ]
 
+if settings.FEATURES['blog']:
+    urlpatterns += [
+        # Support `taggit_autosuggest` (from `djangocms-blog`)
+        url(r'^taggit_autosuggest/', include('taggit_autosuggest.urls')),
+    ]
+
 urlpatterns += [
-    url(r'^admin/', admin.site.urls),  # NOQA
     url(r'^', include('cms.urls')),
 ]
 
