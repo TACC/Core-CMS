@@ -1,10 +1,6 @@
 'use strict';
 
-console.warn('Debug Mode: TRUE');
-
-// Let all other scripts know that we are in debug mode
-// CAVEAT: To use, This file must load before other scripts (no `async`, no `defer`)
-window.DEBUG = true;
+console.warn('Debug Mode', window.DEBUG);
 
 // In DEBUG mode, prevent output from these `console` methods
 if ( ! window.DEBUG ) {
