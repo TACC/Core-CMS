@@ -1,8 +1,11 @@
 'use strict';
 
-console.warn('Debug Mode', window.DEBUG);
+// In DEBUG mode, notify developer in console
+if ( window.DEBUG ) {
+  console.warn('Debug Mode', window.DEBUG);
+}
 
-// In DEBUG mode, prevent output from these `console` methods
+// In production, prevent output from these `console` methods
 if ( ! window.DEBUG ) {
   console.info = function () {};
   console.debug = function () {};
