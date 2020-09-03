@@ -5,12 +5,14 @@
 
 /* SETTINGS */
 @import url("_imports/settings/props.font.css");
+@import url("_imports/settings/props.space.css");
 
 /* GENERICS */
 /* … Bootstrap handles most of this … */
 
 /* ELEMENTS */
 @import url("_imports/elements/roots.css");
+@import url("_imports/elements/sectioning.css");
 
 /* OBJECTS */
 @import url("_imports/objects/o-site.css");
