@@ -41,6 +41,8 @@ _DATABASES = {
 _SITE_ID = 1
 _CMS_TEMPLATES = (
     # Customize this
+    # FAQ: First template is default template
+    # REF: http://docs.django-cms.org/en/latest/how_to/install.html#templates
     ('fullwidth.html', 'Fullwidth'),
     ('sidebar_left.html', 'Sidebar Left'),
     ('sidebar_right.html', 'Sidebar Right')

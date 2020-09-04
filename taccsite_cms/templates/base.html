@@ -6,7 +6,8 @@
 <html
   id="page-{{ request.current_page.id }}"
   {# FAQ: Only available if set in page's "Advanced" settings #}
-  data-page-id="{{ request.current_page.reverse_id }}">
+  data-page-id="{{ request.current_page.reverse_id }}"
+  class="{% block template_class %}{% endblock template_class %}">
 
 {% if settings.FEATURES.blog %}
   {% with path="djangocms_blog_head.html" %}{% include path %}{% endwith %}
@@ -14,6 +15,7 @@
 <head>
 {% endif %}
   <!-- Google Analytics partial. -->
+  {# TODO: After PR !48: Move to late in "Site Assets: Scripts" #}
   {% include 'analytics.html' %}
 
   <!-- Metadata. -->
@@ -26,38 +28,58 @@
     {% endblock meta %}
   {% endif %}
 
-  <!-- External Styles. -->
+  <!-- Web Fonts. -->
+  {# Load `@font-face` before other resources #}
+  {# SEE: https://confluence.tacc.utexas.edu/x/TwBgBQ #}
+  {% block head_fonts %}
+    <link id="css-site-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+  {% endblock head_fonts %}
+
+  <!-- Site Assets. -->
   <link rel="icon" href="{% static 'site_cms/images/favicons/favicon.ico' %}" type="image/x-icon" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <!-- Requires `npm run build` step before running the django project. -->
+  <!-- Site Assets: Styles. -->
+  {# CAVEAT: Requires `npm run build` step before running the Django project. #}
   <link id="css-site" rel="stylesheet" href="{% static 'build/styles/site.css' %}">
   <link id="css-site-header" rel="stylesheet" href="{% static 'build/styles/site.header.css' %}">
   {% if settings.FEATURES.blog %}
     <link id="css-site-blog" rel="stylesheet" href="{% static 'build/styles/site.blog.css' %}">
   {% endif %}
+  <!-- Site Assets: Scripts. -->
+  <!-- (coming soon: debug, Google Analytics) -->
 
-  <!-- Web Fonts. -->
-  <link id="css-site-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+  <!-- Custom Assets. -->
+  {# Fonts have their own block `head_fonts` #}
+  {# Load assets as external files, so they are cached independent of markup #}
 
-  <!-- Custom <head> Markup per Site to Customize the Site <head> Content. -->
-  <!-- No custom markup in base template. -->
+  <!-- Custom Assets: Per Template. -->
+  {% block head_core %}
+    {% comment %}
+    <link rel="stylesheet" href="{% static 'build/styles/template.___.css' %}">
+    <script src="{% static 'build/scripts/template.___.js' %}"></script>
+    {% endcomment %}
+  {% endblock head_core %}
+
+  <!-- Custom Assets: Per Brand. -->
+  {% block head_brand %}
+    {% comment %}
+    <link rel="stylesheet" href="{% static 'build/styles/brand/*.css' %}">
+    <script src="{% static 'build/scripts/brand/*.js' %}"></script>
+    {% endcomment %}
+  {% endblock head_brand %}
+
+  <!-- CMS Assets. -->
+  {# Styles the on-page CMS admin tools #}
   {% render_block "css" %}
 
-  <!-- In-line Styles -->
-  {% block custom_css %}
-  <style>
-    /* Styles are overridden by template inheritance in fullwidth.html. */
-    /* Better to keep all CSS styles in external css files --> static/taccsite_cms/static/site_cms/css/styles.css (linked above). */
-  </style>
-  {% endblock custom_css %}
-
   <!-- Pre-Render Scripts. -->
+  {# TODO: After PR !48: Move to early in "Site Assets: Scripts" #}
   {% if settings.DEBUG %}
   <script src="{% static 'site_cms/scripts/debug.js' %}"></script>
   {% endif %}
 </head>
 
-<body class="o-site  {% block page_type_class %}{% endblock page_type_class %}">
+<body class="o-site">
   {% cms_toolbar %}
 
   <!-- Custom Navigation Block per Site to Customize the Site Header Branding. -->
