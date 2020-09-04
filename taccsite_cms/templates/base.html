@@ -50,7 +50,7 @@
 
   <!-- Custom Assets. -->
   {# Fonts have their own block `head_fonts` #}
-  {# Load assets as external files, so they are cached independent of markup #}
+  {# Load assets as external files, to cache independent of markup #}
 
   <!-- Custom Assets: Per Template. -->
   {% block head_core %}
@@ -115,19 +115,27 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-  <!-- Custom Scripts -->
-  <script src="{% static 'site_cms/scripts/base.js' %}" crossorigin="anonymous"></script>
-  <script>
-    // console.log("--> FILE: taccsite_cms.templates.base.html");
-  </script>
-  {% render_block "js" %}
+  <!-- Delayed Assets. -->
+  {# NOTE: Styles rarely need these. Scripts have attributes for this. #}
+  {# Load assets as external files, to cache independent of markup #}
 
-  <!-- In-line Scripts  -->
-  {% block "custom_js" %}
-  <script>
-    // console.log("--> FILE: taccsite_cms.templates.base.html custom_js block ::OVERRIDDEN");
-  </script>
-  {% endblock "custom_js" %}
+  <!-- Delayed Assets: Per Template. -->
+  {% block body_end_core %}
+    {% comment %}
+    <script src="{% static 'build/scripts/template.___.js' %}"></script>
+    {% endcomment %}
+  {% endblock body_end_core %}
+
+  <!-- Delayed Assets: Per Brand. -->
+  {% block body_end_brand %}
+    {% comment %}
+    <script src="{% static 'build/scripts/brand/*.js' %}"></script>
+    {% endcomment %}
+  {% endblock body_end_brand %}
+
+  <!-- CMS Assets. -->
+  {# Scripts the on-page CMS admin tools #}
+  {% render_block "js" %}
 </body>
 
 </html>
