@@ -1,0 +1,34 @@
+{# Load assets as external files, to cache independently of markup. #}
+{% comment %}
+  FAQ: IF a script or style is better cached with markup, THEN:
+    - Such a style belongs inline before relevant markup, not via this block
+    - Such a script belongs inline after relevant markup, not via this block
+{% endcomment %}
+
+{# NOTE: Fonts may be loaded early via `head_fonts` #}
+
+
+
+{# Do NOT directly load assets here. Load as needed by template or brand. #}
+
+
+
+{# Example: Template-Specific Assets. #}
+{% comment %}
+  {% block head_end %}
+    {{ block.super }}
+
+    <link rel="stylesheet" href="{% static 'build/styles/template.___.css' %}">
+    <script src="{% static 'site_cms/scripts/template.___.js' %}"></script>
+  {% endblock head_end %}
+{% endcomment %}
+
+{# Example: Brand-Specific Assets. #}
+{% comment %}
+  {% block head_end %}
+    {{ block.super }}
+
+    <link rel="stylesheet" href="{% static 'build/styles/brand/*.css' %}">
+    <script src="{% static 'site_cms/scripts/brand/*.js' %}"></script>
+  {% endblock head_end %}
+{% endcomment %}

@@ -10,12 +10,13 @@
   class="{% block template_class %}{% endblock template_class %}">
 
 {% if settings.FEATURES.blog %}
+  {# FAQ: Do not use simpler syntax `{% include "…" with key="val" %}` #}
+  {# SEE: https://confluence.tacc.utexas.edu/x/QwI9Cw #}
   {% with path="djangocms_blog_head.html" %}{% include path %}{% endwith %}
 {% else %}
 <head>
 {% endif %}
-  <!-- Google Analytics partial. -->
-  {# TODO: After PR !48: Move to late in "Site Assets: Scripts" #}
+  <!-- Google Analytics. -->
   {% include 'analytics.html' %}
 
   <!-- Metadata. -->
@@ -24,76 +25,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   {% if settings.FEATURES.blog %}
     {% block meta %}
+      {# FAQ: Do not use simpler syntax `{% include "…" with key="val" %}` #}
+      {# SEE: https://confluence.tacc.utexas.edu/x/QwI9Cw #}
       {% with path="djangocms_page_meta.html" %}{% include path %}{% endwith %}
     {% endblock meta %}
   {% endif %}
 
   <!-- Web Fonts. -->
-  {# Load web fonts and preload urgent assets #}
-  {# SEE: https://confluence.tacc.utexas.edu/x/B4COCw #}
   {% block head_fonts %}
-    <link id="css-site-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
-
-    {# Example of Font Replacement. #}
-    {% comment %}
-      <link rel="stylesheet" href="https://use.typekit.net/xnr7bof.css" />
-    {% endcomment %}
-    {# Example of Font Addition. #}
-    {% comment %}
-      {{ block.super }}
-
-      <link rel="stylesheet" href="https://use.typekit.net/xnr7bof.css" />
-    {% endcomment %}
+    {% include 'assets_fonts.html' %}
   {% endblock head_fonts %}
 
   <!-- Site Assets. -->
-  <link rel="icon" href="{% static 'site_cms/images/favicons/favicon.ico' %}" type="image/x-icon" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <!-- Site Assets: Styles. -->
-  {# CAVEAT: Requires `npm run build` step before running the Django project. #}
-  <link id="css-site" rel="stylesheet" href="{% static 'build/styles/site.css' %}">
-  <link id="css-site-header" rel="stylesheet" href="{% static 'build/styles/site.header.css' %}">
-  {% if settings.FEATURES.blog %}
-    <link id="css-site-blog" rel="stylesheet" href="{% static 'build/styles/site.blog.css' %}">
-  {% endif %}
-  <!-- Site Assets: Scripts. -->
-  <!-- (coming soon: debug, Google Analytics) -->
+  {% include 'assets_site.html' %}
 
   <!-- Custom Assets. -->
-  {% comment %}
-    Load assets as external files, to cache independently of markup.
-    FAQ: Some scripts or styles may be better cached with markup:
-      - Such styles belong inline before relevant markup, not via this block
-      - Such scripts belong inline after relevant markup, not via this block
-    NOTE: Fonts may be loaded early via `head_fonts`
-  {% endcomment %}
   {% block head_end %}
-    {# Example of Template-Specific Assets. #}
-    {% comment %}
-    {{ block.super }}
-
-    <link rel="stylesheet" href="{% static 'build/styles/template.___.css' %}">
-    <script src="{% static 'site_cms/scripts/template.___.js' %}"></script>
-    {% endcomment %}
-
-    {# Example of Brand-Specific Assets. #}
-    {% comment %}
-    {{ block.super }}
-
-    <link rel="stylesheet" href="{% static 'build/styles/brand/*.css' %}">
-    <script src="{% static 'site_cms/scripts/brand/*.js' %}"></script>
-    {% endcomment %}
+    {% include 'assets_custom.html' %}
   {% endblock head_end %}
 
-  <!-- CMS Assets. -->
-  {# Styles the on-page CMS admin tools #}
+  <!-- CMS Admin Styles. -->
   {% render_block "css" %}
-
-  <!-- Pre-Render Scripts. -->
-  {# TODO: After PR !48: Move to early in "Site Assets: Scripts" #}
-  {% if settings.DEBUG %}
-  <script src="{% static 'site_cms/scripts/debug.js' %}"></script>
-  {% endif %}
 </head>
 
 <body class="o-site">
@@ -128,36 +80,14 @@
   </div>
 
   <!-- Site Assets (Delayed). -->
-  <!-- Site Assets (Delayed): Scripts. -->
-  {# FAQ: Bootstrap requires jQuery and Popper and its own script #}
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  {% include 'assets_site_delayed.html' %}
 
   <!-- Custom Assets (Delayed). -->
-  {% comment %}
-    WARNING: Consider asset load via `head_end`, not `body_end`:
-      - Styles should not need a delayed load time.
-      - Scripts can use `defer` or `async` attr's to manage load time.
-  {% endcomment %}
   {% block body_end %}
-    {# Example of Template-Specific Assets. #}
-    {% comment %}
-    {{ block.super }}
-
-    <script src="{% static 'site_cms/scripts/template.___.js' %}"></script>
-    {% endcomment %}
-
-    {# Example of Brand-Specific Assets. #}
-    {% comment %}
-    {{ block.super }}
-
-    <script src="{% static 'site_cms/scripts/brand/*.js' %}"></script>
-    {% endcomment %}
+    {% include 'assets_custom_delayed.html' %}
   {% endblock body_end %}
 
-  <!-- CMS Assets. -->
-  {# Scripts the on-page CMS admin tools #}
+  <!-- CMS Admin Scripts. -->
   {% render_block "js" %}
 </body>
 
