@@ -23,7 +23,9 @@
   <title>{% block title %} This is my new project home page {% endblock title %}</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
   {% if settings.FEATURES.blog %}
+  <!-- Metadata: Social Media. -->
     {% block meta %}
       {# FAQ: Do not use simpler syntax `{% include "…" with key="val" %}` #}
       {# SEE: https://confluence.tacc.utexas.edu/x/QwI9Cw #}
@@ -31,18 +33,19 @@
     {% endblock meta %}
   {% endif %}
 
-  <!-- Web Fonts. -->
-  {% block head_fonts %}
-    {% include 'assets_fonts.html' %}
-  {% endblock head_fonts %}
+  <!-- Web Font. -->
+  {# FAQ: Site font which can be replaced or accompanied by Custom font #}
+  {% block assets_font %}
+  {% include 'assets_font.html' %}
+  {% endblock assets_font %}
 
   <!-- Site Assets. -->
   {% include 'assets_site.html' %}
 
   <!-- Custom Assets. -->
-  {% block head_end %}
-    {% include 'assets_custom.html' %}
-  {% endblock head_end %}
+  {% block assets_custom %}
+  {% include 'assets_custom.html' %}
+  {% endblock assets_custom %}
 
   <!-- CMS Admin Styles. -->
   {% render_block "css" %}
@@ -83,9 +86,9 @@
   {% include 'assets_site_delayed.html' %}
 
   <!-- Custom Assets (Delayed). -->
-  {% block body_end %}
-    {% include 'assets_custom_delayed.html' %}
-  {% endblock body_end %}
+  {% block assets_custom_delayed %}
+  {% include 'assets_custom_delayed.html' %}
+  {% endblock assets_custom_delayed %}
 
   <!-- CMS Admin Scripts. -->
   {% render_block "js" %}

@@ -1,13 +1,13 @@
 {# For assets that should be loaded after all others. #}
 {% comment %}
-Consider asset load via `head_end`, not `body_end`:
+Consider asset load via `assets_custom`, not `assets_custom_delayed`:
   - Styles should not need a delayed load time.
   - Scripts can use `defer` or `async` attr's to manage load time.
 {% endcomment %}
 
 
 
-<!-- Site Assets (Delayed): Scripts. -->
+<!-- Site Assets (Delayed): Bootstrap. -->
 {# FAQ: Bootstrap can use jQuery, Popper, then its own script #}
 {# SEE: https://getbootstrap.com/docs/4.0/getting-started/introduction/#starter-template #}
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

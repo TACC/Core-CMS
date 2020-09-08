@@ -5,7 +5,7 @@
     - Such a script belongs inline after relevant markup, not via this block
 {% endcomment %}
 
-{# NOTE: Fonts may be loaded early via `head_fonts` #}
+{# NOTE: Fonts may be loaded early via `assets_font` #}
 
 
 
@@ -15,20 +15,20 @@
 
 {# Example: Template-Specific Assets. #}
 {% comment %}
-  {% block head_end %}
+  {% block assets_custom %}
     {{ block.super }}
 
     <link rel="stylesheet" href="{% static 'build/styles/template.___.css' %}">
     <script src="{% static 'site_cms/scripts/template.___.js' %}"></script>
-  {% endblock head_end %}
+  {% endblock assets_custom %}
 {% endcomment %}
 
 {# Example: Brand-Specific Assets. #}
 {% comment %}
-  {% block head_end %}
+  {% block assets_custom %}
     {{ block.super }}
 
     <link rel="stylesheet" href="{% static 'build/styles/brand/*.css' %}">
     <script src="{% static 'site_cms/scripts/brand/*.js' %}"></script>
-  {% endblock head_end %}
+  {% endblock assets_custom %}
 {% endcomment %}

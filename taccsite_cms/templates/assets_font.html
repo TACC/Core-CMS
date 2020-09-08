@@ -7,18 +7,18 @@
 
 
 
-{# Example: Font Replacement. #}
+{# Example: Custom font that replaces Site font. #}
 {% comment %}
-  {% block head_fonts %}
+  {% block assets_font %}
     <link rel="stylesheet" href="https://use.typekit.net/xnr7bof.css" />
-  {% endblock head_fonts %}
+  {% endblock assets_font %}
 {% endcomment %}
 
-{# Example: Font Addition. #}
+{# Example: Custom font that accompanies Site font. #}
 {% comment %}
-  {% block head_fonts %}
+  {% block assets_font %}
     {{ block.super }}
 
     <link rel="stylesheet" href="https://use.typekit.net/xnr7bof.css" />
-  {% endblock head_fonts %}
+  {% endblock assets_font %}
 {% endcomment %}

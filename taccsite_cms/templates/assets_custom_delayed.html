@@ -1,6 +1,6 @@
 {# For assets that should be loaded after all others. #}
 {% comment %}
-Consider asset load via `head_end`, not `body_end`:
+Consider asset load via `assets_custom`, not `assets_custom_delayed`:
   - Styles should not need a delayed load time.
   - Scripts can use `defer` or `async` attr's to manage load time.
 {% endcomment %}
@@ -13,18 +13,18 @@ Consider asset load via `head_end`, not `body_end`:
 
 {# Example: Template-Specific Assets. #}
 {% comment %}
-  {% block body_end %}
+  {% block assets_custom_delayed %}
     {{ block.super }}
 
     <script src="{% static 'site_cms/scripts/template.___.js' %}"></script>
-  {% endblock body_end %}
+  {% endblock assets_custom_delayed %}
 {% endcomment %}
 
 {# Example: Brand-Specific Assets. #}
 {% comment %}
-  {% block body_end %}
+  {% block assets_custom_delayed %}
     {{ block.super }}
 
     <script src="{% static 'site_cms/scripts/brand/*.js' %}"></script>
-  {% endblock body_end %}
+  {% endblock assets_custom_delayed %}
 {% endcomment %}
