@@ -1,6 +1,3 @@
-{# FAQ: Conditional includes are intentionally verbose #}
-{# SEE: https://confluence.tacc.utexas.edu/x/QwI9Cw #}
-
 {% load cms_tags staticfiles sekizai_tags cache i18n %}
 <!doctype html>
 <html
@@ -10,7 +7,7 @@
   class="{% block template_class %}{% endblock template_class %}">
 
 {% if settings.FEATURES.blog %}
-  {# FAQ: Do not use simpler syntax `{% include "…" with key="val" %}` #}
+  {# FAQ: Conditional includes are intentionally verbose #}
   {# SEE: https://confluence.tacc.utexas.edu/x/QwI9Cw #}
   {% with path="djangocms_blog_head.html" %}{% include path %}{% endwith %}
 {% else %}
@@ -27,7 +24,7 @@
   {% if settings.FEATURES.blog %}
   <!-- Metadata: Social Media. -->
     {% block meta %}
-      {# FAQ: Do not use simpler syntax `{% include "…" with key="val" %}` #}
+      {# FAQ: Conditional includes are intentionally verbose #}
       {# SEE: https://confluence.tacc.utexas.edu/x/QwI9Cw #}
       {% with path="djangocms_page_meta.html" %}{% include path %}{% endwith %}
     {% endblock meta %}
