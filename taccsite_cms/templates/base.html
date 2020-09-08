@@ -28,12 +28,20 @@
     {% endblock meta %}
   {% endif %}
 
-  <!-- Web Fonts. -->
-  {# Load `@font-face` before other resources #}
-  {# SEE: https://confluence.tacc.utexas.edu/x/TwBgBQ #}
-  {% block head_fonts %}
+  <!-- Web Fonts & Preload Assets. -->
+  {# Load web fonts and preload urgent assets #}
+  {# SEE: https://confluence.tacc.utexas.edu/x/B4COCw #}
+  {% block head_start %}
     <link id="css-site-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
-  {% endblock head_fonts %}
+
+    {# Example of Custom Assets. #}
+    {% comment %}
+      {{ block.super }}
+
+      <link rel="preload" as="image" href="{% static 'site_cms/images/some-hero-banner.jpg' %}" />
+      <link rel="stylesheet" href="https://use.typekit.net/xnr7bof.css" />
+    {% endcomment %}
+  {% endblock head_start %}
 
   <!-- Site Assets. -->
   <link rel="icon" href="{% static 'site_cms/images/favicons/favicon.ico' %}" type="image/x-icon" />
@@ -49,24 +57,30 @@
   <!-- (coming soon: debug, Google Analytics) -->
 
   <!-- Custom Assets. -->
-  {# Fonts have their own block `head_fonts` #}
-  {# Load assets as external files, to cache independent of markup #}
-
-  <!-- Custom Assets: Per Template. -->
-  {% block head_core %}
+  {% comment %}
+    Load assets as external files, to cache independently of markup.
+    FAQ: Some scripts or styles may be better cached with markup:
+      - Such styles belong inline before relevant markup, not via this block
+      - Such scripts belong inline after relevant markup, not via this block
+    NOTE: Fonts may be loaded early via `head_start`
+  {% endcomment %}
+  {% block head_end %}
+    {# Example of Template-Specific Assets. #}
     {% comment %}
+    {{ block.super }}
+
     <link rel="stylesheet" href="{% static 'build/styles/template.___.css' %}">
-    <script src="{% static 'build/scripts/template.___.js' %}"></script>
+    <script src="{% static 'site_cms/scripts/template.___.js' %}"></script>
     {% endcomment %}
-  {% endblock head_core %}
 
-  <!-- Custom Assets: Per Brand. -->
-  {% block head_brand %}
+    {# Example of Brand-Specific Assets. #}
     {% comment %}
+    {{ block.super }}
+
     <link rel="stylesheet" href="{% static 'build/styles/brand/*.css' %}">
-    <script src="{% static 'build/scripts/brand/*.js' %}"></script>
+    <script src="{% static 'site_cms/scripts/brand/*.js' %}"></script>
     {% endcomment %}
-  {% endblock head_brand %}
+  {% endblock head_end %}
 
   <!-- CMS Assets. -->
   {# Styles the on-page CMS admin tools #}
@@ -110,28 +124,34 @@
     </footer>
   </div>
 
-  <!-- Vendor Scripts -->
+  <!-- Site Assets (Delayed). -->
+  <!-- Site Assets (Delayed): Scripts. -->
+  {# FAQ: Bootstrap requires jQuery and Popper and its own script #}
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-  <!-- Delayed Assets. -->
-  {# NOTE: Styles rarely need these. Scripts have attributes for this. #}
-  {# Load assets as external files, to cache independent of markup #}
-
-  <!-- Delayed Assets: Per Template. -->
-  {% block body_end_core %}
+  <!-- Custom Assets (Delayed). -->
+  {% comment %}
+    WARNING: Consider asset load via `head_end`, not `body_end`:
+      - Styles should not need a delayed load time.
+      - Scripts can use `defer` or `async` attr's to manage load time.
+  {% endcomment %}
+  {% block body_end %}
+    {# Example of Template-Specific Assets. #}
     {% comment %}
-    <script src="{% static 'build/scripts/template.___.js' %}"></script>
-    {% endcomment %}
-  {% endblock body_end_core %}
+    {{ block.super }}
 
-  <!-- Delayed Assets: Per Brand. -->
-  {% block body_end_brand %}
-    {% comment %}
-    <script src="{% static 'build/scripts/brand/*.js' %}"></script>
+    <script src="{% static 'site_cms/scripts/template.___.js' %}"></script>
     {% endcomment %}
-  {% endblock body_end_brand %}
+
+    {# Example of Brand-Specific Assets. #}
+    {% comment %}
+    {{ block.super }}
+
+    <script src="{% static 'site_cms/scripts/brand/*.js' %}"></script>
+    {% endcomment %}
+  {% endblock body_end %}
 
   <!-- CMS Assets. -->
   {# Scripts the on-page CMS admin tools #}

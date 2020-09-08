@@ -3,19 +3,19 @@
 
 {% block title %}{% page_attribute "page_title" %}{% endblock title %}
 
-{% block custom_css %}
+{% block head_end %}
 <style>
   /* Overrides base.html embedded styles. */
   /* Better to keep all CSS styles in external css files --> styles.css. */
 </style>
-{% endblock custom_css %}
+{% endblock head_end %}
 
 {% block content %}
 {% placeholder "content" %}
 {% endblock content %}
 
-{% block "custom_js" %}
+{% block body_end %}
 <script>
   // console.log("--> FILE: taccsite_cms.templates.fullwidth.html custom_js block");
 </script>
-{% endblock "custom_js" %}
+{% endblock body_end %}
