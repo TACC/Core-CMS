@@ -130,9 +130,9 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         # FAQ: List custom directory first, so custom templates take precedence
         # SEE: https://docs.djangoproject.com/en/3.1/topics/templates/#configuration
-        'DIRS':
+        'DIRS': [
             os.path.join(BASE_DIR, 'taccsite_custom', CUSTOM_ASSET_DIR, 'templates'),
-            os.path.join(BASE_DIR, 'taccsite_cms', 'templates'),
+            os.path.join(BASE_DIR, 'taccsite_cms', 'templates')
         ],
         # 'APP_DIRS': True,
         'OPTIONS': {
