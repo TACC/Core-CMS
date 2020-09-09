@@ -111,6 +111,12 @@ _FEATURES = {
 }
 
 ########################
+# ASSETS.
+
+# Specify from which directory in `taccsite_custom` to pull custom assets
+_CUSTOM_ASSET_DIR = ""
+
+########################
 # BRANDING & LOGOS
 ########################
 

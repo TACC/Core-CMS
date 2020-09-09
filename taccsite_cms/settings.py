@@ -95,6 +95,9 @@ LOGO  = current_secrets._LOGO
 # Optional features.
 FEATURES = current_secrets._FEATURES
 
+# Custom assets.
+CUSTOM_ASSET_DIR = current_secrets._CUSTOM_ASSET_DIR
+
 # Application definition
 ROOT_URLCONF = 'taccsite_cms.urls'
 
@@ -107,6 +110,7 @@ if CONSOLE_LOG_ENABLED:
     print("--> Variable STATIC_ROOT: ", STATIC_ROOT)
 
 STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'taccsite_custom', CUSTOM_ASSET_DIR, 'static'),
     os.path.join(BASE_DIR, 'taccsite_cms', 'static'),
     # os.path.join(BASE_DIR, 'taccsite_cms', 'en', 'static'),
 )
@@ -124,7 +128,12 @@ if CONSOLE_LOG_ENABLED:
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'taccsite_cms', 'templates'), ],
+        # FAQ: List custom directory first, so custom templates take precedence
+        # SEE: https://docs.djangoproject.com/en/3.1/topics/templates/#configuration
+        'DIRS':
+            os.path.join(BASE_DIR, 'taccsite_custom', CUSTOM_ASSET_DIR, 'templates'),
+            os.path.join(BASE_DIR, 'taccsite_cms', 'templates'),
+        ],
         # 'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
