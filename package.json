@@ -1,7 +1,7 @@
 {
     "name": "portal-cms",
-    "// version": "1.0.0",
-    "// license": "MIT",
+    "version": "0.2.0",
+    "license": "MIT",
     "description": "The master CMS codebase for all downstream TACC stand alone CMS sites.",
     "scripts": {
         "build": "npm run build:css",

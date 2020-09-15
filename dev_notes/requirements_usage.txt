@@ -1,0 +1,40 @@
+NOTE: This requirements.txt file is the default setup used for venv management.
+
+In local dev, the environment.yml + miniconda are used for venv management.
+Currently parity between these two files is manually maintained.
+
+WMA prefers to setup the venv manually for live deployments at this time.
+Eventually this will all run in a container.
+That will eliminate the need for a local dev venv and the environment.yml file.
+
+To purge the current venv packages before reinstalling fresh, use this command:
+  pip freeze | xargs pip uninstall -y
+
+
+#  STANDARD.
+
+(...deps...)
+
+
+#  OPTIONAL.
+
+NOTE: We should install optional features only as enabled, but it is not clear how to do this based on `secrets.py` values.
+
+Blog/News & Social Media Metadata
+
+FAQ: Require the most recent TACC-tested commit with TACC-desired fixes (in liue of 1.2.0)
+
+SEE: https://github.com/nephila/djangocms-blog/pull/626
+
+SEE: https://github.com/nephila/djangocms-blog/issues/614
+
+WARNING: Late 2018-08, any GitHub commit URL freezes at "Cloning […]":
+
+    -e git+https://github.com/nephila/djangocms-blog.git@1e51a42fdfe91a26624a9f74c421bfc049d20c97#egg=djangocms-blog
+
+WARNING: Temporarily using bleeding edge, so GH-24 can continue:
+
+    -e git+https://github.com/nephila/djangocms-blog.git@develop#egg=djangocms-blog
+
+
+(...more deps...)
