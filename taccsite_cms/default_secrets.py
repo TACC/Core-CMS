@@ -26,7 +26,7 @@ _USING_CONTAINERS = False
 ########################
 
 if _USING_CONTAINERS:
-    # used in out-of-the-box demo or container deployments.
+    # used in container deployments.
     _DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
