@@ -18,20 +18,38 @@ _ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost', '*']   # In development.
 # in the requirements.txt file or installed if using ldap.
 _LDAP_ENABLED = False
 
+# Boolean check to determine the appropriate database settings when using containers.
+_USING_CONTAINERS = False
+
 ########################
 # DATABASE SETTINGS
 ########################
 
-_DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'taccsite',
-        'USER': 'postgresadmin',
-        'PASSWORD': 'taccforever' ,   # Change for deployment configuration.
-        'HOST': 'localhost',                # 'localhost' in demo/local-dev/SAD CMS deployments, 'taccsite_postgres' in containerized portal deployments.
-        'PORT': '5432',
+if _USING_CONTAINERS:
+    # used in out-of-the-box demo or container deployments.
+    _DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'PORT': '5432',
+            'NAME': 'taccsite',
+            'USER': 'postgresadmin',
+            'PASSWORD': 'taccforever', # Change for deployment configuration.
+            'HOST': 'taccsite_postgres'
+        }
     }
-}
+else:
+    # used in local dev venv or manual SAD deployments.
+    _DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'PORT': '5432',
+            'NAME': 'taccsite',
+            'USER': 'postgresadmin',
+            'PASSWORD': 'taccforever', # Change for deployment configuration.
+            'HOST': 'localhost'
+
+        }
+    }
 
 ########################
 # DJANGO CMS SETTINGS
