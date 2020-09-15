@@ -1,7 +1,7 @@
 {
     "name": "portal-cms",
-    "// version": "undefined",
-    "// license": "undefined",
+    "version": "1.0.0",
+    "license": "MIT",
     "description": "The master CMS codebase for all downstream TACC stand alone CMS sites.",
     "scripts": {
         "build": "npm run build:css",
@@ -15,15 +15,13 @@
         "watch // NOTE": "The macOS operating system requires object-based conifguration",
         "watch // NOTE // SEE": "https://github.com/M-Zuber/npm-watch/issues/35"
     },
-    "repository": {
-        "type": "git",
-        "url": "git@gitlab.tacc.utexas.edu:wma-cms/cms-site-template.git"
-    },
+    "repository": "git@gitlab.tacc.utexas.edu:wma-cms/cms-site-template.git",
     "devDependencies": {
         "cssnano": "^4.1.10",
         "npm-watch": "^0.7.0",
         "postcss-cli": "^7.1.2",
-        "postcss-import": "^12.0.1"
+        "postcss-import": "^12.0.1",
+        "yarn": "^1.22.5"
     },
     "postcss": {
         "plugins": {
@@ -46,5 +44,6 @@
     },
     "resolutions": {
         "dot-prop": ">=5.2.0"
-    }
+    },
+    "author": "TACC ACI WMA <wma-portals@gmail.com>"
 }
