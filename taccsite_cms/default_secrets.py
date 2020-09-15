@@ -33,21 +33,20 @@ if _USING_CONTAINERS:
             'PORT': '5432',
             'NAME': 'taccsite',
             'USER': 'postgresadmin',
-            'PASSWORD': 'taccforever', # Change for deployment configuration.
+            'PASSWORD': 'taccforever', # Change before live deployment.
             'HOST': 'taccsite_postgres'
         }
     }
 else:
-    # used in local dev venv or manual SAD deployments.
+    # used in local dev, venv or manual deployments.
     _DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'PORT': '5432',
             'NAME': 'taccsite',
             'USER': 'postgresadmin',
-            'PASSWORD': 'taccforever', # Change for deployment configuration.
+            'PASSWORD': 'taccforever', # Change before live deployment.
             'HOST': 'localhost'
-
         }
     }
 
