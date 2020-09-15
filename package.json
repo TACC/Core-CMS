@@ -1,7 +1,7 @@
 {
     "name": "portal-cms",
-    "version": "1.0.0",
-    "license": "MIT",
+    "// version": "1.0.0",
+    "// license": "MIT",
     "description": "The master CMS codebase for all downstream TACC stand alone CMS sites.",
     "scripts": {
         "build": "npm run build:css",
@@ -45,5 +45,6 @@
     "resolutions": {
         "dot-prop": ">=5.2.0"
     },
-    "author": "TACC ACI WMA <wma-portals@gmail.com>"
+    "author": "TACC ACI WMA <wma-portals@gmail.com>",
+    "version": "0.0.0"
 }
