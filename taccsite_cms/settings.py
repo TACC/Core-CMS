@@ -105,6 +105,7 @@ if CONSOLE_LOG_ENABLED:
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'taccsite_cms', 'static'),
+    os.path.join(BASE_DIR, 'taccsite_cms', 'build'),
     # os.path.join(BASE_DIR, 'taccsite_cms', 'en', 'static'),
 )
 

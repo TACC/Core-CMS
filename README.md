@@ -95,17 +95,17 @@ Log in with the user that was created via the `createsuperuser` step.
 
 Certain static resources are built
 
-- __from__ `/taccsite_cms/static/site_cms` source code entry point files,
+- __from__ `/taccsite_cms/static/site_cms/__FILE_TYPE__/exports/` source code entry point files,
 
 and populated
 
-- __to__ `/taccsite_cms/static/build` in a matching folder as build artifacts.
+- __to__ `/taccsite_cms/build/site_cms/__FILE_TYPE__/` in a matching sub-folder as build artifacts.
 
-### Resources
+### Resources to Build
 
-- `…/styles` (CSS stylesheets)
+- `styles/` (CSS stylesheets)
 
-### Build
+### How to Build
 
 Resources are already built every time a Docker container is started via `docker-compose`. If you need to _either_ manually re-build _or_ re-build on source file edit, then follow these steps.
 
@@ -147,8 +147,8 @@ Resources are already built every time a Docker container is started via `docker
 > __Remember__:
 > Templates can load two kinds of static resources.
 >
-> - Those that _need the build step_ __must__ be loaded from `…/build`.
-> - Those that _need __no__ build step_ __must__ be loaded from `…/site_cms`.
+> - Those that _need the build step_ __must__ be loaded from `…/build/site_cms`.
+> - Those that _need __no__ build step_ __must__ be loaded from `…/static/site_cms`.
 
 ## Linting and Formatting Conventions
 

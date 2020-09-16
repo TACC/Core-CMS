@@ -1,7 +1,13 @@
 # TACC CMS - Stylesheets
 
-Stylesheets are built from source code entry point files located at `./exports/*`.
+ADD SOURCE FILES HERE!
 
-Add new stylesheets into this location to be picked up by the `npm run build` task and the django `collectstatic` steps.
+Author styles within `./imports/` stylesheet partials.
+
+Import stylesheet partials into `./exports/` entry points.
+
+Built stylesheets are compiled to `../build/styles/`.
 
 See [project `README.md` at "Building Static Resources"](/README.md#Building%20Static%20Resources).
+
+_This directory exists in `static/` __only__ because it is customary for CSS to be authored in this directory._
