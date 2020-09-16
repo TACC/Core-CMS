@@ -13,9 +13,9 @@
 {% else %}
 <head>
 {% endif %}
-  <!-- Debugging Support. -->
+  {# Debugging Support. #}
   {% include "debug_js.html" with settings=settings %}
-  <!-- Google Analytics. -->
+  {# Google Analytics. #}
   {% include 'analytics.html' %}
 
   <!-- Metadata. -->
@@ -32,16 +32,18 @@
     {% endblock meta %}
   {% endif %}
 
-  <!-- Web Font. -->
-  {# FAQ: Site font which can be replaced or accompanied by Custom font #}
+  <!-- Site Font and/or Custom Font. -->
+  {# The core site font (can be replaced or accompanied by custom font/s) #}
   {% block assets_font %}
   {% include 'assets_font.html' %}
   {% endblock assets_font %}
 
   <!-- Site Assets. -->
+  {# The core site assets (can NOT be replaced by custom assets) #}
   {% include 'assets_site.html' %}
 
   <!-- Custom Assets. -->
+  {# Placeholder for custom assets #}
   {% block assets_custom %}
   {% include 'assets_custom.html' %}
   {% endblock assets_custom %}
@@ -82,9 +84,11 @@
   </div>
 
   <!-- Site Assets (Delayed). -->
+  {# The core site assets (late load) (can NOT be replaced by custom assets) #}
   {% include 'assets_site_delayed.html' %}
 
   <!-- Custom Assets (Delayed). -->
+  {# Placeholder for custom assets (late load) #}
   {% block assets_custom_delayed %}
   {% include 'assets_custom_delayed.html' %}
   {% endblock assets_custom_delayed %}
