@@ -1,19 +1,41 @@
-{% load i18n menu_tags cache %}
+{% load menu_tags %}
 
+{# TODO: GL-36/GL-44: Implement dropdown to support more than one tier #}
+{# NOTE: This template content is copied from a third-party plugin that we do not use nor need #}
+{# SEE: https://github.com/jrief/djangocms-bootstrap/blob/aa74994/cms_bootstrap/templates/bootstrap4/menu/navbar.html #}
+{% spaceless %}
 {% for child in children %}
-<li class="nav-item {% if child.ancestor or child.selected or request.get_full_path == child.url %}active{% endif %} {% if child.children %}dropdown{% endif %} {{child.attr.class}}">
-  {% if child.children %}
-  <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ child.get_menu_title | safe }} <span class="caret"></span></a>
-  <ul class="dropdown-menu">
-    <!--
-      <li {%if child.selected %}class="active"{% endif %}>
-        <a href="{{ child.get_absolute_url }}"><span>{{ child.get_menu_title | safe }}</span></a>
-      </li>
-    -->
-    {% show_menu from_level to_level extra_inactive extra_active template "" "" child %}
-  </ul>
-  {% else %}
-  <a class="nav-link" href="{{ child.get_absolute_url }}"><span>{{ child.get_menu_title | safe }}</span></a>
-  {% endif %}
+<li class="nav-item{% if child.selected or child.ancestor %} active{% endif %}{% if child.children %} dropdown{% endif %}">
+	{% if child.is_leaf_node %}
+	<a class="nav-link" href="{{ child.attr.redirect_url|default:child.get_absolute_url }}">
+		{{ child.get_menu_title|safe }}
+		<span class="sr-only">(current)</span>
+	</a>
+	{% else %}
+  <span class="nav-link">
+    <a href="{{ child.attr.redirect_url|default:child.get_absolute_url }}">
+      {{ child.get_menu_title|safe }}
+    </a>
+    <a
+      href=""
+      class="dropdown-toggle dropdown-toggle-split"
+      data-toggle="dropdown"
+      aria-haspopup="true"
+      aria-expanded="false">
+      <span class="sr-only">Toggle Dropdown</span>
+    </a>
+    <div class="dropdown-menu" role="menu" aria-labelledby="navbarDropdown">
+      {% comment %}
+      Bootsrap4 does not support submenues, so levels > 1 can't be handled be the main_menu tag and therfore
+      recursion has been dropped intentionally. Read https://github.com/twbs/bootstrap/pull/6342 for details.
+      {% endcomment %}
+      {% for grandchild in child.children %}
+      <a class="dropdown-item{% if grandchild.selected %} active{% endif %}" href="{{ grandchild.attr.redirect_url|default:grandchild.get_absolute_url }}" role="menuitem">
+        {{ grandchild.get_menu_title|safe }}
+      </a>
+      {% endfor %}
+  </span>
+	{% endif %}
 </li>
 {% endfor %}
+{% endspaceless %}
