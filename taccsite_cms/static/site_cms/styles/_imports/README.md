@@ -1,6 +1,6 @@
 # TACC CMS - Stylesheets - Imports
 
-These styles are intended to be imported by other stylesheets.
+Author styles here within partials to be imported by entry points.
 
 ## Directories
 

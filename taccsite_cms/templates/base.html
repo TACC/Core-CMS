@@ -27,10 +27,10 @@
   <link rel="icon" href="{% static 'site_cms/images/favicons/favicon.ico' %}" type="image/x-icon" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <!-- Requires `npm run build` step before running the django project. -->
-  <link id="css-site" rel="stylesheet" href="{% static 'build/styles/site.css' %}">
-  <link id="css-site-header" rel="stylesheet" href="{% static 'build/styles/site.header.css' %}">
+  <link id="css-site" rel="stylesheet" href="{% static 'build/site_cms/styles/site.css' %}">
+  <link id="css-site-header" rel="stylesheet" href="{% static 'build/site_cms/styles/site.header.css' %}">
   {% if settings.FEATURES.blog %}
-    <link id="css-site-blog" rel="stylesheet" href="{% static 'build/styles/site.blog.css' %}">
+    <link id="css-site-blog" rel="stylesheet" href="{% static 'build/site_cms/styles/site.blog.css' %}">
   {% endif %}
 
   <!-- Web Fonts. -->

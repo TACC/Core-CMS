@@ -5,7 +5,7 @@
     "description": "The master CMS codebase for all downstream TACC stand alone CMS sites.",
     "scripts": {
         "build": "npm run build:css",
-        "build:css": "postcss \"taccsite_cms/static/site_cms/styles/exports/**/*.css\" --base taccsite_cms/static/site_cms/styles/exports --dir taccsite_cms/static/build/styles",
+        "build:css": "postcss \"taccsite_cms/static/site_cms/styles/exports/**/*.css\" --base taccsite_cms/static/site_cms/styles/exports --dir taccsite_cms/build/site_cms/styles",
         "watch": "npm-watch"
     },
     "// scripts": {
