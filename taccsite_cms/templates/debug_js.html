@@ -1,0 +1,8 @@
+{% load staticfiles %}
+
+{# Let all other scripts know that we are in debug mode #}
+{# CAVEAT: To be effectual, this file must load before other scripts (no `async`, no `defer`) #}
+{% if settings.DEBUG %}
+  <script>window.DEBUG = true;</script>
+{% endif %}
+<script src="{% static 'site_cms/scripts/debug.js' %}"></script>

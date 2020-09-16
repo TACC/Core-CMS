@@ -49,9 +49,7 @@
   {% endblock custom_css %}
 
   <!-- Pre-Render Scripts. -->
-  {% if settings.DEBUG %}
-  <script src="{% static 'site_cms/scripts/debug.css' %}"></script>
-  {% endif %}
+  {% include "debug_js.html" with settings=settings %}
 </head>
 
 <body class="o-site  {% block page_type_class %}{% endblock page_type_class %}">
