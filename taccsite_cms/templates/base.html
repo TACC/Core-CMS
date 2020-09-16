@@ -13,6 +13,8 @@
 {% else %}
 <head>
 {% endif %}
+  <!-- Debugging Support. -->
+  {% include "debug_js.html" with settings=settings %}
   <!-- Google Analytics. -->
   {% include 'analytics.html' %}
 
