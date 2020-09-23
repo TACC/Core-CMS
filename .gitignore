@@ -13,6 +13,7 @@
 # Node & NPM
 ## built assets
 **/build/*
+!**/build/README.md
 
 ## environment variables
 .env

@@ -19,10 +19,10 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 {# CAVEAT: Requires `npm run build` step before running the Django project. #}
-<link id="css-site" rel="stylesheet" href="{% static 'build/styles/site.css' %}">
-<link id="css-site-header" rel="stylesheet" href="{% static 'build/styles/site.header.css' %}">
+<link id="css-site" rel="stylesheet" href="{% static 'site_cms/build/styles/site.css' %}">
+<link id="css-site-header" rel="stylesheet" href="{% static 'site_cms/build/styles/site.header.css' %}">
 {% if settings.FEATURES.blog %}
-  <link id="css-site-blog" rel="stylesheet" href="{% static 'build/styles/site.blog.css' %}">
+  <link id="css-site-blog" rel="stylesheet" href="{% static 'site_cms/build/styles/site.blog.css' %}">
 {% endif %}
 
 <!-- Site Assets: Scripts. -->

@@ -7,7 +7,7 @@ See [project `README.md` at "Building Static Resources"](/README.md#Building%20S
 All stylesheets are built
 
 - __from__ `../site_cms/…/exports/*` source code entry point files, and populated
-- __to__ `../build/…/*` as matching build artifacts.
+- __to__ `../site_cms/build/…/*` as matching build artifacts.
 
 Add new stylesheets into this directory, __NEVER__ that directory!
 These will be tracked in the repository and serve as files in which to import source code.

@@ -99,7 +99,7 @@ Certain static resources are built
 
 and populated
 
-- __to__ `/taccsite_cms/static/build` in a matching folder as build artifacts.
+- __to__ `/taccsite_cms/static/site_cms/build` in a matching folder as build artifacts.
 
 ### Resources
 
@@ -141,7 +141,7 @@ and populated
 > __Remember__:
 > Templates can load two kinds of static files.
 >
-> - Those that _need the build step_ __must__ be loaded from `…/build`.
+> - Those that _need the build step_ __must__ be loaded from `…/site_cms/build`.
 > - Those that _need __no__ build step_ __must__ be loaded from `…/site_cms`.
 
 ## Reference

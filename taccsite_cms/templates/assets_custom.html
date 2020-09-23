@@ -18,8 +18,8 @@
   {% block assets_custom %}
     {{ block.super }}
 
-    <link rel="stylesheet" href="{% static 'build/styles/template.___.css' %}">
-    <script src="{% static 'site_cms/scripts/template.___.js' %}"></script>
+    <link rel="stylesheet" href="{% static '__PROJECT__/build/styles/template.___.css' %}">
+    <script src="{% static '__PROJECT__/scripts/template.___.js' %}"></script>
   {% endblock assets_custom %}
 {% endcomment %}
 
@@ -28,7 +28,7 @@
   {% block assets_custom %}
     {{ block.super }}
 
-    <link rel="stylesheet" href="{% static 'build/styles/brand/*.css' %}">
-    <script src="{% static 'site_cms/scripts/brand/*.js' %}"></script>
+    <link rel="stylesheet" href="{% static '__PROJECT__/build/styles/brand/___.css' %}">
+    <script src="{% static '__PROJECT__/scripts/brand/___.js' %}"></script>
   {% endblock assets_custom %}
 {% endcomment %}
