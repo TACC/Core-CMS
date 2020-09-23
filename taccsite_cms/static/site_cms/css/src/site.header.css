@@ -26,6 +26,4 @@
 /* UNORGANIZED */
 
 /* TODO: Convert to a component */
-/* FAQ: Not moved to `_imports` because Wesley B is trying to reduce complexity
-        of controlled refactor by delaying all non-critical changes */
-@import url("exports/branding_logos.css");
+@import url("_imports/branding_logos.css");

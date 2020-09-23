@@ -19,11 +19,11 @@ FAQ: IF a script or style is better cached with markup, THEN:
     {{ block.super }}
 
     {# Example: Site Assets. #}
-    <link rel="stylesheet" href="{% static '__PROJECT__/styles/build/site.css' %}">
+    <link rel="stylesheet" href="{% static '__PROJECT__/css/build/site.css' %}">
     <script src="{% static '__PROJECT__/scripts/site.js' %}"></script>
 
     {# Example: Template-Specific Assets. #}
-    <link rel="stylesheet" href="{% static '__PROJECT__/styles/build/template.___.css' %}">
+    <link rel="stylesheet" href="{% static '__PROJECT__/css/build/template.___.css' %}">
     <script src="{% static '__PROJECT__/scripts/template.___.js' %}"></script>
 
     {# Example: Page-Specific Assets. #}

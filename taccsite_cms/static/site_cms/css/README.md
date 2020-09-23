@@ -1,6 +1,6 @@
 # TACC CMS - Stylesheets
 
-Stylesheets are built from source code entry point files located in `./exports*`. Styles are imported from source code files located in `./_imports/*`.
+Stylesheets are built from source code entry point files located in `./src/*`. Stylesheets are built to static asset artifact directory `./build/*`.
 
 Add new stylesheets into these locations to be picked up by the `npm run build` task and the django `collectstatic` steps.
 

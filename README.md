@@ -95,11 +95,11 @@ Log in with the user that was created via the `createsuperuser` step.
 
 Certain static resources are built
 
-- __from__ `/taccsite_cms/static/site_cms` source code entry point files,
+- __from__ `/taccsite_cms/static/site_cms/*/src` source code entry point files,
 
 and populated
 
-- __to__ `/taccsite_cms/static/site_cms/build` in a matching folder as build artifacts.
+- __to__ `/taccsite_cms/static/site_cms/*/build` in a matching folder as build artifacts.
 
 ### Resources
 
@@ -141,8 +141,8 @@ and populated
 > __Remember__:
 > Templates can load two kinds of static files.
 >
-> - Those that _need the build step_ __must__ be loaded from `…/site_cms/build`.
-> - Those that _need __no__ build step_ __must__ be loaded from `…/site_cms`.
+> - Those that _need the build step_ __must__ be loaded from `…/site_cms/*/build`.
+> - Those that _need __no__ build step_ __must__ be loaded from `…/site_cms/*/___`.
 
 ## Reference
 

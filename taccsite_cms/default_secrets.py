@@ -143,7 +143,7 @@ Usage:
 - The order of the _BRANDING list determines the rendering order of the elements in the template.
 - The portal logo setting must be assigned to the _LOGO variable to render in the template.
 - The following VALUES for new elements set in the configuration object must exist in the portal css as well:
-    - Any new selectors or css styles (add to /taccsite_cms/static/site_cms/styles/exports/branding_logos.css)
+    - Any new selectors or css styles (add to /taccsite_cms/static/site_cms/css/_imports/branding_logos.css)
     - Image files being references (add to /taccsite_cms/static/site_cms/images/org_logos)
 
 Values to populate:

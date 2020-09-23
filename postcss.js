@@ -35,10 +35,10 @@ function parallelCallback(err, results) {
 function buildStylesCore() {
   // Quote globbed paths to prevent OS from parsing them
   // SEE: https://github.com/postcss/postcss-cli/issues/142#issuecomment-310681302
-  exec(`postcss "taccsite_cms/static/site_cms/styles/exports/**/*.css" --base "taccsite_cms/static/site_cms/styles/exports" --dir "taccsite_cms/static/site_cms/build/styles"`, execCallback);
+  exec(`postcss "taccsite_cms/static/site_cms/css/src/*.css" --dir "taccsite_cms/static/site_cms/css/build"`, execCallback);
 }
 function buildStylesCustom() {
-  exec(`postcss "taccsite_custom/${env.CUSTOM_ASSET_DIR}/static/${env.CUSTOM_ASSET_DIR}/styles/exports/**/*.css" --base "taccsite_custom/${env.CUSTOM_ASSET_DIR}/static/${env.CUSTOM_ASSET_DIR}/styles/exports" --dir "taccsite_custom/${env.CUSTOM_ASSET_DIR}/static/${env.CUSTOM_ASSET_DIR}/build/styles"`, execCallback);
+  exec(`postcss "taccsite_custom/${env.CUSTOM_ASSET_DIR}/static/${env.CUSTOM_ASSET_DIR}/css/src/*.css" --dir "taccsite_custom/${env.CUSTOM_ASSET_DIR}/static/${env.CUSTOM_ASSET_DIR}/css/build"`, execCallback);
 }
 
 // Build process for styles may be run in parallel because they are independent

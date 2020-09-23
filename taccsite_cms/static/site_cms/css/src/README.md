@@ -1,4 +1,4 @@
-# TACC CMS - Stylesheets - Exports
+# TACC CMS - Stylesheets
 
 These files are minified and processed by the `npm run build` step.
 
@@ -6,15 +6,15 @@ See [project `README.md` at "Building Static Resources"](/README.md#Building%20S
 
 All stylesheets are built
 
-- __from__ `../site_cms/…/exports/*` source code entry point files, and populated
-- __to__ `../site_cms/build/…/*` as matching build artifacts.
+- __from__ `../site_cms/…/src/*` source code entry point files, and populated
+- __to__ `../site_cms/…/build/*` as matching build artifacts.
 
 Add new stylesheets into this directory, __NEVER__ that directory!
 These will be tracked in the repository and serve as files in which to import source code.
 
 ## Rules
 
-1. Files __must__ import styles from [`./_imports`](./_imports).
+1. Files __must__ import styles from [`./_imports/`](./_imports).
 1. Files __must__ be [named with appropriate format](#Naming%20Format).
 1. Files __must__ be [documented in appropriate format](#Documentation%20Format).
 
