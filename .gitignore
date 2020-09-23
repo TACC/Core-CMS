@@ -12,7 +12,7 @@
 
 # Node & NPM
 ## built assets
-build/*
+**/build/*
 
 ## environment variables
 .env
