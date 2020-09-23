@@ -11,20 +11,22 @@ Consider asset load via `assets_custom`, not `assets_custom_delayed`:
 
 
 
-{# Example: Template-Specific Assets. #}
+{# Example #}
 {% comment %}
   {% block assets_custom_delayed %}
     {{ block.super }}
 
-    <script src="{% static 'site_cms/scripts/template.___.js' %}"></script>
-  {% endblock assets_custom_delayed %}
-{% endcomment %}
+    {# Example: Site Assets. #}
+    <link rel="stylesheet" href="{% static '__PROJECT__/styles/build/site.css' %}">
+    <script src="{% static '__PROJECT__/scripts/site.js' %}"></script>
 
-{# Example: Brand-Specific Assets. #}
-{% comment %}
-  {% block assets_custom_delayed %}
-    {{ block.super }}
+    {# Example: Template-Specific Assets. #}
+    <link rel="stylesheet" href="{% static '__PROJECT__/styles/build/template.___.css' %}">
+    <script src="{% static '__PROJECT__/scripts/template.___.js' %}"></script>
 
-    <script src="{% static 'site_cms/scripts/brand/*.js' %}"></script>
+    {# Example: Page-Specific Assets. #}
+    {# WARNING: Undesired use case. Create re-usable code instead. #}
+    {# SEE: https://confluence.tacc.utexas.edu/x/54AZCg #}
+
   {% endblock assets_custom_delayed %}
 {% endcomment %}

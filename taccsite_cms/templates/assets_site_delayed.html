@@ -1,9 +1,11 @@
 {# For assets that should be loaded after all others. #}
 {% comment %}
-Consider asset load via `assets_custom`, not `assets_custom_delayed`:
+Consider asset load via `assets_site`, not `assets_site_delayed`:
   - Styles should not need a delayed load time.
   - Scripts can use `defer` or `async` attr's to manage load time.
 {% endcomment %}
+
+{# NOTE: Fonts may be loaded early via `assets_font` #}
 
 
 
