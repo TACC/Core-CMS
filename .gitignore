@@ -12,7 +12,8 @@
 
 # Node & NPM
 ## built assets
-/taccsite_cms/static/build/*
+build/*
+
 ## environment variables
 .env
 
