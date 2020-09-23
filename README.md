@@ -79,7 +79,7 @@ The CMS admin site should now be accessible at http://localhost:8000/admin (or a
 [docker-compose-up]: https://docs.docker.com/compose/reference/up/
 [docker-compose-build]: https://docs.docker.com/compose/reference/build/
 
-[django-migrate]: https://docs.djangoproject.com/en/3.0/topics/migrations/
+[django-migrate]: https://docs.djangoproject.com/en/2.2/topics/migrations/
 
 [django-cms-migrate]: http://docs.django-cms.org/en/latest/how_to/install.html#database-tables
 [django-cms-su]: http://docs.django-cms.org/en/latest/how_to/install.html#admin-user
