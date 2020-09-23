@@ -38,7 +38,7 @@ function buildStylesCore() {
   exec(`postcss "taccsite_cms/static/site_cms/styles/exports/**/*.css" --base "taccsite_cms/static/site_cms/styles/exports" --dir "taccsite_cms/static/build/styles"`, execCallback);
 }
 function buildStylesCustom() {
-  exec(`postcss "taccsite_custom/${env.CUSTOM_ASSET_DIR}/static/${env.CUSTOM_ASSET_DIR}/styles/exports/**/*.css" --base "taccsite_custom/${env.CUSTOM_ASSET_DIR}/static/${env.CUSTOM_ASSET_DIR}/styles/exports" --dir "taccsite_custom/${env.CUSTOM_ASSET_DIR}/static/build/styles"`, execCallback);
+  exec(`postcss "taccsite_custom/${env.CUSTOM_ASSET_DIR}/static/${env.CUSTOM_ASSET_DIR}/styles/exports/**/*.css" --base "taccsite_custom/${env.CUSTOM_ASSET_DIR}/static/${env.CUSTOM_ASSET_DIR}/styles/exports" --dir "taccsite_custom/${env.CUSTOM_ASSET_DIR}/static/${env.CUSTOM_ASSET_DIR}/build/styles"`, execCallback);
 }
 
 // Build process for styles may be run in parallel because they are independent

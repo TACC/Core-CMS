@@ -14,6 +14,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import logging
 import os
+from glob import glob
 
 
 def gettext(s): return s
@@ -95,9 +96,6 @@ LOGO  = current_secrets._LOGO
 # Optional features.
 FEATURES = current_secrets._FEATURES
 
-# Custom assets.
-CUSTOM_ASSET_DIR = current_secrets._CUSTOM_ASSET_DIR
-
 # Application definition
 ROOT_URLCONF = 'taccsite_cms.urls'
 
@@ -110,10 +108,15 @@ if CONSOLE_LOG_ENABLED:
     print("--> Variable STATIC_ROOT: ", STATIC_ROOT)
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'taccsite_custom', CUSTOM_ASSET_DIR, 'static'),
     os.path.join(BASE_DIR, 'taccsite_cms', 'static'),
     # os.path.join(BASE_DIR, 'taccsite_cms', 'en', 'static'),
 )
+
+# !!!: Ugliest Code Ever!
+STATICFILES_DIRS_PREPEND_LIST = glob(os.path.join(BASE_DIR, 'taccsite_custom', '*', 'static'));
+STATICFILES_DIRS_PREPEND = tuple(STATICFILES_DIRS_PREPEND_LIST)
+STATICFILES_DIRS = STATICFILES_DIRS_PREPEND + STATICFILES_DIRS
+
 
 if CONSOLE_LOG_ENABLED:
     print("--> Variable STATICFILES_DIRS: ", STATICFILES_DIRS)
