@@ -18,11 +18,11 @@ Consider asset load via `assets_custom`, not `assets_custom_delayed`:
 
     {# Example: Site Assets. #}
     <link rel="stylesheet" href="{% static '__PROJECT__/css/build/site.css' %}">
-    <script src="{% static '__PROJECT__/scripts/site.js' %}"></script>
+    <script src="{% static '__PROJECT__/js/site.js' %}"></script>
 
     {# Example: Template-Specific Assets. #}
     <link rel="stylesheet" href="{% static '__PROJECT__/css/build/template.___.css' %}">
-    <script src="{% static '__PROJECT__/scripts/template.___.js' %}"></script>
+    <script src="{% static '__PROJECT__/js/template.___.js' %}"></script>
 
     {# Example: Page-Specific Assets. #}
     {# WARNING: Undesired use case. Create re-usable code instead. #}

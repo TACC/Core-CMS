@@ -13,7 +13,7 @@ FAQ: IF a script or style is better cached with markup, THEN:
 
 
 <!-- Site Assets: Favicon. -->
-<link rel="icon" href="{% static 'site_cms/images/favicons/favicon.ico' %}" type="image/x-icon" />
+<link rel="icon" href="{% static 'site_cms/img/favicons/favicon.ico' %}" type="image/x-icon" />
 
 <!-- Site Assets: Styles. -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -26,6 +26,4 @@ FAQ: IF a script or style is better cached with markup, THEN:
 {% endif %}
 
 <!-- Site Assets: Scripts. -->
-{% if settings.DEBUG %}
-  <script src="{% static 'site_cms/scripts/debug.js' %}"></script>
-{% endif %}
+<script src="{% static 'site_cms/js/site.js' %}"></script>
