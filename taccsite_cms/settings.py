@@ -190,7 +190,10 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.sites',
     'django.contrib.sitemaps',
-    'django.contrib.staticfiles',
+    # Customize 'django.contrib.staticfiles'
+    # SEE: https://stackoverflow.com/q/57921970/11817077
+    # 'django.contrib.staticfiles',
+    'taccsite_cms.django.contrib.staticfiles_custom',
     'django.contrib.messages',
     'cms',
     'menus',
