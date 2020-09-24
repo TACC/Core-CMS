@@ -35,11 +35,22 @@ function parallelCallback(err, results) {
 function buildStylesCore() {
   // Quote globbed paths to prevent OS from parsing them
   // SEE: https://github.com/postcss/postcss-cli/issues/142#issuecomment-310681302
-  exec(`postcss "taccsite_cms/static/site_cms/css/src/*.css" --dir "taccsite_cms/static/site_cms/css/build"`, execCallback);
+  const command = `postcss "taccsite_cms/static/site_cms/css/src/*.css" --dir "taccsite_cms/static/site_cms/css/build" --verbose --colors`;
+
+  console.log(command);
+  exec(command, execCallback);
 }
 function buildStylesCustom() {
-  exec(`postcss "taccsite_custom/${env.CUSTOM_ASSET_DIR}/static/${env.CUSTOM_ASSET_DIR}/css/src/*.css" --dir "taccsite_custom/${env.CUSTOM_ASSET_DIR}/static/${env.CUSTOM_ASSET_DIR}/css/build"`, execCallback);
+  // Quote globbed paths to prevent OS from parsing them
+  // SEE: https://github.com/postcss/postcss-cli/issues/142#issuecomment-310681302
+  const command = `postcss "taccsite_custom/${env.CUSTOM_ASSET_DIR}/static/${env.CUSTOM_ASSET_DIR}/css/src/*.css" --dir "taccsite_custom/${env.CUSTOM_ASSET_DIR}/static/${env.CUSTOM_ASSET_DIR}/css/build" --verbose --colors`;
+
+  console.log(command);
+  exec(command, execCallback);
 }
+
+// The confusing is worth explaining (and fixing if we know how)
+console.warn('The commands are run in parallel so the output may be out of order.' + "\n");
 
 // Build process for styles may be run in parallel because they are independent
 // SEE: https://stackoverflow.com/a/10776939/11817077

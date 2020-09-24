@@ -9,7 +9,7 @@ let importPathsForCustomAsset = [];
 
 if (env.CUSTOM_ASSET_DIR) {
   importPathsForCustomAsset.push(
-    `./taccsite_custom/${env.CUSTOM_ASSET_DIR}/static/${env.CUSTOM_ASSET_DIR}/styles`
+    `./taccsite_custom/${env.CUSTOM_ASSET_DIR}/static/${env.CUSTOM_ASSET_DIR}/css/src`
   );
 }
 
@@ -17,7 +17,7 @@ module.exports = {
   plugins: [
     require('postcss-import')({
       path: [
-        './taccsite_cms/static/site_cms/styles'
+        './taccsite_cms/static/site_cms/css/src'
       ].concat(
         importPathsForCustomAsset
       )
