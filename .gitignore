@@ -12,7 +12,7 @@
 
 # Node & NPM
 ## built assets
-build/*
+build
 !build/README.md
 
 ## environment variables
