@@ -8,6 +8,6 @@ class TaccStaticFilesConfig(StaticFilesConfig):
         # SEE: https://docs.djangoproject.com/en/2.2/ref/contrib/staticfiles/#customizing-the-ignored-pattern-list
         'CVS', '.*', '*~',
         # Added by TACC
-        # WARNING: Does ignore `src` from non-TACC static's
-        'src'
+        # WARNING: Ignores these from non-TACC static's also
+        'src', 'README.md'
     ]
