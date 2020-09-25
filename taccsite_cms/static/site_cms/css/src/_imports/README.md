@@ -1,5 +1,7 @@
 # TACC CMS - Stylesheets - Imports
 
+AUTHOR ACTUAL STYLES HERE!
+
 These styles are only to be imported by other stylesheets.
 
 ## Rules

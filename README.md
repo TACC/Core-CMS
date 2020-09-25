@@ -95,17 +95,19 @@ Log in with the user that was created via the `createsuperuser` step.
 
 Certain static resources are built
 
-- __from__ `/taccsite_cms/static/site_cms/*/src` source code entry point files,
+- __from__ `/taccsite_cms/static/site_cms/__FILE_TYPE__/src` source code entry point files,
 
 and populated
 
-- __to__ `/taccsite_cms/static/site_cms/*/build` in a matching folder as build artifacts.
+- __to__ `/taccsite_cms/static/site_cms/__FILE_TYPE__/build` in a matching folder as build artifacts.
 
-### Resources
+### Resources to Build
 
-- `…/styles` (CSS stylesheets)
+- `styles/` (CSS stylesheets)
 
-### Setup
+### How to Build
+
+Resources are currently built locally and synced to the CMS Docker container. _[Issue #30](https://gitlab.tacc.utexas.edu/wma-cms/cms-site-template/issues/30) will change this process and this paragraph._
 
 1. [Install][npm-cli-install] the dependencies:
 
@@ -113,7 +115,7 @@ and populated
     npm install
     ```
 
-2. Build the static dependencies:
+2. Build static resources:
 
     ```bash
     npm run build
@@ -130,19 +132,27 @@ and populated
 [npm-pkg-watch]: https://www.npmjs.com/package/npm-watch
 
 
-### Usage
+### How to Use
 
 1. Make changes to source files.
-2. Compile changes to source via:
+2. Build changes from source via:
     - (manually, for any ready changes) `npm run build`
     - (automatically, on source change) `npm run watch`
 3. Confirm that the build output has changed.
 
-> __Remember__:
-> Templates can load two kinds of static files.
->
-> - Those that _need the build step_ __must__ be loaded from `…/site_cms/*/build`.
-> - Those that _need __no__ build step_ __must__ be loaded from `…/site_cms/*/___`.
+### How to Load
+
+- Resources with a built step:
+
+  ```django
+  {% static 'site_cms/__FILE_TYPE__/build/' %}
+  ```
+
+- Resources with no build step:
+
+  ```django
+  {% static 'site_cms/__FILE_TYPE__/' %}
+  ```
 
 ## Reference
 

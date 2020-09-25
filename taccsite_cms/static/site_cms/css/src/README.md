@@ -1,16 +1,14 @@
 # TACC CMS - Stylesheets
 
-These files are minified and processed by the `npm run build` step.
+AUTHOR STYLESHEETS HERE!
+
+- Author styles as stylesheet partials in `./_imports/`.
+- Import stylesheet partials into entry point files here at `./`.
+- Built stylesheets are compiled to `../build/`.
 
 See [project `README.md` at "Building Static Resources"](/README.md#Building%20Static%20Resources).
 
-All stylesheets are built
-
-- __from__ `../site_cms/…/src/*` source code entry point files, and populated
-- __to__ `../site_cms/…/build/*` as matching build artifacts.
-
-Add new stylesheets into this directory, __NEVER__ that directory!
-These will be tracked in the repository and serve as files in which to import source code.
+_This directory exists in `static/` __only__ because it is customary, using Django, for CSS to be authored in this directory._
 
 ## Rules
 
