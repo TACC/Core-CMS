@@ -1,7 +1,7 @@
 from django.contrib.staticfiles.apps import StaticFilesConfig
 
 # Make `python manage.py collectstatic` ignore `src/` files
-# FAQ: Do not allow developers to load source files as static resources
+# FAQ: Do not allow developers to load source files as static files
 class TaccStaticFilesConfig(StaticFilesConfig):
     ignore_patterns = [
         # Original values

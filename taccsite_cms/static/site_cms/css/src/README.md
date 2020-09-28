@@ -6,7 +6,7 @@ AUTHOR STYLESHEETS HERE!
 - Import stylesheet partials into entry point files here at `./`.
 - Built stylesheets are compiled to `../build/`.
 
-See [project `README.md` at "Building Static Resources"](/README.md#Building%20Static%20Resources).
+See [project `README.md` at "Building Static Files"](/README.md#Building%20Static%20Files).
 
 _This directory exists in `static/` __only__ because it is customary, using Django, for CSS to be authored in this directory._
 

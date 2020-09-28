@@ -91,23 +91,23 @@ Log in with the user that was created via the `createsuperuser` step.
 
 > __Warning__: The CMS install will be fresh i.e. the CMS will __not__ be populated with production content.
 
-## Building Static Resources
+## Building Static Files
 
-Certain static resources are built
+Certain static files are built
 
-- __from__ `/taccsite_cms/static/site_cms/__FILE_TYPE__/src` source code entry point files,
+- __from__ `/taccsite_cms/static/site_cms/__FILE_TYPE__/src` source files,
 
 and populated
 
-- __to__ `/taccsite_cms/static/site_cms/__FILE_TYPE__/build` in a matching folder as build artifacts.
+- __to__ `/taccsite_cms/static/site_cms/__FILE_TYPE__/build` as build artifacts.
 
-### Resources to Build
+### Files to Build
 
-- `styles/` (CSS stylesheets)
+- `css/` (CSS stylesheets)
 
 ### How to Build
 
-Resources are currently built locally and synced to the CMS Docker container. _[Issue #30](https://gitlab.tacc.utexas.edu/wma-cms/cms-site-template/issues/30) will change this process and this paragraph._
+The files are currently built locally and synced to the CMS Docker container. _[Issue #30](https://gitlab.tacc.utexas.edu/wma-cms/cms-site-template/issues/30) will change this process and this paragraph._
 
 1. [Install][npm-cli-install] the dependencies:
 
@@ -115,7 +115,7 @@ Resources are currently built locally and synced to the CMS Docker container. _[
     npm install
     ```
 
-2. Build static resources:
+2. Build static files:
 
     ```bash
     npm run build
@@ -138,21 +138,7 @@ Resources are currently built locally and synced to the CMS Docker container. _[
 2. Build changes from source via:
     - (manually, for any ready changes) `npm run build`
     - (automatically, on source change) `npm run watch`
-3. Confirm that the build output has changed.
-
-### How to Load
-
-- Resources with a built step:
-
-  ```django
-  {% static 'site_cms/__FILE_TYPE__/build/' %}
-  ```
-
-- Resources with no build step:
-
-  ```django
-  {% static 'site_cms/__FILE_TYPE__/' %}
-  ```
+3. (Optional) Confirm that `build/` output has changed.
 
 ## Reference
 

@@ -9,9 +9,9 @@
         "watch": "npm-watch"
     },
     "// scripts": {
-        "build": "Run all asset build commands",
-        "build:css": "Build styles from source files",
-        "watch": "Build assets when source files change"
+        "build": "Run all static file build commands",
+        "build:css": "Build stylesheets from source files",
+        "watch": "Build static files when source files change"
     },
     "repository": "git@gitlab.tacc.utexas.edu:wma-cms/cms-site-template.git",
     "devDependencies": {

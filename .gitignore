@@ -11,7 +11,7 @@
 /static/css/*.css
 
 # Node & NPM
-## built assets
+## built Static files
 build
 !build/README.md
 
