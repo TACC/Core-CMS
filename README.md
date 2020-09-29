@@ -112,7 +112,7 @@ Log in with the user that was created via the `createsuperuser` step.
 
 ## Changing Static Files
 
-Whenever static files are changed, the CMS may need to be manually told to serve them (if not automatically performed, or if cached).
+Whenever static files are changed, the CMS may need to be manually told to serve them (if not [automatically performed, or if cached](https://stackoverflow.com/a/59340216/11817077)).
 
 1. [Start a bash session][docker-exec-bash] into the CMS container:
 
