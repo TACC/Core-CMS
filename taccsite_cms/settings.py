@@ -110,13 +110,9 @@ if CONSOLE_LOG_ENABLED:
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'taccsite_cms', 'static'),
     # os.path.join(BASE_DIR, 'taccsite_cms', 'en', 'static'),
-)
-
-# !!!: Ugliest Code Ever!
-STATICFILES_DIRS_PREPEND_LIST = glob(os.path.join(BASE_DIR, 'taccsite_custom', '*', 'static'));
-STATICFILES_DIRS_PREPEND = tuple(STATICFILES_DIRS_PREPEND_LIST)
-STATICFILES_DIRS = STATICFILES_DIRS_PREPEND + STATICFILES_DIRS
-
+) + tuple(glob(
+    os.path.join(BASE_DIR, 'taccsite_custom', '*', 'static')
+))
 
 if CONSOLE_LOG_ENABLED:
     print("--> Variable STATICFILES_DIRS: ", STATICFILES_DIRS)
@@ -134,9 +130,10 @@ TEMPLATES = [
         # FAQ: List custom directory first, so custom templates take precedence
         # SEE: https://docs.djangoproject.com/en/2.2/topics/templates/#configuration
         'DIRS': [
-            os.path.join(BASE_DIR, 'taccsite_custom'),
             os.path.join(BASE_DIR, 'taccsite_cms', 'templates')
-        ],
+        ] + glob(
+            os.path.join(BASE_DIR, 'taccsite_custom', '*', 'templates')
+        ),
         # 'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -227,8 +224,27 @@ INSTALLED_APPS = [
     'djangocms_bootstrap4.contrib.bootstrap4_picture',
     'djangocms_bootstrap4.contrib.bootstrap4_tabs',
     'djangocms_bootstrap4.contrib.bootstrap4_utilities',
-    'taccsite_cms'
 ]
+
+# !!!: Ugliest code ever
+# Convert list of paths to list of dotted module names
+def get_subdirs_as_module_names(path):
+    module_names = []
+    for entry in os.scandir(path):
+        if entry.is_dir():
+            module_name = entry.path \
+                .replace(os.path.sep + 'code' + os.path.sep, '') \
+                .replace(os.path.sep, '.')
+            module_names.append(module_name)
+    return module_names
+# FAQ: Append CMS project paths as module names to INSTALLED_APPS
+CUSTOM_CMS_DIR = os.path.join(BASE_DIR, 'taccsite_custom')
+INSTALLED_APPS_APPEND = get_subdirs_as_module_names(CUSTOM_CMS_DIR)
+INSTALLED_APPS = INSTALLED_APPS + INSTALLED_APPS_APPEND + ['taccsite_cms']
+
+
+if CONSOLE_LOG_ENABLED:
+    print("--> Variable INSTALLED_APPS: ", INSTALLED_APPS)
 
 # Comment the LDAPBackend to use local django auth
 AUTHENTICATION_BACKENDS = [
