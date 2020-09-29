@@ -1,3 +1,3 @@
 'use strict';
 
-console.info('No site script logic exists, but files can be loaded.');
+console.info('Core `site.js` has no logic.');

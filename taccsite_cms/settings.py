@@ -132,7 +132,7 @@ TEMPLATES = [
         'DIRS': [
             os.path.join(BASE_DIR, 'taccsite_cms', 'templates')
         ] + glob(
-            os.path.join(BASE_DIR, 'taccsite_custom', '*', 'templates')
+            os.path.join(BASE_DIR, 'taccsite_custom')
         ),
         # 'APP_DIRS': True,
         'OPTIONS': {

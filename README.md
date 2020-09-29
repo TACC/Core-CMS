@@ -174,8 +174,9 @@ The files are currently built locally and synced to the CMS Docker container. _[
 1. Create/Edit files in a child directory of `/taccsite_custom`.
 2. Follow instructions and directory structure of `example-cms`.
 3. Reference other projects in `/taccsite_custom`.
-4. (As necessary) Re-build static assets.
-5. [Commit changes.](#Commit%20Changes)
+4. (As necessary) Build static assets.
+5. (For templates) Restart server.
+6. [Commit changes.](#Commit%20Changes)
     1. In `/taccsite_custom` submodule repo, commit changes.
     2. In `cms-site-template` parent repo, add `/taccsite_custom` change.
     3. In `cms-site-template` parent repo, commit changes.
