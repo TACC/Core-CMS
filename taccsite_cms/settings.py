@@ -212,6 +212,7 @@ INSTALLED_APPS = [
     'djangocms_bootstrap4.contrib.bootstrap4_picture',
     'djangocms_bootstrap4.contrib.bootstrap4_tabs',
     'djangocms_bootstrap4.contrib.bootstrap4_utilities',
+    'haystack',
     'taccsite_cms'
 ]
 
@@ -392,6 +393,18 @@ GOOGLE_ANALYTICS_PRELOAD = current_secrets._GOOGLE_ANALYTICS_PRELOAD
 # SETTINGS VARIABLE EXPORTS.
 # Use a custom namespace (using default settings.VARIABLE configuration)
 SETTINGS_EXPORT_VARIABLE_NAME = 'settings'
+
+# Elasticsearch Indexing
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+        'URL': current_secrets._ES_HOSTS,
+        'INDEX_NAME': current_secrets._ES_INDEX_PREFIX.format('cms'),
+        'KWARGS': {'http_auth': current_secrets._ES_AUTH }
+    }
+}
+
+ES_DOMAIN = current_secrets._ES_DOMAIN
 
 # Exported settings.
 SETTINGS_EXPORT = [
