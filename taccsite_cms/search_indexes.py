@@ -58,7 +58,7 @@ class TextPluginIndex(indexes.SearchIndex, indexes.Indexable):
         request.session = {}
         request.LANGUAGE_CODE = settings.LANGUAGE_CODE
         self.prepared_data = super(TextPluginIndex, self).prepare(page)
-        plugins = CMSPlugin.objects.all()
+        plugins = CMSPlugin.objects.filter(placeholder__in=obj.page.placeholders.all())
         text = ''
         for base_plugin in plugins:
             instance, plugin_type = base_plugin.get_plugin_instance()

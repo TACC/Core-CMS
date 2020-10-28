@@ -44,7 +44,7 @@ services:
       - taccsite_cms_es_data:/usr/share/elasticsearch/data
     container_name: taccsite_cms_elasticsearch
     ports:
-      - 9200:9200
+      - 9201:9200
     networks:
       - taccsite_cms_net
 
