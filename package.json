@@ -26,7 +26,8 @@
     "watch": {
         "build:css": {
             "patterns": [
-                "./taccsite_cms/static/site_cms/styles"
+                "./taccsite_cms/static/site_cms/css/src",
+                "./taccsite_custom/**/static/**/css/src"
             ],
             "extensions": "css",
             "runOnChangeOnly": false
