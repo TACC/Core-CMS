@@ -19,7 +19,7 @@ _ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost', '*']   # In development.
 _LDAP_ENABLED = False
 
 # Boolean check to determine the appropriate database settings when using containers.
-_USING_CONTAINERS = False
+_USING_CONTAINERS = True
 
 ########################
 # DATABASE SETTINGS
@@ -238,3 +238,12 @@ _PORTAL_LOGO =  [
 ]
 
 _LOGO = _PORTAL_LOGO                # Default Portal Logo.
+
+########################
+# ELASTICSEARCH
+########################
+
+_ES_AUTH = 'username:password'
+_ES_HOSTS = 'http://elasticsearch:9200'
+_ES_INDEX_PREFIX = 'cms-dev-{}'
+_ES_DOMAIN = 'http://localhost:8000'

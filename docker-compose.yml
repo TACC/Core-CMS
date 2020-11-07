@@ -32,8 +32,25 @@ services:
     networks:
       - taccsite_cms_net
 
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.4.0
+    ulimits:
+      memlock: -1
+    environment:
+      - ES_HEAP_SIZE:1g
+      - discovery.type=single-node
+    volumes:
+      - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - taccsite_cms_es_data:/usr/share/elasticsearch/data
+    container_name: taccsite_cms_elasticsearch
+    ports:
+      - 9201:9200
+    networks:
+      - taccsite_cms_net
+
 volumes:
   taccsite_postgres_data:
+  taccsite_cms_es_data:
 
 networks:
   taccsite_cms_net:
