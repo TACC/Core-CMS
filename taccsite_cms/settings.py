@@ -92,6 +92,11 @@ ALLOWED_HOSTS = current_secrets._ALLOWED_HOSTS
 BRANDING = current_secrets._BRANDING
 LOGO  = current_secrets._LOGO
 
+# Cofnigure Portal.
+PORTAL = current_secrets._PORTAL
+PORTAL_AUTH_LINKS = current_secrets._PORTAL_AUTH_LINKS
+PORTAL_UNAUTH_LINKS = current_secrets._PORTAL_UNAUTH_LINKS
+
 # Application definition
 ROOT_URLCONF = 'taccsite_cms.urls'
 
@@ -349,6 +354,9 @@ SETTINGS_EXPORT = [
     'DEBUG',
     'BRANDING',
     'LOGO',
+    'PORTAL',
+    'PORTAL_AUTH_LINKS',
+    'PORTAL_UNAUTH_LINKS',
     'GOOGLE_ANALYTICS_PROPERTY_ID',
     'GOOGLE_ANALYTICS_PRELOAD'
 ]
