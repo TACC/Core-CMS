@@ -6,26 +6,32 @@ A TACC CMS can be run using Docker and Docker Compose both locally or in product
 
 ## Configuration
 
-### To Support Indepenent Isolated Instance
+### For Isolated Instance Like Production
 
 Skip configuration; you may use the default configuration.
 
-### To Support Instance Alongside Other CMS Project Instances
+### For Isolated Containerized Local Development
 
-1. Copy `docker-compose.yml` as new `docker-compose.custom.yml` file, and in the new file:
+1. Run any `docker-compose` command with `docker-compose.dev.yml` configuration, ex:
+
+    ```bash
+    docker-compose -f docker-compose.dev.yml …
+    ```
+
+### For Running Alongside Other Containerized CMS Instances
+
+1. Copy `docker-compose.dev.yml` as new `docker-compose.custom.yml` file, and in the new file:
     - Replace any `taccsite_` string partial with a unique identifier.
     - Replace the first number in `ports` value with a unique port.
 2. Copy `taccsite_cms/default_secrets.py` as new `taccsite_cms/secrets.py` file, and in the new file:
     - Change `_DATABASES`:`default`:`HOST` to equal `docker-compose.custom.yml`'s `postgres`:`hostname`.
-3. Run any `docker-compose` with file argument, e.g.:
+3. Run any `docker-compose` command with `docker-compose.dev.yml` configuration, ex:
 
     ```bash
     docker-compose -f docker-compose.custom.yml …
     ```
 
 ## Run the CMS (via Docker)
-
-> __Notice__: The `docker-compose.yml` file included in this repo is set up for running the instance locally.
 
 ### Prerequisites
 
@@ -59,7 +65,7 @@ Skip configuration; you may use the default configuration.
     python manage.py migrate
     ```
 
-    _This is like a Django CMS wrapper around [Django migrations][django-cms-migrate]._
+    _This is like a Django CMS wrapper around [Django migrations][django-migrate]._
 
 5. [Create a superuser][django-cms-su] for Django CMS:
 
@@ -73,6 +79,20 @@ Skip configuration; you may use the default configuration.
 
 The CMS admin site should now be accessible at http://localhost:8000/admin (or at the port defined in a `docker-compose.custom.yml`).
 
+Log in with the user that was created via the `createsuperuser` step.
+
+> __Notice__: To log in with a TACC account using LDAP, create the account using the TACC username, then assign staff and/or superuser privileges. The assigned password can be any password and does __not__ need to be sent to the user. The CMS will __not__ attempt to validate with the assigned password unless LDAP authentication fails. __For production, create a strong password.__
+
+> __Warning__: The CMS install will be fresh i.e. the CMS will __not__ be populated with production content.
+
+6. [Collect static files][django-static] for Django:
+
+    ```bash
+    python manage.py collectstatic
+    ```
+
+    _[If `DEBUG` is set to `True`, then this is automated by `python manage.py runserver`.][django-static-serve-dev]_
+
 
 [docker-exec-bash]: https://docs.docker.com/engine/reference/commandline/exec/#run-docker-exec-on-a-running-container
 
@@ -80,16 +100,14 @@ The CMS admin site should now be accessible at http://localhost:8000/admin (or a
 [docker-compose-build]: https://docs.docker.com/compose/reference/build/
 
 [django-migrate]: https://docs.djangoproject.com/en/3.0/topics/migrations/
+[django-static]: https://docs.djangoproject.com/en/3.1/howto/static-files/
+[django-static-serve-dev]: https://docs.djangoproject.com/en/3.1/howto/static-files/#serving-static-files-during-development
 
 [django-cms-migrate]: http://docs.django-cms.org/en/latest/how_to/install.html#database-tables
 [django-cms-su]: http://docs.django-cms.org/en/latest/how_to/install.html#admin-user
 
+https://docs.djangoproject.com/en/3.1/howto/static-files/#serving-static-files-during-development
 
-Log in with the user that was created via the `createsuperuser` step.
-
-> __Notice__: To log in with a TACC account using LDAP, create the account using the TACC username, then assign staff and/or superuser privileges. The assigned password can be any password and does __not__ need to be sent to the user. The CMS will __not__ attempt to validate with the assigned password unless LDAP authentication fails. __For production, create a strong password.__
-
-> __Warning__: The CMS install will be fresh i.e. the CMS will __not__ be populated with production content.
 
 ## Building Static Resources
 
@@ -99,7 +117,7 @@ Certain static resources are built
 
 and populated
 
-- __to__ `/taccsite_cms/build/site_cms/__FILE_TYPE__/` in a matching sub-folder as build artifacts.
+- __to__ `/taccsite_cms/static/build/__FILE_TYPE__/` in a matching sub-folder as build artifacts.
 
 ### Resources to Build
 
@@ -107,9 +125,7 @@ and populated
 
 ### How to Build
 
-Resources are already built every time a CMS Docker container is built. If you need to _either_ manually re-build _or_ re-build on source file edit, then follow these steps.
-
-1. [Start a bash session][docker-exec-bash] into the CMS container:
+1. (only if using `docker-compose.yml`) [Start a bash session][docker-exec-bash] into the CMS container:
 
     > __Notice__: If you are using a `docker-compose.custom.yml`, then replace this command's `taccsite_cms` with that file's `cms`: `hostname`.
 
@@ -131,6 +147,10 @@ Resources are already built every time a CMS Docker container is built. If you n
     npm run watch
     ```
 
+> __Using `docker-compose.yml`__: Resources are automatically built once in the container. To re-build, you must run the commands in this section _in the container_.
+
+> __Using `docker-compose.dev.yml`__: Resources are automatically built once in the container __but__ _container resources are overwritten by local resources_. To build, you may run the commands in this section _either_ locally _or_ in the container.
+
 
 [npm-cli-install]: https://docs.npmjs.com/cli/install
 [npm-pkg-watch]: https://www.npmjs.com/package/npm-watch
@@ -147,8 +167,8 @@ Resources are already built every time a CMS Docker container is built. If you n
 > __Remember__:
 > Templates can load two kinds of static resources.
 >
-> - Those that _need the build step_ __must__ be loaded from `…/build/site_cms`.
-> - Those that _need __no__ build step_ __must__ be loaded from `…/static/site_cms`.
+> - Those that _need the build step_ __must__ be loaded from `build`.
+> - Those that _need __no__ build step_ __must__ be loaded from `site_cms`.
 
 ## Linting and Formatting Conventions
 
