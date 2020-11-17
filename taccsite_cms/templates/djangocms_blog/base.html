@@ -1,0 +1,17 @@
+{% extends CMS_TEMPLATE %}
+
+{# FAQ: To ensure Blog page shows metadata, template code changed per official instruction #}
+{# SEE: https://github.com/nephila/djangocms-blog/issues/613#issuecomment-681147460 #}
+{% block meta %}
+    {% if meta %}
+        {% include "meta/meta.html" %}
+    {% else %}
+        {{ block.super }}
+    {% endif %}
+{% endblock meta %}
+
+{% block content %}
+<div class="app app-blog">
+    {% block content_blog %}{% endblock %}
+</div>
+{% endblock content %}

@@ -18,20 +18,37 @@ _ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost', '*']   # In development.
 # in the requirements.txt file or installed if using ldap.
 _LDAP_ENABLED = False
 
+# Boolean check to determine the appropriate database settings when using containers.
+_USING_CONTAINERS = True
+
 ########################
 # DATABASE SETTINGS
 ########################
 
-_DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'taccsite',
-        'USER': 'postgresadmin',
-        'PASSWORD': 'taccforever' ,   # Change for deployment configuration.
-        'HOST': 'localhost',                # 'localhost' in demo/local-dev/SAD CMS deployments, 'taccsite_postgres' in containerized portal deployments.
-        'PORT': '5432',
+if _USING_CONTAINERS:
+    # used in container deployments.
+    _DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'PORT': '5432',
+            'NAME': 'taccsite',
+            'USER': 'postgresadmin',
+            'PASSWORD': 'taccforever', # Change before live deployment.
+            'HOST': 'taccsite_postgres'
+        }
     }
-}
+else:
+    # used in local dev, venv or manual deployments.
+    _DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'PORT': '5432',
+            'NAME': 'taccsite',
+            'USER': 'postgresadmin',
+            'PASSWORD': 'taccforever', # Change before live deployment.
+            'HOST': 'localhost'
+        }
+    }
 
 ########################
 # DJANGO CMS SETTINGS
@@ -55,11 +72,58 @@ _GOOGLE_ANALYTICS_PROPERTY_ID = "UA-123ABC@%$&-#"
 _GOOGLE_ANALYTICS_PRELOAD = True
 
 ########################
-# CUSTOM SITE SETTINGS
+# CUSTOM SITE
 ########################
 
+"""
+Custom Site
+
+Usage:
+
+- For baked-in features, update settings per website (see example below).
+- For optional features, enable features per website via _FEATURES list.
+
+Baked-In Feature Setting Example.
+
+# Desctipion of feature X
+# SEE: [link to user/div guide about feature]
+_FEATURE_A = "someValue"
+
+Optional Feature Toggle Example.
+
+_FEATURES = {
+    # Desctipion of feature X
+    # SEE: [link to user/dev guide about feature]
+    "X": True,
+
+    # Desctipion of feature Y
+    # SEE: [link to user/dev guide about feature]
+    "Y": False,
+
+    # Desctipion of feature Z
+    # SEE: [link to user/dev guide about feature]
+    "Z": True,
+}
+
+"""
+
+########################
+# SETTINGS.
+
+# Create CMS Forms
+# SEE: https://pypi.org/project/djangocms-forms/
 _DJANGOCMS_FORMS_RECAPTCHA_PUBLIC_KEY = ""
 _DJANGOCMS_FORMS_RECAPTCHA_SECRET_KEY = ""
+
+########################
+# FEATURES.
+
+_FEATURES = {
+    # Blog/News & Social Media Metadata
+    # SEE: https://confluence.tacc.utexas.edu/x/EwDeCg
+    # SEE: https://confluence.tacc.utexas.edu/x/FAA9Cw
+    "blog": False,
+}
 
 ########################
 # BRANDING & LOGOS
@@ -247,3 +311,12 @@ _LOGIN_UNAUTH_LINK = {
 
 _PORTAL_AUTH_LINKS = [ _DASH_AUTH_LINK, _PROFILE_AUTH_LINK, _LOGOUT_AUTH_LINK ]       # Default TACC Portal.
 _PORTAL_UNAUTH_LINKS = [ _LOGIN_UNAUTH_LINK ]                                         # Default TACC Portal.
+
+########################
+# ELASTICSEARCH
+########################
+
+_ES_AUTH = 'username:password'
+_ES_HOSTS = 'http://elasticsearch:9200'
+_ES_INDEX_PREFIX = 'cms-dev-{}'
+_ES_DOMAIN = 'http://localhost:8000'

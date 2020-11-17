@@ -15,6 +15,8 @@ admin.autodiscover()
 urlpatterns = [
     url(r'^sitemap\.xml$', sitemap,
         {'sitemaps': {'cmspages': CMSSitemap}}),
+
+    url(r'^admin/', admin.site.urls),  # NOQA
 ]
 
 if settings.PORTAL:
@@ -22,10 +24,14 @@ if settings.PORTAL:
     urlpatterns += [
         # FAQ: Allows direct access to isolated CMS menu markup for the Portal and User Guide to render
         url(r'^cms/nav/pages/markup/$', TemplateView.as_view(template_name='nav_cms.raw.html'), name='menu_pages_markup'),
+
+if settings.FEATURES['blog']:
+    urlpatterns += [
+        # Support `taggit_autosuggest` (from `djangocms-blog`)
+        url(r'^taggit_autosuggest/', include('taggit_autosuggest.urls')),
     ]
 
 urlpatterns += [
-    url(r'^admin/', admin.site.urls),  # NOQA
     url(r'^', include('cms.urls')),
 ]
 

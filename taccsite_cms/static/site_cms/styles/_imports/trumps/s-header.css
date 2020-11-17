@@ -106,7 +106,9 @@ Styleguide Trumps.Scopes.Header
   margin-bottom: calc( var(--border-width) * -1 );
 }
 /* HACK: Using an ID selector, because Bootstrap has overspecific selectors */
-#s-header .nav-link {
+#s-header .nav-link,
+/* HACK: Support `span.nav-link` having children `a` and `a.dropdown-toggle-split` */
+#s-header .nav-link > a {
   color: var(--text-color);
   /* text-decoration: none; *//* already provided by Bootstrap */
 }
