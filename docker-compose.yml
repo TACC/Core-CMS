@@ -21,6 +21,7 @@ services:
 
 volumes:
   taccsite_postgres_data:
+  taccsite_cms_es_data:
 
 networks:
   taccsite_cms_net:
