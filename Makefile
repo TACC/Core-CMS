@@ -2,6 +2,7 @@ DOCKERHUB_REPO := taccwma/$(shell cat ./repo_name.var)
 DOCKER_TAG ?= $(shell git rev-parse --short HEAD)
 DOCKER_IMAGE := $(DOCKERHUB_REPO):$(DOCKER_TAG)
 DOCKER_IMAGE_LATEST := $(DOCKERHUB_REPO):latest
+DOCKER_IMAGE_LOCAL := $(DOCKERHUB_REPO):local
 
 .PHONY: build
 build:
