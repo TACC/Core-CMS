@@ -5,22 +5,14 @@
 const dotenv = require('dotenv');
 
 const env = dotenv.config({ path: '.env' }).parsed;
-let importPathsForCustomAsset = [];
-
-if (env.CUSTOM_ASSET_DIR) {
-  importPathsForCustomAsset.push(
-    `./taccsite_custom/${env.CUSTOM_ASSET_DIR}/static/${env.CUSTOM_ASSET_DIR}/css/src`
-  );
-}
 
 module.exports = {
   plugins: [
     require('postcss-import')({
       path: [
-        './taccsite_cms/static/site_cms/css/src'
-      ].concat(
-        importPathsForCustomAsset
-      )
+        './taccsite_cms/static/site_cms/css/src',
+        `./taccsite_custom/${env.CUSTOM_ASSET_DIR}/static/${env.CUSTOM_ASSET_DIR}/css/src`
+      ]
     }),
     require('cssnano')({
       preset: 'default'
