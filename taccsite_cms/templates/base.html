@@ -1,68 +1,70 @@
-{# FAQ: Conditional includes are intentionally verbose #}
-{# SEE: https://confluence.tacc.utexas.edu/x/QwI9Cw #}
-
 {% load cms_tags staticfiles sekizai_tags cache i18n %}
 <!doctype html>
-<html>
+<html
+  id="page-{{ request.current_page.id }}"
+  {# FAQ: Only available if set in page's "Advanced" settings #}
+  data-page-id="{{ request.current_page.reverse_id }}"
+  class="{% block template_class %}{% endblock template_class %}">
 
 {% if settings.FEATURES.blog %}
+  {# FAQ: Conditional includes are intentionally verbose #}
+  {# SEE: https://confluence.tacc.utexas.edu/x/QwI9Cw #}
   {% with path="djangocms_blog_head.html" %}{% include path %}{% endwith %}
 {% else %}
 <head>
 {% endif %}
-  <!-- Google Analytics partial. -->
+  <!-- Early Site Scripts. -->
+  {# Debugging Support. #}
+  {% include "debug_js.html" with settings=settings %}
+  {# Google Analytics. #}
   {% include 'analytics.html' %}
 
   <!-- Metadata. -->
   <title>{% block title %} This is my new project home page {% endblock title %}</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
   {% if settings.FEATURES.blog %}
+  <!-- Metadata: Social Media. -->
     {% block meta %}
+      {# FAQ: Conditional includes are intentionally verbose #}
+      {# SEE: https://confluence.tacc.utexas.edu/x/QwI9Cw #}
       {% with path="djangocms_page_meta.html" %}{% include path %}{% endwith %}
     {% endblock meta %}
   {% endif %}
 
-  <!-- External Styles. -->
-  <link rel="icon" href="{% static 'site_cms/images/favicons/favicon.ico' %}" type="image/x-icon" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <!-- Requires `npm run build` step before running the django project. -->
-  <link id="css-site" rel="stylesheet" href="{% static 'build/styles/site.css' %}">
-  <link id="css-site-header" rel="stylesheet" href="{% static 'build/styles/site.header.css' %}">
-  {% if settings.FEATURES.blog %}
-    <link id="css-site-blog" rel="stylesheet" href="{% static 'build/styles/site.blog.css' %}">
-  {% endif %}
+  <!-- Site Font and/or Custom Font. -->
+  {# The core site font (can be replaced or accompanied by custom font/s) #}
+  {% block assets_font %}
+  {% include 'assets_font.html' %}
+  {% endblock assets_font %}
 
-  <!-- Web Fonts. -->
-  <link id="css-site-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+  <!-- Site Assets. -->
+  {# The core site assets (can NOT be replaced by custom assets) #}
+  {% include 'assets_site.html' %}
 
-  <!-- Custom <head> Markup per Site to Customize the Site <head> Content. -->
-  <!-- No custom markup in base template. -->
+  <!-- Custom Assets. -->
+  {# Placeholder for custom assets #}
+  {% block assets_custom %}
+  {% include 'assets_custom.html' %}
+  {% endblock assets_custom %}
+
+  <!-- CMS Admin Styles. -->
   {% render_block "css" %}
-
-  <!-- In-line Styles -->
-  {% block custom_css %}
-  <style>
-    /* Styles are overridden by template inheritance in fullwidth.html. */
-    /* Better to keep all CSS styles in external css files --> static/taccsite_cms/static/site_cms/css/styles.css (linked above). */
-  </style>
-  {% endblock custom_css %}
-
-  <!-- Pre-Render Scripts. -->
-  {% include "debug_js.html" with settings=settings %}
 </head>
 
-<body class="o-site  {% block page_type_class %}{% endblock page_type_class %}">
+<body class="o-site">
   {% cms_toolbar %}
 
   <!-- Custom Navigation Block per Site to Customize the Site Header Branding. -->
-  <div class="cms-branded-navigation" class="o-site__head">
+  <div class="o-site__head">
     {% include "branding.html" %}
   </div>
 
   <!-- Page content. -->
   <div id="cms-content" class="o-site o-site__body">
     <div id="content-wrap" class="o-site__body">
+      <pre>{{ request.current_page.parent_id }}</pre>
       <!-- This block used regardless. -->
       {% block content %}
       <div class="container">
@@ -82,24 +84,18 @@
     </footer>
   </div>
 
-  <!-- Vendor Scripts -->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <!-- Site Assets (Delayed). -->
+  {# The core site assets (late load) (can NOT be replaced by custom assets) #}
+  {% include 'assets_site_delayed.html' %}
 
-  <!-- Custom Scripts -->
-  <script src="{% static 'site_cms/scripts/base.js' %}" crossorigin="anonymous"></script>
-  <script>
-    // console.log("--> FILE: taccsite_cms.templates.base.html");
-  </script>
+  <!-- Custom Assets (Delayed). -->
+  {# Placeholder for custom assets (late load) #}
+  {% block assets_custom_delayed %}
+  {% include 'assets_custom_delayed.html' %}
+  {% endblock assets_custom_delayed %}
+
+  <!-- CMS Admin Scripts. -->
   {% render_block "js" %}
-
-  <!-- In-line Scripts  -->
-  {% block "custom_js" %}
-  <script>
-    // console.log("--> FILE: taccsite_cms.templates.base.html custom_js block ::OVERRIDDEN");
-  </script>
-  {% endblock "custom_js" %}
 </body>
 
 </html>

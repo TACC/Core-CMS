@@ -1,0 +1,29 @@
+{% load staticfiles %}
+{# @var settings #}
+
+{# Load assets as external files, to cache independently of markup. #}
+{% comment %}
+FAQ: IF a script or style is better cached with markup, THEN:
+  - Such a style belongs inline before relevant markup, not via this block
+  - Such a script belongs inline after relevant markup, not via this block
+{% endcomment %}
+
+{# NOTE: Fonts may be loaded early via `assets_font` #}
+
+
+
+<!-- Site Assets: Favicon. -->
+<link rel="icon" href="{% static 'site_cms/img/favicons/favicon.ico' %}" type="image/x-icon" />
+
+<!-- Site Assets: Styles. -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+{# CAVEAT: Requires `npm run build` step before running the Django project. #}
+<link id="css-site" rel="stylesheet" href="{% static 'site_cms/css/build/site.css' %}">
+<link id="css-site-header" rel="stylesheet" href="{% static 'site_cms/css/build/site.header.css' %}">
+{% if settings.FEATURES.blog %}
+  <link id="css-site-blog" rel="stylesheet" href="{% static 'site_cms/css/build/site.blog.css' %}">
+{% endif %}
+
+<!-- Site Assets: Scripts. -->
+<script src="{% static 'site_cms/js/site.js' %}"></script>

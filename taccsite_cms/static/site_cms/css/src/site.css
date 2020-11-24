@@ -1,0 +1,27 @@
+/* DO NOT ADD STYLES HERE; ONLY IMPORT OTHER STYLESHEETS */
+
+/* Organize via ITCSS */
+/* SEE: https://confluence.tacc.utexas.edu/x/IAA9Cw */
+
+/* SETTINGS */
+@import url("_imports/settings/props.font.css");
+@import url("_imports/settings/props.space.css");
+
+/* GENERICS */
+/* … Bootstrap handles most of this … */
+
+/* ELEMENTS */
+@import url("_imports/elements/roots.css");
+@import url("_imports/elements/sectioning.css");
+
+/* OBJECTS */
+@import url("_imports/objects/o-site.css");
+
+/* COMPONENTS */
+@import url("_imports/components/c-footer.css");
+@import url("_imports/components/django.cms.css");
+@import url("_imports/components/django.cms.blog.css");
+@import url("_imports/components/django.cms.post.css");
+
+/* TRUMPS */
+@import url("_imports/trumps/s-footer.css");

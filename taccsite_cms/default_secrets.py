@@ -59,6 +59,8 @@ else:
 _SITE_ID = 1
 _CMS_TEMPLATES = (
     # Customize this
+    # FAQ: First template is default template
+    # REF: http://docs.django-cms.org/en/latest/how_to/install.html#templates
     ('fullwidth.html', 'Fullwidth'),
     ('sidebar_left.html', 'Sidebar Left'),
     ('sidebar_right.html', 'Sidebar Right')
@@ -153,8 +155,8 @@ Usage:
 - The order of the _BRANDING list determines the rendering order of the elements in the template.
 - The portal logo setting must be assigned to the _LOGO variable to render in the template.
 - The following VALUES for new elements set in the configuration object must exist in the portal css as well:
-    - Any new selectors or css styles (add to /taccsite_cms/static/site_cms/styles/exports/branding_logos.css)
-    - Image files being references (add to /taccsite_cms/static/site_cms/images/org_logos)
+    - Any new selectors or css styles (add to /taccsite_cms/static/site_cms/css/src/_imports/branding_logos.css)
+    - Image files being references (add to /taccsite_cms/static/site_cms/img/org_logos)
 
 Values to populate:
 
@@ -173,7 +175,7 @@ Branding Configuration Example.
 
 _ANORG_BRANDING = [
    "anorg",
-   "site_cms/images/org_logos/anorg-logo.png"
+   "site_cms/img/org_logos/anorg-logo.png"
    "branding-anorg",
    "https://www.anorg.com/"
    "_blank",
@@ -186,7 +188,7 @@ Logo Configuration Example.
 
 _ANORG_LOGO = [
    "anorg",
-   "site_cms/images/org_logos/anorg-logo.png"
+   "site_cms/img/org_logos/anorg-logo.png"
    "branding-anorg",
    "/"
    "_self",
@@ -201,7 +203,7 @@ _ANORG_LOGO = [
 
 _TACC_BRANDING = [
     "tacc",
-    "site_cms/images/org_logos/tacc-white.png",
+    "site_cms/img/org_logos/tacc-white.png",
     "branding-tacc",
     "https://www.tacc.utexas.edu/",
     "_blank",
@@ -212,7 +214,7 @@ _TACC_BRANDING = [
 
 _UTEXAS_BRANDING =  [
     "utexas",
-    "site_cms/images/org_logos/utaustin-white.png",
+    "site_cms/img/org_logos/utaustin-white.png",
     "branding-utaustin",
     "https://www.utexas.edu/",
     "_blank",
@@ -223,7 +225,7 @@ _UTEXAS_BRANDING =  [
 
 _NSF_BRANDING = [
     "nsf",
-    "site_cms/images/org_logos/nsf-white.png",
+    "site_cms/img/org_logos/nsf-white.png",
     "branding-nsf",
     "https://www.nsf.gov/",
     "_blank",
@@ -240,7 +242,7 @@ _BRANDING = [ _TACC_BRANDING, _UTEXAS_BRANDING ]        # Default TACC Portal.
 
 _PORTAL_LOGO =  [
     "portal",
-    "site_cms/images/org_logos/portal.png",
+    "site_cms/img/org_logos/portal.png",
     "",
     "/",
     "_self",

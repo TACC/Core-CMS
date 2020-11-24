@@ -1,0 +1,26 @@
+/*
+Site
+
+Layout and class names that are applicable to most websites:
+
+- ["sticky footer"](https://css-tricks.com/couple-takes-sticky-footer/)
+
+Markup: o-site.html
+
+Styleguide Objects.Site
+*/
+
+/* SEE: https://css-tricks.com/couple-takes-sticky-footer/#article-header-id-3 */
+.o-site {
+  display: flex;
+  flex-direction: column;
+}
+.o-site__body {
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: auto;
+}
+.o-site__head,
+.o-site__foot {
+  flex-shrink: 0;
+}
