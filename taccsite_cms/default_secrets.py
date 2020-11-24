@@ -1,5 +1,6 @@
 # TACC CMS SITE TEMPLATE SETTINGS.
-# DEFAULT VALUES - CHANGE FOR LIVE USE.
+# DEFAULT VALUES.
+# CHANGE BEFOR DEV/PREPROD/PRODUCTION DEPLOYMENT.
 
 ########################
 # DJANGO SETTINGS
@@ -34,7 +35,7 @@ if _USING_CONTAINERS:
             'NAME': 'taccsite',
             'USER': 'postgresadmin',
             'PASSWORD': 'taccforever', # Change before live deployment.
-            'HOST': 'taccsite_postgres'
+            'HOST': 'core_cms_postgres'
         }
     }
 else:
@@ -70,6 +71,24 @@ _CMS_TEMPLATES = (
 # To use during dev, Tracking Protection in browser needs to be turned OFF.
 _GOOGLE_ANALYTICS_PROPERTY_ID = "UA-123ABC@%$&-#"
 _GOOGLE_ANALYTICS_PRELOAD = True
+
+########################
+# CMS FORMS.
+########################
+
+# Create CMS Forms
+# SEE: https://pypi.org/project/djangocms-forms/
+_DJANGOCMS_FORMS_RECAPTCHA_PUBLIC_KEY = ""
+_DJANGOCMS_FORMS_RECAPTCHA_SECRET_KEY = ""
+
+########################
+# ELASTICSEARCH
+########################
+
+_ES_AUTH = 'username:password'
+_ES_HOSTS = 'http://elasticsearch:9200'
+_ES_INDEX_PREFIX = 'cms-dev-{}'
+_ES_DOMAIN = 'http://localhost:8000'
 
 ########################
 # CUSTOM SITE
@@ -108,15 +127,8 @@ _FEATURES = {
 """
 
 ########################
-# SETTINGS.
-
-# Create CMS Forms
-# SEE: https://pypi.org/project/djangocms-forms/
-_DJANGOCMS_FORMS_RECAPTCHA_PUBLIC_KEY = ""
-_DJANGOCMS_FORMS_RECAPTCHA_SECRET_KEY = ""
-
-########################
 # FEATURES.
+########################
 
 _FEATURES = {
     # Blog/News & Social Media Metadata
@@ -238,12 +250,3 @@ _PORTAL_LOGO =  [
 ]
 
 _LOGO = _PORTAL_LOGO                # Default Portal Logo.
-
-########################
-# ELASTICSEARCH
-########################
-
-_ES_AUTH = 'username:password'
-_ES_HOSTS = 'http://elasticsearch:9200'
-_ES_INDEX_PREFIX = 'cms-dev-{}'
-_ES_DOMAIN = 'http://localhost:8000'
