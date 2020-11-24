@@ -242,7 +242,7 @@ def get_subdirs_as_module_names(path):
 # FAQ: Append CMS project paths as module names to INSTALLED_APPS
 CUSTOM_CMS_DIR = os.path.join(BASE_DIR, 'taccsite_custom')
 INSTALLED_APPS_APPEND = get_subdirs_as_module_names(CUSTOM_CMS_DIR)
-INSTALLED_APPS = INSTALLED_APPS + INSTALLED_APPS_APPEND + ['taccsite_cms']
+INSTALLED_APPS = INSTALLED_APPS + INSTALLED_APPS_APPEND
 
 
 if CONSOLE_LOG_ENABLED:
