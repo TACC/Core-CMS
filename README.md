@@ -24,6 +24,7 @@ For all CMS projects (besides the standalone Core), the submodule for project-sp
 3. Create and update `secrets.py`. See [Custom Configuration](#Optional%20Custom%20Configuration).
     - Setup existing CMS project by manually appending secrets from `taccsite_custom/__PROJECT__/secrets.py`.
     - For new CMS projects, add custom and unique resources and configuration to `taccsite_custom/__PROJECT__/`.
+4. Create a `.env` at the root of the project, with the content `CUSTOM_ASSET_DIR=name-of-project` where `name-of-project` matches a directory from `/taccsite_custom`.
 
 ### (Optional) Multiple CMS Projects on One Machine
 

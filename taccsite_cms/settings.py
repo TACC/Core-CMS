@@ -228,7 +228,6 @@ INSTALLED_APPS = [
     'taccsite_cms',
 ]
 
-# !!!: Ugliest code ever
 # Convert list of paths to list of dotted module names
 def get_subdirs_as_module_names(path):
     module_names = []
@@ -239,7 +238,9 @@ def get_subdirs_as_module_names(path):
                 .replace(os.path.sep, '.')
             module_names.append(module_name)
     return module_names
-# FAQ: Append CMS project paths as module names to INSTALLED_APPS
+
+# Append CMS project paths as module names to INSTALLED_APPS
+# FAQ: This automatically looks into `/taccsite_custom` and creates an "App" for each directory within
 CUSTOM_CMS_DIR = os.path.join(BASE_DIR, 'taccsite_custom')
 INSTALLED_APPS_APPEND = get_subdirs_as_module_names(CUSTOM_CMS_DIR)
 INSTALLED_APPS = INSTALLED_APPS + INSTALLED_APPS_APPEND
