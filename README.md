@@ -18,12 +18,34 @@ Skip configuration; you may use the default configuration.
     docker-compose -f docker-compose.dev.yml …
     ```
 
-### For Running Alongside Other Containerized CMS Instances
+### (Optional) Custom Configuration
+
+Configuration is stored in `default_secrets.py` and may be customized by creating a `secrets.py`.
+
+1. Copy `taccsite_cms/default_secrets.py` as new `taccsite_cms/secrets.py` file.
+2. Update the `secrets.py` file.
+
+### (Optional) Custom Resources per CMS Project
+
+For all CMS projects (besides the stand-alone Core), the submodule for project-specific resources __must__ be available.
+
+1. `git submodule init` (only necessary once)
+    - Add `cms-site-resources` repo as `taccsite_custom/`.
+2. `git submodule update` (after `git fetch` / `pull`)
+    - Get latest desired submodule commit (thus directory content).
+3. Create and update `secrets.py`. _See [Custom Configuration](#optional-custom-configuration)._
+    - Setup existing CMS project by manually appending secrets from `taccsite_custom/__PROJECT__/secrets.py`.
+    - For new CMS projects, add custom and unique resources and configuration to `taccsite_custom/__PROJECT__/`.
+4. Create a `.env` at the root of the project, with the content `CUSTOM_ASSET_DIR=name-of-project` where `name-of-project` matches a directory from `/taccsite_custom`.
+
+### (Optional) Multiple CMS Projects on One Machine
+
+To support multiple instances of the CMS on one machine (i.e. local development), configure unique identification for the database of each.
 
 1. Copy `docker-compose.dev.yml` as new `docker-compose.custom.yml` file, and in the new file:
     - Replace any `taccsite_` string partial with a unique identifier.
     - Replace the first number in `ports` value with a unique port.
-2. Copy `taccsite_cms/default_secrets.py` as new `taccsite_cms/secrets.py` file, and in the new file:
+2. Create and update `secrets.py`. _See [Custom Configuration](#optional-custom-configuration)._
     - Change `_DATABASES`:`default`:`HOST` to equal `docker-compose.custom.yml`'s `postgres`:`hostname`.
 3. Run any `docker-compose` command with `docker-compose.dev.yml` configuration, ex:
 
@@ -31,7 +53,7 @@ Skip configuration; you may use the default configuration.
     docker-compose -f docker-compose.custom.yml …
     ```
 
-## Run the CMS (via Docker)
+## Run the CMS
 
 ### Prerequisites
 
@@ -99,7 +121,7 @@ Log in with the user that was created via the `createsuperuser` step.
 [docker-compose-up]: https://docs.docker.com/compose/reference/up/
 [docker-compose-build]: https://docs.docker.com/compose/reference/build/
 
-[django-migrate]: https://docs.djangoproject.com/en/3.0/topics/migrations/
+[django-migrate]: https://docs.djangoproject.com/en/3.1/topics/migrations/
 [django-static]: https://docs.djangoproject.com/en/3.1/howto/static-files/
 [django-static-serve-dev]: https://docs.djangoproject.com/en/3.1/howto/static-files/#serving-static-files-during-development
 
@@ -109,21 +131,23 @@ Log in with the user that was created via the `createsuperuser` step.
 https://docs.djangoproject.com/en/3.1/howto/static-files/#serving-static-files-during-development
 
 
-## Building Static Resources
+## Static Files
 
-Certain static resources are built
+Certain static files are built __from__ source files __in__ `src` directories __to__ compiled files __in__ `build` directories.
 
-- __from__ `/taccsite_cms/static/site_cms/__FILE_TYPE__/exports/` source code entry point files,
+> __Notice__: We configured Django to ignore `src` directories during [`collectstatic`][django-static], so templates can not directly load source files.
 
-and populated
+### Quick Start
 
-- __to__ `/taccsite_cms/static/build/__FILE_TYPE__/` in a matching sub-folder as build artifacts.
+1. Make changes to relevant `src` files.
+2. Build static files from source files via:
+    - (manually, for any ready changes) `npm run build`
+    - (automatically, on source change) `npm run watch`
+3. (Debug) Confirm relevant `build` output changed.
+4. "Collect" static files. _See [How to Collect Static Files](#how-to-collect-static-files)._
+5. (Debug) Confirm relevant `/static/…/build` output changed.
 
-### Resources to Build
-
-- `styles/` (CSS stylesheets)
-
-### How to Build
+### How to Build Static Files
 
 1. (only if using `docker-compose.yml`) [Start a bash session][docker-exec-bash] into the CMS container:
 
@@ -155,38 +179,37 @@ and populated
 [npm-cli-install]: https://docs.npmjs.com/cli/install
 [npm-pkg-watch]: https://www.npmjs.com/package/npm-watch
 
+### How to Collect Static Files
 
-### Usage
+Whenever static files are changed, the CMS may need to be manually told to serve them (if not [automatically performed, or if cached](https://stackoverflow.com/a/59340216/11817077)).
 
-1. Make changes to source files.
-2. Build changes from source via:
-    - (manually, for any ready changes) `npm run build`
-    - (automatically, on source change) `npm run watch`
-3. Confirm that the build output has changed.
+1. [Start a bash session][docker-exec-bash] into the CMS container:
 
-> __Remember__:
-> Templates can load two kinds of static resources.
->
-> - Those that _need the build step_ __must__ be loaded from `build`.
-> - Those that _need __no__ build step_ __must__ be loaded from `site_cms`.
+    > __Notice__: If you are using a `docker-compose.custom.yml`, then replace this command's `taccsite_cms` with that file's `cms`: `hostname`.
 
-## Linting and Formatting Conventions
+    ```bash
+    docker exec -it taccsite_cms /bin/bash
+    ```
 
-Markdown docments can be linted via [markdownlint][mdlint]. Known editor plugins:
+2. [Collect static files][django-static] for Django:
 
-- [Atom: linter-node-markdownlint](https://atom.io/packages/linter-node-markdownlint)
-- [VS Code: vscode-markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint)
+    ```bash
+    python manage.py collectstatic
+    ```
 
-Client-side and server-side code may be formatted via [EditorConfig][editorconfig]. Known editor plugins:
+## Custom Resources
 
-- [Atom: editorconfig](https://atom.io/packages/editorconfig)
-- [VS Code: EditorConfig](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
-
-
-[mdlint]: https://github.com/DavidAnson/markdownlint
-[editorconfig]: https://editorconfig.org/
-
+1. Create/Edit files in a child directory of `/taccsite_custom`.
+2. Follow instructions and directory structure of `example-cms`.
+3. Reference other projects in `/taccsite_custom`.
+4. (As necessary) Build static assets.
+5. (For templates) Restart server.
+6. Commit changes:
+    1. In `/taccsite_custom` submodule repo, commit changes (__not__ to `master`).
+    2. In `cms-site-template` parent repo, add `/taccsite_custom` change.
+    3. In `cms-site-template` parent repo, commit changes (__not__ to `master`).
 
 ## Reference
 
+- [Formatting & Linting](https://confluence.tacc.utexas.edu/x/HoBGCw)
 - [DjangoCMS Stand Alone Site](https://confluence.tacc.utexas.edu/x/G4G-Ag)

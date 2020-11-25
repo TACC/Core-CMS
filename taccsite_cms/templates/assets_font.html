@@ -1,0 +1,25 @@
+{# Load web fonts early #}
+{# SEE: https://confluence.tacc.utexas.edu/x/B4COCw #}
+
+
+
+<link id="css-site-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+
+
+
+{# Example #}
+{% comment %}
+
+  {# Example: Custom font that replaces Site font. #}
+  {% block assets_font %}
+    <link rel="stylesheet" href="https://use.typekit.net/xnr7bof.css" />
+  {% endblock assets_font %}
+
+  {# Example: Custom font that accompanies Site font. #}
+  {% block assets_font %}
+    {{ block.super }}
+
+    <link rel="stylesheet" href="https://use.typekit.net/xnr7bof.css" />
+  {% endblock assets_font %}
+
+{% endcomment %}

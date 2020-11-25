@@ -1,5 +1,6 @@
 # TACC CMS SITE TEMPLATE SETTINGS.
-# DEFAULT VALUES - CHANGE FOR LIVE USE.
+# DEFAULT VALUES.
+# CHANGE BEFOR DEV/PREPROD/PRODUCTION DEPLOYMENT.
 
 ########################
 # DJANGO SETTINGS
@@ -34,7 +35,7 @@ if _USING_CONTAINERS:
             'NAME': 'taccsite',
             'USER': 'postgresadmin',
             'PASSWORD': 'taccforever', # Change before live deployment.
-            'HOST': 'taccsite_postgres'
+            'HOST': 'core_cms_postgres'
         }
     }
 else:
@@ -58,6 +59,8 @@ else:
 _SITE_ID = 1
 _CMS_TEMPLATES = (
     # Customize this
+    # FAQ: First template is default template
+    # REF: http://docs.django-cms.org/en/latest/how_to/install.html#templates
     ('fullwidth.html', 'Fullwidth'),
     ('sidebar_left.html', 'Sidebar Left'),
     ('sidebar_right.html', 'Sidebar Right')
@@ -70,6 +73,24 @@ _CMS_TEMPLATES = (
 # To use during dev, Tracking Protection in browser needs to be turned OFF.
 _GOOGLE_ANALYTICS_PROPERTY_ID = "UA-123ABC@%$&-#"
 _GOOGLE_ANALYTICS_PRELOAD = True
+
+########################
+# CMS FORMS.
+########################
+
+# Create CMS Forms
+# SEE: https://pypi.org/project/djangocms-forms/
+_DJANGOCMS_FORMS_RECAPTCHA_PUBLIC_KEY = ""
+_DJANGOCMS_FORMS_RECAPTCHA_SECRET_KEY = ""
+
+########################
+# ELASTICSEARCH
+########################
+
+_ES_AUTH = 'username:password'
+_ES_HOSTS = 'http://elasticsearch:9200'
+_ES_INDEX_PREFIX = 'cms-dev-{}'
+_ES_DOMAIN = 'http://localhost:8000'
 
 ########################
 # CUSTOM SITE
@@ -108,15 +129,8 @@ _FEATURES = {
 """
 
 ########################
-# SETTINGS.
-
-# Create CMS Forms
-# SEE: https://pypi.org/project/djangocms-forms/
-_DJANGOCMS_FORMS_RECAPTCHA_PUBLIC_KEY = ""
-_DJANGOCMS_FORMS_RECAPTCHA_SECRET_KEY = ""
-
-########################
 # FEATURES.
+########################
 
 _FEATURES = {
     # Blog/News & Social Media Metadata
@@ -141,8 +155,8 @@ Usage:
 - The order of the _BRANDING list determines the rendering order of the elements in the template.
 - The portal logo setting must be assigned to the _LOGO variable to render in the template.
 - The following VALUES for new elements set in the configuration object must exist in the portal css as well:
-    - Any new selectors or css styles (add to /taccsite_cms/static/site_cms/styles/exports/branding_logos.css)
-    - Image files being references (add to /taccsite_cms/static/site_cms/images/org_logos)
+    - Any new selectors or css styles (add to /taccsite_cms/static/site_cms/css/src/_imports/branding_logos.css)
+    - Image files being references (add to /taccsite_cms/static/site_cms/img/org_logos)
 
 Values to populate:
 
@@ -161,7 +175,7 @@ Branding Configuration Example.
 
 _ANORG_BRANDING = [
    "anorg",
-   "site_cms/images/org_logos/anorg-logo.png"
+   "site_cms/img/org_logos/anorg-logo.png"
    "branding-anorg",
    "https://www.anorg.com/"
    "_blank",
@@ -174,7 +188,7 @@ Logo Configuration Example.
 
 _ANORG_LOGO = [
    "anorg",
-   "site_cms/images/org_logos/anorg-logo.png"
+   "site_cms/img/org_logos/anorg-logo.png"
    "branding-anorg",
    "/"
    "_self",
@@ -189,7 +203,7 @@ _ANORG_LOGO = [
 
 _TACC_BRANDING = [
     "tacc",
-    "site_cms/images/org_logos/tacc-white.png",
+    "site_cms/img/org_logos/tacc-white.png",
     "branding-tacc",
     "https://www.tacc.utexas.edu/",
     "_blank",
@@ -200,7 +214,7 @@ _TACC_BRANDING = [
 
 _UTEXAS_BRANDING =  [
     "utexas",
-    "site_cms/images/org_logos/utaustin-white.png",
+    "site_cms/img/org_logos/utaustin-white.png",
     "branding-utaustin",
     "https://www.utexas.edu/",
     "_blank",
@@ -211,7 +225,7 @@ _UTEXAS_BRANDING =  [
 
 _NSF_BRANDING = [
     "nsf",
-    "site_cms/images/org_logos/nsf-white.png",
+    "site_cms/img/org_logos/nsf-white.png",
     "branding-nsf",
     "https://www.nsf.gov/",
     "_blank",
@@ -228,7 +242,7 @@ _BRANDING = [ _TACC_BRANDING, _UTEXAS_BRANDING ]        # Default TACC Portal.
 
 _PORTAL_LOGO =  [
     "portal",
-    "site_cms/images/org_logos/portal.png",
+    "site_cms/img/org_logos/portal.png",
     "",
     "/",
     "_self",
@@ -238,12 +252,3 @@ _PORTAL_LOGO =  [
 ]
 
 _LOGO = _PORTAL_LOGO                # Default Portal Logo.
-
-########################
-# ELASTICSEARCH
-########################
-
-_ES_AUTH = 'username:password'
-_ES_HOSTS = 'http://elasticsearch:9200'
-_ES_INDEX_PREFIX = 'cms-dev-{}'
-_ES_DOMAIN = 'http://localhost:8000'

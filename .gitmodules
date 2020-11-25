@@ -1,0 +1,4 @@
+[submodule "taccsite_custom"]
+	path = taccsite_custom
+	url = git@github.com:TACC/cms-site-resources.git
+	branch = task/37-per-site-assets
