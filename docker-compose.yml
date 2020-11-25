@@ -5,7 +5,9 @@ services:
       file: docker-compose.dev.yml
       service: cms
     volumes:
-      # Prevents overwrite of auto-built static files by local content
+      # Prevent volume sync from host to container for specific directories
+      # FAQ: Without this, directories of static files built within docker will be overwritten by empty host directories (because host directories are empty during a fresh setup and all of `/code` is synced as a volume)
+      # SEE: https://confluence.tacc.utexas.edu/x/DwAODQ (Solution E)
       - /code/static
       - /code/taccsite_cms/static
 
