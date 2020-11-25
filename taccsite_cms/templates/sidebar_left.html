@@ -3,6 +3,12 @@
 
 {% block title %}{% page_attribute "page_title" %}{% endblock title %}
 
+{% block assets_custom %}
+<script>
+  console.info('Core `sidebar_left.html` loads no custom assets');
+</script>
+{% endblock assets_custom %}
+
 {% block content %}
 <div class="sidebar">
   {% placeholder "sidebar" %}
@@ -11,3 +17,9 @@
   {% placeholder "content" %}
 </div>
 {% endblock content %}
+
+{% block assets_custom_delayed %}
+<script>
+  console.info('Core `sidebar_left.html` loads no (delayed) custom assets');
+</script>
+{% endblock assets_custom_delayed %}

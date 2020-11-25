@@ -1,0 +1,24 @@
+/*
+Portal Navigation
+
+Styles for elements within Portal navigation that has third-party code:
+
+- Bootstrap 4.3.1
+
+Markup: s-portal-nav.html
+
+Styleguide Trumps.Scopes.PortalNav
+*/
+
+/* WARNING: NO-R/EM: Until Frontera CMS drops Bootstrap 3.7.1 (for old design)…
+            No `em` nor `rem` allowed, because they aren't consitently reliable.
+            - On Frontera CMS, `1rem` = `10px` and `body { font-size: 15px }`
+            - On any other CMS, `1rem` = `16px` (browser default). */
+
+.s-portal-nav {
+  /* Override `.navbar` */
+  text-transform: none;
+}
+.s-portal-nav .dropdown-menu {
+  font-size: 16px; /* NO-R/EM: 1rem (from Bootstrap via `.dropdown-menu`) */
+}

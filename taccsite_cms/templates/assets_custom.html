@@ -1,0 +1,34 @@
+{# Load assets as external files, to cache independently of markup. #}
+{% comment %}
+FAQ: IF a script or style is better cached with markup, THEN:
+  - Such a style belongs inline before relevant markup, not via this block
+  - Such a script belongs inline after relevant markup, not via this block
+{% endcomment %}
+
+{# NOTE: Fonts may be loaded early via `assets_font` #}
+
+
+
+{# Do NOT directly load assets here. Load as needed by template or brand. #}
+
+
+
+{# Example #}
+{% comment %}
+  {% block assets_custom %}
+    {{ block.super }}
+
+    {# Example: Site Assets. #}
+    <link rel="stylesheet" href="{% static '__PROJECT__/css/build/site.css' %}">
+    <script src="{% static '__PROJECT__/js/site.js' %}"></script>
+
+    {# Example: Template-Specific Assets. #}
+    <link rel="stylesheet" href="{% static '__PROJECT__/css/build/template.___.css' %}">
+    <script src="{% static '__PROJECT__/js/template.___.js' %}"></script>
+
+    {# Example: Page-Specific Assets. #}
+    {# WARNING: Undesired use case. Create re-usable code instead. #}
+    {# SEE: https://confluence.tacc.utexas.edu/x/54AZCg #}
+
+  {% endblock assets_custom %}
+{% endcomment %}
