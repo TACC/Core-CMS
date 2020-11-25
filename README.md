@@ -43,7 +43,7 @@ For all CMS projects (besides the stand-alone Core), the submodule for project-s
 To support multiple instances of the CMS on one machine (i.e. local development), configure unique identification for the database of each.
 
 1. Copy `docker-compose.dev.yml` as new `docker-compose.custom.yml` file, and in the new file:
-    - Replace any `taccsite_` string partial with a unique identifier.
+    - Replace any `core_cms_` string partial with a unique identifier.
     - Replace the first number in `ports` value with a unique port.
 2. Create and update `secrets.py`. _See [Custom Configuration](#optional-custom-configuration)._
     - Change `_DATABASES`:`default`:`HOST` to equal `docker-compose.custom.yml`'s `postgres`:`hostname`.
@@ -75,10 +75,10 @@ To support multiple instances of the CMS on one machine (i.e. local development)
 
 3. [Start a bash session][docker-exec-bash] into the CMS container:
 
-    > __Notice__: If you are using a `docker-compose.custom.yml`, then replace this command's `taccsite_cms` with that file's `cms`: `hostname`.
+    > __Notice__: If you are using a `docker-compose.custom.yml`, then replace this command's `core_cms` with that file's `cms`: `container_name`.
 
     ```bash
-    docker exec -it taccsite_cms /bin/bash
+    docker exec -it core_cms /bin/bash
     ```
 
 4. [Run migrations][django-cms-migrate] for Django CMS:
