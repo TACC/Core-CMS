@@ -1,0 +1,8 @@
+{% extends "../fullwidth.html" %}
+{% load cms_tags staticfiles %}
+
+{% block custom_css %}
+	<link rel="stylesheet" href="{% static 'build/styles/template.category.css' %}">
+{% endblock custom_css %}
+
+{% block page_type_class %}s-category-page{% endblock page_type_class %}
