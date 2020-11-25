@@ -6,6 +6,10 @@ A TACC CMS can be run using Docker and Docker Compose both locally or in product
 
 ## Configuration
 
+### Required
+
+Create a `.env` at the root of the project, with the content `CUSTOM_ASSET_DIR=name-of-project` where `name-of-project` matches a directory from `/taccsite_custom`.
+
 ### For Isolated Instance Like Production
 
 Skip configuration; you may use the default configuration.
@@ -36,7 +40,7 @@ For all CMS projects (besides the stand-alone Core), the submodule for project-s
 3. Create and update `secrets.py`. _See [Custom Configuration](#optional-custom-configuration)._
     - Setup existing CMS project by manually appending secrets from `taccsite_custom/__PROJECT__/secrets.py`.
     - For new CMS projects, add custom and unique resources and configuration to `taccsite_custom/__PROJECT__/`.
-4. Create a `.env` at the root of the project, with the content `CUSTOM_ASSET_DIR=name-of-project` where `name-of-project` matches a directory from `/taccsite_custom`.
+4. Update the `.env` at the root of the project, with the content `CUSTOM_ASSET_DIR=name-of-project` where `name-of-project` matches a directory from `/taccsite_custom`.
 
 ### (Optional) Multiple CMS Projects on One Machine
 
