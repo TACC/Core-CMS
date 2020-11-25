@@ -1,0 +1,3 @@
+[submodule "taccsite_custom"]
+	path = taccsite_custom
+	url = https://github.com/TACC/cms-site-resources.git
