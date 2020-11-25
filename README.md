@@ -8,11 +8,11 @@ A TACC CMS can be run using Docker and Docker Compose both locally or in product
 
 ### Required
 
-Create a `.env` at the root of the project, with the content `CUSTOM_ASSET_DIR=name-of-project` where `name-of-project` matches a directory from `/taccsite_custom`.
+Create a `.env` at the root of the project, with the content `CUSTOM_ASSET_DIR=example-cms`.
 
 ### For Isolated Instance Like Production
 
-Skip configuration; you may use the default configuration.
+Skip further configuration; you may use the default configuration.
 
 ### For Isolated Containerized Local Development
 
