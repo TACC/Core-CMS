@@ -2,7 +2,7 @@ version: "3"
 services:
   cms:
     build: .
-    image: taccwma/taccsite-cms:initial
+    image: taccwma/core-portal-cms:latest
     links:
       - postgres:postgres
     volumes:
@@ -10,10 +10,10 @@ services:
     ports:
       - 8000:8000
     command: ['python3', 'manage.py', 'runserver', '0.0.0.0:8000']
-    container_name: taccsite_cms
-    hostname: taccsite_cms
+    container_name: core_cms
+    hostname: core_cms
     networks:
-      - taccsite_cms_net
+      - core_cms_net
 
   postgres:
     image: postgres:11.5
@@ -23,14 +23,14 @@ services:
       - POSTGRES_DB=taccsite
       - PGDATA=/var/lib/postgresql/data/taccsite
     volumes:
-      - taccsite_postgres_data:/var/lib/postgresql/data
+      - core_cms_postgres_data:/var/lib/postgresql/data
       - ./conf/postgres/pg_db.secret:/var/lib/postgresql/pg_db.secret
       - ./conf/postgres/pg_user.secret:/var/lib/postgresql/pg_user.secret
       - ./conf/postgres/pg_password.secret:/var/lib/postgresql/pg_password.secret
-    hostname: taccsite_postgres
-    container_name: taccsite_postgres
+    hostname: core_cms_postgres
+    container_name: core_cms_postgres
     networks:
-      - taccsite_cms_net
+      - core_cms_net
 
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.4.0
@@ -41,16 +41,16 @@ services:
       - discovery.type=single-node
     volumes:
       - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
-      - taccsite_cms_es_data:/usr/share/elasticsearch/data
-    container_name: taccsite_cms_elasticsearch
+      - core_cms_es_data:/usr/share/elasticsearch/data
+    container_name: core_cms_elasticsearch
     ports:
       - 9201:9200
     networks:
-      - taccsite_cms_net
+      - core_cms_net
 
 volumes:
-  taccsite_postgres_data:
-  taccsite_cms_es_data:
+  core_cms_postgres_data:
+  core_cms_es_data:
 
 networks:
-  taccsite_cms_net:
+  core_cms_net:

@@ -1,0 +1,24 @@
+/*
+Portal Navigation
+
+Styles for elements within Portal navigation that has third-party code:
+
+- Bootstrap 4.3.1
+
+Markup: s-portal-nav.html
+
+Styleguide Trumps.Scopes.PortalNav
+*/
+
+/* WARNING: NO-R/EM: No `em` nor `rem` allowed while `old-css` is used (on CMS),
+            because the `rem` values assume `16px` (browser default),
+            yet `old-css` sets `body { font-size: 15px }` (changes `em` value),
+            and also sets `html { font-size: 10px }` (changes `rem` value) */
+
+.s-portal-nav {
+  /* Override `.navbar` */
+  text-transform: none;
+}
+.s-portal-nav .dropdown-menu {
+  font-size: 16px; /* NO-R/EM: 1rem (from Bootstrap via `.dropdown-menu`) */
+}
