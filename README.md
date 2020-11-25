@@ -47,7 +47,7 @@ To support multiple instances of the CMS on one machine (i.e. local development)
     - Replace the first number in `ports` value with a unique port.
 2. Create and update `secrets.py`. _See [Custom Configuration](#optional-custom-configuration)._
     - Change `_DATABASES`:`default`:`HOST` to equal `docker-compose.custom.yml`'s `postgres`:`hostname`.
-3. Run any `docker-compose` command with `docker-compose.dev.yml` configuration, ex:
+3. Run any `docker-compose` command with `docker-compose.custom.yml` configuration, ex:
 
     ```bash
     docker-compose -f docker-compose.custom.yml …
