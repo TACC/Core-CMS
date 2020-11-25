@@ -1,3 +1,5 @@
+# WARNING: The `extends` keyword is NOT supported in Compose version 3.x
+# SEE: https://docs.docker.com/compose/extends/#extending-services
 version: "3"
 services:
   cms:
@@ -10,6 +12,8 @@ services:
       # SEE: https://confluence.tacc.utexas.edu/x/DwAODQ (Solution E)
       - /code/static
       - /code/taccsite_cms/static
+      # CMS projects (besides Core) must add a line for their custom resources
+      - /code/taccsite_custom/example-cms/static
 
   postgres:
     extends:

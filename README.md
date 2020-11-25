@@ -38,11 +38,13 @@ Configuration is stored in `default_secrets.py` and may be customized by creatin
 
 All CMS projects (besides the stand-alone CMS core), store project-specific resources in the `taccsite_custom` submodule.
 
-1. Create and update `secrets.py`. _See [Custom Configuration](#optional-custom-configuration)._
+1. (For Production) Copy `docker-compose.yml` as new `docker-compose.custom.yml` file, and in the new file:
+    - To `cms`:`volumes` list, add an entry `/code/taccsite_custom/name-of-project/static` where `name-of-project` matches a directory from `/taccsite_custom`.
+2. Create and update `secrets.py`. _See [Custom Configuration](#optional-custom-configuration)._
     - Setup existing CMS project by manually appending secrets from `taccsite_custom/__PROJECT__/secrets.py`.
     - For new CMS projects, add custom and unique resources and configuration to `taccsite_custom/__PROJECT__/`.
-2. Update the `.env` at the root of the project, with the content `CUSTOM_ASSET_DIR=name-of-project` where `name-of-project` matches a directory from `/taccsite_custom`.
-3. Re-build static assets, so that project-specific assets are built. _See ["Static Files"](/README.md#static-files)._
+3. Update the `.env` at the root of the project, with the content `CUSTOM_ASSET_DIR=name-of-project` where `name-of-project` matches a directory from `/taccsite_custom`.
+4. Re-build static assets, so that project-specific assets are built. _See ["Static Files"](/README.md#static-files)._
 
 ### (Optional) Multiple CMS Projects on One Machine
 
