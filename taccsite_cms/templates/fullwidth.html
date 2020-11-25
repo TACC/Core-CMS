@@ -3,19 +3,18 @@
 
 {% block title %}{% page_attribute "page_title" %}{% endblock title %}
 
-{% block custom_css %}
-<style>
-  /* Overrides base.html embedded styles. */
-  /* Better to keep all CSS styles in external css files --> styles.css. */
-</style>
-{% endblock custom_css %}
+{% block assets_custom %}
+<script>
+  console.info('Core `fullwidth.html` loads no custom assets');
+</script>
+{% endblock assets_custom %}
 
 {% block content %}
 {% placeholder "content" %}
 {% endblock content %}
 
-{% block "custom_js" %}
+{% block assets_custom_delayed %}
 <script>
-  // console.log("--> FILE: taccsite_cms.templates.fullwidth.html custom_js block");
+  console.info('Core `fullwidth.html` loads no (delayed) custom assets');
 </script>
-{% endblock "custom_js" %}
+{% endblock assets_custom_delayed %}

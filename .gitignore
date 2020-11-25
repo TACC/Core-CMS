@@ -1,7 +1,7 @@
 # Python
 *.pyc
 *.pyo
-/__pycache__/*
+__pycache__
 
 # Project
 /public/static
@@ -10,8 +10,13 @@
 /fcgi/django.fcgi
 /static/css/*.css
 
-# Build Artifacts
-/taccsite_cms/static/build/*
+# Node & NPM
+## built Static files
+build
+!build/README.md
+
+## environment variables
+.env
 
 # Static and Media folders
 /static

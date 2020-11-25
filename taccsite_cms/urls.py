@@ -38,4 +38,6 @@ if settings.DEBUG:
 
     urlpatterns += staticfiles_urlpatterns()
 
+    # RFE: Would preventing cache be a good addition?
+    # SEE: https://stackoverflow.com/a/59340216/11817077
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
