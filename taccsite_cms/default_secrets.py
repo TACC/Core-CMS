@@ -75,7 +75,7 @@ _GOOGLE_ANALYTICS_PROPERTY_ID = "UA-123ABC@%$&-#"
 _GOOGLE_ANALYTICS_PRELOAD = True
 
 ########################
-# CMS FORMS.
+# CMS FORMS
 ########################
 
 # Create CMS Forms
@@ -93,16 +93,16 @@ _ES_INDEX_PREFIX = 'cms-dev-{}'
 _ES_DOMAIN = 'http://localhost:8000'
 
 ########################
-# CUSTOM SITE
+# FEATURES
 ########################
 
 """
-Custom Site
+Features for the CMS that can be turned either ON or OFF
 
 Usage:
 
-- For baked-in features, update settings per website (see example below).
-- For optional features, enable features per website via _FEATURES list.
+- For baked-in features, like BRANDING or PORTAL, see relevant section instead.
+- For optional features, look below, and enable feature(s) via _FEATURES list.
 
 Baked-In Feature Setting Example.
 
@@ -128,12 +128,9 @@ _FEATURES = {
 
 """
 
-########################
-# FEATURES.
-########################
-
 _FEATURES = {
     # Blog/News & Social Media Metadata
+    # GL-42: Split this into two features
     # SEE: https://confluence.tacc.utexas.edu/x/EwDeCg
     # SEE: https://confluence.tacc.utexas.edu/x/FAA9Cw
     "blog": False,
@@ -199,7 +196,7 @@ _ANORG_LOGO = [
 """
 
 ########################
-# BRANDING.
+# BRANDING
 
 _TACC_BRANDING = [
     "tacc",
@@ -238,7 +235,7 @@ _BRANDING = [ _TACC_BRANDING, _UTEXAS_BRANDING ]        # Default TACC Portal.
 # _BRANDING = [ _NSF_BRANDING, _TACC_BRANDING, _UTEXAS_BRANDING ]       # NSF Funded TACC Portal.
 
 ########################
-# LOGOS.
+# LOGOS
 
 _PORTAL_LOGO =  [
     "portal",
