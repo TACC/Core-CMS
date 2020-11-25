@@ -8,7 +8,12 @@ A TACC CMS can be run using Docker and Docker Compose both locally or in product
 
 ### Required
 
-Create a `.env` at the root of the project, with the content `CUSTOM_ASSET_DIR=example-cms`.
+1. Create a `.env` at the root of the project, with the content `CUSTOM_ASSET_DIR=example-cms`.
+1. Initialize submodules and retireve the latest relevant code.
+    1. `git submodule init` (only necessary once)
+        - Add `cms-site-resources` repo as `taccsite_custom/`.
+    2. `git submodule update`
+        - Get latest desired submodule commit (this adds directory content).
 
 ### For Isolated Instance Like Production
 
@@ -31,16 +36,13 @@ Configuration is stored in `default_secrets.py` and may be customized by creatin
 
 ### (Optional) Custom Resources per CMS Project
 
-For all CMS projects (besides the stand-alone Core), the submodule for project-specific resources __must__ be available.
+All CMS projects (besides the stand-alone CMS core), store project-specific resources in the `taccsite_custom` submodule.
 
-1. `git submodule init` (only necessary once)
-    - Add `cms-site-resources` repo as `taccsite_custom/`.
-2. `git submodule update` (after `git fetch` / `pull`)
-    - Get latest desired submodule commit (thus directory content).
-3. Create and update `secrets.py`. _See [Custom Configuration](#optional-custom-configuration)._
+1. Create and update `secrets.py`. _See [Custom Configuration](#optional-custom-configuration)._
     - Setup existing CMS project by manually appending secrets from `taccsite_custom/__PROJECT__/secrets.py`.
     - For new CMS projects, add custom and unique resources and configuration to `taccsite_custom/__PROJECT__/`.
-4. Update the `.env` at the root of the project, with the content `CUSTOM_ASSET_DIR=name-of-project` where `name-of-project` matches a directory from `/taccsite_custom`.
+2. Update the `.env` at the root of the project, with the content `CUSTOM_ASSET_DIR=name-of-project` where `name-of-project` matches a directory from `/taccsite_custom`.
+3. Re-build static assets, so that project-specific assets are built. _See ["Static Files"](/README.md#static-files)._
 
 ### (Optional) Multiple CMS Projects on One Machine
 
