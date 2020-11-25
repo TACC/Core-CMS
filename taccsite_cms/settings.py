@@ -233,8 +233,12 @@ def get_subdirs_as_module_names(path):
     module_names = []
     for entry in os.scandir(path):
         if entry.is_dir():
+            # FAQ: There are different root paths to tweak:
+            #      - Containers use `/code/…`
+            #      - Python Venvs use `/srv/taccsite/…`
             module_name = entry.path \
                 .replace(os.path.sep + 'code' + os.path.sep, '') \
+                .replace(os.path.sep + 'srv' + os.path.sep + 'taccsite' + os.path.sep, '') \
                 .replace(os.path.sep, '.')
             module_names.append(module_name)
     return module_names
