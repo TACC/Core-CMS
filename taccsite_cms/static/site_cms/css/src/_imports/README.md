@@ -6,15 +6,18 @@ These styles are only to be imported by other stylesheets.
 
 ## Rules
 
-1. Files __must__ be [located in appropriate directory](#Directories).
-1. Files __must__ be [documented in appropriate format](#Documentation%20Format).
-1. Files __must__ follow the [style guide](#Style%20Guide).
+1. Files __must__ be [located in appropriate directory](#directories).
+1. Files __must__ be [documented in appropriate format](#documentation-format).
+1. Files __must__ follow the [style guide](#style-guide).
+
+1. Styles __should__ be [structural](#structure-vs-skin) and __may__ be a [skin](#structure-vs-skin).
 
 ## Directories
 
 These directories are based on [ITCSS][tacc-itcss].
 
 [tacc-itcss]: https://confluence.tacc.utexas.edu/x/IAA9Cw
+[tacc-oocss]: https://confluence.tacc.utexas.edu/x/VwALBg
 
 ## Documentation Format
 
@@ -37,3 +40,10 @@ Styleguide __StylesSection__.__StylesName__
 ## Style Guide
 
 See [TACC: CSS Style Guide](https://confluence.tacc.utexas.edu/x/ZQALBg).
+
+## Structure vs. Skin
+
+- Most Core styles will be _only __or__ mostly_ for [structure][tacc-oocss].
+- Some core styles may be [skin][tacc-oocss].
+
+[tacc-oocss]: https://confluence.tacc.utexas.edu/x/VwALBg
