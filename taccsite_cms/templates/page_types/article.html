@@ -2,6 +2,8 @@
 {% load cms_tags staticfiles %}
 
 {% block custom_css %}
+  {{ block.super }}
+
 	<link rel="stylesheet" href="{% static 'build/styles/template.article.css' %}">
 {% endblock custom_css %}
 

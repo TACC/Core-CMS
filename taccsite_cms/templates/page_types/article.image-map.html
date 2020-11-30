@@ -2,7 +2,7 @@
 {% load cms_tags staticfiles %}
 
 {% block custom_css %}
-{{ block.super }}
+  {{ block.super }}
 
   <link rel="stylesheet" href="{% static 'build/styles/template.article.image-map.css' %}">
 {% endblock custom_css %}
@@ -34,7 +34,7 @@
 {% endblock content %}
 
 {% block "custom_js" %}
-{{ block.super }}
+  {{ block.super }}
 
-<script src="{% static 'site_cms/scripts/activateFocusTarget.js' %}" crossorigin="anonymous"></script>
+  <script src="{% static 'site_cms/scripts/activateFocusTarget.js' %}" crossorigin="anonymous"></script>
 {% endblock "custom_js" %}
