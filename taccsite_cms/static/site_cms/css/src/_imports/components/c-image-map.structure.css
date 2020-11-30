@@ -4,10 +4,10 @@
   --button-shape-size: 50px;
   --toggle-shape-size: 60px;
   --caption-width: 100%;
-  --caption-offset: 0px;
-
-  /* SEE: `.c-image-map--has-caption-toggle-alignment` */
-  --caption-offset-from-toggle: calc( ( var(--toggle-shape-size) / 2 ) + 1em );
+}
+.c-image-map--has-caption-toggle-alignment {
+  --caption-toggle-offset-horz: 0px;
+  --caption-toggle-offset-vert: calc( ( var(--toggle-shape-size) / 2 ) + 1em );
 }
 
 
@@ -244,39 +244,36 @@ button.c-image-map__item-close {
 /* Fix scroll position for toggle anchor links to item */
 .c-image-map--has-caption-toggle-alignment .c-image-map__item {
   scroll-snap-align: start;
-  scroll-margin: var(--caption-offset-from-toggle);
+  scroll-margin: var(--caption-toggle-offset-vert);
 }
 
 /* Align caption far left, but still aligned vertically with toggle */
 .c-image-map--has-caption-toggle-alignment .c-image-map__item-caption {
-  /* Move caption to the far left */
-  left: var(--caption-offset);
+  left: var(--caption-toggle-offset-horz);
 }
 
 /* On narrow screen, move toggles of unmapped items to center of widget */
 @media only screen and (max-width: 991px) {
-  .c-image-map__item--unmapped .c-image-map__item-toggle {
+  .c-image-map--has-caption-toggle-alignment .c-image-map__item--unmapped .c-image-map__item-toggle {
     left: 50% !important; /* overwrite item ID selector */
   }
 }
 /* On wide screen, move toggles of unmapped items to top-right of caption */
 @media only screen and (min-width: 992px) {
-  .c-image-map__item--unmapped .c-image-map__item-toggle {
-    left: calc( var(--caption-offset) + var(--caption-width) ) !important; /* overwrite item ID */
-  }
-  .c-image-map__item--unmapped .c-image-map__item-caption {
-    margin-top: unset; /* overwrite item ID */
+  .c-image-map--has-caption-toggle-alignment .c-image-map__item--unmapped .c-image-map__item-toggle {
+    left: calc( var(--caption-toggle-offset-horz) + var(--caption-width) ) !important; /* overwrite item ID */
   }
 }
 
 /* On narrow viewport, set caption atop (z-axis) toggles below it (y-axis) */
 @media only screen and (max-width: 991px) {
+  .c-image-map--has-caption-toggle-alignment .c-image-map__item--unmapped .c-image-map__item-caption {
+    /* Position caption below toggle */
+    margin-top: var(--caption-toggle-offset-vert);
+  }
   .c-image-map--has-caption-toggle-alignment .c-image-map__item-caption {
     /* Layer caption above toggle */
     z-index: 1;
-
-    /* Position caption below toggle */
-    margin-top: var(--caption-offset-from-toggle);
   }
 }
 /* On wide viewport, set toggle atop (z-axis) its own caption (if nearby) */
