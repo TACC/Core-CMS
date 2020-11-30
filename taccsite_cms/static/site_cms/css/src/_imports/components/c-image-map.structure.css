@@ -267,13 +267,12 @@ button.c-image-map__item-close {
 
 /* On narrow viewport, set caption atop (z-axis) toggles below it (y-axis) */
 @media only screen and (max-width: 991px) {
-  .c-image-map--has-caption-toggle-alignment .c-image-map__item--unmapped .c-image-map__item-caption {
-    /* Position caption below toggle */
-    margin-top: var(--caption-toggle-offset-vert);
-  }
   .c-image-map--has-caption-toggle-alignment .c-image-map__item-caption {
     /* Layer caption above toggle */
     z-index: 1;
+
+    /* Position caption below toggle */
+    margin-top: var(--caption-toggle-offset-vert);
   }
 }
 /* On wide viewport, set toggle atop (z-axis) its own caption (if nearby) */
