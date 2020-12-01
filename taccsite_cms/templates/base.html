@@ -53,7 +53,7 @@
   {% render_block "css" %}
 </head>
 
-<body class="o-site">
+<body class="o-site  {% block page_type_class %}{% endblock page_type_class %}">
   {% cms_toolbar %}
 
   <!-- Custom Navigation Block per Site to Customize the Site Header Branding. -->
@@ -64,7 +64,6 @@
   <!-- Page content. -->
   <div id="cms-content" class="o-site o-site__body">
     <div id="content-wrap" class="o-site__body">
-      <pre>{{ request.current_page.parent_id }}</pre>
       <!-- This block used regardless. -->
       {% block content %}
       <div class="container">

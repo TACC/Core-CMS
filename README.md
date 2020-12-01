@@ -6,44 +6,62 @@ A TACC CMS can be run using Docker and Docker Compose both locally or in product
 
 ## Configuration
 
-### Custom Configuration
+### Required
+
+1. Create a `.env` at the root of the project, with the content `CUSTOM_ASSET_DIR=example-cms`.
+1. Initialize submodules and retireve the latest relevant code.
+    1. `git submodule init` (only necessary once)
+        - Add `cms-site-resources` repo as `taccsite_custom/`.
+    2. `git submodule update`
+        - Get latest desired submodule commit (this adds directory content).
+
+### For Isolated Instance Like Production
+
+Skip further configuration; you may use the default configuration.
+
+### For Isolated Containerized Local Development
+
+1. Run any `docker-compose` command with `docker-compose.dev.yml` configuration, ex:
+
+    ```bash
+    docker-compose -f docker-compose.dev.yml …
+    ```
+
+### (Optional) Custom Configuration
 
 Configuration is stored in `default_secrets.py` and may be customized by creating a `secrets.py`.
 
 1. Copy `taccsite_cms/default_secrets.py` as new `taccsite_cms/secrets.py` file.
 2. Update the `secrets.py` file.
 
-### Custom Resources per CMS Project
+### (Optional) Custom Resources per CMS Project
 
-For all CMS projects (besides the standalone Core), the submodule for project-specific resources __must__ be available.
+All CMS projects (besides the stand-alone CMS core), store project-specific resources in the `taccsite_custom` submodule.
 
-1. `git submodule init` (only necessary once)
-    - Add `cms-site-resources` repo as `taccsite_custom/`.
-2. `git submodule update` (after `git fetch` / `pull`)
-    - Get latest desired submodule commit (thus directory content).
-3. Create and update `secrets.py`. See [Custom Configuration](#Optional%20Custom%20Configuration).
+1. (For Production) Copy `docker-compose.yml` as new `docker-compose.custom.yml` file, and in the new file:
+    - To `cms`:`volumes` list, add an entry `/code/taccsite_custom/name-of-project/static` where `name-of-project` matches a directory from `/taccsite_custom`.
+2. Create and update `secrets.py`. _See [Custom Configuration](#optional-custom-configuration)._
     - Setup existing CMS project by manually appending secrets from `taccsite_custom/__PROJECT__/secrets.py`.
     - For new CMS projects, add custom and unique resources and configuration to `taccsite_custom/__PROJECT__/`.
-4. Create a `.env` at the root of the project, with the content `CUSTOM_ASSET_DIR=name-of-project` where `name-of-project` matches a directory from `/taccsite_custom`.
+3. Update the `.env` at the root of the project, with the content `CUSTOM_ASSET_DIR=name-of-project` where `name-of-project` matches a directory from `/taccsite_custom`.
+4. Re-build static assets, so that project-specific assets are built. _See ["Static Files"](/README.md#static-files)._
 
 ### (Optional) Multiple CMS Projects on One Machine
 
 To support multiple instances of the CMS on one machine (i.e. local development), configure unique identification for the database of each.
 
-1. Copy `docker-compose.yml` as new `docker-compose.custom.yml` file, and in the new file:
-    - Replace any `taccsite_` string partial with a unique identifier.
+1. Copy `docker-compose.dev.yml` as new `docker-compose.custom.yml` file, and in the new file:
+    - Replace any `core_cms_` string partial with a unique identifier.
     - Replace the first number in `ports` value with a unique port.
-2. Create and update `secrets.py`. See [Custom Configuration](Optional%20Custom%20Configuration).
+2. Create and update `secrets.py`. _See [Custom Configuration](#optional-custom-configuration)._
     - Change `_DATABASES`:`default`:`HOST` to equal `docker-compose.custom.yml`'s `postgres`:`hostname`.
-3. Run any `docker-compose` with file argument, e.g.:
+3. Run any `docker-compose` command with `docker-compose.custom.yml` configuration, ex:
 
     ```bash
     docker-compose -f docker-compose.custom.yml …
     ```
 
-## Run the CMS (via Docker)
-
-> __Notice__: The `docker-compose.yml` file included in this repo is set up for running the instance locally.
+## Run the CMS
 
 ### Prerequisites
 
@@ -65,10 +83,10 @@ To support multiple instances of the CMS on one machine (i.e. local development)
 
 3. [Start a bash session][docker-exec-bash] into the CMS container:
 
-    > __Notice__: If you are using a `docker-compose.custom.yml`, then replace this command's `taccsite_cms` with that file's `cms`: `hostname`.
+    > __Notice__: If you are using a `docker-compose.custom.yml`, then replace this command's `core_cms` with that file's `cms`: `container_name`.
 
     ```bash
-    docker exec -it taccsite_cms /bin/bash
+    docker exec -it core_cms /bin/bash
     ```
 
 4. [Run migrations][django-cms-migrate] for Django CMS:
@@ -77,7 +95,7 @@ To support multiple instances of the CMS on one machine (i.e. local development)
     python manage.py migrate
     ```
 
-    _This is like a Django CMS wrapper around [Django migrations][django-cms-migrate]._
+    _This is like a Django CMS wrapper around [Django migrations][django-migrate]._
 
 5. [Create a superuser][django-cms-su] for Django CMS:
 
@@ -91,49 +109,41 @@ To support multiple instances of the CMS on one machine (i.e. local development)
 
 The CMS admin site should now be accessible at http://localhost:8000/admin (or at the port defined in a `docker-compose.custom.yml`).
 
-
-[docker-exec-bash]: https://docs.docker.com/engine/reference/commandline/exec/#run-docker-exec-on-a-running-container
-
-[docker-compose-up]: https://docs.docker.com/compose/reference/up/
-[docker-compose-build]: https://docs.docker.com/compose/reference/build/
-
-[django-migrate]: https://docs.djangoproject.com/en/2.2/topics/migrations/
-
-[django-collectstatic]: https://docs.djangoproject.com/en/2.2/ref/contrib/staticfiles/#django-admin-collectstatic
-
-[django-cms-migrate]: http://docs.django-cms.org/en/latest/how_to/install.html#database-tables
-[django-cms-su]: http://docs.django-cms.org/en/latest/how_to/install.html#admin-user
-
-
 Log in with the user that was created via the `createsuperuser` step.
 
 > __Notice__: To log in with a TACC account using LDAP, create the account using the TACC username, then assign staff and/or superuser privileges. The assigned password can be any password and does __not__ need to be sent to the user. The CMS will __not__ attempt to validate with the assigned password unless LDAP authentication fails. __For production, create a strong password.__
 
 > __Warning__: The CMS install will be fresh i.e. the CMS will __not__ be populated with production content.
 
-## Changing Static Files
-
-Whenever static files are changed, the CMS may need to be manually told to serve them (if not [automatically performed, or if cached](https://stackoverflow.com/a/59340216/11817077)).
-
-1. [Start a bash session][docker-exec-bash] into the CMS container:
-
-    > __Notice__: If you are using a `docker-compose.custom.yml`, then replace this command's `taccsite_cms` with that file's `cms`: `hostname`.
-
-    ```bash
-    docker exec -it taccsite_cms /bin/bash
-    ```
-
-2. [Collect static files][django-collectstatic] for Django:
+6. [Collect static files][django-static] for Django:
 
     ```bash
     python manage.py collectstatic
     ```
 
-## Building Static Files
+    _[If `DEBUG` is set to `True`, then this is automated by `python manage.py runserver`.][django-static-serve-dev]_
+
+
+[docker-exec-bash]: https://docs.docker.com/engine/reference/commandline/exec/#run-docker-exec-on-a-running-container
+
+[docker-compose-up]: https://docs.docker.com/compose/reference/up/
+[docker-compose-build]: https://docs.docker.com/compose/reference/build/
+
+[django-migrate]: https://docs.djangoproject.com/en/3.1/topics/migrations/
+[django-static]: https://docs.djangoproject.com/en/3.1/howto/static-files/
+[django-static-serve-dev]: https://docs.djangoproject.com/en/3.1/howto/static-files/#serving-static-files-during-development
+
+[django-cms-migrate]: http://docs.django-cms.org/en/latest/how_to/install.html#database-tables
+[django-cms-su]: http://docs.django-cms.org/en/latest/how_to/install.html#admin-user
+
+https://docs.djangoproject.com/en/3.1/howto/static-files/#serving-static-files-during-development
+
+
+## Static Files
 
 Certain static files are built __from__ source files __in__ `src` directories __to__ compiled files __in__ `build` directories.
 
-> __Notice__: We configured Django to ignore `src` directories during [`collectstatic`][django-collectstatic], so templates can not directly load source files.
+> __Notice__: We configured Django to ignore `src` directories during [`collectstatic`][django-static], so templates can not directly load source files.
 
 ### Quick Start
 
@@ -142,20 +152,22 @@ Certain static files are built __from__ source files __in__ `src` directories __
     - (manually, for any ready changes) `npm run build`
     - (automatically, on source change) `npm run watch`
 3. (Debug) Confirm relevant `build` output changed.
-4. "Collect" static files. See [Changing Static Files](#Changing%20Static%20Files).
+4. "Collect" static files. _See [How to Collect Static Files](#how-to-collect-static-files)._
 5. (Debug) Confirm relevant `/static/…/build` output changed.
 
-### How to Build
+### How to Build Static Files
 
-The files are currently built locally and synced to the CMS Docker container. _[Issue #30](https://gitlab.tacc.utexas.edu/wma-cms/cms-site-template/issues/30) will change this process and this paragraph._
+1. (only if using `docker-compose.yml`) [Start a bash session][docker-exec-bash] into the CMS container:
 
-1. [Install][npm-cli-install] the dependencies:
+    > __Notice__: If you are using a `docker-compose.custom.yml`, then replace this command's `taccsite_cms` with that file's `cms`: `hostname`.
 
     ```bash
-    npm ci
+    docker exec -it taccsite_cms /bin/bash
     ```
 
-2. Build static files:
+    _It is __not__ necessary to run the next commands in the Docker container, but it does completely __isolate development__ and __mirror production__ representation._
+
+2. Build static resources:
 
     ```bash
     npm run build
@@ -167,20 +179,43 @@ The files are currently built locally and synced to the CMS Docker container. _[
     npm run watch
     ```
 
+> __Using `docker-compose.yml`__: Resources are automatically built once in the container. To re-build, you must run the commands in this section _in the container_.
+
+> __Using `docker-compose.dev.yml`__: Resources are automatically built once in the container __but__ _container resources are overwritten by local resources_. To build, you may run the commands in this section _either_ locally _or_ in the container.
+
+
 [npm-cli-install]: https://docs.npmjs.com/cli/install
 [npm-pkg-watch]: https://www.npmjs.com/package/npm-watch
 
-## Managing Custom Resources
+### How to Collect Static Files
+
+Whenever static files are changed, the CMS may need to be manually told to serve them (if not [automatically performed, or if cached](https://stackoverflow.com/a/59340216/11817077)).
+
+1. [Start a bash session][docker-exec-bash] into the CMS container:
+
+    > __Notice__: If you are using a `docker-compose.custom.yml`, then replace this command's `taccsite_cms` with that file's `cms`: `hostname`.
+
+    ```bash
+    docker exec -it taccsite_cms /bin/bash
+    ```
+
+2. [Collect static files][django-static] for Django:
+
+    ```bash
+    python manage.py collectstatic
+    ```
+
+## Custom Resources
 
 1. Create/Edit files in a child directory of `/taccsite_custom`.
 2. Follow instructions and directory structure of `example-cms`.
 3. Reference other projects in `/taccsite_custom`.
 4. (As necessary) Build static assets.
 5. (For templates) Restart server.
-6. [Commit changes.](#Commit%20Changes)
-    1. In `/taccsite_custom` submodule repo, commit changes.
+6. Commit changes:
+    1. In `/taccsite_custom` submodule repo, commit changes (__not__ to `master`).
     2. In `cms-site-template` parent repo, add `/taccsite_custom` change.
-    3. In `cms-site-template` parent repo, commit changes.
+    3. In `cms-site-template` parent repo, commit changes (__not__ to `master`).
 
 ## Reference
 
