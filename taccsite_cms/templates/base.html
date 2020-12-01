@@ -53,7 +53,7 @@
   {% render_block "css" %}
 </head>
 
-<body class="o-site">
+<body class="o-site  {% block page_type_class %}{% endblock page_type_class %}">
   {% cms_toolbar %}
 
   <!-- Custom Navigation Block per Site to Customize the Site Header Branding. -->
