@@ -29,7 +29,7 @@
 
 {% with settings.LOGO as logo %}
 <!-- Navigation Bar -->
-<nav id="s-header" class="s-header  navbar navbar-expand-md navbar-dark">
+<nav id="s-header" class="s-header  navbar {% if settings.PORTAL %}navbar-expand-lg{% else %}navbar-expand-md{% endif %} navbar-dark">
   <!-- Portal Logo -->
   {% with filename=logo|index:1 selectors=logo|index:2 targeturl=logo|index:3 targetType=logo|index:4 accessibility=logo|index:5 corstype=logo|index:6 visibility=logo|index:7 %}
     {% if visibility == "True" %}
