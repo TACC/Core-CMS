@@ -129,11 +129,11 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         # FAQ: List custom directory first, so custom templates take precedence
         # SEE: https://docs.djangoproject.com/en/2.2/topics/templates/#configuration
-        'DIRS': [
-            os.path.join(BASE_DIR, 'taccsite_cms', 'templates')
-        ] + glob(
+        'DIRS': glob(
             os.path.join(BASE_DIR, 'taccsite_custom')
-        ),
+        ) + [
+            os.path.join(BASE_DIR, 'taccsite_cms', 'templates')
+        ],
         # 'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -233,8 +233,12 @@ def get_subdirs_as_module_names(path):
     module_names = []
     for entry in os.scandir(path):
         if entry.is_dir():
+            # FAQ: There are different root paths to tweak:
+            #      - Containers use `/code/…`
+            #      - Python Venvs use `/srv/taccsite/…`
             module_name = entry.path \
                 .replace(os.path.sep + 'code' + os.path.sep, '') \
+                .replace(os.path.sep + 'srv' + os.path.sep + 'taccsite' + os.path.sep, '') \
                 .replace(os.path.sep, '.')
             module_names.append(module_name)
     return module_names
