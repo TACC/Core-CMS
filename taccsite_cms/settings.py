@@ -259,13 +259,15 @@ INSTALLED_APPS = INSTALLED_APPS + INSTALLED_APPS_APPEND
 if CONSOLE_LOG_ENABLED:
     print("--> Variable INSTALLED_APPS: ", INSTALLED_APPS)
 
-# Comment the LDAPBackend to use local django auth
 AUTHENTICATION_BACKENDS = [
-    # "django_auth_ldap.backend.LDAPBackend",
     "django.contrib.auth.backends.ModelBackend",
 ]
 
 if LDAP_ENABLED:
+    AUTHENTICATION_BACKENDS.insert(0,
+        "django_auth_ldap.backend.LDAPBackend"
+    )
+
     ''' LDAP Auth Settings '''
     AUTH_LDAP_SERVER_URI = "ldap://ldap.tacc.utexas.edu"
     AUTH_LDAP_CONNECTION_OPTIONS = {ldap.OPT_REFERRALS: 0}

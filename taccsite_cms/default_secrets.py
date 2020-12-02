@@ -15,8 +15,7 @@ _CONSOLE_LOG_ENABLED = False    # Boolean check to turn on/off console logging s
 _ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost', '*']   # In development.
 
 # Boolean check to see if ldap is being used by the site.
-# Ensure the django-auth-ldap==2.0.0 package is uncommented
-# in the requirements.txt file or installed if using ldap.
+# Requires django-auth-ldap ≥ 2.0.0
 _LDAP_ENABLED = False
 
 # Boolean check to determine the appropriate database settings when using containers.
