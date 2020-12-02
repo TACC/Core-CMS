@@ -79,6 +79,7 @@ _GOOGLE_ANALYTICS_PRELOAD = True
 
 # Create CMS Forms
 # SEE: https://pypi.org/project/djangocms-forms/
+# SEE: https://www.google.com/recaptcha/admin/create
 _DJANGOCMS_FORMS_RECAPTCHA_PUBLIC_KEY = ""
 _DJANGOCMS_FORMS_RECAPTCHA_SECRET_KEY = ""
 
