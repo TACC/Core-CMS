@@ -202,6 +202,7 @@ INSTALLED_APPS = [
     # 'djangocms_audio',
     'djangocms_column',
     'djangocms_file',
+    # 'djangocms_forms', # FP-416: Pending full support
     'djangocms_link',
     'djangocms_picture',
     'djangocms_style',
@@ -422,6 +423,21 @@ DJANGOCMS_AUDIO_ALLOWED_EXTENSIONS = ['mp3', 'ogg', 'wav']
 # DJANGOCMS_AUDIO_TEMPLATES = [
 #     ('feature', _('Featured Version')),
 # ]
+
+# Djangocms Forms Settings.
+# SEE: https://github.com/mishbahr/djangocms-forms#configuration
+DJANGOCMS_FORMS_PLUGIN_MODULE = ('Generic')
+DJANGOCMS_FORMS_PLUGIN_NAME = ('Form')
+# DJANGOCMS_FORMS_DEFAULT_TEMPLATE = 'djangocms_forms/form_template/default.html'
+DJANGOCMS_FORMS_TEMPLATES = (
+    ('djangocms_forms/form_template/default.html', ('Default')),
+)
+DJANGOCMS_FORMS_USE_HTML5_REQUIRED = False
+# DJANGOCMS_FORMS_WIDGET_CSS_CLASSES = {'__all__': ('form-control', ) }
+DJANGOCMS_FORMS_REDIRECT_DELAY = 10000  # 10 seconds
+
+DJANGOCMS_FORMS_RECAPTCHA_PUBLIC_KEY = current_secrets._DJANGOCMS_FORMS_RECAPTCHA_PUBLIC_KEY
+DJANGOCMS_FORMS_RECAPTCHA_SECRET_KEY = current_secrets._DJANGOCMS_FORMS_RECAPTCHA_SECRET_KEY
 
 # Google Analytics.
 GOOGLE_ANALYTICS_PROPERTY_ID  = current_secrets._GOOGLE_ANALYTICS_PROPERTY_ID
