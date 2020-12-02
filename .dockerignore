@@ -1,3 +1,12 @@
+# Version Control
 .git
-.cache
-.pyc
+
+# Python
+*.pyc
+*.pyo
+**/__pycache__
+
+# Node & NPM
+**/node_modules
+**/build
+**/secrets.py
