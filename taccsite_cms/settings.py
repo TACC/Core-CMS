@@ -263,9 +263,9 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 if LDAP_ENABLED:
-    AUTHENTICATION_BACKENDS += [
-        "django_auth_ldap.backend.LDAPBackend",
-    ]
+    AUTHENTICATION_BACKENDS.insert(0,
+        "django_auth_ldap.backend.LDAPBackend"
+    )
 
     ''' LDAP Auth Settings '''
     AUTH_LDAP_SERVER_URI = "ldap://ldap.tacc.utexas.edu"
