@@ -436,9 +436,6 @@ DJANGOCMS_FORMS_USE_HTML5_REQUIRED = False
 # DJANGOCMS_FORMS_WIDGET_CSS_CLASSES = {'__all__': ('form-control', ) }
 DJANGOCMS_FORMS_REDIRECT_DELAY = 10000  # 10 seconds
 
-# RECAPTCHA for DJangocms Forms.
-# To use reCAPTCHA for spam protection, you need to sign up for an
-# API key pair for your site: https://www.google.com/recaptcha/admin/create
 DJANGOCMS_FORMS_RECAPTCHA_PUBLIC_KEY = current_secrets._DJANGOCMS_FORMS_RECAPTCHA_PUBLIC_KEY
 DJANGOCMS_FORMS_RECAPTCHA_SECRET_KEY = current_secrets._DJANGOCMS_FORMS_RECAPTCHA_SECRET_KEY
 
