@@ -39,19 +39,21 @@ Configuration is stored in `default_secrets.py` and may be customized by creatin
 All CMS projects (besides the stand-alone CMS core), store project-specific resources in the `taccsite_custom` submodule.
 
 1. (For Production) Copy `docker-compose.yml` as new `docker-compose.custom.yml` file, and in the new file:
-    - To `cms`:`volumes` list, add an entry `/code/taccsite_custom/name-of-project/static` where `name-of-project` matches a directory from `/taccsite_custom`.
+    - To `cms`:`volumes` list, add an entry `/code/taccsite_custom/name-of-project/static`.*
 2. Create and update `secrets.py`. _See [Custom Configuration](#optional-custom-configuration)._
-    - Setup existing CMS project by manually appending secrets from `taccsite_custom/__PROJECT__/secrets.py`.
-    - For new CMS projects, add custom and unique resources and configuration to `taccsite_custom/__PROJECT__/`.
-3. Update the `.env` at the root of the project, with the content `CUSTOM_ASSET_DIR=name-of-project` where `name-of-project` matches a directory from `/taccsite_custom`.
+    - Setup existing CMS project by manually appending secrets from `taccsite_custom/name-of-project/secrets.py`.*
+    - For new CMS projects, add custom and unique resources and configuration to `taccsite_custom/name-of-project/`.*
+3. Update the `.env` at the root of the project, with the content `CUSTOM_ASSET_DIR=name-of-project`.*
 4. Re-build static assets, so that project-specific assets are built. _See ["Static Files"](/README.md#static-files)._
+
+\* Where `name-of-project` matches a directory from `/taccsite_custom`.
 
 ### (Optional) Multiple CMS Projects on One Machine
 
 To support multiple instances of the CMS on one machine (i.e. local development), configure unique identification for the database of each.
 
 1. Copy `docker-compose.dev.yml` as new `docker-compose.custom.yml` file, and in the new file:
-    - Replace any `core_cms_` string partial with a unique identifier.
+    - Replace any `core_cms` string partial with a unique identifier.
     - Replace the first number in `ports` value with a unique port.
 2. Create and update `secrets.py`. _See [Custom Configuration](#optional-custom-configuration)._
     - Change `_DATABASES`:`default`:`HOST` to equal `docker-compose.custom.yml`'s `postgres`:`hostname`.
@@ -107,13 +109,13 @@ To support multiple instances of the CMS on one machine (i.e. local development)
 
     _You may create additional accounts as needed._
 
-The CMS admin site should now be accessible at http://localhost:8000/admin (or at the port defined in a `docker-compose.custom.yml`).
+    The CMS admin site should now be accessible at http://localhost:8000/admin (or at the port defined in a `docker-compose.custom.yml`).
 
-Log in with the user that was created via the `createsuperuser` step.
+    Log in with the user that was created via the `createsuperuser` step.
 
-> __Notice__: To log in with a TACC account using LDAP, create the account using the TACC username, then assign staff and/or superuser privileges. The assigned password can be any password and does __not__ need to be sent to the user. The CMS will __not__ attempt to validate with the assigned password unless LDAP authentication fails. __For production, create a strong password.__
+    > __Notice__: To log in with a TACC account using LDAP, create the account using the TACC username, then assign staff and/or superuser privileges. The assigned password can be any password and does __not__ need to be sent to the user. The CMS will __not__ attempt to validate with the assigned password unless LDAP authentication fails. __For production, create a strong password.__
 
-> __Warning__: The CMS install will be fresh i.e. the CMS will __not__ be populated with production content.
+    > __Warning__: The CMS install will be fresh i.e. the CMS will __not__ be populated with production content.
 
 6. [Collect static files][django-static] for Django:
 
@@ -121,7 +123,7 @@ Log in with the user that was created via the `createsuperuser` step.
     python manage.py collectstatic
     ```
 
-    _[If `DEBUG` is set to `True`, then this is automated by `python manage.py runserver`.][django-static-serve-dev]_
+    _[If `DEBUG` is set to `True`, then this is automated via `python manage.py runserver`.][django-static-serve-dev]_
 
 
 [docker-exec-bash]: https://docs.docker.com/engine/reference/commandline/exec/#run-docker-exec-on-a-running-container
@@ -147,7 +149,7 @@ Certain static files are built __from__ source files __in__ `src` directories __
 
 ### Quick Start
 
-1. Make changes to relevant `src` files.
+1. (Optional) Make changes to `src` files.
 2. Build static files from source files via:
     - (manually, for any ready changes) `npm run build`
     - (automatically, on source change) `npm run watch`
@@ -165,7 +167,7 @@ Certain static files are built __from__ source files __in__ `src` directories __
     docker exec -it taccsite_cms /bin/bash
     ```
 
-    _It is __not__ necessary to run the next commands in the Docker container, but it does completely __isolate development__ and __mirror production__ representation._
+    _It is __not__ necessary to run the next commands in the Docker container, but it does completely __isolate development__ and __mimic production__._
 
 2. Build static resources:
 
@@ -181,7 +183,7 @@ Certain static files are built __from__ source files __in__ `src` directories __
 
 > __Using `docker-compose.yml`__: Resources are automatically built once in the container. To re-build, you must run the commands in this section _in the container_.
 
-> __Using `docker-compose.dev.yml`__: Resources are automatically built once in the container __but__ _container resources are overwritten by local resources_. To build, you may run the commands in this section _either_ locally _or_ in the container.
+> __Using `docker-compose.dev.yml`__: Resources are automatically built once in the container __but__ _container resources are overwritten by local resources_. To re-build, you may run the commands in this section _either_ locally _or_ in the container.
 
 
 [npm-cli-install]: https://docs.npmjs.com/cli/install
