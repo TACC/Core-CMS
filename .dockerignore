@@ -1,8 +1,6 @@
 .git
 .cache
 .pyc
-**/settings_secret.py
-**/node_modules/*
-**/client/build/*
-secrets.py
-**/secrets**
+**/node_modules
+**/build
+**/secrets.py
