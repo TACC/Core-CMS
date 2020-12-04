@@ -10,7 +10,7 @@
  * @param {function} onSuccess - Callback for data retrieval success
  * @param {function} onError - Callback for data retrieval success
  */
-function getUserData(path, onSuccess, onError) {
+function getData(path, onSuccess, onError) {
   var xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function () {
     if (xhr.readyState === XMLHttpRequest.DONE) {
