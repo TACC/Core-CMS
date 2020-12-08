@@ -24,10 +24,11 @@
 * - The specific element must be a `ul` tag
 * - The specific element must have the ID `cms-nav-pages`
 * - The specific element must have the attribute `data-cms-nav-endpoint`
+* @param {function} callback - A function to run after async action completion
 * @todo Rewrite function to either take parameters or be a custom element
 * @todo Use `insertAdjacentHTML` (not `innerHTML`) to insert markup
 */
-function includeCMSNavMarkup() {
+function includeCMSNavMarkup(callback) {
   const cmsPagesElement = document.getElementById('cms-nav-pages');
   const cmsPagesEndpoint = cmsPagesElement && cmsPagesElement.dataset.cmsNavEndpoint;
 
@@ -41,6 +42,9 @@ function includeCMSNavMarkup() {
       console.error(err);
     }).finally(() => {
       cmsPagesElement.removeAttribute('data-cms-nav-endpoint');
+      if (typeof callback === 'function') {
+        callback();
+      }
     });
   }
 }
@@ -148,6 +152,9 @@ function flagLinkAsActive(activeClassname, linkSelector, scopeElement, ancestorA
   const scopeElement = document.getElementsByClassName('s-cms-nav')[0];
   const ancestorActiveElementSelector = 'li';
 
-  flagLinkAsActive(activeClassname, linkSelector, scopeElement, ancestorActiveElementSelector);
-  includeCMSNavMarkup();
+  function navMarkupCallback() {
+    flagLinkAsActive(activeClassname, linkSelector, scopeElement, ancestorActiveElementSelector);
+  }
+
+  includeCMSNavMarkup(navMarkupCallback);
 })();
