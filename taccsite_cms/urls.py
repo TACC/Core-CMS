@@ -27,6 +27,7 @@ if settings.FEATURES['blog']:
 
 urlpatterns += [
     url(r'^', include('cms.urls')),
+    # url(r'^', include('djangocms_forms.urls')), # FP-416: Pending full support
 ]
 
 # This is only needed when using runserver.
