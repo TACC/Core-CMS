@@ -1,18 +1,18 @@
 /* BRANDING & LOGO CLASS SELECTORS */
 /* TODO: Convert to a component */
 
-/* Shared by All Templates */
+/* WARNING: NO-R/EM: Until Frontera CMS drops Bootstrap 3.7.1 (for old design)…
+            No `em` nor `rem` allowed, because they aren't consitently reliable.
+            - On Frontera CMS, `1rem` = `10px` and `body { font-size: 15px }`
+            - On any other CMS, `1rem` = `16px` (browser default). */
 
-.navbar-tacc {
-  background-color: rgb(51, 51, 51);
-  padding: 0 9%;
-}
+/* Shared by All Templates */
 
 /* Branding Selectors  */
 
 .branding-header {
   margin: 0;
-  padding: 0.4rem 0 0.4rem;
+  padding: 6.4px 0 6.4px; /* NO-R/EM: 0.4rem 0 0.4rem */
   text-align: center;
   background-color: rgb(51, 51, 51);
   color: #fff;
@@ -62,14 +62,4 @@
   margin: 0;
   padding: 0;
   border: none;
-}
-
-/* Media Query Selectors */
-
-@media only screen and (max-width: 640px) {
-  .navbar-tacc {
-    background-color: rgb(51, 51, 51);
-    padding-left: 5%;
-    padding-right: 5%;
-  }
 }

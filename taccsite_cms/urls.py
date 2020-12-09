@@ -19,6 +19,13 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),  # NOQA
 ]
 
+if settings.PORTAL:
+    from django.views.generic.base import TemplateView
+    urlpatterns += [
+        # FAQ: Allows direct access to isolated CMS menu markup for the Portal and User Guide to render
+        url(r'^cms/nav/pages/markup/$', TemplateView.as_view(template_name='nav_cms.raw.html'), name='menu_pages_markup'),
+    ]
+
 if settings.FEATURES['blog']:
     urlpatterns += [
         # Support `taggit_autosuggest` (from `djangocms-blog`)
