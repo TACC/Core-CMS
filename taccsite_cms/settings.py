@@ -93,6 +93,11 @@ ALLOWED_HOSTS = current_secrets._ALLOWED_HOSTS
 BRANDING = current_secrets._BRANDING
 LOGO  = current_secrets._LOGO
 
+# Configure Portal.
+PORTAL = current_secrets._PORTAL
+PORTAL_AUTH_LINKS = current_secrets._PORTAL_AUTH_LINKS
+PORTAL_UNAUTH_LINKS = current_secrets._PORTAL_UNAUTH_LINKS
+
 # Optional features.
 FEATURES = current_secrets._FEATURES
 
@@ -254,13 +259,15 @@ INSTALLED_APPS = INSTALLED_APPS + INSTALLED_APPS_APPEND
 if CONSOLE_LOG_ENABLED:
     print("--> Variable INSTALLED_APPS: ", INSTALLED_APPS)
 
-# Comment the LDAPBackend to use local django auth
 AUTHENTICATION_BACKENDS = [
-    # "django_auth_ldap.backend.LDAPBackend",
     "django.contrib.auth.backends.ModelBackend",
 ]
 
 if LDAP_ENABLED:
+    AUTHENTICATION_BACKENDS.insert(0,
+        "django_auth_ldap.backend.LDAPBackend"
+    )
+
     ''' LDAP Auth Settings '''
     AUTH_LDAP_SERVER_URI = "ldap://ldap.tacc.utexas.edu"
     AUTH_LDAP_CONNECTION_OPTIONS = {ldap.OPT_REFERRALS: 0}
@@ -464,6 +471,9 @@ SETTINGS_EXPORT = [
     'DEBUG',
     'BRANDING',
     'LOGO',
+    'PORTAL',
+    'PORTAL_AUTH_LINKS',
+    'PORTAL_UNAUTH_LINKS',
     'FEATURES',
     'GOOGLE_ANALYTICS_PROPERTY_ID',
     'GOOGLE_ANALYTICS_PRELOAD'

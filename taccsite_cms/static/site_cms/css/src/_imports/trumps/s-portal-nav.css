@@ -10,10 +10,10 @@ Markup: s-portal-nav.html
 Styleguide Trumps.Scopes.PortalNav
 */
 
-/* WARNING: NO-R/EM: No `em` nor `rem` allowed while `old-css` is used (on CMS),
-            because the `rem` values assume `16px` (browser default),
-            yet `old-css` sets `body { font-size: 15px }` (changes `em` value),
-            and also sets `html { font-size: 10px }` (changes `rem` value) */
+/* WARNING: NO-R/EM: Until Frontera CMS drops Bootstrap 3.7.1 (for old design)…
+            No `em` nor `rem` allowed, because they aren't consitently reliable.
+            - On Frontera CMS, `1rem` = `10px` and `body { font-size: 15px }`
+            - On any other CMS, `1rem` = `16px` (browser default). */
 
 .s-portal-nav {
   /* Override `.navbar` */

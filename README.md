@@ -164,7 +164,7 @@ Certain static files are built __from__ source files __in__ `src` directories __
     > __Notice__: If you are using a `docker-compose.custom.yml`, then replace this command's `taccsite_cms` with that file's `cms`: `hostname`.
 
     ```bash
-    docker exec -it taccsite_cms /bin/bash
+    docker exec -it core_cms /bin/bash
     ```
 
     _It is __not__ necessary to run the next commands in the Docker container, but it does completely __isolate development__ and __mimic production__._
@@ -198,7 +198,7 @@ Whenever static files are changed, the CMS may need to be manually told to serve
     > __Notice__: If you are using a `docker-compose.custom.yml`, then replace this command's `taccsite_cms` with that file's `cms`: `hostname`.
 
     ```bash
-    docker exec -it taccsite_cms /bin/bash
+    docker exec -it core_cms /bin/bash
     ```
 
 2. [Collect static files][django-static] for Django:
