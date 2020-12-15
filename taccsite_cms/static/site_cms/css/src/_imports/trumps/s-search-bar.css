@@ -1,0 +1,31 @@
+/*
+Search Bar
+
+Styles for search bar cloned from Portal codebase
+
+- Bootstrap (different options)
+    - ⅹ 4.3.1 (the styles necessary are in `./s-search-bar/bootstrap.4.3.1.css`)
+    - ✓ 4.0.0 (loaded for whole site as external file via `<link>` in template)
+    - ✓ relevant delta from 4.0.0 to 4.3.1 (determined by comparing render diff)
+
+Markup: s-search-bar.html
+
+Styleguide Trumps.Scopes.SearchBar
+*/
+
+
+
+/* Bootstrap */
+
+/* Bootstrap: 4.3.1 */
+/* @import url("_imports/trumps/s-search-bar/bootstrap.4.3.1.css"); */
+
+/* Bootstrap: 4.0.0 */
+/* SEE: taccsite_cms/templates/assets_site.html */
+
+/* Bootstrap: relevant delta from 4.0.0 to 4.3.1 */
+@import url("_imports/trumps/s-search-bar/bootstrap.delta.4.0.0-to-4.3.1.css");
+
+
+
+/* … */
