@@ -1,14 +1,19 @@
 # TACC CMS - Shared Static Files
 
-THIS FOLDER IS PENDING FUTURE POPULATION!
+SYNC SOURCE FILES HERE WITH CMS & PORTAL & DOCS!
 
-This `README.md` is referenced by several files within `../site_cms/**/shared`.
+The directory structure __must__ mirror that of [`../site_cms`](`../site_cms`).
 
 ## To Do
 
 - [ ] Create a GitHUb repo that shares source files between Portal, CMS, and User Guide.
 
-## Rules
+## Documentation Format
 
-1. Files __must__ use the same name across repositories.
-1. Files __must__ have the same content across repositories.
+```
+/* WARNING: This file is copied from Portal repo */
+/* TODO: Share source code between CMS, Portal, & User Guide */
+/* SEE: https://github.com/TACC/Frontera-Portal/blob/master/… */
+
+/* … */
+```
