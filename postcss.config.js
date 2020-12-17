@@ -14,6 +14,9 @@ module.exports = {
         `./taccsite_custom/${env.CUSTOM_ASSET_DIR}/static/${env.CUSTOM_ASSET_DIR}/css/src`
       ]
     }),
+    require('postcss-extend')({
+      preset: 'default'
+    }),
     require('cssnano')({
       preset: 'default'
     })
