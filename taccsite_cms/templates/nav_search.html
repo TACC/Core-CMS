@@ -2,14 +2,60 @@
 
 {# WARNING: Some markup is duplicated in other repositories #}
 {# SEE: https://confluence.tacc.utexas.edu/x/LoCnCQ #}
-<form class="s-search-bar  {{className}}">
-  <div class="input-group">
-    <div class="input-group-prepend">
-      <button type="submit" class="btn btn-secondary">
-        <i class="icon icon-search" role="img" aria-label=""></i>
-        <span class="">Search</span>
-      </button>
+<template id="tacc-search-bar">
+
+  {# Include Standard Assets #}
+  {# SEE: base.html #}
+
+  <!-- Site Font and/or Custom Font. -->
+  {% include 'assets_font.html' %}
+
+  <!-- Site Assets. -->
+  {% include 'assets_site.html' %}
+
+  <!-- Custom Assets. -->
+  <!-- (UNAVAILABLE) -->
+  {# WARNING: The `assets_custom` WILL NOT load #}
+  {# FAQ: Until custom assets style form elements, this is irrelevant. Also, by the time custom assets WILL style form elements, we will not need to scope this search bar within `customElements.define()` #}
+
+  {# / Include Standard Assets #}
+
+  <form part="form">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <button part="button" type="submit" class="btn btn-secondary">
+          <i part="button__icon" class="icon icon-search" role="img" aria-label=""></i>
+          <span class="">Search</span>
+        </button>
+      </div>
+      <input part="input" type="search" name="query" aria-label="Search the website" class="form-control" placeholder="Search the website" data-testid="input" autocomplete="off" value="">
     </div>
-    <input type="search" name="query" aria-label="Search the website" class="form-control" placeholder="Search" data-testid="input" autocomplete="off" value="">
-  </div>
-</form>
+  </form>
+
+  {# Include Standard Assets #}
+  {# SEE: base.html #}
+
+  <!-- Site Assets (Delayed). -->
+  {% include 'assets_site_delayed.html' %}
+
+  <!-- Custom Assets (Delayed). -->
+  <!-- (UNAVAILABLE) -->
+  {# WARNING: The `assets_custom` WILL NOT load #}
+  {# FAQ: Until custom assets style form elements, this is irrelevant. Also, by the time custom assets WILL style form elements, we will not need to scope this search bar within `customElements.define()` #}
+
+  {# / Include Standard Assets #}
+
+</template>
+
+<tacc-search-bar class="s-search-bar  {{className}}"></tacc-search-bar>
+
+<script>
+  let template = document.querySelector("#tacc-search-bar");
+  window.customElements.define(template.id, class extends HTMLElement {
+    constructor() {
+      super();
+      this.attachShadow({ mode: "open" });
+      this.shadowRoot.appendChild(template.content);
+    }
+  });
+</script>

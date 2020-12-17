@@ -28,4 +28,38 @@ Styleguide Trumps.Scopes.SearchBar
 
 
 
-/* … */
+/* Shared */
+
+/* Components */
+@import url("_imports/components/shared/bootstrap.form.css");
+@import url("_imports/components/shared/c-button.css");
+
+
+
+
+/* Overwrite */
+/* FAQ: The `.s-search-bar` is added to trump Bootstrap class specificity */
+
+tacc-search-bar.s-search-bar::part(form) {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+tacc-search-bar.s-search-bar::part(button) {
+  @extend .c-button--secondary;
+
+  /* Copied from `.workbench-content .btn-secondary` from Portal `Workbench.scss` */
+  background-color: #F4F4F4;
+  color: #484848;
+  border: 1px solid #AFAFAF;
+}
+
+tacc-search-bar.s-search-bar::part(button__icon) {
+  @extend .c-button__icon--before;
+}
+
+tacc-search-bar.s-search-bar::part(input) {
+  @extend .form-control;
+  @extend input.form-control;
+}
