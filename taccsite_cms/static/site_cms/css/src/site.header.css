@@ -11,8 +11,8 @@
 /* TODO: Find a way to be modular, but not redundant */
 @import url("_imports/settings/props.font.css");
 
-@import url("_imports/settings/shared/border.css");
-@import url("_imports/settings/shared/color.css");
+@import url("../../../site_shared/css/src/_imports/settings/border.css");
+@import url("../../../site_shared/css/src/_imports/settings/color.css");
 
 /* TRUMPS */
 
@@ -26,7 +26,7 @@
 @import url("_imports/trumps/s-portal-nav.css");
 @import url("_imports/trumps/s-cms-nav.css");
 
-@import url('_imports/trumps/shared/icon.css');
+@import url('../../../site_shared/css/src/_imports/trumps/icon.css');
 
 /* UNORGANIZED */
 

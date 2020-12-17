@@ -1,9 +1,11 @@
 /*
 Search Bar
 
-Styles for search bar cloned from Portal codebase, but also relying on Bootstrap:
-- Bootstrap 4.0.0 (loaded as external file via `<link>` in template)
-- relevant delta from Bootstrap 4.0.0 to 4.3.1 (determined manually)
+Styles for search bar cloned from Portal codebase, but also relying on Bootstrap ([whose version usage is complicated][bootstrap-versions]):
+- Bootstrap 4.0.0 (loaded as external file in CMS via `<link>` in template)
+- relevant delta (manually built) from Bootstrap 4.0.0 (CMS) to 4.3.1 (Portal)
+
+[bootstrap-versions]: https://confluence.tacc.utexas.edu/x/OAACBw
 
 Markup: s-search-bar.html
 

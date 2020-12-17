@@ -7,15 +7,16 @@
 
 /* SETTINGS */
 
-@import url("_imports/settings/shared/border.css");
-@import url("_imports/settings/shared/color.css");
+@import url("../../../site_shared/css/src/_imports/settings/border.css");
+@import url("../../../site_shared/css/src/_imports/settings/color.css");
 
 /* COMPONENTS */
 
-@import url("_imports/components/shared/bootstrap.form.css");
-@import url("_imports/components/shared/c-button.css");
+@import url("../../../site_shared/css/src/_imports/components/bootstrap.form.css");
+@import url("../../../site_shared/css/src/_imports/components/c-button.css");
 
 /* TRUMPS */
 
 @import url("_imports/trumps/s-search-bar.css");
-@import url('_imports/trumps/shared/icon.css');
+
+@import url('../../../site_shared/css/src/_imports/trumps/icon.css');
