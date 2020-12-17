@@ -69,7 +69,7 @@ Styleguide Components.Button
   background-color: var(--global-color-primary--normal);
   border-color: var(--global-color-primary--x-dark);
 }
-.btn-secondary:disabled {
+.c-button--secondary:disabled {
   /* OVERWRITE BOOTSTRAP `.btn-secondary:disabled` */
   color: var(--global-color-primary--x-dark);
   background-color: var(--global-color-primary--x-light);

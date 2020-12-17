@@ -1,3 +1,4 @@
+{% load staticfiles %}
 {# @var className #}
 
 {# WARNING: Some markup is duplicated in other repositories #}
@@ -9,14 +10,16 @@
 
   <!-- Site Font and/or Custom Font. -->
   {% include 'assets_font.html' %}
+  {# WARNING: Custom font MIGHT NOT load; this is untested #}
 
   <!-- Site Assets. -->
   {% include 'assets_site.html' %}
+  <link id="css-site-tacc-search-bar" rel="stylesheet" href="{% static 'site_cms/css/build/site.tacc-search-bar.css' %}">
 
   <!-- Custom Assets. -->
   <!-- (UNAVAILABLE) -->
-  {# WARNING: The `assets_custom` WILL NOT load #}
-  {# FAQ: Until custom assets style form elements, this is irrelevant. Also, by the time custom assets WILL style form elements, we will not need to scope this search bar within `customElements.define()` #}
+  {# WARNING: The `assets_custom` WILL NOT load; the reason is unclear #}
+  {# FAQ: Custom project styling can be done per element via `::part()` #}
 
   {# / Include Standard Assets #}
 
@@ -40,8 +43,8 @@
 
   <!-- Custom Assets (Delayed). -->
   <!-- (UNAVAILABLE) -->
-  {# WARNING: The `assets_custom` WILL NOT load #}
-  {# FAQ: Until custom assets style form elements, this is irrelevant. Also, by the time custom assets WILL style form elements, we will not need to scope this search bar within `customElements.define()` #}
+  {# WARNING: The `assets_custom` WILL NOT load; the reason is unclear #}
+  {# FAQ: Custom project styling can be done per element via `::part()` #}
 
   {# / Include Standard Assets #}
 

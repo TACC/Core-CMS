@@ -1,12 +1,9 @@
 /*
 Search Bar
 
-Styles for search bar cloned from Portal codebase
-
-- Bootstrap (different options)
-    - ⅹ 4.3.1 (the styles necessary are in `./s-search-bar/bootstrap.4.3.1.css`)
-    - ✓ 4.0.0 (loaded for whole site as external file via `<link>` in template)
-    - ✓ relevant delta from 4.0.0 to 4.3.1 (determined by comparing render diff)
+Styles for search bar cloned from Portal codebase, but also relying on Bootstrap:
+- Bootstrap 4.0.0 (loaded as external file via `<link>` in template)
+- relevant delta from Bootstrap 4.0.0 to 4.3.1 (determined manually)
 
 Markup: s-search-bar.html
 
@@ -17,27 +14,12 @@ Styleguide Trumps.Scopes.SearchBar
 
 /* Bootstrap */
 
-/* Bootstrap: 4.3.1 */
-/* @import url("_imports/trumps/s-search-bar/bootstrap.4.3.1.css"); */
-
-/* Bootstrap: 4.0.0 */
-/* SEE: taccsite_cms/templates/assets_site.html */
-
 /* Bootstrap: relevant delta from 4.0.0 to 4.3.1 */
 @import url("_imports/trumps/s-search-bar/bootstrap.delta.4.0.0-to-4.3.1.css");
 
 
 
-/* Shared */
-
-/* Components */
-@import url("_imports/components/shared/bootstrap.form.css");
-@import url("_imports/components/shared/c-button.css");
-
-
-
-
-/* Overwrite */
+/* TACC */
 /* FAQ: The `.s-search-bar` is added to trump Bootstrap class specificity */
 
 tacc-search-bar.s-search-bar::part(form) {
@@ -46,7 +28,9 @@ tacc-search-bar.s-search-bar::part(form) {
   align-items: center;
 }
 
-tacc-search-bar.s-search-bar::part(button) {
+/* FAQ: Added `#s-header` to trump `.workbench-content .btn-secondary` specificity because it should match (thus override); could have used merely `.s-header`, but CMS use of `@apply` brings in CSS pseudo-class styles, while Portal use of `composes` does not, so `:hover` styles have effect in CMS while they do not have effect in Portal, hence using `#s-header` to create a more specific selector */
+/* WARNING: This causes the same bug it does in Portal; no `:hover` state */
+#s-header tacc-search-bar.s-search-bar::part(button) {
   @extend .c-button--secondary;
 
   /* Copied from `.workbench-content .btn-secondary` from Portal `Workbench.scss` */

@@ -11,6 +11,9 @@
 /* TODO: Find a way to be modular, but not redundant */
 @import url("_imports/settings/props.font.css");
 
+@import url("_imports/settings/shared/border.css");
+@import url("_imports/settings/shared/color.css");
+
 /* TRUMPS */
 
 /* FAQ: Because of third-party code and a rush to style the Frontera header
@@ -22,7 +25,7 @@
 @import url("_imports/trumps/s-header.css");
 @import url("_imports/trumps/s-portal-nav.css");
 @import url("_imports/trumps/s-cms-nav.css");
-@import url("_imports/trumps/s-search-bar.css");
+
 @import url('_imports/trumps/shared/icon.css');
 
 /* UNORGANIZED */
