@@ -121,7 +121,8 @@ Styleguide Trumps.Scopes.Header
 
 /* Search */
 
-.s-header .s-search-bar::after {
+/* Create a line between search bar and login */
+.s-header .s-search-bar ~ .s-portal-nav::before {
   content: "";
   width: 1px;
   /* FAQ: Not `height`, cuz `.s-search-bar` (via `.form-inline`) is flexbox */
