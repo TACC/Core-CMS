@@ -23,7 +23,6 @@
 
   <!-- Site Assets. -->
   {% include 'assets_site.html' %}
-  <link id="css-site-tacc-search-bar" rel="stylesheet" href="{% static 'site_cms/css/build/site.tacc-search-bar.css' %}">
 
   <!-- Custom Assets. -->
   <!-- (UNAVAILABLE) -->
@@ -50,6 +49,7 @@
   {# SEE: base.html #}
 
   <!-- Site Assets (Delayed). -->
+  {# !!!: This causes an error (commenting bootstrap.js load resolves error) #}
   {% include 'assets_site_delayed.html' %}
 
   <!-- Custom Assets (Delayed). -->
@@ -61,13 +61,18 @@
 
 </template>
 
+{# <script src="{% static 'site_cms/js/site.tacc-search-bar.js' %}"></script> #}
+{# {% comment %} #}
 <script>
   let template = document.querySelector("#tacc-search-bar");
+
   window.customElements.define(template.id, class extends HTMLElement {
     constructor() {
       super();
+      console.debug(template);
       this.attachShadow({ mode: "open" });
       this.shadowRoot.appendChild(template.content);
     }
   });
 </script>
+{# {% endcomment %} #}
