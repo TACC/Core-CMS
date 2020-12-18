@@ -33,7 +33,7 @@
 
   {# NOTE: Copied from Portal Data Files search bar (rendered not raw markup) #}
   {# SEE: https://github.com/TACC/Frontera-Portal/blob/master/client/src/components/DataFiles/DataFilesSearchbar/DataFilesSearchbar.js #}
-  <form part="form">
+  <form part="form" onSubmit="return search(event)">
     <div class="input-group">
       <div class="input-group-prepend">
         <button part="button" type="submit" class="btn btn-secondary">
@@ -61,7 +61,7 @@
 
 </template>
 
-<script>
+<script id="js-load-search-element">
   let template = document.querySelector("#tacc-search-bar");
 
   window.customElements.define(template.id, class extends HTMLElement {
@@ -72,4 +72,21 @@
       this.shadowRoot.appendChild(template.content);
     }
   });
+</script>
+<script id="js-perform-search">
+  function search(event) {
+    event.preventDefault();
+
+    const url = new URL(window.location.origin);
+    const form = new FormData(event.target);
+    const queryString = form.get('query');
+
+    url.pathname = 'search';
+    url.searchParams.set('page', 1);
+    url.searchParams.append('query_string', queryString);
+console.log(url);
+    window.location = url.toString();
+
+    return false;
+  }
 </script>
