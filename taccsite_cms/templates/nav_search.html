@@ -4,6 +4,12 @@
 {# WARNING: Some markup is duplicated in other repositories #}
 {# SEE: https://confluence.tacc.utexas.edu/x/LoCnCQ #}
 <template id="tacc-search-bar">
+  <style type="text/css">
+    /* Hide form (to be shown after all styles are loaded) to avoid FOUC */
+    form {
+      display: none;
+    }
+  </style>
 
   {# Include Standard Assets #}
   {# SEE: base.html #}
@@ -23,6 +29,8 @@
 
   {# / Include Standard Assets #}
 
+  {# NOTE: Copied from Portal Data Files search bar (rendered not raw markup) #}
+  {# SEE: https://github.com/TACC/Frontera-Portal/blob/master/client/src/components/DataFiles/DataFilesSearchbar/DataFilesSearchbar.js #}
   <form part="form">
     <div class="input-group">
       <div class="input-group-prepend">

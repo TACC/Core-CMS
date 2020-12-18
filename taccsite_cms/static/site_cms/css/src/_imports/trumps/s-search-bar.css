@@ -49,3 +49,9 @@ tacc-search-bar.s-search-bar::part(input) {
   @extend .form-control;
   @extend input.form-control;
 }
+
+/* Render search bar after it has loaded all styles */
+/* HACK: Force visibility of search bar form which hides self (to avoid FOUC) */
+tacc-search-bar.s-search-bar::part(form) {
+  display: block !important;
+}
