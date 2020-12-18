@@ -1,11 +1,12 @@
 {% load staticfiles %}
 {# @var className #}
 
+{# WARNING: Some markup is duplicated in other repositories #}
+{# SEE: https://confluence.tacc.utexas.edu/x/LoCnCQ #}
+
 {# Encapsulate search bar as custom element, so styles do not bleed out #}
 <tacc-search-bar class="s-search-bar  {{className}}"></tacc-search-bar>
 
-{# WARNING: Some markup is duplicated in other repositories #}
-{# SEE: https://confluence.tacc.utexas.edu/x/LoCnCQ #}
 <template id="tacc-search-bar">
   <style type="text/css">
     /* Hide form before CSS load (to be shown after CSS load) to avoid FOUC */
