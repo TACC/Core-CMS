@@ -122,6 +122,7 @@ Styleguide Trumps.Scopes.Header
 /* Search */
 
 /* Create a line between search bar and login */
+/* FAQ: The line should only exist if both elements are present */
 .s-header .s-search-bar ~ .s-portal-nav::before {
   content: "";
   width: 1px;

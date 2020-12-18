@@ -25,6 +25,8 @@ Styleguide Trumps.Scopes.SearchBar
 /* FAQ: The `.s-search-bar` is added to trump Bootstrap class specificity */
 
 tacc-search-bar.s-search-bar::part(form) {
+  /* Copied from `.container` from Portal */
+  /* SEE: https://github.com/TACC/Frontera-Portal/blob/master/client/src/components/DataFiles/DataFilesSearchbar/DataFilesSearchbar.module.css */
   display: flex;
   flex-direction: row;
   align-items: center;
