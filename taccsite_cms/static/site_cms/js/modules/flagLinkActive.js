@@ -32,7 +32,7 @@ function _normalizePath(path) {
 * @return {boolean}
 */
 function _areMatchingURLs(locationA, locationB, propsToMatch) {
-  const isExactMatch = locationA.href && locationA.href === locationB.href;
+  const isExactMatch = locationA.href === locationB.href;
   const doAllRequiredPropsMatch = propsToMatch.every(doesPropertyMatch);
 
   function doesPropertyMatch(property) {
@@ -63,10 +63,10 @@ export default function flagLinkActive({
 
   linkElements.forEach((linkElement) => {
     const propsToMatch = ['pathname', 'hostname'];
-    const shouldBeActive = _areMatchingURLs(linkElement, document.location, propsToMatch);
+    const shouldBeActive = linkElement.getAttribute('href') && _areMatchingURLs(linkElement, document.location, propsToMatch);
 
     if (shouldBeActive) {
-      console.info('Found link that is active', linkElement);
+      console.info('Found link that is active', linkElement, linkElement.href);
 
       const activeElement = (ancestorActiveElementSelector)
         ? linkElement.closest(ancestorActiveElementSelector)
