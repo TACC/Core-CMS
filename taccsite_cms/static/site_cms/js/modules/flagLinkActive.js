@@ -66,7 +66,7 @@ export default function flagLinkActive({
     const shouldBeActive = linkElement.getAttribute('href') && _areMatchingURLs(linkElement, document.location, propsToMatch);
 
     if (shouldBeActive) {
-      console.info('Found link that is active', linkElement, linkElement.href);
+      console.info('Found link that is active', linkElement);
 
       const activeElement = (ancestorActiveElementSelector)
         ? linkElement.closest(ancestorActiveElementSelector)
