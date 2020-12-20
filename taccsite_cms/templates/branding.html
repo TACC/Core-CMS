@@ -46,7 +46,7 @@
 
   <!-- Navbar Links -->
   <div class="collapse navbar-collapse" id="navbarsExpandTarget">
-    {# RFE: (Core GL-6) Remove need for different `className` values for `nav_cms.html` inclusion #}
+    {# GL-6: Remove need for different `className` values #}
     {% if settings.PORTAL %}
       {# FAQ: If template were included with `only`, then it would NOT render `show_menu` #}
       {% include "nav_cms.html" with className="navbar-nav" %}
