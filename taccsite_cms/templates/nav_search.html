@@ -13,7 +13,8 @@
     /* FAQ: Manage visibility of search bar to avoid FOUC */
     /* HACK: This should be done via a dynamically-added `-is-loaded` class */
     form {
-      display: none;
+      height: 0;
+      visibility: hidden;
     }
   </style>
 
@@ -26,6 +27,9 @@
 
   <!-- Site Assets. -->
   {% include 'assets_site.html' %}
+  {# Do NOT move `tacc-search-bar` code to `assets_site.html` yet #}
+  {# FAQ: Need to FIRST figure out why Docs are not registering `:root` vars #}
+  <link id="css-site-tacc-search-bar" rel="stylesheet" href="{% static 'site_cms/css/build/site.tacc-search-bar.css' %}">
 
   <!-- Custom Assets. -->
   <!-- (UNAVAILABLE) -->
