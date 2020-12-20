@@ -52,8 +52,9 @@ tacc-search-bar.s-search-bar::part(input) {
   @extend input.form-control;
 }
 
-/* Render search bar after it has loaded all styles */
-/* HACK: Force visibility of search bar form which hides self (to avoid FOUC) */
+/* Show search bar after all relevant styles have loaded */
+/* FAQ: Manage visibility of search bar to avoid FOUC */
+/* HACK: This should be done via a dynamically-added `-is-loaded` class */
 tacc-search-bar.s-search-bar::part(form) {
-  display: block !important;
+  display: flex !important;
 }

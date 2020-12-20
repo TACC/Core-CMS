@@ -9,7 +9,9 @@
 
 <template id="tacc-search-bar">
   <style type="text/css">
-    /* Hide form before CSS load (to be shown after CSS load) to avoid FOUC */
+    /* Hide search bar before all relevant styles have loaded */
+    /* FAQ: Manage visibility of search bar to avoid FOUC */
+    /* HACK: This should be done via a dynamically-added `-is-loaded` class */
     form {
       display: none;
     }
