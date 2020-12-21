@@ -1,10 +1,10 @@
 /**
  * Create an HTML Template element from a given HTML element string
- * @param {string} name - Name of custom element to register
  * @param {string} html - HTML for shadow DOM of custom element
+ * @param {string} name - Name of custom element to register
  * @return {Element}
  */
-export function fromHTMLString(name, html) {
+export function fromHTMLString(html, name) {
   let template = document.createElement('template');
 
   // Never return a text node of whitespace
@@ -13,16 +13,16 @@ export function fromHTMLString(name, html) {
   template.innerHTML = html;
   template = document.head.appendChild(template);
 
-  return fromTemplate(name, template);
+  return fromTemplate(template, name);
 }
 
 /**
  * Populate custom element of givenname with content of a given HTML template
- * @param {string} name - Name of custom element to register
  * @param {HTMLTemplateElement} template - HTML for shadow DOM of custom element
+ * @param {string} name - Name of custom element to register
  * @return {Element}
  */
-export function fromTemplate(name, template) {
+export function fromTemplate(template, name) {
 
   console.log({template});
 
