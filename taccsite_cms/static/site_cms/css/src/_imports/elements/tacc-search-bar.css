@@ -37,6 +37,11 @@ Styleguide Trumps.Scopes.SearchBar
   border: 1px solid #AFAFAF;
 }
 
+.input-group {
+  /* If link text uses 2 lines, header grows taller (but it must not do so) */
+  flex-wrap: nowrap;
+}
+
 /* tacc-search-bar.s-search-bar::part(button__icon) { */
 [part="button__icon"] {
   @extend .c-button__icon--before;

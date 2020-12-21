@@ -88,6 +88,9 @@ Styleguide Trumps.Scopes.Header
   top: var(--border-offset);
 
   line-height: var(--line-height);
+
+  /* If link text uses 2 lines, header grows taller (but it must not do so) */
+  white-space: nowrap;
 }
 .s-header .nav-link:hover,
 .s-header .nav-link:focus,
