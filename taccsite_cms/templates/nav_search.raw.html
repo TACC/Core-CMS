@@ -2,87 +2,82 @@
 <!-- FAQ: This template loads independently at a unique url (see `urls.py`)
           so Portal and User Guide can render this markup into their markup. -->
 
-{# Encapsulate search bar as custom element, so styles do not bleed out #}
-<tacc-search-bar></tacc-search-bar>
+{# TACC SEARCH BAR: Styles #}
+<!--
+<style type="text/css">
+  /* Hide search bar before all relevant styles have loaded */
+  /* FAQ: Manage visibility of search bar to avoid FOUC */
+  /* HACK: This should be done via a dynamically-added `-is-loaded` class */
+  form {
+    display: none;
+  }
+</style>
+-->
 
-<template>
-  {# TACC SEARCH BAR: Styles #}
-  <!--
-  <style type="text/css">
-    /* Hide search bar before all relevant styles have loaded */
-    /* FAQ: Manage visibility of search bar to avoid FOUC */
-    /* HACK: This should be done via a dynamically-added `-is-loaded` class */
-    form {
-      display: none;
-    }
-  </style>
-  -->
+{# TACC SEARCH BAR: Core Assets #}
+{# SEE: base.html #}
 
-  {# TACC SEARCH BAR: Core Assets #}
-  {# SEE: base.html #}
+<!-- Site Font and/or Custom Font. -->
+{% include 'assets_font.html' %}
+{# WARNING: Custom font MIGHT NOT load; this is untested #}
 
-  <!-- Site Font and/or Custom Font. -->
-  {% include 'assets_font.html' %}
-  {# WARNING: Custom font MIGHT NOT load; this is untested #}
+<!-- Site Assets. -->
+{% include 'assets_site.html' %}
+{# Do NOT move `tacc-search-bar` code to `assets_site.html` yet #}
+{# FAQ: Need to FIRST figure out why Docs are not registering `:root` vars #}
+<link id="css-site-tacc-search-bar" rel="stylesheet" href="{% static 'site_cms/css/build/site.tacc-search-bar.css' %}">
 
-  <!-- Site Assets. -->
-  {% include 'assets_site.html' %}
-  {# Do NOT move `tacc-search-bar` code to `assets_site.html` yet #}
-  {# FAQ: Need to FIRST figure out why Docs are not registering `:root` vars #}
-  <link id="css-site-tacc-search-bar" rel="stylesheet" href="{% static 'site_cms/css/build/site.tacc-search-bar.css' %}">
+<!-- Custom Assets. -->
+<!-- (UNAVAILABLE) -->
+{# WARNING: The `assets_custom` WILL NOT load; the reason is unclear #}
+{# FAQ: Custom project styling can be done per element via `::part()` #}
 
-  <!-- Custom Assets. -->
-  <!-- (UNAVAILABLE) -->
-  {# WARNING: The `assets_custom` WILL NOT load; the reason is unclear #}
-  {# FAQ: Custom project styling can be done per element via `::part()` #}
+{# / TACC SEARCH BAR: Core Assets #}
 
-  {# / TACC SEARCH BAR: Core Assets #}
-
-  {# TACC SEARCH BAR: Markup #}
-  {# NOTE: Copied from Portal DataFiles search bar (rendered markup, not raw) #}
-  {# SEE: https://github.com/TACC/Frontera-Portal/blob/master/client/src/components/DataFiles/DataFilesSearchbar/DataFilesSearchbar.js #}
-  <form part="form" onSubmit="return search(event)">
-    <div class="input-group">
-      <div class="input-group-prepend">
-        <button part="button" type="submit" class="btn btn-secondary">
-          <i part="button__icon" class="icon icon-search" role="img" aria-label=""></i>
-          <span class="">Search</span>
-        </button>
-      </div>
-      <input part="input" type="search" name="query" aria-label="Search the website" class="form-control" placeholder="Search the website" data-testid="input" autocomplete="off" value="">
+{# TACC SEARCH BAR: Markup #}
+{# NOTE: Copied from Portal DataFiles search bar (rendered markup, not raw) #}
+{# SEE: https://github.com/TACC/Frontera-Portal/blob/master/client/src/components/DataFiles/DataFilesSearchbar/DataFilesSearchbar.js #}
+<form part="form" onSubmit="return search(event)">
+  <div class="input-group">
+    <div class="input-group-prepend">
+      <button part="button" type="submit" class="btn btn-secondary">
+        <i part="button__icon" class="icon icon-search" role="img" aria-label=""></i>
+        <span class="">Search</span>
+      </button>
     </div>
-  </form>
+    <input part="input" type="search" name="query" aria-label="Search the website" class="form-control" placeholder="Search the website" data-testid="input" autocomplete="off" value="">
+  </div>
+</form>
 
-  {# TACC SEARCH BAR: Core Assets #}
-  {# SEE: base.html #}
+{# TACC SEARCH BAR: Core Assets #}
+{# SEE: base.html #}
 
-  <!-- Site Assets (Delayed). -->
-  {# !!!: This causes an error (commenting bootstrap.js load resolves error) #}
-  {% include 'assets_site_delayed.html' %}
+<!-- Site Assets (Delayed). -->
+{# !!!: This causes an error (commenting bootstrap.js load resolves error) #}
+{% include 'assets_site_delayed.html' %}
 
-  <!-- Custom Assets (Delayed). -->
-  <!-- (UNAVAILABLE) -->
-  {# WARNING: The `assets_custom` WILL NOT load; the reason is unclear #}
-  {# FAQ: Custom project styling can be done per element via `::part()` #}
+<!-- Custom Assets (Delayed). -->
+<!-- (UNAVAILABLE) -->
+{# WARNING: The `assets_custom` WILL NOT load; the reason is unclear #}
+{# FAQ: Custom project styling can be done per element via `::part()` #}
 
-  {# / TACC SEARCH BAR: Core Assets #}
+{# / TACC SEARCH BAR: Core Assets #}
 
-  {# TACC SEARCH BAR: Scripts #}
-  <script id="js-perform-search">
-    function search(event) {
-      event.preventDefault();
+{# TACC SEARCH BAR: Scripts #}
+<script id="js-perform-search">
+  function search(event) {
+    event.preventDefault();
 
-      const url = new URL(window.location.origin);
-      const form = new FormData(event.target);
-      const queryString = form.get('query');
+    const url = new URL(window.location.origin);
+    const form = new FormData(event.target);
+    const queryString = form.get('query');
 
-      url.pathname = 'search';
-      url.searchParams.set('page', 1);
-      url.searchParams.append('query_string', queryString);
+    url.pathname = 'search';
+    url.searchParams.set('page', 1);
+    url.searchParams.append('query_string', queryString);
 
-      window.location = url.toString();
+    window.location = url.toString();
 
-      return false;
-    }
-  </script>
-</template>
+    return false;
+  }
+</script>
