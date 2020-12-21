@@ -10,6 +10,8 @@
 <script type="module">
   import * as registerCustomElement from '/static/site_cms/js/modules/registerCustomElement.js';
 
-  const template = document.getElementById('nav-search');
+  const container = document.getElementById('s-search-bar');
+
+  const template = container.getElementsByTagName('template')[0];
   registerCustomElement.fromTemplate('tacc-search-bar', template);
 </script>
