@@ -20,6 +20,7 @@
         "dotenv": "^8.2.0",
         "npm-watch": "^0.7.0",
         "postcss-cli": "^7.1.2",
+        "postcss-css-variables": "^0.17.0",
         "postcss-extend": "^1.0.5",
         "postcss-import": "^12.0.1",
         "yarn": "^1.22.5"

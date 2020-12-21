@@ -14,17 +14,10 @@ Styleguide Trumps.Scopes.SearchBar
 
 
 
-/* Bootstrap */
-
-/* Bootstrap: relevant delta from 4.0.0 to 4.3.1 */
-@import url("_imports/trumps/s-search-bar/bootstrap.delta.4.0.0-to-4.3.1.css");
-
-
-
-/* TACC */
 /* FAQ: The `.s-search-bar` is added to trump Bootstrap class specificity */
 
-tacc-search-bar.s-search-bar::part(form) {
+/* tacc-search-bar.s-search-bar::part(form) { */
+[part="form"] {
   /* Copied from `.container` from Portal */
   /* SEE: https://github.com/TACC/Frontera-Portal/blob/master/client/src/components/DataFiles/DataFilesSearchbar/DataFilesSearchbar.module.css */
   display: flex;
@@ -33,8 +26,9 @@ tacc-search-bar.s-search-bar::part(form) {
 }
 
 /* FAQ: Added `#s-header` to trump `.workbench-content .btn-secondary` specificity because it should match (thus override); could have used merely `.s-header`, but CMS use of `@apply` brings in CSS pseudo-class styles, while Portal use of `composes` does not, so `:hover` styles have effect in CMS while they do not have effect in Portal, hence using `#s-header` to create a more specific selector */
-/* WARNING: This causes the same bug it does in Portal; no `:hover` state */
-#s-header tacc-search-bar.s-search-bar::part(button) {
+/* !!!: This causes the same bug it does in Portal; no `:hover` state */
+/* #s-header tacc-search-bar.s-search-bar::part(button) { */
+[part="button"] {
   @extend .c-button--secondary;
 
   /* Copied from `.workbench-content .btn-secondary` from Portal `Workbench.scss` */
@@ -43,11 +37,13 @@ tacc-search-bar.s-search-bar::part(form) {
   border: 1px solid #AFAFAF;
 }
 
-tacc-search-bar.s-search-bar::part(button__icon) {
+/* tacc-search-bar.s-search-bar::part(button__icon) { */
+[part="button__icon"] {
   @extend .c-button__icon--before;
 }
 
-tacc-search-bar.s-search-bar::part(input) {
+/* tacc-search-bar.s-search-bar::part(input) { */
+[part="input"] {
   @extend .form-control;
   @extend input.form-control;
 }
@@ -55,6 +51,7 @@ tacc-search-bar.s-search-bar::part(input) {
 /* Show search bar after all relevant styles have loaded */
 /* FAQ: Manage visibility of search bar to avoid FOUC */
 /* HACK: This should be done via a dynamically-added `-is-loaded` class */
-tacc-search-bar.s-search-bar::part(form) {
+/* tacc-search-bar.s-search-bar::part(form) { */
+[part="form"] {
   display: flex !important;
 }

@@ -8,9 +8,17 @@
   <!-- The search bar is populated here (from the template below). -->
   <template>{% include "nav_search.raw.html" %}</template>
 </tacc-search-bar>
+
 <script type="module">
   import * as registerCustomElement from '/static/site_cms/js/modules/registerCustomElement.js';
 
+
   const template = document.getElementById('s-search-bar').firstElementChild;
+  /* Load necessary Bootstrap outside raw markup so CMS */
+  /* FAQ: CMS, Portal, User Guide each use a different Bootstrap file */
+  /* TODO: After CMS redesign, use only one Bootstrap version (Portal's) */
+  template.content.prepend(
+    document.getElementById('css-bootstrap').cloneNode(true)
+  );
   registerCustomElement.fromTemplate(template, 'tacc-search-bar');
 </script>
