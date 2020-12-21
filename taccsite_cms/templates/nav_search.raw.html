@@ -20,11 +20,13 @@
   <div class="input-group">
     <div class="input-group-prepend">
       <button part="button" type="submit" class="btn btn-secondary">
-        <i part="button__icon" class="icon icon-search" role="img" aria-label=""></i>
-        <span class="">Search</span>
+        <i part="button__icon" class="icon icon-search" role="img" aria-labelledby="button-label"></i>
+        <span id="button-label">
+          Search <span class="sr-only">the website</span>
+        </span>
       </button>
     </div>
-    <input part="input" type="search" name="query" aria-label="Search the website" class="form-control" placeholder="Search the website" data-testid="input" autocomplete="off" value="">
+    <input part="input" type="search" name="query" aria-labelledby="button-label" class="form-control" placeholder="Search the website" data-testid="input" autocomplete="off" value="">
   </div>
 </form>
 
