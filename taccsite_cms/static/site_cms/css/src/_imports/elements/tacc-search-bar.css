@@ -52,6 +52,4 @@ Styleguide Trumps.Scopes.SearchBar
 /* FAQ: Manage visibility of search bar to avoid FOUC */
 /* HACK: This should be done via a dynamically-added `-is-loaded` class */
 /* tacc-search-bar.s-search-bar::part(form) { */
-[part="form"] {
-  display: flex !important;
-}
+:host { visibility: visible; height: auto; }

@@ -2,16 +2,12 @@
 <!-- FAQ: This template loads independently at a unique url (see `urls.py`)
           so Portal and User Guide can render this markup into their markup. -->
 
-<!--
 <style type="text/css">
   /* Hide search bar before all relevant styles have loaded */
   /* FAQ: Manage visibility of search bar to avoid FOUC */
   /* HACK: This should be done via a dynamically-added `-is-loaded` class */
-  form {
-    display: none;
-  }
+  :host { visibility: hidden; height: 0; }
 </style>
--->
 
 <link id="css-site" rel="stylesheet" href="{% static 'site_cms/css/build/site.css' %}">
 
