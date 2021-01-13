@@ -7,6 +7,10 @@ from .models import TaccsiteGreet
 
 @plugin_pool.register_plugin
 class TaccsiteGreetPlugin(CMSPluginBase):
+    """
+    Components > "Greet" Plugin (Sample)
+    https://url.to/docs/components/sample/
+    """
     module = 'TACC Site'
     model = TaccsiteGreet
     name = _('Greet User')
