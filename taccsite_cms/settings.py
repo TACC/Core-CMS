@@ -232,6 +232,8 @@ INSTALLED_APPS = [
     'djangocms_bootstrap4.contrib.bootstrap4_utilities',
     'haystack',
     'taccsite_cms',
+    # RFE: Extract TACC CMS UI components into pip-installable plugins
+    # FAQ: The djangocms_bootstrap4 library can serve as an example
     'taccsite_cms.contrib.taccsite_greet',
 ]
 
