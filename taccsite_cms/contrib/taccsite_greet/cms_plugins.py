@@ -3,14 +3,14 @@ from cms.plugin_pool import plugin_pool
 from cms.models.pluginmodel import CMSPlugin
 from django.utils.translation import gettext_lazy as _
 
-from .models import Hello
+from .models import TaccsiteGreet
 
 @plugin_pool.register_plugin
-class HelloPlugin(CMSPluginBase):
-    module = 'TACC'
-    model = Hello
-    name = _('Wes\' Test Plugin "Hello Plugin"')
-    render_template = 'hello_plugin.html'
+class TaccsiteGreetPlugin(CMSPluginBase):
+    module = 'TACC Site'
+    model = TaccsiteGreet
+    name = _('Greet User')
+    render_template = 'greet.html'
     cache = False
 
     def get_name(self, instance, user):

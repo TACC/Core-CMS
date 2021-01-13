@@ -232,7 +232,7 @@ INSTALLED_APPS = [
     'djangocms_bootstrap4.contrib.bootstrap4_utilities',
     'haystack',
     'taccsite_cms',
-    'taccsite_cms.contrib.hello_plugin',
+    'taccsite_cms.contrib.taccsite_greet',
 ]
 
 # Convert list of paths to list of dotted module names
