@@ -22,7 +22,8 @@ urlpatterns = [
 if settings.PORTAL:
     from django.views.generic.base import TemplateView
     urlpatterns += [
-        # FAQ: Allows direct access to isolated CMS menu markup for the Portal and User Guide to render
+        # FAQ: Allow direct access to markup for Portal and User Guide to render
+        url(r'^cms/nav/search/markup/$', TemplateView.as_view(template_name='nav_search.raw.html'), name='search_bar_markup'),
         url(r'^cms/nav/pages/markup/$', TemplateView.as_view(template_name='nav_cms.raw.html'), name='menu_pages_markup'),
     ]
 
