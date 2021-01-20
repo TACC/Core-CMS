@@ -2,7 +2,7 @@
     "name": "portal-cms",
     "version": "0.0.0",
     "license": "MIT",
-    "description": "The master CMS codebase for all downstream TACC stand alone CMS sites.",
+    "description": "The core CMS codebase for all new and updated TACC CMS sites.",
     "scripts": {
         "build": "npm run build:css",
         "build:css": "node postcss.js",

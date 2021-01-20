@@ -217,7 +217,7 @@ Whenever static files are changed, the CMS may need to be manually told to serve
 6. Commit changes:
     1. In `/taccsite_custom` submodule repo, commit changes (__not__ to `master`).
     2. In this parent repo, add `/taccsite_custom` change.
-    3. In this parent repo, commit changes (__not__ to `master`).
+    3. In this parent repo, commit changes (__not__ to `main`).
 
 ## Reference
 
