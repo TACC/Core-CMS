@@ -12,8 +12,10 @@ module.exports = {
       path: [
         './taccsite_cms/static/site_cms/css/src',
         `./taccsite_custom/${env.CUSTOM_ASSET_DIR}/static/${env.CUSTOM_ASSET_DIR}/css/src`
-      ]
+      ],
+      filter: path => ! RegExp('^/static').test(path)
     }),
+    require('postcss-extend')(),
     require('cssnano')({
       preset: 'default'
     })

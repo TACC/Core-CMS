@@ -1,0 +1,22 @@
+/* DO NOT ADD STYLES HERE; ONLY IMPORT OTHER STYLESHEETS */
+
+/* NOTE: This file exists so <tacc-search-bar> can load internal styles */
+
+/* Organize via ITCSS */
+/* SEE: https://confluence.tacc.utexas.edu/x/IAA9Cw */
+
+/* SETTINGS */
+
+@import url("../../../site_shared/css/src/_imports/settings/border.css");
+@import url("../../../site_shared/css/src/_imports/settings/color.css");
+
+/* COMPONENTS */
+
+@import url("../../../site_shared/css/src/_imports/components/bootstrap.form.css");
+@import url("../../../site_shared/css/src/_imports/components/c-button.css");
+
+/* TRUMPS */
+
+@import url("../../../site_shared/css/src/_imports/trumps/icon.css");
+
+@import url("_imports/elements/tacc-search-bar.css");
