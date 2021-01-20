@@ -1,8 +1,8 @@
-# TACC CMS
+# TACC CORE-CMS
 
 ## Docker Setup
 
-A TACC CMS can be run using Docker and Docker Compose both locally or in production.
+The TACC CORE-CMS can be run using Docker and Docker Compose, both locally and in production.
 
 ## Configuration
 
