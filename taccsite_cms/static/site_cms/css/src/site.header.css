@@ -13,6 +13,10 @@
 
 /* TRUMPS */
 
+/* FP-526: Consider loading Cortal icons with <link> as delayed asset */
+/* NOTE: This import is duplicated from `icon.css` because `@font-face` is ineffectual in Shadow DOM (where `site.tacc-search-bar.css` is loaded) */
+/* SEE: https://bugs.chromium.org/p/chromium/issues/detail?id=336876 */
+@import url("../../../site_shared/css/src/_imports/trumps/icon.fonts.css");
 /* FAQ: Because of third-party code and a rush to style the Frontera header
         (which meant maintaining existing markup), scope classes were used for
         - the header

@@ -2,7 +2,6 @@
  * Create an HTML Template element from a given HTML element string
  * @param {string} html - HTML for shadow DOM of custom element
  * @param {string} name - Name of custom element to register
- * @return {Element}
  */
 export function fromHTMLString(html, name) {
   let template = document.createElement('template');
@@ -17,10 +16,9 @@ export function fromHTMLString(html, name) {
 }
 
 /**
- * Populate custom element of givenname with content of a given HTML template
+ * Populate custom element of given name with content of a given HTML template
  * @param {HTMLTemplateElement} template - HTML for shadow DOM of custom element
  * @param {string} name - Name of custom element to register
- * @return {Element}
  */
 export function fromTemplate(template, name) {
   window.customElements.define(name, class extends HTMLElement {
