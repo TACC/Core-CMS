@@ -17,6 +17,7 @@ build
 
 ## environment variables
 .env
+docker_repo.var
 
 # Static and Media folders
 /static
