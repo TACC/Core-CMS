@@ -6,6 +6,7 @@ const { parallel } = require('async');
 const { exec } = require('child_process');
 
 const env = dotenv.config({ path: '.env' }).parsed;
+const standardConfigDir = 'conf/css/';
 
 // Isolate boilerplate error/ouput handling logic
 function execCallback(err, stdout, stderr) {
@@ -32,18 +33,37 @@ function parallelCallback(err, results) {
 // SEE: https://github.com/postcss/postcss-cli#readme
 // FAQ: PostCSS JS API not used because it is for a "PostCSS Runner" not a user
 // SEE: https://www.npmjs.com/package/postcss#js-api
-function buildStylesCore() {
+/**
+ * Build styles for the Core CMS
+ * @param {boolean} [shouldFreezeVariables=false] - Whether to freeze values of custom properties
+ */
+function buildStylesCore({shouldFreezeVariables = false} = {}) {
+  let command;
+  let sourceDir;
+  let configDir;
+
+  if (shouldFreezeVariables === true) {
+    sourceDir = 'freeze_variables/';
+    configDir = 'conf/css/freeze_variables/';
+  } else {
+    sourceDir = '';
+    configDir = standardConfigDir;
+  }
+
   // Quote globbed paths to prevent OS from parsing them
   // SEE: https://github.com/postcss/postcss-cli/issues/142#issuecomment-310681302
-  const command = `postcss "taccsite_cms/static/site_cms/css/src/*.css" --dir "taccsite_cms/static/site_cms/css/build" --verbose --colors`;
+  command = `postcss "taccsite_cms/static/site_cms/css/src/${sourceDir}*.css" --base "taccsite_cms/static/site_cms/css/src/" --dir "taccsite_cms/static/site_cms/css/build" --verbose --colors --config "${configDir}"`;
 
   console.log(command);
   exec(command, execCallback);
 }
+/**
+ * Build styles for custom CMS projects
+ */
 function buildStylesCustom() {
   // Quote globbed paths to prevent OS from parsing them
   // SEE: https://github.com/postcss/postcss-cli/issues/142#issuecomment-310681302
-  const command = `postcss "taccsite_custom/${env.CUSTOM_ASSET_DIR}/static/${env.CUSTOM_ASSET_DIR}/css/src/*.css" --dir "taccsite_custom/${env.CUSTOM_ASSET_DIR}/static/${env.CUSTOM_ASSET_DIR}/css/build" --verbose --colors`;
+  const command = `postcss "taccsite_custom/${env.CUSTOM_ASSET_DIR}/static/${env.CUSTOM_ASSET_DIR}/css/src/*.css" --base "taccsite_custom/${env.CUSTOM_ASSET_DIR}/static/${env.CUSTOM_ASSET_DIR}/css/src/" --dir "taccsite_custom/${env.CUSTOM_ASSET_DIR}/static/${env.CUSTOM_ASSET_DIR}/css/build" --verbose --colors --config "${standardConfigDir}"`;
 
   console.log(command);
   exec(command, execCallback);
@@ -57,4 +77,7 @@ console.warn('The commands are run in parallel so the output may be out of order
 parallel([
   buildStylesCore,
   buildStylesCustom,
+  () => { buildStylesCore({shouldFreezeVariables: true}) },
+  // Do NOT support freezing variables for custom projects
+  // FAQ: The variable freezing is advanced and (hopefully) temporary
 ], parallelCallback);

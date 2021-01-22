@@ -1,52 +1,32 @@
+# WARNING: The `extends` keyword is NOT supported in Compose version 3.x
+# SEE: https://docs.docker.com/compose/extends/#extending-services
 version: "3"
 services:
   cms:
-    build: .
-    image: taccwma/core-portal-cms:latest
-    links:
-      - postgres:postgres
+    extends:
+      file: docker-compose.dev.yml
+      service: cms
     volumes:
-      - .:/code
-    ports:
-      - 8000:8000
-    command: ['python3', 'manage.py', 'runserver', '0.0.0.0:8000']
-    container_name: core_cms
-    hostname: core_cms
-    networks:
-      - core_cms_net
+      # Prevent volume sync from host to container for specific directories
+      # FAQ: Prevents overwrite of container directory with empty host directory (which would happen with `static/` and `build/` on a clean setup)
+      # SEE: https://confluence.tacc.utexas.edu/x/DwAODQ (Solution E)
+      #   The /static` dir is populated by `python … collectstatic` command
+      - /code/static
+      #   Any `.../build` dirs are populated by `npm … build` command
+      #   HACK: No confirmed support for dir globbing, so block all of `static/`
+      - /code/taccsite_cms/static
+      #   CAVEAT: CMS projects must add a line to ignore thier `...build/` dirs
+      - /code/taccsite_custom/example-cms/static
 
   postgres:
-    image: postgres:11.5
-    environment:
-      - POSTGRES_PASSWORD=taccforever
-      - POSTGRES_USER=postgresadmin
-      - POSTGRES_DB=taccsite
-      - PGDATA=/var/lib/postgresql/data/taccsite
-    volumes:
-      - core_cms_postgres_data:/var/lib/postgresql/data
-      - ./conf/postgres/pg_db.secret:/var/lib/postgresql/pg_db.secret
-      - ./conf/postgres/pg_user.secret:/var/lib/postgresql/pg_user.secret
-      - ./conf/postgres/pg_password.secret:/var/lib/postgresql/pg_password.secret
-    hostname: core_cms_postgres
-    container_name: core_cms_postgres
-    networks:
-      - core_cms_net
+    extends:
+      file: docker-compose.dev.yml
+      service: postgres
 
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.4.0
-    ulimits:
-      memlock: -1
-    environment:
-      - ES_HEAP_SIZE:1g
-      - discovery.type=single-node
-    volumes:
-      - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
-      - core_cms_es_data:/usr/share/elasticsearch/data
-    container_name: core_cms_elasticsearch
-    ports:
-      - 9201:9200
-    networks:
-      - core_cms_net
+    extends:
+      file: docker-compose.dev.yml
+      service: elasticsearch
 
 volumes:
   core_cms_postgres_data:

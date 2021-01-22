@@ -6,7 +6,7 @@
 {% with settings.BRANDING as branding %}
 <!-- Sponsor Logos -->
 <div class="branding-header">
-  <!-- <p>{{ branding|first }}</p> -->
+  {# DEBUG: #}{# <code>{{ branding|first }}</code> #}
   {% for brand in branding %}
     {% with filename=brand|index:1 selectors=brand|index:2 targeturl=brand|index:3 targetType=brand|index:4 accessibility=brand|index:5 corstype=brand|index:6 visibility=brand|index:7 %}
       {% if visibility == "True" %}
@@ -15,6 +15,7 @@
           <img class="branding-logo {{ selectors }}" src="{% static filename %}" crossorigin="{{ corstype }}" alt="{{ accessibility }}" >
         </a>
         {% elif brand != branding|first %}
+        {# RFE: Use CSS to remove the need for `.branding-seperator` and `if` logic #}
         <span class="branding-seperator"></span>
         <a href="{{ targeturl }}" target="{{ targettype }}">
           <img class="branding-logo {{ selectors }}" src="{% static filename %}" crossorigin="{{ corstype }}" alt="{{ accessibility }}" >
@@ -28,7 +29,7 @@
 
 {% with settings.LOGO as logo %}
 <!-- Navigation Bar -->
-<nav id="s-header" class="s-header  navbar navbar-expand-md navbar-dark">
+<nav id="s-header" class="s-header  navbar {% if settings.PORTAL %}navbar-expand-xl{% else %}navbar-expand-lg{% endif %} navbar-dark">
   <!-- Portal Logo -->
   {% with filename=logo|index:1 selectors=logo|index:2 targeturl=logo|index:3 targetType=logo|index:4 accessibility=logo|index:5 corstype=logo|index:6 visibility=logo|index:7 %}
     {% if visibility == "True" %}
@@ -45,8 +46,18 @@
 
   <!-- Navbar Links -->
   <div class="collapse navbar-collapse" id="navbarsExpandTarget">
-    {# FAQ: If template were included with `only`, then it would NOT render `show_menu` #}
-    {% include "nav_cms.html" with className="navbar-nav ml-auto" %}
+    {# GL-6: Remove need for different `className` values #}
+    {% if settings.PORTAL %}
+      {# FAQ: If template were included with `only`, then it would NOT render `show_menu` #}
+      {% include "nav_cms.html" with className="navbar-nav" %}
+
+      {# NOTE: As of 2020-12, search is only available with a Portal #}
+      {% include "nav_search.html" with className="form-inline  ml-auto" only %}
+      {% include "nav_portal.html" with className="navbar-nav" settings=settings only %}
+    {% else %}
+      {# FAQ: If template were included with `only`, then it would NOT render `show_menu` #}
+      {% include "nav_cms.html" with className="navbar-nav  ml-auto" %}
+    {% endif %}
   </div>
 </nav>
 {% endwith %}

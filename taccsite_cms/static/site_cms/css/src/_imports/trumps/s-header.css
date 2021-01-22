@@ -16,10 +16,10 @@ Markup: s-header.html.twig
 Styleguide Trumps.Scopes.Header
 */
 
-/* WARNING: NO-R/EM: No `em` nor `rem` allowed while `old-css` is used (on CMS),
-            because the `rem` values assume `16px` (browser default),
-            yet `old-css` sets `body { font-size: 15px }` (changes `em` value),
-            and also sets `html { font-size: 10px }` (changes `rem` value) */
+/* WARNING: NO-R/EM: Until Frontera CMS drops Bootstrap 3.7.1 (for old design)…
+            No `em` nor `rem` allowed, because they aren't consitently reliable.
+            - On Frontera CMS, `1rem` = `10px` and `body { font-size: 15px }`
+            - On any other CMS, `1rem` = `16px` (browser default). */
 
 .s-header {
   --text-color: rgb(255, 255, 255);
@@ -88,6 +88,9 @@ Styleguide Trumps.Scopes.Header
   top: var(--border-offset);
 
   line-height: var(--line-height);
+
+  /* If link text uses 2 lines, header grows taller (but it must not do so) */
+  white-space: nowrap;
 }
 .s-header .nav-link:hover,
 .s-header .nav-link:focus,
@@ -115,6 +118,23 @@ Styleguide Trumps.Scopes.Header
 
   padding-right: 14px; /* NO-R/EM: .875rem (overwrite Bootstrap) */
   padding-left: 14px; /* NO-R/EM: .875rem (overwrite Bootstrap) */
+}
+
+
+
+/* Search */
+
+/* Create a line between search bar and login */
+/* FAQ: The line should only exist if both elements are present */
+.s-header .s-search-bar ~ .s-portal-nav::before {
+  content: "";
+  width: 1px;
+  /* FAQ: Not `height`, cuz `.s-search-bar` (via `.form-inline`) is flexbox */
+  align-self: stretch;
+
+  background-color: rgb(255,255,255);
+
+  margin-left: 12px;
 }
 
 

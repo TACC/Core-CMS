@@ -93,6 +93,11 @@ ALLOWED_HOSTS = current_secrets._ALLOWED_HOSTS
 BRANDING = current_secrets._BRANDING
 LOGO  = current_secrets._LOGO
 
+# Configure Portal.
+PORTAL = current_secrets._PORTAL
+PORTAL_AUTH_LINKS = current_secrets._PORTAL_AUTH_LINKS
+PORTAL_UNAUTH_LINKS = current_secrets._PORTAL_UNAUTH_LINKS
+
 # Optional features.
 FEATURES = current_secrets._FEATURES
 
@@ -129,11 +134,11 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         # FAQ: List custom directory first, so custom templates take precedence
         # SEE: https://docs.djangoproject.com/en/2.2/topics/templates/#configuration
-        'DIRS': [
-            os.path.join(BASE_DIR, 'taccsite_cms', 'templates')
-        ] + glob(
+        'DIRS': glob(
             os.path.join(BASE_DIR, 'taccsite_custom')
-        ),
+        ) + [
+            os.path.join(BASE_DIR, 'taccsite_cms', 'templates')
+        ],
         # 'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -202,6 +207,7 @@ INSTALLED_APPS = [
     # 'djangocms_audio',
     'djangocms_column',
     'djangocms_file',
+    # 'djangocms_forms', # FP-416: Pending full support
     'djangocms_link',
     'djangocms_picture',
     'djangocms_style',
@@ -233,8 +239,12 @@ def get_subdirs_as_module_names(path):
     module_names = []
     for entry in os.scandir(path):
         if entry.is_dir():
+            # FAQ: There are different root paths to tweak:
+            #      - Containers use `/code/…`
+            #      - Python Venvs use `/srv/taccsite/…`
             module_name = entry.path \
                 .replace(os.path.sep + 'code' + os.path.sep, '') \
+                .replace(os.path.sep + 'srv' + os.path.sep + 'taccsite' + os.path.sep, '') \
                 .replace(os.path.sep, '.')
             module_names.append(module_name)
     return module_names
@@ -249,13 +259,15 @@ INSTALLED_APPS = INSTALLED_APPS + INSTALLED_APPS_APPEND
 if CONSOLE_LOG_ENABLED:
     print("--> Variable INSTALLED_APPS: ", INSTALLED_APPS)
 
-# Comment the LDAPBackend to use local django auth
 AUTHENTICATION_BACKENDS = [
-    # "django_auth_ldap.backend.LDAPBackend",
     "django.contrib.auth.backends.ModelBackend",
 ]
 
 if LDAP_ENABLED:
+    AUTHENTICATION_BACKENDS.insert(0,
+        "django_auth_ldap.backend.LDAPBackend"
+    )
+
     ''' LDAP Auth Settings '''
     AUTH_LDAP_SERVER_URI = "ldap://ldap.tacc.utexas.edu"
     AUTH_LDAP_CONNECTION_OPTIONS = {ldap.OPT_REFERRALS: 0}
@@ -419,6 +431,21 @@ DJANGOCMS_AUDIO_ALLOWED_EXTENSIONS = ['mp3', 'ogg', 'wav']
 #     ('feature', _('Featured Version')),
 # ]
 
+# Djangocms Forms Settings.
+# SEE: https://github.com/mishbahr/djangocms-forms#configuration
+DJANGOCMS_FORMS_PLUGIN_MODULE = ('Generic')
+DJANGOCMS_FORMS_PLUGIN_NAME = ('Form')
+# DJANGOCMS_FORMS_DEFAULT_TEMPLATE = 'djangocms_forms/form_template/default.html'
+DJANGOCMS_FORMS_TEMPLATES = (
+    ('djangocms_forms/form_template/default.html', ('Default')),
+)
+DJANGOCMS_FORMS_USE_HTML5_REQUIRED = False
+# DJANGOCMS_FORMS_WIDGET_CSS_CLASSES = {'__all__': ('form-control', ) }
+DJANGOCMS_FORMS_REDIRECT_DELAY = 10000  # 10 seconds
+
+DJANGOCMS_FORMS_RECAPTCHA_PUBLIC_KEY = current_secrets._DJANGOCMS_FORMS_RECAPTCHA_PUBLIC_KEY
+DJANGOCMS_FORMS_RECAPTCHA_SECRET_KEY = current_secrets._DJANGOCMS_FORMS_RECAPTCHA_SECRET_KEY
+
 # Google Analytics.
 GOOGLE_ANALYTICS_PROPERTY_ID  = current_secrets._GOOGLE_ANALYTICS_PROPERTY_ID
 GOOGLE_ANALYTICS_PRELOAD = current_secrets._GOOGLE_ANALYTICS_PRELOAD
@@ -444,6 +471,9 @@ SETTINGS_EXPORT = [
     'DEBUG',
     'BRANDING',
     'LOGO',
+    'PORTAL',
+    'PORTAL_AUTH_LINKS',
+    'PORTAL_UNAUTH_LINKS',
     'FEATURES',
     'GOOGLE_ANALYTICS_PROPERTY_ID',
     'GOOGLE_ANALYTICS_PRELOAD'

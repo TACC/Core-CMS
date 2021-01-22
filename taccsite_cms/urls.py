@@ -19,6 +19,14 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),  # NOQA
 ]
 
+if settings.PORTAL:
+    from django.views.generic.base import TemplateView
+    urlpatterns += [
+        # FAQ: Allow direct access to markup for Portal and User Guide to render
+        url(r'^cms/nav/search/markup/$', TemplateView.as_view(template_name='nav_search.raw.html'), name='search_bar_markup'),
+        url(r'^cms/nav/pages/markup/$', TemplateView.as_view(template_name='nav_cms.raw.html'), name='menu_pages_markup'),
+    ]
+
 if settings.FEATURES['blog']:
     urlpatterns += [
         # Support `taggit_autosuggest` (from `djangocms-blog`)
@@ -27,6 +35,7 @@ if settings.FEATURES['blog']:
 
 urlpatterns += [
     url(r'^', include('cms.urls')),
+    # url(r'^', include('djangocms_forms.urls')), # FP-416: Pending full support
 ]
 
 # This is only needed when using runserver.

@@ -15,8 +15,7 @@ _CONSOLE_LOG_ENABLED = False    # Boolean check to turn on/off console logging s
 _ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost', '*']   # In development.
 
 # Boolean check to see if ldap is being used by the site.
-# Ensure the django-auth-ldap==2.0.0 package is uncommented
-# in the requirements.txt file or installed if using ldap.
+# Requires django-auth-ldap ≥ 2.0.0
 _LDAP_ENABLED = False
 
 # Boolean check to determine the appropriate database settings when using containers.
@@ -62,8 +61,7 @@ _CMS_TEMPLATES = (
     # FAQ: First template is default template
     # REF: http://docs.django-cms.org/en/latest/how_to/install.html#templates
     ('fullwidth.html', 'Fullwidth'),
-    ('sidebar_left.html', 'Sidebar Left'),
-    ('sidebar_right.html', 'Sidebar Right')
+    ('example-cms/templates/fullwidth.html', 'Fullwidth (Custom Example)')
 )
 
 ########################
@@ -75,11 +73,12 @@ _GOOGLE_ANALYTICS_PROPERTY_ID = "UA-123ABC@%$&-#"
 _GOOGLE_ANALYTICS_PRELOAD = True
 
 ########################
-# CMS FORMS.
+# CMS FORMS
 ########################
 
 # Create CMS Forms
 # SEE: https://pypi.org/project/djangocms-forms/
+# SEE: https://www.google.com/recaptcha/admin/create
 _DJANGOCMS_FORMS_RECAPTCHA_PUBLIC_KEY = ""
 _DJANGOCMS_FORMS_RECAPTCHA_SECRET_KEY = ""
 
@@ -93,16 +92,16 @@ _ES_INDEX_PREFIX = 'cms-dev-{}'
 _ES_DOMAIN = 'http://localhost:8000'
 
 ########################
-# CUSTOM SITE
+# FEATURES
 ########################
 
 """
-Custom Site
+Features for the CMS that can be turned either ON or OFF
 
 Usage:
 
-- For baked-in features, update settings per website (see example below).
-- For optional features, enable features per website via _FEATURES list.
+- For baked-in features, like BRANDING or PORTAL, see relevant section instead.
+- For optional features, look below, and enable feature(s) via _FEATURES list.
 
 Baked-In Feature Setting Example.
 
@@ -128,12 +127,9 @@ _FEATURES = {
 
 """
 
-########################
-# FEATURES.
-########################
-
 _FEATURES = {
     # Blog/News & Social Media Metadata
+    # GL-42: Split this into two features
     # SEE: https://confluence.tacc.utexas.edu/x/EwDeCg
     # SEE: https://confluence.tacc.utexas.edu/x/FAA9Cw
     "blog": False,
@@ -199,7 +195,7 @@ _ANORG_LOGO = [
 """
 
 ########################
-# BRANDING.
+# BRANDING
 
 _TACC_BRANDING = [
     "tacc",
@@ -238,7 +234,7 @@ _BRANDING = [ _TACC_BRANDING, _UTEXAS_BRANDING ]        # Default TACC Portal.
 # _BRANDING = [ _NSF_BRANDING, _TACC_BRANDING, _UTEXAS_BRANDING ]       # NSF Funded TACC Portal.
 
 ########################
-# LOGOS.
+# LOGOS
 
 _PORTAL_LOGO =  [
     "portal",
@@ -252,3 +248,77 @@ _PORTAL_LOGO =  [
 ]
 
 _LOGO = _PORTAL_LOGO                # Default Portal Logo.
+
+########################
+# PORTAL
+########################
+
+_PORTAL = False     # True for any CMS that is part of a Portal.
+
+"""
+Portal Links
+
+Usage:
+
+- For each link used in the templating, add new links values (see example below).
+- New links must be added to the _PORTAL_AUTH_LINKS and _PORTAL_UNAUTH_LINKS lists.
+- The order of the _PORTAL_[…]_LINKS lists determine the rendering order of the elements.
+
+Values to populate:
+
+_NAMED_LINK = {                    # The name of the link object.
+    "name": "…",                       # The name of the link (to distinguish it, as if for ID).
+    "url": "…",                        # The URL path to which the link should navigate the user.
+    "text": "…",                       # The text of the link.
+    "icon": "…",                       # The icon of the link.
+}
+
+Links Configuration Example.
+
+_ANY_AUTH_LINK = {
+    "name": "section-1",
+    "url": "/some/section/",
+    "text": "Visit Section",
+    "icon": "some-section",
+}
+
+_ANY_UNAUTH_LINK = {
+    "name": "action-1",
+    "url": "/some-action/",
+    "text": "Do Action",
+    "icon": "some-action",
+}
+
+"""
+
+########################
+# LINKS (for Portal).
+
+_DASH_AUTH_LINK = {
+    "name": "dash",
+    "url": "/workbench/dashboard/",
+    "text": "My Dashboard",
+    "icon": "desktop",
+}
+_PROFILE_AUTH_LINK = {
+    "name": "profile",
+    "url": "/accounts/profile/",
+    "text": "My Account",
+    "icon": "user-circle",
+}
+_LOGOUT_AUTH_LINK = {
+    "name": "logout",
+    "url": "/accounts/logout/",
+    "text": "Log Out",
+    "icon": "sign-out-alt",
+}
+
+_LOGIN_UNAUTH_LINK = {
+    "name": "login",
+    "url": "/login/",
+    "text": "Log In",
+    "icon": "sign-in-alt",
+}
+
+_PORTAL_AUTH_LINKS = [ _DASH_AUTH_LINK, _PROFILE_AUTH_LINK, _LOGOUT_AUTH_LINK ]       # Default TACC Portal.
+_PORTAL_UNAUTH_LINKS = [ _LOGIN_UNAUTH_LINK ]                                         # Default TACC Portal.

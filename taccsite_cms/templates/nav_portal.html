@@ -1,0 +1,48 @@
+{% load static %}
+{# @var className #}
+
+{# WARNING: Some markup is duplicated in other repositories #}
+{# SEE: https://confluence.tacc.utexas.edu/x/LoCnCQ #}
+{# NOTE: The `id` attr's are identified by a CMS script which changes markup #}
+<ul class="s-portal-nav  {{ className }}">
+  <div id="auth-menu" class="navbar-nav  d-none">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle"
+        id="auth-menu-button"
+        href="#"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="fas fa-user-circle fa-lg  nav-icon"></i>
+        <span id="portal-username">Workbench</span>
+        <span class="sr-only">Toggle Dropdown</span>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right"
+        aria-labelledby="auth-menu-button"
+        id="auth-menu-list">
+        {% for link in settings.PORTAL_AUTH_LINKS %}
+          <a id="auth-menu-link-{{ link.name }}"
+            class="dropdown-item"
+            href="{{ link.url }}"
+          >
+            <i class="fas fa-{{ link.icon }}  nav-icon"></i>
+            {{ link.text }}
+          </a>
+        {% endfor %}
+      </div>
+    </li>
+  </div>
+  <li id="unauth-menu" class="nav-item  d-none">
+    {% for link in settings.PORTAL_UNAUTH_LINKS %}
+      <a id="unauth-menu-link-{{ link.name }}"
+        class="nav-link"
+        href="{{ link.url }}"
+      >
+        <i class="fas fa-{{ link.icon }}  nav-icon"></i>
+        {{ link.text }}
+      </a>
+    {% endfor %}
+  </li>
+</ul>
+<script src="{% static 'site_cms/js/nav_portal.js' %}"></script>
