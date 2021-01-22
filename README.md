@@ -32,7 +32,7 @@ The TACC CORE-CMS can be run using Docker and Docker Compose, both locally and i
         git pull # (or git fetch […], etc.)
         ```
 
-    4. (as necessary) Save/Commit the pinned commit of submodule.
+    4. (as necessary) Save/Commit the pinned commit of submodule.\
         _(Updates the pinned commit of `cms-site-resources` repo at `taccsite_custom/`.)_
 
         ```bash
