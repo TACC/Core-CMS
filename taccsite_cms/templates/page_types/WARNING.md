@@ -17,15 +17,13 @@ This directory (and its content) is a temporary solution to prevent Texascale te
   - [x] `2018`
 
 - https://texascale.org
-  - [ ] `2020`
-  - [ ] `2020/…`
-  - [ ] `2020/…/`
-  - [ ] `2020/…/…`
-  - [x] `2020/visualizing-science/frontera-secret-sauce/`*
-  - [ ] `2019`
-  - [ ] `2019/…/`
-  - [ ] `2019/…/…`
-  - [x] `2019/visualizing-science/whats-in-a-node/`*
-  - [ ] `2018`
+  - [x] `2020`
+  - [x] `2020/…`
+  - [x] `2020/…/`
+  - [x] `2020/…/…`
+  - [x] `2019`
+  - [x] `2019/…/`
+  - [x] `2019/…/…`
+  - [x] `2018`
 
 \* The first article to update, because it is the most complex (good test candidate).
