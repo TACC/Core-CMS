@@ -31,8 +31,9 @@ The TACC CORE-CMS can be run using Docker and Docker Compose, both locally and i
         # Update commit of submodule repo (as necessary)
         git pull # (or git fetch […], etc.)
         ```
+
     4. (as necessary) Save/Commit the pinned commit of submodule.
-        _(Updates the pinned commit of `cms-site-resources` repo to `taccsite_custom/`.)_
+        _(Updates the pinned commit of `cms-site-resources` repo at `taccsite_custom/`.)_
 
         ```bash
         # Navigate back to this repo (from root of submodule repo)
