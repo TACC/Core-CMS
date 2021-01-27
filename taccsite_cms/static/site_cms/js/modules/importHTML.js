@@ -67,9 +67,9 @@ export function insertFromURL(markupURL, container) {
 export function replaceFromURL(markupURL, placeholder) {
   if (markupURL) {
     return getFromURL(markupURL).then(markup => {
-      newElement = htmlToElement(markup);
+      const newElement = htmlToElement(markup);
       placeholder.replaceWith(newElement);
-      return container;
+      return placeholder;
     });
   } else {
     return Promise.reject(new Error('No `markupURL` provided'));
