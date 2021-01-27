@@ -62,6 +62,12 @@ Styleguide Trumps.Scopes.Header
 
 /* Navigation */
 
+.s-header {
+  /* This prevents nav bar resize when search bar is dynamically added */
+  /* CAVEAT: This is only for Portal and Docs which dynamically load content */
+  height: 50px;
+}
+
 .s-header.navbar {
   /* Make horizontal padding match the horizontal content buffer in Portal */
   /* FAQ: The `calc()` keeps track of disparate source of space values */
