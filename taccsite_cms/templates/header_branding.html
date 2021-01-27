@@ -1,6 +1,7 @@
 {# @var brands, className #}
 {% load staticfiles custom_portal_settings %}
 
+{% with settings.BRANDING as brands %}
 <div id="header-branding" class="branding-header {{className}}">
   {# DEBUG: #}{# <code>{{ brands|first }}</code> #}
   {% for brand in brands %}
@@ -21,3 +22,4 @@
     {% endwith %}
   {% endfor %}
 </div>
+{% endwith %}

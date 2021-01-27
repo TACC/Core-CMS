@@ -4,12 +4,12 @@
 {# SEE: https://confluence.tacc.utexas.edu/x/LoCnCQ #}
 
 <!-- Sponsor Logos -->
-{% include "header_branding.html" with brands=settings.BRANDING %}
+{% include "header_branding.html" %}
 
 <!-- Navigation Bar -->
 <nav id="s-header" class="s-header  navbar {% if settings.PORTAL %}navbar-expand-xl{% else %}navbar-expand-lg{% endif %} navbar-dark">
   <!-- Portal Logo -->
-  {% include "header_logo.html" with logo=settings.LOGO %}
+  {% include "header_logo.html" %}
 
   <!-- Navbar Accordian Toggle on Small Screens  -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExpandTarget" aria-controls="navbarsExpandTarget" aria-expanded="false" aria-label="Toggle navigation">
