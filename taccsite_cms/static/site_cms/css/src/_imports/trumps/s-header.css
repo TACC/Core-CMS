@@ -41,7 +41,7 @@ Styleguide Trumps.Scopes.Header
 
 /* Affiliation */
 
-/* (none) */
+/* SEE: taccsite_cms/static/site_cms/css/src/_imports/branding_logos.css */
 
 
 
@@ -62,10 +62,12 @@ Styleguide Trumps.Scopes.Header
 
 /* Navigation */
 
-.s-header {
-  /* This prevents nav bar resize when search bar is dynamically added */
-  /* CAVEAT: This is only for Portal and Docs which dynamically load content */
-  height: 50px;
+/* On wide viewport, prevent header resize from dynamic content */
+/* CAVEAT: This is only for Portal and Docs which dynamically load content */
+@media only screen and (min-width: 1201px) {
+  .s-header.navbar {
+    height: 50px;
+  }
 }
 
 .s-header.navbar {
