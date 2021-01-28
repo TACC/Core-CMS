@@ -1,0 +1,33 @@
+{# WARNING: Some markup is duplicated in other repositories #}
+{# SEE: https://confluence.tacc.utexas.edu/x/LoCnCQ #}
+{# FAQ: Extra lines exist to ease CMS/Portal/Guide template comparison #}
+
+<!-- Sponsor Logos -->
+{% include "header_branding.html" %}
+
+<!-- Navigation Bar -->
+<nav id="s-header" class="s-header  navbar {% if settings.PORTAL %}navbar-expand-xl{% else %}navbar-expand-lg{% endif %} navbar-dark">
+  <!-- Portal Logo -->
+  {% include "header_logo.html" %}
+
+  <!-- Navbar Accordian Toggle on Small Screens  -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExpandTarget" aria-controls="navbarsExpandTarget" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar Links -->
+  <div class="collapse navbar-collapse" id="navbarsExpandTarget">
+    {# GL-6: Remove need for different `className` values #}
+    {% if settings.PORTAL %}
+      {# FAQ: If template were included with `only`, then it would NOT render `show_menu` #}
+      {% include "nav_cms.html" with className="navbar-nav" %}
+
+      {# NOTE: As of 2020-12, search is only available with a Portal #}
+      {% include "nav_search.html" with className="form-inline  ml-auto" only %}
+      {% include "nav_portal.html" with className="navbar-nav" settings=settings only %}
+    {% else %}
+      {# FAQ: If template were included with `only`, then it would NOT render `show_menu` #}
+      {% include "nav_cms.html" with className="navbar-nav  ml-auto" %}
+    {% endif %}
+  </div>
+</nav>

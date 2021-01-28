@@ -1,0 +1,25 @@
+{# @var brands, className #}
+{% load staticfiles custom_portal_settings %}
+
+{% with settings.BRANDING as brands %}
+<div id="header-branding" class="branding-header {{className}}">
+  {# DEBUG: #}{# <code>{{ brands|first }}</code> #}
+  {% for brand in brands %}
+    {% with filename=brand|index:1 selectors=brand|index:2 targeturl=brand|index:3 targetType=brand|index:4 accessibility=brand|index:5 corstype=brand|index:6 visibility=brand|index:7 %}
+      {% if visibility == "True" %}
+        {% if brand == brands|first %}
+        <a href="{{ targeturl }}" target="{{ targettype }}">
+          <img class="branding-logo {{ selectors }}" src="{% static filename %}" crossorigin="{{ corstype }}" alt="{{ accessibility }}" >
+        </a>
+        {% elif brand != brands|first %}
+        {# RFE: Use CSS to remove the need for `.branding-seperator` and `if` logic #}
+        <span class="branding-seperator"></span>
+        <a href="{{ targeturl }}" target="{{ targettype }}">
+          <img class="branding-logo {{ selectors }}" src="{% static filename %}" crossorigin="{{ corstype }}" alt="{{ accessibility }}" >
+        </a>
+        {% endif %}
+      {% endif %}
+    {% endwith %}
+  {% endfor %}
+</div>
+{% endwith %}
