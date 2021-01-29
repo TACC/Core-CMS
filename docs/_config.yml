@@ -1,6 +1,6 @@
 theme: jekyll-theme-minimal
 title: TACC Core-CMS
 description: The TACC ACI-WMA Core-Portal DjangoCMS codebase used to generate branded CMS container images for TACC portal projects.
-logo: /assets/img/tacc_logo.png
+logo: /assets/img/TACC_logo.jpeg
 show_downloads: true
 google_analytics: ##-########-##
