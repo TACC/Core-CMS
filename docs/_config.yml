@@ -1,6 +1,6 @@
 theme: jekyll-theme-minimal
 title: TACC Core-CMS
 description: The TACC ACI-WMA Core-CMS codebase used to generate branded CMS container images for all TACC portal projects.
-logo: /assets/img/TACC_logo.jpeg
+logo: /assets/img/tacc.logo.x256.png
 show_downloads: true
 google_analytics: ##-########-##
