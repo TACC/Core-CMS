@@ -1,5 +1,5 @@
 ---
-layout: tacc.minimal_default.html
+layout: _layouts/tacc.minimal_default.html
 ---
 
 Docs pages content coming soon.
