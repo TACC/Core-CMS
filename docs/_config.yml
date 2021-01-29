@@ -1,1 +1,6 @@
 theme: jekyll-theme-minimal
+title: TACC Core-CMS
+description: The CORE Portal DjangoCMS codebase used to generate container images used by all TACC portal projects.
+logo: /assets/img/tacc_logo.png
+show_downloads: "false"
+google_analytics: ##-########-##
