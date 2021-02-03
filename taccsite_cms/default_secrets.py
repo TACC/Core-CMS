@@ -61,6 +61,9 @@ _CMS_TEMPLATES = (
     # FAQ: First template is default template
     # REF: http://docs.django-cms.org/en/latest/how_to/install.html#templates
     ('fullwidth.html', 'Fullwidth'),
+    ('example-cms/templates/fullwidth.html', 'Fullwidth (Custom Example)'),
+    ('hardcoded_pages/getting_started.html', 'Getting Started'),
+    ('hardcoded_pages/globus_data_transfer_guide.html', 'Globus Data Transfer Guide'),
     ('example-cms/templates/fullwidth.html', 'Fullwidth (Custom Example)')
 )
 
