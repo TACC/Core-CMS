@@ -1,0 +1,279 @@
+/*
+Elements
+
+Element styles are those for bare HTML elements (like `<h1>`, `<a>`, etc.). These come with default styling from the browser; we can redefine them here.
+
+Reference:
+
+- [Creative Bloq: Manage Large CSS Projects With ITCSS](https://www.creativebloq.com/web-design/manage-large-css-projects-itcss-101517528) (find "Elements")
+- [MDN: HTML element reference](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5/HTML5_element_list)
+
+Rules:
+
+- Element tags may be styled.
+- Pseudo classes may be styled.
+- Pseudo elements may be styled.
+
+Weight: 4
+
+Styleguide Elements
+*/
+
+/* Add styles per element to relevant sections below */
+
+
+
+
+
+/*
+Main Root & Sectioning Root
+
+Elements that represent the root of a document or document content.
+
+```
+<html> <body>
+```
+
+Reference:
+
+- [MDN: HTML element reference: Main root](https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Main_root)
+- [MDN: HTML element reference: Sectioning root](https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Sectioning_root)
+
+Markup:
+<body>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultricies dapibus sapien cursus luctus. Vivamus pulvinar diam sed tellus fringilla condimentum.</p>
+</body>
+
+Styleguide Elements.MainSectioningRoots
+*/
+
+/* The webpage must be at least as tall as the viewport */
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: var(--global-font-family);
+}
+
+
+
+
+
+/*
+Content Sectioning
+
+Elements that organize a document into logical pieces and create a broad outline for page content.
+
+```
+<main> <nav> <section> <header> <h1> <h2> <h3> <h4> <h5> <h6> <hgroup> <footer> <article> <aside> <address>
+```
+
+Reference:
+
+- [HTML element reference: Content sectioning | MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Content_sectioning)
+
+Styleguide Elements.ContentSectioning
+*/
+
+/* … */
+
+
+
+
+
+/*
+Text Content
+
+Elements that organize blocks or sections of content placed (includes lists).
+
+```
+<blockquote> <dd> <div> <dl> <dt> <figcaption> <figure> <hr> <li> <ol> <p> <pre> <ul>
+```
+
+Reference:
+
+- [HTML element reference: Text content | MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Text_content)
+
+Styleguide Elements.TextContent
+*/
+
+/* … */
+
+
+
+
+
+/*
+Inline Text Semantics
+
+Elements that define the meaning, structure, or style of a word, line, or any arbitrary piece of text.
+
+```
+<a> <abbr> <b> <bdi> <bdo> <br> <cite> <code> <data> <dfn> <em> <i> <kbd> <mark> <q> <rb> <rp> <rt> <rtc> <ruby> <s> <samp> <small> <span> <strong> <sub> <sup> <time> <u> <var> <wbr>
+```
+- `<del> <ins>`
+
+Reference:
+
+- [HTML element reference: Inline text semantics | MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Inline_text_semantics)
+
+Styleguide Elements.InlineTextSemantics
+*/
+
+/* … */
+
+
+
+
+
+/*
+Demarcating Edits
+
+Elements that provide indications that specific parts of the text have been altered.
+
+```
+<del> <ins>
+```
+
+Reference:
+
+- [HTML element reference: Demarcating edits | MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Demarcating_edits)
+
+Styleguide Elements.DemarcatingEdits
+*/
+
+/* … */
+
+
+
+
+
+/*
+Image & Multimedia
+
+Elements that support various multimedia resources such as images, audio, and video.
+
+```
+<area> <audio> <img> <map> <track> <video>
+```
+
+Reference:
+
+- [HTML element reference: Image and multimedia | MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Image_and_multimedia)
+
+Styleguide Elements.Media
+*/
+
+/* … */
+
+
+
+
+
+/*
+Embedded Content
+
+Elements that support various other media that has limited interaction.
+
+```
+<embed> <iframe> <object> <param> <picture> <source>
+```
+
+Reference:
+
+- [HTML element reference: Embedded content | MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Embedded_content)
+
+Styleguide Elements.EmbeddedContent
+*/
+
+/* … */
+
+
+
+
+
+/*
+SVG & MathML
+
+Elements for Scalable Vector Graphics and Mathematical Markup Language.
+
+```
+<svg> <math>
+```
+
+Reference:
+
+- [HTML element reference: Demarcating edits | MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Demarcating_edits)
+
+Styleguide Elements.DemarcatingEdits
+*/
+
+/* … */
+
+
+
+
+
+/*
+Table Content
+
+Elements that create and handle tabular data.
+
+```
+<table> <thead> <tbody> <th> <td> <tfoot> <colgroup> <col> <caption>
+```
+
+Reference:
+
+- [HTML element reference: Table content | MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Table_content)
+
+Styleguide Elements.Tables
+*/
+
+/* … */
+
+
+
+
+
+/*
+Forms
+
+Elements that create forms which the user can fill out and submit to the Web site or application.
+
+```
+<form> <fieldset> <legend> <label> <input> <select> <optgroup> <option> <textarea> <button> <output> <progress> <meter> <datalist>
+```
+
+Reference:
+
+- [HTML element reference: Forms | MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Forms)
+
+Styleguide Elements.Forms
+*/
+
+/* … */
+
+
+
+
+
+/*
+Interactive Elements
+
+Elements that help to create interactive user interface objects.
+
+```
+<details> <summary> <dialog> <menu>
+```
+
+Reference:
+
+- [HTML element reference: Interactive elements | MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Interactive_elements)
+
+Styleguide Elements.Interactive
+*/
+
+/* … */
