@@ -1,0 +1,12 @@
+{# @var logo, className #}
+{% load staticfiles custom_portal_settings %}
+
+{% with settings.LOGO as logo %}
+  {% with filename=logo|index:1 selectors=logo|index:2 targeturl=logo|index:3 targetType=logo|index:4 accessibility=logo|index:5 corstype=logo|index:6 visibility=logo|index:7 %}
+    {% if visibility == "True" %}
+    <a id="header-logo" class="navbar-brand {{className}}" href="{{ targeturl }}" target="{{ targettype }}">
+      <img class="portal-logo {{ selectors }}" src="{% static filename %}" crossorigin="{{ corstype }}" alt="{{ accessibility }}" >
+    </a>
+    {% endif %}
+  {% endwith %}
+{% endwith %}
