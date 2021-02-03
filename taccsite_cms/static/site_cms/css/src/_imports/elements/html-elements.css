@@ -1,31 +1,4 @@
 /*
-Elements
-
-Element styles are those for bare HTML elements (like `<h1>`, `<a>`, etc.). These come with default styling from the browser; we can redefine them here.
-
-Reference:
-
-- [Creative Bloq: Manage Large CSS Projects With ITCSS](https://www.creativebloq.com/web-design/manage-large-css-projects-itcss-101517528) (find "Elements")
-- [MDN: HTML element reference](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5/HTML5_element_list)
-
-Rules:
-
-- Element tags may be styled.
-- Pseudo classes may be styled.
-- Pseudo elements may be styled.
-
-Weight: 4
-
-Styleguide Elements
-*/
-
-/* Add styles per element to relevant sections below */
-
-
-
-
-
-/*
 Main Root & Sectioning Root
 
 Elements that represent the root of a document or document content.
