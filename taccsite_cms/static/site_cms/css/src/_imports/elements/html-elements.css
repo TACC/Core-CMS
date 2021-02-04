@@ -20,6 +20,12 @@ Markup:
 Styleguide Elements.MainSectioningRoots
 */
 
+html {
+  /* Set base font but support user-defined browser font size */
+  /* SEE: https://snook.ca/archives/html_and_css/font-size-with-rem */
+  font-size: 100%; /* 16px */
+}
+
 /* The webpage must be at least as tall as the viewport */
 html,
 body {
@@ -50,7 +56,9 @@ Reference:
 Styleguide Elements.ContentSectioning
 */
 
-/* … */
+main {
+  padding-bottom: var(--global-space-beneath-main-content);
+}
 
 
 
@@ -72,7 +80,10 @@ Reference:
 Styleguide Elements.TextContent
 */
 
-/* … */
+/* Undo Bootstrap `_reboot.css` */
+ol ol, ol ul, ul ol, ul ul {
+  margin-bottom: 1rem;
+}
 
 
 
@@ -94,7 +105,38 @@ Reference:
 Styleguide Elements.InlineTextSemantics
 */
 
-/* … */
+var,
+/* Overwrite Bootstrap (which does not use its `--font-family-monospace`) */
+code, kbd, pre, samp {
+  font-family: var(--global-font-family--mono);
+}
+
+code {
+  background-color: var(--global-color-primary--x-light);
+
+  border-width: var(--global-border-width--normal);
+  border-style: solid;
+  border-color: var(--global-color-primary--light);
+
+  /* Undo Bootstrap */
+  color: unset;
+}
+:not(pre) > code {
+  display: inline-block;
+  padding: var(--global-space--xx-small) var(--global-space--x-small);
+}
+pre > code {
+  display: block;
+  padding: var(--global-space--x-small) var(--global-space--small);
+}
+
+samp {
+  font-size: 87.5%; /* mirror Bootstrap `code { font-size: 87.5%; }` */
+}
+pre > code samp {
+  /* TODO: Use `user-select` after Autoprefixer is part of CSS processing */
+  -webkit-user-select: none;
+}
 
 
 

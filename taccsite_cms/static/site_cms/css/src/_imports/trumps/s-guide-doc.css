@@ -1,0 +1,61 @@
+/*
+Guide Doc
+
+Styles for elements within a guide document
+
+Markup: s-cms-nav.html
+
+Styleguide Trumps.Scopes.GuideDoc
+*/
+
+.s-guide-doc {
+  margin-bottom: var(--global-space--large);
+}
+
+
+
+
+
+/* ELEMENTS */
+
+
+/* ELEMENTS: Content Sectioning */
+
+.s-guide-doc h2 {
+  margin: var(--global-space--large) 0 var(--global-space--normal);
+}
+
+.s-guide-doc h3 {
+  margin-bottom: var(--global-space--normal);
+}
+/* Fake <hr> above <h3> */
+.s-guide-doc h3::before {
+  display: block;
+  content: '';
+
+  margin: var(--global-space--large) 0;
+  border-top: 1px solid var(--global-color-primary--light);
+}
+
+.s-guide-doc h3 {
+  margin-bottom: var(--global-space--normal);
+}
+
+
+/* ELEMENTS: Inline Text Semantics */
+/* ELEMENTS: Image & Multimedia */
+
+.s-guide-doc p + pre,
+.s-guide-doc p + img {
+  margin-top: -0.5rem;
+  margin-bottom: 1rem; /* mirror Bootstrap `_reboot.css` <p> */
+}
+
+
+/* ELEMENTS: Image & Multimedia */
+
+.s-guide-doc img {
+  width: 75%;
+
+  border: var(--global-border--normal);
+}
