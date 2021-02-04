@@ -1,0 +1,1008 @@
+{% extends "fullwidth.html" %} {% load staticfiles %} {% block assets_custom %}
+{{ block.super }}
+
+<link rel="stylesheet"
+  href="{% static 'site_cms/css/build/template.guide-doc.css' %}"
+/>
+{% endblock assets_custom %} {% block content %}
+<div class="container s-guide-doc">
+  <div class="row">
+    <div class="col">
+      <h2>A2CPS Data Transfer and Management Guide</h2>
+      <h3>Outline</h3>
+
+      <ul>
+        <li>
+          <a href="https://a2cps-staging.tacc.utexas.edu/help/rsync-data-transfer-guide/#table1">Data Transfer Methods<a>
+        </li>
+        <li>
+          <a href="https://a2cps-staging.tacc.utexas.edu/help/rsync-data-transfer-guide/#corral">What is Corral?<a>
+        </li>
+        <li>
+          <a href="https://a2cps-staging.tacc.utexas.edu/help/rsync-data-transfer-guide/#a2cps_prereqs">Prerequisites for A2CPS Project User<a>
+        </li>
+        <li>
+          <a href="https://a2cps-staging.tacc.utexas.edu/help/rsync-data-transfer-guide/#command_line_tools">Using Command Line Tools to Transfer and Organize Data<a>
+        </li>
+        <li>
+          <a href="https://a2cps-staging.tacc.utexas.edu/help/rsync-data-transfer-guide/#scp_sftp_rsync"><code>scp</code>, <code>sftp</code>, &amp; <code>rsync</code><a>
+        </li>
+        <li>
+          <a href="https://a2cps-staging.tacc.utexas.edu/help/rsync-data-transfer-guide/#data_transfer_prereqs">Prerequisites for Data Transfer with Command Line Tools<a>
+        </li>
+        <li>
+          <a href="https://a2cps-staging.tacc.utexas.edu/help/rsync-data-transfer-guide/#local_data_path">Determining the Path to Your Data File(s) on Your Local System<a>
+        </li>
+        <li>
+          <a href="https://a2cps-staging.tacc.utexas.edu/help/rsync-data-transfer-guide/#figure1">Figure 1. Use Get Info to determine “Where” the path of your data file(s) is</a>
+        </li>
+        <li>
+          <a href="https://a2cps-staging.tacc.utexas.edu/help/rsync-data-transfer-guide/#local_data_path">Determining the Path to Your Transfer Directory on Corral<a>
+        </li>
+        <li>
+          <a href="https://a2cps-staging.tacc.utexas.edu/help/rsync-data-transfer-guide/#scp_transfer">Transfer Data with <code>scp</code><a>
+        </li>
+        <li>
+          <a href="https://a2cps-staging.tacc.utexas.edu/help/rsync-data-transfer-guide/#sftp_transfer">Transfer Data with <code>sftp</code><a>
+        </li>
+        <li>
+          <a href="https://a2cps-staging.tacc.utexas.edu/help/rsync-data-transfer-guide/#rsync_transfer">Transfer Data with <code>rsync</code><a>
+        </li>
+        <li>
+          <a href="https://a2cps-staging.tacc.utexas.edu/help/rsync-data-transfer-guide/#cyberduck_transfer">Transfer Data with Cyberduck<a>
+          <ul>
+            <li>
+              <a href="https://a2cps-staging.tacc.utexas.edu/help/rsync-data-transfer-guide/#cy_windows">For Windows<a>
+              <ul>
+                <li>
+                  <a href="https://a2cps-staging.tacc.utexas.edu/help/rsync-data-transfer-guide/#figure2" >Figure 2. Windows Cyberduck and “Open Connection” setup screen</a>
+                </li>
+                <li>
+                  <a href="https://a2cps-staging.tacc.utexas.edu/help/rsync-data-transfer-guide/#figure3">Figure 3. Windows “Open Connection” setup screen<a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="https://a2cps-staging.tacc.utexas.edu/help/rsync-data-transfer-guide/#cy_mac">For Mac<a>
+              <ul>
+                <li>
+                  <a href="https://a2cps-staging.tacc.utexas.edu/help/rsync-data-transfer-guide/#figure4">Figure 4. macOS “New Bookmark” setup screen<a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://a2cps-staging.tacc.utexas.edu/help/rsync-data-transfer-guide/#references">References<a>
+        </li>
+      </ul>
+
+      <h3>Data Transfer and Management Guide</h3>
+
+      <p>
+        Transferring A2CPS project data from your local machine to
+        <a href="#corral">TACC’s Corral system</a> can be accomplished using two methods: command line tools (<code>scp</code>, <code>sftp</code>,
+        <code>rsync</code>) and graphical tools (Cyberduck).
+      </p>
+
+      <p>
+        <a name="table1">Data Transfer Methods</a>
+      </p>
+
+      <p>&nbsp;</p>
+
+      <table cellspacing="1" style="width: 500px" border="1" cellpadding="1">
+        <tbody>
+          <tr>
+            <th>Usage Mode</th>
+            <th>Transfer Method</th>
+          </tr>
+          <tr>
+            <td style="text-align: center">Command Line Tool</td>
+            <td style="text-align: center">
+              <a href="https://man7.org/linux/man-pages/man1/scp.1.html"><code>scp</code><a>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: center">Command Line Tool</td>
+            <td style="text-align: center">
+              <a href="https://man7.org/linux/man-pages/man1/sftp.1.html"><code>sftp</code><a>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: center">Command Line Tool</td>
+            <td style="text-align: center">
+              <a href="https://man7.org/linux/man-pages/man1/rsync.1.html"><code>rsync</code><a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <table class="MsoTableGrid"
+                style="
+                  border-collapse: collapse;
+                  border-style: none;
+                  border-color: initial;
+                "
+              >
+                <tbody>
+                  <tr>
+                    <td style="
+                        width: 233.75pt;
+                        border-top: none;
+                        padding: 0in 5.4pt 0in 5.4pt;
+                      "
+                      valign="top"
+                      width="312"
+                    >
+                      <p style="text-align: center">
+                        Graphical Tool
+                      </p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+            <td style="text-align: center">
+              <a href="https://cyberduck.io/">Cyberduck<a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>&nbsp;</p>
+
+      <p>
+        <a name="corral">What is Corral?</a>
+      </p>
+
+      <p>
+        Corral is one of TACC’s systems dedicated to storage and data management. Corral can be used for storing protected data on a secure location of Corral (i.e. Corral Secure). As an A2CPS project user, you have access to Corral’s secure server
+        “<code>secure.corral.tacc.utexas.edu</code>”, as well as the secure Corral folder <code>/corral-secure/projects/A2CPS</code>. Corral Secure’s system is to be used exclusively for transferring and accessing A2CPS project data.
+      </p>
+
+      <p>&nbsp;</p>
+
+      <p><a name="a2cps_prereqs">Prerequisites for A2CPS Project User</a></p>
+
+      <p>There are two requirements needed prior to transferring data:</p>
+
+      <ul>
+        <li>A TACC Account</li>
+        <li>
+          Multi-Factor Authentication (MFA) pairing with the
+          <a href="https://portal.tacc.utexas.edu/tutorials/multifactor-authentication#tacctokenapp">TACC Token app<a>
+        </li>
+      </ul>
+
+      <p>
+        As an A2CPS project user, you should already have access to a TACC account through the
+        <a href="https://portal.tacc.utexas.edu/">TACC Portal</a>
+        . If you are unsure of your TACC account username, please consult the
+        “TACC Account Request Confirmation” email you have received from TACC Accounting Staff, or contact
+        <a href="mailto:acantu@tacc.utexas.edu">acantu@tacc.utexas.edu</a>
+        .
+      </p>
+
+      <p>&nbsp;</p>
+
+      <p>
+        TACC now requires MFA pairing. To set up MFA, you can follow
+        <a href="https://portal.tacc.utexas.edu/tutorials/multifactor-authentication">this tutorial<a>.
+      </p>
+
+      <p>&nbsp;</p>
+
+      <p>
+        <a name="command_line_tools">Using Command Line Tools to Transfer and Organize Data<a>
+      </p>
+
+      <p>
+        A common method of transferring files between TACC resources and/or your local machine is through the command line.
+      </p>
+
+      <p>&nbsp;</p>
+
+      <p>
+        <a name="scp_sftp_rsync"><code>scp</code>, <code>sftp</code>, &amp; <code>rsync</code><a>
+      </p>
+
+      <p>
+        These three command line tools are secure and can be used to accomplish data transfer. You can run these commands directly from the terminal if your local system runs Linux or macOS.
+      </p>
+
+      <p>&nbsp;</p>
+
+      <table class="MsoTableGridLight"
+        style="border-collapse: collapse; border: solid #bfbfbf 1pt"
+      >
+        <tbody>
+          <tr>
+            <td style="
+                border: solid #bfbfbf 1pt;
+                width: 467.5pt;
+                padding: 0in 5.4pt 0in 5.4pt;
+              "
+              valign="top"
+              width="623"
+            >
+              <p>
+                Note: It is possible to use these command line tools if your local machine runs Windows, but you will need to use a ssh client (ex. <a href="https://www.putty.org/">PuTTY</a>).
+                However, for the scope of this project and ease in data transfer, it is recommended that Windows users follow our
+                <a href="#cyberduck_transfer">Transfer Data with Cyberduck</a>
+                guide below.
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>&nbsp;</p>
+
+      <p>&nbsp;</p>
+
+      <p>
+        For users that are new to the command line, using either <code>scp</code> or <code>sftp</code>
+        to transfer data is advised.
+      </p>
+
+      <p>&nbsp;</p>
+
+      <p>
+        <a name="data_transfer_prereqs">Prerequisites for Data Transfer with Command Line Tools<a>
+      </p>
+
+      <p>Before we begin, you will need to know:</p>
+
+      <ul>
+        <li>the path to your data file(s) on your local system</li>
+        <li>the path to your transfer directory on Corral</li>
+      </ul>
+
+      <p>
+        <a name="local_data_path">Determining the Path to Your Data File(s) on Your Local System<a>
+      </p>
+
+      <p>
+        In order to transfer your project data, you will need to know where your file(s) is located on your local system. To do so, navigate through the file system on your local computer.
+      </p>
+
+      <p>&nbsp;</p>
+
+      <p>
+        For example, you can do so on Mac by going to Finder. Common data file locations such as Desktop and Documents should be accessible through the Favorites pane on the left-hand side of the window. You can also do Finder &gt; Go to find other common locations on your computer.
+      </p>
+
+      <p>&nbsp;</p>
+
+      <p>
+        Once you have navigated to where your file(s) is located, take note of its path by right-clicking on the file and selecting Get Info.
+      </p>
+
+      <p>&nbsp;</p>
+
+      <p style="text-align: center">
+        <img src="/media/filer_public_thumbnails/filer_public/6c/ea/6ceacba9-7824-4925-b924-dd317040b629/picture1.png__1170x0_q85_subsampling-2_upscale.png"
+          alt=""
+          class="img-responsive"
+          width="65%"
+          margin="1rem"
+        />
+      </p>
+
+      <p style="text-align: center">
+        <a name="figure1">Figure 1. Use Get Info to determine “Where” the path of your data file(s) is</a>
+      </p>
+
+      <p>
+        For example, a file located in an <code>a2cps-data</code> folder in <code>Documents</code> would have the following path:
+      </p>
+
+      <p>&nbsp;</p>
+
+      <p>
+        <code>/Users/myname/Documents/a2cps-data/my_file.txt</code>
+      </p>
+
+      <p>&nbsp;</p>
+
+      <p>
+        <a name="corral_data_path">Determining the Path to Your Transfer Directory on Corral<a>
+      </p>
+
+      <p>
+        A transfer directory on Corral has already been set up for you and is available for data transfer. The transfer directory path is individualized to your research center/institution.
+      </p>
+
+      <p>&nbsp;</p>
+
+      <p>
+        For example, for a user that is affiliated with the institution University of Texas at Austin, the path to their transfer directory on Corral would be:
+      </p>
+
+      <p>&nbsp;</p>
+
+      <p>
+        <code>/corral-secure/projects/A2CPS/submissions/utaustin/ </code>
+      </p>
+
+      <p>&nbsp;</p>
+
+      <table class="MsoTableGridLight"
+        style="border-collapse: collapse; border: solid #bfbfbf 1pt"
+      >
+        <tbody>
+          <tr>
+            <td style="
+                border: solid #bfbfbf 1pt;
+                width: 467.5pt;
+                padding: 0in 5.4pt 0in 5.4pt;
+              "
+              valign="top"
+              width="623"
+            >
+              <p>
+                Note: The transfer directory name will always be one word and in lowercase.
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>&nbsp;</p>
+
+      <p>
+        If you are unsure of your transfer directory path, please consult the email you have received from
+        <a href="mailto:acantu@tacc.utexas.edu">acantu@tacc.utexas.edu</a>
+        , or contact
+        <a href="mailto:acantu@tacc.utexas.edu">acantu@tacc.utexas.edu</a>
+        directly.
+      </p>
+
+      <p>&nbsp;</p>
+
+      <p>
+        <a name="scp_transfer">Transfer Data with<code>scp</code></a>
+      </p>
+
+      <p>
+        <code>scp</code>copies files between hosts on a network. To transfer a file (ex. <code>my_file.txt</code>) to Corral’s secure system via <code>scp</code>, open a terminal on your local computer and navigate to the path where your data file is located.
+      </p>
+
+      <p>&nbsp;</p>
+
+      <table cellspacing="1" style="width: 500px" border="1" cellpadding="1">
+        <tbody>
+          <tr>
+            <td>
+              <code>localhost$ cd Documents/a2cps-data/</code>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>&nbsp;</p>
+
+      <p>&nbsp;</p>
+
+      <p>
+        Assuming your TACC username is <code>jdoe</code> and you are affiliated with UT Austin, a <code>scp</code> transfer that pushes <code>my_file.txt</code>
+        from your local computer to Corral’s secure system would look like this:
+      </p>
+
+      <p>&nbsp;</p>
+
+      <table cellspacing="1" style="width: 1500px" border="1" cellpadding="1">
+        <tbody>
+          <tr>
+            <td>
+              <p>
+                <code>localhost$ scp ./my_file.txt jdoe@secure.corral.tacc.utexas.edu:/corral-secure/projects/A2CPS/submissions/utaustin/</code>
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>&nbsp;</p>
+
+      <table class="MsoTableGridLight"
+        style="border-collapse: collapse; border: solid #bfbfbf 1pt"
+      >
+        <tbody>
+          <tr>
+            <td style="
+                border: solid #bfbfbf 1pt;
+                width: 467.5pt;
+                padding: 0in 5.4pt 0in 5.4pt;
+              "
+              valign="top"
+              width="623"
+            >
+              <p>
+                Note: This command will copy your data file directly to your individualized transfer directory on Corral’s system.
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>&nbsp;</p>
+
+      <p>
+        <em>If you have not done so already, enter this command in your terminal, replacing the file name, TACC username, and your individualized transfer directory name appropriately.</em>
+      </p>
+
+      <p>&nbsp;</p>
+
+      <p>
+        After entering the command, you will be prompted to login to Corral’s secure system by entering the password associated with your TACC account as well as the token value generated from your TACC token app.
+      </p>
+
+      <p>&nbsp;</p>
+
+      <p>
+        The data transfer was successful if your terminal output looks like this:
+      </p>
+
+      <p>&nbsp;</p>
+
+      <table cellspacing="1" style="width: 500px" border="1" cellpadding="1">
+        <tbody>
+          <tr>
+            <td>
+              <pre><code>my_file.txt     100% ##  #.#                      KB/s  ##:##</code></pre>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>&nbsp;</p>
+
+      <p>&nbsp;</p>
+
+      <p>
+        If you wish to learn more about <code>scp</code>, you can do so
+        <a href="https://man7.org/linux/man-pages/man1/scp.1.html">here</a>
+        .
+      </p>
+
+      <p>&nbsp;</p>
+
+      <p>
+        <a name="sftp_transfer">Transfer Data with <code>sftp</code></a>
+      </p>
+
+      <p>
+        <code>sftp</code>
+        is a file transfer program that allows you to interactively navigate between your local file system and Corral’s remote secure system. To transfer a file (ex. <code>my_file.txt</code>) to Corral’s secure system via <code>sftp</code>, open a terminal on your local computer and navigate to the path where your data file is located.&nbsp;
+      </p>
+
+      <p>&nbsp;</p>
+
+      <table cellspacing="1" style="width: 500px" border="1" cellpadding="1">
+        <tbody>
+          <tr>
+            <td>
+              <code>localhost$ cd Documents/a2cps-data/</code>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>&nbsp;</p>
+
+      <p>&nbsp;</p>
+
+      <p>
+        Assuming your TACC username is <code>jdoe</code> and you are affiliated with UT Austin, a <code>sftp</code> transfer that pushes <code>my_file.txt</code>
+        from your local computer to Corral’s secure system would look like this:
+      </p>
+
+      <p>&nbsp;</p>
+
+      <table cellspacing="1" style="width: 1500px" border="1" cellpadding="1">
+        <tbody>
+          <tr>
+            <td>
+              <p>
+                <code>localhost$ sftp jdoe@secure.corral.tacc.utexas.edu:/corral-secure/projects/A2CPS/submissions/utaustin</code>
+              </p>
+
+              <p>
+                <code>Password:</code>
+              </p>
+
+              <p>
+                <code>TACC Token Code:</code>
+              </p>
+
+              <p>
+                <code>Connected to secure.corral.tacc.utexas.edu.</code>
+              </p>
+
+              <p>
+                <code>Changing to:
+                  /corral-secure/projects/A2CPS/submissions/utaustin</code>
+              </p>
+
+              <p>
+                <code>sftp&gt;</code>
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        <br />
+        &nbsp;
+      </p>
+
+      <p>
+        <em>If you have not done so already, enter this command in your terminal, replacing the TACC username and your individualized transfer directory name appropriately.</em>
+      </p>
+
+      <p>
+        At this point, you have logged in to Corral’s secure system and been redirected to your transfer directory. To confirm your location on Corral, enter the following command:
+      </p>
+
+      <p>&nbsp;</p>
+
+      <table cellspacing="1" style="width: 1000px" border="1" cellpadding="1">
+        <tbody>
+          <tr>
+            <td>
+              <code>sftp&gt; pwd<br />
+                Remote working directory:
+                /corral-secure/projects/A2CPS/submissions/utaustin</code>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>&nbsp;</p>
+
+      <p>&nbsp;</p>
+
+      <p>To list the files currently in your transfer directory:</p>
+
+      <p>&nbsp;</p>
+
+      <table cellspacing="1" style="width: 500px" border="1" cellpadding="1">
+        <tbody>
+          <tr>
+            <td>
+              <p>
+                <code>ftp&gt; ls</code>
+              </p>
+
+              <p>
+                <code>utaustin_dir.txt</code>
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>&nbsp;</p>
+
+      <p>&nbsp;</p>
+
+      <p>
+        To list the files currently in your <em>local</em> directory (ex.
+        <code>/Users/myname/Documents/a2cps-data/</code>):
+      </p>
+
+      <p>&nbsp;</p>
+
+      <table cellspacing="1" style="width: 500px" border="1" cellpadding="1">
+        <tbody>
+          <tr>
+            <td>
+              <p>
+                <code>sftp&gt; lls</code>
+              </p>
+
+              <p>
+                <code>my_file.txt</code>
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>&nbsp;</p>
+
+      <table class="MsoTableGridLight"
+        style="border-collapse: collapse; border: solid #bfbfbf 1pt"
+      >
+        <tbody>
+          <tr>
+            <td style="
+                border: solid #bfbfbf 1pt;
+                width: 467.5pt;
+                padding: 0in 5.4pt 0in 5.4pt;
+              "
+              valign="top"
+              width="623"
+            >
+              <p>
+                Note: The leading <em>l</em> in the <code>lls</code> command denotes that you are listing the contents of your <em>local</em> working directory.
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>&nbsp;</p>
+
+      <p>
+        To transfer <code>my_file.txt</code> from your local computer to <code>/corral-secure/projects/A2CPS/submissions/utaustin</code>:
+      </p>
+
+      <p>&nbsp;</p>
+
+      <table cellspacing="1" style="width: 1000px" border="1" cellpadding="1">
+        <tbody>
+          <tr>
+            <td>
+              <p>
+                <code>sftp&gt; put my_file.txt</code>
+              </p>
+
+              <p>
+                <code>Uploading my_file.txt to
+                  /corral-secure/projects/A2CPS/submissions/utaustin/my_file.txt</code>
+              </p>
+
+              <p>
+                <code>my_file.txt &nbsp;&nbsp;&nbsp; 100% ##&nbsp;
+                  #.#KB/s&nbsp;&nbsp; ##:##</code>
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>&nbsp;</p>
+
+      <p>
+        To check if <code>my_file.txt</code> is in the <code>utaustin</code>
+        subfolder:
+      </p>
+
+      <p>&nbsp;</p>
+
+      <table cellspacing="1" style="width: 500px" border="1" cellpadding="1">
+        <tbody>
+          <tr>
+            <td>
+              <p>
+                <code>sftp&gt; ls</code>
+              </p>
+
+              <p>
+                <code>my_file.txt</code>
+              </p>
+
+              <p>
+                <code>utaustin_dir.txt</code>
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>&nbsp;</p>
+
+      <p>
+        To exit out of <code>sftp</code>
+        on the terminal:
+      </p>
+
+      <p>&nbsp;</p>
+
+      <table cellspacing="1" style="width: 500px" border="1" cellpadding="1">
+        <tbody>
+          <tr>
+            <td>
+              <p>
+                <code>ftp&gt; bye</code>
+              </p>
+
+              <p>
+                <code>localhost1$</code>
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>&nbsp;</p>
+
+      <p>
+        If you wish to learn more about <code>sftp</code>, you can do so
+        <a href="https://man7.org/linux/man-pages/man1/sftp.1.html">here</a>.
+      </p>
+
+      <p>&nbsp;</p>
+
+      <p>
+        <a name="rsync_transfer">Transfer Data with <code>rsync</code></a>
+      </p>
+
+      <p>
+        <code>rsync</code>is a file copying tool that can reduce the amount of data transferred by sending only the differences between the source files on your local system and the existing files in your transfer directory. To transfer a file (ex. <code>my_file.txt</code>) to Corral’s secure system via <code>rsync</code>, open a terminal on your local computer and navigate to the path where your data file is located.
+      </p>
+
+      <p>&nbsp;</p>
+
+      <table cellspacing="1" style="width: 65%" border="1" cellpadding="1">
+        <tbody>
+          <tr>
+            <td>
+              <code>localhost$ cd Documents/a2cps-data/</code>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>&nbsp;</p>
+
+      <p>
+        Assuming your TACC username is <code>jdoe</code> and you are affiliated with UT Austin, a <code>rsync</code> transfer that pushes <code>my_file.txt</code>
+        from your local computer to Corral’s secure system would look like this:
+      </p>
+
+      <p>&nbsp;</p>
+
+      <table cellspacing="1" style="width: 1000px" border="1" cellpadding="1">
+        <tbody>
+          <tr>
+            <td>
+              <code>localhost$ rsync ./my_file.txt jdoe@secure.corral.tacc.utexas.edu:/corral-secure/projects/A2CPS/submissions/utaustin/</code>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>&nbsp;</p>
+
+      <p>
+        <em>If you have not done so already, enter this command in your terminal, replacing the TACC username and your individualized transfer directory name appropriately.</em>
+      </p>
+
+      <p>&nbsp;</p>
+
+      <p>
+        If the command returns 0 in your terminal, the data transfer was successful.
+      </p>
+
+      <p>&nbsp;</p>
+
+      <p>
+        If you wish to learn more about <code>rsync</code> and how to synchronize your file transfer, you can do so
+        <a href="https://man7.org/linux/man-pages/man1/rsync.1.html">here</a>
+        or follow the “Transferring files using <code>scp</code> and <code>rsync</code>” section of our
+        <a href="https://portal.tacc.utexas.edu/user-guides/stampede2#transferring-scp">Stampede2 guide<a>
+        .
+      </p>
+
+      <p>&nbsp;</p>
+
+      <p><a name="cyberduck_transfer">Transfer Data with Cyberduck</a></p>
+
+      <p>
+        <a href="https://cyberduck.io/">Cyberduck</a> is a free graphical tool for data transfer and is an alternative to using the command line. With a drag-and-drop interface, it is easy to transfer a file from your local system to Corral’s secure system. You can use
+        <a href="https://cyberduck.io/">Cyberduck</a>
+        for Windows or macOS.
+      </p>
+
+      <p>&nbsp;</p>
+
+      <h4><a name="cy_windows">For Windows</a></h4>
+
+      <p>
+        <a href="https://cyberduck.io/download/">Download and install Cyberduck for Windows<a>
+        on your local machine.
+      </p>
+
+      <p>
+        Once installed, click “Open Connection” in the top left corner of your Cyberduck window.
+      </p>
+
+      <p style="text-align: center">
+        <img src="/media/filer_public_thumbnails/filer_public/a9/9f/a99fa278-ae07-4b5e-9219-f9db3c2c89d5/picture2.png__1170x0_q85_subsampling-2_upscale.png"
+          alt=""
+          class="img-responsive"
+          width="65%"
+          margin="1rem"
+        />
+      </p>
+
+      <p style="text-align: center">
+        <a name="figure2">Figure 2. Windows Cyberduck and “Open Connection” setup screen<a>
+      </p>
+
+      <p>&nbsp;</p>
+
+      <p>
+        To setup a connection, type in the server name <code>secure.corral.tacc.utexas.edu</code>. Add your TACC username and password in the spaces provided. If the "More Options" area is not shown, click the small triangle button to expand the window; this will allow you to enter the path to your transfer directory (ex.
+        <code>/corral-secure/projects/A2CPS/submissions/tacc</code>) so that when Cyberduck opens the connection you will immediately be in your individualized transfer directory on Corral. Click the "Connect" button to open your connection.
+      </p>
+
+      <p>
+        Consult Figure 3. below to ensure the information you have provided is correct.
+        <em>If you have not done so already, replace the “Path” with the path to your individualized transfer directory.</em>
+      </p>
+
+      <p>&nbsp;</p>
+
+      <p style="text-align: center">
+        <img src="/media/filer_public_thumbnails/filer_public/10/fb/10fbbb2a-dcd8-44d8-9ade-fb4ed3df8487/picture3.png__1170x0_q85_subsampling-2_upscale.png"
+          alt=""
+          class="img-responsive"
+          width="65%"
+          margin="1rem"
+        />
+      </p>
+
+      <p style="text-align: center">
+        <a name="figure3">Figure 3. Windows “Open Connection” setup screen</a>
+      </p>
+
+      <p style="text-align: center">&nbsp;</p>
+
+      <table class="MsoTableGridLight"
+        style="border-collapse: collapse; border: solid #bfbfbf 1pt"
+      >
+        <tbody>
+          <tr>
+            <td style="
+                border: solid #bfbfbf 1pt;
+                width: 467.5pt;
+                padding: 0in 5.4pt 0in 5.4pt;
+              "
+              valign="top"
+              width="623"
+            >
+              <p>
+                Note: You will be prompted to “allow unknown fingerprint…” upon connection. Select “allow” and enter your TACC token value.
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>&nbsp;</p>
+
+      <p>
+        Once connected, you can navigate through your remote file hierarchy using familiar graphical navigation techniques. You may also drag-and-drop files from your local computer into the Cyberduck window to transfer files to Corral.
+      </p>
+
+      <p>&nbsp;</p>
+
+      <h4><a name="cy_mac">For Mac</a></h4>
+
+      <p>
+        <a href="https://cyberduck.io/download/">Download and install Cyberduck for macOS<a>
+        on your local machine.
+      </p>
+
+      <p>
+        Once installed, go to Bookmark &gt; New Bookmark to setup a connection.
+      </p>
+
+      <p>&nbsp;</p>
+
+      <table class="MsoTableGridLight"
+        style="border-collapse: collapse; border: solid #bfbfbf 1pt"
+      >
+        <tbody>
+          <tr>
+            <td style="
+                border: solid #bfbfbf 1pt;
+                width: 467.5pt;
+                padding: 0in 5.4pt 0in 5.4pt;
+              "
+              valign="top"
+              width="623"
+            >
+              <p>
+                Note: You cannot select “Open Connection” in the top left corner of your Cyberduck window as macOS’ setup screen is missing the
+                “More Options” button.
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>&nbsp;</p>
+
+      <p>
+        To setup a connection using “New Bookmark", type in the server name <code>secure.corral.tacc.utexas.edu</code>. Add your TACC username and password in the spaces provided. If the "More Options" area is not shown, click the small triangle or button to expand the window; this will allow you to enter the path to your transfer directory (ex.
+        <code>/corral-secure/projects/A2CPS/submissions/tacc</code>) so that when Cyberduck opens the connection you will immediately be in your individualized transfer directory on Corral. As you fill out the information, Cyberduck will be creating the bookmark for you. Exit out of the setup screen and click on your newly created bookmark to launch the connection.
+      </p>
+
+      <p>&nbsp;</p>
+
+      <p style="text-align: center">
+        <img src="/media/filer_public_thumbnails/filer_public/fa/b3/fab3edd6-c7a6-46dc-8103-09917ef02240/picture4.png__1170x0_q85_subsampling-2_upscale.png"
+          alt=""
+          class="img-responsive"
+          width="65%"
+          margin="1rem"
+        />
+      </p>
+
+      <p>&nbsp;</p>
+
+      <p style="text-align: center">
+        <a name="figure4">Figure 4. macOS “New Bookmark” setup screen</a>
+      </p>
+
+      <p>
+        Consult Figure 4. above to ensure the information you have provided is correct.
+        <em>If you have not done so already, replace the “Path” with the path to your individualized transfer directory.</em>
+      </p>
+
+      <p>&nbsp;</p>
+
+      <table class="MsoTableGridLight"
+        style="border-collapse: collapse; border: solid #bfbfbf 1pt"
+      >
+        <tbody>
+          <tr>
+            <td style="
+                border: solid #bfbfbf 1pt;
+                width: 467.5pt;
+                padding: 0in 5.4pt 0in 5.4pt;
+              "
+              valign="top"
+              width="623"
+            >
+              <p>
+                Note: You will be prompted to “allow unknown fingerprint…” upon connection. Select “allow” and enter your TACC token value.
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>&nbsp;</p>
+
+      <p>
+        Once connected, you can navigate through your remote file hierarchy using familiar graphical navigation techniques. You may also drag-and-drop files from your local computer into the Cyberduck window to transfer files to Corral.
+      </p>
+
+      <p>
+        <a name="references">References</a>
+      </p>
+
+      <ul>
+        <li>
+          <a href="https://man7.org/linux/man-pages/man1/scp.1.html">https://man7.org/linux/man-pages/man1/scp.1.html<a>
+        </li>
+        <li>
+          <a href="https://man7.org/linux/man-pages/man1/sftp.1.html">https://man7.org/linux/man-pages/man1/sftp.1.html<a>
+        </li>
+        <li>
+          <a href="https://man7.org/linux/man-pages/man1/rsync.1.html">https://man7.org/linux/man-pages/man1/rsync.1.html<a>
+        </li>
+        <li>
+          <a href="https://portal.tacc.utexas.edu/tutorials/multifactor-authentication">https://portal.tacc.utexas.edu/tutorials/multifactor-authentication<a>
+        </li>
+        <li>
+          <a href="https://portal.tacc.utexas.edu/user-guides/corral">https://portal.tacc.utexas.edu/user-guides/corral<a>
+        </li>
+        <li>
+          <a href="https://portal.tacc.utexas.edu/user-guides/stampede2">https://portal.tacc.utexas.edu/user-guides/stampede2<a>
+        </li>
+        <li>
+          <a href="https://portal.xsede.org/data-management">https://portal.xsede.org/data-management<a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock content %}
