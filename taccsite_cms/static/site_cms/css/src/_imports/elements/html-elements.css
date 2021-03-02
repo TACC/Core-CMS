@@ -111,7 +111,10 @@ code, kbd, pre, samp {
   font-family: var(--global-font-family--mono);
 }
 
-code {
+/* Code (<code>, <samp>, <pre>) */
+
+/* Code: any content or context) */ code,
+/* Code: content has only output */ pre > samp {
   background-color: var(--global-color-primary--x-light);
 
   border-width: var(--global-border-width--normal);
@@ -121,21 +124,33 @@ code {
   /* Undo Bootstrap */
   color: unset;
 }
-:not(pre) > code {
+/* Code: context is inline */ :not(pre) > code {
   display: inline-block;
   padding: var(--global-space--xx-small) var(--global-space--x-small);
 }
-pre > code {
-  display: block;
+/* Code: context is block, content has input */ pre > code,
+/* Code: context is block, content has only ouput */ pre > samp {
+  display: inline-block; /* FAQ: If `block`, then background color is cropped */
   padding: var(--global-space--x-small) var(--global-space--small);
 }
-
-samp {
-  font-size: 87.5%; /* mirror Bootstrap `code { font-size: 87.5%; }` */
+/* Code: context is block, container probably has inline-style width set */
+/* FAQ: Stretch code to meet container width */
+pre[style] > code,
+pre[style] > samp {
+  min-width: 100%;
 }
-pre > code samp {
-  /* TODO: Use `user-select` after Autoprefixer is part of CSS processing */
-  -webkit-user-select: none;
+
+/* Code: context is inline, content has only output */
+/* FAQ: Examples: command output within CLI illustration */
+pre samp {
+  opacity: 0.75;
+  text-decoration: none;
+}
+/* Code: context is inline, content has context-agnostic output */
+/* FAQ: Examples: command prompt within CLI illustration */
+pre code u {
+  opacity: 0.50;
+  text-decoration: none;
 }
 
 
@@ -246,7 +261,11 @@ Reference:
 Styleguide Elements.Tables
 */
 
-/* … */
+.s-guide-doc table,
+.s-guide-doc td,
+.s-guide-doc th {
+  border: var(--global-border--normal);
+}
 
 
 

@@ -41,21 +41,65 @@ Styleguide Trumps.Scopes.GuideDoc
   margin-bottom: var(--global-space--normal);
 }
 
+/* Extra space above some headings */
+.s-guide-doc h4,
+.s-guide-doc h5,
+.s-guide-doc h6 {
+  margin-top: 2em;
+}
+
+/* ELEMENTS: Text Content */
+
+.s-guide-doc blockquote {
+  opacity: 0.75;
+  border: var(--global-border--normal);
+
+  padding: 1em;
+}
+.s-guide-doc blockquote > *:last-child { margin-bottom: 0; }
+
+@media only screen and (min-width: 768px) {
+  blockquote { width: 600px; }
+}
+
+.s-guide-doc figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.s-guide-doc figcaption {
+  font-weight: bold;
+}
 
 /* ELEMENTS: Inline Text Semantics */
 /* ELEMENTS: Image & Multimedia */
 
+/* FAQ: Pulls images and code blocks closer to paragraph above */
 .s-guide-doc p + pre,
 .s-guide-doc p + img {
-  margin-top: -0.5rem;
+  margin-top: -0.75rem;
   margin-bottom: 1rem; /* mirror Bootstrap `_reboot.css` <p> */
 }
 
 
 /* ELEMENTS: Image & Multimedia */
 
-.s-guide-doc img {
+/* NOTE: The rsync_data_transfer_guide template uses <figure>'s */
+.s-guide-doc img/*:not(figure > img)*/ {
   width: 75%;
 
   border: var(--global-border--normal);
+}
+
+
+/* ELEMENTS: Table Content */
+
+.s-guide-doc table {
+  width: 100%;
+  max-width: 500px;
+
+  text-align: center;
+}
+.s-guide-doc td,
+.s-guide-doc th {
 }
