@@ -64,6 +64,7 @@ _CMS_TEMPLATES = (
     ('example-cms/templates/fullwidth.html', 'Fullwidth (Custom Example)'),
     ('hardcoded_pages/getting_started.html', 'Getting Started'),
     ('hardcoded_pages/globus_data_transfer_guide.html', 'Globus Data Transfer Guide'),
+    ('hardcoded_pages/rsync_data_transfer_guide.html', 'Guide: Rsync Data Transfer'),
     ('example-cms/templates/fullwidth.html', 'Fullwidth (Custom Example)')
 )
 
