@@ -12,10 +12,9 @@ href="{% static 'site_cms/css/build/template.guide-doc.css' %}"
 
 {% block content %}
 <div class="container s-guide-doc">
-  <h1>Portal Technology Stack</h1>
+  <h2>Portal Technology Stack</h2>
 
-  <hr>
-  <h2>Portal Overview</h2>
+  <h3>Portal Overview</h3>
 
   <p>CEP, Core Experience Portal, is the core engine for all TACC portal projects. The primary goal of the Core Portal project is to establish a codebase that can be used as a springboard for all future portal projects undertaken by TACC. By establishing a common codebase for all portal efforts, we can better maintaining alignment between the core capabilities and technologies supported across all TACC portals. There will be unique requirements in some portal projects, but CEP should provide an "out-of-the-box" framework for rapidly deploying a new portal project with all the common capabilities already in place and compliant with current best practices and conventions at TACC.</p>
 
@@ -51,8 +50,7 @@ href="{% static 'site_cms/css/build/template.guide-doc.css' %}"
 
   <p><em>Note: Any additional portal capabilities required by a project need to be identified and planned for independently.</em></p>
 
-  <hr>
-  <h2>High-level Architecture</h2>
+  <h3>High-level Architecture</h3>
 
   <p>The portal architecture operates in a tiered structure. Listed below in order from the outermost-tier and going inward, they are:</p>
 
@@ -73,8 +71,7 @@ href="{% static 'site_cms/css/build/template.guide-doc.css' %}"
     " border="1px solid #000 ">
   </p>
 
-  <hr>
-  <h2>Backend (Server-side)</h2>
+  <h3>Backend (Server-side)</h3>
 
   <p><strong>Agave Platform</strong> (<a href="http://agaveapi.co" class="external-link" rel="nofollow">http://agaveapi.co</a>) an open source, science-as-a-service API platform that provides HPC and file management integrations. (Agave is developed in-house).</p>
 
@@ -88,8 +85,7 @@ href="{% static 'site_cms/css/build/template.guide-doc.css' %}"
 
   <p><strong>Projects API</strong>&nbsp;- Returns project listings and associated files utilizing the Django framework.</p>
 
-  <hr>
-  <h2>Frontend (Client-side)</h2>
+  <h3>Frontend (Client-side)</h3>
 
   <p><strong>Web based Portals</strong></p>
 
@@ -127,8 +123,7 @@ href="{% static 'site_cms/css/build/template.guide-doc.css' %}"
 
   <p>CEP has a multi-tenant capable full-text search engine with an HTTP web interface and schema-free JSON documents based on ElasticSearch. Users can search for data files, or text.</p>
 
-  <hr>
-  <h2>Environment</h2>
+  <h3>Environment</h3>
 
   <p>The Core portal utilizes a wide variety of technologies developed by multiple technology vendors. Below is a list of the primary libraries, frameworks and APIs leveraged in the core portal tech stack.</p>
 
