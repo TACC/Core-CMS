@@ -57,13 +57,13 @@
   {% cms_toolbar %}
 
   <!-- Custom Navigation Block per Site to Customize the Site Header Branding. -->
-  <header class="o-site__head">
+  <div class="o-site__head">
     {% include "header.html" %}
-  </header>
+  </div>
 
   <!-- Page content. -->
   <div id="cms-content" class="o-site o-site__body">
-    <main class="o-site__body">
+    <div id="content-wrap" class="o-site__body">
       <!-- This block used regardless. -->
       {% block content %}
       <div class="container">
@@ -71,7 +71,7 @@
       </div>
       {% endblock content %}
       <!-- End of Block. -->
-    </main>
+    </div>
 
     <!-- Footer block. -->
     <footer class="c-footer  s-footer  o-site__foot">
