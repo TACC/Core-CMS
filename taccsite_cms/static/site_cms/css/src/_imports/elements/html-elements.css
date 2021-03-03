@@ -80,9 +80,12 @@ Reference:
 Styleguide Elements.TextContent
 */
 
-/* Undo Bootstrap `_reboot.css` */
-ol ol, ol ul, ul ol, ul ul {
-  margin-bottom: 1rem;
+ol, ul,
+dl dl /* Treat nested definition lists like other nested lists */ {
+  padding-left: var(--global-space--list-indent);
+}
+dl dl, ol ol, ol ul, ul ol, ul ul {
+  margin: revert; /* Undo Bootstrap `_reboot.css` */
 }
 
 

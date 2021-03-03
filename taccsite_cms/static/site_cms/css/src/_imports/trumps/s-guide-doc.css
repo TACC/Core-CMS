@@ -41,11 +41,12 @@ Styleguide Trumps.Scopes.GuideDoc
   margin-bottom: var(--global-space--normal);
 }
 
-/* Extra space above some headings */
+/* Extra space above lesser headings */
+.s-guide-doc h3,
 .s-guide-doc h4,
 .s-guide-doc h5,
 .s-guide-doc h6 {
-  margin-top: 2em;
+  margin-top: 1.5em;
 }
 
 /* ELEMENTS: Text Content */
@@ -70,6 +71,7 @@ Styleguide Trumps.Scopes.GuideDoc
 .s-guide-doc figcaption {
   font-weight: bold;
 }
+
 
 /* ELEMENTS: Inline Text Semantics */
 /* ELEMENTS: Image & Multimedia */
