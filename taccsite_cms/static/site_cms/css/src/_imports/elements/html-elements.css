@@ -259,9 +259,9 @@ Reference:
 Styleguide Elements.Tables
 */
 
-.s-guide-doc table,
-.s-guide-doc td,
-.s-guide-doc th {
+table,
+td,
+th {
   border: var(--global-border--normal);
 }
 

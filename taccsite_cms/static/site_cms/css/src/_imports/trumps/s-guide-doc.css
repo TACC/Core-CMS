@@ -1,16 +1,10 @@
 /*
 Guide Doc
 
-Styles for elements within a guide document
-
-Markup: s-cms-nav.html
+Styles for elements within a user instruction guide document.
 
 Styleguide Trumps.Scopes.GuideDoc
 */
-
-.s-guide-doc {
-  margin-bottom: var(--global-space--large);
-}
 
 
 
@@ -21,13 +15,6 @@ Styleguide Trumps.Scopes.GuideDoc
 
 /* ELEMENTS: Content Sectioning */
 
-.s-guide-doc h2 {
-  margin: var(--global-space--large) 0 var(--global-space--normal);
-}
-
-.s-guide-doc h3 {
-  margin-bottom: var(--global-space--normal);
-}
 /* Fake <hr> above <h3> */
 .s-guide-doc h3::before {
   display: block;
@@ -37,17 +24,6 @@ Styleguide Trumps.Scopes.GuideDoc
   border-top: 1px solid var(--global-color-primary--light);
 }
 
-.s-guide-doc h3 {
-  margin-bottom: var(--global-space--normal);
-}
-
-/* Extra space above lesser headings */
-.s-guide-doc h3,
-.s-guide-doc h4,
-.s-guide-doc h5,
-.s-guide-doc h6 {
-  margin-top: 1.5em;
-}
 
 /* ELEMENTS: Text Content */
 
@@ -70,28 +46,6 @@ Styleguide Trumps.Scopes.GuideDoc
 }
 .s-guide-doc figcaption {
   font-weight: bold;
-}
-
-
-/* ELEMENTS: Inline Text Semantics */
-/* ELEMENTS: Image & Multimedia */
-
-/* FAQ: Pulls images and code blocks closer to paragraph above */
-.s-guide-doc p + pre,
-.s-guide-doc p + img {
-  margin-top: -0.75rem;
-  margin-bottom: 1rem; /* mirror Bootstrap `_reboot.css` <p> */
-}
-
-
-/* ELEMENTS: Image & Multimedia */
-
-/* NOTE: The rsync_data_transfer_guide template uses <figure>'s */
-.s-guide-doc img/*:not(figure > img)*/ {
-  display: block;
-  max-width: 75%;
-
-  border: var(--global-border--normal);
 }
 
 

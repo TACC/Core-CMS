@@ -1,0 +1,107 @@
+/*
+Document
+
+Styles for elements within a document page or section
+
+Styleguide Trumps.Scopes.Document
+*/
+
+.s-document {
+  margin-bottom: var(--global-space--large);
+}
+
+
+
+
+
+/* ELEMENTS */
+
+
+/* ELEMENTS: Content Sectioning */
+
+.s-document h2 {
+  margin: var(--global-space--large) 0 var(--global-space--normal);
+}
+
+.s-document h3 {
+  margin-bottom: var(--global-space--normal);
+}
+
+/* Extra space above lesser headings */
+.s-document h3 { margin-top: 1em; }
+.s-document h4,
+.s-document h5,
+.s-document h6 { margin-top: 1.25em; }
+
+/* ELEMENTS: Text Content */
+
+.s-document blockquote {
+  opacity: 0.75;
+  border: var(--global-border--normal);
+
+  padding: 1em;
+}
+.s-document blockquote > *:last-child { margin-bottom: 0; }
+
+@media only screen and (min-width: 768px) {
+  blockquote { width: 600px; }
+}
+
+.s-document figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.s-document figcaption {
+  font-weight: bold;
+}
+
+
+/* ELEMENTS: Inline Text Semantics */
+/* ELEMENTS: Image & Multimedia */
+
+/* FAQ: Pulls images and code blocks closer to paragraph above */
+.s-document p + pre,
+.s-document p + img {
+  margin-top: -0.75rem;
+  margin-bottom: 1rem; /* mirror Bootstrap `_reboot.css` <p> */
+}
+
+
+/* ELEMENTS: Image & Multimedia */
+
+/* NOTE: The rsync_data_transfer_guide template uses <figure>'s */
+.s-document img/*:not(figure > img)*/ {
+  display: block;
+  max-width: 75%;
+
+  border: var(--global-border--normal);
+}
+
+
+/* ELEMENTS: Table Content */
+
+.s-document table {
+  width: 100%;
+  max-width: 500px;
+
+  text-align: center;
+}
+
+
+
+
+
+/* COMPONENTS */
+
+/* COMPONENTS: Bootstrap */
+
+.s-document .row > .col > *:last-child {
+  margin-bottom: 0;
+}
+.s-document .row .row {
+  padding: var(--global-space--normal) 0;
+}
+.s-document .row .row:nth-child(even) {
+  background-color: var(--global-color-primary--x-light);
+}

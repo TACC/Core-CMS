@@ -61,11 +61,13 @@ _CMS_TEMPLATES = (
     # FAQ: First template is default template
     # REF: http://docs.django-cms.org/en/latest/how_to/install.html#templates
     ('fullwidth.html', 'Fullwidth'),
-    ('example-cms/templates/fullwidth.html', 'Fullwidth (Custom Example)'),
-    ('hardcoded_pages/getting_started.html', 'Guide: Getting Started'),
-    ('hardcoded_pages/globus_data_transfer_guide.html', 'Guide: Globus Data Transfer'),
-    ('hardcoded_pages/rsync_data_transfer_guide.html', 'Guide: Rsync Data Transfer'),
-    ('hardcoded_pages/portal_technology_stack.html', 'Guide: Portal Technology Stack')
+    ('example-cms/templates/fullwidth.html', 'Fullwidth (Custom Example)'),,
+    ('home.html', 'Homepage'),
+    ('guide.html', 'Guide'),
+    ('guides/getting_started.html', 'Guide: Getting Started'),
+    ('guides/globus_data_transfer.html', 'Guide: Globus Data Transfer'),
+    ('guides/rsync_data_transfer.html', 'Guide: Rsync Data Transfer'),
+    ('guides/portal_technology.html', 'Guide: Portal Technology Stack')
 )
 
 ########################

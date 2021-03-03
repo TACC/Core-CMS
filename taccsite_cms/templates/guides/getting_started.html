@@ -1,17 +1,6 @@
-{% extends "fullwidth.html" %}
-{% load staticfiles %}
+{% extends "guide.html" %}
 
-{% block assets_custom %}
-	{{ block.super }}
-
-	<link
-    rel="stylesheet"
-    href="{% static 'site_cms/css/build/template.guide-doc.css' %}"
-  >
-{% endblock assets_custom %}
-
-{% block content %}
-<div class="container s-guide-doc">
+{% block guide %}
   <div class="row">
     <div class="col">
       <h2>
@@ -448,5 +437,4 @@
       </div>
     </div>
   </div>
-</div>
-{% endblock content %}
+{% endblock guide %}

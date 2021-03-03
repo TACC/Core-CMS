@@ -1,0 +1,17 @@
+{% extends "fullwidth.html" %}
+{% load cms_tags staticfiles %}
+
+{% block assets_custom %}
+	{{ block.super }}
+
+	<link
+    rel="stylesheet"
+    href="{% static 'site_cms/css/build/template.home.css' %}"
+  >
+{% endblock assets_custom %}
+
+{% block content %}
+<div class="container  s-document">
+  {% placeholder "content" %}
+</div>
+{% endblock content %}
