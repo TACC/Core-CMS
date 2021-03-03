@@ -62,10 +62,9 @@ _CMS_TEMPLATES = (
     # REF: http://docs.django-cms.org/en/latest/how_to/install.html#templates
     ('fullwidth.html', 'Fullwidth'),
     ('example-cms/templates/fullwidth.html', 'Fullwidth (Custom Example)'),
-    ('hardcoded_pages/getting_started.html', 'Getting Started'),
-    ('hardcoded_pages/globus_data_transfer_guide.html', 'Globus Data Transfer Guide'),
-    ('hardcoded_pages/rsync_data_transfer_guide.html', 'Guide: Rsync Data Transfer'),
-    ('example-cms/templates/fullwidth.html', 'Fullwidth (Custom Example)')
+    ('hardcoded_pages/getting_started.html', 'Guide: Getting Started'),
+    ('hardcoded_pages/globus_data_transfer_guide.html', 'Guide: Globus Data Transfer'),
+    ('hardcoded_pages/rsync_data_transfer_guide.html', 'Guide: Rsync Data Transfer')
 )
 
 ########################
