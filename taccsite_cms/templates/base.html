@@ -57,31 +57,29 @@
   {% cms_toolbar %}
 
   <!-- Custom Navigation Block per Site to Customize the Site Header Branding. -->
-  <div class="o-site__head">
+  <header class="o-site__head">
     {% include "header.html" %}
-  </div>
+  </header>
 
   <!-- Page content. -->
-  <div id="cms-content" class="o-site o-site__body">
-    <div id="content-wrap" class="o-site__body">
-      <!-- This block used regardless. -->
-      {% block content %}
-      <div class="container">
-        {% placeholder "content" %}
-      </div>
-      {% endblock content %}
-      <!-- End of Block. -->
+  <main class="o-site__body">
+    <!-- This block used regardless. -->
+    {% block content %}
+    <div class="container">
+      {% placeholder "content" %}
     </div>
+    {% endblock content %}
+    <!-- End of Block. -->
+  </main>
 
-    <!-- Footer block. -->
-    <footer class="c-footer  s-footer  o-site__foot">
-      {% block footer %}
-      {% static_placeholder "footer-content" or %}
-      <p>©2020 Texas Advanced Computing Center, The University of Texas at Austin, Office of the Vice President for Research.</p>
-      {% endstatic_placeholder %}
-      {% endblock footer %}
-    </footer>
-  </div>
+  <!-- Footer block. -->
+  <footer class="c-footer  s-footer  o-site__foot">
+    {% block footer %}
+    {% static_placeholder "footer-content" or %}
+    <p>©2020 Texas Advanced Computing Center, The University of Texas at Austin, Office of the Vice President for Research.</p>
+    {% endstatic_placeholder %}
+    {% endblock footer %}
+  </footer>
 
   <!-- Site Assets (Delayed). -->
   {# The core site assets (late load) (can NOT be replaced by custom assets) #}
