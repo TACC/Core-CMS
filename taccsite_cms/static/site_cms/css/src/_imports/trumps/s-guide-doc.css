@@ -88,6 +88,7 @@ Styleguide Trumps.Scopes.GuideDoc
 
 /* NOTE: The rsync_data_transfer_guide template uses <figure>'s */
 .s-guide-doc img/*:not(figure > img)*/ {
+  display: block;
   max-width: 75%;
 
   border: var(--global-border--normal);

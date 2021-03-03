@@ -2,12 +2,14 @@
 {% load staticfiles %}
 
 {% block assets_custom %}
-{{ block.super }}
+  {{ block.super }}
 
-<link
-rel="stylesheet"
-href="{% static 'site_cms/css/build/template.guide-doc.css' %}"
->
+  <link rel="stylesheet" href="{% static 'site_cms/css/build/template.guide-doc.css' %}">
+  <style>
+    .s-guide-doc img {
+      border: none;
+    }
+  </style>
 {% endblock assets_custom %}
 
 {% block content %}
@@ -68,10 +70,8 @@ href="{% static 'site_cms/css/build/template.guide-doc.css' %}"
     <dd>The physical infrastructure (storage, HPC and Cloud systems) where data and applications are stored, manipulated, and executed (Corral, Stampede2, Lonestar5, etc.).</dd>
   </dl>
 
-  <p><img src="https://cep-web-staging-01.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/4e/de/4ede0716-07fb-455c-a3a4-ef0cc8b36857/image2018-12-13_15-26-55.png__400x225_q85_crop_subsampling-2_upscale.png" alt="portal-high-level-architecture" class="
-    img-responsive
-    img-rounded
-    " border="1px solid #000 ">
+  <p>
+    <img src="https://cep-web-staging-01.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/4e/de/4ede0716-07fb-455c-a3a4-ef0cc8b36857/image2018-12-13_15-26-55.png__400x225_q85_crop_subsampling-2_upscale.png" alt="Portal high-level architecture diagram as a triangle pointing up and segmented into four layers, where the top is layer 4 and the bottom is layer 1">
   </p>
 
   <h3>Backend (Server-side)</h3>
@@ -112,8 +112,8 @@ href="{% static 'site_cms/css/build/template.guide-doc.css' %}"
 
   <ul>
     <li><strong>My Data</strong> drive hosts any data the user decides to store there. This is also the default storage device for application output data from the Workspace. Within the MyData space, users can organize, manipulate, view, copy the data to an external storage resource.</li>
-    <li><strong>My Projects </strong>view displays the projects the user has created or has been shared with by another team member. Within this scope, files associated with a specific project can be manipulated, tagged, organized, and published through the Data Curation workflow, where publications automatically receive a DOI.</li>
-    <li><strong>Community Data </strong>view displays non-curated user-contributed data for public use.</li>
+    <li><strong>My Projects</strong> view displays the projects the user has created or has been shared with by another team member. Within this scope, files associated with a specific project can be manipulated, tagged, organized, and published through the Data Curation workflow, where publications automatically receive a DOI.</li>
+    <li><strong>Community Data</strong> view displays non-curated user-contributed data for public use.</li>
   </ul>
 
   <h4>Applications</h4>
