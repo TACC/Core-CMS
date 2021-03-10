@@ -3,7 +3,7 @@
 {% block guide %}
   <div class="row">
     <div class="col">
-      <h2>A2CPS Data Transfer and Management Guide</h2>
+      <h2>Rsync Data Transfer and Management Guide</h2>
       <h3>Outline</h3>
 
       <ul>
@@ -14,7 +14,7 @@
           <a href="#corral">What is Corral?</a>
         </li>
         <li>
-          <a href="#a2cps_prereqs">Prerequisites for A2CPS Project User</a>
+          <a href="#rsync_prereqs">Prerequisites for Portal user</a>
         </li>
         <li>
           <a href="#command_line_tools">Using Command Line Tools to Transfer and Organize Data</a>
@@ -77,7 +77,7 @@
       <h3>Data Transfer and Management Guide</h3>
 
       <p>
-        Transferring A2CPS project data from your local machine to
+        Transferring Portal data from your local machine to
         <a href="#corral">TACC’s Corral system</a> can be accomplished using two methods: command line tools (<code>scp</code>, <code>sftp</code>,
         <code>rsync</code>) and graphical tools (Cyberduck).
       </p>
@@ -118,11 +118,14 @@
       <h4 id="corral">What is Corral?</h4>
 
       <p>
-        Corral is one of TACC’s systems dedicated to storage and data management. Corral can be used for storing protected data on a secure location of Corral (i.e. Corral Secure). As an A2CPS project user, you have access to Corral’s secure server “
+        Corral is one of TACC’s systems dedicated to storage and data management. Corral can be used for storing protected data on a secure location of Corral (i.e. Corral Secure). As an Portal user, you have access to Corral’s secure server “
+        <!-- XXX: What values to use? -->
         <code>secure.corral.tacc.utexas.edu</code>
-        ”, as well as the secure Corral folder <code>/corral-secure/projects/A2CPS</code>. Corral Secure’s system is to be used exclusively for transferring and accessing A2CPS project data.
+        ”, as well as the secure Corral folder
+        <code>/corral-secure/projects/A2CPS</code>
+        . Corral Secure’s system is to be used exclusively for transferring and accessing Portal data.
       </p>
-      <h4 id="a2cps_prereqs">Prerequisites for A2CPS Project User</h4>
+      <h4 id="rsync_prereqs">Prerequisites for Portal User</h4>
 
       <p>There are two requirements needed prior to transferring data:</p>
 
@@ -135,7 +138,7 @@
       </ul>
 
       <p>
-        As an A2CPS project user, you should already have access to a TACC account through the
+        As an Portal user, you should already have access to a TACC account through the
         <a target="_blank" href="https://portal.tacc.utexas.edu/">TACC Portal</a>
         . If you are unsure of your TACC account username, please consult the
         “TACC Account Request Confirmation” email you have received from TACC Accounting Staff, or contact
@@ -207,11 +210,11 @@
       </figure>
 
       <p>
-        For example, a file located in an <code>a2cps-data</code> folder in
+        For example, a file located in an <code>portal-data</code> folder in
         <code>Documents</code> would have the following path:
       </p>
       <p>
-        <code>/Users/myname/Documents/a2cps-data/my_file.txt</code>
+        <code>/Users/myname/Documents/portal-data/my_file.txt</code>
       </p>
       <h4 id="corral_data_path">
         Determining the Path to Your Transfer Directory on Corral
@@ -243,7 +246,7 @@
       <p>
         <code>scp</code>copies files between hosts on a network. To transfer a file (ex. <code>my_file.txt</code>) to Corral’s secure system via <code>scp</code>, open a terminal on your local computer and navigate to the path where your data file is located.
       </p>
-      <pre style="max-width: 500px"><code><u>localhost$ </u>cd Documents/a2cps-data/</code></pre>
+      <pre style="max-width: 500px"><code><u>localhost$ </u>cd Documents/portal-data/</code></pre>
 
       <p>
         Assuming your TACC username is <code>jdoe</code> and you are affiliated with UT Austin, a <code>scp</code> transfer that pushes <code>my_file.txt</code> from your local computer to Corral’s secure system would look like this:
@@ -277,7 +280,7 @@
         <code>sftp</code>
         is a file transfer program that allows you to interactively navigate between your local file system and Corral’s remote secure system. To transfer a file (ex. <code>my_file.txt</code>) to Corral’s secure system via <code>sftp</code>, open a terminal on your local computer and navigate to the path where your data file is located.&nbsp;
       </p>
-      <pre style="max-width: 500px"><code><u>localhost$ </u>cd Documents/a2cps-data/</code></pre>
+      <pre style="max-width: 500px"><code><u>localhost$ </u>cd Documents/portal-data/</code></pre>
 
       <p>
         Assuming your TACC username is <code>jdoe</code> and you are affiliated with UT Austin, a <code>sftp</code> transfer that pushes
@@ -311,7 +314,7 @@ Changing to:
 
       <p>
         To list the files currently in your <em>local</em> directory (ex.
-        <code>/Users/myname/Documents/a2cps-data/</code>):
+        <code>/Users/myname/Documents/portal-data/</code>):
       </p>
 
       <pre style="max-width: 500px"><code><u>sftp&gt; </u>lls
@@ -357,7 +360,7 @@ Changing to:
       <p>
         <code>rsync</code>is a file copying tool that can reduce the amount of data transferred by sending only the differences between the source files on your local system and the existing files in your transfer directory. To transfer a file (ex. <code>my_file.txt</code>) to Corral’s secure system via <code>rsync</code>, open a terminal on your local computer and navigate to the path where your data file is located.
       </p>
-      <pre style="max-width: 500px" ><code><u>localhost$ </u>cd Documents/a2cps-data/</code></pre>
+      <pre style="max-width: 500px" ><code><u>localhost$ </u>cd Documents/portal-data/</code></pre>
       <p>
         Assuming your TACC username is <code>jdoe</code> and you are affiliated with UT Austin, a <code>rsync</code> transfer that pushes
         <code>my_file.txt</code>
