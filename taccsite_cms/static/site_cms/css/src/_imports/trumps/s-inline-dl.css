@@ -3,14 +3,6 @@
 
 Of `<dl>` (description lists), make terms in-line with descritpions.
 
-- FontAwesome icons
-  (for Portal navigation)
-- Bootstrap
-  (for CMS navigation)
-  (for Portal navigation)
-- a subset of Bootstrap 3.3.7
-  (for CMS body content, can affect navigation)
-
 Markup:
 <dl class="s-inline-dl">
   <dt>Apple</dt><dd>Red round fruit.</dd>
