@@ -79,8 +79,12 @@ ol, ul,
 dl dl /* Treat nested definition lists like other nested lists */ {
   padding-left: var(--global-space--list-indent);
 }
-dl dl, ol ol, ol ul, ul ol, ul ul {
+ol ol, ol ul, ul ol, ul ul {
   margin: revert; /* Undo Bootstrap `_reboot.css` */
+}
+/* Add space between `dt` and `dd` */
+dt {
+  margin-bottom: .5rem; /* Mirror's Bootstrap `margin-bottom` */
 }
 
 
@@ -107,6 +111,11 @@ var,
 /* Overwrite Bootstrap (which does not use its `--font-family-monospace`) */
 code, kbd, pre, samp {
   font-family: var(--global-font-family--mono);
+}
+code kbd {
+  margin-left: .2rem;
+  margin-right: .2rem;
+  font-size: inherit;
 }
 
 /* Code (<code>, <samp>, <pre>) */
@@ -307,4 +316,8 @@ Reference:
 Styleguide Elements.Interactive
 */
 
-/* … */
+/* Clone Bootstrap's <p> and <ul> margins */
+details {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}

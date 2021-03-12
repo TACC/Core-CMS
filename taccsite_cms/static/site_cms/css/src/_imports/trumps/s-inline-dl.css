@@ -23,11 +23,19 @@ Styleguide Trumps.Scopes.InlineDescriptionList
 dl.s-inline-dl dt {
   display: block;
   float: left;
+
+  /* Remove space between <dt> and <dd> (from our styles) */
+  /* SEE: ../elments/html-elements.html */
+  margin-bottom: 0;
 }
-dl.s-inline-dl {
-  list-style: outside disc;
+dl.s-inline-dl dd {
+  clear: right;
+
+  /* Remove space between <dd>'s (from Bootstrap) */
+  margin-bottom: 0;
 }
 dl.s-inline-dl dt::after {
-  content: ":";
+  content: ':';
+
   margin-inline-end: 0.25em;
 }

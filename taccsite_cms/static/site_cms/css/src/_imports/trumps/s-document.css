@@ -56,13 +56,24 @@ Styleguide Trumps.Scopes.Document
   font-weight: bold;
 }
 
+/* Treat nested definition lists like other nested lists */
+/* NOTE: See `../elments/html-elements.html` for `dl dl` reference styles */
+p + dl.small {
+  padding-left: var(--global-space--list-indent);
+}
 
+/* ELEMENTS: Text Content */
 /* ELEMENTS: Inline Text Semantics */
 /* ELEMENTS: Image & Multimedia */
+/* ELEMENTS: Interactive Elements */
 
-/* FAQ: Pulls images and code blocks closer to paragraph above */
+/* FAQ: Pulls images, code, and some lists closer to paragraph above */
+.s-document p + ul.small /* Bootstrap class */,
+.s-document p + ol.small /* Bootstrap class */,
+.s-document p + dl.small /* Bootstrap class */,
 .s-document p + pre,
-.s-document p + img {
+.s-document p + img,
+.s-document p + details {
   margin-top: -0.75rem;
   margin-bottom: 1rem; /* mirror Bootstrap `_reboot.css` <p> */
 }
@@ -87,6 +98,23 @@ Styleguide Trumps.Scopes.Document
 
   text-align: center;
 }
+
+/* ELEMENTS: Interactive Elements */
+
+.s-document summary {
+  /* Make text line up with paragraphs and marker be to the left */
+  /* WARNING: This value is an estimate */
+  /* NOTE: Isolate usage because it could hide marker in some contexts */
+  margin-left: -1.2rem;
+}
+.s-document summary::after {
+  display: inline-block;
+  margin-left: 0.2rem;
+
+  opacity: 0.75;
+}
+.s-document details[open] > summary::after { content: '(hide)'; }
+.s-document details:not([open]) > summary::after { content: '(show)'; }
 
 
 

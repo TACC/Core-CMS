@@ -20,14 +20,14 @@
       </p>
       <ul>
         <li>
-          Step 1: Retrieve and Associate a Distinguished Name (DN) with Your TACC Account
+          <a href="#step-1-distinguished-name">Step 1: Retrieve and Associate a Distinguished Name (DN) with Your TACC Account</a>
         </li>
         <li>
-          Step 2: Activate Your Desktop/Laptop as a Globus Endpoint and Transfer Files
+          <a href="#step-2-globus-endpoint">Step 2: Activate Your Desktop/Laptop as a Globus Endpoint and Transfer Files</a>
         </li>
       </ul>
       <p>
-        PLEASE NOTE: You must use <i>your institution’s credentials and not your personal Google account</i> when setting up Globus. If you use a personal account, you will encounter an issue with the endpoint (Corral).
+        PLEASE NOTE: You must use <em>your institution’s credentials and not your personal Google account</em> when setting up Globus. If you use a personal account, you will encounter an issue with the appropriate endpoint (Frontera, Stampede2, Corral, Ranch).
       </p>
     </div>
   </div>
@@ -131,18 +131,40 @@
       <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/0f/3d/0f3daa28-6632-4d3e-a964-706d33dc2fa3/picture9.png__1170x0_q85_subsampling-2_upscale.png" />
 
       <p>
-        You can also click on Panels to look at two endpoints at the same time. In the other transfer endpoint, search for "TACC" and select either TACC Stampede2 (for My Data) or TACC Corral 3 (for My Projects).
+        You can also click on Panels to look at two endpoints at the same time. In the other transfer endpoint, search for "TACC" and select the appropriate allocation system (Frontera, Stampede2, Corral, Ranch).
       </p>
+      <details class="small"><summary>Examples:</summary>
+        <dl>
+          <dt>UTRC</dt>
+          <dd>
+            <dl class="s-inline-dl">
+              <dt>My Data</dt>
+              <dd>TACC Stampede2</dd>
+              <dt>Shared Workspaces</dt>
+              <dd>TACC Corral 3</dd>
+            </dl>
+          </dd>
+          <dt>Frontera</dt>
+          <dd>
+            <dl class="s-inline-dl">
+              <dt>My Data</dt>
+              <dd>TACC Frontera</dd>
+              <dt>Shared Workspaces</dt>
+              <dd>TACC Frontera</dd>
+            </dl>
+          </dd>
+        </dl>
+      </details>
 
       <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/5b/7a/5b7adb5f-da51-4dd0-9b84-44ce69c41da6/picture10.png__1170x0_q85_subsampling-2_upscale.png" />
 
       <p>
-        After successfully authenticating, you will be redirected back to Globus and you will now be able to access your data on Stampede2 or Corral:
+        After successfully authenticating, you will be redirected back to Globus and you will now be able to access your data on the allocation system (Frontera, Stampede2, Corral, Ranch):
       </p>
 
       <ul>
         <li>
-          <p>To access "My Data", use the Stampede2 endpoint and set <samp>Path</samp> to the path of your <var>$WORK</var> location on Stampede2.</p>
+          <p>To access "My Data", use the appropriate endpoint and set <samp>Path</samp> to the path of your <var>$WORK</var> location on your system.</p>
           <ul>
             <li>
               <p>To find that path, run the following commands in a terminal.</p>
@@ -157,12 +179,29 @@
               The output of the <code>pwd</code> command is your path to your <var>$WORK</var> directory.
             </li>
           </ul>
+
+          <p><small>Examples:</small></p>
+          <dl class="s-inline-dl  small">
+            <dt>Stampede 2</dt>
+            <dd>Endpoint: "Stampede2"</dd>
+            <dd>Path: <code>stampede2.tacc.utexas.edu</code></dd>
+          </dl>
         </li>
         <li>
-          <p>To access a project in "My Projects" use the Corral3 endpoint and set <samp>Path</samp> to <code>/corral-repl/tacc/aci/UTRC/projects/UTRC-ProjectIDNumber</code>.</p>
+          <p>To access a project in "My Projects" use the appropriate endpoint and set <samp>Path</samp> to:</p>
+          <code>/<kbd>path/to/portal/data</kbd>/<kbd>PORTAL</kbd>/projects/<kbd>PORTAL-ProjectIDNumber</kbd></code>
+
+          <p><small>Systems' Endpoint &amp; Path:</small></p>
+          <dl class="small">
+            <dt>Corral 3</dt>
+            <dd>Endpoint: "Corral3"</dd>
+            <dd>Path: <code>corral-repl/tacc/aci</code></dd>
+          </dl>
+
           <p><small>
-            Example:
-            <code>/corral-repl/tacc/aci/UTRC/projects/UTRC-26</code>
+            Examples:
+            <code>/corral-repl/tacc/aci/UTRC/projects/UTRC-26</code>,
+            <code>/corral-repl/tacc/aci/A2CPS/projects/A2CPS-1</code>
           </small></p>
 
           <ul>
@@ -171,16 +210,29 @@
               <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/53/f4/53f40efb-3207-44e8-a84c-59a2a97a9b56/picture11_a2cps.png__1170x0_q85_subsampling-2_upscale.png" />
             </li>
             <li>
-              <p>If you are viewing a project, the Project Id will be appended to the URL in your browser as '<samp>.../utrc.project.UTRC-##/</samp>'.</p>
+              <p>If you are viewing a project, the Project Id will be appended to the URL in your browser as:
+                <pre><code>https://<kbd>portal.domain</kbd>/workbench/data-depot/projects/<kbd>portal</kbd>.project.<kbd>PORTAL-ProjectIDNumber</kbd></code></pre>
                 <p><small>
-                  Example:
-                  <code>https://utrc.tacc.utexas.edu/workbench/data-depot/projects/utrc.project.UTRC-26</code>
+                  Examples:
+                  <code>https://utrc.tacc.utexas.edu/workbench/data-depot/projects/utrc.project.UTRC-26</code>,
+                  <code>https://a2cps.org/workbench/data-depot/projects/a2cps.project.A2CPS-42</code>
                 </small></p>
             </li>
           </ul>
         </li>
         <li>
-          To access Community Data, use the Corral3 endpoint and set Path to <code>/corral-repl/tacc/aci/UTRC/community/</code>.
+          To access "Community Data", use the appropriate endpoint and set <samp>Path</samp> to:
+          <code>/<kbd>path/to/portal/data</kbd>/<kbd>PORTAL</kbd>/community/</code>
+
+          <p><small>Examples:</small></p>
+          <dl class="small">
+            <dt>Corral 3</dt>
+            <dd>Endpoint: "Corral3"</dd>
+            <dd>Paths:
+              <code>/corral-repl/tacc/aci/UTRC/community/</code>,
+              <code>/corral-repl/tacc/aci/A2CPS/community/</code>
+            </dd>
+          </dl>
         </li>
       </ul>
 
