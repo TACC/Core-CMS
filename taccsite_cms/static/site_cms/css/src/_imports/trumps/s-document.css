@@ -101,12 +101,16 @@ p + dl.small {
 
 /* ELEMENTS: Interactive Elements */
 
-.s-document summary {
-  /* Make text line up with paragraphs and marker be to the left */
-  /* WARNING: This value is an estimate */
-  /* NOTE: Isolate usage because it could hide marker in some contexts */
-  margin-left: -1.2rem;
+/* FAQ: Indent details content, but not the summary */
+.s-document details {
+  --buffer-horz: 1em; padding-left: var(--buffer-horz);
 }
+.s-document summary { margin-left: calc( var(--buffer-horz) * -1 ); }
+
+.s-document details[open] > summary { margin-bottom: 0.5em; }
+
+/* Add explanation to summary toggle */
+/* FAQ: The <details>/<summary> feature is not common in a paragraph context */
 .s-document summary::after {
   display: inline-block;
   margin-left: 0.2rem;

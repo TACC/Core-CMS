@@ -131,26 +131,30 @@
       <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/0f/3d/0f3daa28-6632-4d3e-a964-706d33dc2fa3/picture9.png__1170x0_q85_subsampling-2_upscale.png" />
 
       <p>
-        You can also click on Panels to look at two endpoints at the same time. In the other transfer endpoint, search for "TACC" and select the appropriate allocation system (Frontera, Stampede2, Corral, Ranch).
+        You can also click on Panels to look at two endpoints at the same time. In the other transfer endpoint, search for "TACC" and select the appropriate allocation storage system (Frontera, Stampede2, Corral, Ranch) for the desired data.
       </p>
       <details class="small"><summary>Examples:</summary>
         <dl>
-          <dt>UTRC</dt>
+          <dt>UTRC Portal</dt>
           <dd>
             <dl class="s-inline-dl">
-              <dt>My Data</dt>
-              <dd>TACC Stampede2</dd>
-              <dt>Shared Workspaces</dt>
-              <dd>TACC Corral 3</dd>
+              <dt>Data</dt><dd>My Data</dd>
+              <dt>System</dt><dd>TACC Stampede2</dd>
+            </dl>
+            <dl class="s-inline-dl">
+              <dt>Data</dt><dd>Shared Workspaces</dt>
+              <dt>System</dt><dd>TACC Corral 3</dd>
             </dl>
           </dd>
-          <dt>Frontera</dt>
+          <dt>Frontera Portal</dt>
           <dd>
             <dl class="s-inline-dl">
-              <dt>My Data</dt>
-              <dd>TACC Frontera</dd>
-              <dt>Shared Workspaces</dt>
-              <dd>TACC Frontera</dd>
+              <dt>Data</dt><dd>My Data</dd>
+              <dt>System</dt><dd>Frontera, Longhorn, Stockyard</dd>
+            </dl>
+            <dl class="s-inline-dl">
+              <dt>Data</dt><dd>Shared Workspaces</dt>
+              <dt>System</dt><dd>Corral</dd>
             </dl>
           </dd>
         </dl>
@@ -159,7 +163,7 @@
       <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/5b/7a/5b7adb5f-da51-4dd0-9b84-44ce69c41da6/picture10.png__1170x0_q85_subsampling-2_upscale.png" />
 
       <p>
-        After successfully authenticating, you will be redirected back to Globus and you will now be able to access your data on the allocation system (Frontera, Stampede2, Corral, Ranch):
+        After successfully authenticating, you will be redirected back to Globus and you will now be able to access your data on the allocation storage system (Frontera, Stampede2, Corral, Ranch):
       </p>
 
       <ul>
@@ -168,7 +172,7 @@
           <ul>
             <li>
               <p>To find that path, run the following commands in a terminal.</p>
-<pre><code><u>localhost$ </u>ssh <strong>username</strong>@<var>host.name</var>
+<pre><code><u>localhost$ </u>ssh <strong>username</strong>@<kbd>host</kbd>
 <samp>
 [authenticate with your password and TACC Token]
 </samp>
@@ -180,29 +184,39 @@
             </li>
           </ul>
 
-          <p><small>Examples:</small></p>
-          <dl class="s-inline-dl  small">
-            <dt>Stampede 2</dt>
-            <dd>Endpoint: "Stampede2"</dd>
-            <dd>Hostname: <code>stampede2.tacc.utexas.edu</code></dd>
-          </dl>
+          <details class="small"><summary>Examples:</summary>
+            <dl>
+              <dt>Stampede</dt>
+              <dd>
+                <dl class="s-inline-dl">
+                  <dt>Endpoint</dt><dd>Stampede2</dd>
+                  <dt>Host</dt><dd><kbd>stampede2.tacc.utexas.edu</kbd></dd>
+                </dl>
+              </dd>
+              <dt>Frontera</dt>
+              <dd>
+                <dl class="s-inline-dl">
+                  <dt>Endpoint</dt><dd>Frontera</dd>
+                  <dt>Host</dt><dd><kbd>frontera.tacc.utexas.edu</kbd></dd>
+                </dl>
+              </dd>
+              <dt>Longhorn</dt>
+              <dd>
+                <dl class="s-inline-dl">
+                  <dt>Endpoint</dt><dd>Longhorn</dd>
+                  <dt>Host</dt><dd><kbd>longhorn.tacc.utexas.edu</kbd></dd>
+                </dl>
+              </dd>
+            </dl>
+          </details>
         </li>
         <li>
-          <p>To access a project in "My Projects" use the appropriate endpoint and set <samp>Path</samp> to:</p>
-          <code>/<kbd>path/to/portal/data</kbd>/<kbd>PORTAL</kbd>/projects/<kbd>PORTAL-ProjectIDNumber</kbd></code>
+          <p>To access a project in "My Projects" use the appropriate endpoint and set <samp>Path</samp> to:
+          <code>/<kbd>path/to/storage</kbd>/<kbd>PORTAL</kbd>/projects/<kbd>PORTAL-ProjectIDNumber</kbd></code></p>
 
-          <p><small>Systems' Endpoint &amp; Path:</small></p>
-          <dl class="small">
-            <dt>Corral 3</dt>
-            <dd>Endpoint: "Corral3"</dd>
-            <dd>Path: <code>corral-repl/tacc/aci</code></dd>
-          </dl>
-
-          <p><small>
-            Examples:
-            <code>/corral-repl/tacc/aci/UTRC/projects/UTRC-26</code>,
-            <code>/corral-repl/tacc/aci/A2CPS/projects/A2CPS-1</code>
-          </small></p>
+          <details class="small"><summary>Examples:</summary>
+            <code>/corral-repl/tacc/aci/FRONTERA/projects/FRONTERA-26</code>
+          </details>
 
           <ul>
             <li>
@@ -212,11 +226,10 @@
             <li>
               <p>If you are viewing a project, the Project Id will be appended to the URL in your browser as:
                 <pre><code>https://<kbd>portal.domain</kbd>/workbench/data-depot/projects/<kbd>portal</kbd>.project.<kbd>PORTAL-ProjectIDNumber</kbd></code></pre>
-                <p><small>
-                  Examples:
-                  <code>https://utrc.tacc.utexas.edu/workbench/data-depot/projects/utrc.project.UTRC-26</code>,
-                  <code>https://a2cps.org/workbench/data-depot/projects/a2cps.project.A2CPS-42</code>
-                </small></p>
+
+                <details class="small"><summary>Examples:</summary>
+                  <code>https://frontera-portal.tacc.utexas.edu/workbench/data/tapis/projects/frontera.project.FRONTERA-23</code>
+                </details>
             </li>
           </ul>
         </li>
@@ -224,15 +237,10 @@
           To access "Community Data", use the appropriate endpoint and set <samp>Path</samp> to:
           <code>/<kbd>path/to/portal/data</kbd>/<kbd>PORTAL</kbd>/community/</code>
 
-          <p><small>Examples:</small></p>
-          <dl class="small">
-            <dt>Corral 3</dt>
-            <dd>Endpoint: "Corral3"</dd>
-            <dd>Paths:
-              <code>/corral-repl/tacc/aci/UTRC/community/</code>,
-              <code>/corral-repl/tacc/aci/A2CPS/community/</code>
-            </dd>
-          </dl>
+          <details class="small"><summary>Examples:</summary>
+            <code>/corral-repl/tacc/aci/UTRC/community/</code>,
+            <code>/corral-repl/tacc/aci/A2CPS/community/</code>
+          </details>
         </li>
       </ul>
 
