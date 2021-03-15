@@ -66,7 +66,9 @@ _CMS_TEMPLATES = (
     ('guide.html', 'Guide'),
     ('guides/getting_started.html', 'Guide: Getting Started'),
     ('guides/globus_data_transfer.html', 'Guide: Globus Data Transfer'),
-    ('guides/rsync_data_transfer.html', 'Guide: Rsync Data Transfer'),
+    # Rsync Data Transfer is not generic enough, yet
+    # FP-961: Uncomment this template entry and remove these comments
+    # ('guides/rsync_data_transfer.html', 'Guide: Rsync Data Transfer'),
     ('guides/portal_technology.html', 'Guide: Portal Technology Stack')
 )
 
