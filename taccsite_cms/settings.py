@@ -91,7 +91,8 @@ ALLOWED_HOSTS = current_secrets._ALLOWED_HOSTS
 
 # Custom Branding.
 BRANDING = current_secrets._BRANDING
-LOGO  = current_secrets._LOGO
+LOGO = current_secrets._LOGO
+FAVICON = current_secrets._FAVICON
 
 # Configure Portal.
 PORTAL = current_secrets._PORTAL
@@ -471,6 +472,7 @@ SETTINGS_EXPORT = [
     'DEBUG',
     'BRANDING',
     'LOGO',
+    'FAVICON',
     'PORTAL',
     'PORTAL_AUTH_LINKS',
     'PORTAL_UNAUTH_LINKS',
