@@ -1,6 +1,8 @@
 {% extends "guide.html" %}
+{% load cms_tags tacc_uri_shortcuts %}
 
 {% block guide %}
+  {% site_uri as site_uri %}
   <div class="row">
     <div class="col">
       <h2>
@@ -110,7 +112,7 @@
         <div class="col">
           <p>
             You may now log in to the Portal by navigating to
-            <a href="https://utrc.tacc.utexas.edu" target="_blank">https://utrc.tacc.utexas.edu</a>
+            <a href="{{ site_uri.absolute_uri }}" target="_blank">{{ site_uri.absolute_uri }}</a>
             and clicking Log in with TACC.
           </p>
         </div>
@@ -330,7 +332,7 @@
         <div class="col">
           <p>
             Once you have completed MFA pairing with the TACC Token app, return to the Portal
-            <a href="https://utrc.tacc.utexas.edu/onboarding/setup" target="_blank">https://utrc.tacc.utexas.edu/onboarding/setup</a>
+            <a href="{{ site_uri.absolute_uri }}workbench/onboarding/setup" target="_blank">{{ site_uri.absolute_uri }}workbench/onboarding/setup</a>
             and click the <strong>Confirm</strong> button.
           </p>
         </div>
