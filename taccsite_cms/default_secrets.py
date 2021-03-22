@@ -136,7 +136,7 @@ _FEATURES = {
 }
 
 ########################
-# BRANDING & LOGOS & FAVION
+# BRANDING & LOGOS & FAVICON
 ########################
 # TODO: GH-59: Use Dict Not Array for Branding Settings
 
