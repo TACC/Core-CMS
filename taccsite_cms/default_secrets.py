@@ -65,8 +65,8 @@ _CMS_TEMPLATES = (
     ('home.html', 'Homepage'),
     ('guide.html', 'Guide'),
     ('guides/getting_started.html', 'Guide: Getting Started'),
-    ('guides/globus_data_transfer.html', 'Guide: Globus Data Transfer'),
-    ('guides/rsync_data_transfer.html', 'Guide: Rsync Data Transfer'),
+    ('guides/data_transfer.globus.html', 'Guide: Globus Data Transfer'),
+    ('guides/data_transfer.html', 'Guide: Data Transfer'),
     ('guides/portal_technology.html', 'Guide: Portal Technology Stack')
 )
 

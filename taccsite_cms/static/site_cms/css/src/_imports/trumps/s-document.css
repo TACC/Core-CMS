@@ -81,7 +81,7 @@ p + dl.small {
 
 /* ELEMENTS: Image & Multimedia */
 
-/* NOTE: The rsync_data_transfer_guide template uses <figure>'s */
+/* NOTE: The `data_transfer.html` template uses <figure>'s */
 .s-document img/*:not(figure > img)*/ {
   display: block;
   max-width: 75%;
