@@ -79,7 +79,7 @@
       <p>
         Transferring Portal data from your local machine to
         <a href="#storage">one of TACC's remote storage systems</a> can be accomplished using two methods: command line tools (<code>scp</code>, <code>sftp</code>,
-        <code>rsync</code>) and graphical tools (Cyberduck).
+        <code>rsync</code>) and graphical user interface (Cyberduck).
       </p>
 
       <h4 id="table1">Data Transfer Methods</h4>
@@ -120,7 +120,7 @@
       <p>
         A TACC storage system is a logically defined resource designed to provide data storage and management capabilities to TACC portal users through the portal interface. Each portal is accessible over a URL path (e.g.,
         <code><samp>sub.domain</samp>.tacc.utexas.edu</code>
-        ) which we will subsequently refer to as "host".
+        ) which we will subsequently refer to as “host”.
       </p><p>
         Storage systems can be configured for both normal and protected data (e.g., HIPAA) in a secured location, depending on the project requirements established for the portal. This location is exposed as a path to a directory on the secure system (e.g.,
         <code>/<kbd>secure-server-root</kbd>/projects/<kbd>directory_name</kbd></code>
@@ -145,13 +145,14 @@
       <p>
         All portal users will need to create a TACC account in the TACC User Portal (which can be accessed at
         <a target="_blank" href="https://portal.tacc.utexas.edu/">TACC Portal</a>.
-        If you have forgotten your TACC account credentials, please refer to your email for a message titled "TACC Account Request Confirmation" or go to
-        <a href="https://portal.tacc.utexas.edu/password-reset/-/password/forgot-username">https://portal.tacc.utexas.edu/password-reset/-/password/forgot-username</a>
-        for further assistance in account recovery.
+        If you have forgotten your TACC account credentials, please refer to your email for a message titled “TACC Account Request Confirmation” or use the TACC Portal's
+        <a href="https://portal.tacc.utexas.edu/password-reset/-/password/">password reset form</a>
+        or
+        <a href="https://portal.tacc.utexas.edu/password-reset/-/password/forgot-username">username recovery form</a>.
       </p>
       <p>
-        Access to all TACC resources requires a completed Multi-Factor Authentication pairing with your TACC credentials. To set up MFA, please reference the tutorial at
-        <a target="_blank" href="https://portal.tacc.utexas.edu/tutorials/multifactor-authentication">https://portal.tacc.utexas.edu/tutorials/multifactor-authentication</a>.
+        Access to all TACC resources requires a completed Multi-Factor Authentication pairing with your TACC credentials. To set up MFA, please reference TACC Portal's
+        <a href="https://portal.tacc.utexas.edu/tutorials/multifactor-authentication">Multi-Factor Authentication tutorial</a>.
       </p>
       <h4 id="command_line_tools">
         Using Command Line Tools to Transfer and Organize Data
@@ -201,7 +202,7 @@
         In order to transfer your project data, you will first need to know where the files are located on your local system.
       </p>
       <p>
-        To do so, navigate to the location of the files on your computer. This can be accomplished on a Mac by using the Finder application or on Windows with File Explorer application. Common locations for user data ate the user's home directory, the Desktop and My Documents.
+        To do so, navigate to the location of the files on your computer. This can be accomplished on a Mac by using the Finder application or on Windows with File Explorer application. Common locations for user data at the user's home directory, the Desktop and My Documents.
       </p>
       <p>
         Once you have identified the location of the files, you can right-click on them and select either Get Info (on Mac) or Properties (on Windows) to view the path location on your local system.
@@ -232,12 +233,10 @@
       <details class="small"><summary>Examples:</summary>
         <!-- TODO: Confirm example accuracy -->
         {# SEE: https://github.com/TACC/Core-CMS/pull/152/files/89cd2a51d3b0904421df9438be2385f46c0f7ae6?file-filters%5B%5D=.html#r598831265 #}
-        <!--
-        <pre><code>/corral-repl/utexas/<kbd>project_name</kbd>/submissions/utaustin/</code></pre>,
-        <pre><code>/corral-repl/uta/<kbd>project_name</kbd>/submissions/utaustin/</code></pre>,
-        <pre><code>/corral-repl/utep/<kbd>project_name</kbd>/submissions/utaustin/</code></pre>,
-        <pre><code>/corral-repl/uth/<kbd>project_name</kbd>/submissions/utaustin/</code></pre>,
-        -->
+        <pre><code>/corral-repl/utexas/<kbd>project_name</kbd>/submissions/</code></pre>,
+        <pre><code>/corral-repl/uta/<kbd>project_name</kbd>/submissions/</code></pre>,
+        <pre><code>/corral-repl/utep/<kbd>project_name</kbd>/submissions/</code></pre>,
+        <pre><code>/corral-repl/uth/<kbd>project_name</kbd>/submissions/</code></pre>,
         <pre><code>/corral-secure/projects/A2CPS/submissions/utaustin/</code></pre>
         <blockquote>
           <p>
@@ -261,7 +260,7 @@
       </dl>
 
       <p>
-        Assuming your TACC username is <code>jdoe</code> and you are affiliated with UT Austin, a <code>scp</code> transfer that pushes <code>my_file.txt</code> from your the current directory of your local computer to the remote secure system would look like this:
+        Assuming your TACC username is <code>jdoe</code> and you are affiliated with UT Austin, a <code>scp</code> transfer that pushes <code>my_file.txt</code> from the current directory of your local computer to the remote secure system would look like this:
       </p>
       <pre style="max-width: 1500px"><code><u>localhost$ </u>scp ./my_file.txt jdoe@<kbd>host</kbd>:<kbd>/transfer/directory/path</kbd></code></pre>
       <blockquote>
@@ -295,7 +294,7 @@
         </li>
         <li>
           <a target="_blank" href="https://portal.tacc.utexas.edu/user-guides">TACC User Guides (for each system)</a>
-          <small>(select the relevant system for this portal, then search "<code>scp</code>")</small>
+          <small>(select the relevant system for this portal, then search “<code>scp</code>”)</small>
         </li>
       </ul>
 
@@ -422,14 +421,14 @@ Changing to:
         </li>
         <li>
           <a target="_blank" href="https://portal.tacc.utexas.edu/user-guides">TACC User Guides (for each system)</a>
-          <small>(select the relevant system for this portal, then search "<code>rsync</code>")</small>
+          <small>(select the relevant system for this portal, then search “<code>rsync</code>”)</small>
         </li>
       </ul>
 
       <h4 id="cyberduck_transfer">How to Transfer Data with Cyberduck</h4>
 
       <p>
-        <a target="_blank" href="https://cyberduck.io/">Cyberduck</a> is a free graphical tool for data transfer and is an alternative to using the command line. With a drag-and-drop interface, it is easy to transfer a file from your local system to the remote secure system. You can use
+        <a target="_blank" href="https://cyberduck.io/">Cyberduck</a> is a free graphical user interface for data transfer and is an alternative to using the command line. With a drag-and-drop interface, it is easy to transfer a file from your local system to the remote secure system. You can use
         <a target="_blank" href="https://cyberduck.io/">Cyberduck</a>
         for Windows or macOS.
       </p>
@@ -451,8 +450,8 @@ Changing to:
         </figcaption>
       </figure>
       <p>
-        To setup a connection, type in the server name
-        <kbd>host</kbd>. Add your TACC username and password in the spaces provided. If the "More Options" area is not shown, click the small triangle button to expand the window; this will allow you to enter the path to your transfer directory <kbd>/transfer/directory/path</kbd> so that when Cyberduck opens the connection you will immediately be in your individualized transfer directory on the system. Click the "Connect" button to open your connection.
+        To setup a connection, type in the server name,
+        <kbd>host</kbd>. Add your TACC username and password in the spaces provided. If the “More Options” area is not shown, click the small triangle button to expand the window; this will allow you to enter the path to your transfer directory, <kbd>/transfer/directory/path</kbd>, so that when Cyberduck opens the connection you will immediately be in your individualized transfer directory on the system. Click the “Connect” button to open your connection.
       </p>
 
       <p>
@@ -481,7 +480,7 @@ Changing to:
       </p>
 
       <p>
-        Once installed, go to "Bookmark &gt; New Bookmark" to setup a connection.
+        Once installed, go to “Bookmark &gt; New Bookmark” to setup a connection.
       </p>
       <blockquote>
         <p>
@@ -489,8 +488,8 @@ Changing to:
         </p>
       </blockquote>
       <p>
-        To setup a connection using “New Bookmark", type in the server name
-        <kbd>host</kbd>. Add your TACC username and password in the spaces provided. If the "More Options" area is not shown, click the small triangle or button to expand the window; this will allow you to enter the path to your transfer directory so that when Cyberduck opens the connection you will immediately be in your individualized transfer directory on the system. As you fill out the information, Cyberduck will create the bookmark for you. Exit out of the setup screen and click on your newly created bookmark to launch the connection.
+        To setup a connection using “New Bookmark", type in the server name,
+        <kbd>host</kbd>. Add your TACC username and password in the spaces provided. If the “More Options” area is not shown, click the small triangle or button to expand the window; this will allow you to enter the path to your transfer directory, <kbd>/transfer/directory/path</kbd>, so that when Cyberduck opens the connection you will immediately be in your individualized transfer directory on the system. As you fill out the information, Cyberduck will create the bookmark for you. Exit out of the setup screen and click on your newly created bookmark to launch the connection.
       </p>
       <figure id="figure4">
         <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/fa/b3/fab3edd6-c7a6-46dc-8103-09917ef02240/picture4.png__1170x0_q85_subsampling-2_upscale.png" />
