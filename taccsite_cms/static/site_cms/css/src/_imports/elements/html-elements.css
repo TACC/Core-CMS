@@ -113,8 +113,11 @@ code, kbd, pre, samp {
   font-family: var(--global-font-family--mono);
 }
 code kbd {
+  display: inline-block; /* ensure element does not bleed outside parent */
+  padding: .1rem .2rem; /* overwrites Bootstrap */
   margin-left: .2rem;
   margin-right: .2rem;
+
   font-size: inherit;
 }
 
