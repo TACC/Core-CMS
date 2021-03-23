@@ -1,5 +1,5 @@
 {% extends "guide.html" %}
-{% load cms_tags tacc_uri_shortcuts %}
+{% load cms_tags staticfiles tacc_uri_shortcuts %}
 
 {% block guide %}
   {% site_uri as site_uri %}
@@ -20,7 +20,7 @@
 
   <div class="row">
     <div class="col">
-      <h3>Creating an Account</h3>
+      <h3 id="create-account">Creating an Account</h3>
 
       <p>
         Before you can access the Portal, you must first have an active
@@ -91,7 +91,7 @@
 
   <div class="row">
     <div class="col">
-      <h3>Logging In for the First Time</h3>
+      <h3 id="first-login">Logging In for the First Time</h3>
 
       <p>
         Your initial login to the Portal requires you to approve
@@ -102,7 +102,8 @@
           <p>
             <img
               class="img-fluid"
-              src="https://utrc.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/e8/76/e87670ab-f330-4448-9414-f97549798225/login_page.png__525x249_q85_subsampling-2.png"
+              src="{% static 'site_cms/img/guides/login-portal.from-home.jpeg' %}"
+              alt="The Portal homepage with active login link."
             />
           </p>
         </div>
@@ -120,7 +121,8 @@
           <p>
             <img
               class="img-fluid"
-              src="https://utrc.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/35/63/3563ef5b-d91f-4134-81ac-fd5c7914ec95/agave_login.png__525x547_q85_subsampling-2.png"
+              src="{% static 'site_cms/img/guides/login-tacc.form.jpeg' %}"
+              alt="The TACC login form."
             />
           </p>
         </div>
@@ -137,7 +139,8 @@
           <p>
             <img
               class="img-fluid"
-              src="https://utrc.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/10/5f/105fe07a-98b5-4497-a7b7-f6c49db2626a/agave_platform_approve.png__525x200_q85_subsampling-2.png"
+              src="{% static 'site_cms/img/guides/login-tacc.approval.jpeg' %}"
+              alt="The TACC post-login authentication approval step."
             />
           </p>
         </div>
@@ -154,7 +157,8 @@
           <p>
             <img
               class="img-fluid"
-              src="https://utrc.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/0b/f2/0bf2765b-0028-49ad-b704-bb4f09884b9b/onboarding.png__525x282_q85_subsampling-2.png"
+              src="{% static 'site_cms/img/guides/onboarding.sample-progress.jpeg' %}"
+              alt="A sample Portal account onboarding in progress."
             />
           </p>
         </div>
@@ -162,31 +166,41 @@
         <div class="col">
           <p>
             The Portal will display the Account Setup page. This page will
-            verify that your account has:
+            verify that your account has passed several checks. These checks differ per portal, and may include:
           </p>
           <ul>
-            <li>An active allocation on TACC systems</li>
-            <li>Multi-factor authentication (MFA) with the TACC Token App</li>
+            <li>Multi-factor Authentication (MFA) with the TACC Token App</li>
+            <li>Requesting access to Portal from system administrator</li>
+            <li>Checking or requesting project membership</li>
+            <li>Retrieving allocations for your account</li>
+            <li>Creating storage systems for your account</li>
           </ul>
           <p>
             If you already meet these requirements, you will be forwarded to the
-            dashboard and you may proceed with Accessing Your Files. Otherwise,
-            continue reading about Getting an Allocation and how to Setup
-            Multi-factor Authentication.
+            Dashboard and you may proceed with
+            <a href="#access-files">Accessing Your Files</a>.
+            Otherwise, continue reading about
+            <a href="#onboard-account">Onboarding Your Account</a>.
           </p>
         </div>
       </div>
     </div>
   </div>
 
-  <h3>Account Onboarding</h3>
+  <h3 id="onboard-account">Onboarding Your Account</h3>
   <p>
-    Your account will have a certain number of <a href="{{ site_uri.absolute_uri }}workbench/onboarding/setup" target="_blank">Account Onboarding</a> steps. Some of them require action from you.
+    Your account will have a certain number of <a href="{{ site_uri.absolute_uri }}workbench/onboarding/setup" target="_blank">Account Onboarding</a> steps. Some of them require action from you while some are automated.
   </p>
+  <ul>
+    <li><a href="#setup-mfa">Multi-Factor Authentication</a></li>
+    <li><a href="#request-access">Requesting Access</a></li>
+    <li><a href="#check-project">Checking Project Membership</a></li>
+    <li><a href="#other-steps">Other Steps</a></li>
+  </ul>
 
   <div class="row">
     <div class="col">
-      <h4>Multi-Factor Authentication</h4>
+      <h4 id="setup-mfa">Multi-Factor Authentication</h4>
       <p>
         Your account may need to have Multi-Factor Authentication (MFA) setup
         using the TACC Token App, available on the Google Play and iTunes
@@ -198,16 +212,15 @@
           <p>
             <img
               class="img-fluid"
-              src="https://utrc.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/6d/bd/6dbdaa04-dc27-4922-a446-f11bffa08189/mfa_required.png__525x144_q85_subsampling-2.png"
-              alt="A sample onboarding UI with 'Multi-Factor Authentication' step pending action."
+              src="{% static 'site_cms/img/guides/onboarding-mfa.userwait.png' %}"
+              alt="A sample Portal account onboarding with 'Multi-Factor Authentication' step pending action."
             />
           </p>
         </div>
 
         <div class="col">
           <p>
-            If you do not have MFA pairing through the TACC Token App, click the
-            <strong>Click here for more info</strong> link.
+            If you have <em>already</em> set up MFA pairing through the TACC Token App, then click <strong>Confirm MFA Pairing</strong>.
           </p>
         </div>
       </div>
@@ -217,7 +230,7 @@
           <p>
             <img
               class="img-fluid"
-              src="https://utrc.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/c4/89/c48958f4-078d-4417-9a27-9361cef49129/mfa_pairing_dialog.png__525x290_q85_subsampling-2.png"
+              src="{% static 'site_cms/img/guides/onboarding-mfa.processing.png' %}"
               alt="A sample modal dialog UI explaining the next step of 'Multi-Factor Authentication'."
             />
           </p>
@@ -225,8 +238,8 @@
 
         <div class="col">
           <p>
-            In the dialog that appears, click the link to go to
-            <a href="https://portal.tacc.utexas.edu/account-profile/-/profile/view" target="_blank">TACC Portal Account Profile</a
+            If you have <em>not</em> set up MFA pairing through the TACC Token App, then set up multi-factor authentication in your
+            <a href="https://portal.tacc.utexas.edu/account-profile" target="_blank">TACC Portal Account Profile</a
             >.
           </p>
         </div>
@@ -245,8 +258,9 @@
 
         <div class="col">
           <p>
-            You will be redirected to the TACC User Portal, where you can pair
-            your account with the TACC Token App.
+            To set up multi-factor authentication, pair your
+            <a href="https://portal.tacc.utexas.edu/account-profile" target="_blank">TACC Portal Account</a>
+            with the TACC Token App.
           </p>
         </div>
       </div>
@@ -256,8 +270,8 @@
           <p>
             <img
               class="img-fluid"
-              src="https://utrc.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/b6/bb/b6bbc465-1666-4e45-915b-4152dac88701/confirm_pairing.png__525x132_q85_subsampling-2.png"
-              alt="A sample onboarding UI with 'Multi-Factor Authentication' step in progress."
+              src="{% static 'site_cms/img/guides/onboarding-mfa.userwait.png' %}"
+              alt="A sample Portal account onboarding with 'Multi-Factor Authentication' step in progress."
             />
           </p>
         </div>
@@ -275,44 +289,25 @@
           <p>
             <img
               class="img-fluid"
-              src="https://utrc.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/7b/5a/7b5aa552-b9cb-4e65-9cbe-6236e29788a6/setup_complete.png__525x291_q85_subsampling-2.png"
-              alt="A sample onboarding UI with 'Multi-Factor Authentication' step complete."
+              src="{% static 'site_cms/img/guides/onboarding-mfa.completed.png' %}"
+              alt="A sample Portal account onboarding with 'Multi-Factor Authentication' step complete."
             />
           </p>
         </div>
 
         <div class="col">
           <p>
-            Your authentication is now complete. You may proceed to the next step of the Account Onboarding.
+            Your account is now authenticated. You may proceed to the next step of the Account Onboarding.
           </p>
         </div>
       </div>
 
       <hr />
 
-      <h4>Requesting Access</h4>
-      <p>
-        To use the Portal, you may need to have the approval of a system administrator. If so, visit the
-        <a href="{{ site_uri.absolute_uri }}workbench/onboarding/setup" target="_blank">Account Onboarding</a>
-        to see the status and possibly take action.
-      </p>
-
-      <hr />
-
-      <h4>Checking Project Membership</h4>
-      <p>
-        To use the Portal, you may need to have a specific project membership. If so, visit the
-        <a href="{{ site_uri.absolute_uri }}workbench/onboarding/setup" target="_blank">Account Onboarding</a>
-        to see the status and possibly take action.
-      </p>
-
-      <hr />
-
-      <h4>Retrieving Allocations</h4>
+      <h4 id="request-access">Requesting Access</h4>
       <p>
         To use the Portal, you may need to have an active allocation on
-        TACC resources. If you are PI eligible, you may request your own project
-        and allocations. Alternatively, you may request to be added to a startup
+        TACC resources. If you are PI eligible, you may request your own allocations. Alternatively, you may request to be added to an
         allocation through the
         <a href="{{ site_uri.absolute_uri }}workbench/onboarding/setup" target="_blank">Account Onboarding</a>.
       </p>
@@ -322,15 +317,15 @@
           <p>
             <img
               class="img-fluid"
-              src="https://utrc.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/7d/25/7d2505af-553d-4d2d-9c7a-fa454ff84515/confirm_request.png__525x182_q85_subsampling-2.png"
-              alt="A sample onboarding UI with 'Retrieving Allocations' step pending action."
+              src="{% static 'site_cms/img/guides/onboarding-access.userwait.png' %}"
+              alt="A sample Portal account onboarding with 'Requesting Access' step pending action."
             />
           </p>
         </div>
 
         <div class="col">
           <p>
-            If you are a new TACC user that does not have an active project, you may request to be added to one. Please click <strong>Request Portal Access</strong> on the Account Onboarding. A request to be added to a project will be generated on your behalf.
+            If you are a new TACC user that does not have an active project, you may request to be added to one. Please click <strong>Request Portal Access</strong> in the Account Onboarding. A request to be added to an allocation will be generated on your behalf.
           </p>
         </div>
       </div>
@@ -340,8 +335,8 @@
           <p>
             <img
               class="img-fluid"
-              src="https://utrc.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/e6/87/e6877328-77cd-491a-af97-6b1f1e89d6d6/awaiting_approval.png__525x166_q85_subsampling-2.png"
-              alt="A sample onboarding UI with 'Retrieving Allocations' step in progress."
+              src="{% static 'site_cms/img/guides/onboarding-access.staffwait.png' %}"
+              alt="A sample Portal account onboarding with 'Requesting Access' step in progress."
             />
           </p>
         </div>
@@ -356,8 +351,8 @@
           <p>
             <img
               class="img-fluid"
-              src="https://utrc.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/3f/eb/3feb2160-7fff-4057-9ed5-ded0fc0fcde4/allocation_approved.png__525x109_q85_subsampling-2.png"
-              alt="A sample onboarding UI with 'Retrieving Allocations' step complete."
+              src="{% static 'site_cms/img/guides/onboarding-access.completed.png' %}"
+              alt="A sample Portal account onboarding with 'Requesting Access' step complete."
             />
           </p>
         </div>
@@ -369,7 +364,69 @@
         </div>
       </div>
 
-      <h4>Other Steps</h4>
+      <hr />
+
+      <h4 id="check-project">Checking Project Membership</h4>
+      <p>
+        To use the Portal, you may need to have memebrship on a project. If you are PI eligible, you may request your own project. Alternatively, you may request to be added to a project through the
+        <a href="{{ site_uri.absolute_uri }}workbench/onboarding/setup" target="_blank">Account Onboarding</a>.
+      </p>
+
+      <div class="row">
+        <div class="col">
+          <p>
+            <img
+              class="img-fluid"
+              src="{% static 'site_cms/img/guides/onboarding-project.userwait.png' %}"
+              alt="A sample Portal account onboarding with 'Checking Project Membership' step pending action."
+            />
+          </p>
+        </div>
+
+        <div class="col">
+          <p>
+            If you are a new TACC user that does not have an active project, you may request to be added to one. Please click <strong>Request Project Access</strong> in the Account Onboarding. A request to be added to a project will be generated on your behalf.
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <p>
+            <img
+              class="img-fluid"
+              src="{% static 'site_cms/img/guides/onboarding-project.staffwait.png' %}"
+              alt="A sample Portal account onboarding with 'Checking Project Membership' step in progress."
+            />
+          </p>
+        </div>
+
+        <div class="col">
+          <p>Your request will be reviewed by TACC staff. When you have been approved, you will receive an e-mail notification.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <p>
+            <img
+              class="img-fluid"
+              src="{% static 'site_cms/img/guides/onboarding-project.completed.png' %}"
+              alt="A sample Portal account onboarding with 'Checking Project Membership' step complete."
+            />
+          </p>
+        </div>
+
+        <div class="col">
+          <p>
+            Your account now has access to a project on the Portal. You may proceed to the next step of the Account Onboarding.
+          </p>
+        </div>
+      </div>
+
+      <hr />
+
+      <h4 id="other-steps">Other Steps</h4>
       <p>
         Onboarding for the specific Portal you use may require additional <a href="{{ site_uri.absolute_uri }}workbench/onboarding/setup" target="_blank">Account Onboarding</a> steps, like:
       </p>
@@ -383,8 +440,8 @@
           <p>
             <img
               class="img-fluid"
-              src=""
-              alt="A sample onboarding UI with final steps incomplete."
+              src="{% static 'site_cms/img/guides/onboarding.completed.jpeg' %}"
+              alt="A sample Portal account onboarding with all steps complete."
             />
           </p>
         </div>
@@ -393,23 +450,8 @@
           <p>
             Please follow the Account Onboarding until all steps are complete.
           </p>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col">
           <p>
-            <img
-              class="img-fluid"
-              src=""
-              alt="A sample onboarding UI with all steps complete."
-            />
-          </p>
-        </div>
-
-        <div class="col">
-          <p>
-            Once your Account Onboarding is complete. You may click
+            Once your Account Onboarding is complete, you may click
             <strong>Access Dashboard</strong>, or navigate to the Dashboard with the now-enabled sidebar.
           </p>
         </div>
@@ -419,7 +461,7 @@
 
   <div class="row">
     <div class="col">
-      <h3>Accessing Your Files</h3>
+      <h3 id="access-files">Accessing Your Files</h3>
 
       <p>
         To access your personal files on the Portal, you will need to
