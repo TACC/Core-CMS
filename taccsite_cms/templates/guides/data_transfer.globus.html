@@ -1,0 +1,264 @@
+{% extends "guide.html" %}
+
+{% block guide %}
+  <div class="row">
+    <div class="col">
+      <h2>
+        Globus Data Transfer Guide
+      </h2>
+
+      <p>
+        Globus supplies high speed, reliable, asynchronous transfers to the portal. Globus is fast, for large volumes of data, as it uses multiple network sockets simultaneously to transfer data. It is reliable for large numbers of directories and files, as it can automatically fail and restart itself, and will only notify you when the transfers are completed successfully.
+      </p>
+
+      <p>
+        To get these benefits there are a few setup steps you have to do beyond the normal Data Depot transfer process. Most of the steps you are only required to do once when you set up Globus to use for the first time. Several steps will need to be repeated each time you set up a new computer to use Globus for the portal. Once you are set up, you can use Globus not only for transfers to and from the portal, but also to access other cyberinfrastructure resources at TACC and around the world.
+      </p>
+
+      <p>
+        To start using Globus, you need to do two things: Generate a unique identifier for all Globus services, and enroll the machine you are transferring data to/from with Globus (this can be your personal laptop or desktop, or a server to which you have access). Follow this one-time process to set up the Globus file transfer capability.
+      </p>
+      <ul>
+        <li>
+          <a href="#step-1-distinguished-name">Step 1: Retrieve and Associate a Distinguished Name (DN) with Your TACC Account</a>
+        </li>
+        <li>
+          <a href="#step-2-globus-endpoint">Step 2: Activate Your Desktop/Laptop as a Globus Endpoint and Transfer Files</a>
+        </li>
+      </ul>
+      <p>
+        PLEASE NOTE: You must use <em>your institution’s credentials and not your personal Google account</em> when setting up Globus. If you use a personal account, you will encounter an issue with the transfer endpoint (Frontera, Stampede2, Corral, Ranch, etcetera).
+      </p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <h3 id="step-1-distinguished-name">
+        Step 1: Retrieve and Associate a Distinguished Name (DN) with Your TACC Account
+      </h3>
+
+      <p>
+        In order for Globus to know who you are when you move data in and out of the CEP portal from your computer, or between any other pair of systems, Globus needs a unique identifier for you, which is called a “Distinguished Name”, or DN. You can generate a DN instantly for free. To create a DN, you need to log in from some authoritative source that can verify your identity, typically your university or employer. If you already have a DN from another source, you can use that. If you do not, you can associate one with your account from many of the major universities in the world via the “CI Logon” service.
+      </p>
+
+      <p>
+        To retrieve your DN, go to
+        <a href="https://cilogon.org/" target="_blank">https://cilogon.org</a>
+        in your browser. Select an Identity Provider from the drop-down list, and click "Log On" which will take you to the login screen for the Identity Provider you selected. If your university or employer is not in the list, we recommend
+        <a href="https://portal.xsede.org/#/guest" target="_blank">registering for an XSEDE account</a>
+        as XSEDE is a CILogon Identity Provider.
+      </p>
+
+      <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/b2/a8/b2a856d2-e079-48f1-8785-dbf758534510/picture1.png__1170x0_q85_subsampling-2_upscale.png" />
+
+      <p>
+        After successfully authenticating at your chosen Identity Provider, you are redirected back to CILogon, where you can find your Certificate Subject that you will need to copy and paste in the next step:
+      </p>
+
+      <pre><code>/DC=org/DC=cilogon/C=US/O=University of Texas at Austin/CN=Sample Person A00000</code></pre>
+
+      <p>
+        Login to the
+        <a href="https://portal.tacc.utexas.edu/" target="_blank">TACC User Portal</a>
+        and select "Account Profile" from the main menu under the "Home" dropdown.
+      </p>
+
+      <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/d9/a7/d9a7c353-416b-44b1-9c16-3014d6308b01/picture2.png__1170x0_q85_subsampling-2_upscale.png" />
+
+      <p>
+        On the left of the page is a list of account actions, select "Manage DNs". You will be presented with a list of the DNs currently associated with your TACC account and a text field to associate a new DN to your account. Enter the Certificate Subject obtained from
+        <a href="http://CILogon.org" target="_blank">CILogon.org</a>
+        in the text field. Click the button to "Associate DN". This will associate the new DN with your account. Please note, it may take up to 30 minutes for this change to propagate to all TACC systems.
+      </p>
+
+      <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/06/b0/06b0c288-90cc-4bd0-9650-45d25497bbc5/picture3.png__1170x0_q85_subsampling-2_upscale.png" />
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <h3 id="step-2-globus-endpoint">
+        Step 2: Activate Your Desktop/Laptop as a Globus Endpoint and Transfer Files
+      </h3>
+
+      <p>
+        Now that you have associated the DN with your TACC account and given the DN time to propagate to the systems (up to thirty minutes), you can activate the Globus transfer endpoints and begin transferring files.
+      </p>
+
+      <p>
+        Go to
+        <a target="_blank" href="https://globus.org/">https://globus.org</a>
+        and log in.
+      </p>
+
+      <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/64/ec/64ec67d5-29fb-4a8c-84bf-d8e52860083a/picture4.png__1170x0_q85_subsampling-2_upscale.png" />
+
+      <p>
+        Upon successful login you, you will be directed to the "File Manager" landing page.
+      </p>
+
+      <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/04/cc/04cc029b-9af8-4cb0-8698-943ae93d9e0e/picture5.png__1170x0_q85_subsampling-2_upscale.png" />
+
+      <p>Click on Endpoints.</p>
+
+      <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/14/a5/14a540bd-9666-449c-be18-ef18456faf42/picture6.png__1170x0_q85_subsampling-2_upscale.png" />
+
+      <p>
+        Click “+ Create new endpoint” and follow the instructions to set up your desktop/laptop as an endpoint.
+      </p>
+
+      <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/71/94/71947964-5a11-4bb3-ab5e-b8b2ae1b1c86/picture7.png__1170x0_q85_subsampling-2_upscale.png" />
+
+      <p>
+        Enter a Display Name to identify your local endpoint like My Laptop, My Desktop at Home, etcetera and then click Generate Setup Key and click copy to copy the Personal Setup Key.
+      </p>
+
+      <p>Download and Install the Globus Connect Personal client.</p>
+
+      <p>
+        After install, open the Globus Connect Personal application. A pop menu pops up asking your setup key. Copy the setup key from the previous step to complete the setup.
+      </p>
+
+      <p>
+        Click on “File Manager”, and next click on the Collection field. You can choose "Your collections" and click on "My Laptop" to select the created endpoint to your computer.
+      </p>
+
+      <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/6f/ee/6feecdb0-0abc-4732-85a0-88f3e58a361f/picture8.png__1170x0_q85_subsampling-2_upscale.png" />
+
+      <p>You can now access the files on your desktop/laptop via Globus.</p>
+
+      <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/0f/3d/0f3daa28-6632-4d3e-a964-706d33dc2fa3/picture9.png__1170x0_q85_subsampling-2_upscale.png" />
+
+      <p>
+        You can also click on Panels to look at two endpoints at the same time. In the other transfer endpoint, search for "TACC" and select the appropriate allocation storage system (Frontera, Stampede2, Corral, Ranch, etcetera) for the desired data.
+      </p>
+      <details class="small"><summary>Examples:</summary>
+        <dl>
+          <dt>UTRC Portal</dt>
+          <dd>
+            <dl class="s-inline-dl">
+              <dt>Data</dt><dd>My Data</dd>
+              <dt>System</dt><dd>TACC Stampede2</dd>
+            </dl>
+            <dl class="s-inline-dl">
+              <dt>Data</dt><dd>Shared Workspaces</dt>
+              <dt>System</dt><dd>TACC Corral 3</dd>
+            </dl>
+          </dd>
+          <dt>Frontera Portal</dt>
+          <dd>
+            <dl class="s-inline-dl">
+              <dt>Data</dt><dd>My Data</dd>
+              <dt>System</dt><dd>Frontera, Longhorn, Stockyard</dd>
+            </dl>
+            <dl class="s-inline-dl">
+              <dt>Data</dt><dd>Shared Workspaces</dt>
+              <dt>System</dt><dd>Corral</dd>
+            </dl>
+          </dd>
+        </dl>
+      </details>
+
+      <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/5b/7a/5b7adb5f-da51-4dd0-9b84-44ce69c41da6/picture10.png__1170x0_q85_subsampling-2_upscale.png" />
+
+      <p>
+        After successfully authenticating, you will be redirected back to Globus and you will now be able to access your data on the allocation storage system (Frontera, Stampede2, Corral, Ranch):
+      </p>
+
+      <ul>
+        <li>
+          <p>To access "My Data", use the appropriate endpoint and set <samp>Path</samp> to the path of your <var>$WORK</var> location on your system.</p>
+          <ul>
+            <li>
+              <p>To find that path, run the following commands in a terminal.</p>
+<pre><code><u>localhost$ </u>ssh <strong>username</strong>@<kbd>host</kbd>
+<samp>
+[authenticate with your password and TACC Token]
+</samp>
+<u>login2(#)$ </u>cd $WORK
+<u>login2(#)$ </u>pwd</code></pre>
+            </li>
+            <li>
+              The output of the <code>pwd</code> command is your path to your <var>$WORK</var> directory.
+            </li>
+          </ul>
+
+          <details class="small"><summary>Examples:</summary>
+            <dl>
+              <dt>Stampede</dt>
+              <dd>
+                <dl class="s-inline-dl">
+                  <dt>Endpoint</dt><dd>Stampede2</dd>
+                  <dt>Host</dt><dd><kbd>stampede2.tacc.utexas.edu</kbd></dd>
+                </dl>
+              </dd>
+              <dt>Frontera</dt>
+              <dd>
+                <dl class="s-inline-dl">
+                  <dt>Endpoint</dt><dd>Frontera</dd>
+                  <dt>Host</dt><dd><kbd>frontera.tacc.utexas.edu</kbd></dd>
+                </dl>
+              </dd>
+              <dt>Longhorn</dt>
+              <dd>
+                <dl class="s-inline-dl">
+                  <dt>Endpoint</dt><dd>Longhorn</dd>
+                  <dt>Host</dt><dd><kbd>longhorn.tacc.utexas.edu</kbd></dd>
+                </dl>
+              </dd>
+            </dl>
+          </details>
+        </li>
+        <li>
+          <p>To access a project in "My Projects" use the appropriate endpoint and set <samp>Path</samp> to:
+          <code>/<kbd>path/to/storage</kbd>/<kbd>PORTAL</kbd>/projects/<kbd>PORTAL-ProjectIDNumber</kbd></code></p>
+
+          <details class="small"><summary>Examples:</summary>
+            <code>/corral-repl/tacc/aci/FRONTERA/projects/FRONTERA-26</code>
+          </details>
+
+          <ul>
+            <li>
+              <p>You will find the Project Id on your “My Projects” list in the second column.</p>
+              <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/53/f4/53f40efb-3207-44e8-a84c-59a2a97a9b56/picture11_a2cps.png__1170x0_q85_subsampling-2_upscale.png" />
+            </li>
+            <li>
+              <p>If you are viewing a project, the Project Id will be appended to the URL in your browser as:
+                <pre><code>https://<kbd>portal.domain</kbd>/workbench/data/tapis/projects/<kbd>portal</kbd>.project.<kbd>PORTAL-ProjectIDNumber</kbd></code></pre>
+
+                <details class="small"><summary>Examples:</summary>
+                  <code>https://frontera-portal.tacc.utexas.edu/workbench/data/tapis/projects/frontera.project.FRONTERA-23</code>
+                </details>
+            </li>
+          </ul>
+        </li>
+        <li>
+          To access "Community Data", use the appropriate endpoint and set <samp>Path</samp> to:
+          <code>/<kbd>path/to/portal/data</kbd>/<kbd>PORTAL</kbd>/community/</code>
+
+          <details class="small"><summary>Examples:</summary>
+            <code>/corral-repl/tacc/aci/UTRC/community/</code>,
+            <code>/corral-repl/tacc/aci/Frontera/community/</code>
+          </details>
+        </li>
+      </ul>
+
+      <p>
+        You can transfer files between the selected endpoints.
+      </p>
+
+      <p>
+        Once the transfer is initiated, you can see the task id for the transfer being initiated.
+      </p>
+
+      <p>
+        Click activity to check status on all the transfers you have initiated.
+      </p>
+
+      <p>
+        You will also receive an email to the registered email address once the transfer is completed.
+      </p>
+    </div>
+  </div>
+{% endblock guide %}

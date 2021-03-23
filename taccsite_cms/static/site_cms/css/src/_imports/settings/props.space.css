@@ -5,9 +5,30 @@ Spacing
 
 These are global spacing values for a website.
 
-Weight: 0
+_Notice_: We will use Bootstrap values until Design defines values.
+
+Usage: `var(--global-space--normal)`
+
+Reference:
+- https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties
+- https://getbootstrap.com/docs/4.0/utilities/spacing/
+- https://getbootstrap.com/docs/4.0/getting-started/theming/#sass-options
 
 Styleguide Settings.CustomProperties.Space
 */
 
-/* TODO: Populate with variables, like for header and footer */
+/* Modifers
+    --normal:   standard value
+    --(…)small: smaller value
+    --(…)large: larger value
+*/
+:root {
+  --global-space--xx-small: 0.125rem;  /*  2px (if base is 16px) */
+  --global-space--x-small: 0.25rem;    /*  4px (if base is 16px) */
+  --global-space--small: 0.5rem;       /*  8px (if base is 16px) */
+  --global-space--normal: 1.0rem;      /* 16px (if base is 16px) */
+  --global-space--large: 1.5rem;       /* 25px (if base is 16px) */
+  --global-space--x-large: 3.0rem;     /* 48px (if base is 16px) */
+
+  --global-space--list-indent: 40px;   /* browser default (Firefox, Edge) */
+}

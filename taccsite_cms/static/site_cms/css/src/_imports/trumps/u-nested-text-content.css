@@ -1,0 +1,14 @@
+/*
+Nested Text Content
+
+Any content that should be nested like a list (`<ol>`, `<ul>`) would be.
+
+Examples:
+- A definition list among paragraphs
+
+Styleguide Utilities.NestedTextContent
+*/
+
+.u-nested-text-content {
+  padding-left: var(--global-space--list-indent);
+}

@@ -1,0 +1,139 @@
+/*
+Document
+
+Styles for elements within a document page or section
+
+Styleguide Trumps.Scopes.Document
+*/
+
+.s-document {
+  margin-bottom: var(--global-space--large);
+}
+
+
+
+
+
+/* ELEMENTS */
+
+
+/* ELEMENTS: Content Sectioning */
+
+.s-document h2 {
+  margin: var(--global-space--large) 0 var(--global-space--normal);
+}
+
+.s-document h3 {
+  margin-bottom: var(--global-space--normal);
+}
+
+/* Extra space above lesser headings */
+.s-document h3 { margin-top: 1em; }
+.s-document h4,
+.s-document h5,
+.s-document h6 { margin-top: 1.25em; }
+
+/* ELEMENTS: Text Content */
+
+.s-document blockquote {
+  opacity: 0.75;
+  border: var(--global-border--normal);
+
+  padding: 1em;
+}
+.s-document blockquote > *:last-child { margin-bottom: 0; }
+
+@media only screen and (min-width: 768px) {
+  blockquote { width: 600px; }
+}
+
+.s-document figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.s-document figcaption {
+  font-weight: bold;
+}
+
+/* Treat nested definition lists like other nested lists */
+/* NOTE: See `../elments/html-elements.html` for `dl dl` reference styles */
+p + dl.small {
+  padding-left: var(--global-space--list-indent);
+}
+
+/* ELEMENTS: Text Content */
+/* ELEMENTS: Inline Text Semantics */
+/* ELEMENTS: Image & Multimedia */
+/* ELEMENTS: Interactive Elements */
+
+/* FAQ: Pulls images, code, and some lists closer to paragraph above */
+.s-document p + ul.small /* Bootstrap class */,
+.s-document p + ol.small /* Bootstrap class */,
+.s-document p + dl.small /* Bootstrap class */,
+.s-document p + pre,
+.s-document p + img,
+.s-document p + details {
+  margin-top: -0.75rem;
+  margin-bottom: 1rem; /* mirror Bootstrap `_reboot.css` <p> */
+}
+
+
+/* ELEMENTS: Image & Multimedia */
+
+/* NOTE: The `data_transfer.html` template uses <figure>'s */
+.s-document img/*:not(figure > img)*/ {
+  display: block;
+  max-width: 75%;
+
+  border: var(--global-border--normal);
+}
+
+
+/* ELEMENTS: Table Content */
+
+.s-document table {
+  width: 100%;
+  max-width: 500px;
+
+  text-align: center;
+}
+
+/* ELEMENTS: Interactive Elements */
+
+/* FAQ: Indent details content, but not the summary */
+.s-document details {
+  --buffer-horz: 1em; padding-left: var(--buffer-horz);
+}
+.s-document summary { margin-left: calc( var(--buffer-horz) * -1 ); }
+
+.s-document details[open] > summary { margin-bottom: 0.5em; }
+
+/* Add explanation to summary toggle */
+/* FAQ: The <details>/<summary> feature is not common in a paragraph context */
+.s-document summary::after {
+  display: inline-block;
+  margin-left: 0.2rem;
+
+  opacity: 0.75;
+}
+.s-document details[open] > summary::after { content: '(hide)'; }
+.s-document details:not([open]) > summary::after { content: '(show)'; }
+
+
+
+
+
+/* COMPONENTS */
+
+/* COMPONENTS: Bootstrap */
+
+.s-document .row > .col > *:last-child {
+  margin-bottom: 0;
+}
+.s-document .row .row {
+  padding: var(--global-space--normal) 0;
+}
+.s-document .row .row:nth-child(even) {
+  background-color: var(--global-color-primary--x-light);
+}

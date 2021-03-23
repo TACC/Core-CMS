@@ -10,6 +10,9 @@ from django.contrib.sitemaps.views import sitemap
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.views.static import serve
 
+from django.http import request
+from django.views.generic.base import RedirectView
+
 admin.autodiscover()
 
 urlpatterns = [
@@ -37,6 +40,7 @@ if settings.FEATURES['blog']:
 
 urlpatterns += [
     url(r'^', include('cms.urls')),
+    # url(r'^$', RedirectView.as_view(url=request.build_absolute_uri('/')), name='home')
     # url(r'^', include('djangocms_forms.urls')), # FP-416: Pending full support
 ]
 

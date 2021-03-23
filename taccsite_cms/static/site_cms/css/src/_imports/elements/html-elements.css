@@ -15,6 +15,12 @@ Reference:
 Styleguide Elements.MainSectioningRoots
 */
 
+html {
+  /* Set base font but support user-defined browser font size */
+  /* SEE: https://snook.ca/archives/html_and_css/font-size-with-rem */
+  font-size: 100%; /* 16px */
+}
+
 /* The webpage must be at least as tall as the viewport */
 html,
 body {
@@ -45,7 +51,9 @@ Reference:
 Styleguide Elements.ContentSectioning
 */
 
-/* … */
+main {
+  padding-bottom: var(--global-space-beneath-main-content);
+}
 
 
 
@@ -67,7 +75,17 @@ Reference:
 Styleguide Elements.TextContent
 */
 
-/* … */
+ol, ul,
+dl dl /* Treat nested definition lists like other nested lists */ {
+  padding-left: var(--global-space--list-indent);
+}
+ol ol, ol ul, ul ol, ul ul {
+  margin: revert; /* Undo Bootstrap `_reboot.css` */
+}
+/* Add space between `dt` and `dd` */
+dt {
+  margin-bottom: .5rem; /* Mirror's Bootstrap `margin-bottom` */
+}
 
 
 
@@ -89,7 +107,61 @@ Reference:
 Styleguide Elements.InlineTextSemantics
 */
 
-/* … */
+var,
+/* Overwrite Bootstrap (which does not use its `--font-family-monospace`) */
+code, kbd, pre, samp {
+  font-family: var(--global-font-family--mono);
+}
+code kbd {
+  display: inline-block; /* ensure element does not bleed outside parent */
+  padding: .1rem .2rem; /* overwrites Bootstrap */
+  margin-left: .2rem;
+  margin-right: .2rem;
+
+  font-size: inherit;
+}
+
+/* Code (<code>, <samp>, <pre>) */
+
+/* Code: any content or context) */ code,
+/* Code: content has only output */ pre > samp {
+  background-color: var(--global-color-primary--x-light);
+
+  border-width: var(--global-border-width--normal);
+  border-style: solid;
+  border-color: var(--global-color-primary--light);
+
+  /* Undo Bootstrap */
+  color: unset;
+}
+/* Code: context is inline */ :not(pre) > code {
+  display: inline-block;
+  padding: var(--global-space--xx-small) var(--global-space--x-small);
+}
+/* Code: context is block, content has input */ pre > code,
+/* Code: context is block, content has only ouput */ pre > samp {
+  display: inline-block; /* FAQ: If `block`, then background color is cropped */
+  padding: var(--global-space--x-small) var(--global-space--small);
+}
+/* Code: context is block, container probably has inline-style width set */
+/* FAQ: Stretch code to meet container width */
+pre[style] > code,
+pre[style] > samp {
+  min-width: 100%;
+}
+
+/* Code: context is inline, content has only output */
+/* FAQ: Examples: command output within CLI illustration */
+pre samp {
+  opacity: 0.75;
+  text-decoration: none;
+}
+/* Code: context is inline, content has context-agnostic output */
+/* FAQ: Examples: command prompt within CLI illustration */
+pre code u {
+  opacity: 0.50;
+  text-decoration: none;
+}
 
 
 
@@ -199,7 +271,11 @@ Reference:
 Styleguide Elements.Tables
 */
 
-/* … */
+table,
+td,
+th {
+  border: var(--global-border--normal);
+}
 
 
 
@@ -243,4 +319,8 @@ Reference:
 Styleguide Elements.Interactive
 */
 
-/* … */
+/* Clone Bootstrap's <p> and <ul> margins */
+details {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
