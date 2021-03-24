@@ -20,3 +20,28 @@ Weight: 4
 
 Styleguide Elements
 */
+
+/* Add styles to the `html-elements.css` stylesheet */
+
+
+
+
+
+/*
+TACC Elements
+
+Styles for TACC custom elements (like `<tacc-search-bar>`) and their parts (which may inherit standard HTML element styles).
+
+Reference:
+
+- [MDN: Web Components: Using custom elements](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements)
+
+Rules:
+
+- Style via `[part="button"]`.
+- Style via `:host`.
+
+Styleguide Elements.TACC
+*/
+
+/* Add styles to an individual stylesheet for each custom element */

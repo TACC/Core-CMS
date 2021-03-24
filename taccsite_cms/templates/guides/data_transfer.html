@@ -1,0 +1,527 @@
+{% extends "guide.html" %}
+
+{% block guide %}
+  <div class="row">
+    <div class="col">
+      <h2>Data Transfer and Management Guide</h2>
+      <h3>Outline</h3>
+
+      <ul>
+        <li>
+          <a href="#table1">Data Transfer Methods</a>
+        </li>
+        <li>
+          <a href="#storage">What is TACC's Storage Server?</a>
+        </li>
+        <li>
+          <a href="#rsync_prereqs">Prerequisites for Portal user</a>
+        </li>
+        <li>
+          <a href="#command_line_tools">Using Command Line Tools to Transfer and Organize Data</a>
+        </li>
+        <li>
+          <a href="#scp_sftp_rsync"><code>scp</code>, <code>sftp</code>, &amp; <code>rsync</code></a>
+        </li>
+        <li>
+          <a href="#data_transfer_prereqs">Prerequisites for Data Transfer with Command Line Tools</a>
+        </li>
+        <li>
+          <a href="#local_data_path">Determining the Path to Your Data File(s) on Your Local System</a>
+          <ul>
+            <li>
+              <a href="#figure1">Figure 1. Use Get Info to determine “Where” the path of your data file(s) is</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#local_data_path">Determining the Path to Your Transfer Directory</a>
+        </li>
+        <li>
+          <a href="#scp_transfer">How to Transfer Data with <code>scp</code></a>
+        </li>
+        <li>
+          <a href="#sftp_transfer">How to Transfer Data with <code>sftp</code></a>
+        </li>
+        <li>
+          <a href="#rsync_transfer">How to Transfer Data with <code>rsync</code></a>
+        </li>
+        <li>
+          <a href="#cyberduck_transfer">How to Transfer Data with Cyberduck</a>
+          <ul>
+            <li>
+              <a href="#cy_windows">For Windows</a>
+              <ul>
+                <li>
+                  <a href="#figure2">Figure 2. Windows Cyberduck and “Open Connection” setup screen</a>
+                </li>
+                <li>
+                  <a href="#figure3">Figure 3. Windows “Open Connection” setup screen</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#cy_mac">For Mac</a>
+              <ul>
+                <li>
+                  <a href="#figure4">Figure 4. macOS “New Bookmark” setup screen</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#references">References</a>
+        </li>
+      </ul>
+
+      <h3>Data Transfer and Management Guide</h3>
+
+      <p>
+        Transferring Portal data from your local machine to
+        <a href="#storage">one of TACC's remote storage systems</a> can be accomplished using two methods: command line tools (<code>scp</code>, <code>sftp</code>,
+        <code>rsync</code>) and graphical user interface (Cyberduck).
+      </p>
+
+      <h4 id="table1">Data Transfer Methods</h4>
+      <table style="max-width: 500px">
+        <tbody>
+          <tr>
+            <th>Usage Mode</th>
+            <th>Transfer Method</th>
+          </tr>
+          <tr>
+            <td>Command Line Tool</td>
+            <td>
+              <a target="_blank" href="https://man7.org/linux/man-pages/man1/scp.1.html"><code>scp</code></a>
+            </td>
+          </tr>
+          <tr>
+            <td>Command Line Tool</td>
+            <td>
+              <a target="_blank" href="https://man7.org/linux/man-pages/man1/sftp.1.html"><code>sftp</code></a>
+            </td>
+          </tr>
+          <tr>
+            <td>Command Line Tool</td>
+            <td>
+              <a target="_blank" href="https://man7.org/linux/man-pages/man1/rsync.1.html"><code>rsync</code></a>
+            </td>
+          </tr>
+          <tr>
+            <td>Graphical Tool</td>
+            <td>
+              <a target="_blank" href="https://cyberduck.io/">Cyberduck</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <h4 id="storage">What is TACC's Storage Server?</h4>
+
+      <p>
+        A TACC storage system is a logically defined resource designed to provide data storage and management capabilities to TACC portal users through the portal interface. Each portal is accessible over a URL path (e.g.,
+        <code><samp>sub.domain</samp>.tacc.utexas.edu</code>
+        ) which we will subsequently refer to as “host”.
+      </p><p>
+        Storage systems can be configured for both normal and protected data (e.g., HIPAA) in a secured location, depending on the project requirements established for the portal. This location is exposed as a path to a directory on the secure system (e.g.,
+        <code>/<kbd>secure-server-root</kbd>/projects/<kbd>directory_name</kbd></code>
+        ) which this document will subsequently refer to as
+        <code>/transfer/directory/path</code>
+        .
+      </p><p>
+        Storage systems are to be used exclusively for transferring and accessing data through the portal.
+      </p>
+      <h4 id="rsync_prereqs">Prerequisites for Portal User</h4>
+
+      <p>There are two prerequisites for accessing a portal and transferring data:</p>
+
+      <ul>
+        <li>A TACC Account</li>
+        <li>
+          Multi-Factor Authentication (MFA) pairing with the
+          <a target="_blank" href="https://portal.tacc.utexas.edu/tutorials/multifactor-authentication#tacctokenapp">TACC Token app</a>
+        </li>
+      </ul>
+
+      <p>
+        All portal users will need to create a TACC account in the TACC User Portal (which can be accessed at
+        <a target="_blank" href="https://portal.tacc.utexas.edu/">TACC Portal</a>.
+        If you have forgotten your TACC account credentials, please refer to your email for a message titled “TACC Account Request Confirmation” or use the TACC Portal's
+        <a href="https://portal.tacc.utexas.edu/password-reset/-/password/">password reset form</a>
+        or
+        <a href="https://portal.tacc.utexas.edu/password-reset/-/password/forgot-username">username recovery form</a>.
+      </p>
+      <p>
+        Access to all TACC resources requires a completed Multi-Factor Authentication pairing with your TACC credentials. To set up MFA, please reference TACC Portal's
+        <a href="https://portal.tacc.utexas.edu/tutorials/multifactor-authentication">Multi-Factor Authentication tutorial</a>.
+      </p>
+      <h4 id="command_line_tools">
+        Using Command Line Tools to Transfer and Organize Data
+      </h4>
+
+      <p>
+        A common method of transferring files between TACC resources and/or your local machine is through the command line.
+      </p>
+      <h4 id="scp_sftp_rsync">
+        <code>scp</code>, <code>sftp</code>, &amp; <code>rsync</code>
+      </h4>
+
+      <p>
+        These three command line tools are secure and can be used to accomplish data transfer. You can run these commands directly from the terminal if your local system runs Linux or macOS.
+      </p>
+      <blockquote>
+        <p>
+          Note: It is possible to use these command line tools if your local machine runs Windows, but you will need to use a ssh client (ex.
+          <a target="_blank" href="https://www.putty.org/">PuTTY</a>
+          ).
+        </p>
+        <p>
+          To simplify the data transfer process, it is recommended that Windows users follow the
+          <a href="#cyberduck_transfer">How to Transfer Data with Cyberduck</a>
+          guide as detailed below.
+        </p>
+      </blockquote>
+      <p>
+        For users that are new to the command line, using either <code>scp</code> or <code>sftp</code> to transfer data is advised.
+      </p>
+      <h4 id="data_transfer_prereqs">
+        Prerequisites for Data Transfer with Command Line Tools
+      </h4>
+
+      <p>Before we begin, you will need to know:</p>
+
+      <ul>
+        <li>the path to your data file(s) on your local system</li>
+        <li>the path to your transfer directory on the remote storage server</li>
+      </ul>
+
+      <h4 id="local_data_path">
+        Determining the Path to Your Data File(s) on Your Local System
+      </h4>
+
+      <p>
+        In order to transfer your project data, you will first need to know where the files are located on your local system.
+      </p>
+      <p>
+        To do so, navigate to the location of the files on your computer. This can be accomplished on a Mac by using the Finder application or on Windows with File Explorer application. Common locations for user data at the user's home directory, the Desktop and My Documents.
+      </p>
+      <p>
+        Once you have identified the location of the files, you can right-click on them and select either Get Info (on Mac) or Properties (on Windows) to view the path location on your local system.
+      </p>
+      <figure id="figure1">
+        <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/6c/ea/6ceacba9-7824-4925-b924-dd317040b629/picture1.png__1170x0_q85_subsampling-2_upscale.png" />
+        <figcaption>
+          Figure 1. Use Get Info to determine “Where” the path of your data file(s) is
+        </figcaption>
+      </figure>
+
+      <p>
+        For example, a file located in a folder named <kbd>portal-data</kbd> under <code>Documents</code> would have the following path:
+      </p>
+      <dl>
+        <dt>On Mac</dt>
+        <dd><code>/Users/<kbd>username</kbd>/Documents/<kbd>portal-data</kbd>/my_file.txt</code></dd>
+        <dt>On Windows</dt>
+        <dd><code>\Users\<kbd>username</kbd>\My Documents\<kbd>portal-data</kbd>\my_file.txt</code></dd>
+      </dl>
+      <h4 id="storage_data_path">
+        Determining the Path to Your Transfer Directory
+      </h4>
+
+      <p>
+        A transfer directory on the remote storage server associated with the portal you are accessing it through will be established when your account is given access to the portal and completes the on-boarding procedure. The transfer directory path will be unique for every institution and project.
+      </p>
+      <details class="small"><summary>Examples:</summary>
+        <code>/corral-secure/projects/A2CPS/submissions/utaustin/</code>
+      </details>
+      <p>
+        If you are unsure of your transfer directory path, please consult your project PI directly.
+        {# FP-752: Consider referencing Portal → Data Files after the Portal User Guide is added. #}
+      </p>
+      <h4 id="scp_transfer">How to Transfer Data with <code>scp</code></h4>
+
+      <p>
+        <code>scp</code> copies files between hosts on a network. To transfer a file (ex. <code>my_file.txt</code>) to the remote secure system via <code>scp</code>, open a terminal on your local computer and navigate to the path where your data file is located.
+      </p>
+      <dl>
+        <dt>On Mac</dt>
+        <dd><pre style="max-width: 500px"><code><u>localhost$ </u>cd ~/Documents/<kbd>portal-data</kbd>/</code></pre></dd>
+        <dt>On Windows</dt>
+        <dd><pre style="max-width: 500px"><code><u>localhost$ </u>cd %HOMEPATH%\Documents\<kbd>portal-data</kbd>\</code></pre></dd>
+      </dl>
+
+      <p>
+        Assuming your TACC username is <code>jdoe</code> and you are affiliated with UT Austin, a <code>scp</code> transfer that pushes <code>my_file.txt</code> from the current directory of your local computer to the remote secure system would look like this:
+      </p>
+      <pre style="max-width: 1500px"><code><u>localhost$ </u>scp ./my_file.txt jdoe@<kbd>host</kbd>:<kbd>/transfer/directory/path</kbd></code></pre>
+      <blockquote>
+        <p>
+          Note: This command will copy your data file directly to your individualized transfer directory on the remote storage system.
+        </p>
+      </blockquote>
+      <p>
+        <em>If you have not done so already, enter this command in your terminal,
+          replacing the file name, TACC username, and your individualized transfer directory path appropriately.</em>
+      </p>
+      <p>
+        After entering the command, you will be prompted to login to the remote secure system by entering the password associated with your TACC account as well as the token value generated from your TACC token app.
+      </p>
+      <p>
+        A successful data transfer will generate terminal output similar to this:
+      </p>
+      <pre style="max-width: 500px"><samp>my_file.txt     100% ##  #.#          KB/s   ##:##</samp></pre>
+
+      <p>
+        If you wish to learn more about <code>scp</code> and how to synchronize your file transfer, you can do so
+        <a target="_blank" href="https://man7.org/linux/man-pages/man1/scp.1.html">the online <code>man</code> page for <code>scp</code></a>
+        or follow the file transfer section of the user guide for the appropriate TACC system:
+      </p>
+      <ul>
+        <li>
+          <a target="_blank" href="https://portal.tacc.utexas.edu/user-guides/stampede2#transferring-rsync">Stampede2 User Guide: Transferring Files Using <code>scp</code></a>
+        </li>
+        <li>
+          <a target="_blank" href="https://frontera-portal.tacc.utexas.edu/user-guide/files/#transferring-files-with-rsync">Frontera User Guide: Transferring Files with <code>rsync</code></a>
+        </li>
+        <li>
+          <a target="_blank" href="https://portal.tacc.utexas.edu/user-guides">TACC User Guides (for each system)</a>
+          <small>(select the relevant system for this portal, then search “<code>scp</code>”)</small>
+        </li>
+      </ul>
+
+      <h4 id="sftp_transfer">How to Transfer Data with <code>sftp</code></h4>
+
+      <p>
+        <code>sftp</code> is a file transfer program that allows you to interactively navigate between your local file system and the remote secure system. To transfer a file (ex. <code>my_file.txt</code>) to the remote secure system via <code>sftp</code>, open a terminal on your local computer and navigate to the path where your data file is located.&nbsp;
+      </p>
+      <dl>
+        <dt>On Mac</dt>
+        <dd><pre style="max-width: 500px"><code><u>localhost$ </u>cd ~/Documents/<kbd>portal-data</kbd>/</code></pre></dd>
+        <dt>On Windows</dt>
+        <dd><pre style="max-width: 500px"><code><u>localhost$ </u>cd %HOMEPATH%\Documents\<kbd>portal-data</kbd>\</code></pre></dd>
+      </dl>
+
+      <p>
+        Assuming your TACC username is <code>jdoe</code> and you are affiliated with UT Austin, an <code>sftp</code> transfer that pushes
+        <code>my_file.txt</code>
+        from the current directory of your local computer to the remote secure system would look like this:
+      </p>
+      <pre style="max-width: 1500px"><code><u>localhost$ </u>sftp jdoe@<kbd>host</kbd>:<kbd>/transfer/directory/path</kbd>
+<samp>Password:
+TACC Token Code:
+Connected to <var>host</var>.
+Changing to:
+  <var>/transfer/directory/path</var></samp>
+<u>sftp&gt;</u></code></pre>
+
+      <blockquote>
+        <p>If you have not done so already, enter this command in your terminal,
+          replacing the TACC username and your individualized transfer directory path appropriately.</p>
+      </blockquote>
+
+      <p>
+        You are now logged into the remote secure system and have been redirected to your transfer directory. To confirm your location on the server, enter the following command:
+      </p>
+
+      <pre style="max-width: 1000px"><code><u>sftp&gt; </u>pwd
+<samp>Remote working directory:
+  <var>/transfer/directory/path</var></samp></code></pre>
+
+      <p>To list the files currently in your transfer directory:</p>
+
+      <pre style="max-width: 500px"><code><u>sftp&gt; </u>ls
+<samp>utaustin_dir.txt<samp></code></pre>
+
+      <p>
+        To list the files currently in your <em>local</em> directory:
+      </p>
+
+      <pre style="max-width: 500px"><code><u>sftp&gt; </u>lls
+<samp>my_file.txt<samp></code></pre>
+
+      <blockquote>
+        <p>
+          Note: The leading <code>l</code> in the <code>lls</code> command denotes that you are listing the contents of your <em>local</em> working directory.
+        </p>
+      </blockquote>
+
+      <p>
+        To transfer <code>my_file.txt</code> from your local computer to your transfer directory:
+      </p>
+
+      <pre style="max-width: 1000px"><code><u>sftp&gt; </u>put my_file.txt
+<samp>Uploading my_file.txt to <var>/transfer/directory/path</var></samp>
+<samp>my_file.txt     100% ##  #.#          KB/s   ##:#</samp></code></pre>
+
+      <p>
+        To check if <code>my_file.txt</code> is in the <code>utaustin</code>
+        subfolder:
+      </p>
+
+      <pre style="max-width: 500px"><code><u>sftp&gt; </u>ls
+<samp>my_file.txt</samp>
+<samp>utaustin_dir.txt</samp></code></pre>
+
+      <p>
+        To exit out of <code>sftp</code> on the terminal:
+      </p>
+
+      <pre style="max-width: 500px"><code><u>sftp&gt; </u>bye
+<u>localhost1$</u></code></pre>
+
+      <p>
+        If you wish to learn more about <code>sftp</code>, you can do so
+        at <a target="_blank" href="https://man7.org/linux/man-pages/man1/sftp.1.html">the online <code>man</code> page for <code>scp</code></a>.
+      </p>
+
+      <h4 id="rsync_transfer">How to Transfer Data with <code>rsync</code></h4>
+
+      <p>
+        <code>rsync</code>is a file copying tool that can reduce the amount of data transferred by sending only the differences between the source files on your local system and the existing files in your transfer directory. To transfer a file (ex. <code>my_file.txt</code>) to the remote secure system via <code>rsync</code>, open a terminal on your local computer and navigate to the path where your data file is located.
+      </p>
+      <dl>
+        <dt>On Mac</dt>
+        <dd><pre style="max-width: 500px"><code><u>localhost$ </u>cd ~/Documents/<kbd>portal-data</kbd>/</code></pre></dd>
+        <dt>On Windows</dt>
+        <dd><pre style="max-width: 500px"><code><u>localhost$ </u>cd %HOMEPATH%\Documents\<kbd>portal-data</kbd>\</code></pre></dd>
+      </dl>
+      <p>
+        Assuming your TACC username is <code>jdoe</code> and you are affiliated with UT Austin, an <code>rsync</code> transfer that pushes
+        <code>my_file.txt</code>
+        from the current directory of your local computer to the remote secure system would look like this:
+      </p>
+      <pre style="max-width: 1000px"><code><u>localhost$ </u>rsync ./my_file.txt jdoe@<kbd>host</kbd>:<kbd>/transfer/directory/path</kbd></code></pre>
+      <blockquote>
+        <p>If you have not done so already, enter this command in your terminal,
+          replacing the TACC username and your individualized transfer directory path appropriately.</p>
+      </blockquote>
+      <p>
+        If the command returns 0 in your terminal, the data transfer was successful.
+      </p>
+      <p>
+        If you wish to learn more about <code>rsync</code> and how to synchronize your file transfer, you can do so
+        <a target="_blank" href="https://man7.org/linux/man-pages/man1/rsync.1.html">the online <code>man</code> page for <code>rsync</code></a>
+        or follow the file transfer section of the user guide for the appropriate TACC system:
+      </p>
+      <ul>
+        <li>
+          <a target="_blank" href="https://portal.tacc.utexas.edu/user-guides/stampede2#transferring-rsync">Stampede2 User Guide: Transferring Files Using <code>rsync</code></a>
+        </li>
+        <li>
+          <a target="_blank" href="https://frontera-portal.tacc.utexas.edu/user-guide/files/#transferring-files-with-rsync">Frontera User Guide: Transferring Files with <code>rsync</code></a>
+        </li>
+        <li>
+          <a target="_blank" href="https://portal.tacc.utexas.edu/user-guides">TACC User Guides (for each system)</a>
+          <small>(select the relevant system for this portal, then search “<code>rsync</code>”)</small>
+        </li>
+      </ul>
+
+      <h4 id="cyberduck_transfer">How to Transfer Data with Cyberduck</h4>
+
+      <p>
+        <a target="_blank" href="https://cyberduck.io/">Cyberduck</a> is a free graphical user interface for data transfer and is an alternative to using the command line. With a drag-and-drop interface, it is easy to transfer a file from your local system to the remote secure system. You can use
+        <a target="_blank" href="https://cyberduck.io/">Cyberduck</a>
+        for Windows or macOS.
+      </p>
+      <h5 id="cy_windows">For Windows</h5>
+
+      <p>
+        <a target="_blank" href="https://cyberduck.io/download/">Download and install Cyberduck for Windows</a>
+        on your local machine.
+      </p>
+
+      <p>
+        Once installed, click “Open Connection” in the top left corner of your Cyberduck window.
+      </p>
+
+      <figure id="figure2">
+        <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/a9/9f/a99fa278-ae07-4b5e-9219-f9db3c2c89d5/picture2.png__1170x0_q85_subsampling-2_upscale.png" />
+        <figcaption>
+          Figure 2. Windows Cyberduck and “Open Connection” setup screen
+        </figcaption>
+      </figure>
+      <p>
+        To setup a connection, type in the server name,
+        <kbd>host</kbd>. Add your TACC username and password in the spaces provided. If the “More Options” area is not shown, click the small triangle button to expand the window; this will allow you to enter the path to your transfer directory, <kbd>/transfer/directory/path</kbd>, so that when Cyberduck opens the connection you will immediately be in your individualized transfer directory on the system. Click the “Connect” button to open your connection.
+      </p>
+
+      <p>
+        Consult Figure 3. below to ensure the information you have provided is correct.
+        <em>If you have not done so already, replace the “Path” with the path to your individualized transfer directory.</em>
+      </p>
+      <figure id="figure3">
+        <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/10/fb/10fbbb2a-dcd8-44d8-9ade-fb4ed3df8487/picture3.png__1170x0_q85_subsampling-2_upscale.png" />
+        <figcaption>
+          Figure 3. Windows “Open Connection” setup screen
+        </figcaption>
+      </figure>
+      <blockquote>
+        <p>
+          Note: You will be prompted to “allow unknown fingerprint…” upon connection. Select “allow” and enter your TACC token value.
+        </p>
+      </blockquote>
+      <p>
+        Once connected, you can navigate through your remote file hierarchy using the graphical user interface. You may also drag-and-drop files from your local computer into the Cyberduck window to transfer files to the system.
+      </p>
+      <h5 id="cy_mac">For Mac</h5>
+
+      <p>
+        <a target="_blank" href="https://cyberduck.io/download/">Download and install Cyberduck for macOS</a>
+        on your local machine.
+      </p>
+
+      <p>
+        Once installed, go to “Bookmark &gt; New Bookmark” to setup a connection.
+      </p>
+      <blockquote>
+        <p>
+          Note: You cannot select “Open Connection” in the top left corner of your Cyberduck window as macOS’ setup screen is missing the “More Options” button.
+        </p>
+      </blockquote>
+      <p>
+        To setup a connection using “New Bookmark", type in the server name,
+        <kbd>host</kbd>. Add your TACC username and password in the spaces provided. If the “More Options” area is not shown, click the small triangle or button to expand the window; this will allow you to enter the path to your transfer directory, <kbd>/transfer/directory/path</kbd>, so that when Cyberduck opens the connection you will immediately be in your individualized transfer directory on the system. As you fill out the information, Cyberduck will create the bookmark for you. Exit out of the setup screen and click on your newly created bookmark to launch the connection.
+      </p>
+      <figure id="figure4">
+        <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/fa/b3/fab3edd6-c7a6-46dc-8103-09917ef02240/picture4.png__1170x0_q85_subsampling-2_upscale.png" />
+        <figcaption>Figure 4. macOS “New Bookmark” setup screen</figcaption>
+      </figure>
+
+      <p>
+        Consult Figure 4. above to ensure the information you have provided is correct.
+        <em>If you have not done so already, replace the “Path” with the path to your individualized transfer directory.</em>
+      </p>
+      <blockquote>
+        <p>
+          Note: You will be prompted to “allow unknown fingerprint…” upon connection. Select “allow” and enter your TACC token value.
+        </p>
+      </blockquote>
+      <p>
+        Once connected, you can navigate through your remote file hierarchy using the graphical user interface. You may also drag-and-drop files from your local computer into the Cyberduck window to transfer files to the storage system.
+      </p>
+
+      <h4 id="references">References</h4>
+
+      <ul>
+        <li>
+          <a target="_blank" href="https://man7.org/linux/man-pages/man1/scp.1.html">https://man7.org/linux/man-pages/man1/scp.1.html</a>
+        </li>
+        <li>
+          <a target="_blank" href="https://man7.org/linux/man-pages/man1/sftp.1.html">https://man7.org/linux/man-pages/man1/sftp.1.html</a>
+        </li>
+        <li>
+          <a target="_blank" href="https://man7.org/linux/man-pages/man1/rsync.1.html">https://man7.org/linux/man-pages/man1/rsync.1.html</a>
+        </li>
+        <li>
+          <a target="_blank" href="https://portal.tacc.utexas.edu/tutorials/multifactor-authentication">https://portal.tacc.utexas.edu/tutorials/multifactor-authentication</a>
+        </li>
+        <li>
+          <a target="_blank" href="https://portal.tacc.utexas.edu/user-guides">https://portal.tacc.utexas.edu/user-guides</a>
+          <small>(select the relevant system for this portal)</small>
+        </li>
+        <li>
+          <a target="_blank" href="https://portal.xsede.org/data-management">https://portal.xsede.org/data-management</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+{% endblock guide %}

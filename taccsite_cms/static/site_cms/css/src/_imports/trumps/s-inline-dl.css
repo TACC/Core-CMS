@@ -1,0 +1,33 @@
+/*
+"Inline" Description List
+
+Of `<dl>` (description lists), make terms in-line with descritpions.
+
+Markup:
+<dl class="s-inline-dl">
+  <dt>Apple</dt><dd>Red round fruit.</dd>
+  <dt>Dog</dt><dd>Loud loyal mammal.</dd>
+  <dt>Star</dt><dd>Giant fire ball.</dd>
+</dl>
+
+Styleguide Trumps.Scopes.InlineDescriptionList
+*/
+dl.s-inline-dl dt {
+  display: block;
+  float: left;
+
+  /* Remove space between <dt> and <dd> (from our styles) */
+  /* SEE: ../elments/html-elements.html */
+  margin-bottom: 0;
+}
+dl.s-inline-dl dd {
+  clear: right;
+
+  /* Remove space between <dd>'s (from Bootstrap) */
+  margin-bottom: 0;
+}
+dl.s-inline-dl dt::after {
+  content: ':';
+
+  margin-inline-end: 0.25em;
+}
