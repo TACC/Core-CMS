@@ -285,11 +285,9 @@ _LOGO = _PORTAL_LOGO                # Default Portal Logo.
 ########################
 # FAVICON
 
-_PORTAL_FAVICON = {
+_FAVICON = {
     "img_file_src": "site_cms/img/favicons/favicon.ico"
 }
-
-_FAVICON = _PORTAL_FAVICON                # Default Favicon.
 
 ########################
 # PORTAL
