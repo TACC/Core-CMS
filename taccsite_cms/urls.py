@@ -10,6 +10,9 @@ from django.contrib.sitemaps.views import sitemap
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.views.static import serve
 
+from django.http import request
+from django.views.generic.base import RedirectView
+
 admin.autodiscover()
 
 urlpatterns = [
@@ -25,6 +28,8 @@ if settings.PORTAL:
         # FAQ: Allow direct access to markup for Portal and User Guide to render
         url(r'^cms/nav/search/markup/$', TemplateView.as_view(template_name='nav_search.raw.html'), name='search_bar_markup'),
         url(r'^cms/nav/pages/markup/$', TemplateView.as_view(template_name='nav_cms.raw.html'), name='menu_pages_markup'),
+        url(r'^cms/header/branding/markup/$', TemplateView.as_view(template_name='header_branding.html'), name='header_branding_markup'),
+        url(r'^cms/header/logo/markup/$', TemplateView.as_view(template_name='header_logo.html'), name='header_logo_markup'),
     ]
 
 if settings.FEATURES['blog']:
@@ -35,6 +40,7 @@ if settings.FEATURES['blog']:
 
 urlpatterns += [
     url(r'^', include('cms.urls')),
+    # url(r'^$', RedirectView.as_view(url=request.build_absolute_uri('/')), name='home')
     # url(r'^', include('djangocms_forms.urls')), # FP-416: Pending full support
 ]
 
