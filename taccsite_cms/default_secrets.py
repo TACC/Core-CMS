@@ -65,6 +65,11 @@ _CMS_TEMPLATES = (
     # NOTE: To have per-project styles, the custom default template is required
     ('fullwidth.html', 'Fullwidth'),
     ('example-cms/templates/fullwidth.html', 'Fullwidth (Custom Example)'),
+    # NOTE: If project later uses custom template, then for that project:
+    #       1. Rename standard default template to "DEPRECATED […]".
+    #       2. Update all pages to use the custom default template.
+    #       3. Disable standard default template (remove from `_CMS_TEMPLATES`).
+    # ('fullwidth.html', 'DEPRECATED Fullwidth'),
 
     # Any portal whose homepage has no design must enable and use this template
     # ('home_portal.html', 'Standard Portal Homepage'),
