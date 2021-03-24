@@ -1,0 +1,41 @@
+{% extends "fullwidth.html" %}
+{% load cms_tags staticfiles %}
+
+{% block assets_custom %}
+	{{ block.super }}
+
+  <link
+    rel="stylesheet"
+    href="{% static 'site_cms/css/build/template.home.css' %}"
+  >
+{% endblock assets_custom %}
+
+{% block content %}
+  {% placeholder "content" or %}
+  <div class="container  s-document">
+    <h2>Core Experience Portal</h2>
+
+    <p><strong>The Texas Advanced Computing Center (TACC) provides powerful and intuitive web interfaces that remove technological hurdles.</strong></p>
+
+    <p>The portal manages massive datasets, enables the execution of highly parallelized computations, and allows users to collaborate across the U.S. The portal is not just for scientists and engineers, TACC&#39;s resources can be used by technologists, industry partners, educators, humanities scholars, and others.</p>
+
+    <p>The portal&#39;s main features include:</p>
+
+    <h3>Data Management</h3>
+
+    <ul>
+      <li>Upload from your device or cloud storage.</li>
+      <li>Preview many data formats.</li>
+      <li>Download anywhere.</li>
+      <li>Share with collaborators and reviewers.</li>
+    </ul>
+
+    <h3>Computation</h3>
+
+    <ul>
+      <li>Queue HPC Jobs.</li>
+      <li>Execute on some of the most powerful systems in the world.</li>
+    </ul>
+  </div>
+  {% endplaceholder %}
+{% endblock content %}

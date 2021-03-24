@@ -1,0 +1,159 @@
+{% extends "guide.html" %}
+
+{% block guide %}
+  <h2>Portal Technology Stack</h2>
+
+  <h3>Portal Overview</h3>
+
+  <p>CEP, Core Experience Portal, is the core engine for all TACC portal projects. The primary goal of the Core Portal project is to establish a codebase that can be used as a springboard for all future portal projects undertaken by TACC. By establishing a common codebase for all portal efforts, we can better maintaining alignment between the core capabilities and technologies supported across all TACC portals. There will be unique requirements in some portal projects, but CEP should provide an "out-of-the-box" framework for rapidly deploying a new portal project with all the common capabilities already in place and compliant with current best practices and conventions at TACC.</p>
+
+  <h4>Common Portal Capabilities:</h4>
+
+  <ul>
+    <li><strong>Dedicated VM</strong> resources for each portal (varies by portal requirements)</li>
+    <li>An <strong>isolated tenant</strong> for integration into the TACC ecosystem via the portal</li>
+    <li>A <strong>CMS</strong> for adding/editing content within static portal pages</li>
+    <li>Integrated <strong>Elastic Search</strong></li>
+    <li>An <strong>Issue Tracking &amp; Ticketing System</strong> (integrated with the TACC RT ticketing system)</li>
+    <li>User account <strong>authentication</strong> (requires a TACC account)</li>
+    <li>A user-based <strong>Dashboard</strong> to monitor project activity and resource utilization</li>
+    <li>A shared <strong>Community Data</strong> storage system for collaborative data</li>
+    <li>A <strong>Private Data</strong> storage system for individual data</li>
+    <li><strong>Execution Systems</strong> for running applications</li>
+    <li>An <strong>Application Launcher</strong> for accessing public and private applications</li>
+    <li>A shared <strong>My Projects</strong> storage system for non-public group projects</li>
+    <li>A <strong>Public Data</strong> storage area for unauthenticated access to published work or data sets.</li>
+  </ul>
+
+  <h4>CEP Major Components:</h4>
+
+  <ul>
+    <li>General Content Management</li>
+    <li>My Account</li>
+    <li>My Dashboard</li>
+    <li>Data Files (Data Depot)</li>
+    <li>Applications (workspace)</li>
+    <li>Search</li>
+    <li>Notifications</li>
+  </ul>
+
+  <p><em>Note: Any additional portal capabilities required by a project need to be identified and planned for independently.</em></p>
+
+  <h3>High-level Architecture</h3>
+
+  <p>The portal architecture operates in a tiered structure. Listed below in order from the outermost-tier and going inward, they are:</p>
+
+  <dl class="s-inline-dl">
+    <dt>Layer 4</dt>
+    <dd>The user-facing web portal that enables users to interact with Agave through a browser-based GUI.</dd>
+
+    <dt>Layer 3</dt>
+    <dd>The Agave API that exposes access to Layer 2 and Layer 1 resources over a RESTful API as well as via a CLI for programmatic interaction with resources.</dd>
+
+    <dt>Layer 2</dt>
+    <dd>The middleware service that enables data management, job creation, and job scheduling (eg. Slurm, Kubernetes) across all layer 1 resources.</dd>
+
+    <dt>Layer 1</dt>
+    <dd>The physical infrastructure (storage, HPC and Cloud systems) where data and applications are stored, manipulated, and executed (Corral, Stampede2, Lonestar5, etc.).</dd>
+  </dl>
+
+  <p>
+    <img src="https://cep-web-staging-01.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/4e/de/4ede0716-07fb-455c-a3a4-ef0cc8b36857/image2018-12-13_15-26-55.png__400x225_q85_crop_subsampling-2_upscale.png" alt="Portal high-level architecture diagram as a triangle pointing up and segmented into four layers, where the top is layer 4 and the bottom is layer 1">
+  </p>
+
+  <h3>Backend (Server-side)</h3>
+
+  <dl class="s-inline-dl">
+    <dt>Agave Platform</dt>
+    <dd>(<a href="http://agaveapi.co" rel="nofollow" target="_blank">http://agaveapi.co</a>) An open source, science-as-a-service API platform that provides HPC and file management integrations. (Agave is developed in-house).</p>
+
+    <dt>HPC Connectivity</dt>
+    <dd>From within the portal access to HPC is primarily through Agave. Agave calls in turn submit jobs through Slurm. Multiple platforms are used based on the particular application (or simply for availability) -- Lonestar5 and Stampede2 are the primary target platforms for app deployment</dd>
+
+    <dt>File Storage</dt>
+    <dd>Files are stored on Corral, a mirrored GPFS storage facility, and backed up to Ranch. From the web interface, all File I/O is done through Agave calls, to maintain consistent metadata. Users also have the option to upload through Globus online, or through public cloud storage facilities (Dropbox, Box, Google Drive) -- the web integration of the cloud providers pushes imports through Agave to keep metadata consistent.</dd>
+
+    <dt>Applications</dt>
+    <dd>Portal applications have three distinct components. The applications themselves are installed on the execution systems -- HPC platforms, or containers that run within the virtual infrastructure. Applications are then registered with the API -they are defined as Agave application records, pointing to a zip file on corral, with associated metadata records for further use. a JSON document for each application defines the UI. Runtime instruction inputs are supplied by the jobs created by portal through Agave. Agave also supplies callbacks for updates on a given job’s status. More details on application deployment are provided in the section entitled “Extensibility”. Application templates are available at the template GitHub repository.</dd>
+
+    <dt>API</dt>
+    <dd> API manager (APIM) sits in front of Agave core handles auth, proxying/routing, client management, analytics, rate limiting, and many other features. It provides a unified namespace for the entire API to be hosted behind.</dd>
+
+    <dt>Projects API</dt>
+    <dd> Returns project listings and associated files utilizing the Django framework.</dd>
+  </dl>
+
+  <h3>Frontend (Client-side)</h3>
+
+  <h4>Web-based Portals</h4>
+
+  <p>Portals using Agave to manage apps, data storage, reconfigurable workflows, and to interact with HPC resources. The architecture for the web portal that provides data management, analysis, and simulation capabilities to users through a web interface. The dashboard provides overview of jobs status, data storage, allocations, and system status. Users will primarily interact with the portal through the Workbench which will include: Manage Account, Data Files, Application Workspace, Search, and Help.</p>
+
+  <h4>My Dashboard</h4>
+
+  <p>The dashboard displays availability of TACC resources, and user allocation usages. The CEP infrastructure runs on TACC hosted Virtual Machines, Django/Angular web portal with responsive layout. Every Portal project will have a dedicated VM resources. system status instrumentation will be provided via APIs. The AngularJS framework works by first reading the HTML page, which has additional custom tag attributes embedded into it. Angular interprets those attributes as directives to bind input or output parts of the page to a model that is represented by standard JavaScript variables. The values of those JavaScript variables can be manually set within the code, or retrieved from static or dynamic JSON resources.</p>
+
+  <h4>Data Files</h4>
+
+  <p>Data Files is a collection of storage spaces where user and project data are located, stored, and ultimately organized by users to curate publications and share information. Data Repository is the place where experimental and simulation results are stored for long term. Working storage is the area to share and collaborate with data that is not yet published, Workspace to allow for the analysis of data, a gateway to large scale HPC resources and simulation tools. The data is organized in three categories:</p>
+
+  <ul>
+    <li><strong>My Data</strong> drive hosts any data the user decides to store there. This is also the default storage device for application output data from the Workspace. Within the MyData space, users can organize, manipulate, view, copy the data to an external storage resource.</li>
+    <li><strong>My Projects</strong> view displays the projects the user has created or has been shared with by another team member. Within this scope, files associated with a specific project can be manipulated, tagged, organized, and published through the Data Curation workflow, where publications automatically receive a DOI.</li>
+    <li><strong>Community Data</strong> view displays non-curated user-contributed data for public use.</li>
+  </ul>
+
+  <h4>Applications</h4>
+
+  <p>APPS are executable code available for invocation through Agave’s Jobs service on a specific execution system. If a single code needs to be run on multiple systems, each combination and system needs to be defined as an app. Code that can be forked at the command line or submitted to a batch scheduler can be registered as an Agave app and run through the Jobs service. The user sends a request by filling in the application inputs and job details on CEP portal. The app is packaged with 3 files:</p>
+
+  <dl class="s-inline-dl  u-nested-text-content">
+    <dt>App.json</dt><dd>JSON file with application definitions and parameters such as (name, version, label).</dd>
+    <dt>Wrapper.sh</dt><dd>wrapper file, shell script which executes the job on HPC/Docker.</dd>
+    <dt>Test.sh</dt><dd>runs a test before the job is launched and cleans up the files.</dd>
+  </dl>
+
+  <h4>Notifications</h4>
+
+  <p>Notification Bell enables the user to view information and status of submitted jobs.</p>
+
+  <h4>Search</h4>
+
+  <p>CEP has a multi-tenant capable full-text search engine with an HTTP web interface and schema-free JSON documents based on ElasticSearch. Users can search for data files, or text.</p>
+
+  <h3>Environment</h3>
+
+  <p>The Core portal utilizes a wide variety of technologies developed by multiple technology vendors. Below is a list of the primary libraries, frameworks and APIs leveraged in the core portal tech stack.</p>
+
+  <dl class="s-inline-dl">
+    <dt>NginX</dt>
+      <dd>When user sends http request to call the CEP URL, it goes to nginx webserver, a proxy, intermediary for requests from clients seeking resources from other&nbsp;servers. Nginx carry the request to the Web Server Gateway.</dd>
+
+    <dt>WSGI</dt>
+      <dd>Web Server Gateway Interface, a calling convention for a web hosting server to forward requests to web applications or frameworks written in the Python programming language. It forwards the CEP user request to Django.</dd>
+
+    <dt>Django</dt>
+      <dd>A backend server manages the requests and response cycle. Pass the CEP user request to Angular and the return back information (Python base)</dd>
+
+    <dt>Angular</dt>
+      <dd>The JavaScript framework taking care of all the frontend client-side requests, activities that taking place on that page, Requests method such as get, post, put.</dd>
+
+    <dt>PostgreSQL</dt>
+      <dd>The object-relational database management system</dd>
+
+    <dt>Agave Platform</dt>
+      <dd>is an open source, science-as-a-service API platform, securely manage, move, and share data metadata, shared high performance computing (HPC) Cloud, and Big Data resources under a single, web-friendly REST API. Run code, simplifies building web portals that use back-end computing, and run executable systems.</dd>
+
+    <dt>RABBITMQ</dt>
+      <dd>The portal Messages Broker, enterprise messaging system modeled on the Advanced Message Queuing Protocol (AMQP) standard. a message broker that acts as an intermediary platform to processing communication between two applications.</dd>
+
+    <dt>CELERY</dt>
+      <dd>A Distributed message passing queue.</dd>
+
+    <dt>HPC</dt>
+      <dd>High Performance Computers, TACC super computer resources (Frontera, Stampede, etc.)</dd>
+
+    <dt>CMS</dt>
+      <dd>The Content Management System used in the core portal.</dd>
+  </dl>
+{% endblock guide %}

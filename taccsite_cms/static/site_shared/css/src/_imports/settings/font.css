@@ -1,0 +1,44 @@
+/*
+Fonts
+
+These are standard fonts for an application.
+
+Usage: `var(--global-font-size--normal)`
+
+Reference:
+- https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties
+- [Shared UI - Constants - Font](https://confluence.tacc.utexas.edu/x/cYAZCg)
+
+Styleguide Settings.CustomProperties.Font
+*/
+
+:root {
+  /* stylelint-disable value-keyword-case */
+  --global-font-family--sans: "Roboto", sans-serif;
+  --global-font-family--serif: Times, sans-serif;
+  --global-font-family--mono: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  /* stylelint-enable value-keyword-case */
+
+  --global-font-family: var(--global-font-family--sans);
+}
+/* Update Bootstrap values (not effectual for code, kbd, pre, samp in 4.0) */
+:root {
+  --font-family-sans-serif: var(--global-font-family--sans);
+  --font-family-monospace: var(--global-font-family--mono);
+}
+
+/* Modifers
+    --normal:   standard value
+    --(…)small: smaller value
+    --(…)large: larger value
+*/
+:root {
+  --global-font-size--xx-small: 0.625rem;  /* 10px (if base is 16px) */
+  --global-font-size--x-small: 0.8125rem;  /* 13px (if base is 16px) */
+  --global-font-size--small: 1.0rem;       /* 16px (if base is 16px) */
+  --global-font-size--normal: 1.25rem;     /* 20px (if base is 16px) */
+  --global-font-size--large: 1.5rem;       /* 24px (if base is 16px) */
+  --global-font-size--x-large: 2.0rem;     /* 32px (if base is 16px) */
+  --global-font-size--xx-large: 2.5rem;    /* 40px (if base is 16px) */
+  --global-font-size--xxx-large: 3.0rem;   /* 48px (if base is 16px) */
+}

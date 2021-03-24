@@ -91,7 +91,8 @@ ALLOWED_HOSTS = current_secrets._ALLOWED_HOSTS
 
 # Custom Branding.
 BRANDING = current_secrets._BRANDING
-LOGO  = current_secrets._LOGO
+LOGO = current_secrets._LOGO
+FAVICON = current_secrets._FAVICON
 
 # Configure Portal.
 PORTAL = current_secrets._PORTAL
@@ -156,7 +157,10 @@ TEMPLATES = [
                 'django_settings_export.settings_export'
             ],
             'libraries': {
+                # NOTE: These are an unnecessary alternative config, because taccsite_cms is in INSTALLED_APPS, but are comfortably explicit
+                # SEE: https://docs.djangoproject.com/en/3.1/howto/custom-template-tags/#code-layout
                 'custom_portal_settings': 'taccsite_cms.templatetags.custom_portal_settings',
+                'tacc_uri_shortcuts': 'taccsite_cms.templatetags.tacc_uri_shortcuts',
             },
             'loaders': [
                 'django.template.loaders.filesystem.Loader',
@@ -471,6 +475,7 @@ SETTINGS_EXPORT = [
     'DEBUG',
     'BRANDING',
     'LOGO',
+    'FAVICON',
     'PORTAL',
     'PORTAL_AUTH_LINKS',
     'PORTAL_UNAUTH_LINKS',

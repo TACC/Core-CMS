@@ -1,3 +1,5 @@
+{% load staticfiles %}
+
 {# Load assets as external files, to cache independently of markup. #}
 {% comment %}
 FAQ: IF a script or style is better cached with markup, THEN:
@@ -9,20 +11,25 @@ FAQ: IF a script or style is better cached with markup, THEN:
 
 
 
-{# Do NOT directly load assets here. Load as needed by template or brand. #}
+<!-- Custom Site Assets: Favicon. -->
+{% with settings.FAVICON as favicon %}
+<link rel="icon" href="{% static favicon.img_file_src %}" type="image/x-icon" />
+{% endwith %}
 
 
+
+{# Do NOT directly load project-specific assets here; see `/taccsite_custom` #}
 
 {# Example #}
 {% comment %}
   {% block assets_custom %}
     {{ block.super }}
 
-    {# Example: Site Assets. #}
+    {# Example: Custom Site Assets. #}
     <link rel="stylesheet" href="{% static '__PROJECT__/css/build/site.css' %}">
     <script src="{% static '__PROJECT__/js/site.js' %}"></script>
 
-    {# Example: Template-Specific Assets. #}
+    {# Example: Custom Template-Specific Assets. #}
     <link rel="stylesheet" href="{% static '__PROJECT__/css/build/template.___.css' %}">
     <script src="{% static '__PROJECT__/js/template.___.js' %}"></script>
 

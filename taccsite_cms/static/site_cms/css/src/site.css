@@ -4,15 +4,18 @@
 /* SEE: https://confluence.tacc.utexas.edu/x/IAA9Cw */
 
 /* SETTINGS */
-@import url("_imports/settings/props.font.css");
+@import url("../../../site_shared/css/src/_imports/settings/border.css");
+@import url("../../../site_shared/css/src/_imports/settings/color.css");
+@import url("../../../site_shared/css/src/_imports/settings/font.css");
 @import url("_imports/settings/props.space.css");
 
 /* GENERICS */
-/* … Bootstrap handles most of this … */
+/* Bootstrap performs much of this */
 
 /* ELEMENTS */
-@import url("_imports/elements/roots.css");
-@import url("_imports/elements/sectioning.css");
+/* Bootstrap performs much of this */
+@import url("_imports/elements/html-elements.css");
+/* Load custom element styles within custom element, not here */
 
 /* OBJECTS */
 @import url("_imports/objects/o-site.css");

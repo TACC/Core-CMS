@@ -9,7 +9,7 @@
 
 /* NOTE: This is already imported in `site.css` */
 /* TODO: Find a way to be modular, but not redundant */
-@import url("_imports/settings/props.font.css");
+@import url("../../../site_shared/css/src/_imports/settings/font.css");
 
 /* TRUMPS */
 
