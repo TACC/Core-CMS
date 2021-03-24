@@ -57,17 +57,26 @@ else:
 # CMS Site (allows for multiple sites on a single CMS)
 _SITE_ID = 1
 _CMS_TEMPLATES = (
-    # Customize this
+    # Customize this list
     # FAQ: First template is default template
     # REF: http://docs.django-cms.org/en/latest/how_to/install.html#templates
+
+    # Default template with standard and custom (per-project) choices
+    # NOTE: To have per-project styles, the custom default template is required
     ('fullwidth.html', 'Fullwidth'),
     ('example-cms/templates/fullwidth.html', 'Fullwidth (Custom Example)'),
-    ('home_portal.html', 'Standard Portal Homepage'),
-    ('guide.html', 'Guide'),
-    ('guides/getting_started.html', 'Guide: Getting Started'),
-    ('guides/data_transfer.html', 'Guide: Data Transfer'),
-    ('guides/data_transfer.globus.html', 'Guide: Globus Data Transfer'),
-    ('guides/portal_technology.html', 'Guide: Portal Technology Stack')
+
+    # Any portal whose homepage has no design must enable and use this template
+    # ('home_portal.html', 'Standard Portal Homepage'),
+
+    # All portals should enable all of these templates
+    # FAQ: If this becomes mandatory, then in `settings.py`:
+    #      `if _PORTAL: [ manually add these entries ]`
+    # ('guide.html', 'Guide'),
+    # ('guides/getting_started.html', 'Guide: Getting Started'),
+    # ('guides/data_transfer.html', 'Guide: Data Transfer'),
+    # ('guides/data_transfer.globus.html', 'Guide: Globus Data Transfer'),
+    # ('guides/portal_technology.html', 'Guide: Portal Technology Stack')
 )
 
 ########################
