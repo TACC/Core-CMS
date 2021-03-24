@@ -57,7 +57,7 @@ else:
 # CMS Site (allows for multiple sites on a single CMS)
 _SITE_ID = 1
 _CMS_TEMPLATES = (
-    # Customize this list
+    # Customize this list in per-project `secrets.py`
     # FAQ: First template is default template
     # REF: http://docs.django-cms.org/en/latest/how_to/install.html#templates
 
@@ -71,7 +71,7 @@ _CMS_TEMPLATES = (
     #       3. Disable standard default template (remove from `_CMS_TEMPLATES`).
     # ('fullwidth.html', 'DEPRECATED Fullwidth'),
 
-    # Any portal whose homepage has no design must enable and use this template
+    # Any portal whose homepage has NO design must enable and use this template
     # ('home_portal.html', 'Standard Portal Homepage'),
 
     # All portals should enable all of these templates
