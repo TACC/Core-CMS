@@ -57,17 +57,31 @@ else:
 # CMS Site (allows for multiple sites on a single CMS)
 _SITE_ID = 1
 _CMS_TEMPLATES = (
-    # Customize this
+    # Customize this list in per-project `secrets.py`
     # FAQ: First template is default template
     # REF: http://docs.django-cms.org/en/latest/how_to/install.html#templates
+
+    # Default template with standard and custom (per-project) choices
+    # NOTE: To have per-project styles, the custom default template is required
     ('fullwidth.html', 'Fullwidth'),
     ('example-cms/templates/fullwidth.html', 'Fullwidth (Custom Example)'),
-    ('home.html', 'Homepage'),
-    ('guide.html', 'Guide'),
-    ('guides/getting_started.html', 'Guide: Getting Started'),
-    ('guides/data_transfer.globus.html', 'Guide: Globus Data Transfer'),
-    ('guides/data_transfer.html', 'Guide: Data Transfer'),
-    ('guides/portal_technology.html', 'Guide: Portal Technology Stack')
+    # NOTE: If project later uses custom template, then for that project:
+    #       1. Rename standard default template to "DEPRECATED […]".
+    #       2. Update all pages to use the custom default template.
+    #       3. Disable standard default template (remove from `_CMS_TEMPLATES`).
+    # ('fullwidth.html', 'DEPRECATED Fullwidth'),
+
+    # Any portal whose homepage has NO design must enable and use this template
+    # ('home_portal.html', 'Standard Portal Homepage'),
+
+    # All portals should enable all of these templates
+    # FAQ: If this becomes mandatory, then in `settings.py`:
+    #      `if _PORTAL: [ manually add these entries ]`
+    # ('guide.html', 'Guide'),
+    # ('guides/getting_started.html', 'Guide: Getting Started'),
+    # ('guides/data_transfer.html', 'Guide: Data Transfer'),
+    # ('guides/data_transfer.globus.html', 'Guide: Globus Data Transfer'),
+    # ('guides/portal_technology.html', 'Guide: Portal Technology Stack')
 )
 
 ########################
