@@ -1,0 +1,77 @@
+/*
+Guide Doc
+
+Styles for elements within a user instruction guide document.
+
+Styleguide Trumps.Scopes.GuideDoc
+*/
+
+
+
+
+
+/* ELEMENTS */
+
+
+/* ELEMENTS: Content Sectioning */
+
+/* Fake <hr> above <h3> */
+.s-guide-doc h3::before {
+  display: block;
+  content: '';
+
+  margin: var(--global-space--large) 0;
+  border-top: 1px solid var(--global-color-primary--light);
+}
+
+
+/* ELEMENTS: Text Content */
+
+.s-guide-doc blockquote {
+  opacity: 0.75;
+  border: var(--global-border--normal);
+
+  padding: 1em;
+}
+.s-guide-doc blockquote > *:last-child { margin-bottom: 0; }
+
+@media only screen and (min-width: 768px) {
+  blockquote { width: 600px; }
+}
+
+.s-guide-doc figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.s-guide-doc figcaption {
+  font-weight: bold;
+}
+
+
+/* ELEMENTS: Table Content */
+
+.s-guide-doc table {
+  width: 100%;
+  max-width: 500px;
+
+  text-align: center;
+}
+
+
+
+
+
+/* COMPONENTS */
+
+/* COMPONENTS: Bootstrap */
+
+.s-guide-doc .row > .col > *:last-child {
+  margin-bottom: 0;
+}
+.s-guide-doc .row .row {
+  padding: var(--global-space--normal) 0;
+}
+.s-guide-doc .row .row:nth-child(even) {
+  background-color: var(--global-color-primary--x-light);
+}

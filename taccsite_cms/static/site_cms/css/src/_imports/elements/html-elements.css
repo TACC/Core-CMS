@@ -1,0 +1,326 @@
+/*
+Main Root & Sectioning Root
+
+Elements that represent the root of a document or document content.
+
+```
+<html> <body>
+```
+
+Reference:
+
+- [MDN: HTML element reference: Main root](https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Main_root)
+- [MDN: HTML element reference: Sectioning root](https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Sectioning_root)
+
+Styleguide Elements.MainSectioningRoots
+*/
+
+html {
+  /* Set base font but support user-defined browser font size */
+  /* SEE: https://snook.ca/archives/html_and_css/font-size-with-rem */
+  font-size: 100%; /* 16px */
+}
+
+/* The webpage must be at least as tall as the viewport */
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: var(--global-font-family);
+}
+
+
+
+
+
+/*
+Content Sectioning
+
+Elements that organize a document into logical pieces and create a broad outline for page content.
+
+```
+<main> <nav> <section> <header> <h1> <h2> <h3> <h4> <h5> <h6> <hgroup> <footer> <article> <aside> <address>
+```
+
+Reference:
+
+- [HTML element reference: Content sectioning | MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Content_sectioning)
+
+Styleguide Elements.ContentSectioning
+*/
+
+main {
+  padding-bottom: var(--global-space-beneath-main-content);
+}
+
+
+
+
+
+/*
+Text Content
+
+Elements that organize blocks or sections of content placed (includes lists).
+
+```
+<blockquote> <dd> <div> <dl> <dt> <figcaption> <figure> <hr> <li> <ol> <p> <pre> <ul>
+```
+
+Reference:
+
+- [HTML element reference: Text content | MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Text_content)
+
+Styleguide Elements.TextContent
+*/
+
+ol, ul,
+dl dl /* Treat nested definition lists like other nested lists */ {
+  padding-left: var(--global-space--list-indent);
+}
+ol ol, ol ul, ul ol, ul ul {
+  margin: revert; /* Undo Bootstrap `_reboot.css` */
+}
+/* Add space between `dt` and `dd` */
+dt {
+  margin-bottom: .5rem; /* Mirror's Bootstrap `margin-bottom` */
+}
+
+
+
+
+
+/*
+Inline Text Semantics
+
+Elements that define the meaning, structure, or style of a word, line, or any arbitrary piece of text.
+
+```
+<a> <abbr> <b> <bdi> <bdo> <br> <cite> <code> <data> <dfn> <em> <i> <kbd> <mark> <q> <rb> <rp> <rt> <rtc> <ruby> <s> <samp> <small> <span> <strong> <sub> <sup> <time> <u> <var> <wbr>
+```
+
+Reference:
+
+- [HTML element reference: Inline text semantics | MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Inline_text_semantics)
+
+Styleguide Elements.InlineTextSemantics
+*/
+
+var,
+/* Overwrite Bootstrap (which does not use its `--font-family-monospace`) */
+code, kbd, pre, samp {
+  font-family: var(--global-font-family--mono);
+}
+code kbd {
+  display: inline-block; /* ensure element does not bleed outside parent */
+  padding: .1rem .2rem; /* overwrites Bootstrap */
+  margin-left: .2rem;
+  margin-right: .2rem;
+
+  font-size: inherit;
+}
+
+/* Code (<code>, <samp>, <pre>) */
+
+/* Code: any content or context) */ code,
+/* Code: content has only output */ pre > samp {
+  background-color: var(--global-color-primary--x-light);
+
+  border-width: var(--global-border-width--normal);
+  border-style: solid;
+  border-color: var(--global-color-primary--light);
+
+  /* Undo Bootstrap */
+  color: unset;
+}
+/* Code: context is inline */ :not(pre) > code {
+  display: inline-block;
+  padding: var(--global-space--xx-small) var(--global-space--x-small);
+}
+/* Code: context is block, content has input */ pre > code,
+/* Code: context is block, content has only ouput */ pre > samp {
+  display: inline-block; /* FAQ: If `block`, then background color is cropped */
+  padding: var(--global-space--x-small) var(--global-space--small);
+}
+/* Code: context is block, container probably has inline-style width set */
+/* FAQ: Stretch code to meet container width */
+pre[style] > code,
+pre[style] > samp {
+  min-width: 100%;
+}
+
+/* Code: context is inline, content has only output */
+/* FAQ: Examples: command output within CLI illustration */
+pre samp {
+  opacity: 0.75;
+  text-decoration: none;
+}
+/* Code: context is inline, content has context-agnostic output */
+/* FAQ: Examples: command prompt within CLI illustration */
+pre code u {
+  opacity: 0.50;
+  text-decoration: none;
+}
+
+
+
+
+
+/*
+Demarcating Edits
+
+Elements that provide indications that specific parts of the text have been altered.
+
+```
+<del> <ins>
+```
+
+Reference:
+
+- [HTML element reference: Demarcating edits | MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Demarcating_edits)
+
+Styleguide Elements.DemarcatingEdits
+*/
+
+/* … */
+
+
+
+
+
+/*
+Image & Multimedia
+
+Elements that support various multimedia resources such as images, audio, and video.
+
+```
+<area> <audio> <img> <map> <track> <video>
+```
+
+Reference:
+
+- [HTML element reference: Image and multimedia | MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Image_and_multimedia)
+
+Styleguide Elements.Media
+*/
+
+/* … */
+
+
+
+
+
+/*
+Embedded Content
+
+Elements that support various other media that has limited interaction.
+
+```
+<embed> <iframe> <object> <param> <picture> <source>
+```
+
+Reference:
+
+- [HTML element reference: Embedded content | MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Embedded_content)
+
+Styleguide Elements.EmbeddedContent
+*/
+
+/* … */
+
+
+
+
+
+/*
+SVG & MathML
+
+Elements for Scalable Vector Graphics and Mathematical Markup Language.
+
+```
+<svg> <math>
+```
+
+Reference:
+
+- [HTML element reference: Demarcating edits | MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Demarcating_edits)
+
+Styleguide Elements.DemarcatingEdits
+*/
+
+/* … */
+
+
+
+
+
+/*
+Table Content
+
+Elements that create and handle tabular data.
+
+```
+<table> <thead> <tbody> <th> <td> <tfoot> <colgroup> <col> <caption>
+```
+
+Reference:
+
+- [HTML element reference: Table content | MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Table_content)
+
+Styleguide Elements.Tables
+*/
+
+table,
+td,
+th {
+  border: var(--global-border--normal);
+}
+
+
+
+
+
+/*
+Forms
+
+Elements that create forms which the user can fill out and submit to the Web site or application.
+
+```
+<form> <fieldset> <legend> <label> <input> <select> <optgroup> <option> <textarea> <button> <output> <progress> <meter> <datalist>
+```
+
+Reference:
+
+- [HTML element reference: Forms | MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Forms)
+
+Styleguide Elements.Forms
+*/
+
+/* … */
+
+
+
+
+
+/*
+Interactive Elements
+
+Elements that help to create interactive user interface objects.
+
+```
+<details> <summary> <dialog> <menu>
+```
+
+Reference:
+
+- [HTML element reference: Interactive elements | MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Interactive_elements)
+
+Styleguide Elements.Interactive
+*/
+
+/* Clone Bootstrap's <p> and <ul> margins */
+details {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
