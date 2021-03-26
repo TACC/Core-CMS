@@ -1,6 +1,6 @@
 # TACC CORE-CMS
 
-This repo is deprecated. Use [CORE-cms](https://github.com/TACC/CORE-cms) instead.
+## Docker Setup
 
 The TACC CORE-CMS can be run using Docker and Docker Compose, both locally and in production.
 
