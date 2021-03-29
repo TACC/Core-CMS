@@ -1,0 +1,66 @@
+/*
+Section
+
+Horizontal
+
+Markup: o-section.html
+
+Styleguide Objects.Section
+*/
+
+/* SEE: https://css-tricks.com/couple-takes-sticky-footer/#article-header-id-3 */
+.o-section,
+[class*="o-section"] {
+  /* GH-99: Use standard spacing value */
+  padding: 45px; /* the Design varies, but this is the approx. average */
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+/* Style */
+
+.o-section--style-dark {
+  color: var(--global-color-primary--xx-light);
+  background-color: var(--global-color-primary--xx-dark);
+}
+.o-section--style-dark + .o-section--style-dark {
+  border-top: 1px solid var(--global-color-primary--xx-light);
+}
+.o-section--style-light {
+  color: var(--global-color-primary--dark);
+  background-color: var(--global-color-primary--xx-light);
+}
+.o-section--style-light + .o-section--style-light {
+  border-top: 1px solid var(--global-color-primary--normal);
+}
+
+/* Layout */
+
+[class*="o-section--layout-"] {
+  display: grid;
+  gap: 30px; /* GH-99: Use standard spacing value */
+}
+[class*="o-section--layout-"] > :empty,
+[class*="o-section--layout-"] .u-empty {
+  display: none;
+}
+
+.o-section--layout-a {
+  /* WARNING: Does not support responsive design */
+  /* TODO: Support responsive design */
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.o-section--layout-b {
+  /* WARNING: Does not support responsive design */
+  /* TODO: Support responsive design */
+  /* grid-template-columns: 3fr 2fr; *//* designer mentioned 3 column grid */
+  grid-template-columns: 55.25% 44.75%; /* approx. match design */
+}
+
+.o-section--layout-c {
+  /* TODO: Support responsive design */
+  grid-template-columns: repeat(3, 3fr);
+}
