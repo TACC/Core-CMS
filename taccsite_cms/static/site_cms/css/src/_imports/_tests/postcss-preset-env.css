@@ -8,9 +8,13 @@ Styles for testing plugins, e.g.:
 Styleguide _Test
 */
 
-/* Custom Media Queries */
+/*! Custom Media Queries */
 /* SEE: https://preset-env.cssdb.org/features#custom-media-queries */
 
+/*! Goal: */
+@media (max-width:30em){._test{background-color:red}}
+
+/*! Test: */
 @custom-media --narrow-window (max-width: 30em);
 
 @media (--narrow-window) {
