@@ -26,7 +26,12 @@ module.exports = {
       }
     }),
     require('cssnano')({
-      preset: 'default'
+      preset: ['default', {
+        // Disabled to avoid sweeping bad CSS under the rug
+        // NOTE: Also fixes comparability in tests by retaining expectation code
+        discardDuplicates: { exclude: true },
+        mergeRules: { exclude: true },
+      }]
     })
   ]
 }
