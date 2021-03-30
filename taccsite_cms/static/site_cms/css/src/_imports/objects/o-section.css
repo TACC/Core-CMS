@@ -7,6 +7,7 @@ Markup: o-section.html
 
 Styleguide Objects.Section
 */
+@import url("_imports/tools/media-queries.css");
 
 /* SEE: https://css-tricks.com/couple-takes-sticky-footer/#article-header-id-3 */
 [class*="o-section"] {
@@ -84,29 +85,51 @@ Styleguide Objects.Section
 }
 
 /* Layout: B (two 50% columns) */
-/* !!!: Support responsive design */
 
 .o-section--layout-a {
   grid-template-columns: repeat(2, 1fr);
 }
+@media (--wide-and-below) {
+  .o-section--layout-a:not(.o-section--is-banner) {
+    grid-template-columns: 1fr;
+  }
+}
+@media (--medium-and-below) {
+  .o-section--layout-a.o-section--is-banner {
+    gap: 0;
+    grid-template-columns: 1fr;
+  }
+}
 
-/* Layout: B (one 60% column, one 40% column) */
-/* !!!: Support responsive design */
+/* Layout: B (one 66.6…% column, one 33.3…% column) */
 
 .o-section--layout-b {
   grid-template-columns: 2fr 1fr;
 }
+@media (--medium-and-below) {
+  .o-section--layout-b {
+    grid-template-columns: 1fr;
+  }
+}
 
-/* Layout: B (one 60% column, one 40% column) */
-/* !!!: Support responsive design */
+/* Layout: C (one 33.3…% column, one 66.6…% column) */
 
 .o-section--layout-c {
   grid-template-columns: 1fr 2fr;
 }
+@media (--medium-and-below) {
+  .o-section--layout-c {
+    grid-template-columns: 1fr;
+  }
+}
 
-/* Layout: C (three 33.3…% columns) */
-/* !!!: Support responsive design */
+/* Layout: D (three 33.3…% columns) */
 
-.o-section--layout-c {
+.o-section--layout-d {
   grid-template-columns: repeat(3, 3fr);
+}
+@media (--medium-and-below) {
+  .o-section--layout-d {
+    grid-template-columns: 1fr;
+  }
 }

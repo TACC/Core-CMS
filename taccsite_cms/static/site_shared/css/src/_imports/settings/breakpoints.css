@@ -1,0 +1,16 @@
+/* WARNING: This file should be copied to Portal repo */
+/* TODO: Share source code between CMS, Portal, & User Guide */
+/* SEE: https://github.com/TACC/Frontera-Portal/blob/master/client/src/styles/settings/breakpoints.css */
+
+/* SETTINGS: Breakpoints */
+
+/* Usage: `var(--global-breakpoint--x-narrow)` */
+/* SEE: https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties */
+
+:root {
+  --global-breakpoint--x-narrow: 576px;
+  --global-breakpoint--narrow: 768px;
+  --global-breakpoint--medium: 992px;
+  --global-breakpoint--wide: 1200px;
+  --global-breakpoint--x-wide: 1680px;
+}

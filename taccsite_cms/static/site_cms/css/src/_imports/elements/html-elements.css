@@ -28,6 +28,10 @@ body {
 }
 
 body {
+  min-width: var(--global-breakpoint--x-narrow);
+
+  overflow-x: hidden; /* Prevent scroll from `.o-section--style::before`'s */
+
   font-family: var(--global-font-family);
 }
 

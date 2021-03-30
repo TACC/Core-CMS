@@ -7,6 +7,7 @@
 @import url("../../../site_shared/css/src/_imports/settings/border.css");
 @import url("../../../site_shared/css/src/_imports/settings/color.css");
 @import url("../../../site_shared/css/src/_imports/settings/font.css");
+@import url("../../../site_shared/css/src/_imports/settings/breakpoints.css");
 @import url("_imports/settings/props.space.css");
 
 /* GENERICS */
