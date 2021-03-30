@@ -9,8 +9,14 @@ Styleguide Objects.Section
 */
 @import url("_imports/tools/media-queries.css");
 
+
+
+
+
+/* Block */
+
 /* SEE: https://css-tricks.com/couple-takes-sticky-footer/#article-header-id-3 */
-[class*="o-section"] {
+[class*="o-section--"] {
   /* GH-99: Use standard spacing value */
   padding: 45px; /* the Design varies, but this is the approx. average */
 
@@ -19,18 +25,30 @@ Styleguide Objects.Section
   flex-wrap: wrap;
 }
 
-.o-section--is-banner {
-  /* GH-99: Use standard spacing value */
-  padding: 0 45px;
+
+
+
+
+/* Modifers */
+
+
+
+/* Modifers: Banner */
+
+.o-section--banner {
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 
 
-/* Style */
+/* Modifers: Style */
 
 [class*="o-section--style"] {
   --hr-height: var(--global-border-width--normal);
 }
+
+/* Modifers: Style: Dark & Light */
 
 .o-section--style-dark,
 .o-section--style-dark::before {
@@ -38,8 +56,8 @@ Styleguide Objects.Section
   background-color: var(--global-color-primary--xx-dark);
 }
 /* FAQ: Banners should not touch a border of the following section */
-.o-section--style-dark:not(.o-section--is-banner)
-+ .o-section--style-dark:not(.o-section--is-banner) {
+.o-section--style-dark:not(.o-section--banner)
++ .o-section--style-dark:not(.o-section--banner) {
   border-top: var(--hr-height) solid var(--global-color-primary--xx-light);
 }
 
@@ -49,18 +67,28 @@ Styleguide Objects.Section
   background-color: var(--global-color-primary--xx-light);
 }
 /* FAQ: Banners should not touch a border of the following section */
-.o-section--style-light:not(.o-section--is-banner)
-+ .o-section--style-light:not(.o-section--is-banner) {
+.o-section--style-light:not(.o-section--banner)
++ .o-section--style-light:not(.o-section--banner) {
   border-top: var(--hr-height) solid var(--global-color-primary--xx-light);
 }
 
-/* Style: (Fake) Endless Width */
+/* Modifers: Style: (Fake) Endless Width */
 
-[class*="o-section--style"] { position: relative; }
-[class*="o-section--style"] > * { position: relative; z-index: 1; }
+[class*="o-section--style"] {
+  /* To anchor `position: absolute` pseudo-element child */
+  /* To allow `z-index` on children as necessary */
+  position: relative;
+}
+[class*="o-section--style"] > * {
+  /* To ensure children are above `position: absolute` pseudo-element child */
+  position: relative;
+  z-index: 1;
+}
+/* CAVEAT: This intentional horizontal overflow MUST be maintained */
+/* SEE: "Tricks" section */
 [class*="o-section--style"]::before {
   content: '';
-  z-index: 0;
+  z-index: 0; /* To ensure real element children are above this */
 
   --offset: -9999px; /* how much space beyond edges to extend */
 
@@ -75,7 +103,7 @@ Styleguide Objects.Section
 
 
 
-/* Layout */
+/* Modifers: Layout */
 
 [class*="o-section--layout"] {
   display: grid;
@@ -86,24 +114,24 @@ Styleguide Objects.Section
   display: none;
 }
 
-/* Layout: B (two 50% columns) */
+/* Modifers: Layout: A (two 50% columns) */
 
 .o-section--layout-a {
   grid-template-columns: repeat(2, 1fr);
 }
 @media (--wide-and-below) {
-  .o-section--layout-a:not(.o-section--is-banner) {
+  .o-section--layout-a:not(.o-section--banner) {
     grid-template-columns: 1fr;
   }
 }
 @media (--medium-and-below) {
-  .o-section--layout-a.o-section--is-banner {
+  .o-section--layout-a.o-section--banner {
     gap: 0;
     grid-template-columns: 1fr;
   }
 }
 
-/* Layout: B (one 66.6…% column, one 33.3…% column) */
+/* Modifers: Layout: B (one 66.6…% column, one 33.3…% column) */
 
 .o-section--layout-b {
   grid-template-columns: 2fr 1fr;
@@ -114,7 +142,7 @@ Styleguide Objects.Section
   }
 }
 
-/* Layout: C (one 33.3…% column, one 66.6…% column) */
+/* Modifers: Layout: C (one 33.3…% column, one 66.6…% column) */
 
 .o-section--layout-c {
   grid-template-columns: 1fr 2fr;
@@ -125,7 +153,7 @@ Styleguide Objects.Section
   }
 }
 
-/* Layout: D (three 33.3…% columns) */
+/* Modifers: Layout: D (three 33.3…% columns) */
 
 .o-section--layout-d {
   grid-template-columns: repeat(3, 3fr);
@@ -135,3 +163,87 @@ Styleguide Objects.Section
     grid-template-columns: 1fr;
   }
 }
+
+
+
+
+
+/* Children */
+
+
+
+/* Children: Banner Image */
+
+/* Added `.o-section--banner` to require parent modifier class in markup */
+.o-section--banner .o-section__banner-image {
+  position: absolute;
+  z-index: 1;
+
+  /* To size image to cover section dimensions but maintain ratio */
+  /* CAVEAT: This causes image to overflow beyond section */
+  /* SEE: "Tricks" section */
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+
+  /* To vertically center image within section */
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+
+/* Children: Banner Overlay */
+
+/* Added `.o-section--banner` to require parent modifier class in markup */
+.o-section--banner .o-section__banner-overlay {
+  position: relative;
+  z-index: 2;
+
+  /* Avoids the need to add placeholder markup for empty column */
+  /* FAQ: The image "leaves" the column via `position: absolute` */
+  grid-column-start: 2;
+
+  background-color: rgba(var(--color-bkgd-rgb), 0.65);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.o-section--banner.o-section--style-dark .o-section__banner-overlay {
+  --color-bkgd-rgb: var(--global-color-primary--x-dark-rgb);
+}
+.o-section--banner.o-section--style-light .o-section__banner-overlay {
+  --color-bkgd-rgb: var(--global-color-primary--x-light-rgb);
+}
+
+
+
+
+
+/* Tricks */
+
+
+
+/* Tricks: /* Style: (Fake) Endless Width */
+/* Tricks: /* Children: Banner Image */
+
+/* To hide vertical overflow but allow horizontal overflow */
+/* SEE: https://stackoverflow.com/a/6433475/11817077 */
+/* HACK: The `.container-fluid` makes the overflow caveat irrelevant */
+[class*="o-section--style"].container-fluid {
+  overflow-y: hidden;
+  /* CAVEAT: `overflow-x: visible` (default) is re-intepreted as `auto` */
+  overflow-x: visible;
+}
+
+
+
+/* Tricks: /* Children: Banner Image */
+
+/* HACK: To hide vertical overflow by placing sibling sections atop */
+/* NOTE: This selector assumes only a banner section has vertical overflow */
+/* CAVEAT: Any banner pop-out el's can NOT overflow atop sibling sections */
+[class*="o-section--style"].o-section--banner { z-index: 0; }
+/* NOTE: A `z-index` > 0 is only necessary for sections before banner */
+/* CAVEAT: Any section pop-out el's can NOT overflow atop section after it */
+[class*="o-section--style"] { z-index: 1; }
