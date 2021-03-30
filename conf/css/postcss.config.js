@@ -22,7 +22,8 @@ module.exports = {
       stage: false,
       // SEE: https://github.com/csstools/postcss-preset-env/blob/master/src/lib/plugins-by-id.js#L35
       features: {
-        'custom-media-queries': true
+        'custom-media-queries': true,
+        'media-query-ranges': true,
       }
     }),
     require('cssnano')({
