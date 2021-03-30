@@ -10,6 +10,7 @@ module.exports = {
   plugins: [
     require('postcss-import')({
       path: [
+        './taccsite_cms/static/site_shared/css/src',
         './taccsite_cms/static/site_cms/css/src',
         `./taccsite_custom/${env.CUSTOM_ASSET_DIR}/static/${env.CUSTOM_ASSET_DIR}/css/src`
       ],

@@ -13,13 +13,15 @@
     --weak:     transparent instance
     --(…)light: lighter value
     --(…)dark:  darker value
+    --(…)rgb:   "R, G, B" value partial (ex. usage: `rgba(var(--...-rgb), 0.5)`)
 */
 
 :root {
     /* Primary (Text, Layout) */
-    /* WARNING: Do not use `-alt-` hues; instead, "round up" to nearest color */
+    /* WARNING: Do not use `-alt-` hues; "round up" to nearest color, instead */
     --global-color-primary--xx-light: #FFFFFF;
     --global-color-primary--x-light: #F4F4F4;
+    --global-color-primary--x-light-rgb: 244, 244, 244;
     --global-color-primary--light: #C6C6C6;/*
         --global-color-primary--light-alt-2: #DBDBDB;
         --global-color-primary--light-alt-2: #D8D8D8; */
@@ -29,7 +31,8 @@
     --global-color-primary--dark: #707070;/*
         --global-color-primary--dark-alt-1: #696666;
         --global-color-primary--dark-alt-2: #5F5C5C; */
-    --global-color-primary--x-dark: #484848;/*
+    --global-color-primary--x-dark: #484848;
+    --global-color-primary--x-dark-rgb: 72, 72, 72;/*
         --global-color-primary--x-dark-alt-1: #464646; */
     --global-color-primary--xx-dark: #222222; /*
         --global-color-primary--xx-dark-alt-1: #2C2C2B;

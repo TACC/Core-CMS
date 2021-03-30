@@ -9,7 +9,6 @@ Styleguide Objects.Section
 */
 
 /* SEE: https://css-tricks.com/couple-takes-sticky-footer/#article-header-id-3 */
-.o-section,
 [class*="o-section"] {
   /* GH-99: Use standard spacing value */
   padding: 45px; /* the Design varies, but this is the approx. average */
@@ -19,48 +18,95 @@ Styleguide Objects.Section
   flex-wrap: wrap;
 }
 
+.o-section--is-banner {
+  /* GH-99: Use standard spacing value */
+  padding: 0 45px;
+}
+
+
+
 /* Style */
 
-.o-section--style-dark {
+[class*="o-section--style"] {
+  --hr-height: var(--global-border-width--normal);
+}
+
+.o-section--style-dark,
+.o-section--style-dark::before {
   color: var(--global-color-primary--xx-light);
   background-color: var(--global-color-primary--xx-dark);
 }
-.o-section--style-dark + .o-section--style-dark {
-  border-top: 1px solid var(--global-color-primary--xx-light);
+/* FAQ: Banners should not touch a border of the following section */
+.o-section--style-dark:not(.o-section--is-banner) + .o-section--style-dark {
+  border-top: var(--hr-height) solid var(--global-color-primary--xx-light);
 }
-.o-section--style-light {
+
+.o-section--style-light,
+.o-section--style-light::before {
   color: var(--global-color-primary--dark);
   background-color: var(--global-color-primary--xx-light);
 }
-.o-section--style-light + .o-section--style-light {
-  border-top: 1px solid var(--global-color-primary--normal);
+/* FAQ: Banners should not touch a border of the following section */
+.o-section--style-light:not(.o-section--is-banner) + .o-section--style-light {
+  border-top: var(--hr-height) solid var(--global-color-primary--xx-light);
 }
+
+/* Style: (Fake) Endless Width */
+
+[class*="o-section--style"] { position: relative; }
+[class*="o-section--style"] > * { position: relative; z-index: 1; }
+[class*="o-section--style"]::before {
+  content: '';
+  z-index: 0;
+
+  --offset: -9999px; /* how much space beyond edges to extend */
+
+  position: absolute;
+  display: block;
+  left: var(--offset);
+  right: var(--offset);
+  top: 0;
+  /* FAQ: Covers space of following sibling's border without covering border */
+  bottom: calc(-1 * var(--hr-height));
+}
+
+
 
 /* Layout */
 
-[class*="o-section--layout-"] {
+[class*="o-section--layout"] {
   display: grid;
   gap: 30px; /* GH-99: Use standard spacing value */
 }
-[class*="o-section--layout-"] > :empty,
-[class*="o-section--layout-"] .u-empty {
+[class*="o-section--layout"] > :empty:not(img),
+[class*="o-section--layout"] .u-empty {
   display: none;
 }
 
+/* Layout: B (two 50% columns) */
+/* !!!: Support responsive design */
+
 .o-section--layout-a {
-  /* WARNING: Does not support responsive design */
-  /* TODO: Support responsive design */
   grid-template-columns: repeat(2, 1fr);
 }
 
+/* Layout: B (one 60% column, one 40% column) */
+/* !!!: Support responsive design */
+
 .o-section--layout-b {
-  /* WARNING: Does not support responsive design */
-  /* TODO: Support responsive design */
-  /* grid-template-columns: 3fr 2fr; *//* designer mentioned 3 column grid */
-  grid-template-columns: 55.25% 44.75%; /* approx. match design */
+  grid-template-columns: 2fr 1fr;
 }
 
+/* Layout: B (one 60% column, one 40% column) */
+/* !!!: Support responsive design */
+
 .o-section--layout-c {
-  /* TODO: Support responsive design */
+  grid-template-columns: 1fr 2fr;
+}
+
+/* Layout: C (three 33.3…% columns) */
+/* !!!: Support responsive design */
+
+.o-section--layout-c {
   grid-template-columns: repeat(3, 3fr);
 }
