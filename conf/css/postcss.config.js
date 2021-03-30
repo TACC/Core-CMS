@@ -16,6 +16,14 @@ module.exports = {
       filter: path => ! RegExp('^/static').test(path)
     }),
     require('postcss-extend')(),
+    require('postcss-preset-env')({
+      // SEE: https://github.com/csstools/postcss-preset-env#features
+      stage: false,
+      // SEE: https://github.com/csstools/postcss-preset-env/blob/master/src/lib/plugins-by-id.js#L35
+      features: {
+        'custom-media-queries': true
+      }
+    }),
     require('cssnano')({
       preset: 'default'
     })
