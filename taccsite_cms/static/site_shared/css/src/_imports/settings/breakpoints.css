@@ -12,5 +12,15 @@
   --global-breakpoint--narrow: 768px;
   --global-breakpoint--medium: 992px;
   --global-breakpoint--wide: 1200px;
-  --global-breakpoint--x-wide: 1680px;
+  --global-breakpoint--x-wide: 1400px;
+  --global-breakpoint--xx-wide: 1680px;
+  --global-breakpoint--xxx-wide: 1920px;
+
+  --global-max-width--x-narrow: 540px;
+  --global-max-width--narrow: 720px;
+  --global-max-width--medium: 960px;
+  --global-max-width--wide: 1140px;
+  --global-max-width--x-wide: 1320px;
+  --global-max-width--xx-wide: 1580px;
+  --global-max-width--xxx-wide: 1800px;
 }

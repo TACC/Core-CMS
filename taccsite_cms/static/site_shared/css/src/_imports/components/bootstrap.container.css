@@ -1,0 +1,24 @@
+/* WARNING: This file should be copied to Portal repo */
+/* TODO: Share source code between CMS, Portal, & User Guide */
+/* SEE: https://github.com/TACC/Frontera-Portal/blob/master/client/src/styles/components/bootstrap.container.css */
+
+/*
+Container (Bootstrap)
+
+Add to Bootstrap styles. See:
+
+- [Bootstrap Grid](https://getbootstrap.com/docs/4.0/layout/grid/)
+
+Styleguide Components.Bootstrap.Grid
+*/
+@import url("_imports/tools/media-queries.css");
+
+@media (--x-wide-and-above) {
+  .container { max-width: var(--global-max-width--x-wide); }
+}
+@media (--xx-wide-and-above) {
+  .container { max-width: var(--global-max-width--xx-wide); }
+}
+@media (--xxx-wide-and-above) {
+  .container { max-width: var(--global-max-width--xxx-wide); }
+}

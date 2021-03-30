@@ -28,8 +28,16 @@ Styleguide Tools.CustomMediaQueries.Breakpoints
 
 @custom-media --wide-and-below (width < 1200px);
 @custom-media --wide-and-above (width >= 1200px);
-@custom-media --wide-to-x-wide (1200px <= width < 1680px);
+@custom-media --wide-to-x-wide (1200px <= width < 1400px);
 
-@custom-media --x-wide-and-below (width < 1680px);
-@custom-media --x-wide-and-above (width >= 1680px);
-/* @custom-media --x-wide-to-xx-wide (... <= width < ...); */
+@custom-media --x-wide-and-below (width < 1400px);
+@custom-media --x-wide-and-above (width >= 1400px);
+@custom-media --x-wide-to-xx-wide (1400px <= width < 1680px);
+
+@custom-media --xx-wide-and-below (width < 1680px);
+@custom-media --xx-wide-and-above (width >= 1680px);
+@custom-media --xx-wide-to-xxx-wide (1680px <= width < 1920px);
+
+@custom-media --xxx-wide-and-below (width < 1920px);
+@custom-media --xxx-wide-and-above (width >= 1920px);
+/* @custom-media --xxx-wide-to-omg-wide (... <= width < ...); */
