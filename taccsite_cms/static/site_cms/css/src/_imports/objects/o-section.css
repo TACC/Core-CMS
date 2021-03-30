@@ -38,7 +38,8 @@ Styleguide Objects.Section
   background-color: var(--global-color-primary--xx-dark);
 }
 /* FAQ: Banners should not touch a border of the following section */
-.o-section--style-dark:not(.o-section--is-banner) + .o-section--style-dark {
+.o-section--style-dark:not(.o-section--is-banner)
++ .o-section--style-dark:not(.o-section--is-banner) {
   border-top: var(--hr-height) solid var(--global-color-primary--xx-light);
 }
 
@@ -48,7 +49,8 @@ Styleguide Objects.Section
   background-color: var(--global-color-primary--xx-light);
 }
 /* FAQ: Banners should not touch a border of the following section */
-.o-section--style-light:not(.o-section--is-banner) + .o-section--style-light {
+.o-section--style-light:not(.o-section--is-banner)
++ .o-section--style-light:not(.o-section--is-banner) {
   border-top: var(--hr-height) solid var(--global-color-primary--xx-light);
 }
 
