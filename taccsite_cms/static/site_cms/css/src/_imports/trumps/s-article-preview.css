@@ -1,0 +1,139 @@
+/*
+Article Preview
+
+A preview of an article (to be used in a `s-article-list`). Content __must__ come in the order and use the tags defined by the example markup.
+
+Markup: s-article-preview.html
+
+Styleguide Trumps.Scopes.ArticlePreview
+*/
+
+
+
+
+
+/* Block */
+
+.s-article-preview {
+  display: flex;
+  flex-direction: column;
+
+  font-family: BentonSansRegular;
+}
+
+
+
+
+
+/* Modifiers */
+
+
+
+/* Modifiers: Of `s-article-list` */
+
+/* Children Visibility */
+
+/* (List) News */
+.s-article-list--news .s-article-preview ul > li:nth-child(3) /* author */,
+/* (List) Allocations */
+.s-article-list--allocations .s-article-preview p:not(:first-child) /* abstract */,
+.s-article-list--allocations .s-article-preview ul > li:nth-child(2) /* type */,
+.s-article-list--allocations .s-article-preview ul > li:nth-child(3) /* author */,
+/* (List) Events */
+.s-article-list--events .s-article-preview p:first-child /* media */,
+.s-article-list--events .s-article-preview ul > li:nth-child(2) /* type */,
+.s-article-list--events .s-article-preview ul > li:nth-child(3) /* author */ {
+  display: none;
+}
+
+/* Children Order */
+
+/* (List) Allocations */
+.s-article-list--allocations .s-article-preview ul /* metadata */ {
+  order: 5;
+}
+
+
+
+
+
+/* Children */
+
+
+
+/* Children: Media */
+
+.s-article-preview p:first-child {
+  order: 1;
+}
+.s-article-preview p:first-child > img {
+  /* … */
+}
+
+
+
+/* Children: Title */
+
+.s-article-preview h3 {
+  order: 3;
+
+  margin-top: 0.5em; /* overwrite Bootstrap and browser */
+  margin-bottom: 0.25em; /* overwrite Bootstrap and browser */
+
+  font-size: 1.8rem;
+  font-family: BentonSansBold;
+  line-height: 2.4rem;
+}
+
+
+
+/* Children: Abstract */
+
+.s-article-preview p:not(:first-child) {
+  order: 4;
+
+  margin-bottom: 0; /* overwrite Bootstrap and browser */
+
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+}
+
+
+
+/* Children: Metadata */
+
+.s-article-preview ul {
+  order: 2;
+
+  display: flex;
+  flex-direction: column;
+
+  list-style: none;
+  padding-left: 0; /* overwrite `site.css` and browser */
+  margin-bottom: 0; /* overwrite Bootstrap */
+}
+
+/* Children: Metadata: Date */
+
+.s-article-preview ul > li:nth-child(1) {
+  order: 2;
+
+  font-size: 1.0rem;
+  font-family: BentonSansBold;
+}
+
+/* Children: Metadata: Type */
+
+.s-article-preview ul > li:nth-child(2) {
+  order: 1;
+
+  font-size: 1.2rem;
+  font-family: BentonSansBold;
+  text-transform: uppercase;
+}
+
+/* Children: Metadata: Author */
+
+.s-article-preview ul > li:nth-child(3) {
+  order: 3;
+}

@@ -1,0 +1,112 @@
+/*
+Article List
+
+A list of article previews. Content __must__ use the tags defined by the example markup.
+
+Markup: s-article-list.html
+
+Styleguide Trumps.Scopes.ArticleList
+*/
+
+/* Block */
+
+[class*="s-article-list--"] {
+  /* … */
+}
+
+
+
+/* Modifiers */
+
+/* Modifiers: News */
+
+.s-article-list--news[class*="o-section--"] {
+  padding-top: 20px;
+  padding-bottom: 25px;
+}
+
+
+
+/* Children */
+
+/* Children: Title */
+
+[class*="s-article-list--"][class*="o-section--layout"] h2 {
+  /* To span all columns */
+  grid-column-start: 1;
+  grid-column-end: -1;
+}
+
+[class*="s-article-list--"] h2 {
+  margin-top: 0; /* overwrite Bootstrap */
+  margin-bottom: 0; /* overwrite Bootstrap */
+
+  color: var(--global-color-accent--normal);
+
+  font-size: 1.6rem;
+  font-family: BentonSansBold;
+  text-transform: uppercase;
+}
+/* Add a fake short border above title */
+[class*="s-article-list--"] h2 {
+  position: relative;
+  padding-top: 1em;
+}
+[class*="s-article-list--"] h2::before {
+  content: '';
+  display: block;
+
+  position: absolute;
+  top: 0;
+  height: 0.5em;
+  width: 2.5em;
+
+  background-color: var(--global-color-accent--normal);
+}
+
+/* Children: Article */
+
+[class*="s-article-list--"] article {
+  /* … */
+}
+
+/* Children: "See More" */
+
+/* Anchor */
+[class*="s-article-list--"] a {
+  /* To span all columns */
+  grid-column-start: 1;
+  grid-column-end: -1;
+
+  /* To add border and spacing */
+  border-top: var(--global-border-width--thick) solid var(--global-color-primary--xx-light);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: -10px; /* to "undo" space added from `padding-bottom` */
+
+  /* Text */
+  font-size: 1.2rem;
+  font-family: BentonSansBold;
+}
+
+/* Icon */
+[class*="s-article-list--"] a::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f35a";
+  margin-right: 10px;
+
+  font-size: 1.4rem;
+  vertical-align: middle;
+
+  /* To hide the `text-decoration: underline` of the anchor */
+  /* SEE: https://stackoverflow.com/a/15688237/11817077 */
+  display: inline-block;
+}
+
+/* Color */
+.o-section--style-light[class*="s-article-list--"] a {
+  color: var(--global-color-primary--xx-dark);
+}
+.o-section--style-dark[class*="s-article-list--"] a {
+  color: var(--global-color-primary--xx-light);
+}
