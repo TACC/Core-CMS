@@ -15,14 +15,27 @@ Styleguide Objects.Section
 
 /* Block */
 
-/* SEE: https://css-tricks.com/couple-takes-sticky-footer/#article-header-id-3 */
 [class*="o-section--"] {
   /* GH-99: Use standard spacing value */
-  padding: 45px; /* the Design varies, but this is the approx. average */
+  /* NOTE: The Design varies, but this is the approx. average */
+  --vert-space: 45px;
+  --horz-space: 45px;
 
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  padding-top: var(--vert-space);
+  padding-bottom: var(--vert-space);
+}
+
+/* Overwrite Bootstrap */
+[class*="o-section--"].container,
+[class*="o-section--"].container-fluid {
+  width: auto; /* Bootstrap forcing `width: 100%` prevented usable margin */
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: var(--horz-space);
+  margin-right: var(--horz-space);
+}
+[class*="o-section--"].container {
+  --horz-space: auto;
 }
 
 
@@ -36,8 +49,8 @@ Styleguide Objects.Section
 /* Modifers: Banner */
 
 .o-section--banner {
-  padding-top: 0;
-  padding-bottom: 0;
+  --vert-space: 0;
+  --horz-space: 0;
 }
 
 
@@ -72,33 +85,35 @@ Styleguide Objects.Section
   border-top: var(--hr-height) solid var(--global-color-primary--xx-light);
 }
 
-/* Modifers: Style: (Fake) Endless Width */
+/* Modifers: Style: (Fake) Endless Background */
 
 [class*="o-section--style"] {
-  /* To anchor `position: absolute` pseudo-element child */
+  /* To anchor the `position: absolute` pseudo-element */
   /* To allow `z-index` on children as necessary */
   position: relative;
+
+  /* CAVEAT: We MUST maintain intentional horizontal overflow of pseudo-child */
+  overflow-x: visible !important; /* do not allow accidental hide of fake bkgd */
 }
 [class*="o-section--style"] > * {
-  /* To ensure children are above `position: absolute` pseudo-element child */
+  /* To ensure children are above `position: absolute` pseudo-element */
   position: relative;
   z-index: 1;
 }
-/* CAVEAT: This intentional horizontal overflow MUST be maintained */
-/* SEE: "Tricks" section */
 [class*="o-section--style"]::before {
   content: '';
   z-index: 0; /* To ensure real element children are above this */
 
-  --offset: -9999px; /* how much space beyond edges to extend */
-
   position: absolute;
   display: block;
-  left: var(--offset);
-  right: var(--offset);
+  width: 100vw;
   top: 0;
   /* FAQ: Covers space of following sibling's border without covering border */
   bottom: calc(-1 * var(--hr-height));
+
+  /* To horizontally center */
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 
@@ -114,54 +129,44 @@ Styleguide Objects.Section
   display: none;
 }
 
-/* Modifers: Layout: A (two 50% columns) */
+/* Modifers: Layout: A (widest: two even columns) */
 
-.o-section--layout-a {
-  grid-template-columns: repeat(2, 1fr);
-}
-@media (--wide-and-below) {
-  .o-section--layout-a:not(.o-section--banner) {
-    grid-template-columns: 1fr;
-  }
-}
 @media (--medium-and-below) {
-  .o-section--layout-a.o-section--banner {
-    gap: 0;
-    grid-template-columns: 1fr;
-  }
+  .o-section--layout-a.o-section--banner { gap: 0; }
+  .o-section--layout-a { grid-template-columns: 1fr; }
+}
+@media (--medium-and-above) {
+  .o-section--layout-a { grid-template-columns: 1fr 1fr; }
 }
 
-/* Modifers: Layout: B (one 66.6…% column, one 33.3…% column) */
+/* Modifers: Layout: B (widest: one wide column, one narrow column) */
 
-.o-section--layout-b {
-  grid-template-columns: 2fr 1fr;
-}
 @media (--medium-and-below) {
-  .o-section--layout-b {
-    grid-template-columns: 1fr;
-  }
+  .o-section--layout-b { grid-template-columns: 1fr; }
+}
+@media (--medium-and-above) {
+  .o-section--layout-b { grid-template-columns: 2fr 1fr; }
 }
 
-/* Modifers: Layout: C (one 33.3…% column, one 66.6…% column) */
+/* Modifers: Layout: C (widest: one narrow column, one wide column) */
 
-.o-section--layout-c {
-  grid-template-columns: 1fr 2fr;
-}
 @media (--medium-and-below) {
-  .o-section--layout-c {
-    grid-template-columns: 1fr;
-  }
+  .o-section--layout-c { grid-template-columns: 1fr; }
+}
+@media (--medium-and-above) {
+  .o-section--layout-c { grid-template-columns: 1fr 2fr; }
 }
 
-/* Modifers: Layout: D (three 33.3…% columns) */
+/* Modifers: Layout: D (widest: three equal columns) */
 
-.o-section--layout-d {
-  grid-template-columns: repeat(3, 3fr);
+@media (--x-narrow-and-below) {
+  .o-section--layout-d { grid-template-columns: 1fr; }
 }
-@media (--medium-and-below) {
-  .o-section--layout-d {
-    grid-template-columns: 1fr;
-  }
+@media (--narrow-to-medium), (--x-narrow-to-narrow) {
+  .o-section--layout-d { grid-template-columns: 1fr 1fr; }
+}
+@media (--medium-and-above) {
+  .o-section--layout-d { grid-template-columns: 1fr 1fr 1fr; }
 }
 
 
@@ -182,7 +187,7 @@ Styleguide Objects.Section
   /* To size image to cover section dimensions but maintain ratio */
   /* CAVEAT: This causes image to overflow beyond section */
   /* SEE: "Tricks" section */
-  min-width: 100%;
+  min-width: 100vw;
   min-height: 100%;
   object-fit: cover;
 
@@ -221,20 +226,6 @@ Styleguide Objects.Section
 
 
 /* Tricks */
-
-
-
-/* Tricks: /* Style: (Fake) Endless Width */
-/* Tricks: /* Children: Banner Image */
-
-/* To hide vertical overflow but allow horizontal overflow */
-/* SEE: https://stackoverflow.com/a/6433475/11817077 */
-/* HACK: The `.container-fluid` makes the overflow caveat irrelevant */
-[class*="o-section--style"].container-fluid {
-  overflow-y: hidden;
-  /* CAVEAT: `overflow-x: visible` (default) is re-intepreted as `auto` */
-  overflow-x: visible;
-}
 
 
 
