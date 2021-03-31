@@ -44,7 +44,7 @@ Styleguide Trumps.Scopes.ArticleList
   color: var(--global-color-accent--normal);
 
   font-size: 1.6rem;
-  font-family: BentonSansBold;
+  font-weight: var(--bold);
   text-transform: uppercase;
 }
 /* Add a fake short border above title */
@@ -86,7 +86,7 @@ Styleguide Trumps.Scopes.ArticleList
 
   /* Text */
   font-size: 1.2rem;
-  font-family: BentonSansBold;
+  font-weight: var(--bold);
 }
 
 /* Icon */

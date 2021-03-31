@@ -17,8 +17,6 @@ Styleguide Trumps.Scopes.ArticlePreview
 .s-article-preview {
   display: flex;
   flex-direction: column;
-
-  font-family: BentonSansRegular;
 }
 
 
@@ -81,7 +79,7 @@ Styleguide Trumps.Scopes.ArticlePreview
   margin-bottom: 0.25em; /* overwrite Bootstrap and browser */
 
   font-size: 1.8rem;
-  font-family: BentonSansBold;
+  font-weight: var(--bold);
   line-height: 2.4rem;
 }
 
@@ -119,7 +117,7 @@ Styleguide Trumps.Scopes.ArticlePreview
   order: 2;
 
   font-size: 1.0rem;
-  font-family: BentonSansBold;
+  font-weight: var(--bold);
 }
 
 /* Children: Metadata: Type */
@@ -128,7 +126,7 @@ Styleguide Trumps.Scopes.ArticlePreview
   order: 1;
 
   font-size: 1.2rem;
-  font-family: BentonSansBold;
+  font-weight: var(--bold);
   text-transform: uppercase;
 }
 

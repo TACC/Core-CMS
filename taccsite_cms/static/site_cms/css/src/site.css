@@ -4,11 +4,13 @@
 /* SEE: https://confluence.tacc.utexas.edu/x/IAA9Cw */
 
 /* SETTINGS */
+/* Shared with Portal */
 @import url("../../../site_shared/css/src/_imports/settings/border.css");
 @import url("../../../site_shared/css/src/_imports/settings/color.css");
-@import url("../../../site_shared/css/src/_imports/settings/font.css");
 @import url("../../../site_shared/css/src/_imports/settings/breakpoints.css");
+/* Unique to CMS */
 @import url("_imports/settings/props.space.css");
+@import url("_imports/settings/font.css");
 
 /* GENERICS */
 /* Bootstrap performs much of this */

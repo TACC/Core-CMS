@@ -18,6 +18,8 @@ Styleguide Elements.TACC.SearchBar
 
 /* tacc-search-bar.s-search-bar::part(form) { */
 [part="form"] {
+  font-family: "Roboto";
+
   /* Copied from `.container` from Portal */
   /* SEE: https://github.com/TACC/Frontera-Portal/blob/master/client/src/components/DataFiles/DataFilesSearchbar/DataFilesSearchbar.module.css */
   display: flex;
