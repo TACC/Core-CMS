@@ -15,15 +15,15 @@ Reference:
 Styleguide Tools.CustomMediaQueries.Breakpoints
 */
 @custom-media --x-narrow-and-below (width < 576px);
-@custom-media --x-narrow-and-above (idth >= 576px);
+@custom-media --x-narrow-and-above (width >= 576px);
 @custom-media --x-narrow-to-narrow (576px <= width < 768px);
 
 @custom-media --narrow-and-below (width < 768px);
-@custom-media --narrow-and-above (idth >= 768px);
+@custom-media --narrow-and-above (width >= 768px);
 @custom-media --narrow-to-medium (768px <= width < 992px);
 
 @custom-media --medium-and-below (width < 992px);
-@custom-media --medium-and-above (idth >= 992px);
+@custom-media --medium-and-above (width >= 992px);
 @custom-media --medium-to-wide (992px <= width < 1200px);
 
 @custom-media --wide-and-below (width < 1200px);
