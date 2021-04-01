@@ -18,7 +18,7 @@ Styleguide Elements.MainSectioningRoots
 html {
   /* Set base font but support user-defined browser font size */
   /* SEE: https://snook.ca/archives/html_and_css/font-size-with-rem */
-  font-size: 100%;
+  font-size: 100%; /* 16px */
 }
 
 /* The webpage must be at least as tall as the viewport */
