@@ -3,7 +3,7 @@ Font
 
 Define standard fonts for a TACC website.
 
-Usage: `font-size: var(--global-font-size--normal)`
+Usage:
   ```
   .something {
     font-family: var(--global-font-family--serif);
