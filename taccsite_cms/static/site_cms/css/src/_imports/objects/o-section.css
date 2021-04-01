@@ -133,10 +133,10 @@ Styleguide Objects.Section
 
 @media (--medium-and-below) {
   .o-section--layout-a.o-section--banner { gap: 0; }
-  .o-section--layout-a { grid-template-columns: 1fr; }
+  .o-section--layout-a { grid-template-columns: repeat(1, minmax(0, 1fr)); }
 }
 @media (--medium-and-above) {
-  .o-section--layout-a { grid-template-columns: 1fr 1fr; }
+  .o-section--layout-a { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Modifers: Layout: B (widest: one wide column, one narrow column) */
@@ -145,7 +145,7 @@ Styleguide Objects.Section
   .o-section--layout-b { grid-template-columns: 1fr; }
 }
 @media (--medium-and-above) {
-  .o-section--layout-b { grid-template-columns: 2fr 1fr; }
+  .o-section--layout-b { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); }
 }
 
 /* Modifers: Layout: C (widest: one narrow column, one wide column) */
@@ -154,19 +154,19 @@ Styleguide Objects.Section
   .o-section--layout-c { grid-template-columns: 1fr; }
 }
 @media (--medium-and-above) {
-  .o-section--layout-c { grid-template-columns: 1fr 2fr; }
+  .o-section--layout-c { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); }
 }
 
 /* Modifers: Layout: D (widest: three equal columns) */
 
 @media (--x-narrow-and-below) {
-  .o-section--layout-d { grid-template-columns: 1fr; }
+  .o-section--layout-d { grid-template-columns: repeat(1, minmax(0, 1fr)); }
 }
 @media (--narrow-to-medium), (--x-narrow-to-narrow) {
-  .o-section--layout-d { grid-template-columns: 1fr 1fr; }
+  .o-section--layout-d { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (--medium-and-above) {
-  .o-section--layout-d { grid-template-columns: 1fr 1fr 1fr; }
+  .o-section--layout-d { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
 
