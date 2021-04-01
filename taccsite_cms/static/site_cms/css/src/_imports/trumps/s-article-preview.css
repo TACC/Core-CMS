@@ -64,9 +64,18 @@ Styleguide Trumps.Scopes.ArticlePreview
 
 .s-article-preview p:first-child {
   order: 1;
+
+  height: 55%;
+  overflow: hidden;
+
+  margin-bottom: 8px; /* overwrite Bootstrap */
 }
 .s-article-preview p:first-child > img {
-  /* … */
+  /* To center image within container */
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 
