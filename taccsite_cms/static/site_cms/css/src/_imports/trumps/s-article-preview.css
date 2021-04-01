@@ -7,6 +7,7 @@ Markup: s-article-preview.html
 
 Styleguide Trumps.Scopes.ArticlePreview
 */
+@import url("_imports/tools/x-truncate.css");
 
 
 
@@ -94,6 +95,15 @@ Styleguide Trumps.Scopes.ArticlePreview
 
   font-size: 1.6rem;
   line-height: 2.4rem;
+
+  flex-shrink: 0;
+  height: calc(2.4rem * var(--lines)); /* line-height * lines clamped */
+
+  @extend .x-truncate--many-lines;
+  --lines: 2;
+}
+.s-article-preview p:not(:first-child):hover {
+  @extend .x-untruncate--many-lines;
 }
 
 
