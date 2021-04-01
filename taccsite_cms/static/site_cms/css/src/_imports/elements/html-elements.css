@@ -29,6 +29,8 @@ body {
 
 body {
   font-family: var(--global-font-family);
+
+  line-height: 1.4; /* overwrite Bootstrap */
 }
 
 
