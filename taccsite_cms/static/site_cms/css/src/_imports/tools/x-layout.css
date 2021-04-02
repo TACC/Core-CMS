@@ -66,12 +66,6 @@ Styleguide Tools.ExtendsAndMixins.Layout
 /* Row-Based */
 
 .x-layout--e {
-  display: grid;
-}
-
-/* E (multiple even rows) */
-
-.x-layout--e {
-  grid-auto-rows: minmax(0, min-content);
-  grid-auto-columns: minmax(0, 1fr);
+  display: flex;
+  flex-direction: column;
 }

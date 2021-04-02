@@ -9,6 +9,10 @@ Styleguide Trumps.Scopes.ArticleList
 */
 @import url("../../../../../../../taccsite_cms/static/site_cms/css/src/_imports/tools/x-layout.css");
 
+
+
+
+
 /* Block */
 
 [class*="s-article-list--"] {
@@ -17,11 +21,28 @@ Styleguide Trumps.Scopes.ArticleList
 
 
 
+
+
 /* Children */
+
+
+
+/* Children: All */
+
+/* Not "Title" & Not "See More" */
+.s-article-list--layout-e > :not(h2):not(a:last-child) {
+  /* To shrink heading */
+  flex-grow: 1;
+}
+
+
 
 /* Children: Title */
 
-[class*="s-article-list--"] h2 {
+.s-article-list--layout-a h2,
+.s-article-list--layout-b h2,
+.s-article-list--layout-c h2,
+.s-article-list--layout-d h2 {
   /* To span all columns */
   grid-column-start: 1;
   grid-column-end: -1;
@@ -54,19 +75,30 @@ Styleguide Trumps.Scopes.ArticleList
   background-color: var(--global-color-accent--normal);
 }
 
+
+
 /* Children: Article */
 
 .s-article-list--news article {
   height: 320px;
 }
 
+
+
 /* Children: "See More" */
 
 /* Anchor */
-[class*="s-article-list--"] > a:last-child {
+
+.s-article-list--layout-a > a:last-child,
+.s-article-list--layout-b > a:last-child,
+.s-article-list--layout-c > a:last-child,
+.s-article-list--layout-d > a:last-child {
+  /* To span all columns */
   grid-column-start: 1;
   grid-column-end: -1;
+}
 
+[class*="s-article-list--"] > a:last-child {
   border-top-width: var(--global-border-width--thick);
   border-top-style: solid;
 
@@ -90,6 +122,7 @@ Styleguide Trumps.Scopes.ArticleList
 }
 
 /* Icon */
+
 [class*="s-article-list--"] > a:last-child::before {
   font-family: "Font Awesome 5 Free";
   content: "\f35a";
@@ -105,7 +138,11 @@ Styleguide Trumps.Scopes.ArticleList
 
 
 
+
+
 /* Modifiers */
+
+
 
 /* Modifiers: Layout */
 
@@ -116,6 +153,7 @@ Styleguide Trumps.Scopes.ArticleList
 .s-article-list--layout-e { @extend .x-layout--e; }
 
 /* Modifiers: Layout: Column-Based */
+
 .s-article-list--layout-a,
 .s-article-list--layout-b,
 .s-article-list--layout-c,
@@ -124,20 +162,21 @@ Styleguide Trumps.Scopes.ArticleList
 }
 
 /* Modifiers: Layout: Row-Based */
+
 .s-article-list--layout-e {
-  row-gap: 30px; /* GH-99: Use standard spacing value */
-}
-.s-article-list--layout-e:not(.s-article-list--layout-gapless) .s-article-preview:first-of-type {
-  margin-top: -30px; /* remove row-gap for articles */
+  /* … */
 }
 
 /* Modifiers: Layout: Options */
+
 .s-article-list--layout-gapless {
   gap: 0;
 }
 .s-article-list--layout-compact > a:last-child {
   margin-top: 0;
 }
+
+
 
 /* Modifiers: Links */
 
