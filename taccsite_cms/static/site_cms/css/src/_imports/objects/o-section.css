@@ -24,6 +24,10 @@ Styleguide Objects.Section
   padding-top: var(--vert-space);
   padding-bottom: var(--vert-space);
 }
+[class*="o-section--"] > [class*="o-section--"] {
+  --vert-space: 0;
+  --horz-space: 0;
+}
 
 /* Overwrite Bootstrap */
 [class*="o-section--"].container,
