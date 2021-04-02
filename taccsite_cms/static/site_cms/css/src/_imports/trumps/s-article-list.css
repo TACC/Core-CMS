@@ -63,7 +63,7 @@ Styleguide Trumps.Scopes.ArticleList
 /* Children: "See More" */
 
 /* Anchor */
-[class*="s-article-list--"] > a {
+[class*="s-article-list--"] > a:last-child {
   grid-column-start: 1;
   grid-column-end: -1;
 
@@ -78,19 +78,19 @@ Styleguide Trumps.Scopes.ArticleList
   font-size: 1.2rem;
   font-weight: var(--bold);
 }
-.o-section--style-light[class*="s-article-list--"] > a,
-.o-section--style-light [class*="s-article-list--"] > a {
+.o-section--style-light[class*="s-article-list--"] > a:last-child,
+.o-section--style-light [class*="s-article-list--"] > a:last-child {
   color: var(--global-color-primary--xx-dark);
   border-top-color: var(--global-color-primary--xx-dark);
 }
-.o-section--style-dark[class*="s-article-list--"] > a,
-.o-section--style-dark [class*="s-article-list--"] > a {
+.o-section--style-dark[class*="s-article-list--"] > a:last-child,
+.o-section--style-dark [class*="s-article-list--"] > a:last-child {
   color: var(--global-color-primary--xx-light);
   border-top-color: var(--global-color-primary--xx-light);
 }
 
 /* Icon */
-[class*="s-article-list--"] > a::before {
+[class*="s-article-list--"] > a:last-child::before {
   font-family: "Font Awesome 5 Free";
   content: "\f35a";
   margin-right: 10px;
@@ -127,10 +127,27 @@ Styleguide Trumps.Scopes.ArticleList
 .s-article-list--layout-e {
   row-gap: 30px; /* GH-99: Use standard spacing value */
 }
-.s-article-list--layout-e:not(.s-article-list--layout-compact) .s-article-preview:first-of-type {
+.s-article-list--layout-e:not(.s-article-list--layout-gapless) .s-article-preview:first-of-type {
   margin-top: -30px; /* remove row-gap for articles */
 }
 
-/* Modifiers: Layout: Compact */
-.s-article-list--layout-compact { gap: 0; }
-.s-article-list--layout-compact > a { margin-top: 0 }
+/* Modifiers: Layout: Options */
+.s-article-list--layout-gapless {
+  gap: 0;
+}
+.s-article-list--layout-compact > a:last-child {
+  margin-top: 0;
+}
+
+/* Modifiers: Links */
+
+.s-article-list--links {
+  font-size: 1.4rem;
+  color: var(--global-color-primary--xx-dark);
+}
+.s-article-list--links p {
+  margin: 0; /* Overwrite Bootstrap and browser */
+}
+.s-article-list--links p a {
+  font-weight: var(--bold);
+}
