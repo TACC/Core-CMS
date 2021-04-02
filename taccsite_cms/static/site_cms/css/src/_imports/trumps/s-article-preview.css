@@ -21,12 +21,6 @@ Styleguide Trumps.Scopes.ArticlePreview
   display: flex;
   flex-direction: column;
 }
-/* (List) Events */
-.s-article-list--events .s-article-preview {
-  padding-top: 8px;
-
-  border-top: var(--global-border-width--normal) solid var(--global-color-primary--dark);
-}
 
 
 
@@ -237,13 +231,19 @@ Styleguide Trumps.Scopes.ArticlePreview
 
 /* Modifiers */
 
+
+
 /* Modifiers: (List) News, Allocations, Evetns, etc. */
 /* SEE: All "Children" styles */
 
+
+
 /* Modifiers: (List) Layout: Options */
+
 .s-article-list--layout-gapless .s-article-preview p:last-child > a:hover {
   outline-offset: 0;
 }
+
 .s-article-list--layout-compact .s-article-preview > * {
   margin-bottom: 0; /* overwrite `.s-article-preview > …` */
 }

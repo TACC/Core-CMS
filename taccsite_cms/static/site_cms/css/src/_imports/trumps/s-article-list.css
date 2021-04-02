@@ -176,6 +176,21 @@ Styleguide Trumps.Scopes.ArticleList
   margin-top: 0;
 }
 
+.s-article-list--layout-divided > :not(h2):not(a:last-child) {
+  padding-top: 8px;
+
+  border-width: var(--global-border-width--normal) 0 0;
+  border-style: solid;
+}
+.o-section--style-dark.s-article-list--layout-divided > :not(h2):not(a:last-child),
+.o-section--style-dark .s-article-list--layout-divided > :not(h2):not(a:last-child) {
+  border-color: var(--global-color-primary--light);
+}
+.o-section--style-light.s-article-list--layout-divided > :not(h2):not(a:last-child),
+.o-section--style-light .s-article-list--layout-divided > :not(h2):not(a:last-child) {
+  border-color: var(--global-color-primary--dark);
+}
+
 
 
 /* Modifiers: Links */
