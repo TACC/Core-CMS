@@ -49,11 +49,11 @@ Styleguide Trumps.Scopes.ArticlePreview
 }
 /* (List) News */
 .s-article-list--news .s-article-preview p:first-child {
-  height: 55%;
+  height: 180px;
 }
 /* (List) Allocations */
 .s-article-list--allocations .s-article-preview p:first-child {
-  height: 100px;
+  height: 10.0rem;
 }
 /* (List) Events */
 .s-article-list--events .s-article-preview p:first-child {
@@ -99,18 +99,9 @@ Styleguide Trumps.Scopes.ArticlePreview
   font-size: 1.6rem;
   line-height: 2.4rem;
 
-  flex-shrink: 0;
-  height: calc(2.4rem * var(--lines)); /* line-height * lines clamped */
 
   @extend .x-truncate--many-lines;
-  --lines: 2;
-}
-/* (List) News */
-.s-article-list--news .s-article-preview p:not(:first-child):not(:last-child) {
-  z-index: 1; /* ensure Abstract appears over Link */
-}
-.s-article-list--news .s-article-preview p:not(:first-child):not(:last-child):hover {
-  @extend .x-untruncate--many-lines;
+  --lines: 3;
 }
 /* (List) Allocations */
 .s-article-list--allocations .s-article-preview p:not(:first-child):not(:last-child) {

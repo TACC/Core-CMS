@@ -58,6 +58,8 @@ Styleguide Trumps.Scopes.ArticleList
   font-size: 1.6rem;
   font-weight: var(--bold);
   text-transform: uppercase;
+
+  @extend .x-truncate--one-line;
 }
 /* Add a fake short border above title */
 [class*="s-article-list--"] h2 {
@@ -74,14 +76,6 @@ Styleguide Trumps.Scopes.ArticleList
   width: 2.5em;
 
   background-color: var(--global-color-accent--normal);
-}
-
-
-
-/* Children: Article */
-
-.s-article-list--news article {
-  height: 320px;
 }
 
 
@@ -110,6 +104,8 @@ Styleguide Trumps.Scopes.ArticleList
 
   font-size: 1.2rem;
   font-weight: var(--bold);
+
+  @extend .x-truncate--one-line;
 }
 [class*="s-article-list--"] > a:last-child:not(:hover) {
   border-bottom-color: transparent !important;
