@@ -67,6 +67,7 @@ Styleguide Objects.Section
 
 .o-section--intro {
   @extend .x-layout--a;
+  gap: 30px; /* GH-99: Use standard spacing value */
 }
 .o-section--intro > :empty:not(img),
 .o-section--intro .u-empty {

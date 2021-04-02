@@ -7,6 +7,7 @@ Markup: s-article-list.html
 
 Styleguide Trumps.Scopes.ArticleList
 */
+@import url("../../../../../../../taccsite_cms/static/site_cms/css/src/_imports/tools/x-layout.css");
 
 /* Block */
 
@@ -20,10 +21,17 @@ Styleguide Trumps.Scopes.ArticleList
 
 /* Modifiers: News */
 
-.s-article-list--news[class*="o-section--"] {
-  padding-top: 20px;
-  padding-bottom: 25px;
+.s-article-list--layout-a,
+.s-article-list--layout-b,
+.s-article-list--layout-c,
+.s-article-list--layout-d {
+  column-gap: 30px; /* GH-99: Use standard spacing value */
 }
+.s-article-list--layout-a { @extend .x-layout--a; }
+.s-article-list--layout-b { @extend .x-layout--b; }
+.s-article-list--layout-c { @extend .x-layout--c; }
+.s-article-list--layout-d { @extend .x-layout--d; }
+.s-article-list--layout-e { @extend .x-layout--e; }
 
 
 
@@ -31,7 +39,7 @@ Styleguide Trumps.Scopes.ArticleList
 
 /* Children: Title */
 
-[class*="s-article-list--"][class*="o-section--layout"] h2 {
+[class*="s-article-list--"] h2 {
   /* To span all columns */
   grid-column-start: 1;
   grid-column-end: -1;
@@ -39,7 +47,7 @@ Styleguide Trumps.Scopes.ArticleList
 
 [class*="s-article-list--"] h2 {
   margin-top: 0; /* overwrite Bootstrap */
-  margin-bottom: 0; /* overwrite Bootstrap */
+  margin-bottom: 30px; /* overwrite Bootstrap */
 
   color: var(--global-color-accent--normal);
 
