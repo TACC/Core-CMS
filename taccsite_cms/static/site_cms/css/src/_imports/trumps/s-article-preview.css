@@ -137,12 +137,13 @@ Styleguide Trumps.Scopes.ArticlePreview
 .s-article-preview ul > li:nth-child(1) {
   order: 2;
 
+  font-weight: var(--medium);
+
   @extend .x-truncate--one-line;
 }
 /* (List) News */
 .s-article-list--news .s-article-preview ul > li:nth-child(1) {
   font-size: 1.0rem;
-  font-weight: var(--bold);
 }
 .s-article-list--news .s-article-preview ul > li:nth-child(1)::before {
   content: 'Published: ';
@@ -150,13 +151,11 @@ Styleguide Trumps.Scopes.ArticlePreview
 /* (List) Events */
 .s-article-list--events .s-article-preview ul > li:nth-child(1) {
   font-size: 1.4rem;
-  font-weight: var(--medium);
   color: var(--global-color-accent--normal);
 }
 /* (List) Allocations */
 .s-article-list--allocations .s-article-preview ul > li:nth-child(1) {
   font-size: 1.6rem;
-  font-weight: var(--medium);
 }
 .s-article-list--allocations .s-article-preview ul > li:nth-child(1)::before {
   content: 'Submission Deadlines: ';
