@@ -8,6 +8,7 @@ Markup: s-article-preview.html
 Styleguide Trumps.Scopes.ArticlePreview
 */
 @import url("_imports/tools/x-truncate.css");
+@import url("_imports/tools/x-article-link.css");
 
 
 
@@ -206,23 +207,27 @@ Styleguide Trumps.Scopes.ArticlePreview
 /* Children: Link */
 
 .s-article-preview p:last-child {
-  z-index: 1; /* ensure Link appears over Media */
-
   margin-bottom: 0; /* overwite Bootstrap and browser */
 }
-.s-article-preview p:last-child,
-.s-article-preview p:last-child > a {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  top: 0; /* explicit position (in case `s-article-preview` has top padding) */
 
-  color: transparent; /* ensure Link _text_ is invisible (allow decoration) */
+/* Expand link to cover its container */
+.s-article-preview p:last-child {
+  z-index: 1; /* ensure Link appears over Media */
 }
-.s-article-preview p:last-child > a:hover {
-  outline: 1px solid var(--global-color-accent--normal);
+.s-article-preview p:last-child > a {
+  color: transparent; /* ensure Link _text_ is invisible (allow decoration) */
 
-  outline-offset: 1em;
+  @extend .x-article-link-stretch;
+}
+.s-article-list--layout-gapless .s-article-preview p:last-child > a {
+  @extend .x-article-link-stretch--gapless;
+}
+/* Give link state (pseudo-class) feedback */
+.s-article-preview p:last-child > a:hover {
+  @extend .x-article-link-hover;
+}
+.s-article-list--layout-gapless .s-article-preview p:last-child > a:hover {
+  @extend .x-article-link-hover--gapless;
 }
 
 
@@ -239,10 +244,6 @@ Styleguide Trumps.Scopes.ArticlePreview
 
 
 /* Modifiers: (List) Layout: Options */
-
-.s-article-list--layout-gapless .s-article-preview p:last-child > a:hover {
-  outline-offset: 0;
-}
 
 .s-article-list--layout-compact .s-article-preview > * {
   margin-bottom: 0; /* overwrite `.s-article-preview > …` */
