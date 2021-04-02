@@ -143,6 +143,7 @@ Styleguide Trumps.Scopes.ArticlePreview
 }
 /* (List) News */
 .s-article-list--news .s-article-preview ul > li:nth-child(1) {
+  margin-bottom: 0.8rem; /* overwrite Bootstrap */
   font-size: 1.0rem;
 }
 .s-article-list--news .s-article-preview ul > li:nth-child(1)::before {
