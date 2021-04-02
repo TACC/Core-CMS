@@ -81,7 +81,7 @@ Styleguide Trumps.Scopes.ArticleList
 /* Children: "See More" */
 
 /* Anchor */
-[class*="s-article-list--"] a {
+[class*="s-article-list--"] > a {
   grid-column-start: 1;
   grid-column-end: -1;
 
@@ -96,19 +96,19 @@ Styleguide Trumps.Scopes.ArticleList
   font-size: 1.2rem;
   font-weight: var(--bold);
 }
-.o-section--style-light[class*="s-article-list--"] a,
-.o-section--style-light [class*="s-article-list--"] a {
+.o-section--style-light[class*="s-article-list--"] > a,
+.o-section--style-light [class*="s-article-list--"] > a {
   color: var(--global-color-primary--xx-dark);
   border-top-color: var(--global-color-primary--xx-dark);
 }
-.o-section--style-dark[class*="s-article-list--"] a,
-.o-section--style-dark [class*="s-article-list--"] a {
+.o-section--style-dark[class*="s-article-list--"] > a,
+.o-section--style-dark [class*="s-article-list--"] > a {
   color: var(--global-color-primary--xx-light);
   border-top-color: var(--global-color-primary--xx-light);
 }
 
 /* Icon */
-[class*="s-article-list--"] a::before {
+[class*="s-article-list--"] > a::before {
   font-family: "Font Awesome 5 Free";
   content: "\f35a";
   margin-right: 10px;
