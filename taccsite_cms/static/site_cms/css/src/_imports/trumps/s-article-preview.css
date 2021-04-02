@@ -21,14 +21,12 @@ Styleguide Trumps.Scopes.ArticlePreview
   display: flex;
   flex-direction: column;
 }
+/* (List) Events */
+.s-article-list--events .s-article-preview {
+  padding-top: 8px;
 
-
-
-
-
-/* Modifiers */
-
-/* … */
+  border-top: var(--global-border-width--normal) solid var(--global-color-primary--dark);
+}
 
 
 
@@ -43,7 +41,6 @@ Styleguide Trumps.Scopes.ArticlePreview
 .s-article-preview p:first-child {
   order: 1;
 
-  height: 55%;
   overflow: hidden;
 
   margin-bottom: 8px; /* overwrite Bootstrap */
@@ -54,6 +51,14 @@ Styleguide Trumps.Scopes.ArticlePreview
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+/* (List) News */
+.s-article-list--news .s-article-preview p:first-child {
+  height: 55%;
+}
+/* (List) Allocations */
+.s-article-list--allocations .s-article-preview p:first-child {
+  height: 100px;
 }
 /* (List) Events */
 .s-article-list--events .s-article-preview p:first-child {
@@ -81,6 +86,11 @@ Styleguide Trumps.Scopes.ArticlePreview
   font-size: 1.6rem;
   font-weight: var(--bold);
 }
+/* (List) Events */
+.s-article-list--events .s-article-preview h3 {
+  font-size: 1.4rem;
+  color: var(--global-color-primary--xx-dark);
+}
 
 
 
@@ -88,7 +98,6 @@ Styleguide Trumps.Scopes.ArticlePreview
 
 .s-article-preview p:not(:first-child):not(:last-child) {
   order: 4;
-  z-index: 1; /* ensure Abstract appears over Link */
 
   margin-bottom: 0; /* overwrite Bootstrap and browser */
 
@@ -101,12 +110,21 @@ Styleguide Trumps.Scopes.ArticlePreview
   @extend .x-truncate--many-lines;
   --lines: 2;
 }
-.s-article-preview p:not(:first-child):not(:last-child):hover {
+/* (List) News */
+.s-article-list--news .s-article-preview p:not(:first-child):not(:last-child) {
+  z-index: 1; /* ensure Abstract appears over Link */
+}
+.s-article-list--news .s-article-preview p:not(:first-child):not(:last-child):hover {
   @extend .x-untruncate--many-lines;
 }
 /* (List) Allocations */
-.s-article-list--allocations .s-article-preview p:not(:last-child):not(:first-child) {
+.s-article-list--allocations .s-article-preview p:not(:first-child):not(:last-child) {
   display: none;
+}
+/* (List) Events */
+.s-article-list--events .s-article-preview p:not(:first-child):not(:last-child) {
+  font-size: 1.4rem;
+  color: var(--global-color-primary--xx-dark);
 }
 
 
@@ -134,8 +152,7 @@ Styleguide Trumps.Scopes.ArticlePreview
 .s-article-preview ul > li:nth-child(1) {
   order: 2;
 
-  /* FAQ: To prevent line wrap from changing height */
-  height: 1.4em; /* equal to line-height */
+  @extend .x-truncate--one-line;
 }
 /* (List) News */
 .s-article-list--news .s-article-preview ul > li:nth-child(1) {
@@ -144,6 +161,12 @@ Styleguide Trumps.Scopes.ArticlePreview
 }
 .s-article-list--news .s-article-preview ul > li:nth-child(1)::before {
   content: 'Published: ';
+}
+/* (List) Events */
+.s-article-list--events .s-article-preview ul > li:nth-child(1) {
+  font-size: 1.4rem;
+  font-weight: var(--medium);
+  color: var(--global-color-accent--normal);
 }
 /* (List) Allocations */
 .s-article-list--allocations .s-article-preview ul > li:nth-child(1) {
@@ -196,15 +219,31 @@ Styleguide Trumps.Scopes.ArticlePreview
 .s-article-preview p:last-child,
 .s-article-preview p:last-child > a {
   position: absolute;
-  width: 100%;
   height: 100%;
+  width: 100%;
+  top: 0; /* explicit position (in case `s-article-preview` has top padding) */
 
   color: transparent; /* ensure Link _text_ is invisible (allow decoration) */
 }
 .s-article-preview p:last-child > a:hover {
   outline: 1px solid var(--global-color-accent--normal);
-}
-/* (List) News */
-.s-article-list--news .s-article-preview p:last-child > a:hover {
+
   outline-offset: 1em;
+}
+
+
+
+
+
+/* Modifiers */
+
+/* Modifiers: (List) News, Allocations, Evetns, etc. */
+/* SEE: All "Children" styles */
+
+/* Modifiers: (List) Layout: Compact */
+.s-article-list--layout-compact .s-article-preview > * {
+  margin-bottom: 0; /* overwrite `.s-article-preview > …` */
+}
+.s-article-list--layout-compact .s-article-preview p:last-child > a:hover {
+  outline-offset: 0;
 }

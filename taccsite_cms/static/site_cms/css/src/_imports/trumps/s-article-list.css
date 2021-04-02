@@ -17,24 +17,6 @@ Styleguide Trumps.Scopes.ArticleList
 
 
 
-/* Modifiers */
-
-/* Modifiers: Layout */
-
-.s-article-list--layout-a,
-.s-article-list--layout-b,
-.s-article-list--layout-c,
-.s-article-list--layout-d {
-  column-gap: 30px; /* GH-99: Use standard spacing value */
-}
-.s-article-list--layout-a { @extend .x-layout--a; }
-.s-article-list--layout-b { @extend .x-layout--b; }
-.s-article-list--layout-c { @extend .x-layout--c; }
-.s-article-list--layout-d { @extend .x-layout--d; }
-.s-article-list--layout-e { @extend .x-layout--e; }
-
-
-
 /* Children */
 
 /* Children: Title */
@@ -88,7 +70,7 @@ Styleguide Trumps.Scopes.ArticleList
   border-top-width: var(--global-border-width--thick);
   border-top-style: solid;
 
-  margin-top: 30px;
+  margin-top: 30px; /* GH-99: Use standard spacing value */
   padding-top: 10px;
   padding-bottom: 10px;
   margin-bottom: -10px; /* to "undo" space added from `padding-bottom` */
@@ -120,3 +102,35 @@ Styleguide Trumps.Scopes.ArticleList
   /* SEE: https://stackoverflow.com/a/15688237/11817077 */
   display: inline-block;
 }
+
+
+
+/* Modifiers */
+
+/* Modifiers: Layout */
+
+.s-article-list--layout-a { @extend .x-layout--a; }
+.s-article-list--layout-b { @extend .x-layout--b; }
+.s-article-list--layout-c { @extend .x-layout--c; }
+.s-article-list--layout-d { @extend .x-layout--d; }
+.s-article-list--layout-e { @extend .x-layout--e; }
+
+/* Modifiers: Layout: Column-Based */
+.s-article-list--layout-a,
+.s-article-list--layout-b,
+.s-article-list--layout-c,
+.s-article-list--layout-d {
+  column-gap: 30px; /* GH-99: Use standard spacing value */
+}
+
+/* Modifiers: Layout: Row-Based */
+.s-article-list--layout-e {
+  row-gap: 30px; /* GH-99: Use standard spacing value */
+}
+.s-article-list--layout-e:not(.s-article-list--layout-compact) .s-article-preview:first-of-type {
+  margin-top: -30px; /* remove row-gap for articles */
+}
+
+/* Modifiers: Layout: Compact */
+.s-article-list--layout-compact { gap: 0; }
+.s-article-list--layout-compact > a { margin-top: 0 }
