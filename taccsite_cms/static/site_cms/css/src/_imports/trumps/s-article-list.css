@@ -100,8 +100,8 @@ Styleguide Trumps.Scopes.ArticleList
 }
 
 [class*="s-article-list--"] > a:last-child {
-  border-top-width: var(--global-border-width--thick);
-  border-top-style: solid;
+  border-width: var(--global-border-width--thick) 0 var(--global-border-width--normal);
+  border-style: solid;
 
   margin-top: 30px; /* GH-99: Use standard spacing value */
   padding-top: 10px;
@@ -111,15 +111,18 @@ Styleguide Trumps.Scopes.ArticleList
   font-size: 1.2rem;
   font-weight: var(--bold);
 }
+[class*="s-article-list--"] > a:last-child:not(:hover) {
+  border-bottom-color: transparent !important;
+}
 .o-section--style-light[class*="s-article-list--"] > a:last-child,
 .o-section--style-light [class*="s-article-list--"] > a:last-child {
   color: var(--global-color-primary--xx-dark);
-  border-top-color: var(--global-color-primary--xx-dark);
+  border-color: var(--global-color-primary--xx-dark);
 }
 .o-section--style-dark[class*="s-article-list--"] > a:last-child,
 .o-section--style-dark [class*="s-article-list--"] > a:last-child {
   color: var(--global-color-primary--xx-light);
-  border-top-color: var(--global-color-primary--xx-light);
+  border-color: var(--global-color-primary--xx-light);
 }
 
 /* Icon */
