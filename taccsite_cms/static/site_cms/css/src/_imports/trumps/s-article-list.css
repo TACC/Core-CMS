@@ -40,16 +40,16 @@ Styleguide Trumps.Scopes.ArticleList
 
 /* Children: Title */
 
-.s-article-list--layout-a h2,
-.s-article-list--layout-b h2,
-.s-article-list--layout-c h2,
-.s-article-list--layout-d h2 {
+.s-article-list--layout-a > h2,
+.s-article-list--layout-b > h2,
+.s-article-list--layout-c > h2,
+.s-article-list--layout-d > h2 {
   /* To span all columns */
   grid-column-start: 1;
   grid-column-end: -1;
 }
 
-[class*="s-article-list--"] h2 {
+[class*="s-article-list--"] > h2 {
   margin-top: 0; /* overwrite Bootstrap */
   margin-bottom: 3.0rem; /* overwrite Bootstrap */
 
@@ -62,11 +62,11 @@ Styleguide Trumps.Scopes.ArticleList
   @extend .x-truncate--one-line;
 }
 /* Add a fake short border above title */
-[class*="s-article-list--"] h2 {
+[class*="s-article-list--"] > h2 {
   position: relative;
   padding-top: 1em;
 }
-[class*="s-article-list--"] h2::before {
+[class*="s-article-list--"] > h2::before {
   content: '';
   display: block;
 
