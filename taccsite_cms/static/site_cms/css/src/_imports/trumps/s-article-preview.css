@@ -240,10 +240,10 @@ Styleguide Trumps.Scopes.ArticlePreview
 /* Modifiers: (List) News, Allocations, Evetns, etc. */
 /* SEE: All "Children" styles */
 
-/* Modifiers: (List) Layout: Compact */
+/* Modifiers: (List) Layout: Options */
+.s-article-list--layout-gapless .s-article-preview p:last-child > a:hover {
+  outline-offset: 0;
+}
 .s-article-list--layout-compact .s-article-preview > * {
   margin-bottom: 0; /* overwrite `.s-article-preview > …` */
-}
-.s-article-list--layout-compact .s-article-preview p:last-child > a:hover {
-  outline-offset: 0;
 }
