@@ -74,20 +74,29 @@ Styleguide Trumps.Scopes.ArticleList
 
 /* Anchor */
 [class*="s-article-list--"] a {
-  /* To span all columns */
   grid-column-start: 1;
   grid-column-end: -1;
 
-  /* To add border and spacing */
-  border-top: var(--global-border-width--thick) solid var(--global-color-primary--xx-light);
+  border-top-width: var(--global-border-width--thick);
+  border-top-style: solid;
+
   margin-top: 30px;
   padding-top: 10px;
   padding-bottom: 10px;
   margin-bottom: -10px; /* to "undo" space added from `padding-bottom` */
 
-  /* Text */
   font-size: 1.2rem;
   font-weight: var(--bold);
+}
+.o-section--style-light[class*="s-article-list--"] a,
+.o-section--style-light [class*="s-article-list--"] a {
+  color: var(--global-color-primary--xx-dark);
+  border-top-color: var(--global-color-primary--xx-dark);
+}
+.o-section--style-dark[class*="s-article-list--"] a,
+.o-section--style-dark [class*="s-article-list--"] a {
+  color: var(--global-color-primary--xx-light);
+  border-top-color: var(--global-color-primary--xx-light);
 }
 
 /* Icon */
@@ -102,12 +111,4 @@ Styleguide Trumps.Scopes.ArticleList
   /* To hide the `text-decoration: underline` of the anchor */
   /* SEE: https://stackoverflow.com/a/15688237/11817077 */
   display: inline-block;
-}
-
-/* Color */
-.o-section--style-light[class*="s-article-list--"] a {
-  color: var(--global-color-primary--xx-dark);
-}
-.o-section--style-dark[class*="s-article-list--"] a {
-  color: var(--global-color-primary--xx-light);
 }
