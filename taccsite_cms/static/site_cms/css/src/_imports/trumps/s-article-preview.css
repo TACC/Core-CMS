@@ -16,6 +16,8 @@ Styleguide Trumps.Scopes.ArticlePreview
 /* Block */
 
 .s-article-preview {
+  position: relative; /* for absolutely positioned "Children: Link" */
+
   display: flex;
   flex-direction: column;
 }
@@ -84,8 +86,9 @@ Styleguide Trumps.Scopes.ArticlePreview
 
 /* Children: Abstract */
 
-.s-article-preview p:not(:first-child) {
+.s-article-preview p:not(:first-child):not(:last-child) {
   order: 4;
+  z-index: 1; /* ensure Abstract appears over Link */
 
   margin-bottom: 0; /* overwrite Bootstrap and browser */
 
@@ -98,11 +101,11 @@ Styleguide Trumps.Scopes.ArticlePreview
   @extend .x-truncate--many-lines;
   --lines: 2;
 }
-.s-article-preview p:not(:first-child):hover {
+.s-article-preview p:not(:first-child):not(:last-child):hover {
   @extend .x-untruncate--many-lines;
 }
 /* (List) Allocations */
-.s-article-list--allocations .s-article-preview p:not(:first-child) {
+.s-article-list--allocations .s-article-preview p:not(:last-child):not(:first-child) {
   display: none;
 }
 
@@ -179,4 +182,29 @@ Styleguide Trumps.Scopes.ArticlePreview
 /* (List) Allocations */
 .s-article-list--allocations .s-article-preview ul > li:nth-child(3) {
   display: none;
+}
+
+
+
+/* Children: Link */
+
+.s-article-preview p:last-child {
+  z-index: 1; /* ensure Link appears over Media */
+
+  margin-bottom: 0; /* overwite Bootstrap and browser */
+}
+.s-article-preview p:last-child,
+.s-article-preview p:last-child > a {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  color: transparent; /* ensure Link _text_ is invisible (allow decoration) */
+}
+.s-article-preview p:last-child > a:hover {
+  outline: 1px solid var(--global-color-accent--normal);
+}
+/* (List) News */
+.s-article-list--news .s-article-preview p:last-child > a:hover {
+  outline-offset: 1em;
 }
