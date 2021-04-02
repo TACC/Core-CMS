@@ -70,6 +70,9 @@ Styleguide Trumps.Scopes.ArticlePreview
   font-size: 1.8rem;
   font-weight: var(--bold);
   line-height: 2.4rem;
+
+  @extend .x-truncate--many-lines;
+  --lines: 2;
 }
 
 
