@@ -141,16 +141,12 @@ Styleguide Objects.Section
 
 /* Modifers: Layout */
 
-/* Modifers: Layout: A (widest: two even columns) */
+.o-section--layout-d {
+  column-gap: 30px; /* GH-99: Use standard spacing value */
+}
 .o-section--layout-a { @extend .x-layout--a; }
-
-/* Modifers: Layout: B (widest: one wide column, one narrow column) */
 .o-section--layout-b { @extend .x-layout--b; }
-
-/* Modifers: Layout: C (widest: one narrow column, one wide column) */
 .o-section--layout-c { @extend .x-layout--c; }
-
-/* Modifers: Layout: D (widest: three equal columns) */
 .o-section--layout-d { @extend .x-layout--d; }
 
 
