@@ -141,8 +141,11 @@ Styleguide Objects.Section
 
 /* Modifers: Layout */
 
+.o-section--layout-a,
+.o-section--layout-b,
+.o-section--layout-c,
 .o-section--layout-d {
-  column-gap: 30px; /* GH-99: Use standard spacing value */
+  gap: 30px; /* GH-99: Use standard spacing value */
 }
 .o-section--layout-a { @extend .x-layout--a; }
 .o-section--layout-b { @extend .x-layout--b; }
