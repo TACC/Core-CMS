@@ -156,6 +156,7 @@ Styleguide Trumps.Scopes.ArticleList
 }
 .s-article-list--links p a {
   font-weight: var(--bold);
+  color: var(--global-color-primary--xx-dark);
 }
 
 /* Expand link to cover its container */
