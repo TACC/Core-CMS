@@ -31,7 +31,7 @@ Styleguide Trumps.Scopes.ArticleList
 /* Children: All */
 
 /* Not "Title" & Not "See More" */
-.s-article-list--layout-e > :not(h2):not(a:last-child) {
+.s-article-list--layout-e > :not(h2):not(p:last-child) {
   /* To shrink heading */
   flex-grow: 1;
 }
