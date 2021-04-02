@@ -64,8 +64,8 @@ Styleguide Trumps.Scopes.ArticlePreview
 .s-article-preview h3 {
   order: 3;
 
-  margin-top: 0.5em; /* overwrite Bootstrap and browser */
-  margin-bottom: 0.25em; /* overwrite Bootstrap and browser */
+  margin-top: 0; /* overwrite Bootstrap and browser */
+  margin-bottom: 8px; /* overwrite Bootstrap and browser */
 
   font-size: 1.8rem;
   font-weight: var(--bold);
@@ -73,6 +73,11 @@ Styleguide Trumps.Scopes.ArticlePreview
 
   @extend .x-truncate--many-lines;
   --lines: 2;
+}
+/* (List) Allocations */
+.s-article-list--allocations .s-article-preview h3 {
+  font-size: 1.6rem;
+  font-weight: var(--bold);
 }
 
 
@@ -113,7 +118,8 @@ Styleguide Trumps.Scopes.ArticlePreview
 
   list-style: none;
   padding-left: 0; /* overwrite `site.css` and browser */
-  margin-bottom: 0; /* overwrite Bootstrap */
+
+  margin-bottom: 8px; /* overwrite Bootstrap */
 }
 /* (List) Allocations */
 .s-article-list--allocations .s-article-preview ul {
@@ -125,8 +131,24 @@ Styleguide Trumps.Scopes.ArticlePreview
 .s-article-preview ul > li:nth-child(1) {
   order: 2;
 
+  /* FAQ: To prevent line wrap from changing height */
+  height: 1.4em; /* equal to line-height */
+}
+/* (List) News */
+.s-article-list--news .s-article-preview ul > li:nth-child(1) {
   font-size: 1.0rem;
   font-weight: var(--bold);
+}
+.s-article-list--news .s-article-preview ul > li:nth-child(1)::before {
+  content: 'Published: ';
+}
+/* (List) Allocations */
+.s-article-list--allocations .s-article-preview ul > li:nth-child(1) {
+  font-size: 1.6rem;
+  font-weight: var(--medium);
+}
+.s-article-list--allocations .s-article-preview ul > li:nth-child(1)::before {
+  content: 'Submission Deadlines: ';
 }
 
 /* Children: Metadata: Type */
