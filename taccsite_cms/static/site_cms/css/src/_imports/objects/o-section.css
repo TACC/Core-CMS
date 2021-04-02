@@ -8,6 +8,7 @@ Markup: o-section.html
 Styleguide Objects.Section
 */
 @import url("../../../../../../../taccsite_cms/static/site_shared/css/src/_imports/tools/media-queries.css");
+@import url("../../../../../../../taccsite_cms/static/site_cms/css/src/_imports/tools/x-layout.css");
 
 
 
@@ -55,6 +56,21 @@ Styleguide Objects.Section
 .o-section--banner {
   --vert-space: 0;
   --horz-space: 0;
+
+  @extend .x-layout--a;
+  gap: 0;
+}
+
+
+
+/* Modifers: Intro */
+
+.o-section--intro {
+  @extend .x-layout--a;
+}
+.o-section--intro > :empty:not(img),
+.o-section--intro .u-empty {
+  display: none;
 }
 
 
@@ -124,54 +140,17 @@ Styleguide Objects.Section
 
 /* Modifers: Layout */
 
-[class*="o-section--layout"] {
-  display: grid;
-  gap: 30px; /* GH-99: Use standard spacing value */
-}
-[class*="o-section--layout"] > :empty:not(img),
-[class*="o-section--layout"] .u-empty {
-  display: none;
-}
-
 /* Modifers: Layout: A (widest: two even columns) */
-
-@media (--medium-and-below) {
-  .o-section--layout-a.o-section--banner { gap: 0; }
-  .o-section--layout-a { grid-template-columns: repeat(1, minmax(0, 1fr)); }
-}
-@media (--medium-and-above) {
-  .o-section--layout-a { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
+.o-section--layout-a { @extend .x-layout--a; }
 
 /* Modifers: Layout: B (widest: one wide column, one narrow column) */
-
-@media (--medium-and-below) {
-  .o-section--layout-b { grid-template-columns: 1fr; }
-}
-@media (--medium-and-above) {
-  .o-section--layout-b { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); }
-}
+.o-section--layout-b { @extend .x-layout--b; }
 
 /* Modifers: Layout: C (widest: one narrow column, one wide column) */
-
-@media (--medium-and-below) {
-  .o-section--layout-c { grid-template-columns: 1fr; }
-}
-@media (--medium-and-above) {
-  .o-section--layout-c { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); }
-}
+.o-section--layout-c { @extend .x-layout--c; }
 
 /* Modifers: Layout: D (widest: three equal columns) */
-
-@media (--x-narrow-and-below) {
-  .o-section--layout-d { grid-template-columns: repeat(1, minmax(0, 1fr)); }
-}
-@media (--narrow-to-medium), (--x-narrow-to-narrow) {
-  .o-section--layout-d { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-@media (--medium-and-above) {
-  .o-section--layout-d { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-}
+.o-section--layout-d { @extend .x-layout--d; }
 
 
 
