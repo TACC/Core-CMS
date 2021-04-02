@@ -38,7 +38,7 @@ Styleguide Trumps.Scopes.ArticlePreview
 
   overflow: hidden;
 
-  margin-bottom: 8px; /* overwrite Bootstrap */
+  margin-bottom: 0.8rem; /* overwrite Bootstrap */
 }
 .s-article-preview p:first-child > img {
   /* To center image within container */
@@ -67,7 +67,7 @@ Styleguide Trumps.Scopes.ArticlePreview
   order: 3;
 
   margin-top: 0; /* overwrite Bootstrap and browser */
-  margin-bottom: 8px; /* overwrite Bootstrap and browser */
+  margin-bottom: 0.8rem; /* overwrite Bootstrap and browser */
 
   font-size: 1.8rem;
   font-weight: var(--bold);
@@ -99,7 +99,6 @@ Styleguide Trumps.Scopes.ArticlePreview
   font-size: 1.6rem;
   line-height: 2.4rem;
 
-
   @extend .x-truncate--many-lines;
   --lines: 3;
 }
@@ -126,7 +125,7 @@ Styleguide Trumps.Scopes.ArticlePreview
   list-style: none;
   padding-left: 0; /* overwrite `site.css` and browser */
 
-  margin-bottom: 8px; /* overwrite Bootstrap */
+  margin-bottom: 0.8rem; /* overwrite Bootstrap */
 }
 /* (List) Allocations */
 .s-article-list--allocations .s-article-preview ul {

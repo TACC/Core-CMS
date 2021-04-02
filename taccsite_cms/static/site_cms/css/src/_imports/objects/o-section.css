@@ -19,8 +19,8 @@ Styleguide Objects.Section
 [class*="o-section--"] {
   /* GH-99: Use standard spacing value */
   /* NOTE: The Design varies, but this is the approx. average */
-  --vert-space: 45px;
-  --horz-space: 45px;
+  --vert-space: 4.5rem;
+  --horz-space: 4.5rem;
 
   padding-top: var(--vert-space);
   padding-bottom: var(--vert-space);
@@ -67,7 +67,7 @@ Styleguide Objects.Section
 
 .o-section--intro {
   @extend .x-layout--a;
-  gap: 30px; /* GH-99: Use standard spacing value */
+  gap: 3.0rem; /* GH-99: Use standard spacing value */
 }
 .o-section--intro > :empty:not(img),
 .o-section--intro .u-empty {
@@ -145,7 +145,7 @@ Styleguide Objects.Section
 .o-section--layout-b,
 .o-section--layout-c,
 .o-section--layout-d {
-  gap: 30px; /* GH-99: Use standard spacing value */
+  gap: 3.0rem; /* GH-99: Use standard spacing value */
 }
 .o-section--layout-a { @extend .x-layout--a; }
 .o-section--layout-b { @extend .x-layout--b; }

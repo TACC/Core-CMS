@@ -51,7 +51,7 @@ Styleguide Trumps.Scopes.ArticleList
 
 [class*="s-article-list--"] h2 {
   margin-top: 0; /* overwrite Bootstrap */
-  margin-bottom: 30px; /* overwrite Bootstrap */
+  margin-bottom: 3.0rem; /* overwrite Bootstrap */
 
   color: var(--global-color-accent--normal);
 
@@ -97,7 +97,7 @@ Styleguide Trumps.Scopes.ArticleList
   border-width: var(--global-border-width--thick) 0 var(--global-border-width--normal);
   border-style: solid;
 
-  margin-top: 30px; /* GH-99: Use standard spacing value */
+  margin-top: 3.0rem; /* GH-99: Use standard spacing value */
   padding-top: 10px;
   padding-bottom: 10px;
   margin-bottom: -10px; /* to "undo" space added from `padding-bottom` */
@@ -192,7 +192,7 @@ Styleguide Trumps.Scopes.ArticleList
 .s-article-list--layout-b,
 .s-article-list--layout-c,
 .s-article-list--layout-d {
-  column-gap: 30px; /* GH-99: Use standard spacing value */
+  column-gap: 3.0rem; /* GH-99: Use standard spacing value */
 }
 
 /* Modifiers: Layout: Row-Based */
@@ -212,7 +212,7 @@ Styleguide Trumps.Scopes.ArticleList
 }
 
 .s-article-list--layout-divided > :not(h2):not(a:last-child) {
-  padding-top: 8px;
+  padding-top: 0.8rem;
 
   border-width: var(--global-border-width--normal) 0 0;
   border-style: solid;
