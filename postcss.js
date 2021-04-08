@@ -75,9 +75,14 @@ console.warn('The commands are run in parallel so the output may be out of order
 // Build process for styles may be run in parallel because they are independent
 // SEE: https://stackoverflow.com/a/10776939/11817077
 parallel([
+  // Always build Core assets
   buildStylesCore,
-  buildStylesCustom,
+
+  // Build custom assets, except for Core
+  () => { if (env.CUSTOM_ASSET_DIR !== 'core-cms') buildStylesCustom() },
+
+  // Temporarily build "frozen variables" from Core
+  // FAQ: This is an advanced solution to a problem that should not exist
   () => { buildStylesCore({shouldFreezeVariables: true}) },
-  // Do NOT support freezing variables for custom projects
-  // FAQ: The variable freezing is advanced and (hopefully) temporary
+  // NOTE: Do NOT support freezing variables for custom projects
 ], parallelCallback);
