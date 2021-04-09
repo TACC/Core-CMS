@@ -42,6 +42,5 @@
     "resolutions": {
         "dot-prop": ">=5.2.0"
     },
-    "author": "TACC ACI WMA <wma-portals@gmail.com>",
-    "dependencies": {}
+    "author": "TACC ACI WMA <wma-portals@gmail.com>"
 }
