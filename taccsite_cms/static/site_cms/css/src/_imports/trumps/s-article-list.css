@@ -113,15 +113,19 @@ Styleguide Trumps.Scopes.ArticleList
   @extend .x-truncate--one-line;
   max-width: 100%; /* SEE: https://stackoverflow.com/a/44521595 */
 }
-.o-section--style-light[class*="s-article-list--"] > p:last-child a,
-.o-section--style-light [class*="s-article-list--"] > p:last-child a {
-  color: var(--global-color-primary--xx-dark);
-  border-color: var(--global-color-primary--xx-dark);
+/* Dark section */
+.o-section--style-dark [class*="s-article-list--"] > p:last-child {
+  border-color: var(--global-color-primary--xx-light);
 }
-.o-section--style-dark[class*="s-article-list--"] > p:last-child a,
 .o-section--style-dark [class*="s-article-list--"] > p:last-child a {
   color: var(--global-color-primary--xx-light);
-  border-color: var(--global-color-primary--xx-light);
+}
+/* Light section */
+.o-section--style-light [class*="s-article-list--"] > p:last-child {
+  border-color: var(--global-color-primary--xx-dark);
+}
+.o-section--style-light [class*="s-article-list--"] > p:last-child a {
+  color: var(--global-color-primary--xx-dark);
 }
 
 /* Icon */
@@ -220,10 +224,12 @@ Styleguide Trumps.Scopes.ArticleList
   border-width: var(--global-border-width--normal) 0 0;
   border-style: solid;
 }
+/* Dark section */
 .o-section--style-dark.s-article-list--layout-divided > :not(h2):not(p:last-child),
 .o-section--style-dark .s-article-list--layout-divided > :not(h2):not(p:last-child) {
   border-color: var(--global-color-primary--light);
 }
+/* Light section */
 .o-section--style-light.s-article-list--layout-divided > :not(h2):not(p:last-child),
 .o-section--style-light .s-article-list--layout-divided > :not(h2):not(p:last-child) {
   border-color: var(--global-color-primary--dark);
