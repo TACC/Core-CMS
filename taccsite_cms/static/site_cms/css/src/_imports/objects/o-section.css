@@ -40,7 +40,7 @@ Styleguide Objects.Section
 [class*="o-section--"].container {
   --horz-space: auto;
 }
-/* To take control of padding away from Bootstrap on most screen sizes */
+/* To take control of padding away from Bootstrap on MOST screen sizes */
 @media (--x-narrow-and-above) {
   [class*="o-section--"].container,
   [class*="o-section--"].container-fluid {
@@ -64,18 +64,19 @@ Styleguide Objects.Section
   --vert-space: 0;
   --horz-space: 0;
 
-  @extend .x-layout--a;
-  gap: 0;
+  gap: 0 !important; /* overwrite `o-section--layout-*` */
+}
+/* To take control of padding away from Bootstrap on ALL screen sizes */
+.o-section--banner.container,
+.o-section--banner.container-fluid {
+  padding-left: 0;
+  padding-right: 0;
 }
 
 
 
 /* Modifers: Intro */
 
-.o-section--intro {
-  @extend .x-layout--a;
-  gap: 3.0rem; /* GH-99: Use standard spacing value */
-}
 .o-section--intro > :empty:not(img),
 .o-section--intro .u-empty {
   display: none;
@@ -176,6 +177,7 @@ Styleguide Objects.Section
 
   /* To size image to cover section dimensions but maintain ratio */
   /* CAVEAT: This causes image to overflow beyond section */
+  /* CAVEAT: The `vw` causes shrinkage on screen narrower than body min-width */
   /* SEE: "Tricks" section */
   width: 100vw;
   min-height: 100%;
