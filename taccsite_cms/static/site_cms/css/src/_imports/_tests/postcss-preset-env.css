@@ -5,6 +5,11 @@ Styles for testing plugins, e.g.:
 
 - `postcss-preset-env`
 
+Instructions:
+1. In this file, add code after "! Goal:" to show what the output should be.
+2. In this file, add code after "! Test:" to be transformed by plugins.
+3. In the output file, the code after "! Goal:" and "! Test:" should match.
+
 Styleguide _Test
 */
 
