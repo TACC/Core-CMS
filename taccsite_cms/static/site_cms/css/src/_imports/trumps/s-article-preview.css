@@ -47,6 +47,12 @@ Styleguide Trumps.Scopes.ArticlePreview
   left: 50%;
   transform: translate(-50%, -50%);
 }
+.s-article-preview p:first-child > img.img-fluid {
+  /* To ensure super wide or tall image do not have negative space / gaps */
+  width: 100%;
+  object-fit: cover;
+  height: 100%; /* overwrite `.img-fluid` *//* NOTE: Sould this be standard? */
+}
 /* (List) News */
 .s-article-list--news .s-article-preview p:first-child {
   height: 180px;
