@@ -34,14 +34,21 @@ Styleguide Objects.Section
 [class*="o-section--"].container,
 [class*="o-section--"].container-fluid {
   width: auto; /* Bootstrap forcing `width: 100%` prevented usable margin */
-  padding-left: 0;
-  padding-right: 0;
   margin-left: var(--horz-space);
   margin-right: var(--horz-space);
 }
 [class*="o-section--"].container {
   --horz-space: auto;
 }
+/* To take control of padding away from Bootstrap on most screen sizes */
+@media (--x-narrow-and-above) {
+  [class*="o-section--"].container,
+  [class*="o-section--"].container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
 
 
 

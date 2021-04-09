@@ -9,10 +9,6 @@ Styleguide Components.Bootstrap.Grid
 */
 @import url("../../../../../../../taccsite_cms/static/site_shared/css/src/_imports/tools/media-queries.css");
 
-@media (--x-narrow-and-below) {
-  .container { max-width: 90%; }
-}
-
 @media (--x-wide-and-above) {
   .container { max-width: var(--global-max-width--x-wide); }
 }
