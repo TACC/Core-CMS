@@ -31,7 +31,7 @@ Styleguide Components.Footer
   color: var(--global-color-primary--xx-light);
   background-color: var(--global-color-primary--xx-dark);
 
-  font-size: 1.2rem;
+  font-size: 12px;
   text-align: center;
 }
 /* TODO: Use "custom media query" for each standard Bootstrap media query */
