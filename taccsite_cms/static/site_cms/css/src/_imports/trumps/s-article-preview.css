@@ -79,8 +79,7 @@ Styleguide Trumps.Scopes.ArticlePreview
   font-weight: var(--bold);
   line-height: 2.4rem;
 
-  @extend .x-truncate--many-lines;
-  --lines: 2;
+  @extend .x-truncate--one-line;
 }
 /* (List) Allocations */
 .s-article-list--allocations .s-article-preview h3 {
@@ -145,7 +144,9 @@ Styleguide Trumps.Scopes.ArticlePreview
 
   font-weight: var(--medium);
 
-  @extend .x-truncate--one-line;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 /* (List) News */
 .s-article-list--news .s-article-preview ul > li:nth-child(1) {
