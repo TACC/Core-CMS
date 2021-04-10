@@ -1,0 +1,43 @@
+/* DO NOT ADD STYLES HERE; ADD CUSTOM MEDIA QUERIES TO USE IN OTHER STYLESHEETS */
+
+/*
+Breakpoints
+
+These are global breakpoints values for a website.
+
+Usage: `@media (--narrow-and above) { … }`
+
+Notice: These must be Tools (imported as needed) until native browser support, at which time they can become Settings (imported globally).
+
+Reference:
+- https://drafts.csswg.org/mediaqueries-5/#at-ruledef-custom-media
+
+Styleguide Tools.CustomMediaQueries.Breakpoints
+*/
+@custom-media --x-narrow-and-below (width < 576px);
+@custom-media --x-narrow-and-above (width >= 576px);
+@custom-media --x-narrow-to-narrow (576px <= width < 768px);
+
+@custom-media --narrow-and-below (width < 768px);
+@custom-media --narrow-and-above (width >= 768px);
+@custom-media --narrow-to-medium (768px <= width < 992px);
+
+@custom-media --medium-and-below (width < 992px);
+@custom-media --medium-and-above (width >= 992px);
+@custom-media --medium-to-wide (992px <= width < 1200px);
+
+@custom-media --wide-and-below (width < 1200px);
+@custom-media --wide-and-above (width >= 1200px);
+@custom-media --wide-to-x-wide (1200px <= width < 1400px);
+
+@custom-media --x-wide-and-below (width < 1400px);
+@custom-media --x-wide-and-above (width >= 1400px);
+@custom-media --x-wide-to-xx-wide (1400px <= width < 1680px);
+
+@custom-media --xx-wide-and-below (width < 1680px);
+@custom-media --xx-wide-and-above (width >= 1680px);
+@custom-media --xx-wide-to-xxx-wide (1680px <= width < 1920px);
+
+@custom-media --xxx-wide-and-below (width < 1920px);
+@custom-media --xxx-wide-and-above (width >= 1920px);
+/* @custom-media --xxx-wide-to-omg-wide (... <= width < ...); */

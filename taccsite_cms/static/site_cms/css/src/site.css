@@ -4,9 +4,12 @@
 /* SEE: https://confluence.tacc.utexas.edu/x/IAA9Cw */
 
 /* SETTINGS */
+/* Shared with Portal */
 @import url("../../../site_shared/css/src/_imports/settings/border.css");
 @import url("../../../site_shared/css/src/_imports/settings/color.css");
 @import url("../../../site_shared/css/src/_imports/settings/font.css");
+/* Unique to CMS */
+@import url("_imports/settings/props.max-width.css");
 @import url("_imports/settings/props.space.css");
 
 /* GENERICS */
@@ -25,6 +28,7 @@
 @import url("_imports/components/django.cms.css");
 @import url("_imports/components/django.cms.blog.css");
 @import url("_imports/components/django.cms.post.css");
+@import url("_imports/components/bootstrap.container.css");
 
 /* TRUMPS */
 @import url("_imports/trumps/s-footer.css");
