@@ -23,8 +23,8 @@
   height: 49px;
 
 
-  background-color: rgb(51, 51, 51);
-  color: #fff;
+  background-color: var(--global-color-primary--xx-dark);
+  color: var(--global-color-primary--xx-light);
   border-bottom: 1px solid #aaa;
 }
 
