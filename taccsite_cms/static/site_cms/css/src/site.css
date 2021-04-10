@@ -8,6 +8,7 @@
 @import url("../../../site_shared/css/src/_imports/settings/border.css");
 @import url("../../../site_shared/css/src/_imports/settings/color.css");
 /* Unique to CMS */
+@import url("_imports/settings/props.max-width.css");
 @import url("_imports/settings/props.space.css");
 @import url("_imports/settings/font.css");
 
@@ -27,6 +28,7 @@
 @import url("_imports/components/django.cms.css");
 @import url("_imports/components/django.cms.blog.css");
 @import url("_imports/components/django.cms.post.css");
+@import url("_imports/components/bootstrap.container.css");
 
 /* TRUMPS */
 @import url("_imports/trumps/s-footer.css");
