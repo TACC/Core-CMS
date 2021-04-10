@@ -1,0 +1,24 @@
+/*
+Empty
+
+Any element that must be treated as `:empty` (even if it is not).
+
+Examples:
+- `o-section.css`:
+  ```
+  .o-section--layout-halfway-split > :not(:empty),
+  .o-section--layout-halfway-split > :not(.u-empty) {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 50%;
+  }
+  .o-section--layout-halfway-split > :empty,
+  .o-section--layout-halfway-split > .u-empty { display: none; }
+  ```
+
+Styleguide Utilities.Empty
+*/
+
+.u-empty {
+  /* FAQ: This class should NOT have any styles on its own. It is a unique class that allows non-empty content to appear empty to TACC stylesheets that recognize it. Any TACC stylesheet selector that recognizes `:empty` elements should also recognize `u-empty` elements. */
+}
