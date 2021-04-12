@@ -17,15 +17,17 @@ class TaccsiteGreetPlugin(CMSPluginBase):
     render_template = 'greet.html'
     cache = False
 
+    default_name = 'Guest'
+
     def get_name(self, instance, user):
         """Get name of authenticated user or the name for any guest."""
 
         if user.is_authenticated:
             name = user.first_name + ' ' + user.last_name
-        if False:
-            name = 'Jim'
-        else:
+        elif bool(instance.guest_name):
             name = instance.guest_name
+        else:
+            name = self.default_name
 
         return name
 
