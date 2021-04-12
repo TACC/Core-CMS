@@ -235,6 +235,7 @@ INSTALLED_APPS = [
     'djangocms_bootstrap4.contrib.bootstrap4_tabs',
     'djangocms_bootstrap4.contrib.bootstrap4_utilities',
     'haystack',
+    'aldryn_apphooks_config',
     'taccsite_cms',
     # RFE: Extract TACC CMS UI components into pip-installable plugins
     # FAQ: The djangocms_bootstrap4 library can serve as an example
@@ -382,7 +383,6 @@ if current_secrets._FEATURES['blog']:
         # Blog/News
         # 'filer',              # Already added
         # 'easy_thumbnails',    # Already added
-        'aldryn_apphooks_config',
         'parler',
         'taggit',
         'taggit_autosuggest',
@@ -463,6 +463,9 @@ GOOGLE_ANALYTICS_PRELOAD = current_secrets._GOOGLE_ANALYTICS_PRELOAD
 SETTINGS_EXPORT_VARIABLE_NAME = 'settings'
 
 # Elasticsearch Indexing
+HAYSTACK_ROUTERS = ['aldryn_search.router.LanguageRouter',]
+ALDRYN_SEARCH_DEFAULT_LANGUAGE = 'en'
+ALDRYN_SEARCH_REGISTER_APPHOOK = True
 HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
