@@ -249,6 +249,26 @@ Whenever static files are changed, the CMS may need to be manually told to serve
     2. In this parent repo, add `/taccsite_custom` change.
     3. In this parent repo, commit changes (__not__ to `main`).
 
+## How to Run Tests
+
+### Test TACC CMS Plugins
+
+testing is run through Django. Run `python manage.py test PATH_TO_DIR_WITH_TESTS` from the repository root directory. Example:
+
+```
+python manage.py test taccsite_cms.contrib.taccsite_greet
+```
+
+> __Notice__: To test without migrations—which is _much_ faster—add the flag `--nomigrations` (or `-n`). Example:
+> 
+> ```
+> python manage.py test taccsite_cms.contrib.taccsite_greet --nomigrations
+> ```
+
+### Test PostCSS Plugin Configs
+
+Testing is manual review of build output. Run `npm run build` from the repository root directory, then review `taccsite_cms/static/site_cms/css/build/_test.css`.
+
 ## Reference
 
 - [Formatting & Linting](https://confluence.tacc.utexas.edu/x/HoBGCw)
