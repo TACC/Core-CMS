@@ -114,16 +114,20 @@ Styleguide Trumps.Scopes.ArticleList
   max-width: 100%; /* SEE: https://stackoverflow.com/a/44521595 */
 }
 /* Dark section */
+.o-section--style-dark[class*="s-article-list--"] > p:last-child,
 .o-section--style-dark [class*="s-article-list--"] > p:last-child {
   border-color: var(--global-color-primary--xx-light);
 }
+.o-section--style-dark[class*="s-article-list--"] > p:last-child a,
 .o-section--style-dark [class*="s-article-list--"] > p:last-child a {
   color: var(--global-color-primary--xx-light);
 }
 /* Light section */
+.o-section--style-light[class*="s-article-list--"] > p:last-child,
 .o-section--style-light [class*="s-article-list--"] > p:last-child {
   border-color: var(--global-color-primary--xx-dark);
 }
+.o-section--style-light[class*="s-article-list--"] > p:last-child a,
 .o-section--style-light [class*="s-article-list--"] > p:last-child a {
   color: var(--global-color-primary--xx-dark);
 }
