@@ -1,10 +1,11 @@
-{% load cms_tags staticfiles sekizai_tags cache i18n %}
+{% load cms_tags staticfiles sekizai_tags cache i18n custom_portal_settings %}
 <!doctype html>
 <html
   id="page-{{ request.current_page.id }}"
   {# FAQ: Only available if set in page's "Advanced" settings #}
   data-page-id="{{ request.current_page.reverse_id }}"
-  class="{% block template_class %}{% endblock template_class %}">
+  {# CAVEAT: Theme class MUST be first (to avoid verbose class and CSS) #}
+  class="t-{{settings.THEME}}  {% block template_class %}{% endblock template_class %}">
 
 {% if settings.FEATURES.blog %}
   {# FAQ: Conditional includes are intentionally verbose #}

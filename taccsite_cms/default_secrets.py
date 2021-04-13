@@ -156,9 +156,22 @@ _FEATURES = {
 }
 
 ########################
-# BRANDING & LOGOS & FAVICON
+# BRANDING
 ########################
 # TODO: GH-59: Use Dict Not Array for Branding Settings
+
+# The theme of the CMS and the header
+
+"""
+Optional theming of CMS (to support deviant branding or dark logos in a pinch)
+
+Options:
+
+- 'dark' (standard)
+- 'light' (requires Design approval)
+"""
+
+_THEME = 'dark'
 
 # Branding settings for portal and navigation.
 

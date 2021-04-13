@@ -22,8 +22,6 @@ Styleguide Trumps.Scopes.Header
             - On any other CMS, `1rem` = `16px` (browser default). */
 
 .s-header {
-  --text-color: rgb(255, 255, 255);
-
   font-size: 16px; /* NO-R/EM: Overwrite `bootstrap.3.3.7.css` */
 
   /* FAQ: Asssigning this font is only necessary for the User Guide,
@@ -35,6 +33,18 @@ Styleguide Trumps.Scopes.Header
   /* Copied from Portal (via `body`) */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+:root.t-dark .s-header,
+:root:not([class^="t-"]) .s-header {
+  --text-color: var(--global-color-primary--xx-light);
+  --bkgd-color: var(--global-color-primary--xx-dark);
+}
+:root.t-light .s-header {
+  --text-color: var(--global-color-primary--x-dark);
+  --bkgd-color: var(--global-color-primary--x-light);
+
+  /* FAQ: Only the light theme gets a border */
+  border-bottom: 1px solid var(--global-color-primary--normal);
 }
 
 
@@ -78,7 +88,7 @@ Styleguide Trumps.Scopes.Header
   --nav-padding-vert: 5px;
   --nav-padding-horz: calc(16px + 20px);
 
-  background-color: rgb(51, 51, 51);
+  background-color: var(--bkgd-color);
   padding: var(--nav-padding-vert) var(--nav-padding-horz);
 }
 
@@ -140,7 +150,7 @@ Styleguide Trumps.Scopes.Header
   /* FAQ: Not `height`, cuz `.s-search-bar` (via `.form-inline`) is flexbox */
   align-self: stretch;
 
-  background-color: rgb(255,255,255);
+  background-color: var(--bkgd-color);
 
   margin-left: 12px;
 }

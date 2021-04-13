@@ -11,6 +11,13 @@ Styleguide Scope.Footer
 .s-footer > p:last-of-type {
   margin: 0;
 }
+:root.t-dark .s-footer,
+:root:not([class^="t-"]) .s-footer {
+  --link-color: var(--global-color-primary--light);
+}
+:root.t-light .s-footer {
+  --link-color: var(--global-color-primary--xxx-dark);
+}
 .s-footer a {
-  color: #cccccc;
+  color: var(--link-color);
 }

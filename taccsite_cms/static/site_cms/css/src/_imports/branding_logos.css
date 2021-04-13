@@ -23,16 +23,27 @@
   height: 49px;
 
 
-  background-color: rgb(51, 51, 51);
-  color: #fff;
-  border-bottom: 1px solid #aaa;
+  background-color: var(--bkgd-color);
+  color: var(--text-color);
+  border-bottom: 1px solid var(--line-color);
+}
+:root.t-dark .branding-header,
+:root:not([class^="t-"]) .branding-header {
+  --text-color: var(--global-color-primary--xx-light);
+  --bkgd-color: var(--global-color-primary--xx-dark);
+  --line-color: var(--global-color-primary--normal);
+}
+:root.t-light .branding-header {
+  --text-color: var(--global-color-primary--x-dark);
+  --bkgd-color: var(--global-color-primary--x-light);
+  --line-color: var(--global-color-primary--normal);
 }
 
 .branding-seperator {
   width: 1px;
   height: 100%;
   max-height: var(--branding-logo-height);
-  border-left: solid 1px #fff;
+  border-left: solid 1px var(--line-color);
   margin: 0 15px;
   vertical-align: middle;
 }

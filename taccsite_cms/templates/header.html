@@ -1,12 +1,13 @@
 {# WARNING: Some markup is duplicated in other repositories #}
 {# SEE: https://confluence.tacc.utexas.edu/x/LoCnCQ #}
 {# FAQ: Extra lines exist to ease CMS/Portal/Guide template comparison #}
+{% load custom_portal_settings %}
 
 <!-- Sponsor Logos -->
 {% include "header_branding.html" %}
 
 <!-- Navigation Bar -->
-<nav id="s-header" class="s-header  navbar {% if settings.PORTAL %}navbar-expand-xl{% else %}navbar-expand-lg{% endif %} navbar-dark">
+<nav id="s-header" class="s-header s-header--style-{{settings.THEME}}  navbar {% if settings.PORTAL %}navbar-expand-xl{% else %}navbar-expand-lg{% endif %} navbar-dark">
   <!-- Portal Logo -->
   {% include "header_logo.html" %}
 

@@ -28,11 +28,20 @@ Styleguide Components.Footer
   padding-top: 20px;
   padding-bottom: 20px;
 
-  color: rgb(255, 255, 255);
-  background-color: rgb(51, 51, 51);
+  color: var(--text-color);
+  background-color: var(--bkgd-color);
 
   font-size: 12px;
   text-align: center;
+}
+:root.t-dark .c-footer,
+:root:not([class^="t-"]) .c-footer {
+  --text-color: var(--global-color-primary--xx-light);
+  --bkgd-color: var(--global-color-primary--xx-dark);
+}
+:root.t-light .c-footer {
+  --text-color: var(--global-color-primary--x-dark);
+  --bkgd-color: var(--global-color-primary--x-light);
 }
 /* TODO: Use "custom media query" for each standard Bootstrap media query */
 @media only screen and (max-width: 640px) {
