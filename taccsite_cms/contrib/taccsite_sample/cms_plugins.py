@@ -5,6 +5,8 @@ from django.utils.translation import gettext_lazy as _
 
 from .models import TaccsiteSample
 
+from .defaults import name as default_name
+
 @plugin_pool.register_plugin
 class TaccsiteSamplePlugin(CMSPluginBase):
     """
@@ -16,8 +18,7 @@ class TaccsiteSamplePlugin(CMSPluginBase):
     name = _('Sample (Greet User)')
     render_template = 'sample.html'
     cache = False
-
-    default_name = 'Guest'
+    text_enabled = True
 
     def get_name(self, instance, user):
         """Get name of authenticated user or the name for any guest."""
@@ -27,7 +28,7 @@ class TaccsiteSamplePlugin(CMSPluginBase):
         elif bool(instance.guest_name):
             name = instance.guest_name
         else:
-            name = self.default_name
+            name = default_name
 
         return name
 
