@@ -5,6 +5,15 @@ from cms import signals
 
 
 class RealtimeSignalProcessor(BaseSignalProcessor):
+    """
+    A signal processor to make a call to the Django Haystack
+    `rebuild_index` management command when a CMS document is
+    published, unpublished, or deleted.
+
+    Usage:
+        This signal processor hooks into Haystack via the
+        `HAYSTACK_SIGNAL_PROCESSOR` Django setting.
+    """
 
     def setup(self):
         signals.post_publish.connect(self.handle_save)
