@@ -265,6 +265,9 @@ python manage.py test taccsite_cms.contrib.taccsite_sample
 > python manage.py test taccsite_cms.contrib.taccsite_sample --nomigrations
 > ```
 
+<!-- TODO: Make `python manage.py test` recursively find all the tests -->
+<!-- SEE: https://docs.djangoproject.com/en/2.2/topics/testing/overview/#running-tests -->
+
 ### Test PostCSS Plugin Configs
 
 Testing is manual review of build output. Run `npm run build` from the repository root directory, then review `taccsite_cms/static/site_cms/css/build/_test.css`.
