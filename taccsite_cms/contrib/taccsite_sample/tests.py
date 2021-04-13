@@ -7,10 +7,10 @@ from cms.api import add_plugin
 from cms.models import Placeholder
 from cms.plugin_rendering import ContentRenderer
 
-from taccsite_cms.contrib.taccsite_greet.cms_plugins import TaccsiteGreetPlugin
-from taccsite_cms.contrib.taccsite_greet.models import TaccsiteGreet
+from taccsite_cms.contrib.taccsite_sample.cms_plugins import TaccsiteSamplePlugin
+from taccsite_cms.contrib.taccsite_sample.models import TaccsiteSample
 
-class TaccsiteGreetTests(TestCase):
+class TaccsiteSampleTests(TestCase):
     def setUp(self):
         self.factory = RequestFactory()
         self.auth_user = User()
@@ -19,7 +19,7 @@ class TaccsiteGreetTests(TestCase):
         self.placeholder = Placeholder.objects.create(slot='test')
         self.plugin = add_plugin(
             self.placeholder,
-            TaccsiteGreetPlugin,
+            TaccsiteSamplePlugin,
             'en',
         )
 

@@ -256,13 +256,13 @@ Whenever static files are changed, the CMS may need to be manually told to serve
 testing is run through Django. Run `python manage.py test PATH_TO_DIR_WITH_TESTS` from the repository root directory. Example:
 
 ```
-python manage.py test taccsite_cms.contrib.taccsite_greet
+python manage.py test taccsite_cms.contrib.taccsite_sample
 ```
 
 > __Notice__: To test without migrations—which is _much_ faster—add the flag `--nomigrations` (or `-n`). Example:
 > 
 > ```
-> python manage.py test taccsite_cms.contrib.taccsite_greet --nomigrations
+> python manage.py test taccsite_cms.contrib.taccsite_sample --nomigrations
 > ```
 
 ### Test PostCSS Plugin Configs

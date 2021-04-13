@@ -3,18 +3,18 @@ from cms.plugin_pool import plugin_pool
 from cms.models.pluginmodel import CMSPlugin
 from django.utils.translation import gettext_lazy as _
 
-from .models import TaccsiteGreet
+from .models import TaccsiteSample
 
 @plugin_pool.register_plugin
-class TaccsiteGreetPlugin(CMSPluginBase):
+class TaccsiteSamplePlugin(CMSPluginBase):
     """
-    Components > "Greet" Plugin (Sample)
+    Components > "Sample (Greet User)" Plugin
     https://url.to/docs/components/sample/
     """
     module = 'TACC Site'
-    model = TaccsiteGreet
-    name = _('Greet User')
-    render_template = 'greet.html'
+    model = TaccsiteSample
+    name = _('Sample (Greet User)')
+    render_template = 'sample.html'
     cache = False
 
     default_name = 'Guest'
