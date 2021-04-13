@@ -253,7 +253,7 @@ Whenever static files are changed, the CMS may need to be manually told to serve
 
 ### Test TACC CMS Plugins
 
-testing is run through Django. Run `python manage.py test PATH_TO_DIR_WITH_TESTS` from the repository root directory. Example:
+Testing is run through Django. Run `python manage.py test PATH_TO_DIR_WITH_TESTS` from the repository root directory. Example:
 
 ```
 python manage.py test taccsite_cms.contrib.taccsite_sample
