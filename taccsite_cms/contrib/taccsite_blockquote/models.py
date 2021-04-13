@@ -4,7 +4,7 @@ from django.db import models
 
 class TaccsiteBlockquote(CMSPlugin):
     """
-    Components > "Blockquote" Plugin
+    Components > "Blockquote" Model
     https://confluence.tacc.utexas.edu/x/FIEjCQ
     """
     guest_name = models.CharField(max_length=50, default='Guest')
