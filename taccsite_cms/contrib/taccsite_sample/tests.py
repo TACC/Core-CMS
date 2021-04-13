@@ -59,7 +59,7 @@ class TaccsiteSampleTests(TestCase):
         self._test_context(assertVals)
         self._test_html(assertVals)
 
-    def test_auth_user_context(self):
+    def test_auth_user(self):
         """Test name of authenticated user"""
         self.context['request'].user = self.auth_user
 
