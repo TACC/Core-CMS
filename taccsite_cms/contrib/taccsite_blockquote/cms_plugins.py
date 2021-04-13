@@ -2,8 +2,11 @@ from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 from cms.models.pluginmodel import CMSPlugin
 from django.utils.translation import gettext_lazy as _
+from django.utils.encoding import force_text
 
 from .models import TaccsiteBlockquote
+
+from .defaults import user_name as default_name
 
 @plugin_pool.register_plugin
 class TaccsiteBlockquotePlugin(CMSPluginBase):
@@ -15,19 +18,31 @@ class TaccsiteBlockquotePlugin(CMSPluginBase):
     model = TaccsiteBlockquote
     name = _('Blockquote')
     render_template = 'blockquote.html'
-    cache = False
 
-    def get_name(self, instance, user):
+    cache = False
+    text_enabled = False
+
+    # FAQ: Sets tooltip of preview of this plugin within a Text plugin
+    def icon_alt(self, instance):
+        super_value = force_text(super().icon_alt(instance))
+        name = self.get_name(instance)
+        return f'Hello, {{{name}}} [{super_value}]'
+
+    # Helpers
+
+    def get_name(self, instance, user=None):
         """Get name of authenticated user or the name for any guest."""
 
-        if user.is_authenticated:
+        if user and user.is_authenticated:
             name = user.first_name + ' ' + user.last_name
-        if False:
-            name = 'Jim'
-        else:
+        elif bool(instance.guest_name):
             name = instance.guest_name
+        else:
+            name = default_name
 
         return name
+
+    # Render
 
     def render(self, context, instance, placeholder):
         context = super().render(context, instance, placeholder)
