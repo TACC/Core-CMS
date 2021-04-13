@@ -6,7 +6,7 @@ from django.utils.encoding import force_text
 
 from .models import TaccsiteSample
 
-from .defaults import name as default_name
+from .defaults import user_name as default_name
 
 # SEE: http://docs.django-cms.org/en/release-3.7.x/reference/plugins.html
 @plugin_pool.register_plugin

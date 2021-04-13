@@ -2,7 +2,7 @@ from cms.models.pluginmodel import CMSPlugin
 
 from django.db import models
 
-from .defaults import name as default_name
+from .defaults import user_name as default_name
 
 class TaccsiteSample(CMSPlugin):
     """
