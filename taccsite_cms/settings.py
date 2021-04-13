@@ -240,7 +240,7 @@ INSTALLED_APPS = [
     # SEE: https://stackoverflow.com/a/37150997
     'test_without_migrations',
     'taccsite_cms',
-    # RFE: Extract TACC CMS UI components into pip-installable plugins
+    # TODO: Extract TACC CMS UI components into pip-installable plugins
     # FAQ: The djangocms_bootstrap4 library can serve as an example
     'taccsite_cms.contrib.taccsite_sample',
 ]
