@@ -253,21 +253,26 @@ Whenever static files are changed, the CMS may need to be manually told to serve
 
 ### Test TACC CMS Plugins
 
-testing is run through Django. Run `python manage.py test PATH_TO_DIR_WITH_TESTS` from the repository root directory. Example:
+Testing is run through Django. From within `core_cms` container, run `python manage.py test PATH_TO_DIR_WITH_TESTS` from the repository root directory. Example:
 
-```
+```bash
+docker exec -it core_cms /bin/bash
 python manage.py test taccsite_cms.contrib.taccsite_sample
 ```
 
 > __Notice__: To test without migrations—which is _much_ faster—add the flag `--nomigrations` (or `-n`). Example:
 > 
-> ```
+> ```bash
+> docker exec -it core_cms /bin/bash
 > python manage.py test taccsite_cms.contrib.taccsite_sample --nomigrations
 > ```
 
+<!-- TODO: Make `python manage.py test` recursively find all the tests -->
+<!-- SEE: https://docs.djangoproject.com/en/2.2/topics/testing/overview/#running-tests -->
+
 ### Test PostCSS Plugin Configs
 
-Testing is manual review of build output. Run `npm run build` from the repository root directory, then review `taccsite_cms/static/site_cms/css/build/_test.css`.
+Testing is manual review of build output. From within `core_cms` container, run `npm run build` from the repository root directory, then review `taccsite_cms/static/site_cms/css/build/_test.css`.
 
 ## Reference
 
