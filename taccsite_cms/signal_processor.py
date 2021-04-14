@@ -8,7 +8,9 @@ class RealtimeSignalProcessor(BaseSignalProcessor):
     """
     A signal processor to make a call to the Django Haystack
     `rebuild_index` management command when a CMS document is
-    published, unpublished, or deleted.
+    published, unpublished, or deleted. This will allow the
+    ElasticSearch index to remain up-to-date with the latest
+    published CMS content when a user searches the site.
 
     Usage:
         This signal processor hooks into Haystack via the
