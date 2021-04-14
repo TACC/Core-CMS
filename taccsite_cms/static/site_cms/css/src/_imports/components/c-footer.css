@@ -33,15 +33,9 @@ Styleguide Components.Footer
 
   font-size: 12px;
   text-align: center;
-}
-:root.t-dark .c-footer,
-:root:not([class^="t-"]) .c-footer {
+
   --text-color: var(--global-color-primary--xx-light);
   --bkgd-color: var(--global-color-primary--xx-dark);
-}
-:root.t-light .c-footer {
-  --text-color: var(--global-color-primary--x-dark);
-  --bkgd-color: var(--global-color-primary--x-light);
 }
 /* TODO: Use "custom media query" for each standard Bootstrap media query */
 @media only screen and (max-width: 640px) {

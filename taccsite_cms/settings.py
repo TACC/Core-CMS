@@ -90,7 +90,6 @@ DEBUG = current_secrets._DEBUG
 ALLOWED_HOSTS = current_secrets._ALLOWED_HOSTS
 
 # Custom Branding.
-THEME = current_secrets._THEME
 BRANDING = current_secrets._BRANDING
 LOGO = current_secrets._LOGO
 FAVICON = current_secrets._FAVICON
@@ -476,7 +475,6 @@ ES_DOMAIN = current_secrets._ES_DOMAIN
 
 # Exported settings.
 SETTINGS_EXPORT = [
-    'THEME',
     'DEBUG',
     'BRANDING',
     'LOGO',

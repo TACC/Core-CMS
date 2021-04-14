@@ -22,6 +22,8 @@ Styleguide Trumps.Scopes.Header
             - On any other CMS, `1rem` = `16px` (browser default). */
 
 .s-header {
+  border-bottom: 1px solid var(--line-color);
+
   font-size: 16px; /* NO-R/EM: Overwrite `bootstrap.3.3.7.css` */
 
   /* FAQ: Asssigning this font is only necessary for the User Guide,
@@ -34,17 +36,16 @@ Styleguide Trumps.Scopes.Header
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-:root.t-dark .s-header,
-:root:not([class^="t-"]) .s-header {
+.s-header--style-dark,
+.s-header:not([class*="s-header--style-"]) {
   --text-color: var(--global-color-primary--xx-light);
   --bkgd-color: var(--global-color-primary--xx-dark);
+  --line-color: var(--global-color-primary--xx-dark);
 }
-:root.t-light .s-header {
+.s-header--style-light {
   --text-color: var(--global-color-primary--x-dark);
   --bkgd-color: var(--global-color-primary--x-light);
-
-  /* FAQ: Only the light theme gets a border */
-  border-bottom: 1px solid var(--global-color-primary--normal);
+  --line-color: var(--global-color-primary--normal);
 }
 
 

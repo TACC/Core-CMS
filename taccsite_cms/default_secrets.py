@@ -160,19 +160,6 @@ _FEATURES = {
 ########################
 # TODO: GH-59: Use Dict Not Array for Branding Settings
 
-# The theme of the CMS and the header
-
-"""
-Optional theming of CMS (to support deviant branding or dark logos in a pinch)
-
-Options:
-
-- 'dark' (standard)
-- 'light' (requires Design approval)
-"""
-
-_THEME = 'dark'
-
 # Branding settings for portal and navigation.
 
 """
@@ -198,7 +185,8 @@ _SETTING_NAME = [                # The name of the branding or logo config setti
     "a_target_type",               # The target to open the new link in, use _blank for external links, _self for internal links.
     "alt_text",                    # The text to read or render for web assistance standards.
     "cors_setting",                # The CORS setting for the image, set to anonymous by default.
-    "visibility"                   # Toggles wether or not to display the element in the template, use True to render, False to hide.
+    "should_show"                  # Whether to display element in template
+    "is_dark"                      # Whether to account for darkness of image
 ]
 
 Values to populate (for a dict):

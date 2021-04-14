@@ -26,7 +26,17 @@ def index(indexable, i):
 
     - Also works with for loops.
     """
-    return indexable[i]
+    has_index = (len(indexable) > i)
+    value = None
+
+    print("len(indexable)",len(indexable))
+    print("i",i)
+    print("has_index",has_index)
+
+    if has_index:
+        value = indexable[i]
+
+    return value
 
 
 @register.filter
@@ -34,4 +44,10 @@ def get_at_index(list, index):
     """
     Gets the list element at the given index.
     """
-    return list[index]
+    has_index = (len(list) > index)
+    value = None
+
+    if has_index:
+        value = list[index]
+
+    return value

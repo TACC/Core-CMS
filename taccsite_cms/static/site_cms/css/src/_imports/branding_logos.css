@@ -22,20 +22,12 @@
   /* FAQ: Do not use `48.78px`, because Safari only accepts whole numbers */
   height: 49px;
 
-
   background-color: var(--bkgd-color);
   color: var(--text-color);
   border-bottom: 1px solid var(--line-color);
-}
-:root.t-dark .branding-header,
-:root:not([class^="t-"]) .branding-header {
+
   --text-color: var(--global-color-primary--xx-light);
   --bkgd-color: var(--global-color-primary--xx-dark);
-  --line-color: var(--global-color-primary--normal);
-}
-:root.t-light .branding-header {
-  --text-color: var(--global-color-primary--x-dark);
-  --bkgd-color: var(--global-color-primary--x-light);
   --line-color: var(--global-color-primary--normal);
 }
 
