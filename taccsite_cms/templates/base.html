@@ -4,7 +4,7 @@
   id="page-{{ request.current_page.id }}"
   {# FAQ: Only available if set in page's "Advanced" settings #}
   data-page-id="{{ request.current_page.reverse_id }}"
-  class="{% block template_class %}{% endblock template_class %}">
+  class="t-{{settings.THEME}}  {% block template_class %}{% endblock template_class %}">
 
 {% if settings.FEATURES.blog %}
   {# FAQ: Conditional includes are intentionally verbose #}

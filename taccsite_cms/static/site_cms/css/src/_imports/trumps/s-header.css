@@ -34,8 +34,8 @@ Styleguide Trumps.Scopes.Header
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.s-header--style-dark,
-.s-header:not([class*="s-header--style-"]) {
+/* Use dark header to support light logo */
+:root:not(.t-has-dark-logo) .s-header {
   --text-color: var(--global-color-primary--xx-light);
   --bkgd-color: var(--global-color-primary--xx-dark);
   --line-color: var(--global-color-primary--normal);
@@ -43,7 +43,8 @@ Styleguide Trumps.Scopes.Header
   /* To hide border but retain it (height of light & dark header must match) */
   border-bottom: 1px solid var(--bkgd-color);
 }
-.s-header--style-light {
+/* Use light header to support dark logo */
+:root.t-has-dark-logo .s-header {
   --text-color: var(--global-color-primary--x-dark);
   --bkgd-color: var(--global-color-primary--x-light);
   --line-color: var(--global-color-primary--normal);

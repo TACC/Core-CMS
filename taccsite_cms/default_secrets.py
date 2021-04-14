@@ -156,9 +156,21 @@ _FEATURES = {
 }
 
 ########################
-# BRANDING & LOGOS & FAVICON
+# BRANDING SETTINGS
 ########################
 # TODO: GH-59: Use Dict Not Array for Branding Settings
+
+# Visual theme for the CMS
+
+"""
+Optional theming of CMS (certain themes may only affect some elements)
+
+Usage:
+- '' (standard theme)
+- 'has-dark-logo'
+"""
+
+_THEME = ''
 
 # Branding settings for portal and navigation.
 
@@ -185,8 +197,7 @@ _SETTING_NAME = [                # The name of the branding or logo config setti
     "a_target_type",               # The target to open the new link in, use _blank for external links, _self for internal links.
     "alt_text",                    # The text to read or render for web assistance standards.
     "cors_setting",                # The CORS setting for the image, set to anonymous by default.
-    "should_show"                  # Whether to display element in template
-    "is_dark"                      # Whether to account for darkness of image
+    "visibility"                   # Whether to display element in template
 ]
 
 Values to populate (for a dict):

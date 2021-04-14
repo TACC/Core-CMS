@@ -8,7 +8,7 @@
 
 <!-- Navigation Bar -->
 
-<nav id="s-header" class="s-header {% with is_dark=settings.LOGO|index:8 %}{% if is_dark == "True" %}s-header--style-light {% endif %}{% endwith %} navbar {% if settings.PORTAL %}navbar-expand-xl{% else %}navbar-expand-lg{% endif %} navbar-dark">
+<nav id="s-header" class="s-header  navbar {% if settings.PORTAL %}navbar-expand-xl{% else %}navbar-expand-lg{% endif %} navbar-dark">
   <!-- Portal Logo -->
   {% include "header_logo.html" %}
 
