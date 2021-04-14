@@ -22,8 +22,6 @@ Styleguide Trumps.Scopes.Header
             - On any other CMS, `1rem` = `16px` (browser default). */
 
 .s-header {
-  border-bottom: 1px solid var(--line-color);
-
   font-size: 16px; /* NO-R/EM: Overwrite `bootstrap.3.3.7.css` */
 
   /* FAQ: Asssigning this font is only necessary for the User Guide,
@@ -40,12 +38,16 @@ Styleguide Trumps.Scopes.Header
 .s-header:not([class*="s-header--style-"]) {
   --text-color: var(--global-color-primary--xx-light);
   --bkgd-color: var(--global-color-primary--xx-dark);
-  --line-color: var(--global-color-primary--xx-dark);
+  --line-color: var(--global-color-primary--xx-light);
+
+  border-bottom: 1px solid var(--bkgd-color);
 }
 .s-header--style-light {
   --text-color: var(--global-color-primary--x-dark);
   --bkgd-color: var(--global-color-primary--x-light);
   --line-color: var(--global-color-primary--normal);
+
+  border-bottom: 1px solid var(--line-color);
 }
 
 
@@ -145,13 +147,8 @@ Styleguide Trumps.Scopes.Header
 
 /* Create a line between search bar and login */
 /* FAQ: The line should only exist if both elements are present */
-.s-header .s-search-bar ~ .s-portal-nav::before {
-  content: "";
-  width: 1px;
-  /* FAQ: Not `height`, cuz `.s-search-bar` (via `.form-inline`) is flexbox */
-  align-self: stretch;
-
-  background-color: var(--bkgd-color);
+.s-header .s-search-bar ~ .s-portal-nav {
+  border-left: 1px solid var(--line-color);
 
   margin-left: 12px;
 }
