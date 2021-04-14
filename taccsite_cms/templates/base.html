@@ -1,10 +1,9 @@
-{% load cms_tags staticfiles sekizai_tags cache i18n custom_portal_settings %}
+{% load cms_tags staticfiles sekizai_tags cache i18n %}
 <!doctype html>
 <html
   id="page-{{ request.current_page.id }}"
   {# FAQ: Only available if set in page's "Advanced" settings #}
   data-page-id="{{ request.current_page.reverse_id }}"
-  {# CAVEAT: Theme class MUST be first (to avoid verbose class and CSS) #}
   class="{% block template_class %}{% endblock template_class %}">
 
 {% if settings.FEATURES.blog %}

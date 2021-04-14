@@ -38,8 +38,9 @@ Styleguide Trumps.Scopes.Header
 .s-header:not([class*="s-header--style-"]) {
   --text-color: var(--global-color-primary--xx-light);
   --bkgd-color: var(--global-color-primary--xx-dark);
-  --line-color: var(--global-color-primary--xx-light);
+  --line-color: var(--global-color-primary--normal);
 
+  /* To hide border but retain it (height of light & dark header must match) */
   border-bottom: 1px solid var(--bkgd-color);
 }
 .s-header--style-light {
@@ -47,6 +48,7 @@ Styleguide Trumps.Scopes.Header
   --bkgd-color: var(--global-color-primary--x-light);
   --line-color: var(--global-color-primary--normal);
 
+  /* To show border between only the light header and content below it */
   border-bottom: 1px solid var(--line-color);
 }
 

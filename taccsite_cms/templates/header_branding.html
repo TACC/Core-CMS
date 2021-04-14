@@ -6,7 +6,7 @@
   {# DEBUG: #}{# <code>{{ brands|first }}</code> #}
   {% for brand in brands %}
     {% with filename=brand|index:1 selectors=brand|index:2 targeturl=brand|index:3 targetType=brand|index:4 accessibility=brand|index:5 corstype=brand|index:6 should_show=brand|index:7 %}
-      {% if should_show %}
+      {% if should_show == "True" %}
         {% if brand == brands|first %}
         <a href="{{ targeturl }}" target="{{ targettype }}">
           <img class="branding-logo {{ selectors }}" src="{% static filename %}" crossorigin="{{ corstype }}" alt="{{ accessibility }}" >

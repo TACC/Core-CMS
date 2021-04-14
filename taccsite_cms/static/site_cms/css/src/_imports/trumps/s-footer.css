@@ -10,9 +10,7 @@ Styleguide Scope.Footer
 
 .s-footer > p:last-of-type {
   margin: 0;
-
-  --link-color: var(--global-color-primary--light);
 }
 .s-footer a {
-  color: var(--link-color);
+  color: var(--global-color-primary--light);
 }
