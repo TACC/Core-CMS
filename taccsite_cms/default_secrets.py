@@ -197,7 +197,7 @@ _SETTING_NAME = [                # The name of the branding or logo config setti
     "a_target_type",               # The target to open the new link in, use _blank for external links, _self for internal links.
     "alt_text",                    # The text to read or render for web assistance standards.
     "cors_setting",                # The CORS setting for the image, set to anonymous by default.
-    "visibility"                   # Whether to display element in template
+    "visibility"                   # Toggles wether or not to display the element in the template, use True to render, False to hide.
 ]
 
 Values to populate (for a dict):
