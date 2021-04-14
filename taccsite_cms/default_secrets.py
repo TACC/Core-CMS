@@ -166,11 +166,11 @@ _FEATURES = {
 Optional theming of CMS (certain themes may only affect some elements)
 
 Usage:
-- '' (standard theme)
+- None (standard theme)
 - 'has-dark-logo'
 """
 
-_THEME = ''
+_THEME = None
 
 # Branding settings for portal and navigation.
 
