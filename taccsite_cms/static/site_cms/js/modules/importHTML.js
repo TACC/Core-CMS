@@ -1,3 +1,5 @@
+import { getFromURL as getDataFromURL } from './importData.js';
+
 /**
  * Create element from HTML string
  * @param {String} - HTML representing a single element
@@ -29,16 +31,7 @@ export function htmlToElements(html) {
  * @returns {Promise<string>} Promise that returns markup if resolved
  */
 export function getFromURL(markupURL) {
-  if (markupURL) {
-    return fetch(markupURL).then(response => {
-      const markup = response.text();
-      return markup;
-    }).catch(err => {
-      console.error(err);
-    });
-  } else {
-    return Promise.reject(new Error('Invalid `markupURL` provided'));
-  }
+  return getDataFromURL(markupURL, 'html');
 }
 
 /**
