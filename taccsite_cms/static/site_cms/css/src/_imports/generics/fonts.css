@@ -1,0 +1,54 @@
+/*
+Fonts
+
+Load standard fonts for a TACC website.
+
+Usage:
+  ```
+  .something {
+    // BentonSans-MediumItalic
+    font-family: 'Benton Sans';
+    font-weight: 500;
+    font-style: italic;
+  }
+  ```
+
+Reference:
+- [Keep Font CSS Simple](https://www.456bereastreet.com/archive/201012/font-face_tip_define_font-weight_and_font-style_to_keep_your_css_simple/)
+- [font-weight](https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight)
+- [Shared UI - Constants - Font](https://confluence.tacc.utexas.edu/x/cYAZCg)
+
+Styleguide Generics.Fonts
+*/
+
+@font-face {
+  font-family: 'Benton Sans';
+  src: url("/static/frontera-cms/fonts/archive/BentonSans-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Benton Sans';
+  src: url("/static/frontera-cms/fonts/archive/BentonSans-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Benton Sans';
+  src: url("/static/frontera-cms/fonts/archive/BentonSans-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Benton Sans';
+  src: url("/static/frontera-cms/fonts/archive/BentonSans-MediumItalic.otf") format("opentype");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}

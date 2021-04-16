@@ -1,0 +1,31 @@
+/*
+Max. Widths (Bootstrap)
+
+Define maximum widths for Bootstrap 5.0 containers and wider.
+
+Usage:
+  ```
+  @media (--x-wide-and-above) {
+    .container { max-width: var(--global-max-width--x-wide); }
+  }
+  ```
+
+Reference:
+- https://getbootstrap.com/docs/4.0/layout/grid/#grid-options
+- https://getbootstrap.com/docs/5.0/layout/grid/#grid-options
+
+Styleguide Settings.CustomProperties.MaxWidth
+*/
+
+/* Usage: `var(--global-breakpoint--x-narrow)` */
+/* SEE: https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties */
+
+:root {
+  --global-max-width--x-narrow: 540px;
+  --global-max-width--narrow: 720px;
+  --global-max-width--medium: 960px;
+  --global-max-width--wide: 1140px;
+  --global-max-width--x-wide: 1320px;
+  --global-max-width--xx-wide: 1580px;
+  --global-max-width--xxx-wide: 1800px;
+}
