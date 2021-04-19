@@ -23,9 +23,14 @@ class TaccsiteSampleTests(TestCase):
             'en',
         )
 
+        print('[setUp] self.auth_user: ', self.auth_user)
+        print('[setUp] User(): ', User())
+        print('[setUp] self.anon_user: ', self.anon_user)
+        print('[setUp] AnonymousUser(): ', AnonymousUser())
+
     # Helpers
 
-    def _get_context(self):
+    def _get_data(self):
         """Return context necessary for testing plugin logic"""
         plugin_instance = self.plugin.get_plugin_class_instance()
         context = plugin_instance.render(self.context, self.plugin, None)
@@ -37,35 +42,52 @@ class TaccsiteSampleTests(TestCase):
         html = renderer.render_plugin(self.plugin, self.context)
         return html
 
-    def _test_context(self, assertVals):
+    def _test_data(self, assertVals):
         """Reusable plugin logic test"""
-        context = self._get_context()
-        self.assertIn('user_name', context)
-        self.assertEqual(context['user_name'], assertVals['name'])
+        context = self._get_data()
+        self.assertIn('name', context)
+        self.assertEqual(context['name'], assertVals['name'])
 
     def _test_html(self, assertVals):
         """Reusable plugin markup test"""
         html = self._get_html()
-        self.assertEqual(html, '<h1>Hello, ' + assertVals['name'] + '.</h1>\n')
+        self.assertTrue(html.find('Hello') != -1)
+        self.assertTrue(html.find(assertVals['name']) != -1)
 
-    # Tests
-
-    def test_anon_user(self):
-        """Test name of unauthenticated user"""
+    def _get_anon_user_vals(self):
         self.context['request'].user = self.anon_user
 
-        assertVals = { 'name': 'Guest' }
+        return { 'name': 'Guest' }
 
-        self._test_context(assertVals)
-        self._test_html(assertVals)
-
-    def test_auth_user(self):
-        """Test name of authenticated user"""
+    def _get_auth_user_vals(self):
         self.context['request'].user = self.auth_user
 
-        assertVals = {
+        print('self.auth_user: ', self.auth_user)
+        print('self.auth_user.first_name: ', self.auth_user.first_name)
+        print('self.auth_user.last_name: ', self.auth_user.last_name)
+
+        return {
             'name': self.auth_user.first_name + ' ' + self.auth_user.last_name
         }
 
-        self._test_context(assertVals)
+    # Tests
+
+    def test_anon_user_data(self):
+        """Test context of guest user"""
+        assertVals = self._get_anon_user_vals()
+        self._test_data(assertVals)
+
+    def test_anon_user_html(self):
+        """Test markup of guest user"""
+        assertVals = self._get_anon_user_vals()
+        self._test_html(assertVals)
+
+    def test_auth_user_data(self):
+        """Test context of logged-in user"""
+        assertVals = self._get_auth_user_vals()
+        self._test_data(assertVals)
+
+    def test_auth_user_html(self):
+        """Test markup of logged-in user"""
+        assertVals = self._get_auth_user_vals()
         self._test_html(assertVals)
