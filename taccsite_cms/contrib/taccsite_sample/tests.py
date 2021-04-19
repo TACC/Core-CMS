@@ -13,9 +13,9 @@ from taccsite_cms.contrib.taccsite_sample.models import TaccsiteSample
 class TaccsiteSampleTests(TestCase):
     def setUp(self):
         self.factory = RequestFactory()
-        self.auth_user = User()
+        self.auth_user = None # set via _create_user()
         self.anon_user = AnonymousUser()
-        self.context = { 'request': self.factory.get('/test/user') }
+        self.context = None # set via _create_user()
         self.placeholder = Placeholder.objects.create(slot='test')
         self.plugin = add_plugin(
             self.placeholder,
@@ -23,18 +23,31 @@ class TaccsiteSampleTests(TestCase):
             'en',
         )
 
-        print('[setUp] self.auth_user: ', self.auth_user)
-        print('[setUp] User(): ', User())
-        print('[setUp] self.anon_user: ', self.anon_user)
-        print('[setUp] AnonymousUser(): ', AnonymousUser())
+
 
     # Helpers
+
+    def _create_auth_user(self, username='test', first_name='', last_name=''):
+        self.auth_user = User.objects.create_user(
+            username=username,
+            first_name=first_name,
+            last_name=last_name,
+            email='123@test.com',
+            password='top_secret'
+        )
+        self.context = { 'request': self.factory.get('/test/user') }
+        self.context['request'].user = self.auth_user
+
+    def _create_anon_user(self, guest_name='Guest'):
+        self.auth_user = AnonymousUser()
+        self.context = { 'request': self.factory.get('/test/user') }
+        self.context['request'].user = self.anon_user
 
     def _get_data(self):
         """Return context necessary for testing plugin logic"""
         plugin_instance = self.plugin.get_plugin_class_instance()
-        context = plugin_instance.render(self.context, self.plugin, None)
-        return context
+        data = plugin_instance.render(self.context, self.plugin, None)
+        return data
 
     def _get_html(self):
         """Return markup necessary for testing plugin template"""
@@ -42,52 +55,96 @@ class TaccsiteSampleTests(TestCase):
         html = renderer.render_plugin(self.plugin, self.context)
         return html
 
-    def _test_data(self, assertVals):
+    def _test_data(self, assertDict):
         """Reusable plugin logic test"""
         context = self._get_data()
-        self.assertIn('name', context)
-        self.assertEqual(context['name'], assertVals['name'])
+        for key in assertDict.keys():
+            self.assertIn(key, context)
+            self.assertEqual(context[key], assertDict[key], msg=f"key='{key}'")
 
-    def _test_html(self, assertVals):
+    def _test_html(self, assertDict):
         """Reusable plugin markup test"""
         html = self._get_html()
-        self.assertTrue(html.find('Hello') != -1)
-        self.assertTrue(html.find(assertVals['name']) != -1)
+        self.assertTrue(html.find('Hello') > -1)
+        self.assertTrue(html.find(assertDict['name']) > -1)
 
-    def _get_anon_user_vals(self):
-        self.context['request'].user = self.anon_user
 
-        return { 'name': 'Guest' }
-
-    def _get_auth_user_vals(self):
-        self.context['request'].user = self.auth_user
-
-        print('self.auth_user: ', self.auth_user)
-        print('self.auth_user.first_name: ', self.auth_user.first_name)
-        print('self.auth_user.last_name: ', self.auth_user.last_name)
-
-        return {
-            'name': self.auth_user.first_name + ' ' + self.auth_user.last_name
-        }
 
     # Tests
 
-    def test_anon_user_data(self):
-        """Test context of guest user"""
-        assertVals = self._get_anon_user_vals()
-        self._test_data(assertVals)
+    # Tests: Guest User
 
-    def test_anon_user_html(self):
-        """Test markup of guest user"""
-        assertVals = self._get_anon_user_vals()
-        self._test_html(assertVals)
+    def test_anon_user_default(self):
+        """Test guest user with default values"""
+        self._create_anon_user()
+        assertDict = {
+            'name': 'Guest',
+            'has_proper_name': None,
+            'is_authenticated': False
+        }
 
-    def test_auth_user_data(self):
-        """Test context of logged-in user"""
-        assertVals = self._get_auth_user_vals()
-        self._test_data(assertVals)
+        self._test_data(assertDict)
+        self._test_html(assertDict)
 
-    def test_auth_user_html(self):
-        """Test markup of logged-in user"""
-        assertVals = self._get_auth_user_vals()
-        self._test_html(assertVals)
+    def test_anon_user_custom(self):
+        """Test guest user with custom values"""
+        self._create_anon_user(guest_name='Friend')
+        assertDict = {
+            'name': 'Friend',
+            'has_proper_name': None,
+            'is_authenticated': False
+        }
+
+        self._test_data(assertDict)
+        self._test_html(assertDict)
+
+    # Tests: Auth'd User
+
+    def test_auth_user_username(self):
+        """Test logged-in user with no first nor last name"""
+        self._create_auth_user(username='fred')
+        assertDict = {
+            'name': 'fred',
+            'has_proper_name': False,
+            'is_authenticated': True
+        }
+
+        self._test_data(assertDict)
+        self._test_html(assertDict)
+
+    def test_auth_user_lastname(self):
+        """Test logged-in user with only last name"""
+        self._create_auth_user(username='fred', last_name='Flintstone')
+        assertDict = {
+            'name': 'fred',
+            'has_proper_name': False,
+            'is_authenticated': True
+        }
+
+        self._test_data(assertDict)
+        self._test_html(assertDict)
+
+    def test_auth_user_firstname(self):
+        """Test logged-in user with only first name"""
+        self._create_auth_user(username='fred', first_name='Fred')
+        assertDict = {
+            'name': 'Fred',
+            'has_proper_name': True,
+            'is_authenticated': True
+        }
+
+        self._test_data(assertDict)
+        self._test_html(assertDict)
+
+    def test_auth_user_fullname(self):
+        """Test logged-in user with first and last name"""
+        self._create_auth_user(
+            username='fred', first_name='Fred', last_name='Flintstone')
+        assertDict = {
+            'name': 'Fred Flintstone',
+            'has_proper_name': True,
+            'is_authenticated': True
+        }
+
+        self._test_data(assertDict)
+        self._test_html(assertDict)
