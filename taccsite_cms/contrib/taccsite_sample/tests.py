@@ -17,11 +17,7 @@ class TaccsiteSampleTests(TestCase):
         self.anon_user = AnonymousUser()
         self.context = None # set via _create_user()
         self.placeholder = Placeholder.objects.create(slot='test')
-        self.plugin = add_plugin(
-            self.placeholder,
-            TaccsiteSamplePlugin,
-            'en',
-        )
+        self.plugin = None # set via _populate_plugin_model()
 
 
 
@@ -42,6 +38,15 @@ class TaccsiteSampleTests(TestCase):
         self.auth_user = AnonymousUser()
         self.context = { 'request': self.factory.get('/test/user') }
         self.context['request'].user = self.anon_user
+
+    def _populate_plugin_model(self, guest_name=None):
+        data = {'guest_name': guest_name} if bool(guest_name) else {}
+        self.plugin = add_plugin(
+            self.placeholder,
+            TaccsiteSamplePlugin,
+            'en',
+            **data
+        )
 
     def _get_data(self):
         """Return context necessary for testing plugin logic"""
@@ -75,8 +80,9 @@ class TaccsiteSampleTests(TestCase):
     # Tests: Guest User
 
     def test_anon_user_default(self):
-        """Test guest user with default values"""
+        """Test guest user with plugin default value(s)"""
         self._create_anon_user()
+        self._populate_plugin_model()
         assertDict = {
             'name': 'Guest',
             'has_proper_name': None,
@@ -87,8 +93,9 @@ class TaccsiteSampleTests(TestCase):
         self._test_html(assertDict)
 
     def test_anon_user_custom(self):
-        """Test guest user with custom values"""
+        """Test guest user with plugin custom value(s)"""
         self._create_anon_user(guest_name='Friend')
+        self._populate_plugin_model(guest_name='Friend')
         assertDict = {
             'name': 'Friend',
             'has_proper_name': None,
@@ -103,6 +110,7 @@ class TaccsiteSampleTests(TestCase):
     def test_auth_user_username(self):
         """Test logged-in user with no first nor last name"""
         self._create_auth_user(username='fred')
+        self._populate_plugin_model()
         assertDict = {
             'name': 'fred',
             'has_proper_name': False,
@@ -115,6 +123,7 @@ class TaccsiteSampleTests(TestCase):
     def test_auth_user_lastname(self):
         """Test logged-in user with only last name"""
         self._create_auth_user(username='fred', last_name='Flintstone')
+        self._populate_plugin_model()
         assertDict = {
             'name': 'fred',
             'has_proper_name': False,
@@ -127,6 +136,7 @@ class TaccsiteSampleTests(TestCase):
     def test_auth_user_firstname(self):
         """Test logged-in user with only first name"""
         self._create_auth_user(username='fred', first_name='Fred')
+        self._populate_plugin_model()
         assertDict = {
             'name': 'Fred',
             'has_proper_name': True,
@@ -140,6 +150,7 @@ class TaccsiteSampleTests(TestCase):
         """Test logged-in user with first and last name"""
         self._create_auth_user(
             username='fred', first_name='Fred', last_name='Flintstone')
+        self._populate_plugin_model()
         assertDict = {
             'name': 'Fred Flintstone',
             'has_proper_name': True,
