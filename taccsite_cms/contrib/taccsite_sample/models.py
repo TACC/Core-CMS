@@ -3,8 +3,16 @@ from cms.models.pluginmodel import CMSPlugin
 from django.db import models
 
 from .defaults import user_name as default_name
+from .utils import has_proper_name, get_proper_name
 
 class TaccsiteSample(CMSPlugin):
+    # Overwrites
+
+    def get_short_description(self):
+        return 'Hello, […]'
+
+    # Fields
+
     """
     Components > "Sample (Greet User)" Model
     https://url.to/docs/components/sample/
@@ -21,5 +29,23 @@ class TaccsiteSample(CMSPlugin):
         blank=True
     )
 
-    def get_short_description(self):
-        return 'Hello, […]'
+    # Custom
+
+    def get_name(self, user=None):
+        """Get name by which to greet the user.
+
+        :param user: Django user object
+
+        :rtype: str
+        :returns: Name of authenticated user or the name for any guest
+        """
+        if has_proper_name(user):
+            name = get_proper_name(user)
+        elif user.is_authenticated:
+            name = user.username
+        elif bool(self.guest_name):
+            name = self.guest_name
+        else:
+            name = default_name
+
+        return name

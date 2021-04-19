@@ -6,8 +6,8 @@ from django.utils.encoding import force_text
 
 from .models import TaccsiteSample
 
-from .utils import has_proper_name, get_proper_name
 from .defaults import user_name as default_name
+from .utils import has_proper_name
 
 # SEE: http://docs.django-cms.org/en/release-3.7.x/reference/plugins.html
 @plugin_pool.register_plugin
@@ -33,43 +33,18 @@ class TaccsiteSamplePlugin(CMSPluginBase):
     # FAQ: Sets tooltip of preview of this plugin within a Text plugin
     def icon_alt(self, instance):
         super_value = force_text(super().icon_alt(instance))
-        name = self.get_name(instance)
-        return f'Hello, {{{name}}} [{super_value}]'
+        return f'Hello, […] ({super_value})'
     # NOTE: Our previews (see `icon_alt`) are rich and have no icon...
     # TODO: Confirm whether these are ever necessary
     # def icon_src(self, instance)
     # def text_editor_button_icon(...)
-
-    # Helpers
-
-    def get_name(self, instance, user=None):
-        """Get name of authenticated user or the name for any guest.
-
-        :param instance: instance of plugin
-        :param user: Django user object
-
-        :returns: Set of keys
-        :rtype: str
-        """
-        if has_proper_name(user):
-            name = get_proper_name(user)
-        elif user.is_authenticated:
-            name = user.username
-        elif bool(instance.guest_name):
-            name = instance.guest_name
-        else:
-            name = default_name
-
-        return name
-
-    # Render
 
     def render(self, context, instance, placeholder):
         context = super().render(context, instance, placeholder)
         request = context['request']
 
         context.update({
-            'name': self.get_name(instance, request.user),
+            'name': instance.get_name(request.user),
             'has_proper_name': has_proper_name(request.user),
             'is_authenticated': request.user.is_authenticated
         })
