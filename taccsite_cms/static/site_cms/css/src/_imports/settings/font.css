@@ -1,0 +1,69 @@
+/*
+Font
+
+Define standard fonts for a TACC website.
+
+Usage:
+  ```
+  .something {
+    font-family: var(--global-font-family--serif);
+    font-size: var(--global-font-size--normal);
+    font-weight: var(--global-font-weight--bold); /* or `var(--bold)` *\/
+  }
+  ```
+
+Reference:
+- https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties
+- [Shared UI - Constants - Font](https://confluence.tacc.utexas.edu/x/cYAZCg)
+
+Styleguide Settings.CustomProperties.Font
+*/
+
+:root {
+
+
+
+  /* Family */
+
+  --global-font-family--sans: "Benton Sans", "Roboto", sans-serif;
+  --global-font-family--serif: Times, sans-serif;
+  --global-font-family--mono: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+
+  --global-font-family: var(--global-font-family--sans);
+
+  /* Family: Overwrite Boostrap */
+
+  --font-family-sans-serif: var(--global-font-family--sans);
+  /* CAVEAT: Ineffectual for <code>, <kbd>, <pre>, <samp> */
+  --font-family-monospace: var(--global-font-family--mono);
+
+
+
+  /* Size */
+  /* NOTE: Defined with Design in 2020, but not yet used for 2021 UI work */
+  /*
+  --global-font-size--xx-small: 0.625rem;  /* 10px (if base is 16px) *\/
+  --global-font-size--x-small: 0.8125rem;  /* 13px (if base is 16px) *\/
+  --global-font-size--small: 1.0rem;       /* 16px (if base is 16px) *\/
+  --global-font-size--normal: 1.25rem;     /* 20px (if base is 16px) *\/
+  --global-font-size--large: 1.5rem;       /* 24px (if base is 16px) *\/
+  --global-font-size--x-large: 2.0rem;     /* 32px (if base is 16px) *\/
+  --global-font-size--xx-large: 2.5rem;    /* 40px (if base is 16px) *\/
+  --global-font-size--xxx-large: 3.0rem;   /* 48px (if base is 16px) *\/
+  */
+
+
+
+  /* Weight */
+  /* SEE: https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight */
+
+  /* NOTE: Long names to be consistent (opinions welcome) */
+  --global-font-weight--regular: 400;
+  --global-font-weight--medium: 500;
+  --global-font-weight--bold: 700;
+
+  /* NOTE: Short names to increase adoption (opinions welcome) */
+  --regular: 400;
+  --medium: 500;
+  --bold: 700;
+}

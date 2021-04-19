@@ -4,10 +4,13 @@
 /* SEE: https://confluence.tacc.utexas.edu/x/IAA9Cw */
 
 /* SETTINGS */
+/* Shared with Portal */
 @import url("../../../site_shared/css/src/_imports/settings/border.css");
 @import url("../../../site_shared/css/src/_imports/settings/color.css");
-@import url("../../../site_shared/css/src/_imports/settings/font.css");
+/* Unique to CMS */
+@import url("_imports/settings/props.max-width.css");
 @import url("_imports/settings/props.space.css");
+@import url("_imports/settings/font.css");
 
 /* GENERICS */
 /* Bootstrap performs much of this */
@@ -19,12 +22,15 @@
 
 /* OBJECTS */
 @import url("_imports/objects/o-site.css");
+@import url("_imports/objects/o-section.css");
 
 /* COMPONENTS */
 @import url("_imports/components/c-footer.css");
 @import url("_imports/components/django.cms.css");
 @import url("_imports/components/django.cms.blog.css");
 @import url("_imports/components/django.cms.post.css");
+@import url("_imports/components/bootstrap.container.css");
 
 /* TRUMPS */
 @import url("_imports/trumps/s-footer.css");
+@import url("_imports/trumps/u-empty.css");

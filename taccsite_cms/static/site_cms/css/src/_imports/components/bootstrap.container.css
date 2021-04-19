@@ -1,0 +1,23 @@
+/*
+Container (Bootstrap)
+
+Add to Bootstrap styles. See:
+
+- [Bootstrap Grid](https://getbootstrap.com/docs/4.0/layout/grid/)
+
+Styleguide Components.Bootstrap.Grid
+*/
+@import url("../../../../../../../taccsite_cms/static/site_shared/css/src/_imports/tools/media-queries.css");
+
+@media (--x-wide-and-above) {
+  .container { max-width: var(--global-max-width--x-wide); }
+}
+@media (--xx-wide-and-above) {
+  .container { max-width: var(--global-max-width--xx-wide); }
+}
+/* FAQ: We can do this, but Design does not want to stretch this wide */
+/*
+@media (--xxx-wide-and-above) {
+  .container { max-width: var(--global-max-width--xxx-wide); }
+}
+*/
