@@ -10,6 +10,7 @@ from cms.plugin_rendering import ContentRenderer
 from taccsite_cms.contrib.taccsite_sample.cms_plugins import TaccsiteSamplePlugin
 from taccsite_cms.contrib.taccsite_sample.models import TaccsiteSample
 
+# TODO: Isolate model test from plugin test
 class TaccsiteSampleTests(TestCase):
     def setUp(self):
         self.factory = RequestFactory()
