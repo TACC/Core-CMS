@@ -1,0 +1,26 @@
+plugins:
+  postcss-import:
+    path:
+      - './taccsite_cms/static/site_cms/css/src'
+  postcss-simple-vars: {}
+  postcss-extend: {}
+  postcss-preset-env:
+    # SEE: https://github.com/csstools/postcss-preset-env#features
+    stage: false,
+    # SEE: https://github.com/csstools/postcss-preset-env/blob/master/src/lib/plugins-by-id.js#L35
+    features:
+      custom-media-queries: true
+      media-query-ranges: true
+  cssnano:
+    preset:
+      - 'default'
+      -
+        # Disabled to avoid sweeping bad CSS under the rug
+        # Disabled to improve test comparison by retaining expectation code
+        discardDuplicates:
+          exclude: true
+        mergeRules:
+          exclude: true
+        # Disabled to prevent cssnano & postcss-simple-vars compatibility bug
+        # SEE: https://github.com/postcss/postcss-simple-vars/issues/94#issuecomment-773424448
+        calc: false
