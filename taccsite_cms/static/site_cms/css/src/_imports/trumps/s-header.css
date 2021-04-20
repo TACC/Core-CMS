@@ -36,6 +36,10 @@ Styleguide Trumps.Scopes.Header
 }
 /* Use dark header to support light logo */
 :root:not(.t-has-dark-logo) .s-header {
+  /* !!!: Testing! */
+  color: env(--color);
+  content: env(--theme);
+
   --text-color: var(--global-color-primary--xx-light);
   --bkgd-color: var(--global-color-primary--xx-dark);
   --line-color: var(--global-color-primary--normal);
