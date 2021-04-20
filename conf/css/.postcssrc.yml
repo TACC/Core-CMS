@@ -14,8 +14,8 @@ plugins:
     preset:
       - 'default'
       -
-        # Disabled to avoid sweeping bad CSS under the rug
-        # Disabled to improve test comparison by retaining expectation code
+        # Both of these are disabled to allow manual CSS build tests
+        # The `discardDuplicates` is disabled to prevent hiding duplicate CSS
         discardDuplicates:
           exclude: true
         mergeRules:
