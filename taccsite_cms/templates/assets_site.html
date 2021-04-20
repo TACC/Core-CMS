@@ -34,10 +34,6 @@ FAQ: IF a script or style is better cached with markup, THEN:
   {# FAQ: CMS does ALSO load but does so in `assets_font.html` instead #}
   <link id="css-site-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
 
-  {# To load JavaScript that performs actions on which CSS depends #}
-  {# FAQ: CMS does NOT load because it already sets theme via template markup #}
-  <script id="css-site-script" type="module" src="{% 'site_cms/js/site.css.js' %}"></script>
-
   {# To load CSS that styles the header #}
   {# FAQ: CMS does ALSO load so it styles header using identical complex code #}
   <link id="css-site-header" rel="stylesheet" href="{% 'site_cms/css/build/site.header.css' %}" />

@@ -20,9 +20,6 @@ urlpatterns = [
         {'sitemaps': {'cmspages': CMSSitemap}}),
 
     url(r'^admin/', admin.site.urls),  # NOQA
-
-    # Allow external apps (e.g., Portal, Docs) to have access to public settings
-    url(r'^cms/api/', include('taccsite_cms.api.settings.urls', namespace='settings')),
 ]
 
 if settings.PORTAL:
