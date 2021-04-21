@@ -1,0 +1,8 @@
+{
+  "environment-variables": {
+    "--header-text-color": "var(--global-color-primary--x-dark)",
+    "--header-bkgd-color": "var(--global-color-primary--x-light)",
+    "--header-minor-border-color": "var(--global-color-primary--normal)",
+    "--header-major-border-color": "var(--global-color-primary--normal)"
+  }
+}

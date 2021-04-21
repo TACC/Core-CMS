@@ -1,6 +1,0 @@
-{
-  "environment-variables": {
-    "--theme": "{{THEME}}",
-    "--color": "{{COLOR}}"
-  }
-}

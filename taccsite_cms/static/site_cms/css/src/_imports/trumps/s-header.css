@@ -33,30 +33,10 @@ Styleguide Trumps.Scopes.Header
   /* Copied from Portal (via `body`) */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* To have border not show, ensure value equals that of `--bkgd-color` */
+  border-bottom: 1px solid env(--header-major-border-color);
 }
-/* Use dark header to support light logo */
-:root:not(.t-has-dark-logo) .s-header {
-  /* !!!: Testing! */
-  color: env(--color);
-  content: env(--theme);
-
-  --text-color: var(--global-color-primary--xx-light);
-  --bkgd-color: var(--global-color-primary--xx-dark);
-  --line-color: var(--global-color-primary--normal);
-
-  /* To hide border but retain it (height of light & dark header must match) */
-  border-bottom: 1px solid var(--bkgd-color);
-}
-/* Use light header to support dark logo */
-:root.t-has-dark-logo .s-header {
-  --text-color: var(--global-color-primary--x-dark);
-  --bkgd-color: var(--global-color-primary--x-light);
-  --line-color: var(--global-color-primary--normal);
-
-  /* To show border between only the light header and content below it */
-  border-bottom: 1px solid var(--line-color);
-}
-
 
 
 /* Affiliation */
@@ -74,7 +54,7 @@ Styleguide Trumps.Scopes.Header
   margin-right: 16px; /* NO-R/EM: 1rem (from Bootstrap via `.navbar-brand`) */
   padding: 0;
 
-  color: var(--text-color);
+  color: env(--header-text-color);
   /* text-decoration: none; *//* already provided by Bootstrap */
 }
 
@@ -98,7 +78,7 @@ Styleguide Trumps.Scopes.Header
   --nav-padding-vert: 5px;
   --nav-padding-horz: calc(16px + 20px);
 
-  background-color: var(--bkgd-color);
+  background-color: env(--header-bkgd-color);
   padding: var(--nav-padding-vert) var(--nav-padding-horz);
 }
 
@@ -133,7 +113,7 @@ Styleguide Trumps.Scopes.Header
 #s-header .nav-link,
 /* HACK: Support `span.nav-link` having children `a` and `a.dropdown-toggle-split` */
 #s-header .nav-link > a {
-  color: var(--text-color);
+  color: env(--header-text-color);
   /* text-decoration: none; *//* already provided by Bootstrap */
 }
 
@@ -155,7 +135,7 @@ Styleguide Trumps.Scopes.Header
 /* Create a line between search bar and login */
 /* FAQ: The line should only exist if both elements are present */
 .s-header .s-search-bar ~ .s-portal-nav {
-  border-left: 1px solid var(--line-color);
+  border-left: 1px solid env(--header-minor-border-color);
 
   margin-left: 12px;
 }
