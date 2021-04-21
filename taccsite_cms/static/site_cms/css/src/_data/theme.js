@@ -1,3 +1,5 @@
+require('jsonc-require');
+
 const dotenv = require('dotenv');
 
 const env = dotenv.config({ path: '.env' }).parsed;
@@ -24,8 +26,8 @@ function requireOrElse(modulePath, callback) {
   }
 }
 
-const data = requireOrElse(`./theme.${theme}.json`, () => {
-  console.error(`Unable to find '${__dirname}/theme.${theme}.json'`);
+const data = requireOrElse(`./theme.${theme}.jsonc`, (e) => {
+  console.error(`Unable to find '${__dirname}/theme.${theme}.jsonc'`, e);
 });
 
 module.exports = data;

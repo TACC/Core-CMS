@@ -3,7 +3,7 @@
     "--header-text-color": "var(--global-color-primary--xx-light)",
     "--header-bkgd-color": "var(--global-color-primary--xx-dark)",
     "--header-minor-border-color": "var(--global-color-primary--normal)",
-    "//": "Hide but retain border (height of light & dark header must match)",
+    // To hide but retain border by setting its color to match background color
     "--header-major-border-color": "var(--global-color-primary--xx-dark)"
   }
 }
