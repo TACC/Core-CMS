@@ -1183,7 +1183,7 @@ json-parse-better-errors@^1.0.1:
   resolved "https://registry.npmjs.org/json-parse-better-errors/-/json-parse-better-errors-1.0.2.tgz"
   integrity sha512-mrqyZKfX5EhL7hvqcV6WG1yYjnjeuYDzDhhcAAUrq8Po85NBQBJP+ZDUT75qZQ98IkUoBqdkExkukOU7Ts2wrw==
 
-"jsonc-require@github:tacc-wbomar/jsonc-require#quick/support-jsonc-ext":
+"jsonc-require@https://github.com/tacc-wbomar/jsonc-require.git":
   version "1.0.0"
   resolved "git+ssh://git@github.com/tacc-wbomar/jsonc-require.git#01a76162859f3184f1e2b35136db15f8a8c7833f"
   dependencies:
