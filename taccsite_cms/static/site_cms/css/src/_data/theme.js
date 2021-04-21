@@ -26,8 +26,8 @@ function requireOrElse(modulePath, callback) {
   }
 }
 
-const data = requireOrElse(`./theme.${theme}.jsonc`, (e) => {
-  console.error(`Unable to find '${__dirname}/theme.${theme}.jsonc'`, e);
+const data = requireOrElse(`./theme.${theme}.jsonc`, () => {
+  console.error(`Unable to find '${__dirname}/theme.${theme}.jsonc'`);
 });
 
 module.exports = data;
