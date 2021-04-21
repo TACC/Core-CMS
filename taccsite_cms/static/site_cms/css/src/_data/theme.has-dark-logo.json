@@ -1,4 +1,6 @@
 {
+  "NOTE": "This file is JSONC but Jenkins didn't support `.jsonc` solution",
+  "SEE": "/job/Core_CMS/75/console",
   "environment-variables": {
     "--header-text-color": "var(--global-color-primary--x-dark)",
     "--header-bkgd-color": "var(--global-color-primary--x-light)",
