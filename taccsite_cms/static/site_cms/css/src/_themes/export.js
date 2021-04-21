@@ -1,5 +1,6 @@
-require('jsonc-require');
-
+/**
+ * Export appropriate theme file based on `.env` value
+ */
 const dotenv = require('dotenv');
 
 const env = dotenv.config({ path: '.env' }).parsed;

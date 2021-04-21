@@ -9,7 +9,7 @@ plugins:
   # NOTE: Using `postcss-preset-env`'s install of `postcss-env-function` works
   postcss-env-function:
     importFrom:
-      - './taccsite_cms/static/site_cms/css/src/_data/theme.js'
+      - './taccsite_cms/static/site_cms/css/src/_themes/export.js'
   postcss-preset-env:
     # SEE: https://github.com/csstools/postcss-preset-env#features
     stage: false

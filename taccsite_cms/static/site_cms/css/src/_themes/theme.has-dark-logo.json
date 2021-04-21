@@ -1,11 +1,12 @@
 {
-  "NOTE": "This file is JSONC but Jenkins didn't support `.jsonc` solution",
-  "SEE": "/job/Core_CMS/75/console",
+  "//": "Metadata for humans",
+  "format": "https://github.com/csstools/postcss-preset-env#importfrom",
+
   "environment-variables": {
     "--header-text-color": "var(--global-color-primary--x-dark)",
     "--header-bkgd-color": "var(--global-color-primary--x-light)",
     "--header-minor-border-color": "var(--global-color-primary--normal)",
-    // To show border between only the light header and content below it
+    "//": "To show border between only the light header and content below it",
     "--header-major-border-color": "var(--global-color-primary--normal)"
   }
 }
