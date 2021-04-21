@@ -14,7 +14,7 @@ The TACC CORE-CMS can be run using Docker and Docker Compose, both locally and i
     CUSTOM_ASSET_DIR=example-cms
     ```
 
-    \* Where `example-cms` is the project to be run. _See [(Optional) Custom Resources per CMS Project](#optional-custom-resources-per-cms-project)._
+    \* Where `example-cms` is the project to be run. _See [(Optional) Custom Resources per CMS Project](#optional-custom-resources-per-cms-project). Refer to `.env.sample` for other settings._
 1. Initialize / Update submodules.
     1. `git submodule init`\
         _(Adds `cms-site-resources` repo as submodule at `taccsite_custom/`. Only necessary once per `CORE-cms` repo clone.)_
