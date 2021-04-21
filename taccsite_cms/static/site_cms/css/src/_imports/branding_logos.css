@@ -31,7 +31,7 @@
   width: 1px;
   height: 100%;
   max-height: var(--branding-logo-height);
-  border-left: solid 1px var(--global-color-primary--normal);
+  border-left: solid 1px var(--global-color-primary--xx-light);
   margin: 0 15px;
   vertical-align: middle;
 }
