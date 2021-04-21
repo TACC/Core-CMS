@@ -7,10 +7,11 @@
 
 /* SETTINGS */
 
-/* NOTE: This is already imported in `site.css` */
+/* CAVEAT: This is already imported in `site.css`, but necessary here to
+           override Portal (which also loads `site.header.css`), so font
+           variables are overwritten once in CMS and twice in Portal */
 /* TODO: Find a way to be modular, but not redundant */
 @import url("_imports/settings/font.css");
-@import url("../../../site_shared/css/src/_imports/settings/color.css");
 
 /* TRUMPS */
 

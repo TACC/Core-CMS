@@ -1183,6 +1183,12 @@ json-parse-better-errors@^1.0.1:
   resolved "https://registry.npmjs.org/json-parse-better-errors/-/json-parse-better-errors-1.0.2.tgz"
   integrity sha512-mrqyZKfX5EhL7hvqcV6WG1yYjnjeuYDzDhhcAAUrq8Po85NBQBJP+ZDUT75qZQ98IkUoBqdkExkukOU7Ts2wrw==
 
+"jsonc-require@github:tacc-wbomar/jsonc-require#quick/support-jsonc-ext":
+  version "1.0.0"
+  resolved "git+ssh://git@github.com/tacc-wbomar/jsonc-require.git#01a76162859f3184f1e2b35136db15f8a8c7833f"
+  dependencies:
+    perf-regexes "^1.0.1"
+
 jsonfile@^6.0.1:
   version "6.0.1"
   resolved "https://registry.npmjs.org/jsonfile/-/jsonfile-6.0.1.tgz"
@@ -1493,6 +1499,11 @@ path-type@^4.0.0:
   version "4.0.0"
   resolved "https://registry.npmjs.org/path-type/-/path-type-4.0.0.tgz"
   integrity sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==
+
+perf-regexes@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.npmjs.org/perf-regexes/-/perf-regexes-1.0.1.tgz"
+  integrity sha512-L7MXxUDtqr4PUaLFCDCXBfGV/6KLIuSEccizDI7JxT+c9x1G1v04BQ4+4oag84SHaCdrBgQAIs/Cqn+flwFPng==
 
 picomatch@^2.0.4, picomatch@^2.0.5, picomatch@^2.2.1:
   version "2.2.2"

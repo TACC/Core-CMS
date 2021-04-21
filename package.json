@@ -18,6 +18,7 @@
         "async": "^3.2.0",
         "cssnano": "^4.1.10",
         "dotenv": "^8.2.0",
+        "jsonc-require": "github:tacc-wbomar/jsonc-require#quick/support-jsonc-ext",
         "npm-watch": "^0.7.0",
         "postcss-cli": "^7.1.2",
         "postcss-css-variables": "^0.17.0",

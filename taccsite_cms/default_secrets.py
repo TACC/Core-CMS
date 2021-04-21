@@ -160,18 +160,6 @@ _FEATURES = {
 ########################
 # TODO: GH-59: Use Dict Not Array for Branding Settings
 
-# Visual theme for the CMS
-
-"""
-Optional theming of CMS (certain themes may only affect some elements)
-
-Usage:
-- None (standard theme)
-- 'has-dark-logo'
-"""
-
-_THEME = None
-
 # Branding settings for portal and navigation.
 
 """
