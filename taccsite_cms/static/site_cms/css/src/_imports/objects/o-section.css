@@ -1,0 +1,232 @@
+/*
+Section
+
+Horizontal
+
+Markup: o-section.html
+
+Styleguide Objects.Section
+*/
+@import url("../../../../../../../taccsite_cms/static/site_shared/css/src/_imports/tools/media-queries.css");
+@import url("../../../../../../../taccsite_cms/static/site_cms/css/src/_imports/tools/x-layout.css");
+
+
+
+
+
+/* Block */
+
+[class*="o-section--"] {
+  /* GH-99: Use standard spacing value */
+  /* NOTE: The Design varies, but this is the approx. average */
+  --vert-space: 4.5rem;
+  --horz-space: 4.5rem;
+
+  padding-top: var(--vert-space);
+  padding-bottom: var(--vert-space);
+}
+[class*="o-section--"] > [class*="o-section--"] {
+  --vert-space: 0;
+  --horz-space: 0;
+}
+
+/* Overwrite Bootstrap */
+[class*="o-section--"].container,
+[class*="o-section--"].container-fluid {
+  width: auto; /* Bootstrap forcing `width: 100%` prevented usable margin */
+  margin-left: var(--horz-space);
+  margin-right: var(--horz-space);
+}
+[class*="o-section--"].container {
+  --horz-space: auto;
+}
+/* To take control of padding away from Bootstrap on MOST screen sizes */
+@media (--x-narrow-and-above) {
+  [class*="o-section--"].container,
+  [class*="o-section--"].container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+
+
+
+
+
+/* Modifers */
+
+
+
+/* Modifers: Banner */
+
+.o-section--banner {
+  --vert-space: 0;
+  --horz-space: 0;
+
+  gap: 0 !important; /* overwrite `o-section--layout-*` */
+}
+/* To take control of padding away from Bootstrap on ALL screen sizes */
+.o-section--banner.container,
+.o-section--banner.container-fluid {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+
+
+/* Modifers: Intro */
+
+.o-section--intro > :empty:not(img),
+.o-section--intro .u-empty {
+  display: none;
+}
+
+
+
+/* Modifers: Style */
+
+[class*="o-section--style"] {
+  --hr-height: var(--global-border-width--normal);
+}
+
+/* Modifers: Style: Dark & Light */
+
+.o-section--style-dark,
+.o-section--style-dark::before {
+  color: var(--global-color-primary--xx-light);
+  background-color: var(--global-color-primary--xx-dark);
+}
+/* FAQ: Banners should not touch a border of the following section */
+.o-section--style-dark:not(.o-section--banner)
++ .o-section--style-dark:not(.o-section--banner) {
+  border-top: var(--hr-height) solid var(--global-color-primary--xx-light);
+}
+
+.o-section--style-light,
+.o-section--style-light::before {
+  color: var(--global-color-primary--dark);
+  background-color: var(--global-color-primary--xx-light);
+}
+/* FAQ: Banners should not touch a border of the following section */
+.o-section--style-light:not(.o-section--banner)
++ .o-section--style-light:not(.o-section--banner) {
+  border-top: var(--hr-height) solid var(--global-color-primary--xx-light);
+}
+
+/* Modifers: Style: (Fake) Endless Background */
+
+[class*="o-section--style"] {
+  /* To anchor the `position: absolute` pseudo-element */
+  /* To allow `z-index` on children as necessary */
+  position: relative;
+
+  /* CAVEAT: We MUST maintain intentional horizontal overflow of pseudo-child */
+  overflow-x: visible !important; /* do not allow accidental hide of fake bkgd */
+}
+[class*="o-section--style"] > * {
+  /* To ensure children are above `position: absolute` pseudo-element */
+  position: relative;
+  z-index: 1;
+}
+[class*="o-section--style"]::before {
+  content: '';
+  z-index: 0; /* To ensure real element children are above this */
+
+  position: absolute;
+  display: block;
+  width: 100vw;
+  top: 0;
+  /* FAQ: Covers space of following sibling's border without covering border */
+  bottom: calc(-1 * var(--hr-height));
+
+  /* To horizontally center */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
+
+/* Modifers: Layout */
+
+.o-section--layout-a,
+.o-section--layout-b,
+.o-section--layout-c,
+.o-section--layout-d {
+  gap: 3.0rem; /* GH-99: Use standard spacing value */
+}
+.o-section--layout-a { @extend .x-layout--a; }
+.o-section--layout-b { @extend .x-layout--b; }
+.o-section--layout-c { @extend .x-layout--c; }
+.o-section--layout-d { @extend .x-layout--d; }
+
+
+
+
+
+/* Children */
+
+
+
+/* Children: Banner Image */
+
+/* Added `.o-section--banner` to require parent modifier class in markup */
+.o-section--banner .o-section__banner-image {
+  position: absolute;
+  z-index: 1;
+
+  /* To size image to cover section dimensions but maintain ratio */
+  /* CAVEAT: This causes image to overflow beyond section */
+  /* CAVEAT: The `vw` causes shrinkage on screen narrower than body min-width */
+  /* SEE: "Tricks" section */
+  width: 100vw;
+  min-height: 100%;
+  object-fit: cover;
+
+  /* To vertically center image within section */
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+
+/* Children: Banner Overlay */
+
+/* Added `.o-section--banner` to require parent modifier class in markup */
+.o-section--banner .o-section__banner-overlay {
+  position: relative;
+  z-index: 2;
+
+  /* Avoids the need to add placeholder markup for empty column */
+  /* FAQ: The image "leaves" the column via `position: absolute` */
+  grid-column-start: 2;
+
+  background-color: rgba(var(--color-bkgd-rgb), 0.65);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.o-section--banner.o-section--style-dark .o-section__banner-overlay {
+  --color-bkgd-rgb: var(--global-color-primary--x-dark-rgb);
+}
+.o-section--banner.o-section--style-light .o-section__banner-overlay {
+  --color-bkgd-rgb: var(--global-color-primary--x-light-rgb);
+}
+
+
+
+
+
+/* Tricks */
+
+
+
+/* Tricks: /* Children: Banner Image */
+
+/* HACK: To hide vertical overflow by placing sibling sections atop */
+/* NOTE: This selector assumes only a banner section has vertical overflow */
+/* CAVEAT: Any banner pop-out el's can NOT overflow atop sibling sections */
+[class*="o-section--style"].o-section--banner { z-index: 0; }
+/* NOTE: A `z-index` > 0 is only necessary for sections before banner */
+/* CAVEAT: Any section pop-out el's can NOT overflow atop section after it */
+[class*="o-section--style"] { z-index: 1; }

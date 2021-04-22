@@ -22,7 +22,7 @@ Styleguide Trumps.Scopes.Header
             - On any other CMS, `1rem` = `16px` (browser default). */
 
 .s-header {
-  --text-color: rgb(255, 255, 255);
+  --text-color: var(--global-color-primary--xx-light);
 
   font-size: 16px; /* NO-R/EM: Overwrite `bootstrap.3.3.7.css` */
 
@@ -78,7 +78,7 @@ Styleguide Trumps.Scopes.Header
   --nav-padding-vert: 5px;
   --nav-padding-horz: calc(16px + 20px);
 
-  background-color: rgb(51, 51, 51);
+  background-color: var(--global-color-primary--xx-dark);
   padding: var(--nav-padding-vert) var(--nav-padding-horz);
 }
 

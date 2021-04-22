@@ -1,0 +1,50 @@
+/*
+Read More
+
+A CSS-only way to support a "Read More…" feature. It requires a container and three children in order:
+- state checkbox (must be first)
+- target text
+- toggle element
+
+.c-read-more--one-line   - Truncated text may only be one line tall.
+.c-read-more--many-lines - Truncated text may be many lines tall.
+
+Styleguide: Components.ReadMore
+*/
+@import url("_imports/tools/x-truncate.css");
+
+/* Truncation */
+
+/* Many Lines */
+.c-read-more--many-lines .c-read-more__target {
+  @extend .x-truncate--many-lines;
+}
+.c-read-more--many-lines .c-read-more__state:checked ~ .c-read-more__target {
+  @extend .x-untruncate--many-lines;
+}
+
+/* One Line */
+.c-read-more--one-line .c-read-more__target {
+  @extend .x-truncate--one-line;
+}
+.c-read-more--one-line .c-read-more__state:checked ~ .c-read-more__target {
+  @extend .x-untruncate--one-line;
+}
+
+/* Read More / Read Less */
+
+/* State */
+.c-read-more__state,
+.c-read-more__on-text,
+.c-read-more__off-text {
+  display: none;
+}
+.c-read-more__state:not(:checked) ~ .c-read-more__toggle .c-read-more__on-text,
+.c-read-more__state:checked ~ .c-read-more__toggle .c-read-more__off-text {
+  display: block;
+}
+
+/* Toggle */
+.c-read-more__toggle {
+  cursor: pointer;
+}
