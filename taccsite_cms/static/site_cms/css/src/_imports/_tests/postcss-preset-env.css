@@ -1,0 +1,58 @@
+/*
+Test
+
+Styles for testing plugins, e.g.:
+
+- `postcss-preset-env`
+
+Instructions:
+1. In this file, add code after "! Goal:" to show what the output should be.
+2. In this file, add code after "! Test:" to be transformed by plugins.
+3. In the output file, the code after "! Goal:" and "! Test:" should match.
+
+Styleguide _Test
+*/
+
+/*! Custom Media Queries */
+/* SEE: https://preset-env.cssdb.org/features#custom-media-queries */
+
+/*! Goal: */
+@media (max-width:30em){._test{background-color:red}}
+
+/*! Test: */
+@custom-media --narrow-window (max-width: 30em);
+
+@media (--narrow-window) {
+  ._test {
+    background-color: red;
+  }
+}
+
+/*! Media Query Ranges */
+/* SEE: https://preset-env.cssdb.org/features#media-query-ranges */
+
+/*! Goal: */@media (max-width:479px){._test{background-color:red}}@media (min-width:480px) and (max-width:767px){._test{background-color:blue}}@media (min-width:768px){._test{background-color:lime}}
+
+/*! Test: */
+@media (width < 480px) {
+  ._test{ background-color:red; }
+}
+@media (480px <= width < 768px) {
+  ._test{ background-color:blue; }
+}
+@media (width >= 768px) {
+  ._test{ background-color:lime; }
+}
+
+/*! Custom Media Queries & Media Query Ranges */
+/* SEE: https://preset-env.cssdb.org/features#custom-media-queries */
+
+/*! Goal: */
+@media (min-width:992px) and (max-width:1199px){._test{background-color:red}}
+
+/*! Test: */
+@custom-media --wide-window (992px <= width < 1200px);
+
+@media (--wide-window) {
+  ._test{ background-color:red; }
+}

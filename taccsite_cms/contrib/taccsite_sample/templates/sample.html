@@ -1,0 +1,7 @@
+<h1>{% spaceless %}
+  {% if has_proper_name or not is_authenticated %}
+  Hello, {{name}}.
+  {% elif is_authenticated %}
+  Hello, <samp>{{name}}</samp>.
+  {% endif %}
+{% endspaceless %}</h1>
