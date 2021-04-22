@@ -1,0 +1,55 @@
+/*
+Center
+
+Styles that allow centering for specific contexts.
+
+Caveat: Only generic solutions with limited side effects are supported. See "Reference" section for more solutions.
+
+Reference:
+- [Centering in CSS: A Complete Guide](https://css-tricks.com/centering-css-complete-guide/)
+
+.x-center--horz-inline                     - Horz. align any num of inline el's
+.x-center--horz-block                      - Horz. align any num of block el's
+.x-center--horz-block-multiple-children    - Horz. align multiple block el's
+.x-center--vert-inline-multiline--flex     - Vert. align multiple inline el's: Flex Method
+.x-center--both--flex                      - Vert. & Horz. align any el's
+
+Styleguide Tools.ExtendsAndMixins.Center
+*/
+
+/* Horizontal */
+
+/* Horizontal: Inline */
+.x-center--horz-inline {
+  text-align: center;
+}
+
+/* Horizontal: Block */
+.x-center--horz-block {
+  margin: 0 auto;
+}
+
+/* Horizontal: Block: Multiple Children */
+.x-center--horz-block-multiple-children {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+/* Vertical */
+
+/* Vertical: Inline: Multiple Lines - via Flexbox */
+.x-center--vert-inline-multiline--flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Both */
+
+/* Both: Any - via Flexbox */
+.x-center--both--flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

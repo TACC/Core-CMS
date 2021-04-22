@@ -1,0 +1,43 @@
+/*
+Truncate
+
+Styles that allow truncating text.
+
+.x-truncate--one-line     - Truncated text may only be one line tall.
+.x-untruncate--one-line   - Remove one-line truncation after it's added.
+.x-truncate--many-lines   - Truncated text may be many lines tall.
+.x-untruncate--many-lines - Remove many-lines truncation after it's added.
+
+Styleguide Tools.ExtendsAndMixins.Truncate
+*/
+
+/* Many Lines */
+/* WARNING: Relies on proprietary and undocumented rules (that work well) */
+
+.x-truncate--many-lines {
+  --lines: 2;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+
+  overflow: hidden;
+  -webkit-line-clamp: var(--lines);
+}
+.x-untruncate--many-lines {
+  overflow: visible;
+  -webkit-line-clamp: inherit;
+}
+
+/* One Line */
+
+.x-truncate--one-line {
+	text-overflow: ellipsis;
+
+	overflow: hidden;
+	white-space: nowrap;
+}
+.x-untruncate--one-line {
+  overflow: visible;
+	white-space: normal;
+}
+

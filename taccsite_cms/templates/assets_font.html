@@ -1,9 +1,11 @@
 {# Load web fonts early #}
 {# SEE: https://confluence.tacc.utexas.edu/x/B4COCw #}
+{% load staticfiles %}
 
 
 
-<link id="css-site-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+<link id="css-site-font" rel="stylesheet" href="{% static 'site_cms/css/build/site.fonts.css' %}">
+<link id="css-site-font--backup" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
 
 
 
