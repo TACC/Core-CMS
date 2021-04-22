@@ -7,18 +7,6 @@
 /* FAQ: Styles within a custom element can not access the `:root` */
 
 /* SETTINGS */
-
-/* NOTE: These errors are expected ONLY when freeezing variables—
-
-  ```
-  […] --global-color-warning--normal is undefined and used without a fallback
-  […] --global-color-warning--weak is undefined and used without a fallback
-  ```
-
-  —because the definition of those variables is incomplete before freezing.
-
-  P.S. In raw CSS, the values dynamically cascade at run time after definition.
-*/
 @import url("../../../../site_shared/css/src/_imports/settings/color.css");
 @import url("../../../../site_shared/css/src/_imports/settings/border.css");
 
