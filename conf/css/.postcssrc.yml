@@ -1,0 +1,22 @@
+plugins:
+  postcss-import:
+    path:
+      - './taccsite_cms/static/site_cms/css/src'
+  postcss-extend: {}
+  postcss-preset-env:
+    # SEE: https://github.com/csstools/postcss-preset-env#features
+    stage: false
+    # SEE: https://github.com/csstools/postcss-preset-env/blob/master/src/lib/plugins-by-id.js#L35
+    features:
+      custom-media-queries: true
+      media-query-ranges: true
+  cssnano:
+    preset:
+      - 'default'
+      -
+        # Both of these are disabled to allow manual CSS build tests
+        # The `discardDuplicates` is disabled to prevent hiding duplicate CSS
+        discardDuplicates:
+          exclude: true
+        mergeRules:
+          exclude: true

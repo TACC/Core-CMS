@@ -1,0 +1,71 @@
+/*
+Layout
+
+Styles that allow re-usable layouts.
+
+.x-layout--a - Widest: two even columns
+.x-layout--b - Widest: one wide column & one narrow column
+.x-layout--c - Widest: one narrow column & one wide column
+.x-layout--d - Widest: three even columns
+.x-layout--d - Always: multiple even rows
+
+Styleguide Tools.ExtendsAndMixins.Layout
+*/
+
+
+
+/* Column-Based */
+
+.x-layout--a,
+.x-layout--b,
+.x-layout--c,
+.x-layout--d {
+  display: grid;
+}
+
+/* A (two even columns) */
+
+@media (--medium-and-below) {
+  .x-layout--a { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+}
+@media (--medium-and-above) {
+  .x-layout--a { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* B (one wide column & one narrow column) */
+
+@media (--medium-and-below) {
+  .x-layout--b { grid-template-columns: 1fr; }
+}
+@media (--medium-and-above) {
+  .x-layout--b { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); }
+}
+
+/* C (one narrow column & one wide column) */
+
+@media (--medium-and-below) {
+  .x-layout--c { grid-template-columns: 1fr; }
+}
+@media (--medium-and-above) {
+  .x-layout--c { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); }
+}
+
+/* D (three equal columns) */
+
+@media (--x-narrow-and-below) {
+  .x-layout--d { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+}
+@media (--narrow-to-medium), (--x-narrow-to-narrow) {
+  .x-layout--d { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (--medium-and-above) {
+  .x-layout--d { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+
+/* Row-Based */
+
+.x-layout--e {
+  display: flex;
+  flex-direction: column;
+}

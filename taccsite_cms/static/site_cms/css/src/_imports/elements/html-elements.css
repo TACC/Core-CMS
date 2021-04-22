@@ -28,7 +28,12 @@ body {
 }
 
 body {
+  /* To avoid negative whitespace at right on horz scroll on tiny screen */
+  min-width: 290px; /* developer-decided value */
+
   font-family: var(--global-font-family);
+
+  line-height: 1.4; /* overwrite Bootstrap */
 }
 
 

@@ -23,4 +23,8 @@ Styleguide Objects.Site
 .o-site__head,
 .o-site__foot {
   flex-shrink: 0;
+
+  /* Hides any overflow from `o-site__body` (e.g. `o-section__banner-image`) */
+  position: relative;
+  z-index: 1;
 }
