@@ -29,11 +29,15 @@ window.redirectPaths = ['/atlas/', 'another-path'];
     /**
      * Set external links to open in new tab
      * @param {array.<string>} redirectPaths - A list of relative URLs that shoul be treated like external URLs
+     * @param {HTMLElement} [scope=document] - The element within which to search for links
      */
-    function findLinksAndSetTargets(redirectPaths) {
+    function findLinksAndSetTargets(redirectPaths, scope = document) {
         const links = document.getElementsByTagName('a');
         [ ...links ].forEach( function setTarget(link) {
             if ( ! link.href) {
+              return false;
+            }
+            if (link.href.indexOf('javascript') === 0) {
               return false;
             }
 
