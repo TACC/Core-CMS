@@ -45,8 +45,13 @@ window.redirectPaths = ['/atlas/', 'another-path'];
                 return doPathsMatch(path, link.pathname);
             });
             const isExternal = (link.origin !== document.location.origin);
+            const isIndex = ( (link.host === document.location.host)
+                            && link.pathname === '/');
+            const shouldOpenInNewWindow = (
+                ! isIndex && (isExternal || hasExternalRedirect)
+            );
 
-            if (isExternal || hasExternalRedirect) {
+            if ( shouldOpenInNewWindow ) {
                 if (link.target !== '_blank') {
                     link.target = '_blank';
                     console.debug(`Link ${link.href} now opens in new tab`);
