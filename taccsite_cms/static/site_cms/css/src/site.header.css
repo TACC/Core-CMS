@@ -7,9 +7,12 @@
 
 /* SETTINGS */
 
-/* NOTE: This is already imported in `site.css` */
+/* NOTE: These are already imported in `site.css` */
 /* TODO: Find a way to be modular, but not redundant */
 @import url("_imports/settings/font.css");
+/* NOTE: Portal does not need this, because it has independent copy of these,
+         but the User Guides do not. This can be removed in Core-CMS PR #192 */
+@import url("../../../site_shared/css/src/_imports/settings/color.css");
 
 /* TRUMPS */
 
