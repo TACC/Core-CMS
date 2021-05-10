@@ -1,8 +1,4 @@
-/* WARNING: This is merely a polished version of Frontera CMS rush code */
-/* SEE: https://gitlab.tacc.utexas.edu/wma-cms/frontera-cms/blob/4a0d198/taccsite_cms/static/site_cms/scripts/base.js#L86 */
-
-/* RFC: If we dynamically load isolated nav DOM from Portal, then do we need this solution? */
-/* SEE: https://github.com/TACC/Frontera-Portal/blob/d4c3895/server/portal/templates/includes/navigation.html#L78-L92 */
+/* WARNING: This code is deprecated. It must be removed AFTER GH-195/FP-1015. */
 
 /**
  * Load JSON from an endpoint, and perform success-dependent actions
