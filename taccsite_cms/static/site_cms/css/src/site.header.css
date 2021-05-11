@@ -14,6 +14,15 @@
          but the User Guides do not. This can be removed in Core-CMS PR #192 */
 @import url("_imports/settings/color.css");
 
+
+
+/* COMPONENTS */
+
+@import url("_imports/components/c-branding.css");
+@import url("_imports/components/c-logo.css");
+
+
+
 /* TRUMPS */
 
 /* Shared with Portal */
@@ -31,8 +40,3 @@
 @import url("_imports/trumps/s-header.css");
 @import url("_imports/trumps/s-portal-nav.css");
 @import url("_imports/trumps/s-cms-nav.css");
-
-/* UNORGANIZED */
-
-/* TODO: Convert to a component */
-@import url("_imports/branding_logos.css");

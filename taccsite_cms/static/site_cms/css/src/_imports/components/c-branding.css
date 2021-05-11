@@ -1,0 +1,91 @@
+/*
+Branding
+
+A list of linked images for funders and affiliates. Project customization should be minimal.
+
+Markup: c-branding.twig.html
+
+Styleguide Components.Branding
+*/
+@import url("_imports/tools/media-queries.css");
+
+/* IDEA: Use multi-column (`column-*`) to simplify border, margin, separator */
+
+
+
+/* Base */
+
+.c-branding {
+  --column-gap--side: 25px;
+  --column-gap--center: 35px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  /* This prevents header bar resize when branding is dynamically added */
+  /* CAVEAT: This is only for Portal and Docs which dynamically load content */
+  /* FAQ: Do not use `48.78px`, because Safari only accepts whole numbers */
+  height: 40px;
+
+  background-color: var(--global-color-primary--xx-dark);
+  color: var(--global-color-primary--xx-light);
+  border-bottom: 1px solid #aaa;
+}
+
+/* A responsive column gap */
+.c-branding__link:first-child .c-branding__image {
+  margin-right: var(--column-gap--side);
+}
+.c-branding__link:not(:first-child):not(:last-child) .c-branding__image {
+  margin-left: var(--column-gap--center);
+  margin-right: var(--column-gap--center);
+}
+.c-branding__link:last-child .c-branding__image {
+  margin-left: var(--column-gap--side);
+}
+@media (--x-narrow-and-below) {
+  .c-branding {
+    --column-gap--side: 10px;
+    --column-gap--center: 10px;
+  }
+}
+
+
+
+/* Elements */
+
+.c-branding__link {
+  --height: 90%;
+
+  height: var(--height);
+}
+.c-branding__separator {
+  /* To add border */
+  height: 25px;
+  border-left: solid 1px #fff;
+
+  /* To hide text */
+  width: 0;
+  overflow: hidden;
+}
+.c-branding__image {
+  /* To match parent height */
+  height: 100%;
+}
+
+/* Specific brands */
+.c-branding__nsf-link    { --height: 35px; }
+.c-branding__tacc-link   { --height: 30px; }
+.c-branding__utexas-link { --height: 26px; }
+
+
+
+/* Modifiers */
+
+/* Compact */
+.c-branding--compact {
+  --column-gap--side: 10px;
+  --column-gap--center: 10px;
+}

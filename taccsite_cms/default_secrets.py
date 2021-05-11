@@ -233,7 +233,7 @@ _ANORG_FAVICON = {
 _TACC_BRANDING = [
     "tacc",
     "site_cms/img/org_logos/tacc-white.png",
-    "branding-tacc",
+    "branding-tacc", # Unused but kept to retain index count # GH-59: Remove
     "https://www.tacc.utexas.edu/",
     "_blank",
     "TACC Logo",
@@ -244,7 +244,7 @@ _TACC_BRANDING = [
 _UTEXAS_BRANDING = [
     "utexas",
     "site_cms/img/org_logos/utaustin-white.png",
-    "branding-utaustin",
+    "branding-utaustin", # Unused but kept to retain index count # GH-59: Remove
     "https://www.utexas.edu/",
     "_blank",
     "University of Texas at Austin Logo",
@@ -255,7 +255,7 @@ _UTEXAS_BRANDING = [
 _NSF_BRANDING = [
     "nsf",
     "site_cms/img/org_logos/nsf-white.png",
-    "branding-nsf",
+    "branding-nsf", # Unused but kept to retain index count # GH-59: Remove
     "https://www.nsf.gov/",
     "_blank",
     "NSF Logo",
@@ -272,7 +272,7 @@ _BRANDING = [ _TACC_BRANDING, _UTEXAS_BRANDING ]        # Default TACC Portal.
 _PORTAL_LOGO = [
     "portal",
     "site_cms/img/org_logos/portal.png",
-    "",
+    "", # Unused, but kept to retain index count
     "/",
     "_self",
     "Portal Logo",
