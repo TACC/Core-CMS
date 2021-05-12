@@ -26,6 +26,7 @@ docker_repo.var
 repo_name.var
 
 # Secrets and Customizations
+settings.json
 taccsite_cms/secrets.py
 *.custom.yml
 

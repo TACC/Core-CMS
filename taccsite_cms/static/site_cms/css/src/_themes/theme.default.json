@@ -1,6 +1,7 @@
 {
   "//": "Metadata for humans",
   "format": "https://github.com/csstools/postcss-preset-env#importfrom",
+  "name": "default",
 
   "environment-variables": {
 

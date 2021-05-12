@@ -1,10 +1,9 @@
 /**
- * Export appropriate theme file based on `.env` value
+ * Export appropriate theme file based on settings value
  */
-const dotenv = require('dotenv');
-
-const env = dotenv.config({ path: '.env' }).parsed;
-const theme = env.THEME || 'default';
+const rootPath = __dirname + '/../../../../../../';
+const settings = require( rootPath + 'taccsite_cms/settings.json');
+const theme = settings.THEME || 'default';
 
 /**
  * Perform `require` but on fail:
