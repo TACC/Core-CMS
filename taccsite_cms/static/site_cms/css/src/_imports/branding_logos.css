@@ -22,17 +22,16 @@
   /* FAQ: Do not use `48.78px`, because Safari only accepts whole numbers */
   height: 49px;
 
-
   background-color: var(--global-color-primary--xx-dark);
   color: var(--global-color-primary--xx-light);
-  border-bottom: 1px solid #aaa;
+  border-bottom: 1px solid var(--global-color-primary--normal);
 }
 
 .branding-seperator {
   width: 1px;
   height: 100%;
   max-height: var(--branding-logo-height);
-  border-left: solid 1px #fff;
+  border-left: solid 1px var(--global-color-primary--xx-light);
   margin: 0 15px;
   vertical-align: middle;
 }

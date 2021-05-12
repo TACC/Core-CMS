@@ -22,8 +22,6 @@ Styleguide Trumps.Scopes.Header
             - On any other CMS, `1rem` = `16px` (browser default). */
 
 .s-header {
-  --text-color: var(--global-color-primary--xx-light);
-
   font-size: 16px; /* NO-R/EM: Overwrite `bootstrap.3.3.7.css` */
 
   /* FAQ: Asssigning this font is only necessary for the User Guide,
@@ -35,8 +33,10 @@ Styleguide Trumps.Scopes.Header
   /* Copied from Portal (via `body`) */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
 
+  /* To have border not show, ensure value equals that of `--bkgd-color` */
+  border-bottom: 1px solid env(--header-major-border-color);
+}
 
 
 /* Affiliation */
@@ -54,7 +54,7 @@ Styleguide Trumps.Scopes.Header
   margin-right: 16px; /* NO-R/EM: 1rem (from Bootstrap via `.navbar-brand`) */
   padding: 0;
 
-  color: var(--text-color);
+  color: env(--header-text-color);
   /* text-decoration: none; *//* already provided by Bootstrap */
 }
 
@@ -78,7 +78,7 @@ Styleguide Trumps.Scopes.Header
   --nav-padding-vert: 5px;
   --nav-padding-horz: calc(16px + 20px);
 
-  background-color: var(--global-color-primary--xx-dark);
+  background-color: env(--header-bkgd-color);
   padding: var(--nav-padding-vert) var(--nav-padding-horz);
 }
 
@@ -113,7 +113,7 @@ Styleguide Trumps.Scopes.Header
 #s-header .nav-link,
 /* HACK: Support `span.nav-link` having children `a` and `a.dropdown-toggle-split` */
 #s-header .nav-link > a {
-  color: var(--text-color);
+  color: env(--header-text-color);
   /* text-decoration: none; *//* already provided by Bootstrap */
 }
 
@@ -134,13 +134,8 @@ Styleguide Trumps.Scopes.Header
 
 /* Create a line between search bar and login */
 /* FAQ: The line should only exist if both elements are present */
-.s-header .s-search-bar ~ .s-portal-nav::before {
-  content: "";
-  width: 1px;
-  /* FAQ: Not `height`, cuz `.s-search-bar` (via `.form-inline`) is flexbox */
-  align-self: stretch;
-
-  background-color: rgb(255,255,255);
+.s-header .s-search-bar ~ .s-portal-nav {
+  border-left: 1px solid env(--header-minor-border-color);
 
   margin-left: 12px;
 }
