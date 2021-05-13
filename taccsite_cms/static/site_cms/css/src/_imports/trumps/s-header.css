@@ -47,15 +47,18 @@ Styleguide Trumps.Scopes.Header
 
 /* Logo */
 
-.s-header .navbar-brand {
-  /* If branding is short enough, then align position of first CMS nav link with Portal "Dashboard" header */
-  /* WARNING: This is a manual value; if Portal interface changes, then this may need to change */
+.s-header .c-logo {
+  /* To align position of first CMS nav link with Portal "Dashboard" header */
+  /* WARNING: If Portal UI changes, then these styles may need to change */
   min-width: 176px;
   margin-right: 16px; /* NO-R/EM: 1rem (from Bootstrap via `.navbar-brand`) */
   padding: 0;
 
   color: env(--header-text-color);
   /* text-decoration: none; *//* already provided by Bootstrap */
+}
+.s-header .c-logo__image {
+  height: 40px;
 }
 
 
@@ -75,8 +78,8 @@ Styleguide Trumps.Scopes.Header
   /* FAQ: The `calc()` keeps track of disparate source of space values */
   /* `16px` = `1rem` from Portal (via `#sidebar .nav-content`) */
   /* `20px` from Portal (via `.nav-link`) */
-  --nav-padding-vert: 5px;
   --nav-padding-horz: calc(16px + 20px);
+  --nav-padding-vert: 5px;
 
   background-color: env(--header-bkgd-color);
   padding: var(--nav-padding-vert) var(--nav-padding-horz);
