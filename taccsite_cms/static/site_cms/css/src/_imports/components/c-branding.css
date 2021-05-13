@@ -31,7 +31,7 @@ Styleguide Components.Branding
 
   background-color: var(--global-color-primary--xx-dark);
   color: var(--global-color-primary--xx-light);
-  border-bottom: 1px solid #aaa;
+  border-bottom: 1px solid var(--global-color-primary--normal);
 }
 
 /* A responsive column gap */
@@ -64,7 +64,7 @@ Styleguide Components.Branding
 .c-branding__separator {
   /* To add border */
   height: 25px;
-  border-left: solid 1px #fff;
+  border-left: solid 1px var(--global-color-primary--xx-light);
 
   /* To hide text */
   width: 0;
