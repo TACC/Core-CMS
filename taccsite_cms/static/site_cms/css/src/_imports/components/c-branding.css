@@ -26,7 +26,6 @@ Styleguide Components.Branding
 
   /* This prevents header bar resize when branding is dynamically added */
   /* CAVEAT: This is only for Portal and Docs which dynamically load content */
-  /* FAQ: Do not use `48.78px`, because Safari only accepts whole numbers */
   height: 40px;
 
   background-color: var(--global-color-primary--xx-dark);

@@ -23,5 +23,5 @@ Styleguide Components.Logo
 /* Elements  */
 
 .c-logo__image {
-  /* … */
+  height: 100%;
 }

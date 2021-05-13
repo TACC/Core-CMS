@@ -15,125 +15,178 @@ Markup: s-header.html.twig
 
 Styleguide Trumps.Scopes.Header
 */
+@import url("_imports/tools/x-arrow.css");
 
-/* WARNING: NO-R/EM: Until Frontera CMS drops Bootstrap 3.7.1 (for old design)…
-            No `em` nor `rem` allowed, because they aren't consitently reliable.
-            - On Frontera CMS, `1rem` = `10px` and `body { font-size: 15px }`
-            - On any other CMS, `1rem` = `16px` (browser default). */
+@custom-selector :--in-cms    body > .o-site__body;
+@custom-selector :--in-portal body > .content;
+@custom-selector :--in-docs   body > #frontera-top-nav-container;
 
 .s-header {
-  font-size: 16px; /* NO-R/EM: Overwrite `bootstrap.3.3.7.css` */
+  /* FAQ: Other flex styles come from Bootstrap via `.navbar` */
+  align-items: stretch;
 
-  /* FAQ: Asssigning this font is only necessary for the User Guide,
-          because it has a different `body` font. Otherwise, this style
-          repeats the CMS and Portal `body` font. But, with this style,
-          the header may be moved to a future page/site without losing font */
-  /* TODO: Find a way to be safe, but not redundant */
-  font-family: var(--global-font-family);
+  /* Make horizontal padding match the horizontal content buffer in Portal */
+  /* FAQ: The `calc()` keeps track of disparate source of space values */
+  /*      - 16px is 1rem from Portal (via `#sidebar .nav-content`) */
+  /*      - 20px is from Portal (via `.nav-link`) */
+  padding: 0 calc(16px + 20px);
+
+  background-color: env(--header-bkgd-color);
+
+  font-size: 12px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
+  font-weight: bold;
+  font-family: env(--header-font-family);
+
   /* Copied from Portal (via `body`) */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+/* To overwrite Portal which loads Bootstrap after header styles */
+:--in-portal .s-header {
+  padding: 0 calc(16px + 20px);
+}
 
-  /* To have border not show, ensure value equals that of `--bkgd-color` */
-  border-bottom: 1px solid env(--header-major-border-color);
+/* On wide viewport, prevent header resize from dynamic content */
+@media (--wide-and-above) {
+  /* CAVEAT: This is only for Portal and Docs which dynamically load content */
+  .s-header {
+    height: 55px;
+  }
 }
 
 
-/* Affiliation */
-
-/* SEE: taccsite_cms/static/site_cms/css/src/_imports/branding_logos.css */
 
 
 
 /* Logo */
 
 .s-header .c-logo {
-  /* To align position of first CMS nav link with Portal "Dashboard" header */
-  /* WARNING: If Portal UI changes, then these styles may need to change */
-  min-width: 176px;
-  margin-right: 16px; /* NO-R/EM: 1rem (from Bootstrap via `.navbar-brand`) */
-  padding: 0;
+  height: 100%;
 
+  /* To align position of first CMS nav link with Portal "Dashboard" header */
+  /* NOTE: Each portal should set this value based on its image width */
+  --offset: 10px;
+  margin-right: var(--offset);
+
+  /* FAQ: In case image does not load and browser shows alt text */
   color: env(--header-text-color);
-  /* text-decoration: none; *//* already provided by Bootstrap */
 }
+/* Overwrite Bootstrap */
+.s-header .c-logo.navbar-brand {
+  padding-top: unset;
+  padding-bottom: unset;
+  display: unset;
+}
+
 .s-header .c-logo__image {
-  height: 40px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
+
+
 
 
 
 /* Navigation */
 
-/* On wide viewport, prevent header resize from dynamic content */
-/* CAVEAT: This is only for Portal and Docs which dynamically load content */
-@media only screen and (min-width: 1201px) {
-  .s-header.navbar {
-    height: 50px;
-  }
+/* FAQ: Each relies on the parent also stretching */
+.s-header,
+:--in-portal .s-header,
+.s-header .navbar-collapse {
+  align-items: stretch;
 }
 
-.s-header.navbar {
-  /* Make horizontal padding match the horizontal content buffer in Portal */
-  /* FAQ: The `calc()` keeps track of disparate source of space values */
-  /* `16px` = `1rem` from Portal (via `#sidebar .nav-content`) */
-  /* `20px` from Portal (via `.nav-link`) */
-  --nav-padding-horz: calc(16px + 20px);
-  --nav-padding-vert: 5px;
 
-  background-color: env(--header-bkgd-color);
-  padding: var(--nav-padding-vert) var(--nav-padding-horz);
-}
 
-/* Navigation: Links */
+/* Links */
+
+/* RFE: Fix bug on the Internet so we can use these reliably */
+/* SEE: https://github.com/postcss/postcss-custom-selectors/issues/40 */
+/*
+@custom-selector :--nav-link-hover  .s-header .nav-link:hover;
+@custom-selector :--nav-link-focus  .s-header .nav-link:focus;
+@custom-selector :--nav-link-active .s-header .nav-link:active;
+@custom-selector :--nav-link-current
+  .s-header .nav-item.active .nav-link,
+  .s-header .nav-item.dropdown.show .nav-link;
+*/
 
 .s-header .nav-link {
-  --line-height: 24px;
-  --border-width: 4px;
-  --border-offset: calc(var(--nav-padding-vert) - var(--border-width));
-  --border-color: rgb(213, 181, 124);
+  height: 100%;
 
-  /* The nav vertical padding does not match the link border, so the alignment
-     of the link border with the bottom of the header is off by small amount */
-  position: relative;
-  top: var(--border-offset);
-
-  line-height: var(--line-height);
-
-  /* If link text uses 2 lines, header grows taller (but it must not do so) */
+  display: flex;
+  align-items: center;
+  /* FAQ: If link text uses 2 lines, header grows taller, but it must not */
   white-space: nowrap;
+
+  color: env(--header-text-color);
+}
+.s-header .nav-link:hover,
+.s-header .nav-link:active,
+.s-header .nav-item.active .nav-link,
+.s-header .nav-item.dropdown.show .nav-link {
+  background-color: env(--header-link-bkgd-color);
 }
 .s-header .nav-link:hover,
 .s-header .nav-link:focus,
 .s-header .nav-link:active,
-.s-header .nav-item.active .nav-link {
-  border-width: 0 0 var(--border-width);
-  border-style: solid;
-  border-color: var(--border-color);
-  margin-bottom: calc( var(--border-width) * -1 );
+.s-header .nav-item.active .nav-link,
+.s-header .nav-item.dropdown.show .nav-link {
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid env(--header-accent-color);
 }
-/* HACK: Using an ID selector, because Bootstrap has overspecific selectors */
-#s-header .nav-link,
-/* HACK: Support `span.nav-link` having children `a` and `a.dropdown-toggle-split` */
-#s-header .nav-link > a {
+/* Overwrite Bootstrap */
+.s-header.navbar-dark .navbar-nav .nav-link,
+.s-header.navbar-dark .navbar-nav .nav-link:focus,
+.s-header.navbar-dark .navbar-nav .nav-link:hover {
   color: env(--header-text-color);
-  /* text-decoration: none; *//* already provided by Bootstrap */
+}
+.s-header .nav-link {
+  padding-top: unset;
+  padding-bottom: unset;
 }
 
-/* Navigation: Links: Responsive Design */
-
-/* Tweak Bootstrap `_nav.scss` (which selects via `navbar-expand-` class) */
-.s-header[class*="navbar-expand-"] .navbar-nav .nav-link {
-  padding-top: 8px; /* NO-R/EM: 0.5rem (from Bootstrap) */
-  padding-bottom: 8px; /* NO-R/EM: 0.5rem (from Bootstrap) */
-
-  padding-right: 14px; /* NO-R/EM: .875rem (overwrite Bootstrap) */
-  padding-left: 14px; /* NO-R/EM: .875rem (overwrite Bootstrap) */
+@media (--wide-and-above) {
+  .s-header .navbar-nav .nav-link,
+  :--in-portal .s-header .navbar-nav .nav-link {
+    padding-right: 1.25em; /* intent is 15px padding for 12px font */
+    padding-left: 1.25em; /* intent is 15px padding for 12px font */
+  }
+}
+@media (--wide-and-below) {
+  .s-header .navbar-nav .nav-link,
+  :--in-portal .s-header .navbar-nav .nav-link {
+    padding-right: 0.5em; /* intent is just very narrow (dev design) */
+    padding-left: 0.5em; /* intent is just very narrow (dev design) */
+  }
 }
 
+.s-header .dropdown-toggle::after {
+  @extend %x-arrow;
+
+  --size: 4px;
+  --line: 1px;
+  --color: env(--header-text-color);
+  margin-left: 8px;
+}
+.s-header .dropdown-toggle[aria-expanded="true"]::after {
+  @extend %x-arrow--up;
+  margin-top: 0.6em;
+}
+.s-header .dropdown-toggle[aria-expanded="false"]::after {
+  @extend %x-arrow--down;
+  margin-top: -0.4em;
+}
 
 
 /* Search */
+
+/* GH-101: Retain search design until Wes works on it */
+.s-header .s-search-bar,
+.s-header .s-search-bar::part(input),
+.s-header .s-search-bar::part(button) {
+  font-size: 12px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
+}
 
 /* Create a line between search bar and login */
 /* FAQ: The line should only exist if both elements are present */
@@ -149,6 +202,6 @@ Styleguide Trumps.Scopes.Header
 
 /* HACK: Using FontAwesome as placeholder */
 .s-header [class*="fa-"] {
-    width: 27px; /* NO-R/EM: 1.25em (from Portal `.fa`—FP-228 will deprecate it) */
+    width: 27px; /* (from Portal `.fa` 1.25em which FP-636 will deprecate) */
     text-align: center;
 }

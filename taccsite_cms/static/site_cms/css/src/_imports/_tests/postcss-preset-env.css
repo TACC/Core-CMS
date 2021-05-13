@@ -56,3 +56,33 @@ Styleguide _Test
 @media (--wide-window) {
   ._test{ background-color:red; }
 }
+
+
+/*! Custom Selectors */
+/* SEE: https://preset-env.cssdb.org/features#custom-selectors */
+
+/*! Goal: */
+article h1+p,article h2+p,article h3+p{color: #000;}
+
+/*! Test: */
+@custom-selector :--heading h1, h2, h3;
+
+article :--heading + p {
+  color: #000;
+}
+
+/*! Goal: */
+.nav-link:hover,.nav-link:focus,.nav-link:active{color:red;}
+
+/*! See: https://github.com/postcss/postcss-custom-selectors/issues/40 */
+
+/*! Test: */
+@custom-selector :--nav-link-hover  .nav-link:hover;
+@custom-selector :--nav-link-focus  .nav-link:focus;
+@custom-selector :--nav-link-active .nav-link:active;
+
+:--nav-link-hover,
+:--nav-link-focus,
+:--nav-link-active {
+  color: red;
+}
