@@ -7,17 +7,24 @@ Styleguide Trumps.ForOtherSites.Docs
 */
 @import url("_imports/tools/selectors.css");
 
+/* Sidebar Nav Dependency on Header Height */
+/* FAQ: These stylesare intentionally overriden by Docs layout resize script */
+/* SEE: https://bitbucket.org/taccaci/frontera-tech-docs/src/429f05f/frontera_theme/base.html#lines-69 */
+
+/* To position Docs' sidebar nav at expected initial vertical location ASAP */
 :--for-docs nav.stickynav {
+  /* Override `top: 0` (in `theme.css`) */
   top: 95px;
 }
 :--for-docs #frontera-top-nav {
-  /* To ensure header has height for a layout resize script */
-  /* SEE: https://bitbucket.org/taccaci/frontera-tech-docs/src/429f05f/frontera_theme/base.html#lines-69 */
+  /* To ensure header has expected height before Docs AJAX content load */
   min-height: 95px;
 
   /* WARNING: Unknown purpose! */
   background-color: rgb(51, 51, 51);
 }
+
+
 
 /* To compensate for Docs not having `.form-inline` in _its_ Bootstrap 4.3.1 */
 :--for-docs .form-inline {

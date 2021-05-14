@@ -25,15 +25,6 @@ Styleguide Trumps.Scopes.Header
 /* Container */
 
 .s-header {
-  /* FAQ: Other flex styles come from Bootstrap via `.navbar` */
-  align-items: stretch;
-
-  /* Make horizontal padding match the horizontal content buffer in Portal */
-  /* FAQ: The `calc()` keeps track of disparate source of space values */
-  /*      - 16px is 1rem from Portal (via `#sidebar .nav-content`) */
-  /*      - 20px is from Portal (via `.nav-link`) */
-  padding: 0 calc(16px + 20px);
-
   background-color: env(--header-bkgd-color);
 
   font-size: 12px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
@@ -44,28 +35,51 @@ Styleguide Trumps.Scopes.Header
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-/* To overwrite Portal which loads Bootstrap after header styles */
+/* To give cross-site header padding that respects Portal-only visual balance */
+.s-header,
+/* To overwrite Docs' Bootstrap which is unexpectedly loaded after this */
+/* RFE: Load Docs Bootstrap before CMS CSS (test, revisit relevant hacks) */
+:--for-docs .s-header,
+/* To overwrite Portal's Bootstrap which is mistakenly loaded after this */
+/* RFE: Load Portal Bootstrap before CMS CSS (test, revisit relevant hacks) */
 :--for-portal .s-header {
+  /* To align logo (whole image not just visible pixels) with Portal sidebar */
+  /* FAQ: The calc() retains values from disparate styles in Portal */
+  /* FAQ: The calc() is calculated at build time, so we may be verbose */
+  /*      - 16px is 1rem from Portal `#sidebar .nav-content` */
+  /*      - 20px is from Portal `.nav-link` */
   padding: 0 calc(16px + 20px);
 }
 
-/* On wide viewport, prevent header resize from dynamic content */
-@media (--wide-and-above) {
-  /* CAVEAT: This is only for Portal and Docs which dynamically load content */
-  .s-header {
-    height: 55px;
-  }
+/* To stretch elements as tall as parent (`height: 100%` for flex row items) */
+.s-header,
+/* To overwrite Docs' Bootstrap which is unexpectedly loaded after this */
+/* RFE: Load Docs Bootstrap before CMS CSS (test, revisit relevant hacks) */
+:--for-docs .s-header,
+/* To overwrite Portal's Bootstrap which is mistakenly loaded after this */
+/* RFE: Load Portal Bootstrap before CMS CSS (test, revisit relevant hacks) */
+:--for-portal .s-header,
+/* To propogate styles through extra wrapper (of Bootstrap-driven mobile nav) */
+.s-header .navbar-collapse {
+  align-items: stretch;
 }
 
-
+/* To prevent zero-height element as it is loaded */
+/* FAQ: The zero-height fix is most obvious on Portal/Docs or slow network */
+/* To prevent extra height from FOUC during Portal/Docs AJAX content load */
+/* To set nav height, but not constrain height of opened mobile nav */
+/* FAQ: Set height of descendants, but not of CMS and Portal and mobile navs */
+.s-header .c-logo,
+.s-header .navbar-toggler,
+.s-header tacc-search-bar {
+  height: 55px;
+}
 
 
 
 /* Logo */
 
 .s-header .c-logo {
-  height: 100%;
-
   /* To align position of first CMS nav link with Portal "Dashboard" header */
   /* NOTE: Each portal should set this value based on its image width */
   --offset: 10px;
@@ -87,17 +101,6 @@ Styleguide Trumps.Scopes.Header
 }
 
 
-
-
-
-/* Navigation */
-
-/* FAQ: Each relies on the parent also stretching */
-.s-header,
-:--for-portal .s-header,
-.s-header .navbar-collapse {
-  align-items: stretch;
-}
 
 
 
@@ -151,6 +154,8 @@ Styleguide Trumps.Scopes.Header
 
 @media (--wide-and-above) {
   .s-header .navbar-nav .nav-link,
+  /* To overwrite Portal's Bootstrap which is mistakenly loaded after this */
+  /* RFE: Load Portal Bootstrap before CMS CSS (test, revisit relevant hacks) */
   :--for-portal .s-header .navbar-nav .nav-link {
     padding-right: 1.25em; /* intent is 15px padding for 12px font */
     padding-left: 1.25em; /* intent is 15px padding for 12px font */
@@ -158,6 +163,8 @@ Styleguide Trumps.Scopes.Header
 }
 @media (--wide-and-below) {
   .s-header .navbar-nav .nav-link,
+  /* To overwrite Portal's Bootstrap which is mistakenly loaded after this */
+  /* RFE: Load Portal Bootstrap before CMS CSS (test, revisit relevant hacks) */
   :--for-portal .s-header .navbar-nav .nav-link {
     padding-right: 0.5em; /* intent is just very narrow (dev design) */
     padding-left: 0.5em; /* intent is just very narrow (dev design) */

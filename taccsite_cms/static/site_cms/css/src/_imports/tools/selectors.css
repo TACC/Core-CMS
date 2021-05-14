@@ -5,7 +5,7 @@ For Other Sites
 
 These are global selectors to target known subsites.
 
-Usage: `:--for-portal .some-class { … }`
+Usage: `:--for-subsite .some-class { … }`
 
 Notice: These must be Tools (imported as needed) until native browser support, at which time they can become Settings (imported globally).
 
