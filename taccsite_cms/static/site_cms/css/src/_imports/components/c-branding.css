@@ -30,7 +30,7 @@ Styleguide Components.Branding
 :--for-docs .branding-header,
 :--for-portal .branding-header {
   /* To prevent zero-height element as it is loaded */
-  height: 40px;
+  height: env(--header-brandbar-height);
 
   color: var(--global-color-primary--xx-light);
   background-color: env(--header-bkgd-color);

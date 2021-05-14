@@ -1,6 +1,7 @@
 /**
  * Export appropriate theme file based on settings value
  */
+const merge = require('merge-lite');
 const rootPath = __dirname + '/../../../../../../';
 const settings = require( rootPath + 'taccsite_cms/settings.json');
 const theme = settings.THEME || 'default';
@@ -26,8 +27,12 @@ function requireOrElse(modulePath, callback) {
   }
 }
 
-const data = requireOrElse(`./theme.${theme}.json`, () => {
+const constants = require(`./constants.json`);
+const themeData = requireOrElse(`./theme.${theme}.json`, () => {
   console.error(`Unable to find '${__dirname}/theme.${theme}.json'`);
 });
+
+/* To prevent a theme from overwriting a constant, merge constants onto theme */
+let data = merge( themeData, constants );
 
 module.exports = data;

@@ -1,0 +1,15 @@
+{
+  "// METADATA FOR HUMANS": "",
+  "format": "https://github.com/csstools/postcss-preset-env#importfrom",
+  "name": "constants",
+
+  "environment-variables": {
+
+    "// HEADER": "",
+    "--header-font-family": "Roboto, sans-serif",
+    "--header-accent-color": "#877453",
+    "--header-brandbar-height": "40px",
+    "--header-navbar-height": "55px"
+
+  }
+}

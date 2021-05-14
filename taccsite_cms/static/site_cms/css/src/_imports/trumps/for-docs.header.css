@@ -7,33 +7,37 @@ Styleguide Trumps.ForOtherSites.Docs
 */
 @import url("_imports/tools/selectors.css");
 
-/* Sidebar Nav Dependency on Header Height */
-/* FAQ: These stylesare intentionally overriden by Docs layout resize script */
-/* SEE: https://bitbucket.org/taccaci/frontera-tech-docs/src/429f05f/frontera_theme/base.html#lines-69 */
+
+
+/* Initialize Sidebar Position (for Dependency on Header Height) */
 
 /* To position Docs' sidebar nav at expected initial vertical location ASAP */
 :--for-docs nav.stickynav {
-  /* Override `top: 0` (in `theme.css`) */
-  top: 95px;
-}
-:--for-docs #frontera-top-nav {
-  /* To ensure header has expected height before Docs AJAX content load */
-  min-height: 95px;
-
-  /* WARNING: Unknown purpose! */
-  background-color: rgb(51, 51, 51);
+  /* To override `top: 0` (in `theme.css`) */
+  /* FAQ: This is an initial value that is re-calculated by a Docs script */
+  /* SEE: https://bitbucket.org/taccaci/frontera-tech-docs/src/429f05f/frontera_theme/base.html#lines-69 */
+  top: calc(env(--header-brandbar-height) + env(--header-navbar-height));
 }
 
 
+
+/* Overwrite Bootstrap (for Search Form in Header) */
 
 /* To compensate for Docs not having `.form-inline` in _its_ Bootstrap 4.3.1 */
 :--for-docs .form-inline {
-  /* SEE: CMS https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/… */
-  /* SEE: Portal https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/… */
+  /* The search bar expects these styles to be available */
+  /* SEE: CMS //maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap… */
+  /* SEE: Portal //stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap… */
+  /* SEE: Docs /src/5b223a5/docs/css/cms.bootstrap.4.3.1.css */
   display: flex;
+  /* NOTE: These are perceptibly ineffectual but consistent with Portal & CMS */
   flex-flow: row wrap;
   align-items: center;
 }
+
+
+
+/* Overwrite ReadTheDocs (for Images in Header) */
 
 /* To overwrite `img { max-width: 100% }` */
 :--for-docs .s-header img,

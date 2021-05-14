@@ -1,13 +1,11 @@
 {
-  "//": "Metadata for humans",
+  "// METADATA FOR HUMANS": "",
   "format": "https://github.com/csstools/postcss-preset-env#importfrom",
   "name": "default",
 
   "environment-variables": {
 
     "// HEADER": "",
-    "--header-font-family": "Roboto, sans-serif",
-    "--header-accent-color": "#877453",
     "--header-text-color": "var(--global-color-primary--xx-light)",
     "--header-bkgd-color": "var(--global-color-primary--xx-dark)",
     "--header-link-bkgd-color": "#313131",

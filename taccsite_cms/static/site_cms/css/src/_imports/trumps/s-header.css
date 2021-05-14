@@ -72,7 +72,7 @@ Styleguide Trumps.Scopes.Header
 .s-header .c-logo,
 .s-header .navbar-toggler,
 .s-header tacc-search-bar {
-  height: 55px;
+  height: env(--header-navbar-height);
 }
 
 
