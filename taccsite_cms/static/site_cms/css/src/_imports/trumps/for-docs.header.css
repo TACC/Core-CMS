@@ -27,3 +27,9 @@ Styleguide Trumps.ForOtherSites.Docs
   flex-flow: row wrap;
   align-items: center;
 }
+
+/* To overwrite `img { max-width: 100% }` */
+:--for-docs .s-header img,
+:--for-docs .c-branding img {
+  max-width: unset;
+}
