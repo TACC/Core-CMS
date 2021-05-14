@@ -104,7 +104,7 @@ Styleguide Trumps.Scopes.Header
 
 
 
-/* Links */
+/* Nav Links */
 
 /* RFE: Fix bug on the Internet so we can use these reliably */
 /* SEE: https://github.com/postcss/postcss-custom-selectors/issues/40 */
@@ -186,6 +186,17 @@ Styleguide Trumps.Scopes.Header
 .s-header .dropdown-toggle[aria-expanded="false"]::after {
   @extend %x-arrow--down;
   margin-top: -0.4em;
+}
+
+
+
+
+
+/* Dropdown Menus */
+
+.dropdown-menu {
+  /* To overwrite Bootstrap's `1rem` */
+  font-size: 12px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
 }
 
 
