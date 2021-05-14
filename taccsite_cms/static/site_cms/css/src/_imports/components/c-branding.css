@@ -7,6 +7,7 @@ Markup: c-branding.twig.html
 
 Styleguide Components.Branding
 */
+@import url("_imports/tools/selectors.css");
 @import url("_imports/tools/media-queries.css");
 
 /* IDEA: Use multi-column (`column-*`) to simplify border, margin, separator */
@@ -23,15 +24,19 @@ Styleguide Components.Branding
   flex-direction: row;
   justify-content: center;
   align-items: center;
-
-  /* This prevents header bar resize when branding is dynamically added */
-  /* CAVEAT: This is only for Portal and Docs which dynamically load content */
+}
+.c-branding,
+/* To force style on old markup before new markup dynamically replaces it */
+:--for-docs .branding-header,
+:--for-portal .branding-header {
+  /* To prevent zero height branding bar as it is loaded */
   height: 40px;
 
-  background-color: var(--global-color-primary--xx-dark);
   color: var(--global-color-primary--xx-light);
+  background-color: env(--header-bkgd-color);
   border-bottom: 1px solid var(--global-color-primary--normal);
 }
+
 
 /* A responsive column gap */
 .c-branding__link:first-child .c-branding__image {

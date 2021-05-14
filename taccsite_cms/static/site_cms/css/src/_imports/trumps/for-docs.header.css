@@ -1,0 +1,29 @@
+/*
+Docs
+
+The [Core Docs](https://github.com/TACC/Core-Docs).
+
+Styleguide Trumps.ForOtherSites.Docs
+*/
+@import url("_imports/tools/selectors.css");
+
+:--for-docs nav.stickynav {
+  top: 95px;
+}
+:--for-docs #frontera-top-nav {
+  /* To ensure header has height for a layout resize script */
+  /* SEE: https://bitbucket.org/taccaci/frontera-tech-docs/src/429f05f/frontera_theme/base.html#lines-69 */
+  min-height: 95px;
+
+  /* WARNING: Unknown purpose! */
+  background-color: rgb(51, 51, 51);
+}
+
+/* To compensate for Docs not having `.form-inline` in _its_ Bootstrap 4.3.1 */
+:--for-docs .form-inline {
+  /* SEE: CMS https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/… */
+  /* SEE: Portal https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/… */
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
