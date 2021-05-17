@@ -199,7 +199,7 @@ Styleguide Trumps.Scopes.Header
 
 /* Dropdown Menus */
 
-.dropdown-menu {
+.s-header .dropdown-menu {
   padding: 7px 0 0;
   margin: unset; /* undo Bootstrap */
 
