@@ -25,17 +25,6 @@ Styleguide Components.Branding
   justify-content: center;
   align-items: center;
 }
-.c-branding,
-/* To force style on old markup before new markup dynamically replaces it */
-:--for-docs .branding-header,
-:--for-portal .branding-header {
-  /* To prevent zero-height element as it is loaded */
-  height: env(--header-brandbar-height);
-
-  color: var(--global-color-primary--xx-light);
-  background-color: var(--global-color-primary--xx-dark);
-  border-bottom: 1px solid var(--global-color-primary--normal);
-}
 
 
 /* A responsive column gap */
