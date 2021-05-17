@@ -28,7 +28,7 @@ Styleguide Trumps.Scopes.Header
   background-color: env(--header-bkgd-color);
 
   font-size: 12px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
-  font-weight: bold;
+  font-weight: env(--bold);
   font-family: env(--header-font-family);
 
   /* Copied from Portal (via `body`) */
@@ -143,8 +143,8 @@ Styleguide Trumps.Scopes.Header
 .s-header .nav-link:active,
 .s-header .nav-item.active .nav-link,
 .s-header .nav-item.dropdown.show .nav-link {
-  border-top: 4px solid transparent;
-  border-bottom: 4px solid env(--header-accent-color);
+  border-top: env(--border-width--xx-thick) solid transparent;
+  border-bottom: env(--border-width--xx-thick) solid env(--header-accent-color);
 }
 /* Overwrite Bootstrap */
 .s-header.navbar-dark .navbar-nav .nav-link,
@@ -200,9 +200,38 @@ Styleguide Trumps.Scopes.Header
 /* Dropdown Menus */
 
 .dropdown-menu {
-  /* To overwrite Bootstrap's `1rem` */
-  font-size: 12px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
+  padding: 7px 0 0;
+  margin: unset; /* undo Bootstrap */
+
+  background-color: env(--header-link-bkgd-color);
+  border: env(--border-width--normal) solid env(--header-accent-color);
+  border-radius: unset; /* undo Bootstrap */
 }
+/* FAQ: Selector specificty trumps Bootstrap, so no need for `:hover` (etc.) */
+.s-header .dropdown-item {
+  --horz-pad: 11px;
+  padding: 5px var(--horz-pad) 6px;
+
+  color: env(--header-text-color);
+  border-left: env(--border-width--x-thick) solid transparent;
+
+  font-size: 12px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
+  font-weight: env(--medium);
+}
+.s-header .dropdown-item + .dropdown-item {
+  box-shadow:
+    0px calc(-1 * (1px + var(--horz-pad))) 0px calc(-1 * var(--horz-pad))
+    env(--header-bkgd-color);
+}
+.s-header .dropdown-item.active,
+.s-header .dropdown-item:active,
+.s-header .dropdown-item:focus,
+.s-header .dropdown-item:hover {
+  border-left-color: env(--header-accent-color);
+  background-color: env(--header-bkgd-color);
+  box-shadow: none;
+}
+
 
 
 

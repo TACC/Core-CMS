@@ -9,7 +9,20 @@
     "--header-font-family": "Roboto, sans-serif",
     "--header-accent-color": "#877453",
     "--header-brandbar-height": "40px",
-    "--header-navbar-height": "55px"
+    "--header-navbar-height": "55px",
+
+    "// BORDER": "",
+    "--border-width--normal": "1px",
+    "--border-width--thick": "2px",
+    "--border-width--x-thick": "3px",
+    "--border-width--xx-thick": "4px",
+
+    "// FONT": "",
+    "// FONT WEIGHT": "A word-based shortcut for font weights",
+    "--light": 300,
+    "--regular": 400,
+    "--medium": 500,
+    "--bold": 700
 
   }
 }
