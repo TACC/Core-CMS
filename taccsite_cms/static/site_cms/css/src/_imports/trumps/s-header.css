@@ -223,7 +223,11 @@ Styleguide Trumps.Scopes.Header
 
 
 
-/* Dropdown Menus */
+/* Dropdowns */
+
+
+
+/* Menu */
 
 .s-header .dropdown-menu {
   padding: 7px 0 0;
@@ -233,22 +237,28 @@ Styleguide Trumps.Scopes.Header
   border: env(--border-width--normal) solid env(--header-accent-color);
   border-radius: unset; /* undo Bootstrap */
 }
+
+
+
+/* Item */
+
 /* FAQ: Selector specificty trumps Bootstrap, so no need for `:hover` (etc.) */
 .s-header .dropdown-item {
   --horz-pad: 11px;
   padding: 5px var(--horz-pad) 6px;
 
-  color: env(--header-text-color);
   border-left: env(--border-width--x-thick) solid transparent;
 
   font-size: 12px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
   font-weight: env(--medium);
 }
+/* To create line between each item */
 .s-header .dropdown-item + .dropdown-item {
   box-shadow:
     0px calc(-1 * (1px + var(--horz-pad))) 0px calc(-1 * var(--horz-pad))
     env(--header-bkgd-color);
 }
+
 .s-header .dropdown-item.active,
 .s-header .dropdown-item:active,
 .s-header .dropdown-item:focus,
@@ -258,6 +268,14 @@ Styleguide Trumps.Scopes.Header
   box-shadow: none;
 }
 
+.s-header .dropdown-item,
+/* To overwrite Bootstrap (see "Portal & Docs Selectors") */
+:--for-portal .s-header .dropdown-item.active,
+:--for-portal .s-header .dropdown-item:active,
+:--for-portal .s-header .dropdown-item:focus,
+:--for-portal .s-header .dropdown-item:hover {
+  color: env(--header-text-color);
+}
 
 
 
