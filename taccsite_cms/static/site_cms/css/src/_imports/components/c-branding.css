@@ -50,9 +50,7 @@ Styleguide Components.Branding
 /* Elements */
 
 .c-branding__link {
-  --height: 90%;
-
-  height: var(--height);
+  height: var(--height, 90%);
 }
 .c-branding__separator {
   /* To add border */
