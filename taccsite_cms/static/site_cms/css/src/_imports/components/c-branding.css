@@ -33,7 +33,7 @@ Styleguide Components.Branding
   height: env(--header-brandbar-height);
 
   color: var(--global-color-primary--xx-light);
-  background-color: env(--header-bkgd-color);
+  background-color: var(--global-color-primary--xx-dark);
   border-bottom: 1px solid var(--global-color-primary--normal);
 }
 
