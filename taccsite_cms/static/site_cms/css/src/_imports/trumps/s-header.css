@@ -80,10 +80,17 @@ Styleguide Trumps.Scopes.Header
 /* Logo */
 
 .s-header .c-logo {
-  /* To align position of first CMS nav link with Portal "Dashboard" header */
-  /* NOTE: Each portal should set this value based on its image width */
-  --offset: 10px;
-  margin-right: var(--offset);
+  /* To allow projects to set this value, but let Core implement it */
+  --width: auto;
+  width: var(--width);
+
+  /* To prevent zero-width element as it is loaded */
+  /* To align position of first CMS nav link with Portal section headers */
+  min-width: 190px; /* CAVEAT: Only works for logos narrow enough to fit */
+
+  /* To allow projects to set this value, but let Core implement it */
+  --space-after-logo-before-nav: 0;
+  margin-right: var(--space-after-logo-before-nav); /* overwrites Bootstrap */
 
   /* FAQ: In case image does not load and browser shows alt text */
   color: env(--header-text-color);

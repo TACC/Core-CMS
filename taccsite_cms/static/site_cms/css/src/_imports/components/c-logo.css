@@ -23,5 +23,8 @@ Styleguide Components.Logo
 /* Elements  */
 
 .c-logo__image {
+  /* To delegate height control to base/container */
   height: 100%;
+  /* To prevent length wider than (but allow narrower than) base/container */
+  max-width: 100%;
 }
