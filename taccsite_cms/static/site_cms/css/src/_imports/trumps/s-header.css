@@ -131,8 +131,6 @@ Styleguide Trumps.Scopes.Header
   align-items: center;
   /* FAQ: If link text uses 2 lines, header grows taller, but it must not */
   white-space: nowrap;
-
-  color: env(--header-text-color);
 }
 .s-header .nav-link:hover,
 .s-header .nav-link:active,
