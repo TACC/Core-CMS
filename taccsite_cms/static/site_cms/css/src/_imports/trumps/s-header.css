@@ -28,6 +28,17 @@ Styleguide Trumps.Scopes.Header
 
 
 
+/* Generic */
+
+/* .s-header, *//* FAQ: Already inherited from body */
+/* To match CMS line-height */
+:--for-docs .s-header,
+:--for-portal .s-header {
+  line-height: 1.4;
+}
+
+
+
 
 
 /* Nav Bar */
