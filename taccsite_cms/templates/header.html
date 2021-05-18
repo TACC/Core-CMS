@@ -6,7 +6,7 @@
 {% include "header_branding.html" %}
 
 <!-- Navigation Bar -->
-<nav id="header-navbar" class="s-header  navbar {% if settings.PORTAL %}navbar-expand-xl{% else %}navbar-expand-lg{% endif %} navbar-dark">
+<nav id="header-navbar" class="s-header  navbar navbar-dark {% if settings.PORTAL %}navbar-expand-lg  is-on-portal{% else %}navbar-expand-md{% endif %}">
   <!-- Portal Logo -->
   {% include "header_logo.html" %}
 

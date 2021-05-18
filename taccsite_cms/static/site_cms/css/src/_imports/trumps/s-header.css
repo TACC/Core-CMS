@@ -194,23 +194,54 @@ Styleguide Trumps.Scopes.Header
   color: env(--header-text-color) !important;
 }
 
+
+
+/* Responsive Design */
+
+.s-header .navbar-nav .nav-link,
+/* To overwrite Bootstrap (see "Portal & Docs Selectors") */
+:--for-portal .s-header .navbar-nav .nav-link {
+  padding-right: var(--space-between-horz, 0);
+  padding-left: var(--space-between-horz, 0);
+}
+
 /* To set less space between nav links when screen is narrow */
+/* " (sans Portal) */
+@media (--medium-and-above) {
+  /* To have 15px of space for 12px font */
+  .s-header:not(.is-on-portal) .nav-link { --space-between-horz: 1.25em; }
+}
+@media (--medium-and-below) {
+  /* To have "narrower" space (designed by dev) */
+  .s-header:not(.is-on-portal) .nav-link { --space-between-horz: 0.5em; }
+}
+/* " (with Portal) */
 @media (--wide-and-above) {
-  .s-header .navbar-nav .nav-link,
-  /* To overwrite Bootstrap (see "Portal & Docs Selectors") */
-  :--for-portal .s-header .navbar-nav .nav-link {
-    padding-right: 1.25em; /* intent is 15px padding for 12px font */
-    padding-left: 1.25em; /* intent is 15px padding for 12px font */
-  }
+  /* To have 15px of space for 12px font */
+  .s-header.is-on-portal .nav-link,
+  /* To apply style to old markup (see "Portal & Docs Selectors") */
+  /* TODO: Hardcode `is-on-portal` in Portal & Docs markup */
+  :--for-docs .s-header .nav-link,
+  :--for-portal .s-header .nav-link { --space-between-horz: 1.25em; }
 }
 @media (--wide-and-below) {
-  .s-header .navbar-nav .nav-link,
-  /* To overwrite Bootstrap (see "Portal & Docs Selectors") */
-  :--for-portal .s-header .navbar-nav .nav-link {
-    padding-right: 0.5em; /* intent is just very narrow (dev design) */
-    padding-left: 0.5em; /* intent is just very narrow (dev design) */
-  }
+  /* To have "narrower" space (designed by dev) */
+  .s-header.is-on-portal .nav-link,
+  /* To apply style to old markup (see "Portal & Docs Selectors") */
+  /* TODO: Hardcode `is-on-portal` in Portal & Docs markup */
+  :--for-docs .s-header .nav-link,
+  :--for-portal .s-header .nav-link { --space-between-horz: 0.5em; }
 }
+
+
+
+
+
+/* Dropdowns */
+
+
+
+/* Toggle */
 
 .s-header .dropdown-toggle::after {
   @extend %x-arrow;
@@ -228,12 +259,6 @@ Styleguide Trumps.Scopes.Header
   @extend %x-arrow--down;
   margin-top: -0.4em;
 }
-
-
-
-
-
-/* Dropdowns */
 
 
 
