@@ -55,14 +55,8 @@ Styleguide Settings.CustomProperties.Font
 
 
   /* Weight */
-  /* SEE: https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight */
-
-  /* NOTE: Long names to be consistent (opinions welcome) */
-  --global-font-weight--regular: 400;
-  --global-font-weight--medium: 500;
-  --global-font-weight--bold: 700;
-
-  /* NOTE: Short names to increase adoption (opinions welcome) */
+  /* TODO: Replace use of `var(--…)` with `env(--…)` for font weights */
+  /* WARNING: Deprecated! Do NOT use. Use `env(--…)` instead for font weights */
   --regular: 400;
   --medium: 500;
   --bold: 700;

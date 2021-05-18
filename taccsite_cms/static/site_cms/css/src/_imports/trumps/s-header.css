@@ -11,129 +11,319 @@ Styles for elements within a header that has third-party code:
 - a subset of Bootstrap 3.3.7
   (for CMS body content, can affect navigation)
 
+Portal & Docs Selectors:
+
+- To select old markup by using subsite-specific selectors, some styles target Portal or Docs. This was necessary because markup changed in CMS during GH-101, but Portal and Docs markup was not updated. If Portal and Docs markup matches that of CMS, then these selectors need not be so specific for _this_ purpose.
+- To overwrite Bootstrap by using extra-specific selectors, some styles target Portal or Docs. This was necessary because Bootstrap on both subsites load _after_ these styles (thus took precedence). If we load Bootstrap styles before CMS styles, then these selectors need not be so specific for _this_ purpose.
+
 Markup: s-header.html.twig
 
 Styleguide Trumps.Scopes.Header
 */
+@import url("_imports/tools/selectors.css");
+@import url("_imports/tools/x-arrow.css");
 
-/* WARNING: NO-R/EM: Until Frontera CMS drops Bootstrap 3.7.1 (for old design)…
-            No `em` nor `rem` allowed, because they aren't consitently reliable.
-            - On Frontera CMS, `1rem` = `10px` and `body { font-size: 15px }`
-            - On any other CMS, `1rem` = `16px` (browser default). */
+/* RFE: Make Portal & Docs markup match CMS (see "Portal & Docs Selectors") */
+/* RFE: Load Bootstrap before CMS stylesheets (see "Portal & Docs Selectors") */
 
-.s-header {
-  font-size: 16px; /* NO-R/EM: Overwrite `bootstrap.3.3.7.css` */
 
-  /* FAQ: Asssigning this font is only necessary for the User Guide,
-          because it has a different `body` font. Otherwise, this style
-          repeats the CMS and Portal `body` font. But, with this style,
-          the header may be moved to a future page/site without losing font */
-  /* TODO: Find a way to be safe, but not redundant */
-  font-family: var(--global-font-family);
-  /* Copied from Portal (via `body`) */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 
-  /* To have border not show, ensure value equals that of `--bkgd-color` */
-  border-bottom: 1px solid env(--header-major-border-color);
+/* Generic */
+
+/* .s-header, *//* FAQ: Already inherited from body */
+/* To match CMS line-height */
+:--for-docs .s-header,
+:--for-portal .s-header {
+  line-height: 1.4;
 }
 
 
-/* Affiliation */
 
-/* SEE: taccsite_cms/static/site_cms/css/src/_imports/branding_logos.css */
+
+
+/* Nav Bar */
+
+.s-header.navbar {
+  background-color: env(--header-bkgd-color);
+
+  font-size: 12px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
+  font-weight: env(--bold);
+  font-family: env(--header-font-family);
+
+  /* Copied from Portal (via `body`) */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* To give cross-site padding that respects Portal-specific visual balance */
+.s-header.navbar,
+/* To overwrite Bootstrap (see "Portal & Docs Selectors") */
+:--for-docs .s-header.navbar,
+:--for-portal .s-header.navbar {
+  /* To align logo (whole image not just visible pixels) with Portal sidebar */
+  /* FAQ: The calc() retains values from disparate styles in Portal */
+  /* FAQ: The calc() is calculated at build time, so we may be verbose */
+  /*      - 16px is 1rem from Portal `#sidebar .nav-content` */
+  /*      - 20px is from Portal `.nav-link` */
+  padding: 0 calc(16px + 20px);
+}
+
+/* To stretch elements as tall as parent */
+.s-header.navbar,
+/* To overwrite Bootstrap (see "Portal & Docs Selectors") */
+:--for-docs .s-header.navbar,
+:--for-portal .s-header.navbar,
+/* To propogate styles through extra wrapper (of Bootstrap-driven mobile nav) */
+.s-header .navbar-collapse {
+  align-items: stretch;
+}
+
+/* To prevent zero-height element as it is loaded */
+/* FAQ: The zero-height fix is most obvious on Portal/Docs or slow network */
+/* To prevent extra height from FOUC during Portal/Docs AJAX content load */
+/* To set nav height, but not constrain height of opened mobile nav */
+/* FAQ: Set height of descendants, but not of CMS and Portal and mobile navs */
+.s-header .c-logo,
+.s-header .navbar-toggler,
+.s-header tacc-search-bar {
+  height: env(--header-navbar-height);
+}
+
+
+
+
+
+/* Branding */
+
+.s-header.c-branding,
+/* To apply style to old markup (see "Portal & Docs Selectors") */
+/* NOTE: The old markup is dynamically replaced by new markup from CMS */
+:--for-docs .branding-header,
+:--for-portal .branding-header {
+  /* To prevent zero-height element as it is loaded */
+  height: env(--header-brandbar-height);
+
+  color: var(--global-color-primary--xx-light);
+  background-color: var(--global-color-primary--xx-dark);
+  border-bottom: 1px solid var(--global-color-primary--normal);
+}
+
+
 
 
 
 /* Logo */
 
 .s-header .c-logo {
-  /* To align position of first CMS nav link with Portal "Dashboard" header */
-  /* WARNING: If Portal UI changes, then these styles may need to change */
-  min-width: 176px;
-  margin-right: 16px; /* NO-R/EM: 1rem (from Bootstrap via `.navbar-brand`) */
-  padding: 0;
+  /* To allow projects to set this value, but let Core implement it */
+  width: var(--width, auto);
 
+  /* To prevent zero-width element as it is loaded */
+  /* To align position of first CMS nav link with Portal section headers */
+  min-width: 190px; /* CAVEAT: Only works for logos narrow enough to fit */
+
+  /* To overwrite Bootstrap */
+  /* To allow projects to set this value, but let Core implement it */
+  margin-right: var(--space-after-logo-before-nav, 0);
+
+  /* FAQ: In case image does not load and browser shows alt text */
   color: env(--header-text-color);
-  /* text-decoration: none; *//* already provided by Bootstrap */
 }
+/* To overwrite bootstrap */
+.s-header .c-logo.navbar-brand {
+  padding-top: unset;
+  padding-bottom: unset;
+  display: unset;
+}
+
 .s-header .c-logo__image {
-  height: 40px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 
 
-/* Navigation */
 
-/* On wide viewport, prevent header resize from dynamic content */
-/* CAVEAT: This is only for Portal and Docs which dynamically load content */
-@media only screen and (min-width: 1201px) {
-  .s-header.navbar {
-    height: 50px;
-  }
-}
 
-.s-header.navbar {
-  /* Make horizontal padding match the horizontal content buffer in Portal */
-  /* FAQ: The `calc()` keeps track of disparate source of space values */
-  /* `16px` = `1rem` from Portal (via `#sidebar .nav-content`) */
-  /* `20px` from Portal (via `.nav-link`) */
-  --nav-padding-horz: calc(16px + 20px);
-  --nav-padding-vert: 5px;
+/* Nav Links */
 
-  background-color: env(--header-bkgd-color);
-  padding: var(--nav-padding-vert) var(--nav-padding-horz);
-}
-
-/* Navigation: Links */
+/* RFE: Fix bug on the Internet so we can use these reliably */
+/* SEE: https://github.com/postcss/postcss-custom-selectors/issues/40 */
+/*
+@custom-selector :--nav-link-hover  .s-header .nav-link:hover;
+@custom-selector :--nav-link-focus  .s-header .nav-link:focus;
+@custom-selector :--nav-link-active .s-header .nav-link:active;
+@custom-selector :--nav-link-current
+  .s-header .nav-item.active .nav-link,
+  .s-header .nav-item.dropdown.show .nav-link;
+*/
 
 .s-header .nav-link {
-  --line-height: 24px;
-  --border-width: 4px;
-  --border-offset: calc(var(--nav-padding-vert) - var(--border-width));
-  --border-color: rgb(213, 181, 124);
+  height: 100%;
 
-  /* The nav vertical padding does not match the link border, so the alignment
-     of the link border with the bottom of the header is off by small amount */
-  position: relative;
-  top: var(--border-offset);
-
-  line-height: var(--line-height);
-
-  /* If link text uses 2 lines, header grows taller (but it must not do so) */
+  display: flex;
+  align-items: center;
+  /* FAQ: If link text uses 2 lines, header grows taller, but it must not */
   white-space: nowrap;
+}
+.s-header .nav-link:hover,
+.s-header .nav-link:active,
+.s-header .nav-item.active .nav-link,
+.s-header .nav-item.dropdown.show .nav-link {
+  background-color: env(--header-link-bkgd-color);
 }
 .s-header .nav-link:hover,
 .s-header .nav-link:focus,
 .s-header .nav-link:active,
-.s-header .nav-item.active .nav-link {
-  border-width: 0 0 var(--border-width);
-  border-style: solid;
-  border-color: var(--border-color);
-  margin-bottom: calc( var(--border-width) * -1 );
+.s-header .nav-item.active .nav-link,
+.s-header .nav-item.dropdown.show .nav-link {
+  border-top: env(--border-width--xx-thick) solid transparent;
+  border-bottom: env(--border-width--xx-thick) solid env(--header-accent-color);
 }
-/* HACK: Using an ID selector, because Bootstrap has overspecific selectors */
-#s-header .nav-link,
-/* HACK: Support `span.nav-link` having children `a` and `a.dropdown-toggle-split` */
-#s-header .nav-link > a {
+
+/* To overwrite Bootstrap */
+.s-header .nav-link {
+  padding-top: unset;
+  padding-bottom: unset;
+}
+/* FAQ: Comment out `.navbar-dark` to obviate "Portal & Docs Selectors" here */
+/* FAQ: On CMS, the `.navbar-dark` is a descendant of `.s-header` */
+.s-header/* .navbar-dark */ .nav-link,
+.s-header/* .navbar-dark */ .nav-link:focus,
+.s-header/* .navbar-dark */ .nav-link:hover {
+  color: env(--header-text-color) !important;
+}
+
+
+
+/* Responsive Design */
+
+.s-header .navbar-nav .nav-link,
+/* To overwrite Bootstrap (see "Portal & Docs Selectors") */
+:--for-portal .s-header .navbar-nav .nav-link {
+  padding-right: var(--space-between-horz, 0);
+  padding-left: var(--space-between-horz, 0);
+}
+
+/* To set less space between nav links when screen is narrow */
+/* " (sans Portal) */
+@media (--medium-and-above) {
+  /* To have 15px of space for 12px font */
+  .s-header:not(.is-on-portal) .nav-link { --space-between-horz: 1.25em; }
+}
+@media (--medium-and-below) {
+  /* To have "narrower" space (designed by dev) */
+  .s-header:not(.is-on-portal) .nav-link { --space-between-horz: 0.5em; }
+}
+/* " (with Portal) */
+@media (--wide-and-above) {
+  /* To have 15px of space for 12px font */
+  .s-header.is-on-portal .nav-link,
+  /* To apply style to old markup (see "Portal & Docs Selectors") */
+  /* TODO: Hardcode `is-on-portal` in Portal & Docs markup */
+  :--for-docs .s-header .nav-link,
+  :--for-portal .s-header .nav-link { --space-between-horz: 1.25em; }
+}
+@media (--wide-and-below) {
+  /* To have "narrower" space (designed by dev) */
+  .s-header.is-on-portal .nav-link,
+  /* To apply style to old markup (see "Portal & Docs Selectors") */
+  /* TODO: Hardcode `is-on-portal` in Portal & Docs markup */
+  :--for-docs .s-header .nav-link,
+  :--for-portal .s-header .nav-link { --space-between-horz: 0.5em; }
+}
+
+
+
+
+
+/* Dropdowns */
+
+
+
+/* Toggle */
+
+.s-header .dropdown-toggle::after {
+  @extend %x-arrow;
+
+  --size: 4px;
+  --line: 1px;
+  --color: env(--header-text-color);
+  margin-left: 8px;
+}
+.s-header .dropdown-toggle[aria-expanded="true"]::after {
+  @extend %x-arrow--up;
+  margin-top: 0.6em;
+}
+.s-header .dropdown-toggle[aria-expanded="false"]::after {
+  @extend %x-arrow--down;
+  margin-top: -0.4em;
+}
+
+
+
+/* Menu */
+
+.s-header .dropdown-menu {
+  padding: 7px 0 0;
+  margin: unset; /* undo Bootstrap */
+
+  background-color: env(--header-link-bkgd-color);
+  border: env(--border-width--normal) solid env(--header-accent-color);
+  border-radius: unset; /* undo Bootstrap */
+}
+
+
+
+/* Item */
+
+/* FAQ: Selector specificty trumps Bootstrap, so no need for `:hover` (etc.) */
+.s-header .dropdown-item {
+  --horz-pad: 11px;
+  padding: 5px var(--horz-pad) 6px;
+
+  border-left: env(--border-width--x-thick) solid transparent;
+
+  font-size: 12px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
+  font-weight: env(--medium);
+}
+/* To create line between each item */
+.s-header .dropdown-item + .dropdown-item {
+  box-shadow:
+    0px calc(-1 * (1px + var(--horz-pad))) 0px calc(-1 * var(--horz-pad))
+    env(--header-bkgd-color);
+}
+
+.s-header .dropdown-item.active,
+.s-header .dropdown-item:active,
+.s-header .dropdown-item:focus,
+.s-header .dropdown-item:hover {
+  border-left-color: env(--header-accent-color);
+  background-color: env(--header-bkgd-color);
+  box-shadow: none;
+}
+
+.s-header .dropdown-item,
+/* To overwrite Bootstrap (see "Portal & Docs Selectors") */
+:--for-portal .s-header .dropdown-item.active,
+:--for-portal .s-header .dropdown-item:active,
+:--for-portal .s-header .dropdown-item:focus,
+:--for-portal .s-header .dropdown-item:hover {
   color: env(--header-text-color);
-  /* text-decoration: none; *//* already provided by Bootstrap */
 }
 
-/* Navigation: Links: Responsive Design */
 
-/* Tweak Bootstrap `_nav.scss` (which selects via `navbar-expand-` class) */
-.s-header[class*="navbar-expand-"] .navbar-nav .nav-link {
-  padding-top: 8px; /* NO-R/EM: 0.5rem (from Bootstrap) */
-  padding-bottom: 8px; /* NO-R/EM: 0.5rem (from Bootstrap) */
-
-  padding-right: 14px; /* NO-R/EM: .875rem (overwrite Bootstrap) */
-  padding-left: 14px; /* NO-R/EM: .875rem (overwrite Bootstrap) */
-}
 
 
 
 /* Search */
+
+/* GH-101: Retain search design until Wes works on it */
+.s-header .s-search-bar,
+.s-header .s-search-bar::part(input),
+.s-header .s-search-bar::part(button) {
+  font-size: 12px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
+}
 
 /* Create a line between search bar and login */
 /* FAQ: The line should only exist if both elements are present */
@@ -145,10 +335,12 @@ Styleguide Trumps.Scopes.Header
 
 
 
+
+
 /* Icons */
 
 /* HACK: Using FontAwesome as placeholder */
 .s-header [class*="fa-"] {
-    width: 27px; /* NO-R/EM: 1.25em (from Portal `.fa`—FP-228 will deprecate it) */
+    width: 27px; /* (from Portal `.fa` 1.25em which FP-636 will deprecate) */
     text-align: center;
 }

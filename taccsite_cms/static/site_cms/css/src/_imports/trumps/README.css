@@ -46,6 +46,47 @@ Styleguide Trumps.Scopes
 */
 
 /*
+For (Other Sites)
+
+For (Other Sites) styles are functional overrides and styles that are scoped to a specific subsite that shares elements with sibling subsites. These are meant to be used sparingly. The for-other-site styles are specifically intended for needs specific to Docs, CMS, or Portal.
+
+Guidelines:
+
+- For (Other Site) styles are especially rare, evaluate before creating.
+- For reliable results, use a consistent selector for each subsite.
+
+Rules:
+
+- The `!important` may be used.
+- All styles **must** have a comment.
+
+Styleguide Trumps.ForOtherSites
+*/
+
+/*
+Scopes
+
+Scope styles are functional overrides and styles that are scoped to a specific area. These are meant to be used sparingly. Examples of scopes are functional styles for third-party markup, WYSIWIG editor tags, form elements, components with a forced relationship.
+
+Reference:
+
+- [BEM with Namespaces: Scope Namespaces](https://csswizardry.com/2015/03/more-transparent-ui-code-with-namespaces/#scope-namespaces-s-)
+
+Guidelines:
+
+- Scopes are pretty rare, evaluate before creating.
+- A consistent way to author these in nested inside `.s-* {}`.
+
+Rules:
+
+- The `!important` may be used.
+- All overrides **must** have a comment.
+- Scope styles should have a comment.
+
+Styleguide Trumps.Scopes
+*/
+
+/*
 Utility
 
 Utility styles exist to overwrite other styles. They are seldom modified. Example use case is one-time use on modules that are not meant to be extended to have the desired behavior.

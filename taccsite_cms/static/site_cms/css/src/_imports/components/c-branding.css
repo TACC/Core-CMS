@@ -7,6 +7,7 @@ Markup: c-branding.twig.html
 
 Styleguide Components.Branding
 */
+@import url("_imports/tools/selectors.css");
 @import url("_imports/tools/media-queries.css");
 
 /* IDEA: Use multi-column (`column-*`) to simplify border, margin, separator */
@@ -23,16 +24,8 @@ Styleguide Components.Branding
   flex-direction: row;
   justify-content: center;
   align-items: center;
-
-  /* This prevents header bar resize when branding is dynamically added */
-  /* CAVEAT: This is only for Portal and Docs which dynamically load content */
-  /* FAQ: Do not use `48.78px`, because Safari only accepts whole numbers */
-  height: 40px;
-
-  background-color: var(--global-color-primary--xx-dark);
-  color: var(--global-color-primary--xx-light);
-  border-bottom: 1px solid var(--global-color-primary--normal);
 }
+
 
 /* A responsive column gap */
 .c-branding__link:first-child .c-branding__image {
@@ -57,9 +50,7 @@ Styleguide Components.Branding
 /* Elements */
 
 .c-branding__link {
-  --height: 90%;
-
-  height: var(--height);
+  height: var(--height, 90%);
 }
 .c-branding__separator {
   /* To add border */
