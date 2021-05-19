@@ -19,10 +19,11 @@
 
     "// FONT": "",
     "// FONT WEIGHT": "A word-based shortcut for font weights",
-    "--light": 300,
-    "--regular": 400,
-    "--medium": 500,
-    "--bold": 700
+    "// FAQ": "Quotes are required (seems like a plugin defect).",
+    "--light": "300",
+    "--regular": "400",
+    "--medium": "500",
+    "--bold": "700"
 
   }
 }
