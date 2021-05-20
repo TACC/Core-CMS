@@ -8,8 +8,10 @@
     "// HEADER": "",
     "--header-text-color": "var(--global-color-primary--xx-light)",
     "--header-bkgd-color": "var(--global-color-primary--xx-dark)",
+    "// --header-link-bkgd-color": "unique, not registered in global colors",
     "--header-link-bkgd-color": "#313131",
-    "--header-minor-border-color": "var(--global-color-primary--normal)"
+    "--header-minor-border-color": "var(--global-color-primary--normal)",
+    "--header-portal-nav-bkgd-color": "var(--global-color-primary--x-dark)"
 
   }
 }

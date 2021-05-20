@@ -9,3 +9,22 @@ Markup: s-portal-nav.html
 
 Styleguide Trumps.Scopes.PortalNav
 */
+
+/* To distinguish/highlight Portal nav from CMS nav */
+.s-portal-nav {
+  background-color: env(--header-portal-nav-bkgd-color);
+}
+
+.s-portal-nav .nav-link {
+  /* To overwrite `.s-header .nav-link:…` etcetera */
+  border-bottom-color: transparent !important;
+}
+
+/* To overwrite `.s-header .navbar-nav .nav-link, […]` */
+.s-portal-nav .nav-item .nav-link,
+:--for-portal .s-portal-nav .nav-item .nav-link {
+  padding-left: 30px;
+  padding-right: calc(
+    env(--portal-sidebar-padding) + env(--portal-navlink-padding)
+  );
+}

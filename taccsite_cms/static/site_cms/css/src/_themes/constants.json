@@ -5,6 +5,10 @@
 
   "environment-variables": {
 
+    "// PORTAL": "",
+    "--portal-sidebar-padding": "16px",
+    "--portal-navlink-padding": "20px",
+
     "// HEADER": "",
     "--header-font-family": "Roboto, sans-serif",
     "--header-accent-color": "#877453",
