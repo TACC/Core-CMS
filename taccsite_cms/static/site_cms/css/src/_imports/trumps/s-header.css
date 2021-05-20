@@ -201,18 +201,18 @@ Styleguide Trumps.Scopes.Header
   padding-left: var(--space-between-horz, 0);
 }
 
-/* To set less space between nav links when screen is narrow */
+/* To reduce space between nav links when space is limited */
 /* " (sans Portal) */
-@media (--medium-and-above) {
+@media (--nav-expanded--sans-portal) {
   /* To have 15px of space for 12px font */
   .s-header:not(.is-on-portal) .nav-link { --space-between-horz: 1.25em; }
 }
-@media (--medium-and-below) {
+@media (--nav-compressed--sans-portal) {
   /* To have "narrower" space (designed by dev) */
   .s-header:not(.is-on-portal) .nav-link { --space-between-horz: 0.5em; }
 }
 /* " (with Portal) */
-@media (--wide-and-above) {
+@media (--nav-expanded--with-portal) {
   /* To have 15px of space for 12px font */
   .s-header.is-on-portal .nav-link,
   /* To apply style to old markup (see "Portal & Docs Selectors") */
@@ -220,7 +220,7 @@ Styleguide Trumps.Scopes.Header
   :--for-docs .s-header .nav-link,
   :--for-portal .s-header .nav-link { --space-between-horz: 1.25em; }
 }
-@media (--wide-and-below) {
+@media (--nav-compressed--with-portal) {
   /* To have "narrower" space (designed by dev) */
   .s-header.is-on-portal .nav-link,
   /* To apply style to old markup (see "Portal & Docs Selectors") */

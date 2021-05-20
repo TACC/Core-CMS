@@ -14,6 +14,11 @@ Reference:
 
 Styleguide Tools.CustomMediaQueries.Breakpoints
 */
+
+
+
+/* Standard Breakpoints (based on Bootstrap) */
+
 @custom-media --x-narrow-and-below (width < 576px);
 @custom-media --x-narrow-and-above (width >= 576px);
 @custom-media --x-narrow-to-narrow (576px <= width < 768px);
@@ -41,3 +46,17 @@ Styleguide Tools.CustomMediaQueries.Breakpoints
 @custom-media --xxx-wide-and-below (width < 1920px);
 @custom-media --xxx-wide-and-above (width >= 1920px);
 /* @custom-media --xxx-wide-to-omg-wide (... <= width < ...); */
+
+
+
+/* Header Navbar State (Compressed/Expanded) */
+
+/* I.e. --medium-and-below */
+@custom-media --nav-compressed--sans-portal (width < 992px);
+/* I.e. --medium-and-below */
+@custom-media --nav-expanded--sans-portal (width >= 992px);
+
+/* I.e. --wide-and-below */
+@custom-media --nav-compressed--with-portal (width < 1200px);
+/* I.e. --wide-and-above */
+@custom-media --nav-expanded--with-portal (width >= 1200px);
