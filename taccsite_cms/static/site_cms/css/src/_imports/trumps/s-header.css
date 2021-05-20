@@ -103,7 +103,7 @@ Styleguide Trumps.Scopes.Header
 
   color: var(--global-color-primary--xx-light);
   background-color: var(--global-color-primary--xx-dark);
-  border-bottom: 1px solid var(--global-color-primary--normal);
+  border-bottom: 1px solid var(--global-color-primary--xx-light);
 }
 
 

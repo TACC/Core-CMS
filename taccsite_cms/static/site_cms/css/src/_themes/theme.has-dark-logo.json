@@ -10,7 +10,6 @@
     "--header-bkgd-color": "var(--global-color-primary--x-light)",
     "// --header-link-bkgd-color": "registered in global vars as an alt. color",
     "--header-link-bkgd-color": "#D8D8D8",
-    "--header-minor-border-color": "var(--global-color-primary--normal)",
     "--header-portal-nav-bkgd-color": "var(--global-color-primary--light)"
 
   }
