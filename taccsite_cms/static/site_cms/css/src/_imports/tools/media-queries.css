@@ -51,12 +51,10 @@ Styleguide Tools.CustomMediaQueries.Breakpoints
 
 /* Header Navbar State (Compressed/Expanded) */
 
-/* I.e. --medium-and-below */
-@custom-media --nav-compressed--sans-portal (width < 992px);
-/* I.e. --medium-and-below */
-@custom-media --nav-expanded--sans-portal (width >= 992px);
-
-/* I.e. --wide-and-below */
-@custom-media --nav-compressed--with-portal (width < 1200px);
-/* I.e. --wide-and-above */
-@custom-media --nav-expanded--with-portal (width >= 1200px);
+/* Map `s-header.html`'s `navbar-expand-*` to `--*-and-below|above`:
+   - `...-xl` → `--wide-and-...`
+   - `...-lg` → `--medium-and-...`
+   - `...-md` → `--narrow-and-...`
+   - `...-sm` → `--x-narrow-and-...` */
+@custom-media --nav-compressed (width < 992px);
+@custom-media --nav-expanded (width >= 992px);

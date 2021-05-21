@@ -61,10 +61,6 @@ Styleguide Components.Branding
   width: 0;
   overflow: hidden;
 }
-.c-branding__image {
-  /* To match parent height */
-  height: 100%;
-}
 
 /* Specific brands */
 .c-branding__nsf-link    { --height: 35px; }

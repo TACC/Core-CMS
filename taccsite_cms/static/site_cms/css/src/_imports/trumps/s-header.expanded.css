@@ -1,0 +1,154 @@
+/*
+Header (Expanded Navigation)
+
+Styles for when navigation is expanded.
+
+Styleguide Trumps.Scopes.Header.Expanded
+*/
+
+
+
+
+
+/* COMPARABLE (to Compressed Styles) */
+
+@media (--nav-expanded) {
+
+  /* Nav */
+
+
+
+  /* Container */
+
+  .s-header .navbar-nav {
+    /* --nav-link-horz-pad: … *//* set within different media queries */
+    --nav-line-color: transparent;
+  }
+
+
+
+  /* Nav Links */
+
+  .s-header .nav-link {
+    height: 100%;
+
+    /* To overwrite Bootstrap */
+    padding-top: unset;
+    padding-bottom: unset;
+
+    /* font-size: 1em; *//* to mirror props on `s-header.compressed.css` */
+  }
+
+  /* NOTE: Design may want hover .s-header active background color with alpha */
+  /* SEE: `./s-header.css` */
+
+  /* NOTE: Design may want hover/focus/active styles to differ per nav state */
+  .s-header .nav-link:hover,
+  .s-header .nav-link:focus,
+  .s-header .nav-link:active,
+  .s-header .nav-item.active .nav-link,
+  .s-header .nav-item.dropdown.show .nav-link {
+    border-top: env(--border-width--xx-thick) solid transparent;
+    border-bottom: env(--border-width--xx-thick) solid env(--header-accent-color);
+  }
+
+
+
+
+
+  /* Dropdowns */
+
+
+
+  /* Container */
+
+  .s-header .dropdown {
+    --menu-link-horz-pad: 11px;
+    --menu-line-color: env(--header-bkgd-color);
+  }
+
+
+
+  /* Menu */
+
+  /* To overwrite Bootstrap */
+  .s-header .dropdown-menu {
+    padding: 7px 0 0;
+
+    background-color: env(--header-link-bkgd-color);
+    border: env(--border-width--normal) solid env(--header-accent-color);
+
+    font-size: 12px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
+  }
+
+
+
+  /* Item */
+
+  /* FAQ: Selector specificty trumps Bootstrap, so no need for `:hover` (etc.) */
+  .s-header .dropdown-item {
+    /* To overwrite Bootstrap */
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+  }
+
+
+  /* Search */
+
+  /* GH-101: Retain search design until Wes works on it */
+  .s-header .s-search-bar,
+  .s-header .s-search-bar::part(input),
+  .s-header .s-search-bar::part(button) {
+    font-size: 12px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
+  }
+
+  /* Create space between search bar and login (only if both elements exist) */
+  .s-header .s-search-bar ~ .s-portal-nav {
+    margin-left: 12px;
+  }
+
+
+
+
+
+  /* Icons */
+
+  .s-header .s-portal-nav .nav-link .nav-icon {
+    margin-right: 0.5em;
+  }
+
+}
+
+
+
+
+
+/* UNIQUE (to Expanded Styles) */
+
+/* To reduce space between nav links when space is limited */
+@media (--wide-and-below) and (--nav-expanded) {
+  /* To have "narrower" space (designed by dev) */
+  .s-header:not(.is-on-portal) .navbar-nav { --nav-link-horz-pad: 1em; }
+}
+@media (--x-wide-and-below) and (--nav-expanded) {
+  /* To have "narrower" space (designed by dev) */
+  .s-header.is-on-portal .navbar-nav,
+  /* To apply style to old markup (see "Portal & Docs Selectors") */
+  /* TODO: Hardcode `is-on-portal` in Portal & Docs markup */
+  :--for-docs .s-header .navbar-nav,
+  :--for-portal .s-header .navbar-nav { --nav-link-horz-pad: 1em; }
+}
+
+/* To increase space between nav links when space is available */
+@media (--wide-and-above) and (--nav-expanded) {
+  /* To have 15px of space for 12px font */
+  .s-header:not(.is-on-portal) .navbar-nav { --nav-link-horz-pad: 1.25em; }
+}
+@media (--x-wide-and-above) and (--nav-expanded) {
+  /* To have 15px of space for 12px font */
+  .s-header.is-on-portal .navbar-nav,
+  /* To apply style to old markup (see "Portal & Docs Selectors") */
+  /* TODO: Hardcode `is-on-portal` in Portal & Docs markup */
+  :--for-docs .s-header .navbar-nav,
+  :--for-portal .s-header .navbar-nav { --nav-link-horz-pad: 1.25em; }
+}
