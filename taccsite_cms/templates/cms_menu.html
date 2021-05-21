@@ -14,7 +14,7 @@
     aria-haspopup="true"
     aria-expanded="false"
   >
-    {{ child.get_menu_title|safe }}
+    <span class="nav-text">{{ child.get_menu_title|safe }}</span>
     {% if child.selected %}<span class="sr-only">(current)</span>{% endif %}
     <span class="sr-only">Toggle Dropdown</span>
   </a>
@@ -29,7 +29,7 @@
       href="{{ grandchild.attr.redirect_url|default:grandchild.get_absolute_url }}"
       role="menuitem"
     >
-      {{ grandchild.get_menu_title|safe }}
+      <span class="nav-text">{{ grandchild.get_menu_title|safe }}</span>
       {% if grandchild.selected %}<span class="sr-only">(current)</span>{% endif %}
     </a>
     {% endfor %}
@@ -39,7 +39,7 @@
     class="nav-link"
     href="{{ child.attr.redirect_url|default:child.get_absolute_url }}"
   >
-    {{ child.get_menu_title|safe }}
+    <span class="nav-text">{{ child.get_menu_title|safe }}</span>
     {% if child.selected %}<span class="sr-only">(current)</span>{% endif %}
   </a>
   {% endif %}

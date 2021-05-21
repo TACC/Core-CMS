@@ -1,0 +1,144 @@
+/*
+Header (Compressed Navigation)
+
+Styles for when navigation is compressed.
+
+Styleguide Trumps.Scopes.Header.Compressed
+*/
+
+
+
+
+
+/* COMPARABLE (to Expanded Styles) */
+
+@media (--nav-compressed) {
+
+  /* Nav */
+
+
+
+  /* Container */
+
+  .s-header .navbar-nav {
+    /* --nav-link-horz-pad: … *//* set within different media queries */
+    --nav-line-color: env(--header-accent-color);
+  }
+
+
+
+  /* Nav Links */
+
+  .s-header .nav-link {
+    height: auto;
+
+    /* To overwrite Bootstrap */
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+
+    font-size: 2em;
+  }
+
+  /* NOTE: Design may want hover .s-header active background color with alpha */
+  /* SEE: `./s-header.css` */
+
+  /* NOTE: Design may want hover/focus/active styles to differ per nav state */
+  .s-header .nav-link:hover,
+  .s-header .nav-link:focus,
+  .s-header .nav-link:active,
+  .s-header .nav-item.active .nav-link,
+  .s-header .nav-item.dropdown.show .nav-link {
+    /* border-top: none *//* to mirror props on `s-header.compressed.css` */
+    /* border-bottom: none *//* to mirror props on `s-header.compressed.css` */
+  }
+
+
+
+
+
+  /* Dropdowns */
+
+
+
+  /* Container */
+
+  .s-header .dropdown {
+    --menu-link-horz-pad: 26px;
+    --menu-line-color: transparent;
+  }
+
+
+
+  /* Menu */
+
+  /* To overwrite Bootstrap */
+  .s-header .dropdown-menu {
+    padding: 0;
+
+    background-color: transparent;
+    border: none;
+
+    font-size: 20px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
+  }
+
+
+
+  /* Item */
+
+  /* FAQ: Selector specificty trumps Bootstrap, so no need for `:hover` (etc.) */
+  .s-header .dropdown-item {
+    /* To overwrite Bootstrap */
+    padding-top: 1em;
+    padding-bottom: 1em;
+  }
+
+
+  /* Search */
+
+  /* GH-101: Retain search design until Wes works on it */
+  .s-header .s-search-bar,
+  .s-header .s-search-bar::part(input),
+  .s-header .s-search-bar::part(button) {
+    font-size: 12px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
+  }
+
+  /* Create space between search bar and login (only if both elements exist) */
+  .s-header .s-search-bar ~ .s-portal-nav {
+    margin-left: 2px;
+  }
+
+
+
+
+
+  /* Icons */
+
+  .s-header .s-portal-nav .nav-link .nav-icon {
+    margin-right: 0.5em;
+  }
+
+}
+
+
+
+
+
+/* UNIQUE (to Compressed Styles) */
+
+@media (--nav-compressed) {
+  .s-header .navbar-nav {
+    --nav-link-horz-pad: calc(
+      env(--portal-sidebar-padding) + env(--portal-navlink-padding)
+    );
+
+    margin-left: calc(-1 * var(--nav-link-horz-pad));
+  }
+
+  .s-header .s-cms-nav .dropdown-menu {
+    --menu-link-horz-pad: calc(
+      env(--portal-sidebar-padding) + env(--portal-navlink-padding)
+    );
+
+    margin-left: var(--menu-link-horz-pad);
+  }
+}

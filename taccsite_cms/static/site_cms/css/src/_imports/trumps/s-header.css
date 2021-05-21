@@ -22,6 +22,7 @@ Styleguide Trumps.Scopes.Header
 */
 @import url("_imports/tools/selectors.css");
 @import url("_imports/tools/x-arrow.css");
+@import url("_imports/tools/x-truncate.css");
 
 /* RFE: Make Portal & Docs markup match CMS (see "Portal & Docs Selectors") */
 /* RFE: Load Bootstrap before CMS stylesheets (see "Portal & Docs Selectors") */
@@ -150,47 +151,59 @@ Styleguide Trumps.Scopes.Header
 
 
 
+/* Nav */
+
+
+
+/* Container */
+
+.s-header .navbar-nav {
+  /*
+  --nav-link-horz-pad: …
+  --nav-line-color: …
+  */
+}
+
+
+
 /* Nav Links */
 
 /* RFE: Fix bug on the Internet so we can use these reliably */
 /* SEE: https://github.com/postcss/postcss-custom-selectors/issues/40 */
 /*
-@custom-selector :--nav-link-hover  .s-header .nav-link:hover;
-@custom-selector :--nav-link-focus  .s-header .nav-link:focus;
-@custom-selector :--nav-link-active .s-header .nav-link:active;
+@custom-selector :--nav-link-hover  .nav-link:hover;
+@custom-selector :--nav-link-focus  .nav-link:focus;
+@custom-selector :--nav-link-active .nav-link:active;
 @custom-selector :--nav-link-current
-  .s-header .nav-item.active .nav-link,
-  .s-header .nav-item.dropdown.show .nav-link;
+  .nav-item.active .nav-link,
+  .nav-item.dropdown.show .nav-link;
 */
 
 .s-header .nav-link {
-  height: 100%;
-
+  /* To support truncation */
+  /* To vertically center text and icons (if any) */
   display: flex;
   align-items: center;
-  /* FAQ: If link text uses 2 lines, header grows taller, but it must not */
-  white-space: nowrap;
 }
+
+/* To truncate link text */
+/* SEE: https://css-tricks.com/flexbox-truncated-text/ */
+.s-header .s-cms-nav,
+.s-header .nav-item { min-width: 0; }
+.s-header .nav-text { @extend .x-truncate--one-line; }
+
+/* NOTE: Design may want hover & active background color with alpha */
 .s-header .nav-link:hover,
 .s-header .nav-link:active,
 .s-header .nav-item.active .nav-link,
 .s-header .nav-item.dropdown.show .nav-link {
   background-color: env(--header-link-bkgd-color);
 }
-.s-header .nav-link:hover,
-.s-header .nav-link:focus,
-.s-header .nav-link:active,
-.s-header .nav-item.active .nav-link,
-.s-header .nav-item.dropdown.show .nav-link {
-  border-top: env(--border-width--xx-thick) solid transparent;
-  border-bottom: env(--border-width--xx-thick) solid env(--header-accent-color);
-}
 
-/* To overwrite Bootstrap */
-.s-header .nav-link {
-  padding-top: unset;
-  padding-bottom: unset;
-}
+/* NOTE: Design may want hover/focus/active styles the same for any nav state */
+/* SEE: `./s-header.compressed.css` */
+/* SEE: `./s-header.expanded.css` */
+
 /* FAQ: Comment out `.navbar-dark` to obviate "Portal & Docs Selectors" here */
 /* FAQ: On CMS, the `.navbar-dark` is a descendant of `.s-header` */
 .s-header/* .navbar-dark */ .nav-link,
@@ -199,44 +212,25 @@ Styleguide Trumps.Scopes.Header
   color: env(--header-text-color) !important;
 }
 
-
-
-/* Responsive Design */
-
 /* FAQ: The overspecific `.navbar-nav` selector allows overwrite of Bootstrap */
 .s-header .navbar-nav .nav-link,
 /* To overwrite Bootstrap (see "Portal & Docs Selectors") */
 :--for-portal .s-header .navbar-nav .nav-link {
-  padding-right: var(--space-between-horz, 0);
-  padding-left: var(--space-between-horz, 0);
+  padding-right: var(--nav-link-horz-pad, 0);
+  padding-left: var(--nav-link-horz-pad, 0);
 }
 
-/* To reduce space between nav links when space is limited */
-/* " (sans Portal) */
-@media (--nav-expanded--sans-portal) {
-  /* To have 15px of space for 12px font */
-  .s-header:not(.is-on-portal) .nav-link { --space-between-horz: 1.25em; }
-}
-@media (--nav-compressed--sans-portal) {
-  /* To have "narrower" space (designed by dev) */
-  .s-header:not(.is-on-portal) .nav-link { --space-between-horz: 0.5em; }
-}
-/* " (with Portal) */
-@media (--nav-expanded--with-portal) {
-  /* To have 15px of space for 12px font */
-  .s-header.is-on-portal .nav-link,
-  /* To apply style to old markup (see "Portal & Docs Selectors") */
-  /* TODO: Hardcode `is-on-portal` in Portal & Docs markup */
-  :--for-docs .s-header .nav-link,
-  :--for-portal .s-header .nav-link { --space-between-horz: 1.25em; }
-}
-@media (--nav-compressed--with-portal) {
-  /* To have "narrower" space (designed by dev) */
-  .s-header.is-on-portal .nav-link,
-  /* To apply style to old markup (see "Portal & Docs Selectors") */
-  /* TODO: Hardcode `is-on-portal` in Portal & Docs markup */
-  :--for-docs .s-header .nav-link,
-  :--for-portal .s-header .nav-link { --space-between-horz: 0.5em; }
+/* To create line between each item */
+.s-header .nav-item + .nav-item .nav-link {
+  /* To ensure any background color does not cover box-shadow */
+  position: relative;
+
+  box-shadow:
+    /* x pos. */ calc(var(--nav-link-horz-pad) / 2)
+    /* y pos. */ calc(-1 * (2px + calc(var(--nav-link-horz-pad) / 2)))
+    /* blur */   0
+    /* spread */ calc(-1 * calc(var(--nav-link-horz-pad) / 2))
+    /* color */  var(--nav-line-color, transparent);
 }
 
 
@@ -247,23 +241,36 @@ Styleguide Trumps.Scopes.Header
 
 
 
+/* Container */
+
+.s-header .dropdown {
+  /*
+  --menu-link-horz-pad: …
+  --menu-line-color: …
+  */
+}
+
+
+
 /* Toggle */
 
 .s-header .dropdown-toggle::after {
   @extend %x-arrow;
 
-  --size: 4px;
-  --line: 1px;
+  --size: 0.5em;
+  --line: 0.1em; /* to get 1px at 12px text and 2px at 24px text */
   --color: env(--header-text-color);
-  margin-left: 8px;
+
+  margin-left: 0.6em;
+  position: relative; /* to allow use of `top` (to vertically align) */
 }
 .s-header .dropdown-toggle[aria-expanded="true"]::after {
   @extend %x-arrow--up;
-  margin-top: 0.6em;
+  top: 0.35em; /* to vertically align with text */
 }
 .s-header .dropdown-toggle[aria-expanded="false"]::after {
   @extend %x-arrow--down;
-  margin-top: -0.4em;
+  top: -0.35em; /* to vertically align with text */
 }
 
 
@@ -271,11 +278,8 @@ Styleguide Trumps.Scopes.Header
 /* Menu */
 
 .s-header .dropdown-menu {
-  padding: 7px 0 0;
   margin: unset; /* undo Bootstrap */
 
-  background-color: env(--header-link-bkgd-color);
-  border: env(--border-width--normal) solid env(--header-accent-color);
   border-radius: unset; /* undo Bootstrap */
 }
 
@@ -285,19 +289,20 @@ Styleguide Trumps.Scopes.Header
 
 /* FAQ: Selector specificty trumps Bootstrap, so no need for `:hover` (etc.) */
 .s-header .dropdown-item {
-  --horz-pad: 11px;
-  padding: 5px var(--horz-pad) 6px;
+  padding-left: var(--menu-link-horz-pad);
+  padding-right: var(--menu-link-horz-pad);
 
   border-left: env(--border-width--x-thick) solid transparent;
 
-  font-size: 12px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
   font-weight: env(--medium);
 }
-/* To create line between each item */
 .s-header .dropdown-item + .dropdown-item {
   box-shadow:
-    0px calc(-1 * (1px + var(--horz-pad))) 0px calc(-1 * var(--horz-pad))
-    env(--header-bkgd-color);
+    /* x pos. */ 0
+    /* y pos. */ calc(-1 * (1px + var(--menu-link-horz-pad)))
+    /* blur */   0
+    /* spread */ calc(-1 * var(--menu-link-horz-pad))
+    /* color */  var(--menu-line-color, transparent);
 }
 
 .s-header .dropdown-item.active,
@@ -317,9 +322,6 @@ Styleguide Trumps.Scopes.Header
 :--for-portal .s-header .dropdown-item:hover {
   color: env(--header-text-color);
 }
-
-
-
 
 
 /* Search */
@@ -342,19 +344,13 @@ Styleguide Trumps.Scopes.Header
 
 /* Icons */
 
-.s-header .nav-icon {
-  margin-right: 1em;
-}
-.s-header .nav-link .nav-icon {
-  margin-right: 0.5em;
-}
 .s-header .dropdown-item .nav-icon {
   margin-right: 0.5em;
 }
+
 /* To overwrite Font Awesome & style via Font Awesome */
 /* FP-636: Remove all `.fa` (Font Awesome) icons */
-/* FAQ: The `.nav-link` ensures dropdown icons are unaffected */
-.s-header .nav-link .nav-icon[class*="fa"] {
+.s-portal-nav .nav-link .nav-icon[class*="fa"] {
   font-size: 26px;
   line-height: unset;
   vertical-align: unset;
