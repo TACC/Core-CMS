@@ -81,7 +81,7 @@ Styleguide Trumps.Scopes.Header
 /* To prevent extra height from FOUC during Portal/Docs AJAX content load */
 /* To set nav height, but not constrain height of opened mobile nav */
 /* FAQ: Set height of descendants, but not of CMS and Portal and mobile navs */
-.s-header .c-logo,
+#header-logo,
 .s-header .navbar-toggler,
 .s-header tacc-search-bar {
   height: env(--header-navbar-height);
@@ -112,7 +112,13 @@ Styleguide Trumps.Scopes.Header
 
 /* Logo */
 
-.s-header .c-logo {
+#header-logo {
+  display: flex;
+  align-items: center;
+
+  /* To prevent wide image from forcing `.navbar-toggler` to be wrapped */
+  min-width: calc(215px - 25px);
+
   /* To prevent zero-width element as it is loaded */
   /* To align position of first CMS nav link with Portal section headers */
   min-width: calc(190px - 25px); /* CAVEAT: Only works on narrow-enough logos */
@@ -124,16 +130,20 @@ Styleguide Trumps.Scopes.Header
   /* FAQ: In case image does not load and browser shows alt text */
   color: env(--header-text-color);
 }
-/* To overwrite bootstrap */
-.s-header .c-logo.navbar-brand {
+/* To overwrite Bootstrap */
+#header-logo.navbar-brand {
   padding-top: unset;
   padding-bottom: unset;
-  display: unset;
 }
 
-.s-header .c-logo__image {
+#header-logo .c-logo__image {
   padding-top: 5px;
   padding-bottom: 5px;
+
+  /* Of base i.e. container */
+  /* To avoid a project shrinking logo beyond legibility */
+  min-height: 50%;
+  min-width: 50%;
 }
 
 
