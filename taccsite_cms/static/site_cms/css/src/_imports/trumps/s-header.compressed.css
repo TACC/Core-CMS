@@ -180,4 +180,20 @@ Styleguide Trumps.Scopes.Header.Compressed
 
     margin-left: var(--menu-link-horz-pad);
   }
+
+  /* HACK: To transform the navbar into a dropdown */
+  /* TODO: We should either use dropdown or create TACC nav component (GH-12) */
+  /* NOTE: This does NOT behave exactly like a dropdown:
+      1. If menu is open, and screen width changes trigger nav layout transition from mobile to desktop to mobile, then menu will remain open upon return to mobile layout. But a dropdown inside this navbar that was open would be closed after the return.
+      2. If menu is open, and user clicks anywhere outside the navbar, then menu will remain open. But a dropdown anywhere that was open would be closed after the click.
+  */
+  .s-header .navbar-collapse {
+    /* This `position` expects Bootstrap's `.navbar { position: relative }` */
+    position: absolute;
+
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+  }
 }
