@@ -46,3 +46,14 @@ Styleguide Trumps.ForOtherSites.Docs
 :--for-docs .c-branding img {
   max-width: unset;
 }
+
+
+
+/* Overwrite TACC (for Icons in Body) */
+
+/* To compensate for Docs using an `.icon` class different from CMS & Portal */
+:--for-docs .icon {
+  width: unset;
+  height: unset;
+  vertical-align: unset;
+}

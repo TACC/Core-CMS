@@ -215,7 +215,8 @@ Styleguide Trumps.Scopes.Header
 }
 /* To overwrite Bootstrap */
 .s-header .navbar-toggler-icon { display: none; }
-/* To apply icon styles without using a class in the markup */
+/* To swap Bootstrap icon for Cortal icon */
+/* HACK: To apply icon styles without using a class in the markup */
 /* FAQ: For dynamic markup change, Portal & Docs markup must be updated */
 /* SEE: https://getbootstrap.com/docs/4.0/components/collapse/#events */
 .s-header :--navbar-button { @extend [class*=" icon-"]; }
@@ -421,12 +422,4 @@ Styleguide Trumps.Scopes.Header
 
 .s-header .dropdown-item .nav-icon {
   margin-right: 0.5em;
-}
-
-/* To overwrite Font Awesome & style via Font Awesome */
-/* FP-636: Remove all `.fa` (Font Awesome) icons */
-.s-portal-nav .nav-link .nav-icon[class*="fa"] {
-  font-size: 26px;
-  line-height: unset;
-  vertical-align: unset;
 }
