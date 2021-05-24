@@ -191,10 +191,8 @@ Styleguide Trumps.Scopes.Header
   .navbar-toggler[aria-expanded="false"];
 
 /* Button */
-/* To ensure button remains hidden on expanded navbar */
-/* FAQ: The button as (`.navbar-toggler`) uses `display: none` from Bootstrap */
-.s-header :--navbar-button--opened { display: flex; }
 .s-header :--navbar-button {
+  /* display: flex; *//* SEE `s-header.compressed.css` */
   flex-direction: column;
   align-items: center;
   justify-content: center;

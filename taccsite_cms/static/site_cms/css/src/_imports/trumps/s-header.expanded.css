@@ -59,6 +59,15 @@ Styleguide Trumps.Scopes.Header.Expanded
 
 
 
+  /* Toggle */
+
+  /* Button */
+  /* To match lines with `s-header.compressed.css` */
+  /* FAQ: Matching lines eases comparison with `s-header.compressed.css` */
+  /* .s-header :--navbar-button { } */
+
+
+
   /* Nav Links */
 
   .s-header .nav-link {

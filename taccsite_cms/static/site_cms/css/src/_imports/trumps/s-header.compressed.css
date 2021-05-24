@@ -59,6 +59,15 @@ Styleguide Trumps.Scopes.Header.Compressed
 
 
 
+  /* Toggle */
+
+  /* Button */
+  /* To ensure button remains hidden on expanded navbar, isolate this style */
+  /* FAQ: The button as `.navbar-toggler` uses `display: none` from Bootstrap */
+  .s-header :--navbar-button { display: flex; }
+
+
+
   /* Nav Links */
 
   .s-header .nav-link {
