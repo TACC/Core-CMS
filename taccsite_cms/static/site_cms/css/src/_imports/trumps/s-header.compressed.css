@@ -14,12 +14,44 @@ Styleguide Trumps.Scopes.Header.Compressed
 
 @media (--nav-compressed) {
 
+  /* Generic */
+
+  :root {
+    --header-brandbar-height: env(--header-brandbar-mobile-height);
+    --header-navbar-height: env(--header-navbar-mobile-height);
+  }
+
+
+
+
+
+  /* Logo */
+
+  #header-logo {
+    /* To prevent wide image from forcing `.navbar-toggler` to be wrapped */
+    /* To match lines with `s-header.compressed.css` */
+    /* FAQ: Matching lines eases comparison with `s-header.compressed.css` */
+    max-width: calc(188px - var(--space-after-logo-before-nav));
+  }
+
+
+
+
+
   /* Nav */
 
 
 
-  /* Container */
+  /* Containers */
 
+  .s-header .navbar-collapse {
+    margin-right: env(--header-navbar-toggle-width);
+
+    background-color: rgba(var(--global-color-primary--x-dark-rgb), 0.6);
+    backdrop-filter: blur(18px) brightness(85%);
+
+    border: env(--border-width--normal) solid var(--global-color-primary--dark);
+  }
   .s-header .navbar-nav {
     /* --nav-link-horz-pad: … *//* set within different media queries */
     --nav-line-color: env(--header-accent-color);
@@ -130,8 +162,6 @@ Styleguide Trumps.Scopes.Header.Compressed
     --nav-link-horz-pad: calc(
       env(--portal-sidebar-padding) + env(--portal-navlink-padding)
     );
-
-    margin-left: calc(-1 * var(--nav-link-horz-pad));
   }
 
   .s-header .s-cms-nav .dropdown-menu {

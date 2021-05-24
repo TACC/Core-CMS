@@ -14,12 +14,44 @@ Styleguide Trumps.Scopes.Header.Expanded
 
 @media (--nav-expanded) {
 
+  /* Generic */
+
+  :root {
+    --header-brandbar-height: env(--header-brandbar-normal-height);
+    --header-navbar-height: env(--header-navbar-normal-height);
+  }
+
+
+
+
+
+  /* Logo */
+
+  #header-logo {
+    /* To prevent zero-width element as it is loaded */
+    /* To align position of first CMS nav link with Portal section headers */
+    /* CAVEAT: Only works on narrow-enough logos */
+    min-width: calc(190px - var(--space-after-logo-before-nav));
+  }
+
+
+
+
+
   /* Nav */
 
 
 
-  /* Container */
+  /* Containers */
 
+  .s-header .navbar-collapse {
+    /* … */
+
+    /* To match lines with `s-header.compressed.css` */
+    /* FAQ: Matching lines eases comparison with `s-header.compressed.css` */
+
+    /* … */
+  }
   .s-header .navbar-nav {
     /* --nav-link-horz-pad: … *//* set within different media queries */
     --nav-line-color: transparent;

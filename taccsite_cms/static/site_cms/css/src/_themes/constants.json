@@ -12,8 +12,11 @@
     "// HEADER": "",
     "--header-font-family": "Roboto, sans-serif",
     "--header-accent-color": "#877453",
-    "--header-brandbar-height": "40px",
-    "--header-navbar-height": "55px",
+    "--header-brandbar-normal-height": "40px",
+    "--header-brandbar-mobile-height": "33px",
+    "--header-navbar-normal-height": "55px",
+    "--header-navbar-mobile-height": "48px",
+    "--header-navbar-toggle-width": "48px",
 
     "// BORDER": "",
     "--border-width--normal": "1px",
