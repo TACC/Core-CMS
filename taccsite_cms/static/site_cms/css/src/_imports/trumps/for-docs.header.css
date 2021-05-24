@@ -16,7 +16,9 @@ Styleguide Trumps.ForOtherSites.Docs
   /* To override `top: 0` (in `theme.css`) */
   /* FAQ: This is an initial value that is re-calculated by a Docs script */
   /* SEE: https://bitbucket.org/taccaci/frontera-tech-docs/src/429f05f/frontera_theme/base.html#lines-69 */
-  top: calc(env(--header-brandbar-height) + env(--header-navbar-height));
+  top: calc(
+    var(--header-brandbar-height) + var(--header-navbar-height)
+  );
 }
 
 

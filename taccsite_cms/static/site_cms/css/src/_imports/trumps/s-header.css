@@ -44,9 +44,9 @@ Styleguide Trumps.Scopes.Header
 
 /* Nav Bar */
 
-.s-header.navbar {
-  background-color: env(--header-bkgd-color);
+@custom-selector :--nav-bar-fake-bkgd  .s-header.navbar::after;
 
+.s-header.navbar {
   font-size: 12px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
   font-weight: env(--bold);
   font-family: env(--header-font-family);
@@ -56,15 +56,25 @@ Styleguide Trumps.Scopes.Header
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* To give cross-site padding that respects Portal-specific visual balance */
+/* To color navbar, but allow CMS nav to be transluscent to body content */
+:--nav-bar-fake-bkgd {
+  content: '';
+
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+
+  background-color: env(--header-bkgd-color);
+}
+
+/* To overwrite Bootstrap */
 .s-header.navbar,
 /* To overwrite Bootstrap (see "Portal & Docs Selectors") */
 :--for-docs .s-header.navbar,
 :--for-portal .s-header.navbar {
-  /* To align logo (whole image not just visible pixels) with Portal sidebar */
-  padding: 0 0 0 calc(
-    env(--portal-sidebar-padding) + env(--portal-navlink-padding)
-  );
+  padding: 0;
 }
 
 /* To stretch elements as tall as parent */
@@ -82,10 +92,12 @@ Styleguide Trumps.Scopes.Header
 /* To prevent extra height from FOUC during Portal/Docs AJAX content load */
 /* To set nav height, but not constrain height of opened mobile nav */
 /* FAQ: Set height of descendants, but not of CMS and Portal and mobile navs */
+:--nav-bar-fake-bkgd,
 #header-logo,
 .s-header .navbar-toggler,
 .s-header tacc-search-bar {
-  height: env(--header-navbar-height);
+  /* FAQ: To allow height to change in `…expanded.css` and `…compressed.css` */
+  height: var(--header-navbar-height, env(--header-navbar-normal-height));
 }
 
 
@@ -100,7 +112,7 @@ Styleguide Trumps.Scopes.Header
 :--for-docs .branding-header,
 :--for-portal .branding-header {
   /* To prevent zero-height element as it is loaded */
-  height: env(--header-brandbar-height);
+  height: var(--header-brandbar-height, env(--header-brandbar-normal-height));
 
   color: var(--global-color-primary--xx-light);
   background-color: var(--global-color-primary--xx-dark);
@@ -114,19 +126,22 @@ Styleguide Trumps.Scopes.Header
 /* Logo */
 
 #header-logo {
+  /* To allow projects to change value and responsive design to use value */
+  --space-after-logo-before-nav: 25px;
+
   display: flex;
   align-items: center;
 
-  /* To prevent wide image from forcing `.navbar-toggler` to be wrapped */
-  min-width: calc(215px - 25px);
-
-  /* To prevent zero-width element as it is loaded */
-  /* To align position of first CMS nav link with Portal section headers */
-  min-width: calc(190px - 25px); /* CAVEAT: Only works on narrow-enough logos */
+  /* To allow shrinking beyond content width */
+  min-width: 0;
 
   /* To overwrite Bootstrap */
-  /* To allow projects to set this value, but let Core implement it */
-  margin-right: var(--space-after-logo-before-nav, 25px);
+  margin-right: var(--space-after-logo-before-nav);
+
+  /* To align logo (whole image not just visible pixels) with Portal sidebar */
+  margin-left: calc(
+    env(--portal-sidebar-padding) + env(--portal-navlink-padding)
+  );
 
   /* FAQ: In case image does not load and browser shows alt text */
   color: env(--header-text-color);
@@ -163,6 +178,68 @@ Styleguide Trumps.Scopes.Header
   --nav-line-color: …
   */
 }
+
+
+
+/* Toggle */
+
+@custom-selector :--navbar-button
+  .navbar-toggler;
+@custom-selector :--navbar-button--opened
+  .navbar-toggler[aria-expanded="true"];
+@custom-selector :--navbar-button--closed
+  .navbar-toggler[aria-expanded="false"];
+
+/* Button */
+/* To ensure button remains hidden on expanded navbar */
+/* FAQ: The button as (`.navbar-toggler`) uses `display: none` from Bootstrap */
+.s-header :--navbar-button--opened { display: flex; }
+.s-header :--navbar-button {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: env(--header-navbar-toggle-width);
+  margin-right: env(--header-navbar-toggle-width);
+  padding: 0; /* to overwrite Bootstrap */
+
+  color: env(--header-text-color);
+  background-color: env(--header-portal-nav-bkgd-color);
+
+  /* To overwrite Bootstrap */
+  border: none;
+  border-radius: 0;
+}
+
+/* Icon */
+.s-header :--navbar-button::before {
+  font-size: 30px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
+}
+/* To overwrite Bootstrap */
+.s-header .navbar-toggler-icon { display: none; }
+/* To apply icon styles without using a class in the markup */
+/* FAQ: For dynamic markup change, Portal & Docs markup must be updated */
+/* SEE: https://getbootstrap.com/docs/4.0/components/collapse/#events */
+.s-header :--navbar-button { @extend [class*=" icon-"]; }
+.s-header :--navbar-button::before { @extend .icon; }
+/* To change icon without using dynamic icon classes */
+.s-header :--navbar-button--opened { @extend .icon-close; }
+.s-header :--navbar-button--closed { @extend .icon-burger; }
+/* To stretch icon to mimic icon in design (which is not available yet) */
+.s-header :--navbar-button--closed::before { transform: scaleX(1.5); }
+
+/* Text */
+.s-header :--navbar-button::after {
+  content: attr(data-icon-label);
+  display: block;
+
+  font-family: Benton Sans, env(--header-font-family);
+  font-size: 10px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: env(--medium);
+}
+.s-header :--navbar-button--opened::after { display: none; }
 
 
 
