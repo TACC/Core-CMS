@@ -201,12 +201,18 @@ Styleguide Trumps.Scopes.Header
   margin-right: env(--header-navbar-toggle-width);
   padding: 0; /* to overwrite Bootstrap */
 
-  color: env(--header-text-color);
   background-color: env(--header-portal-nav-bkgd-color);
 
   /* To overwrite Bootstrap */
   border: none;
   border-radius: 0;
+}
+/* To isolate styles that require more specificity to override Portal */
+.s-header :--navbar-button,
+/* To overwrite Bootstrap (see "Portal & Docs Selectors") */
+:--for-docs .s-header :--navbar-button,
+:--for-portal .s-header :--navbar-button {
+  color: env(--header-text-color);
 }
 
 /* Icon */
