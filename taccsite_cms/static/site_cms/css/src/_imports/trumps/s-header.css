@@ -94,7 +94,7 @@ Styleguide Trumps.Scopes.Header
 /* FAQ: Set height of descendants, but not of CMS and Portal and mobile navs */
 :--nav-bar-fake-bkgd,
 #header-logo,
-.s-header .navbar-toggler,
+.s-header :--navbar-button,
 .s-header tacc-search-bar {
   /* FAQ: To allow height to change in `…expanded.css` and `…compressed.css` */
   height: var(--header-navbar-height, env(--header-navbar-normal-height));
