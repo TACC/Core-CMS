@@ -166,13 +166,29 @@ Styleguide Trumps.Scopes.Header.Compressed
 
 /* UNIQUE (to Compressed Styles) */
 
+/* Basic Media Range */
+
 @media (--nav-compressed) {
+
+
+
+  /* Nav */
+
   /* To add nav menu padding */
   .s-header .navbar-nav {
     /* To line up menu text with logo */
     --nav-link-horz-pad: calc(
       env(--portal-sidebar-padding) + env(--portal-navlink-padding)
     );
+  }
+
+  /* To overwrite Bootstrap */
+  /* To apply style to old markup (see "Portal & Docs Selectors") */
+  /* TODO: 1. Remove `ml-auto` from Portal & Docs markup
+           2. Remove this style */
+  :--for-docs .s-header .s-cms-nav.ml-auto,
+  :--for-portal .s-header .s-cms-nav.ml-auto {
+    margin-left: 0 !important;
   }
 
   /* To add dropdown menu padding */
@@ -200,4 +216,18 @@ Styleguide Trumps.Scopes.Header.Compressed
     right: 0;
     z-index: 1000;
   }
+
+
+
+  /* Search */
+
+  /* To overwrite Bootstrap */
+  /* To apply style to old markup (see "Portal & Docs Selectors") */
+  /* TODO: 1. Remove `ml-auto` from Portal & Docs markup
+           2. Remove this style */
+  :--for-docs .s-header .s-search-bar.ml-auto,
+  :--for-portal .s-header .s-search-bar.ml-auto {
+    margin-left: 0 !important;
+  }
+
 }

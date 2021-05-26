@@ -166,6 +166,11 @@ Styleguide Trumps.Scopes.Header.Expanded
 
 /* UNIQUE (to Expanded Styles) */
 
+
+
+
+/* Complex Media Range */
+
 /* To reduce space between nav links when space is limited */
 @media (--wide-and-below) and (--nav-expanded) {
   /* To have "narrower" space (designed by dev) */
@@ -192,4 +197,30 @@ Styleguide Trumps.Scopes.Header.Expanded
   /* TODO: Hardcode `is-on-portal` in Portal & Docs markup */
   :--for-docs .s-header .navbar-nav,
   :--for-portal .s-header .navbar-nav { --nav-link-horz-pad: 1.25em; }
+}
+
+
+
+/* Basic Media Range */
+
+@media (--nav-expanded) {
+
+
+
+  /* Nav */
+
+  /* To move CMS nav to the right if there is no Portal */
+  .s-header:not(.is-on-portal) .s-cms-nav {
+    margin-left: auto;
+  }
+
+
+
+  /* Search */
+
+  /* To add flexible space between CMS nav and search bar */
+  .s-header .s-search-bar {
+    margin-left: auto;
+  }
+
 }
