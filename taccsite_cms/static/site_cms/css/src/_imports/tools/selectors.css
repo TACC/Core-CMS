@@ -14,6 +14,6 @@ Reference:
 
 Styleguide Tools.CustomSelectors.ForOtherSites
 */
-@custom-selector :--for-cms    body > .o-site__body;
+@custom-selector :--for-cms    body > .o-site__head;
 @custom-selector :--for-portal body > .content;
 @custom-selector :--for-docs   .wy-body-for-nav;

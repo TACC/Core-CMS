@@ -254,11 +254,22 @@ Styleguide Trumps.Scopes.Header.Compressed
   .s-header .s-portal-nav .dropdown-menu {
     /* Copied from Bootstrap:
        ```
-       @media (min-width: 992px) {
-          .navbar-expand-lg .navbar-nav .dropdown-menu
+       @media (min-width: ...px) {
+          .navbar-expand-…… .navbar-nav .dropdown-menu
        }
        ``` */
     position: absolute; /* without this, menu pushes down content beneath it */
+  }
+  /* To compensate for CMS's Bootstrap version older than Portal & Docs */
+  :--for-cms .dropdown-menu-right {
+    /* Copied from Bootstrap:
+       ```
+       @media (min-width: ...px) {
+          .navbar-expand-…… .navbar-nav .dropdown-menu-right
+       }
+       ``` */
+    right: 0;
+    left: auto;
   }
 
   /* To distinguish CMS dropdown from Portal dropdown */
