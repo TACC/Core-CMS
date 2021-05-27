@@ -20,17 +20,14 @@
 
   <!-- Navbar Links -->
   <div class="collapse navbar-collapse" id="navbarsExpandTarget">
-    {# GL-6: Remove need for different `className` values #}
-    {% if settings.PORTAL %}
-      {# FAQ: If template were included with `only`, then it would NOT render `show_menu` #}
-      {% include "nav_cms.html" with className="navbar-nav" %}
+    {# FAQ: We pass `navbar-nav` because it is coupled to `navbar-…` here #}
+    {# FAQ: If template included with `only`, it would NOT render `show_menu` #}
+    {% include "nav_cms.html" with className="navbar-nav" %}
 
+    {% if settings.PORTAL %}
       {# NOTE: As of 2020-12, search is only available with a Portal #}
-      {% include "nav_search.html" with className="form-inline  ml-auto" only %}
+      {% include "nav_search.html" with className="form-inline" only %}
       {% include "nav_portal.html" with className="navbar-nav" settings=settings only %}
-    {% else %}
-      {# FAQ: If template were included with `only`, then it would NOT render `show_menu` #}
-      {% include "nav_cms.html" with className="navbar-nav  ml-auto" %}
     {% endif %}
   </div>
 </nav>
