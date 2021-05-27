@@ -45,12 +45,12 @@ Styleguide Trumps.Scopes.Header.Expanded
   /* Containers */
 
   .s-header .navbar-collapse {
-    /* … */
+
 
     /* To match lines with `s-header.compressed.css` */
     /* FAQ: Matching lines eases comparison with `s-header.compressed.css` */
 
-    /* … */
+
   }
   .s-header .navbar-nav {
     /* --nav-link-horz-pad: … *//* set within different media queries */
@@ -110,37 +110,25 @@ Styleguide Trumps.Scopes.Header.Expanded
 
 
 
-  /* Menu */
-
-  /* To overwrite Bootstrap */
-  .s-header .dropdown-menu {
-    padding: 7px 0 0;
-
-    background-color: env(--header-link-bkgd-color);
-    border: env(--border-width--normal) solid env(--header-accent-color);
-
-    font-size: 12px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
-  }
-
-
-
-  /* Item */
-
-  /* FAQ: Selector specificty trumps Bootstrap, so no need for `:hover` (etc.) */
-  .s-header .dropdown-item {
-    /* To overwrite Bootstrap */
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
-  }
-
-
   /* Search */
 
-  /* GH-101: Retain search design until Wes works on it */
+  /* To add flexible space between CMS nav and search bar */
+  .s-header .s-search-bar {
+    /* To match lines with `s-header.compressed.css` */
+    /* FAQ: Matching lines eases comparison with `s-header.compressed.css` */
+
+
+
+
+    margin-left: auto;
+
+
+  }
+
   .s-header .s-search-bar,
   .s-header .s-search-bar::part(input),
   .s-header .s-search-bar::part(button) {
-    font-size: 12px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
+    font-size: 14px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
   }
 
   /* Create space between search bar and login (only if both elements exist) */
@@ -156,6 +144,11 @@ Styleguide Trumps.Scopes.Header.Expanded
 
   .s-header .s-portal-nav .nav-link .nav-icon {
     margin-right: 0.5em;
+  }
+
+  /* To enlarge toggle icon */
+  .s-portal-nav .dropdown-toggle .nav-icon {
+    font-size: 26px;
   }
 
 }
@@ -216,11 +209,22 @@ Styleguide Trumps.Scopes.Header.Expanded
 
 
 
-  /* Search */
+  /* Dropdowns */
 
-  /* To add flexible space between CMS nav and search bar */
-  .s-header .s-search-bar {
-    margin-left: auto;
+  /* To overwrite Bootstrap */
+  .s-header .dropdown-menu {
+    padding: 7px 0 0;
+
+    background-color: env(--header-link-bkgd-color);
+    border: env(--border-width--normal) solid env(--header-accent-color);
+
+    font-size: 12px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
+  }
+
+  /* To overwrite Bootstrap */
+  .s-header .dropdown-item {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
   }
 
 }

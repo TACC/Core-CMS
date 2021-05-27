@@ -71,7 +71,7 @@ Styleguide Trumps.Scopes.Header.Compressed
   /* Nav Links */
 
   .s-header .nav-link {
-    height: auto;
+    /* height: auto; *//* to mirror props on `s-header.compressed.css` */
 
     /* To overwrite Bootstrap */
     padding-top: 0.8em;
@@ -110,37 +110,25 @@ Styleguide Trumps.Scopes.Header.Compressed
 
 
 
-  /* Menu */
-
-  /* To overwrite Bootstrap */
-  .s-header .dropdown-menu {
-    padding: 0;
-
-    background-color: transparent;
-    border: none;
-
-    font-size: 20px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
-  }
-
-
-
-  /* Item */
-
-  /* FAQ: Selector specificty trumps Bootstrap, so no need for `:hover` (etc.) */
-  .s-header .dropdown-item {
-    /* To overwrite Bootstrap */
-    padding-top: 1em;
-    padding-bottom: 1em;
-  }
-
-
   /* Search */
 
-  /* GH-101: Retain search design until Wes works on it */
+  .s-header .s-search-bar,
+  /* To apply style to old markup (see "Portal & Docs Selectors") */
+  /* TODO: 1. Remove `ml-auto` from Portal & Docs markup
+           2. Remove the ` !important`
+           3. Remove the subsite selectors */
+  :--for-docs .s-header .s-search-bar.ml-auto,
+  :--for-portal .s-header .s-search-bar.ml-auto {
+    /* To line up menu text with logo */
+    margin-left: calc(
+      env(--portal-sidebar-padding) + env(--portal-navlink-padding)
+    ) !important;
+  }
+
   .s-header .s-search-bar,
   .s-header .s-search-bar::part(input),
   .s-header .s-search-bar::part(button) {
-    font-size: 12px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
+    font-size: 18px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
   }
 
   /* Create space between search bar and login (only if both elements exist) */
@@ -156,6 +144,11 @@ Styleguide Trumps.Scopes.Header.Compressed
 
   .s-header .s-portal-nav .nav-link .nav-icon {
     margin-right: 0.5em;
+  }
+
+  /* To enlarge all icons */
+  .s-portal-nav .dropdown .nav-icon {
+    font-size: 26px;
   }
 
 }
@@ -217,17 +210,70 @@ Styleguide Trumps.Scopes.Header.Compressed
     z-index: 1000;
   }
 
+  /* To layout elements for mobile navigation */
+  /* FAQ: Mimic column via 100% rows so portal nav & search can be on one row */
+  .s-header .navbar-collapse.show,
+  .s-header .navbar-collapse.collapsing {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .s-header .navbar-collapse > *:not(.s-portal-nav, .s-search-bar) {
+    flex-basis: 100%;
+  }
+  /* To let portal nav & search fit "comfortably" together on thier row */
+  .s-header .s-portal-nav { flex: 0 1 auto }
+  .s-header .s-search-bar { flex: 1 1 auto }
+  /* To let search fill up available space */
+  .s-header tacc-search-bar.s-search-bar::part(form) { width: 100%; }
+  /* To move portal nav & search to top of menu */
+  .s-header .s-portal-nav { order: -1 }
+  .s-header .s-search-bar { order: -2 }
 
 
-  /* Search */
+
+  /* Dropdowns */
 
   /* To overwrite Bootstrap */
-  /* To apply style to old markup (see "Portal & Docs Selectors") */
-  /* TODO: 1. Remove `ml-auto` from Portal & Docs markup
-           2. Remove this style */
-  :--for-docs .s-header .s-search-bar.ml-auto,
-  :--for-portal .s-header .s-search-bar.ml-auto {
-    margin-left: 0 !important;
+  .s-header .dropdown-menu {
+    padding: 0;
+  }
+  .s-header .s-cms-nav .dropdown-menu {
+    background-color: transparent;
+    border: none;
+
+    font-size: 20px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
+  }
+  .s-header .s-portal-nav .dropdown-menu {
+    background-color: env(--header-link-bkgd-color);
+    border: none;
+  }
+  /* To overwrite Bootstrap */
+  /* To allow Portal nav menu to still drop down over content on small screen */
+  .s-header .s-portal-nav .dropdown-menu {
+    /* Copied from Bootstrap:
+       ```
+       @media (min-width: 992px) {
+          .navbar-expand-lg .navbar-nav .dropdown-menu
+       }
+       ``` */
+    position: absolute; /* without this, menu pushes down content beneath it */
+  }
+
+  /* To distinguish CMS dropdown from Portal dropdown */
+  .s-header .s-cms-nav .dropdown-item {
+    /* To overwrite Bootstrap */
+    padding-top: 1em;
+    padding-bottom: 1em;
+  }
+  /* To mimic `.s-header .nav-link` */
+  .s-header .s-portal-nav .dropdown-item {
+    /* To overwrite Bootstrap */
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+
+    font-size: 2em;
   }
 
 }

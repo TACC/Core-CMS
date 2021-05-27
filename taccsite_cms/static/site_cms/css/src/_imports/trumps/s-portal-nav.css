@@ -1,7 +1,7 @@
 /*
 Portal Navigation
 
-Styles for elements within Portal navigation that has third-party code:
+Styles for elements specific to Portal navigation in isolation:
 
 - Bootstrap 4.3.1
 
@@ -10,26 +10,11 @@ Markup: s-portal-nav.html
 Styleguide Trumps.Scopes.PortalNav
 */
 
-/* To distinguish Portal nav from CMS nav */
-/* To overwrite `.s-header` */
-.s-portal-nav {
-  background-color: env(--header-portal-nav-bkgd-color);
-}
-.s-portal-nav .nav-link {
-  /* To overwrite `.s-header .nav-link:…` etcetera */
-  border-bottom-color: transparent !important;
-}
-.s-portal-nav .nav-item .nav-link,
-:--for-portal .s-portal-nav .nav-item .nav-link {
-  padding-left: 30px;
-  padding-right: calc(
-    env(--portal-sidebar-padding) + env(--portal-navlink-padding)
-  );
-}
 
-.s-portal-nav .dropdown-toggle .nav-icon {
-  font-size: 26px;
-}
+
+
+
+/* Icons */
 
 /* To swap Font Awesome icons for Cortal icons */
 /* HACK: To apply icon styles without using a class in the markup */

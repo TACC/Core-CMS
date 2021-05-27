@@ -86,3 +86,11 @@ article :--heading + p {
 :--nav-link-active {
   color: red;
 }
+
+/*! Goal: */
+._test>:not(._test--x):not(._test--y){align-items:center}
+
+/*! Test: */
+._test > *:not(._test--x, ._test--y) {
+  align-items: center;
+}

@@ -1,7 +1,9 @@
 /*
 Header
 
-Styles for elements within a header that has third-party code:
+Styles for elements within a header.
+
+Warning: There are complex overwrites for 3rd-party and subsite code:
 
 - FontAwesome icons
   (for Portal navigation)
@@ -10,6 +12,8 @@ Styles for elements within a header that has third-party code:
   (for Portal navigation)
 - a subset of Bootstrap 3.3.7
   (for CMS body content, can affect navigation)
+- Docs
+- Portal
 
 Portal & Docs Selectors:
 
@@ -95,7 +99,7 @@ Styleguide Trumps.Scopes.Header
 :--nav-bar-fake-bkgd,
 #header-logo,
 .s-header :--navbar-button,
-.s-header tacc-search-bar {
+.s-header .s-search-bar {
   /* FAQ: To allow height to change in `…expanded.css` and `…compressed.css` */
   height: var(--header-navbar-height, env(--header-navbar-normal-height));
 }
@@ -177,6 +181,11 @@ Styleguide Trumps.Scopes.Header
   --nav-link-horz-pad: …
   --nav-line-color: …
   */
+}
+
+/* To distinguish Portal nav from CMS nav */
+.s-portal-nav {
+  background-color: env(--header-portal-nav-bkgd-color);
 }
 
 
@@ -301,6 +310,11 @@ Styleguide Trumps.Scopes.Header
   padding-right: var(--nav-link-horz-pad, 0);
   padding-left: var(--nav-link-horz-pad, 0);
 }
+.s-header .s-portal-nav .nav-link,
+/* To overwrite Bootstrap (see "Portal & Docs Selectors") */
+:--for-portal .s-portal-nav .nav-link {
+  padding-left: 30px;
+}
 
 /* To create line between each item */
 .s-header .nav-item + .nav-item .nav-link {
@@ -359,17 +373,20 @@ Styleguide Trumps.Scopes.Header
 
 /* Menu */
 
+/* To overwrite Bootstrap */
+/* FAQ: Bootstrap has styles we do not want a value for, so `unset` */
 .s-header .dropdown-menu {
-  margin: unset; /* undo Bootstrap */
+  margin: unset;
 
-  border-radius: unset; /* undo Bootstrap */
+  border-radius: unset;
+
+  font-size: unset;
 }
 
 
 
 /* Item */
 
-/* FAQ: Selector specificty trumps Bootstrap, so no need for `:hover` (etc.) */
 .s-header .dropdown-item {
   padding-left: var(--menu-link-horz-pad);
   padding-right: var(--menu-link-horz-pad);
@@ -403,21 +420,6 @@ Styleguide Trumps.Scopes.Header
 :--for-portal .s-header .dropdown-item:focus,
 :--for-portal .s-header .dropdown-item:hover {
   color: env(--header-text-color);
-}
-
-
-/* Search */
-
-/* GH-101: Retain search design until Wes works on it */
-.s-header .s-search-bar,
-.s-header .s-search-bar::part(input),
-.s-header .s-search-bar::part(button) {
-  font-size: 12px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
-}
-
-/* Create space between search bar and login (only if both elements exist) */
-.s-header .s-search-bar ~ .s-portal-nav {
-  margin-left: 12px;
 }
 
 
