@@ -254,6 +254,11 @@ Styleguide Trumps.Scopes.Header
   font-weight: env(--medium);
 }
 .s-header :--navbar-button--opened::after { display: none; }
+/* To apply style to old markup (see "Portal & Docs Selectors") */
+/* FAQ: This selector does not use `:--for-portal` but has similar purpose */
+.s-header :--navbar-button:not([data-icon-label])::after {
+  content: 'Menu';
+}
 
 
 
