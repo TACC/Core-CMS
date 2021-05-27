@@ -353,20 +353,22 @@ Styleguide Trumps.Scopes.Header
 .s-header .dropdown-toggle::after {
   @extend %x-arrow;
 
-  --size: 0.5em;
+  --size: 0.375em;
   --line: 0.1em; /* to get 1px at 12px text and 2px at 24px text */
   --color: env(--header-text-color);
+  --nudge: 0.24em;
 
   margin-left: 0.6em;
   position: relative; /* to allow use of `top` (to vertically align) */
 }
+/* To vertically align with text */
 .s-header .dropdown-toggle[aria-expanded="true"]::after {
   @extend %x-arrow--up;
-  top: 0.35em; /* to vertically align with text */
+  top: var(--nudge);
 }
 .s-header .dropdown-toggle[aria-expanded="false"]::after {
   @extend %x-arrow--down;
-  top: -0.35em; /* to vertically align with text */
+  bottom: var(--nudge);
 }
 
 
