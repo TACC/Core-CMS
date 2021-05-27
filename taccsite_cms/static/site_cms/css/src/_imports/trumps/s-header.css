@@ -224,6 +224,11 @@ Styleguide Trumps.Scopes.Header
   color: env(--header-text-color);
 }
 
+.s-header :--navbar-button:hover,
+.s-header :--navbar-button:active {
+  background-color: env(--header-link-bkgd-color);
+}
+
 /* Icon */
 .s-header :--navbar-button::before {
   font-size: 30px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
