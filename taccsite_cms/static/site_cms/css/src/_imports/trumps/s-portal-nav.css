@@ -34,3 +34,9 @@ Styleguide Trumps.Scopes.PortalNav
 .s-portal-nav .fa-sign-out-alt {
   transform: translateX(2px);
 }
+
+/* HACK: To make Portal text "Log in" from old markup appear as "Log In" */
+/* TODO: (1) Fix Portal nav text, (2) Delete this ruleset */
+.s-portal-nav .nav-link:not(.dropdown-toggle) {
+  text-transform: capitalize;
+}
