@@ -13,5 +13,23 @@
 
   const container = document.getElementById('portal-nav');
 
-  importHTML.insertFromURL('/core/markup/nav', container);
+  importHTML.insertFromURL('/core/markup/nav', container).then(container => {
+    container.classList.add('js-content--is-loaded');
+  });
 </script>
+<style>
+  .s-portal-nav {
+    flex-shrink: 0;
+
+    transition: max-width 0.5s ease-out;
+    max-width: 0;
+  }
+  .s-portal-nav.js-content--is-loaded {
+    /* FAQ: Value is normal width of logged in nav with 8-char (max) username */
+    /* CAVEAT: Change of space or dimension of portal nav items affects value */
+    max-width: 212px;
+  }
+  .s-portal-nav .dropdown:not(.show) {
+    overflow: hidden;
+  }
+</style>
