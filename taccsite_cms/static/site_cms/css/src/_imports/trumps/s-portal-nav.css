@@ -9,6 +9,7 @@ Markup: s-portal-nav.html
 
 Styleguide Trumps.Scopes.PortalNav
 */
+@import url("_imports/tools/selectors.css");
 
 
 
@@ -18,19 +19,23 @@ Styleguide Trumps.Scopes.PortalNav
 
 /* To have Portal Nav gently push—not abruptly shove—elements to make room */
 /* FAQ: Load Portal Nav with zero width, then transition to normal width */
-.s-portal-nav {
+/* FAQ: Portal loads Portal Nav statically, so no need to ever hide it */
+:--for-cms .s-portal-nav,
+:--for-docs .s-portal-nav {
   flex-shrink: 0;
 
   transition: max-width 0.5s ease-out;
   max-width: 0;
 }
-.s-portal-nav.js-content--is-loaded /* from `nav_portal.html` */ {
+.s-portal-nav.js-content--is-loaded /* from `nav_portal.html` */,
+/* To ensure Portal has identical post-load styles as CMS & Docs */
+:--for-portal .s-portal-nav {
   /* To let width grow, use explicit value, and not constrain width */
   /* FAQ: No support for transition to `width: auto` nor `max-width: 100%` */
   /* SEE: https://css-tricks.com/using-css-transitions-auto-dimensions/ */
   /* FAQ: Value is normal width of logged in nav with 8-char (max) username */
   /* CAVEAT: Change of space or dimension of portal nav items affects value */
-  max-width: 212px;
+  max-width: 212px !important; /* override `:--for-cms` and `:--for-docs` */
 }
 /* To ensure content that is off screen does not cause scrollbar for <body> */
 /* FAQ: The specific conditional hide ensures dropdown menu is not hidden */
