@@ -27,6 +27,7 @@ Styleguide Trumps.Scopes.PortalNav
 .s-portal-nav .fa-tasks        { @extend .icon-approved-boxed; }
 .s-portal-nav .fa-user-circle  { @extend .icon-user; }
 .s-portal-nav .fa-sign-out-alt { @extend .icon-exit; }
+.s-portal-nav .fa-sign-in-alt  { @extend .icon-user; }
 
 /* To align log out icon closer to visual midpoint of other icons */
 .s-portal-nav .icon-exit,

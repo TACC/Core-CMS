@@ -141,12 +141,8 @@ Styleguide Trumps.Scopes.Header.Compressed
 
   /* Icons */
 
-  .s-header .s-portal-nav .nav-link .nav-icon {
-    margin-right: 0.5em;
-  }
-
   /* To enlarge all icons */
-  .s-portal-nav .dropdown .nav-icon {
+  .s-header .nav-icon {
     font-size: 26px;
   }
 

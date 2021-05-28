@@ -141,12 +141,8 @@ Styleguide Trumps.Scopes.Header.Expanded
 
   /* Icons */
 
-  .s-header .s-portal-nav .nav-link .nav-icon {
-    margin-right: 0.5em;
-  }
-
-  /* To enlarge toggle icon */
-  .s-portal-nav .dropdown-toggle .nav-icon {
+  /* To enlarge primary nav link icon */
+  .s-header .nav-link .nav-icon {
     font-size: 26px;
   }
 
