@@ -19,8 +19,9 @@ Styleguide Tools.ExtendsAndMixins.ArticleLink
   position: absolute;
   height: 100%;
   width: 100%;
-  /* An explicit position (in case container has top padding) */
+  /* FAQ: Explicit position prevents container padding from offsetting link */
   top: 0;
+  left: 0;
 }
 .x-article-link-stretch--gapless,
 %x-article-link-stretch--gapless {
