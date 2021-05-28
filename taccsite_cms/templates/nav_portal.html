@@ -13,5 +13,7 @@
 
   const container = document.getElementById('portal-nav');
 
-  importHTML.insertFromURL('/core/markup/nav', container);
+  importHTML.insertFromURL('/core/markup/nav', container).then(container => {
+    container.classList.add('js-content--is-loaded');
+  });
 </script>
