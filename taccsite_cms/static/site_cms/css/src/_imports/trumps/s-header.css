@@ -104,6 +104,13 @@ Styleguide Trumps.Scopes.Header
   height: var(--header-navbar-height, env(--header-navbar-normal-height));
 }
 
+/* To support shrinking and truncation of certain nav elements */
+/* SEE: https://css-tricks.com/flexbox-truncated-text/ */
+.s-header .navbar-collapse,
+  #header-logo,
+  .s-header .s-cms-nav,
+  .s-header .s-search-bar { min-width: 0; }
+
 
 
 
@@ -135,9 +142,6 @@ Styleguide Trumps.Scopes.Header
 
   display: flex;
   align-items: center;
-
-  /* To allow shrinking beyond content width */
-  min-width: 0;
 
   /* To overwrite Bootstrap */
   margin-right: var(--space-after-logo-before-nav);
@@ -288,8 +292,6 @@ Styleguide Trumps.Scopes.Header
 }
 
 /* To truncate link text */
-/* SEE: https://css-tricks.com/flexbox-truncated-text/ */
-.s-header .s-cms-nav,
 .s-header .nav-item { min-width: 0; }
 .s-header .nav-text { @extend .x-truncate--one-line; }
 
