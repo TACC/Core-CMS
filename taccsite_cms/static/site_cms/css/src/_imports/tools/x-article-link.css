@@ -19,9 +19,13 @@ Styleguide Tools.ExtendsAndMixins.ArticleLink
   position: absolute;
   height: 100%;
   width: 100%;
-  /* FAQ: Explicit position prevents container padding from offsetting link */
+  /* To prevent container padding from offsetting an `outline` */
   top: 0;
   left: 0;
+
+  /* To prevent `outline` from being inexplicably offset in Firefox */
+  /* SEE: http://johndoesdesign.com/blog/2012/css/firefox-and-its-css-focus-outline-bug/ */
+  overflow: hidden;
 }
 .x-article-link-stretch--gapless,
 %x-article-link-stretch--gapless {
