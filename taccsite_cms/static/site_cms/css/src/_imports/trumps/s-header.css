@@ -289,6 +289,8 @@ Styleguide Trumps.Scopes.Header
   /* To vertically center text and icons (if any) */
   display: flex;
   align-items: center;
+
+  text-transform: capitalize;
 }
 
 /* To truncate link text */
