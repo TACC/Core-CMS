@@ -83,12 +83,11 @@ Styleguide Trumps.Scopes.Header.Expanded
   /* NOTE: Design may want hover .s-header active background color with alpha */
   /* SEE: `./s-header.css` */
 
-  /* NOTE: Design may want hover/focus/active styles to differ per nav state */
-  .s-header .nav-link:hover,
-  .s-header .nav-link:focus,
-  .s-header .nav-link:active,
-  .s-header .nav-item.active .nav-link,
-  .s-header .nav-item.dropdown.show .nav-link {
+  .s-header .navbar-nav:not(.s-portal-nav) .nav-link:hover,
+  .s-header .navbar-nav:not(.s-portal-nav) .nav-link:focus,
+  .s-header .navbar-nav:not(.s-portal-nav) .nav-link:active,
+  .s-header .navbar-nav:not(.s-portal-nav) .nav-item.active .nav-link,
+  .s-header .navbar-nav:not(.s-portal-nav) .nav-item.dropdown.show .nav-link {
     border-top: env(--border-width--xx-thick) solid transparent;
     border-bottom: env(--border-width--xx-thick) solid env(--header-accent-color);
   }

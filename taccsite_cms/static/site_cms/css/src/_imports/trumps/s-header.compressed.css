@@ -83,7 +83,6 @@ Styleguide Trumps.Scopes.Header.Compressed
   /* NOTE: Design may want hover .s-header active background color with alpha */
   /* SEE: `./s-header.css` */
 
-  /* NOTE: Design may want hover/focus/active styles to differ per nav state */
   .s-header .nav-link:hover,
   .s-header .nav-link:focus,
   .s-header .nav-link:active,
