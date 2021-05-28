@@ -186,9 +186,8 @@ Styleguide Trumps.Scopes.Header
   --nav-line-color: …
   */
 }
-
 /* To distinguish Portal nav from CMS nav */
-.s-portal-nav {
+.s-header .s-portal-nav {
   background-color: env(--header-portal-nav-bkgd-color);
 }
 
