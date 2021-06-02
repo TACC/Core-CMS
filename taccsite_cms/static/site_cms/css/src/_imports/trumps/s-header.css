@@ -27,6 +27,7 @@ Styleguide Trumps.Scopes.Header
 @import url("_imports/tools/selectors.css");
 @import url("_imports/tools/x-arrow.css");
 @import url("_imports/tools/x-truncate.css");
+@import url("_imports/tools/x-mobile-button.css");
 
 /* RFE: Make Portal & Docs markup match CMS (see "Portal & Docs Selectors") */
 /* RFE: Load Bootstrap before CMS stylesheets (see "Portal & Docs Selectors") */
@@ -204,10 +205,8 @@ Styleguide Trumps.Scopes.Header
 
 /* Button */
 .s-header :--navbar-button {
+  @extend %x-mobile-button--toggle-on-side;
   /* display: flex; *//* SEE `s-header.compressed.css` */
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 
   width: env(--header-navbar-toggle-width);
   margin-right: env(--header-navbar-toggle-width);
@@ -252,14 +251,9 @@ Styleguide Trumps.Scopes.Header
 
 /* Text */
 .s-header :--navbar-button::after {
-  content: attr(data-icon-label);
-  display: block;
+  @extend %x-mobile-button__text;
 
-  font-family: Benton Sans, env(--header-font-family);
-  font-size: 10px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
-  text-align: center;
-  text-transform: uppercase;
-  font-weight: env(--medium);
+  content: attr(data-icon-label);
 }
 .s-header :--navbar-button--opened::after { display: none; }
 /* To apply style to old markup (see "Portal & Docs Selectors") */

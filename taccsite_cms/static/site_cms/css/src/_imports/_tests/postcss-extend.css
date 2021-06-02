@@ -78,3 +78,21 @@ Styleguide _Test.Extend
 ._test_5 {
   @extend _test_mixin_5;
 }
+
+
+/*! Nested Extends */
+
+/*! Goal: */
+._test_6{color:#000}._test_6{background-color:#fff}
+
+/*! Test: */
+%_test_mixin_6a {
+  color: black;
+}
+%_test_mixin_6b {
+  @extend %_test_mixin_6a;
+  background-color: white;
+}
+._test_6 {
+  @extend %_test_mixin_6b;
+}
