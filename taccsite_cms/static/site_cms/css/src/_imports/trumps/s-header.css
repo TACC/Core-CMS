@@ -147,10 +147,8 @@ Styleguide Trumps.Scopes.Header
   /* To overwrite Bootstrap */
   margin-right: var(--space-after-logo-before-nav);
 
-  /* To align logo (whole image not just visible pixels) with Portal sidebar */
-  margin-left: calc(
-    env(--portal-sidebar-padding) + env(--portal-navlink-padding)
-  );
+  /* To align logo (whole image not just visible pixels) with Portal content */
+  margin-left: env(--header-navbar-left-pad);
 
   /* FAQ: In case image does not load and browser shows alt text */
   color: env(--header-text-color);
@@ -187,10 +185,6 @@ Styleguide Trumps.Scopes.Header
   --nav-line-color: …
   */
 }
-/* To distinguish Portal nav from CMS nav */
-.s-header .s-portal-nav {
-  background-color: env(--header-portal-nav-bkgd-color);
-}
 
 
 
@@ -208,7 +202,7 @@ Styleguide Trumps.Scopes.Header
   /* display: grid; *//* SEE `s-header.compressed.css` */
 
   width: env(--header-navbar-toggle-width);
-  margin-right: env(--header-navbar-toggle-width);
+  margin-right: env(--header-navbar-right-pad);
   padding: 0; /* to overwrite Bootstrap */
 
   background-color: env(--header-portal-nav-bkgd-color);
@@ -287,6 +281,10 @@ Styleguide Trumps.Scopes.Header
   display: flex;
   align-items: center;
 }
+.s-header .s-portal .nav-link {
+  /* To horizontally center align icon, text, and toggle as a group */
+  justify-content: center;
+}
 
 /* To truncate link text */
 .s-header .nav-item { min-width: 0; }
@@ -319,14 +317,74 @@ Styleguide Trumps.Scopes.Header
   padding-right: var(--nav-link-horz-pad, 0);
   padding-left: var(--nav-link-horz-pad, 0);
 }
-.s-header .s-portal-nav .nav-link,
-/* To overwrite Bootstrap (see "Portal & Docs Selectors") */
-:--for-portal .s-portal-nav .nav-link {
-  padding-left: 30px;
-  /* To match space betwwen logo and left side of window */
-  --nav-link-horz-pad: calc(
-    env(--portal-sidebar-padding) + env(--portal-navlink-padding)
-  );
+
+/* To match design of expanded navbar Portal Nav but take liberty with when */
+@media (--nav-expanded), /* match design */
+       (--nav-narrow-and-above) and (--nav-compressed) /* dev liberty */ {
+
+  .s-header .s-portal-nav .nav-link,
+  /* To overwrite Bootstrap (see "Portal & Docs Selectors") */
+  :--for-portal .s-portal-nav .nav-link {
+    padding-left: 30px;
+    /* To match space betwwen logo and left side of window */
+    --nav-link-horz-pad: env(--header-navbar-left-pad);
+  }
+  .s-header .s-portal-nav .nav-link .nav-icon {
+    margin-right: 0.5em;
+  }
+
+}
+/* To match design of collapsed navbar Portal Nav but take liberty with when */
+@media (--nav-narrow-and-above) and (--nav-compressed) /* dev liberty */ {
+
+
+  /* To make space for portal nav in which to shove portal nav */
+  .s-header .s-search-bar {
+    --space-after-search-before-nav: calc(
+      env(--portal-navlink-normal-max-width) + 2px
+    );
+  }
+  .s-header .s-portal-nav .nav-link {
+    /* To prevent width expansion upon dropdown menu open */
+    width: env(--portal-navlink-normal-max-width);
+  }
+
+}
+@media (--nav-narrow-and-below) {
+
+  /* To make space for portal nav in which to shove portal nav */
+  .s-header .s-search-bar {
+    --space-after-search-before-nav: calc(
+      env(--portal-navlink-mobile-max-width) + 2px
+    );
+  }
+  .s-header .s-portal-nav .nav-link {
+    /* To prevent width expansion upon dropdown menu open */
+    width: env(--portal-navlink-mobile-max-width);
+  }
+
+  /* To style "Log In" and "username" like navbar toggle button */
+  .s-header .s-portal-nav .nav-link {
+    @extend %x-mobile-button--has-toggle;
+    display: grid;
+
+    min-width: calc(2 * env(--header-navbar-toggle-width)); /* dev liberty */
+    margin-right: 0; /* to overwrite (--nav-expanded) `.s-header .nav-icon` */
+
+    padding-top: 0; /* to overwrite Bootstrap */
+    padding-bottom: 0; /* to overwrite Bootstrap */
+    --nav-link-horz-pad: 1em;
+  }
+  .s-header .s-portal-nav .nav-link .nav-icon {
+    @extend %x-mobile-button__icon;
+  }
+  .s-header .s-portal-nav .nav-link .nav-text {
+    @extend %x-mobile-button__text;
+  }
+  .s-header .s-portal-nav .nav-link::after {
+    @extend %x-mobile-button__toggle;
+  }
+
 }
 
 /* To create line between each item */
@@ -435,4 +493,19 @@ Styleguide Trumps.Scopes.Header
 :--for-portal .s-header .dropdown-item:focus,
 :--for-portal .s-header .dropdown-item:hover {
   color: env(--header-text-color);
+}
+
+
+
+
+
+/* Search */
+
+/* Create space between search bar and login (only if both elements exist) */
+.s-header.is-on-portal .s-search-bar,
+/* To apply style to old markup (see "Portal & Docs Selectors") */
+/* TODO: Hardcode `is-on-portal` in Portal & Docs markup */
+:--for-docs .s-header .s-search-bar,
+:--for-portal .s-header .s-search-bar {
+  margin-right: var(--space-after-search-before-nav, 0);
 }
