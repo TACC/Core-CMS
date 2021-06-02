@@ -205,8 +205,7 @@ Styleguide Trumps.Scopes.Header
 
 /* Button */
 .s-header :--navbar-button {
-  @extend %x-mobile-button--toggle-on-side;
-  /* display: flex; *//* SEE `s-header.compressed.css` */
+  /* display: grid; *//* SEE `s-header.compressed.css` */
 
   width: env(--header-navbar-toggle-width);
   margin-right: env(--header-navbar-toggle-width);
@@ -218,6 +217,8 @@ Styleguide Trumps.Scopes.Header
   border: none;
   border-radius: 0;
 }
+.s-header :--navbar-button--opened { @extend %x-mobile-button--only-icon; }
+.s-header :--navbar-button--closed { @extend %x-mobile-button--no-toggle; }
 /* To isolate styles that require more specificity to override Portal */
 .s-header :--navbar-button,
 /* To overwrite Bootstrap (see "Portal & Docs Selectors") */
@@ -254,6 +255,9 @@ Styleguide Trumps.Scopes.Header
   @extend %x-mobile-button__text;
 
   content: attr(data-icon-label);
+}
+.s-header .navbar-toggler-icon {
+  @extend %x-mobile-button__icon;
 }
 .s-header :--navbar-button--opened::after { display: none; }
 /* To apply style to old markup (see "Portal & Docs Selectors") */
