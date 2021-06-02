@@ -101,7 +101,7 @@ Styleguide Trumps.Scopes.Header
 #header-logo,
 .s-header :--navbar-button,
 .s-header .s-search-bar {
-  /* FAQ: To allow height to change in `…expanded.css` and `…compressed.css` */
+  /* FAQ: To allow height to change in `…expanded.css`, `…compressed.css`, … */
   height: var(--header-navbar-height, env(--header-navbar-normal-height));
 }
 
