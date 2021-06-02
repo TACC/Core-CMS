@@ -70,7 +70,7 @@ Styleguide Trumps.Scopes.Header.Compressed
 
   /* Nav Links */
 
-  .s-header .nav-link {
+  .s-header .s-cms-nav .nav-link {
     /* height: auto; *//* to mirror props on `s-header.compressed.css` */
 
     /* To overwrite Bootstrap */
@@ -140,6 +140,10 @@ Styleguide Trumps.Scopes.Header.Compressed
 
 
   /* Icons */
+
+  .s-header .s-cms-nav .nav-icon {
+    margin-right: 0.5em;
+  }
 
   /* To enlarge all icons */
   .s-header .nav-icon {
@@ -226,6 +230,35 @@ Styleguide Trumps.Scopes.Header.Compressed
   .s-header .s-portal-nav { order: -1 }
   .s-header .s-search-bar { order: -2 }
 
+  /* To style "Log In" and "username" like navbar toggle button */
+  .s-header .s-portal-nav .nav-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  /* To position dropdown toggle at the right of the link icon and link text */
+  /* FAQ: Target logged in nav link, but permit styles on logged out nav link */
+  .s-header .s-portal-nav .nav-link/*.dropdown-toggle */ {
+    height: 56px; /* FAQ: A static height seems required to trigger wrapping */
+    flex-wrap: wrap;
+
+    /* To overwrite Boostrap */
+    /* To ensure dropdown toggle wraps by limited available content height */
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  /* FAQ: The extra `.nav-link` specificity avoids styling dropdown link text */
+  .s-header .s-portal-nav .nav-link .nav-text {
+    content: attr(data-icon-label);
+    display: block;
+
+    font-family: Benton Sans, env(--header-font-family);
+    font-size: 10px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: env(--medium);
+  }
 
 
   /* Dropdowns */

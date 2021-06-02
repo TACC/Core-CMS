@@ -141,6 +141,10 @@ Styleguide Trumps.Scopes.Header.Expanded
 
   /* Icons */
 
+  .s-header .nav-icon {
+    margin-right: 0.5em;
+  }
+
   /* To enlarge primary nav link icon */
   .s-header .nav-link .nav-icon {
     font-size: 26px;

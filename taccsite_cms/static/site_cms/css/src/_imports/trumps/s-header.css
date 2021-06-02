@@ -438,13 +438,3 @@ Styleguide Trumps.Scopes.Header
 :--for-portal .s-header .dropdown-item:hover {
   color: env(--header-text-color);
 }
-
-
-
-
-
-/* Icons */
-
-.s-header .nav-icon {
-  margin-right: 0.5em;
-}
