@@ -1,0 +1,54 @@
+/*
+Mobile Button (or Link)
+
+Styles to lay out button icon, text, and toggle in a compressed area.
+
+%x-mobile-button--toggle-on-side - Support toggle positioned on side of button
+
+Styleguide Tools.ExtendsAndMixins.MobileButton
+*/
+
+/* WARNING: A button must have `display: (inline-)flex` set externally */
+/* FAQ: Why not set `display: flex` here?
+        - It may break a button conditionally dependent on `display: none`.
+        - It would be overridden if button needs `display: inline-flex`.
+        - It makes user aware of the complexity of `display` and `flex`.
+*/
+
+
+
+/* Base */
+
+%x-mobile-button {
+  /* FAQ: The flex properties require `display` of `flex` or `inline-flex` */
+  /* display: flex; *//* set this externally */
+
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+/* Elements */
+
+%x-mobile-button__text {
+  font-family: var(--global-font-family--sans);
+  font-size: 10px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: env(--medium);
+}
+
+
+
+/* Modifiers */
+
+%x-mobile-button--toggle-on-side {
+  @extend %x-mobile-button;
+
+  /* FAQ: A height is required to force toggle to wrap */
+  /* height: 60px; *//* set this externally */
+
+  flex-wrap: wrap;
+}
