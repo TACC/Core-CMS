@@ -61,7 +61,6 @@ Styleguide Tools.ExtendsAndMixins.MobileButton
   /* FAQ: The flex properties require `display` of `grid` or `inline-grid` */
   /* display: grid; *//* set this externally */
 
-  display: grid;
   grid-auto-flow: column;
   grid-template-rows: auto;
   justify-items: center;
