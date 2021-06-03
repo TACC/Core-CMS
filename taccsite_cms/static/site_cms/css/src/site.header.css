@@ -35,8 +35,6 @@
 */
 /* Unique to CMS */
 @import url("_imports/trumps/s-header.css");
-@import url("_imports/trumps/s-header.compressed.css");
-@import url("_imports/trumps/s-header.expanded.css");
 @import url("_imports/trumps/s-portal-nav.css");
 @import url("_imports/trumps/s-cms-nav.css");
 /* Specific to Subsites */

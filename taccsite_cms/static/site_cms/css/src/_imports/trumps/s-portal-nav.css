@@ -1,9 +1,11 @@
 /*
 Portal Navigation
 
-Styles for elements specific to Portal navigation in isolation:
+Styles for elements specific to Portal navigation (independent of context such as a header).
 
-- Bootstrap 4.3.1
+This overwrites 3rd-party code:
+
+- FontAwesome icons
 
 Markup: s-portal-nav.html
 
@@ -15,6 +17,10 @@ Styleguide Trumps.Scopes.PortalNav
 
 
 /* Container */
+
+
+
+/* Container: Desktop */
 
 @media (--nav-expanded) {
 
@@ -53,7 +59,7 @@ Styleguide Trumps.Scopes.PortalNav
 
 /* To swap Font Awesome icons for Cortal icons */
 /* HACK: To apply icon styles without using a class in the markup */
-/* NOTE: So I can deploy new header and not require edit to Portal nor Docs */
+/* NOTE: So I can deploy new header and not require edit of Portal nor Docs */
 /* FP-526: Use Cortal Icons for header (then remove these styles) */
 .s-portal-nav [class*="fa"] { @extend [class*=" icon-"]; }
 .s-portal-nav [class*="fa"] { @extend .icon; }

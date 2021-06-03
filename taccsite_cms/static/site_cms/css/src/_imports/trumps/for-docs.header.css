@@ -7,6 +7,15 @@ Styleguide Trumps.ForOtherSites.Docs
 */
 @import url("_imports/tools/selectors.css");
 
+/* Update / Unset Outdated Styles */
+
+:--for-docs #frontera-top-nav {
+  min-height: calc(
+    var(--header-brandbar-height) + var(--header-navbar-height)
+  );
+  background-color: unset;
+}
+
 
 
 /* Initialize Sidebar Position (for Dependency on Header Height) */
