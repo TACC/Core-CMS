@@ -50,12 +50,12 @@ Styleguide Components.Branding
 /* Elements */
 
 .c-branding__link {
-  /* FAQ: Percentage-based math adapts to var(--header-brandbar-height) */
+  /* FAQ: Percentage-based math adapts to container height */
   height: var(--height, 90%);
 }
 .c-branding__separator {
   /* To add border */
-  /* FAQ: Percentage-based math adapts to var(--header-brandbar-height) */
+  /* FAQ: Percentage-based math adapts to container height */
   height: calc(100% - 35%);
   border-left: env(--border-width--normal) solid var(--global-color-primary--xx-light);
 
@@ -65,7 +65,7 @@ Styleguide Components.Branding
 }
 
 /* Specific brands */
-/* FAQ: Percentage-based math adapts to var(--header-brandbar-height) */
+/* FAQ: Percentage-based math adapts to container height */
 .c-branding__nsf-link    { --height: 87.5%; }
 .c-branding__tacc-link   { --height: 75%; }
 .c-branding__utexas-link { --height: 65%; }

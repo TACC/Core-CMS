@@ -14,7 +14,7 @@ Styleguide Elements.TACC.SearchBar
 
 
 
-/* FAQ: The `.s-search-bar` is added to trump Bootstrap class specificity */
+/* FAQ: The `.s-search-bar` was to override Bootstrap class specificity */
 
 /* tacc-search-bar.s-search-bar::part(form) { */
 [part="form"] {
@@ -27,6 +27,9 @@ Styleguide Elements.TACC.SearchBar
   display: flex;
   flex-direction: row;
   align-items: center;
+
+  /* To fill available space */
+  width: 100%;
 }
 
 /* FAQ: Added `#s-header` to trump `.workbench-content .btn-secondary` specificity because it should match (thus override); could have used merely `.s-header`, but CMS use of `@apply` brings in CSS pseudo-class styles, while Portal use of `composes` does not, so `:hover` styles have effect in CMS while they do not have effect in Portal, hence using `#s-header` to create a more specific selector */
