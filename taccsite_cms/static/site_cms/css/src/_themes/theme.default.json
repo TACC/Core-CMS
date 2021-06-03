@@ -10,6 +10,8 @@
     "--header-bkgd-color": "var(--global-color-primary--xx-dark)",
     "// --header-link-bkgd-color": "unique, not registered in global colors",
     "--header-link-bkgd-color": "#313131",
+    "--header-search-brdr-color": "var(--global-color-primary--dark)",
+    "--header-search-bkgd-color": "#313131",
     "--header-portal-nav-bkgd-color": "var(--global-color-primary--x-dark)"
 
   }
