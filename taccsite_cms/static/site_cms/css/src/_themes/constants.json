@@ -6,8 +6,10 @@
   "environment-variables": {
 
     "// PORTAL": "",
-    "--portal-sidebar-padding": "16px",
-    "--portal-navlink-padding": "20px",
+    "--portal-sidebar-pad": "16px",
+    "--portal-navlink-pad": "20px",
+    "--portal-navlink-normal-max-width": "206px",
+    "--portal-navlink-mobile-max-width": "112px",
 
     "// HEADER": "",
     "--header-font-family": "Roboto, sans-serif",
@@ -17,6 +19,10 @@
     "--header-navbar-normal-height": "55px",
     "--header-navbar-mobile-height": "48px",
     "--header-navbar-toggle-width": "48px",
+    "--header-navbar-right-pad": "48px",
+    "// --header-navbar-left-pad: 16px": "--portal-sidebar-pad",
+    "// --header-navbar-left-pad: 20px": "--portal-navlink-pad",
+    "--header-navbar-left-pad": "calc(16px + 20px)",
 
     "// BORDER": "",
     "--border-width--normal": "1px",

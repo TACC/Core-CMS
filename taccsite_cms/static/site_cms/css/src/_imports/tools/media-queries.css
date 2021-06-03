@@ -58,3 +58,9 @@ Styleguide Tools.CustomMediaQueries.Breakpoints
    - `...-sm` → `--x-narrow-and-...` */
 @custom-media --nav-compressed (width < 992px);
 @custom-media --nav-expanded (width >= 992px);
+
+/* Arbitrary widths below and above `--nav-compressed` and `--nav-expanded` */
+@custom-media --nav-narrow-and-below (width < 768px);
+@custom-media --nav-narrow-and-above (width >= 768px);
+@custom-media --nav-wide-and-below (width < 1200px);
+@custom-media --nav-wide-and-above (width >= 1200px);

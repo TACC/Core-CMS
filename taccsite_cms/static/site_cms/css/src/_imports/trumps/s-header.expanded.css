@@ -79,6 +79,9 @@ Styleguide Trumps.Scopes.Header.Expanded
 
     /* font-size: 1em; *//* to mirror props on `s-header.compressed.css` */
   }
+  .s-header .s-portal-nav .nav-link {
+    background-color: env(--header-portal-nav-bkgd-color);
+  }
 
   /* NOTE: Design may want hover .s-header active background color with alpha */
   /* SEE: `./s-header.css` */
@@ -113,26 +116,23 @@ Styleguide Trumps.Scopes.Header.Expanded
 
   /* To add flexible space between CMS nav and search bar */
   .s-header .s-search-bar {
+    --space-after-search-before-nav: 12px;
+
     /* To match lines with `s-header.compressed.css` */
     /* FAQ: Matching lines eases comparison with `s-header.compressed.css` */
 
-
-
-
+    /* To insert flexible space */
     margin-left: auto;
-
-
   }
+
+  /* To match lines with `s-header.compressed.css` */
+  /* FAQ: Matching lines eases comparison with `s-header.compressed.css` */
+
 
   .s-header .s-search-bar,
   .s-header .s-search-bar::part(input),
   .s-header .s-search-bar::part(button) {
     font-size: 14px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
-  }
-
-  /* Create space between search bar and login (only if both elements exist) */
-  .s-header .s-search-bar ~ .s-portal-nav {
-    margin-left: 12px;
   }
 
 
@@ -141,7 +141,8 @@ Styleguide Trumps.Scopes.Header.Expanded
 
   /* Icons */
 
-  .s-header .nav-icon {
+  .s-header .s-cms-nav .nav-icon,
+  .s-header .s-portal-nav .nav-icon {
     margin-right: 0.5em;
   }
 
@@ -157,7 +158,6 @@ Styleguide Trumps.Scopes.Header.Expanded
 
 
 /* UNIQUE (to Expanded Styles) */
-
 
 
 

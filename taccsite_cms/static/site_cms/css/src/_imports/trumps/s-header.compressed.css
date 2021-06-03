@@ -10,7 +10,6 @@ Styleguide Trumps.Scopes.Header.Compressed
 
 
 
-
 /* COMPARABLE (to Expanded Styles) */
 
 @media (--nav-compressed) {
@@ -46,7 +45,7 @@ Styleguide Trumps.Scopes.Header.Compressed
   /* Containers */
 
   .s-header .navbar-collapse {
-    margin-right: env(--header-navbar-toggle-width);
+    margin-right: env(--header-navbar-right-pad);
 
     background-color: rgba(var(--global-color-primary--x-dark-rgb), 0.6);
     backdrop-filter: blur(18px) brightness(85%);
@@ -65,7 +64,7 @@ Styleguide Trumps.Scopes.Header.Compressed
   /* Button */
   /* To ensure button remains hidden on expanded navbar, isolate this style */
   /* FAQ: The button as `.navbar-toggler` uses `display: none` from Bootstrap */
-  .s-header :--navbar-button { display: flex; }
+  .s-header :--navbar-button { display: grid; }
 
 
 
@@ -80,6 +79,9 @@ Styleguide Trumps.Scopes.Header.Compressed
 
     font-size: 2em;
   }
+  /* To match lines with `s-header.compressed.css` */
+  /* FAQ: Matching lines eases comparison with `s-header.compressed.css` */
+  /* .s-header .s-portal-nav .nav-link { } */
 
   /* NOTE: Design may want hover .s-header active background color with alpha */
   /* SEE: `./s-header.css` */
@@ -112,17 +114,14 @@ Styleguide Trumps.Scopes.Header.Compressed
 
   /* Search */
 
-  .s-header .s-search-bar,
-  /* To apply style to old markup (see "Portal & Docs Selectors") */
-  /* TODO: 1. Remove `ml-auto` from Portal & Docs markup
-           2. Remove the ` !important`
-           3. Remove the subsite selectors */
-  :--for-docs .s-header .s-search-bar.ml-auto,
-  :--for-portal .s-header .s-search-bar.ml-auto {
-    /* To line up menu text with logo */
-    margin-left: calc(
-      env(--portal-sidebar-padding) + env(--portal-navlink-padding)
-    ) !important;
+  /* To add constant space between CMS nav and search bar */
+  .s-header .s-search-bar {
+    /* To line up menu content with logo */
+    margin-left: env(--header-navbar-left-pad);
+  }
+  /* To shove portal nav into same row as search bar */
+  .s-header .s-portal-nav {
+    margin-top: calc(-1 * env(--header-navbar-mobile-height));
   }
 
   .s-header .s-search-bar,
@@ -131,18 +130,14 @@ Styleguide Trumps.Scopes.Header.Compressed
     font-size: 18px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
   }
 
-  /* Create space between search bar and login (only if both elements exist) */
-  .s-header .s-search-bar ~ .s-portal-nav {
-    margin-left: 2px;
-  }
-
 
 
 
 
   /* Icons */
 
-  .s-header .s-cms-nav .nav-icon {
+  .s-header .s-cms-nav .nav-icon,
+  .s-header .s-portal-nav .dropdown-item .nav-icon {
     margin-right: 0.5em;
   }
 
@@ -159,6 +154,8 @@ Styleguide Trumps.Scopes.Header.Compressed
 
 /* UNIQUE (to Compressed Styles) */
 
+
+
 /* Basic Media Range */
 
 @media (--nav-compressed) {
@@ -169,10 +166,8 @@ Styleguide Trumps.Scopes.Header.Compressed
 
   /* To add nav menu padding */
   .s-header .navbar-nav {
-    /* To line up menu text with logo */
-    --nav-link-horz-pad: calc(
-      env(--portal-sidebar-padding) + env(--portal-navlink-padding)
-    );
+    /* To line up menu content with logo */
+    --nav-link-horz-pad: env(--header-navbar-left-pad);
   }
 
   /* To overwrite Bootstrap */
@@ -187,11 +182,31 @@ Styleguide Trumps.Scopes.Header.Compressed
   /* To add dropdown menu padding */
   .s-header .s-cms-nav .dropdown-menu {
     /* To match nav menu padding (because spacing in design is so similar) */
-    --menu-link-horz-pad: calc(
-      env(--portal-sidebar-padding) + env(--portal-navlink-padding)
-    );
+    margin-left: var(--menu-link-horz-pad, env(--header-navbar-left-pad));
+  }
 
-    margin-left: var(--menu-link-horz-pad);
+  /* To set height of "top row" (search bar & portal nav) of mobile nav */
+  /* FAQ: Setting height of search bar is not respected as navbar collapses */
+  /* FAQ: Setting height of portal nav would hide portal nav dropdown menu */
+  .s-header tacc-search-bar.s-search-bar::part(form),
+  .s-header .s-portal-nav .nav-link {
+    height: var(--header-navbar-height);
+  }
+  .s-header .s-portal-nav .nav-link {
+    margin-left: auto; /* to align right compared to dropdown menu */
+  }
+
+  /* To make background for "top row" (search bar & portal nav) of mobile nav */
+  /* HACK: Create background with a pseudo element that matches "row" height */
+  .s-header .s-portal-nav .dropdown::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    background-color: env(--header-bkgd-color);
   }
 
   /* HACK: To transform the navbar into a dropdown */
@@ -215,36 +230,15 @@ Styleguide Trumps.Scopes.Header.Compressed
   .s-header .navbar-collapse.show,
   .s-header .navbar-collapse.collapsing {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
+    flex-direction: column;
   }
-  .s-header .navbar-collapse > *:not(.s-portal-nav, .s-search-bar) {
-    flex-basis: 100%;
-  }
-  /* To let portal nav & search fit "comfortably" together on thier row */
-  .s-header .s-portal-nav { flex: 0 1 auto }
-  .s-header .s-search-bar { flex: 1 1 auto }
-  /* To let search fill up available space */
+  /* To make content of search bar fill up available space */
   .s-header tacc-search-bar.s-search-bar::part(form) { width: 100%; }
   /* To move portal nav & search to top of menu */
-  .s-header .s-portal-nav { order: -1 }
-  .s-header .s-search-bar { order: -2 }
+  /* FAQ: The `z-index` ensures portal nav allows click through to search */
+  .s-header .s-portal-nav { order: -1; z-index: 1 }
+  .s-header .s-search-bar { order: -2; z-index: 2 }
 
-  /* To style "Log In" and "username" like navbar toggle button */
-  .s-header .s-portal-nav .nav-link {
-    @extend %x-mobile-button--toggle-on-side;
-    display: flex;
-
-    /* To ensure dropdown toggle wraps by limiting available content height */
-    height: 56px;
-    padding-top: 5px; /* to overwrite Boostrap */
-    padding-bottom: 5px; /* to overwrite Boostrap */
-  }
-  /* FAQ: The extra `.nav-link` specificity avoids styling dropdown link text */
-  .s-header .s-portal-nav .nav-link .nav-text {
-    @extend %x-mobile-button__text;
-  }
 
 
   /* Dropdowns */
@@ -252,38 +246,19 @@ Styleguide Trumps.Scopes.Header.Compressed
   /* To overwrite Bootstrap */
   .s-header .dropdown-menu {
     padding: 0;
+
+    font-size: 20px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
   }
   .s-header .s-cms-nav .dropdown-menu {
     background-color: transparent;
     border: none;
-
-    font-size: 20px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
   }
   .s-header .s-portal-nav .dropdown-menu {
     background-color: env(--header-link-bkgd-color);
     border: none;
-  }
-  /* To overwrite Bootstrap */
-  /* To allow Portal nav menu to still drop down over content on small screen */
-  .s-header .s-portal-nav .dropdown-menu {
-    /* Copied from Bootstrap:
-       ```
-       @media (min-width: ...px) {
-          .navbar-expand-…… .navbar-nav .dropdown-menu
-       }
-       ``` */
-    position: absolute; /* without this, menu pushes down content beneath it */
-  }
-  /* To compensate for CMS's Bootstrap version older than Portal & Docs */
-  :--for-cms .dropdown-menu-right {
-    /* Copied from Bootstrap:
-       ```
-       @media (min-width: ...px) {
-          .navbar-expand-…… .navbar-nav .dropdown-menu-right
-       }
-       ``` */
-    right: 0;
-    left: auto;
+
+    width: max-content;
+    margin-left: auto;
   }
 
   /* To distinguish CMS dropdown from Portal dropdown */
@@ -297,8 +272,6 @@ Styleguide Trumps.Scopes.Header.Compressed
     /* To overwrite Bootstrap */
     padding-top: 0.8em;
     padding-bottom: 0.8em;
-
-    font-size: 2em;
   }
 
 }
