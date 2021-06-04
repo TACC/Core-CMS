@@ -382,6 +382,8 @@ Styleguide Trumps.Scopes.Header
   /* Style */
 
   .s-header .navbar-collapse {
+    padding-top: 12px;
+
     background-color: rgba(var(--global-color-primary--x-dark-rgb), 0.6);
     backdrop-filter: blur(18px) brightness(85%);
 
@@ -512,6 +514,11 @@ Styleguide Trumps.Scopes.Header
   :--for-docs .s-header .s-cms-nav.ml-auto,
   :--for-portal .s-header .s-cms-nav.ml-auto {
     margin-left: 0 !important;
+  }
+
+  /* To match design */
+  .s-cms-nav {
+    padding-top: 8px;
   }
 
 }
