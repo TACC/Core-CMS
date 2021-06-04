@@ -675,11 +675,16 @@ Styleguide Trumps.Scopes.Header
 
 .s-header .nav-link:hover,
 .s-header .nav-link:active,
-.s-header .nav-item.active .nav-link,
-.s-header .nav-item.dropdown.show .nav-link {
+.s-header .nav-item.active .nav-link {
   background-color: env(--header-link-bkgd-color);
 }
+
+/* Nav Link: State: Desktop */
+
 @media (--nav-expanded) {
+  .s-header .nav-item.dropdown.show .nav-link {
+    background-color: env(--header-link-bkgd-color);
+  }
   .s-header .s-cms-nav .nav-link:hover,
   .s-header .s-cms-nav .nav-link:focus,
   .s-header .s-cms-nav .nav-link:active,
@@ -689,6 +694,15 @@ Styleguide Trumps.Scopes.Header
     border-bottom: env(--border-width--xx-thick) solid env(--header-accent-color);
   }
 }
+
+/* Nav Link: State: Mobile */
+
+/* FAQ: Design does not know what this should be yet */
+/*
+@media (--nav-compressed) {
+
+}
+*/
 
 
 
