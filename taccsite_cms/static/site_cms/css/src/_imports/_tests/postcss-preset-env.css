@@ -74,7 +74,6 @@ Styleguide _Test.PresetEnv
   ._test{ background-color:red; }
 }
 
-
 /*! Custom Selectors */
 /* SEE: https://preset-env.cssdb.org/features#custom-selectors */
 
@@ -103,6 +102,25 @@ article :--heading + p {
 :--nav-link-active {
   color: red;
 }
+
+/*! Goal: */
+h4,h5,h6{color: lime;}h4,h5,h6{color: magenta;}
+
+/*! Test: */
+@custom-selector :--test h1, h2, h3;
+
+:--test {
+  color: lime;
+}
+
+@custom-selector :--test h4, h5, h6;
+
+:--test {
+  color: magenta;
+}
+
+/*! `:not` Pseudo Class */
+/* SEE: https://preset-env.cssdb.org/features#not-pseudo-class */
 
 /*! Goal: */
 ._test>:not(._test--x):not(._test--y){align-items:center}
