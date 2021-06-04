@@ -387,8 +387,17 @@ Styleguide Trumps.Scopes.Header
   .s-header .navbar-collapse {
     padding-top: 12px;
 
-    background-color: rgba(var(--global-color-primary--x-dark-rgb), 0.6);
-    backdrop-filter: blur(18px) brightness(85%);
+    @supports (backdrop-filter: none) {
+      & {
+        backdrop-filter: blur(18px) brightness(85%);
+        background-color: rgba(var(--global-color-primary--x-dark-rgb), 0.6);
+      }
+    }
+    @supports not (backdrop-filter: none) {
+      & {
+        background-color: rgba(var(--global-color-primary--x-dark-rgb), 0.95);
+      }
+    }
 
     border: env(--border-width--normal) solid var(--global-color-primary--dark);
   }

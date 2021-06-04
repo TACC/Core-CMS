@@ -17,6 +17,7 @@ plugins:
       custom-media-queries: true
       media-query-ranges: true
       not-pseudo-class: true
+      nesting-rules: true
       # RFE: Fix bug on the Internet so we can use these reliably
       # SEE: https://github.com/postcss/postcss-custom-selectors/issues/40
       custom-selectors: true
