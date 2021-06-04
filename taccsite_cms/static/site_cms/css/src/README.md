@@ -23,6 +23,9 @@ _This directory exists in `static/` __only__ because it is customary, using Djan
 | `site(.*).css` | styles that apply to the entire website i.e. global styles
 | `template.*.css` | styles that apply only to certain templates
 | `page.*.css` | styles that apply only to certain pages
+| `migrate.*.css` | styles that apply to websites that have been migrated[^1]
+
+[^1]: When sensible, use the migration folder name, i.e. `migrate.v1_v2.css`.
 
 ## Documentation Format
 

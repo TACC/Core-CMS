@@ -93,6 +93,17 @@ To support multiple instances of the CMS on one machine (i.e. local development)
     docker-compose -f docker-compose.custom.yml …
     ```
 
+### (Optional) Migrate Website from Older Version
+
+Some websites need static resources to supplement their migration.
+
+1. Copy `taccsite_cms/templates/fullwidth.html` to `taccsite_custom/name-of-project/templates/fullwidth.html`.
+2. Update `taccsite_custom/name-of-project/templates/fullwidth.html` to load migration static resources e.g., in `assets_custom` block add:
+
+    ```html
+    <link id="css-site-font" rel="stylesheet" href="{% static 'site_cms/css/build/migrate.v1_v2.css' %}">
+    ```
+
 ## Run the CMS
 
 ### Prerequisites
