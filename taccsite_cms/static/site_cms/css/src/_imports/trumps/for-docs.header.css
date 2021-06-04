@@ -58,6 +58,14 @@ Styleguide Trumps.ForOtherSites.Docs
 
 
 
+/* Overwrite ReadTheDocs (so Header Mobile Nav covers Body Side Nav) */
+
+.wy-nav-side {
+  z-index: unset;
+}
+
+
+
 /* Overwrite TACC (for Icons in Body) */
 
 /* To compensate for Docs using an `.icon` class different from CMS & Portal */
