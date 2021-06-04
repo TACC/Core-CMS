@@ -439,31 +439,47 @@ Styleguide Trumps.Scopes.Header
 /* Nav: Variables (Addendum) */
 
 /* To reduce space between nav links when space is limited */
-@media (--wide-and-below) and (--nav-expanded) {
-  /* To have "narrower" space (designed by dev) */
-  .s-header:not(.is-on-portal) .navbar-nav { --nav-link-horz-pad: 1em; }
+/* NOTE: This was designed by dev, but mimics Bootstrap behavior */
+@media (--nav-expanded) and (--nav-wide-and-below)  {
+  /* TODO: Hardcode `is-on-portal` in Portal & Docs markup,
+           then remove the `:--for-cms` selector prefix */
+  :--for-cms .s-header:not(.is-on-portal) .navbar-nav {
+    --nav-link-horz-pad: 1em;
+  }
 }
-@media (--x-wide-and-below) and (--nav-expanded) {
-  /* To have "narrower" space (designed by dev) */
+/* FAQ: Reduce space at wider breakpoint when Portal Nav is present */
+@media (--nav-expanded) and (--nav-x-wide-and-below) {
   .s-header.is-on-portal .navbar-nav,
   /* To apply style to old markup (see "Portal & Docs Selectors") */
-  /* TODO: Hardcode `is-on-portal` in Portal & Docs markup */
+  /* TODO: Hardcode `is-on-portal` in Portal & Docs markup,
+           then remove the `:--for-*` selectors */
   :--for-docs .s-header .navbar-nav,
-  :--for-portal .s-header .navbar-nav { --nav-link-horz-pad: 1em; }
+  :--for-portal .s-header .navbar-nav {
+    --nav-link-horz-pad: 1em;
+  }
 }
 
 /* To increase space between nav links when space is available */
-@media (--wide-and-above) and (--nav-expanded) {
+/* NOTE: This was designed by dev, but mimics Bootstrap behavior */
+@media (--nav-expanded) and (--nav-wide-and-above) {
   /* To have 15px of space for 12px font */
-  .s-header:not(.is-on-portal) .navbar-nav { --nav-link-horz-pad: 1.25em; }
+  /* TODO: Hardcode `is-on-portal` in Portal & Docs markup,
+           then remove the `:--for-cms` selector prefix */
+  :--for-cms .s-header:not(.is-on-portal) .navbar-nav {
+    --nav-link-horz-pad: 1.5em;
+   }
 }
-@media (--x-wide-and-above) and (--nav-expanded) {
+/* FAQ: Increase space at wider breakpoint when Portal Nav is present */
+@media (--nav-expanded) and (--nav-x-wide-and-above) {
   /* To have 15px of space for 12px font */
   .s-header.is-on-portal .navbar-nav,
   /* To apply style to old markup (see "Portal & Docs Selectors") */
-  /* TODO: Hardcode `is-on-portal` in Portal & Docs markup */
+  /* TODO: Hardcode `is-on-portal` in Portal & Docs markup,
+           then remove the `:--for-*` selectors */
   :--for-docs .s-header .navbar-nav,
-  :--for-portal .s-header .navbar-nav { --nav-link-horz-pad: 1.25em; }
+  :--for-portal .s-header .navbar-nav {
+    --nav-link-horz-pad: 1.5em;
+  }
 }
 
 
@@ -472,8 +488,10 @@ Styleguide Trumps.Scopes.Header
 
 @media (--nav-expanded) {
 
-  /* To move CMS nav to the right if there is no Portal */
-  .s-header:not(.is-on-portal) .s-cms-nav {
+  /* To align CMS nav to the right ONLY if there is no Portal */
+  /* TODO: Hardcode `is-on-portal` in Portal & Docs markup,
+           then remove the `:--for-cms` selector prefix */
+  :--for-cms .s-header:not(.is-on-portal) .s-cms-nav {
     margin-left: auto;
   }
 
@@ -994,7 +1012,8 @@ Styleguide Trumps.Scopes.Header
 /* Create space between search bar & portal nav ONLY IF both elements exist */
 .s-header.is-on-portal .s-search-bar,
 /* To apply style to old markup (see "Portal & Docs Selectors") */
-/* TODO: Hardcode `is-on-portal` in Portal & Docs markup */
+  /* TODO: Hardcode `is-on-portal` in Portal & Docs markup,
+           then remove the `:--for-*` selectors */
 :--for-docs .s-header .s-search-bar,
 :--for-portal .s-header .s-search-bar {
   margin-right: var(--space-after-search-before-nav, 0);

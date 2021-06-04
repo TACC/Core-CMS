@@ -64,3 +64,5 @@ Styleguide Tools.CustomMediaQueries.Breakpoints
 @custom-media --nav-narrow-and-above (width >= 576px);
 @custom-media --nav-wide-and-below (width < 1400px);
 @custom-media --nav-wide-and-above (width >= 1400px);
+@custom-media --nav-x-wide-and-below (width < 1680px);
+@custom-media --nav-x-wide-and-above (width >= 1680px);
