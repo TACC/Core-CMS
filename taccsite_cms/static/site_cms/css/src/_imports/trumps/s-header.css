@@ -430,7 +430,7 @@ Styleguide Trumps.Scopes.Header
 @media (--nav-compressed) {
   .s-header .navbar-nav {
     --nav-line-color: env(--header-accent-color);
-    --nav-link-vert-pad: 0.8em;
+    --nav-link-vert-pad: 0.425em;
     /* To line up navbar left-hand content with logo */
     --nav-link-horz-pad: env(--header-navbar-left-pad);
   }
@@ -657,7 +657,7 @@ Styleguide Trumps.Scopes.Header
     /* y pos. */ calc(-1 * (2px + calc(var(--nav-link-horz-pad) / 2)))
     /* blur */   0
     /* spread */ calc(-1 * calc(var(--nav-link-horz-pad) / 2))
-    /* color */  var(--nav-line-color, transparent);
+    /* color */  var(--nav-line-color);
 }
 
 
@@ -756,7 +756,9 @@ Styleguide Trumps.Scopes.Header
 
 
 
-/* Dropdown: Menu */
+
+
+/* Dropdown Menu */
 
 /* To overwrite Bootstrap */
 /* FAQ: Bootstrap has styles we do not want a value for, so `unset` */
@@ -768,7 +770,9 @@ Styleguide Trumps.Scopes.Header
   font-size: unset;
 }
 
-/* Dropdown: Menu: Desktop */
+
+
+/* Dropdown Menu: Desktop */
 
 @media (--nav-expanded) {
 
@@ -786,25 +790,29 @@ Styleguide Trumps.Scopes.Header
 
 }
 
-/* Dropdown: Menu: Mobile */
+
+
+/* Dropdown Menu: Mobile */
 
 @media (--nav-compressed) {
 
   /* To overwrite Bootstrap */
   .s-header .dropdown-menu {
-    padding: 0;
-
     font-size: 20px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
   }
   .s-header .s-cms-nav .dropdown-menu {
+    padding: 0 0 0.5em 0;
+
     background-color: transparent;
     border: none;
 
     /* To indent dropdown menu */
     /* To match CMS nav menu padding */
-    margin-left: var(--menu-link-horz-pad, env(--header-navbar-left-pad));
+    margin-left: env(--header-navbar-left-pad);
   }
   .s-header .s-portal-nav .dropdown-menu {
+    padding: 0;
+
     background-color: env(--header-link-bkgd-color);
     border: none;
 
@@ -818,24 +826,72 @@ Styleguide Trumps.Scopes.Header
 
 
 
-/* Dropdown: Item */
+
+/* Dropdown Item */
+
+
+
+/* Dropdown Item: General */
 
 .s-header .dropdown-item {
-  padding-left: var(--menu-link-horz-pad);
-  padding-right: var(--menu-link-horz-pad);
-
   border-left: env(--border-width--x-thick) solid transparent;
 
   font-weight: env(--medium);
 }
+
+
+
+/* Dropdown Item: Spacing */
+
+.s-header .dropdown-item {
+  padding-left: var(--menu-link-horz-pad);
+  padding-right: var(--menu-link-horz-pad);
+}
+
+/* Dropdown Item: Spacing: Desktop */
+
+@media (--nav-expanded) {
+
+  /* To overwrite Bootstrap */
+  .s-header .dropdown-item {
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
+  }
+
+}
+
+/* Dropdown Item: Spacing: Mobile */
+
+@media (--nav-compressed) {
+
+  .s-header .dropdown-item {
+    /* To overwrite Bootstrap */
+    padding-top: var(--nav-link-vert-pad);
+    padding-bottom: var(--nav-link-vert-pad);
+  }
+
+}
+
+
+
+/* Dropdown Item: Separator */
+
+/* To create line between each item */
 .s-header .dropdown-item + .dropdown-item {
+  /* To ensure any background color does not cover box-shadow */
+  position: relative;
+
   box-shadow:
     /* x pos. */ 0
     /* y pos. */ calc(-1 * (1px + var(--menu-link-horz-pad)))
     /* blur */   0
     /* spread */ calc(-1 * var(--menu-link-horz-pad))
-    /* color */  var(--menu-line-color, transparent);
+    /* color */  var(--menu-line-color);
 }
+
+
+
+/* Dropdown Item: State */
 
 .s-header .dropdown-item.active,
 .s-header .dropdown-item:active,
@@ -859,37 +915,6 @@ Styleguide Trumps.Scopes.Header
 :--for-portal .s-header .dropdown-item:focus,
 :--for-portal .s-header .dropdown-item:hover {
   color: env(--header-text-color);
-}
-
-/* Dropdown: Item: Desktop */
-
-@media (--nav-expanded) {
-
-  /* To overwrite Bootstrap */
-  .s-header .dropdown-item {
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
-  }
-
-}
-
-/* Dropdown: Item: Mobile */
-
-@media (--nav-compressed) {
-
-  /* To distinguish CMS dropdown from Portal dropdown */
-  .s-header .s-cms-nav .dropdown-item {
-    /* To overwrite Bootstrap */
-    padding-top: 1em;
-    padding-bottom: 1em;
-  }
-  /* To mimic `.s-header .nav-link` */
-  .s-header .s-portal-nav .dropdown-item {
-    /* To overwrite Bootstrap */
-    padding-top: 0.8em;
-    padding-bottom: 0.8em;
-  }
-
 }
 
 
