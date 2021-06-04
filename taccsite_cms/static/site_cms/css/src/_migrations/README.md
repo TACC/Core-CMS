@@ -11,7 +11,7 @@ Earlier CMS website versions may expect or rely on these styles.
 1. Folders __must__ include any top-of-file comments from source file.
 1. Folders __must__ be [named with appropriate format](#Naming%20Format).
 1. Files __should__ [comment on purpose and means of acquisition](#Documentation%20Format).
-1. Files __must__ include any top-of-file comments from source file.
+1. Files __must__ include a top-of-file comments (from source file or by TACC).
 1. Files (except this document) __must__ be in a folder.
 
 ## Documentation Format
