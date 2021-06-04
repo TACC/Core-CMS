@@ -361,12 +361,13 @@ Styleguide Trumps.Scopes.Header
   .s-header :--navbar-button::after {
     content: attr(data-icon-label);
   }
-  .s-header :--navbar-button--opened::after { display: none; }
   /* To apply style to old markup (see "Portal & Docs Selectors") */
   /* FAQ: This selector does not use `:--for-portal` but has similar purpose */
   .s-header :--navbar-button:not([data-icon-label])::after {
     content: 'Menu';
   }
+  /* FAQ: Only the closed state is supposed to have text */
+  .s-header :--navbar-button--opened::after { display: none; }
 
 }
 
@@ -548,13 +549,22 @@ Styleguide Trumps.Scopes.Header
 /* RFE: Fix bug on the Internet so we can use these reliably */
 /* SEE: https://github.com/postcss/postcss-custom-selectors/issues/40 */
 /*
-@custom-selector :--nav-link-hover  .nav-link:hover;
-@custom-selector :--nav-link-focus  .nav-link:focus;
-@custom-selector :--nav-link-active .nav-link:active;
-@custom-selector :--nav-link-current
+@custom-selector :--nav-link--hover  .nav-link:hover;
+@custom-selector :--nav-link--focus  .nav-link:focus;
+@custom-selector :--nav-link--active .nav-link:active;
+@custom-selector :--nav-link--current
   .nav-item.active .nav-link,
   .nav-item.dropdown.show .nav-link;
 */
+@custom-selector :--portal-nav-link--user
+  .s-portal-nav .nav-link.dropdown-toggle;
+@custom-selector :--portal-nav-link--guest
+  .s-portal-nav .nav-link:not(.dropdown-toggle);
+@custom-selector :--portal-nav-link__icon
+  .s-portal-nav .nav-link .nav-icon;
+@custom-selector :--portal-nav-link__text
+  .s-portal-nav .nav-link .nav-text;
+
 
 
 
@@ -626,7 +636,7 @@ Styleguide Trumps.Scopes.Header
     --nav-link-horz-pad: env(--header-navbar-normal-left-pad);
   }
 
-  .s-header .s-portal-nav .nav-link .nav-icon {
+  .s-header :--portal-nav-link__icon {
     margin-right: 0.5em;
   }
 
@@ -647,20 +657,52 @@ Styleguide Trumps.Scopes.Header
     --nav-link-horz-pad: 1em;
   }
 
+}
+
+
+
+/* Nav Link: Icon   (Mobile-Only) */
+
+/* To match design of collapsed navbar Portal Nav but take liberty with when */
+@media (--nav-narrow-and-below) /* dev liberty */ {
+
+  /* Layout */
+
   /* To layout each link as a "mobile button" */
   .s-header .s-portal-nav .nav-link {
-    @extend %x-mobile-button--has-toggle;
     display: grid;
   }
-  .s-header .s-portal-nav .nav-link .nav-icon {
+  .s-header :--portal-nav-link--user {
+    @extend %x-mobile-button--has-toggle;
+  }
+  .s-header :--portal-nav-link--guest {
+    @extend %x-mobile-button--no-toggle;
+  }
+  .s-header :--portal-nav-link__icon {
     @extend %x-mobile-button__icon;
   }
-  .s-header .s-portal-nav .nav-link span {
+  .s-header .s-portal-nav .nav-link::before {
     @extend %x-mobile-button__text;
   }
   .s-header .s-portal-nav .nav-link::after {
     @extend %x-mobile-button__toggle;
   }
+
+
+
+  /* Text */
+
+  /* To apply style to old markup (see "Portal & Docs Selectors") */
+  /* FAQ: This selector does not use `:--for-portal` but has similar purpose */
+  .s-header :--portal-nav-link--guest::before {
+    content: 'Log In';
+  }
+  /* Use content for text, not actual text */
+  /* FAQ: For consistency with `:--navbar-button` */
+  /* FAQ: Because the text need not be selectable anyway */
+  .s-header :--portal-nav-link__text { display: none; }
+  /* To hide the stray text */
+  .s-header :--portal-nav-link--guest { font-size: 0; }
 
 }
 
