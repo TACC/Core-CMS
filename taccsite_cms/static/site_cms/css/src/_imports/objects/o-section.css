@@ -202,9 +202,17 @@ Styleguide Objects.Section
   /* FAQ: The image "leaves" the column via `position: absolute` */
   grid-column-start: 2;
 
-  background-color: rgba(var(--color-bkgd-rgb), 0.65);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  @supports (backdrop-filter: none) {
+    & {
+      background-color: rgba(var(--color-bkgd-rgb), 0.65);
+      backdrop-filter: blur(6px);
+    }
+  }
+  @supports not (backdrop-filter: none) {
+    & {
+      background-color: rgba(var(--color-bkgd-rgb), 0.95);
+    }
+  }
 }
 .o-section--banner.o-section--style-dark .o-section__banner-overlay {
   --color-bkgd-rgb: var(--global-color-primary--x-dark-rgb);

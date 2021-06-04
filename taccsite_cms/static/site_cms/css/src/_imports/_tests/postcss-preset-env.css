@@ -129,3 +129,26 @@ h4,h5,h6{color: lime;}h4,h5,h6{color: magenta;}
 ._test > *:not(._test--x, ._test--y) {
   align-items: center;
 }
+
+/*! Nesting Rules */
+/* SEE: https://preset-env.cssdb.org/features#nesting-rules */
+
+/*! Goal: */
+.foo { display: grid; }
+
+@media (orientation: landscape) {
+  .foo {
+    grid-auto-flow: column;
+  }
+}
+
+/*! Test: */
+.foo {
+  display: grid;
+
+  @media (orientation: landscape) {
+    & {
+      grid-auto-flow: column;
+    }
+  }
+}
