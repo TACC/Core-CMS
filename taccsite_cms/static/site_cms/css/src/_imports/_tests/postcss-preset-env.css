@@ -26,6 +26,26 @@ Styleguide _Test.PresetEnv
   }
 }
 
+/*! Goal: */
+@media (max-width:60em){._test{background-color:red}}@media (max-width:60em){._test{background-color:blue}}
+
+/*! Test: */
+@custom-media --test-window (min-width: 30em);
+
+@media (--test-window) {
+  ._test {
+    background-color: red;
+  }
+}
+
+@custom-media --test-window (min-width: 60em);
+
+@media (--test-window) {
+  ._test {
+    background-color: blue;
+  }
+}
+
 /*! Media Query Ranges */
 /* SEE: https://preset-env.cssdb.org/features#media-query-ranges */
 
@@ -43,7 +63,6 @@ Styleguide _Test.PresetEnv
 }
 
 /*! Custom Media Queries & Media Query Ranges */
-/* SEE: https://preset-env.cssdb.org/features#custom-media-queries */
 
 /*! Goal: */
 @media (min-width:992px) and (max-width:1199px){._test{background-color:red}}
