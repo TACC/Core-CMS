@@ -22,6 +22,8 @@
     "--header-navbar-right-pad": "48px",
     "// --header-navbar-left-pad: 16px": "--portal-sidebar-pad",
     "// --header-navbar-left-pad: 20px": "--portal-navlink-pad",
+    "To line up logo with navbar left-hand content": "",
+    "CAVEAT: Portal navbar width is why this value may not match design": "",
     "--header-navbar-left-pad": "calc(16px + 20px)",
 
     "// BORDER": "",
