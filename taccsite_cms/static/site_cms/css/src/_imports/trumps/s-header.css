@@ -126,9 +126,6 @@ Styleguide Trumps.Scopes.Header
   /* To overwrite Bootstrap */
   margin-right: var(--space-after-logo-before-nav);
 
-  /* To align logo (whole image not just visible pixels) with Portal content */
-  margin-left: env(--header-navbar-left-pad);
-
   /* FAQ: In case image does not load and browser shows alt text */
   color: env(--header-text-color);
 }
@@ -152,13 +149,16 @@ Styleguide Trumps.Scopes.Header
 
 /* Logo: Mobile */
 
-/* To manage logo width influence on other elements */
 @media (--nav-expanded) {
   #header-logo {
+    /* To manage logo width influence on other elements */
     /* To prevent zero-width element as it is loaded */
     /* To align position of first CMS nav link with Portal section headers */
     /* CAVEAT: Only works on narrow-enough logos */
     min-width: calc(190px - var(--space-after-logo-before-nav));
+
+    /* To align logo (whole image not just visible pixels) w/ Portal side nav */
+    margin-left: env(--header-navbar-normal-left-pad);
   }
 }
 
@@ -170,6 +170,9 @@ Styleguide Trumps.Scopes.Header
   #header-logo {
     /* To prevent wide image from forcing `.navbar-toggler` to be wrapped */
     max-width: calc(188px - var(--space-after-logo-before-nav));
+
+    /* To match space between logo and left side of window */
+    margin-left: env(--header-navbar-mobile-left-pad);
   }
 }
 
@@ -306,7 +309,7 @@ Styleguide Trumps.Scopes.Header
 
   .s-header :--navbar-button {
     width: env(--header-navbar-toggle-width);
-    margin-right: env(--header-navbar-right-pad);
+    margin-right: env(--header-navbar-mobile-right-pad);
     padding: 0; /* to overwrite Bootstrap */
 
     background-color: env(--header-portal-nav-bkgd-color);
@@ -405,7 +408,7 @@ Styleguide Trumps.Scopes.Header
 
     top: 100%;
     left: 0;
-    right: env(--header-navbar-right-pad);
+    right: env(--header-navbar-mobile-right-pad);
     z-index: 1; /* To be above main content in Portal & Docs */
   }
 
@@ -434,7 +437,7 @@ Styleguide Trumps.Scopes.Header
     --nav-line-color: env(--header-accent-color);
     --nav-link-vert-pad: 0.425em;
     /* To line up navbar left-hand content with logo */
-    --nav-link-horz-pad: env(--header-navbar-left-pad);
+    --nav-link-horz-pad: calc(env(--header-navbar-toggle-width) / 2);
   }
 }
 
@@ -611,7 +614,7 @@ Styleguide Trumps.Scopes.Header
   /* To overwrite Bootstrap (see "Portal & Docs Selectors") */
   :--for-portal .s-portal-nav .nav-link {
     /* To match space between logo and left side of window */
-    --nav-link-horz-pad: env(--header-navbar-left-pad);
+    --nav-link-horz-pad: env(--header-navbar-normal-left-pad);
   }
 
   .s-header .s-portal-nav .nav-link .nav-icon {
@@ -630,6 +633,8 @@ Styleguide Trumps.Scopes.Header
 
     padding-top: 0; /* to overwrite Bootstrap */
     padding-bottom: 0; /* to overwrite Bootstrap */
+    /* NOTE: Might as well be zero (given `width` is expected max-width),
+             but if username exceeds expectation some padding would look good */
     --nav-link-horz-pad: 1em;
   }
 
@@ -829,7 +834,7 @@ Styleguide Trumps.Scopes.Header
 
     /* To indent dropdown menu */
     /* To match CMS nav menu padding */
-    margin-left: env(--header-navbar-left-pad);
+    margin-left: calc(env(--header-navbar-toggle-width) / 2);
   }
   .s-header .s-portal-nav .dropdown-menu {
     padding: 0;
@@ -986,8 +991,7 @@ Styleguide Trumps.Scopes.Header
     /* --space-after-search-before-nav: … */
 
     /* To line up logo with navbar left-hand content */
-    /* CAVEAT: Portal navbar width is why this value may not match design */
-    --space-before-search: env(--header-navbar-left-pad);
+    --space-before-search: env(--header-navbar-mobile-left-pad);
   }
 }
 
