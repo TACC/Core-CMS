@@ -56,11 +56,11 @@ Styleguide Tools.CustomMediaQueries.Breakpoints
    - `...-lg` → `--medium-and-...`
    - `...-md` → `--narrow-and-...`
    - `...-sm` → `--x-narrow-and-...` */
-@custom-media --nav-compressed (width < 992px);
-@custom-media --nav-expanded (width >= 992px);
+@custom-media --nav-compressed (width < 1200px);
+@custom-media --nav-expanded (width >= 1200px);
 
 /* Arbitrary widths below and above `--nav-compressed` and `--nav-expanded` */
-@custom-media --nav-narrow-and-below (width < 768px);
-@custom-media --nav-narrow-and-above (width >= 768px);
-@custom-media --nav-wide-and-below (width < 1200px);
-@custom-media --nav-wide-and-above (width >= 1200px);
+@custom-media --nav-narrow-and-below (width < 576px);
+@custom-media --nav-narrow-and-above (width >= 576px);
+@custom-media --nav-wide-and-below (width < 1400px);
+@custom-media --nav-wide-and-above (width >= 1400px);
