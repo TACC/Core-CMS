@@ -397,8 +397,7 @@ Styleguide Trumps.Scopes.Header
       2. If menu is open, and user clicks anywhere outside the navbar, then menu will remain open. But a dropdown anywhere that was open would be closed after the click.
   */
   .s-header .navbar-collapse {
-    /* This `position` expects Bootstrap's `.navbar { position: relative }` */
-    position: absolute;
+    position: absolute; /* expects Bootstrap `.navbar { position: relative }` */
 
     top: 100%;
     left: 0;
@@ -890,7 +889,107 @@ Styleguide Trumps.Scopes.Header
 
 
 
-/* Search: Spacing */
+/* Search: Variables */
+
+.s-header .s-search-bar {
+  --button-horz-pad: 10px;
+  --input-horz-pad: 0.125em;
+}
+@media (--nav-expanded) {
+  .s-header .s-search-bar {
+    --input-height: 26px;
+    /* WARNING: Do not use `rem` until `html { 62.5%; }` */
+    --button-font-size: 18px;
+    --input-font-size: 14px;
+
+    /* To match design */
+    --space-after-search-before-nav: 12px;
+
+    /* To insert flexible space between search bar and CMS nav */
+    --space-before-search: auto;
+  }
+}
+@media (--nav-compressed) {
+  .s-header .s-search-bar {
+    /* NOTE: Deviates from design cuz "Mobile Nav Top Row" height deviates */
+    --input-height: 38px;
+    /* WARNING: Do not use `rem` until `html { 62.5%; }` */
+    --button-font-size: 24px;
+    --input-font-size: 18px;
+
+    /* SEE: "Mobile Nav Top Row" */
+    /* --space-after-search-before-nav: … */
+
+    /* To line up navbar left-hand content with logo */
+    --space-before-search: env(--header-navbar-left-pad);
+  }
+}
+
+
+
+/* Search: Elements */
+
+.s-header .s-search-bar {
+  /* To remove all whitespace */
+  /* NOTE: A `font-size: 0` is not necessary if tag whitespace is removed */
+  font-size: 0;
+}
+
+.s-header .s-search-bar::part(form) {
+  display: flex;
+  align-items: center;
+
+  position: relative;
+}
+.s-header .s-search-bar::part(button) {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+
+  box-sizing: content-box;
+  height: var(--input-height);
+  align-items: center; /* works if has flex layout (does if class is `.icon`) */
+
+  margin: 0;
+  padding: 0 var(--button-horz-pad);
+
+  background-color: transparent;
+  border: none;
+
+  color: env(--header-text-color);
+  font-size: var(--button-font-size);
+}
+.s-header .s-search-bar::part(input) {
+  display: block;
+  width: 100%;
+  height: var(--input-height);
+
+  margin: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  /* To indent text by the width of embedded button plus actual padding */
+  /* FAQ: Using `text-indent` has text overflow as user enters beyond width */
+  /* HELP: Using `text-indent` is prefered (simpler)... how to do sans bug? */
+  padding-left: calc(
+    var(--button-horz-pad) +
+    var(--button-font-size) +
+    var(--button-horz-pad) +
+    var(--input-horz-pad)
+  );
+  padding-right: var(--input-horz-pad);
+
+  background-color: env(--header-search-bkgd-color);
+  border: env(--border-width--normal) solid env(--header-search-brdr-color);
+  border-radius: 5px;
+
+  color: env(--header-text-color);
+  font-size: var(--input-font-size);
+}
+
+
+
+/* Search: Spacing (Margin) */
 
 /* Create space between search bar & portal nav ONLY IF both elements exist */
 .s-header.is-on-portal .s-search-bar,
@@ -908,51 +1007,6 @@ Styleguide Trumps.Scopes.Header
 :--for-docs .s-header .s-search-bar,
 :--for-portal .s-header .s-search-bar {
   margin-left: var(--space-before-search, 0) !important;
-}
-
-
-
-/* Search: Desktop */
-
-@media (--nav-expanded) {
-
-  .s-header .s-search-bar {
-    /* To match design */
-    --space-after-search-before-nav: 12px;
-
-    /* To insert flexible space between search bar and CMS nav */
-    --space-before-search: auto;
-  }
-
-  .s-header .s-search-bar,
-  .s-header .s-search-bar::part(input),
-  .s-header .s-search-bar::part(button) {
-    font-size: 14px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
-  }
-
-}
-
-
-
-/* Search: Mobile */
-
-@media (--nav-compressed) {
-
-  /* To add constant space between CMS nav and search bar */
-  .s-header .s-search-bar {
-    /* SEE: "Mobile Nav Top Row" */
-    /* --space-after-search-before-nav: … */
-
-    /* To line up navbar left-hand content with logo */
-    --space-before-search: env(--header-navbar-left-pad);
-  }
-
-  .s-header .s-search-bar,
-  .s-header .s-search-bar::part(input),
-  .s-header .s-search-bar::part(button) {
-    font-size: 18px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
-  }
-
 }
 
 
@@ -977,7 +1031,7 @@ Styleguide Trumps.Scopes.Header
   .s-header .s-search-bar {
     /* To make space for portal nav in which to shove portal nav */
     --space-after-search-before-nav: calc(
-      var(--portal-navlink-max-width) + (env(--border-width--normal) * 2)
+      var(--portal-navlink-max-width) + 5px
     );
   }
   .s-header .s-portal-nav {
@@ -999,9 +1053,7 @@ Styleguide Trumps.Scopes.Header
 
   /* To make a fake background */
   /* HACK: Create background with a pseudo element that matches "row" height */
-  .s-header .s-portal-nav {
-    position: relative; /* for `position: absolute` child/pseudo element */
-  }
+  .s-header .s-portal-nav { position: relative; }
   .s-header .s-portal-nav::before {
     content: '';
     position: absolute;
