@@ -1,0 +1,80 @@
+/*
+Test
+
+Styles for testing `postcss-extend`.
+
+Instructions:
+1. In this file, add code after "! Goal:" to show what the output should be.
+2. In this file, add code after "! Test:" to be transformed by plugins.
+3. In the output file, the code after "! Goal:" and "! Test:" should match.
+
+Styleguide _Test.Extend
+*/
+
+/*! Class Selector */
+
+/*! Goal: */
+._test_1,._test_mixin_1{color:red}
+
+/*! Test: */
+._test_mixin_1 {
+  color: red;
+}
+._test_1 {
+  @extend ._test_mixin_1;
+}
+
+/*! Placeholder Selector */
+
+/*! Goal: */
+._test_2{color:yellow}
+
+/*! Test: */
+%_test_mixin_2 {
+  color: yellow;
+}
+._test_2 {
+  @extend %_test_mixin_2;
+}
+
+/*! Class & Placeholder Selector, Use Class Selector */
+
+/*! Goal: */
+._test_3,._test_mixin_3{color:green}
+
+/*! Test: */
+%_test_mixin_3,
+._test_mixin_3 {
+  color: green;
+}
+._test_3 {
+  @extend ._test_mixin_3;
+}
+
+/*! Class & Placeholder Selector, Use Placeholder Selector */
+
+/*! Goal: */
+._test_4{color:blue}
+
+/*! Test: */
+%_test_mixin_4,
+._test_mixin_4 {
+  color: blue;
+}
+._test_4 {
+  @extend %_test_mixin_4;
+}
+
+
+/*! Define Placeholder */
+
+/*! Goal: */
+._test_5{color:white}
+
+/*! Test: */
+@define-placeholder _test_mixin_5 {
+  color: white;
+}
+._test_5 {
+  @extend _test_mixin_5;
+}
