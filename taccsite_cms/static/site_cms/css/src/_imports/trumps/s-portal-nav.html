@@ -7,6 +7,7 @@ from https://frontera-portal.tacc.utexas.edu/. It has:
 - Bootstrap attributes
 -->
 <ul class="s-portal-nav  navbar-nav">
+  <!-- When user is not logged in, there are zero dropdown(-*) classes -->
   <li class="nav-item  dropdown">
     <a class="nav-link  dropdown-toggle"
       href="#"
@@ -14,22 +15,22 @@ from https://frontera-portal.tacc.utexas.edu/. It has:
       aria-haspopup="true"
       aria-expanded="false"
     >
-      <i class="nav-icon  icon icon-user"></i>
+      <i class="icon icon-user"></i>
       <span>username</span>
       <span class="sr-only">Toggle Dropdown</span>
     </a>
     <nav class="dropdown-menu dropdown-menu-right show">
       <a class="dropdown-item" href="/workbench/dashboard">
-        <i class="nav-icon  icon icon-dashboard"></i> My Dashboard
+        <i class="icon icon-dashboard"></i> My Dashboard
       </a>
       <a class="dropdown-item" href="/workbench/onboarding/admin">
-        <i class="nav-icon  icon icon-approved-boxed"></i> Onboarding Admin
+        <i class="icon icon-approved-boxed"></i> Onboarding Admin
       </a>
       <a class="dropdown-item" href="/accounts/profile/">
-        <i class="nav-icon  icon icon-gear"></i> My Account
+        <i class="icon icon-gear"></i> My Account
       </a>
       <a class="dropdown-item" href="/accounts/logout">
-        <i class="nav-icon  icon icon-user"></i> Log Out
+        <i class="icon icon-user"></i> Log Out
       </a>
     </nav>
   </li>
