@@ -1170,6 +1170,8 @@ Styleguide Trumps.Scopes.Header
     z-index: -1;
     background-color: env(--header-bkgd-color);
   }
+  /* To ensure search bar can be focused i.e. is above the fake background */
+  .s-header .s-search-bar { z-index: 1; }
 
 }
 
