@@ -921,32 +921,10 @@ Styleguide Trumps.Scopes.Header
 /* Dropdown Item: Spacing */
 
 .s-header .dropdown-item {
-  padding-left: var(--menu-link-horz-pad);
-  padding-right: var(--menu-link-horz-pad);
-}
-
-/* Dropdown Item: Spacing: Desktop */
-
-@media (--nav-expanded) {
+  --nav-link-vert-pad: 0.4em;
 
   /* To overwrite Bootstrap */
-  .s-header .dropdown-item {
-    padding-top: 0.3em;
-    padding-bottom: 0.3em;
-  }
-
-}
-
-/* Dropdown Item: Spacing: Mobile */
-
-@media (--nav-compressed) {
-
-  .s-header .dropdown-item {
-    /* To overwrite Bootstrap */
-    padding-top: var(--nav-link-vert-pad);
-    padding-bottom: var(--nav-link-vert-pad);
-  }
-
+  padding: var(--nav-link-vert-pad) var(--menu-link-horz-pad);
 }
 
 
@@ -1195,6 +1173,14 @@ Styleguide Trumps.Scopes.Header
 
 
 
+.s-header .icon {
+  /* HACK: The `!important` overrides Portal's temporary <style> CSS */
+  /* AFTER GH-101: Portal: Remove `!important` */
+  font-size: 26px !important;
+}
+
+
+
 /* Icons: Desktop */
 
 @media (--nav-expanded) {
@@ -1202,13 +1188,6 @@ Styleguide Trumps.Scopes.Header
   /* To add space between icon and text for ALL icons */
   .s-header .icon {
     margin-right: 0.5em;
-  }
-
-  /* To enlarge ONLY top-level link icons */
-  .s-header .nav-link .icon {
-    /* HACK: The `!important` overrides Portal's temporary <style> CSS */
-    /* AFTER GH-101: Portal: Remove `!important` */
-    font-size: 26px !important;
   }
 
 }
@@ -1223,13 +1202,6 @@ Styleguide Trumps.Scopes.Header
   .s-header .s-portal-nav .dropdown-item .icon,
   .s-header .s-cms-nav .icon {
     margin-right: 0.5em;
-  }
-
-  /* To enlarge ALL icons */
-  .s-header .icon {
-    /* HACK: The `!important` overrides Portal's temporary <style> CSS */
-    /* AFTER GH-101: Portal: Remove `!important` */
-    font-size: 26px !important;
   }
 
 }

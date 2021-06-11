@@ -61,7 +61,7 @@ Styleguide Trumps.Scopes.PortalNav
 .s-portal-nav .icon {
   /* HACK: The `!important` overrides Portal's temporary <style> CSS */
   /* AFTER GH-101: Portal: Remove `!important` */
-  vertical-align: bottom !important;
+  vertical-align: middle !important;
 }
 /* HACK: To override Portal's temporary <style> CSS */
 /* AFTER GH-101: Portal: Remove this block */
