@@ -25,4 +25,4 @@ WORKDIR /code
 RUN pip3 install --no-cache-dir -r requirements.txt
 
 # build assets
-RUN npm ci && npm run build
+RUN npm ci && npm run settings && npm run build
