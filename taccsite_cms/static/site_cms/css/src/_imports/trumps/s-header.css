@@ -878,7 +878,7 @@ Styleguide Trumps.Scopes.Header
 @media (--nav-compressed) {
 
   /* To overwrite Bootstrap */
-  .s-header .dropdown-menu {
+  .s-header .s-portal-nav .dropdown-menu {
     font-size: 20px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
   }
   .s-header .s-cms-nav .dropdown-menu {
@@ -892,14 +892,17 @@ Styleguide Trumps.Scopes.Header
     margin-left: calc(env(--header-navbar-toggle-width) / 2);
   }
   .s-header .s-portal-nav .dropdown-menu {
+    /* To retain dropdown, not push-down, behavior */
+    /* FAQ: Bootstrap uses `static` for navbar dropdowns until wide screen */
+    position: absolute;
+
     padding: 0;
 
     background-color: env(--header-link-bkgd-color);
     border: none;
 
-    /* To align portal nav menu to the right */
-    width: max-content;
-    margin-left: auto;
+    /* To stretch portal nav menu over entire CMS menu */
+    width: 100%;
   }
 
 }
@@ -1161,8 +1164,6 @@ Styleguide Trumps.Scopes.Header
     );
   }
   .s-header .s-portal-nav {
-    /* To not cover search bar and CMS nav */
-    z-index: -1;
     /* To shove portal nav into same row as search bar */
     margin-top: calc(-1 * env(--header-navbar-mobile-height));
   }
