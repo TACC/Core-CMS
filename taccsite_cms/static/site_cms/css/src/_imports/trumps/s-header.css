@@ -298,9 +298,15 @@ Styleguide Trumps.Scopes.Header
 
   /* Button */
 
+  /* To layout the button */
   .s-header :--navbar-button {
     width: env(--header-navbar-toggle-width);
+  
     margin-right: env(--header-navbar-mobile-right-pad);
+  }
+
+  /* To style the button */
+  .s-header :--navbar-button {
     padding: 0; /* to overwrite Bootstrap */
 
     background-color: env(--header-portal-nav-bkgd-color);
@@ -398,15 +404,12 @@ Styleguide Trumps.Scopes.Header
 
   /* Layout */
 
-  /* HACK: To transform the navbar into a dropdown */
+  /* HACK: To make the navbar act similar to a dropdown */
   /* TODO: We should either use dropdown or create TACC nav component (GH-12) */
-  /* NOTE: This does NOT behave exactly like a dropdown:
-      1. If menu is open, and screen width changes trigger nav layout transition from mobile to desktop to mobile, then menu will remain open upon return to mobile layout. But a dropdown inside this navbar that was open would be closed after the return.
-      2. If menu is open, and user clicks anywhere outside the navbar, then menu will remain open. But a dropdown anywhere that was open would be closed after the click.
-  */
+  /* CAVEAT: If menu is open, and layout switches from collapsed to expanded to collapsed, then menu will remain open upon return to collapsed layout.
+  /* CAVEAT: If menu is open, and user clicks anywhere outside the navbar, then menu remains open. But a real dropdown would be closed after such a click. */
   .s-header .navbar-collapse {
-    position: absolute; /* expects Bootstrap `.navbar { position: relative }` */
-
+    position: absolute; /* assumes Bootstrap `.navbar { position: relative }` */
     top: 100%;
     left: 0;
     right: env(--header-navbar-mobile-right-pad);
