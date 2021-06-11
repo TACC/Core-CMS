@@ -59,7 +59,16 @@ Styleguide Trumps.Scopes.PortalNav
 
 /* To align all icons */
 .s-portal-nav .icon {
-  vertical-align: bottom;
+  /* HACK: The `!important` overrides Portal's temporary <style> CSS */
+  /* AFTER GH-101: Portal: Remove `!important` */
+  vertical-align: bottom !important;
+}
+/* HACK: To override Portal's temporary <style> CSS */
+/* AFTER GH-101: Portal: Remove this block */
+@media (--nav-compressed) {
+  .s-portal-nav .nav-link .icon {
+    margin-right: 0;
+  }
 }
 
 /* To align log out icon closer to visual midpoint of other icons */

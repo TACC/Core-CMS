@@ -561,7 +561,7 @@ Styleguide Trumps.Scopes.Header
 @custom-selector :--portal-nav-link--guest
   .s-portal-nav .nav-link:not(.dropdown-toggle);
 @custom-selector :--portal-nav-link__icon
-  .s-portal-nav .nav-link .nav-icon;
+  .s-portal-nav .nav-link .icon;
 @custom-selector :--portal-nav-link__text
   .s-portal-nav .nav-link .nav-text;
 
@@ -1202,13 +1202,15 @@ Styleguide Trumps.Scopes.Header
 @media (--nav-expanded) {
 
   /* To add space between icon and text for ALL icons */
-  .s-header .nav-icon {
+  .s-header .icon {
     margin-right: 0.5em;
   }
 
   /* To enlarge ONLY top-level link icons */
-  .s-header .nav-link .nav-icon {
-    font-size: 26px;
+  .s-header .nav-link .icon {
+    /* HACK: The `!important` overrides Portal's temporary <style> CSS */
+    /* AFTER GH-101: Portal: Remove `!important` */
+    font-size: 26px !important;
   }
 
 }
@@ -1220,14 +1222,16 @@ Styleguide Trumps.Scopes.Header
 @media (--nav-compressed) {
 
   /* To add space between icon and text for ONLY portal nav top-level and CMS */
-  .s-header .s-portal-nav .dropdown-item .nav-icon,
-  .s-header .s-cms-nav .nav-icon {
+  .s-header .s-portal-nav .dropdown-item .icon,
+  .s-header .s-cms-nav .icon {
     margin-right: 0.5em;
   }
 
   /* To enlarge ALL icons */
-  .s-header .nav-icon {
-    font-size: 26px;
+  .s-header .icon {
+    /* HACK: The `!important` overrides Portal's temporary <style> CSS */
+    /* AFTER GH-101: Portal: Remove `!important` */
+    font-size: 26px !important;
   }
 
 }
