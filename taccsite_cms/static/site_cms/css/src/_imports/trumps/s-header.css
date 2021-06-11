@@ -69,17 +69,8 @@ Styleguide Trumps.Scopes.Header
   :root {
     --header-brandbar-height: env(--header-brandbar-mobile-height);
     --header-navbar-height: env(--header-navbar-mobile-height);
-  }
 
-  @media (--nav-narrow-and-above) {
-    :root {
-      --portal-navlink-max-width: env(--portal-navlink-normal-max-width);
-    }
-  }
-  @media (--nav-narrow-and-below) {
-    :root {
-      --portal-navlink-max-width: env(--portal-navlink-mobile-max-width);
-    }
+    --portal-navlink-max-width: env(--portal-navlink-mobile-max-width);
   }
 }
 
@@ -629,9 +620,7 @@ Styleguide Trumps.Scopes.Header
 
 /* Nav Link: Spacing: Desktop */
 
-/* To match design of expanded navbar Portal Nav but take liberty with when */
-@media (--nav-expanded), /* match design */
-       (--nav-narrow-and-above) and (--nav-compressed) /* dev liberty */ {
+@media (--nav-expanded) {
 
   .s-header .s-portal-nav .nav-link,
   /* To overwrite Bootstrap (see "Portal & Docs Selectors") */
@@ -649,7 +638,7 @@ Styleguide Trumps.Scopes.Header
 /* Nav Link: Spacing: Mobile */
 
 /* To match design of collapsed navbar Portal Nav but take liberty with when */
-@media (--nav-narrow-and-below) /* dev liberty */ {
+@media (--nav-compressed) /* dev liberty */ {
 
   .s-header .s-portal-nav .nav-link {
     min-width: calc(2 * env(--header-navbar-toggle-width)); /* dev liberty */
@@ -667,8 +656,7 @@ Styleguide Trumps.Scopes.Header
 
 /* Nav Link: Icon   (Mobile-Only) */
 
-/* To match design of collapsed navbar Portal Nav but take liberty with when */
-@media (--nav-narrow-and-below) /* dev liberty */ {
+@media (--nav-compressed) {
 
   /* Layout */
 
