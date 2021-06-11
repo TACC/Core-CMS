@@ -845,8 +845,6 @@ Styleguide Trumps.Scopes.Header
   margin: unset;
 
   border-radius: unset;
-
-  font-size: unset;
 }
 
 
@@ -876,7 +874,7 @@ Styleguide Trumps.Scopes.Header
 @media (--nav-compressed) {
 
   /* To overwrite Bootstrap */
-  .s-header .s-portal-nav .dropdown-menu {
+  .s-header .dropdown-menu {
     font-size: 20px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
   }
   .s-header .s-cms-nav .dropdown-menu {
