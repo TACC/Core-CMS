@@ -6,6 +6,9 @@ The [Core Docs](https://github.com/TACC/Core-Docs).
 Styleguide Trumps.ForOtherSites.Docs
 */
 @import url("_imports/tools/selectors.css");
+@import url("_imports/tools/x-hide.css");
+
+
 
 /* Update & Unset Outdated Styles */
 
@@ -32,7 +35,7 @@ Styleguide Trumps.ForOtherSites.Docs
 
 
 
-/* Overwrite Bootstrap (for Search Form in Header) */
+/* Supplement Bootstrap (for Search Form in Header) */
 
 /* To compensate for Docs not having `.form-inline` in _its_ Bootstrap 4.3.1 */
 :--for-docs .form-inline {
@@ -44,6 +47,11 @@ Styleguide Trumps.ForOtherSites.Docs
   /* NOTE: These are perceptibly ineffectual but consistent with Portal & CMS */
   flex-flow: row wrap;
   align-items: center;
+}
+
+/* To compensate for Docs not having `.sr-only` in _its_ Bootstrap 4.3.1 */
+:--for-docs .sr-only {
+  @extend %x-hide--only-visually;
 }
 
 
@@ -66,11 +74,30 @@ Styleguide Trumps.ForOtherSites.Docs
 
 
 
-/* Overwrite TACC (for Icons in Body) */
+/* Overwrite TACC (for TACC Icons in Header, for FontAwesome Icons in Body) */
+
+/* To override an override that exists in a <style> tag */
+/* FAQ: Docs has overwrite code that is too broad and too powerful */
+/* TODO: Remove the style tag, then remove this code */
+:--for-docs .icon:not(.wy-side-nav-search a) {
+  font-family: Cortal-Icons !important; /* to overwrite `!important` */
+}
 
 /* To compensate for Docs using an `.icon` class different from CMS & Portal */
-:--for-docs .icon {
+/* FAQ: Some TACC styles break this Docs FontAwesome icon */
+:--for-docs .wy-side-nav-search a.icon {
   width: unset;
   height: unset;
   vertical-align: unset;
+  font-family: inherit !important; /* override `!important` in `icon.css` */
+}
+
+
+
+/* Overwrite ReadTheDocs (for TACC Icons in Header) */
+
+/* To compensate for Docs using an `.icon` class different from CMS & Portal */
+/* FAQ: Some FontAwesome styles break TACC icons */
+:--for-docs .icon:not(.wy-side-nav-search a)::before {
+  font-family: inherit; /* to ignore FontAwesome and use TACC */
 }
