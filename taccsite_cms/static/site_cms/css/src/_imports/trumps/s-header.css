@@ -582,6 +582,10 @@ Styleguide Trumps.Scopes.Header
 
   /* To prevent expansion upon dropdown menu open */
   width: var(--portal-navlink-max-width);
+
+  /* To prevent "Log In" from wrapping as it slides into place */
+  /* NOTE: This affects username also, but it should not have any whitespace */
+  white-space: nowrap;
 }
 
 /* Nav Link: General: Desktop */
