@@ -7,7 +7,7 @@ Styleguide Trumps.ForOtherSites.Docs
 */
 @import url("_imports/tools/selectors.css");
 
-/* Update / Unset Outdated Styles */
+/* Update & Unset Outdated Styles */
 
 :--for-docs #frontera-top-nav {
   min-height: calc(
@@ -50,10 +50,10 @@ Styleguide Trumps.ForOtherSites.Docs
 
 /* Overwrite ReadTheDocs (for Images in Header) */
 
-/* To overwrite `img { max-width: 100% }` */
 :--for-docs .s-header img,
 :--for-docs .c-branding img {
-  max-width: unset;
+  width: unset;
+  vertical-align: unset;
 }
 
 
