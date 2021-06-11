@@ -832,6 +832,13 @@ Styleguide Trumps.Scopes.Header
 
 /* Dropdown Menu */
 
+/* To layout menu */
+.s-header .s-portal-nav .dropdown-menu {
+  /* To stretch dropdown width to match width of its parent */
+  width: 100%;
+}
+
+/* To style menu */
 /* To overwrite Bootstrap */
 /* FAQ: Bootstrap has styles we do not want a value for, so `unset` */
 .s-header .dropdown-menu {
@@ -891,9 +898,6 @@ Styleguide Trumps.Scopes.Header
 
     background-color: env(--header-link-bkgd-color);
     border: none;
-
-    /* To stretch portal nav menu over entire CMS menu */
-    width: 100%;
   }
 
 }
