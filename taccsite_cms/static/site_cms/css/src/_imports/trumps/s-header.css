@@ -512,6 +512,7 @@ Styleguide Trumps.Scopes.Header
            then remove the `:--for-cms` selector prefix */
   :--for-cms .s-header:not(.is-on-portal) .s-cms-nav {
     margin-left: auto;
+    margin-right: env(--header-navbar-normal-right-pad);
   }
 
 }
