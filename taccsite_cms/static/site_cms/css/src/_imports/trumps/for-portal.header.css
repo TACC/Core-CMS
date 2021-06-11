@@ -1,0 +1,37 @@
+/*
+Portal
+
+The [Core Portal](https://github.com/TACC/Core-Portal).
+
+Styleguide Trumps.ForOtherSites.Portal
+*/
+@import url("_imports/tools/selectors.css");
+
+/* Ammend `s-header.css` (for Header because of Body) */
+
+@media (--nav-compressed) {
+
+  /* To position navbar+button based on screen width instead of parent width */
+  /* FAQ: Portal body min-width places a static button outside narrow screen */
+  :--for-portal .s-header :--navbar-button {
+    position: absolute; /* assumes Bootstrap `.navbar { position: relative }` */
+    width: env(--header-navbar-toggle-width);
+    left: calc(
+      100vw
+      - env(--header-navbar-mobile-right-pad)
+      - env(--header-navbar-toggle-width)
+    ); /* full screen width – distance from right of screen – its own width */
+
+    /* To overwrite `s-header.css` */
+    margin-right: auto;
+  }
+  :--for-portal .s-header .navbar-collapse {
+    width: calc(
+      100vw - env(--header-navbar-mobile-right-pad)
+    );
+
+    /* To overwrite `s-header.css` */
+    right: auto;
+  }
+
+}

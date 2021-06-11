@@ -50,6 +50,11 @@ Styleguide Components.Branding
 /* Elements */
 
 .c-branding__link {
+  /* To center image (in case other styles shrink the image) */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   /* FAQ: Percentage-based math adapts to container height */
   height: var(--height, 90%);
 }

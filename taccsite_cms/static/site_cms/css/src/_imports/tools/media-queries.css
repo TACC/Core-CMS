@@ -19,6 +19,10 @@ Styleguide Tools.CustomMediaQueries.Breakpoints
 
 /* Standard Breakpoints (based on Bootstrap) */
 
+@custom-media --xx-narrow-and-below (width < 320px);
+@custom-media --xx-narrow-and-above (width >= 320px);
+@custom-media --xx-narrow-to-narrow (320px <= width < 576px);
+
 @custom-media --x-narrow-and-below (width < 576px);
 @custom-media --x-narrow-and-above (width >= 576px);
 @custom-media --x-narrow-to-narrow (576px <= width < 768px);

@@ -11,6 +11,10 @@
     "--portal-navlink-normal-max-width": "206px",
     "--portal-navlink-mobile-max-width": "112px",
 
+    "// BODY": "",
+    "// --body-min-width": "developer-decided value",
+    "--body-min-width": "320px",
+
     "// HEADER": "",
     "--header-font-family": "Roboto, sans-serif",
     "--header-accent-color": "#877453",

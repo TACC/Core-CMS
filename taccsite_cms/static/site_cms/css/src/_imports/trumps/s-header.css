@@ -101,6 +101,14 @@ Styleguide Trumps.Scopes.Header
   border-bottom: 1px solid var(--global-color-primary--xx-light);
 }
 
+/* To avoid squished branding on super narrow screens */
+@media (--xx-narrow-and-below) {
+  .s-header .c-branding__image {
+    /* To allow image to shrink so spacing occurs in narrow box */
+    max-width: 80%;
+  }
+}
+
 
 
 

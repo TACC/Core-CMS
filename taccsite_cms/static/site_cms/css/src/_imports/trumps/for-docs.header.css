@@ -21,6 +21,27 @@ Styleguide Trumps.ForOtherSites.Docs
 
 
 
+/* Ammend `s-header.css` (for Header because of Body) */
+
+@media (--xx-narrow-and-below) {
+
+  /* To position navbar+button based on screen width instead of parent width */
+  /* FAQ: Portal body min-width places a static button outside narrow screen */
+  :--for-docs .s-header :--navbar-button {
+    flex-grow: 1;
+
+    /* To overwrite `s-header.css` */
+    margin-right: 0;
+  }
+  :--for-docs .s-header .navbar-collapse {
+    /* To overwrite `s-header.css` */
+    right: 0;
+  }
+
+}
+
+
+
 /* Initialize Sidebar Position (for Dependency on Header Height) */
 
 /* To position Docs' sidebar nav at expected initial vertical location ASAP */
