@@ -3,6 +3,11 @@ Hide
 
 Different ways and reasons to hide elements.
 
+.u-hide--for-all                - Hide for all media and remove layout
+.u-hide--for-all-but-has-layout - Hide for all media but retain layout
+.u-hide--text-image-replacement - Hide text to replace with image
+.u-hide--visually               - Hide only for visual UI
+
 Resources:
 - https://kittygiraudel.com/2021/02/17/hiding-content-responsibly/
 - https://codepen.io/vincent-valentin/full/JjGmxzV
@@ -11,37 +16,27 @@ Markup: u-hide.css
 
 Styleguide Core.Trumps.Utilities.Hide
 */
+@import url("_imports/tools/x-hide.css");
 
-/* Hides content for all users, even screen readers */
+/* To hide content from all interfaces */
 .u-hide--for-all {
-  display: none;
+  @extend %x-hide--for-all;
 }
 .u-hide--for-all-but-has-layout {
-  visibility: hidden;
+  @extend %x-hide--for-all-but-has-layout;
 }
 
-/* Replace text with image; meets WCAG 2.0 success criteria */
-/* SEE: https://www.w3.org/TR/WCAG20-TECHS/C30.html */
+/* To replace text with image */
 .u-hide--text-image-replacement {
-  /* background-image: url('…'); */
+  @extend %x-hide--text-image-replacement;
+  /* background-image: url('…'); *//* for user to define */
 }
 .u-hide--text-image-replacement .u-hide__text {
-  position: absolute;
-  left: -9999em;
+  @extend %x-hide--text-image-replacement__text;
 }
 
-/* Hides content for visual users, retain hidden text for screen readers */
+/* To hide content only from visual interfaces */
 /* SEE: https://www.a11yproject.com/posts/2013-01-11-how-to-hide-content/ */
 .u-hide--visually:not(:focus, :active) {
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-
-  /* Added by TACC based on other examples */
-  border: none;
-  padding: 0;
+  @extend %x-hide--visually;
 }

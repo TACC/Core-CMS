@@ -3,21 +3,48 @@ Hide
 
 Methods to hide text.
 
-NOTE: This file will have even more useful mixins when W.Bomar finds his uncomitted version.
+.x-hide--for-all                - Hide for all media and remove layout
+.x-hide--for-all-but-has-layout - Hide for all media but retain layout
+.x-hide--text-image-replacement - Hide text to replace with image
+.x-hide--visually               - Hide only for visual UI
 
-.x-hide--only-visually - Hide only for visual UI
+Resources:
+- https://kittygiraudel.com/2021/02/17/hiding-content-responsibly/
+- https://codepen.io/vincent-valentin/full/JjGmxzV
 
-Styleguide Components.Branding
+Styleguide Tools.ExtendsAndMixins.Hide
 */
 
-%x-hide--only-visually {
+/* To hide content from all interfaces, even screen readers */
+%x-hide--for-all {
+  display: none;
+}
+%x-hide--for-all-but-has-layout {
+  visibility: hidden;
+}
+
+/* To replace text with image (meets WCAG 2.0 success criteria) */
+/* SEE: https://www.w3.org/TR/WCAG20-TECHS/C30.html */
+%x-hide--text-image-replacement {
+  /* background-image: url('…'); *//* for user to define */
+}
+%x-hide--text-image-replacement__text {
   position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
+  left: -9999em;
+}
+
+/* To hide content only from visual interfaces (not screen readers) */
+/* SEE: https://www.a11yproject.com/posts/2013-01-11-how-to-hide-content/ */
+%x-hide--visually {
+  clip: rect(0 0 0 0);
   clip-path: inset(50%);
-  border: 0;
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+
+  /* Added by TACC based on other examples */
+  border: none;
+  padding: 0;
 }
