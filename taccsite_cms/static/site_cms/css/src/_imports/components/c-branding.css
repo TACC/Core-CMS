@@ -31,7 +31,7 @@ Styleguide Components.Branding
 .c-branding__link:first-child .c-branding__image {
   margin-right: var(--column-gap--side);
 }
-.c-branding__link:not(:first-child):not(:last-child) .c-branding__image {
+.c-branding__link:not(:first-child, :last-child) .c-branding__image {
   margin-left: var(--column-gap--center);
   margin-right: var(--column-gap--center);
 }
