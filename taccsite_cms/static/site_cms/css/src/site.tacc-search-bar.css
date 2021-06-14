@@ -7,16 +7,19 @@
 
 /* SETTINGS */
 
-@import url("../../../site_shared/css/src/_imports/settings/border.css");
-@import url("../../../site_shared/css/src/_imports/settings/color.css");
+/* Shared with Portal */
+@import url("_imports/settings/border.css");
+@import url("_imports/settings/color.css");
 
 /* COMPONENTS */
 
-@import url("../../../site_shared/css/src/_imports/components/bootstrap.form.css");
-@import url("../../../site_shared/css/src/_imports/components/c-button.css");
+/* Shared with Portal */
+@import url("_imports/components/bootstrap.form.css");
+@import url("_imports/components/c-button.css");
 
 /* TRUMPS */
 
-@import url("../../../site_shared/css/src/_imports/trumps/icon.css");
-
+/* Shared with Portal */
+@import url("_imports/trumps/icon.css");
+/* Unique to CMS */
 @import url("_imports/elements/tacc-search-bar.css");
