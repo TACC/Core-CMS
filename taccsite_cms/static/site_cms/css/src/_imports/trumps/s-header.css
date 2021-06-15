@@ -309,8 +309,12 @@ Styleguide Trumps.Scopes.Header
   /* To layout the button */
   .s-header :--navbar-button {
     width: env(--header-navbar-toggle-width);
-  
-    margin-right: env(--header-navbar-mobile-right-pad);
+
+    /* Prevent wrap of button while it has static width */
+    /* FAQ: Wrap happens if logo is wide and button layout is not flexible */
+    /* FAQ: Set flexible width that never wraps button (on Frontera) */
+    /* FAQ: Set maximum width at env. variable */
+    margin-right: clamp(0px, 15%, env(--header-navbar-mobile-right-pad));
   }
 
   /* To style the button */
