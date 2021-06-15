@@ -27,7 +27,7 @@ Styleguide Trumps.ForOtherSites.Docs
 
   /* To position navbar+button based on screen width instead of parent width */
   /* FAQ: Portal body min-width places a static button outside narrow screen */
-  :--for-docs .s-header :--navbar-button {
+  :--for-docs .s-header :--navbar-toggle {
     flex-grow: 1;
 
     /* To overwrite `s-header.css` */

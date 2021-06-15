@@ -13,7 +13,7 @@ Styleguide Trumps.ForOtherSites.Portal
 
   /* To position navbar+button based on screen width instead of parent width */
   /* FAQ: Portal body min-width places a static button outside narrow screen */
-  :--for-portal .s-header :--navbar-button {
+  :--for-portal .s-header :--navbar-toggle {
     position: absolute; /* assumes Bootstrap `.navbar { position: relative }` */
     width: env(--header-navbar-toggle-width);
     left: calc(
