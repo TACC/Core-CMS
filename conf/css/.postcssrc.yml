@@ -31,3 +31,7 @@ plugins:
           exclude: true
         mergeRules:
           exclude: true
+        # This breaks values like `clamp(0px, 15%, 48px)` by stripping 0's unit
+        # SEE: https://github.com/cssnano/cssnano/issues/286
+        convertValues:
+          exclude: true
