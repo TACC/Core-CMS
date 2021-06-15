@@ -57,6 +57,9 @@ Styleguide Trumps.ForOtherSites.Docs
 
 
 /* Supplement Bootstrap (for Search Form in Header) */
+/* TODO: Remove this after Docs' GH-101 branch is deployed */
+/* SEE: https://bitbucket.org/taccaci/frontera-tech-docs/src/ed6a61a/docs/css/cms.bootstrap.4.3.1.css#lines-18:25 */
+/* SEE: https://bitbucket.org/taccaci/frontera-tech-docs/src/ed6a61aeb8bc7776a0b1be0f93ade47bcd05e3ba/docs/css/cms.bootstrap.4.3.1.css#lines-606:624 */
 
 /* To compensate for Docs not having `.form-inline` in _its_ Bootstrap 4.3.1 */
 :--for-docs .form-inline {
