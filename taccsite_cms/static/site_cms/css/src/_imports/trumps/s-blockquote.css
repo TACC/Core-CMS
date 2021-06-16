@@ -1,0 +1,28 @@
+/*
+Blockquote
+
+A [`<blockquote>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote).
+
+Markup: s-blockquote.twig.html
+
+Styleguide Trumps.Scopes.Blockquote
+*/
+
+.s-blockquote {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.s-blockquote blockquote {
+  color: #b75554;
+  font-size: 18px;
+  font-style: italic;
+}
+.s-blockquote figcaption {
+  margin-top: 5px;
+
+  color: #636466;
+  font-size: 16px;
+}
+.s-blockquote cite {
+  font-style: normal; /* overwrite browser `cite` */
+}

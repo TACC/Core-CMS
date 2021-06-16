@@ -1,8 +1,12 @@
+# SEE: https://github.com/django-cms/djangocms-bootstrap4/blob/2.0.0/djangocms_bootstrap4/contrib/bootstrap4_content/cms_plugins.py#L41
+
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 from cms.models.pluginmodel import CMSPlugin
 from django.utils.translation import gettext_lazy as _
 from django.utils.encoding import force_text
+
+from taccsite_cms.contrib.helpers import concat_classes
 
 from .models import TaccsiteBlockquote
 
@@ -22,25 +26,32 @@ class TaccsiteBlockquotePlugin(CMSPluginBase):
     cache = False
     text_enabled = False
 
-    # FAQ: Sets tooltip of preview of this plugin within a Text plugin
-    def icon_alt(self, instance):
-        super_value = force_text(super().icon_alt(instance))
-        name = self.get_name(instance)
-        return f'Hello, {{{name}}} [{super_value}]'
+    fieldsets = [
+        (None, {
+            'fields': (
+                ('quote_text', 'quote_origin'),
+                'quote_alignment',
+            )
+        }),
+        (_('Advanced settings'), {
+            'classes': ('collapse'),
+            'fields': (
+                'attributes',
+            )
+        }),
+    ]
 
     # Helpers
 
-    def get_name(self, instance, user=None):
-        """Get name of authenticated user or the name for any guest."""
+    def get_alignment_class(self, instance, option_value):
+        """Get alignment class based on alignment option."""
 
-        if user and user.is_authenticated:
-            name = user.first_name + ' ' + user.last_name
-        elif bool(instance.guest_name):
-            name = instance.guest_name
-        else:
-            name = default_name
+        switcher = {
+            'right': 'c-offset-content--right',
+            'left': 'c-offset-content--left',
+        }
 
-        return name
+        return switcher.get(option_value, '')
 
     # Render
 
@@ -48,7 +59,11 @@ class TaccsiteBlockquotePlugin(CMSPluginBase):
         context = super().render(context, instance, placeholder)
         request = context['request']
 
-        context.update({
-            'user_name': self.get_name(instance, request.user)
-        })
+        classes = ' '.join([
+            's-blockquote',
+            self.get_alignment_class(instance, instance.quote_alignment),
+            instance.attributes.get('class'),
+        ])
+        instance.attributes['class'] = classes
+
         return context
