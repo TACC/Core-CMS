@@ -96,8 +96,6 @@ FAVICON = current_secrets._FAVICON
 
 # Configure Portal.
 PORTAL = current_secrets._PORTAL
-PORTAL_AUTH_LINKS = current_secrets._PORTAL_AUTH_LINKS
-PORTAL_UNAUTH_LINKS = current_secrets._PORTAL_UNAUTH_LINKS
 
 # Optional features.
 FEATURES = current_secrets._FEATURES
@@ -490,8 +488,6 @@ SETTINGS_EXPORT = [
     'LOGO',
     'FAVICON',
     'PORTAL',
-    'PORTAL_AUTH_LINKS',
-    'PORTAL_UNAUTH_LINKS',
     'FEATURES',
     'GOOGLE_ANALYTICS_PROPERTY_ID',
     'GOOGLE_ANALYTICS_PRELOAD'

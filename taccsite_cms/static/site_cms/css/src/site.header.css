@@ -12,20 +12,22 @@
 @import url("_imports/settings/font.css");
 /* NOTE: Portal does not need this, because it has independent copy of these,
          but the User Guides do not. This can be removed in Core-CMS PR #192 */
-@import url("../../../site_shared/css/src/_imports/settings/color.css");
+@import url("_imports/settings/color.css");
 
 /* TRUMPS */
 
+/* Shared with Portal */
 /* FP-526: Consider loading Cortal icons with <link> as delayed asset */
 /* NOTE: This import is duplicated from `icon.css` because `@font-face` is ineffectual in Shadow DOM (where `site.tacc-search-bar.css` is loaded) */
 /* SEE: https://bugs.chromium.org/p/chromium/issues/detail?id=336876 */
-@import url("../../../site_shared/css/src/_imports/trumps/icon.fonts.css");
+@import url("_imports/trumps/icon.fonts.css");
 /* FAQ: Because of third-party code and a rush to style the Frontera header
         (which meant maintaining existing markup), scope classes were used for
         - the header
         - the Portal nav
         - the CMS nav
 */
+/* Unique to CMS */
 @import url("_imports/trumps/s-header.css");
 @import url("_imports/trumps/s-portal-nav.css");
 @import url("_imports/trumps/s-cms-nav.css");
