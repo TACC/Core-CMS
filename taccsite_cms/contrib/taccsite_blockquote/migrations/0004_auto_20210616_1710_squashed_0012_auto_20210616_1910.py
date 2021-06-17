@@ -5,8 +5,6 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    replaces = [('taccsite_blockquote', '0004_auto_20210616_1710'), ('taccsite_blockquote', '0005_auto_20210616_1717'), ('taccsite_blockquote', '0006_auto_20210616_1752'), ('taccsite_blockquote', '0007_auto_20210616_1758'), ('taccsite_blockquote', '0008_auto_20210616_1802'), ('taccsite_blockquote', '0009_taccsiteblockquote_use_adv_origin'), ('taccsite_blockquote', '0010_auto_20210616_1832'), ('taccsite_blockquote', '0011_auto_20210616_1833'), ('taccsite_blockquote', '0012_auto_20210616_1910')]
-
     dependencies = [
         ('taccsite_blockquote', '0003_auto_20210616_1544'),
     ]

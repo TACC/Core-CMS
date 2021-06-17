@@ -9,20 +9,29 @@ Styleguide Trumps.Scopes.Blockquote
 */
 
 .s-blockquote {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
 }
 .s-blockquote blockquote {
-  color: #b75554;
-  font-size: 18px;
+  margin-bottom: 0; /* overwrite Bootstrap */
+
+  font-size: 1.125em;
   font-style: italic;
 }
-.s-blockquote figcaption {
-  margin-top: 5px;
-
-  color: #636466;
-  font-size: 16px;
+.s-blockquote blockquote p {
+  margin: 0;
+  white-space: pre-wrap;
 }
+
+.s-blockquote figcaption {
+  margin-top: 0.3em;
+
+  font-size: 1em;
+}
+.s-blockquote figcaption::before {
+  content: "—";
+}
+
 .s-blockquote cite {
-  font-style: normal; /* overwrite browser `cite` */
+  font-style: normal; /* overwrite browser */
 }

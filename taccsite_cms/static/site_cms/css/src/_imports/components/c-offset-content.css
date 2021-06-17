@@ -9,6 +9,8 @@ Styleguide Components.OffsetContent
 [class*="c-offset-content--"] {
   --offset-distance: 8.5vw; /* NOTE: Value is from Texascale.org 2020 */
 	--buffer: 30px; /* double Bootstrap `.col` padding */
+
+  max-width: 50%;
 }
 
 @media only screen and (--medium-and-above) {

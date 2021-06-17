@@ -7,6 +7,8 @@ from django.db import models
 
 from djangocms_attributes_field import fields
 
+from taccsite_cms.contrib.taccsite_offset.models import TaccsiteOffset
+
 class TaccsiteBlockquote(CMSPlugin):
     """
     Components > "Blockquote" Model
@@ -43,6 +45,12 @@ class TaccsiteBlockquote(CMSPlugin):
     cite_url = models.CharField(
         verbose_name=_('Source URL'),
         help_text=_('URL for the source of the quote.'),
+        blank=True,
+        max_length=255,
+    )
+
+    offset = models.CharField(
+        choices=TaccsiteOffset.DIRECTION_CHOICES,
         blank=True,
         max_length=255,
     )
