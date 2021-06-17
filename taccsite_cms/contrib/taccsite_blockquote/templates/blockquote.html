@@ -1,8 +1,29 @@
-<blockquote {{ instance.attributes_str }}>
-  {{ instance.quote_text }}
-  {% if instance.quote_origin %}
-      <footer class="blockquote-footer">
-          <cite title="{{ instance.quote_origin }}">{{ instance.quote_origin }}</cite>
-      </footer>
+<figure {{ instance.attributes_str }}>
+  <blockquote cite="{{ instance.cite_url }}">
+      <p>{{ instance.text }}</p>
+  </blockquote>
+  <figcaption>
+  {% if instance.use_cite %}
+
+    {% if instance.cite_person %}
+      {{ instance.cite_person }}{% if instance.cite_text %},{% endif %}
+    {% endif %}
+
+    {% if instance.cite_text and instance.cite_url %}
+    <cite><a href="{{ instance.cite_url }}" target="_blank">
+      {{ instance.cite_text }}
+    </a></cite>
+    {% endif %}
+    {% if instance.cite_text and not instance.cite_url %}
+    <cite>
+      {{ instance.cite_text }}
+    </cite>
+    {% endif %}
+
+  {% else %}
+
+    {{ instance.origin }}
+
   {% endif %}
-</blockquote>
+  </figcaption>
+</figure>

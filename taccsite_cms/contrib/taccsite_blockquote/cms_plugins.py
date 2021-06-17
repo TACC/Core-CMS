@@ -2,15 +2,11 @@
 
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
-from cms.models.pluginmodel import CMSPlugin
 from django.utils.translation import gettext_lazy as _
-from django.utils.encoding import force_text
 
-from taccsite_cms.contrib.helpers import concat_classes
+from taccsite_cms.contrib.helpers import concat_classnames
 
 from .models import TaccsiteBlockquote
-
-from .defaults import user_name as default_name
 
 @plugin_pool.register_plugin
 class TaccsiteBlockquotePlugin(CMSPluginBase):
@@ -29,29 +25,25 @@ class TaccsiteBlockquotePlugin(CMSPluginBase):
     fieldsets = [
         (None, {
             'fields': (
-                ('quote_text', 'quote_origin'),
-                'quote_alignment',
+                'text',
+                'origin',
+                'use_cite',
+            )
+        }),
+        (_('Citation'), {
+            'classes': ('collapse',),
+            'fields': (
+                'cite_person',
+                ('cite_text', 'cite_url'),
             )
         }),
         (_('Advanced settings'), {
-            'classes': ('collapse'),
+            'classes': ('collapse',),
             'fields': (
                 'attributes',
             )
         }),
     ]
-
-    # Helpers
-
-    def get_alignment_class(self, instance, option_value):
-        """Get alignment class based on alignment option."""
-
-        switcher = {
-            'right': 'c-offset-content--right',
-            'left': 'c-offset-content--left',
-        }
-
-        return switcher.get(option_value, '')
 
     # Render
 
@@ -59,9 +51,8 @@ class TaccsiteBlockquotePlugin(CMSPluginBase):
         context = super().render(context, instance, placeholder)
         request = context['request']
 
-        classes = ' '.join([
+        classes = concat_classnames([
             's-blockquote',
-            self.get_alignment_class(instance, instance.quote_alignment),
             instance.attributes.get('class'),
         ])
         instance.attributes['class'] = classes
