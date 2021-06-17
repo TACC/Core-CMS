@@ -1,0 +1,19 @@
+{% extends "fullwidth.html" %}
+{% load cms_tags staticfiles %}
+
+{% block assets_custom %}
+  {{ block.super }}
+
+  <link
+    rel="stylesheet"
+    href="{% static 'site_cms/css/build/template.style-guide.css' %}"
+  >
+{% endblock assets_custom %}
+
+{% block content %}
+<div class="container  s-document  s-style-guide">
+  {% block guide %}
+    {% placeholder "content" %}
+  {% endblock guide %}
+</div>
+{% endblock content %}
