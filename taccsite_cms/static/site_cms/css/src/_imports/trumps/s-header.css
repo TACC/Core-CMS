@@ -132,6 +132,12 @@ Styleguide Trumps.Scopes.Header
 
 /* Search */
 
+.s-header .s-search-bar,
+.s-header .s-search-bar::part(input),
+.s-header .s-search-bar::part(button) {
+  font-size: 16px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
+}
+
 /* Create a line between search bar and login */
 /* FAQ: The line should only exist if both elements are present */
 .s-header .s-search-bar ~ .s-portal-nav::before {
