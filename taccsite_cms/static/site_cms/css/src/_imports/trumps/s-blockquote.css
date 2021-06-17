@@ -29,7 +29,7 @@ Styleguide Trumps.Scopes.Blockquote
   font-size: 1em;
 }
 .s-blockquote figcaption::before {
-  content: "—";
+  content: "— ";
 }
 
 .s-blockquote cite {

@@ -2,8 +2,8 @@
   <blockquote cite="{{ instance.cite_url }}">
       <p>{{ instance.text }}</p>
   </blockquote>
-  <figcaption>
   {% if instance.use_cite %}
+  <figcaption>
 
     {% if instance.cite_person %}
       {{ instance.cite_person }}{% if instance.cite_text %},{% endif %}
@@ -20,10 +20,10 @@
     </cite>
     {% endif %}
 
-  {% else %}
+  </figcaption>
+  {% elif instance.origin %}
 
-    {{ instance.origin }}
+  <figcaption>{{ instance.origin }}</figcaption>
 
   {% endif %}
-  </figcaption>
 </figure>
