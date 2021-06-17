@@ -78,8 +78,10 @@ Styleguide Trumps.Scopes.ArticlePreview
   font-size: 1.8rem;
   font-weight: var(--bold);
   line-height: 2.4rem;
-
-  @extend .x-truncate--one-line;
+}
+/* (List) */
+[class*="s-article-list--"] .s-article-preview h3 {
+  @extend %x-truncate--one-line;
 }
 /* (List) Allocations */
 .s-article-list--allocations .s-article-preview h3 {
@@ -103,8 +105,10 @@ Styleguide Trumps.Scopes.ArticlePreview
 
   font-size: 1.6rem;
   line-height: 2.4rem;
-
-  @extend .x-truncate--many-lines;
+}
+/* (List) */
+[class*="s-article-list--"] .s-article-preview p:not(:first-child):not(:last-child) {
+  @extend %x-truncate--many-lines;
   --lines: 3;
 }
 /* (List) Allocations */
@@ -155,6 +159,7 @@ Styleguide Trumps.Scopes.ArticlePreview
 }
 .s-article-list--news .s-article-preview ul > li:nth-child(1)::before {
   content: 'Published: ';
+  white-space: pre;
 }
 /* (List) Events */
 .s-article-list--events .s-article-preview ul > li:nth-child(1) {
@@ -167,6 +172,7 @@ Styleguide Trumps.Scopes.ArticlePreview
 }
 .s-article-list--allocations .s-article-preview ul > li:nth-child(1)::before {
   content: 'Submission Deadlines: ';
+  white-space: pre;
 }
 
 /* Children: Metadata: Type */

@@ -3,10 +3,10 @@ Article Link
 
 Styles that allow visible link hover for article lists.
 
-.x-article-link-stretch          - Stretch link to cover container
-.x-article-link-stretch--gapless - Make link box fix gapless layout
-.x-article-link-hover            - Give link a hover state
-.x-article-link-hover--gapless   - Make link hover state fix gapless layout
+%x-article-link-stretch          - Stretch link to cover container
+%x-article-link-stretch--gapless - Make link box fix gapless layout
+%x-article-link-hover            - Give link a hover state
+%x-article-link-hover--gapless   - Make link hover state fix gapless layout
 
 Styleguide Tools.ExtendsAndMixins.ArticleLink
 */
@@ -14,24 +14,33 @@ Styleguide Tools.ExtendsAndMixins.ArticleLink
 /* WARNING: A link ancestor must have its `position` set (not to static) */
 
 /* Expand link to cover container */
-.x-article-link-stretch {
+.x-article-link-stretch,
+%x-article-link-stretch {
   position: absolute;
   height: 100%;
   width: 100%;
-  /* An explicit position (in case container has top padding) */
+  /* To prevent container padding from offsetting an `outline` */
   top: 0;
+  left: 0;
+
+  /* To prevent `outline` from being inexplicably offset in Firefox */
+  /* SEE: http://johndoesdesign.com/blog/2012/css/firefox-and-its-css-focus-outline-bug/ */
+  overflow: hidden;
 }
-.x-article-link-stretch--gapless {
+.x-article-link-stretch--gapless,
+%x-article-link-stretch--gapless {
   width: calc(100% + 30px); /* GH-99: Use standard spacing value */
   left: -15px;
 }
 
 /* Give link state (pseudo-class) feedback */
-.x-article-link-hover {
+.x-article-link-hover,
+%x-article-link-hover {
   outline: 1px solid var(--global-color-accent--normal);
 
   outline-offset: 1em;
 }
-.x-article-link-hover--gapless {
+.x-article-link-hover--gapless,
+%x-article-link-hover--gapless {
   outline-offset: 0;
 }

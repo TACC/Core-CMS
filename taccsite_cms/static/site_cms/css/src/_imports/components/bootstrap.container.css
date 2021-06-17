@@ -7,7 +7,7 @@ Add to Bootstrap styles. See:
 
 Styleguide Components.Bootstrap.Grid
 */
-@import url("../../../../../../../taccsite_cms/static/site_shared/css/src/_imports/tools/media-queries.css");
+@import url("_imports/tools/media-queries.css");
 
 @media (--x-wide-and-above) {
   .container { max-width: var(--global-max-width--x-wide); }
