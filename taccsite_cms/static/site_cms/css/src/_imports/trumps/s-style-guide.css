@@ -1,0 +1,39 @@
+/*
+Style Guide
+
+A style guide. This is intended for:
+- a design system
+- a writing style guide
+- a developer style guide
+
+Styleguide Trumps.Scopes.StyleGuide
+*/
+
+.s-style-guide {
+  margin-top: var(--global-space--large);
+  margin-bottom: var(--global-space--x-large);
+}
+
+
+
+
+
+/* ELEMENTS */
+
+
+
+/* ELEMENTS: Content Sectioning */
+
+.s-style-guide section {
+  clear: both;
+}
+.s-style-guide section:not(section section) {
+  border-top: var(--global-border--x-thick);
+  padding-top: var(--global-space--x-large);
+  margin-top: var(--global-space--x-large);
+}
+.s-style-guide section section {
+  border-top: var(--global-border--normal);
+  padding-top: var(--global-space--normal);
+  margin-top: var(--global-space--normal);
+}
