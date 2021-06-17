@@ -81,7 +81,11 @@ _CMS_TEMPLATES = (
     # ('guides/getting_started.html', 'Guide: Getting Started'),
     # ('guides/data_transfer.html', 'Guide: Data Transfer'),
     # ('guides/data_transfer.globus.html', 'Guide: Globus Data Transfer'),
-    # ('guides/portal_technology.html', 'Guide: Portal Technology Stack')
+    # ('guides/portal_technology.html', 'Guide: Portal Technology Stack'),
+
+    # For now, only Core portal should enable this template
+    # FAQ: We know not yet how to auto-replicate pages and plugins across sites
+    # ('style_guide.html', 'Style Guide'),
 )
 
 ########################
