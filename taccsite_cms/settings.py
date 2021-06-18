@@ -471,6 +471,7 @@ SETTINGS_EXPORT_VARIABLE_NAME = 'settings'
 
 # Elasticsearch Indexing
 HAYSTACK_ROUTERS = ['aldryn_search.router.LanguageRouter',]
+# FP-1099: Wesley is disabling this to prove it is a trigger for a bug
 # HAYSTACK_SIGNAL_PROCESSOR = 'taccsite_cms.signal_processor.RealtimeSignalProcessor'
 ALDRYN_SEARCH_DEFAULT_LANGUAGE = 'en'
 ALDRYN_SEARCH_REGISTER_APPHOOK = True
