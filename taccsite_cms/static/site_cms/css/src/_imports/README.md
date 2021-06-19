@@ -17,7 +17,6 @@ These styles are only to be imported by other stylesheets.
 These directories are based on [ITCSS][tacc-itcss].
 
 [tacc-itcss]: https://confluence.tacc.utexas.edu/x/IAA9Cw
-[tacc-oocss]: https://confluence.tacc.utexas.edu/x/VwALBg
 
 ## Documentation Format
 
