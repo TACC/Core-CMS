@@ -1,0 +1,26 @@
+/*
+Image Map
+
+An image with (optional) counters and (related) captions.
+
+Caveat: The element for `.c-image-map__item-toggle` must support `:focus`; for options, see https://stackoverflow.com/a/1600194.
+
+Notice: These classes apply opinionated styles (based on https://texascale.org/2019/visualizing-science/whats-in-a-node/) that should be revisited when alternative styles arrive (from future implementations):
+
+- `.c-image-map--has-caption-toggle-alignment`
+- `.c-image-map__item--unmapped`
+
+.c-image-map--should-position-items - Allow items to respect absolute position that is relative to the image
+.c-image-map--has-item-counters - Renders counter element and text for each item
+.c-image-map--has-toggle-counters - Renders counter text inside each toggle
+.c-image-map--has-caption-toggle-alignment - Standard alignment of captions and toggles
+
+Markup: ../../../../../../snippets/image-map-whats-in-a-node.html
+
+Styleguide Components.ImageMap
+*/
+
+/* Styles are organized by OOCSS methodology */
+/* SEE: https://confluence.tacc.utexas.edu/x/VwALBg */
+@import url("./c-image-map.structure.css");
+@import url("./c-image-map.skin.css");
