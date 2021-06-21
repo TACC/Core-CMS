@@ -21,12 +21,12 @@
 /* Load custom element styles within custom element, not here */
 
 /* OBJECTS */
-@import url("_imports/objects/o-site.css");
+@import url("_imports/objects/o-offset-content.css");
 @import url("_imports/objects/o-section.css");
+@import url("_imports/objects/o-site.css");
 
 /* COMPONENTS */
 @import url("_imports/components/c-footer.css");
-@import url("_imports/components/c-offset-content.css");
 @import url("_imports/components/django.cms.css");
 @import url("_imports/components/django.cms.blog.css");
 @import url("_imports/components/django.cms.post.css");

@@ -4,8 +4,8 @@ def get_offset_classname(offset):
     # TODO: Limit input to known offsets
     # SEE: taccsite_cms.contrib.constants:OFFSET_CHOICES
     switcher = {
-        'right': 'c-offset-content--right',
-        'left': 'c-offset-content--left'
+        'right': 'o-offset-content--right',
+        'left': 'o-offset-content--left'
     }
 
     return switcher.get(offset, '')
