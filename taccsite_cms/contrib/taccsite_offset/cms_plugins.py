@@ -31,7 +31,7 @@ class TaccsiteOffsetPlugin(CMSPluginBase):
             )
         }),
         (_('Advanced settings'), {
-            'classes': ('collapse'),
+            'classes': ('collapse',),
             'fields': (
                 'attributes',
             )
