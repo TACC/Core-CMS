@@ -159,10 +159,10 @@ _FEATURES = {
     "blog": False,
 
     # Search
-    # - `True`  (Portal:  enable search, CMS:  enable indexing)
-    # - (falsy) (Portal:  enable search, CMS: disable indexing)
-    # - `False` (Portal: disable search, CMS: disable indexing)
-    # FP-1099: Search can be disabled as a workaround to suspected indexing bug
+    # - `True`  (Portal:       allow search,          Any CMS: allow index)
+    # - (falsy) (Portal & CMS: allow search & index,  SAD CMS: never index)
+    # - `False` (Portal:       no search bar,         Any CMS: never index)
+    # FP-1099: Search can be disabled as a workaround to suspected index bug
     "search": None,
 }
 
