@@ -241,6 +241,8 @@ INSTALLED_APPS = [
     # TODO: Extract TACC CMS UI components into pip-installable plugins
     # FAQ: The djangocms_bootstrap4 library can serve as an example
     'taccsite_cms.contrib.taccsite_sample',
+    'taccsite_cms.contrib.taccsite_blockquote',
+    'taccsite_cms.contrib.taccsite_offset',
 ]
 
 # Convert list of paths to list of dotted module names
