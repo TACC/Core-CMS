@@ -11,6 +11,7 @@ Notice: These must be Tools (imported as needed) until native browser support, a
 
 Reference:
 - https://drafts.csswg.org/mediaqueries-5/#at-ruledef-custom-media
+- https://confluence.tacc.utexas.edu/x/b4AZCg
 
 Styleguide Tools.CustomMediaQueries.Breakpoints
 */
@@ -40,4 +41,8 @@ Styleguide Tools.CustomMediaQueries.Breakpoints
 
 @custom-media --xxx-wide-and-below (width < 1920px);
 @custom-media --xxx-wide-and-above (width >= 1920px);
-/* @custom-media --xxx-wide-to-omg-wide (... <= width < ...); */
+@custom-media --xxx-wide-to-max-wide (1920px <= width < 2400px);
+
+@custom-media --max-wide-and-below (width < 2400px);
+@custom-media --max-wide-and-above (width >= 2400px);
+/* @custom-media --max-wide-to-god-wide (... <= width < ...); */
