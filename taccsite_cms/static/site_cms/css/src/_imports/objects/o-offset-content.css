@@ -10,8 +10,7 @@ Styleguide Objects.OffsetContent
 [class*="o-offset-content--"] {
   --offset-distance: 8.5vw; /* NOTE: Value is from Texascale.org 2020 */
 	--buffer: 30px; /* double Bootstrap `.col` padding */
-
-  max-width: 50%;
+  --max-width: initial;
 }
 
 @media only screen and (--medium-and-above) {
@@ -29,7 +28,10 @@ Styleguide Objects.OffsetContent
 }
 /* WARNING: Value `2400px` is from Texascale.org 2020 */
 @media only screen and (--medium-and-above) and (max-width: 2400px) {
-    /* Apply negative margin only when using offset value */
+  [class*="c-offset-content--"] {
+    --max-width: 50%;
+  }
+  /* Apply negative margin only when using offset value */
 	.o-offset-content--right {
 		margin-right: calc( var(--offset-distance) * -1);
 	}
