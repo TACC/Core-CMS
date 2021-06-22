@@ -157,6 +157,13 @@ _FEATURES = {
     # SEE: https://confluence.tacc.utexas.edu/x/EwDeCg
     # SEE: https://confluence.tacc.utexas.edu/x/FAA9Cw
     "blog": False,
+
+    # Search
+    # - `True`  (Portal:       allow search,          Any CMS: allow index)
+    # - (falsy) (Portal & CMS: allow search & index,  SAD CMS: never index)
+    # - `False` (Portal:       no search bar,         Any CMS: never index)
+    # FP-1099: Search can be disabled as a workaround to suspected index bug
+    "search": None,
 }
 
 ########################
