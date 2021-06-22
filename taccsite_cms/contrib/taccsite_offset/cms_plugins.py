@@ -5,9 +5,9 @@ from cms.plugin_pool import plugin_pool
 
 from django.utils.translation import gettext_lazy as _
 
-from taccsite_cms.contrib.helpers import concat_classnames, get_offset_classname
+from taccsite_cms.contrib.helpers import concat_classnames
 
-from .models import TaccsiteOffset
+from .models import TaccsiteOffset, get_direction_classname
 
 @plugin_pool.register_plugin
 class TaccsiteOffsetPlugin(CMSPluginBase):
@@ -45,7 +45,7 @@ class TaccsiteOffsetPlugin(CMSPluginBase):
         request = context['request']
 
         classes = concat_classnames([
-            get_offset_classname(instance.direction),
+            get_direction_classname(instance.direction),
             instance.attributes.get('class'),
         ])
         instance.attributes['class'] = classes

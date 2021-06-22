@@ -7,7 +7,7 @@ from django.db import models
 
 from djangocms_attributes_field import fields
 
-from taccsite_cms.contrib.taccsite_offset.models import TaccsiteOffset
+from taccsite_cms.contrib.taccsite_offset.models import DIRECTION_CHOICES
 
 class TaccsiteBlockquote(CMSPlugin):
     """
@@ -50,7 +50,7 @@ class TaccsiteBlockquote(CMSPlugin):
     )
 
     offset = models.CharField(
-        choices=TaccsiteOffset.DIRECTION_CHOICES,
+        choices=DIRECTION_CHOICES,
         blank=True,
         max_length=255,
     )

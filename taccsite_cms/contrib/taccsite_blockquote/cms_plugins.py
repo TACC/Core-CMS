@@ -4,7 +4,9 @@ from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 from django.utils.translation import gettext_lazy as _
 
-from taccsite_cms.contrib.helpers import concat_classnames, get_offset_classname
+from taccsite_cms.contrib.helpers import concat_classnames
+
+from taccsite_cms.contrib.taccsite_offset.models import get_direction_classname
 
 from .models import TaccsiteBlockquote
 
@@ -58,7 +60,7 @@ class TaccsiteBlockquotePlugin(CMSPluginBase):
 
         classes = concat_classnames([
             's-blockquote',
-            get_offset_classname(instance.offset),
+            get_direction_classname(instance.offset),
             instance.attributes.get('class'),
         ])
         instance.attributes['class'] = classes
