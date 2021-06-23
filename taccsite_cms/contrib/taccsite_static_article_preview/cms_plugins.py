@@ -52,7 +52,7 @@ class TaccsiteStaticNewsArticlePreviewPlugin(ArticlePreviewPlugin):
     """
     module = 'TACC Site'
     model = TaccsiteStaticNewsArticlePreview
-    name = _('(Static) News Article Preview')
+    name = _('News Article Preview (Static)')
     render_template = 'static_article_preview.html'
 
     cache = True

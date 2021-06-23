@@ -3,7 +3,7 @@ from cms.plugin_pool import plugin_pool
 from django.utils.translation import gettext_lazy as _
 
 from taccsite_cms.contrib.helpers import concat_classnames
-from taccsite_cms.contrib.taccsite_article_list.models import (
+from taccsite_cms.contrib.taccsite_static_article_list.models import (
     get_layout_classname, get_content_classname, get_style_classname
 )
 
@@ -17,7 +17,7 @@ class TaccsiteArticleListPlugin(CMSPluginBase):
     """
     module = 'TACC Site'
     model = TaccsiteArticleList
-    name = _('Article List')
+    name = _('Article List (Static)')
     render_template = 'article_list.html'
 
     cache = True
