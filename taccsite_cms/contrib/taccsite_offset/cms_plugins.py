@@ -18,7 +18,7 @@ class TaccsiteOffsetPlugin(CMSPluginBase):
     name = _('Offset Content')
     render_template = 'offset.html'
 
-    cache = False
+    cache = True
     text_enabled = False
     allow_children = True
 

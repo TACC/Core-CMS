@@ -19,16 +19,16 @@ DIRECTION_CHOICES = (
 
 # Helpers
 
-def get_direction_classname(offset):
-    """Get offset content class based on standard offset value."""
+def get_direction_classname(value):
+    """Get direction class based on value."""
 
-    # HELP: Should we limit input by coupling this map to DIRECTION_CHOICES?
+    # TODO: Couple this map to DIRECTION_CHOICES
     switcher = {
         'right': 'o-offset-content--right',
         'left': 'o-offset-content--left'
     }
 
-    return switcher.get(offset, '')
+    return switcher.get(value, '')
 
 
 

@@ -19,8 +19,9 @@ class TaccsiteBlockquotePlugin(CMSPluginBase):
     name = _('Blockquote')
     render_template = 'blockquote.html'
 
-    cache = False
+    cache = True
     text_enabled = True
+    allow_children = False
 
     fieldsets = [
         (None, {
