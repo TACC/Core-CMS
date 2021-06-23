@@ -1,0 +1,19 @@
+{% load cms_tags %}
+
+<article
+  {# class="c-article-list c-article-list--..." #}
+  {{ instance.attributes_str }}>
+  <h2 class="c-article-list__title">
+    {{ instance.header_title_text }}
+  </h2>
+  {% for plugin_instance in instance.child_plugin_instances %}
+    {# <article class="c-article-list__item">…</article> #}
+    {% render_plugin plugin_instance %}
+  {% endfor %}
+  <footer class="c-article-list__footer">
+    <a class="c-article-list__link" href="/more">
+      <i class=".c-article-list__link-icon  icon icon-push-right"></i>
+      <span>{{ instance.footer_link_text }}</span>
+    </a>
+  </footer>
+</article>
