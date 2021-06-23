@@ -1,5 +1,3 @@
-# SEE: https://github.com/django-cms/djangocms-bootstrap4/blob/2.0.0/djangocms_bootstrap4/contrib/bootstrap4_content/cms_plugins.py#L41
-
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 from django.utils.translation import gettext_lazy as _
@@ -21,8 +19,9 @@ class TaccsiteBlockquotePlugin(CMSPluginBase):
     name = _('Blockquote')
     render_template = 'blockquote.html'
 
-    cache = False
+    cache = True
     text_enabled = True
+    allow_children = False
 
     fieldsets = [
         (None, {

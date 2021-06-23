@@ -1,5 +1,3 @@
-# SEE: https://github.com/django-cms/djangocms-bootstrap4/blob/2.0.0/djangocms_bootstrap4/contrib/bootstrap4_content/cms_plugins.py#L41
-
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 
@@ -20,7 +18,7 @@ class TaccsiteOffsetPlugin(CMSPluginBase):
     name = _('Offset Content')
     render_template = 'offset.html'
 
-    cache = False
+    cache = True
     text_enabled = False
     allow_children = True
 

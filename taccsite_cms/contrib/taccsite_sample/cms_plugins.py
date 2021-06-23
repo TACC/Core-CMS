@@ -22,6 +22,7 @@ class TaccsiteSamplePlugin(CMSPluginBase):
 
     cache = False
     text_enabled = True
+    allow_children = False
     # NOTE: Use case is unclear
     # admin_preview = True
     # NOTE: To change for all TACC plugins add taccsite_cms/templates/admin/...
