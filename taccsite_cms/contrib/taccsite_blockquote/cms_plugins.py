@@ -3,7 +3,6 @@ from cms.plugin_pool import plugin_pool
 from django.utils.translation import gettext_lazy as _
 
 from taccsite_cms.contrib.helpers import concat_classnames
-
 from taccsite_cms.contrib.taccsite_offset.models import get_direction_classname
 
 from .models import TaccsiteBlockquote
