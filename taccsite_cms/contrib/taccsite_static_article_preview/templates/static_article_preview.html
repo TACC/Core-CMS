@@ -1,0 +1,41 @@
+{% load cms_tags %}
+
+<article {# class="c-article-preview" #}{{ instance.attributes_str }}>
+  {# Media e.g. image thumbnail #}
+  {% for plugin_instance in instance.child_plugin_instances %}
+      {% render_plugin plugin_instance %}
+  {% endfor %}
+
+  {# Title #}
+  <h3 class="c-article-preview__title">
+    {{ instance.title_text }}
+  </h3>
+
+  {# Abstract #}
+  {% if kind != 'allocs' %}
+  <p class="c-article-preview__abstract">
+    {{ instance.abstract_text }}
+  </p>
+  {% endif %}
+
+  {# Date #}
+  {% if kind != 'docs' %}
+  <time
+    class="c-article-preview__date"
+    datetime="{{ instance.publish_date|date:"Y-m-d" }}"
+  >
+    {{ instance.publish_date|date:"F d, Y" }}
+  </time>
+  {% endif %}
+
+  {# Type #}
+  {% if kind == 'news' %}
+  <small class="c-article-preview__type">{{ instance.type_text }}</small>
+  {% endif %}
+
+  {# Author #}
+  {# FAQ: Not shown in design #}
+  {% comment %}
+  <small class="c-article-preview__author">{{ instance.author_text }}</small>
+  {% endcomment %}
+</article>

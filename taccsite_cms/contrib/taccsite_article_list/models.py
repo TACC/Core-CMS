@@ -68,7 +68,7 @@ def get_style_classname(value):
 class TaccsiteArticleList(CMSPlugin):
     """
     Components > "Article List" Model
-    https://confluence.tacc.utexas.edu/x/FIEjCQ
+    https://confluence.tacc.utexas.edu/x/OIAjCQ
     """
     header_title_text = models.CharField(
         help_text='The title at the top of the list.',

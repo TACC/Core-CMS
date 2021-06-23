@@ -3,7 +3,6 @@ from cms.plugin_pool import plugin_pool
 from django.utils.translation import gettext_lazy as _
 
 from taccsite_cms.contrib.helpers import concat_classnames
-
 from taccsite_cms.contrib.taccsite_article_list.models import (
     get_layout_classname, get_content_classname, get_style_classname
 )
@@ -14,7 +13,7 @@ from .models import TaccsiteArticleList
 class TaccsiteArticleListPlugin(CMSPluginBase):
     """
     Components > "Article List" Plugin
-    https://confluence.tacc.utexas.edu/x/FIEjCQ
+    https://confluence.tacc.utexas.edu/x/OIAjCQ
     """
     module = 'TACC Site'
     model = TaccsiteArticleList
@@ -24,8 +23,9 @@ class TaccsiteArticleListPlugin(CMSPluginBase):
     cache = True
     text_enabled = False
     allow_children = True
-    # TODO: Create taccsite_article_preview
-    # child_classes = ['TaccsiteArticlePreviewPlugin']
+    child_classes = [
+        'TaccsiteStaticNewsArticlePreviewPlugin'
+    ]
 
     fieldsets = [
         (None, {
