@@ -80,6 +80,7 @@ class TaccsiteArticleList(CMSPlugin):
         blank=True,
         max_length=100,
     )
+    # TODO: Add `footer_link_url`
 
     content_type = models.CharField(
         choices=CONTENT_CHOICES,

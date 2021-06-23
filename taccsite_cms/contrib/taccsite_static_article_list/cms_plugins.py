@@ -32,6 +32,7 @@ class TaccsiteArticleListPlugin(CMSPluginBase):
             'fields': (
                 'header_title_text',
                 'footer_link_text',
+                # TODO: Add `footer_link_url`
             )
         }),
         (_('Options'), {

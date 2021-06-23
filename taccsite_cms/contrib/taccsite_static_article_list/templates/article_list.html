@@ -11,6 +11,7 @@
     {% render_plugin plugin_instance %}
   {% endfor %}
   <footer class="c-article-list__footer">
+    {# TODO: Add `footer_link_url` support in `href` #}
     <a class="c-article-list__link" href="/more">
       <i class=".c-article-list__link-icon  icon icon-push-right"></i>
       <span>{{ instance.footer_link_text }}</span>
