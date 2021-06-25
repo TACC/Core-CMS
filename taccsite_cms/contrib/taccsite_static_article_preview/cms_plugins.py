@@ -173,14 +173,21 @@ class TaccsiteStaticAllocsArticlePreviewPlugin(AbstractArticlePreviewWithMediaPl
         context = super().render(context, instance, placeholder)
         request = context['request']
 
-        show_show_dates = which_date_is_nearest_today(
+        dates = which_date_is_nearest_today(
             instance.publish_date,
             instance.expiry_date,
             'future'
         )
+        (should_show_open_date, open_date_time_period) = dates[0]
+        (should_show_close_date, close_date_time_period) = dates[1]
 
         context.update({
-            'should_show_open_date': show_show_dates[0],
-            'should_show_close_date': show_show_dates[1]
+            'open_date': instance.publish_date,
+            'should_show_open_date': should_show_open_date,
+            'open_date_time_period': open_date_time_period,
+
+            'close_date': instance.expiry_date,
+            'should_show_close_date': should_show_close_date,
+            'close_date_time_period': close_date_time_period,
         })
         return context

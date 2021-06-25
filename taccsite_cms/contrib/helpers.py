@@ -26,7 +26,8 @@ def get_nearest(items, pivot):
 
 
 # HELP: Can this logic be less verbose?
-def which_date_is_nearest_today(date_a, date_b, preferred_time):
+# HELP: Is the `preferred_time_period` parameter effectual?
+def which_date_is_nearest_today(date_a, date_b, preferred_time_period):
     """
     Returns whether each date is today or nearest today, and whether nearest date is past or today or future.
 
@@ -36,41 +37,55 @@ def which_date_is_nearest_today(date_a, date_b, preferred_time):
 
     :param datetime date_a: a date "A" to compare
     :param datetime date_b: a date "B" to compare
-    :param str preferred_time: whether to prefer 'future' or 'past' dates
+    :param str preferred_time_period: whether to prefer 'future' or 'past' dates
 
     :returns:
-        A tuple containing, respectively:
-        - a ``boolean`` (whether ``date_a`` is nearest)
-        - a ``boolean`` (whether ``date_b`` is nearest)
-        - a ``string`` (whether nearest date/s is/are ``past``, ``today``, or ``future``)
+        A tuple of tuples:
+        (
+            ``boolean`` of whether ``date_a`` is nearest,
+            ``string`` of ``date_a`` time period ``past``/``today``/``future``
+        ),
+        (
+            ``boolean`` of whether ``date_b`` is nearest,
+            ``string`` of ``date_b`` time period ``past``/``today``/``future``
+        ),
     :rtype: tuple
     """
     today = date.today()
+    is_a = False
+    is_b = False
+    a_time_period = 'today'
+    b_time_period = 'today'
 
     # Match preferred time
 
     if today in {date_a, date_b}:
         is_a = True
         is_b = True
-        actual_time = 'today'
+        a_time_period = 'today'
+        b_time_period = 'today'
 
-    elif preferred_time == 'future':
+    elif preferred_time_period == 'future':
         is_a = date_a and date_a >= today
         is_b = date_b and date_b >= today
-        actual_time = 'future'
+        if is_a: a_time_period = 'future'
+        if is_b: b_time_period = 'future'
         if not is_a and not is_b:
             is_a = date_a and date_a < today
             is_b = date_b and date_b < today
-            actual_time = 'past'
+            if is_a: a_time_period = 'past'
+            if is_b: b_time_period = 'past'
 
-    elif preferred_time == 'past':
+    elif preferred_time_period == 'past':
         is_a = date_a and date_a < today
         is_b = date_b and date_b < today
-        actual_time = 'past'
+        if is_a: a_time_period = 'past'
+        if is_b: b_time_period = 'past'
         if not is_a and not is_b:
             is_a = date_a and date_a >= today
             is_b = date_b and date_b >= today
-            actual_time = 'future'
+            if is_a: a_time_period = 'future'
+            if is_b: b_time_period = 'future'
 
     # Show nearest date
     if is_a and is_b and date_a != date_b:
@@ -81,7 +96,7 @@ def which_date_is_nearest_today(date_a, date_b, preferred_time):
         if date_b == nearest_date:
             is_a = False
 
-    return (is_a, is_b, actual_time)
+    return ((is_a, a_time_period), (is_b, b_time_period))
 
 
 

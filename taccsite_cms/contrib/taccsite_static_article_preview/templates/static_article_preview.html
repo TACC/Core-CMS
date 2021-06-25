@@ -36,26 +36,26 @@
   {% if kind == 'news' %}
     <li class="c-article-preview__date  c-date">
       <span class="c-date__label">Published</span>
-      <time class="c-date__value" datetime="{{ instance.publish_date|date:"Y-m-d" }}">
-        {{ instance.publish_date|date:"F d, Y" }}
+      <time class="c-date__value" datetime="{{ open_date|date:"Y-m-d" }}">
+        {{ open_date|date:"F d, Y" }}
       </time>
     </li>
   {% endif %}
 
   {% if kind == 'allocs' %}
 
-    {% if instance.publish_date and instance.expiry_date %}
+    {% if open_date and close_date and open_date <= close_date %}
 
     <li class="c-article-preview__date  c-date">
       <span class="c-date__label">Submission Dates</span>
       <time class="c-date__value"
-            datetime="{{ instance.publish_date|date:"Y-m-d" }}">
-        {{ instance.publish_date|date:"M d, Y" }}
+            datetime="{{ open_date|date:"Y-m-d" }}">
+        {{ open_date|date:"M d, Y" }}
       </time>
       <span>—</span>
       <time class="c-date__value"
-            datetime="{{ instance.expiry_date|date:"Y-m-d" }}">
-        {{ instance.expiry_date|date:"M d, Y" }}
+            datetime="{{ close_date|date:"Y-m-d" }}">
+        {{ close_date|date:"M d, Y" }}
       </time>
     </li>
 
@@ -64,21 +64,25 @@
     <li class="c-article-preview__date  c-date">
       <span class="c-date__label">
       {# FAQ: Odd spacing avoids whitespace rendered after text #}
-      {% if date_time == 'future' %}
+      {% if open_date_time_period == 'future' %}
           Submissions Next Open{% else %}Submissions Open Since{% endif %}</span>
-      <time class="c-date__value" datetime="{{ instance.publish_date|date:"Y-m-d" }}">
-        {{ instance.publish_date|date:"F d, Y" }}
+      <time class="c-date__value" datetime="{{ open_date|date:"Y-m-d" }}">
+        {{ open_date|date:"F d, Y" }}
       </time>
     </li>
 
     {% elif should_show_close_date %}
 
     <li class="c-article-preview__date  c-date">
-      <span class="c-date__label">Submission Deadline</span>
-      <time class="c-date__value" datetime="{{ instance.expiry_date|date:"Y-m-d" }}">
-        {{ instance.expiry_date|date:"F d, Y" }}
+      <span class="c-date__label">
+        {# FAQ: Odd spacing avoids whitespace rendered after text #}
+        {% if open_date_time_period == 'future' %}
+            Submissions Deadline{% else %}Submissions Closed{% endif %}</span>
+      <time class="c-date__value" datetime="{{ close_date|date:"Y-m-d" }}">
+        {{ close_date|date:"F d, Y" }}
       </time>
     </li>
+
     {% endif %}
 
   {% endif %}
