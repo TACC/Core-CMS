@@ -55,21 +55,21 @@ def which_date_is_nearest_today(date_a, date_b, preferred_time):
         actual_time = 'today'
 
     elif preferred_time == 'future':
-        is_a = date_a >= today
-        is_b = date_b >= today
+        is_a = date_a and date_a >= today
+        is_b = date_b and date_b >= today
         actual_time = 'future'
         if not is_a and not is_b:
-            is_a = date_a < today
-            is_b = date_b < today
+            is_a = date_a and date_a < today
+            is_b = date_b and date_b < today
             actual_time = 'past'
 
     elif preferred_time == 'past':
-        is_a = date_a < today
-        is_b = date_b < today
+        is_a = date_a and date_a < today
+        is_b = date_b and date_b < today
         actual_time = 'past'
         if not is_a and not is_b:
-            is_a = date_a >= today
-            is_b = date_b >= today
+            is_a = date_a and date_a >= today
+            is_b = date_b and date_b >= today
             actual_time = 'future'
 
     # Show nearest date

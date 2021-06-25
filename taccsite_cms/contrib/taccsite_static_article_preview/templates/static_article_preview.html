@@ -31,20 +31,36 @@
 
 
 
-    {# Date #}
+  {# Date #}
 
-    {% if kind == 'news' %}
+  {% if kind == 'news' %}
     <li class="c-article-preview__date  c-date">
       <span class="c-date__label">Published</span>
       <time class="c-date__value" datetime="{{ instance.publish_date|date:"Y-m-d" }}">
         {{ instance.publish_date|date:"F d, Y" }}
       </time>
     </li>
-    {% endif %}
+  {% endif %}
 
-    {% if kind == 'allocs' %}
+  {% if kind == 'allocs' %}
 
-    {% if should_show_open_date %}
+    {% if instance.publish_date and instance.expiry_date %}
+
+    <li class="c-article-preview__date  c-date">
+      <span class="c-date__label">Submission Dates</span>
+      <time class="c-date__value"
+            datetime="{{ instance.publish_date|date:"Y-m-d" }}">
+        {{ instance.publish_date|date:"M d, Y" }}
+      </time>
+      <span>—</span>
+      <time class="c-date__value"
+            datetime="{{ instance.expiry_date|date:"Y-m-d" }}">
+        {{ instance.expiry_date|date:"M d, Y" }}
+      </time>
+    </li>
+
+    {% elif should_show_open_date %}
+
     <li class="c-article-preview__date  c-date">
       <span class="c-date__label">
       {# FAQ: Odd spacing avoids whitespace rendered after text #}
@@ -54,8 +70,9 @@
         {{ instance.publish_date|date:"F d, Y" }}
       </time>
     </li>
-    {% endif %}
-    {% if should_show_close_date %}
+
+    {% elif should_show_close_date %}
+
     <li class="c-article-preview__date  c-date">
       <span class="c-date__label">Submission Deadline</span>
       <time class="c-date__value" datetime="{{ instance.expiry_date|date:"Y-m-d" }}">
@@ -64,20 +81,23 @@
     </li>
     {% endif %}
 
-    {% endif %}
+  {% endif %}
 
 
 
-    {# Type #}
-    {% if kind == 'news' %}
+  {# Type #}
+  {% if kind == 'news' %}
     <li class="c-article-preview__type">{{ instance.type_text }}</li>
-    {% endif %}
+  {% endif %}
 
-    {# Author #}
-    {# FAQ: Not shown in design #}
-    {% comment %}
+  {# Author #}
+  {# FAQ: Not shown in design #}
+  {% comment %}
     <li class="c-article-preview__author">{{ instance.author_text }}</li>
-    {% endcomment %}
+  {% endcomment %}
+
+
+
   </ul>
 
 </article>

@@ -158,7 +158,7 @@ class TaccsiteStaticAllocsArticlePreviewPlugin(AbstractArticlePreviewWithMediaPl
     ])
     fieldsets = insert_at_position(len(fieldsets) - 1, fieldsets, [
         (_('Dates'), {
-            'description': 'If available, the nearest future date is shown. Otherwise, the nearest past date is shown. Matching dates will both be shown.',
+            'description': 'Two dates will show a range. If given one date, the nearest future date is shown. Otherwise, the nearest past date is shown.',
             'fields': (('publish_date', 'expiry_date'),)
         }),
     ])
