@@ -1,11 +1,14 @@
+/* WARNING: Deprecated. Do NOT add this to markup! */
+/* TODO: Replace usage (Frontera New Homepage) with `c-article-preview` */
+/* SEE: ../../components/c-article-preview.css */
 /*
-Article Preview
+(Deprecated) Article Preview
 
 A preview of an article (to be used in a `s-article-list`). Content __must__ come in the order and use the tags defined by the example markup.
 
 Markup: s-article-preview.html
 
-Styleguide Trumps.Scopes.ArticlePreview
+Styleguide Trumps.Deprecated.Scopes.ArticlePreview
 */
 @import url("_imports/tools/x-truncate.css");
 @import url("_imports/tools/x-article-link.css");
@@ -79,7 +82,7 @@ Styleguide Trumps.Scopes.ArticlePreview
   font-weight: var(--bold);
   line-height: 2.4rem;
 }
-/* (List) */
+/* (List) *//* FAQ: I.E. NOT the article previews inside a Hero Banner */
 [class*="s-article-list--"] .s-article-preview h3 {
   @extend %x-truncate--one-line;
 }
@@ -106,7 +109,7 @@ Styleguide Trumps.Scopes.ArticlePreview
   font-size: 1.6rem;
   line-height: 2.4rem;
 }
-/* (List) */
+/* (List) *//* FAQ: I.E. NOT the article previews inside a Hero Banner */
 [class*="s-article-list--"] .s-article-preview p:not(:first-child):not(:last-child) {
   @extend %x-truncate--many-lines;
   --lines: 3;
