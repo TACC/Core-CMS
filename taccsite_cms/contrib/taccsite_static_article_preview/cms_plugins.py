@@ -43,9 +43,6 @@ class AbstractArticlePreviewPlugin(CMSPluginBaseWithMaxChildren):
 
     cache = True
     text_enabled = False
-    parent_classes = [
-        'TaccsiteArticleListPlugin'
-    ]
     # NOTE: Should article previews be allowed to exist in isolation?
     #       Consider [hero banner](https://github.com/TACC/Core-CMS/issues/134).
     # require_parent = True
@@ -118,6 +115,10 @@ class TaccsiteStaticNewsArticlePreviewPlugin(AbstractArticlePreviewWithMediaPlug
     model = TaccsiteStaticNewsArticlePreview
     name = _('News Article Preview (Static)')
 
+    parent_classes = [
+        'TaccsiteNewsArticleListPlugin'
+    ]
+
     fieldsets = insert_at_position(0, AbstractArticlePreviewWithMediaPlugin.fieldsets, [
         (None, {
             # To enable these fields, see `./README.md`
@@ -143,6 +144,10 @@ class TaccsiteStaticAllocsArticlePreviewPlugin(AbstractArticlePreviewWithMediaPl
     """
     model = TaccsiteStaticAllocsArticlePreview
     name = _('Allocations Article Preview (Static)')
+
+    parent_classes = [
+        'TaccsiteAllocsArticleListPlugin'
+    ]
 
     fieldsets = insert_at_position(0, AbstractArticlePreviewWithMediaPlugin.fieldsets, [
         (None, {

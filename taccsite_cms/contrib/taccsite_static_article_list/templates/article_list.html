@@ -1,18 +1,22 @@
 {% load cms_tags %}
 
 <section {# class="c-article-list" #}{{ instance.attributes_str }}>
+  {% if instance.header_title_text %}
   <h2 class="c-article-list__title">
     {{ instance.header_title_text }}
   </h2>
+  {% endif %}
   {% for plugin_instance in instance.child_plugin_instances %}
     {# <article class="c-article-list__item">…</article> #}
     {% render_plugin plugin_instance %}
   {% endfor %}
+  {% if instance.footer_link_text %}
   <footer class="c-article-list__footer">
     {# TODO: Add `footer_link_url` support in `href` #}
     <a class="c-article-list__link" href="/more">
       <i class=".c-article-list__link-icon  icon icon-push-right"></i>
-      <span>{{ instance.footer_link_text }}</span>
+      <span>{{ instance.footer_link_text|default:"See All" }}</span>
     </a>
   </footer>
+  {% endif %}
 </section>

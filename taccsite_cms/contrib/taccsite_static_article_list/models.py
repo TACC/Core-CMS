@@ -31,7 +31,7 @@ class TaccsiteArticleList(CMSPlugin):
         max_length=100,
     )
     footer_link_text = models.CharField(
-        help_text='The "See All ..." link at the bottom of the list.',
+        help_text='The "See All" link at the bottom of the list.',
         blank=True,
         max_length=100,
     )

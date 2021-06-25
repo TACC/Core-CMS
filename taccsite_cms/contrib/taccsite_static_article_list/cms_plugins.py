@@ -32,26 +32,22 @@ def get_style_classname(value):
 
     return switcher.get(value, '')
 
-# Plugin
+# Bases
 
-@plugin_pool.register_plugin
-class TaccsiteArticleListPlugin(CMSPluginBase):
+class AbstractArticleListPlugin(CMSPluginBase):
     """
     Components > "Article List" Plugin
     https://confluence.tacc.utexas.edu/x/OIAjCQ
     """
     module = 'TACC Site'
     model = TaccsiteArticleList
-    name = _('Article List (Static)')
+    # abstract
+    # name = _('______ Article List (Static)')
     render_template = 'article_list.html'
 
     cache = True
     text_enabled = False
     allow_children = True
-    child_classes = [
-        'TaccsiteStaticNewsArticlePreviewPlugin',
-        'TaccsiteStaticAllocsArticlePreviewPlugin'
-    ]
 
     fieldsets = [
         (None, {
@@ -88,7 +84,30 @@ class TaccsiteArticleListPlugin(CMSPluginBase):
         ])
         instance.attributes['class'] = classes
 
-        # for plugin_instance in instance.child_plugin_instances:
-        #     plugin_instance.attributes['class'] += 'c-article-list__item'
-
         return context
+
+# Plugin
+
+@plugin_pool.register_plugin
+class TaccsiteNewsArticleListPlugin(AbstractArticleListPlugin):
+    """
+    Components > "Article List" Plugin
+    https://confluence.tacc.utexas.edu/x/OIAjCQ
+    """
+    name = _('News Article List (Static)')
+
+    child_classes = [
+        'TaccsiteStaticNewsArticlePreviewPlugin'
+    ]
+
+@plugin_pool.register_plugin
+class TaccsiteAllocsArticleListPlugin(AbstractArticleListPlugin):
+    """
+    Components > "Article List" Plugin
+    https://confluence.tacc.utexas.edu/x/OIAjCQ
+    """
+    name = _('Allocations Article List (Static)')
+
+    child_classes = [
+        'TaccsiteStaticAllocsArticlePreviewPlugin'
+    ]
