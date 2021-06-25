@@ -88,7 +88,7 @@ def create_expiry_date_field(blank=True, help_text=None, verbose_name=None):
 
 
 # Models
-# TODO: Add `TaccsiteStatic____ArticlePreview` (Docs, Allocs, Events)
+# TODO: Add `TaccsiteStatic____ArticlePreview` (Docs, Events)
 
 class TaccsiteStaticNewsArticlePreview(CMSPlugin):
     media_support = create_media_support_field(blank=False)

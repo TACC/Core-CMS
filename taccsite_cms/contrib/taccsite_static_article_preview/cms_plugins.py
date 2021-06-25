@@ -104,7 +104,7 @@ class AbstractArticlePreviewWithMediaPlugin(AbstractArticlePreviewPlugin):
             return []
 
 # Plugins
-# TODO: Add `TaccsiteStatic___ArticlePreviewPlugin` (Docs, Allocs, Events)
+# TODO: Add `TaccsiteStatic___ArticlePreviewPlugin` (Docs, Events)
 
 @plugin_pool.register_plugin
 class TaccsiteStaticNewsArticlePreviewPlugin(AbstractArticlePreviewWithMediaPlugin):
