@@ -243,6 +243,9 @@ INSTALLED_APPS = [
     'taccsite_cms.contrib.taccsite_offset',
     'taccsite_cms.contrib.taccsite_static_article_list',
     'taccsite_cms.contrib.taccsite_static_article_preview',
+    # Restore djangocms plugins that bootstrap4 hides
+    'taccsite_cms.contrib.bootstrap4_djangocms_link',
+    'taccsite_cms.contrib.bootstrap4_djangocms_picture',
 ]
 
 # Convert list of paths to list of dotted module names
