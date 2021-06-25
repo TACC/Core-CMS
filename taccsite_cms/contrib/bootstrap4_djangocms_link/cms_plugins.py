@@ -18,6 +18,7 @@ try:
 
     # SEE: https://github.com/django-cms/djangocms-link/issues/163
     plugin_pool.register_plugin(LinkPlugin)
-# CAVEAT: If plugins exist but import statement is inaccurate... silent failure
+# CAVEAT: If import statement fails for reason other than Bootstrap presence,
+#         then that failure, and the failure of this plugin, is silent
 except ImportError:
     pass
