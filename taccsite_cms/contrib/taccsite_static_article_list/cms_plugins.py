@@ -3,11 +3,36 @@ from cms.plugin_pool import plugin_pool
 from django.utils.translation import gettext_lazy as _
 
 from taccsite_cms.contrib.helpers import concat_classnames
-from taccsite_cms.contrib.taccsite_static_article_list.models import (
-    get_layout_classname, get_content_classname, get_style_classname
-)
 
 from .models import TaccsiteArticleList
+
+# Helpers
+
+def get_layout_classname(value):
+    """Get layout class based on value."""
+
+    # HELP: Should we couple this map to LAYOUT_CHOICES? If so, how?
+    switcher = {
+        'widest-cols-2--even': 'c-article-list--layout-a',
+        'widest-cols-2--wide-narr': 'c-article-list--layout-b',
+        'widest-cols-2--narr-wide': 'c-article-list--layout-c',
+        'widest-cols-3--even': 'c-article-list--layout-d',
+        'always-rows-N--even': 'c-article-list--layout-e',
+    }
+
+    return switcher.get(value, '')
+
+def get_style_classname(value):
+    """Get style class based on value."""
+
+    # HELP: Should we couple this map to STYLE_CHOICES? If so, how?
+    switcher = {
+        'divided': 'c-article-list--style-divided',
+    }
+
+    return switcher.get(value, '')
+
+# Plugin
 
 @plugin_pool.register_plugin
 class TaccsiteArticleListPlugin(CMSPluginBase):
@@ -24,7 +49,8 @@ class TaccsiteArticleListPlugin(CMSPluginBase):
     text_enabled = False
     allow_children = True
     child_classes = [
-        'TaccsiteStaticNewsArticlePreviewPlugin'
+        'TaccsiteStaticNewsArticlePreviewPlugin',
+        'TaccsiteStaticAllocsArticlePreviewPlugin'
     ]
 
     fieldsets = [
@@ -37,7 +63,6 @@ class TaccsiteArticleListPlugin(CMSPluginBase):
         }),
         (_('Options'), {
             'fields': (
-                'content_type',
                 ('layout_type', 'style_type')
             )
         }),
@@ -58,7 +83,6 @@ class TaccsiteArticleListPlugin(CMSPluginBase):
         classes = concat_classnames([
             'c-article-list',
             get_layout_classname(instance.layout_type),
-            get_content_classname(instance.content_type),
             get_style_classname(instance.style_type),
             instance.attributes.get('class'),
         ])

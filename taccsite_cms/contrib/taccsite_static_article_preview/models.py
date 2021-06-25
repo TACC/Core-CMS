@@ -59,10 +59,28 @@ def create_author_text_field(blank=True):
         max_length=50,
     )
 
-def create_publish_date_field(blank=True):
+def create_publish_date_field(blank=True, help_text=None, verbose_name=None):
     return models.DateField(
-        verbose_name=_('Date Published'),
-        help_text='The date the article was published (manual entry). Format: YYYY-MM-DD',
+        verbose_name=verbose_name
+            if verbose_name
+            else _('Date Published'),
+        # Allocations repurposes this as date when submissions open
+        help_text=help_text + ' Format: YYYY-MM-DD'
+            if help_text
+            else 'The date the article was published (manual entry).',
+        blank=blank,
+        null=True,
+    )
+
+def create_expiry_date_field(blank=True, help_text=None, verbose_name=None):
+    return models.DateField(
+        verbose_name=verbose_name
+            if verbose_name
+            else _('Date to Expire'),
+        # Allocations repurposes this as date when submissions close
+        help_text=help_text + ' Format: YYYY-MM-DD'
+            if help_text
+            else 'The date the article should no longer appear show (manual entry).',
         blank=blank,
         null=True,
     )
@@ -70,6 +88,7 @@ def create_publish_date_field(blank=True):
 
 
 # Models
+# TODO: Add `TaccsiteStatic____ArticlePreview` (Docs, Allocs, Events)
 
 class TaccsiteStaticNewsArticlePreview(CMSPlugin):
     media_support = create_media_support_field(blank=False)
@@ -78,5 +97,20 @@ class TaccsiteStaticNewsArticlePreview(CMSPlugin):
     type_text = create_type_text_field()
     author_text = create_author_text_field()
     publish_date = create_publish_date_field()
+
+    attributes = fields.AttributesField()
+
+class TaccsiteStaticAllocsArticlePreview(CMSPlugin):
+    media_support = create_media_support_field(blank=False)
+    title_text = create_title_text_field(blank=False)
+    abstract_text = create_abstract_text_field(blank=False)
+    expiry_date = create_expiry_date_field(
+        verbose_name='Submission End Date',
+        help_text='The date after which submissions are not accepted (manual entry).'
+    )
+    publish_date = create_publish_date_field(
+        verbose_name='Submission Start Date',
+        help_text='The date after which submissions are accepted (manual entry).'
+    )
 
     attributes = fields.AttributesField()

@@ -1,8 +1,6 @@
 {% load cms_tags %}
 
-<section
-  {# class="c-article-list c-article-list--..." #}
-  {{ instance.attributes_str }}>
+<section {# class="c-article-list" #}{{ instance.attributes_str }}>
   <h2 class="c-article-list__title">
     {{ instance.header_title_text }}
   </h2>

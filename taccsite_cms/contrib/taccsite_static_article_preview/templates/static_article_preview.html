@@ -1,14 +1,22 @@
 {% load cms_tags %}
 
-<article {# class="c-article-preview" #}{{ instance.attributes_str }}>
+<article
+  {# class="c-article-preview c-article-preview--..." #}
+  {{ instance.attributes_str }}
+>
   {# Media e.g. image thumbnail #}
+  {# HACK: Forced to use a wrapper because we cannot control markup #}
+  <div class="c-article-preview__media">
   {% for plugin_instance in instance.child_plugin_instances %}
       {% render_plugin plugin_instance %}
   {% endfor %}
+  </div>
 
   {# Title #}
   <h3 class="c-article-preview__title">
-    {{ instance.title_text }}
+    <a class="c-article-preview__link" href="{{ instance.link_url }}">
+      {{ instance.title_text }}
+    </a>
   </h3>
 
   {# Abstract #}
@@ -18,24 +26,58 @@
   </p>
   {% endif %}
 
-  {# Date #}
-  {% if kind != 'docs' %}
-  <time
-    class="c-article-preview__date"
-    datetime="{{ instance.publish_date|date:"Y-m-d" }}"
-  >
-    {{ instance.publish_date|date:"F d, Y" }}
-  </time>
-  {% endif %}
+  {# Metadata #}
+  <ul class="c-article-preview__metadata">
 
-  {# Type #}
-  {% if kind == 'news' %}
-  <small class="c-article-preview__type">{{ instance.type_text }}</small>
-  {% endif %}
 
-  {# Author #}
-  {# FAQ: Not shown in design #}
-  {% comment %}
-  <small class="c-article-preview__author">{{ instance.author_text }}</small>
-  {% endcomment %}
+
+    {# Date #}
+
+    {% if kind == 'news' %}
+    <li class="c-article-preview__date  c-date">
+      <span class="c-date__label">Published</span>
+      <time class="c-date__value" datetime="{{ instance.publish_date|date:"Y-m-d" }}">
+        {{ instance.publish_date|date:"F d, Y" }}
+      </time>
+    </li>
+    {% endif %}
+
+    {% if kind == 'allocs' %}
+
+    {% if should_show_open_date %}
+    <li class="c-article-preview__date  c-date">
+      <span class="c-date__label">
+      {# FAQ: Odd spacing avoids whitespace rendered after text #}
+      {% if date_time == 'future' %}
+          Submissions Next Open{% else %}Submissions Open Since{% endif %}</span>
+      <time class="c-date__value" datetime="{{ instance.publish_date|date:"Y-m-d" }}">
+        {{ instance.publish_date|date:"F d, Y" }}
+      </time>
+    </li>
+    {% endif %}
+    {% if should_show_close_date %}
+    <li class="c-article-preview__date  c-date">
+      <span class="c-date__label">Submission Deadline</span>
+      <time class="c-date__value" datetime="{{ instance.expiry_date|date:"Y-m-d" }}">
+        {{ instance.expiry_date|date:"F d, Y" }}
+      </time>
+    </li>
+    {% endif %}
+
+    {% endif %}
+
+
+
+    {# Type #}
+    {% if kind == 'news' %}
+    <li class="c-article-preview__type">{{ instance.type_text }}</li>
+    {% endif %}
+
+    {# Author #}
+    {# FAQ: Not shown in design #}
+    {% comment %}
+    <li class="c-article-preview__author">{{ instance.author_text }}</li>
+    {% endcomment %}
+  </ul>
+
 </article>
