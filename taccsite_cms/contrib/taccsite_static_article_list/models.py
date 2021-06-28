@@ -24,10 +24,10 @@ LAYOUT_CHOICES = (
         ('rows-always-N-even',  _('Multiple Rows')),
     )),
     (COLS_CHOICES_NAME, (
-        ('cols-widest-2-even', _('2 Equal-Width Columns (when list is at its widest)')),
-        ('cols-widest-2-wide-narr', _('2 Columns: 1 Wide, 1 Narrow (when list is at its widest)')),
-        ('cols-widest-2-narr-wide', _('2 Columns: 1 Narrow, 1 Wide (when list is at its widest)')),
-        ('cols-widest-3-even', _('3 Equal-Width Columns (when list is at its widest)')),
+        ('cols-widest-2-even', _('2 Equal-Width Columns')),
+        ('cols-widest-2-wide-narr', _('2 Columns: 1 Wide, 1 Narrow')),
+        ('cols-widest-2-narr-wide', _('2 Columns: 1 Narrow, 1 Wide')),
+        ('cols-widest-3-even', _('3 Equal-Width Columns')),
     )),
 )
 STYLE_CHOICES = (
@@ -49,14 +49,14 @@ class TaccsiteArticleList(AbstractLink):
     """
     title_text = models.CharField(
         verbose_name=_('Title Text'),
-        help_text='The title at the top of the list.',
+        help_text=_('The title at the top of the list.'),
         blank=True,
         max_length=100,
     )
 
     layout_type = models.CharField(
         verbose_name=_('Layout Option'),
-        help_text='Layout of the articles within.',
+        help_text=_(f'Layout of the articles within. Notice: All {COLS_CHOICES_NAME} become multiple rows when screen width is narrow.'),
         choices=LAYOUT_CHOICES,
         default=LAYOUT_CHOICES[0][0],
         blank=False,
@@ -64,7 +64,7 @@ class TaccsiteArticleList(AbstractLink):
     )
     style_type = models.CharField(
         verbose_name=_('Style Option'),
-        help_text='Optional styles for the list itself.',
+        help_text=_('Optional styles for the list itself.'),
         choices=STYLE_CHOICES,
         blank=True,
         max_length=255,
