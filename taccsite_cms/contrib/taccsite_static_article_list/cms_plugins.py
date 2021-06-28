@@ -1,8 +1,12 @@
-from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 from django.utils.translation import gettext_lazy as _
 
-from taccsite_cms.contrib.helpers import concat_classnames
+from djangocms_link.cms_plugins import LinkPlugin
+
+from taccsite_cms.contrib.helpers import (
+    concat_classnames,
+    add_classname_to_instances
+)
 
 from .models import TaccsiteArticleList
 
@@ -34,7 +38,7 @@ def get_style_classname(value):
 
 # Bases
 
-class AbstractArticleListPlugin(CMSPluginBase):
+class AbstractArticleListPlugin(LinkPlugin):
     """
     Components > "Article List" Plugin
     https://confluence.tacc.utexas.edu/x/OIAjCQ
@@ -44,6 +48,8 @@ class AbstractArticleListPlugin(CMSPluginBase):
     # abstract
     # name = _('______ Article List (Static)')
     render_template = 'article_list.html'
+    def get_render_template(self, context, instance, placeholder):
+        return self.render_template
 
     cache = True
     text_enabled = False
@@ -53,13 +59,16 @@ class AbstractArticleListPlugin(CMSPluginBase):
         (None, {
             'fields': (
                 'header_title_text',
-                'footer_link_text',
-                # TODO: Add `footer_link_url`
+                ('layout_type', 'style_type')
             )
         }),
-        (_('Options'), {
+        (_('Footer link'), {
+            'classes': ('collapse',),
+            'description': 'The "See All" link at the bottom of the list. "Display name" is the text.',
             'fields': (
-                ('layout_type', 'style_type')
+                'name',
+                ('external_link', 'internal_link'),
+                ('anchor', 'target'),
             )
         }),
         (_('Advanced settings'), {
@@ -83,6 +92,8 @@ class AbstractArticleListPlugin(CMSPluginBase):
             instance.attributes.get('class'),
         ])
         instance.attributes['class'] = classes
+
+        add_classname_to_instances('c-article-list__item', instance.child_plugin_instances)
 
         return context
 

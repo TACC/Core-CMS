@@ -24,6 +24,29 @@ def get_nearest(items, pivot):
 
 
 
+# SEE: https://stackoverflow.com/a/67393343/11817077
+def get_indices_that_start_with(text, list):
+    """
+    Get a list of indexes of list element that starts with given text
+
+    :rtype: list
+    """
+    return [i for i in range(len(list)) if list[i].startswith(text)]
+
+
+
+def add_classname_to_instances(classname, plugin_instances):
+    """Add class names to class attribute of plugin instances"""
+    for instance in plugin_instances:
+        # A plugin may not have any class set
+        if not hasattr(instance.attributes, 'class'):
+            instance.attributes['class'] = ''
+
+        # The class should occur before any CMS or user classes
+        # FAQ: This keeps plugin author classes together
+        instance.attributes['class'] = instance.attributes['class'] + classname
+
+
 
 # HELP: Can this logic be less verbose?
 # HELP: Is the `preferred_time_period` parameter effectual?

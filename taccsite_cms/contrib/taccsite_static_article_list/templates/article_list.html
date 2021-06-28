@@ -10,12 +10,12 @@
     {# <article class="c-article-list__item">…</article> #}
     {% render_plugin plugin_instance %}
   {% endfor %}
-  {% if instance.footer_link_text %}
+  {% if link %}
   <footer class="c-article-list__footer">
-    {# TODO: Add `footer_link_url` support in `href` #}
-    <a class="c-article-list__link" href="/more">
+    <a class="c-article-list__link" href="{{ link }}"
+      {% if instance.target %}target="{{ instance.target }}"{% endif %}>
       <i class=".c-article-list__link-icon  icon icon-push-right"></i>
-      <span>{{ instance.footer_link_text|default:"See All" }}</span>
+      {{ instance.name|default:"See All" }}
     </a>
   </footer>
   {% endif %}
