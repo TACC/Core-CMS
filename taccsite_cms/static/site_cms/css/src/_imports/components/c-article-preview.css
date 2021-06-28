@@ -41,18 +41,17 @@ Styleguide Components.ArticlePreview
 
   margin-bottom: 0.8rem; /* overwrite Bootstrap */
 }
-.c-article-preview__media > img {
+.c-article-preview__media img {
   /* To center image within container */
   position: relative;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
-.c-article-preview__media > img.img-fluid {
+
   /* To ensure super wide or tall image do not have negative space / gaps */
   width: 100%;
   object-fit: cover;
-  height: 100%; /* overwrite `.img-fluid` *//* NOTE: Sould this be standard? */
+  height: 100%;
 }
 /* (List) News */
 .c-article-preview--news .c-article-preview__media {
@@ -74,11 +73,16 @@ Styleguide Components.ArticlePreview
   order: 3;
 
   margin-top: 0; /* overwrite Bootstrap and browser */
-  margin-bottom: 0.8rem; /* overwrite Bootstrap and browser */
+  margin-bottom: 0; /* overwrite Bootstrap and browser */
 
   font-size: 1.8rem;
   font-weight: var(--bold);
   line-height: 2.4rem;
+}
+.c-article-preview__title a,
+.c-article-preview__title a:hover,
+.c-article-preview__title a:focus {
+  color: inherit;
 }
 /* (List) *//* FAQ: I.E. NOT the article previews inside a Hero Banner */
 /* !!!: Cross-Component Styles not Allowed in Single Component */
@@ -137,7 +141,7 @@ Styleguide Components.ArticlePreview
   list-style: none;
   padding-left: 0; /* overwrite `site.css` and browser */
 
-  margin-bottom: 0.8rem; /* overwrite Bootstrap */
+  margin-bottom: 0; /* overwrite Bootstrap and browser */
 }
 /* (List) Allocations */
 .c-article-preview--allocs .c-article-preview__metadata {
@@ -215,17 +219,12 @@ Styleguide Components.ArticlePreview
 
   @extend .x-article-link-stretch;
 }
-/* !!!: Cross-Component Styles not Allowed in Single Component */
-.c-article-list--layout-gapless .c-article-preview__link::before {
-  /* TODO: Require use independent of `.x-article-link-stretch` */
-  @extend .x-article-link-stretch--gapless;
-}
 /* Give link state (pseudo-class) feedback */
 .c-article-preview__link:hover::before {
   @extend .x-article-link-hover;
 }
 /* !!!: Cross-Component Styles not Allowed in Single Component */
-.c-article-list--layout-gapless .c-article-preview__link:hover::before {
+.c-article-list--style-gapless .c-article-preview__link:hover::before {
   /* TODO: Require use independent of `.x-article-link-hover` */
   @extend .x-article-link-hover--gapless;
 }
@@ -249,20 +248,12 @@ Styleguide Components.ArticlePreview
   font-size: 1.4rem;
   color: var(--global-color-primary--xx-dark);
 }
-/* TODO: Remove/Revisit this because it was specific to `p`, which need not be used */
-/* .c-article-list--links .c-article-list__item { */
-/*  margin: 0; /* Overwrite Bootstrap and browser */
-/* } */
 .c-article-preview--links .c-article-preview__title {
   font-weight: var(--bold);
   color: var(--global-color-primary--xx-dark);
 }
-
-
-
-/* Modifiers: (List) Layout: Options */
-
+/* HACK: Force links to be a little closer together */
 /* !!!: Cross-Component Styles not Allowed in Single Component */
-.c-article-list--layout-compact .c-article-preview > * {
-  margin-bottom: 0; /* overwrite `.c-article-preview > …` */
+.c-article-list .c-article-preview--links::last-child {
+  margin-bottom: 3.0rem;
 }

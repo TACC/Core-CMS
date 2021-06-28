@@ -17,12 +17,17 @@ from taccsite_cms.contrib.helpers import (
 LAYOUT_CHOICES = (
     ('always-rows-N--even',  _('N Equal-Height Rows (always)')),
     ('widest-cols-2--even', _('2 Equal-Width Columns (when list is at its widest)')),
-    ('widest-cols-2--wide-narr', _('2 Cols: 1 Wide, 1 Narrow (when list is at its widest)')),
-    ('widest-cols-2--narr-wide', _('2 Cols: 1 Narrow, 1 Wide (when list is at its widest)')),
+    ('widest-cols-2--wide-narr', _('2 Columns: 1 Wide, 1 Narrow (when list is at its widest)')),
+    ('widest-cols-2--narr-wide', _('2 Columns: 1 Narrow, 1 Wide (when list is at its widest)')),
     ('widest-cols-3--even', _('3 Equal-Width Columns (when list is at its widest)')),
 )
 STYLE_CHOICES = (
-    ('divided', _('Dividers Between Articles')),
+    ('Row Layouts', (
+        ('divided', _('Dividers Between Articles')),
+    )),
+    ('Column Layouts', (
+        ('gapless', _('Remove Gaps Between Articles')),
+    )),
 )
 
 # Models

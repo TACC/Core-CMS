@@ -13,7 +13,7 @@ Markup:
   <article class="c-article-list__item">(Article Preview)</article>
   <footer class="c-article-list__footer">
     <a class="c-article-list__link" href="/more">
-      <i class=".c-article-list__link-icon  icon icon-push-right"></i>
+      <i class="c-article-list__link-icon  icon icon-push-right"></i>
       <span>See All</span>
     </a>
   </footer>
@@ -99,7 +99,6 @@ Styleguide Components.ArticleList
   border-top-width: var(--global-border-width--thick);
   border-top-style: solid;
 
-  margin-top: 3.0rem; /* GH-99: Use standard spacing value */
   margin-bottom: -1.0rem; /* to "undo" space added from `padding-bottom` */
 
   font-size: 1.2rem;
@@ -133,7 +132,7 @@ Styleguide Components.ArticleList
 /* Icon */
 
 .c-article-list__link-icon {
-  margin-right: 0.25em;
+  margin-right: 0.5em;
 
   font-size: 1.4rem;
   vertical-align: text-bottom;
@@ -171,17 +170,7 @@ Styleguide Components.ArticleList
 /* Modifiers: Layout: Row-Based */
 
 .c-article-list--layout-e {
-  /* … */
-}
-
-/* Modifiers: Layout: Options */
-
-.c-article-list--layout-gapless {
-  gap: 0;
-}
-
-.c-article-list--layout-compact .c-article-list__footer {
-  margin-top: 0;
+  row-gap: 0;
 }
 
 
@@ -190,10 +179,12 @@ Styleguide Components.ArticleList
 
 /* Modifiers: Style: Divided */
 
-.c-article-list--style-divided .c-article-list__item {
+/* Vertical layout */
+.c-article-list--layout-e.c-article-list--style-divided .c-article-list__item {
   padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
 
-  border-width: var(--global-border-width--normal) 0 0;
+  border-width: var(--global-border-width--normal) 0 0 0;
   border-style: solid;
 }
 /* Dark section */
@@ -205,4 +196,10 @@ Styleguide Components.ArticleList
 .o-section--style-light.c-article-list--style-divided .c-article-list__item,
 .o-section--style-light .c-article-list--style-divided .c-article-list__item {
   border-color: var(--global-color-primary--dark);
+}
+
+/* Modifiers: Style: Gapless */
+
+.c-article-list--style-gapless {
+  gap: 0; /* overwrite `column-gap` or `row-gap` */
 }

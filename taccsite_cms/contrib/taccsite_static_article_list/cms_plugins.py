@@ -32,6 +32,7 @@ def get_style_classname(value):
     # HELP: Should we couple this map to STYLE_CHOICES? If so, how?
     switcher = {
         'divided': 'c-article-list--style-divided',
+        'gapless': 'c-article-list--style-gapless',
     }
 
     return switcher.get(value, '')
