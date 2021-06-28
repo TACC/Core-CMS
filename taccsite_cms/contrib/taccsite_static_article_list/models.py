@@ -21,13 +21,13 @@ COLS_CHOICES_NAME = _('Column Layouts')
 
 LAYOUT_CHOICES = (
     (ROWS_CHOICES_NAME, (
-        ('always-rows-N--even',  _('N Equal-Height Rows (always)')),
+        ('rows-always-N-even',  _('N Equal-Height Rows (always)')),
     )),
     (COLS_CHOICES_NAME, (
-        ('widest-cols-2--even', _('2 Equal-Width Columns (when list is at its widest)')),
-        ('widest-cols-2--wide-narr', _('2 Columns: 1 Wide, 1 Narrow (when list is at its widest)')),
-        ('widest-cols-2--narr-wide', _('2 Columns: 1 Narrow, 1 Wide (when list is at its widest)')),
-        ('widest-cols-3--even', _('3 Equal-Width Columns (when list is at its widest)')),
+        ('cols-widest-2-even', _('2 Equal-Width Columns (when list is at its widest)')),
+        ('cols-widest-2-wide-narr', _('2 Columns: 1 Wide, 1 Narrow (when list is at its widest)')),
+        ('cols-widest-2-narr-wide', _('2 Columns: 1 Narrow, 1 Wide (when list is at its widest)')),
+        ('cols-widest-3-even', _('3 Equal-Width Columns (when list is at its widest)')),
     )),
 )
 STYLE_CHOICES = (

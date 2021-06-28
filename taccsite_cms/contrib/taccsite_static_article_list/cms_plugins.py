@@ -17,11 +17,11 @@ def get_layout_classname(value):
 
     # HELP: Should we couple this map to LAYOUT_CHOICES? If so, how?
     switcher = {
-        'widest-cols-2--even': 'c-article-list--layout-a',
-        'widest-cols-2--wide-narr': 'c-article-list--layout-b',
-        'widest-cols-2--narr-wide': 'c-article-list--layout-c',
-        'widest-cols-3--even': 'c-article-list--layout-d',
-        'always-rows-N--even': 'c-article-list--layout-e',
+        'cols-widest-2-even': 'c-article-list--layout-a',
+        'cols-widest-2-wide-narr': 'c-article-list--layout-b',
+        'cols-widest-2-narr-wide': 'c-article-list--layout-c',
+        'cols-widest-3-even': 'c-article-list--layout-d',
+        'rows-always-N-even': 'c-article-list--layout-e',
     }
 
     return switcher.get(value, '')
