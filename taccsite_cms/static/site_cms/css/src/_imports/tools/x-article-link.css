@@ -32,7 +32,7 @@ Styleguide Tools.ExtendsAndMixins.ArticleLink
 %x-article-link-hover {
   outline: 1px solid var(--global-color-accent--normal);
 
-  outline-offset: 1em;
+  outline-offset: 1rem;
 }
 .x-article-link-hover--gapless,
 %x-article-link-hover--gapless {
