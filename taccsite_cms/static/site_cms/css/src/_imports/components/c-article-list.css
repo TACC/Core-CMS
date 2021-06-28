@@ -170,7 +170,7 @@ Styleguide Components.ArticleList
 /* Modifiers: Layout: Row-Based */
 
 .c-article-list--layout-e {
-  row-gap: 0;
+  row-gap: 3.0rem; /* GH-99: Use standard spacing value */
 }
 
 

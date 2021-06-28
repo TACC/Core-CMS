@@ -15,6 +15,7 @@ from taccsite_cms.contrib.helpers import (
 
 # Constants
 
+ANY_CHOICES_NAME = _('Any Layouts')
 ROWS_CHOICES_NAME = _('Row Layouts')
 COLS_CHOICES_NAME = _('Column Layouts')
 
@@ -31,10 +32,10 @@ LAYOUT_CHOICES = (
 )
 STYLE_CHOICES = (
     (ROWS_CHOICES_NAME, (
-        ('divided-rows', _('Dividers Between Articles')),
+        ('rows-divided', _('Dividers Between Articles')),
     )),
-    (COLS_CHOICES_NAME, (
-        ('gapless-cols', _('Remove Gaps Between Articles')),
+    (ANY_CHOICES_NAME, (
+        ('all-gapless', _('Remove Gaps Between Articles')),
     )),
 )
 
