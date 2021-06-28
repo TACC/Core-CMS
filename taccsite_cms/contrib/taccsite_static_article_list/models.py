@@ -21,7 +21,7 @@ COLS_CHOICES_NAME = _('Column Layouts')
 
 LAYOUT_CHOICES = (
     (ROWS_CHOICES_NAME, (
-        ('rows-always-N-even',  _('N Equal-Height Rows (always)')),
+        ('rows-always-N-even',  _('Multiple Rows')),
     )),
     (COLS_CHOICES_NAME, (
         ('cols-widest-2-even', _('2 Equal-Width Columns (when list is at its widest)')),
@@ -33,9 +33,10 @@ LAYOUT_CHOICES = (
 STYLE_CHOICES = (
     (ROWS_CHOICES_NAME, (
         ('rows-divided', _('Dividers Between Articles')),
+        ('rows-gapless', _('Remove Gaps Between Articles')),
     )),
-    (ANY_CHOICES_NAME, (
-        ('all-gapless', _('Remove Gaps Between Articles')),
+    (COLS_CHOICES_NAME, (
+        ('cols-gapless', _('Remove Gaps Between Articles')),
     )),
 )
 
@@ -110,16 +111,20 @@ class TaccsiteArticleList(AbstractLink):
             else:
                 raise err
 
-        if (
-            ('rows' in self.layout_type and 'cols' in self.style_type) or
-            ('cols' in self.layout_type and 'rows' in self.style_type)
-        ):
-            layout_name = force_text(
-                self._meta.get_field('layout_type').verbose_name)
-            style_name = force_text(
-                self._meta.get_field('style_type').verbose_name)
+        # Add self validation
+        layout_name = force_text(
+            self._meta.get_field('layout_type').verbose_name)
+        style_name = force_text(
+            self._meta.get_field('style_type').verbose_name)
+
+        if 'cols' in self.layout_type and 'rows' in self.style_type:
             raise ValidationError(
-                _(f'Choose {layout_name} and {style_name} that are both for {ROWS_CHOICES_NAME} or both for {COLS_CHOICES_NAME}.'),
+                _(f'If you choose a {layout_name} for {ROWS_CHOICES_NAME}, then choose a {style_name} for {ROWS_CHOICES_NAME} (or no {style_name}).'),
+                code='invalid'
+            )
+        if 'rows' in self.layout_type and 'cols' in self.style_type:
+            raise ValidationError(
+                _(f'If you choose a {layout_name} for {COLS_CHOICES_NAME}, then choose a {style_name} for {COLS_CHOICES_NAME} (or no {style_name}).'),
                 code='invalid'
             )
 
