@@ -32,7 +32,7 @@ class TaccsiteArticleList(AbstractLink):
     Components > "Article List" Model
     https://confluence.tacc.utexas.edu/x/OIAjCQ
     """
-    header_title_text = models.CharField(
+    title_text = models.CharField(
         help_text='The title at the top of the list.',
         blank=True,
         max_length=100,
@@ -55,7 +55,7 @@ class TaccsiteArticleList(AbstractLink):
     attributes = fields.AttributesField()
 
     def get_short_description(self):
-        return self.header_title_text
+        return self.title_text
 
     def clean(self):
         # Bypass irrelevant parent validation

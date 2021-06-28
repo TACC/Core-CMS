@@ -58,7 +58,7 @@ class AbstractArticleListPlugin(LinkPlugin):
     fieldsets = [
         (None, {
             'fields': (
-                'header_title_text',
+                'title_text',
                 ('layout_type', 'style_type')
             )
         }),
@@ -95,6 +95,11 @@ class AbstractArticleListPlugin(LinkPlugin):
 
         add_classname_to_instances('c-article-list__item', instance.child_plugin_instances)
 
+        context.update({
+            'link_url': instance.get_link(),
+            'link_text': instance.name,
+            'link_target': instance.target
+        })
         return context
 
 # Plugin
