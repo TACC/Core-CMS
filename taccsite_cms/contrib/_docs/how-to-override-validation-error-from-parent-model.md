@@ -30,12 +30,12 @@ class OurModelThatUsesXxx(AbstractXxx):
             # Intercept multi-field errors
             if hasattr(err, 'error_dict'):
                 for field, errors in err.message_dict.items():
-                  # SEE: "Find Error(s)"
-                  # ...
-                      # Skip error
-                      del err.error_dict[field]
-                      # Replace error
-                      # SEE: https://docs.djangoproject.com/en/2.2/ref/forms/validation/#raising-validationerror
+                    # SEE: "Find Error(s)"
+                    # ...
+                        # Skip error
+                        del err.error_dict[field]
+                        # Replace error
+                        # SEE: https://docs.djangoproject.com/en/2.2/ref/forms/validation/#raising-validationerror
 
             # NOTE: The conditional `pass` is only to skip multi-field errors;
             #       single-field error skipping is unaffected by this logic;
@@ -52,15 +52,15 @@ Handle Error(s):
 # SEE: "Find Error(s)"
 # ...
 
-                # Catch known static error
-                if 'Known static error string' in error:
-                      # ...
+                    # Catch known static error
+                    if 'Known static error string' in error:
+                        # ...
 
-                # Catch known dynamic error
-                indices_to_catch = get_indices_that_start_with(
-                    'Known dynamic error string that starts with same text',
-                    errors
-                )
-                for i in indices_to_catch:
-                    # ...
+                    # Catch known dynamic error
+                    indices_to_catch = get_indices_that_start_with(
+                        'Known dynamic error string that starts with same text',
+                        errors
+                    )
+                    for i in indices_to_catch:
+                        # ...
 ```
