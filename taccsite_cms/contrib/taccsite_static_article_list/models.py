@@ -1,6 +1,5 @@
 from django.core.exceptions import ValidationError
 
-from cms.models.pluginmodel import CMSPlugin
 from django.utils.translation import gettext_lazy as _
 from django.utils.encoding import force_text
 
@@ -72,28 +71,40 @@ class TaccsiteArticleList(AbstractLink):
 
     attributes = fields.AttributesField()
 
+    link_is_optional = True # SEE: AbstractLink
+
+
+
     def get_short_description(self):
         return self.title_text
 
     def clean(self):
+        # If user provided link text, then require link
+        if self.name and not self.get_link():
+            err.error_list[i] = ValidationError(
+                _('Please provide a footer link or delete its display name.'), code='invalid')
+
+        # If user mix-and-matched layout and styles, then explain their mistake
+        layout_name = force_text(
+            self._meta.get_field('layout_type').verbose_name)
+        style_name = force_text(
+            self._meta.get_field('style_type').verbose_name)
+        if 'cols' in self.layout_type and 'rows' in self.style_type:
+            raise ValidationError(
+                _(f'If you choose a {layout_name} for {ROWS_CHOICES_NAME}, then choose a {style_name} for {ROWS_CHOICES_NAME} (or no {style_name}).'),
+                code='invalid'
+            )
+        if 'rows' in self.layout_type and 'cols' in self.style_type:
+            raise ValidationError(
+                _(f'If you choose a {layout_name} for {COLS_CHOICES_NAME}, then choose a {style_name} for {COLS_CHOICES_NAME} (or no {style_name}).'),
+                code='invalid'
+            )
+
         # Bypass irrelevant parent validation
         # SEE: ./_docs/how-to-override-validation-error-from-parent-model.md
         try:
             super().clean()
         except ValidationError as err:
-            # Intercept single-field errors
-            if hasattr(err, 'error_list'):
-                for i in range(len(err.error_list)):
-                    error = err.error_list[i]
-                    # Do not require a link
-                    if 'Please provide a link.' in error:
-                        # Unless user provided link text
-                        if self.name and not self.get_link():
-                            err.error_list[i] = ValidationError(
-                                _('Please provide a footer link or delete its display name.'), code='invalid')
-                        else:
-                            del err.error_list[i]
-
             # Intercept multi-field errors
             if hasattr(err, 'error_dict'):
                 for field, errors in err.message_dict.items():
@@ -110,23 +121,6 @@ class TaccsiteArticleList(AbstractLink):
                 pass
             else:
                 raise err
-
-        # Add self validation
-        layout_name = force_text(
-            self._meta.get_field('layout_type').verbose_name)
-        style_name = force_text(
-            self._meta.get_field('style_type').verbose_name)
-
-        if 'cols' in self.layout_type and 'rows' in self.style_type:
-            raise ValidationError(
-                _(f'If you choose a {layout_name} for {ROWS_CHOICES_NAME}, then choose a {style_name} for {ROWS_CHOICES_NAME} (or no {style_name}).'),
-                code='invalid'
-            )
-        if 'rows' in self.layout_type and 'cols' in self.style_type:
-            raise ValidationError(
-                _(f'If you choose a {layout_name} for {COLS_CHOICES_NAME}, then choose a {style_name} for {COLS_CHOICES_NAME} (or no {style_name}).'),
-                code='invalid'
-            )
 
     class Meta:
         abstract = False
