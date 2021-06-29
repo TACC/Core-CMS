@@ -27,10 +27,6 @@ LAYOUT_CHOICES = (
 STYLE_CHOICES = (
     (ROWS_CHOICES_NAME, (
         ('rows-divided', _('Dividers Between Articles')),
-        ('rows-gapless', _('Remove Gaps Between Articles')),
-    )),
-    (COLS_CHOICES_NAME, (
-        ('cols-gapless', _('Remove Gaps Between Articles')),
     )),
 )
 

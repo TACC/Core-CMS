@@ -17,11 +17,12 @@ def get_layout_classname(value):
 
     # HELP: Should we couple this map to LAYOUT_CHOICES? If so, how?
     switcher = {
-        'cols-widest-2-even': 'c-article-list--layout-a',
-        'cols-widest-2-wide-narr': 'c-article-list--layout-b',
-        'cols-widest-2-narr-wide': 'c-article-list--layout-c',
-        'cols-widest-3-even': 'c-article-list--layout-d',
-        'rows-always-N-even': 'c-article-list--layout-e',
+        'cols-widest-2-even':       'c-article-list--layout-a',
+        'cols-widest-2-wide-narr':  'c-article-list--layout-b',
+        'cols-widest-2-narr-wide':  'c-article-list--layout-c',
+        'cols-widest-3-even':       'c-article-list--layout-d',
+        'rows-always-N-even':       'c-article-list--layout-e'
+                                    '  ' + 'c-article-list--style-gapless',
     }
 
     return switcher.get(value, '')
@@ -32,8 +33,6 @@ def get_style_classname(value):
     # HELP: Should we couple this map to STYLE_CHOICES? If so, how?
     switcher = {
         'rows-divided': 'c-article-list--style-divided',
-        'rows-gapless': 'c-article-list--style-gapless',
-        'cols-gapless': 'c-article-list--style-gapless',
     }
 
     return switcher.get(value, '')
