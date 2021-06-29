@@ -15,14 +15,18 @@ But this is not available due to constrainst of architecture, time, or ability.
 Ideally, the image fields are in the plugin, not a child plugin.
 
 Wesley failed to achieve that functionality:
+
 1. Build model so it extends `AbstractPicture` from `djangocms-picture`.
 2. Tweak model to sweep bugs under the rug.
 3. Quit when he was unable to resolve the error,
     `TaccsiteStaticNewsArticlePreview has no field named 'cmsplugin_ptr_id'`
     upon saving a plugin instance.
-4. Learn that he [should not try to reduce `AbstractPicture`](https://stackoverflow.com/a/3674714/11817077).
+4. Learn:
+    - [one should not try to reduce `AbstractPicture`](https://stackoverflow.com/a/3674714/11817077)
+    - [one should not subclass a subclass of `CMSPlugin`](https://github.com/django-cms/django-cms/blob/3.7.4/cms/models/pluginmodel.py#L104)
 
 This is the relevant code he abandoned:
+
 ```python
 from djangocms_picture.models import AbstractPicture
 
