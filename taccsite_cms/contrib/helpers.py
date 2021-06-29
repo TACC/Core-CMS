@@ -1,7 +1,3 @@
-from datetime import date
-
-
-
 # SEE: https://github.com/django-cms/djangocms-bootstrap4/blob/master/djangocms_bootstrap4/helpers.py
 def concat_classnames(classes):
     """Concatenates a list of classes (without failing on None)"""
@@ -50,6 +46,9 @@ def add_classname_to_instances(classname, plugin_instances):
 
 # HELP: Can this logic be less verbose?
 # HELP: Is the `preferred_time_period` parameter effectual?
+
+from datetime import date
+
 def which_date_is_nearest_today(date_a, date_b, preferred_time_period):
     """
     Returns whether each date is today or nearest today, and whether nearest date is past or today or future.
@@ -129,8 +128,9 @@ from django.shortcuts import render
 
 class AbstractMaxChildrenPlugin():
     """
-    Abstract extension of `CMSPluginBase` that allows setting maximum amount of nested/child plugins. Usage:
+    Abstract extension of `CMSPluginBase` that allows setting maximum amount of nested/child plugins.
 
+    Usage:
     1. Extend this class,
        after extending `CMSPluginBase` or a class that extends `CMSPluginBase`.
     2. Set `max_children` to desired limit.
@@ -152,3 +152,46 @@ class AbstractMaxChildrenPlugin():
                     'max_children': self.max_children,
                 })
         return super(AbstractMaxChildrenPlugin, self).add_view(request, form_url, extra_context)
+
+
+
+from cms.models.pluginmodel import CMSPlugin
+
+from django.core.exceptions import ValidationError
+from django.utils.translation import gettext_lazy as _
+
+# SEE: https://github.com/django-cms/djangocms-link/blob/3.0.0/djangocms_link/models.py#L48
+def clean_for_abstract_link(model, self):
+    """
+    Intercept and manipulate validation on `AbstractLink` so that it suits TACC's minimal subclassing of it.
+
+    Usage:
+    ```
+    from taccsite_cms.contrib.helpers import clean_for_abstract_link
+
+    def clean(self):
+        clean_for_abstract_link(__class__, self)
+    ```
+    """
+
+    # Bypass irrelevant parent validation
+    # SEE: ./_docs/how-to-override-validation-error-from-parent-model.md
+    try:
+        super(model, self).clean()
+    except ValidationError as err:
+        # Intercept multi-field errors
+        if hasattr(err, 'error_dict'):
+            for field, errors in err.message_dict.items():
+                # Reduce verbosity of original error message
+                # FAQ: Original error message assumes more fields exist
+                indices = get_indices_that_start_with(
+                    'Only one of ', errors
+                )
+                for i in indices:
+                    err.error_dict[field] = ValidationError(
+                        _('Only one of External link or Internal link may be given.'), code='invalid')
+
+        if len(err.messages) == 0:
+            pass
+        else:
+            raise err

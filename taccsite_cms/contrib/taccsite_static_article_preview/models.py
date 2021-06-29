@@ -1,10 +1,11 @@
 from cms.models.pluginmodel import CMSPlugin
-from django.utils.translation import gettext_lazy as _
 
+from django.utils.translation import gettext_lazy as _
 from django.db import models
+
 from djangocms_link.models import AbstractLink
 
-from djangocms_attributes_field import fields
+from taccsite_cms.contrib.helpers import clean_for_abstract_link
 
 # Constants
 
@@ -100,14 +101,13 @@ class TaccsiteStaticNewsArticlePreview(AbstractLink):
     author_text = create_author_text_field()
     publish_date = create_publish_date_field()
 
-    attributes = fields.AttributesField()
-
-    link_is_optional = True # SEE: AbstractLink
-
-
+    link_is_optional = True
 
     class Meta:
         abstract = False
+
+    def clean(self):
+        clean_for_abstract_link(__class__, self)
 
 class TaccsiteStaticAllocsArticlePreview(AbstractLink):
     media_support = create_media_support_field(blank=False)
@@ -122,11 +122,10 @@ class TaccsiteStaticAllocsArticlePreview(AbstractLink):
         help_text='The date after which submissions are accepted (manual entry).'
     )
 
-    attributes = fields.AttributesField()
-
-    link_is_optional = True # SEE: AbstractLink
-
-
+    link_is_optional = True
 
     class Meta:
         abstract = False
+
+    def clean(self):
+        clean_for_abstract_link(__class__, self)

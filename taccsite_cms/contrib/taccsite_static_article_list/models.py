@@ -1,16 +1,11 @@
 from django.core.exceptions import ValidationError
-
 from django.utils.translation import gettext_lazy as _
 from django.utils.encoding import force_text
-
 from django.db import models
+
 from djangocms_link.models import AbstractLink
 
-from djangocms_attributes_field import fields
-
-from taccsite_cms.contrib.helpers import (
-    get_indices_that_start_with
-)
+from taccsite_cms.contrib.helpers import clean_for_abstract_link
 
 # Constants
 
@@ -69,11 +64,7 @@ class TaccsiteArticleList(AbstractLink):
         max_length=255,
     )
 
-    attributes = fields.AttributesField()
-
-    link_is_optional = True # SEE: AbstractLink
-
-
+    link_is_optional = True
 
     def get_short_description(self):
         return self.title_text
@@ -100,27 +91,7 @@ class TaccsiteArticleList(AbstractLink):
                 code='invalid'
             )
 
-        # Bypass irrelevant parent validation
-        # SEE: ./_docs/how-to-override-validation-error-from-parent-model.md
-        try:
-            super().clean()
-        except ValidationError as err:
-            # Intercept multi-field errors
-            if hasattr(err, 'error_dict'):
-                for field, errors in err.message_dict.items():
-                    # Reduce verbosity of original error message
-                    # FAQ: Original error message assumes more fields exist
-                    indices = get_indices_that_start_with(
-                        'Only one of ', errors
-                    )
-                    for i in indices:
-                        err.error_dict[field] = ValidationError(
-                            _('Only one of External link or Internal link may be given.'), code='invalid')
-
-            if len(err.messages) == 0:
-                pass
-            else:
-                raise err
+        clean_for_abstract_link(__class__, self)
 
     class Meta:
         abstract = False
