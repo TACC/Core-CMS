@@ -2,6 +2,7 @@ from cms.models.pluginmodel import CMSPlugin
 from django.utils.translation import gettext_lazy as _
 
 from django.db import models
+from djangocms_link.models import AbstractLink
 
 from djangocms_attributes_field import fields
 
@@ -90,20 +91,28 @@ def create_expiry_date_field(blank=True, help_text=None, verbose_name=None):
 # Models
 # TODO: Add `TaccsiteStatic____ArticlePreview` (Docs, Events)
 
-class TaccsiteStaticNewsArticlePreview(CMSPlugin):
+class TaccsiteStaticNewsArticlePreview(AbstractLink):
     media_support = create_media_support_field(blank=False)
     title_text = create_title_text_field(blank=False)
     abstract_text = create_abstract_text_field(blank=False)
+
     type_text = create_type_text_field()
     author_text = create_author_text_field()
     publish_date = create_publish_date_field()
 
     attributes = fields.AttributesField()
 
-class TaccsiteStaticAllocsArticlePreview(CMSPlugin):
+    link_is_optional = True # SEE: AbstractLink
+
+
+
+    class Meta:
+        abstract = False
+
+class TaccsiteStaticAllocsArticlePreview(AbstractLink):
     media_support = create_media_support_field(blank=False)
     title_text = create_title_text_field(blank=False)
-    abstract_text = create_abstract_text_field(blank=False)
+
     expiry_date = create_expiry_date_field(
         verbose_name='Submission End Date',
         help_text='The date after which submissions are not accepted (manual entry).'
@@ -114,3 +123,10 @@ class TaccsiteStaticAllocsArticlePreview(CMSPlugin):
     )
 
     attributes = fields.AttributesField()
+
+    link_is_optional = True # SEE: AbstractLink
+
+
+
+    class Meta:
+        abstract = False

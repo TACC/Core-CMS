@@ -4,11 +4,13 @@ from django.core.exceptions import ValidationError
 from cms.plugin_pool import plugin_pool
 from django.utils.translation import gettext_lazy as _
 
+from djangocms_link.cms_plugins import LinkPlugin
+
 from taccsite_cms.contrib.helpers import (
     concat_classnames,
     insert_at_position,
     which_date_is_nearest_today,
-    CMSPluginBaseWithMaxChildren,
+    AbstractMaxChildrenPlugin,
 )
 
 from .models import (
@@ -33,13 +35,15 @@ def get_kind_classname(value):
 
 # Bases
 
-class AbstractArticlePreviewPlugin(CMSPluginBaseWithMaxChildren):
+class AbstractArticlePreviewPlugin(LinkPlugin, AbstractMaxChildrenPlugin):
     module = 'TACC Site'
     # abstract
     # model = TaccsiteStatic___ArticlePreview
     # abstract
     # name = _('______ Article Preview (Static)')
     render_template = 'static_article_preview.html'
+    def get_render_template(self, context, instance, placeholder):
+        return self.render_template
 
     cache = True
     text_enabled = False
@@ -48,6 +52,12 @@ class AbstractArticlePreviewPlugin(CMSPluginBaseWithMaxChildren):
     # require_parent = True
 
     fieldsets = [
+        (_('Link'), {
+            'fields': (
+                ('external_link', 'internal_link'),
+                ('anchor', 'target'),
+            )
+        }),
         (_('Advanced settings'), {
             'classes': ('collapse',),
             'fields': (
@@ -75,7 +85,10 @@ class AbstractArticlePreviewPlugin(CMSPluginBaseWithMaxChildren):
         instance.attributes['class'] = classes
 
         context.update({
-            'kind': self.kind
+            'kind': self.kind,
+            'link_url': instance.get_link(),
+            'link_text': instance.name,
+            'link_target': instance.target
         })
         return context
 
@@ -122,7 +135,7 @@ class TaccsiteStaticNewsArticlePreviewPlugin(AbstractArticlePreviewWithMediaPlug
     fieldsets = insert_at_position(0, AbstractArticlePreviewWithMediaPlugin.fieldsets, [
         (None, {
             # To enable these fields, see `./README.md`
-            # 'fields': ('picture', 'external_picture')
+            # 'fields': (..., 'picture', 'external_picture')
             'fields': ('title_text', 'abstract_text')
         }),
     ])

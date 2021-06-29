@@ -126,13 +126,13 @@ def which_date_is_nearest_today(date_a, date_b, preferred_time_period):
 # SEE: https://github.com/django-cms/django-cms/issues/5102#issuecomment-597150141
 
 from django.shortcuts import render
-from cms.plugin_base import CMSPluginBase
 
-class CMSPluginBaseWithMaxChildren(CMSPluginBase):
+class AbstractMaxChildrenPlugin():
     """
-    Extension of `CMSPluginBase` that allows setting maximum amount of nested/child plugins. Usage:
+    Abstract extension of `CMSPluginBase` that allows setting maximum amount of nested/child plugins. Usage:
 
-    1. Extend this class (instead of `CMSPluginBase`)
+    1. Extend this class,
+       after extending `CMSPluginBase` or a class that extends `CMSPluginBase`.
     2. Set `max_children` to desired limit.
     """
 
@@ -151,4 +151,4 @@ class CMSPluginBaseWithMaxChildren(CMSPluginBase):
                 return render(request , "path/to/your/max_reached_template.html", {
                     'max_children': self.max_children,
                 })
-        return super(CMSPluginBaseWithMaxChildren, self).add_view(request, form_url, extra_context)
+        return super(AbstractMaxChildrenPlugin, self).add_view(request, form_url, extra_context)
