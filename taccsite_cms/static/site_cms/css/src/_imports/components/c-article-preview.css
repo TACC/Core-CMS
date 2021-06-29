@@ -264,6 +264,8 @@ Styleguide Components.ArticlePreview
 
 /* HACK: Force links to be a little closer together */
 /* !!!: Cross-Component Styles not Allowed in Single Component */
-.c-article-list .c-article-preview--docs::last-child {
-  margin-bottom: 3.0rem;
+.c-article-list .c-article-preview--docs:last-of-type {
+  /* FAQ: Commented out because code and style looks better without it */
+  /* TODO: Let Design decide */
+  /* margin-bottom: 3.0rem; */
 }
