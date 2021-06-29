@@ -129,3 +129,15 @@ class TaccsiteAllocsArticleListPlugin(AbstractArticleListPlugin):
     child_classes = [
         'TaccsiteStaticAllocsArticlePreviewPlugin'
     ]
+
+@plugin_pool.register_plugin
+class TaccsiteDocsArticleListPlugin(AbstractArticleListPlugin):
+    """
+    Components > "Article List" Plugin
+    https://confluence.tacc.utexas.edu/x/OIAjCQ
+    """
+    name = _('Document Article List (Static)')
+
+    child_classes = [
+        'TaccsiteStaticDocsArticlePreviewPlugin'
+    ]

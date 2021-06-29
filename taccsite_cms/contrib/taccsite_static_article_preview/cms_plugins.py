@@ -17,6 +17,7 @@ from .models import (
     MEDIA_SUPPORT_CHOICES,
     TaccsiteStaticNewsArticlePreview,
     TaccsiteStaticAllocsArticlePreview,
+    TaccsiteStaticDocsArticlePreview,
 )
 
 # Helpers
@@ -117,7 +118,7 @@ class AbstractArticlePreviewWithMediaPlugin(AbstractArticlePreviewPlugin):
             return []
 
 # Plugins
-# TODO: Add `TaccsiteStatic___ArticlePreviewPlugin` (Docs, Events)
+# TODO: Add `TaccsiteStaticEventsArticlePreviewPlugin`
 
 @plugin_pool.register_plugin
 class TaccsiteStaticNewsArticlePreviewPlugin(AbstractArticlePreviewWithMediaPlugin):
@@ -204,3 +205,26 @@ class TaccsiteStaticAllocsArticlePreviewPlugin(AbstractArticlePreviewWithMediaPl
             'close_date_time_period': close_date_time_period,
         })
         return context
+
+@plugin_pool.register_plugin
+class TaccsiteStaticDocsArticlePreviewPlugin(AbstractArticlePreviewPlugin):
+    """
+    Components > "(Static) Document Article Preview" Plugin
+    https://confluence.tacc.utexas.edu/x/OYAjCQ
+    """
+    model = TaccsiteStaticDocsArticlePreview
+    name = _('Document Article Preview (Static)')
+
+    parent_classes = [
+        'TaccsiteDocsArticleListPlugin'
+    ]
+
+    fieldsets = insert_at_position(0, AbstractArticlePreviewPlugin.fieldsets, [
+        (None, {
+            'fields': ('title_text', 'abstract_text')
+        }),
+    ])
+
+    # Custom
+
+    kind = 'docs'

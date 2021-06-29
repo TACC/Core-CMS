@@ -75,9 +75,7 @@ Styleguide Components.ArticlePreview
   margin-top: 0; /* overwrite Bootstrap and browser */
   margin-bottom: 0; /* overwrite Bootstrap and browser */
 
-  font-size: 1.8rem;
   font-weight: var(--bold);
-  line-height: 2.4rem;
 }
 .c-article-preview__title a,
 .c-article-preview__title a:hover,
@@ -89,14 +87,26 @@ Styleguide Components.ArticlePreview
 .c-article-list .c-article-preview__title {
   @extend %x-truncate--one-line;
 }
+/* (List) News */
+.c-article-preview--news .c-article-preview__title {
+  font-size: 1.8rem;
+  line-height: 2.4rem;
+}
 /* (List) Allocations */
 .c-article-preview--allocs .c-article-preview__title {
   font-size: 1.6rem;
-  font-weight: var(--bold);
+  line-height: 2.4rem;
 }
 /* (List) Events */
 .c-article-preview--events .c-article-preview__title {
   font-size: 1.4rem;
+  line-height: 2.4rem;
+  color: var(--global-color-primary--xx-dark);
+}
+/* (List) Links */
+.c-article-preview--links .c-article-preview__title {
+  font-size: 1.4rem;
+  line-height: inherit; /* override Bootstrap */
   color: var(--global-color-primary--xx-dark);
 }
 
@@ -104,13 +114,10 @@ Styleguide Components.ArticlePreview
 
 /* Children: Abstract */
 
-.c-article-preview .c-article-preview__abstract {
+.c-article-preview__abstract {
   order: 4;
 
   margin-bottom: 0; /* overwrite Bootstrap and browser */
-
-  font-size: 1.6rem;
-  line-height: 2.4rem;
 }
 /* (List) *//* FAQ: I.E. NOT the article previews inside a Hero Banner */
 /* !!!: Cross-Component Styles not Allowed in Single Component */
@@ -118,12 +125,23 @@ Styleguide Components.ArticlePreview
   @extend %x-truncate--many-lines;
   --lines: 3;
 }
+/* (List) News */
+.c-article-preview--news .c-article-preview__abstract {
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+}
 /* (List) Allocations */
 .c-article-preview--allocs .c-article-preview__abstract {
   display: none;
 }
 /* (List) Events */
 .c-article-preview--events .c-article-preview__abstract {
+  font-size: 1.4rem;
+  line-height: 2.4rem;
+  color: var(--global-color-primary--xx-dark);
+}
+/* (List) Links */
+.c-article-preview--links .c-article-preview__abstract {
   font-size: 1.4rem;
   color: var(--global-color-primary--xx-dark);
 }
@@ -244,14 +262,6 @@ Styleguide Components.ArticlePreview
 
 /* Modifiers: (List) Links */
 
-.s-article-preview--links {
-  font-size: 1.4rem;
-  color: var(--global-color-primary--xx-dark);
-}
-.c-article-preview--links .c-article-preview__title {
-  font-weight: var(--bold);
-  color: var(--global-color-primary--xx-dark);
-}
 /* HACK: Force links to be a little closer together */
 /* !!!: Cross-Component Styles not Allowed in Single Component */
 .c-article-list .c-article-preview--links::last-child {

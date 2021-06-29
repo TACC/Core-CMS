@@ -129,3 +129,15 @@ class TaccsiteStaticAllocsArticlePreview(AbstractLink):
 
     def clean(self):
         clean_for_abstract_link(__class__, self)
+
+class TaccsiteStaticDocsArticlePreview(AbstractLink):
+    title_text = create_title_text_field(blank=False)
+    abstract_text = create_abstract_text_field(blank=False)
+
+    link_is_optional = True
+
+    class Meta:
+        abstract = False
+
+    def clean(self):
+        clean_for_abstract_link(__class__, self)

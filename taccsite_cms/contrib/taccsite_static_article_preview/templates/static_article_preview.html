@@ -5,12 +5,14 @@
   {{ instance.attributes_str }}
 >
   {# Media e.g. image thumbnail #}
+  {% if kind == 'news' or kind == 'allocs' %}
   {# HACK: Forced to use a wrapper because we cannot control markup #}
   <div class="c-article-preview__media">
   {% for plugin_instance in instance.child_plugin_instances %}
       {% render_plugin plugin_instance %}
   {% endfor %}
   </div>
+  {% endif %}
 
   {# Title #}
   <h3 class="c-article-preview__title">
