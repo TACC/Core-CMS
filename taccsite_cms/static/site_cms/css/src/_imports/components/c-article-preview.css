@@ -103,8 +103,8 @@ Styleguide Components.ArticlePreview
   line-height: 2.4rem;
   color: var(--global-color-primary--xx-dark);
 }
-/* (List) Links */
-.c-article-preview--links .c-article-preview__title {
+/* (List) Docs */
+.c-article-preview--docs .c-article-preview__title {
   font-size: 1.4rem;
   line-height: inherit; /* override Bootstrap */
   color: var(--global-color-primary--xx-dark);
@@ -140,8 +140,8 @@ Styleguide Components.ArticlePreview
   line-height: 2.4rem;
   color: var(--global-color-primary--xx-dark);
 }
-/* (List) Links */
-.c-article-preview--links .c-article-preview__abstract {
+/* (List) Docs */
+.c-article-preview--docs .c-article-preview__abstract {
   font-size: 1.4rem;
   color: var(--global-color-primary--xx-dark);
 }
@@ -260,10 +260,10 @@ Styleguide Components.ArticlePreview
 
 
 
-/* Modifiers: (List) Links */
+/* Modifiers: (List) Docs */
 
 /* HACK: Force links to be a little closer together */
 /* !!!: Cross-Component Styles not Allowed in Single Component */
-.c-article-list .c-article-preview--links::last-child {
+.c-article-list .c-article-preview--docs::last-child {
   margin-bottom: 3.0rem;
 }

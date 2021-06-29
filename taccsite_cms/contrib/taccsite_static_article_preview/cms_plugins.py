@@ -27,7 +27,7 @@ def get_kind_classname(value):
 
     switcher = {
         'news': 'c-article-preview--news',
-        'docs': 'c-article-preview--links',
+        'docs': 'c-article-preview--docs',
         'allocs': 'c-article-preview--allocs',
         'events': 'c-article-preview--events',
     }
