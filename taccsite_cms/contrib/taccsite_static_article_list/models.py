@@ -46,7 +46,7 @@ class TaccsiteArticleList(AbstractLink):
 
     layout_type = models.CharField(
         verbose_name=_('Layout Option'),
-        help_text=_(f'Layout of the articles within. Notice: All {COLS_CHOICES_NAME} become multiple rows when screen width is narrow.'),
+        help_text=_('Layout of the articles within. Notice: All %(col_layouts)s become multiple rows when screen width is narrow.') % { 'col_layouts': COLS_CHOICES_NAME },
         choices=LAYOUT_CHOICES,
         default=LAYOUT_CHOICES[0][0],
         blank=False,
@@ -71,21 +71,28 @@ class TaccsiteArticleList(AbstractLink):
         # If user provided link text, then require link
         if self.name and not self.get_link():
             raise ValidationError(
-                _('Please provide a footer link or delete its display name.'), code='invalid')
+                _('Please provide a footer link or delete its display name.'), code='invalid'
+            )
 
         # If user mix-and-matched layout and styles, then explain their mistake
         layout_name = force_text(
-            self._meta.get_field('layout_type').verbose_name)
+            self._meta.get_field('layout_type').verbose_name )
         style_name = force_text(
-            self._meta.get_field('style_type').verbose_name)
+            self._meta.get_field('style_type').verbose_name )
         if 'cols' in self.layout_type and 'rows' in self.style_type:
             raise ValidationError(
-                _(f'If you choose a {layout_name} for {ROWS_CHOICES_NAME}, then choose a {style_name} for {ROWS_CHOICES_NAME} (or no {style_name}).'),
+                _('If you choose a %(layout)s from %(row_layouts)s, then choose a %(style)s from %(row_layouts)s (or no %(style)s).') % {
+                    'style': style_name, 'layout': layout_name,
+                    'row_layouts': ROWS_CHOICES_NAME
+                },
                 code='invalid'
             )
         if 'rows' in self.layout_type and 'cols' in self.style_type:
             raise ValidationError(
-                _(f'If you choose a {layout_name} for {COLS_CHOICES_NAME}, then choose a {style_name} for {COLS_CHOICES_NAME} (or no {style_name}).'),
+                _('If you choose a %(layout)s from %(col_layouts)s, then choose a %(style)s from %(col_layouts)s (or no %(style)s).') % {
+                    'style': style_name, 'layout': layout_name,
+                    'col_layouts': COLS_CHOICES_NAME
+                },
                 code='invalid'
             )
 
