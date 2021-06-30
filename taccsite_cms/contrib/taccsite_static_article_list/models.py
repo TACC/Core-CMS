@@ -31,11 +31,9 @@ STYLE_CHOICES = (
     ( ROWS_CHOICES_NAME, filter_choices_by_prefix(
         get_choices(STYLE_DICT), 'rows'
     ) ),
-    # Disabled until some exist
-    # FAQ: Absent optgroup is easier for user to understand than empty optgroup
-    # ( COLS_CHOICES_NAME, filter_choices_by_prefix(
-    #     get_choices(STYLE_DICT), 'cols'
-    # ) ),
+    ( COLS_CHOICES_NAME, filter_choices_by_prefix(
+        get_choices(STYLE_DICT), 'cols'
+    ) ),
 )
 
 # Models

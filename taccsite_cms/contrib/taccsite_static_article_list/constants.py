@@ -27,4 +27,8 @@ STYLE_DICT = {
         'classname':    'c-article-list--style-divided',
         'description':  'Dividers Between Articles',
     },
+    'cols-gapless': {
+        'classname':    'c-article-list--style-gapless',
+        'description':  'Remove Gaps Between Articles',
+    },
 }
