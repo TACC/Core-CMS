@@ -1,6 +1,8 @@
 from cms.models.pluginmodel import CMSPlugin
 
+from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
+from django.utils.encoding import force_text
 from django.db import models
 
 from djangocms_link.models import AbstractLink
@@ -141,3 +143,37 @@ class TaccsiteStaticDocsArticlePreview(AbstractLink):
 
     def clean(self):
         clean_for_abstract_link(__class__, self)
+
+class TaccsiteStaticEventsArticlePreview(AbstractLink):
+    title_text = create_title_text_field(blank=False)
+    abstract_text = create_abstract_text_field(blank=False)
+
+    expiry_date = create_expiry_date_field(
+        verbose_name='Event End Date',
+        help_text='The date upon which the event starts (manual entry).'
+    )
+    publish_date = create_publish_date_field(
+        verbose_name='Event Start Date',
+        help_text='The date after which the event ends (manual entry).'
+    )
+
+    link_is_optional = True
+
+    class Meta:
+        abstract = False
+
+    def clean(self):
+        clean_for_abstract_link(__class__, self)
+
+        # If user provided link text, then require link
+        if not self.publish_date and not self.expiry_date:
+            end_date_name = force_text(
+                self._meta.get_field('expiry_date').verbose_name )
+            start_date_name = force_text(
+                self._meta.get_field('publish_date').verbose_name )
+            raise ValidationError(
+                _('Provide either a %(start_date)s or an %(end_date)s.') % {
+                    'start_date': start_date_name, 'end_date': end_date_name
+                },
+                code='invalid'
+            )

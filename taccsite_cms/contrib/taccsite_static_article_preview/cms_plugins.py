@@ -18,6 +18,7 @@ from .models import (
     TaccsiteStaticNewsArticlePreview,
     TaccsiteStaticAllocsArticlePreview,
     TaccsiteStaticDocsArticlePreview,
+    TaccsiteStaticEventsArticlePreview,
 )
 
 # Helpers
@@ -118,7 +119,6 @@ class AbstractArticlePreviewWithMediaPlugin(AbstractArticlePreviewPlugin):
             return []
 
 # Plugins
-# TODO: Add `TaccsiteStaticEventsArticlePreviewPlugin`
 
 @plugin_pool.register_plugin
 class TaccsiteStaticNewsArticlePreviewPlugin(AbstractArticlePreviewWithMediaPlugin):
@@ -228,3 +228,42 @@ class TaccsiteStaticDocsArticlePreviewPlugin(AbstractArticlePreviewPlugin):
     # Custom
 
     kind = 'docs'
+
+@plugin_pool.register_plugin
+class TaccsiteStaticEventsArticlePreviewPlugin(AbstractArticlePreviewPlugin):
+    """
+    Components > "(Static) Event Article Preview" Plugin
+    https://confluence.tacc.utexas.edu/x/OYAjCQ
+    """
+    model = TaccsiteStaticEventsArticlePreview
+    name = _('Event Article Preview (Static)')
+
+    parent_classes = [
+        'TaccsiteEventsArticleListPlugin'
+    ]
+
+    fieldsets = insert_at_position(0, AbstractArticlePreviewPlugin.fieldsets, [
+        (None, {
+            'fields': (
+                ('publish_date', 'expiry_date'),
+                'title_text',
+                'abstract_text'
+            )
+        }),
+    ])
+
+    # Custom
+
+    kind = 'events'
+
+    # Render
+
+    def render(self, context, instance, placeholder):
+        context = super().render(context, instance, placeholder)
+        request = context['request']
+
+        context.update({
+            'open_date': instance.publish_date,
+            'close_date': instance.expiry_date,
+        })
+        return context
