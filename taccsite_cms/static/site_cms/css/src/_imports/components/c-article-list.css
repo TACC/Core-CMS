@@ -132,7 +132,7 @@ Styleguide Components.ArticleList
 /* Icon */
 
 .c-article-list__link-icon {
-  margin-right: 0.5em;
+  margin-right: 0.75em;
 
   font-size: 1.4rem;
   vertical-align: text-bottom;
