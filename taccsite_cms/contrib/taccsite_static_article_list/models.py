@@ -66,9 +66,11 @@ class TaccsiteArticleList(AbstractLink):
         return self.title_text
 
     def clean(self):
+        clean_for_abstract_link(__class__, self)
+
         # If user provided link text, then require link
         if self.name and not self.get_link():
-            err.error_list[i] = ValidationError(
+            raise ValidationError(
                 _('Please provide a footer link or delete its display name.'), code='invalid')
 
         # If user mix-and-matched layout and styles, then explain their mistake
@@ -86,8 +88,6 @@ class TaccsiteArticleList(AbstractLink):
                 _(f'If you choose a {layout_name} for {COLS_CHOICES_NAME}, then choose a {style_name} for {COLS_CHOICES_NAME} (or no {style_name}).'),
                 code='invalid'
             )
-
-        clean_for_abstract_link(__class__, self)
 
     class Meta:
         abstract = False

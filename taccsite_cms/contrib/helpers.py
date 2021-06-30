@@ -163,7 +163,7 @@ from django.utils.translation import gettext_lazy as _
 # SEE: https://github.com/django-cms/djangocms-link/blob/3.0.0/djangocms_link/models.py#L48
 def clean_for_abstract_link(model, self):
     """
-    Intercept and manipulate validation on `AbstractLink` so that it suits TACC's minimal subclassing of it.
+    Intercept and manipulate validation on `AbstractLink` so that it suits TACC's minimal subclassing of it. (To catch only parent validation errors, not custom ones, run this before any custom validation.)
 
     Usage:
     ```
@@ -171,6 +171,8 @@ def clean_for_abstract_link(model, self):
 
     def clean(self):
         clean_for_abstract_link(__class__, self)
+
+        ...
     ```
     """
 
