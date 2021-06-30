@@ -9,33 +9,17 @@ from taccsite_cms.contrib.helpers import (
 )
 
 from .models import TaccsiteArticleList
+from .constants import LAYOUT_DICT, STYLE_DICT
 
 # Helpers
 
 def get_layout_classname(value):
     """Get layout class based on value."""
-
-    # HELP: Should we couple this map to LAYOUT_CHOICES? If so, how?
-    switcher = {
-        'cols-widest-2-even':       'c-article-list--layout-a',
-        'cols-widest-2-wide-narr':  'c-article-list--layout-b',
-        'cols-widest-2-narr-wide':  'c-article-list--layout-c',
-        'cols-widest-3-even':       'c-article-list--layout-d',
-        'rows-always-N-even':       'c-article-list--layout-e'
-                                    '  ' + 'c-article-list--style-gapless',
-    }
-
-    return switcher.get(value, '')
+    return LAYOUT_DICT.get(value, {}).get('classname')
 
 def get_style_classname(value):
     """Get style class based on value."""
-
-    # HELP: Should we couple this map to STYLE_CHOICES? If so, how?
-    switcher = {
-        'rows-divided': 'c-article-list--style-divided',
-    }
-
-    return switcher.get(value, '')
+    return STYLE_DICT.get(value, {}).get('classname')
 
 # Bases
 

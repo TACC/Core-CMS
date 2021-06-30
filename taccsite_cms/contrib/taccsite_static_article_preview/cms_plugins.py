@@ -21,19 +21,22 @@ from .models import (
     TaccsiteStaticEventsArticlePreview,
 )
 
+# Constants
+
+KIND_DICT = {
+    'news': 'c-article-preview--news',
+    'docs': 'c-article-preview--docs',
+    'allocs': 'c-article-preview--allocs',
+    'events': 'c-article-preview--events',
+}
+
 # Helpers
 
+# FAQ: This exists to retireve classnames via consistently-named functions
+# SEE: taccsite_cms.contrib.taccsite_static_article_list.cms_plugins
 def get_kind_classname(value):
     """Get kind class based on value."""
-
-    switcher = {
-        'news': 'c-article-preview--news',
-        'docs': 'c-article-preview--docs',
-        'allocs': 'c-article-preview--allocs',
-        'events': 'c-article-preview--events',
-    }
-
-    return switcher.get(value, '')
+    return KIND_DICT[value]
 
 # Bases
 

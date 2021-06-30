@@ -1,3 +1,39 @@
+def get_choices(choice_dict):
+    """Get a sequence for a Django model field choices from a dictionary.
+
+    :param Dict[str, Dict[str, str]] dictionary: choice as key for dictionary of classnames and descriptions
+    :return: a sequence for django.db.models.CharField.choices
+    :rtype: List[Tuple[str, str], ...]
+    """
+    choices = []
+
+    for key, data in choice_dict.items():
+        choice = (key, data['description'])
+        choices.append(choice)
+
+    return choices
+
+
+
+def filter_choices_by_prefix(choices, prefix):
+    """Reduce sequence of choices to items whose values begin with given string
+
+    :param List[Tuple[str, str], ...] choices: the sequence to filter
+    :param str prefix: the starting text required of an item value to retain it
+    :returns: a sequence for django.db.models.CharField.choices
+    :rtype: List[Tuple[str, str], ...]
+    """
+    new_choices = []
+
+    for choice in choices:
+        should_keep = choice[0].startswith(prefix)
+        if should_keep:
+            new_choices.append(choice)
+
+    return new_choices
+
+
+
 # SEE: https://github.com/django-cms/djangocms-bootstrap4/blob/master/djangocms_bootstrap4/helpers.py
 def concat_classnames(classes):
     """Concatenates a list of classes (without failing on None)"""
@@ -63,14 +99,14 @@ def which_date_is_nearest_today(date_a, date_b, preferred_time_period):
 
     :returns:
         A tuple of tuples:
-        (
+        ((
             ``boolean`` of whether ``date_a`` is nearest,
             ``string`` of ``date_a`` time period ``past``/``today``/``future``
         ),
         (
             ``boolean`` of whether ``date_b`` is nearest,
             ``string`` of ``date_b`` time period ``past``/``today``/``future``
-        ),
+        )),
     :rtype: tuple
     """
     today = date.today()

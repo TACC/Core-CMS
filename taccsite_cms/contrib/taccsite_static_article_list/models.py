@@ -5,7 +5,13 @@ from django.db import models
 
 from djangocms_link.models import AbstractLink
 
-from taccsite_cms.contrib.helpers import clean_for_abstract_link
+from taccsite_cms.contrib.helpers import (
+    get_choices,
+    filter_choices_by_prefix,
+    clean_for_abstract_link,
+)
+
+from .constants import LAYOUT_DICT, STYLE_DICT
 
 # Constants
 
@@ -14,20 +20,22 @@ ROWS_CHOICES_NAME = _('Row Layouts')
 COLS_CHOICES_NAME = _('Column Layouts')
 
 LAYOUT_CHOICES = (
-    (ROWS_CHOICES_NAME, (
-        ('rows-always-N-even',  _('Multiple Rows')),
-    )),
-    (COLS_CHOICES_NAME, (
-        ('cols-widest-2-even', _('2 Equal-Width Columns')),
-        ('cols-widest-2-wide-narr', _('2 Columns: 1 Wide, 1 Narrow')),
-        ('cols-widest-2-narr-wide', _('2 Columns: 1 Narrow, 1 Wide')),
-        ('cols-widest-3-even', _('3 Equal-Width Columns')),
-    )),
+    ( ROWS_CHOICES_NAME, filter_choices_by_prefix(
+        get_choices(LAYOUT_DICT), 'row'
+    ) ),
+    ( COLS_CHOICES_NAME, filter_choices_by_prefix(
+        get_choices(LAYOUT_DICT), 'cols'
+    ) ),
 )
 STYLE_CHOICES = (
-    (ROWS_CHOICES_NAME, (
-        ('rows-divided', _('Dividers Between Articles')),
-    )),
+    ( ROWS_CHOICES_NAME, filter_choices_by_prefix(
+        get_choices(STYLE_DICT), 'rows'
+    ) ),
+    # Disabled until some exist
+    # FAQ: Absent optgroup is easier for user to understand than empty optgroup
+    # ( COLS_CHOICES_NAME, filter_choices_by_prefix(
+    #     get_choices(STYLE_DICT), 'cols'
+    # ) ),
 )
 
 # Models
