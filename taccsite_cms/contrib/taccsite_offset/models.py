@@ -5,26 +5,21 @@ from django.utils.translation import gettext_lazy as _
 
 from djangocms_attributes_field import fields
 
+from taccsite_cms.contrib.helpers import get_choices
+
 # Constants
 
-DIRECTION_CHOICES = (
-    ('left', _('Left')),
-    # ('center', _('Center')), # GH-66: Support centered offset content
-    ('right', _('Right')),
-)
-
-# Helpers
-
-def get_direction_classname(value):
-    """Get direction class based on value."""
-
-    # TODO: Couple this map to DIRECTION_CHOICES
-    switcher = {
-        'right': 'o-offset-content--right',
-        'left': 'o-offset-content--left'
-    }
-
-    return switcher.get(value, '')
+DIRECTION_DICT = {
+    'left': {
+        'classname':    'o-offset-content--left',
+        'description':  'Left',
+    },
+    'right': {
+        'classname':    'o-offset-content--right',
+        'description':  'Right',
+    },
+}
+DIRECTION_CHOICES = get_choices(DIRECTION_DICT)
 
 # Models
 
