@@ -1,8 +1,3 @@
-"""
-.. module:: taccsite_sample.utils
-   :synopsis: Utilities to process user name.
-"""
-
 def has_proper_name(user=None):
     """Whether user has enough data with which to form a proper name.
 
