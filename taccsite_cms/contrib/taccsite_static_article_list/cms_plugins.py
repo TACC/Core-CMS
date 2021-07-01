@@ -11,6 +11,8 @@ from taccsite_cms.contrib.helpers import (
 from .models import TaccsiteArticleList
 from .constants import LAYOUT_DICT, STYLE_DICT
 
+
+
 # Helpers
 
 def get_layout_classname(value):
@@ -21,7 +23,9 @@ def get_style_classname(value):
     """Get style class based on value."""
     return STYLE_DICT.get(value, {}).get('classname')
 
-# Bases
+
+
+# Abstracts
 
 class AbstractArticleListPlugin(LinkPlugin):
     """
@@ -87,7 +91,9 @@ class AbstractArticleListPlugin(LinkPlugin):
         })
         return context
 
-# Plugin
+
+
+# Plugins
 
 @plugin_pool.register_plugin
 class TaccsiteNewsArticleListPlugin(AbstractArticleListPlugin):

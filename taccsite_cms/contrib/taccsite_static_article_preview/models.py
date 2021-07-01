@@ -9,12 +9,16 @@ from djangocms_link.models import AbstractLink
 
 from taccsite_cms.contrib.helpers import clean_for_abstract_link
 
+
+
 # Constants
 
 MEDIA_SUPPORT_CHOICES = (
     ('nested', _('Nest a single Picture / Image plugin inside this plugin.')),
     # ('direct', _('Choose / Define an image directly within this plugin.')),
 )
+
+
 
 # Helpers
 
@@ -92,7 +96,6 @@ def create_expiry_date_field(blank=True, help_text=None, verbose_name=None):
 
 
 # Models
-# TODO: Add `TaccsiteStatic____ArticlePreview` (Docs, Events)
 
 class TaccsiteStaticNewsArticlePreview(AbstractLink):
     media_support = create_media_support_field(blank=False)

@@ -13,6 +13,8 @@ from taccsite_cms.contrib.helpers import (
 
 from .constants import LAYOUT_DICT, STYLE_DICT
 
+
+
 # Constants
 
 ANY_CHOICES_NAME = _('Any Layouts')
@@ -35,6 +37,8 @@ STYLE_CHOICES = (
         get_choices(STYLE_DICT), 'cols'
     ) ),
 )
+
+
 
 # Models
 

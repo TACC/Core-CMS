@@ -1,5 +1,6 @@
 # Reregister unregistered PicturePlugin without uninstalling Bootstrap4's
 # FAQ: A Bootstrap picture has superfluous options that are not always desirable
+# TODO: Drop try/except & load non-standard plugin set for migrated legacy sites
 # FAQ: If we can import both plugins, then re-register PicturePlugin
 #      (because Bootstrap4Picture unregistered PicturePlugin)
 try:

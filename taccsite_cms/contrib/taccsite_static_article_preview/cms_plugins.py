@@ -21,6 +21,8 @@ from .models import (
     TaccsiteStaticEventsArticlePreview,
 )
 
+
+
 # Constants
 
 KIND_DICT = {
@@ -30,6 +32,8 @@ KIND_DICT = {
     'events': 'c-article-preview--events',
 }
 
+
+
 # Helpers
 
 # FAQ: This exists to retireve classnames via consistently-named functions
@@ -38,7 +42,9 @@ def get_kind_classname(value):
     """Get kind class based on value."""
     return KIND_DICT[value]
 
-# Bases
+
+
+# Abstracts
 
 class AbstractArticlePreviewPlugin(LinkPlugin, AbstractMaxChildrenPlugin):
     module = 'TACC Site'
@@ -120,6 +126,8 @@ class AbstractArticlePreviewWithMediaPlugin(AbstractArticlePreviewPlugin):
             return ['media_support'] if len(MEDIA_SUPPORT_CHOICES) == 1 else []
         else:   # i.e. user is creating instance
             return []
+
+
 
 # Plugins
 
