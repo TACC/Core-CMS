@@ -1,12 +1,7 @@
-"""
-.. module:: taccsite_sample.utils
-   :synopsis: Utilities to process user name.
-"""
-
 def has_proper_name(user=None):
     """Whether user has enough data with which to form a proper name.
 
-    :param user: Django user object
+    :param django.contrib.auth.models.User: Django user object
 
     :returns: True, False, or None (if unknown)
     :rtype: bool | None
@@ -27,7 +22,7 @@ def has_proper_name(user=None):
 def get_proper_name(user=None):
     """Get proper name of an authenticated user.
 
-    :param user: Django user object (authenticated)
+    :param django.contrib.auth.models.User: Django user object (authenticated)
 
     :returns: Proper name of user
     :rtype: str | None

@@ -19,7 +19,7 @@ class TaccsiteBlockquote(CMSPlugin):
     )
 
     origin = models.CharField(
-        help_text='The origin of the quote (i.e. citation, attribution) (e.g. author, source). This value is ignored if "Advanced origin" fields have data.',
+        help_text=_('The origin of the quote (i.e. citation, attribution) (e.g. author, source). This value is ignored if "Advanced origin" fields have data.'),
         blank=True,
         max_length=100,
     )

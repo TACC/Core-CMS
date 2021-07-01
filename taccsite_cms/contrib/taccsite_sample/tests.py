@@ -25,6 +25,7 @@ class TaccsiteSampleTests(TestCase):
     # Helpers
 
     def _create_auth_user(self, username='test', first_name='', last_name=''):
+        """Create authenticated user"""
         self.auth_user = User.objects.create_user(
             username=username,
             first_name=first_name,
@@ -36,11 +37,13 @@ class TaccsiteSampleTests(TestCase):
         self.context['request'].user = self.auth_user
 
     def _create_anon_user(self, guest_name='Guest'):
+        """Create unauthenticated user"""
         self.auth_user = AnonymousUser()
         self.context = { 'request': self.factory.get('/test/user') }
         self.context['request'].user = self.anon_user
 
     def _populate_plugin_model(self, guest_name=None):
+        """Update plugin model to have necessary data"""
         data = {'guest_name': guest_name} if bool(guest_name) else {}
         self.plugin = add_plugin(
             self.placeholder,

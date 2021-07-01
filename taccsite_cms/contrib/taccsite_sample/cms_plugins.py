@@ -6,7 +6,7 @@ from django.utils.encoding import force_text
 from .models import TaccsiteSample
 
 from .constants import DEFAULT_USER_NAME as default_name
-from .utils import has_proper_name
+from .helpers import has_proper_name
 
 # SEE: http://docs.django-cms.org/en/release-3.7.x/reference/plugins.html
 @plugin_pool.register_plugin
@@ -35,7 +35,9 @@ class TaccsiteSamplePlugin(CMSPluginBase):
     # FAQ: Sets tooltip of preview of this plugin within a Text plugin
     def icon_alt(self, instance):
         super_value = force_text(super().icon_alt(instance))
-        return f'Hello, […] ({super_value})'
+        return _('Hello, […] (%(original_string_text)s)') % {
+            'original_string_text': super_value
+        }
     # NOTE: Our previews (see `icon_alt`) are rich and have no icon...
     # TODO: Confirm whether these are ever necessary
     # def icon_src(self, instance)

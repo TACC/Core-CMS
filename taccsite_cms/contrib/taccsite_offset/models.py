@@ -7,6 +7,8 @@ from djangocms_attributes_field import fields
 
 from taccsite_cms.contrib.helpers import get_choices
 
+
+
 # Constants
 
 DIRECTION_DICT = {
@@ -20,6 +22,8 @@ DIRECTION_DICT = {
     },
 }
 DIRECTION_CHOICES = get_choices(DIRECTION_DICT)
+
+
 
 # Models
 
