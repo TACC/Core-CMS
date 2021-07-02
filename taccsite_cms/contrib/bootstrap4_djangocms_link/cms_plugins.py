@@ -1,4 +1,4 @@
-# Reregister unregistered LinkPlugin without uninstalling Bootstrap4's
+# Re-register unregistered LinkPlugin without uninstalling Bootstrap4's
 # FAQ: A Bootstrap link is undesirable but may be used by migrated legacy sites
 # TODO: Drop try/except & load non-standard plugin set for migrated legacy sites
 # FAQ: If we can import both plugins, then re-register LinkPlugin

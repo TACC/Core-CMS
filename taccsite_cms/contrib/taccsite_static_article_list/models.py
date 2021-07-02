@@ -70,11 +70,19 @@ class TaccsiteArticleList(AbstractLink):
         max_length=255,
     )
 
-    link_is_optional = True
-
     def get_short_description(self):
         return self.title_text
 
+
+
+    # Parent
+
+    link_is_optional = True
+
+    class Meta:
+        abstract = False
+
+    # Validate
     def clean(self):
         clean_for_abstract_link(__class__, self)
 
@@ -105,6 +113,3 @@ class TaccsiteArticleList(AbstractLink):
                 },
                 code='invalid'
             )
-
-    class Meta:
-        abstract = False

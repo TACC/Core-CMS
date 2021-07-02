@@ -43,7 +43,6 @@ class ______Plugin(LinkPlugin):
     ]
 
     # Render
-
     def render(self, context, instance, placeholder):
         context = super().render(context, instance, placeholder)
         request = context['request']

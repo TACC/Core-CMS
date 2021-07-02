@@ -1,3 +1,4 @@
+# TODO: Consider using an Enum (and an Abstract Enum with `get_choices` method)
 LAYOUT_DICT = {
     'cols-widest-2-even_width': {
         'classname':    'c-article-list--layout-a',

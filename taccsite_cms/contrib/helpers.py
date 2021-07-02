@@ -1,3 +1,4 @@
+# Get Django `models.CharField` `choices`
 def get_choices(choice_dict):
     """Get a sequence for a Django model field choices from a dictionary.
 
@@ -15,6 +16,8 @@ def get_choices(choice_dict):
 
 
 
+# Filter Django `models.CharField` `choices`
+# SEE: get_choices
 def filter_choices_by_prefix(choices, prefix):
     """Reduce sequence of choices to items whose values begin with given string
 
@@ -34,32 +37,42 @@ def filter_choices_by_prefix(choices, prefix):
 
 
 
+# Concatenate a list of CSS classes
 # SEE: https://github.com/django-cms/djangocms-bootstrap4/blob/master/djangocms_bootstrap4/helpers.py
 def concat_classnames(classes):
-    """Concatenates a list of classes (without failing on None)"""
+    """Concatenate a list of classname strings (without failing on None)"""
     # SEE: https://stackoverflow.com/a/20271297/11817077
     return ' '.join(_class for _class in classes if _class)
 
 
 
+# Create a list clone that has another list shoved into it
 # SEE: https://newbedev.com/how-to-insert-multiple-elements-into-a-list
 def insert_at_position(position, list, list_to_insert):
-    """Insert list at position within another list"""
+    """Insert list at position within another list
+
+    :returns: New list
+    """
     return list[:position] + list_to_insert + list[position:]
 
 
 
+# Get the date from a list that is nearest
 # SEE: https://stackoverflow.com/a/32237949/11817077
 def get_nearest(items, pivot):
-    """Get nearest date (or other arithmatic value)"""
+    """Get nearest date (or other arithmatic value)
+
+    :returns: The item value nearest the given "pivot" value
+    """
     return min(items, key=lambda x: abs(x - pivot))
 
 
 
+# Get list of indicies of items that start with text
 # SEE: https://stackoverflow.com/a/67393343/11817077
 def get_indices_that_start_with(text, list):
     """
-    Get a list of indexes of list element that starts with given text
+    Get a list of indices of list elements that starts with given text
 
     :rtype: list
     """
@@ -67,10 +80,11 @@ def get_indices_that_start_with(text, list):
 
 
 
+# Populate class attribute of plugin instances
 def add_classname_to_instances(classname, plugin_instances):
     """Add class names to class attribute of plugin instances"""
     for instance in plugin_instances:
-        # A plugin may not have any class set
+        # A plugin must not have any class set
         if not hasattr(instance.attributes, 'class'):
             instance.attributes['class'] = ''
 
@@ -80,11 +94,12 @@ def add_classname_to_instances(classname, plugin_instances):
 
 
 
-# HELP: Can this logic be less verbose?
-# HELP: Is the `preferred_time_period` parameter effectual?
+# Get date nearest today
 
 from datetime import date
 
+# HELP: Can this logic be less verbose?
+# HELP: Is the `preferred_time_period` parameter effectual?
 def which_date_is_nearest_today(date_a, date_b, preferred_time_period):
     """
     Returns whether each date is today or nearest today, and whether nearest date is past or today or future.
@@ -158,10 +173,11 @@ def which_date_is_nearest_today(date_a, date_b, preferred_time_period):
 
 
 
-# SEE: https://github.com/django-cms/django-cms/issues/5102#issuecomment-597150141
+# Allow plugins to set max number of nested children
 
 from django.shortcuts import render
 
+# SEE: https://github.com/django-cms/django-cms/issues/5102#issuecomment-597150141
 class AbstractMaxChildrenPlugin():
     """
     Abstract extension of `CMSPluginBase` that allows setting maximum amount of nested/child plugins.
@@ -191,6 +207,8 @@ class AbstractMaxChildrenPlugin():
 
 
 
+# Tweak validation on Django CMS `AbstractLink` for TACC
+
 from cms.models.pluginmodel import CMSPlugin
 
 from django.core.exceptions import ValidationError
@@ -205,6 +223,7 @@ def clean_for_abstract_link(model, self):
     ```
     from taccsite_cms.contrib.helpers import clean_for_abstract_link
 
+    # Validate
     def clean(self):
         clean_for_abstract_link(__class__, self)
 

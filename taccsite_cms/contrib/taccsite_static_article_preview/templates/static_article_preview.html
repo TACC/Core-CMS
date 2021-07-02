@@ -29,12 +29,12 @@
   </p>
   {% endif %}
 
+
+
   {# Metadata #}
   <ul class="c-article-preview__metadata">
 
-
-
-  {# Date #}
+  {# Metadata: Date #}
 
   {% if kind == 'news' %}
     <li class="c-article-preview__date  c-date">
@@ -112,19 +112,19 @@
 
 
 
-  {# Type #}
+  {# Metadata: Type #}
   {% if kind == 'news' %}
     <li class="c-article-preview__type">{{ instance.type_text }}</li>
   {% endif %}
 
-  {# Author #}
+  {# Metadata: Author #}
   {# FAQ: Not shown in design #}
   {% comment %}
     <li class="c-article-preview__author">{{ instance.author_text }}</li>
   {% endcomment %}
 
-
-
   </ul>
+
+
 
 </article>

@@ -11,6 +11,7 @@ from taccsite_cms.contrib.helpers import get_choices
 
 # Constants
 
+# TODO: Consider using an Enum (and an Abstract Enum with `get_choices` method)
 DIRECTION_DICT = {
     'left': {
         'classname':    'o-offset-content--left',

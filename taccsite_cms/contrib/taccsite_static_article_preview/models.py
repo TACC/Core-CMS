@@ -34,6 +34,10 @@ def create_media_support_field(blank=False):
         max_length=255,
     )
 
+# Helpers: Field Creation
+# FAQ: Allow fields to be shared between models without creating abstract model
+# NOTE: What every model has could change depending on new page designs…
+
 def create_title_text_field(blank=True):
     return models.CharField(
         verbose_name=_('Title'),
@@ -106,11 +110,16 @@ class TaccsiteStaticNewsArticlePreview(AbstractLink):
     author_text = create_author_text_field()
     publish_date = create_publish_date_field()
 
+
+
+    # Parent
+
     link_is_optional = True
 
     class Meta:
         abstract = False
 
+    # Validate
     def clean(self):
         clean_for_abstract_link(__class__, self)
 
@@ -127,11 +136,16 @@ class TaccsiteStaticAllocsArticlePreview(AbstractLink):
         help_text='The date after which submissions are accepted (manual entry).'
     )
 
+
+
+    # Parent
+
     link_is_optional = True
 
     class Meta:
         abstract = False
 
+    # Validate
     def clean(self):
         clean_for_abstract_link(__class__, self)
 
@@ -139,11 +153,16 @@ class TaccsiteStaticDocsArticlePreview(AbstractLink):
     title_text = create_title_text_field(blank=False)
     abstract_text = create_abstract_text_field(blank=False)
 
+
+
+    # Parent
+
     link_is_optional = True
 
     class Meta:
         abstract = False
 
+    # Validate
     def clean(self):
         clean_for_abstract_link(__class__, self)
 
@@ -160,11 +179,16 @@ class TaccsiteStaticEventsArticlePreview(AbstractLink):
         help_text='The date after which the event ends (manual entry).'
     )
 
+
+
+    # Parent
+
     link_is_optional = True
 
     class Meta:
         abstract = False
 
+    # Validate
     def clean(self):
         clean_for_abstract_link(__class__, self)
 

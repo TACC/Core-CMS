@@ -34,8 +34,7 @@ class AbstractArticleListPlugin(LinkPlugin):
     """
     module = 'TACC Site'
     model = TaccsiteArticleList
-    # abstract
-    # name = _('______ Article List (Static)')
+    # name = _('______ Article List (Static)') # abstract
     render_template = 'article_list.html'
     def get_render_template(self, context, instance, placeholder):
         return self.render_template
@@ -69,7 +68,6 @@ class AbstractArticleListPlugin(LinkPlugin):
     ]
 
     # Render
-
     def render(self, context, instance, placeholder):
         context = super().render(context, instance, placeholder)
         request = context['request']

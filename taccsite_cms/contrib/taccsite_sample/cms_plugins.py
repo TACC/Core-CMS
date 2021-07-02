@@ -44,7 +44,6 @@ class TaccsiteSamplePlugin(CMSPluginBase):
     # def text_editor_button_icon(...)
 
     # Render
-
     def render(self, context, instance, placeholder):
         context = super().render(context, instance, placeholder)
         request = context['request']

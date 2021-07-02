@@ -12,6 +12,7 @@ from taccsite_cms.contrib.helpers import (
 )
 
 class OurModelThatUsesXxx(AbstractXxx):
+    # Validate
     def clean(self):
         # Bypass irrelevant parent validation
         try:

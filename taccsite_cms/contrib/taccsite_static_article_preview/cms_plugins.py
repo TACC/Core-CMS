@@ -1,4 +1,3 @@
-
 from django.core.exceptions import ValidationError
 
 from cms.plugin_pool import plugin_pool
@@ -48,10 +47,8 @@ def get_kind_classname(value):
 
 class AbstractArticlePreviewPlugin(LinkPlugin, AbstractMaxChildrenPlugin):
     module = 'TACC Site'
-    # abstract
-    # model = TaccsiteStatic___ArticlePreview
-    # abstract
-    # name = _('______ Article Preview (Static)')
+    # model = TaccsiteStatic___ArticlePreview # abstract
+    # name = _('______ Article Preview (Static)') # abstract
     render_template = 'static_article_preview.html'
     def get_render_template(self, context, instance, placeholder):
         return self.render_template
@@ -77,13 +74,15 @@ class AbstractArticlePreviewPlugin(LinkPlugin, AbstractMaxChildrenPlugin):
         }),
     ]
 
-    # Custom
 
-    # abstract
-    # kind = '______'
+
+    # Helpers
+
+    # kind = '______' # abstract
+
+
 
     # Render
-
     def render(self, context, instance, placeholder):
         context = super().render(context, instance, placeholder)
         request = context['request']
@@ -157,7 +156,9 @@ class TaccsiteStaticNewsArticlePreviewPlugin(AbstractArticlePreviewWithMediaPlug
         }),
     ])
 
-    # Custom
+
+
+    # Helpers
 
     kind = 'news'
 
@@ -188,12 +189,15 @@ class TaccsiteStaticAllocsArticlePreviewPlugin(AbstractArticlePreviewWithMediaPl
         }),
     ])
 
-    # Custom
+
+
+    # Helper
 
     kind = 'allocs'
 
-    # Render
 
+
+    # Render
     def render(self, context, instance, placeholder):
         context = super().render(context, instance, placeholder)
         request = context['request']
@@ -236,7 +240,9 @@ class TaccsiteStaticDocsArticlePreviewPlugin(AbstractArticlePreviewPlugin):
         }),
     ])
 
-    # Custom
+
+
+    # Helpers
 
     kind = 'docs'
 
@@ -263,12 +269,15 @@ class TaccsiteStaticEventsArticlePreviewPlugin(AbstractArticlePreviewPlugin):
         }),
     ])
 
-    # Custom
+
+
+    # Helpers
 
     kind = 'events'
 
-    # Render
 
+
+    # Render
     def render(self, context, instance, placeholder):
         context = super().render(context, instance, placeholder)
         request = context['request']

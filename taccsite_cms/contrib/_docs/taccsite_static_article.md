@@ -60,6 +60,7 @@ class TaccsiteStaticNewsArticlePreview(AbstractPicture):
     class Meta:
         abstract = False
 
+    # Validate
     def clean(self):
         skip_image_validation()
 ```
