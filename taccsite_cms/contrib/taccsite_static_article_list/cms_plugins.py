@@ -73,7 +73,7 @@ class AbstractArticleListPlugin(LinkPlugin):
         request = context['request']
 
         classes = concat_classnames([
-            'c-article-list',
+            's-article-list  c-article-list',
             get_layout_classname(instance.layout_type),
             get_style_classname(instance.style_type),
             instance.attributes.get('class'),

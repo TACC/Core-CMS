@@ -5,7 +5,6 @@ Styles that allow visible link hover for article lists.
 
 %x-article-link-stretch          - Stretch link to cover container
 %x-article-link-hover            - Give link a hover state
-%x-article-link-hover--gapless   - Make link hover state fix gapless layout
 
 Styleguide Tools.ExtendsAndMixins.ArticleLink
 */
@@ -31,10 +30,4 @@ Styleguide Tools.ExtendsAndMixins.ArticleLink
 .x-article-link-hover,
 %x-article-link-hover {
   outline: 1px solid var(--global-color-accent--normal);
-
-  outline-offset: 1rem;
-}
-.x-article-link-hover--gapless,
-%x-article-link-hover--gapless {
-  outline-offset: 0;
 }

@@ -100,11 +100,6 @@ Styleguide Components.ArticlePreview
 .c-article-preview__title a:focus {
   color: inherit;
 }
-/* (List) *//* FAQ: I.E. NOT the article previews inside a Hero Banner */
-/* !!!: Cross-Component Styles not Allowed in Single Component */
-.c-article-list .c-article-preview__title {
-  @extend %x-truncate--one-line;
-}
 /* (List) News */
 .c-article-preview--news .c-article-preview__title {
   font-size: 1.8rem;
@@ -136,12 +131,6 @@ Styleguide Components.ArticlePreview
   order: 4;
 
   margin-bottom: 0; /* overwrite Bootstrap and browser */
-}
-/* (List) *//* FAQ: I.E. NOT the article previews inside a Hero Banner */
-/* !!!: Cross-Component Styles not Allowed in Single Component */
-.c-article-list .c-article-preview__abstract {
-  @extend %x-truncate--many-lines;
-  --lines: 3;
 }
 /* (List) News */
 .c-article-preview--news .c-article-preview__abstract {
@@ -258,32 +247,4 @@ Styleguide Components.ArticlePreview
 /* Give link state (pseudo-class) feedback */
 .c-article-preview__link:hover::before {
   @extend .x-article-link-hover;
-}
-/* !!!: Cross-Component Styles not Allowed in Single Component */
-.c-article-list--style-gapless .c-article-preview__link:hover::before {
-  /* TODO: Require use independent of `.x-article-link-hover` */
-  @extend .x-article-link-hover--gapless;
-}
-
-
-
-
-
-/* Modifiers */
-
-
-
-/* Modifiers: (List) News, Allocations, Events */
-/* SEE: All "Children" styles */
-
-
-
-/* Modifiers: (List) Docs */
-
-/* HACK: Force links to be a little closer together */
-/* !!!: Cross-Component Styles not Allowed in Single Component */
-.c-article-list .c-article-preview--docs:last-of-type {
-  /* FAQ: Commented out because code and style looks better without it */
-  /* TODO: Let Design decide */
-  /* margin-bottom: 3.0rem; */
 }

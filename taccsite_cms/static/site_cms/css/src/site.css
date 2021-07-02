@@ -36,6 +36,7 @@
 @import url("_imports/components/bootstrap.container.css");
 
 /* TRUMPS */
+@import url("_imports/trumps/s-article-list.css");
 @import url("_imports/trumps/s-footer.css");
 @import url("_imports/trumps/s-blockquote.css");
 @import url("_imports/trumps/u-empty.css");

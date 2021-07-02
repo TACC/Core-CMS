@@ -1,0 +1,57 @@
+/* WARNING: Deprecated. Do NOT add this to markup! */
+/* TODO: Replace usage (Frontera New Homepage) with `c-article-list` */
+/* SEE: ../../components/c-article-list.css */
+/*
+(Deprecated) Article List
+
+A list of article previews. Content __must__ use the tags defined by the example markup.
+
+Markup:
+<article class="s-article-list">
+  <h2>Articles</h2>
+  <article>...</article>
+  <article>...</article>
+  <article>...</article>
+  <footer><a href="/more">See All</a></footer>
+</article>
+
+Styleguide Trumps.Scopes.ArticleList
+*/
+
+
+
+/* Children */
+
+/* Children: Title */
+
+.s-article-list .c-article-preview__title {
+  /* FAQ: Article preview truncation differs for Hero Banner */
+  /* SEE: https://github.com/TACC/Core-CMS-Resources/blob/main/frontera-cms/static/frontera-cms/css/src/_imports/trumps/s-home.css#L158-L161 */
+  @extend %x-truncate--one-line;
+}
+
+/* Children: Abstract */
+
+.s-article-list .c-article-preview__abstract {
+  /* FAQ: Article previews may not always truncate many lines */
+  @extend %x-truncate--many-lines;
+  --lines: 3;
+}
+
+/* Children: Link */
+
+.s-article-list:not(.c-article-list--style-gapless)
+  .c-article-preview__link:hover::before {
+    outline-offset: 1rem;
+}
+
+
+
+/* Modifiers */
+
+/* Modifiers: Docs */
+
+.s-article-list .c-article-preview--docs:last-of-type {
+  /* HACK: Force links to be a little closer together (match design) */
+  margin-bottom: 3.0rem;
+}
