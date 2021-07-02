@@ -1,16 +1,16 @@
 /*
 Article List
 
-A list of article previews. Content __must__ use the tags defined by the example markup.
+A list of article previews.
 
 Markup:
 <article class="c-article-list">
   <h2 class="c-article-list__title">
-    News &amp; Stuff
+    News
   </h2>
-  <article class="c-article-list__item">(Article Preview)</article>
-  <article class="c-article-list__item">(Article Preview)</article>
-  <article class="c-article-list__item">(Article Preview)</article>
+  <article class="c-article-list__item">...</article>
+  <article class="c-article-list__item">...</article>
+  <article class="c-article-list__item">...</article>
   <footer class="c-article-list__footer">
     <a class="c-article-list__link" href="/more">
       <i class="c-article-list__link-icon  icon icon-push-right"></i>

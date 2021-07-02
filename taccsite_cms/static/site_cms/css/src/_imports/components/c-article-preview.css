@@ -1,9 +1,27 @@
 /*
 Article Preview
 
-A preview of an article (to be used in a `c-article-list`). Content __must__ come in the order and use the tags defined by the example markup.
+A preview of an article (to be used in a `c-article-list`). Content __should__ come in the order defined by the example markup.
 
-Markup: c-article-preview.html
+Markup:
+<article class="c-article-preview c-article-preview--…">
+  <div class="c-article-preview__media">
+    <img src="…" alt="…" />
+  </div>
+  <h3 class="c-article-preview__title">
+    A Long or Short Title of Article
+  </h3>
+  <p class="c-article-preview__abstract">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+  </p>
+  <ul class="c-article-preview__metadata">
+    <li class="c-article-preview__date">
+      <time datetime="2018-07-07">July 7</time>
+    </li>
+    <li class="c-article-preview__type">Science News</li>
+    <li class="c-article-preview__author">Wesley B.</li>
+  </ul>
+</article>
 
 Styleguide Components.ArticlePreview
 */
