@@ -61,7 +61,7 @@ Styleguide Components.ArticleList
   font-weight: var(--bold);
   text-transform: uppercase;
 
-  @extend .x-truncate--one-line;
+  @extend %x-truncate--one-line;
 }
 /* Add a fake short border above title */
 .c-article-list__title {
@@ -111,7 +111,7 @@ Styleguide Components.ArticleList
   padding-bottom: 1.0rem;
   padding-right: 1.0rem;
 
-  @extend .x-truncate--one-line;
+  @extend %x-truncate--one-line;
   max-width: 100%; /* SEE: https://stackoverflow.com/a/44521595 */
 }
 /* Dark section */

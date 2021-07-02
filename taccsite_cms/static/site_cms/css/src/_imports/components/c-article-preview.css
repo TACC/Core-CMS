@@ -242,9 +242,9 @@ Styleguide Components.ArticlePreview
 
   color: transparent; /* ensure Link _text_ is invisible (allow decoration) */
 
-  @extend .x-article-link-stretch;
+  @extend %x-article-link-stretch;
 }
 /* Give link state (pseudo-class) feedback */
 .c-article-preview__link:hover::before {
-  @extend .x-article-link-hover;
+  @extend %x-article-link-hover;
 }

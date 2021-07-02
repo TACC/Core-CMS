@@ -24,7 +24,7 @@ dl.c-date {
 /* Children */
 
 .c-date__label {
-  @extend .x-truncate--one-line;
+  @extend %x-truncate--one-line;
 }
 .c-date__label::after {
   content: ':';

@@ -12,7 +12,6 @@ Styleguide Tools.ExtendsAndMixins.ArticleLink
 /* WARNING: A link ancestor must have its `position` set (not to static) */
 
 /* Expand link to cover container */
-.x-article-link-stretch,
 %x-article-link-stretch {
   position: absolute;
   height: 100%;
@@ -27,7 +26,6 @@ Styleguide Tools.ExtendsAndMixins.ArticleLink
 }
 
 /* Give link state (pseudo-class) feedback */
-.x-article-link-hover,
 %x-article-link-hover {
   outline: 1px solid var(--global-color-accent--normal);
 }
