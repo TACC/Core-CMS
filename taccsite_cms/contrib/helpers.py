@@ -136,7 +136,7 @@ def which_date_is_nearest_today(date_a, date_b, preferred_time_period):
         is_a = True
         a_time_period = 'today'
 
-    elif today == date_b:
+    if today == date_b:
         is_b = True
         b_time_period = 'today'
 
