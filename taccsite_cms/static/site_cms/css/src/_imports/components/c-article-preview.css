@@ -94,6 +94,7 @@ Styleguide Components.ArticlePreview
   margin-bottom: 0; /* overwrite Bootstrap and browser */
 
   font-weight: var(--bold);
+  line-height: 2.4rem;
 }
 .c-article-preview__title a,
 .c-article-preview__title a:hover,
@@ -103,23 +104,19 @@ Styleguide Components.ArticlePreview
 /* (List) News */
 .c-article-preview--news .c-article-preview__title {
   font-size: 1.8rem;
-  line-height: 2.4rem;
 }
 /* (List) Allocations */
 .c-article-preview--allocs .c-article-preview__title {
   font-size: 1.6rem;
-  line-height: 2.4rem;
 }
 /* (List) Events */
 .c-article-preview--events .c-article-preview__title {
   font-size: 1.4rem;
-  line-height: 2.4rem;
   color: var(--global-color-primary--xx-dark);
 }
 /* (List) Docs */
 .c-article-preview--docs .c-article-preview__title {
   font-size: 1.4rem;
-  line-height: inherit; /* override Bootstrap */
   color: var(--global-color-primary--xx-dark);
 }
 
@@ -131,11 +128,12 @@ Styleguide Components.ArticlePreview
   order: 4;
 
   margin-bottom: 0; /* overwrite Bootstrap and browser */
+
+  line-height: 2.4rem;
 }
 /* (List) News */
 .c-article-preview--news .c-article-preview__abstract {
   font-size: 1.6rem;
-  line-height: 2.4rem;
 }
 /* (List) Allocations */
 .c-article-preview--allocs .c-article-preview__abstract {
@@ -144,7 +142,6 @@ Styleguide Components.ArticlePreview
 /* (List) Events */
 .c-article-preview--events .c-article-preview__abstract {
   font-size: 1.4rem;
-  line-height: 2.4rem;
   color: var(--global-color-primary--xx-dark);
 }
 /* (List) Docs */
