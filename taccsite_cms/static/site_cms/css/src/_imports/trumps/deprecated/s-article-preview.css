@@ -223,17 +223,17 @@ Styleguide Trumps.Deprecated.Scopes.ArticlePreview
 .s-article-preview p:last-child > a {
   color: transparent; /* ensure Link _text_ is invisible (allow decoration) */
 
-  @extend .x-article-link-stretch;
+  @extend %x-article-link-stretch;
 }
 .s-article-list--layout-gapless .s-article-preview p:last-child > a {
-  @extend .x-article-link-stretch--gapless;
+  /* NOTE: Deleted in GH-93 *//* @extend %x-article-link-stretch--gapless; */
 }
 /* Give link state (pseudo-class) feedback */
 .s-article-preview p:last-child > a:hover {
-  @extend .x-article-link-hover;
+  @extend %x-article-link-hover;
 }
 .s-article-list--layout-gapless .s-article-preview p:last-child > a:hover {
-  @extend .x-article-link-hover--gapless;
+  /* NOTE: Deleted in GH-93 *//* @extend %x-article-link-hover--gapless; */
 }
 
 
