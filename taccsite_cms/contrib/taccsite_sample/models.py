@@ -25,7 +25,9 @@ class TaccsiteSample(CMSPlugin):
     def get_short_description(self):
         return 'Hello, […]'
 
-    # Custom
+
+
+    # Helpers
 
     def get_name(self, user=None):
         """Get name by which to greet the user.

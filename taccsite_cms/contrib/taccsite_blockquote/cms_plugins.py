@@ -3,8 +3,7 @@ from cms.plugin_pool import plugin_pool
 from django.utils.translation import gettext_lazy as _
 
 from taccsite_cms.contrib.helpers import concat_classnames
-
-from taccsite_cms.contrib.taccsite_offset.models import get_direction_classname
+from taccsite_cms.contrib.taccsite_offset.cms_plugins import get_direction_classname
 
 from .models import TaccsiteBlockquote
 
@@ -19,8 +18,9 @@ class TaccsiteBlockquotePlugin(CMSPluginBase):
     name = _('Blockquote')
     render_template = 'blockquote.html'
 
-    cache = False
+    cache = True
     text_enabled = True
+    allow_children = False
 
     fieldsets = [
         (None, {
@@ -51,7 +51,6 @@ class TaccsiteBlockquotePlugin(CMSPluginBase):
     ]
 
     # Render
-
     def render(self, context, instance, placeholder):
         context = super().render(context, instance, placeholder)
         request = context['request']

@@ -89,7 +89,8 @@ ol ol, ol ul, ul ol, ul ul {
 }
 /* Add space between `dt` and `dd` */
 dt {
-  margin-bottom: .5rem; /* Mirror's Bootstrap `margin-bottom` */
+  margin-bottom: .5rem; /* overwrite Bootstrap */
+  font-weight: initial; /* overwrite Bootstrap */
 }
 
 

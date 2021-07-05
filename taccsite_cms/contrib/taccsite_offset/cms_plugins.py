@@ -5,7 +5,17 @@ from django.utils.translation import gettext_lazy as _
 
 from taccsite_cms.contrib.helpers import concat_classnames
 
-from .models import TaccsiteOffset, get_direction_classname
+from .models import TaccsiteOffset, DIRECTION_DICT
+
+# Helpers
+
+# FAQ: This exists to retireve classnames via consistently-named functions
+# SEE: taccsite_cms.contrib.taccsite_static_article_list.cms_plugins
+def get_direction_classname(value):
+    """Get direction class based on value."""
+    return DIRECTION_DICT.get(value, {}).get('classname')
+
+# Plugins
 
 @plugin_pool.register_plugin
 class TaccsiteOffsetPlugin(CMSPluginBase):
@@ -18,7 +28,7 @@ class TaccsiteOffsetPlugin(CMSPluginBase):
     name = _('Offset Content')
     render_template = 'offset.html'
 
-    cache = False
+    cache = True
     text_enabled = False
     allow_children = True
 
@@ -37,7 +47,6 @@ class TaccsiteOffsetPlugin(CMSPluginBase):
     ]
 
     # Render
-
     def render(self, context, instance, placeholder):
         context = super().render(context, instance, placeholder)
         request = context['request']
