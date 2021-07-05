@@ -39,7 +39,8 @@
   {% if kind == 'news' %}
     <li class="c-article-preview__date  c-date">
       <span class="c-date__label">Published</span>
-      <time class="c-date__value" datetime="{{ instance.publish_date|date:"Y-m-d" }}">
+      <time class="c-date__value"
+            datetime="{{ instance.publish_date|date:"Y-m-d" }}">
         {{ instance.publish_date|date:"F d, Y" }}
       </time>
     </li>
@@ -69,7 +70,8 @@
       {# FAQ: Odd spacing avoids whitespace rendered after text #}
       {% if open_date_time_period == 'future' %}
           Submissions Next Open{% else %}Submissions Open Since{% endif %}</span>
-      <time class="c-date__value" datetime="{{ open_date|date:"Y-m-d" }}">
+      <time class="c-date__value"
+            datetime="{{ open_date|date:"Y-m-d" }}">
         {{ open_date|date:"F d, Y" }}
       </time>
     </li>
@@ -81,7 +83,8 @@
         {# FAQ: Odd spacing avoids whitespace rendered after text #}
         {% if open_date_time_period == 'future' %}
             Submissions Deadline{% else %}Submissions Closed{% endif %}</span>
-      <time class="c-date__value" datetime="{{ close_date|date:"Y-m-d" }}">
+      <time class="c-date__value"
+            datetime="{{ close_date|date:"Y-m-d" }}">
         {{ close_date|date:"F d, Y" }}
       </time>
     </li>
