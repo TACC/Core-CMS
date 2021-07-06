@@ -4,7 +4,7 @@ ORGANIZE STYLES HERE!
 
 These folders' styles are only to be imported by other stylesheets.
 
-Earlier CMS website versions may expect or rely on these styles.
+CMS websites that were migrated from earlier instances may need these styles.
 
 ## Rules
 
