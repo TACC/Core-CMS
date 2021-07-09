@@ -247,7 +247,7 @@ INSTALLED_APPS = [
 def get_subdirs_as_module_names(path):
     module_names = []
     for entry in os.scandir(path):
-        if entry.is_dir() and not entry.path.startswith('_'):
+        if entry.is_dir():
             # FAQ: There are different root paths to tweak:
             #      - Containers use `/code/…`
             #      - Python Venvs use `/srv/taccsite/…`
