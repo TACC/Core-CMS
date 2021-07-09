@@ -97,11 +97,22 @@ To support multiple instances of the CMS on one machine (i.e. local development)
 
 Some websites need static resources to supplement their migration.
 
-1. Copy `taccsite_cms/templates/fullwidth.html` to `taccsite_custom/name-of-project/templates/fullwidth.html`.
-2. Update `taccsite_custom/name-of-project/templates/fullwidth.html` to load migration static resources e.g., in `assets_custom` block add:
+1. __If__ you did not [create your project by cloning `example-cms`](#custom-resources), __then__:
+    1. Copy `templates/fullwidth.html` from `taccsite_custom/example-cms/` to `taccsite_custom/name-of-project/`.
+    2. Copy `static/.../css/src/migrate.v1_v2.css` from `taccsite_custom/example-cms/` to `taccsite_custom/name-of-project/`.
+2. Update `taccsite_custom/name-of-project/templates/fullwidth.html` to load migration assets e.g.:
+    - Change
 
     ```html
-    <link id="css-site-font" rel="stylesheet" href="{% static 'site_cms/css/build/migrate.v1_v2.css' %}">
+      <!-- To style old CMS content on new CMS -->
+      <!-- <link rel="stylesheet" href="{% static 'example-cms/css/build/migrate.v1_v2.css' %}"> -->
+    ```
+
+    - To
+
+    ```html
+      <!-- To style old CMS content on new CMS -->
+      <link rel="stylesheet" href="{% static 'name-of-project/css/build/migrate.v1_v2.css' %}">
     ```
 
 ## Run the CMS
