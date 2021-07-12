@@ -1,11 +1,11 @@
-# SEE: https://github.com/django-cms/djangocms-bootstrap4/blob/2.0.0/djangocms_bootstrap4/contrib/bootstrap4_content/models.py
-
 from cms.models.pluginmodel import CMSPlugin
 
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 from djangocms_attributes_field import fields
+
+
 
 # Constants
 
@@ -14,6 +14,8 @@ DIRECTION_CHOICES = (
     # ('center', _('Center')), # GH-66: Support centered offset content
     ('right', _('Right')),
 )
+
+
 
 # Helpers
 
@@ -27,6 +29,8 @@ def get_direction_classname(offset):
     }
 
     return switcher.get(offset, '')
+
+
 
 # Models
 
