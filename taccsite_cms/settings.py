@@ -232,6 +232,8 @@ INSTALLED_APPS = [
     'djangocms_bootstrap4.contrib.bootstrap4_picture',
     'djangocms_bootstrap4.contrib.bootstrap4_tabs',
     'djangocms_bootstrap4.contrib.bootstrap4_utilities',
+    'haystack',
+    'aldryn_apphooks_config',
     # For faster testing, disable migrations during database creation
     # SEE: https://stackoverflow.com/a/37150997
     'test_without_migrations',
@@ -382,8 +384,8 @@ if CONSOLE_LOG_ENABLED:
     for feature in FEATURES:
         print(feature + ": ", FEATURES[feature])
 
-# Support Blog/News & Social Media Metadata
-if FEATURES['blog']:
+if current_secrets._FEATURES['blog']:
+    # Install required apps
     INSTALLED_APPS += [
         # Blog/News
         # 'filer',              # Already added
@@ -399,7 +401,7 @@ if FEATURES['blog']:
         'djangocms_page_meta',
     ]
 
-    # Configure metadata
+    # Metadata: Configure
     META_SITE_PROTOCOL = 'http'
     META_USE_SITES = True
     META_USE_OG_PROPERTIES = True
@@ -407,45 +409,18 @@ if FEATURES['blog']:
     META_USE_GOOGLEPLUS_PROPERTIES = True # django-meta 1.x+
     # META_USE_SCHEMAORG_PROPERTIES=True  # django-meta 2.x+
 
-    # Set custom paths for templates
+    # Blog/News: Set custom paths for templates
     BLOG_PLUGIN_TEMPLATE_FOLDERS = (
         ('plugins/default', 'Default template'),    # i.e. `templates/djangocms_blog/plugins/default/`
         ('plugins/default-clone', 'Clone of default template'),  # i.e. `templates/djangocms_blog/plugins/default-clone/`
     )
 
-    # Change default values for the auto-setup of one `BlogConfig`
+    # Blog/News: Change default values for the auto-setup of one `BlogConfig`
     # SEE: https://github.com/nephila/djangocms-blog/issues/629
     BLOG_AUTO_SETUP = True
     BLOG_AUTO_HOME_TITLE ='Home'
     BLOG_AUTO_BLOG_TITLE = 'News'
     BLOG_AUTO_APP_TITLE = 'News'
-
-# Support Portal search or CMS indexing
-if 'search' in FEATURES and (
-    FEATURES['search']
-    # FAQ: Portals can search by default, but may not set `FEATURES['search']`
-    or (PORTAL and FEATURES['search'] != False)
-):
-    INSTALLED_APPS += [
-        'haystack',
-        'aldryn_apphooks_config',
-    ]
-
-    # Elasticsearch Indexing
-    HAYSTACK_ROUTERS = ['aldryn_search.router.LanguageRouter',]
-    HAYSTACK_SIGNAL_PROCESSOR = 'taccsite_cms.signal_processor.RealtimeSignalProcessor'
-    ALDRYN_SEARCH_DEFAULT_LANGUAGE = 'en'
-    ALDRYN_SEARCH_REGISTER_APPHOOK = True
-    HAYSTACK_CONNECTIONS = {
-        'default': {
-            'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
-            'URL': current_secrets._ES_HOSTS,
-            'INDEX_NAME': current_secrets._ES_INDEX_PREFIX.format('cms'),
-            'KWARGS': {'http_auth': current_secrets._ES_AUTH }
-        }
-    }
-
-    ES_DOMAIN = current_secrets._ES_DOMAIN
 
 
 DJANGOCMS_PICTURE_NESTING = True
@@ -496,6 +471,22 @@ GOOGLE_ANALYTICS_PRELOAD = current_secrets._GOOGLE_ANALYTICS_PRELOAD
 # SETTINGS VARIABLE EXPORTS.
 # Use a custom namespace (using default settings.VARIABLE configuration)
 SETTINGS_EXPORT_VARIABLE_NAME = 'settings'
+
+# Elasticsearch Indexing
+HAYSTACK_ROUTERS = ['aldryn_search.router.LanguageRouter',]
+HAYSTACK_SIGNAL_PROCESSOR = 'taccsite_cms.signal_processor.RealtimeSignalProcessor'
+ALDRYN_SEARCH_DEFAULT_LANGUAGE = 'en'
+ALDRYN_SEARCH_REGISTER_APPHOOK = True
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+        'URL': current_secrets._ES_HOSTS,
+        'INDEX_NAME': current_secrets._ES_INDEX_PREFIX.format('cms'),
+        'KWARGS': {'http_auth': current_secrets._ES_AUTH }
+    }
+}
+
+ES_DOMAIN = current_secrets._ES_DOMAIN
 
 # Exported settings.
 SETTINGS_EXPORT = [
