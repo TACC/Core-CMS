@@ -10,7 +10,6 @@ try:
 
     # SEE: https://github.com/django-cms/djangocms-bootstrap4/blob/master/djangocms_bootstrap4/contrib/bootstrap4_picture/cms_plugins.py#L54
     plugin_pool.register_plugin(PicturePlugin)
-# CAVEAT: If import statement fails for reason other than Bootstrap presence,
-#         then that failure, and the failure of this plugin, is silent
+# CAVEAT: If plugins exist but import statement is inaccurate... silent failure
 except ImportError:
     pass

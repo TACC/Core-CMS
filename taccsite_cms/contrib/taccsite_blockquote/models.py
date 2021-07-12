@@ -1,3 +1,5 @@
+# SEE: https://github.com/django-cms/djangocms-bootstrap4/blob/2.0.0/djangocms_bootstrap4/contrib/bootstrap4_content/models.py
+
 from cms.models.pluginmodel import CMSPlugin
 from django.utils.translation import gettext_lazy as _
 
@@ -19,7 +21,7 @@ class TaccsiteBlockquote(CMSPlugin):
     )
 
     origin = models.CharField(
-        help_text=_('The origin of the quote (i.e. citation, attribution) (e.g. author, source). This value is ignored if "Advanced origin" fields have data.'),
+        help_text='The origin of the quote (i.e. citation, attribution) (e.g. author, source). This value is ignored if "Advanced origin" fields have data.',
         blank=True,
         max_length=100,
     )
