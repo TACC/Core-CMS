@@ -25,6 +25,9 @@
 @import url("_imports/objects/o-section.css");
 
 /* COMPONENTS */
+@import url("_imports/components/c-article-list.css");
+@import url("_imports/components/c-article-preview.css");
+@import url("_imports/components/c-date.css");
 @import url("_imports/components/c-footer.css");
 @import url("_imports/components/django.cms.css");
 @import url("_imports/components/django.cms.blog.css");
@@ -32,5 +35,6 @@
 @import url("_imports/components/bootstrap.container.css");
 
 /* TRUMPS */
+@import url("_imports/trumps/s-article-list.css");
 @import url("_imports/trumps/s-footer.css");
 @import url("_imports/trumps/u-empty.css");

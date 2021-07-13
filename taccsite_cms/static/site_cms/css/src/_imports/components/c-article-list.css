@@ -1,0 +1,205 @@
+/*
+Article List
+
+A list of article previews.
+
+Markup:
+<article class="c-article-list">
+  <h2 class="c-article-list__title">
+    News
+  </h2>
+  <article class="c-article-list__item">...</article>
+  <article class="c-article-list__item">...</article>
+  <article class="c-article-list__item">...</article>
+  <footer class="c-article-list__footer">
+    <a class="c-article-list__link" href="/more">
+      <i class="c-article-list__link-icon  icon icon-push-right"></i>
+      <span>See All</span>
+    </a>
+  </footer>
+</article>
+
+Styleguide Components.ArticleList
+*/
+@import url("_imports/tools/x-truncate.css");
+@import url("_imports/tools/x-layout.css");
+@import url("_imports/tools/x-article-link.css");
+
+
+
+
+
+/* Children */
+
+
+
+.c-article-list--layout-e .c-article-list__item {
+  /* To shrink heading */
+  flex-grow: 1;
+}
+
+
+
+/* Children: Title */
+
+.c-article-list--layout-a .c-article-list__title,
+.c-article-list--layout-b .c-article-list__title,
+.c-article-list--layout-c .c-article-list__title,
+.c-article-list--layout-d .c-article-list__title {
+  /* To span all columns */
+  grid-column-start: 1;
+  grid-column-end: -1;
+}
+
+.c-article-list__title {
+  margin-top: 0; /* overwrite Bootstrap */
+  margin-bottom: 3.0rem; /* overwrite Bootstrap */
+
+  color: var(--global-color-accent--normal);
+
+  font-size: 1.6rem;
+  font-weight: var(--bold);
+  text-transform: uppercase;
+
+  @extend %x-truncate--one-line;
+}
+/* Add a fake short border above title */
+.c-article-list__title {
+  position: relative;
+  padding-top: 1em;
+}
+.c-article-list__title::before {
+  content: '';
+  display: block;
+
+  position: absolute;
+  top: 0;
+  height: 0.5em;
+  width: 2.5em;
+
+  background-color: var(--global-color-accent--normal);
+}
+
+
+
+/* Children: "See More" */
+
+/* Anchor */
+
+.c-article-list--layout-a .c-article-list__footer,
+.c-article-list--layout-b .c-article-list__footer,
+.c-article-list--layout-c .c-article-list__footer,
+.c-article-list--layout-d .c-article-list__footer {
+  /* To span all columns */
+  grid-column-start: 1;
+  grid-column-end: -1;
+}
+
+.c-article-list__footer {
+  border-top-width: var(--global-border-width--thick);
+  border-top-style: solid;
+
+  margin-bottom: -1.0rem; /* to "undo" space added from `padding-bottom` */
+
+  font-size: 1.2rem;
+  font-weight: var(--bold);
+}
+.c-article-list__link {
+  display: inline-block;
+
+  padding-top: 1.0rem;
+  padding-bottom: 1.0rem;
+  padding-right: 1.0rem;
+
+  @extend %x-truncate--one-line;
+  max-width: 100%; /* SEE: https://stackoverflow.com/a/44521595 */
+}
+/* Dark section */
+.o-section--style-dark .c-article-list__footer {
+  border-color: var(--global-color-primary--xx-light);
+}
+.o-section--style-dark .c-article-list__link {
+  color: var(--global-color-primary--xx-light);
+}
+/* Light section */
+.o-section--style-light .c-article-list__footer {
+  border-color: var(--global-color-primary--xx-dark);
+}
+.o-section--style-light .c-article-list__link {
+  color: var(--global-color-primary--xx-dark);
+}
+
+/* Icon */
+
+.c-article-list__link-icon {
+  margin-right: 0.75em;
+
+  font-size: 1.4rem;
+  vertical-align: text-bottom;
+
+  /* To hide the `text-decoration: underline` of the anchor */
+  /* SEE: https://stackoverflow.com/a/15688237/11817077 */
+  display: inline-block;
+}
+
+
+
+
+
+/* Modifiers */
+
+
+
+/* Modifiers: Layout */
+
+.c-article-list--layout-a { @extend %x-layout--a; }
+.c-article-list--layout-b { @extend %x-layout--b; }
+.c-article-list--layout-c { @extend %x-layout--c; }
+.c-article-list--layout-d { @extend %x-layout--d; }
+.c-article-list--layout-e { @extend %x-layout--e; }
+
+/* Modifiers: Layout: Column-Based */
+
+.c-article-list--layout-a,
+.c-article-list--layout-b,
+.c-article-list--layout-c,
+.c-article-list--layout-d {
+  column-gap: 3.0rem; /* GH-99: Use standard spacing value */
+}
+
+/* Modifiers: Layout: Row-Based */
+
+.c-article-list--layout-e {
+  row-gap: 3.0rem; /* GH-99: Use standard spacing value */
+}
+
+
+
+/* Modifiers: Style */
+
+/* Modifiers: Style: Divided */
+
+/* Vertical layout */
+.c-article-list--layout-e.c-article-list--style-divided .c-article-list__item {
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
+
+  border-width: var(--global-border-width--normal) 0 0 0;
+  border-style: solid;
+}
+/* Dark section */
+.o-section--style-dark.c-article-list--style-divided .c-article-list__item,
+.o-section--style-dark .c-article-list--style-divided .c-article-list__item {
+  border-color: var(--global-color-primary--light);
+}
+/* Light section */
+.o-section--style-light.c-article-list--style-divided .c-article-list__item,
+.o-section--style-light .c-article-list--style-divided .c-article-list__item {
+  border-color: var(--global-color-primary--dark);
+}
+
+/* Modifiers: Style: Gapless */
+
+.c-article-list--style-gapless {
+  gap: 0; /* overwrite `column-gap` or `row-gap` */
+}

@@ -1,0 +1,133 @@
+{% load cms_tags %}
+
+<article
+  {# class="c-article-preview c-article-preview--..." #}
+  {{ instance.attributes_str }}
+>
+  {# Media e.g. image thumbnail #}
+  {% if kind == 'news' or kind == 'allocs' %}
+  {# HACK: Forced to use a wrapper because we cannot control markup #}
+  <div class="c-article-preview__media">
+  {% for plugin_instance in instance.child_plugin_instances %}
+      {% render_plugin plugin_instance %}
+  {% endfor %}
+  </div>
+  {% endif %}
+
+  {# Title #}
+  <h3 class="c-article-preview__title">
+    <a class="c-article-preview__link" href="{{ link_url }}"
+      {% if link_target %}target="{{ link_target }}"{% endif %}>
+      {{ instance.title_text }}
+    </a>
+  </h3>
+
+  {# Abstract #}
+  {% if kind != 'allocs' %}
+  <p class="c-article-preview__abstract">
+    {{ instance.abstract_text }}
+  </p>
+  {% endif %}
+
+
+
+  {# Metadata #}
+  <ul class="c-article-preview__metadata">
+
+  {# Metadata: Date #}
+
+  {% if kind == 'news' %}
+    <li class="c-article-preview__date  c-date">
+      <span class="c-date__label">Published</span>
+      <time class="c-date__value"
+            datetime="{{ instance.publish_date|date:"Y-m-d" }}">
+        {{ instance.publish_date|date:"F d, Y" }}
+      </time>
+    </li>
+  {% endif %}
+
+  {% if kind == 'allocs' %}
+
+    {% if open_date and close_date and open_date <= close_date %}
+
+    <li class="c-article-preview__date  c-date">
+      <span class="c-date__label">Submission Dates</span>
+      <time class="c-date__value"
+            datetime="{{ open_date|date:"Y-m-d" }}">
+        {{ open_date|date:"M d, Y" }}
+      </time>
+      <span>—</span>
+      <time class="c-date__value"
+            datetime="{{ close_date|date:"Y-m-d" }}">
+        {{ close_date|date:"M d, Y" }}
+      </time>
+    </li>
+
+    {% elif should_show_open_date %}
+
+    <li class="c-article-preview__date  c-date">
+      <span class="c-date__label">
+      {# FAQ: Odd spacing avoids whitespace rendered after text #}
+      {% if open_date_time_period == 'future' %}
+          Submissions Next Open{% else %}Submissions Open Since{% endif %}</span>
+      <time class="c-date__value"
+            datetime="{{ open_date|date:"Y-m-d" }}">
+        {{ open_date|date:"F d, Y" }}
+      </time>
+    </li>
+
+    {% elif should_show_close_date %}
+
+    <li class="c-article-preview__date  c-date">
+      <span class="c-date__label">
+        {# FAQ: Odd spacing avoids whitespace rendered after text #}
+        {% if open_date_time_period == 'future' %}
+            Submissions Deadline{% else %}Submissions Closed{% endif %}</span>
+      <time class="c-date__value"
+            datetime="{{ close_date|date:"Y-m-d" }}">
+        {{ close_date|date:"F d, Y" }}
+      </time>
+    </li>
+
+    {% endif %}
+
+  {% endif %}
+
+  {% if kind == 'events' %}
+    <li class="c-article-preview__date  c-date">
+      {# WARNING: Dev Idea: A single day range may show as just a single date #}
+      {% if open_date or open_date == close_date %}
+      <time class="c-date__value"
+            datetime="{{ open_date|date:"Y-m-d" }}">
+        {{ open_date|date:"m/d/y" }}
+      </time>
+      {% endif %}
+      {# WARNING: Dev Idea: A lone close date may start with trailing dash #}
+      {% if close_date and close_date != open_date %}
+      <span>—</span>
+      <time class="c-date__value"
+            datetime="{{ close_date|date:"Y-m-d" }}">
+        {{ close_date|date:"m/d/y" }}
+      </time>
+      {% endif %}
+    </li>
+  {% endif %}
+
+
+
+  {# Metadata: Type #}
+  {% if kind == 'news' %}
+    <li class="c-article-preview__type">{{ instance.type_text }}</li>
+  {% endif %}
+
+  {# Metadata: Author #}
+  {# FAQ: Not shown in design #}
+  {% comment %}
+    <li class="c-article-preview__author">{{ instance.author_text }}</li>
+  {% endcomment %}
+
+  </ul>
+
+
+
+</article>

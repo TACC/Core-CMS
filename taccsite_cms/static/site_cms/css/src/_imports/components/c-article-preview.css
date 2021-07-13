@@ -1,0 +1,247 @@
+/*
+Article Preview
+
+A preview of an article (to be used in a `c-article-list`). Content __should__ come in the order defined by the example markup.
+
+Markup:
+<article class="c-article-preview c-article-preview--…">
+  <div class="c-article-preview__media">
+    <img src="…" alt="…" />
+  </div>
+  <h3 class="c-article-preview__title">
+    A Long or Short Title of Article
+  </h3>
+  <p class="c-article-preview__abstract">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+  </p>
+  <ul class="c-article-preview__metadata">
+    <li class="c-article-preview__date">
+      <time datetime="2018-07-07">July 7</time>
+    </li>
+    <li class="c-article-preview__type">Science News</li>
+    <li class="c-article-preview__author">Wesley B.</li>
+  </ul>
+</article>
+
+Styleguide Components.ArticlePreview
+*/
+@import url("_imports/tools/x-truncate.css");
+@import url("_imports/tools/x-article-link.css");
+
+
+
+
+
+/* Block */
+
+.c-article-preview {
+  position: relative; /* for absolutely positioned "Children: Link" */
+
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+
+
+/* Children */
+
+
+
+/* Children: Media */
+/* HACK: Forced to style <img> directly because we do not contorl markup */
+
+.c-article-preview__media {
+  order: 1;
+
+  overflow: hidden;
+
+  margin-bottom: 0.8rem; /* overwrite Bootstrap */
+}
+.c-article-preview__media img {
+  /* To center image within container */
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  /* To ensure super wide or tall image do not have negative space / gaps */
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+}
+/* News */
+.c-article-preview--news .c-article-preview__media {
+  height: 180px;
+}
+/* Allocations */
+.c-article-preview--allocs .c-article-preview__media {
+  height: 10rem;
+}
+/* Events */
+.c-article-preview--events .c-article-preview__media {
+  display: none;
+}
+
+
+/* Children: Title */
+
+.c-article-preview__title {
+  order: 3;
+
+  margin-top: 0; /* overwrite Bootstrap and browser */
+  margin-bottom: 0; /* overwrite Bootstrap and browser */
+
+  font-weight: var(--bold);
+  line-height: 2.4rem;
+}
+.c-article-preview__title a,
+.c-article-preview__title a:hover,
+.c-article-preview__title a:focus {
+  color: inherit;
+}
+/* News */
+.c-article-preview--news .c-article-preview__title {
+  font-size: 1.8rem;
+}
+/* Allocations */
+.c-article-preview--allocs .c-article-preview__title {
+  font-size: 1.6rem;
+}
+/* Events */
+.c-article-preview--events .c-article-preview__title {
+  font-size: 1.4rem;
+  color: var(--global-color-primary--xx-dark);
+}
+/* Docs */
+.c-article-preview--docs .c-article-preview__title {
+  font-size: 1.4rem;
+  color: var(--global-color-primary--xx-dark);
+}
+
+
+
+/* Children: Abstract */
+
+.c-article-preview__abstract {
+  order: 4;
+
+  margin-bottom: 0; /* overwrite Bootstrap and browser */
+
+  line-height: 2.4rem;
+}
+/* News */
+.c-article-preview--news .c-article-preview__abstract {
+  font-size: 1.6rem;
+}
+/* Allocations */
+.c-article-preview--allocs .c-article-preview__abstract {
+  display: none;
+}
+/* Events */
+.c-article-preview--events .c-article-preview__abstract {
+  font-size: 1.4rem;
+  color: var(--global-color-primary--xx-dark);
+}
+/* Docs */
+.c-article-preview--docs .c-article-preview__abstract {
+  font-size: 1.4rem;
+  color: var(--global-color-primary--xx-dark);
+}
+
+
+
+/* Children: Metadata */
+
+.c-article-preview__metadata {
+  order: 2;
+
+  display: flex;
+  flex-direction: column;
+
+  list-style: none;
+  padding-left: 0; /* overwrite `site.css` and browser */
+
+  margin-bottom: 0; /* overwrite Bootstrap and browser */
+}
+/* Allocations */
+.c-article-preview--allocs .c-article-preview__metadata {
+  order: 5;
+}
+
+/* Children: Metadata: Date */
+
+.c-article-preview__date {
+  order: 2;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  font-weight: var(--medium);
+
+  white-space: pre;
+}
+/* News */
+.c-article-preview--news .c-article-preview__date {
+  margin-bottom: 0.8rem; /* overwrite Bootstrap */
+  font-size: 1.0rem;
+}
+/* Events */
+.c-article-preview--events .c-article-preview__date {
+  font-size: 1.4rem;
+  color: var(--global-color-accent--normal);
+}
+/* Allocations */
+.c-article-preview--allocs .c-article-preview__date {
+  font-size: 1.6rem;
+}
+
+/* Children: Metadata: Type */
+
+.c-article-preview__type {
+  order: 1;
+
+  font-size: 1.2rem;
+  font-weight: var(--bold);
+  text-transform: uppercase;
+}
+/* Events */
+.c-article-preview--events .c-article-preview__type,
+/* Allocations */
+.c-article-preview--allocs .c-article-preview__type {
+  display: none;
+}
+
+/* Children: Metadata: Author */
+
+.c-article-preview__author {
+  order: 3;
+}
+/* News */
+.c-article-preview--news .c-article-preview__author,
+/* Events */
+.c-article-preview--events .c-article-preview__author,
+/* Allocations */
+.c-article-preview--allocs .c-article-preview__author {
+  display: none;
+}
+
+
+
+/* Children: Link */
+
+/* Expand link to cover its container */
+.c-article-preview__link::before {
+  content: '';
+  z-index: 1; /* ensure Link appears over Media */
+
+  color: transparent; /* ensure Link _text_ is invisible (allow decoration) */
+
+  @extend %x-article-link-stretch;
+}
+/* Give link state (pseudo-class) feedback */
+.c-article-preview__link:hover::before {
+  @extend %x-article-link-hover;
+}

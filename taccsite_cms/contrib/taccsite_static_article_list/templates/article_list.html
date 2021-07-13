@@ -1,0 +1,29 @@
+{% load cms_tags %}
+
+<section {# class="c-article-list" #}{{ instance.attributes_str }}>
+  {# Title #}
+  {% if instance.title_text %}
+  <h2 class="c-article-list__title">
+    {{ instance.title_text }}
+  </h2>
+  {% endif %}
+
+  {# Articles #}
+  {% for plugin_instance in instance.child_plugin_instances %}
+    {# <article class="c-article-list__item">…</article> #}
+    {% render_plugin plugin_instance %}
+  {% endfor %}
+
+  {# Footer #}
+  {% if link_url %}
+  <footer class="c-article-list__footer">
+    {% spaceless %}
+    <a class="c-article-list__link" href="{{ link_url }}"
+      {% if link_target %}target="{{ link_target }}"{% endif %}>
+      <i class="c-article-list__link-icon  icon icon-push-right"></i>
+      <span>{{ link_text|default:"See All" }}</span>
+    </a>
+    {% endspaceless %}
+  </footer>
+  {% endif %}
+</section>
