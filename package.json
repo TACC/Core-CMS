@@ -1,6 +1,6 @@
 {
     "name": "portal-cms",
-    "version": "0.0.0",
+    "version": "2.1.0",
     "license": "MIT",
     "description": "The core CMS codebase for all new and updated TACC CMS sites.",
     "scripts": {
