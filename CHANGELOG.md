@@ -7,11 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [2.6.2] - 2021-07-16: A2CPS (Unstyled); Fix Publish Bug; Texascale 2020; Polish
+## [2.6.1] - 2021-07-16: Fix Publish Bug; Texascale 2020; Polish
 
 ### Added
 
-- Quick: A2CPS Template & Support (Unstyled) (#272) (#271)
 - Major: Texascale 2020 (#256)
 - GH-253: Initial Pattern Library Template & Styles (#25)
 - Quick: Set Version & Add Changelog (#252)
@@ -81,8 +80,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.0.0] - 2021-03-31
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v2.6.2...HEAD
-[2.6.2]: https://github.com/TACC/Core-CMS/compare/v2.6.2
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v2.6.1...HEAD
+[2.6.1]: https://github.com/TACC/Core-CMS/compare/v2.6.1
 [2.1.1]: https://github.com/TACC/Core-CMS/compare/v2.1.1
 [2.1.0]: https://github.com/TACC/Core-CMS/releases/tag/v2.1.0
 [2.0.0]: https://github.com/TACC/Core-CMS/releases/tag/v2.0.0
