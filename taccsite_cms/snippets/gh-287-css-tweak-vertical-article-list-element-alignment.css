@@ -1,0 +1,15 @@
+<style type="text/css">
+/* Snippet */ .s-article-list--layout-e :not(h2):not(p:last-child),
+/* Plugins */ .c-article-list--layout-e .c-article-list__item {
+    flex-grow: 0 !important; /* overwrite more specific selector */
+}
+/* Snippet */ .s-article-list--layout-e:not(.s-article-list--style-divided) :not(h2):not(p:last-child):not(:first-of-type),
+/* Plugins */ .c-article-list--layout-e:not(.c-article-list--style-divided) .c-article-list__item:not(:first-of-type) {
+    margin-top: .8rem;
+}
+
+/* Snippet */ [class*="s-article-list"] > p:last-child,
+/* Plugins */ .c-article-list__footer {
+    margin-top: auto;
+}
+</style>
