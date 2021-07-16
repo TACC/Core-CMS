@@ -81,7 +81,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 v2.0.0 Production release as of Mar 31, 2021.
 
 [unreleased]: https://github.com/TACC/Core-CMS/compare/v2.5.2...HEAD
-[2.5.2]: https://github.com/TACC/Core-CMS/compare/v2.5.2
-[2.1.1]: https://github.com/TACC/Core-CMS/compare/v2.1.1
+[2.5.2]: https://github.com/TACC/Core-CMS/releases/tag/v2.5.2
+[2.1.1]: https://github.com/TACC/Core-CMS/releases/tag/v2.1.1
 [2.1.0]: https://github.com/TACC/Core-CMS/releases/tag/v2.1.0
 [2.0.0]: https://github.com/TACC/Core-CMS/releases/tag/v2.0.0
