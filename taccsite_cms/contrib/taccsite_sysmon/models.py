@@ -1,0 +1,45 @@
+from cms.models.pluginmodel import CMSPlugin
+from django.utils.translation import gettext_lazy as _
+
+from django.db import models
+
+from djangocms_attributes_field import fields
+
+from taccsite_cms.contrib.helpers import get_choices
+
+from .constants import DEFAULT_SYSTEM
+
+# TODO: Do not replicate `display_name` data from API
+SYSTEM_DICT = {
+    'frontera.tacc.utexas.edu': {
+        'description': 'Frontera'
+    },
+    'stampede2.tacc.utexas.edu': {
+        'description': 'Stampede2'
+    },
+    'maverick2.tacc.utexas.edu': {
+        'description': 'Maverick2'
+    },
+    'longhorn.tacc.utexas.edu': {
+        'description': 'Longhorn'
+    },
+}
+SYSTEM_CHOICES = get_choices(SYSTEM_DICT)
+
+class TaccsiteSysmon(CMSPlugin):
+    """
+    Components > "System Monitor" Model
+    https://confluence.tacc.utexas.edu/x/FIEjCQ
+    """
+    system = models.CharField(
+        verbose_name=_('System'),
+        choices=SYSTEM_CHOICES,
+        blank=False,
+        max_length=255,
+        default=DEFAULT_SYSTEM,
+    )
+
+    attributes = fields.AttributesField()
+
+    def get_short_description(self):
+        return SYSTEM_DICT[self.system]

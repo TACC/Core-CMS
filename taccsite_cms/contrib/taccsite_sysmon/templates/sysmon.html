@@ -1,0 +1,34 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static "taccsite_sysmon/css/sysmon.css" %}" />
+
+<div {# class="s-sysmon" #}{{ instance.attributes_str }}>
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">STATUS</th>
+        <th scope="col">LOAD</th>
+        <th scope="col">RUNNING</th>
+        <th scope="col">QUEUED</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td scope="row">
+          <span
+            id="status"
+            class="iconworks  badge badge-success  d-none"
+            data-icon="&#217;"
+            >Operational</span
+          >
+        </td>
+        <td id="load_percentage">-</td>
+        <td id="jobs_running">-</td>
+        <td id="jobs_queued">-</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<script>window.SYSMON_SYSTEM_HOSTNAME = '{{ instance.system }}';</script>
+<script src="{% static "taccsite_sysmon/js/sysmon.js" %}"></script>
