@@ -1,0 +1,86 @@
+/*
+System Monitor a.k.a. SysMon
+
+Styles for the system monitor table that assumes external code:
+
+- custom properties
+  (for `--global-...`)
+- Bootstrap
+  (for badge)
+- Iconworks
+  (for icon)
+
+Styleguide Trumps.Scopes.SystemMonitor
+*/
+
+/* Container */
+
+.s-sysmon {
+  font-size: 1.4rem;
+  min-width: 320px;
+}
+
+/* Table */
+
+.s-sysmon table {
+  /* vert. `padding` + vert. `border-spacing` + `border-width` = 14px */
+  padding: 6px 0;
+
+  border: 1px solid var(--global-color-primary--xx-light);
+  border-radius: 9px;
+  border-spacing: 14px 7px; /* Overwrite Bootstrap 3 */
+  border-collapse: separate; /* Overwrite Bootstrap 4 */
+}
+.s-sysmon thead > tr {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.s-sysmon th {
+  font-weight: var(--bold);
+}
+.s-sysmon td {
+  font-weight: var(--medium);
+}
+
+/* Overwrite Bootstrap Class */
+.s-sysmon .table {
+  margin-bottom: 0px;
+}
+.s-sysmon .table-dark {
+  color: var(--global-color-primary--normal);
+  background-color: var(--global-color-primary--xx-dark);
+}
+.s-sysmon .table thead th {
+  border-bottom: 1px solid var(--global-color-primary--dark);
+}
+.s-sysmon .table th,
+.s-sysmon .table td {
+  vertical-align: middle;
+  border: none;
+  padding: 0 0 5px;
+}
+.s-sysmon .table td {
+  padding: 0;
+}
+
+/* Status Label */
+
+.s-sysmon .badge {
+  font-family: Roboto;
+}
+
+/* Overwrite Bootstrap */
+.s-sysmon .badge {
+  border-radius: 3px;
+  font-size: 1.3rem;
+  font-weight: normal;
+}
+.s-sysmon .badge-warning {
+  background-color: var(--global-color-warning--normal);
+  color: var(--global-color-primary--xx-light);
+}
+
+/* Overwrite IconWorks */
+.s-sysmon .iconworks:before {
+  padding-right: 0.5em;
+}
