@@ -19,7 +19,7 @@ class TaccsiteSysmonPlugin(CMSPluginBase):
     render_template = 'sysmon.html'
 
     cache = True
-    text_enabled = True
+    text_enabled = False
     allow_children = False
 
     fieldsets = [
