@@ -9,7 +9,7 @@ from taccsite_cms.contrib.helpers import get_choices
 
 from .constants import DEFAULT_SYSTEM
 
-# TODO: Do not replicate `display_name` data from API
+# TODO: (Maybe in GH-295) Do not replicate `display_name` data from API
 SYSTEM_DICT = {
     'frontera.tacc.utexas.edu': {
         'description': 'Frontera'

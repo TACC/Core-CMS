@@ -1,4 +1,4 @@
-// TODO: Use server-side logic instead of client-side
+// GH-295: Use server-side logic instead of client-side
 
 /**
  * All system data

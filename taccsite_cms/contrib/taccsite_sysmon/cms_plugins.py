@@ -24,6 +24,7 @@ class TaccsiteSysmonPlugin(CMSPluginBase):
 
     fieldsets = [
         (_('Single System'), {
+            # NOTE: Can GH-295 fix the reload caveat?
             'description': 'Only a single system may be shown. After editing this plugin, reload the page to load system data.',
             'fields': (
                 'system',
