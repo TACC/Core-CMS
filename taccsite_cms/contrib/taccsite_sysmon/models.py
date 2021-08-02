@@ -42,4 +42,5 @@ class TaccsiteSysmon(CMSPlugin):
     attributes = fields.AttributesField()
 
     def get_short_description(self):
-        return SYSTEM_DICT[self.system]
+        system_choice = SYSTEM_DICT[self.system]
+        return system_choice['description']
