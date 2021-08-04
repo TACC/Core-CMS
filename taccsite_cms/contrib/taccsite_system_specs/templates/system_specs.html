@@ -1,0 +1,66 @@
+{% load static %}
+
+<article {# class="s-system-specs" #}{{ instance.attributes_str }}>
+
+
+
+  {# System #}
+
+  {# System Intro #}
+  <h3>System Specifications</h3>
+  <p>{{ instance.system_desc }}</p>
+
+  {# System Data #}
+  <dl class="c-data-list c-data-list--is-vert c-data-list--is-narrow">
+    <dt class="c-data-list__key">Processors</dt>
+    <dd class="c-data-list__value">{{ instance.system_processor_count }}</dd>
+    <dt class="c-data-list__key">Processor Type</dt>
+    <dd class="c-data-list__value">{{ instance.system_processor_type }}</dd>
+    <dt class="c-data-list__key">RAM/Node</dt>
+    <dd class="c-data-list__value">{{ instance.system_node_ram }}</dd>
+    <dt class="c-data-list__key">Network</dt>
+    <dd class="c-data-list__value">{{ instance.system_network }}</dd>
+    <dt class="c-data-list__key">Peak Performance</dt>
+    <dd class="c-data-list__value">{{ instance.system_performance }}</dd>
+    <dt class="c-data-list__key">System Memory</dt>
+    <dd class="c-data-list__value">{{ instance.system_memory }}</dd>
+  </dl>
+
+  {# See All #}
+  {% if link_url %}
+  {% spaceless %}
+  <a class="c-see-all-link" href="{{ link_url }}"
+    {% if link_target %}target="{{ link_target }}"{% endif %}>
+    <i class="c-see-all-link__icon  icon icon-push-right"></i>
+    <span class="c-see-all-link__text">{{ link_text|default:"See All" }}</span>
+  </a>
+  {% endspaceless %}
+  {% endif %}
+
+
+
+  {# Other #}
+  {% if has_other %}
+
+  {# Other Intro #}
+  <h4>{{ instance.other_title|default:default_other_title }}</h4>
+  <p>{{ instance.other_desc }}</p>
+
+  {# Other Data #}
+  {% if instance.child_plugin_instances %}
+  <dl class="c-data-list">
+  {% for plugin_instance in instance.child_plugin_instances %}
+    {% comment %}
+    <dt class="c-data-list__key">Key</dt>
+    <dd class="c-data-list__value">{{ plugin_instance.value }}</dd>
+    {% endcomment %}
+    {# {% render_plugin plugin_instance %} #}
+  {% endfor %}
+  </dl>
+  {% endif %}
+
+  {% endif %}
+
+
+
+</article>
