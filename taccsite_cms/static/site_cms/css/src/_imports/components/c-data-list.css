@@ -1,0 +1,100 @@
+/*
+Data List
+
+A list of pairs of values, where the titles/names of the values are aligned with each other and the values themselves are aligned with each other.
+
+__Notice__:
+- User _should_ add arrangement and spacing modifiers. See Caveat #1.
+- The _recommended_ markup is a definition list (`<dl>`) or a table (`<table>`).
+
+__Caveat__:
+1. With no modifiers added, the result is an incomplete vertical arrangement.
+2. No provided repsonsive design solutions; users must apply their own.
+3. Limited support for (table) `<table>` markup and `.c-data-list--is-horz`.
+
+.c-data-list--is-horz - (arrangement) A horizontal list
+.c-data-list--is-vert - (arrangement) A vertical list
+.c-data-list--is-narrow - (spacing) A list that has limited horizontal space
+.c-data-list--is-wide - (spacing) A list that has ample horizontal space
+
+Markup: c-data-list.html
+
+Styleguide Components.DataList
+*/
+@import url("_imports/tools/x-truncate.css");
+
+
+
+/* Base i.e. Container */
+
+.c-data-list--is-horz,
+.c-data-list--is-horz dd {
+  margin-bottom: 0; /* overwrite Bootstrap's `_reboot.scss` */
+}
+
+
+
+/* Elements i.e. Children */
+
+.c-data-list__key {
+  --text-overflow: ':';
+  @extend %x-truncate--one-line;
+}
+.c-data-list__key::after {
+  content: ':';
+  display: inline;
+  padding-right: 0.25em;
+}
+.c-data-list--is-horz
+> .c-data-list__value {
+  white-space: nowrap;
+}
+
+
+
+/* Modifiers i.e. Types */
+
+.c-data-list--is-horz {
+  display: flex;
+  flex-direction: row;
+}
+.c-data-list--is-horz
+> .c-data-list__key ~ .c-data-list__key::before {
+  content: '|';
+  display: inline-block;
+}
+
+.c-data-list--is-horz.c-data-list--is-narrow
+> .c-data-list__key ~ .c-data-list__key::before {
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+.c-data-list--is-horz.c-data-list--is-wide
+> .c-data-list__key ~ .c-data-list__key::before {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+/* Overwrite Bootstrap `_reboot.scss` */
+.c-data-list--is-vert
+> .c-data-list__value {
+  margin-left: 0;
+}
+.c-data-list--is-vert.c-data-list--is-narrow
+> .c-data-list__value {
+  padding-left: 0;
+}
+.c-data-list--is-vert.c-data-list--is-wide
+> .c-data-list__value {
+  padding-left: 2.5em; /* font-size 10px gives 40px (Firefox default margin) */
+}
+
+/* Truncate specific edge cases */
+.c-data-list--is-horz.c-data-list--is-wide
+> .c-data-list__value {
+  @extend %x-truncate--one-line;
+}
+.c-data-list--is-vert.c-data-list--is-narrow
+> .c-data-list__value {
+  @extend %x-truncate--one-line;
+}
