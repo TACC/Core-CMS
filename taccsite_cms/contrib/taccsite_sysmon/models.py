@@ -29,7 +29,6 @@ SYSTEM_CHOICES = get_choices(SYSTEM_DICT)
 class TaccsiteSysmon(CMSPlugin):
     """
     Components > "System Monitor" Model
-    https://confluence.tacc.utexas.edu/x/FIEjCQ
     """
     system = models.CharField(
         verbose_name=_('System'),

@@ -11,7 +11,7 @@ from .models import TaccsiteSysmon
 class TaccsiteSysmonPlugin(CMSPluginBase):
     """
     Components > "System Monitor" Plugin
-    https://confluence.tacc.utexas.edu/x/FIEjCQ
+    https://url.to/docs/components/sysmon/
     """
     module = 'TACC Site'
     model = TaccsiteSysmon
