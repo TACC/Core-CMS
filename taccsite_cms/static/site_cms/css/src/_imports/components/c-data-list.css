@@ -58,13 +58,17 @@ table.c-data-list {
   }
 }
 
-/* To add colon */
+/* To add colon (non-tables) */
 .c-data-list__key:not(th)::after {
   content: ':';
   display: inline;
   padding-right: 0.25em;
 }
 
+/* To add space (instead of colon) (tables) */
+th.c-data-list__key {
+  padding-right: 0.25em;
+}
 
 
 
@@ -191,11 +195,7 @@ table.c-data-list--is-horz th.c-data-list__key {
 /* FAQ: Truncate when doing is unlikely to almost entirely obscure text */
 
 /* Non-table wide horz. layout is for areas expected to have enough space */
-.c-data-list--is-horz.c-data-list--is-wide:not(table) .c-data-list__value,
-/* Non-table narr. vert. layout has enough space cuz values are beneath keys */
-.c-data-list--is-vert.c-data-list--is-narrow:not(table) .c-data-list__value,
-/* Table vert. layout does NOT have enough space but text would escape table */
-table.c-data-list--is-vert .c-data-list__value {
+.c-data-list--should-truncate-values .c-data-list__value {
   @extend %x-truncate--one-line;
 }
 
@@ -207,7 +207,8 @@ table.c-data-list--is-vert .c-data-list__value {
 
 .c-data-list--is-horz:not(table) { align-items: baseline; }
 
-/* CAVEAT: This causes th and td cell borders to be offset */
+/* CAVEAT: On Firefox (for "Benton Sans"), `align-items` is ineffectual */
+/* CAVEAT: This causes <th> and <td> cell borders to be offset */
 table.c-data-list--is-horz tr { align-items: baseline; }
 
 table.c-data-list--is-vert th.c-data-list__key,
