@@ -141,7 +141,7 @@ table.c-data-list--is-vert {
   margin-left: 0;
 }
 
-/* To space out key and value */
+/* To space out key and value (tables) */
 .c-data-list--is-vert:not(table).c-data-list--is-narrow > .c-data-list__value,
 table.c-data-list--is-vert.c-data-list--is-narrow td.c-data-list__value {
   padding-left: 0;
@@ -161,7 +161,7 @@ table.c-data-list--is-vert.c-data-list--is-wide td.c-data-list__value {
 
 /* Element Borders */
 
-/* To remove most table borders */
+/* To remove most borders (tables) */
 table.c-data-list--is-vert th.c-data-list__key,
 td.c-data-list__value {
   border-left: 0;
@@ -173,7 +173,7 @@ table.c-data-list--is-horz td.c-data-list__value {
   border-bottom: 0;
 }
 
-/* To keep real border between key and value */
+/* To keep real border between key and value (tables) */
 /* CAVEAT: Certain fonts may limit border height (see "Font Alignment") */
 table.c-data-list--is-horz tr:first-child th.c-data-list__key {
   border-left: 0;
@@ -182,7 +182,7 @@ table.c-data-list--is-horz th.c-data-list__key {
   border-right: 0;
 }
 
-/* To add fake border between key and value */
+/* To add fake border between key and value (non-tables) */
 .c-data-list--is-horz:not(table)
   > .c-data-list__key ~ .c-data-list__key::before {
   content: '|';
@@ -194,7 +194,6 @@ table.c-data-list--is-horz th.c-data-list__key {
 /* Truncate Values */
 /* FAQ: Truncate when doing is unlikely to almost entirely obscure text */
 
-/* Non-table wide horz. layout is for areas expected to have enough space */
 .c-data-list--should-truncate-values .c-data-list__value {
   @extend %x-truncate--one-line;
 }
@@ -205,11 +204,13 @@ table.c-data-list--is-horz th.c-data-list__key {
 /* NOTE: If font has different internal baseline per weight, use these */
 /* FAQ: "Benton Sans" needs this solution (as of 2021-07) */
 
+/* NOTE: This assumes key and value are flex items, not inline display */
 .c-data-list--is-horz:not(table) { align-items: baseline; }
 
 /* CAVEAT: On Firefox (for "Benton Sans"), `align-items` is ineffectual */
 /* CAVEAT: This causes <th> and <td> cell borders to be offset */
 table.c-data-list--is-horz tr { align-items: baseline; }
 
+/* NOTE: This assumes key and value are inline display, not flex items */
 table.c-data-list--is-vert th.c-data-list__key,
 table.c-data-list--is-vert td.c-data-list__value { vertical-align: baseline; }
