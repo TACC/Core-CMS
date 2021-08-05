@@ -1,0 +1,7 @@
+{% load static %}
+
+<dl {# class="c-data-list" #}{{ instance.attributes_str }}>
+  {% for plugin_instance in instance.child_plugin_instances %}
+    {# {% render_plugin plugin_instance %} #}
+  {% endfor %}
+</dl>
