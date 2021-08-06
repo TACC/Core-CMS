@@ -1,4 +1,4 @@
-{% load static %}
+{% load cms_tags %}
 
 <article {# class="s-system-specs" #}{{ instance.attributes_str }}>
 
@@ -11,20 +11,37 @@
   <p>{{ instance.system_desc }}</p>
 
   {# System Data #}
-  <dl class="c-data-list c-data-list--is-vert c-data-list--is-narrow">
-    <dt class="c-data-list__key">Processors</dt>
-    <dd class="c-data-list__value">{{ instance.system_processor_count }}</dd>
-    <dt class="c-data-list__key">Processor Type</dt>
-    <dd class="c-data-list__value">{{ instance.system_processor_type }}</dd>
-    <dt class="c-data-list__key">RAM/Node</dt>
-    <dd class="c-data-list__value">{{ instance.system_node_ram }}</dd>
-    <dt class="c-data-list__key">Network</dt>
-    <dd class="c-data-list__value">{{ instance.system_network }}</dd>
-    <dt class="c-data-list__key">Peak Performance</dt>
-    <dd class="c-data-list__value">{{ instance.system_performance }}</dd>
-    <dt class="c-data-list__key">System Memory</dt>
-    <dd class="c-data-list__value">{{ instance.system_memory }}</dd>
-  </dl>
+  {# HELP: Build DataList plugin instance? What if DataList is not installed? #}
+  {# SEE: https://stackoverflow.com/q/27937448/11817077 #}
+  {# SEE taccsite_data_list #}
+  <table class="c-data-list
+             c-data-list--is-vert
+             c-data-list--is-narrow">
+    <tr>
+      <th class="c-data-list__key">Processors</th>
+      <td class="c-data-list__value">{{ instance.system_processor_count }}</td>
+    </tr>
+    <tr>
+      <th class="c-data-list__key">Processor Type</th>
+      <td class="c-data-list__value">{{ instance.system_processor_type }}</td>
+    </tr>
+    <tr>
+      <th class="c-data-list__key">RAM/Node</th>
+      <td class="c-data-list__value">{{ instance.system_node_ram }}</td>
+    </tr>
+    <tr>
+      <th class="c-data-list__key">Network</th>
+      <td class="c-data-list__value">{{ instance.system_network }}</td>
+    </tr>
+    <tr>
+      <th class="c-data-list__key">Peak Performance</th>
+      <td class="c-data-list__value">{{ instance.system_performance }}</td>
+    </tr>
+    <tr>
+      <th class="c-data-list__key">System Memory</th>
+      <td class="c-data-list__value">{{ instance.system_memory }}</td>
+    </tr>
+  </table>
 
   {# See All #}
   {% if link_url %}
@@ -47,17 +64,9 @@
   <p>{{ instance.other_desc }}</p>
 
   {# Other Data #}
-  {% if instance.child_plugin_instances %}
-  <dl class="c-data-list">
   {% for plugin_instance in instance.child_plugin_instances %}
-    {% comment %}
-    <dt class="c-data-list__key">Key</dt>
-    <dd class="c-data-list__value">{{ plugin_instance.value }}</dd>
-    {% endcomment %}
-    {# {% render_plugin plugin_instance %} #}
+    {% render_plugin plugin_instance %}
   {% endfor %}
-  </dl>
-  {% endif %}
 
   {% endif %}
 

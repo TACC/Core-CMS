@@ -21,10 +21,10 @@ class TaccsiteSystemSpecsPlugin(CMSPluginBase):
 
     cache = True
     text_enabled = False
-    allow_children = False
+    allow_children = True
 
     fieldsets = [
-        (_('System Specifications'), {
+        (_('Specifications'), {
             'fields': (
                 'system_desc',
                 'system_processor_count',
@@ -35,11 +35,25 @@ class TaccsiteSystemSpecsPlugin(CMSPluginBase):
                 'system_memory',
             )
         }),
-        (_('Subsystems / Resources'), {
+        (_('Subsystems and/or resources - Introduction'), {
             'fields': (
                 'other_title',
                 'other_desc',
             )
+        }),
+        (_('Subsystems and/or resources - Data'), {
+            'classes': ('collapse',),
+            'description': '\
+            <dl>\
+                <dt>To add data</dt>\
+                    <dd>nest a plugin inside this one.</dd>\
+                <dt>To edit data</dt>\
+                    <dd>edit the existing plugin.*</dd>\
+            </dl>\
+            <br />\
+            * If the existing data is from a plugin not nested within this one, then you should nest it inside this one instead.\
+            ',
+            'fields': ()
         }),
         (_('Footer link'), {
             'classes': ('collapse',),
@@ -65,7 +79,7 @@ class TaccsiteSystemSpecsPlugin(CMSPluginBase):
         request = context['request']
 
         classes = concat_classnames([
-            's-data_list',
+            's-system-specs',
             instance.attributes.get('class'),
         ])
         instance.attributes['class'] = classes
