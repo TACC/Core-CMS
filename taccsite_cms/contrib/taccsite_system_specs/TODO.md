@@ -13,15 +13,17 @@
   - [x] changes to `taccsite_sysmon` → `task/GH-89`
   - [x] changes to `x-truncate` → (merged to `main`)
 
-## Bugs to Fix
+## Problems to Fix
 
 - [ ] Prevent duplicate entires in "Internal Link".
+- [ ] Add missing link feature to "Data List Item" plugin. → GH-75
+- [ ] Find makeshift way to list dependency plugins i.e. taccsite_data_list.
 
 ## Continued Development
 
-- [ ] Add "Data List" plugin. → GH-75
-- [ ] Add "Data List Item" plugin. → GH-75
-- [ ] Integrate "Data List(…)" plugins into "System Specs" plugin.
+- [x] Add "Data List" plugin. → GH-75
+- [x] Add "Data List Item" plugin. → GH-75
+- [x] Integrate "Data List(…)" plugins into "System Specs" plugin.
 - [x] Create new "See All - Component" ticket. → GH-298
 - [ ] Style the new markup.
 

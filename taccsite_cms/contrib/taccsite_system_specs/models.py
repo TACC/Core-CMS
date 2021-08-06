@@ -16,7 +16,7 @@ class TaccsiteSystemSpecs(AbstractLink):
     system_desc = models.TextField(
         verbose_name=_('System Description'),
         help_text=_('Description of the system machine and mission.'),
-        blank=True,
+        blank=False,
         default=''
     )
     system_processor_count = models.IntegerField(
@@ -60,7 +60,7 @@ class TaccsiteSystemSpecs(AbstractLink):
     )
 
     other_title = models.CharField(
-        verbose_name=_('Resources Title'),
+        verbose_name=_('Alternate Resources Title'),
         help_text=_('An alternate title to replace "%(default_value)s".') % { 'default_value': DEFAULT_OTHER_TITLE },
         blank=True,
         max_length=40, # Based on approx. space available in design
