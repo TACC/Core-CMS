@@ -67,7 +67,7 @@ class TaccsiteDataListItem(CMSPlugin):
     """
     key = models.CharField(
         verbose_name=_('Label'),
-        help_text=_('The label for the item value.'),
+        help_text=_('A label for the data value. To create a link, add a child plugin.'),
         blank=False,
         max_length=50,
     )
@@ -76,6 +76,11 @@ class TaccsiteDataListItem(CMSPlugin):
         help_text=_('The data value.'),
         blank=False,
         max_length=100,
+    )
+    use_plugin_as_key = models.BooleanField(
+        verbose_name=_('Support child plugin for Label'),
+        help_text=_('If a child plugin is added, and this option is checked, then the child plugin will be used (not the Label field text).'),
+        default=True,
     )
 
     attributes = fields.AttributesField()

@@ -5,6 +5,8 @@ from django.utils.translation import gettext_lazy as _
 from taccsite_cms.contrib.helpers import concat_classnames
 from taccsite_cms.contrib.taccsite_offset.cms_plugins import get_direction_classname
 
+from taccsite_cms.contrib.helpers import AbstractMaxChildrenPlugin
+
 from .models import TaccsiteDataList, TaccsiteDataListItem
 from .constants import ORIENTATION_DICT, TYPE_STYLE_DICT, DENSITY_DICT
 
@@ -21,7 +23,7 @@ def get_classname(dict, value):
 # Plugins
 
 @plugin_pool.register_plugin
-class TaccsiteDataListPlugin(CMSPluginBase):
+class TaccsiteDataListPlugin(CMSPluginBase, AbstractMaxChildrenPlugin):
     """
     Components > "Data List" Plugin
     https://confluence.tacc.utexas.edu/x/EiIFDg
@@ -91,12 +93,17 @@ class TaccsiteDataListItemPlugin(CMSPluginBase):
 
     cache = True
     text_enabled = False
-    allow_children = False
+    allow_children = True
+    child_classes = [
+        'LinkPlugin'
+    ]
+    max_children = 1 # Only a label until we know what value will need
 
     fieldsets = [
         (None, {
             'fields': (
                 ('key', 'value'),
+                ('use_plugin_as_key'),
             )
         })
     ]

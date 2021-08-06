@@ -1,3 +1,3 @@
 # To Do
 
-- [ ] Add missing link feature to "Data List Item" plugin.
+- [ ] Support label that is link within text. → GH-306
