@@ -1,6 +1,7 @@
-from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 from django.utils.translation import gettext_lazy as _
+
+from djangocms_link.cms_plugins import LinkPlugin
 
 from taccsite_cms.contrib.helpers import concat_classnames
 from taccsite_cms.contrib.taccsite_offset.cms_plugins import get_direction_classname
@@ -10,7 +11,7 @@ from .constants import DEFAULT_OTHER_TITLE
 from .models import TaccsiteSystemSpecs
 
 @plugin_pool.register_plugin
-class TaccsiteSystemSpecsPlugin(CMSPluginBase):
+class TaccsiteSystemSpecsPlugin(LinkPlugin):
     """
     Components > "System Specs" Plugin
     """
@@ -18,6 +19,8 @@ class TaccsiteSystemSpecsPlugin(CMSPluginBase):
     model = TaccsiteSystemSpecs
     name = _('System Specs')
     render_template = 'system_specs.html'
+    def get_render_template(self, context, instance, placeholder):
+        return self.render_template
 
     cache = True
     text_enabled = False
