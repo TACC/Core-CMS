@@ -1,0 +1,21 @@
+{% load cms_tags %}
+
+{% if instance.type_style == 'dlist' %}
+
+<dl {# class="c-data-list" #}{{ instance.attributes_str }}>
+  {% for plugin_instance in instance.child_plugin_instances %}
+    {% render_plugin plugin_instance %}
+  {% endfor %}
+</dl>
+
+{% elif instance.type_style == 'table' %}
+
+<table {# class="c-data-list" #}{{ instance.attributes_str }}>
+  <tbody>
+    {% for plugin_instance in instance.child_plugin_instances %}
+      {% render_plugin plugin_instance %}
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endif %}
