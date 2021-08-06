@@ -15,7 +15,7 @@
 
 ## Problems to Fix
 
-- [ ] Prevent duplicate entires in "Internal Link".
+- [x] Prevent duplicate entires in "Internal Link".
 - [ ] Add missing link feature to "Data List Item" plugin. → GH-75
 - [ ] Find makeshift way to list dependency plugins i.e. taccsite_data_list.
 
