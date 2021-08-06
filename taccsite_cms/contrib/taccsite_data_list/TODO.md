@@ -1,3 +1,3 @@
 # To Do
 
-- [ ] Add Data List Item plugin
+- [ ] Add missing link feature to "Data List Item" plugin.

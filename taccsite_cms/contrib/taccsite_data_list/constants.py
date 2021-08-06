@@ -15,11 +15,11 @@ ORIENTATION_DICT = {
 
 TYPE_STYLE_DICT = {
     'table': {
-        'description':  'Tabular Data (ex: Columns; Table, no Header)',
+        'description':  'Table (e.g. Columns)',
         'short_description': 'Table',
     },
     'dlist': {
-        'description':  'List of Data (ex: Glossary; Metadata; List)',
+        'description':  'List (e.g. Glossary, Metadata)',
         'short_description': 'List',
     },
 }

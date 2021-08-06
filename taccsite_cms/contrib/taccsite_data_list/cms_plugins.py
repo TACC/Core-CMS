@@ -5,7 +5,7 @@ from django.utils.translation import gettext_lazy as _
 from taccsite_cms.contrib.helpers import concat_classnames
 from taccsite_cms.contrib.taccsite_offset.cms_plugins import get_direction_classname
 
-from .models import TaccsiteDataList
+from .models import TaccsiteDataList, TaccsiteDataListItem
 from .constants import ORIENTATION_DICT, TYPE_STYLE_DICT, DENSITY_DICT
 
 
@@ -32,10 +32,10 @@ class TaccsiteDataListPlugin(CMSPluginBase):
     render_template = 'data_list.html'
 
     cache = True
-    text_enabled = False
+    text_enabled = True
     allow_children = True
     child_classes = [
-        'TaccsiteStaticDataListItemPlugin'
+        'TaccsiteDataListItemPlugin'
     ]
 
     fieldsets = [
@@ -66,12 +66,51 @@ class TaccsiteDataListPlugin(CMSPluginBase):
         request = context['request']
 
         classes = concat_classnames([
-            'c-data_list',
+            'c-data-list',
             get_classname(ORIENTATION_DICT, instance.orientation),
             get_classname(TYPE_STYLE_DICT, instance.type_style),
             get_classname(DENSITY_DICT, instance.density),
+            'c-data-list--should-truncate-values'
+                if instance.truncate_values else '',
             instance.attributes.get('class'),
         ])
         instance.attributes['class'] = classes
+
+        return context
+
+@plugin_pool.register_plugin
+class TaccsiteDataListItemPlugin(CMSPluginBase):
+    """
+    Components > "Data List Item" Plugin
+    https://confluence.tacc.utexas.edu/x/EiIFDg
+    """
+    module = 'TACC Site'
+    model = TaccsiteDataListItem
+    name = _('Data List Item')
+    render_template = 'data_list_item.html'
+
+    cache = True
+    text_enabled = False
+    allow_children = False
+
+    fieldsets = [
+        (None, {
+            'fields': (
+                ('key', 'value'),
+            )
+        })
+    ]
+
+    # Render
+
+    def render(self, context, instance, placeholder):
+        context = super().render(context, instance, placeholder)
+        request = context['request']
+
+        parent_plugin_instance = instance.parent.get_plugin_instance()[0]
+
+        context.update({
+            'parent_plugin_instance': parent_plugin_instance
+        })
 
         return context

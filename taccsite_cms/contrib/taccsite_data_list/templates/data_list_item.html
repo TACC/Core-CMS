@@ -1,0 +1,15 @@
+{% load cms_tags %}
+
+{% if parent_plugin_instance.type_style == 'dlist' %}
+
+  <dt class="c-data-list__key">{{ instance.key }}</dt>
+  <dd class="c-data-list__value">{{ instance.value }}</dd>
+
+{% elif parent_plugin_instance.type_style == 'table' %}
+
+    <tr>
+      <th class="c-data-list__key">{{ instance.key }}</th>
+      <td class="c-data-list__value">{{ instance.value }}</td>
+    </tr>
+
+{% endif %}

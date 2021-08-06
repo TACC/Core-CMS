@@ -60,3 +60,35 @@ class TaccsiteDataList(CMSPlugin):
         density = DENSITY_DICT[self.density]['short_description']
 
         return density + ', ' + orientation + ' ' + type_style
+
+class TaccsiteDataListItem(CMSPlugin):
+    """
+    Components > "Data List Item" Model
+    """
+    key = models.CharField(
+        verbose_name=_('Label'),
+        help_text=_('The label for the item value.'),
+        blank=False,
+        max_length=50,
+    )
+    value = models.CharField(
+        verbose_name=_('Value'),
+        help_text=_('The data value.'),
+        blank=False,
+        max_length=100,
+    )
+
+    attributes = fields.AttributesField()
+
+    def get_short_description(self):
+        key = self.key
+        val = self.value
+        max_len = 4
+
+        should_truncate_key = len(key) > max_len
+        key_desc = key[0:max_len] + '…' if should_truncate_key else key
+
+        should_truncate_val = len(key) > max_len
+        val_desc = val[0:max_len] + '…' if should_truncate_val else val
+
+        return key_desc + ': ' + val_desc
