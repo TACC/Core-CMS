@@ -86,6 +86,9 @@ class TaccsiteSystemSpecsPlugin(CMSPluginBase):
 
         context.update({
             'default_other_title': DEFAULT_OTHER_TITLE,
-            'has_other': instance.other_title or instance.other_desc
+            'has_other': instance.other_title or instance.other_desc,
+            'link_url': instance.get_link(),
+            'link_text': instance.name,
+            'link_target': instance.target
         })
         return context
