@@ -249,6 +249,7 @@ INSTALLED_APPS = [
     'taccsite_cms.contrib.taccsite_blockquote',
     'taccsite_cms.contrib.taccsite_offset',
     'taccsite_cms.contrib.taccsite_sysmon',
+    'taccsite_cms.contrib.taccsite_system_specs',
 ]
 
 # Convert list of paths to list of dotted module names
