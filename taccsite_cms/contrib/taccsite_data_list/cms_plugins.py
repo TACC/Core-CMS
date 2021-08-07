@@ -34,7 +34,7 @@ class TaccsiteDataListPlugin(CMSPluginBase, AbstractMaxChildrenPlugin):
     render_template = 'data_list.html'
 
     cache = True
-    text_enabled = True
+    text_enabled = False
     allow_children = True
     child_classes = [
         'TaccsiteDataListItemPlugin'
