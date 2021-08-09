@@ -2,10 +2,10 @@ from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 from django.utils.translation import gettext_lazy as _
 
-from taccsite_cms.contrib.helpers import concat_classnames
-from taccsite_cms.contrib.taccsite_offset.cms_plugins import get_direction_classname
-
-from taccsite_cms.contrib.helpers import AbstractMaxChildrenPlugin
+from taccsite_cms.contrib.helpers import (
+    concat_classnames,
+    AbstractMaxChildrenPlugin
+)
 
 from .models import TaccsiteDataList, TaccsiteDataListItem
 from .constants import ORIENTATION_DICT, TYPE_STYLE_DICT, DENSITY_DICT
