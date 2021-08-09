@@ -34,7 +34,7 @@ Styleguide Tools.ExtendsAndMixins.Truncate
 
 .x-truncate--one-line, /* DEPRECATED */
 %x-truncate--one-line, {
-	text-overflow: ellipsis;
+	text-overflow: var(--text-overflow, ellipsis);
 
 	overflow: hidden;
 	white-space: nowrap;
