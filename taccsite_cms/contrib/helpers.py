@@ -48,7 +48,7 @@ class AbstractMaxChildrenPlugin():
 
     max_children = None
 
-    def add_view(self,request, form_url='', extra_context=None):
+    def add_view(self, request, form_url='', extra_context=None):
 
         if self.max_children:
             # FAQ: Placeholders do not have a parent, only plugins do
