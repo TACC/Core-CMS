@@ -1,73 +1,94 @@
-{% load cms_tags %}
+{% load cms_tags static %}
+
+<link rel="stylesheet" href="{% static 'site_cms/css/build/app.taccsite_system_specs.css' %}" />
 
 <article {# class="s-system-specs" #}{{ instance.attributes_str }}>
 
 
 
-  {# System #}
-
-  {# System Intro #}
-  <h3>System Specifications</h3>
-  <p>{{ instance.system_desc }}</p>
-
-  {# System Data #}
-  {# HELP: Build DataList plugin instance? What if DataList is not installed? #}
-  {# SEE: https://stackoverflow.com/q/27937448/11817077 #}
-  {# SEE taccsite_data_list #}
-  <table class="c-data-list
-             c-data-list--is-vert
-             c-data-list--is-narrow">
-    <tr>
-      <th class="c-data-list__key">Processors</th>
-      <td class="c-data-list__value">{{ instance.system_processor_count }}</td>
-    </tr>
-    <tr>
-      <th class="c-data-list__key">Processor Type</th>
-      <td class="c-data-list__value">{{ instance.system_processor_type }}</td>
-    </tr>
-    <tr>
-      <th class="c-data-list__key">RAM/Node</th>
-      <td class="c-data-list__value">{{ instance.system_node_ram }}</td>
-    </tr>
-    <tr>
-      <th class="c-data-list__key">Network</th>
-      <td class="c-data-list__value">{{ instance.system_network }}</td>
-    </tr>
-    <tr>
-      <th class="c-data-list__key">Peak Performance</th>
-      <td class="c-data-list__value">{{ instance.system_performance }}</td>
-    </tr>
-    <tr>
-      <th class="c-data-list__key">System Memory</th>
-      <td class="c-data-list__value">{{ instance.system_memory }}</td>
-    </tr>
-  </table>
-
-  {# See All #}
-  {% if link_url %}
-  {% spaceless %}
-  <a class="c-see-all-link" href="{{ link_url }}"
-    {% if link_target %}target="{{ link_target }}"{% endif %}>
-    <i class="c-see-all-link__icon  icon icon-push-right"></i>
-    <span class="c-see-all-link__text">{{ link_text|default:"See All" }}</span>
-  </a>
-  {% endspaceless %}
+  {# Image & Monitor #}
+  {% if image_plugin or sysmon_plugin %}
+  <figure>
+    {% if image_plugin %}
+      {% render_plugin image_plugin %}
+    {% endif %}
+    {% if sysmon_plugin %}
+    <figcaption>
+      {% render_plugin sysmon_plugin %}
+    </figcaption>
+    {% endif %}
+  </figure>
   {% endif %}
+
+
+
+  {# System #}
+  <div>
+    {# System Intro #}
+    <h3>System Specifications</h3>
+    <p>{{ instance.system_desc }}</p>
+
+    {# System Data #}
+    {# HELP: Build DataList plugin instance? What if DataList is not installed? #}
+    {# SEE: https://stackoverflow.com/q/27937448/11817077 #}
+    {# SEE taccsite_data_list #}
+    <table class="c-data-list
+                  c-data-list--is-vert
+                  c-data-list--is-narrow">
+      <tr>
+        <th class="c-data-list__key">Processors</th>
+        <td class="c-data-list__value">{{ instance.system_processor_count }}</td>
+      </tr>
+      <tr>
+        <th class="c-data-list__key">Processor Type</th>
+        <td class="c-data-list__value">{{ instance.system_processor_type }}</td>
+      </tr>
+      <tr>
+        <th class="c-data-list__key">RAM/Node</th>
+        <td class="c-data-list__value">{{ instance.system_node_ram }}</td>
+      </tr>
+      <tr>
+        <th class="c-data-list__key">Network</th>
+        <td class="c-data-list__value">{{ instance.system_network }}</td>
+      </tr>
+      <tr>
+        <th class="c-data-list__key">Peak Performance</th>
+        <td class="c-data-list__value">{{ instance.system_performance }}</td>
+      </tr>
+      <tr>
+        <th class="c-data-list__key">System Memory</th>
+        <td class="c-data-list__value">{{ instance.system_memory }}</td>
+      </tr>
+    </table>
+
+    {# System Link #}
+    {% if link_url %}
+    {% spaceless %}
+    <a class="c-see-all-link" href="{{ link_url }}"
+      {% if link_target %}target="{{ link_target }}"{% endif %}>
+      <i class="c-see-all-link__icon  icon icon-push-right"></i>
+      <span class="c-see-all-link__text">{{ link_text|default:"See More Detailed Specs" }}</span>
+    </a>
+    {% endspaceless %}
+    {% endif %}
+  </div>
 
 
 
   {# Other #}
   {% if has_other %}
+  <aside>
 
-  {# Other Intro #}
-  <h4>{{ instance.other_title|default:default_other_title }}</h4>
-  <p>{{ instance.other_desc }}</p>
+    {# Other Intro #}
+    <h4>{{ instance.other_title|default:default_other_title }}</h4>
+    <p>{{ instance.other_desc }}</p>
 
-  {# Other Data #}
-  {% for plugin_instance in instance.child_plugin_instances %}
-    {% render_plugin plugin_instance %}
-  {% endfor %}
+    {# Other Data #}
+    {% if data_plugin %}
+      {% render_plugin data_plugin %}
+    {% endif %}
 
+  </aside>
   {% endif %}
 
 
