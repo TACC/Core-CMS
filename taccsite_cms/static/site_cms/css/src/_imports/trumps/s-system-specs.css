@@ -1,0 +1,111 @@
+/*
+System Specifications
+
+Styles for System Specifications content which assumes external code:
+
+- custom properties
+  (for `--global-...`)
+- `c-data-list`
+  (for "Data List")
+- `s-sysmon`
+  (for "System Monitor")
+
+Styleguide Trumps.Scopes.SystemSpecs
+*/
+@import url("_imports/tools/media-queries.css");
+
+
+
+/* Layout */
+
+@media only screen and (--narrow-and-above) {
+  .s-system-specs {
+    display: flow-root;
+  }
+  .s-system-specs > * {
+    display: inline-block;
+  }
+  .s-system-specs > figure {
+    float: left;
+  }
+}
+
+
+
+/* Spacing */
+
+.s-system-specs {
+  --row-height: 32px;
+}
+
+.s-system-specs > aside {
+  margin-top: var(--row-height);
+}
+
+@media only screen and (--medium-and-below) {
+  .s-system-specs > figure {
+    margin-bottom: var(--row-height);
+  }
+}
+
+
+
+/* Sizes */
+
+@media only screen and (--medium-and-above) {
+  .s-system-specs {
+    --col-width--thin: 42%;
+    --col-width--wide: 48%;
+    --col-gutter: 10%;
+    --col-padding: 40px;
+
+    padding-inline: var(--col-padding);
+  }
+  .s-system-specs > div,
+  .s-system-specs > aside {
+    width: var(--col-width--thin);
+    padding-inline: var(--col-padding);
+  }
+  .s-system-specs > figure {
+    width: var(--col-width--wide);
+    margin-right: var(--col-gutter);
+  }
+}
+
+
+
+/* Position */
+
+.s-system-specs > figure > img {
+  display: block; /* to support margin */
+}
+.s-system-specs > figure > figcaption {
+  /* To nudge upward on top of image */
+  position: relative; /* to prevent image from appearing on top */
+  margin-top: -40px;
+}
+
+@media only screen and (--medium-and-below) {
+  .s-system-specs > figure > img {
+    /* To center horizontally */
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media only screen and (--medium-and-above) {
+  .s-system-specs > figure > figcaption {
+    /* To center horizontally */
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+
+
+/* Components */
+
+.s-system-specs .c-data-list__key a {
+  font-weight: var(--medium);
+}

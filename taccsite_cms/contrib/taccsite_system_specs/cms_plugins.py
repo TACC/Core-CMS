@@ -3,8 +3,8 @@ from django.utils.translation import gettext_lazy as _
 
 from djangocms_link.cms_plugins import LinkPlugin
 
+from taccsite_cms.contrib.constants import TEXT_FOR_NESTED_PLUGIN_CONTENT_ADD
 from taccsite_cms.contrib.helpers import concat_classnames
-from taccsite_cms.contrib.taccsite_offset.cms_plugins import get_direction_classname
 
 from .constants import DEFAULT_OTHER_TITLE
 
@@ -25,6 +25,12 @@ class TaccsiteSystemSpecsPlugin(LinkPlugin):
     cache = True
     text_enabled = False
     allow_children = True
+    child_classes = [
+        'TaccsiteSysmonPlugin',
+        'PicturePlugin',
+        'Bootstrap4PicturePlugin',
+        'TaccsiteDataListPlugin',
+    ]
 
     fieldsets = [
         (_('Specifications'), {
@@ -38,6 +44,15 @@ class TaccsiteSystemSpecsPlugin(LinkPlugin):
                 'system_memory',
             )
         }),
+        (_('Footer link'), {
+            'classes': ('collapse',),
+            'description': 'The "See More Detailed Specs" link at the bottom of the list. "Display name" is for alternate link text.',
+            'fields': (
+                ('external_link', 'internal_link'),
+                ('anchor', 'target'),
+                'name',
+            )
+        }),
         (_('Subsystems and/or resources - Introduction'), {
             'fields': (
                 'other_title',
@@ -46,26 +61,27 @@ class TaccsiteSystemSpecsPlugin(LinkPlugin):
         }),
         (_('Subsystems and/or resources - Data'), {
             'classes': ('collapse',),
-            'description': '\
-            <dl>\
-                <dt>To add data</dt>\
-                    <dd>nest a plugin inside this one.</dd>\
-                <dt>To edit data</dt>\
-                    <dd>edit the existing plugin.*</dd>\
-            </dl>\
-            <br />\
-            * If the existing data is from a plugin not nested within this one, then you should nest it inside this one instead.\
-            ',
+            'description': TEXT_FOR_NESTED_PLUGIN_CONTENT_ADD.format(
+                element='data',
+                plugin_name='Data List'
+            ),
             'fields': ()
         }),
-        (_('Footer link'), {
+        (_('Image'), {
             'classes': ('collapse',),
-            'description': 'The "See All" link at the bottom of the list. "Display name" is the text.',
-            'fields': (
-                'name',
-                ('external_link', 'internal_link'),
-                ('anchor', 'target'),
-            )
+            'description': TEXT_FOR_NESTED_PLUGIN_CONTENT_ADD.format(
+                element='an image',
+                plugin_name='(…) Image'
+            ),
+            'fields': ()
+        }),
+        (_('System monitor'), {
+            'classes': ('collapse',),
+            'description': TEXT_FOR_NESTED_PLUGIN_CONTENT_ADD.format(
+                element='a system monitor',
+                plugin_name='(…) System Monitor'
+            ),
+            'fields': ()
         }),
         (_('Advanced settings'), {
             'classes': ('collapse',),
@@ -86,6 +102,17 @@ class TaccsiteSystemSpecsPlugin(LinkPlugin):
             instance.attributes.get('class'),
         ])
         instance.attributes['class'] = classes
+
+        # To identify child plugins
+        for plugin_instance in instance.child_plugin_instances:
+            print(type(plugin_instance).__name__)
+            if (type(plugin_instance).__name__ == 'TaccsiteSysmon'):
+                context.update({ 'sysmon_plugin': plugin_instance })
+            if (type(plugin_instance).__name__ == 'Picture' or
+                type(plugin_instance).__name__ == 'Bootstrap4Picture'):
+                context.update({ 'image_plugin': plugin_instance })
+            if (type(plugin_instance).__name__ == 'TaccsiteDataList'):
+                context.update({ 'data_plugin': plugin_instance })
 
         context.update({
             'default_other_title': DEFAULT_OTHER_TITLE,
