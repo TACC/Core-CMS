@@ -77,6 +77,7 @@ Styleguide Trumps.Scopes.SystemSpecs
 /* Position */
 
 .s-system-specs > figure > img {
+  width: 100%;
   display: block; /* to support margin */
 }
 .s-system-specs > figure > figcaption {
