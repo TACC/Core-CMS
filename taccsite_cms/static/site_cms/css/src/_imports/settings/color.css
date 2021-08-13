@@ -17,42 +17,25 @@
 */
 
 :root {
-    /* Primary (Text, Layout) */
-    /* WARNING: Do not use `-alt-` hues; "round up" to nearest color, instead */
-    --global-color-primary--xx-light: #FFFFFF;
-    --global-color-primary--x-light: #F4F4F4;
-    --global-color-primary--x-light-rgb: 244, 244, 244;
-    --global-color-primary--light: #C6C6C6;/*
-        --global-color-primary--light-alt-2: #DBDBDB;
-        --global-color-primary--light-alt-2: #D8D8D8; */
-    --global-color-primary--normal: #AFAFAF;/*
-        --global-color-primary--normal-alt-2: #B7B7B7;
-        --global-color-primary--normal-alt-1: #9B9B9B; */
-    --global-color-primary--dark: #707070;/*
-        --global-color-primary--dark-alt-1: #696666;
-        --global-color-primary--dark-alt-2: #5F5C5C; */
-    --global-color-primary--x-dark: #484848;
-    --global-color-primary--x-dark-rgb: 72, 72, 72;/*
-        --global-color-primary--x-dark-alt-1: #464646; */
-    --global-color-primary--xx-dark: #222222; /*
-        --global-color-primary--xx-dark-alt-1: #2C2C2B;
-        --global-color-primary--xx-dark-alt-2: #1C1B1B; */
+  /* Primary (Text, Layout) */
+  /* WARNING: Do not use `-alt-` hues; "round up" to nearest color, instead */
 
-    /* Distinct Hues */
-    --global-color-accent--normal: #9D85EF;
-        --global-color-accent--weak: #9D85EF20;
-        --global-color-accent--light: #dfdaf5;
-        --global-color-accent--x-light: #D2CCE7;
-    --global-color-info--normal: var(--global-color-primary--x-dark);
-        --global-color-info--weak: var(--global-color-primary--x-light);
-    --global-color-warning--normal: #C7CE1D;
-        --global-color-warning--weak: #C7CE1D20;
-        --global-color-warning--alt: var(--global-color-accent--normal);
-        --global-color-warning--alt-weak: var(--global-color-accent--weak);
-    --global-color-danger--normal: #EB6E6E;
-        --global-color-danger--weak: #EB6E6E20;
-    --global-color-success--normal: #43D130;
-        --global-color-success--weak: #43D13020;
-        --global-color-success--alt: var(--global-color-warning--normal);
-        --global-color-success--alt-weak: var(--global-color-warning--weak);
+  --global-color-primary--xx-light: #FFFFFF;
+  --global-color-primary--x-light: #F4F4F4;
+  --global-color-primary--light: #C6C6C6;
+  --global-color-primary--normal: #AFAFAF;
+  --global-color-primary--dark: #707070;
+  --global-color-primary--x-dark: #484848;
+  --global-color-primary--xx-dark: #222222;
+
+  /* Distinct Hues */
+  /* FAQ: When Design color is not accessible, it is commented and replaced */
+
+  /* FAQ: This placeholder accent color came from Portal */
+  /* CAVEAT: A standard accent color definition is pending more designs */
+  /* NOTE: The new Frontera and TACC designs both have brown and blue accents */
+  --global-color-accent--normal: #877453;
+
+  --global-color-link-on-light--normal: #003399;
+  --global-color-link-on-dark--normal: #0088FF; /* from Developer */
 }
