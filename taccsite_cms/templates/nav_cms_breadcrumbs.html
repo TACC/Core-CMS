@@ -1,0 +1,16 @@
+{# @var className #}
+{% load menu_tags %}
+
+<nav class="s-breadcrumbs  {{className}}">
+
+  {# To support structured data, item* attributes are used #}
+  {# SEE: https://confluence.tacc.utexas.edu/x/5yMFDg #}
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+
+    {# To include pages marked to not show in menu, attributes are added #}
+    {# SEE: https://docs.django-cms.org/en/release-3.6.x/reference/navigation.html#show-breadcrumb #}
+    {% show_breadcrumb 0 "menu/breadcrumb.html" 0 %}
+
+  </ol>
+
+</nav>
