@@ -48,6 +48,8 @@ nav.s-breadcrumbs {
 nav.s-breadcrumbs ol {
   list-style: none; /* overwrite browser styles */
   padding-left: 0; /* overwrite html-elements.css */
+
+  font-weight: var(--global-font-weight--medium);
 }
 
 ol.s-breadcrumbs li,
