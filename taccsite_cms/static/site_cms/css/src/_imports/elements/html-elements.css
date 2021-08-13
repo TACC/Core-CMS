@@ -31,13 +31,11 @@ body {
   /* To avoid negative whitespace at right on horz scroll on tiny screen */
   min-width: 290px; /* developer-decided value */
 
+  /* To overwrite Bootstrap */
   color: var(--global-color-primary--dark);
-
   font-family: var(--global-font-family);
-  font-size: var(--global-font-size--small);
-  font-weight: var(--global-font-weight--medium);
-
-  line-height: 1.4; /* overwrite Bootstrap */
+  font-size: var(--global-font-size--medium);
+  line-height: 1.4;
 }
 
 
