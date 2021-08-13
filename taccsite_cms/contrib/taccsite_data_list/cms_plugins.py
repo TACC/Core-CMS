@@ -2,6 +2,7 @@ from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 from django.utils.translation import gettext_lazy as _
 
+from taccsite_cms.contrib.constants import TEXT_FOR_NESTED_PLUGIN_CONTENT_SWAP
 from taccsite_cms.contrib.helpers import (
     concat_classnames,
     AbstractMaxChildrenPlugin
@@ -103,8 +104,23 @@ class TaccsiteDataListItemPlugin(CMSPluginBase):
         (None, {
             'fields': (
                 ('key', 'value'),
-                ('use_plugin_as_key'),
-            )
+            ),
+        }),
+        (_('Link'), {
+            'classes': ('collapse',),
+            'description': TEXT_FOR_NESTED_PLUGIN_CONTENT_SWAP.format(
+                element='a link',
+                plugin_name='Link'
+            ) + '\
+            <br />\
+            The "Link" plugin\'s "Display name" field takes precedence over this plugin\'s "Label" field. <small>If "Link" pluign is not rendered, then check "Advanced settings" of this plugin.</small>',
+            'fields': (),
+        }),
+        (_('Advanced settings'), {
+            'classes': ('collapse',),
+            'fields': (
+                'use_plugin_as_key',
+            ),
         })
     ]
 
