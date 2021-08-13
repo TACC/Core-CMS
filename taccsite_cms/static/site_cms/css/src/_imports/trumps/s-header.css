@@ -160,3 +160,11 @@ Styleguide Trumps.Scopes.Header
     width: 27px; /* NO-R/EM: 1.25em (from Portal `.fa`—FP-228 will deprecate it) */
     text-align: center;
 }
+
+
+
+/* Dropdown */
+
+.dropdown-menu {
+  font-size: 16px; /* NO-R/EM: 1rem (from Bootstrap via `.dropdown-menu`) */
+}
