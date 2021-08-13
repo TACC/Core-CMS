@@ -16,6 +16,15 @@ Styleguide Trumps.Scopes.SystemSpecs
 
 
 
+/* Cascade */
+
+.s-system-specs {
+  font-size: var(--global-font-size--small);
+  font-weight: var(--global-font-size--medium);
+}
+
+
+
 /* Layout */
 
 @media only screen and (--narrow-and-above) {
