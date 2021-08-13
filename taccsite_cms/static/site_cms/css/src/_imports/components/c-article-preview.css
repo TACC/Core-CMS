@@ -93,6 +93,7 @@ Styleguide Components.ArticlePreview
   margin-top: 0; /* overwrite Bootstrap and browser */
   margin-bottom: 0; /* overwrite Bootstrap and browser */
 
+  color: inherit;
   font-weight: var(--bold);
   line-height: 2.4rem;
 }
