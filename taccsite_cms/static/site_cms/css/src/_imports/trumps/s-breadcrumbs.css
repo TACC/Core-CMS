@@ -1,7 +1,7 @@
 /*
 Breadcrumbs
 
-A list of links and to ancestor navigation (pages or sections that are a parent, grandparent, et cetera of the current page or section).
+A list of links to ancestor navigation (pages or sections that are a parent, grandparent, et cetera of the current page or section) and the current page or section itself.
 
 Notice: A scope class is used to enforce appropriate semantic HTML.
 
@@ -43,20 +43,23 @@ nav.s-breadcrumbs {
 
 /* Elements i.e. Content */
 
+/* To undo default list styles ONLY for major breadcrumbs */
+/* FAQ: Minor breadcrumbs have not been designed, so we should not unstyle it */
 nav.s-breadcrumbs ol {
-  list-style: none;
+  list-style: none; /* overwrite browser styles */
+  padding-left: 0; /* overwrite html-elements.css */
 }
 
 ol.s-breadcrumbs li,
-.s-breadcrumbs ol li {
+nav.s-breadcrumbs ol li {
   display: inline-block;
 }
 
 ol.s-breadcrumbs li + li::before,
-.s-breadcrumbs ol li + li::before {
+nav.s-breadcrumbs ol li + li::before {
   content: ' > ';
 }
 
-.s-breadcrumbs ol li:last-child span {
+nav.s-breadcrumbs ol li:last-child span {
   font-weight: var(--bold);
 }
