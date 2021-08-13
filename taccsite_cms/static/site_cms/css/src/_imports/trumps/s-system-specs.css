@@ -20,7 +20,7 @@ Styleguide Trumps.Scopes.SystemSpecs
 
 .s-system-specs {
   font-size: var(--global-font-size--small);
-  font-weight: var(--global-font-size--medium);
+  font-weight: var(--global-font-weight--medium);
 }
 
 
