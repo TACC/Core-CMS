@@ -19,6 +19,3 @@ Styleguide Trumps.Scopes.PortalNav
   /* Override `.navbar` */
   text-transform: none;
 }
-.s-portal-nav .dropdown-menu {
-  font-size: 16px; /* NO-R/EM: 1rem (from Bootstrap via `.dropdown-menu`) */
-}
