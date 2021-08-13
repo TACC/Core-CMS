@@ -11,6 +11,14 @@ from .constants import ORIENTATION_DICT, TYPE_STYLE_DICT, DENSITY_DICT
 
 
 
+# Helpers
+
+def get_short_descritpion(dict, value):
+    """Get layout class based on value."""
+    return dict.get(value, {}).get('short_description')
+
+
+
 # Constants
 
 ORIENTATION_CHOICES = get_choices(ORIENTATION_DICT)
@@ -55,9 +63,9 @@ class TaccsiteDataList(CMSPlugin):
     attributes = fields.AttributesField()
 
     def get_short_description(self):
-        orientation = ORIENTATION_DICT[self.orientation]['short_description']
-        type_style = TYPE_STYLE_DICT[self.type_style]['short_description']
-        density = DENSITY_DICT[self.density]['short_description']
+        orientation = get_short_descritpion(ORIENTATION_DICT, self.orientation)
+        type_style = get_short_descritpion(TYPE_STYLE_DICT, self.type_style)
+        density = get_short_descritpion(DENSITY_DICT, self.density)
 
         return density + ', ' + orientation + ' ' + type_style
 
