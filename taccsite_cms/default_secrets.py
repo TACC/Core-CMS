@@ -61,10 +61,15 @@ _CMS_TEMPLATES = (
     # FAQ: First template is default template
     # REF: http://docs.django-cms.org/en/latest/how_to/install.html#templates
 
-    # Default template with standard and custom (per-project) choices
-    # NOTE: To have per-project styles, the custom default template is required
+    # For standard pages (has Container and Breadcrumbs)
+    ('standard.html', 'Standard'),
+    # For content that spans full window width (no Container, no Breadcrumbs)
     ('fullwidth.html', 'Fullwidth'),
-    ('example-cms/templates/fullwidth.html', 'Fullwidth (Custom Example)'),
+
+    # Any project that needs per-project styles must have a custom template
+    # FAQ: This is a tedious solution until a cleaner solution is devised
+    # TODO: Automate per-project asset load and update exisitng sites as needed
+    # ('name-of-project/templates/fullwidth.html', 'Fullwidth (Custom)'),
     # NOTE: If project later uses custom template, then for that project:
     #       1. Rename standard default template to "DEPRECATED […]".
     #       2. Update all pages to use the custom default template.
