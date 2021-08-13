@@ -78,10 +78,10 @@ h3 {
   font-size: var(--global-font-size--x-large);
   margin-bottom: 15px; /* overwrite Bootstrap */
 }
-h4 {
-  margin-bottom: 7px; /* overwrite Bootstrap */
-}
 h4, h5, h6 {
+  font-size: var(--global-font-size--small);
+  margin-bottom: 7px; /* overwrite Bootstrap */
+
   text-transform: uppercase;
 }
 
