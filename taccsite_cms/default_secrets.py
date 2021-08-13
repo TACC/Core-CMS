@@ -63,7 +63,7 @@ _CMS_TEMPLATES = (
 
     # For standard pages (has Container and Breadcrumbs)
     ('standard.html', 'Standard'),
-    # For content that spans full window width (no Container, no Breadcrumbs)
+    # For content that spans full window width (no Container nor Breadcrumbs)
     ('fullwidth.html', 'Fullwidth'),
 
     # Any project that needs per-project styles must have a custom template
