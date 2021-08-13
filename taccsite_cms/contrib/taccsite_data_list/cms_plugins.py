@@ -3,10 +3,7 @@ from cms.plugin_pool import plugin_pool
 from django.utils.translation import gettext_lazy as _
 
 from taccsite_cms.contrib.constants import TEXT_FOR_NESTED_PLUGIN_CONTENT_SWAP
-from taccsite_cms.contrib.helpers import (
-    concat_classnames,
-    AbstractMaxChildrenPlugin
-)
+from taccsite_cms.contrib.helpers import concat_classnames
 
 from .models import TaccsiteDataList, TaccsiteDataListItem
 from .constants import ORIENTATION_DICT, TYPE_STYLE_DICT, DENSITY_DICT
@@ -24,7 +21,7 @@ def get_classname(dict, value):
 # Plugins
 
 @plugin_pool.register_plugin
-class TaccsiteDataListPlugin(CMSPluginBase, AbstractMaxChildrenPlugin):
+class TaccsiteDataListPlugin(CMSPluginBase):
     """
     Components > "Data List" Plugin
     https://confluence.tacc.utexas.edu/x/EiIFDg
