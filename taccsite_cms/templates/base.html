@@ -67,6 +67,7 @@
       <!-- This block used regardless. -->
       {% block content %}
       <div class="container">
+        {% include "nav_cms_breadcrumbs.html" %}
         {% placeholder "content" %}
       </div>
       {% endblock content %}
