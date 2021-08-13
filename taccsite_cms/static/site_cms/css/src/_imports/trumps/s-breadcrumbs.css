@@ -1,0 +1,62 @@
+/*
+Breadcrumbs
+
+A list of links and to ancestor navigation (pages or sections that are a parent, grandparent, et cetera of the current page or section).
+
+Notice: A scope class is used to enforce appropriate semantic HTML.
+
+Markup:
+<!-- major navigation -->
+<nav class="s-breadcrumbs">
+  <ol>
+      <li><a href="/"><span>Home</span></a></li>
+      <li><a href="/"><span>Science</span></a></li>
+      <li><span>Publications</span></li>
+  </ol>
+</nav>
+<!-- minor navigation -->
+<ol class="s-breadcrumbs">
+    <li><a href="/"><span>Home</span></a></li>
+    <li><a href="/"><span>Science</span></a></li>
+    <li><span>Publications</span></li>
+</ol>
+
+Styleguide Trumps.Scopes.Breadcrumbs
+*/
+@import url("_imports/tools/x-truncate.css");
+
+
+
+
+
+/* Base i.e. Container */
+
+nav.s-breadcrumbs {
+  padding-top: 15px;
+
+  font-size: var(--global-font-size--x-small);
+
+  text-transform: uppercase;
+}
+
+
+
+/* Elements i.e. Content */
+
+nav.s-breadcrumbs ol {
+  list-style: none;
+}
+
+ol.s-breadcrumbs li,
+.s-breadcrumbs ol li {
+  display: inline-block;
+}
+
+ol.s-breadcrumbs li + li::before,
+.s-breadcrumbs ol li + li::before {
+  content: ' > ';
+}
+
+.s-breadcrumbs ol li:last-child span {
+  font-weight: var(--bold);
+}
