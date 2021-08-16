@@ -18,7 +18,6 @@
 
 :root {
   /* Primary (Text, Layout) */
-  /* WARNING: Do not use `-alt-` hues; "round up" to nearest color, instead */
 
   --global-color-primary--xx-light: #FFFFFF;
   --global-color-primary--x-light: #F4F4F4;
@@ -29,13 +28,14 @@
   --global-color-primary--xx-dark: #222222;
 
   /* Distinct Hues */
-  /* FAQ: When Design color is not accessible, it is commented and replaced */
 
   /* FAQ: This placeholder accent color came from Portal */
   /* CAVEAT: A standard accent color definition is pending more designs */
   /* NOTE: The new Frontera and TACC designs both have brown and blue accents */
   --global-color-accent--normal: #877453;
 
+  /* CAVEAT: Not accessible within paragraph text (edge case as of 2021-08) */
   --global-color-link-on-light--normal: #003399;
-  --global-color-link-on-dark--normal: #0088FF; /* from Developer */
+  /* WARNING: This color is from Dev not Design (not rendered as of 2021-08) */
+  --global-color-link-on-dark--normal: #0088FF;
 }
