@@ -26,7 +26,7 @@ SYSTEM_DICT = {
 }
 SYSTEM_CHOICES = get_choices(SYSTEM_DICT)
 
-class TaccsiteSysmon(CMSPlugin):
+class TaccsiteSystemMonitor(CMSPlugin):
     """
     Components > "System Monitor" Model
     """

@@ -1,8 +1,8 @@
 {% load static %}
 
-<link rel="stylesheet" href="{% static "taccsite_sysmon/css/sysmon.css" %}" />
+<link rel="stylesheet" href="{% static "taccsite_system_monitor/css/system_monitor.css" %}" />
 
-<div {# class="s-sysmon" #}{{ instance.attributes_str }}>
+<div {# class="s-system-monitor" #}{{ instance.attributes_str }}>
   <table class="table table-dark">
     <thead>
       <tr>
@@ -31,4 +31,4 @@
 </div>
 
 <script>window.SYSMON_SYSTEM_HOSTNAME = '{{ instance.system }}';</script>
-<script src="{% static "taccsite_sysmon/js/sysmon.js" %}"></script>
+<script src="{% static "taccsite_system_monitor/js/system_monitor.js" %}"></script>

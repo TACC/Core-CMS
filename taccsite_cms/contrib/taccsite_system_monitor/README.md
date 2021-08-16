@@ -1,4 +1,4 @@
-# Sysmon
+# System Monitor
 
 This is a _minimal_ conversion of the Frontera Sysmon snippet to a Django CMS plugin.
 

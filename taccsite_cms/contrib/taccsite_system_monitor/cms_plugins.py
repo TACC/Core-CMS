@@ -4,18 +4,18 @@ from django.utils.translation import gettext_lazy as _
 
 from taccsite_cms.contrib.helpers import concat_classnames
 
-from .models import TaccsiteSysmon
+from .models import TaccsiteSystemMonitor
 
 @plugin_pool.register_plugin
-class TaccsiteSysmonPlugin(CMSPluginBase):
+class TaccsiteSystemMonitorPlugin(CMSPluginBase):
     """
     Components > "System Monitor" Plugin
-    https://url.to/docs/components/sysmon/
+    https://url.to/docs/components/system_monitor/
     """
     module = 'TACC Site'
-    model = TaccsiteSysmon
+    model = TaccsiteSystemMonitor
     name = _('System Monitor')
-    render_template = 'sysmon.html'
+    render_template = 'system_monitor.html'
 
     cache = True
     text_enabled = False
@@ -44,7 +44,7 @@ class TaccsiteSysmonPlugin(CMSPluginBase):
         request = context['request']
 
         classes = concat_classnames([
-            's-sysmon',
+            's-system-monitor',
             instance.attributes.get('class'),
         ])
         instance.attributes['class'] = classes

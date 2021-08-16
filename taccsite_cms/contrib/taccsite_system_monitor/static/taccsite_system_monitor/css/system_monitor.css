@@ -15,14 +15,14 @@ Styleguide Trumps.Scopes.SystemMonitor
 
 /* Container */
 
-.s-sysmon {
+.s-system-monitor {
   font-size: 1.4rem;
   min-width: 320px;
 }
 
 /* Table */
 
-.s-sysmon table {
+.s-system-monitor table {
   /* vert. `padding` + vert. `border-spacing` + `border-width` = 14px */
   padding: 6px 0;
 
@@ -31,56 +31,56 @@ Styleguide Trumps.Scopes.SystemMonitor
   border-spacing: 14px 7px; /* Overwrite Bootstrap 3 */
   border-collapse: separate; /* Overwrite Bootstrap 4 */
 }
-.s-sysmon thead > tr {
+.s-system-monitor thead > tr {
   margin-left: 5px;
   margin-right: 5px;
 }
-.s-sysmon th {
+.s-system-monitor th {
   font-weight: var(--bold);
 }
-.s-sysmon td {
+.s-system-monitor td {
   font-weight: var(--medium);
 }
 
 /* Overwrite Bootstrap Class */
-.s-sysmon .table {
+.s-system-monitor .table {
   margin-bottom: 0px;
 }
-.s-sysmon .table-dark {
+.s-system-monitor .table-dark {
   color: var(--global-color-primary--normal);
   background-color: var(--global-color-primary--xx-dark);
 }
-.s-sysmon .table thead th {
+.s-system-monitor .table thead th {
   border-bottom: 1px solid var(--global-color-primary--dark);
 }
-.s-sysmon .table th,
-.s-sysmon .table td {
+.s-system-monitor .table th,
+.s-system-monitor .table td {
   vertical-align: middle;
   border: none;
   padding: 0 0 5px;
 }
-.s-sysmon .table td {
+.s-system-monitor .table td {
   padding: 0;
 }
 
 /* Status Label */
 
-.s-sysmon .badge {
+.s-system-monitor .badge {
   font-family: Roboto;
 }
 
 /* Overwrite Bootstrap */
-.s-sysmon .badge {
+.s-system-monitor .badge {
   border-radius: 3px;
   font-size: 1.3rem;
   font-weight: normal;
 }
-.s-sysmon .badge-warning {
+.s-system-monitor .badge-warning {
   background-color: var(--global-color-warning--normal);
   color: var(--global-color-primary--xx-light);
 }
 
 /* Overwrite IconWorks */
-.s-sysmon .iconworks:before {
+.s-system-monitor .iconworks:before {
   padding-right: 0.5em;
 }
