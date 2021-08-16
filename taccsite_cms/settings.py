@@ -248,7 +248,7 @@ INSTALLED_APPS = [
     'taccsite_cms.contrib.taccsite_static_article_preview',
     'taccsite_cms.contrib.taccsite_blockquote',
     'taccsite_cms.contrib.taccsite_offset',
-    'taccsite_cms.contrib.taccsite_sysmon',
+    'taccsite_cms.contrib.taccsite_system_monitor',
     'taccsite_cms.contrib.taccsite_system_specs',
     'taccsite_cms.contrib.taccsite_data_list',
 ]
