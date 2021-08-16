@@ -25,6 +25,7 @@
   --global-color-primary--normal: #AFAFAF;
   --global-color-primary--dark: #707070;
   --global-color-primary--x-dark: #484848;
+    --global-color-primary--x-dark-rgb: 72, 72, 72;
   --global-color-primary--xx-dark: #222222;
 
   /* Distinct Hues */
