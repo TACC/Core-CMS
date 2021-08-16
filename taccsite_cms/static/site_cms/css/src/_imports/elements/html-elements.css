@@ -18,8 +18,7 @@ Styleguide Elements.MainSectioningRoots
 html {
   /* Set base font but support user-defined browser font size */
   /* SEE: https://snook.ca/archives/html_and_css/font-size-with-rem */
-  /* TODO: Use 62.5% (requires recalculating NON-Frontera instances of `rem`) */
-  font-size: 100%; /* 16px */
+  font-size: 62.5%; /* 16px */
 }
 
 /* The webpage must be at least as tall as the viewport */
@@ -32,9 +31,11 @@ body {
   /* To avoid negative whitespace at right on horz scroll on tiny screen */
   min-width: env(--body-min-width);
 
+  /* To overwrite Bootstrap */
+  color: var(--global-color-primary--dark);
   font-family: var(--global-font-family);
-
-  line-height: 1.4; /* overwrite Bootstrap */
+  font-size: var(--global-font-size--medium);
+  line-height: 1.4;
 }
 
 
@@ -59,6 +60,27 @@ Styleguide Elements.ContentSectioning
 
 main {
   padding-bottom: var(--global-space-beneath-main-content);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: var(--bold);
+  color: var(--global-color-primary--xx-dark);
+}
+h1 {
+  font-size: var(--global-font-size--xxx-large);
+}
+h2 {
+  font-size: var(--global-font-size--xx-large);
+}
+h3 {
+  font-size: var(--global-font-size--x-large);
+  margin-bottom: 15px; /* overwrite Bootstrap */
+}
+h4, h5, h6 {
+  font-size: var(--global-font-size--small);
+  margin-bottom: 7px; /* overwrite Bootstrap */
+
+  text-transform: uppercase;
 }
 
 
@@ -90,7 +112,8 @@ ol ol, ol ul, ul ol, ul ul {
 }
 /* Add space between `dt` and `dd` */
 dt {
-  margin-bottom: .5rem; /* Mirror's Bootstrap `margin-bottom` */
+  margin-bottom: .5rem; /* overwrite Bootstrap */
+  font-weight: initial; /* overwrite Bootstrap */
 }
 
 
@@ -112,6 +135,21 @@ Reference:
 
 Styleguide Elements.InlineTextSemantics
 */
+
+/* Links */
+
+a,
+a:hover { color: var(--global-color-link-on-light--normal); /* overwrite Bootstrap */ }
+a:focus { text-decoration: underline dotted; }
+a:active { position: relative; top: 0.1em; /* to simulate "depress" of link */ }
+
+/* FAQ: Bootstrap already provides basic text-decoration */
+/*
+a { text-decoration: none; }
+a:hover { text-decoration: underline; }
+*/
+
+/* Monospace */
 
 var,
 /* Overwrite Bootstrap (which does not use its `--font-family-monospace`) */
