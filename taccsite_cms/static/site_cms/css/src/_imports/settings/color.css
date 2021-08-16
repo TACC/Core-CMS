@@ -18,7 +18,6 @@
 
 :root {
   /* Primary (Text, Layout) */
-  /* WARNING: Do not use `-alt-` hues; "round up" to nearest color, instead */
 
   --global-color-primary--xx-light: #FFFFFF;
   --global-color-primary--x-light: #F4F4F4;
