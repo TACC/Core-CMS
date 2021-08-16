@@ -26,7 +26,7 @@ class TaccsiteSystemSpecsPlugin(LinkPlugin):
     text_enabled = False
     allow_children = True
     child_classes = [
-        'TaccsiteSysmonPlugin',
+        'TaccsiteSystemMonitorPlugin',
         'PicturePlugin',
         'Bootstrap4PicturePlugin',
         'TaccsiteDataListPlugin',
