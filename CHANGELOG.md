@@ -7,7 +7,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [2.1.0] - 2021-06-14: Frontera Home Redesign; New Projects; New CSS Plugin; Bugfixes
+## [2.5.2] - 2021-07-16: Fix Publish Bug; Texascale 2020; Polish
+
+### Added
+
+- Major: Texascale 2020 (#256)
+- GH-253: Initial Pattern Library Template & Styles (#25)
+- Quick: Set Version & Add Changelog (#252)
+
+### Changed
+
+- Quick: Polish Sample (Greet User) Plugin (#263)
+
+### Fixed
+
+- FP-1099: Only rebuild index on Page type for publish or unpublish events (#262)
+
+## [2.1.1] - 2021-06-15: Hotfix for Consistent Search Bar Size
+
+### Changed
+
+- GH-230: Quick: Ensure search bar font sizes match (#231)
+
+## [2.1.0] - 2021-06-14: New Frontera Homepage, Projects, CSS Plugin; Bugfixes
 
 ### Added
 
@@ -58,6 +80,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.0.0] - 2021-03-31
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v2.1.0...HEAD
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v2.5.2...HEAD
+[2.5.2]: https://github.com/TACC/Core-CMS/releases/tag/v2.5.2
+[2.1.1]: https://github.com/TACC/Core-CMS/releases/tag/v2.1.1
 [2.1.0]: https://github.com/TACC/Core-CMS/releases/tag/v2.1.0
 [2.0.0]: https://github.com/TACC/Core-CMS/releases/tag/v2.0.0
