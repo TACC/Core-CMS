@@ -1,4 +1,7 @@
 // GH-295: Use server-side logic instead of client-side
+// NOTE: If JavaScript is a long-term solution, then use a class.
+
+/* Definitions */
 
 /**
  * All system data
@@ -12,6 +15,8 @@
  * @see https://frontera-portal.tacc.utexas.edu/api/system-monitor/
  */
 
+/* Internal Constants (if using a class, Static Properties) */
+
 // Allow system mointor to work(-ish) on local server
 const USE_SAMPLE_DATA = (window.location.hostname === 'localhost');
 const API_SAMPLE_DATA = JSON.parse('[{"hostname": "frontera.tacc.utexas.edu", "display_name": "Frontera", "ssh": {"type": "ssh", "status": true, "timestamp": "2021-07-30T19:45:02Z"}, "heartbeat": {"type": "heartbeat", "status": true, "timestamp": "2021-07-30T19:45:02Z"}, "status_tests": {"ssh": {"type": "ssh", "status": true, "timestamp": "2021-07-30T19:45:02.176Z"}, "heartbeat": {"type": "heartbeat", "status": true, "timestamp": "2021-07-30T19:45:02.174Z"}}, "resource_type": "compute", "jobs": {"running": 322, "queued": 1468, "other": 364}, "load_percentage": 99, "cpu_count": 472760, "cpu_used": 468616, "is_operational": true}, {"hostname": "stampede2.tacc.utexas.edu", "display_name": "Stampede2", "ssh": {"type": "ssh", "status": true, "timestamp": "2021-07-30T19:45:03Z"}, "heartbeat": {"type": "heartbeat", "status": true, "timestamp": "2021-07-30T19:45:03Z"}, "status_tests": {"heartbeat": {"type": "heartbeat", "status": true, "timestamp": "2021-07-30T19:45:03.069Z"}, "ssh": {"type": "ssh", "status": true, "timestamp": "2021-07-30T19:45:03.074Z"}}, "resource_type": "compute", "jobs": {"running": 1115, "queued": 1032, "other": 444}, "load_percentage": 96, "cpu_count": 1309056, "cpu_used": 1257184, "is_operational": true}]');
@@ -22,6 +27,8 @@ const API_SAMPLE_DATA = JSON.parse('[{"hostname": "frontera.tacc.utexas.edu", "d
  */
 const API_URL = '/api/system-monitor';
 
+/* External Constants (if using a class, Parameters) */
+
 /**
  * The systems to show
  *
@@ -29,6 +36,8 @@ const API_URL = '/api/system-monitor';
  * @type {string}
  */
 const SYSTEM_HOSTNAME = window.SYSMON_SYSTEM_HOSTNAME;
+
+/* Functions (if using a class, Methods) */
 
 /**
  * Load system status
@@ -139,6 +148,8 @@ function populate(systems) {
 
   setStatus(status);
 }
+
+/* Initialize (if using a class, Constructor) */
 
 /** Load and populate UI */
 function init() {
