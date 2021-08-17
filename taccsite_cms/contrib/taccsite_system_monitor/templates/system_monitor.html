@@ -31,10 +31,13 @@
   </table>
 </div>
 
-<script>
-  window.SYSMON_SYSTEM_HOSTNAME = '{{ instance.system }}';
-  window.SYSMON_SYSTEM_DOM_ELEMENT = document.getElementById(
+<script type="module">
+  import { SystemMonitor } from '{% static "taccsite_system_monitor/js/system_monitor.js" %}';
+
+  const hostname = '{{ instance.system }}';
+  const element = document.getElementById(
     'system-monitor-' + '{{ instance.id }}'
   );
+  const useSampleData = (window.location.hostname === 'localhost');
+  const systemMonitor = new SystemMonitor(hostname, element, useSampleData);
 </script>
-<script src="{% static "taccsite_system_monitor/js/system_monitor.js" %}"></script>
