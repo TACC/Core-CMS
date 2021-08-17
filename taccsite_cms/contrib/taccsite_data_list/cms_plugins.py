@@ -110,7 +110,7 @@ class TaccsiteDataListItemPlugin(CMSPluginBase):
                 plugin_name='Link'
             ) + '\
             <br />\
-            The "Link" plugin\'s "Display name" field takes precedence over this plugin\'s "Label" field. <small>If "Link" pluign is not rendered, then check "Advanced settings" of this plugin.</small>',
+            The "Link" plugin\'s "Display name" field takes precedence over this plugin\'s "Label" field. <small>If "Link" plugin is not rendered, then check "Advanced settings" of this plugin.</small>',
             'fields': (),
         }),
         (_('Advanced settings'), {
