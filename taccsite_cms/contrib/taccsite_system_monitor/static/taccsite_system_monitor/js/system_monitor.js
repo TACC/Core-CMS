@@ -37,6 +37,14 @@ const API_URL = '/api/system-monitor';
  */
 const SYSTEM_HOSTNAME = window.SYSMON_SYSTEM_HOSTNAME;
 
+/**
+ * The DOM element for display
+ *
+ * _Notice: This value is expected to be available from another script_
+ * @type {HTMLElement}
+ */
+const SYSTEM_DOM_ELEMENT = window.SYSMON_SYSTEM_DOM_ELEMENT;
+
 /* Functions (if using a class, Methods) */
 
 /**
@@ -74,10 +82,22 @@ function isOperational(system) {
 }
 
 /**
+ * Get element in UI by an ID
+ * @param {string} id - The (internally unique) identifier of an element
+ * @return {HTMLElement}
+ */
+function getElement(id) {
+  // NOTE: To permit multiple instances,
+  //       an ID must be reusable across instances,
+  //       so `document.getElementById` SHOULD NOT be used.
+  return SYSTEM_DOM_ELEMENT.querySelector(`[data-id="${id}"]`);
+}
+
+/**
  * Show system content in UI
  */
 function showStatus() {
-  document.getElementById('status').classList.remove('d-none');
+  getElement('status').classList.remove('d-none');
 }
 
 /**
@@ -85,14 +105,14 @@ function showStatus() {
  * @param {string} type - A type: "warning"
  */
 function setStatusStyle(type) {
+  const element = getElement('status');
+
   switch (type) {
     case 'warning':
-      document
-        .getElementById('status')
-        .classList.remove('badge-success');
-      document.getElementById('status').removeAttribute('data-icon');
-      document.getElementById('status').innerHTML = 'Maintenance';
-      document.getElementById('status').classList.add('badge-warning');
+      element.classList.remove('badge-success');
+      element.removeAttribute('data-icon');
+      element.innerHTML = 'Maintenance';
+      element.classList.add('badge-warning');
 
     default:
       break;
@@ -104,11 +124,11 @@ function setStatusStyle(type) {
  * @param {System} status
  */
 function setStatusMarkup(status) {
-  document.getElementById('load_percentage').innerHTML =
+  getElement('load_percentage').innerHTML =
     status['load_percentage'] + '%';
-  document.getElementById('jobs_running').innerHTML =
+  getElement('jobs_running').innerHTML =
     status['jobs']['running'];
-  document.getElementById('jobs_queued').innerHTML =
+  getElement('jobs_queued').innerHTML =
     status['jobs']['queued'];
 }
 

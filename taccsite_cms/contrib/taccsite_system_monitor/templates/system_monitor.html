@@ -2,7 +2,8 @@
 
 <link rel="stylesheet" href="{% static "taccsite_system_monitor/css/system_monitor.css" %}" />
 
-<div {# class="s-system-monitor" #}{{ instance.attributes_str }}>
+<div {# class="s-system-monitor" #}{{ instance.attributes_str }}
+  id="system-monitor-{{ instance.id }}">
   <table class="table table-dark">
     <thead>
       <tr>
@@ -16,19 +17,24 @@
       <tr>
         <td scope="row">
           <span
-            id="status"
+            data-id="status"
             class="iconworks  badge badge-success  d-none"
             data-icon="&#217;"
             >Operational</span
           >
         </td>
-        <td id="load_percentage">-</td>
-        <td id="jobs_running">-</td>
-        <td id="jobs_queued">-</td>
+        <td data-id="load_percentage">-</td>
+        <td data-id="jobs_running">-</td>
+        <td data-id="jobs_queued">-</td>
       </tr>
     </tbody>
   </table>
 </div>
 
-<script>window.SYSMON_SYSTEM_HOSTNAME = '{{ instance.system }}';</script>
+<script>
+  window.SYSMON_SYSTEM_HOSTNAME = '{{ instance.system }}';
+  window.SYSMON_SYSTEM_DOM_ELEMENT = document.getElementById(
+    'system-monitor-' + '{{ instance.id }}'
+  );
+</script>
 <script src="{% static "taccsite_system_monitor/js/system_monitor.js" %}"></script>
