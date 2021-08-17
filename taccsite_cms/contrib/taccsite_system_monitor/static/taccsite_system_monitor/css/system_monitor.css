@@ -75,10 +75,6 @@ Styleguide Trumps.Scopes.SystemMonitor
   font-size: 1.3rem;
   font-weight: normal;
 }
-.s-system-monitor .badge-warning {
-  background-color: var(--global-color-warning--normal);
-  color: var(--global-color-primary--xx-light);
-}
 
 /* Overwrite IconWorks */
 .s-system-monitor .iconworks:before {
