@@ -6,7 +6,9 @@ A list of links to ancestor navigation (pages or sections that are a parent, gra
 Notice: A scope class is used to enforce appropriate semantic HTML.
 
 Markup:
-<!-- major navigation -->
+<!-- Major Navigation -->
+<!-- FAQ: Use this major navigation markup for global breadcrumbs -->
+<!-- SEE: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav#usage_notes -->
 <nav class="s-breadcrumbs">
   <ol>
       <li><a href="/"><span>Home</span></a></li>
@@ -14,7 +16,7 @@ Markup:
       <li><span>Publications</span></li>
   </ol>
 </nav>
-<!-- minor navigation -->
+<!-- Minor Navigation -->
 <ol class="s-breadcrumbs">
     <li><a href="/"><span>Home</span></a></li>
     <li><a href="/"><span>Science</span></a></li>
