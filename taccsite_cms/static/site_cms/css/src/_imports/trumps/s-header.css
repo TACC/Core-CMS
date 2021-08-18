@@ -277,6 +277,10 @@ Styleguide Trumps.Scopes.Header
 
 @custom-selector :--navbar-toggle
   .navbar-toggler;
+@custom-selector :--navbar-toggle__text
+  .navbar-toggler-text;
+@custom-selector :--navbar-toggle__icon
+  .navbar-toggler-icon;
 @custom-selector :--navbar-toggle--opened
   .navbar-toggler[aria-expanded="true"];
 @custom-selector :--navbar-toggle--closed
@@ -291,16 +295,19 @@ Styleguide Trumps.Scopes.Header
   /* Layout */
 
   /* To layout the toggle as a "mobile button" */
-  .s-header :--navbar-toggle--opened,
-  .s-header :--navbar-toggle--closed {
+  .s-header :--navbar-toggle {
     /* WARNING: Do not set `display` outside of (--nav-compressed) */
     /* FAQ: The button as Bootstrap `.navbar-toggler` uses `display: none` */
     display: grid;
   }
   .s-header :--navbar-toggle--opened { @extend %x-mobile-button--only-icon; }
   .s-header :--navbar-toggle--closed { @extend %x-mobile-button--no-toggle; }
-  .s-header :--navbar-toggle::after  { @extend %x-mobile-button__text; }
-  .s-header :--navbar-toggle::before { @extend %x-mobile-button__icon; }
+  .s-header :--navbar-toggle__icon   { @extend %x-mobile-button__icon; }
+  .s-header :--navbar-toggle__text   { @extend %x-mobile-button__text; }
+  /* AFTER GH-101: Remove this ruleset */
+  .s-header :--navbar-toggle:not(.gh-101)::after {
+    @extend %x-mobile-button__text;
+  }
 
 
 
@@ -346,20 +353,28 @@ Styleguide Trumps.Scopes.Header
   /* Icon */
 
   /* To overwrite Bootstrap */
-  .s-header .navbar-toggler-icon { display: none; }
+  .s-header :--navbar-toggle__icon { background-image: none !important; }
   /* To swap Bootstrap icon for Cortal icon */
   /* HACK: To apply icon styles without using a class in the markup */
   /* FAQ: For dynamic markup change, Portal & Docs markup must be updated */
   /* SEE: https://getbootstrap.com/docs/4.0/components/collapse/#events */
-  .s-header :--navbar-toggle { @extend [class*=" icon-"]; }
-  .s-header :--navbar-toggle::before { @extend .icon; }
+  .s-header :--navbar-toggle__icon {
+    @extend [class*=" icon-"];
+    @extend .icon;
+  }
   /* To change icon without using dynamic icon classes */
-  .s-header :--navbar-toggle--opened { @extend .icon-close; }
-  .s-header :--navbar-toggle--closed { @extend .icon-burger; }
-  /* To stretch icon to mimic icon in design (which is not available yet) */
-  .s-header :--navbar-toggle--closed::before { transform: scaleX(1.5); }
+  .s-header :--navbar-toggle--opened :--navbar-toggle__icon {
+    @extend .icon-close;
+  }
+  .s-header :--navbar-toggle--closed :--navbar-toggle__icon {
+    @extend .icon-burger;
+  }
+  /* To stretch icon to mimic icon in design */
+  .s-header :--navbar-toggle--closed :--navbar-toggle__icon {
+    transform: scaleX(1.5);
+  }
   /* To overwrite `.icon` */
-  .s-header :--navbar-toggle::before {
+  .s-header :--navbar-toggle__icon {
     font-size: 30px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
   }
 
@@ -367,16 +382,21 @@ Styleguide Trumps.Scopes.Header
 
   /* Text */
 
-  .s-header :--navbar-toggle::after {
-    content: attr(data-icon-label);
+  /* To hide text of button when menu is open */
+  .s-header :--navbar-toggle--opened :--navbar-toggle__text {
+    display: none;
   }
-  /* To apply style to old markup (see "Portal & Docs Selectors") */
-  /* FAQ: This selector does not use `:--for-portal` but has similar purpose */
-  .s-header :--navbar-toggle:not([data-icon-label])::after {
+
+  /* AFTER GH-101: Remove this block i.e. rely only on `[data-icon-label]` */
+  /* To create fake text that does not exist in old markup */
+  /* FAQ: The `:not(.gh-101)` applies style only to old markup */
+  .s-header :--navbar-toggle:not(.gh-101)::after {
     content: 'Menu';
   }
-  /* FAQ: Only the closed state is supposed to have text */
-  .s-header :--navbar-toggle--opened::after { display: none; }
+  /* To hide fake text of button when menu is open */
+  .s-header :--navbar-toggle--opened:not(.gh-101)::after {
+    display: none;
+  }
 
 }
 
@@ -563,6 +583,8 @@ Styleguide Trumps.Scopes.Header
   .nav-item.active .nav-link,
   .nav-item.dropdown.show .nav-link;
 */
+@custom-selector :--portal-nav-link
+  .s-portal-nav .nav-link;
 @custom-selector :--portal-nav-link--user
   .s-portal-nav .nav-link.dropdown-toggle;
 @custom-selector :--portal-nav-link--guest
@@ -583,7 +605,7 @@ Styleguide Trumps.Scopes.Header
   display: flex;
   align-items: center;
 }
-.s-header .s-portal-nav .nav-link {
+.s-header :--portal-nav-link {
   /* To horizontally center align icon, text, and toggle as a group */
   justify-content: center;
 
@@ -601,7 +623,7 @@ Styleguide Trumps.Scopes.Header
   .s-header .nav-link {
     height: 100%;
   }
-  .s-header .s-portal-nav .nav-link {
+  .s-header :--portal-nav-link {
     background-color: env(--header-portal-nav-bkgd-color);
   }
 }
@@ -612,7 +634,7 @@ Styleguide Trumps.Scopes.Header
   .s-header .s-cms-nav .nav-link {
     font-size: 2em;
   }
-  .s-header .s-portal-nav .nav-link {
+  .s-header :--portal-nav-link {
     /* To align portal nav link to the right */
     margin-left: auto;
   }
@@ -638,9 +660,9 @@ Styleguide Trumps.Scopes.Header
 
 @media (--nav-expanded) {
 
-  .s-header .s-portal-nav .nav-link,
+  .s-header :--portal-nav-link,
   /* To overwrite Bootstrap (see "Portal & Docs Selectors") */
-  :--for-portal .s-portal-nav .nav-link {
+  :--for-portal :--portal-nav-link {
     /* To match space between logo and left side of window */
     --nav-link-horz-pad: env(--header-navbar-normal-left-pad);
   }
@@ -656,7 +678,7 @@ Styleguide Trumps.Scopes.Header
 /* To match design of collapsed navbar Portal Nav but take liberty with when */
 @media (--nav-compressed) /* dev liberty */ {
 
-  .s-header .s-portal-nav .nav-link {
+  .s-header :--portal-nav-link {
     min-width: calc(2 * env(--header-navbar-toggle-width)); /* dev liberty */
 
     padding-top: 0; /* to overwrite Bootstrap */
@@ -677,40 +699,18 @@ Styleguide Trumps.Scopes.Header
   /* Layout */
 
   /* To layout each link as a "mobile button" */
-  .s-header .s-portal-nav .nav-link {
+  .s-header :--portal-nav-link {
     display: grid;
   }
-  .s-header :--portal-nav-link--user {
-    @extend %x-mobile-button--has-toggle;
-  }
-  .s-header :--portal-nav-link--guest {
-    @extend %x-mobile-button--no-toggle;
-  }
-  .s-header :--portal-nav-link__icon {
-    @extend %x-mobile-button__icon;
-  }
-  .s-header .s-portal-nav .nav-link::before {
+  .s-header :--portal-nav-link--user   { @extend %x-mobile-button--has-toggle;}
+  .s-header :--portal-nav-link--guest  { @extend %x-mobile-button--no-toggle; }
+  .s-header :--portal-nav-link__icon   { @extend %x-mobile-button__icon; }
+  .s-header :--portal-nav-link__text   { @extend %x-mobile-button__text; }
+  .s-header :--portal-nav-link::after  { @extend %x-mobile-button__toggle; }
+  /* AFTER GH-101: Remove this ruleset */
+  .s-header :--portal-nav-link:not(.gh-101)::before {
     @extend %x-mobile-button__text;
   }
-  .s-header .s-portal-nav .nav-link::after {
-    @extend %x-mobile-button__toggle;
-  }
-
-
-
-  /* Text */
-
-  /* To apply style to old markup (see "Portal & Docs Selectors") */
-  /* FAQ: This selector does not use `:--for-portal` but has similar purpose */
-  .s-header :--portal-nav-link--guest::before {
-    content: 'Log In';
-  }
-  /* Use content for text, not actual text */
-  /* FAQ: For consistency with `:--navbar-toggle` */
-  /* FAQ: Because the text need not be selectable anyway */
-  .s-header :--portal-nav-link__text { display: none; }
-  /* To hide the stray text */
-  .s-header :--portal-nav-link--guest { font-size: 0; }
 
 }
 
@@ -1158,7 +1158,7 @@ Styleguide Trumps.Scopes.Header
           - height for portal nav would hide its dropdown menu
   */
   .s-header .s-search-bar::part(form),
-  .s-header .s-portal-nav .nav-link {
+  .s-header :--portal-nav-link {
     height: var(--header-navbar-height);
   }
 
