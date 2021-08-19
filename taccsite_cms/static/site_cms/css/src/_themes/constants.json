@@ -23,11 +23,13 @@
     "--header-navbar-normal-height": "55px",
     "--header-navbar-mobile-height": "48px",
     "--header-navbar-toggle-width": "48px",
+    "// To offer a static width for var-width element": "use only as needed",
+    "// --header-navbar-toggle-width--portal-user": "equals fit-content result",
+    "--header-navbar-toggle-width--portal-user": "110px",
 
-    "// --header-navbar-mobile-right-pad": "developer-decided value",
-    "--header-navbar-mobile-right-pad": "48px",
-    "// --header-navbar-mobile-left-pad": "--header-navbar-toggle-width / 2",
-    "--header-navbar-mobile-left-pad": "24px",
+    "--header-navbar-mobile-right-pad": "28px",
+    "--header-navbar-mobile-left-pad": "23px",
+    "--header-navbar-mobile-menu-offset": "67px",
 
     "// To line up logo with navbar left-hand content": "",
     "// CAVEAT: Portal navbar width is why this value may not match design": "",

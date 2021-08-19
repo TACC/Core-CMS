@@ -11,27 +11,35 @@ Styleguide Trumps.ForOtherSites.Portal
 
 @media (--nav-compressed) {
 
-  /* To position navbar+button based on screen width instead of parent width */
-  /* FAQ: Portal body min-width places a static button outside narrow screen */
+  /* To position navbar menus/buttons based on window width not parent width */
+  /* FAQ: Portal at body min. width places menu buttons outside narrow screen */
   :--for-portal .s-header :--navbar-toggle {
     position: absolute; /* assumes Bootstrap `.navbar { position: relative }` */
     width: env(--header-navbar-toggle-width);
     left: calc(
       100vw
-      - env(--header-navbar-mobile-right-pad)
       - env(--header-navbar-toggle-width)
-    ); /* full screen width – distance from right of screen – its own width */
-
-    /* To overwrite `s-header.css` */
-    margin-right: auto;
+      - env(--header-navbar-toggle-width--portal-user)
+    ); /* FAQ: = window width – width of all toggles */
+  }
+  :--for-portal .s-header .s-portal-nav {
+    position: absolute; /* assumes Bootstrap `.navbar { position: relative }` */
+    width: env(--header-navbar-toggle-width--portal-user); /* !!!: Makes "Log In" link too wide */
+    left: calc(
+      100vw
+      - env(--header-navbar-toggle-width--portal-user)
+    ); /* FAQ: = window width – its own width (not others, cuz it's the last) */
   }
   :--for-portal .s-header .navbar-collapse {
     width: calc(
-      100vw - env(--header-navbar-mobile-right-pad)
-    );
+      100vw
+      - env(--header-navbar-mobile-menu-offset)
+    ); /* FAQ: = window width – offset from window */
+  }
 
-    /* To overwrite `s-header.css` */
-    right: auto;
+  /* WARNING: Only Portal may use this cuz only its markup knows login state */
+  :--for-portal .s-header.is-portal-user :--portal-nav-link {
+    width: env(--header-navbar-toggle-width--portal-user);
   }
 
 }

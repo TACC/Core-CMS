@@ -116,14 +116,8 @@ Styleguide Trumps.Scopes.Header
 /* Logo */
 
 #header-logo {
-  /* To allow projects to change value and responsive design to use value */
-  --space-after-logo-before-nav: 25px;
-
   display: flex;
   align-items: center;
-
-  /* To overwrite Bootstrap */
-  margin-right: var(--space-after-logo-before-nav);
 
   /* FAQ: In case image does not load and browser shows alt text */
   color: env(--header-text-color);
@@ -142,37 +136,6 @@ Styleguide Trumps.Scopes.Header
   /* To avoid a project shrinking logo beyond legibility */
   min-height: 50%;
   min-width: 50%;
-}
-
-
-
-/* Logo: Mobile */
-
-@media (--nav-expanded) {
-  #header-logo {
-    /* To manage logo width influence on other elements */
-    /* To prevent zero-width element as it is loaded */
-    /* To align position of first CMS nav link with Portal section headers */
-    /* CAVEAT: Only works on narrow-enough logos */
-    min-width: calc(190px - var(--space-after-logo-before-nav));
-
-    /* To align logo (whole image not just visible pixels) w/ Portal side nav */
-    margin-left: env(--header-navbar-normal-left-pad);
-  }
-}
-
-
-
-/* Logo: Desktop */
-
-@media (--nav-compressed) {
-  #header-logo {
-    /* To prevent wide image from forcing `.navbar-toggler` to be wrapped */
-    max-width: calc(188px - var(--space-after-logo-before-nav));
-
-    /* To match space between logo and left side of window */
-    margin-left: env(--header-navbar-mobile-left-pad);
-  }
 }
 
 
@@ -223,6 +186,9 @@ Styleguide Trumps.Scopes.Header
 }
 
 /* To overwrite Bootstrap */
+.s-header.navbar {
+  flex-wrap: nowrap;
+}
 .s-header.navbar,
 /* To overwrite Bootstrap (see "Portal & Docs Selectors") */
 :--for-docs .s-header.navbar,
@@ -259,7 +225,6 @@ Styleguide Trumps.Scopes.Header
 /* To support shrinking and truncation of certain nav elements */
 /* SEE: https://css-tricks.com/flexbox-truncated-text/ */
 .s-header .navbar-collapse,
-  #header-logo,
   .s-header .s-cms-nav,
   .s-header .s-search-bar { min-width: 0; }
 
@@ -294,6 +259,9 @@ Styleguide Trumps.Scopes.Header
 
   /* Layout */
 
+  /* To push it (and everything to its right) to the right of the navbar */
+  .s-header :--navbar-toggle { margin-left: auto; }
+
   /* To layout the toggle as a "mobile button" */
   .s-header :--navbar-toggle {
     /* WARNING: Do not set `display` outside of (--nav-compressed) */
@@ -316,23 +284,20 @@ Styleguide Trumps.Scopes.Header
   /* To layout the button */
   .s-header :--navbar-toggle {
     width: env(--header-navbar-toggle-width);
-
-    /* Prevent wrap of button while it has static width */
-    /* FAQ: Wrap happens if logo is wide and button layout is not flexible */
-    /* FAQ: Set flexible width that never wraps button (on Frontera) */
-    /* FAQ: Set maximum width at env. variable */
-    margin-right: clamp(0px, 15%, env(--header-navbar-mobile-right-pad));
   }
 
   /* To style the button */
   .s-header :--navbar-toggle {
     padding: 0; /* to overwrite Bootstrap */
 
-    background-color: env(--header-portal-nav-bkgd-color);
-
     /* To overwrite Bootstrap */
     border: none;
     border-radius: 0;
+    background-color: env(--header-bkgd-color);
+  }
+  .s-header :--navbar-toggle:hover,
+  .s-header :--navbar-toggle:active {
+    background-color: env(--header-link-bkgd-color);
   }
 
   /* To isolate styles that require more specificity to override Portal */
@@ -341,11 +306,6 @@ Styleguide Trumps.Scopes.Header
   :--for-docs .s-header :--navbar-toggle,
   :--for-portal .s-header :--navbar-toggle {
     color: env(--header-text-color);
-  }
-
-  .s-header :--navbar-toggle:hover,
-  .s-header :--navbar-toggle:active {
-    background-color: env(--header-link-bkgd-color);
   }
 
 
@@ -381,6 +341,10 @@ Styleguide Trumps.Scopes.Header
 
 
   /* Text */
+
+  .s-header :--navbar-toggle__text {
+    line-height: 1.4; /* to overwrite Bootstrap *//* to match `body` */
+  }
 
   /* To hide text of button when menu is open */
   .s-header :--navbar-toggle--opened :--navbar-toggle__text {
@@ -443,8 +407,8 @@ Styleguide Trumps.Scopes.Header
   .s-header .navbar-collapse {
     position: absolute; /* assumes Bootstrap `.navbar { position: relative }` */
     top: 100%;
-    left: 0;
-    right: env(--header-navbar-mobile-right-pad);
+    left: env(--header-navbar-mobile-menu-offset);
+    right: 0;
     z-index: 1; /* To be above main content in Portal & Docs */
   }
 
@@ -531,6 +495,27 @@ Styleguide Trumps.Scopes.Header
 
 @media (--nav-expanded) {
 
+  /* To align text of CMS nav first link with text of Portal section header */
+  .s-cms-nav {
+    margin-left: calc( -1 * var(--nav-link-horz-pad) );
+  }
+  #header-logo {
+    /* FAQ: Projects with wide logos may change this value to tweak alignment */
+    --space-after-logo-before-nav: env(--header-navbar-normal-left-pad);
+
+    /* To prevent zero-width element as it is loaded */
+    /* FAQ: This only has effect on narrow-enough logos */
+    /* NOTE: Do not use on mobile, because section header alignment would be
+             moot if Portal were to even support mobile, because the section
+             header position would change, because sidebar would be hidden */
+    min-width: calc(203px - var(--space-after-logo-before-nav));
+
+    /* To align logo (whole image not just visible pixels) w/ Portal side nav */
+    margin-left: env(--header-navbar-normal-left-pad);
+    /* To overwrite Bootstrap */
+    margin-right: var(--space-after-logo-before-nav);
+  }
+
   /* To align CMS nav to the right ONLY if there is no Portal */
   /* TODO: Hardcode `is-on-portal` in Portal & Docs markup,
            then remove the `:--for-cms` selector prefix */
@@ -559,6 +544,11 @@ Styleguide Trumps.Scopes.Header
   /* To match design */
   .s-cms-nav {
     padding-top: 8px;
+  }
+
+  #header-logo {
+    /* To align logo (whole image not just visible pixels) w/ Portal side nav */
+    margin-left: env(--header-navbar-normal-left-pad);
   }
 
 }
@@ -599,6 +589,12 @@ Styleguide Trumps.Scopes.Header
 
 /* Nav Link: General */
 
+/* To style the link */
+.s-header :--portal-nav-link {
+  background-color: env(--header-portal-nav-bkgd-color);
+}
+
+/* To layout the link */
 .s-header .nav-link {
   /* To support truncation */
   /* To vertically center text and icons (if any) */
@@ -612,7 +608,7 @@ Styleguide Trumps.Scopes.Header
   /* To prevent expansion upon dropdown menu open */
   width: var(--portal-navlink-max-width);
 
-  /* To prevent "Log In" from wrapping as it slides into place */
+  /* To prevent wrapping of this as it slides into place */
   /* NOTE: This affects username also, but it should not have any whitespace */
   white-space: nowrap;
 }
@@ -623,9 +619,6 @@ Styleguide Trumps.Scopes.Header
   .s-header .nav-link {
     height: 100%;
   }
-  .s-header :--portal-nav-link {
-    background-color: env(--header-portal-nav-bkgd-color);
-  }
 }
 
 /* Nav Link: General: Mobile */
@@ -633,10 +626,6 @@ Styleguide Trumps.Scopes.Header
 @media (--nav-compressed) {
   .s-header .s-cms-nav .nav-link {
     font-size: 2em;
-  }
-  .s-header :--portal-nav-link {
-    /* To align portal nav link to the right */
-    margin-left: auto;
   }
 }
 
@@ -679,13 +668,10 @@ Styleguide Trumps.Scopes.Header
 @media (--nav-compressed) /* dev liberty */ {
 
   .s-header :--portal-nav-link {
-    min-width: calc(2 * env(--header-navbar-toggle-width)); /* dev liberty */
-
     padding-top: 0; /* to overwrite Bootstrap */
     padding-bottom: 0; /* to overwrite Bootstrap */
-    /* NOTE: Might as well be zero (given `width` is expected max-width),
-             but if username exceeds expectation some padding would look good */
-    --nav-link-horz-pad: 1em;
+    /* NOTE: This is for the edge case that username exceeds expectation */
+    --nav-link-horz-pad: 12px;
   }
 
 }
@@ -845,12 +831,6 @@ Styleguide Trumps.Scopes.Header
 
 /* Dropdown Menu */
 
-/* To layout menu */
-.s-header .s-portal-nav .dropdown-menu {
-  /* To stretch dropdown width to match width of its parent */
-  width: 100%;
-}
-
 /* To style menu */
 /* To overwrite Bootstrap */
 /* FAQ: Bootstrap has styles we do not want a value for, so `unset` */
@@ -878,6 +858,12 @@ Styleguide Trumps.Scopes.Header
     font-size: 12px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
   }
 
+  /* To layout menu */
+  .s-header .s-portal-nav .dropdown-menu {
+    /* To stretch dropdown width to match the width of its parent */
+    min-width: 100%;
+  }
+
 }
 
 
@@ -887,28 +873,33 @@ Styleguide Trumps.Scopes.Header
 @media (--nav-compressed) {
 
   /* To overwrite Bootstrap */
-  .s-header .dropdown-menu {
-    font-size: 20px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
-  }
   .s-header .s-cms-nav .dropdown-menu {
     padding: 0 0 0.5em 0;
 
     background-color: transparent;
     border: none;
 
-    /* To indent dropdown menu */
-    /* To match CMS nav menu padding */
-    margin-left: calc(env(--header-navbar-toggle-width) / 2);
+    font-size: 18px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
   }
   .s-header .s-portal-nav .dropdown-menu {
-    /* To retain dropdown, not push-down, behavior */
-    /* FAQ: Bootstrap uses `static` for navbar dropdowns until wide screen */
-    position: absolute;
-
     padding: 0;
 
     background-color: env(--header-link-bkgd-color);
     border: none;
+
+    font-size: 24px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
+  }
+
+  /* To layout menu */
+  /* To restore Bootstrap behavior:
+    - expanded navbar dropdown
+    - not collapsed navbar push-down */
+  /* SEE: (Bootstrap) `.navbar-expand-xl .navbar-nav .dropdown-menu-right` */
+  .s-header .s-portal-nav .dropdown-menu {
+    position: absolute;
+
+    right: 0;
+    left: auto;
   }
 
 }
@@ -1015,7 +1006,7 @@ Styleguide Trumps.Scopes.Header
     --input-font-size: 14px;
 
     /* To match design */
-    --space-after-search-before-nav: 12px;
+    --space-after-search: 12px;
 
     /* To insert flexible space between search bar and CMS nav */
     --space-before-search: auto;
@@ -1029,8 +1020,8 @@ Styleguide Trumps.Scopes.Header
     --button-font-size: 24px;
     --input-font-size: 18px;
 
-    /* SEE: "Mobile Nav Top Row" */
-    /* --space-after-search-before-nav: … */
+    /* To match design */
+    --space-after-search: var(--space-before-search);
 
     /* To line up logo with navbar left-hand content */
     --space-before-search: env(--header-navbar-mobile-left-pad);
@@ -1110,7 +1101,7 @@ Styleguide Trumps.Scopes.Header
            then remove the `:--for-*` selectors */
 :--for-docs .s-header .s-search-bar,
 :--for-portal .s-header .s-search-bar {
-  margin-right: var(--space-after-search-before-nav, 0);
+  margin-right: var(--space-after-search, 0);
 }
 /* Create space before search bar EVEN IF only search bar exists */
 .s-header .s-search-bar {
@@ -1137,22 +1128,25 @@ Styleguide Trumps.Scopes.Header
     display: flex;
     flex-direction: column;
   }
-  .s-header .s-portal-nav { order: -1; }
   .s-header .s-search-bar { order: -2; }
 
-  /* To combine search bar & portal nav into one row */
-  .s-header .s-search-bar {
-    /* To make space for portal nav in which to shove portal nav */
-    --space-after-search-before-nav: calc(
-      var(--portal-navlink-max-width) + 5px
-    );
-  }
-  .s-header .s-portal-nav {
-    /* To shove portal nav into same row as search bar */
-    margin-top: calc(-1 * env(--header-navbar-mobile-height));
+
+
+  /* To layout the button */
+  .s-header :--portal-nav-link {
+    width: fit-content;
+
+    /* To avoid wrapping of button */
+    /* FAQ: Wrap happens if logo is wide and button layout is not flexible */
+    /* NOTE: The `clamp()` solution avoids using third media query for navbar */
+    padding-right: clamp(
+      var(--nav-link-horz-pad),
+      3vw,
+      env(--header-navbar-mobile-right-pad)
+    ); /* FAQ: The widths must prevent wrap when `#header-logo` is max. width */
   }
 
-  /* To set height */
+  /* To layout the button (height) */
   /* FAQ: We set height of immediate content of elements, because:
           - height for elements is not respected as navbar collapses
           - height for portal nav would hide its dropdown menu
