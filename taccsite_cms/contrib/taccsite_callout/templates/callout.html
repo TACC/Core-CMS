@@ -1,0 +1,13 @@
+{% load cms_tags %}
+
+<aside {# class="c-callout" #}{{ instance.attributes_str }}>
+  <h2 class="c-callout__title">{{ instance.title }}</h2>
+  <p class="c-callout__desc">{{ instance.description }}</p>
+  {% if has_children %}
+  <figure class="c-callout__figure">
+    {% for plugin_instance in instance.child_plugin_instances %}
+      {% render_plugin plugin_instance %}
+    {% endfor %}
+  </figure>
+  {% endif %}
+</aside>

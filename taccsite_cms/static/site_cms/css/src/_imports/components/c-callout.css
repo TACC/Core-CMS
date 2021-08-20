@@ -26,11 +26,18 @@ Styleguide Components.Callout
 
 .c-callout {
   display: grid;
+
+  padding: 20px;
+}
+.c-callout--has-children {
   grid-template-areas:
     'figure title'
     'figure desc';
-
-  padding: 20px;
+}
+.c-callout:not(.c-callout--has-children) {
+  grid-template-areas:
+    'title'
+    'desc';
 }
 .c-callout__figure { grid-area: figure; }
 .c-callout__title { grid-area: title; }
@@ -38,11 +45,11 @@ Styleguide Components.Callout
 
 /* To hide figure on narrow window */
 @media only screen and (--narrow-and-below) {
-  .c-callout { column-gap: 0px; }
-  .c-callout__figure { display: none; }
+  .c-callout--has-children .c-callout { column-gap: 0px; }
+  .c-callout--has-children .c-callout__figure { display: none; }
 }
 @media only screen and (--narrow-and-above) {
-  .c-callout { column-gap: 40px; }
+  .c-callout--has-children .c-callout { column-gap: 40px; }
 }
 
 /* To align image to exact center */
