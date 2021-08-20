@@ -242,6 +242,8 @@ INSTALLED_APPS = [
     # FAQ: The djangocms_bootstrap4 library can serve as an example
     'taccsite_cms.contrib.taccsite_sample',
     'taccsite_cms.contrib.taccsite_system_specs',
+    'taccsite_cms.contrib.taccsite_system_monitor',
+    'taccsite_cms.contrib.taccsite_data_list',
 ]
 
 # Convert list of paths to list of dotted module names
