@@ -1,0 +1,82 @@
+/*
+Callout
+
+Interrupt or end Sections with a "call to action".
+
+Markup:
+<aside class="c-callout">
+  <h2 class="c-callout__title">
+    Quick Start Guide
+  </h2>
+  <p class="c-callout__desc">
+    Explore the Frontera User Guide to learn how to get started, see what Frontera offers, and get answers to your questions.
+  </p>
+  <figure class="c-callout__figure">...</figure>
+</aside>
+
+Styleguide Components.Callout
+*/
+@import url("_imports/tools/media-queries.css");
+
+
+
+
+
+/* Layout */
+
+.c-callout {
+  display: grid;
+  grid-template-areas:
+    'figure title'
+    'figure desc';
+
+  padding: 20px;
+}
+.c-callout__figure { grid-area: figure; }
+.c-callout__title { grid-area: title; }
+.c-callout__desc { grid-area: desc; }
+
+/* To hide figure on narrow window */
+@media only screen and (--narrow-and-below) {
+  .c-callout { column-gap: 0px; }
+  .c-callout__figure { display: none; }
+}
+@media only screen and (--narrow-and-above) {
+  .c-callout { column-gap: 40px; }
+}
+
+/* To align image to exact center */
+.c-callout__figure {
+  place-self: center;
+  margin: 0; /* override Bootstrap and browser */
+}
+
+/* To force wrap before full width (to match design) */
+/* NOTE: 1200px window, design has 15px but this was 7px (wraps the same) */
+/* FAQ: Differ from design so narrow screen wrap limit is not noticeable */
+.c-callout__desc { padding-right: 1%; }
+
+
+
+
+
+/* Style */
+
+.c-callout {
+  /* HELP: Should this color change if it is in a dark `o-section`? */
+  /* SEE: https://confluence.tacc.utexas.edu/x/DyUFDg */
+  background-color: var(--global-color-link-on-light--normal);
+}
+.c-callout__title {
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid var(--global-color-primary--xx-light);
+
+  font-size: var(--global-font-size--x-large);
+  font-weight: var(--medium);
+  color: var(--global-color-primary--xx-light); /* override `html-elements.css` */
+}
+.c-callout__desc {
+  font-size: var(--global-font-size--large);
+  color: var(--global-color-primary--xx-light);
+}
