@@ -91,6 +91,8 @@ Styleguide Objects.Section
 }
 
 /* Modifers: Style: Dark & Light */
+/* HELP: How can we change style of `o-section` content without overlap? */
+/* SEE: https://confluence.tacc.utexas.edu/x/DyUFDg */
 
 .o-section--style-dark,
 .o-section--style-dark::before {
