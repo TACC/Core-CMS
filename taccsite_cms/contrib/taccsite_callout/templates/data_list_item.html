@@ -1,0 +1,17 @@
+{% if parent_plugin_instance.type_style == 'dlist' %}
+
+  <dt class="c-data-list__key">
+    {% include "./data_list_item_key.html" %}
+  </dt>
+  <dd class="c-data-list__value">{{ instance.value }}</dd>
+
+{% elif parent_plugin_instance.type_style == 'table' %}
+
+    <tr>
+      <th class="c-data-list__key">
+        {% include "./data_list_item_key.html" %}
+      </th>
+      <td class="c-data-list__value">{{ instance.value }}</td>
+    </tr>
+
+{% endif %}
