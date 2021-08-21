@@ -2,6 +2,7 @@ from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 from django.utils.translation import gettext_lazy as _
 
+from taccsite_cms.contrib.helpers import concat_classnames
 from taccsite_cms.contrib.constants import TEXT_FOR_NESTED_PLUGIN_CONTENT_SWAP
 
 from .models import TaccsiteCallout
@@ -25,8 +26,7 @@ class TaccsiteCalloutPlugin(CMSPluginBase):
     #     'SectionPlugin'
     # ]
     child_classes = [
-        'PicturePlugin',
-        'Bootstrap4PicturePlugin'
+        'PicturePlugin'
     ]
     max_children = 1
 
@@ -36,7 +36,7 @@ class TaccsiteCalloutPlugin(CMSPluginBase):
                 'title', 'description',
             ),
         }),
-        (_('Figure'), {
+        (_('Image'), {
             'classes': ('collapse',),
             'description': TEXT_FOR_NESTED_PLUGIN_CONTENT_SWAP.format(
                 element='an image',
@@ -57,11 +57,17 @@ class TaccsiteCalloutPlugin(CMSPluginBase):
     def render(self, context, instance, placeholder):
         context = super().render(context, instance, placeholder)
         request = context['request']
-        has_children = len(instance.child_plugin_instances)
+        has_child_plugin = {}
+
+        # To identify child plugins
+        for plugin_instance in instance.child_plugin_instances:
+            if (type(plugin_instance).__name__ == 'Picture'):
+                has_child_plugin['image'] = True
+                context.update({ 'image_plugin': plugin_instance })
 
         classes = concat_classnames([
             'c-callout',
-            'c-callout--has-children' if has_children else '',
+            'c-callout--has-figure' if has_child_plugin.get('image') else '',
             instance.attributes.get('class'),
         ])
         instance.attributes['class'] = classes

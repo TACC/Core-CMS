@@ -36,6 +36,7 @@ Styleguide Components.Callout
 
 .c-callout {
   display: grid;
+  grid-template-rows: auto 1fr;
 
   padding: 20px;
 }
@@ -62,10 +63,14 @@ Styleguide Components.Callout
   .c-callout--has-figure { column-gap: 40px; }
 }
 
-/* To align image to exact center */
+/* To align figure to exact center */
 .c-callout__figure {
   place-self: center;
   margin: 0; /* override Bootstrap and browser */
+}
+/* To fit (expected) figure content to available horizontal space */
+.c-callout__figure img {
+  max-width: 100%;
 }
 
 /* To force wrap before full width (to match design) */
