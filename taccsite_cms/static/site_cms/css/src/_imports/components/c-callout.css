@@ -4,7 +4,8 @@ Callout
 Interrupt or end Sections with a "call to action".
 
 Markup:
-<aside class="c-callout">
+<!-- Has Figure -->
+<aside class="c-callout c-callout--has-figure">
   <h2 class="c-callout__title">
     Quick Start Guide
   </h2>
@@ -12,6 +13,15 @@ Markup:
     Explore the Frontera User Guide to learn how to get started, see what Frontera offers, and get answers to your questions.
   </p>
   <figure class="c-callout__figure">...</figure>
+</aside>
+<!-- No Figure -->
+<aside class="c-callout">
+  <h2 class="c-callout__title">
+    Quick Start Guide
+  </h2>
+  <p class="c-callout__desc">
+    Explore the Frontera User Guide to learn how to get started, see what Frontera offers, and get answers to your questions.
+  </p>
 </aside>
 
 Styleguide Components.Callout
@@ -29,12 +39,12 @@ Styleguide Components.Callout
 
   padding: 20px;
 }
-.c-callout--has-children {
+.c-callout--has-figure {
   grid-template-areas:
     'figure title'
     'figure desc';
 }
-.c-callout:not(.c-callout--has-children) {
+.c-callout:not(.c-callout--has-figure) {
   grid-template-areas:
     'title'
     'desc';
@@ -45,11 +55,11 @@ Styleguide Components.Callout
 
 /* To hide figure on narrow window */
 @media only screen and (--narrow-and-below) {
-  .c-callout--has-children .c-callout { column-gap: 0px; }
-  .c-callout--has-children .c-callout__figure { display: none; }
+  .c-callout--has-figure { column-gap: 0px; }
+  .c-callout--has-figure .c-callout__figure { display: none; }
 }
 @media only screen and (--narrow-and-above) {
-  .c-callout--has-children .c-callout { column-gap: 40px; }
+  .c-callout--has-figure { column-gap: 40px; }
 }
 
 /* To align image to exact center */
