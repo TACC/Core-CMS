@@ -27,15 +27,58 @@ Styleguide Trumps.Scopes.SystemSpecs
 
 /* Layout */
 
-@media only screen and (--narrow-and-above) {
+.s-system-specs {
+  --row-gap: 32px;
+
+  display: grid;
+}
+.s-system-specs > figure { grid-area: figure; }
+.s-system-specs > div    { grid-area: specs; }
+.s-system-specs > aside  { grid-area: other; }
+
+@media only screen and (--medium-and-below) {
   .s-system-specs {
-    display: flow-root;
+    --row-gap: 32px;
+
+    grid-template-areas:
+      'figure'
+      'specs'
+      'other';
+    row-gap: var(--row-gap);
   }
-  .s-system-specs > * {
-    display: inline-block;
+}
+@media only screen and (--medium-and-above) {
+  .s-system-specs {
+    --row-gap: 32px;
+
+    grid-template-columns: var(--col-width--wide) var(--col-width--thin);
+    grid-template-rows: auto 1fr;
+    gap: var(--row-gap) var(--col-gap);
   }
-  .s-system-specs > figure {
-    float: left;
+}
+
+@media only screen and (--medium-to-wide) {
+  .s-system-specs {
+    --col-width--wide: 46%;
+    --col-width--thin: 48%;
+    --col-gap: 6%;
+    --col-pad: 20px;
+
+    grid-template-areas:
+      'figure specs'
+      'other other';
+  }
+}
+@media only screen and (--wide-and-above) {
+  .s-system-specs {
+    --col-width--thin: 42%;
+    --col-width--wide: 48%;
+    --col-gap: 10%;
+    --col-pad: 40px;
+
+    grid-template-areas:
+      'figure specs'
+      'figure other';
   }
 }
 
@@ -43,47 +86,18 @@ Styleguide Trumps.Scopes.SystemSpecs
 
 /* Spacing */
 
-.s-system-specs {
-  --row-height: 32px;
-}
-
-.s-system-specs > aside {
-  margin-top: var(--row-height);
-}
-
-@media only screen and (--medium-and-below) {
-  .s-system-specs > figure {
-    margin-bottom: var(--row-height);
-  }
-}
-
-
-
-/* Sizes */
-
 @media only screen and (--medium-and-above) {
-  .s-system-specs {
-    --col-width--thin: 42%;
-    --col-width--wide: 48%;
-    --col-gutter: 10%;
-    --col-padding: 40px;
-
-    padding-inline: var(--col-padding);
-  }
-  .s-system-specs > div,
-  .s-system-specs > aside {
-    width: var(--col-width--thin);
-    padding-inline: var(--col-padding);
-  }
-  .s-system-specs > figure {
-    width: var(--col-width--wide);
-    margin-right: var(--col-gutter);
-  }
+  .s-system-specs,
+  .s-system-specs > div { padding-inline: var(--col-pad); }
+  .s-system-specs > aside { padding-right: var(--col-pad); }
+}
+@media only screen and (--wide-and-above) {
+  .s-system-specs > aside { padding-left: var(--col-pad); }
 }
 
 
 
-/* Position */
+/* Figure */
 
 .s-system-specs > figure > img {
   width: 100%;
