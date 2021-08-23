@@ -1,12 +1,20 @@
-{% load cms_tags %}
+{% load cms_tags static %}
 
-<aside {# class="c-callout" #}{{ instance.attributes_str }}>
+<aside {# class="c-callout" #}{{ instance.attributes_str }}
+  {% if instance.resize_figure_to_fit %}
+  id="callout-{{ instance.id }}"
+  {% endif %}
+>
 
   <h2 class="c-callout__title">{{ instance.title }}</h2>
   <p class="c-callout__desc">{{ instance.description }}</p>
 
   {% if image_plugin %}
-  <figure class="c-callout__figure">
+  <figure class="c-callout__figure"
+    {% if instance.resize_figure_to_fit %}
+    data-transform="size-content-to-fit" hidden
+    {% endif %}
+  >
     {% for plugin_instance in instance.child_plugin_instances %}
       {% render_plugin plugin_instance %}
     {% endfor %}
@@ -14,3 +22,18 @@
   {% endif %}
 
 </aside>
+
+{% if instance.resize_figure_to_fit %}
+<script type="module">
+  import { SizeContentToFit } from '{% static "site_cms/js/modules/elementTransformer.js" %}';
+
+  // HACK: GH-320: Pause to ensure resize occurs while in CMS page edit mode
+  window.setTimeout(() => {
+    const container = document.querySelector(
+      '#callout-' + '{{ instance.id }} [data-transform="size-content-to-fit"]'
+    );
+
+    new SizeContentToFit(container);
+  }, 0);
+</script>
+{% endif %}
