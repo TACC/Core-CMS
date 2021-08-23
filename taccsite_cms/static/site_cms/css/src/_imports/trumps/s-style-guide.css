@@ -24,16 +24,18 @@ Styleguide Trumps.Scopes.StyleGuide
 
 /* ELEMENTS: Content Sectioning */
 
-.s-style-guide section {
-  clear: both;
+/* Mirrors `s-document` "ELEMENTS: Content Sectioning" */
+
+.s-style-guide h2 {
+  margin: var(--global-space--large) 0 var(--global-space--normal);
 }
-.s-style-guide section:not(section section) {
-  border-top: var(--global-border--x-thick);
-  padding-top: var(--global-space--x-large);
-  margin-top: var(--global-space--x-large);
+
+.s-style-guide h3 {
+  margin-bottom: var(--global-space--normal);
 }
-.s-style-guide section section {
-  border-top: var(--global-border--normal);
-  padding-top: var(--global-space--normal);
-  margin-top: var(--global-space--normal);
-}
+
+/* Extra space above lesser headings */
+.s-style-guide h3 { margin-top: 1em; }
+.s-style-guide h4,
+.s-style-guide h5,
+.s-style-guide h6 { margin-top: 1.25em; }
