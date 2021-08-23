@@ -1,0 +1,69 @@
+/*
+Breadcrumbs
+
+A list of links to ancestor navigation (pages or sections that are a parent, grandparent, et cetera of the current page or section) and the current page or section itself.
+
+Notice: A scope class is used to enforce appropriate semantic HTML.
+
+Markup:
+<!-- Major Navigation -->
+<!-- FAQ: Use this major navigation markup for global breadcrumbs -->
+<!-- SEE: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav#usage_notes -->
+<nav class="s-breadcrumbs">
+  <ol>
+      <li><a href="/"><span>Home</span></a></li>
+      <li><a href="/"><span>Science</span></a></li>
+      <li><span>Publications</span></li>
+  </ol>
+</nav>
+<!-- Minor Navigation -->
+<ol class="s-breadcrumbs">
+    <li><a href="/"><span>Home</span></a></li>
+    <li><a href="/"><span>Science</span></a></li>
+    <li><span>Publications</span></li>
+</ol>
+
+Styleguide Trumps.Scopes.Breadcrumbs
+*/
+@import url("_imports/tools/x-truncate.css");
+
+
+
+
+
+/* Base i.e. Container */
+
+nav.s-breadcrumbs {
+  padding-top: 15px;
+
+  font-size: var(--global-font-size--x-small);
+
+  text-transform: uppercase;
+}
+
+
+
+/* Elements i.e. Content */
+
+/* To undo default list styles ONLY for major breadcrumbs */
+/* FAQ: Minor breadcrumbs have not been designed, so we should not unstyle it */
+nav.s-breadcrumbs ol {
+  list-style: none; /* overwrite browser styles */
+  padding-left: 0; /* overwrite html-elements.css */
+
+  font-weight: var(--global-font-weight--medium);
+}
+
+ol.s-breadcrumbs li,
+nav.s-breadcrumbs ol li {
+  display: inline-block;
+}
+
+ol.s-breadcrumbs li + li::before,
+nav.s-breadcrumbs ol li + li::before {
+  content: ' > ';
+}
+
+nav.s-breadcrumbs ol li:last-child span {
+  font-weight: var(--bold);
+}
