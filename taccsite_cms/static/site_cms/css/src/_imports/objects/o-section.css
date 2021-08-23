@@ -119,7 +119,7 @@ Styleguide Objects.Section
 /* FAQ: Banners should not touch a border of the following section */
 .o-section--style-light:not(.o-section--banner)
 + .o-section--style-light:not(.o-section--banner) {
-  border-top: var(--hr-height) solid var(--global-color-primary--xx-light);
+  border-top: var(--hr-height) solid var(--global-color-primary--normal);
 }
 
 /* Modifers: Style: (Fake) Endless Background */
