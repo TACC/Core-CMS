@@ -5,8 +5,6 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    replaces = [('taccsite_callout', '0002_taccsitecallout_resize_figure_to_fit'), ('taccsite_callout', '0003_auto_20210823_1345')]
-
     dependencies = [
         ('taccsite_callout', '0001_initial'),
     ]
