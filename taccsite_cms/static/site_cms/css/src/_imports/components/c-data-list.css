@@ -58,6 +58,12 @@ table.c-data-list {
   }
 }
 
+/* To space out elements (tables) */
+th.c-data-list__key,
+td.c-data-list__value {
+  padding-block: 0.5em;
+}
+
 /* To add colon (non-tables) */
 .c-data-list__key:not(th)::after {
   content: ':';

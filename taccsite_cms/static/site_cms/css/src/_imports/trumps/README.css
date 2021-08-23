@@ -3,7 +3,7 @@
 /*
 Trumps
 
-Trump styles exist to overwrite other styles. They are added as necessary. Examples use cases are third-party styles, styles used only by JavaScript, modules that are not meant to extended as desired.
+Trump styles exist to overwrite other styles. They are added as necessary. Examples use cases are third-party styles, styles used only by JavaScript, modules that are not meant to be extended.
 
 Reference:
 
@@ -25,7 +25,16 @@ Styleguide Trumps
 /*
 Scopes
 
-Scope styles are overrides and styles that are scoped to a specific area. These are meant to be used sparingly. Examples of scopes are styles for third-party markup, WYSIWIG editor tags, form elements, components with a forced relationship.
+Scope styles are overrides and styles that are scoped to a specific area. These are meant to be used sparingly. Examples of scopes are styles for:
+- third-party markup, e.g.:
+    - social media widget
+    - external authentication form
+    - internal Bootstrap-dependent markup
+- enforcing internal markup (e.g. breadcrumbs, form elements, document pages)
+- WYSIWIG editor tags (e.g. CMS WYSIWIG content entry)
+- coupled components (i.e. components interwoven in unique situations), e.g.:
+    - Frontera homepage before all styling used plugins
+    - article previews within an article list
 
 Reference:
 
@@ -33,7 +42,7 @@ Reference:
 
 Guidelines:
 
-- Scopes are pretty rare, evaluate before creating.
+- Scopes should be rare; evaluate before creating.
 - A consistent way to author these in nested inside `.s-* {}`.
 
 Rules:

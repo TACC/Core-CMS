@@ -1,0 +1,43 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static "taccsite_system_monitor/css/system_monitor.css" %}" />
+
+<div {# class="s-system-monitor" #}{{ instance.attributes_str }}
+  id="system-monitor-{{ instance.id }}">
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">STATUS</th>
+        <th scope="col">LOAD</th>
+        <th scope="col">RUNNING</th>
+        <th scope="col">QUEUED</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td scope="row">
+          <span
+            data-id="status"
+            class="iconworks  badge badge-success  d-none"
+            data-icon="&#217;"
+            >Operational</span
+          >
+        </td>
+        <td data-id="load_percentage">-</td>
+        <td data-id="jobs_running">-</td>
+        <td data-id="jobs_queued">-</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<script type="module">
+  import { SystemMonitor } from '{% static "taccsite_system_monitor/js/system_monitor.js" %}';
+
+  const hostname = '{{ instance.system }}';
+  const element = document.getElementById(
+    'system-monitor-' + '{{ instance.id }}'
+  );
+  const useSampleData = (window.location.hostname === 'localhost');
+  const systemMonitor = new SystemMonitor(hostname, element, useSampleData);
+</script>
