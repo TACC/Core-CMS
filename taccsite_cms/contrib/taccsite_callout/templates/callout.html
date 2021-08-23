@@ -19,7 +19,11 @@
   <p class="c-callout__desc">{{ instance.description }}</p>
 
   {% if image_plugin %}
-  <figure class="c-callout__figure">
+  <figure class="c-callout__figure"
+    {% if instance.resize_figure_to_fit %}
+    data-transform="size-content-to-fit" hidden
+    {% endif %}
+  >
     {% for plugin_instance in instance.child_plugin_instances %}
       {% render_plugin plugin_instance %}
     {% endfor %}

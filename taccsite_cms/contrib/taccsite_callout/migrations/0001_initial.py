@@ -23,6 +23,7 @@ class Migration(migrations.Migration):
                 ('cmsplugin_ptr', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, related_name='taccsite_callout_taccsitecallout', serialize=False, to='cms.CMSPlugin')),
                 ('title', models.CharField(blank=True, help_text='A heading for the callout.', max_length=100, verbose_name='Title')),
                 ('description', models.CharField(blank=True, help_text='A paragraph for the callout.', max_length=200, verbose_name='Description')),
+                ('resize_figure_to_fit', models.BooleanField(default=True, help_text='Make image shorter or taller to match the height of text beside it.', verbose_name='Resize any image to fit')),
                 ('attributes', djangocms_attributes_field.fields.AttributesField(default=dict)),
                 ('anchor', models.CharField(blank=True, help_text='Appends the value only after the internal or external link. Do <em>not</em> include a preceding "#" symbol.', max_length=255, verbose_name='Anchor')),
                 ('external_link', models.CharField(blank=True, help_text='Provide a link to an external source.', max_length=2040, validators=[djangocms_link.validators.IntranetURLValidator(intranet_host_re=None)], verbose_name='External link')),

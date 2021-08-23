@@ -51,8 +51,12 @@ class TaccsiteCalloutPlugin(LinkPlugin):
             'description': TEXT_FOR_NESTED_PLUGIN_CONTENT_SWAP.format(
                 element='an image',
                 plugin_name='Image'
+            ) + '\
+            <br />\
+            When the image resize field is checked, the image may disappear after saving this plugin. Reload the page to reload the image.',
+            'fields': (
+                'resize_figure_to_fit',
             ),
-            'fields': (),
         }),
         (_('Advanced settings'), {
             'classes': ('collapse',),
