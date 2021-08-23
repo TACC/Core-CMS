@@ -9,11 +9,6 @@ A style guide. This is intended for:
 Styleguide Trumps.Scopes.StyleGuide
 */
 
-.s-style-guide {
-  margin-top: var(--global-space--large);
-  margin-bottom: var(--global-space--x-large);
-}
-
 
 
 
@@ -24,16 +19,34 @@ Styleguide Trumps.Scopes.StyleGuide
 
 /* ELEMENTS: Content Sectioning */
 
-.s-style-guide section {
-  clear: both;
-}
-.s-style-guide section:not(section section) {
-  border-top: var(--global-border--x-thick);
-  padding-top: var(--global-space--x-large);
+/* NOTE: Similar to `s-document` "ELEMENTS: Content Sectioning" */
+
+/* To give little margin above isolated headings for sections */
+/* FAQ: Headings with no prior sibling need spacing before the heading */
+/* FAQ: Headings that begin `o-section` already have spacing from `o-section` */
+.s-style-guide section:not(.o-section) > h1:first-child,
+.s-style-guide section:not(.o-section) > h2:first-child,
+.s-style-guide section:not(.o-section) > h3:first-child,
+.s-style-guide section:not(.o-section) > h4:first-child,
+.s-style-guide section:not(.o-section) > h5:first-child,
+.s-style-guide section:not(.o-section) > h6:first-child,
+/* FAQ: Headings after non-headings need spacing before the heading */
+/* FAQ: Headings after headings already have spacing from prior heading */
+.s-style-guide section > :not(h1, h2, h3, h4, h5, h6) + h1,
+.s-style-guide section > :not(h1, h2, h3, h4, h5, h6) + h2,
+.s-style-guide section > :not(h1, h2, h3, h4, h5, h6) + h3,
+.s-style-guide section > :not(h1, h2, h3, h4, h5, h6) + h4,
+.s-style-guide section > :not(h1, h2, h3, h4, h5, h6) + h5,
+.s-style-guide section > :not(h1, h2, h3, h4, h5, h6) + h6 {
   margin-top: var(--global-space--x-large);
 }
-.s-style-guide section section {
-  border-top: var(--global-border--normal);
-  padding-top: var(--global-space--normal);
-  margin-top: var(--global-space--normal);
+
+/* To give much margin below all headings for sections */
+.s-style-guide section > h1,
+.s-style-guide section > h2,
+.s-style-guide section > h3,
+.s-style-guide section > h4,
+.s-style-guide section > h5,
+.s-style-guide section > h6 {
+  margin-bottom: var(--global-space--normal);
 }
