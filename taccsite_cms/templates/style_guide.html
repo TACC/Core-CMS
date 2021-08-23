@@ -1,4 +1,4 @@
-{% extends "fullwidth.html" %}
+{% extends "standard.html" %}
 {% load cms_tags staticfiles %}
 
 {% block assets_custom %}
@@ -13,6 +13,7 @@
 {% block content %}
 <div class="container  s-document  s-style-guide">
   {% block guide %}
+    {% include "nav_cms_breadcrumbs.html" %}
     {% placeholder "content" %}
   {% endblock guide %}
 </div>

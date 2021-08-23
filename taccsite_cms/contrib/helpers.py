@@ -15,9 +15,17 @@ def get_choices(choice_dict):
 
 
 
+# GH-93, GH-142, GH-133: Upcoming functions here (ease merge conflict, maybe)
+
+
+
 # Concatenate a list of CSS classes
 # SEE: https://github.com/django-cms/djangocms-bootstrap4/blob/master/djangocms_bootstrap4/helpers.py
 def concat_classnames(classes):
     """Concatenate a list of classname strings (without failing on None)"""
     # SEE: https://stackoverflow.com/a/20271297/11817077
     return ' '.join(_class for _class in classes if _class)
+
+
+
+# GH-93, GH-142, GH-133: Upcoming functions here (ease merge conflict, maybe)
