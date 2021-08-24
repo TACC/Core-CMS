@@ -105,7 +105,6 @@ class TaccsiteSystemSpecsPlugin(LinkPlugin):
 
         # To identify child plugins
         for plugin_instance in instance.child_plugin_instances:
-            print(type(plugin_instance).__name__)
             if (type(plugin_instance).__name__ == 'TaccsiteSystemMonitor'):
                 context.update({ 'sysmon_plugin': plugin_instance })
             if (type(plugin_instance).__name__ == 'Picture' or
