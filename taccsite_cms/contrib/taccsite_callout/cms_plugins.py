@@ -2,13 +2,15 @@ from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 from django.utils.translation import gettext_lazy as _
 
+from djangocms_link.cms_plugins import LinkPlugin
+
 from taccsite_cms.contrib.helpers import concat_classnames
 from taccsite_cms.contrib.constants import TEXT_FOR_NESTED_PLUGIN_CONTENT_SWAP
 
 from .models import TaccsiteCallout
 
 @plugin_pool.register_plugin
-class TaccsiteCalloutPlugin(CMSPluginBase):
+class TaccsiteCalloutPlugin(LinkPlugin):
     """
     Components > "Callout" Plugin
     https://confluence.tacc.utexas.edu/x/EiIFDg
@@ -17,6 +19,8 @@ class TaccsiteCalloutPlugin(CMSPluginBase):
     model = TaccsiteCallout
     name = _('Callout')
     render_template = 'callout.html'
+    def get_render_template(self, context, instance, placeholder):
+        return self.render_template
 
     cache = True
     text_enabled = False
@@ -35,6 +39,12 @@ class TaccsiteCalloutPlugin(CMSPluginBase):
             'fields': (
                 'title', 'description',
             ),
+        }),
+        (_('Link'), {
+            'fields': (
+                ('external_link', 'internal_link'),
+                ('anchor', 'target'),
+            )
         }),
         (_('Image'), {
             'classes': ('collapse',),
@@ -68,8 +78,13 @@ class TaccsiteCalloutPlugin(CMSPluginBase):
         classes = concat_classnames([
             'c-callout',
             'c-callout--has-figure' if has_child_plugin.get('image') else '',
+            'c-callout--is-link' if instance.get_link() else '',
             instance.attributes.get('class'),
         ])
         instance.attributes['class'] = classes
 
+        context.update({
+            'link_url': instance.get_link(),
+            'link_target': instance.target
+        })
         return context
