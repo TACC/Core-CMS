@@ -15,13 +15,13 @@ class TaccsiteCallout(AbstractLink):
     title = models.CharField(
         verbose_name=_('Title'),
         help_text=_('A heading for the callout.'),
-        blank=True,
+        blank=False,
         max_length=100,
     )
     description = models.CharField(
         verbose_name=_('Description'),
         help_text=_('A paragraph for the callout.'),
-        blank=True,
+        blank=False,
         max_length=200,
     )
 
@@ -41,7 +41,7 @@ class TaccsiteCallout(AbstractLink):
 
     # Parent
 
-    link_is_optional = True
+    link_is_optional = False
 
     class Meta:
         abstract = False
