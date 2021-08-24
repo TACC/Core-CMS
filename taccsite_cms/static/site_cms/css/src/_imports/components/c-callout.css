@@ -4,8 +4,8 @@ Callout
 Interrupt or end Sections with a "call to action".
 
 Markup:
-<!-- Has Figure -->
-<aside class="c-callout c-callout--has-figure">
+<!-- Has Figure, Is Link -->
+<a href="#" class="c-callout c-callout--has-figure c-callout--is-figure">
   <h2 class="c-callout__title">
     Quick Start Guide
   </h2>
@@ -13,8 +13,8 @@ Markup:
     Explore the Frontera User Guide to learn how to get started, see what Frontera offers, and get answers to your questions.
   </p>
   <figure class="c-callout__figure">...</figure>
-</aside>
-<!-- No Figure -->
+</a>
+<!-- No Figure, Not Link -->
 <aside class="c-callout">
   <h2 class="c-callout__title">
     Quick Start Guide
@@ -27,6 +27,7 @@ Markup:
 Styleguide Components.Callout
 */
 @import url("_imports/tools/media-queries.css");
+@import url("_imports/tools/x-article-link.css");
 
 
 
@@ -36,14 +37,11 @@ Styleguide Components.Callout
 
 .c-callout {
   display: grid;
-  grid-template-rows: auto 1fr;
 
   padding: 20px;
 }
 .c-callout--has-figure {
-  grid-template-areas:
-    'figure title'
-    'figure desc';
+  /* See @media queries */
 }
 .c-callout:not(.c-callout--has-figure) {
   grid-template-areas:
@@ -54,19 +52,40 @@ Styleguide Components.Callout
 .c-callout__title { grid-area: title; }
 .c-callout__desc { grid-area: desc; }
 
-/* To hide figure on narrow window */
-@media only screen and (--narrow-and-below) {
-  .c-callout--has-figure { column-gap: 0px; }
-  .c-callout--has-figure .c-callout__figure { display: none; }
-}
 @media only screen and (--narrow-and-above) {
-  .c-callout--has-figure { column-gap: 40px; }
+  .c-callout--has-figure {
+    grid-template-rows: auto 1fr;
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      'figure title'
+      'figure desc';
+
+    column-gap: 40px;
+  }
+  .c-callout__figure { margin: 0; /* override Bootstrap */ }
+}
+
+@media only screen and (--narrow-and-below) {
+  .c-callout--has-figure {
+    grid-template-areas:
+      'figure'
+      'title'
+      'desc';
+
+    column-gap: 0px;
+  }
+  .c-callout__figure { margin: 0 0 20px; /* override Bootstrap */ }
+
+  /* To "disable" image resize */
+  .c-callout__figure[data-transform],
+  .c-callout__figure[data-transform] img {
+    height: unset !important; /* overwrite inline style tag (via JavaScript) */
+  }
 }
 
 /* To align figure to exact center */
 .c-callout__figure {
   place-self: center;
-  margin: 0; /* override Bootstrap and browser */
 }
 /* To fit (expected) figure content to available horizontal space */
 .c-callout__figure img {
@@ -89,6 +108,7 @@ Styleguide Components.Callout
   /* SEE: https://confluence.tacc.utexas.edu/x/DyUFDg */
   background-color: var(--global-color-link-on-light--normal);
 }
+
 .c-callout__title {
   padding-bottom: 12px;
   margin-bottom: 12px;
@@ -96,9 +116,28 @@ Styleguide Components.Callout
 
   font-size: var(--global-font-size--x-large);
   font-weight: var(--medium);
-  color: var(--global-color-primary--xx-light); /* override `html-elements.css` */
+  color: var(--global-color-primary--xx-light); /* override `html-elements` */
 }
 .c-callout__desc {
   font-size: var(--global-font-size--large);
   color: var(--global-color-primary--xx-light);
 }
+
+
+
+
+
+/* Link */
+
+.c-callout--is-link:hover {
+  text-decoration: none;
+}
+
+/* To expand link to cover its container */
+.c-callout--is-link::before { @extend %x-article-link-stretch; content: ''; }
+
+/* To give feedback on link hover and click */
+.c-callout--is-link:hover::before,
+.c-callout--is-link:active::before { outline-offset: 1rem; }
+.c-callout--is-link:hover::before { @extend %x-article-link-hover; }
+.c-callout--is-link:active::before { @extend %x-article-link-active; }

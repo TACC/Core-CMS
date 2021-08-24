@@ -2,13 +2,29 @@ from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 from django.utils.translation import gettext_lazy as _
 
-from taccsite_cms.contrib.helpers import concat_classnames
+from djangocms_link.cms_plugins import LinkPlugin
+
+from taccsite_cms.contrib.helpers import (
+    concat_classnames,
+    get_model_field_name
+)
 from taccsite_cms.contrib.constants import TEXT_FOR_NESTED_PLUGIN_CONTENT_SWAP
 
 from .models import TaccsiteCallout
 
+
+
+
+# Constants
+
+RESIZE_FIGURE_FIELD_NAME = get_model_field_name(TaccsiteCallout, 'resize_figure_to_fit')
+
+
+
+# Plugin
+
 @plugin_pool.register_plugin
-class TaccsiteCalloutPlugin(CMSPluginBase):
+class TaccsiteCalloutPlugin(LinkPlugin):
     """
     Components > "Callout" Plugin
     https://confluence.tacc.utexas.edu/x/EiIFDg
@@ -17,6 +33,8 @@ class TaccsiteCalloutPlugin(CMSPluginBase):
     model = TaccsiteCallout
     name = _('Callout')
     render_template = 'callout.html'
+    def get_render_template(self, context, instance, placeholder):
+        return self.render_template
 
     cache = True
     text_enabled = False
@@ -36,17 +54,27 @@ class TaccsiteCalloutPlugin(CMSPluginBase):
                 'title', 'description',
             ),
         }),
+        (_('Link'), {
+            'fields': (
+                ('external_link', 'internal_link'),
+                ('anchor', 'target'),
+            )
+        }),
         (_('Image'), {
             'classes': ('collapse',),
             'description': TEXT_FOR_NESTED_PLUGIN_CONTENT_SWAP.format(
                 element='an image',
                 plugin_name='Image'
-            ),
+            ) + '\
+            <br />\
+            If image disappears while editing, then reload the page to reload the image.',
             'fields': (),
         }),
         (_('Advanced settings'), {
             'classes': ('collapse',),
+            'description': 'Only use the "' + RESIZE_FIGURE_FIELD_NAME + '" in emergencies. It is preferable to resize the image. <small>When the "Advanced settings" field "' + RESIZE_FIGURE_FIELD_NAME + '" is checked, the image may disappear after saving this plugin (because of a JavaScript race condition). Using a server-side solution would eliminate this caveat.</small>',
             'fields': (
+                'resize_figure_to_fit',
                 'attributes',
             )
         }),
@@ -68,8 +96,13 @@ class TaccsiteCalloutPlugin(CMSPluginBase):
         classes = concat_classnames([
             'c-callout',
             'c-callout--has-figure' if has_child_plugin.get('image') else '',
+            'c-callout--is-link' if instance.get_link() else '',
             instance.attributes.get('class'),
         ])
         instance.attributes['class'] = classes
 
+        context.update({
+            'link_url': instance.get_link(),
+            'link_target': instance.target
+        })
         return context
