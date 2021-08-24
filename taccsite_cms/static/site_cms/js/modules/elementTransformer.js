@@ -1,8 +1,10 @@
 /**
- * Resize content to fit parent height
+ * Transform elements (when CSS cannot)
  *
  * - Manipulates attributes within existing markup.
- * - Size is NOT dynamically updated after initial load.
+ * - Transformations are NOT dynamically updated after initial load.
+ *
+ * This is a back-up solution. Try using CSS to solve the problem first.
  * @module elementTransformer
  */
 
@@ -51,9 +53,9 @@ export class SizeContentToFit {
     this.container.dataset.transformState = null;
   }
 
-  /** Whether transformation is in given state */
+  /** Whether transformation is in the given state */
   isState(state) {
-    return (this.container.dataset.transformState == state);
+    return (this.container.dataset.transformState === state);
   }
 
   /** Whether to resize the content */
@@ -68,26 +70,26 @@ export class SizeContentToFit {
   /** Resize the content */
   resizeContent() {
     /* To prevent natural height of content from increasing container height */
-    /* FAQ: Module will set wrong height if content is taller than is desired */
+    /* FAQ: Script will set wrong height if content is taller than is desired */
     if (this.container.getAttribute('hidden') !== null) {
       this.content.style.height = '0';
       this.container.removeAttribute('hidden');
     }
 
-    /* To inform observers that this module is active */
+    /* To inform observers that this transformation is active */
     this.setState('resizing-content');
 
     /* To make container (and its content) the same height as a root element */
-    /* FAQ: Given tall content, figure height equals content height */
-    /* FAQ: Given hidden content, figure height equals desired content height */
+    /* FAQ: With tall content… container height = excessive content height */
+    /* FAQ: With hidden content… container height = desired content height */
     this.container.style.height = '100%';
     this.content.style.height = this.container.offsetHeight + 'px';
     this.container.style.height = null;
 
-    /* To clean up mess (only if it appears to be the mess of this module) */
+    /* To clean up mess (only if it appears to be the mess of this script) */
     if (this.isState('resizing-content')) {
       this.removeState('resizing-content');
-      if ( ! this.container.getAttribute('style')) {
+      if (this.container.getAttribute('style') === '') {
         this.container.removeAttribute('style');
       }
     }
