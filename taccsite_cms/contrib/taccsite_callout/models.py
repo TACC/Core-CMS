@@ -27,7 +27,7 @@ class TaccsiteCallout(AbstractLink):
 
     resize_figure_to_fit = models.BooleanField(
         verbose_name=_('Resize any image to fit'),
-        help_text=_('Make image shorter or taller to match the height of text beside it.'),
+        help_text=_('Make image shorter or taller to match the height of text beside it (as it would be without the image).'),
         blank=False,
         default=False
     )
