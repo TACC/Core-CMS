@@ -27,6 +27,7 @@ Markup:
 Styleguide Components.Callout
 */
 @import url("_imports/tools/media-queries.css");
+@import url("_imports/tools/x-article-link.css");
 
 
 
@@ -89,6 +90,7 @@ Styleguide Components.Callout
   /* SEE: https://confluence.tacc.utexas.edu/x/DyUFDg */
   background-color: var(--global-color-link-on-light--normal);
 }
+
 .c-callout__title {
   padding-bottom: 12px;
   margin-bottom: 12px;
@@ -96,9 +98,28 @@ Styleguide Components.Callout
 
   font-size: var(--global-font-size--x-large);
   font-weight: var(--medium);
-  color: var(--global-color-primary--xx-light); /* override `html-elements.css` */
+  color: var(--global-color-primary--xx-light); /* override `html-elements` */
 }
 .c-callout__desc {
   font-size: var(--global-font-size--large);
   color: var(--global-color-primary--xx-light);
 }
+
+
+
+
+
+/* Link */
+
+.c-callout--is-link:hover {
+  text-decoration: none;
+}
+
+/* To expand link to cover its container */
+.c-callout--is-link::before { @extend %x-article-link-stretch; content: ''; }
+
+/* To give feedback on link hover and click */
+.c-callout--is-link:hover::before,
+.c-callout--is-link:active::before { outline-offset: 1rem; }
+.c-callout--is-link:hover::before { @extend %x-article-link-hover; }
+.c-callout--is-link:active::before { @extend %x-article-link-active; }
