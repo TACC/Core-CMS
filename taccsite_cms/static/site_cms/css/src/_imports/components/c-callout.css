@@ -38,6 +38,7 @@ Styleguide Components.Callout
 .c-callout {
   display: grid;
   grid-template-rows: auto 1fr;
+  grid-template-columns: auto 1fr;
 
   padding: 20px;
 }
