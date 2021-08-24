@@ -7,15 +7,27 @@ These example codes extend the [`djangocms-link` plugin](https://github.com/djan
 ```python
 from djangocms_link.models import AbstractLink
 
+from taccsite_cms.contrib.helpers import clean_for_abstract_link
+
 class Taccsite______(AbstractLink):
     """
     Components > "Article List" Model
     https://confluence.tacc.utexas.edu/x/OIAjCQ
     """
-    # ___ = ___
+    # ...
+
+
+
+    # Parent
+
+    link_is_optional = True # or False
 
     class Meta:
         abstract = False
+
+    # Validate
+    def clean(self):
+        clean_for_abstract_link(__class__, self)
 ```
 
 `.../cms_plugins.py`:
@@ -26,16 +38,16 @@ from djangocms_link.cms_plugins import LinkPlugin
 from .models import ______Preview
 
 class ______Plugin(LinkPlugin):
-    module = 'TACC Site'
-    model = Taccsite______
-    name = _('______')
+    # ...
     render_template = 'static_article_preview.html'
     def get_render_template(self, context, instance, placeholder):
         return self.render_template
 
     fieldsets = [
+        # ...
         (_('Link'), {
             'fields': (
+                # 'name', # to use LinkPlugin "Display name"
                 ('external_link', 'internal_link'),
                 ('anchor', 'target'),
             )
@@ -49,8 +61,8 @@ class ______Plugin(LinkPlugin):
 
         context.update({
             'link_url': instance.get_link(),
-            'link_text': instance.name,
             'link_target': instance.target
+            # 'link_text': instance.name, # to use LinkPlugin "Display name"
         })
         return context
 ```
