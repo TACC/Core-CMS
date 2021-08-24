@@ -29,3 +29,48 @@ def concat_classnames(classes):
 
 
 # GH-93, GH-142, GH-133: Upcoming functions here (ease merge conflict, maybe)
+
+
+
+# Tweak validation on Django CMS `AbstractLink` for TACC
+
+from cms.models.pluginmodel import CMSPlugin
+
+from django.core.exceptions import ValidationError
+from django.utils.translation import gettext_lazy as _
+
+# SEE: https://github.com/django-cms/djangocms-link/blob/3.0.0/djangocms_link/models.py#L48
+def clean_for_abstract_link(model, self):
+    """
+    Intercept and manipulate validation on `AbstractLink` so that it suits TACC's minimal subclassing of it. (To catch only parent validation errors, not custom ones, run this before any custom validation.)
+    Usage:
+    ```
+    from taccsite_cms.contrib.helpers import clean_for_abstract_link
+    # Validate
+    def clean(self):
+        clean_for_abstract_link(__class__, self)
+        ...
+    ```
+    """
+
+    # Bypass irrelevant parent validation
+    # SEE: ./_docs/how-to-override-validation-error-from-parent-model.md
+    try:
+        super(model, self).clean()
+    except ValidationError as err:
+        # Intercept multi-field errors
+        if hasattr(err, 'error_dict'):
+            for field, errors in err.message_dict.items():
+                # Reduce verbosity of original error message
+                # FAQ: Original error message assumes more fields exist
+                indices = get_indices_that_start_with(
+                    'Only one of ', errors
+                )
+                for i in indices:
+                    err.error_dict[field] = ValidationError(
+                        _('Only one of External link or Internal link may be given.'), code='invalid')
+
+        if len(err.messages) == 0:
+            pass
+        else:
+            raise err
