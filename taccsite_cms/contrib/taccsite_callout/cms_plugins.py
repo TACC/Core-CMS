@@ -4,10 +4,24 @@ from django.utils.translation import gettext_lazy as _
 
 from djangocms_link.cms_plugins import LinkPlugin
 
-from taccsite_cms.contrib.helpers import concat_classnames
+from taccsite_cms.contrib.helpers import (
+    concat_classnames,
+    get_model_field_name
+)
 from taccsite_cms.contrib.constants import TEXT_FOR_NESTED_PLUGIN_CONTENT_SWAP
 
 from .models import TaccsiteCallout
+
+
+
+
+# Constants
+
+RESIZE_FIGURE_FIELD_NAME = get_model_field_name(TaccsiteCallout, 'resize_figure_to_fit')
+
+
+
+# Plugin
 
 @plugin_pool.register_plugin
 class TaccsiteCalloutPlugin(LinkPlugin):
@@ -53,14 +67,14 @@ class TaccsiteCalloutPlugin(LinkPlugin):
                 plugin_name='Image'
             ) + '\
             <br />\
-            When the image resize field is checked, the image may disappear after saving this plugin. Reload the page to reload the image.',
-            'fields': (
-                'resize_figure_to_fit',
-            ),
+            If image disappears while editing, then reload the page to reload the image.',
+            'fields': (),
         }),
         (_('Advanced settings'), {
             'classes': ('collapse',),
+            'description': 'Only use the "' + RESIZE_FIGURE_FIELD_NAME + '" in emergencies. It is preferable to resize the image. <small>When the "Advanced settings" field "' + RESIZE_FIGURE_FIELD_NAME + '" is checked, the image may disappear after saving this plugin (because of a JavaScript race condition). Using a server-side solution would eliminate this caveat.</small>',
             'fields': (
+                'resize_figure_to_fit',
                 'attributes',
             )
         }),

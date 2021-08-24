@@ -29,7 +29,7 @@ class TaccsiteCallout(AbstractLink):
         verbose_name=_('Resize any image to fit'),
         help_text=_('Make image shorter or taller to match the height of text beside it.'),
         blank=False,
-        default=True
+        default=False
     )
 
     attributes = fields.AttributesField()

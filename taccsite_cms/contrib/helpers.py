@@ -74,3 +74,11 @@ def clean_for_abstract_link(model, self):
             pass
         else:
             raise err
+
+# Get name of field from a given model
+
+# SEE: https://stackoverflow.com/a/14498938/11817077
+def get_model_field_name(model, field_name):
+    model_field_name = model._meta.get_field(field_name).verbose_name.title()
+
+    return model_field_name
