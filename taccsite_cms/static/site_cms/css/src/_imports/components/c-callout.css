@@ -37,15 +37,11 @@ Styleguide Components.Callout
 
 .c-callout {
   display: grid;
-  grid-template-rows: auto 1fr;
-  grid-template-columns: auto 1fr;
 
   padding: 20px;
 }
 .c-callout--has-figure {
-  grid-template-areas:
-    'figure title'
-    'figure desc';
+  /* See @media queries */
 }
 .c-callout:not(.c-callout--has-figure) {
   grid-template-areas:
@@ -56,19 +52,40 @@ Styleguide Components.Callout
 .c-callout__title { grid-area: title; }
 .c-callout__desc { grid-area: desc; }
 
-/* To hide figure on narrow window */
-@media only screen and (--narrow-and-below) {
-  .c-callout--has-figure { column-gap: 0px; }
-  .c-callout--has-figure .c-callout__figure { display: none; }
-}
 @media only screen and (--narrow-and-above) {
-  .c-callout--has-figure { column-gap: 40px; }
+  .c-callout--has-figure {
+    grid-template-rows: auto 1fr;
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      'figure title'
+      'figure desc';
+
+    column-gap: 40px;
+  }
+  .c-callout__figure { margin: 0; /* override Bootstrap */ }
+}
+
+@media only screen and (--narrow-and-below) {
+  .c-callout--has-figure {
+    grid-template-areas:
+      'figure'
+      'title'
+      'desc';
+
+    column-gap: 0px;
+  }
+  .c-callout__figure { margin: 0 0 20px; /* override Bootstrap */ }
+
+  /* To "disable" image resize */
+  .c-callout__figure[data-transform],
+  .c-callout__figure[data-transform] img {
+    height: unset !important; /* overwrite inline style tag (via JavaScript) */
+  }
 }
 
 /* To align figure to exact center */
 .c-callout__figure {
   place-self: center;
-  margin: 0; /* override Bootstrap and browser */
 }
 /* To fit (expected) figure content to available horizontal space */
 .c-callout__figure img {
