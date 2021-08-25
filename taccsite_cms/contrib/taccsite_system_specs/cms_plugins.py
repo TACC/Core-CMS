@@ -28,7 +28,6 @@ class TaccsiteSystemSpecsPlugin(LinkPlugin):
     child_classes = [
         'TaccsiteSystemMonitorPlugin',
         'PicturePlugin',
-        'Bootstrap4PicturePlugin',
         'TaccsiteDataListPlugin',
     ]
 
@@ -107,8 +106,7 @@ class TaccsiteSystemSpecsPlugin(LinkPlugin):
         for plugin_instance in instance.child_plugin_instances:
             if (type(plugin_instance).__name__ == 'TaccsiteSystemMonitor'):
                 context.update({ 'sysmon_plugin': plugin_instance })
-            if (type(plugin_instance).__name__ == 'Picture' or
-                type(plugin_instance).__name__ == 'Bootstrap4Picture'):
+            if (type(plugin_instance).__name__ == 'Picture'):
                 context.update({ 'image_plugin': plugin_instance })
             if (type(plugin_instance).__name__ == 'TaccsiteDataList'):
                 context.update({ 'data_plugin': plugin_instance })
