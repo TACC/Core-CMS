@@ -1,0 +1,40 @@
+/*
+Offset Content
+
+Content that should be offset from the flow of text within which it is placed.
+
+Styleguide Objects.OffsetContent
+*/
+@import url("_imports/tools/media-queries.css");
+
+[class*="o-offset-content--"] {
+  --offset-distance: 8.5vw; /* NOTE: Value is from Texascale.org 2020 */
+	--buffer: 30px; /* double Bootstrap `.col` padding */
+  --max-width: initial;
+}
+
+@media only screen and (--medium-and-above) {
+	.o-offset-content--right {
+		float: right;
+		margin-left: var(--buffer);
+	}
+	.o-offset-content--right + .o-offset-content--right { clear: right; }
+
+	.o-offset-content--left {
+		float: left;
+		margin-right: var(--buffer);
+	}
+	.o-offset-content--left + .o-offset-content--left { clear: left; }
+}
+@media only screen and (--medium-and-above) and (--max-wide-and-below) {
+  [class*="c-offset-content--"] {
+    --max-width: 50%;
+  }
+  /* Apply negative margin only when using offset value */
+	.o-offset-content--right {
+		margin-right: calc( var(--offset-distance) * -1);
+	}
+	.o-offset-content--left {
+		margin-left: calc( var(--offset-distance) * -1);
+	}
+}

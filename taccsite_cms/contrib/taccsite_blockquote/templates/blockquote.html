@@ -1,0 +1,29 @@
+<figure {# class="s-blockquote" #}{{ instance.attributes_str }}>
+  <blockquote cite="{{ instance.cite_url }}">
+    <p>{{ instance.text }}</p>
+  </blockquote>
+  {% if instance.use_cite %}
+  <figcaption>
+
+    {% if instance.cite_person %}
+      {{ instance.cite_person }}{% if instance.cite_text %},{% endif %}
+    {% endif %}
+
+    {% if instance.cite_text and instance.cite_url %}
+    <cite><a href="{{ instance.cite_url }}" target="_blank">
+      {{ instance.cite_text }}
+    </a></cite>
+    {% endif %}
+    {% if instance.cite_text and not instance.cite_url %}
+    <cite>
+      {{ instance.cite_text }}
+    </cite>
+    {% endif %}
+
+  </figcaption>
+  {% elif instance.origin %}
+
+  <figcaption>{{ instance.origin }}</figcaption>
+
+  {% endif %}
+</figure>
