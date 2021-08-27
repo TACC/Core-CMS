@@ -9,6 +9,8 @@ import filer.fields.file
 
 class Migration(migrations.Migration):
 
+    initial = True
+
     dependencies = [
         ('filer', '0012_file_mime_type'),
         ('cms', '0022_auto_20180620_1551'),
