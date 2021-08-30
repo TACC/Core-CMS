@@ -9,7 +9,7 @@ import filer.fields.file
 
 class Migration(migrations.Migration):
 
-    replaces = [('taccsite_callout', '0001_initial'), ('taccsite_callout', '0003_auto_20210823_1902')]
+    initial = True
 
     dependencies = [
         ('filer', '0012_file_mime_type'),
