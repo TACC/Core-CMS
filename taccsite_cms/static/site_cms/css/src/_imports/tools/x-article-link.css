@@ -38,3 +38,8 @@ Styleguide Tools.ExtendsAndMixins.ArticleLink
 %x-article-link-active {
   outline: 1px dotted var(--global-color-accent--normal);
 }
+
+/* To give link active state feedback */
+%x-article-link-active {
+  outline: 1px dotted var(--global-color-accent--normal);
+}
