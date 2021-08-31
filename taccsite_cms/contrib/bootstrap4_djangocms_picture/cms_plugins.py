@@ -1,5 +1,5 @@
 # To support generic Image plugin without uninstalling Bootstrap's
-# FAQ: A Bootstrap Image plugin has features not desirable in TACC plugins
+# FAQ: Bootstrap Image plugin has features not desirable in TACC plugins
 # FAQ: We must not break sites that already use Bootstrap Image plugin
 try:
     from cms.plugin_pool import plugin_pool

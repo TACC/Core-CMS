@@ -1,9 +1,9 @@
 # To support generic Link plugin without uninstalling Bootstrap4's
 # FAQ: Bootstrap Link plugin has features not desirable within TACC plugins
 # FAQ: We must not break sites that already use Bootstrap Link plugin
-# SEE: https://github.com/django-cms/djangocms-link/issues/163
-# SEE: https://github.com/django-cms/djangocms-link/issues/167
 try:
+    # CAVEAT: Solution must be more than that for `bootstrap4_djangocms_picture`
+    # SEE: https://github.com/django-cms/djangocms-bootstrap4/pull/138
     import copy
 
     from cms.plugin_pool import plugin_pool
@@ -11,7 +11,7 @@ try:
     from djangocms_link.cms_plugins import LinkPlugin
     from djangocms_bootstrap4.contrib.bootstrap4_link.cms_plugins import Bootstrap4LinkPlugin
 
-    # To unlink Bootstrap's plugin fieldsets from generic Link's
+    # To unlink Bootstrap's plugin fieldsets from Generic's
     # SEE: https://github.com/django-cms/djangocms-bootstrap4/blob/2.0.0/djangocms_bootstrap4/contrib/bootstrap4_link/cms_plugins.py#L44
     Bootstrap4LinkPlugin.fieldsets = copy.deepcopy(Bootstrap4LinkPlugin.fieldsets)
 
