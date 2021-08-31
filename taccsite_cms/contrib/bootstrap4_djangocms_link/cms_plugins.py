@@ -1,8 +1,8 @@
-# Reregister unregistered LinkPlugin without uninstalling Bootstrap4's
-# FAQ: A Bootstrap link is undesirable but may be used by migrated legacy sites
-# TODO: Drop try/except & load non-standard plugin set for migrated legacy sites
-# FAQ: If we can import both plugins, then re-register LinkPlugin
-#      (because Bootstrap4Link unregistered LinkPlugin)
+# To support generic Link plugin without uninstalling Bootstrap4's
+# FAQ: Bootstrap Link plugin has features not desirable within TACC plugins
+# FAQ: We must not break sites that already use Bootstrap Link plugin
+# SEE: https://github.com/django-cms/djangocms-link/issues/163
+# SEE: https://github.com/django-cms/djangocms-link/issues/167
 try:
     import copy
 
@@ -28,8 +28,7 @@ try:
     )
 
     # To re-register generic Link plugin
-    # SEE: https://github.com/django-cms/djangocms-link/issues/163
-    # SEE: https://github.com/django-cms/djangocms-link/issues/167
+    # SEE: https://github.com/django-cms/djangocms-bootstrap4/blob/master/djangocms_bootstrap4/contrib/bootstrap4_link/cms_plugins.py#L81
     plugin_pool.register_plugin(LinkPlugin)
 
 # CAVEAT: If import statement fails for reason other than Bootstrap presence,
