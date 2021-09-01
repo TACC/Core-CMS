@@ -1,0 +1,7 @@
+{% load cms_tags %}
+
+<aside {# class="o-offset-content--..." #}{{ instance.attributes_str }}>
+  {% for plugin_instance in instance.child_plugin_instances %}
+      {% render_plugin plugin_instance %}
+  {% endfor %}
+</aside>
