@@ -238,6 +238,9 @@ INSTALLED_APPS = [
     # SEE: https://stackoverflow.com/a/37150997
     'test_without_migrations',
     'taccsite_cms',
+    # Restore djangocms plugins that bootstrap4 hides
+    'taccsite_cms.contrib.bootstrap4_djangocms_link',
+    'taccsite_cms.contrib.bootstrap4_djangocms_picture',
     # TODO: Extract TACC CMS UI components into pip-installable plugins
     # FAQ: The djangocms_bootstrap4 library can serve as an example
     'taccsite_cms.contrib.taccsite_sample',
