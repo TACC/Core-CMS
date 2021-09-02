@@ -5,7 +5,7 @@
     "description": "The core CMS codebase for all new and updated TACC CMS sites.",
     "scripts": {
         "build": "npm run build:css",
-        "build:css": "node postcss.js",
+        "build:css": "npm run settings && node postcss.js",
         "watch": "npm-watch",
         "settings": "python3 taccsite_cms/settings_to_json.py"
     },
