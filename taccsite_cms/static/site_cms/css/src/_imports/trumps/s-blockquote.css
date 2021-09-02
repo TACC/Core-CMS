@@ -1,0 +1,45 @@
+/*
+Blockquote
+
+A [`<blockquote>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote).
+
+Markup:
+<figure class="s-blockquote">
+  <blockquote cite="https://www.huxley.net/bnw/four.html">
+    <p>Words can be like X-rays, if you use them properly—they’ll go through anything. You read and you’re pierced.</p>
+  </blockquote>
+  <figcaption>Aldous Huxley, <cite>Brave New World</cite></figcaption>
+</figure>
+
+Styleguide Trumps.Scopes.Blockquote
+*/
+
+.s-blockquote {
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+}
+.s-blockquote blockquote {
+  margin-bottom: 0; /* overwrite Bootstrap */
+
+  font-size: 1.125em;
+  font-style: italic;
+}
+.s-blockquote blockquote p {
+  margin: 0;
+  white-space: pre-wrap;
+}
+.s-blockquote blockquote p::before { content: '“'; }
+.s-blockquote blockquote p::after { content: '”'; }
+
+.s-blockquote figcaption {
+  margin-top: 0.3em;
+
+  font-size: 1em;
+}
+.s-blockquote figcaption::before {
+  content: "— ";
+}
+
+.s-blockquote cite {
+  font-style: normal; /* overwrite browser */
+}
