@@ -1,0 +1,44 @@
+/*
+Date
+
+A date with a label.
+
+Markup:
+<dl class="c-date">
+  <dt class="c-date__label">Submission Deadline</dt>
+  <dd class="c-date__value">
+    <time datetime="2020-06-03">June 06, 2020</time>
+  </dd>
+</dl>
+
+Styleguide Components.Date
+*/
+@import url("_imports/tools/x-truncate.css");
+
+/* Container */
+
+dl.c-date {
+  margin: 0; /* overwrite Bootstrap's `_reboot.scss` */
+}
+
+/* Children */
+
+.c-date__label {
+  @extend %x-truncate--one-line;
+}
+.c-date__label::after {
+  content: ':';
+  display: inline;
+  padding-right: 0.25em;
+}
+dt.c-date__label {
+  font-weight: inherit; /* overwrite Bootstrap's `_reboot.scss` */
+}
+
+.c-date__value {
+  white-space: nowrap;
+}
+dd.c-date__value {
+  font-weight: inherit;
+  margin: 0; /* overwrite Bootstrap's `_reboot.scss` */
+}
