@@ -1,6 +1,7 @@
 {# WARNING: Some markup is duplicated in other repositories #}
 {# SEE: https://confluence.tacc.utexas.edu/x/LoCnCQ #}
 {# FAQ: Extra lines exist to ease CMS/Portal/Guide template comparison #}
+{% load static %}
 
 <!-- Branding Bar -->
 {% include "header_branding.html" %}
@@ -12,14 +13,8 @@
   <!-- Portal Logo -->
   {% include "header_logo.html" %}
 
-  <!-- Navbar Accordian Toggle on Small Screens  -->
-  <button class="navbar-toggler  gh-101" type="button" data-toggle="collapse" data-target="#navbarsExpandTarget" aria-controls="navbarsExpandTarget" aria-expanded="false" aria-label="Toggle navigation">
-    <i class="navbar-toggler-icon"></i>
-    <span class="navbar-toggler-text">Menu</span>
-  </button>
-
   <!-- Navbar Links -->
-  <div class="collapse navbar-collapse" id="navbarsExpandTarget">
+  <div class="collapse navbar-collapse width" id="navbarsExpandTarget">
     {# FAQ: We pass `navbar-nav` because it is coupled to `navbar-…` here #}
     {# FAQ: If template included with `only`, it would NOT render `show_menu` #}
     {% include "nav_cms.html" with className="navbar-nav" %}
@@ -29,8 +24,20 @@
       {% include "nav_search.html" with className="form-inline" only %}
     {% endif %}
   </div>
+  <aside class="s-header__menu-backdrop" aria-hidden="true"
+    data-target="#navbarsExpandTarget"
+    data-toggle="collapse">
+  </aside>
+
+  <!-- Navbar Accordian Toggle on Small Screens  -->
+  <button class="navbar-toggler  gh-101" type="button" data-toggle="collapse" data-target="#navbarsExpandTarget" aria-controls="navbarsExpandTarget" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="navbar-toggler-icon"></i>
+    <span class="navbar-toggler-text">Menu</span>
+  </button>
 
   {% if settings.PORTAL %}
     {% include "nav_portal.html" with className="navbar-nav" settings=settings only %}
   {% endif %}
 </nav>
+
+<script src="{% static 'site_cms/js/site.header.js' %}" type="module"></script>

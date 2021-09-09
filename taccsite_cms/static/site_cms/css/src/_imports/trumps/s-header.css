@@ -35,6 +35,105 @@ Styleguide Trumps.Scopes.Header
 
 
 /*
+ * MIXINS
+ */
+
+
+
+
+
+/* To create noticable line between each item */
+%s-header-nav-link-border {
+  /* To ensure any background color does not cover box-shadow */
+  position: relative;
+
+  box-shadow:
+    /* x pos. */ calc(var(--nav-link-horz-pad) / 2)
+    /* y pos. */ calc(-1 * (2px + calc(var(--nav-link-horz-pad) / 2)))
+    /* blur */   0
+    /* spread */ calc(-1 * calc(var(--nav-link-horz-pad) / 2))
+    /* color */  var(--nav-line-color);
+}
+
+/* To create negligible line between each item */
+%s-header-menu-link-border {
+  /* To ensure any background color does not cover box-shadow */
+  position: relative;
+
+  box-shadow:
+    /* x pos. */ 0
+    /* y pos. */ calc(-1 * (1px + var(--menu-link-horz-pad)))
+    /* blur */   0
+    /* spread */ calc(-1 * var(--menu-link-horz-pad))
+    /* color */  var(--menu-line-color);
+}
+
+%s-header-mobile-menu {
+  /* Layout: To stretch menu to cover most of page */
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: calc(100vw - env(--header-navbar-mobile-menu-offset));
+
+  /* Layout: To be above body content on Portal & Docs (not harmful on CMS) */
+  z-index: 2; /* 2 overlaps `.s-header__menu-backdrop` on page with scrollbar */
+
+  /* Style */
+  padding-top: env(--header-brandbar-mobile-height);
+  background-color: env(--header-link-bkgd-color);
+  border-left: env(--border-width--normal) solid var(--global-color-primary--dark);
+}
+
+
+
+
+
+/*
+ * JAVASCRIPT
+ */
+
+
+
+
+
+@media (--nav-compressed) {
+
+  /* To allow a click outside a menu to close the menu */
+  .s-header .show + .s-header__menu-backdrop {
+    /* Layout: To stretch element to always span full screen size */
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: env(--header-navbar-mobile-menu-offset);
+
+    /* Layout: To be above body content on Portal & Docs (not harmful on CMS) */
+    z-index: 1;
+
+    /* Style: To blur and/or lighten the content behind the element */
+    @supports (backdrop-filter: none) {
+      & {
+        /* To blur and lighten content behind the element */
+        backdrop-filter: blur(18px) brightness(85%);
+        background-color: transparent;
+      }
+    }
+    @supports not (backdrop-filter: none) {
+      & {
+        /* To lighten content behind the element */
+        background-color: rgba(var(--global-color-primary--x-light-rgb), 0.75);
+      }
+    }
+  }
+
+}
+
+
+
+
+
+/*
  * GENERAL
  */
 
@@ -54,15 +153,36 @@ Styleguide Trumps.Scopes.Header
 
 
 
+/* Elements */
+
+/* To overwrite html-elements.css */
+.s-header a:active {
+  position: unset;
+  top: unset;
+}
+
+
+
+
+
 /* Variables */
 
-/* FAQ: These have `--header` prefix because they can be used outside header */
 @media (--nav-expanded) {
   :root {
     --header-brandbar-height: env(--header-brandbar-normal-height);
     --header-navbar-height: env(--header-navbar-normal-height);
 
     --portal-navlink-max-width: none;
+  }
+
+  .s-header {
+    --menu-link-horz-pad: 11px;
+    --menu-line-color: env(--header-bkgd-color);
+
+    --nav-line-color: transparent;
+    --nav-link-vert-pad: unset;
+    /* SEE: "Nav: Variables (Addendum)" */
+    /* --nav-link-horz-pad: … */
   }
 }
 @media (--nav-compressed) {
@@ -71,6 +191,16 @@ Styleguide Trumps.Scopes.Header
     --header-navbar-height: env(--header-navbar-mobile-height);
 
     --portal-navlink-max-width: env(--portal-navlink-mobile-max-width);
+  }
+
+  .s-header {
+    --menu-link-horz-pad: 24px;
+    --menu-line-color: transparent;
+
+    --nav-line-color: env(--header-accent-color);
+    --nav-link-vert-pad: 12px;
+    /* To line up navbar left-hand content with logo */
+    --nav-link-horz-pad: calc(env(--header-navbar-toggle-width) / 2);
   }
 }
 
@@ -217,9 +347,17 @@ Styleguide Trumps.Scopes.Header
 /* FAQ: Set height of descendants, but not of CMS and Portal and mobile navs */
 :--nav-bar-fake-bkgd,
 #header-logo,
+/* FAQ: We set height of immediate content of elements, because:
+        - height for navbar elements is not respected as navbar collapses
+        - height for portal nav would hide its dropdown menu */
 .s-header :--navbar-toggle,
-.s-header .s-search-bar {
+.s-header .navbar-collapse:not(.show) .s-search-bar::part(form),
+.s-header :--portal-button {
   height: var(--header-navbar-height);
+}
+.s-header .navbar-collapse:is(.show, .collapsing) .s-search-bar::part(form),
+.s-header :--portal-message {
+  height: env(--header-navbar-normal-height);
 }
 
 /* To support shrinking and truncation of certain nav elements */
@@ -259,10 +397,12 @@ Styleguide Trumps.Scopes.Header
 
   /* Layout */
 
-  /* To push it (and everything to its right) to the right of the navbar */
-  .s-header :--navbar-toggle { margin-left: auto; }
+  /* To push toggle (and everything to its right) to the right of the navbar */
+  .s-header .navbar-collapse:not(.show) + :--navbar-toggle {
+    margin-left: auto;
+  }
 
-  /* To layout the toggle as a "mobile button" */
+  /* To layout the toggle content for a "mobile button" */
   .s-header :--navbar-toggle {
     /* WARNING: Do not set `display` outside of (--nav-compressed) */
     /* FAQ: The button as Bootstrap `.navbar-toggler` uses `display: none` */
@@ -376,40 +516,13 @@ Styleguide Trumps.Scopes.Header
 
 @media (--nav-compressed) {
 
-  /* Style */
-
+  /* To make the navbar act similar to an overlay menu */
+  /* CAVEAT: If menu is open, and layout switches from collapsed to expanded to collapsed, then menu will remain open upon return to collapsed layout. */
   .s-header .navbar-collapse {
-    padding-top: 12px;
+    /* Layout */
+    @extend %s-header-mobile-menu;
 
-    @supports (backdrop-filter: none) {
-      & {
-        backdrop-filter: blur(18px) brightness(85%);
-        background-color: rgba(var(--global-color-primary--x-dark-rgb), 0.6);
-      }
-    }
-    @supports not (backdrop-filter: none) {
-      & {
-        background-color: rgba(var(--global-color-primary--x-dark-rgb), 0.95);
-      }
-    }
-
-    border: env(--border-width--normal) solid var(--global-color-primary--dark);
-  }
-
-
-
-  /* Layout */
-
-  /* HACK: To make the navbar act similar to a dropdown */
-  /* TODO: We should either use dropdown or create TACC nav component (GH-12) */
-  /* CAVEAT: If menu is open, and layout switches from collapsed to expanded to collapsed, then menu will remain open upon return to collapsed layout.
-  /* CAVEAT: If menu is open, and user clicks anywhere outside the navbar, then menu remains open. But a real dropdown would be closed after such a click. */
-  .s-header .navbar-collapse {
-    position: absolute; /* assumes Bootstrap `.navbar { position: relative }` */
-    top: 100%;
-    left: env(--header-navbar-mobile-menu-offset);
-    right: 0;
-    z-index: 1; /* To be above main content in Portal & Docs */
+    transition-duration: 0s; /* to overwrite Bootstrap */
   }
 
 }
@@ -422,27 +535,6 @@ Styleguide Trumps.Scopes.Header
 
 
 
-/* Nav: Variables */
-
-@media (--nav-expanded) {
-  .s-header .navbar-nav {
-    --nav-line-color: transparent;
-    --nav-link-vert-pad: unset;
-    /* SEE: "Nav: Variables (Addendum)" */
-    /* --nav-link-horz-pad: … */
-  }
-}
-@media (--nav-compressed) {
-  .s-header .navbar-nav {
-    --nav-line-color: env(--header-accent-color);
-    --nav-link-vert-pad: 0.425em;
-    /* To line up navbar left-hand content with logo */
-    --nav-link-horz-pad: calc(env(--header-navbar-toggle-width) / 2);
-  }
-}
-
-
-
 /* Nav: Variables (Addendum) */
 
 /* To reduce space between nav links when space is limited */
@@ -450,18 +542,18 @@ Styleguide Trumps.Scopes.Header
 @media (--nav-expanded) and (--nav-wide-and-below)  {
   /* TODO: Hardcode `is-on-portal` in Portal & Docs markup,
            then remove the `:--for-cms` selector prefix */
-  :--for-cms .s-header:not(.is-on-portal) .navbar-nav {
+  :--for-cms .s-header:not(.is-on-portal) {
     --nav-link-horz-pad: 1em;
   }
 }
 /* FAQ: Reduce space at wider breakpoint when Portal Nav is present */
 @media (--nav-expanded) and (--nav-x-wide-and-below) {
-  .s-header.is-on-portal .navbar-nav,
+  .s-header.is-on-portal,
   /* To apply style to old markup (see "Portal & Docs Selectors") */
   /* TODO: Hardcode `is-on-portal` in Portal & Docs markup,
            then remove the `:--for-*` selectors */
-  :--for-docs .s-header .navbar-nav,
-  :--for-portal .s-header .navbar-nav {
+  :--for-docs .s-header,
+  :--for-portal .s-header {
     --nav-link-horz-pad: 1em;
   }
 }
@@ -472,19 +564,19 @@ Styleguide Trumps.Scopes.Header
   /* To have 15px of space for 12px font */
   /* TODO: Hardcode `is-on-portal` in Portal & Docs markup,
            then remove the `:--for-cms` selector prefix */
-  :--for-cms .s-header:not(.is-on-portal) .navbar-nav {
+  :--for-cms .s-header:not(.is-on-portal) {
     --nav-link-horz-pad: 1.5em;
    }
 }
 /* FAQ: Increase space at wider breakpoint when Portal Nav is present */
 @media (--nav-expanded) and (--nav-x-wide-and-above) {
   /* To have 15px of space for 12px font */
-  .s-header.is-on-portal .navbar-nav,
+  .s-header.is-on-portal,
   /* To apply style to old markup (see "Portal & Docs Selectors") */
   /* TODO: Hardcode `is-on-portal` in Portal & Docs markup,
            then remove the `:--for-*` selectors */
-  :--for-docs .s-header .navbar-nav,
-  :--for-portal .s-header .navbar-nav {
+  :--for-docs .s-header,
+  :--for-portal .s-header {
     --nav-link-horz-pad: 1.5em;
   }
 }
@@ -542,8 +634,9 @@ Styleguide Trumps.Scopes.Header
   }
 
   /* To match design */
-  .s-cms-nav {
-    padding-top: 8px;
+  .s-cms-nav,
+  .s-portal-nav .dropdown-menu {
+    padding-top: 5px;
   }
 
   #header-logo {
@@ -575,42 +668,36 @@ Styleguide Trumps.Scopes.Header
 */
 @custom-selector :--portal-nav-link
   .s-portal-nav .nav-link;
-@custom-selector :--portal-nav-link--user
-  .s-portal-nav .nav-link.dropdown-toggle;
-@custom-selector :--portal-nav-link--guest
-  .s-portal-nav .nav-link:not(.dropdown-toggle);
-@custom-selector :--portal-nav-link__icon
-  .s-portal-nav .nav-link .icon;
-@custom-selector :--portal-nav-link__text
-  .s-portal-nav .nav-link .nav-text;
-
+@custom-selector :--portal-button
+  .s-portal-nav .dropdown:not(.show) .nav-link,
+  .s-portal-nav .nav-item:not(.dropdown) .nav-link;
+@custom-selector :--portal-button--user
+  .s-portal-nav .dropdown:not(.show) .nav-link.dropdown-toggle;
+@custom-selector :--portal-button--guest
+  .s-portal-nav .nav-item:not(.dropdown) .nav-link:not(.dropdown-toggle);
+@custom-selector :--portal-button__icon
+  .s-portal-nav .dropdown:not(.show) .nav-link .icon,
+  .s-portal-nav :not(.dropdown) .nav-link .icon;
+@custom-selector :--portal-button__text
+  .s-portal-nav .dropdown:not(.show) .nav-link .nav-text,
+  .s-portal-nav :not(.dropdown) .nav-link .nav-text;
+@custom-selector :--portal-message
+  .s-portal-nav .dropdown.show .nav-link;
+@custom-selector :--portal-message__icon
+  .s-portal-nav .dropdown.show .nav-link .icon;
+@custom-selector :--portal-message__text
+  .s-portal-nav .dropdown.show .nav-link .nav-text;
 
 
 
 /* Nav Link: General */
 
-/* To style the link */
-.s-header :--portal-nav-link {
-  background-color: env(--header-portal-nav-bkgd-color);
-}
-
 /* To layout the link */
 .s-header .nav-link {
   /* To support truncation */
-  /* To vertically center text and icons (if any) */
   display: flex;
+  /* To vertically center text and icons (if any) */
   align-items: center;
-}
-.s-header :--portal-nav-link {
-  /* To horizontally center align icon, text, and toggle as a group */
-  justify-content: center;
-
-  /* To prevent expansion upon dropdown menu open */
-  width: var(--portal-navlink-max-width);
-
-  /* To prevent wrapping of this as it slides into place */
-  /* NOTE: This affects username also, but it should not have any whitespace */
-  white-space: nowrap;
 }
 
 /* Nav Link: General: Desktop */
@@ -645,7 +732,15 @@ Styleguide Trumps.Scopes.Header
   padding-bottom: var(--nav-link-vert-pad);
 }
 
-/* Nav Link: Spacing: Desktop */
+
+
+/* Nav Link: Portal */
+
+.s-header :--portal-button {
+  background-color: env(--header-portal-nav-bkgd-color);
+}
+
+/* Nav Link: Portal: Desktop */
 
 @media (--nav-expanded) {
 
@@ -656,46 +751,91 @@ Styleguide Trumps.Scopes.Header
     --nav-link-horz-pad: env(--header-navbar-normal-left-pad);
   }
 
+  .s-header :--portal-nav-link {
+    /* To horizontally center align icon, text, and toggle as a group */
+    justify-content: center;
+
+    /* To prevent expansion upon dropdown menu open */
+    max-width: var(--portal-navlink-max-width);
+
+    /* To prevent wrapping of this as it slides into place */
+    /* NOTE: This affects username also, but it should not have any whitespace */
+    white-space: nowrap;
+  }
+
+  /* CAVEAT: The selector must be specific enough to override Bootstrap */
+  .s-header :--portal-nav-link,
+  /* To overwrite Bootstrap (see "Portal & Docs Selectors") */
+  :--for-portal .s-header :--portal-nav-link {
+    padding-right: var(--nav-link-horz-pad, 0);
+    padding-left: var(--nav-link-horz-pad, 0);
+  }
+
+  /* Icon */
+
   .s-header :--portal-nav-link__icon {
     margin-right: 0.5em;
   }
 
 }
 
-/* Nav Link: Spacing: Mobile */
+/* Nav Link: Portal: Mobile */
 
-/* To match design of collapsed navbar Portal Nav but take liberty with when */
-@media (--nav-compressed) /* dev liberty */ {
+@media (--nav-compressed) {
 
-  .s-header :--portal-nav-link {
-    padding-top: 0; /* to overwrite Bootstrap */
-    padding-bottom: 0; /* to overwrite Bootstrap */
+  .s-header :--portal-nav-link/*,*//* ???: Is below selector necessary here? */
+  /* To overwrite Bootstrap (see "Portal & Docs Selectors") */
+  /* :--for-portal :--portal-nav-link */ {
+    /* To match design */
+    --nav-link-vert-pad: 0;
+  }
+
+  .s-header :--portal-button {
+    width: fit-content;
+
+    /* To avoid wrapping of button */
+    /* FAQ: Wrap happens if logo is wide and button layout is not flexible */
+    /* NOTE: The `clamp()` solution avoids using third media query for navbar */
+    padding-right: clamp(
+      var(--nav-link-horz-pad, 0),
+      3vw,
+      env(--header-navbar-mobile-right-pad)
+    ); /* FAQ: The widths must prevent wrap when `#header-logo` is max. width */
+    padding-left: var(--nav-link-horz-pad, 0);
+
     /* NOTE: This is for the edge case that username exceeds expectation */
     --nav-link-horz-pad: 12px;
   }
 
-}
+  /* Icon */
 
-
-
-/* Nav Link: Icon   (Mobile-Only) */
-
-@media (--nav-compressed) {
-
-  /* Layout */
-
-  /* To layout each link as a "mobile button" */
-  .s-header :--portal-nav-link {
+  /* To make link appear as a button when menu is closed */
+  .s-header :--portal-button {
     display: grid;
   }
-  .s-header :--portal-nav-link--user   { @extend %x-mobile-button--has-toggle;}
-  .s-header :--portal-nav-link--guest  { @extend %x-mobile-button--no-toggle; }
-  .s-header :--portal-nav-link__icon   { @extend %x-mobile-button__icon; }
-  .s-header :--portal-nav-link__text   { @extend %x-mobile-button__text; }
-  .s-header :--portal-nav-link::after  { @extend %x-mobile-button__toggle; }
+  .s-header :--portal-button--user   { @extend %x-mobile-button--has-toggle;}
+  .s-header :--portal-button--guest  { @extend %x-mobile-button--no-toggle; }
+  .s-header :--portal-button__icon   { @extend %x-mobile-button__icon; }
+  .s-header :--portal-button__text   { @extend %x-mobile-button__text; }
+  .s-header :--portal-button::after  { @extend %x-mobile-button__toggle; }
   /* AFTER GH-101: Remove this ruleset */
-  .s-header :--portal-nav-link:not(.gh-101)::before {
+  .s-header :--portal-button:not(.gh-101)::before {
     @extend %x-mobile-button__text;
+  }
+
+  /* To make link appear as a welcome message when menu is open */
+  .s-header :--portal-message__icon {
+    margin-right: 0.875em; /* To approximate design via "pretty" `em` value */
+  }
+  .s-header :--portal-message__text {
+    font-size: 18px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
+    font-weight: var(--regular);
+  }
+  .s-header :--portal-message__text::before {
+    content: 'Welcome, ';
+  }
+  .s-header :--portal-message::after {
+    display: none;
   }
 
 }
@@ -704,17 +844,20 @@ Styleguide Trumps.Scopes.Header
 
 /* Nav Link: Separator */
 
-/* To create line between each item */
-.s-header .nav-item + .nav-item .nav-link {
-  /* To ensure any background color does not cover box-shadow */
-  position: relative;
+/* Nav Link: Separator: Desktop */
 
-  box-shadow:
-    /* x pos. */ calc(var(--nav-link-horz-pad) / 2)
-    /* y pos. */ calc(-1 * (2px + calc(var(--nav-link-horz-pad) / 2)))
-    /* blur */   0
-    /* spread */ calc(-1 * calc(var(--nav-link-horz-pad) / 2))
-    /* color */  var(--nav-line-color);
+@media (--nav-expanded) {
+  .s-header .nav-item + .nav-item .nav-link {
+    @extend %s-header-nav-link-border;
+  }
+}
+
+/* Nav Link: Separator: Mobile */
+
+@media (--nav-compressed) {
+  .s-header .nav-item + .nav-item:not(.dropdown.show) .nav-link {
+    @extend %s-header-nav-link-border;
+  }
 }
 
 
@@ -785,37 +928,25 @@ Styleguide Trumps.Scopes.Header
 
 
 
-/* Dropdown: Variables */
-
-@media (--nav-expanded) {
-  .s-header .dropdown {
-    --menu-link-horz-pad: 11px;
-    --menu-line-color: env(--header-bkgd-color);
-  }
-}
-@media (--nav-compressed) {
-  .s-header .dropdown {
-    --menu-link-horz-pad: 26px;
-    --menu-line-color: transparent;
-  }
-}
-
-
-
 /* Dropdown: Toggle */
 
 .s-header .dropdown-toggle::after {
   @extend %x-arrow;
 
-  --size: 0.375em;
   --line: 0.1em; /* to get 1px at 12px text and 2px at 24px text */
   --color: env(--header-text-color);
+
+  position: relative; /* to allow use of `top` (to vertically align) */
+}
+
+/* Dropdown: Toggle: Layout: Default */
+
+.s-header .dropdown-toggle::after {
+  --size: 0.375em;
   --nudge: 0.24em;
 
   margin-left: 0.6em;
-  position: relative; /* to allow use of `top` (to vertically align) */
 }
-/* To vertically align with text */
 .s-header .dropdown-toggle[aria-expanded="true"]::after {
   @extend %x-arrow--up;
   top: var(--nudge);
@@ -825,19 +956,42 @@ Styleguide Trumps.Scopes.Header
   bottom: var(--nudge);
 }
 
+/* Dropdown: Toggle: Layout: Mobile */
+
+@media (--nav-compressed) {
+
+  /* CMS Menu */
+
+  .s-header .s-cms-nav .dropdown-toggle::after {
+    --size: 0.2em;
+    --nudge: 0.1em;
+  }
+  .s-header .s-cms-nav .dropdown-toggle[aria-expanded="true"]::after {
+    @extend %x-arrow--left;
+    margin-right: calc(-1 * var(--size)); /* to pull text closer */
+    left: calc((-1 * var(--size) * 2) - var(--nudge)); /* to align arrow */
+    order: -1; /* move to far left */
+    top: auto; /* overwrite default */
+  }
+  .s-header .s-cms-nav .dropdown-toggle[aria-expanded="false"]::after {
+    @extend %x-arrow--right;
+    margin-left: auto;
+    right: var(--nudge);
+    /* order: 2; /* retain position */
+    bottom: auto; /* overwrite default */
+  }
+
+}
+
 
 
 
 
 /* Dropdown Menu */
 
-/* To style menu */
-/* To overwrite Bootstrap */
-/* FAQ: Bootstrap has styles we do not want a value for, so `unset` */
 .s-header .dropdown-menu {
-  margin: unset;
-
-  border-radius: unset;
+  margin: unset; /* to undo Bootstrap */
+  border-radius: unset; /* to undo Bootstrap */
 }
 
 
@@ -846,7 +1000,7 @@ Styleguide Trumps.Scopes.Header
 
 @media (--nav-expanded) {
 
-  /* Dropdowns */
+  /* All Dropdowns */
 
   /* To overwrite Bootstrap */
   .s-header .dropdown-menu {
@@ -858,7 +1012,8 @@ Styleguide Trumps.Scopes.Header
     font-size: 12px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
   }
 
-  /* To layout menu */
+  /* Portal Nav */
+
   .s-header .s-portal-nav .dropdown-menu {
     /* To stretch dropdown width to match the width of its parent */
     min-width: 100%;
@@ -872,9 +1027,12 @@ Styleguide Trumps.Scopes.Header
 
 @media (--nav-compressed) {
 
+  /* CMS Menu & Portal Nav */
+
   /* To overwrite Bootstrap */
   .s-header .s-cms-nav .dropdown-menu {
     padding: 0 0 0.5em 0;
+    margin: unset; /* to undo Bootstrap */
 
     background-color: transparent;
     border: none;
@@ -882,24 +1040,68 @@ Styleguide Trumps.Scopes.Header
     font-size: 18px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
   }
   .s-header .s-portal-nav .dropdown-menu {
-    padding: 0;
+    /* padding-top: unset; /* to undo Bootstrap *//* FAQ: Set elsewhere by us */
+    padding-bottom: unset; /* to undo Bootstrap */
 
-    background-color: env(--header-link-bkgd-color);
+    background-color: transparent;
     border: none;
 
     font-size: 24px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
   }
 
-  /* To layout menu */
-  /* To restore Bootstrap behavior:
-    - expanded navbar dropdown
-    - not collapsed navbar push-down */
-  /* SEE: (Bootstrap) `.navbar-expand-xl .navbar-nav .dropdown-menu-right` */
-  .s-header .s-portal-nav .dropdown-menu {
-    position: absolute;
+  /* CMS Nav */
 
-    right: 0;
-    left: auto;
+  .s-header .s-cms-nav .dropdown-menu {
+    @extend %s-header-nav-link-border;
+
+    /* To allow `position: relative` to not move the menu */
+    /* SEE: `_navbar.scss`
+      .navbar-nav .dropdown-menu { position: static; float: none; } */
+    top: 0;
+  }
+
+  /* Portal Nav */
+
+  /* To make the navbar act similar to an overlay menu */
+  /* CAVEAT: If menu is open, and layout switches from collapsed to expanded to collapsed, then menu will remain open upon return to collapsed layout. */
+  .s-header .s-portal-nav .dropdown.show {
+    /* Layout */
+    @extend %s-header-mobile-menu;
+
+    left: auto; /* to overwrite Bootstrap */
+  }
+  .s-header .s-portal-nav .dropdown.show .dropdown-menu {
+    flex-grow: 1;
+  }
+
+  /* Nested Dropdown */
+
+  /* To hide sibling dropdowns */
+  /* CAVEAT: Relies on JavaScript specific to `s-cms-nav` (fallback: `… ~ …` */
+  .s-header .js-has-open-menu .dropdown:not(.show),
+  /* CAVEAT: Does not hide previous siblings (solution: `js-has-open-menu`) */
+  .s-header .nav-item.dropdown.show ~ .nav-item {
+    display: none;
+  }
+
+  /* To provide a back button */
+  .s-header .s-cms-nav .dropdown-toggle[aria-expanded="true"] {
+    flex-wrap: wrap;
+  }
+  .s-header .s-cms-nav .dropdown-toggle[aria-expanded="true"]::after,
+  .s-header .s-cms-nav .dropdown-toggle[aria-expanded="true"]::before {
+    /* To approximate design */
+    margin-bottom: 32px;
+  }
+  .s-header .s-cms-nav .dropdown-toggle[aria-expanded="true"]::before {
+    content: 'All';
+    flex-grow: 1;
+
+    /* Style */
+    font-size: 18px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
+  }
+  .s-header .s-cms-nav .dropdown-toggle[aria-expanded="true"] .nav-text {
+    flex-basis: 100%;
   }
 
 }
@@ -917,7 +1119,7 @@ Styleguide Trumps.Scopes.Header
 .s-header .dropdown-item {
   border-left: env(--border-width--x-thick) solid transparent;
 
-  font-weight: env(--medium);
+  font-weight: env(--bold);
 }
 
 
@@ -928,7 +1130,7 @@ Styleguide Trumps.Scopes.Header
   --nav-link-vert-pad: 0.4em;
 
   /* To overwrite Bootstrap */
-  padding: var(--nav-link-vert-pad) var(--menu-link-horz-pad);
+  padding: var(--nav-link-vert-pad) var(--menu-link-horz-pad, 0);
 }
 
 
@@ -936,16 +1138,24 @@ Styleguide Trumps.Scopes.Header
 /* Dropdown Item: Separator */
 
 /* To create line between each item */
-.s-header .dropdown-item + .dropdown-item {
-  /* To ensure any background color does not cover box-shadow */
-  position: relative;
+.s-header .s-cms-nav .dropdown-item + .dropdown-item {
+  @extend %s-header-menu-link-border;
+}
 
-  box-shadow:
-    /* x pos. */ 0
-    /* y pos. */ calc(-1 * (1px + var(--menu-link-horz-pad)))
-    /* blur */   0
-    /* spread */ calc(-1 * var(--menu-link-horz-pad))
-    /* color */  var(--menu-line-color);
+/* Dropdown Item: Separator: Desktop */
+
+@media (--nav-expanded) {
+  .s-header .s-portal-nav .dropdown-item + .dropdown-item {
+    @extend %s-header-menu-link-border;
+  }
+}
+
+/* Dropdown Item: Separator: Mobile */
+
+@media (--nav-compressed) {
+  .s-header .s-portal-nav .dropdown-item + .dropdown-item {
+    @extend %s-header-nav-link-border;
+  }
 }
 
 
@@ -1014,17 +1224,16 @@ Styleguide Trumps.Scopes.Header
 }
 @media (--nav-compressed) {
   .s-header .s-search-bar {
-    /* NOTE: Deviates from design cuz "Mobile Nav Top Row" height deviates */
-    --input-height: 38px;
+    --input-height: 45px;
     /* WARNING: Do not use `rem` until `html { 62.5%; }` */
     --button-font-size: 24px;
     --input-font-size: 18px;
 
     /* To match design */
-    --space-after-search: var(--space-before-search);
+    --space-after-search: 0;
 
-    /* To line up logo with navbar left-hand content */
-    --space-before-search: env(--header-navbar-mobile-left-pad);
+    /* To let padding manage space */
+    --space-before-search: 0;
   }
 }
 
@@ -1121,56 +1330,23 @@ Styleguide Trumps.Scopes.Header
 
 @media (--nav-compressed) {
 
-  /* To move portal nav & search bar to top of navbar */
-  /* FAQ: The `.show` & `.collapsing` allow Bootstrap `display: none` to work */
-  .s-header .navbar-collapse.show,
-  .s-header .navbar-collapse.collapsing {
+  /* To move portal nav & search bar to top of menu */
+  .s-header .navbar-collapse:is(.show, .collapsing),
+  .s-header .s-portal-nav .dropdown.show {
     display: flex;
     flex-direction: column;
   }
-  .s-header .s-search-bar { order: -2; }
+  .s-header .navbar-collapse:is(.show, .collapsing) .s-search-bar { order: -2; }
+  .s-header :--portal-message { order: -1; }
 
+  /* To create a bar at top of menu */
+  .s-header .navbar-collapse:is(.show, .collapsing) .s-search-bar,
+  .s-header :--portal-message {
+    padding-left: var(--menu-link-horz-pad, 0);
+    padding-right: var(--menu-link-horz-pad, 0);
 
-
-  /* To layout the button */
-  .s-header :--portal-nav-link {
-    width: fit-content;
-
-    /* To avoid wrapping of button */
-    /* FAQ: Wrap happens if logo is wide and button layout is not flexible */
-    /* NOTE: The `clamp()` solution avoids using third media query for navbar */
-    padding-right: clamp(
-      var(--nav-link-horz-pad),
-      3vw,
-      env(--header-navbar-mobile-right-pad)
-    ); /* FAQ: The widths must prevent wrap when `#header-logo` is max. width */
-  }
-
-  /* To layout the button (height) */
-  /* FAQ: We set height of immediate content of elements, because:
-          - height for elements is not respected as navbar collapses
-          - height for portal nav would hide its dropdown menu
-  */
-  .s-header .s-search-bar::part(form),
-  .s-header :--portal-nav-link {
-    height: var(--header-navbar-height);
-  }
-
-  /* To make a fake background */
-  /* HACK: Create background with a pseudo element that matches "row" height */
-  .s-header .s-portal-nav { position: relative; }
-  .s-header .s-portal-nav::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    z-index: -1;
     background-color: env(--header-bkgd-color);
   }
-  /* To ensure search bar can be focused i.e. is above the fake background */
-  .s-header .s-search-bar { z-index: 1; }
 
 }
 
@@ -1210,7 +1386,7 @@ Styleguide Trumps.Scopes.Header
   /* To add space between icon and text for ONLY portal nav top-level and CMS */
   .s-header .s-portal-nav .dropdown-item .icon,
   .s-header .s-cms-nav .icon {
-    margin-right: 0.5em;
+    display: none;
   }
 
 }

@@ -7,12 +7,22 @@ Styleguide Trumps.ForOtherSites.Portal
 */
 @import url("_imports/tools/selectors.css");
 
+
+
+/* Selectors */
+
+/* HACK: Relying on definition from `s-header.css` */
+/* @custom-selector :--portal-button */
+
+
+
 /* Ammend `s-header.css` (for Header because of Body) */
 
 @media (--nav-compressed) {
 
   /* To position navbar menus/buttons based on window width not parent width */
   /* FAQ: Portal at body min. width places menu buttons outside narrow screen */
+  /* NOTE: If Portal had no horz. body scroll, then we would not need this */
   :--for-portal .s-header :--navbar-toggle {
     position: absolute; /* assumes Bootstrap `.navbar { position: relative }` */
     width: env(--header-navbar-toggle-width);
@@ -30,15 +40,10 @@ Styleguide Trumps.ForOtherSites.Portal
       - env(--header-navbar-toggle-width--portal-user)
     ); /* FAQ: = window width – its own width (not others, cuz it's the last) */
   }
-  :--for-portal .s-header .navbar-collapse {
-    width: calc(
-      100vw
-      - env(--header-navbar-mobile-menu-offset)
-    ); /* FAQ: = window width – offset from window */
-  }
 
-  /* WARNING: Only Portal may use this cuz only its markup knows login state */
-  :--for-portal .s-header.is-portal-user :--portal-nav-link {
+  /* To prevent negligible width change from browser dynamic calculation */
+  /* CAVEAT: Only Portal may use this cuz only its markup knows login state */
+  :--for-portal .s-header.is-portal-user :--portal-button {
     width: env(--header-navbar-toggle-width--portal-user);
   }
 
