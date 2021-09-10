@@ -318,6 +318,13 @@ if LDAP_ENABLED:
 if getattr(current_secrets, '_CACHES', None):
     CACHES = current_secrets._CACHES
 
+if getattr(current_secrets, 'CMS_PLACEHOLDER_CACHE', None):
+    CMS_PAGE_CACHE = current_secrets._CMS_PAGE_CACHE
+if getattr(current_secrets, 'CMS_PLACEHOLDER_CACHE', None):
+    CMS_PLACEHOLDER_CACHE = current_secrets._CMS_PLACEHOLDER_CACHE
+if getattr(current_secrets, 'CMS_PLACEHOLDER_CACHE', None):
+    CMS_PLUGIN_CACHE = current_secrets._CMS_PLUGIN_CACHE
+
 DATABASES = current_secrets._DATABASES
 
 MIGRATION_MODULES = { }
