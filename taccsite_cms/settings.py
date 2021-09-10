@@ -316,7 +316,7 @@ if LDAP_ENABLED:
     ''' End LDAP Auth Settings '''
 
 if getattr(current_secrets, '_CACHES', None):
-    CACHES = secrets._CACHES                        # Are we actually using this setting?
+    CACHES = current_secrets._CACHES
 
 DATABASES = current_secrets._DATABASES
 
