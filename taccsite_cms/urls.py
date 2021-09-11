@@ -21,7 +21,6 @@ urlpatterns = [
         {'sitemaps': {'cmspages': CMSSitemap}}),
 
     url(r'^admin/', admin.site.urls),  # NOQA
-    url(r'^admin/', admin.site.urls),  # NOQA
     url(r'^cms/logout/', views.LogoutView.as_view(), name='logout'),
 ]
 
