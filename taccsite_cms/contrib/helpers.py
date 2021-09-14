@@ -29,7 +29,14 @@ def concat_classnames(classes):
 
 
 # GH-93, GH-142, GH-133: Upcoming functions here (ease merge conflict, maybe)
-
+# Get list of indicies of items that start with text
+# SEE: https://stackoverflow.com/a/67393343/11817077
+def get_indices_that_start_with(text, list):
+    """
+    Get a list of indices of list elements that starts with given text
+    :rtype: list
+    """
+    return [i for i in range(len(list)) if list[i].startswith(text)]
 
 
 # Tweak validation on Django CMS `AbstractLink` for TACC
