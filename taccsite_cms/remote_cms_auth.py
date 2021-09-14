@@ -39,6 +39,8 @@ class CorePortalAuthBackend(ModelBackend):
             return None
         username = user_data['username']
         email = user_data['email']
+        first_name = user_data['first_name']
+        last_name = user_data['last_name']
 
         if request.user.is_authenticated:
             self._remove_invalid_user(request)
@@ -47,6 +49,9 @@ class CorePortalAuthBackend(ModelBackend):
             user, created = UserModel._default_manager.get_or_create(**{
                 UserModel.USERNAME_FIELD: username, UserModel.EMAIL_FIELD: email
             })
+            user.first_name = first_name
+            user.last_name = last_name
+            user.save()
             if created:
                 args = (request, user)
                 try:
