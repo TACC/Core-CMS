@@ -416,19 +416,19 @@ SETTINGS_EXPORT = [
 ]
 
 try:
-    from taccsite_cms import settings_custom
+    from taccsite_cms.settings_custom import *
 except:
     None
     # do nothing
 
 try:
-    from taccsite_cms import settings_secret
+    from taccsite_cms.secrets import *
 except:
     None
     # do nothing
 
 try:
-    from taccsite_cms import settings_local
+    from taccsite_cms.settings_local import *
 except:
     None
     # do nothing
