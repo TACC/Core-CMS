@@ -47,8 +47,9 @@ class CorePortalAuthBackend(ModelBackend):
 
         if self.create_unknown_user:
             user, created = UserModel._default_manager.get_or_create(**{
-                UserModel.USERNAME_FIELD: username, UserModel.EMAIL_FIELD: email
+                UserModel.USERNAME_FIELD: username
             })
+            user.email = email
             user.first_name = first_name
             user.last_name = last_name
             user.save()
