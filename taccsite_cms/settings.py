@@ -422,6 +422,12 @@ except:
     # do nothing
 
 try:
+    from taccsite_cms import settings_secret
+except:
+    None
+    # do nothing
+
+try:
     from taccsite_cms import settings_local
 except:
     None
