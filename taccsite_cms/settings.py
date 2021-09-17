@@ -21,9 +21,6 @@ DATA_DIR = os.path.dirname(os.path.dirname(__file__))
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-###################################################################################################
-
-
 DEBUG = True       # False for Prod.
 
 # Specify allowed hosts or use an asterisk to allow any host and simplify the config.
@@ -32,7 +29,6 @@ ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost', '*']   # In development.
 
 # Requires django-auth-ldap ≥ 2.0.0
 LDAP_ENABLED = True
-
 
 ########################
 # DATABASE SETTINGS
@@ -60,14 +56,13 @@ AUTH_LDAP_SERVER_URI = "ldap://ldap.tacc.utexas.edu"
 AUTH_LDAP_CONNECTION_OPTIONS = {ldap.OPT_REFERRALS: 0}
 AUTH_LDAP_START_TLS = True
 AUTH_LDAP_BIND_AS_AUTHENTICATING_USER = True
-
 AUTH_LDAP_BIND_DN = ""
 AUTH_LDAP_BIND_PASSWORD = ""
+AUTH_LDAP_AUTHORIZE_ALL_USERS = True
+
 AUTH_LDAP_USER_SEARCH = LDAPSearch(
     "ou=People,dc=tacc,dc=utexas,dc=edu", ldap.SCOPE_SUBTREE, "(uid=%(user)s)"
 )
-
-AUTH_LDAP_AUTHORIZE_ALL_USERS = True
 
 AUTH_LDAP_USER_ATTR_MAP = {
     "first_name": "givenName",
@@ -164,12 +159,17 @@ FAVICON = {
 }
 
 INCLUDES_CORE_PORTAL = True
+
 LOGOUT_REDIRECT_URL='/'
+
 ## using container name to avoid cep.dev dns issues locally
 ## this will need to be updated for dev/pprd/prod systems
 ## for example, CEP_AUTH_VERIFICATION_ENDPOINT=https://dev.cep.tacc.utexas.edu
 CEP_AUTH_VERIFICATION_ENDPOINT='http://django:6000'
-###################################################################################################
+
+########################
+# CLIENT BUILD SETTINGS
+########################
 
 # Application definition
 ROOT_URLCONF = 'taccsite_cms.urls'
@@ -189,6 +189,7 @@ STATICFILES_DIRS = (
 # User Uploaded Files Location.
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(DATA_DIR, 'media')
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -317,6 +318,7 @@ def get_subdirs_as_module_names(path):
 # Append CMS project paths as module names to INSTALLED_APPS
 # FAQ: This automatically looks into `/taccsite_custom` and creates an "App" for each directory within
 CUSTOM_CMS_DIR = os.path.join(BASE_DIR, 'taccsite_custom')
+
 INSTALLED_APPS_APPEND = get_subdirs_as_module_names(CUSTOM_CMS_DIR)
 INSTALLED_APPS = INSTALLED_APPS + INSTALLED_APPS_APPEND
 
@@ -326,6 +328,7 @@ TIME_ZONE = 'America/Chicago'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
+
 LANGUAGES = (
     # Customize this
     ('en', gettext('en')),
