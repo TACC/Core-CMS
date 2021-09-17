@@ -76,10 +76,13 @@ AUTH_LDAP_USER_ATTR_MAP = {
 }
 
 SITE_ID = 1
+
 CMS_TEMPLATES = (
     ('standard.html', 'Standard'),
     ('fullwidth.html', 'Full Width'),
 )
+
+CMS_PERMISSION = True
 
 ########################
 # GOOGLE ANALYTICS
