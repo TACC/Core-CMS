@@ -141,7 +141,7 @@ NSF_BRANDING = [
 
 BRANDING = [ TACC_BRANDING, UTEXAS_BRANDING ]
 
-PORTAL_LOGO = [
+LOGO = [
     "portal",
     "site_cms/img/org_logos/portal.png",
     "",
@@ -151,8 +151,6 @@ PORTAL_LOGO = [
     "anonymous",
     "True"
 ]
-
-LOGO = PORTAL_LOGO
 
 FAVICON = {
     "img_file_src": "site_cms/img/favicons/favicon.ico"
@@ -200,7 +198,6 @@ TEMPLATES = [
         ) + [
             os.path.join(BASE_DIR, 'taccsite_cms', 'templates')
         ],
-        # 'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.contrib.auth.context_processors.auth',
