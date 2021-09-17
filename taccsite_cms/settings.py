@@ -404,17 +404,6 @@ SETTINGS_EXPORT_VARIABLE_NAME = 'settings'
 DEBUG = True
 FEATURES = ''
 
-SETTINGS_EXPORT = [
-    'DEBUG',
-    'FEATURES',
-    'BRANDING',
-    'LOGO',
-    'FAVICON',
-    'INCLUDES_CORE_PORTAL',
-    'GOOGLE_ANALYTICS_PROPERTY_ID',
-    'GOOGLE_ANALYTICS_PRELOAD'
-]
-
 try:
     from taccsite_cms.settings_custom import *
 except:
@@ -433,4 +422,13 @@ except:
     None
     # do nothing
 
-
+SETTINGS_EXPORT = [
+    'DEBUG',
+    'FEATURES',
+    'BRANDING',
+    'LOGO',
+    'FAVICON',
+    'INCLUDES_CORE_PORTAL',
+    'GOOGLE_ANALYTICS_PROPERTY_ID',
+    'GOOGLE_ANALYTICS_PRELOAD'
+]
