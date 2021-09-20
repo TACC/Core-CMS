@@ -1,6 +1,8 @@
 # Version Control
 .git
 
+**settings_local.py
+
 # Python
 *.pyc
 *.pyo

@@ -6,7 +6,7 @@ try:
     # SEE: https://github.com/django-cms/djangocms-bootstrap4/pull/138
     import copy
 
-    from django.utils.translation import gettext_lazy as _
+    from django.utils.translation import gettext as _
 
     from cms.plugin_pool import plugin_pool
 
