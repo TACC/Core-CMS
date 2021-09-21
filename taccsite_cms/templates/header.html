@@ -8,7 +8,7 @@
 <!-- Navigation Bar -->
 {# NOTE: `navbar-expand-*` maps to a `media-queries.css`'s `--nav-*` value #}
 {# CAVEAT: The mobile nav CSS can NOT support conditional `navbar-expand-*` #}
-<nav id="header-navbar" class="s-header  navbar navbar-dark navbar-expand-xl  {% if settings.PORTAL %}is-on-portal{% endif %}">
+<nav id="header-navbar" class="s-header  navbar navbar-dark navbar-expand-xl  {% if settings.INCLUDES_CORE_PORTAL %}is-on-portal{% endif %}">
   <!-- Portal Logo -->
   {% include "header_logo.html" %}
 
@@ -24,7 +24,7 @@
     {# FAQ: If template included with `only`, it would NOT render `show_menu` #}
     {% include "nav_cms.html" with className="navbar-nav" %}
 
-    {% if settings.PORTAL %}
+    {% if settings.INCLUDES_CORE_PORTAL %}
       {# NOTE: As of 2020-12, search is only available with a Portal #}
       {% include "nav_search.html" with className="form-inline" only %}
       {% include "nav_portal.html" with className="navbar-nav" settings=settings only %}
