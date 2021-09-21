@@ -33,7 +33,7 @@ Styleguide Trumps.Scopes.Header
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  /* To have border not show, ensure value equals that of `--bkgd-color` */
+  /* To hide border, set this in theme to match `--header-bkgd-color` value */
   border-bottom: 1px solid env(--header-major-border-color);
 }
 
