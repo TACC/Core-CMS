@@ -6,6 +6,7 @@ from django.contrib import auth as auth
 import requests
 import logging
 from django.conf import settings
+
 UserModel = get_user_model()
 
 logger = logging.getLogger(__name__)
@@ -17,10 +18,12 @@ def verify_and_auth(request):
         # User is valid.  Set request.user and persist user in the session by logging the user in.
         request.user = user
         auth.login(request, user)
-        response = HttpResponseRedirect(request.GET.get('next', '/workbench/dashboard/'))
+        response = HttpResponseRedirect(request.GET.get('next', \
+                                                        getattr(settings, 'LOGIN_REDIRECT_URL', '/workbench/dashboard/')))
     else:
         response = HttpResponseRedirect('/')
     return response
+
 
 class CorePortalAuthBackend(ModelBackend):
     """
@@ -31,9 +34,9 @@ class CorePortalAuthBackend(ModelBackend):
     create_unknown_user = True
 
     def authenticate(self, request):
-        response = requests.get('{0}/api/users/auth/'.format(\
-            getattr(settings,'CEP_AUTH_VERIFICATION_ENDPOINT','http://django:6000')),
-                                cookies={'coresessionid': request.COOKIES.get('coresessionid')})
+        response = requests.get('{0}/api/users/auth/'.format( \
+            getattr(settings, 'CEP_AUTH_VERIFICATION_ENDPOINT', 'http://django:6000')),
+            cookies={'coresessionid': request.COOKIES.get('coresessionid')})
         user_data = response.json()
         if user_data is None or user_data['username'] is None:
             return None
@@ -91,4 +94,3 @@ class CorePortalAuthBackend(ModelBackend):
         By default, return the user unmodified.
         """
         return user
-
