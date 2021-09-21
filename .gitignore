@@ -28,6 +28,8 @@ repo_name.var
 # Secrets and Customizations
 taccsite_cms/secrets.py
 *.custom.yml
+*settings_custom*.py
+*settings_local*.py
 
 # Makefile var
 cms_name.var
@@ -107,6 +109,3 @@ publish
 # build script local files
 web/build/buildinfo.properties
 web/build/config/buildinfo.properties
-
-*settings_custom.py
-*settings_local.py
