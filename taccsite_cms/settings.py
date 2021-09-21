@@ -164,10 +164,6 @@ FAVICON = {
     "img_file_src": "site_cms/img/favicons/favicon.ico"
 }
 
-########################
-# PORTAL ACCESS
-########################
-
 INCLUDES_CORE_PORTAL = True
 
 LOGOUT_REDIRECT_URL='/'
