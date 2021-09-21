@@ -110,6 +110,3 @@ publish
 # build script local files
 web/build/buildinfo.properties
 web/build/config/buildinfo.properties
-
-*settings_custom.py
-*settings_local.py
