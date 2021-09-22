@@ -106,6 +106,14 @@ ES_HOSTS = 'http://elasticsearch:9200'
 ES_INDEX_PREFIX = 'cms-dev-{}'
 ES_DOMAIN = 'http://localhost:8000'
 
+"""
+Optional theming of CMS (certain themes may only affect some elements)
+Usage:
+- None (standard theme)
+- 'has-dark-logo'
+"""
+THEME = None
+
 TACC_BRANDING = [
     "tacc",
     "site_cms/img/org_logos/tacc-white.png",
@@ -428,6 +436,7 @@ except:
 SETTINGS_EXPORT = [
     'DEBUG',
     'FEATURES',
+    'THEME',
     'BRANDING',
     'LOGO',
     'FAVICON',
