@@ -3,8 +3,8 @@
 {% block guide %}
   <div class="row">
     <div class="col">
-      <h2>Data Transfer and Management Guide</h2>
-      <h3>Outline</h3>
+      <h1>Data Transfer and Management Guide</h2>
+      <h2>Outline</h3>
 
       <ul>
         <li>
@@ -74,7 +74,7 @@
         </li>
       </ul>
 
-      <h3>Data Transfer and Management Guide</h3>
+      <h2>Data Transfer and Management Guide</h3>
 
       <p>
         Transferring Portal data from your local machine to
@@ -82,7 +82,7 @@
         <code>rsync</code>) and graphical user interface (Cyberduck).
       </p>
 
-      <h4 id="table1">Data Transfer Methods</h4>
+      <h3 id="table1">Data Transfer Methods</h4>
       <table style="max-width: 500px">
         <tbody>
           <tr>
@@ -115,7 +115,7 @@
           </tr>
         </tbody>
       </table>
-      <h4 id="storage">What is TACC's Storage Server?</h4>
+      <h3 id="storage">What is TACC's Storage Server?</h4>
 
       <p>
         A TACC storage system is a logically defined resource designed to provide data storage and management capabilities to TACC portal users through the portal interface. Each portal is accessible over a URL path (e.g.,
@@ -130,7 +130,7 @@
       </p><p>
         Storage systems are to be used exclusively for transferring and accessing data through the portal.
       </p>
-      <h4 id="rsync_prereqs">Prerequisites for Portal User</h4>
+      <h3 id="rsync_prereqs">Prerequisites for Portal User</h4>
 
       <p>There are two prerequisites for accessing a portal and transferring data:</p>
 
@@ -154,14 +154,14 @@
         Access to all TACC resources requires a completed Multi-Factor Authentication pairing with your TACC credentials. To set up MFA, please reference TACC Portal's
         <a href="https://portal.tacc.utexas.edu/tutorials/multifactor-authentication">Multi-Factor Authentication tutorial</a>.
       </p>
-      <h4 id="command_line_tools">
+      <h3 id="command_line_tools">
         Using Command Line Tools to Transfer and Organize Data
       </h4>
 
       <p>
         A common method of transferring files between TACC resources and/or your local machine is through the command line.
       </p>
-      <h4 id="scp_sftp_rsync">
+      <h3 id="scp_sftp_rsync">
         <code>scp</code>, <code>sftp</code>, &amp; <code>rsync</code>
       </h4>
 
@@ -183,7 +183,7 @@
       <p>
         For users that are new to the command line, using either <code>scp</code> or <code>sftp</code> to transfer data is advised.
       </p>
-      <h4 id="data_transfer_prereqs">
+      <h3 id="data_transfer_prereqs">
         Prerequisites for Data Transfer with Command Line Tools
       </h4>
 
@@ -194,7 +194,7 @@
         <li>the path to your transfer directory on the remote storage server</li>
       </ul>
 
-      <h4 id="local_data_path">
+      <h3 id="local_data_path">
         Determining the Path to Your Data File(s) on Your Local System
       </h4>
 
@@ -223,7 +223,7 @@
         <dt>On Windows</dt>
         <dd><code>\Users\<kbd>username</kbd>\My Documents\<kbd>portal-data</kbd>\my_file.txt</code></dd>
       </dl>
-      <h4 id="storage_data_path">
+      <h3 id="storage_data_path">
         Determining the Path to Your Transfer Directory
       </h4>
 
@@ -237,7 +237,7 @@
         If you are unsure of your transfer directory path, please consult your project PI directly.
         {# FP-752: Consider referencing Portal → Data Files after the Portal User Guide is added. #}
       </p>
-      <h4 id="scp_transfer">How to Transfer Data with <code>scp</code></h4>
+      <h3 id="scp_transfer">How to Transfer Data with <code>scp</code></h4>
 
       <p>
         <code>scp</code> copies files between hosts on a network. To transfer a file (ex. <code>my_file.txt</code>) to the remote secure system via <code>scp</code>, open a terminal on your local computer and navigate to the path where your data file is located.
@@ -288,7 +288,7 @@
         </li>
       </ul>
 
-      <h4 id="sftp_transfer">How to Transfer Data with <code>sftp</code></h4>
+      <h3 id="sftp_transfer">How to Transfer Data with <code>sftp</code></h4>
 
       <p>
         <code>sftp</code> is a file transfer program that allows you to interactively navigate between your local file system and the remote secure system. To transfer a file (ex. <code>my_file.txt</code>) to the remote secure system via <code>sftp</code>, open a terminal on your local computer and navigate to the path where your data file is located.&nbsp;
@@ -373,7 +373,7 @@ Changing to:
         at <a target="_blank" href="https://man7.org/linux/man-pages/man1/sftp.1.html">the online <code>man</code> page for <code>scp</code></a>.
       </p>
 
-      <h4 id="rsync_transfer">How to Transfer Data with <code>rsync</code></h4>
+      <h3 id="rsync_transfer">How to Transfer Data with <code>rsync</code></h4>
 
       <p>
         <code>rsync</code>is a file copying tool that can reduce the amount of data transferred by sending only the differences between the source files on your local system and the existing files in your transfer directory. To transfer a file (ex. <code>my_file.txt</code>) to the remote secure system via <code>rsync</code>, open a terminal on your local computer and navigate to the path where your data file is located.
@@ -415,14 +415,14 @@ Changing to:
         </li>
       </ul>
 
-      <h4 id="cyberduck_transfer">How to Transfer Data with Cyberduck</h4>
+      <h3 id="cyberduck_transfer">How to Transfer Data with Cyberduck</h4>
 
       <p>
         <a target="_blank" href="https://cyberduck.io/">Cyberduck</a> is a free graphical user interface for data transfer and is an alternative to using the command line. With a drag-and-drop interface, it is easy to transfer a file from your local system to the remote secure system. You can use
         <a target="_blank" href="https://cyberduck.io/">Cyberduck</a>
         for Windows or macOS.
       </p>
-      <h5 id="cy_windows">For Windows</h5>
+      <h4 id="cy_windows">For Windows</h5>
 
       <p>
         <a target="_blank" href="https://cyberduck.io/download/">Download and install Cyberduck for Windows</a>
@@ -462,7 +462,7 @@ Changing to:
       <p>
         Once connected, you can navigate through your remote file hierarchy using the graphical user interface. You may also drag-and-drop files from your local computer into the Cyberduck window to transfer files to the system.
       </p>
-      <h5 id="cy_mac">For Mac</h5>
+      <h4 id="cy_mac">For Mac</h5>
 
       <p>
         <a target="_blank" href="https://cyberduck.io/download/">Download and install Cyberduck for macOS</a>
@@ -499,7 +499,7 @@ Changing to:
         Once connected, you can navigate through your remote file hierarchy using the graphical user interface. You may also drag-and-drop files from your local computer into the Cyberduck window to transfer files to the storage system.
       </p>
 
-      <h4 id="references">References</h4>
+      <h3 id="references">References</h4>
 
       <ul>
         <li>
