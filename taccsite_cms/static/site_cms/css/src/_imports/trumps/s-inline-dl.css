@@ -19,6 +19,8 @@ dl.s-inline-dl dt {
   /* Remove space between <dt> and <dd> (from our styles) */
   /* SEE: ../elments/html-elements.html */
   margin-bottom: 0;
+
+  font-weight: var(--bold);
 }
 dl.s-inline-dl dd {
   clear: right;
