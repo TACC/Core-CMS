@@ -228,6 +228,10 @@ Styleguide Trumps.Scopes.Header
 
   color: var(--global-color-primary--xx-light);
   background-color: var(--global-color-primary--xx-dark);
+
+  /* !!!: Missing env() var `--header-major-border-color` */
+  /* To hide border, set this in theme to match `--header-bkgd-color` value */
+  /* border-bottom: 1px solid env(--header-major-border-color); */
   border-bottom: 1px solid var(--global-color-primary--xx-light);
 }
 

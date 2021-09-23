@@ -29,6 +29,8 @@ repo_name.var
 settings.json
 taccsite_cms/secrets.py
 *.custom.yml
+*settings_custom*.py
+*settings_local*.py
 
 # Makefile var
 cms_name.var

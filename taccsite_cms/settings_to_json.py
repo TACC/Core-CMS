@@ -14,7 +14,7 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "taccsite_cms.settings")
 # Create JSON
 setting_names = ["THEME"]
 settings_export = {}
-# FAQ: The print() statements in settings.py would corrupt the JSON
+# FAQ: Any print() statements in settings.py would corrupt the JSON
 with suppress_stdout():
     for setting_name in setting_names:
         settings_export[setting_name] = getattr(settings, setting_name)
