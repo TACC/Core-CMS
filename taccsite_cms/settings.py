@@ -199,13 +199,7 @@ MEDIA_ROOT = os.path.join(DATA_DIR, 'media')
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        # FAQ: List custom directory first, so custom templates take precedence
-        # SEE: https://docs.djangoproject.com/en/2.2/topics/templates/#configuration
-        'DIRS': glob(
-            os.path.join(BASE_DIR, 'taccsite_custom')
-        ) + [
-            os.path.join(BASE_DIR, 'taccsite_cms', 'templates')
-        ],
+        'DIRS': [os.path.join(BASE_DIR, 'taccsite_cms', 'templates')],
         'OPTIONS': {
             'context_processors': [
                 'django.contrib.auth.context_processors.auth',
@@ -228,8 +222,8 @@ TEMPLATES = [
                 'tacc_uri_shortcuts': 'taccsite_cms.templatetags.tacc_uri_shortcuts',
             },
             'loaders': [
+                'django.template.loaders.app_directories.Loader',
                 'django.template.loaders.filesystem.Loader',
-                'django.template.loaders.app_directories.Loader'
             ],
         },
     },
@@ -250,6 +244,11 @@ MIDDLEWARE = [
     'cms.middleware.language.LanguageCookieMiddleware'
 ]
 
+try:
+    from taccsite_cms.settings_custom import CUSTOM_ASSET_DIR
+except:
+    CUSTOM_ASSET_DIR = 'core-cms'
+
 INSTALLED_APPS = [
     'djangocms_admin_style',
     'django.contrib.auth',
@@ -263,6 +262,8 @@ INSTALLED_APPS = [
     # 'django.contrib.staticfiles',
     'taccsite_cms.django.contrib.staticfiles_custom',
     'django.contrib.messages',
+    'taccsite_custom.' + CUSTOM_ASSET_DIR,
+    'taccsite_cms',
     'cms',
     'menus',
     'sekizai',
@@ -297,35 +298,12 @@ INSTALLED_APPS = [
     'haystack',
     'aldryn_apphooks_config',
     'test_without_migrations',
-    'taccsite_cms',
     'taccsite_cms.contrib.bootstrap4_djangocms_link',
     'taccsite_cms.contrib.bootstrap4_djangocms_picture',
     'taccsite_cms.contrib.taccsite_sample',
     'taccsite_cms.contrib.taccsite_system_monitor',
     'taccsite_cms.contrib.taccsite_data_list'
 ]
-
-# Convert list of paths to list of dotted module names
-def get_subdirs_as_module_names(path):
-    module_names = []
-    for entry in os.scandir(path):
-        if entry.is_dir():
-            # FAQ: There are different root paths to tweak:
-            #      - Containers use `/code/…`
-            #      - Python Venvs use `/srv/taccsite/…`
-            module_name = entry.path \
-                .replace(os.path.sep + 'code' + os.path.sep, '') \
-                .replace(os.path.sep + 'srv' + os.path.sep + 'taccsite' + os.path.sep, '') \
-                .replace(os.path.sep, '.')
-            module_names.append(module_name)
-    return module_names
-
-# Append CMS project paths as module names to INSTALLED_APPS
-# FAQ: This automatically looks into `/taccsite_custom` and creates an "App" for each directory within
-CUSTOM_CMS_DIR = os.path.join(BASE_DIR, 'taccsite_custom')
-
-INSTALLED_APPS_APPEND = get_subdirs_as_module_names(CUSTOM_CMS_DIR)
-INSTALLED_APPS = INSTALLED_APPS + INSTALLED_APPS_APPEND
 
 MIGRATION_MODULES = { }
 LANGUAGE_CODE = 'en'
