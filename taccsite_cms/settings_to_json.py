@@ -12,7 +12,7 @@ sys.path.insert(0, os.getcwd())
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "taccsite_cms.settings")
 
 # Create JSON
-setting_names = ["THEME"]
+setting_names = ["THEME", "CUSTOM_ASSET_DIR"]
 settings_export = {}
 # FAQ: Any print() statements in settings.py would corrupt the JSON
 with suppress_stdout():
