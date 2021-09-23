@@ -12,5 +12,5 @@ Styleguide Scope.Footer
   margin: 0;
 }
 .s-footer a {
-  color: #cccccc;
+  color: var(--global-color-primary--light);
 }

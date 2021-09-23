@@ -24,3 +24,17 @@ FAQ: IF a script or style is better cached with markup, THEN:
 
 <!-- Site Assets: Scripts. -->
 <script src="{% static 'site_cms/js/site.js' %}"></script>
+
+
+
+{# Portal & Docs #}
+{# FAQ: Websites that load CMS header should load these assets in this order #}
+{% comment %}
+  {# To load externally-hosted font which is in the font stack of CMS styles #}
+  {# FAQ: CMS does ALSO load but does so in `assets_font.html` instead #}
+  <link id="css-site-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+
+  {# To load CSS that styles the header #}
+  {# FAQ: CMS does ALSO load so it styles header using identical complex code #}
+  <link id="css-site-header" rel="stylesheet" href="{% 'site_cms/css/build/site.header.css' %}" />
+{% endcomment %}

@@ -6,7 +6,7 @@
 {% include "header_branding.html" %}
 
 <!-- Navigation Bar -->
-<nav id="s-header" class="s-header  navbar {% if settings.PORTAL %}navbar-expand-xl{% else %}navbar-expand-lg{% endif %} navbar-dark">
+<nav id="s-header" class="s-header  navbar {% if settings.INCLUDES_CORE_PORTAL %}navbar-expand-xl{% else %}navbar-expand-lg{% endif %} navbar-dark">
   <!-- Portal Logo -->
   {% include "header_logo.html" %}
 
@@ -18,7 +18,7 @@
   <!-- Navbar Links -->
   <div class="collapse navbar-collapse" id="navbarsExpandTarget">
     {# GL-6: Remove need for different `className` values #}
-    {% if settings.PORTAL %}
+    {% if settings.INCLUDES_CORE_PORTAL %}
       {# FAQ: If template were included with `only`, then it would NOT render `show_menu` #}
       {% include "nav_cms.html" with className="navbar-nav" %}
 

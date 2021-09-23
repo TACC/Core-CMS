@@ -1,0 +1,15 @@
+{
+  "//": "Metadata for humans",
+  "format": "https://github.com/csstools/postcss-preset-env#importfrom",
+  "name": "has-dark-logo",
+
+  "environment-variables": {
+
+    "// HEADER": "",
+    "--header-text-color": "var(--global-color-primary--x-dark)",
+    "--header-bkgd-color": "var(--global-color-primary--x-light)",
+    "--header-minor-border-color": "var(--global-color-primary--normal)",
+    "// To show border between only the light header and content below it": "",
+    "--header-major-border-color": "var(--global-color-primary--normal)"
+  }
+}

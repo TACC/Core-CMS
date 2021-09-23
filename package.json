@@ -4,11 +4,13 @@
     "license": "MIT",
     "description": "The core CMS codebase for all new and updated TACC CMS sites.",
     "scripts": {
+        "prebuild": "python3 taccsite_cms/settings_to_json.py",
         "build": "npm run build:css",
         "build:css": "node postcss.js",
         "watch": "npm-watch"
     },
     "// scripts": {
+        "prebuild": "Export Django settings to JSON (for Node to use)",
         "build": "Run all static file build commands",
         "build:css": "Build stylesheets from source files",
         "watch": "Build static files when source files change"
