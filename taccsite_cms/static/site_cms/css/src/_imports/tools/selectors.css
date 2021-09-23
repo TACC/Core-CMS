@@ -1,0 +1,19 @@
+/* DO NOT ADD STYLES HERE; ADD CUSTOM SELECTORS TO USE IN OTHER STYLESHEETS */
+
+/*
+For Other Sites
+
+These are global selectors to target known subsites.
+
+Usage: `:--for-subsite .some-class { … }`
+
+Notice: These must be Tools (imported as needed) until native browser support, at which time they can become Settings (imported globally).
+
+Reference:
+- https://drafts.csswg.org/css-extensions/#custom-selectors
+
+Styleguide Tools.CustomSelectors.ForOtherSites
+*/
+@custom-selector :--for-cms    body > .o-site__head;
+@custom-selector :--for-portal body > .content;
+@custom-selector :--for-docs   .wy-body-for-nav;

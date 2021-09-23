@@ -5,28 +5,29 @@
 <style type="text/css">
   /* Hide search bar before all relevant styles have loaded */
   /* FAQ: Manage visibility of search bar to avoid FOUC */
-  /* HACK: This should be done via a dynamically-added `-is-loaded` class */
+  /* HACK: This should be done via dynamic `[data-status="loaded"]` */
+  /* SEE: /.../static/site_cms/css/src/_imports/elements/tacc-search-bar.css */
   :host { visibility: hidden; height: 0; }
 </style>
 
-<link id="css-site" rel="stylesheet" href="{% static 'site_cms/css/build/site.css' %}">
+<link rel="stylesheet" href="{% static "site_cms/css/build/site.tacc-search-bar.css" %}">
 
-<link rel="stylesheet" href="{% static 'site_cms/css/build/site.tacc-search-bar.css' %}">
-<link rel="stylesheet" href="{% static 'site_cms/css/build/freeze_variables/site.tacc-search-bar.css' %}">
-
-{# NOTE: Copied from Portal DataFiles search bar (rendered markup, not raw) #}
-{# SEE: https://github.com/TACC/Frontera-Portal/blob/master/client/src/components/DataFiles/DataFilesSearchbar/DataFilesSearchbar.js #}
 <form part="form" method="get" action="/search">
-  <div class="input-group">
-    <div class="input-group-prepend">
-      <button part="button" type="submit" class="btn btn-secondary">
-        <i part="button__icon" class="icon icon-search" role="img" aria-labelledby="button-label"></i>
-        <span id="button-label">
-          Search <span class="sr-only">the website</span>
-        </span>
-      </button>
-    </div>
-    <input type="hidden" name="page" value="1" />
-    <input minlength="3" part="input" type="search" name="query_string" aria-labelledby="button-label" class="form-control" placeholder="Search the website" data-testid="input" autocomplete="off" value="" />
-  </div>
+  <label for="header-search" class="u-hide--visually" part="label">
+    Search
+  </label>
+
+  <input
+    id="header-search"
+    type="search"
+    name="query_string"
+    placeholder="Search the website"
+    autocomplete="off"
+    minlength="3"
+    part="input" />
+  <input type="hidden" name="page" value="1" />
+
+  <button type="submit" part="button" class="icon icon-search">
+    <span class="u-hide--visually">Search</span>
+  </button>
 </form>

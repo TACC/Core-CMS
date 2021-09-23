@@ -35,20 +35,12 @@ function parallelCallback(err, results) {
 // SEE: https://www.npmjs.com/package/postcss#js-api
 /**
  * Build styles for the Core CMS
- * @param {boolean} [shouldFreezeVariables=false] - Whether to freeze values of custom properties
  */
-function buildStylesCore({shouldFreezeVariables = false} = {}) {
+function buildStylesCore() {
   let command;
-  let sourceDir;
-  let configDir;
 
-  if (shouldFreezeVariables === true) {
-    sourceDir = 'freeze_variables/';
-    configDir = 'conf/css/freeze_variables/';
-  } else {
-    sourceDir = '';
-    configDir = standardConfigDir;
-  }
+  const sourceDir = '';
+  const configDir = standardConfigDir;
 
   // Quote globbed paths to prevent OS from parsing them
   // SEE: https://github.com/postcss/postcss-cli/issues/142#issuecomment-310681302
@@ -69,20 +61,12 @@ function buildStylesCustom() {
   exec(command, execCallback);
 }
 
-// The confusing is worth explaining (and fixing if we know how)
-console.warn('The commands are run in parallel so the output may be out of order.' + "\n");
+// To explain why output is not sequiential
+console.warn('The output may be out of order because the commands are run in parallel.' + "\n");
 
 // Build process for styles may be run in parallel because they are independent
 // SEE: https://stackoverflow.com/a/10776939/11817077
 parallel([
-  // Always build Core assets
   buildStylesCore,
-
-  // Build custom assets, except for Core
-  () => { if (env.CUSTOM_ASSET_DIR !== 'core-cms') buildStylesCustom() },
-
-  // Temporarily build "frozen variables" from Core
-  // FAQ: This is an advanced solution to a problem that should not exist
-  () => { buildStylesCore({shouldFreezeVariables: true}) },
-  // NOTE: Do NOT support freezing variables for custom projects
+  buildStylesCustom
 ], parallelCallback);

@@ -73,3 +73,82 @@ Styleguide _Test.PresetEnv
 @media (--wide-window) {
   ._test{ background-color:red; }
 }
+
+/*! Custom Selectors */
+/* SEE: https://preset-env.cssdb.org/features#custom-selectors */
+
+/*! Goal: */
+article h1+p,article h2+p,article h3+p{color: #000;}
+
+/*! Test: */
+@custom-selector :--heading h1, h2, h3;
+
+article :--heading + p {
+  color: #000;
+}
+
+/*! Goal: */
+.nav-link:hover,.nav-link:focus,.nav-link:active{color:red;}
+
+/*! See: https://github.com/postcss/postcss-custom-selectors/issues/40 */
+
+/*! Test: */
+@custom-selector :--nav-link-hover  .nav-link:hover;
+@custom-selector :--nav-link-focus  .nav-link:focus;
+@custom-selector :--nav-link-active .nav-link:active;
+
+:--nav-link-hover,
+:--nav-link-focus,
+:--nav-link-active {
+  color: red;
+}
+
+/*! Goal: */
+h4,h5,h6{color: lime;}h4,h5,h6{color: magenta;}
+
+/*! Test: */
+@custom-selector :--test h1, h2, h3;
+
+:--test {
+  color: lime;
+}
+
+@custom-selector :--test h4, h5, h6;
+
+:--test {
+  color: magenta;
+}
+
+/*! `:not` Pseudo Class */
+/* SEE: https://preset-env.cssdb.org/features#not-pseudo-class */
+
+/*! Goal: */
+._test>:not(._test--x):not(._test--y){align-items:center}
+
+/*! Test: */
+._test > *:not(._test--x, ._test--y) {
+  align-items: center;
+}
+
+/*! Nesting Rules */
+/* SEE: https://preset-env.cssdb.org/features#nesting-rules */
+
+/*! Goal: */
+.foo { display: grid; }
+
+@media (orientation: landscape) {
+  .foo {
+    grid-auto-flow: column;
+  }
+}
+
+/*! Test: */
+.foo {
+  display: grid;
+
+  @media (orientation: landscape) {
+    & {
+      grid-auto-flow: column;
+    }
+  }
+}

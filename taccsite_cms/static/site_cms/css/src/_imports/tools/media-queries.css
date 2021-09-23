@@ -14,6 +14,15 @@ Reference:
 
 Styleguide Tools.CustomMediaQueries.Breakpoints
 */
+
+
+
+/* Standard Breakpoints (based on Bootstrap) */
+
+@custom-media --xx-narrow-and-below (width < 320px);
+@custom-media --xx-narrow-and-above (width >= 320px);
+@custom-media --xx-narrow-to-narrow (320px <= width < 576px);
+
 @custom-media --x-narrow-and-below (width < 576px);
 @custom-media --x-narrow-and-above (width >= 576px);
 @custom-media --x-narrow-to-narrow (576px <= width < 768px);
@@ -41,3 +50,22 @@ Styleguide Tools.CustomMediaQueries.Breakpoints
 @custom-media --xxx-wide-and-below (width < 1920px);
 @custom-media --xxx-wide-and-above (width >= 1920px);
 /* @custom-media --xxx-wide-to-omg-wide (... <= width < ...); */
+
+
+
+/* Header Navbar State (Compressed/Expanded) */
+
+/* Map `s-header.html`'s `navbar-expand-*` to `--*-and-below|above`:
+   - `...-xl` → `--wide-and-...`
+   - `...-lg` → `--medium-and-...`
+   - `...-md` → `--narrow-and-...`
+   - `...-sm` → `--x-narrow-and-...` */
+@custom-media --nav-compressed (width < 1200px);
+@custom-media --nav-expanded (width >= 1200px);
+
+/* Arbitrary widths above `--nav-expanded` */
+/* TODO: Rename these to `--nav-expanded-*` */
+@custom-media --nav-wide-and-below (width < 1400px);
+@custom-media --nav-wide-and-above (width >= 1400px);
+@custom-media --nav-x-wide-and-below (width < 1680px);
+@custom-media --nav-x-wide-and-above (width >= 1680px);

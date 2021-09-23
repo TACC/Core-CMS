@@ -1,11 +1,12 @@
 /*
 CMS Navigation
 
-Styles for elements within CMS navigation that has third-party code:
-
-- Bootstrap 4.0.0
+Styles for elements specific to CMS navigation (independent of context such as a header).
 
 Markup: s-cms-nav.html
 
 Styleguide Trumps.Scopes.CMSNav
 */
+
+/* NOTE: No independent styles exist for this scope. All are header-specific. */
+/* SEE: ./s-header.css */

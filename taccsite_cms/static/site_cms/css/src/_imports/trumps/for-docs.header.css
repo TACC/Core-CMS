@@ -1,0 +1,127 @@
+/*
+Docs
+
+The [Core Docs](https://github.com/TACC/Core-Docs).
+
+Styleguide Trumps.ForOtherSites.Docs
+*/
+@import url("_imports/tools/selectors.css");
+@import url("_imports/tools/x-hide.css");
+
+
+
+/* Update & Unset Outdated Styles */
+
+:--for-docs #frontera-top-nav {
+  min-height: calc(
+    var(--header-brandbar-height) + var(--header-navbar-height)
+  );
+  background-color: unset;
+}
+
+
+
+/* Ammend `s-header.css` (for Header because of Body) */
+
+@media (--xx-narrow-and-below) {
+
+  /* To position navbar+button based on screen width instead of parent width */
+  /* FAQ: Portal body min-width places a static button outside narrow screen */
+  :--for-docs .s-header :--navbar-toggle {
+    flex-grow: 1;
+
+    /* To overwrite `s-header.css` */
+    margin-right: 0;
+  }
+  :--for-docs .s-header .navbar-collapse {
+    /* To overwrite `s-header.css` */
+    right: 0;
+  }
+
+}
+
+
+
+/* Initialize Sidebar Position (for Dependency on Header Height) */
+
+/* To position Docs' sidebar nav at expected initial vertical location ASAP */
+:--for-docs nav.stickynav {
+  /* To override `top: 0` (in `theme.css`) */
+  /* FAQ: This is an initial value that is re-calculated by a Docs script */
+  /* SEE: https://bitbucket.org/taccaci/frontera-tech-docs/src/429f05f/frontera_theme/base.html#lines-69 */
+  top: calc(
+    var(--header-brandbar-height) + var(--header-navbar-height)
+  );
+}
+
+
+
+/* Supplement Bootstrap (for Search Form in Header) */
+/* AFTER GH-101: Docs: Remove these blocks */
+/* SEE: https://bitbucket.org/taccaci/frontera-tech-docs/src/ed6a61a/docs/css/cms.bootstrap.4.3.1.css#lines-18:25 */
+/* SEE: https://bitbucket.org/taccaci/frontera-tech-docs/src/ed6a61aeb8bc7776a0b1be0f93ade47bcd05e3ba/docs/css/cms.bootstrap.4.3.1.css#lines-606:624 */
+
+/* To compensate for Docs not having `.form-inline` in _its_ Bootstrap 4.3.1 */
+:--for-docs .form-inline {
+  /* The search bar expects these styles to be available */
+  /* SEE: CMS //maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap… */
+  /* SEE: Portal //stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap… */
+  /* SEE: Docs /src/5b223a5/docs/css/cms.bootstrap.4.3.1.css */
+  display: flex;
+  /* NOTE: These are perceptibly ineffectual but consistent with Portal & CMS */
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+/* To compensate for Docs not having `.sr-only` in _its_ Bootstrap 4.3.1 */
+:--for-docs .sr-only {
+  @extend %x-hide--visually;
+}
+
+
+
+/* Overwrite ReadTheDocs (for Images in Header) */
+
+:--for-docs .s-header img,
+:--for-docs .c-branding img {
+  width: unset;
+  vertical-align: unset;
+}
+
+
+
+/* Overwrite ReadTheDocs (so Header Mobile Nav covers Body Side Nav) */
+
+.wy-nav-side {
+  z-index: unset;
+}
+
+
+
+/* Overwrite TACC (for TACC Icons in Header, for FontAwesome Icons in Body) */
+
+/* To override an override that exists in a <style> tag */
+/* FAQ: Docs has overwrite code that is too broad and too powerful */
+/* TODO: Remove the style tag, then remove this code */
+:--for-docs .icon:not(.wy-side-nav-search a) {
+  font-family: Cortal-Icons !important; /* to overwrite `!important` */
+}
+
+/* To compensate for Docs using an `.icon` class different from CMS & Portal */
+/* FAQ: Some TACC styles break this Docs FontAwesome icon */
+:--for-docs .wy-side-nav-search a.icon {
+  width: unset;
+  height: unset;
+  vertical-align: unset;
+  font-family: inherit !important; /* override `!important` in `icon.css` */
+}
+
+
+
+/* Overwrite ReadTheDocs (for TACC Icons in Header) */
+
+/* To compensate for Docs using an `.icon` class different from CMS & Portal */
+/* FAQ: Some FontAwesome styles break TACC icons */
+:--for-docs .icon:not(.wy-side-nav-search a)::before {
+  font-family: inherit; /* to ignore FontAwesome and use TACC */
+}

@@ -1,0 +1,126 @@
+/*
+Mobile Button (or Link)
+
+Styles to lay out button icon, text, and toggle in a compressed area.
+
+`x-mobile-button--has-toggle`
+```
+┌────────────┬───┐
+│            │   │
+│            │   │
+│    Icon    │   │
+├────────────┤ ▼ │
+│    Text    │   │
+│            │   │
+└────────────┴───┘
+```
+
+`x-mobile-button--no-toggle`
+```
+┌────────────────┐
+│                │
+│                │
+│      Icon      │
+├────────────────┤
+│      Text      │
+│                │
+└────────────────┘
+```
+
+`x-mobile-button--only-icon`
+```
+┌────────────────┐
+│                │
+│                │
+│                │
+│      Icon      │
+│                │
+│                │
+└────────────────┘
+```
+
+%x-mobile-button--has-toggle - Position toggle (assumed) on side of button
+%x-mobile-button--no-toggle  - Do not position toggle (would fall to bottom)
+%x-mobile-button--only-icon  - Position icon (no other el's) in center of button
+
+Styleguide Tools.ExtendsAndMixins.MobileButton
+*/
+
+/* WARNING: A button must have `display: (inline-)grid` set externally */
+/* FAQ: Why not set `display: grid` here?
+        - It may break a button conditionally dependent on `display: none`.
+        - It would be overridden if button needs `display: inline-grid`.
+        - It makes user aware of the complexity of `display` and `grid`.
+*/
+
+
+
+/* Base */
+
+%x-mobile-button {
+  /* FAQ: The flex properties require `display` of `grid` or `inline-grid` */
+  /* display: grid; *//* set this externally */
+
+  grid-auto-flow: column;
+  grid-template-rows: auto;
+  justify-items: center;
+}
+
+
+
+/* Elements */
+
+%x-mobile-button__icon {
+  grid-area: icon;
+}
+
+%x-mobile-button__text {
+  grid-area: text;
+
+  align-self: start;
+
+  font-family: var(--global-font-family--sans);
+  font-size: 10px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: env(--medium);
+}
+
+%x-mobile-button__toggle {
+  grid-area: toggle;
+
+  align-self: center;
+}
+
+
+/* Modifiers */
+
+%x-mobile-button--has-toggle,
+%x-mobile-button--no-toggle {
+  /* To make icon and text appear vertically centered as a group */
+  grid-template-rows: auto 16px; /* a tad taller than text line height */
+
+  align-items: end;
+}
+
+%x-mobile-button--has-toggle {
+  @extend %x-mobile-button;
+
+  grid-template-areas:
+    "icon toggle"
+    "text toggle";
+}
+%x-mobile-button--no-toggle {
+  @extend %x-mobile-button;
+
+  grid-template-areas:
+    "icon"
+    "text";
+}
+%x-mobile-button--only-icon {
+  @extend %x-mobile-button;
+
+  align-items: center; /* To vertically center icon */
+  grid-template-areas:
+    "icon";
+}

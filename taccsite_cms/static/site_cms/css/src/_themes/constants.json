@@ -1,0 +1,54 @@
+{
+  "// METADATA FOR HUMANS": "",
+  "format": "https://github.com/csstools/postcss-preset-env#importfrom",
+  "name": "constants",
+
+  "environment-variables": {
+
+    "// PORTAL": "",
+    "--portal-sidebar-pad": "16px",
+    "--portal-navlink-pad": "20px",
+    "--portal-navlink-normal-max-width": "206px",
+    "--portal-navlink-mobile-max-width": "112px",
+
+    "// BODY": "",
+    "// --body-min-width": "developer-decided value",
+    "--body-min-width": "320px",
+
+    "// HEADER": "",
+    "--header-font-family": "Roboto, sans-serif",
+    "--header-accent-color": "#877453",
+    "--header-brandbar-normal-height": "40px",
+    "--header-brandbar-mobile-height": "33px",
+    "--header-navbar-normal-height": "55px",
+    "--header-navbar-mobile-height": "48px",
+    "--header-navbar-toggle-width": "48px",
+
+    "// --header-navbar-mobile-right-pad": "developer-decided value",
+    "--header-navbar-mobile-right-pad": "48px",
+    "// --header-navbar-mobile-left-pad": "--header-navbar-toggle-width / 2",
+    "--header-navbar-mobile-left-pad": "24px",
+
+    "// To line up logo with navbar left-hand content": "",
+    "// CAVEAT: Portal navbar width is why this value may not match design": "",
+    "// --header-navbar-normal-*-pad, 16px": "--portal-sidebar-pad",
+    "// --header-navbar-normal-*-pad, 20px": "--portal-navlink-pad",
+    "--header-navbar-normal-right-pad": "calc(16px + 20px)",
+    "--header-navbar-normal-left-pad": "calc(16px + 20px)",
+
+    "// BORDER": "",
+    "--border-width--normal": "1px",
+    "--border-width--thick": "2px",
+    "--border-width--x-thick": "3px",
+    "--border-width--xx-thick": "4px",
+
+    "// FONT": "",
+    "// FONT WEIGHT": "A word-based shortcut for font weights",
+    "// FAQ": "Quotes are required (seems like a plugin defect).",
+    "--light": "300",
+    "--regular": "400",
+    "--medium": "500",
+    "--bold": "700"
+
+  }
+}

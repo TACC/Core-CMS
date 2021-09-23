@@ -5,21 +5,14 @@
 /* Organize via ITCSS */
 /* SEE: https://confluence.tacc.utexas.edu/x/IAA9Cw */
 
-/* SETTINGS */
+/* ELEMENTS */
 
-/* Shared with Portal */
-@import url("_imports/settings/border.css");
-@import url("_imports/settings/color.css");
-
-/* COMPONENTS */
-
-/* Shared with Portal */
-@import url("_imports/components/bootstrap.form.css");
-@import url("_imports/components/c-button.css");
+/* Unique to CMS */
+@import url("_imports/elements/tacc-search-bar.css");
 
 /* TRUMPS */
 
 /* Shared with Portal */
 @import url("_imports/trumps/icon.css");
 /* Unique to CMS */
-@import url("_imports/elements/tacc-search-bar.css");
+@import url("_imports/trumps/u-hide.css");

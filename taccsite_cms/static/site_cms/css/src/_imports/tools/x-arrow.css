@@ -1,0 +1,35 @@
+/*
+Arrow
+
+An arrow generator. Set variables for specific use cases.
+
+.x-arrow--right - Rightward (>)
+.x-arrow--left  - Leftward  (<)
+.x-arrow--up    - Upward    (^)
+.x-arrow--down  - Downward  (v)
+
+Styleguide Components.Branding
+*/
+
+/* SEE: https://www.w3schools.com/howto/howto_css_arrows.asp */
+%x-arrow {
+  --size: 5px;
+  --line: 2px;
+  --color: black;
+
+  display: inline-block;
+  vertical-align: middle;
+
+  /* arrow size */
+  padding: var(--size);
+
+  /* line width */
+  border-width: 0 var(--line) var(--line) 0;
+  border-style: solid;
+  border-color: var(--color);
+}
+
+%x-arrow--right { transform: rotate(-45deg); }
+%x-arrow--left  { transform: rotate(135deg); }
+%x-arrow--up    { transform: rotate(-135deg); }
+%x-arrow--down  { transform: rotate(45deg); }

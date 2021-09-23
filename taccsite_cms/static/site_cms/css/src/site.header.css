@@ -7,19 +7,26 @@
 
 /* SETTINGS */
 
-/* CAVEAT: This is already imported in `site.css`, but necessary here to
-           override Portal (which also loads `site.header.css`), so font
-           variables are unfortunately overwritten 1x in CMS, 2x in Portal */
+/* CAVEAT: These are already imported in `site.css`, but necessary here
+           for Portal & Docs, thus font variables are unfortunately overwritten 1x in CMS, 2x in Portal (which has its own settings CSS) */
 /* TODO: Find a way to be modular, but not redundant; perhaps `env()` vars */
 @import url("_imports/settings/font.css");
+@import url("_imports/settings/color.css");
+
+
+
+/* COMPONENTS */
+
+@import url("_imports/components/c-branding.css");
+@import url("_imports/components/c-logo.css");
+
+
 
 /* TRUMPS */
 
 /* Shared with Portal */
-/* FP-526: Consider loading Cortal icons with <link> as delayed asset */
-/* NOTE: This import is duplicated from `icon.css` because `@font-face` is ineffectual in Shadow DOM (where `site.tacc-search-bar.css` is loaded) */
-/* SEE: https://bugs.chromium.org/p/chromium/issues/detail?id=336876 */
-@import url("_imports/trumps/icon.fonts.css");
+/* FP-636: Consider loading Cortal icons with <link> as delayed asset */
+@import url("_imports/trumps/icon.css");
 /* FAQ: Because of third-party code and a rush to style the Frontera header
         (which meant maintaining existing markup), scope classes were used for
         - the header
@@ -30,8 +37,6 @@
 @import url("_imports/trumps/s-header.css");
 @import url("_imports/trumps/s-portal-nav.css");
 @import url("_imports/trumps/s-cms-nav.css");
-
-/* UNORGANIZED */
-
-/* TODO: Convert to a component */
-@import url("_imports/branding_logos.css");
+/* Specific to Subsites */
+@import url("_imports/trumps/for-docs.header.css");
+@import url("_imports/trumps/for-portal.header.css");
