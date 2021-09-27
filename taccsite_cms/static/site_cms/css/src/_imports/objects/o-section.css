@@ -161,7 +161,10 @@ Styleguide Objects.Section
 .o-section--layout-b,
 .o-section--layout-c,
 .o-section--layout-d {
-  gap: 3.0rem; /* GH-99: Use standard spacing value */
+  /* GH-99: Use standard spacing value */
+  --gap: 3.0rem; /* to allow instances to re-use the gap value */
+
+  gap: var(--gap);
 }
 .o-section--layout-a { @extend .x-layout--a; }
 .o-section--layout-b { @extend .x-layout--b; }
