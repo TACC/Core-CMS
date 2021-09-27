@@ -66,12 +66,6 @@ Styleguide Objects.Section
 
   gap: 0 !important; /* overwrite `o-section--layout-*` */
 }
-/* To take control of padding away from Bootstrap on ALL screen sizes */
-.o-section--banner.container,
-.o-section--banner.container-fluid {
-  padding-left: 0;
-  padding-right: 0;
-}
 
 
 
