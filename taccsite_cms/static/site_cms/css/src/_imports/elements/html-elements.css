@@ -32,7 +32,7 @@ body {
   min-width: env(--body-min-width);
 
   /* To overwrite Bootstrap */
-  color: var(--global-color-primary--dark);
+  color: var(--global-color-primary--x-dark);
   font-family: var(--global-font-family);
   font-size: var(--global-font-size--medium);
   line-height: 1.4;
