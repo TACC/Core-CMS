@@ -20,6 +20,7 @@
   /* Primary (Text, Layout) */
 
   --global-color-primary--xx-light: #FFFFFF;
+    --global-color-primary--xx-light-rgb: 255, 255, 255;
   --global-color-primary--x-light: #F4F4F4;
     --global-color-primary--x-light-rgb: 244, 244, 244;
   --global-color-primary--light: #C6C6C6;
@@ -28,6 +29,7 @@
   --global-color-primary--x-dark: #484848;
     --global-color-primary--x-dark-rgb: 72, 72, 72;
   --global-color-primary--xx-dark: #222222;
+    --global-color-primary--xx-dark-rgb: 34, 34, 34;
 
   /* Distinct Hues */
 
