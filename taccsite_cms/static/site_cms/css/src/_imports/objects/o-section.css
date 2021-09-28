@@ -66,12 +66,6 @@ Styleguide Objects.Section
 
   gap: 0 !important; /* overwrite `o-section--layout-*` */
 }
-/* To take control of padding away from Bootstrap on ALL screen sizes */
-.o-section--banner.container,
-.o-section--banner.container-fluid {
-  padding-left: 0;
-  padding-right: 0;
-}
 
 
 
@@ -161,7 +155,10 @@ Styleguide Objects.Section
 .o-section--layout-b,
 .o-section--layout-c,
 .o-section--layout-d {
-  gap: 3.0rem; /* GH-99: Use standard spacing value */
+  /* GH-99: Use standard spacing value */
+  --gap: 3.0rem; /* to allow instances to re-use the gap value */
+
+  gap: var(--gap);
 }
 .o-section--layout-a { @extend .x-layout--a; }
 .o-section--layout-b { @extend .x-layout--b; }
@@ -205,20 +202,6 @@ Styleguide Objects.Section
 .o-section--banner .o-section__banner-overlay {
   position: relative;
   z-index: 2;
-
-  /* Avoids the need to add placeholder markup for empty column */
-  /* FAQ: The image "leaves" the column via `position: absolute` */
-  grid-column-start: 2;
-
-  background-color: rgba(var(--color-bkgd-rgb), 0.65);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-}
-.o-section--banner.o-section--style-dark .o-section__banner-overlay {
-  --color-bkgd-rgb: var(--global-color-primary--x-dark-rgb);
-}
-.o-section--banner.o-section--style-light .o-section__banner-overlay {
-  --color-bkgd-rgb: var(--global-color-primary--x-light-rgb);
 }
 
 
