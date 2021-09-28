@@ -1,7 +1,7 @@
 from cms.models.pluginmodel import CMSPlugin
 
 from django.db import models
-from django.utils.translation import gettext_lazy as _
+from django.utils.translation import gettext as _
 
 from djangocms_attributes_field import fields
 
