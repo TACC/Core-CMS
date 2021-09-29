@@ -17,6 +17,7 @@ class TaccsiteSystemSpecs(AbstractLink):
         verbose_name=_('System Description'),
         help_text=_('Description of the system machine and mission.'),
         blank=False,
+        max_length=500,
         default=''
     )
     system_processor_count = models.IntegerField(
@@ -69,6 +70,7 @@ class TaccsiteSystemSpecs(AbstractLink):
         verbose_name=_('Resources Description'),
         help_text=_('Description of "%(default_value)s".') % { 'default_value': DEFAULT_OTHER_TITLE },
         blank=True,
+        max_length=500,
         default=''
     )
 
