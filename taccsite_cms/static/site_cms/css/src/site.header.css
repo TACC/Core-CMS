@@ -7,12 +7,11 @@
 
 /* SETTINGS */
 
-/* NOTE: These are already imported in `site.css` */
-/* TODO: Find a way to be modular, but not redundant */
+/* CAVEAT: This is already imported in `site.css`, but necessary here to
+           override Portal (which also loads `site.header.css`), so font
+           variables are unfortunately overwritten 1x in CMS, 2x in Portal */
+/* TODO: Find a way to be modular, but not redundant; perhaps `env()` vars */
 @import url("_imports/settings/font.css");
-/* NOTE: Portal does not need this, because it has independent copy of these,
-         but the User Guides do not. This can be removed in Core-CMS PR #192 */
-@import url("_imports/settings/color.css");
 
 /* TRUMPS */
 

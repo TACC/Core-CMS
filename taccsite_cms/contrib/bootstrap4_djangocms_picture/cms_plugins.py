@@ -2,7 +2,7 @@
 # FAQ: Bootstrap Image plugin has features not desirable in TACC plugins
 # FAQ: We must not break sites that already use Bootstrap Image plugin
 try:
-    from django.utils.translation import gettext_lazy as _
+    from django.utils.translation import gettext as _
 
     from cms.plugin_pool import plugin_pool
 
