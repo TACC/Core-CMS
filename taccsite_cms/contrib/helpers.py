@@ -77,9 +77,7 @@ def clean_for_abstract_link(model, self):
                     err.error_dict[field] = ValidationError(
                         _('Only one of External link or Internal link may be given.'), code='invalid')
 
-        if len(err.messages) == 0:
-            pass
-        else:
+        if err.messages:
             raise err
 
 # Get name of field from a given model
