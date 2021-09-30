@@ -301,6 +301,7 @@ INSTALLED_APPS = [
     'taccsite_cms.contrib.bootstrap4_djangocms_link',
     'taccsite_cms.contrib.bootstrap4_djangocms_picture',
     'taccsite_cms.contrib.taccsite_sample',
+    'taccsite_cms.contrib.taccsite_system_specs',
     'taccsite_cms.contrib.taccsite_system_monitor',
     'taccsite_cms.contrib.taccsite_data_list'
 ]
