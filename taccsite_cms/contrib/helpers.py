@@ -29,6 +29,22 @@ def concat_classnames(classes):
 
 
 # GH-93, GH-142, GH-133: Upcoming functions here (ease merge conflict, maybe)
+# Get list of indicies of items that start with text
+# SEE: https://stackoverflow.com/a/67393343/11817077
+def get_indices_that_start_with(text, list):
+    """
+    Get a list of indices of list elements that starts with given text
+    :rtype: list
+    """
+    return [i for i in range(len(list)) if list[i].startswith(text)]
+
+
+# Tweak validation on Django CMS `AbstractLink` for TACC
+
+from cms.models.pluginmodel import CMSPlugin
+
+from django.core.exceptions import ValidationError
+from django.utils.translation import gettext_lazy as _
 
 
 
@@ -65,3 +81,11 @@ def clean_for_abstract_link(model, self):
 
         if len(err.messages):
             raise err
+
+# Get name of field from a given model
+
+# SEE: https://stackoverflow.com/a/14498938/11817077
+def get_model_field_name(model, field_name):
+    model_field_name = model._meta.get_field(field_name).verbose_name.title()
+
+    return model_field_name
