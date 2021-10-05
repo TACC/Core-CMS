@@ -411,7 +411,7 @@ HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
         'URL': ES_HOSTS,
-        'INDEX_NAME': 'cms',
+        'INDEX_NAME': ES_INDEX_PREFIX.format('cms'),
         'KWARGS': {'http_auth': ES_AUTH }
     }
 }
