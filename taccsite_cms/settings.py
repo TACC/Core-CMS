@@ -30,6 +30,9 @@ ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost', '*']   # In development.
 # Requires django-auth-ldap ≥ 2.0.0
 LDAP_ENABLED = True
 
+# Default portal authorization verification endpoint.
+CEP_AUTH_VERIFICATION_ENDPOINT =  'localhost' #'https://0.0.0.0:8000'
+
 ########################
 # DATABASE SETTINGS
 ########################
