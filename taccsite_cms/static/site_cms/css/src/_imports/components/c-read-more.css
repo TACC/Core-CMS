@@ -31,7 +31,7 @@ Styleguide: Components.ReadMore
   @extend .x-untruncate--one-line;
 }
 
-/* Show More / Read Less */
+/* Show More / Show Less */
 
 /* State */
 .c-show-more__state,
