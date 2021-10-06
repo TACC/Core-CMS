@@ -1,7 +1,7 @@
 /*
-Read More
+Show More
 
-A CSS-only way to support a "Read More…" feature. It requires a container and three children in order:
+A CSS-only way to support a "Show More…" feature. It requires a container and three children in order:
 - state checkbox (must be first)
 - target text
 - toggle element
@@ -31,7 +31,7 @@ Styleguide: Components.ReadMore
   @extend .x-untruncate--one-line;
 }
 
-/* Read More / Read Less */
+/* Show More / Read Less */
 
 /* State */
 .c-show-more__state,
