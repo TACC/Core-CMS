@@ -204,6 +204,8 @@ from cms.models.pluginmodel import CMSPlugin
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 
+
+
 # SEE: https://github.com/django-cms/djangocms-link/blob/3.0.0/djangocms_link/models.py#L48
 def clean_for_abstract_link(model, self):
     """
@@ -235,7 +237,14 @@ def clean_for_abstract_link(model, self):
                     err.error_dict[field] = ValidationError(
                         _('Only one of External link or Internal link may be given.'), code='invalid')
 
-        if len(err.messages) == 0:
-            pass
-        else:
+        if len(err.messages):
             raise err
+
+
+
+# Get name of field from a given model
+# SEE: https://stackoverflow.com/a/14498938/11817077
+def get_model_field_name(model, field_name):
+    model_field_name = model._meta.get_field(field_name).verbose_name.title()
+
+    return model_field_name

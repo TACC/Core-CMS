@@ -300,9 +300,14 @@ INSTALLED_APPS = [
     'taccsite_cms',
     'taccsite_cms.contrib.bootstrap4_djangocms_link',
     'taccsite_cms.contrib.bootstrap4_djangocms_picture',
+    # FP-1231: Convert our CMS plugins to stand-alone apps
+    'taccsite_cms.contrib.taccsite_blockquote',
+    'taccsite_cms.contrib.taccsite_callout',
+    'taccsite_cms.contrib.taccsite_offset',
     'taccsite_cms.contrib.taccsite_sample',
     'taccsite_cms.contrib.taccsite_static_article_list',
     'taccsite_cms.contrib.taccsite_static_article_preview',
+    'taccsite_cms.contrib.taccsite_system_specs',
     'taccsite_cms.contrib.taccsite_system_monitor',
     'taccsite_cms.contrib.taccsite_data_list'
 ]

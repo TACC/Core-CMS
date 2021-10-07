@@ -38,12 +38,7 @@ class OurModelThatUsesXxx(AbstractXxx):
                         # Replace error
                         # SEE: https://docs.djangoproject.com/en/2.2/ref/forms/validation/#raising-validationerror
 
-            # NOTE: The conditional `pass` is only to skip multi-field errors;
-            #       single-field error skipping is unaffected by this logic;
-            #       so it seems safe to always include this logic block
-            if len(err.messages) == 0:
-                pass
-            else:
+            if err.messages:
                 raise err
 ```
 

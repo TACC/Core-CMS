@@ -5,13 +5,15 @@ Styles that allow visible link hover for article lists.
 
 %x-article-link-stretch          - Stretch link to cover container
 %x-article-link-hover            - Give link a hover state
+%x-article-link-active          - Give link an active (click, enter) state
 
 Styleguide Tools.ExtendsAndMixins.ArticleLink
 */
 
-/* WARNING: A link ancestor must have its `position` set (not to static) */
 
-/* Expand link to cover container */
+
+/* To expand link to cover container */
+/* CAVEAT: A link ancestor must have its `position` set (not to static) */
 %x-article-link-stretch {
   position: absolute;
   height: 100%;
@@ -25,7 +27,16 @@ Styleguide Tools.ExtendsAndMixins.ArticleLink
   overflow: hidden;
 }
 
-/* Give link state (pseudo-class) feedback */
+
+
+/* To give link state (pseudo-class) feedback */
 %x-article-link-hover {
   outline: 1px solid var(--global-color-accent--normal);
+}
+
+
+
+/* To give link active state feedback */
+%x-article-link-active {
+  outline: 1px dotted var(--global-color-accent--normal);
 }
