@@ -10,7 +10,8 @@
 /* Branding Selectors  */
 
 .branding-header {
-  --branding-logo-height: 24px;
+  --branding-logo-height--normal: 24px;
+  --branding-logo-height--tall: 35px;
 
   display: flex;
   align-items: center;
@@ -41,19 +42,23 @@
   padding: 0;
   border: none;
 }
+.branding-logo--tall {
+  height: var(--branding-logo-height--tall);
+}
 
 /* Specific Brand Logo Selectors  */
 
+/* To allow */
 .branding-nsf {
-  height: 35px;
+  height: var(--branding-logo-height--tall);
 }
 
 .branding-tacc {
-  height: var(--branding-logo-height);
+  height: var(--branding-logo-height--normal);
 }
 
 .branding-utaustin {
-  height: var(--branding-logo-height);
+  height: var(--branding-logo-height--normal);
 }
 
 /* Logo Selectors  */
