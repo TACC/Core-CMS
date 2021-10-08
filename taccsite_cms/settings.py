@@ -407,23 +407,23 @@ SETTINGS_EXPORT_VARIABLE_NAME = 'settings'
 
 FEATURES = ''
 
-try:
-    from taccsite_cms.settings_custom import *
-except:
-    None
-    # do nothing
-
-try:
-    from taccsite_cms.secrets import *
-except:
-    None
-    # do nothing
-
-try:
-    from taccsite_cms.settings_local import *
-except:
-    None
-    # do nothing
+# try:
+#     from taccsite_cms.settings_custom import *
+# except:
+#     None
+#     # do nothing
+#
+# try:
+#     from taccsite_cms.secrets import *
+# except:
+#     None
+#     # do nothing
+#
+# try:
+#     from taccsite_cms.settings_local import *
+# except:
+#     None
+#     # do nothing
 
 SETTINGS_EXPORT = [
     'DEBUG',
