@@ -10,8 +10,8 @@
 /* Branding Selectors  */
 
 .branding-header {
-  --branding-logo-height--normal: 24px;
-  --branding-logo-height--tall: 35px;
+  --logo-height--normal: 24px;
+  --logo-height--tall: 35px;
 
   display: flex;
   align-items: center;
@@ -30,7 +30,7 @@
 .branding-seperator {
   width: 1px;
   height: 100%;
-  max-height: var(--branding-logo-height);
+  max-height: var(--logo-height);
   border-left: solid 1px var(--global-color-primary--xx-light);
   margin: 0 15px;
   vertical-align: middle;
@@ -43,22 +43,22 @@
   border: none;
 }
 .branding-logo--tall {
-  height: var(--branding-logo-height--tall);
+  height: var(--logo-height--tall);
 }
 
 /* Specific Brand Logo Selectors  */
 
 /* To allow */
 .branding-nsf {
-  height: var(--branding-logo-height--tall);
+  height: var(--logo-height--tall);
 }
 
 .branding-tacc {
-  height: var(--branding-logo-height--normal);
+  height: var(--logo-height--normal);
 }
 
 .branding-utaustin {
-  height: var(--branding-logo-height--normal);
+  height: var(--logo-height--normal);
 }
 
 /* Logo Selectors  */
