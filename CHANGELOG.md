@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [3.33.10] - 2021-10-18: Refactor Settings; New Sites, Plugins; v1 CSS; Themes
+## [3.0.0] - 2021-10-18: Refactor Settings; New Sites, Plugins; v1 CSS; Themes
 
 ### Added
 
@@ -143,8 +143,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.0.0] - 2021-03-31
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.33.10...HEAD
-[3.33.10]: https://github.com/TACC/Core-CMS/releases/tag/v3.33.10
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.0.0...HEAD
+[3.0.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.0.0
 [2.5.2]: https://github.com/TACC/Core-CMS/releases/tag/v2.5.2
 [2.1.1]: https://github.com/TACC/Core-CMS/releases/tag/v2.1.1
 [2.1.0]: https://github.com/TACC/Core-CMS/releases/tag/v2.1.0
