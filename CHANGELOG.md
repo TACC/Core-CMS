@@ -29,11 +29,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Quick: (UTRC-356) Add CSS Mixins for "Overlay" (#362, #368)
 - GH-191: Theme (for ProTX Light Header & TACC Blue Header) (#192)
 - `taccsite_custom`
-  - FP-1238/GH-68: Frontera: [...] Add Standard Template (TACC/Core-CMS-Resources#69)
+  - FP-1238/TACC/Core-CMS-Resources#68: Frontera: [...] Add Standard Template (TACC/Core-CMS-Resources#69)
   - Quick: Frontera: Save Newsletter Snippets (TACC/Core-CMS-Resources#63)
-  - GH-70: ProTX & A2CPS: [...] Add Standard Template (TACC/Core-CMS-Resources#73)
+  - TACC/Core-CMS-Resources#70: ProTX & A2CPS: [...] Add Standard Template (TACC/Core-CMS-Resources#73)
   - FP-1217: New UTRC Logo (TACC/Core-CMS-Resources#83)
-  - GH-191: ProTX: Support 'has-dark-logo' theme (TACC/Core-CMS-Resources#87)
+  - TACC/Core-CMS-Resources#191: ProTX: Support 'has-dark-logo' theme (TACC/Core-CMS-Resources#87)
   - [Texascale: Load Blog a.k.a.] Hotfix: Texascale: Post-FP-1194 Fix (Restore Blog) (#95)
 
 ### Changed
@@ -47,9 +47,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [FP-1194: Synchronize User Login between Core Portal and CMS] (#341, #346, #356)
 - Quick: (UTRC-356) Migrate Banner Overlay Styles from Core (to Frontera) (#361, #368)
 - `taccsite_custom`
-  - FP-1238/GH-68: Frontera: Cleanup Templates [...] (TACC/Core-CMS-Resources#69)
+  - FP-1238/TACC/Core-CMS-Resources#68: Frontera: Cleanup Templates [...] (TACC/Core-CMS-Resources#69)
   - Quick: Support & Move Snippets (TACC/Core-CMS-Resources#66)
-  - GH-70: ProTX & A2CPS: Cleanup Templates [...] (TACC/Core-CMS-Resources#73)
+  - TACC/Core-CMS-Resources#70: ProTX & A2CPS: Cleanup Templates [...] (TACC/Core-CMS-Resources#73)
 
 ### Fixed
 
@@ -62,7 +62,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Hotfix: Static Images for Getting Started Guide (#369)
 - FP-1232: Fix Inconsistent Search Bar Icon Size (#371)
 - `taccsite_custom`
-  - GH-81: Fix Favicons Not Loading (TACC/Core-CMS-Resources#82)
+  - TACC/Core-CMS-Resources#81: Fix Favicons Not Loading (TACC/Core-CMS-Resources#82)
 
 ### Removed
 
