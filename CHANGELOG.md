@@ -62,7 +62,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Hotfix: Static Images for Getting Started Guide (#369)
 - FP-1232: Fix Inconsistent Search Bar Icon Size (#371)
 - `taccsite_custom`
-  - GH-81: Fix Favicons Not Loading (#82)
+  - GH-81: Fix Favicons Not Loading (TACC/Core-CMS-Resources#82)
 
 ### Removed
 
