@@ -25,14 +25,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - GH-98: Typography (#312, #314, #316, #318)
 - GH-83: Callout Plugin (#324)
 - GH-88: System Specs Plugin (#323, #330)
-- UTRC-356: New UTRC Homepage [...] (#367, #368)
+- UTRC-356: New UTRC [...] (#367, #368, TACC/Core-CMS-Resources#80)
 - Quick: (UTRC-356) Add CSS Mixins for "Overlay" (#362, #368)
 - GH-191: Theme (for ProTX Light Header & TACC Blue Header) (#192)
 - `taccsite_custom`
   - FP-1238/GH-68: Frontera: [...] Add Standard Template (TACC/Core-CMS-Resources#69)
   - Quick: Frontera: Save Newsletter Snippets (TACC/Core-CMS-Resources#63)
   - GH-70: ProTX & A2CPS: [...] Add Standard Template (TACC/Core-CMS-Resources#73)
-  - FP-1217: New UTRC Logo (#83)
+  - FP-1217: New UTRC Logo (TACC/Core-CMS-Resources#83)
   - GH-191: ProTX: Support 'has-dark-logo' theme (TACC/Core-CMS-Resources#87)
   - [Texascale: Load Blog a.k.a.] Hotfix: Texascale: Post-FP-1194 Fix (Restore Blog) (#95)
 
