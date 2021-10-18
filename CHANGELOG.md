@@ -7,6 +7,69 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.33.10] - 2021-10-18: Refactor Settings; New Sites, Plugins; v1 CSS; Themes
+
+### Added
+
+- (0.1.0) Quick: A2CPS [Site] (#271, #272, #380)
+- (0.1.0) GH-245/FP-1097: v1–v2 Migration Stylesheet (#274)
+- (0.1.0) GH-73: Blockquote, Offset [...] Plugins (#275)
+- (0.1.0) Quick: Support Non-Bootstrap Link & Picture Plugins (#278)
+- (0.1.0) FP-1097: A2CPS: Add Snippets (#288)
+- (0.1.0) GH-89: (Minimal) System Monitor Plugin (a.k.a. SysMon) (#297)
+- (0.1.0) GH-298: Add "See All" Link Component (#300)
+- (0.1.0) Quick: Support Snippets & Add 1 Useful Snippet (#301)
+- (0.1.0) GH-75: Data List - Styles / Component / Plugin (#305, #308, #326, #336)
+- (0.1.0) GH-310: Breadcrumbs [...] (#311)
+- (0.1.0) GH-310: [...] Standard Template (#311)
+- (0.1.0) GH-98: Typography (#312, #314, #316, #318)
+- (0.1.0) GH-83: Callout Plugin (#324)
+- (0.1.0) GH-88: System Specs Plugin (#323, #330)
+- (0.1.0) UTRC-356: New UTRC Homepage [...] (#367, #368)
+- (0.1.0) Quick: (UTRC-356) Add CSS Mixins for "Overlay" (#362, #368)
+- (0.1.0) GH-191: Theme (for ProTX Light Header & TACC Blue Header) (#192)
+- `taccsite_custom`
+  - (0.1.0) FP-1238/GH-68: Frontera: [...] Add Standard Template (TACC/Core-CMS-Resources#69)
+  - (0.1.0) Quick: Frontera: Save Newsletter Snippets (TACC/Core-CMS-Resources#63)
+  - (0.1.0) GH-70: ProTX & A2CPS: [...] Add Standard Template (TACC/Core-CMS-Resources#73)
+  - (0.1.0) FP-1217: New UTRC Logo (#83)
+  - (0.1.0) GH-191: ProTX: Support 'has-dark-logo' theme (TACC/Core-CMS-Resources#87)
+  - (0.1.0) [Texascale: Load Blog a.k.a.] Hotfix: Texascale: Post-FP-1194 Fix (Restore Blog) (#95)
+
+### Changed
+
+- (0.1.0) GH-73: [Update Sample Plugin to be Consistent with other Plugins] (#275)
+- (0.1.0) Quick: Support Variable in x-truncate CSS (#304)
+- (0.1.0) Quick: GH-253: Tweak Style Guide CSS (#325, #326)
+- (0.1.0) GH-331: Cleanup Fullwidth Template (#332)
+- (1.0.0) [Major: Split Settings and Secrets] (#341, #345, #347, #348, TACC/Core-CMS-Resources#77)
+- (0.1.0) [Quick: Add UTRC Site] (#345, #357)
+- (0.1.0) [FP-1194: Synchronize User Login between Core Portal and CMS] (#341, #346, #356)
+- (0.1.0) Quick: (UTRC-356) Migrate Banner Overlay Styles from Core (to Frontera) (#361, #368)
+- `taccsite_custom`
+  - (0.1.0) FP-1238/GH-68: Frontera: Cleanup Templates [...] (TACC/Core-CMS-Resources#69)
+  - (0.1.0) Quick: Support & Move Snippets (TACC/Core-CMS-Resources#66)
+  - (0.1.0) GH-70: ProTX & A2CPS: Cleanup Templates [...] (TACC/Core-CMS-Resources#73)
+
+### Fixed
+
+- (0.0.1) GH-283/4: Fix Facebook Share Bug (Smaller TACC Logo) (#283)
+- (0.0.1) Hotfix/FP-1194: Use gettext_lazy Not gettext (fixed tup-cms deploy) (#344)
+- (0.0.1) GH-353: Fix Missing Bold for Guide Pages (#354)
+- (0.0.1) FP-1234: Add Missing Top Margin for Headings (#359)
+- (0.0.1) Hotfix: (UTRC-356) Let Banner Section Padding Match Other Sections (#363, #368)
+- (0.0.1) Hotfix: (UTRC-356) Avoid Grid Blowout (#365, #368)
+- (0.0.1) Hotfix: (UTRC-356) Darker Core Body Text (#366, #368)
+- (0.0.1) Hotfix: Static Images for Getting Started Guide (#369)
+- (0.0.1) FP-1232: Fix Inconsistent Search Bar Icon Size (#371)
+- `taccsite_custom`
+  - (0.0.1) GH-81: Fix Favicons Not Loading (#82)
+
+### Removed
+
+- `taccsite_custom`
+  - (0.0.0) GH-89: Remove SysMon Snippet (TACC/Core-CMS-Resources#67)
+
 ## [2.5.2] - 2021-07-16: Fix Publish Bug; Texascale 2020; Polish
 
 ### Added
@@ -80,7 +143,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.0.0] - 2021-03-31
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v2.5.2...HEAD
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.33.10...HEAD
+[3.33.10]: https://github.com/TACC/Core-CMS/releases/tag/v3.33.10
 [2.5.2]: https://github.com/TACC/Core-CMS/releases/tag/v2.5.2
 [2.1.1]: https://github.com/TACC/Core-CMS/releases/tag/v2.1.1
 [2.1.0]: https://github.com/TACC/Core-CMS/releases/tag/v2.1.0
