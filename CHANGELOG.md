@@ -53,7 +53,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- GH-283/4: Fix Facebook Share Bug (Smaller TACC Logo) (#283)
+- GH-283/GH-284: Fix Facebook Share Bug (Smaller TACC Logo) (#283)
 - Hotfix/FP-1194: Use gettext_lazy Not gettext (fixed tup-cms deploy) (#344)
 - GH-353: Fix Missing Bold for Guide Pages (#354)
 - FP-1234: Add Missing Top Margin for Headings (#359)
