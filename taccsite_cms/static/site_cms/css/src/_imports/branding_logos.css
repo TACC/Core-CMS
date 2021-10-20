@@ -30,7 +30,7 @@
 .branding-seperator {
   width: 1px;
   height: 100%;
-  max-height: var(--logo-height);
+  max-height: var(--logo-height--normal);
   border-left: solid 1px var(--global-color-primary--xx-light);
   margin: 0 15px;
   vertical-align: middle;
