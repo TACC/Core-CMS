@@ -26,12 +26,7 @@ def index(indexable, i):
 
     - Also works with for loops.
     """
-    return indexable[i]
-
-
-@register.filter
-def get_at_index(list, index):
-    """
-    Gets the list element at the given index.
-    """
-    return list[index]
+    try:
+        return indexable[i]
+    except IndexError:
+        return None
