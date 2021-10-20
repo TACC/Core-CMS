@@ -10,7 +10,9 @@
     "--header-bkgd-color": "var(--global-color-primary--xx-dark)",
     "--header-minor-border-color": "var(--global-color-primary--normal)",
     "// To 'hide' border by setting its color to match background color": "",
-    "--header-major-border-color": "var(--global-color-primary--xx-dark)"
+    "--header-major-border-color": "var(--global-color-primary--xx-dark)",
+    "--header-search-brdr-color": "var(--global-color-primary--dark)",
+    "--header-search-bkgd-color": "#313131"
 
   }
 }

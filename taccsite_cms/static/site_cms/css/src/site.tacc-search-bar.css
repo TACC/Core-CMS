@@ -5,21 +5,18 @@
 /* Organize via ITCSS */
 /* SEE: https://confluence.tacc.utexas.edu/x/IAA9Cw */
 
-/* SETTINGS */
-
-/* Shared with Portal */
-@import url("_imports/settings/border.css");
-@import url("_imports/settings/color.css");
-
-/* COMPONENTS */
-
-/* Shared with Portal */
-@import url("_imports/components/bootstrap.form.css");
-@import url("_imports/components/c-button.css");
-
 /* TRUMPS */
 
 /* Shared with Portal */
 @import url("_imports/trumps/icon.css");
 /* Unique to CMS */
+@import url("_imports/trumps/u-hide.css");
+@import url("_imports/trumps/tacc-search-bar.css");
+
+/* ELEMENTS */
+/* HACK: "ELEMENTS" should be loaded __before__ "TRUMPS" */
+
+/* Load search bar after all relevant styles have loaded */
+/* FAQ: Manage visibility of search bar to avoid FOUC */
+/* HACK: GH-101: Resolve via  dynamically-added `[data-status="loaded"]` */
 @import url("_imports/elements/tacc-search-bar.css");
