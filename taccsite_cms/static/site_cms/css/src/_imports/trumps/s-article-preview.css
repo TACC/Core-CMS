@@ -91,7 +91,6 @@ Styleguide Trumps.Scopes.ArticlePreview
 /* (List) Events */
 .s-article-list--events .s-article-preview h3 {
   font-size: 1.4rem;
-  color: var(--global-color-primary--xx-dark);
 }
 
 
