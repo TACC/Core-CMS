@@ -7,17 +7,14 @@
 {% for child in children %}
 <li class="nav-item{% if child.selected or child.ancestor %} active{% endif %}{% if child.children %} dropdown{% endif %}">
   {% if child.children %}
-  <span class="nav-link">
-    <a href="{{ child.attr.redirect_url|default:child.get_absolute_url }}">
-      {{ child.get_menu_title|safe }}
-      {% if child.selected %}<span class="sr-only">(current)</span>{% endif %}
-    </a>
     <a
       href=""
-      class="dropdown-toggle dropdown-toggle-split"
+      class="nav-link dropdown-toggle"
       data-toggle="dropdown"
       aria-haspopup="true"
       aria-expanded="false">
+      {{ child.get_menu_title|safe }}
+      {% if child.selected %}<span class="sr-only">(current)</span>{% endif %}
       <span class="sr-only">Toggle Dropdown</span>
     </a>
     <div class="dropdown-menu" role="menu" aria-labelledby="navbarDropdown">
@@ -28,7 +25,6 @@
         {% if grandchild.selected %}<span class="sr-only">(current)</span>{% endif %}
       </a>
       {% endfor %}
-  </span>
   {% else %}
   <a class="nav-link" href="{{ child.attr.redirect_url|default:child.get_absolute_url }}">
     {{ child.get_menu_title|safe }}
