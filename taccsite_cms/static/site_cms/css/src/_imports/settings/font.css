@@ -40,17 +40,16 @@ Styleguide Settings.CustomProperties.Font
 
 
   /* Size */
-  /* NOTE: Defined with Design in 2020, but not yet used for 2021 UI work */
-  /*
-  --global-font-size--xx-small: 0.625rem;  /* 10px (if base is 16px) *\/
-  --global-font-size--x-small: 0.8125rem;  /* 13px (if base is 16px) *\/
-  --global-font-size--small: 1.0rem;       /* 16px (if base is 16px) *\/
-  --global-font-size--normal: 1.25rem;     /* 20px (if base is 16px) *\/
-  --global-font-size--large: 1.5rem;       /* 24px (if base is 16px) *\/
-  --global-font-size--x-large: 2.0rem;     /* 32px (if base is 16px) *\/
-  --global-font-size--xx-large: 2.5rem;    /* 40px (if base is 16px) *\/
-  --global-font-size--xxx-large: 3.0rem;   /* 48px (if base is 16px) *\/
-  */
+  /* SEE: https://confluence.tacc.utexas.edu/x/nh4FDg */
+  /* CAVEAT: These font sizes assume root font is 10px or an equivalent value */
+
+  --global-font-size--x-small: 1.1rem;
+  --global-font-size--small: 1.4rem;
+  --global-font-size--medium: 1.6rem;
+  --global-font-size--large: 2.0rem;
+  --global-font-size--x-large: 2.6rem;
+  --global-font-size--xx-large: 3.2rem;
+  --global-font-size--xxx-large: 4.1rem;
 
 
 
