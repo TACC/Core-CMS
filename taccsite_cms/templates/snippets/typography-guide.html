@@ -1,0 +1,123 @@
+<h1>Typography</h1>
+
+<hr />
+
+<section>
+
+  <h2>Typefaces</h2>
+  <style>
+    .c-family { letter-spacing: 0.5em; }
+
+    .c-family--mono { font-family: var(--global-font-family--mono); }
+    .c-family--serif { font-family: var(--global-font-family--serif); }
+    .c-family--sans { font-family: var(--global-font-family--sans); }
+  </style>
+
+  <section>
+    <h3>Sans</h3>
+    <p class="c-family--sans">
+      The quick brown fox jumps over the lazy dog.</p>
+    <div class="c-family c-family--sans">
+      <p>ABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
+      <p>abcdefghijklmnopqrstuvwxyz</p>
+      <p>0123456789</p>
+    </div>
+  </section>
+  <section>
+    <h3>Mono</h3>
+    <p class="c-family--mono">
+      The quick brown fox jumps over the lazy dog.</p>
+    <div class="c-family c-family--mono">
+      <p>ABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
+      <p>abcdefghijklmnopqrstuvwxyz</p>
+      <p>0123456789</p>
+    </div>
+  </section>
+
+</section>
+<section>
+
+  <h2>Font Sizes</h2>
+
+  <section>
+    <h3>All Sizes</h3>
+    <div>
+      <p style="font-size: var(--global-font-size--xxx-large);">
+        XXX Large</p>
+      <p style="font-size: var(--global-font-size--xx-large);">
+        XX Large</p>
+      <p style="font-size: var(--global-font-size--x-large);">
+        Extra Large</p>
+      <p style="font-size: var(--global-font-size--large);">
+        Large</p>
+      <p style="font-size: var(--global-font-size--medium);">
+        Medium</p>
+      <p style="font-size: var(--global-font-size--small);">
+        Small</p>
+      <p style="font-size: var(--global-font-size--x-small);">
+        Extra Small</p>
+    </div>
+  </section>
+  <section>
+    <h3>Headings</h3>
+    <div>
+      <h1>Heading One</h1>
+      <h2>Heading Two</h2>
+      <h3>Heading Three</h3>
+      <h4>Heading Four</h4>
+      <h5>Heading Five</h5>
+      <h6>Heading Six</h6>
+    </div>
+  </section>
+
+</section>
+<section>
+
+  <h2>Font Weights</h2>
+  <style>
+    .c-weight {
+      border: var(--global-border--normal);
+      padding: 1em;
+      text-align: center;
+      display: inline-block;
+    }
+    .c-weight + .c-weight {
+      margin-left: 1em;
+    }
+
+    .c-weight__sample { font-size: var(--global-font-size--xxx-large); }
+
+    .c-weight--regular .c-weight__sample { font-weight: var(--regular); }
+    .c-weight--medium .c-weight__sample { font-weight: var(--medium); }
+    .c-weight--bold .c-weight__sample { font-weight: var(--bold); }
+  </style>
+
+<section class="c-weight-list">
+    <h3>Sans</h3>
+    <figure class="c-weight c-weight--regular">
+      <p class="c-weight__sample c-family--sans">Aa</p>
+      <figcaption>Sans Regular</figcaption>
+    </figure>
+    <figure class="c-weight c-weight--medium">
+      <p class="c-weight__sample c-family--sans">Aa</p>
+      <figcaption>Sans Medium</figcaption>
+    </figure>
+    <figure class="c-weight c-weight--bold">
+      <p class="c-weight__sample c-family--sans">Aa</p>
+      <figcaption>Sans Bold</figcaption>
+    </figure>
+  </section>
+
+  <section class="c-weight-list">
+    <h3>Mono</h3>
+    <figure class="c-weight c-weight--regular">
+      <p class="c-weight__sample c-family--mono">Aa</p>
+      <figcaption>Mono Regular</figcaption>
+    </figure>
+    <figure class="c-weight c-weight--bold">
+      <p class="c-weight__sample c-family--mono">Aa</p>
+      <figcaption>Mono Bold</figcaption>
+    </figure>
+  </section>
+
+</section>
