@@ -96,6 +96,14 @@ Styleguide Objects.Section
 .o-section--style-dark a {
   color: var(--global-color-link-on-dark--normal);
 }
+.o-section--style-dark h1,
+.o-section--style-dark h2,
+.o-section--style-dark h3,
+.o-section--style-dark h4,
+.o-section--style-dark h5,
+.o-section--style-dark h6 {
+  color: var(--global-color-primary--xx-light);
+}
 /* FAQ: Banners should not touch a border of the following section */
 .o-section--style-dark:not(.o-section--banner)
 + .o-section--style-dark:not(.o-section--banner) {
@@ -109,6 +117,14 @@ Styleguide Objects.Section
 }
 .o-section--style-light a {
   color: var(--global-color-link-on-light--normal);
+}
+.o-section--style-light h1,
+.o-section--style-light h2,
+.o-section--style-light h3,
+.o-section--style-light h4,
+.o-section--style-light h5,
+.o-section--style-light h6 {
+  color: var(--global-color-primary--xx-dark);
 }
 /* FAQ: Banners should not touch a border of the following section */
 .o-section--style-light:not(.o-section--banner)
@@ -177,8 +193,6 @@ Styleguide Objects.Section
 
 /* Added `.o-section--banner` to require parent modifier class in markup */
 .o-section--banner .o-section__banner-image {
-  position: absolute;
-  z-index: 1;
 
   /* To size image to cover section dimensions but maintain ratio */
   /* CAVEAT: This causes image to overflow beyond section */
@@ -188,7 +202,9 @@ Styleguide Objects.Section
   min-height: 100%;
   object-fit: cover;
 
-  /* To vertically center image within section */
+  /* To center image within section */
+  position: absolute;
+  z-index: 1;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
