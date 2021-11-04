@@ -5,7 +5,7 @@
 <div id="header-branding" class="branding-header {{className}}">
   {# DEBUG: #}{# <code>{{ brands|first }}</code> #}
   {% for brand in brands %}
-    {% with filename=brand|index:1 selectors=brand|index:2 targeturl=brand|index:3 targetType=brand|index:4 accessibility=brand|index:5 corstype=brand|index:6 visibility=brand|index:7 %}
+    {% with filename=brand|index:1 selectors=brand|index:2 targeturl=brand|index:3 targettype=brand|index:4 accessibility=brand|index:5 corstype=brand|index:6 visibility=brand|index:7 %}
       {% if visibility == "True" %}
         {% if brand == brands|first %}
         <a href="{{ targeturl }}" target="{{ targettype }}">
