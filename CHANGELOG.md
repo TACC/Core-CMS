@@ -7,9 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.3.0] - 2021-11-04: Brainmap Project; Fix Standard Template & Header Links
+
+### Added
+
+- Quick: [v3.0.7] Changelog (#389, #390, #391)
+- BM-5/BM-19: Add Brainmap Project (#393, #398)
+- Quick: (for BM-19) New CSS Branding Logo Class (#392)
+- task/FP-263: Add Frontera Favicon (update submodule) (#394)
+
+### Changed
+
+- Noop: Reduce verbosity of nested dropdown comment (#396)
+- Noop: Fix Comment Typo & Move Styles Down Under It (#364)
+
 ### Fixed
 
 - Bugfix/FP-1277: Extra Margin from Container by User on Standard Template (#370)
+- FP-1235: Do not support dropdown menu text as link (#395)
+- Hotfix: Fix Branding Links not Opening in New Window (#397)
 
 ## [3.0.7] - 2021-10-26: Hotfixes (mostly for Frontera); Rename Unused Component
 
@@ -162,7 +178,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.0.0] - 2021-03-31
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.0.7...HEAD
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.3.0...HEAD
+[3.3.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.3.0
 [3.0.7]: https://github.com/TACC/Core-CMS/releases/tag/v3.0.7
 [3.0.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.0.0
 [2.5.2]: https://github.com/TACC/Core-CMS/releases/tag/v2.5.2
