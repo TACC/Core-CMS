@@ -54,7 +54,7 @@ Styleguide _Test.Extend
 /*! Class & Placeholder Selector, Use Placeholder Selector */
 
 /*! Goal: */
-._test_4{color:blue}
+._test_4,._test_mixin_4{color:blue}
 
 /*! Test: */
 %_test_mixin_4,
@@ -77,4 +77,22 @@ Styleguide _Test.Extend
 }
 ._test_5 {
   @extend _test_mixin_5;
+}
+
+
+/*! Nested Extends */
+
+/*! Goal: */
+._test_6{color:#000}._test_6{background-color:#fff}
+
+/*! Test: */
+%_test_mixin_6a {
+  color: black;
+}
+%_test_mixin_6b {
+  @extend %_test_mixin_6a;
+  background-color: white;
+}
+._test_6 {
+  @extend %_test_mixin_6b;
 }

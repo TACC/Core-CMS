@@ -6,6 +6,7 @@ from https://frontera-portal.tacc.utexas.edu/. It has:
 - Bootstrap class names
 - Bootstrap attributes
 -->
+<!-- Logged Out -->
 <ul class="s-portal-nav  navbar-nav">
   <!-- When user is not logged in, there are zero dropdown(-*) classes -->
   <li class="nav-item  dropdown">
@@ -21,16 +22,20 @@ from https://frontera-portal.tacc.utexas.edu/. It has:
     </a>
     <nav class="dropdown-menu dropdown-menu-right show">
       <a class="dropdown-item" href="/workbench/dashboard">
-        <i class="icon icon-dashboard"></i> My Dashboard
+        <i class="icon icon-dashboard"></i>
+        <span class="nav-text">My Dashboard</span>
       </a>
       <a class="dropdown-item" href="/workbench/onboarding/admin">
-        <i class="icon icon-approved-boxed"></i> Onboarding Admin
+        <i class="icon icon-approved-boxed"></i>
+        <span class="nav-text">Onboarding Admin</span>
       </a>
       <a class="dropdown-item" href="/accounts/profile/">
-        <i class="icon icon-gear"></i> My Account
+        <i class="icon icon-gear"></i>
+        <span class="nav-text">My Account</span>
       </a>
       <a class="dropdown-item" href="/accounts/logout">
-        <i class="icon icon-user"></i> Log Out
+        <i class="icon icon-user"></i>
+        <span class="nav-text">Log Out</span>
       </a>
     </nav>
   </li>

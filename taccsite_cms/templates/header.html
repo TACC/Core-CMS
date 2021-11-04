@@ -2,32 +2,32 @@
 {# SEE: https://confluence.tacc.utexas.edu/x/LoCnCQ #}
 {# FAQ: Extra lines exist to ease CMS/Portal/Guide template comparison #}
 
-<!-- Sponsor Logos -->
+<!-- Branding Bar -->
 {% include "header_branding.html" %}
 
 <!-- Navigation Bar -->
-<nav id="s-header" class="s-header  navbar {% if settings.INCLUDES_CORE_PORTAL %}navbar-expand-xl{% else %}navbar-expand-lg{% endif %} navbar-dark">
+{# NOTE: `navbar-expand-*` maps to a `media-queries.css`'s `--nav-*` value #}
+{# CAVEAT: The mobile nav CSS can NOT support conditional `navbar-expand-*` #}
+<nav id="header-navbar" class="s-header  navbar navbar-dark navbar-expand-xl  {% if settings.INCLUDES_CORE_PORTAL %}is-on-portal{% endif %}">
   <!-- Portal Logo -->
   {% include "header_logo.html" %}
 
   <!-- Navbar Accordian Toggle on Small Screens  -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExpandTarget" aria-controls="navbarsExpandTarget" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+    <i class="navbar-toggler-icon"></i>
+    <span class="sr-only">Menu</span>
   </button>
 
   <!-- Navbar Links -->
   <div class="collapse navbar-collapse" id="navbarsExpandTarget">
-    {# GL-6: Remove need for different `className` values #}
-    {% if settings.INCLUDES_CORE_PORTAL %}
-      {# FAQ: If template were included with `only`, then it would NOT render `show_menu` #}
-      {% include "nav_cms.html" with className="navbar-nav" %}
+    {# FAQ: We pass `navbar-nav` because it is coupled to `navbar-…` here #}
+    {# FAQ: If template included with `only`, it would NOT render `show_menu` #}
+    {% include "nav_cms.html" with className="navbar-nav" %}
 
+    {% if settings.INCLUDES_CORE_PORTAL %}
       {# NOTE: As of 2020-12, search is only available with a Portal #}
-      {% include "nav_search.html" with className="form-inline  ml-auto" only %}
+      {% include "nav_search.html" with className="form-inline" only %}
       {% include "nav_portal.html" with className="navbar-nav" settings=settings only %}
-    {% else %}
-      {# FAQ: If template were included with `only`, then it would NOT render `show_menu` #}
-      {% include "nav_cms.html" with className="navbar-nav  ml-auto" %}
     {% endif %}
   </div>
 </nav>

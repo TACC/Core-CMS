@@ -1,0 +1,29 @@
+/*
+Logo
+
+The main website logo. Project customization should be minimal.
+
+Markup: c-logo.twig.html
+
+Styleguide Components.Logo
+*/
+/* NOTE: All styles here are currently handled by Bootstrap `.navbar-brand` */
+/* TODO: Abandon Bootstrap `.navbar-brand`. Implement minimum styles instead. */
+
+
+
+/* Base  */
+
+.c-logo {
+  /* … */
+}
+
+
+
+/* Elements  */
+
+.c-logo__image {
+  /* Of base i.e. container */
+  max-height: 100%;
+  max-width: 100%;
+}

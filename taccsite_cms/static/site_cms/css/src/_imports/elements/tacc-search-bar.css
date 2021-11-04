@@ -1,64 +1,21 @@
 /*
 Search Bar
 
-Styles for search bar cloned from Portal codebase, but also relying on Bootstrap ([whose version usage is complicated][bootstrap-versions]):
-- Bootstrap 4.0.0 (loaded as external file in CMS via `<link>` in template)
-- relevant delta (manually built) from Bootstrap 4.0.0 (CMS) to 4.3.1 (Portal)
+A custom search bar originally designed for the header.
 
-[bootstrap-versions]: https://confluence.tacc.utexas.edu/x/OAACBw
-
-Markup: s-search-bar.html
+Markup: tacc-search-bar.html
 
 Styleguide Elements.TACC.SearchBar
 */
 
-
-
-/* FAQ: The `.s-search-bar` is added to trump Bootstrap class specificity */
-
-/* tacc-search-bar.s-search-bar::part(form) { */
 [part="form"] {
-  /* FAQ: Ensure search field font matches Portal */
-  /* SEE: https://confluence.tacc.utexas.edu/x/cYAZCg */
-  font-family: "Roboto";
-
-  /* Copied from `.container` from Portal */
-  /* SEE: https://github.com/TACC/Frontera-Portal/blob/master/client/src/components/DataFiles/DataFilesSearchbar/DataFilesSearchbar.module.css */
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-/* FAQ: Added `#s-header` to trump `.workbench-content .btn-secondary` specificity because it should match (thus override); could have used merely `.s-header`, but CMS use of `@apply` brings in CSS pseudo-class styles, while Portal use of `composes` does not, so `:hover` styles have effect in CMS while they do not have effect in Portal, hence using `#s-header` to create a more specific selector */
-/* !!!: This causes the same bug it does in Portal; no `:hover` state */
-/* #s-header tacc-search-bar.s-search-bar::part(button) { */
-[part="button"] {
-  @extend .c-button--secondary;
-
-  /* Copied from `.workbench-content .btn-secondary` from Portal `Workbench.scss` */
-  background-color: #F4F4F4;
-  color: #484848;
-  border: 1px solid #AFAFAF;
-}
-
-.input-group {
-  /* If link text uses 2 lines, header grows taller (but it must not do so) */
-  flex-wrap: nowrap;
-}
-
-/* tacc-search-bar.s-search-bar::part(button__icon) { */
-[part="button__icon"] {
-  @extend .c-button__icon--before;
-}
-
-/* tacc-search-bar.s-search-bar::part(input) { */
-[part="input"] {
-  @extend .form-control;
-  @extend input.form-control;
+  /* To fill available space of `:host` */
+  width: 100%;
+  height: 100%;
 }
 
 /* Show search bar after all relevant styles have loaded */
 /* FAQ: Manage visibility of search bar to avoid FOUC */
-/* HACK: This should be done via a dynamically-added `-is-loaded` class */
-/* tacc-search-bar.s-search-bar::part(form) { */
+/* HACK: This should be done via dynamic `[data-status="loaded"]` */
+/* SEE: /.../templates/nav_search.raw.html */
 :host { visibility: visible; height: auto; }

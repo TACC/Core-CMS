@@ -29,7 +29,7 @@ body {
 
 body {
   /* To avoid negative whitespace at right on horz scroll on tiny screen */
-  min-width: 290px; /* developer-decided value */
+  min-width: env(--body-min-width);
 
   /* To overwrite Bootstrap */
   color: var(--global-color-primary--x-dark);

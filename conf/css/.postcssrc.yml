@@ -17,6 +17,11 @@ plugins:
     features:
       custom-media-queries: true
       media-query-ranges: true
+      not-pseudo-class: true
+      nesting-rules: true
+      # RFE: Fix bug on the Internet so we can use these reliably
+      # SEE: https://github.com/postcss/postcss-custom-selectors/issues/40
+      custom-selectors: true
   cssnano:
     preset:
       - 'default'
@@ -26,4 +31,8 @@ plugins:
         discardDuplicates:
           exclude: true
         mergeRules:
+          exclude: true
+        # This breaks values like `clamp(0px, 15%, 48px)` by stripping 0's unit
+        # SEE: https://github.com/cssnano/cssnano/issues/286
+        convertValues:
           exclude: true

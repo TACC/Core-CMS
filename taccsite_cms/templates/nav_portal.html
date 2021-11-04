@@ -2,7 +2,7 @@
 
 {# WARNING: Some markup is duplicated in other repositories #}
 {# SEE: https://confluence.tacc.utexas.edu/x/LoCnCQ #}
-<ul class="s-portal-nav  {{ className }}" id="portal-nav">
+<ul class="s-portal-nav  {{ className }}" id="portal-nav" data-status>
 
   <!-- All Portal-controlled nav elements handled here. -->
   {# FAQ: Content populated via JavaScript, below #}
@@ -13,5 +13,7 @@
 
   const container = document.getElementById('portal-nav');
 
-  importHTML.insertFromURL('/core/markup/nav', container);
+  importHTML.insertFromURL('/core/markup/nav', container).then(container => {
+    container.dataset.status = 'loaded';
+  });
 </script>
