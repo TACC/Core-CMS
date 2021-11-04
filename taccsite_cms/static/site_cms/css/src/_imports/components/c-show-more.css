@@ -1,0 +1,50 @@
+/*
+Show More
+
+A CSS-only way to support a "Show More…" feature. It requires a container and three children in order:
+- state checkbox (must be first)
+- target text
+- toggle element
+
+.c-show-more--one-line   - Truncated text may only be one line tall.
+.c-show-more--many-lines - Truncated text may be many lines tall.
+
+Styleguide: Components.ShowMore
+*/
+@import url("_imports/tools/x-truncate.css");
+
+/* Truncation */
+
+/* Many Lines */
+.c-show-more--many-lines .c-show-more__target {
+  @extend .x-truncate--many-lines;
+}
+.c-show-more--many-lines .c-show-more__state:checked ~ .c-show-more__target {
+  @extend .x-untruncate--many-lines;
+}
+
+/* One Line */
+.c-show-more--one-line .c-show-more__target {
+  @extend .x-truncate--one-line;
+}
+.c-show-more--one-line .c-show-more__state:checked ~ .c-show-more__target {
+  @extend .x-untruncate--one-line;
+}
+
+/* Show More / Show Less */
+
+/* State */
+.c-show-more__state,
+.c-show-more__on-text,
+.c-show-more__off-text {
+  display: none;
+}
+.c-show-more__state:not(:checked) ~ .c-show-more__toggle .c-show-more__on-text,
+.c-show-more__state:checked ~ .c-show-more__toggle .c-show-more__off-text {
+  display: block;
+}
+
+/* Toggle */
+.c-show-more__toggle {
+  cursor: pointer;
+}

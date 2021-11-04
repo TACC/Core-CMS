@@ -71,7 +71,9 @@ Styleguide Components.Branding
 
 /* Specific brands */
 /* FAQ: Percentage-based math adapts to container height */
-.c-branding__nsf-link    { --height: 87.5%; }
+
+.c-branding__nsf-link
+.c-branding__tall-link,  { --height: 87.5%; }
 .c-branding__tacc-link   { --height: 75%; }
 .c-branding__utexas-link { --height: 65%; }
 

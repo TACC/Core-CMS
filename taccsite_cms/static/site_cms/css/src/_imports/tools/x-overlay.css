@@ -9,7 +9,7 @@ Colored boxes that appear atop a large image (like a banner).
 Styleguide Tools.ExtendsAndMixins.Overlay
 */
 
-.x-overlay--curtain {
+%x-overlay--curtain {
   --color-text: inherit;
   --color-bkgd-rgb: var(--global-color-primary--normal);
 
@@ -34,7 +34,7 @@ Styleguide Tools.ExtendsAndMixins.Overlay
   }
 }
 
-.x-overlay--callout {
+%x-overlay--callout {
   --color-text: inherit;
   --color-bkgd-rgb: var(--global-color-primary--normal);
 

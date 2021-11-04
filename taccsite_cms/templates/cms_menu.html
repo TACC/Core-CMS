@@ -19,10 +19,7 @@
     <span class="sr-only">Toggle Dropdown</span>
   </a>
   <div class="dropdown-menu" role="menu" aria-labelledby="navbarDropdown">
-    {% comment %}
-    Bootstrap4 does not support submenus, so levels > 1 can't be handled be the main_menu tag and therfore
-    recursion has been dropped intentionally. Read https://github.com/twbs/bootstrap/pull/6342 for details.
-    {% endcomment %}
+    {# Bootstrap4 does not support submenus, so nor do we (and other users). See https://github.com/twbs/bootstrap/pull/6342. #}
     {% for grandchild in child.children %}
     <a
       class="dropdown-item{% if grandchild.selected %} active{% endif %}"
