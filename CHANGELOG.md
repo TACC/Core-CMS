@@ -7,6 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Bugfix/FP-1277: Extra Margin from Container by User on Standard Template (#370)
+
+## [3.0.7] - 2021-10-26: Hotfixes (mostly for Frontera); Rename Unused Component
+
+### Changed
+
+- task/FP-1260 Rename Component ReadMore to ShowMore (#376)
+
+### Fixed
+
+- FP-1270: Provide Header CSS that Only Docs Needs (#381)
+- (UTRC) FP-1234: Add Missing Top Margin for Headings (#359)
+- Quick: Complete Core fix for section header colors (#385)
+- Hotfix: Local Images for Getting Started Guide (#369)
+- `taccsite_custom`
+  - Hotfix: Frontera: White Text for Home Banner H3's (#100)
+  - Hotfix: Frontera: (UTRC-356) Homepage Banner Bkgd (x-overlay Mixin Syntax) (#386)
+
 ## [3.0.0] - 2021-10-18: Refactor Settings; New Sites & Plugins; v1 CSS; Themes
 
 ### Added
@@ -142,7 +162,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.0.0] - 2021-03-31
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.0.0...HEAD
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.0.7...HEAD
+[3.0.7]: https://github.com/TACC/Core-CMS/releases/tag/v3.0.7
 [3.0.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.0.0
 [2.5.2]: https://github.com/TACC/Core-CMS/releases/tag/v2.5.2
 [2.1.1]: https://github.com/TACC/Core-CMS/releases/tag/v2.1.1
