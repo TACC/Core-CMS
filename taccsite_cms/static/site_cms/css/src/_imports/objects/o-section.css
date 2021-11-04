@@ -193,8 +193,6 @@ Styleguide Objects.Section
 
 /* Added `.o-section--banner` to require parent modifier class in markup */
 .o-section--banner .o-section__banner-image {
-  position: absolute;
-  z-index: 1;
 
   /* To size image to cover section dimensions but maintain ratio */
   /* CAVEAT: This causes image to overflow beyond section */
@@ -204,7 +202,9 @@ Styleguide Objects.Section
   min-height: 100%;
   object-fit: cover;
 
-  /* To vertically center image within section */
+  /* To center image within section */
+  position: absolute;
+  z-index: 1;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
