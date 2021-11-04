@@ -42,6 +42,10 @@
   border: none;
 }
 
+.branding-logo--tall {
+  height: 35px;
+}
+
 /* Specific Brand Logo Selectors  */
 
 .branding-nsf {
