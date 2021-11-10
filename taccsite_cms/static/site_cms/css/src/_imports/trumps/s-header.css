@@ -37,12 +37,9 @@ Styleguide Trumps.Scopes.Header
   border-bottom: 1px solid env(--header-major-border-color);
 }
 
-
 /* Affiliation */
 
 /* SEE: taccsite_cms/static/site_cms/css/src/_imports/branding_logos.css */
-
-
 
 /* Logo */
 
@@ -54,10 +51,8 @@ Styleguide Trumps.Scopes.Header
   padding: 0;
 
   color: env(--header-text-color);
-  /* text-decoration: none; *//* already provided by Bootstrap */
+  /* text-decoration: none; */ /* already provided by Bootstrap */
 }
-
-
 
 /* Navigation */
 
@@ -79,6 +74,13 @@ Styleguide Trumps.Scopes.Header
 
   background-color: env(--header-bkgd-color);
   padding: var(--nav-padding-vert) var(--nav-padding-horz);
+}
+
+/* Navigation: Theme-based Toggle Icon Color */
+
+/* Tweak to fix incorrect colors in selectors that use bootstrap native svg images. This fix will be superceded by GH-101 in Core-CMS. */
+.navbar-toggler-icon  {
+  filter: env(--temp-menu-toggle-icon);
 }
 
 /* Navigation: Links */
@@ -106,14 +108,14 @@ Styleguide Trumps.Scopes.Header
   border-width: 0 0 var(--border-width);
   border-style: solid;
   border-color: var(--border-color);
-  margin-bottom: calc( var(--border-width) * -1 );
+  margin-bottom: calc(var(--border-width) * -1);
 }
 /* HACK: Using an ID selector, because Bootstrap has overspecific selectors */
 #s-header .nav-link,
 /* HACK: Support `span.nav-link` having children `a` and `a.dropdown-toggle-split` */
 #s-header .nav-link > a {
   color: env(--header-text-color);
-  /* text-decoration: none; *//* already provided by Bootstrap */
+  /* text-decoration: none; */ /* already provided by Bootstrap */
 }
 
 /* Navigation: Links: Responsive Design */
@@ -126,8 +128,6 @@ Styleguide Trumps.Scopes.Header
   padding-right: 14px; /* NO-R/EM: .875rem (overwrite Bootstrap) */
   padding-left: 14px; /* NO-R/EM: .875rem (overwrite Bootstrap) */
 }
-
-
 
 /* Search */
 
@@ -145,17 +145,13 @@ Styleguide Trumps.Scopes.Header
   margin-left: 12px;
 }
 
-
-
 /* Icons */
 
 /* HACK: Using FontAwesome as placeholder */
 .s-header [class*="fa-"] {
-    width: 27px; /* NO-R/EM: 1.25em (from Portal `.fa`—FP-228 will deprecate it) */
-    text-align: center;
+  width: 27px; /* NO-R/EM: 1.25em (from Portal `.fa`—FP-228 will deprecate it) */
+  text-align: center;
 }
-
-
 
 /* Dropdown */
 
