@@ -11,6 +11,6 @@
     "// To show border between only the light header and content below it": "",
     "--header-major-border-color": "var(--global-color-primary--normal)",
     "// To set the bootstrap navbar-toggler-icon svg color for current theme": "",
-    "--temp-menu-toggle-icon": "invert(100%)"
+    "--menu-toggle-icon": "invert(100%)"
   }
 }

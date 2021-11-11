@@ -11,6 +11,6 @@
     "// To 'hide' border by setting its color to match background color": "",
     "--header-major-border-color": "var(--global-color-primary--xx-dark)",
     "// To set the bootstrap navbar-toggler-icon svg color for current theme": "",
-    "--temp-menu-toggle-icon": "none"
+    "--menu-toggle-icon": "none"
   }
 }

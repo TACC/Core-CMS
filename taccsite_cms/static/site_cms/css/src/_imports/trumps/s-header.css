@@ -76,13 +76,6 @@ Styleguide Trumps.Scopes.Header
   padding: var(--nav-padding-vert) var(--nav-padding-horz);
 }
 
-/* Navigation: Theme-based Toggle Icon Color */
-
-/* Tweak to fix incorrect colors in selectors that use bootstrap native svg images. This fix will be superceded by GH-101 in Core-CMS. */
-.navbar-toggler-icon  {
-  filter: env(--temp-menu-toggle-icon);
-}
-
 /* Navigation: Links */
 
 .s-header .nav-link {
@@ -145,6 +138,12 @@ Styleguide Trumps.Scopes.Header
   margin-left: 12px;
 }
 
+/* Dropdown */
+
+.dropdown-menu {
+  font-size: 16px; /* NO-R/EM: 1rem (from Bootstrap via `.dropdown-menu`) */
+}
+
 /* Icons */
 
 /* HACK: Using FontAwesome as placeholder */
@@ -153,8 +152,35 @@ Styleguide Trumps.Scopes.Header
   text-align: center;
 }
 
-/* Dropdown */
+/* Theme-based Icon Colors */
 
-.dropdown-menu {
-  font-size: 16px; /* NO-R/EM: 1rem (from Bootstrap via `.dropdown-menu`) */
+/* Sets theme-based colors for selectors in themes that use third party images for icons or need color overrides. */
+/* This will eventually be superceded by GH-101. */
+
+/* For black icons:
+  - create a selector definition in s-header.css:
+    .selector-target {
+      filter: env(--targeted-selector);
+    };
+  - set the environment_variables value in theme.*.json to inverted value:
+    "environment-variables": {
+      ...
+      "--targeted-selector": "invert(100%)"
+    }
+*/
+
+/* For themed icons using a color:
+  - create a selector definition in s-header.css:
+    .selector-target {
+      mix-blend-mode: "overlay";
+      filter: env(--selector-theme-color);
+    };
+  - set the environment_variables value in theme.*.json to the desired color value:
+    "environment-variables": {
+      ...
+      "--selector-theme-color": "#ABCDEF"
+    } */
+
+.navbar-toggler-icon  {
+  filter: env(--menu-toggle-icon);
 }
