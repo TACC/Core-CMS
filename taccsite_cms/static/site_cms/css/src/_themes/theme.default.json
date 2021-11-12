@@ -4,7 +4,6 @@
   "name": "default",
 
   "environment-variables": {
-
     "// HEADER": "",
     "--header-text-color": "var(--global-color-primary--xx-light)",
     "--header-bkgd-color": "var(--global-color-primary--xx-dark)",
@@ -12,7 +11,8 @@
     "// To 'hide' border by setting its color to match background color": "",
     "--header-major-border-color": "var(--global-color-primary--xx-dark)",
     "--header-search-brdr-color": "var(--global-color-primary--dark)",
-    "--header-search-bkgd-color": "#313131"
-
+    "--header-search-bkgd-color": "#313131",
+    "// To set the bootstrap navbar-toggler-icon svg color for current theme": "",
+    "--menu-toggle-icon": "none"
   }
 }

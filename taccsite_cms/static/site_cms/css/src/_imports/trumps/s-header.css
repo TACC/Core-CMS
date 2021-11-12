@@ -38,12 +38,9 @@ Styleguide Trumps.Scopes.Header
   border-bottom: 1px solid env(--header-major-border-color);
 }
 
-
 /* Affiliation */
 
 /* SEE: taccsite_cms/static/site_cms/css/src/_imports/branding_logos.css */
-
-
 
 /* Logo */
 
@@ -55,10 +52,8 @@ Styleguide Trumps.Scopes.Header
   padding: 0;
 
   color: env(--header-text-color);
-  /* text-decoration: none; *//* already provided by Bootstrap */
+  /* text-decoration: none; */ /* already provided by Bootstrap */
 }
-
-
 
 /* Navigation */
 
@@ -107,14 +102,14 @@ Styleguide Trumps.Scopes.Header
   border-width: 0 0 var(--border-width);
   border-style: solid;
   border-color: var(--border-color);
-  margin-bottom: calc( var(--border-width) * -1 );
+  margin-bottom: calc(var(--border-width) * -1);
 }
 /* HACK: Using an ID selector, because Bootstrap has overspecific selectors */
 #s-header .nav-link,
 /* HACK: Support `span.nav-link` having children `a` and `a.dropdown-toggle-split` */
 #s-header .nav-link > a {
   color: env(--header-text-color);
-  /* text-decoration: none; *//* already provided by Bootstrap */
+  /* text-decoration: none; */ /* already provided by Bootstrap */
 }
 
 /* Navigation: Links: Responsive Design */
@@ -128,8 +123,6 @@ Styleguide Trumps.Scopes.Header
   padding-left: 14px; /* NO-R/EM: .875rem (overwrite Bootstrap) */
 }
 
-
-
 /* Search */
 
 /* Create a line between search bar and login */
@@ -140,20 +133,49 @@ Styleguide Trumps.Scopes.Header
   margin-left: 12px;
 }
 
+/* Dropdown */
 
+.dropdown-menu {
+  font-size: 16px; /* NO-R/EM: 1rem (from Bootstrap via `.dropdown-menu`) */
+}
 
 /* Icons */
 
 /* HACK: Using FontAwesome as placeholder */
 .s-header [class*="fa-"] {
-    width: 27px; /* NO-R/EM: 1.25em (from Portal `.fa`—FP-228 will deprecate it) */
-    text-align: center;
+  width: 27px; /* NO-R/EM: 1.25em (from Portal `.fa`—FP-228 will deprecate it) */
+  text-align: center;
 }
 
+/* Theme-based Icon Colors */
 
+/* Sets theme-based colors for selectors in themes that use third party images for icons or need color overrides. */
+/* This will eventually be superceded by GH-101. */
 
-/* Dropdown */
+/* For black icons:
+  - create a selector definition in s-header.css:
+    .selector-target {
+      filter: env(--targeted-selector);
+    };
+  - set the environment_variables value in theme.*.json to inverted value:
+    "environment-variables": {
+      ...
+      "--targeted-selector": "invert(100%)"
+    }
+*/
 
-.dropdown-menu {
-  font-size: 16px; /* NO-R/EM: 1rem (from Bootstrap via `.dropdown-menu`) */
+/* For themed icons using a color:
+  - create a selector definition in s-header.css:
+    .selector-target {
+      mix-blend-mode: "overlay";
+      filter: env(--selector-theme-color);
+    };
+  - set the environment_variables value in theme.*.json to the desired color value:
+    "environment-variables": {
+      ...
+      "--selector-theme-color": "#ABCDEF"
+    } */
+
+.navbar-toggler-icon  {
+  filter: env(--menu-toggle-icon);
 }
