@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [3.5.0] - 2021-11-__: Navbar Toggle Color; v3.3.0 Fixes; OOTB Remote Login
+## [3.5.0] - 2021-11-__: Navbar Toggle Color; OOTB Remote Login; v3.3.0 Fixes
 
 ### Added
 
@@ -199,7 +199,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.0.0] - 2021-03-31
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.3.0...HEAD
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.5.0...HEAD
+[3.5.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.5.0
 [3.3.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.3.0
 [3.0.7]: https://github.com/TACC/Core-CMS/releases/tag/v3.0.7
 [3.0.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.0.0
