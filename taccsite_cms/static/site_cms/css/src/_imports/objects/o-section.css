@@ -7,6 +7,7 @@ Markup: o-section.html
 
 Styleguide Objects.Section
 */
+/* TODO: FP-1318: Move styling of tags (<a>, <h1–6>) to `s-section` */
 @import url("_imports/tools/media-queries.css");
 @import url("_imports/tools/x-layout.css");
 
@@ -237,3 +238,14 @@ Styleguide Objects.Section
 /* NOTE: A `z-index` > 0 is only necessary for sections before banner */
 /* CAVEAT: Any section pop-out el's can NOT overflow atop section after it */
 [class*="o-section--style"] { z-index: 1; }
+
+
+
+
+
+/* Scope (should be moved to `s-section`) */
+/* NOTE: FP-1318: Other should-be-scope CSS (<a>, <h1–6>) is in this file */
+
+[class*="o-section--style"] .c-callout__title {
+  color: var(--global-color-primary--xx-light);
+}

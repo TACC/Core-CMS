@@ -7,7 +7,7 @@ services:
       - .:/code
     ports:
       - 8000:8000
-    command: ['python3', 'manage.py', 'runserver', '0.0.0.0:8000']
+    command: ["python3", "manage.py", "runserver", "0.0.0.0:8000"]
     container_name: core_cms
     hostname: core_cms
     networks:
