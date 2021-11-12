@@ -4,7 +4,6 @@
   "name": "has-dark-logo",
 
   "environment-variables": {
-
     "// HEADER": "",
     "--header-text-color": "var(--global-color-primary--x-dark)",
     "--header-bkgd-color": "var(--global-color-primary--x-light)",
