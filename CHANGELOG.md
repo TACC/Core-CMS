@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [3.5.0] - 2021-11-__: Navbar Toggle Color; OOTB Remote Login; v3.3.0 Fixes
+## [3.5.0] - 2021-11-15: Navbar Toggle Color; OOTB Remote Login; v3.3.0 Fixes
 
 ### Added
 
