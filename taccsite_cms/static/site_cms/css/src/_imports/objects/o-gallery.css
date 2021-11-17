@@ -5,11 +5,12 @@ A gallery of apps to launch, images to view, etc.
 
 _Note: Do not use both `layout-cols` together nor both `layout-rows` together._
 
-.o-gallery--content-image-fit           - Images fill its cell or its container
-.o-gallery--content-align-center        - Align content vert. and horz. center
+.o-gallery--content-image-fit    - Images fill its cell or its container
+.o-gallery--content-align-center - Align content vert. and horz. center
 .o-gallery--layout-cols-equal-set-count - Same width columns, preset col. counts
 .o-gallery--layout-cols-equal-min-width - Same width columns, preset min. width
-.o-gallery--layout-rows-equal           - Rows are all the same height
+.o-gallery--layout-rows-equal-max-height - Same height rows, auto. max. height
+.o-gallery--layout-rows-equal-set-height - Same height rows, preset height
 
 Markup:
 <ul class="o-gallery">
@@ -107,8 +108,16 @@ Styleguide Objects.Grid
 
 /* Layout: Rows: Same Height (equal to height of tallest content in grid) */
 
-.o-gallery--layout-rows-equal {
+.o-gallery--layout-rows-equal-max-height {
   grid-auto-rows: 1fr;
+}
+
+/* Layout: Rows: Same Height, Preset Height */
+
+.o-gallery--layout-rows-equal-set-height {
+  --cell-height: 250px;
+
+  grid-auto-rows: var(--cell-height);
 }
 
 
