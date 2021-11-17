@@ -157,4 +157,5 @@ Styleguide Objects.Grid
 .o-gallery--content-image-fit > figure[class=""] > img,
 .o-gallery--content-image-fit > figure[class*="cms-plugin"] > img {
   flex-grow: 1;
+  min-height: 0; /* to allow flex item to shrink less than actual size */
 }
