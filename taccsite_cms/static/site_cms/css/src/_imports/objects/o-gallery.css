@@ -1,0 +1,151 @@
+/*
+Grid
+
+A gallery of apps to launch, images to view, etc.
+
+_Note: Do not use both `layout-cols` together nor both `layout-rows` together._
+
+.o-gallery--content-image-fit           - Images fill its cell or its container
+.o-gallery--content-align-center        - Align content vert. and horz. center
+.o-gallery--layout-cols-equal-set-count - Same width columns, preset col. counts
+.o-gallery--layout-cols-equal-min-width - Same width columns, preset min. width
+.o-gallery--layout-rows-equal           - Rows are all the same height
+
+Markup:
+<ul class="o-gallery">
+    <li>Apple</li>
+    <li>Banana</li>
+    <li>Grapes</li>
+</ul>
+
+Styleguide Objects.Grid
+*/
+
+
+
+
+
+/* Block */
+
+.o-gallery {
+  --gap: var(--global-space--grid-gap, 15px); /* Bootstrap grid spacing */
+
+  display: grid;
+  gap: var(--gap);
+}
+
+
+
+
+
+/* Elements */
+
+/* Avoid leting image size exceed cell size */
+/* FAQ: An intentionally loose limitation (so user can choose to escape it) */
+/* RFC: Should we use `.o-gallery > * > img` (to limit affected markup)? */
+.o-gallery * img {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+/* Hide content that does exceed cell size */
+/* FAQ: If user escapes image size exceeding cell size, do not make a mess */
+.o-gallery > * {
+  overflow: hidden;
+}
+
+
+
+
+
+
+/* Modifiers */
+
+
+
+/* Layout: Columns */
+
+/* Layout: Columns: Same Width, Preset Col. Count */
+
+.o-gallery--layout-cols-equal-set-count {
+  grid-template-columns: repeat(var(--cell-cols), auto);
+}
+/* On narrowest viewport, one column */
+@media (--x-narrow-and-below) {
+  .o-gallery--layout-cols-equal-set-count {
+    --cell-cols: 1;
+  }
+}
+/* On narrow viewport, less columns */
+@media (--x-narrow-to-narrow) {
+  .o-gallery--layout-cols-equal-set-count {
+    --cell-cols: 2;
+  }
+}
+/* On any wider viewport, more columns */
+@media (--narrow-and-above) {
+  .o-gallery--layout-cols-equal-set-count {
+    --cell-cols: 3;
+  }
+}
+
+/* Layout: Columns: Same Width, Preset Min. Width */
+
+.o-gallery--layout-cols-equal-min-width {
+  --cell-width: minmax(250px, 1fr);
+
+  grid-template-columns: repeat(auto-fit, var(--cell-width));
+}
+.o-gallery--layout-cols-equal-min-width > * {
+  max-width: 100%; /* used if `--cell-width` is smaller than content */
+  max-height: 100%; /* used if `--cell-height` is smaller than content */
+}
+
+
+
+/* Layout: Rows */
+
+/* Layout: Rows: Same Height (equal to height of tallest content in grid) */
+
+.o-gallery--layout-rows-equal {
+  grid-auto-rows: 1fr;
+}
+
+
+
+/* Layout: Content */
+
+/* Layout: Content: Align Vert/Horz Center */
+
+.o-gallery--content-align-center {
+  justify-items: center;
+  align-items: center;
+}
+
+/* Layout: Content: Image Fills Cell/Container */
+
+.o-gallery--content-image-fit > *:not(img) {
+  width: 100%;
+  height: 100%;
+}
+.o-gallery--content-image-fit > img,
+.o-gallery--content-image-fit > figure > img,
+.o-gallery--content-image-fit * img:only-child {
+  object-fit: cover;
+
+  height: 100%;
+  width: 100%;
+}
+/* Figures without classes for styling */
+/* FAQ: Plugins in CMS Edit mode have this first if no other classes */
+.o-gallery--content-image-fit > figure:not([class]),
+.o-gallery--content-image-fit > figure[class=""],
+.o-gallery--content-image-fit > figure[class*="cms-plugin"] {
+  display: flex;
+  flex-direction: column;
+}
+.o-gallery--content-image-fit > figure:not([class]) > img,
+.o-gallery--content-image-fit > figure[class=""] > img,
+.o-gallery--content-image-fit > figure[class*="cms-plugin"] > img {
+  flex-grow: 1;
+}
