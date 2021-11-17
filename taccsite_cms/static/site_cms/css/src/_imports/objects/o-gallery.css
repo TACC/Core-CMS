@@ -97,7 +97,8 @@ Styleguide Objects.Grid
 
   grid-template-columns: repeat(auto-fit, var(--cell-width));
 }
-.o-gallery--layout-cols-equal-min-width > * {
+/* FAQ: Specifying `:not(img)` cuz `.o-gallery img` already has `max-…: 100%` */
+.o-gallery--layout-cols-equal-min-width > *:not(img) {
   max-width: 100%; /* used if `--cell-width` is smaller than content */
   max-height: 100%; /* used if `--cell-height` is smaller than content */
 }
