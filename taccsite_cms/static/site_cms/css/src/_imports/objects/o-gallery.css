@@ -43,8 +43,7 @@ Styleguide Objects.Grid
 
 /* Avoid leting image size exceed cell size */
 /* FAQ: An intentionally loose limitation (so user can choose to escape it) */
-/* RFC: Should we use `.o-gallery > * > img` (to limit affected markup)? */
-.o-gallery * img {
+.o-gallery img {
   max-height: 100%;
   max-width: 100%;
 }
