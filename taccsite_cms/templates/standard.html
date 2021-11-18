@@ -12,6 +12,13 @@
   /* HACK: Using ID until upstream updates markup via `quick/create-and-document-element-stylesheets` */
   #content-wrap { overflow: hidden; }
   </style>
+  <style type="text/css">
+  main,
+  /* HACK: Using ID until upstream updates markup via `quick/create-and-document-element-stylesheets` */
+  #content-wrap {
+      padding-bottom: var(--global-space--beneath-main-content);
+  }
+  </style>
 {% endblock assets_custom %}
 
 {% block title %}{% page_attribute "page_title" %}{% endblock title %}
