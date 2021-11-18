@@ -1,0 +1,14 @@
+/*
+Text
+
+Ways to tweak text (usually from WYSIWIG markup).
+
+.u-text--large - Larger than normal text
+
+Styleguide Utilities.Text
+*/
+
+/* NOTE: To avoid Atomic CSS, add these only as necessary or requested */
+.u-text--large {
+  font-size: var(--global-font-size--large);
+}
