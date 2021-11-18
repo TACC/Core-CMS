@@ -1,14 +1,12 @@
 /*
 Grid
 
-A gallery of apps to launch, images to view, etc.
+A grid of items e.g. images, avatars, article previews.
 
-_Note: Do not use both `layout-cols` together nor both `layout-rows` together._
-
-.o-grid--image-fill    - Images fill its cell or its container
-.o-grid--center-align  - Align content vertically and horizontally center
-.o-grid--auto-col-count - Same width columns; automatic column count
-.o-grid--min-col-width - Same width columns; default, variable minimum width (custom properties: `--width`)
+.o-grid--image-fill     - Image fills its cell or container which fills cell (supports: `<img>`, `<img>` in `<figure>` (no class), `<img>` in `<a>`)
+.o-grid--center-align   - Align content vertically and horizontally center
+.o-grid--auto-col-count - Same width columns; wider window equals more columns
+.o-grid--min-col-width  - Same width columns; auto. column count; minimum width (custom properties: `--width`)
 
 Markup:
 <ul class="o-grid">
