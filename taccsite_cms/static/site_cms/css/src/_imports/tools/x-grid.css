@@ -10,6 +10,7 @@ Reference:
 .x-grid--layout-rows-equal-set-height - Same height rows, default var. height (custom properties: `--cell-height`)
 .x-grid--layout-cols-equal-set-count  - Same width columns, auto. column count (custom properties: `--cell-cols`)
 .x-grid--layout-cols-equal-min-width  - Same width columns, default min. width (custom properties: `--min-width`)
+.x-grid--content-align-center         - Align content vert. and horz. center
 
 Styleguide Tools.ExtendsAndMixins.Grid
 */
@@ -19,6 +20,8 @@ Styleguide Tools.ExtendsAndMixins.Grid
 
 
 /* Layout */
+
+
 
 /* Layout: Columns */
 
@@ -54,4 +57,19 @@ Styleguide Tools.ExtendsAndMixins.Grid
   /* --cell-height */
 
   grid-auto-rows: var(--cell-height);
+}
+
+
+
+
+
+/* Content */
+
+
+
+/* Content: Align Vert/Horz Center */
+
+%x-grid--content-align-center {
+  justify-items: center;
+  align-items: center;
 }

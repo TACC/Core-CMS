@@ -121,8 +121,7 @@ Styleguide Objects.Grid
 /* Layout: Content: Align Vert/Horz Center */
 
 .o-gallery--content-align-center {
-  justify-items: center;
-  align-items: center;
+  @extend %x-grid--content-align-center;
 }
 
 /* Layout: Content: Image Fills Cell/Container */
