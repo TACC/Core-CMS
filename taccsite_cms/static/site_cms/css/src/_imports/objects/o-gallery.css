@@ -71,7 +71,7 @@ Styleguide Objects.Grid
 /* Layout: Columns: Same Width, Preset Col. Count */
 
 .o-gallery--layout-cols-set-count {
-  grid-template-columns: repeat(var(--cell-cols), auto);
+  @extend %x-grid--layout-cols-equal-set-count;
 }
 @media (--x-narrow-and-below) {
   .o-gallery--layout-cols-set-count { --cell-cols: 1; }
@@ -106,7 +106,7 @@ Styleguide Objects.Grid
 .o-gallery--layout-cols-min-width {
   --min-width: 250px;
 
-  grid-template-columns: repeat(auto-fit, minmax(var(--min-width), 1fr));
+  @extend %x-grid--layout-equal-cols-min-width;
 }
 /* FAQ: Specifying `:not(img)` cuz `.o-gallery img` already has `max-…: 100%` */
 .o-gallery--layout-cols-min-width > *:not(img) {

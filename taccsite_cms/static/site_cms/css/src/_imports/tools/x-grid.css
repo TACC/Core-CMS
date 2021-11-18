@@ -8,6 +8,8 @@ Reference:
 
 .x-grid--layout-rows-equal-max-height - Same height rows, match tallest content
 .x-grid--layout-rows-equal-set-height - Same height rows, default var. height
+.x-grid--layout-cols-equal-set-count  - Same width columns, auto. column count (custom properties: `--cell-cols`)
+.x-grid--layout-cols-equal-min-width  - Same width columns, default min. width (custom properties: `--min-width`)
 
 Styleguide Tools.ExtendsAndMixins.Grid
 */
@@ -17,6 +19,26 @@ Styleguide Tools.ExtendsAndMixins.Grid
 
 
 /* Layout */
+
+/* Layout: Columns */
+
+/* Layout: Columns: Same Width, Preset Col. Count */
+
+%x-grid--layout-cols-equal-set-count {
+  /* --cell-cols */
+
+  grid-template-columns: repeat(var(--cell-cols), auto);
+}
+
+/* Layout: Columns: Same Width, Preset Min. Width */
+
+%x-grid--layout-equal-cols-min-width {
+  /* --min-width */
+
+  grid-template-columns: repeat(auto-fit, minmax(var(--min-width), 1fr));
+}
+
+
 
 /* Layout: Rows */
 
