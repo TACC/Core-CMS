@@ -5,10 +5,10 @@ A gallery of apps to launch, images to view, etc.
 
 _Note: Do not use both `layout-cols` together nor both `layout-rows` together._
 
-.o-grid--content-image-fit    - Images fill its cell or its container
-.o-grid--content-align-center - Align content vert. and horz. center
-.o-grid--layout-cols-set-count - Same width columns, auto. col. count
-.o-grid--layout-cols-min-width - Same width columns, default min. width
+.o-grid--image-fill    - Images fill its cell or its container
+.o-grid--center-align  - Align content vertically and horizontally center
+.o-grid--set-col-count - Same width columns; automatic column count
+.o-grid--min-col-width - Same width columns; default, variable minimum width (custom properties: `--width`)
 
 Markup:
 <ul class="o-grid">
@@ -70,46 +70,46 @@ Styleguide Objects.Grid
 
 /* Layout: Columns: Same Width, Preset Col. Count */
 
-.o-grid--layout-cols-set-count {
+.o-grid--set-col-count {
   @extend %x-grid--layout-cols-equal-set-count;
 }
 @media (--x-narrow-and-below) {
-  .o-grid--layout-cols-set-count { --cell-cols: 1; }
+  .o-grid--set-col-count { --count: 1; }
 }
 @media (--x-narrow-to-narrow) {
-  .o-grid--layout-cols-set-count { --cell-cols: 2; }
+  .o-grid--set-col-count { --count: 2; }
 }
 @media (--narrow-to-medium) {
-  .o-grid--layout-cols-set-count { --cell-cols: 3; }
+  .o-grid--set-col-count { --count: 3; }
 }
 @media (--medium-to-wide) {
-  .o-grid--layout-cols-set-count { --cell-cols: 4; }
+  .o-grid--set-col-count { --count: 4; }
 }
 @media (--wide-to-x-wide) {
-  .o-grid--layout-cols-set-count { --cell-cols: 5; }
+  .o-grid--set-col-count { --count: 5; }
 }
 @media (--x-wide-to-xx-wide) {
-  .o-grid--layout-cols-set-count { --cell-cols: 6; }
+  .o-grid--set-col-count { --count: 6; }
 }
 @media (--xx-wide-to-xxx-wide) {
-  .o-grid--layout-cols-set-count { --cell-cols: 7; }
+  .o-grid--set-col-count { --count: 7; }
 }
 @media (--xxx-wide-to-max-wide) {
-  .o-grid--layout-cols-set-count { --cell-cols: 8; }
+  .o-grid--set-col-count { --count: 8; }
 }
 @media (--max-wide-and-above) {
-  .o-grid--layout-cols-set-count { --cell-cols: 9; }
+  .o-grid--set-col-count { --count: 9; }
 }
 
 /* Layout: Columns: Same Width, Preset Min. Width */
 
-.o-grid--layout-cols-min-width {
-  --min-width: 250px;
+.o-grid--min-col-width {
+  --width: 250px;
 
   @extend %x-grid--layout-equal-cols-min-width;
 }
 /* FAQ: Specifying `:not(img)` cuz `.o-grid img` already has `max-…: 100%` */
-.o-grid--layout-cols-min-width > *:not(img) {
+.o-grid--min-col-width > *:not(img) {
   max-width: 100%; /* used if `--cell-width` is smaller than content */
   max-height: 100%; /* used if `--cell-height` is smaller than content */
 }
@@ -120,19 +120,19 @@ Styleguide Objects.Grid
 
 /* Layout: Content: Align Vert/Horz Center */
 
-.o-grid--content-align-center {
+.o-grid--center-align {
   @extend %x-grid--content-align-center;
 }
 
 /* Layout: Content: Image Fills Cell/Container */
 
-.o-grid--content-image-fit > *:not(img) {
+.o-grid--image-fill > *:not(img) {
   width: 100%;
   height: 100%;
 }
-.o-grid--content-image-fit > img,
-.o-grid--content-image-fit > figure > img,
-.o-grid--content-image-fit * img:only-child {
+.o-grid--image-fill > img,
+.o-grid--image-fill > figure > img,
+.o-grid--image-fill * img:only-child {
   object-fit: cover;
 
   height: 100%;
@@ -140,15 +140,15 @@ Styleguide Objects.Grid
 }
 /* Figures without classes for styling */
 /* FAQ: Plugins in CMS Edit mode have this first if no other classes */
-.o-grid--content-image-fit > figure:not([class]),
-.o-grid--content-image-fit > figure[class=""],
-.o-grid--content-image-fit > figure[class*="cms-plugin"] {
+.o-grid--image-fill > figure:not([class]),
+.o-grid--image-fill > figure[class=""],
+.o-grid--image-fill > figure[class*="cms-plugin"] {
   display: flex;
   flex-direction: column;
 }
-.o-grid--content-image-fit > figure:not([class]) > img,
-.o-grid--content-image-fit > figure[class=""] > img,
-.o-grid--content-image-fit > figure[class*="cms-plugin"] > img {
+.o-grid--image-fill > figure:not([class]) > img,
+.o-grid--image-fill > figure[class=""] > img,
+.o-grid--image-fill > figure[class*="cms-plugin"] > img {
   flex-grow: 1;
   min-height: 0; /* to allow flex item to shrink less than actual size */
 }
