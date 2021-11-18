@@ -7,7 +7,7 @@ Reference:
 - [A Complete Guide to Grid](https://css-tricks.com/snippets/css/complete-guide-grid/)
 
 .x-grid--layout-rows-equal-max-height - Same height rows, match tallest content
-.x-grid--layout-rows-equal-set-height - Same height rows, default var. height
+.x-grid--layout-rows-equal-set-height - Same height rows, default var. height (custom properties: `--cell-height`)
 .x-grid--layout-cols-equal-set-count  - Same width columns, auto. column count (custom properties: `--cell-cols`)
 .x-grid--layout-cols-equal-min-width  - Same width columns, default min. width (custom properties: `--min-width`)
 
@@ -51,7 +51,7 @@ Styleguide Tools.ExtendsAndMixins.Grid
 /* Layout: Rows: Same Height (equal to default, variable value) */
 
 %x-grid--layout-rows-equal-set-height {
-  --cell-height: 250px;
+  /* --cell-height */
 
   grid-auto-rows: var(--cell-height);
 }
