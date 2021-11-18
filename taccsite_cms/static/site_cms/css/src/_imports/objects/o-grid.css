@@ -124,13 +124,13 @@ Styleguide Objects.Grid
 
 /* Layout: Content: Image Fills Cell/Container */
 
-.o-grid--image-fill > *:not(img) {
+.o-grid--image-fill > :is(a, figure):not(img) {
   width: 100%;
   height: 100%;
 }
 .o-grid--image-fill > img,
 .o-grid--image-fill > figure > img,
-.o-grid--image-fill * img:only-child {
+.o-grid--image-fill > a > img:only-child {
   object-fit: cover;
 
   height: 100%;
