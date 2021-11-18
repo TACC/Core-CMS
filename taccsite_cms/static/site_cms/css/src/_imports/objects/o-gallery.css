@@ -8,7 +8,7 @@ _Note: Do not use both `layout-cols` together nor both `layout-rows` together._
 .o-gallery--content-image-fit    - Images fill its cell or its container
 .o-gallery--content-align-center - Align content vert. and horz. center
 .o-gallery--layout-cols-equal-set-count - Same width columns, auto. col. count
-.o-gallery--layout-cols-equal-min-width - Same width columns, preset min. width
+.o-gallery--layout-cols-equal-min-width - Same width columns, default min. width
 .o-gallery--layout-rows-equal-max-height - Same height rows, auto. max. height
 
 Markup:
@@ -101,9 +101,9 @@ Styleguide Objects.Grid
 /* Layout: Columns: Same Width, Preset Min. Width */
 
 .o-gallery--layout-cols-equal-min-width {
-  --cell-width: minmax(250px, 1fr);
+  --min-width: 250px;
 
-  grid-template-columns: repeat(auto-fit, var(--cell-width));
+  grid-template-columns: repeat(auto-fit, minmax(var(--min-width), 1fr));
 }
 /* FAQ: Specifying `:not(img)` cuz `.o-gallery img` already has `max-…: 100%` */
 .o-gallery--layout-cols-equal-min-width > *:not(img) {
