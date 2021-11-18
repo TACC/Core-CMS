@@ -1,0 +1,102 @@
+/*
+Recognition (Citation, Acknowledgemnt)
+
+A callout (often legal or obligatory) of recognition for an entity.
+
+.c-recognition--style-dark  - A dark background and light text
+.c-recognition--style-light - A light background and dark text
+
+Markup:
+<aside class="c-recognition c-recognition--style-dark">
+    <h3>Citation</h3>
+    <p>Teams who have NSF Petascale Computational Resource (PRAC) Awards should also acknowledge those awards.</p>
+    <p>Dan Stanzione, John West, R. Todd Evans, Tommy Minyard, Omar Ghattas, and Dhabaleswar K. Panda. 2020. Frontera: The Evolution of Leadership Computing at the National Science Foundation. In Practice and Experience in Advanced Research Computing (PEARC ’20), July 26–30, 2020, Portland, OR, USA. ACM, New York, NY, USA, 11 pages. https://doi.org/ 10.1145/3311790.3396656</p>
+</aside>
+<aside class="c-recognition c-recognition--style-light">
+    <h3>Acknowledgement</h3>
+    <p>Please use the following statement when acknowledging use of computational time on Frontera, or help from the support team.</p>
+    <p>This research is part of the Frontera computing project at the Texas Advanced Computing Center. Frontera is made possible by National Science Foundation award OAC-1818253.</p>
+</aside>
+
+Styleguide Components.Recognition
+*/
+
+
+
+
+
+/* Block */
+
+.c-recognition {
+  font-size: var(--global-font-size--small);
+}
+
+.c-recognition,
+/* To overwrite Bootstrap */
+.no-gutters > .col.c-recognition,
+.no-gutters > [class*=col-].c-recognition {
+  padding: 0 2.14em;
+}
+
+
+
+
+
+/* Elements */
+
+.c-recognition h3 {
+  margin-top: 0.7em;
+}
+.c-recognition > p:last-child {
+  margin-bottom: 1.4em;
+}
+
+
+
+
+
+/* Modifiers */
+
+
+
+/* Modifers: Style: Dark */
+
+.c-recognition--style-dark {
+  color: var(--global-color-primary--xx-light);
+  background-color: var(--global-color-primary--xx-dark);
+}
+.c-recognition--style-dark a {
+  color: var(--global-color-link-on-dark--normal);
+}
+.c-recognition--style-dark h1,
+.c-recognition--style-dark h2,
+.c-recognition--style-dark h3,
+.c-recognition--style-dark h4,
+.c-recognition--style-dark h5,
+.c-recognition--style-dark h6 {
+  color: var(--global-color-accent--normal);
+}
+
+
+
+/* Modifers: Style: Light */
+
+.c-recognition--style-light {
+  color: var(--global-color-primary--dark);
+  background-color: var(--global-color-primary--xx-light);
+
+  border-width: var(--global-border-width--normal) 0;
+  border-style: solid;
+  border-color: var(--global-color-primary--xx-dark);
+}
+.c-recognition--style-light a {
+  color: var(--global-color-link-on-light--normal);
+}
+.c-recognition--style-light h1,
+.c-recognition--style-light h2,
+.c-recognition--style-light h3,
+.c-recognition--style-light h4,
+.c-recognition--style-light h5,
+.c-recognition--style-light h6 {
+  color: var(--global-color-primary--xx-dark);
+}
