@@ -9,7 +9,6 @@ _Note: Do not use both `layout-cols` together nor both `layout-rows` together._
 .o-gallery--content-align-center - Align content vert. and horz. center
 .o-gallery--layout-cols-set-count - Same width columns, auto. col. count
 .o-gallery--layout-cols-min-width - Same width columns, default min. width
-.o-gallery--layout-rows-max-height - Same height rows, auto. max. height
 
 Markup:
 <ul class="o-gallery">
@@ -21,6 +20,7 @@ Markup:
 Styleguide Objects.Grid
 */
 @import url("_imports/tools/media-queries.css");
+@import url("_imports/tools/x-grid.css");
 
 
 
@@ -33,6 +33,9 @@ Styleguide Objects.Grid
 
   display: grid;
   gap: var(--gap);
+
+  /* To always have equal height rows that match tallest content */
+  @extend %x-grid--layout-rows-equal-max-height;
 }
 
 
@@ -109,16 +112,6 @@ Styleguide Objects.Grid
 .o-gallery--layout-cols-min-width > *:not(img) {
   max-width: 100%; /* used if `--cell-width` is smaller than content */
   max-height: 100%; /* used if `--cell-height` is smaller than content */
-}
-
-
-
-/* Layout: Rows */
-
-/* Layout: Rows: Same Height (equal to height of tallest content in grid) */
-
-.o-gallery--layout-rows-max-height {
-  grid-auto-rows: 1fr;
 }
 
 

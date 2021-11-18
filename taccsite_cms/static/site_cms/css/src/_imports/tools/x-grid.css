@@ -1,0 +1,26 @@
+/*
+Grid
+
+Snippets i.e. atomic abstractions of useful grid functionality.
+
+Reference:
+- [A Complete Guide to Grid](https://css-tricks.com/snippets/css/complete-guide-grid/)
+
+.x-grid--layout-rows-equal-max-height - Same height rows, match tallest content
+
+Styleguide Tools.ExtendsAndMixins.Grid
+*/
+
+
+
+
+
+/* Layout */
+
+/* Layout: Rows */
+
+/* Layout: Rows: Same Height (equal to height of tallest content in grid) */
+
+%x-grid--layout-rows-equal-max-height {
+  grid-auto-rows: 1fr;
+}
