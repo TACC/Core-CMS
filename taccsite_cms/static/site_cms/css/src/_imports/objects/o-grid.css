@@ -5,13 +5,13 @@ A gallery of apps to launch, images to view, etc.
 
 _Note: Do not use both `layout-cols` together nor both `layout-rows` together._
 
-.o-gallery--content-image-fit    - Images fill its cell or its container
-.o-gallery--content-align-center - Align content vert. and horz. center
-.o-gallery--layout-cols-set-count - Same width columns, auto. col. count
-.o-gallery--layout-cols-min-width - Same width columns, default min. width
+.o-grid--content-image-fit    - Images fill its cell or its container
+.o-grid--content-align-center - Align content vert. and horz. center
+.o-grid--layout-cols-set-count - Same width columns, auto. col. count
+.o-grid--layout-cols-min-width - Same width columns, default min. width
 
 Markup:
-<ul class="o-gallery">
+<ul class="o-grid">
     <li>Apple</li>
     <li>Banana</li>
     <li>Grapes</li>
@@ -28,7 +28,7 @@ Styleguide Objects.Grid
 
 /* Block */
 
-.o-gallery {
+.o-grid {
   --gap: var(--global-space--grid-gap, 15px); /* Bootstrap grid spacing */
 
   display: grid;
@@ -46,14 +46,14 @@ Styleguide Objects.Grid
 
 /* Avoid leting image size exceed cell size */
 /* FAQ: An intentionally loose limitation (so user can choose to escape it) */
-.o-gallery img {
+.o-grid img {
   max-height: 100%;
   max-width: 100%;
 }
 
 /* Hide content that does exceed cell size */
 /* FAQ: If user escapes image size exceeding cell size, do not make a mess */
-.o-gallery > * {
+.o-grid > * {
   overflow: hidden;
 }
 
@@ -70,46 +70,46 @@ Styleguide Objects.Grid
 
 /* Layout: Columns: Same Width, Preset Col. Count */
 
-.o-gallery--layout-cols-set-count {
+.o-grid--layout-cols-set-count {
   @extend %x-grid--layout-cols-equal-set-count;
 }
 @media (--x-narrow-and-below) {
-  .o-gallery--layout-cols-set-count { --cell-cols: 1; }
+  .o-grid--layout-cols-set-count { --cell-cols: 1; }
 }
 @media (--x-narrow-to-narrow) {
-  .o-gallery--layout-cols-set-count { --cell-cols: 2; }
+  .o-grid--layout-cols-set-count { --cell-cols: 2; }
 }
 @media (--narrow-to-medium) {
-  .o-gallery--layout-cols-set-count { --cell-cols: 3; }
+  .o-grid--layout-cols-set-count { --cell-cols: 3; }
 }
 @media (--medium-to-wide) {
-  .o-gallery--layout-cols-set-count { --cell-cols: 4; }
+  .o-grid--layout-cols-set-count { --cell-cols: 4; }
 }
 @media (--wide-to-x-wide) {
-  .o-gallery--layout-cols-set-count { --cell-cols: 5; }
+  .o-grid--layout-cols-set-count { --cell-cols: 5; }
 }
 @media (--x-wide-to-xx-wide) {
-  .o-gallery--layout-cols-set-count { --cell-cols: 6; }
+  .o-grid--layout-cols-set-count { --cell-cols: 6; }
 }
 @media (--xx-wide-to-xxx-wide) {
-  .o-gallery--layout-cols-set-count { --cell-cols: 7; }
+  .o-grid--layout-cols-set-count { --cell-cols: 7; }
 }
 @media (--xxx-wide-to-max-wide) {
-  .o-gallery--layout-cols-set-count { --cell-cols: 8; }
+  .o-grid--layout-cols-set-count { --cell-cols: 8; }
 }
 @media (--max-wide-and-above) {
-  .o-gallery--layout-cols-set-count { --cell-cols: 9; }
+  .o-grid--layout-cols-set-count { --cell-cols: 9; }
 }
 
 /* Layout: Columns: Same Width, Preset Min. Width */
 
-.o-gallery--layout-cols-min-width {
+.o-grid--layout-cols-min-width {
   --min-width: 250px;
 
   @extend %x-grid--layout-equal-cols-min-width;
 }
-/* FAQ: Specifying `:not(img)` cuz `.o-gallery img` already has `max-…: 100%` */
-.o-gallery--layout-cols-min-width > *:not(img) {
+/* FAQ: Specifying `:not(img)` cuz `.o-grid img` already has `max-…: 100%` */
+.o-grid--layout-cols-min-width > *:not(img) {
   max-width: 100%; /* used if `--cell-width` is smaller than content */
   max-height: 100%; /* used if `--cell-height` is smaller than content */
 }
@@ -120,19 +120,19 @@ Styleguide Objects.Grid
 
 /* Layout: Content: Align Vert/Horz Center */
 
-.o-gallery--content-align-center {
+.o-grid--content-align-center {
   @extend %x-grid--content-align-center;
 }
 
 /* Layout: Content: Image Fills Cell/Container */
 
-.o-gallery--content-image-fit > *:not(img) {
+.o-grid--content-image-fit > *:not(img) {
   width: 100%;
   height: 100%;
 }
-.o-gallery--content-image-fit > img,
-.o-gallery--content-image-fit > figure > img,
-.o-gallery--content-image-fit * img:only-child {
+.o-grid--content-image-fit > img,
+.o-grid--content-image-fit > figure > img,
+.o-grid--content-image-fit * img:only-child {
   object-fit: cover;
 
   height: 100%;
@@ -140,15 +140,15 @@ Styleguide Objects.Grid
 }
 /* Figures without classes for styling */
 /* FAQ: Plugins in CMS Edit mode have this first if no other classes */
-.o-gallery--content-image-fit > figure:not([class]),
-.o-gallery--content-image-fit > figure[class=""],
-.o-gallery--content-image-fit > figure[class*="cms-plugin"] {
+.o-grid--content-image-fit > figure:not([class]),
+.o-grid--content-image-fit > figure[class=""],
+.o-grid--content-image-fit > figure[class*="cms-plugin"] {
   display: flex;
   flex-direction: column;
 }
-.o-gallery--content-image-fit > figure:not([class]) > img,
-.o-gallery--content-image-fit > figure[class=""] > img,
-.o-gallery--content-image-fit > figure[class*="cms-plugin"] > img {
+.o-grid--content-image-fit > figure:not([class]) > img,
+.o-grid--content-image-fit > figure[class=""] > img,
+.o-grid--content-image-fit > figure[class*="cms-plugin"] > img {
   flex-grow: 1;
   min-height: 0; /* to allow flex item to shrink less than actual size */
 }
