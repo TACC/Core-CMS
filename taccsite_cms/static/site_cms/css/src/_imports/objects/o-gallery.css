@@ -7,9 +7,9 @@ _Note: Do not use both `layout-cols` together nor both `layout-rows` together._
 
 .o-gallery--content-image-fit    - Images fill its cell or its container
 .o-gallery--content-align-center - Align content vert. and horz. center
-.o-gallery--layout-cols-equal-set-count - Same width columns, auto. col. count
-.o-gallery--layout-cols-equal-min-width - Same width columns, default min. width
-.o-gallery--layout-rows-equal-max-height - Same height rows, auto. max. height
+.o-gallery--layout-cols-set-count - Same width columns, auto. col. count
+.o-gallery--layout-cols-min-width - Same width columns, default min. width
+.o-gallery--layout-rows-max-height - Same height rows, auto. max. height
 
 Markup:
 <ul class="o-gallery">
@@ -67,46 +67,46 @@ Styleguide Objects.Grid
 
 /* Layout: Columns: Same Width, Preset Col. Count */
 
-.o-gallery--layout-cols-equal-set-count {
+.o-gallery--layout-cols-set-count {
   grid-template-columns: repeat(var(--cell-cols), auto);
 }
 @media (--x-narrow-and-below) {
-  .o-gallery--layout-cols-equal-set-count { --cell-cols: 1; }
+  .o-gallery--layout-cols-set-count { --cell-cols: 1; }
 }
 @media (--x-narrow-to-narrow) {
-  .o-gallery--layout-cols-equal-set-count { --cell-cols: 2; }
+  .o-gallery--layout-cols-set-count { --cell-cols: 2; }
 }
 @media (--narrow-to-medium) {
-  .o-gallery--layout-cols-equal-set-count { --cell-cols: 3; }
+  .o-gallery--layout-cols-set-count { --cell-cols: 3; }
 }
 @media (--medium-to-wide) {
-  .o-gallery--layout-cols-equal-set-count { --cell-cols: 4; }
+  .o-gallery--layout-cols-set-count { --cell-cols: 4; }
 }
 @media (--wide-to-x-wide) {
-  .o-gallery--layout-cols-equal-set-count { --cell-cols: 5; }
+  .o-gallery--layout-cols-set-count { --cell-cols: 5; }
 }
 @media (--x-wide-to-xx-wide) {
-  .o-gallery--layout-cols-equal-set-count { --cell-cols: 6; }
+  .o-gallery--layout-cols-set-count { --cell-cols: 6; }
 }
 @media (--xx-wide-to-xxx-wide) {
-  .o-gallery--layout-cols-equal-set-count { --cell-cols: 7; }
+  .o-gallery--layout-cols-set-count { --cell-cols: 7; }
 }
 @media (--xxx-wide-to-max-wide) {
-  .o-gallery--layout-cols-equal-set-count { --cell-cols: 8; }
+  .o-gallery--layout-cols-set-count { --cell-cols: 8; }
 }
 @media (--max-wide-and-above) {
-  .o-gallery--layout-cols-equal-set-count { --cell-cols: 9; }
+  .o-gallery--layout-cols-set-count { --cell-cols: 9; }
 }
 
 /* Layout: Columns: Same Width, Preset Min. Width */
 
-.o-gallery--layout-cols-equal-min-width {
+.o-gallery--layout-cols-min-width {
   --min-width: 250px;
 
   grid-template-columns: repeat(auto-fit, minmax(var(--min-width), 1fr));
 }
 /* FAQ: Specifying `:not(img)` cuz `.o-gallery img` already has `max-…: 100%` */
-.o-gallery--layout-cols-equal-min-width > *:not(img) {
+.o-gallery--layout-cols-min-width > *:not(img) {
   max-width: 100%; /* used if `--cell-width` is smaller than content */
   max-height: 100%; /* used if `--cell-height` is smaller than content */
 }
@@ -117,7 +117,7 @@ Styleguide Objects.Grid
 
 /* Layout: Rows: Same Height (equal to height of tallest content in grid) */
 
-.o-gallery--layout-rows-equal-max-height {
+.o-gallery--layout-rows-max-height {
   grid-auto-rows: 1fr;
 }
 
