@@ -7,7 +7,7 @@ _Note: Do not use both `layout-cols` together nor both `layout-rows` together._
 
 .o-grid--image-fill    - Images fill its cell or its container
 .o-grid--center-align  - Align content vertically and horizontally center
-.o-grid--set-col-count - Same width columns; automatic column count
+.o-grid--auto-col-count - Same width columns; automatic column count
 .o-grid--min-col-width - Same width columns; default, variable minimum width (custom properties: `--width`)
 
 Markup:
@@ -70,35 +70,35 @@ Styleguide Objects.Grid
 
 /* Layout: Columns: Same Width, Preset Col. Count */
 
-.o-grid--set-col-count {
+.o-grid--auto-col-count {
   @extend %x-grid--layout-cols-equal-set-count;
 }
 @media (--x-narrow-and-below) {
-  .o-grid--set-col-count { --count: 1; }
+  .o-grid--auto-col-count { --count: 1; }
 }
 @media (--x-narrow-to-narrow) {
-  .o-grid--set-col-count { --count: 2; }
+  .o-grid--auto-col-count { --count: 2; }
 }
 @media (--narrow-to-medium) {
-  .o-grid--set-col-count { --count: 3; }
+  .o-grid--auto-col-count { --count: 3; }
 }
 @media (--medium-to-wide) {
-  .o-grid--set-col-count { --count: 4; }
+  .o-grid--auto-col-count { --count: 4; }
 }
 @media (--wide-to-x-wide) {
-  .o-grid--set-col-count { --count: 5; }
+  .o-grid--auto-col-count { --count: 5; }
 }
 @media (--x-wide-to-xx-wide) {
-  .o-grid--set-col-count { --count: 6; }
+  .o-grid--auto-col-count { --count: 6; }
 }
 @media (--xx-wide-to-xxx-wide) {
-  .o-grid--set-col-count { --count: 7; }
+  .o-grid--auto-col-count { --count: 7; }
 }
 @media (--xxx-wide-to-max-wide) {
-  .o-grid--set-col-count { --count: 8; }
+  .o-grid--auto-col-count { --count: 8; }
 }
 @media (--max-wide-and-above) {
-  .o-grid--set-col-count { --count: 9; }
+  .o-grid--auto-col-count { --count: 9; }
 }
 
 /* Layout: Columns: Same Width, Preset Min. Width */
