@@ -7,7 +7,7 @@ _Note: Do not use both `layout-cols` together nor both `layout-rows` together._
 
 .o-gallery--content-image-fit    - Images fill its cell or its container
 .o-gallery--content-align-center - Align content vert. and horz. center
-.o-gallery--layout-cols-equal-set-count - Same width columns, preset col. counts
+.o-gallery--layout-cols-equal-set-count - Same width columns, auto. col. count
 .o-gallery--layout-cols-equal-min-width - Same width columns, preset min. width
 .o-gallery--layout-rows-equal-max-height - Same height rows, auto. max. height
 .o-gallery--layout-rows-equal-set-height - Same height rows, preset height
@@ -71,23 +71,32 @@ Styleguide Objects.Grid
 .o-gallery--layout-cols-equal-set-count {
   grid-template-columns: repeat(var(--cell-cols), auto);
 }
-/* On narrowest viewport, one column */
 @media (--x-narrow-and-below) {
-  .o-gallery--layout-cols-equal-set-count {
-    --cell-cols: 1;
-  }
+  .o-gallery--layout-cols-equal-set-count { --cell-cols: 1; }
 }
-/* On narrow viewport, less columns */
 @media (--x-narrow-to-narrow) {
-  .o-gallery--layout-cols-equal-set-count {
-    --cell-cols: 2;
-  }
+  .o-gallery--layout-cols-equal-set-count { --cell-cols: 2; }
 }
-/* On any wider viewport, more columns */
-@media (--narrow-and-above) {
-  .o-gallery--layout-cols-equal-set-count {
-    --cell-cols: 3;
-  }
+@media (--narrow-to-medium) {
+  .o-gallery--layout-cols-equal-set-count { --cell-cols: 3; }
+}
+@media (--medium-to-wide) {
+  .o-gallery--layout-cols-equal-set-count { --cell-cols: 4; }
+}
+@media (--wide-to-x-wide) {
+  .o-gallery--layout-cols-equal-set-count { --cell-cols: 5; }
+}
+@media (--x-wide-to-xx-wide) {
+  .o-gallery--layout-cols-equal-set-count { --cell-cols: 6; }
+}
+@media (--xx-wide-to-xxx-wide) {
+  .o-gallery--layout-cols-equal-set-count { --cell-cols: 7; }
+}
+@media (--xxx-wide-to-max-wide) {
+  .o-gallery--layout-cols-equal-set-count { --cell-cols: 8; }
+}
+@media (--max-wide-and-above) {
+  .o-gallery--layout-cols-equal-set-count { --cell-cols: 9; }
 }
 
 /* Layout: Columns: Same Width, Preset Min. Width */
