@@ -8,12 +8,7 @@ A grid of items e.g. images, avatars, article previews.
 .o-grid--auto-col-count - Same width columns; wider window equals more columns
 .o-grid--min-col-width  - Same width columns; auto. column count; minimum width (custom properties: `--width`)
 
-Markup:
-<ul class="o-grid">
-    <li>Apple</li>
-    <li>Banana</li>
-    <li>Grapes</li>
-</ul>
+Markup: o-grid.html
 
 Styleguide Objects.Grid
 */
