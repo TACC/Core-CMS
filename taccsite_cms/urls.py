@@ -2,6 +2,7 @@
 from __future__ import absolute_import, print_function, unicode_literals
 
 from cms.sitemaps import CMSSitemap
+from django.apps import apps
 from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls import include, url
@@ -10,6 +11,7 @@ from django.contrib.auth import views
 from django.contrib.sitemaps.views import sitemap
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.views.static import serve
+from django.urls import path
 from taccsite_cms import remote_cms_auth as remote_cms_auth
 
 from django.http import request
@@ -37,6 +39,11 @@ if getattr(settings, 'INCLUDES_CORE_PORTAL', True):
 
 urlpatterns += [
     url(r'^', include('cms.urls')),
+]
+
+# if apps.is_installed("pattern_library"):
+urlpatterns += [
+    path("pattern-library/", include("pattern_library.urls")),
 ]
 
 # This is only needed when using runserver.

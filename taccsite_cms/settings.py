@@ -224,6 +224,9 @@ TEMPLATES = [
                 'cms.context_processors.cms_settings',
                 'django_settings_export.settings_export'
             ],
+            'builtins': [
+                'pattern_library.loader_tags'
+            ],
             'libraries': {
                 # NOTE: These are an unnecessary alternative config, because taccsite_cms is in INSTALLED_APPS, but are comfortably explicit
                 # SEE: https://docs.djangoproject.com/en/3.1/howto/custom-template-tags/#code-layout
@@ -297,6 +300,7 @@ INSTALLED_APPS = [
     'djangocms_bootstrap4.contrib.bootstrap4_picture',
     'djangocms_bootstrap4.contrib.bootstrap4_tabs',
     'djangocms_bootstrap4.contrib.bootstrap4_utilities',
+    'pattern_library',
     'haystack',
     'aldryn_apphooks_config',
     'test_without_migrations',
@@ -423,6 +427,28 @@ SETTINGS_EXPORT_VARIABLE_NAME = 'settings'
 
 FEATURES = ''
 
+PATTERN_LIBRARY = {
+    # Groups of templates for the pattern library navigation.
+    # - The keys are group titles
+    # - The values are lists of template name prefixes
+    #   (that will be searched to populate the groups)
+    'SECTIONS': (
+        ('components', ['patterns/components']),
+        ('pages', ['patterns/pages']),
+    ),
+
+    # Configure which files to detect as templates.
+    'TEMPLATE_SUFFIX': '.html',
+
+    # Set the template inside of which components should be rendered
+    # (so they may use page-level component dependencies like CSS)
+    'PATTERN_BASE_TEMPLATE_NAME': 'patterns/base.html',
+
+    # Any template in BASE_TEMPLATE_NAMES (or any that extends one from there)
+    # is considered a "page" and will be rendered as-is (without being wrapped)
+    'BASE_TEMPLATE_NAMES': ['patterns/base_page.html'],
+}
+
 try:
     from taccsite_cms.settings_custom import *
 except:
@@ -440,6 +466,10 @@ try:
 except:
     None
     # do nothing
+
+########################
+# EXPORT
+########################
 
 SETTINGS_EXPORT = [
     'DEBUG',
