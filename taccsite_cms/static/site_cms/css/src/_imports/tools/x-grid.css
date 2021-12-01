@@ -3,6 +3,9 @@ Grid
 
 Snippets i.e. atomic abstractions of useful grid functionality.
 
+Caveats:
+- Do not combine two `x-grid--layout-rows-…` nor two `x-grid--layout-cols-…`.
+
 Reference:
 - [A Complete Guide to Grid](https://css-tricks.com/snippets/css/complete-guide-grid/)
 
@@ -35,7 +38,7 @@ Styleguide Tools.ExtendsAndMixins.Grid
 
 /* Layout: Columns: Same Width, Preset Min. Width */
 
-%x-grid--layout-equal-cols-min-width {
+%x-grid--layout-cols-equal-min-width {
   /* --width */
 
   grid-template-columns: repeat(auto-fit, minmax(var(--width), 1fr));

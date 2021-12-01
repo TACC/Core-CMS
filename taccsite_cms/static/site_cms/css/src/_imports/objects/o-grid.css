@@ -3,10 +3,13 @@ Grid
 
 A grid of items e.g. images, avatars, article previews.
 
+Caveats:
+- Do not combine two `o-grid--col-…`.
+
 .o-grid--image-fill     - Image fills its cell or container which fills cell (supports: `<img>`, `<img>` in `<figure>` (no class), `<img>` in `<a>`)
 .o-grid--center-align   - Align content vertically and horizontally center
-.o-grid--auto-col-count - Same width columns; wider window equals more columns
-.o-grid--min-col-width  - Same width columns; auto. column count; minimum width (custom properties: `--width`)
+.o-grid--col-auto-count - Same width columns; wider window equals more columns
+.o-grid--col-min-width  - Same width columns; auto. column count; minimum width (custom properties: `--width`)
 
 Markup: o-grid.html
 
@@ -63,46 +66,46 @@ Styleguide Objects.Grid
 
 /* Layout: Columns: Same Width, Preset Col. Count */
 
-.o-grid--auto-col-count {
+.o-grid--col-auto-count {
   @extend %x-grid--layout-cols-equal-set-count;
 }
 @media (--x-narrow-and-below) {
-  .o-grid--auto-col-count { --count: 1; }
+  .o-grid--col-auto-count { --count: 1; }
 }
 @media (--x-narrow-to-narrow) {
-  .o-grid--auto-col-count { --count: 2; }
+  .o-grid--col-auto-count { --count: 2; }
 }
 @media (--narrow-to-medium) {
-  .o-grid--auto-col-count { --count: 3; }
+  .o-grid--col-auto-count { --count: 3; }
 }
 @media (--medium-to-wide) {
-  .o-grid--auto-col-count { --count: 4; }
+  .o-grid--col-auto-count { --count: 4; }
 }
 @media (--wide-to-x-wide) {
-  .o-grid--auto-col-count { --count: 5; }
+  .o-grid--col-auto-count { --count: 5; }
 }
 @media (--x-wide-to-xx-wide) {
-  .o-grid--auto-col-count { --count: 6; }
+  .o-grid--col-auto-count { --count: 6; }
 }
 @media (--xx-wide-to-xxx-wide) {
-  .o-grid--auto-col-count { --count: 7; }
+  .o-grid--col-auto-count { --count: 7; }
 }
 @media (--xxx-wide-to-max-wide) {
-  .o-grid--auto-col-count { --count: 8; }
+  .o-grid--col-auto-count { --count: 8; }
 }
 @media (--max-wide-and-above) {
-  .o-grid--auto-col-count { --count: 9; }
+  .o-grid--col-auto-count { --count: 9; }
 }
 
 /* Layout: Columns: Same Width, Preset Min. Width */
 
-.o-grid--min-col-width {
+.o-grid--col-min-width {
   --width: 250px;
 
-  @extend %x-grid--layout-equal-cols-min-width;
+  @extend %x-grid--layout-cols-equal-min-width;
 }
 /* FAQ: Specifying `:not(img)` cuz `.o-grid img` already has `max-…: 100%` */
-.o-grid--min-col-width > *:not(img) {
+.o-grid--col-min-width > *:not(img) {
   max-width: 100%; /* used if `--cell-width` is smaller than content */
   max-height: 100%; /* used if `--cell-height` is smaller than content */
 }
