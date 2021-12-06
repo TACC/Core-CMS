@@ -13,7 +13,7 @@ Reference:
 %x-grid--layout-rows-equal-set-height - Same height rows, default var. height (custom properties: `--height`)
 %x-grid--layout-cols-equal-set-count  - Same width columns, auto. column count (custom properties: `--count`)
 %x-grid--layout-cols-equal-min-width  - Same width columns, default min. width (custom properties: `--width`)
-%x-grid--content-align-center         - Align content vert. and horz. center
+%x-grid--content-align-center         - Align content vert.ly and horz.ly center
 
 Styleguide Tools.ExtendsAndMixins.Grid
 */
