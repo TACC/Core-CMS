@@ -43,6 +43,13 @@ Styleguide Tools.ExtendsAndMixins.Grid
 
   grid-template-columns: repeat(auto-fit, minmax(var(--width), 1fr));
 }
+/* Suggestion for User: Prevent content overflow */
+/*
+.x-grid--layout-cols-equal-min-width > * {
+  max-width: 100%; \/* used if cell width is smaller than content *\/
+  max-height: 100%; \/* used if cell height is smaller than content *\/
+}
+*/
 
 
 
@@ -76,3 +83,34 @@ Styleguide Tools.ExtendsAndMixins.Grid
   justify-items: center;
   align-items: center;
 }
+
+
+
+
+
+/* Suggestions for User */
+
+/*
+.user-block {
+  --gap: ...;
+
+  display: grid;
+  gap: var(--gap);
+}
+
+.user-block--modifier {
+  @extend %x-grid--...;
+}
+
+\/* Hide content that does exceed cell size *\/
+.user-block > * {
+  overflow: hidden;
+}
+
+\/* Avoid leting image size exceed cell size *\/
+\/* FAQ: An intentionally loose limitation (so user can choose to ignore it) *\/
+.user-block img {
+  max-height: 100%;
+  max-width: 100%;
+}
+*/
