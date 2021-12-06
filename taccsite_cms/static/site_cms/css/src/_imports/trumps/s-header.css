@@ -11,7 +11,7 @@ Styles for elements within a header that has third-party code:
 - a subset of Bootstrap 3.3.7
   (for CMS body content, can affect navigation)
 
-Markup: s-header.html.twig
+Markup: s-header.twig.html
 
 Styleguide Trumps.Scopes.Header
 */

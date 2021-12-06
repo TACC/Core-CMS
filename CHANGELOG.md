@@ -7,6 +7,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.5.1] - 2021-11-18: Remove Sentence from Getting Started Doc
+
+### Fixed
+
+- Quick: Remove sentence from Getting Started doc (#410)
+
+## [3.5.0] - 2021-11-15: Navbar Toggle Color; OOTB Remote Login; v3.3.0 Fixes
+
+### Added
+
+- COOKS-108: Navbar Toggler Icon Color [per Theme] (#402)
+
+### Changed
+
+- Update settings.py: Haystack Connection INDEX_NAME (#374)
+- Update settings.py: CEP_AUTH_VERIFICATION_ENDPOINT (#375)
+
+### Fixed
+
+- COOKS-108: Navbar Toggler Icon Color [Fix for "Has Dark Logo" Theme] (#402)
+- Hotfix/FP-1234: Texascale: Remove Category Page Title Margin Top (#388)
+- Hotfix/FP-1338: Offset Content to be Full Width on Narrow Window (#406)
+- Hotfix/FP-1332: Horz. Scrollbar Caused by Sections (#403)
+- Hotfix/FP-1331: Do Not Hide Header Drodpowns (#404)
+- Hotfix/FP-1330: Frontera: Fix Favicon Load on Standard Template (#401)
+- Hotfix/FP-1333: Callout Title Color (#405)
+
 ## [3.3.0] - 2021-11-04: Brainmap Project; Fix Standard Template; Fix Header Links
 
 ### Added
@@ -178,7 +205,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.0.0] - 2021-03-31
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.3.0...HEAD
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.5.1...HEAD
+[3.5.1]: https://github.com/TACC/Core-CMS/releases/tag/v3.5.1
+[3.5.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.5.0
 [3.3.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.3.0
 [3.0.7]: https://github.com/TACC/Core-CMS/releases/tag/v3.0.7
 [3.0.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.0.0
