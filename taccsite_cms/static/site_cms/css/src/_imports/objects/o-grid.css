@@ -84,7 +84,7 @@ Styleguide Objects.Grid
 
   @extend %x-grid--layout-cols-equal-min-width;
 }
-/* To prevent content overflow */
+/* Prevent content overflow */
 /* FAQ: Excluding `img` because `.o-grid img` already sets this for images */
 .o-grid--col-min-width > *:not(img) {
   max-width: 100%; /* used if cell width is smaller than content */
@@ -115,7 +115,7 @@ Styleguide Objects.Grid
   height: 100%;
   width: 100%;
 }
-/* Figures without classes for styling */
+/* Manage layout of figures without classes */
 /* FAQ: Plugins in CMS Edit mode have this first if no other classes */
 .o-grid--image-fill > figure:not([class]),
 .o-grid--image-fill > figure[class=""],
