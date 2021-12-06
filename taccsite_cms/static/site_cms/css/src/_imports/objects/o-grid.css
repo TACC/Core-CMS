@@ -41,18 +41,16 @@ Styleguide Objects.Grid
 /* Elements */
 
 /* Avoid leting image size exceed cell size */
-/* FAQ: An intentionally loose limitation (so user can choose to escape it) */
+/* FAQ: An intentionally loose limitation (so user can choose to ignore it) */
 .o-grid img {
   max-height: 100%;
   max-width: 100%;
 }
 
 /* Hide content that does exceed cell size */
-/* FAQ: If user escapes image size exceeding cell size, do not make a mess */
 .o-grid > * {
   overflow: hidden;
 }
-
 
 
 
@@ -69,33 +67,15 @@ Styleguide Objects.Grid
 .o-grid--col-auto-count {
   @extend %x-grid--layout-cols-equal-set-count;
 }
-@media (--x-narrow-and-below) {
-  .o-grid--col-auto-count { --count: 1; }
-}
-@media (--x-narrow-to-narrow) {
-  .o-grid--col-auto-count { --count: 2; }
-}
-@media (--narrow-to-medium) {
-  .o-grid--col-auto-count { --count: 3; }
-}
-@media (--medium-to-wide) {
-  .o-grid--col-auto-count { --count: 4; }
-}
-@media (--wide-to-x-wide) {
-  .o-grid--col-auto-count { --count: 5; }
-}
-@media (--x-wide-to-xx-wide) {
-  .o-grid--col-auto-count { --count: 6; }
-}
-@media (--xx-wide-to-xxx-wide) {
-  .o-grid--col-auto-count { --count: 7; }
-}
-@media (--xxx-wide-to-max-wide) {
-  .o-grid--col-auto-count { --count: 8; }
-}
-@media (--max-wide-and-above) {
-  .o-grid--col-auto-count { --count: 9; }
-}
+@media (--x-narrow-and-below) { .o-grid--col-auto-count { --count: 1; } }
+@media (--x-narrow-to-narrow) { .o-grid--col-auto-count { --count: 2; } }
+@media (--narrow-to-medium) { .o-grid--col-auto-count { --count: 3; } }
+@media (--medium-to-wide) { .o-grid--col-auto-count { --count: 4; } }
+@media (--wide-to-x-wide) { .o-grid--col-auto-count { --count: 5; } }
+@media (--x-wide-to-xx-wide) { .o-grid--col-auto-count { --count: 6; } }
+@media (--xx-wide-to-xxx-wide) { .o-grid--col-auto-count { --count: 7; } }
+@media (--xxx-wide-to-max-wide) { .o-grid--col-auto-count { --count: 8; } }
+@media (--max-wide-and-above) { .o-grid--col-auto-count { --count: 9; } }
 
 /* Layout: Columns: Same Width, Preset Min. Width */
 
@@ -106,8 +86,8 @@ Styleguide Objects.Grid
 }
 /* FAQ: Specifying `:not(img)` cuz `.o-grid img` already has `max-…: 100%` */
 .o-grid--col-min-width > *:not(img) {
-  max-width: 100%; /* used if `--cell-width` is smaller than content */
-  max-height: 100%; /* used if `--cell-height` is smaller than content */
+  max-width: 100%; /* used if cell width is smaller than content */
+  max-height: 100%; /* used if cell height is smaller than content */
 }
 
 
