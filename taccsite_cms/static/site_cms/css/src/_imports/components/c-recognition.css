@@ -39,7 +39,7 @@ Styleguide Components.Recognition
 }
 :not(.no-gutters) > .col.c-recognition,
 :not(.no-gutters) > [class*=col-].c-recognition {
-  margin: var(--global-space--grid-gap);
+  margin-inline: var(--global-space--grid-gap);
 }
 
 
