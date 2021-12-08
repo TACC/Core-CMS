@@ -14,106 +14,61 @@ The TACC CORE-CMS can be run using Docker and Docker Compose, both locally and i
     CUSTOM_ASSET_DIR=example-cms
     ```
 
-    \* Where `example-cms` is the project to be run. _See [(Optional) Custom Resources per CMS Project](#optional-custom-resources-per-cms-project)._
+    <details><summary>Footnotes</summary>
+
+    \* Where `example-cms` is the project to be run. _See [(Optional) Custom Resources per CMS Project](#optional-custom-resources-per-cms-project).
+
+    </details>
+
 1. Initialize / Update submodules.
-    1. `git submodule init`\
-        _(Adds `cms-site-resources` repo as submodule at `taccsite_custom/`. Only necessary once per `CORE-cms` repo clone.)_
-    2. `git submodule update`\
-        _(Downloads code from pinned commit of `cms-site-resources` repo to `taccsite_custom/`.)_
-    3. (as necessary) Change the pinned commit of submodule.\
-        _(Downloads code from different commit of `cms-site-resources` repo to `taccsite_custom/`.)_
+    1. `git submodule init`
+        <details>
 
-        ```bash
-        # Navigate into submodule (from root of this repo)
-        cd taccsite_custom
-        # Checkout different commit of submodule repo
-        git checkout master_or_other_branch_or_commit
-        # Update commit of submodule repo (as necessary)
-        git pull # (or git fetch […], etc.)
-        ```
+        Adds `cms-site-resources` repo as submodule at `taccsite_custom/`. Only necessary once per `CORE-cms` repo clone.
 
-    4. (as necessary) Save/Commit the pinned commit of submodule.\
-        _(Updates the pinned commit of `cms-site-resources` repo at `taccsite_custom/`.)_
+        </details>
+    2. `git submodule update`
+        <details>
 
-        ```bash
-        # Navigate back to this repo (from root of submodule repo)
-        cd ../
-        # Commit this repo's pointer to a different commit of submodule repo
-        git add taccsite_custom
-        git commit -m "[…] Update submodule to get […]"
-        ```
+        Downloads code from pinned commit of `cms-site-resources` repo to `taccsite_custom/`.
 
-<!-- IDEA: For brevity, consider moving steps 3 and 4 to a different section or document -->
-
-### For Isolated Instance Like Production
-
-Skip further configuration; you may use the default configuration.
-
-### For Isolated Containerized Local Development
-
-1. Run any `docker-compose` command with `docker-compose.dev.yml` configuration, ex:
-
-    ```bash
-    docker-compose -f docker-compose.dev.yml …
-    ```
+        </details>
 
 ### (Optional) Custom Configuration
 
-Configuration is stored in `default_secrets.py` and may be customized by creating a `secrets.py`.
+Settings may be customized piecemeal by creating any of these files with just the settings to change:
 
-1. Copy `taccsite_cms/default_secrets.py` as new `taccsite_cms/secrets.py` file.
-2. Update the `secrets.py` file.
+| Precedence\* | File | Usage |
+| - | - | - |
+| 1 | `secrets.py` | Sensitive setting we would never commit to GitHub, like DB creds and secret values |
+| 2 | `settings_custom.py` | Settings specific to one CMS project (you can symlink to an existing file)† |
+| 3 | `settings_local.py` | Settings specific to a local development environment, not intended for others |
+
+<details><summary>Footnotes</summary>
+
+\* A file with a higher precedence value overrides one of a lower value.
+
+† Example (from project root): `ln -s ../taccsite_custom/name-of-project/settings_custom.py taccsite_cms/settings_custom.py`‡
+
+‡ Where `name-of-project` matches a directory from `/taccsite_custom`.
+
+</details>
 
 ### (Optional) Custom Resources per CMS Project
 
 All CMS projects (besides the stand-alone CMS core), store project-specific resources in the `taccsite_custom` submodule.
 
-1. (For Production) Copy `docker-compose.yml` as new `docker-compose.custom.yml` file, and in the new file:
-    - To `cms`:`volumes` list, add an entry `/code/taccsite_custom/name-of-project/static`.*
-2. Create and update `secrets.py`. _See [Custom Configuration](#optional-custom-configuration)._
-    - Setup existing CMS project by manually appending secrets from `taccsite_custom/name-of-project/secrets.py`.*
-    - For new CMS projects, add custom and unique resources and configuration to `taccsite_custom/name-of-project/`.*
-3. Update the `.env` at the root of the project, with the content `CUSTOM_ASSET_DIR=name-of-project`.*
-4. Re-build static assets, so that project-specific assets are built. _See ["Static Files"](/README.md#static-files)._
+1. Create a `taccsite_cms/settings_custom.py` symlink to `taccsite_custom/name-of-project/settings_custom.py`.\*†
+2. Update the `.env` at the root of the project, with the content `CUSTOM_ASSET_DIR=name-of-project`.*
+3. Re-build static assets, so that project-specific assets are built. _See ["Static Files"](/README.md#static-files)._
+
+<details><summary>Footnotes</summary>
 
 \* Where `name-of-project` matches a directory from `/taccsite_custom`.
 
-### (Optional) Multiple CMS Projects on One Machine
+† Example (from project root): `ln -s ../taccsite_custom/name-of-project/settings_custom.py taccsite_cms/settings_custom.py`\*
 
-To support multiple instances of the CMS on one machine (i.e. local development), configure unique identification for the database of each.
-
-1. Copy `docker-compose.dev.yml` as new `docker-compose.custom.yml` file, and in the new file:
-    - Replace any `core_cms` string partial with a unique identifier.
-    - Replace the first number in `ports` value with a unique port.
-2. Create and update `secrets.py`. _See [Custom Configuration](#optional-custom-configuration)._
-    - Change `_DATABASES`:`default`:`HOST` to equal `docker-compose.custom.yml`'s `postgres`:`hostname`.
-3. Run any `docker-compose` command with `docker-compose.custom.yml` configuration, ex:
-
-    ```bash
-    docker-compose -f docker-compose.custom.yml …
-    ```
-
-### (Optional) Migrate Website from Older Version
-
-Some websites need static resources to supplement their migration.
-
-1. __If__ you did not [create your project by cloning `example-cms`](#custom-resources), __then__:
-    1. Copy `templates/fullwidth.html` from `taccsite_custom/example-cms/` to `taccsite_custom/name-of-project/`.
-    2. Copy `static/.../css/src/migrate.v1_v2.css` from `taccsite_custom/example-cms/` to `taccsite_custom/name-of-project/`.
-2. Update `taccsite_custom/name-of-project/templates/fullwidth.html` to load migration assets e.g.:
-    - Change
-
-    ```html
-      <!-- To style old CMS content on new CMS -->
-      <!-- <link rel="stylesheet" href="{% static 'example-cms/css/build/migrate.v1_v2.css' %}"> -->
-    ```
-
-    - To
-
-    ```html
-      <!-- To style old CMS content on new CMS -->
-      <link rel="stylesheet" href="{% static 'name-of-project/css/build/migrate.v1_v2.css' %}">
-    ```
+</details>
 
 ## Run the CMS
 
@@ -267,9 +222,11 @@ Whenever static files are changed, the CMS may need to be manually told to serve
 4. (As necessary) Build static assets.
 5. (For templates) Restart server.
 6. Commit changes:
-    1. In `/taccsite_custom` submodule repo, commit changes (__not__ to `master`).
+    1. In `/taccsite_custom` submodule repo, commit changes (__not__ to `main`).
     2. In this parent repo, add `/taccsite_custom` change.
     3. In this parent repo, commit changes (__not__ to `main`).
+
+    For more detailed steps, see [How to Change Submodule Branch Commit](https://github.com/TACC/Core-CMS/wiki/How-to-Change-Submodule-Branch-Commit).
 
 ## How to Run Tests
 
