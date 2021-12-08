@@ -32,14 +32,20 @@ Styleguide Components.Recognition
 }
 
 /* Overwrite Bootstrap padding but restore it with margin of same dimensions */
+/* NOTE: Ignore Bootstrap `ml-`/`mr-` class cuz they override w/ `!important` */
 .c-recognition,
 .no-gutters > .col.c-recognition,
-.no-gutters > [class*=col-].c-recognition {
+.no-gutters > [class*="col-"].c-recognition {
   padding: 0 2.14em;
 }
 :not(.no-gutters) > .col.c-recognition,
-:not(.no-gutters) > [class*=col-].c-recognition {
-  margin-inline: var(--global-space--grid-gap);
+:not(.no-gutters) > [class*="col-"].c-recognition {
+  margin-right: var(--global-space--grid-gap);
+}
+/* FAQ: When Bootstrap `offset-` class is present, yield to its `margin-left` */
+:not(.no-gutters) > .col.c-recognition:not([class*="offset-"]),
+:not(.no-gutters) > [class*="col-"].c-recognition:not([class*="offset-"]) {
+  margin-left: var(--global-space--grid-gap);
 }
 
 
