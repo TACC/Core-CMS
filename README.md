@@ -230,7 +230,7 @@ Whenever static files are changed, the CMS may need to be manually told to serve
     2. In this parent repo, add `/taccsite_custom` change.
     3. In this parent repo, commit changes (__not__ to `main`).
 
-    For more detailed steps, see [How to Change Submodule Branch Commit](https://github.com/TACC/Core-CMS/wiki/How-to-Change-Submodule-Branch-Commit).
+    _For more detailed steps, see [How to Change Submodule Branch Commit](https://github.com/TACC/Core-CMS/wiki/How-to-Change-Submodule-Branch-Commit)._
 
 ## How to Run Tests
 
