@@ -3,6 +3,8 @@ Recognition (Citation, Acknowledgemnt)
 
 A callout (often legal or obligatory) of recognition for an entity.
 
+WARNING: Incompatible on a Bootstrap column element. Nest this or the column.
+
 .c-recognition--style-dark  - A dark background and light text
 .c-recognition--style-light - A light background and dark text
 
@@ -33,19 +35,12 @@ Styleguide Components.Recognition
 
 /* Overwrite Bootstrap padding but restore it with margin of same dimensions */
 /* NOTE: Ignore Bootstrap `ml-`/`mr-` class cuz they override w/ `!important` */
-.c-recognition,
-.no-gutters > .col.c-recognition,
-.no-gutters > [class*="col-"].c-recognition {
+.c-recognition {
   padding: 0 2.14em;
-}
-:not(.no-gutters) > .col.c-recognition,
-:not(.no-gutters) > [class*="col-"].c-recognition {
-  margin-right: var(--global-space--grid-gap);
-}
-/* FAQ: When Bootstrap `offset-` class is present, yield to its `margin-left` */
-:not(.no-gutters) > .col.c-recognition:not([class*="offset-"]),
-:not(.no-gutters) > [class*="col-"].c-recognition:not([class*="offset-"]) {
-  margin-left: var(--global-space--grid-gap);
+
+  /* To contain margins of children (there are other one-line solutions) */
+  /* SEE: https://stackoverflow.com/q/13573653/11817077 */
+  overflow: auto;
 }
 
 
