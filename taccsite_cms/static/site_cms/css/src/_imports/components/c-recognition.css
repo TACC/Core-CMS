@@ -31,11 +31,15 @@ Styleguide Components.Recognition
   font-size: var(--global-font-size--small);
 }
 
+/* Overwrite Bootstrap padding but restore it with margin of same dimensions */
 .c-recognition,
-/* To overwrite Bootstrap */
 .no-gutters > .col.c-recognition,
 .no-gutters > [class*=col-].c-recognition {
   padding: 0 2.14em;
+}
+:not(.no-gutters) > .col.c-recognition,
+:not(.no-gutters) > [class*=col-].c-recognition {
+  margin: var(--global-space--grid-gap);
 }
 
 
