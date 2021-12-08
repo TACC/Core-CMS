@@ -34,6 +34,10 @@ The TACC CORE-CMS can be run using Docker and Docker Compose, both locally and i
 
         </details>
 
+### If You Also Have a Local [`Core-Portal`](https://github.com/TACC/Core-Portal/) Instance
+
+Then follow just the ["CMS" section of "Locally Develop CMS Portal Docs"](https://github.com/TACC/Core-CMS/wiki/Locally-Develop-CMS---Portal---Docs#cms).
+
 ### (Optional) Custom Configuration
 
 Settings may be customized piecemeal by creating any of these files with just the settings to change:
