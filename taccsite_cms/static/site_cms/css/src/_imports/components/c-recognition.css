@@ -33,7 +33,7 @@ Styleguide Components.Recognition
 .c-recognition {
   padding: 0 2.14em;
 
-  /* To contain margins of children (there are other one-line solutions) */
+  /* Contain margins of children (there are other one-line solutions) */
   /* SEE: https://stackoverflow.com/q/13573653/11817077 */
   overflow: auto;
 }
