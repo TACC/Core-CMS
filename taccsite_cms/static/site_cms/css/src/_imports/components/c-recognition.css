@@ -9,15 +9,10 @@ WARNING: Incompatible on a Bootstrap column element. Nest this or the column.
 .c-recognition--style-light - A light background and dark text
 
 Markup:
-<aside class="c-recognition c-recognition--style-dark">
-    <h3>Citation</h3>
-    <p>Teams who have NSF Petascale Computational Resource (PRAC) Awards should also acknowledge those awards.</p>
-    <p>Dan Stanzione, John West, R. Todd Evans, Tommy Minyard, Omar Ghattas, and Dhabaleswar K. Panda. 2020. Frontera: The Evolution of Leadership Computing at the National Science Foundation. In Practice and Experience in Advanced Research Computing (PEARC ’20), July 26–30, 2020, Portland, OR, USA. ACM, New York, NY, USA, 11 pages. https://doi.org/ 10.1145/3311790.3396656</p>
-</aside>
-<aside class="c-recognition c-recognition--style-light">
-    <h3>Acknowledgement</h3>
-    <p>Please use the following statement when acknowledging use of computational time on Frontera, or help from the support team.</p>
-    <p>This research is part of the Frontera computing project at the Texas Advanced Computing Center. Frontera is made possible by National Science Foundation award OAC-1818253.</p>
+<aside class="c-recognition {{modifier_class}}">
+  <h3>Citation</h3>
+  <p>Teams who have NSF Petascale Computational Resource (PRAC) Awards should also acknowledge those awards.</p>
+  <p><em>Dan Stanzione, John West, R. Todd Evans, Tommy Minyard, Omar Ghattas, and Dhabaleswar K. Panda. 2020. Frontera: The Evolution of Leadership Computing at the National Science Foundation. In Practice and Experience in Advanced Research Computing (PEARC ’20), July 26–30, 2020, Portland, OR, USA. ACM, New York, NY, USA, 11 pages. https://doi.org/ 10.1145/3311790.3396656</em></p>
 </aside>
 
 Styleguide Components.Recognition
