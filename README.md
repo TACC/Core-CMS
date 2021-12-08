@@ -42,7 +42,7 @@ Then follow just the ["CMS" section of "Locally Develop CMS Portal Docs"](https:
 
 Settings may be customized piecemeal by creating any of these files with just the settings to change:
 
-| Precedence\* | File | Usage |
+| \* | File | Usage |
 | - | - | - |
 | 1 | `secrets.py` | Sensitive setting we would never commit to GitHub, like DB creds and secret values |
 | 2 | `settings_custom.py` | Settings specific to one CMS project (you can symlink to an existing file)† |
@@ -50,7 +50,7 @@ Settings may be customized piecemeal by creating any of these files with just th
 
 <details><summary>Footnotes</summary>
 
-\* A file with a higher precedence value overrides one of a lower value.
+\* This is a "Precedence" column. A file with a higher precedence value overrides one of a lower value.
 
 † Example (from project root): `ln -s ../taccsite_custom/name-of-project/settings_custom.py taccsite_cms/settings_custom.py`‡
 
