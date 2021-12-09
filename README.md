@@ -174,23 +174,29 @@ All CMS projects (besides the stand-alone CMS core), store project-specific reso
 
 ### Static Files
 
-Certain static files are built __from__ source files __in__ `src` directories __to__ compiled files __in__ `build` directories.
+If you changes files in any `static/` directory, you may need to follow some of these steps.
 
-> __Notice__: We configured Django to ignore `src` directories during [`collectstatic`][django-static], so templates can not directly load source files.
+> __Notice__: We configured Django to ignore `src` directories during [`collectstatic`][django-static], so templates can __not__ directly load source files.
 
 #### Quick Start
 
-1. (Optional) Make changes to `src` files.
+1. _(optional)_ Make changes to `/taccsite_cms/static/…/src` files.
 2. Build static files from source files via:
-    - (manually, for any ready changes) `npm run build`
-    - (automatically, on source change) `npm run watch`
-3. (Debug) Confirm relevant `build` output changed.
+    - _(manually, for any ready changes)_ `npm run build`
+    - _(automatically, on source change)_ `npm run watch`
+3. _(to debug)_ Review respective `/taccsite_cms/static/…/build` files' content.
 4. "Collect" static files. _See [How to Collect Static Files](#how-to-collect-static-files)._
-5. (Debug) Confirm relevant `/static/…/build` output changed.
+5. _(to debug)_ Confirm respective `/static/…/build` output changed.
 
 #### How to Build Static Files
 
-1. (only if using `docker-compose.yml`) [Start a bash session][docker-exec-bash] into the CMS container:
+Certain static files are built __from__ source files __in__ `src` directories __to__ compiled files __in__ `build` directories.
+
+> __Using `docker-compose.yml`__: Run these commands in bash session within container (because files are __not__ re-synced).
+
+> __Using `docker-compose.dev.yml` or `docker-compose.custom.yml`__: Run these commands on local machine __or__ in bash session within container (because files are re-synced).
+
+- [Start a bash session][docker-exec-bash] into the CMS container:
 
     > __Notice__: If you have a `docker-compose.custom.yml`, then change  `core_cms` in this command to the `cms`: `container_name` in the `docker-compose.custom.yml`.
 
@@ -198,31 +204,28 @@ Certain static files are built __from__ source files __in__ `src` directories __
     docker exec -it core_cms /bin/bash
     ```
 
-    _It is __not__ necessary to run the next commands in the Docker container, but it does completely __isolate development__ and __mimic production__._
-
-2. Build static resources:
+1. Build static resources:
 
     ```bash
     npm run build
     ```
 
-3. (Optional) [Watch][npm-pkg-watch] files, and re-build when source files change:
+2. _(optional)_ [Watch][npm-pkg-watch] files, and re-build when source files change:
 
     ```bash
     npm run watch
     ```
 
-> __Using `docker-compose.yml`__: Resources are automatically built once in the container. To re-build, you must run the commands in this section _in the container_.
-
-> __Using `docker-compose.dev.yml`__: Resources are automatically built once in the container __but__ _container resources are overwritten by local resources_. To re-build, you may run the commands in this section _either_ locally _or_ in the container.
-
+    > __Notice__: This feature is __not__ reliable for _all_ changes on _all_ relevant files.
 
 [npm-cli-install]: https://docs.npmjs.com/cli/install
 [npm-pkg-watch]: https://www.npmjs.com/package/npm-watch
 
 #### How to Collect Static Files
 
-Whenever static files are changed, the CMS may need to be manually told to serve them (if not [automatically performed, or if cached](https://stackoverflow.com/a/59340216/11817077)).
+Whenever static files are changed, the CMS must be manually told to serve them.\*
+
+<!-- TODO: [Automatically perform `collectstatic`](https://stackoverflow.com/q/59339571/11817077) -->
 
 1. [Start a bash session][docker-exec-bash] into the CMS container:
 
@@ -238,14 +241,15 @@ Whenever static files are changed, the CMS may need to be manually told to serve
     python manage.py collectstatic
     ```
 
-
 ### Custom Resources
 
-1. Create/Edit files in a child directory of `/taccsite_custom`.
-2. Follow instructions and directory structure of `example-cms`.
+If you need to change files within `/taccsite_custom`:
+
+1. Follow instructions and directory structure of `example-cms`.
+2. Create/Edit files in a child directory of `/taccsite_custom`.
 3. Reference other projects in `/taccsite_custom`.
-4. (As necessary) Build static assets.
-5. (For templates) Restart server.
+4. _(for static asset changes)_ Build static assets.
+5. _(for template changes)_ Restart server.
 6. Commit changes:
     1. In `/taccsite_custom` submodule repo, commit changes (__not__ to `main`).
     2. In this parent repo, add `/taccsite_custom` change.
