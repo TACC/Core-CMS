@@ -21,6 +21,7 @@
 /* Load custom element styles within custom element, not here */
 
 /* OBJECTS */
+@import url("_imports/objects/o-grid.css");
 @import url("_imports/objects/o-offset-content.css");
 @import url("_imports/objects/o-section.css");
 @import url("_imports/objects/o-site.css");
