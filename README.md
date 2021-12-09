@@ -6,7 +6,7 @@ The base CMS code for TACC WMA Workspace Portals & Websites
 ## Related Repositories
 
 - [Camino], a Docker container-based deployment scheme
-- [Core CMS], the base CMS code for TACC WMA CMS Websites
+- [Core Portal], the base Portal code for TACC WMA CMS Websites
 - [Core Portal Deployments], private repository that facilitates deployments of [Core Portal] images via [Camino] and Jenkins
 
 
