@@ -1,12 +1,36 @@
-# TACC CORE-CMS
+# TACC Core CMS
 
-## Docker Setup
+The base CMS code for TACC WMA Workspace Portals & Websites
 
-The TACC CORE-CMS can be run using Docker and Docker Compose, both locally and in production.
+### Related Repositories
 
-## Configuration
+- [Camino], a Docker container-based deployment scheme
+- [Core CMS], the base CMS code for TACC WMA CMS Websites
+- [Core Portal Deployments], private repository that facilitates deployments of [Core Portal] images via [Camino] and Jenkins
 
-### Required
+## Local Development Setup
+
+### Prequisites for Running the CMS
+
+* Docker 20.10.7
+* Docker Compose 1.29.2
+* Python 3.6.8
+* Nodejs 12.x (LTS)
+
+The Core Portal can be run using [Docker][1] and [Docker Compose][2]. You will
+need both Docker and Docker Compose pre-installed on the system you wish to run the CMS
+on.
+
+If you are on a Mac or a Windows machine, the recommended method is to install
+[Docker Desktop](https://www.docker.com/products/docker-desktop), which will install both Docker and Docker Compose as well as Docker
+Machine, which is required to run Docker on Mac/Windows hosts.
+
+
+### Code Configuration
+
+After you clone the repository locally, there are several configuration steps required to prepare the project.
+
+#### Required
 
 1. Create a `.env` file\* at the root of the project with this content:
 
@@ -40,11 +64,15 @@ The TACC CORE-CMS can be run using Docker and Docker Compose, both locally and i
 
 </details>
 
-### If You Also Have a Local [Core-Portal](https://github.com/TACC/Core-Portal/) Instance
+#### Dependent
+
+##### If You Also Have a Local [Core-Portal](https://github.com/TACC/Core-Portal/) Instance
 
 Follow [How to Use a Custom Docker Compose File](https://github.com/TACC/Core-CMS/wiki/How-to-Use-a-Custom-Docker-Compose-File).
-xw
-### (Optional) Custom Configuration
+
+#### Optional
+
+##### Custom Configuration
 
 Settings may be customized piecemeal by creating any of these files with just the settings to change:
 
@@ -64,7 +92,7 @@ Settings may be customized piecemeal by creating any of these files with just th
 
 </details>
 
-### (Optional) Custom Resources per CMS Project
+##### Custom Resources per CMS Project
 
 All CMS projects (besides the stand-alone CMS core), store project-specific resources in the `taccsite_custom` submodule.
 
@@ -80,13 +108,8 @@ All CMS projects (besides the stand-alone CMS core), store project-specific reso
 
 </details>
 
-## Run the CMS
 
-### Prerequisites
-
-- Have [Docker Compose](https://docs.docker.com/compose/) on the host system.
-
-### Steps
+### Running the CMS
 
 1. [Build][docker-compose-build] the CMS and database images:
 
@@ -171,13 +194,13 @@ All CMS projects (besides the stand-alone CMS core), store project-specific reso
 [django-static-serve-dev]: https://docs.djangoproject.com/en/3.1/howto/static-files/#serving-static-files-during-development
 
 
-## Static Files
+### Static Files
 
 Certain static files are built __from__ source files __in__ `src` directories __to__ compiled files __in__ `build` directories.
 
 > __Notice__: We configured Django to ignore `src` directories during [`collectstatic`][django-static], so templates can not directly load source files.
 
-### Quick Start
+#### Quick Start
 
 1. (Optional) Make changes to `src` files.
 2. Build static files from source files via:
@@ -187,7 +210,7 @@ Certain static files are built __from__ source files __in__ `src` directories __
 4. "Collect" static files. _See [How to Collect Static Files](#how-to-collect-static-files)._
 5. (Debug) Confirm relevant `/static/…/build` output changed.
 
-### How to Build Static Files
+#### How to Build Static Files
 
 1. (only if using `docker-compose.yml`) [Start a bash session][docker-exec-bash] into the CMS container:
 
@@ -219,7 +242,7 @@ Certain static files are built __from__ source files __in__ `src` directories __
 [npm-cli-install]: https://docs.npmjs.com/cli/install
 [npm-pkg-watch]: https://www.npmjs.com/package/npm-watch
 
-### How to Collect Static Files
+#### How to Collect Static Files
 
 Whenever static files are changed, the CMS may need to be manually told to serve them (if not [automatically performed, or if cached](https://stackoverflow.com/a/59340216/11817077)).
 
@@ -237,7 +260,8 @@ Whenever static files are changed, the CMS may need to be manually told to serve
     python manage.py collectstatic
     ```
 
-## Custom Resources
+
+### Custom Resources
 
 1. Create/Edit files in a child directory of `/taccsite_custom`.
 2. Follow instructions and directory structure of `example-cms`.
@@ -251,32 +275,74 @@ Whenever static files are changed, the CMS may need to be manually told to serve
 
     _For more detailed steps, see [How to Change Submodule Branch Commit](https://github.com/TACC/Core-CMS/wiki/How-to-Change-Submodule-Branch-Commit)._
 
-## How to Run Tests
 
-### Test TACC CMS Plugins
+## Setting up Search Index
 
-Testing is run through Django. From within `core_cms` container, run `python manage.py test PATH_TO_DIR_WITH_TESTS` from the repository root directory. Example:
+See [How to Build Search Index](https://github.com/TACC/Core-CMS/wiki/How-to-Build-Search-Index).
 
-```bash
-docker exec -it core_cms /bin/bash
-python manage.py test taccsite_cms.contrib.taccsite_sample
-```
+## Linting and Formatting Conventions
 
-> __Notice__: To test without migrations—which is _much_ faster—add the flag `--nomigrations` (or `-n`). Example:
-> 
-> ```bash
-> docker exec -it core_cms /bin/bash
-> python manage.py test taccsite_cms.contrib.taccsite_sample --nomigrations
-> ```
+Not standardized. See [(internal) Formatting & Linting](https://confluence.tacc.utexas.edu/x/HoBGCw).
 
-<!-- TODO: Make `python manage.py test` recursively find all the tests -->
+
+## Testing
+
+Server-side CMS plugin testing is run through Python. Start docker container first by `docker exec -it core_cms bash`, Then run `python manage.py test path.to-dir.with.tests`\* from the project root folder to run backend tests and display a report at the bottom of the output.
+
+\* To run tests without console logging, run `python manage.py test path.to-dir.with.tests --nomigrations`.
+
+<!-- TODO: Make command recursively find all tests -->
 <!-- SEE: https://docs.djangoproject.com/en/2.2/topics/testing/overview/#running-tests -->
 
-### Test PostCSS Plugin Configs
+Client-side stylesheet plugin testing is done manually. Run `npm run build` from any folder in this project, then review output in `taccsite_cms/static/site_cms/css/build/_test.css`, to ensure plugins are working correctly.
 
-Testing is manual review of build output. From within `core_cms` container, run `npm run build` from the repository root directory, then review `taccsite_cms/static/site_cms/css/build/_test.css`.
+### Test Coverage
 
-## Reference
+Coverage is sent to codecov on commits to the repo (see Github Actions for branch to see branch coverage). Ideally we only merge positive code coverage changes to `main`.
 
-- [Formatting & Linting](https://confluence.tacc.utexas.edu/x/HoBGCw)
-- [DjangoCMS Stand Alone Site](https://confluence.tacc.utexas.edu/x/G4G-Ag)
+### Production Deployment
+
+The Core CMS runs in a Docker container as part of a set of services managed with Docker Compose.
+
+CMS images are built by [Jenkins](https://jenkins01.tacc.utexas.edu/view/WMA%20CEP/job/Core_CMS/) and published to the [Docker Hub repo](https://hub.docker.com/repository/docker/taccwma/core-cms).
+
+To update the CMS in production or dev, the corresponding [Core Portal Deployments](https://github.com/TACC/Core-Portal-Deployments) env file should be updated with a tag matching an image previously built and published to the taccwma/core-cms repo.
+
+Deployments are initiated via [Jenkins](https://jenkins01.tacc.utexas.edu/view/WMA%20CEP/job/Core_Portal_Deploy/) and orchestrated, tracked, and directed by [Camino](https://github.com/TACC/Camino) on the target server.
+
+
+## Deployment Steps
+
+1. Build and publish portal image with [Jenkins](https://jenkins01.tacc.utexas.edu/view/WMA%20CEP/job/Core_CMS/)
+2. Update deployment settings, particularly the `CMS_TAG` environment variable in [Core Portal Deployments](https://github.com/TACC/Core-Portal-Deployments) with new tag name
+3. Deploy new image with [Jenkins](https://jenkins01.tacc.utexas.edu/view/WMA%20CEP/job/Core_Portal_Deploy/)
+
+
+## Contributing
+
+### Development Workflow
+
+We use a modifed version of [GitFlow](https://datasift.github.io/gitflow/IntroducingGitFlow.html) as our development workflow. Our [development site](https://dev.cep.tacc.utexas.edu) (accessible behind the TACC Network) is always up-to-date with `main`, while the [production site](https://prod.cep.tacc.utexas.edu) is built to a hashed commit tag.
+- Feature branches contain major updates, bug fixes, and hot fixes with respective branch prefixes:
+    - `task/` for features and updates
+    - `bug/` for bugfixes
+    - `fix/` for hotfixes
+
+### Best Practices
+
+Sign your commits ([see this link](https://help.github.com/en/github/authenticating-to-github/managing-commit-signature-verification) for help)
+
+### Resources
+
+* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+* [Tapis Project (Formerly Agave)](https://tacc-cloud.readthedocs.io/projects/agave/en/latest/)
+
+
+<!-- Link Aliases -->
+
+[Core Portal Deployments]: https://github.com/TACC/Core-Portal-Deployments
+[Camino]: https://github.com/TACC/Camino
+[Core CMS]: https://github.com/TACC/Core-CMS
+[Core Portal]: https://github.com/TACC/Core-Portal
+[1]: https://docs.docker.com/get-docker/
+[2]: https://docs.docker.com/compose/install/
