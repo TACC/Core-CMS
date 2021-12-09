@@ -1,0 +1,131 @@
+/*
+Grid
+
+A grid of items e.g. images, avatars, article previews.
+
+Caveats:
+- Do not combine two `o-grid--col-…`.
+
+.o-grid--image-fill     - Image fills its cell or container which fills cell (supports: `<img>`, `<img>` in `<figure>` (no class), `<img>` in `<a>`)
+.o-grid--center-align   - Align content vertically and horizontally center
+.o-grid--col-auto-count - Same width columns; wider window equals more columns
+.o-grid--col-min-width  - Same width columns; auto. column count; minimum width (custom properties: `--width`)
+
+Markup: o-grid.html
+
+Styleguide Objects.Grid
+*/
+@import url("_imports/tools/media-queries.css");
+@import url("_imports/tools/x-grid.css");
+
+
+
+
+
+/* Block */
+
+.o-grid {
+  --gap: var(--global-space--grid-gap, 15px); /* Bootstrap grid spacing */
+
+  display: grid;
+  gap: var(--gap);
+
+  /* To always have equal height rows that match tallest content */
+  @extend %x-grid--layout-rows-equal-max-height;
+}
+
+
+
+
+
+/* Elements */
+
+/* Avoid leting image size exceed cell size */
+/* FAQ: An intentionally loose limitation (so user can choose to ignore it) */
+.o-grid img {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+/* Hide content that does exceed cell size */
+.o-grid > * {
+  overflow: hidden;
+}
+
+
+
+
+
+/* Modifiers */
+
+
+
+/* Layout: Columns */
+
+/* Layout: Columns: Same Width, Preset Col. Count */
+
+.o-grid--col-auto-count {
+  @extend %x-grid--layout-cols-equal-set-count;
+}
+@media (--x-narrow-and-below) { .o-grid--col-auto-count { --count: 1; } }
+@media (--x-narrow-to-narrow) { .o-grid--col-auto-count { --count: 2; } }
+@media (--narrow-to-medium) { .o-grid--col-auto-count { --count: 3; } }
+@media (--medium-to-wide) { .o-grid--col-auto-count { --count: 4; } }
+@media (--wide-to-x-wide) { .o-grid--col-auto-count { --count: 5; } }
+@media (--x-wide-to-xx-wide) { .o-grid--col-auto-count { --count: 6; } }
+@media (--xx-wide-to-xxx-wide) { .o-grid--col-auto-count { --count: 7; } }
+@media (--xxx-wide-to-max-wide) { .o-grid--col-auto-count { --count: 8; } }
+@media (--max-wide-and-above) { .o-grid--col-auto-count { --count: 9; } }
+
+/* Layout: Columns: Same Width, Preset Min. Width */
+
+.o-grid--col-min-width {
+  --width: 250px;
+
+  @extend %x-grid--layout-cols-equal-min-width;
+}
+/* Prevent content overflow */
+/* FAQ: Excluding `img` because `.o-grid img` already sets this for images */
+.o-grid--col-min-width > *:not(img) {
+  max-width: 100%; /* used if cell width is smaller than content */
+  max-height: 100%; /* used if cell height is smaller than content */
+}
+
+
+
+/* Layout: Content */
+
+/* Layout: Content: Align Vert/Horz Center */
+
+.o-grid--center-align {
+  @extend %x-grid--content-align-center;
+}
+
+/* Layout: Content: Image Fills Cell/Container */
+
+.o-grid--image-fill > :is(a, figure):not(img) {
+  width: 100%;
+  height: 100%;
+}
+.o-grid--image-fill > img,
+.o-grid--image-fill > figure > img,
+.o-grid--image-fill > a > img:only-child {
+  object-fit: cover;
+
+  height: 100%;
+  width: 100%;
+}
+/* Manage layout of figures without classes */
+/* FAQ: Plugins in CMS Edit mode have this first if no other classes */
+.o-grid--image-fill > figure:not([class]),
+.o-grid--image-fill > figure[class=""],
+.o-grid--image-fill > figure[class*="cms-plugin"] {
+  display: flex;
+  flex-direction: column;
+}
+.o-grid--image-fill > figure:not([class]) > img,
+.o-grid--image-fill > figure[class=""] > img,
+.o-grid--image-fill > figure[class*="cms-plugin"] > img {
+  flex-grow: 1;
+  min-height: 0; /* to allow flex item to shrink less than actual size */
+}
