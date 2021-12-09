@@ -1,9 +1,15 @@
 # TACC CMS - Templates - Snippets - Manual Pattern Library
 
+## Notice
+
+This is a stopgap for swiflty testing modifers on UI patterns.
+
+Automatic pattern library (e.g. [KSS], [etc.]) would be better.
+
 ## Purpose
 
-- Allow any CMS to consistently reproduce UI pattern markup.
-- Change a `class` within pattern markup per snippet instance.
+- Allow consistent testing of a UI pattern on any CMS.
+- Change a `class` of a UI pattern per snippet instance.
 
 ## How it Works
 
@@ -18,12 +24,6 @@ Each pattern has an `.html` and `.content.html` template.
 - `.html` has logic only DjangoCMS can read.
 - `.content.html` has logic DjangoCMS __and__ [KSS] can read.
 - `.content.html` symlinks to `/taccsite_cms/static/css/src/…`.
-- [KSS] software auto-builds pattern library using sample markup.
 
 [KSS]: https://warpspire.com/kss/
-
-## Why Manual Pattern Library if [KSS] Auto-Builds?
-
-KSS setup is incomplete. Manual pattern library is a stopgap[^1].
-
-[^1]: The stopgap allows devs to swiftly test new patterns.
+[etc.]: https://confluence.tacc.utexas.edu/x/FADMBQ
