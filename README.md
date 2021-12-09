@@ -8,7 +8,7 @@ The TACC CORE-CMS can be run using Docker and Docker Compose, both locally and i
 
 ### Required
 
-1. Create a `.env` with this content\* at the root of the project:
+1. Create a `.env` file\* at the root of the project with this content:
 
     ```bash
     CUSTOM_ASSET_DIR=example-cms
@@ -34,10 +34,16 @@ The TACC CORE-CMS can be run using Docker and Docker Compose, both locally and i
 
         </details>
 
+<details><summary>Footnotes</summary>
+
+\* A ["dotenv" file](https://hexdocs.pm/dotenvy/dotenv-file-format.html) is a file, with or without a name, that has the `.env` extension.
+
+</details>
+
 ### If You Also Have a Local [Core-Portal](https://github.com/TACC/Core-Portal/) Instance
 
-Then follow just the ["CMS" section of "Locally Develop CMS Portal Docs"](https://github.com/TACC/Core-CMS/wiki/Locally-Develop-CMS---Portal---Docs#cms).
-
+Follow [How to Use a Custom Docker Compose File](https://github.com/TACC/Core-CMS/wiki/How-to-Use-a-Custom-Docker-Compose-File).
+xw
 ### (Optional) Custom Configuration
 
 Settings may be customized piecemeal by creating any of these files with just the settings to change:
@@ -63,7 +69,7 @@ Settings may be customized piecemeal by creating any of these files with just th
 All CMS projects (besides the stand-alone CMS core), store project-specific resources in the `taccsite_custom` submodule.
 
 1. Create a `taccsite_cms/settings_custom.py` symlink to `taccsite_custom/name-of-project/settings_custom.py`.\*†
-2. Update the `.env` at the root of the project, with the content `CUSTOM_ASSET_DIR=name-of-project`.*
+2. Update the `.env` file so `CUSTOM_ASSET_DIR=name-of-project`.\*
 3. Re-build static assets, so that project-specific assets are built. _See ["Static Files"](/README.md#static-files)._
 
 <details><summary>Footnotes</summary>
@@ -88,15 +94,28 @@ All CMS projects (besides the stand-alone CMS core), store project-specific reso
     docker-compose build
     ```
 
+    Or, if you have a `docker-compose.custom.yml`, then:
+
+    ```bash
+    docker-compose -f docker-compose.custom.yml build
+    ```
+
 2. [Create and run][docker-compose-up] the CMS and database containers:
 
     ```bash
     docker-compose up
     ```
 
+    Or, if you have a `docker-compose.custom.yml`, then:
+
+    ```bash
+    docker-compose -f docker-compose.custom.yml up
+    ```
+
 3. [Start a bash session][docker-exec-bash] into the CMS container:
 
-    > __Notice__: If you are using a `docker-compose.custom.yml`, then replace this command's `core_cms` with that file's `cms`: `container_name`.
+
+    > __Notice__: If you have a `docker-compose.custom.yml`, then change  `core_cms` in this command to the `cms`: `container_name` in the `docker-compose.custom.yml`.
 
     ```bash
     docker exec -it core_cms /bin/bash
@@ -172,7 +191,7 @@ Certain static files are built __from__ source files __in__ `src` directories __
 
 1. (only if using `docker-compose.yml`) [Start a bash session][docker-exec-bash] into the CMS container:
 
-    > __Notice__: If you are using a `docker-compose.custom.yml`, then replace this command's `taccsite_cms` with that file's `cms`: `hostname`.
+    > __Notice__: If you have a `docker-compose.custom.yml`, then change  `core_cms` in this command to the `cms`: `container_name` in the `docker-compose.custom.yml`.
 
     ```bash
     docker exec -it core_cms /bin/bash
@@ -206,7 +225,7 @@ Whenever static files are changed, the CMS may need to be manually told to serve
 
 1. [Start a bash session][docker-exec-bash] into the CMS container:
 
-    > __Notice__: If you are using a `docker-compose.custom.yml`, then replace this command's `taccsite_cms` with that file's `cms`: `hostname`.
+    > __Notice__: If you have a `docker-compose.custom.yml`, then change  `core_cms` in this command to the `cms`: `container_name` in the `docker-compose.custom.yml`.
 
     ```bash
     docker exec -it core_cms /bin/bash
