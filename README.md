@@ -2,11 +2,13 @@
 
 The base CMS code for TACC WMA Workspace Portals & Websites
 
-### Related Repositories
+
+## Related Repositories
 
 - [Camino], a Docker container-based deployment scheme
 - [Core CMS], the base CMS code for TACC WMA CMS Websites
 - [Core Portal Deployments], private repository that facilitates deployments of [Core Portal] images via [Camino] and Jenkins
+
 
 ## Local Development Setup
 
@@ -38,31 +40,15 @@ After you clone the repository locally, there are several configuration steps re
     CUSTOM_ASSET_DIR=example-cms
     ```
 
-    <details><summary>Footnotes</summary>
-
-    \* Where `example-cms` is the project to be run. _See [(Optional) Custom Resources per CMS Project](#optional-custom-resources-per-cms-project).
-
-    </details>
+    Where `example-cms` is the project to be run. See [Custom Resources per CMS Project](#custom-resources-per-cms-project).
 
 1. Initialize / Update submodules.
-    1. `git submodule init`
-        <details>
-
+    1. `git submodule init`\
         Adds `cms-site-resources` repo as submodule at `taccsite_custom/`. Only necessary once per `CORE-cms` repo clone.
-
-        </details>
-    2. `git submodule update`
-        <details>
-
+    2. `git submodule update`\
         Downloads code from pinned commit of `cms-site-resources` repo to `taccsite_custom/`.
 
-        </details>
-
-<details><summary>Footnotes</summary>
-
 \* A ["dotenv" file](https://hexdocs.pm/dotenvy/dotenv-file-format.html) is a file, with or without a name, that has the `.env` extension.
-
-</details>
 
 #### Dependent
 
@@ -82,15 +68,11 @@ Settings may be customized piecemeal by creating any of these files with just th
 | 2 | `settings_custom.py` | Settings specific to one CMS project (you can symlink to an existing file)† |
 | 3 | `settings_local.py` | Settings specific to a local development environment, not intended for others |
 
-<details><summary>Footnotes</summary>
-
 \* This is a "Precedence" column. A file with a higher precedence value overrides one of a lower value.
 
 † Example (from project root): `ln -s ../taccsite_custom/name-of-project/settings_custom.py taccsite_cms/settings_custom.py`‡
 
 ‡ Where `name-of-project` matches a directory from `/taccsite_custom`.
-
-</details>
 
 ##### Custom Resources per CMS Project
 
@@ -100,13 +82,9 @@ All CMS projects (besides the stand-alone CMS core), store project-specific reso
 2. Update the `.env` file so `CUSTOM_ASSET_DIR=name-of-project`.\*
 3. Re-build static assets, so that project-specific assets are built. _See ["Static Files"](/README.md#static-files)._
 
-<details><summary>Footnotes</summary>
-
 \* Where `name-of-project` matches a directory from `/taccsite_custom`.
 
 † Example (from project root): `ln -s ../taccsite_custom/name-of-project/settings_custom.py taccsite_cms/settings_custom.py`\*
-
-</details>
 
 
 ### Running the CMS
