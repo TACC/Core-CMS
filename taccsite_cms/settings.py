@@ -405,6 +405,15 @@ DJANGOCMS_FORMS_USE_HTML5_REQUIRED = False
 
 DJANGOCMS_FORMS_REDIRECT_DELAY = 1
 
+# DjangoCMS Style Plugin
+DJANGOCMS_STYLE_CHOICES = [
+    # Common UI pattern class combinations
+    'c-recognition c-recognition--style-light',
+    'c-recognition c-recognition--style-dark',
+    'o-section o-section--style-light',
+    'o-section o-section--style-dark',
+]
+
 # Elasticsearch Indexing
 HAYSTACK_ROUTERS = ['aldryn_search.router.LanguageRouter',]
 HAYSTACK_SIGNAL_PROCESSOR = 'taccsite_cms.signal_processor.RealtimeSignalProcessor'
