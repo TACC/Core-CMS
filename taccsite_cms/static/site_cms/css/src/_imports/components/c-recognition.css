@@ -3,7 +3,7 @@ Recognition
 
 A callout (often legal or obligatory) of recognition for an entity.
 
-> __⚠️ Warning__: Incompatible on a Bootstrap column element. You can this pattern within a column instead.
+> __⚠️ Warning__: Incompatible on a Bootstrap column element. You can use this pattern *within* a column instead.
 
 .c-recognition--style-dark  - A dark background and light text
 .c-recognition--style-light - A light background and dark text
