@@ -26,6 +26,12 @@ Styleguide Components.Card
 /* Plugins: Link / Image with Link */
 a.c-card--frontera-about-page {
   display: inline-block;
+
+  text-decoration: none;
+}
+a.c-card--frontera-about-page:hover {
+  outline: 1px solid var(--global-color-accent--normal);
+  outline-offset: 1em;
 }
 
 /* Plugins: * > Image + Text */
@@ -38,7 +44,7 @@ a.c-card--frontera-about-page {
 
 /* Plugins: * > Image with Caption */
 .c-card--frontera-about-page figure {
-  margin-bottom: 0;
+  margin: 0;
 }
 .c-card--frontera-about-page figcaption {
   color: var(--global-color-primary--xx-dark);
