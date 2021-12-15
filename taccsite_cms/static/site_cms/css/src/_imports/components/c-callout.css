@@ -150,6 +150,7 @@ a.c-callout:hover:hover {
 }
 
 /* To expand link to cover its container */
+a.c-callout { position: relative; }
 a.c-callout::before { @extend %x-article-link-stretch; content: ''; }
 
 /* To give feedback on link hover and click */
