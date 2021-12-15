@@ -145,6 +145,7 @@ Styleguide Components.Callout
 }
 
 /* To expand link to cover its container */
+.c-callout--is-link { position: relative; }
 .c-callout--is-link::before { @extend %x-article-link-stretch; content: ''; }
 
 /* To give feedback on link hover and click */
