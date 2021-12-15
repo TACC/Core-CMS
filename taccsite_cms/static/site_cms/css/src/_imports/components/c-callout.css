@@ -3,6 +3,8 @@ Callout
 
 Interrupt or end Sections with a "call to action".
 
+.c-callout--has-figure - Has a figure or image (as a direct child element)
+
 Markup:
 <!-- Has Figure, Is Link -->
 <a href="#" class="c-callout c-callout--has-figure c-callout--is-figure">
@@ -46,9 +48,10 @@ Styleguide Components.Callout
     'title'
     'desc';
 }
-.c-callout__figure { grid-area: figure; }
-.c-callout__title { grid-area: title; }
-.c-callout__desc { grid-area: desc; }
+.c-callout > img,
+.c-callout > figure { grid-area: figure; }
+.c-callout > h2     { grid-area: title; }
+.c-callout > p      { grid-area: desc; }
 
 @media only screen and (--narrow-and-above) {
   .c-callout {
@@ -65,7 +68,8 @@ Styleguide Components.Callout
     column-gap: 40px;
   }
 
-  .c-callout__figure {
+  .c-callout > img,
+  .c-callout > figure {
     margin: 0; /* override Bootstrap */
 
     /* Ensure title and desc determine height of callout */
@@ -88,16 +92,17 @@ Styleguide Components.Callout
 
     column-gap: 0px;
   }
-
-  .c-callout__figure { margin: 0 0 20px; /* override Bootstrap */ }
+  .c-callout > figure { margin: 0 0 20px; /* override Bootstrap */ }
 }
 
 /* To align figure to exact center (only relevant if content is smaller) */
-.c-callout__figure {
+.c-callout > img, /* XXX: Untested */
+.c-callout > figure {
   place-self: center;
 }
 /* To fit (expected) figure content to available space */
-.c-callout__figure img {
+.c-callout > img,
+.c-callout > figure > img {
   max-height: 100%;
   max-width: 100%;
 }
@@ -105,7 +110,7 @@ Styleguide Components.Callout
 /* To force wrap before full width (to match design) */
 /* NOTE: 1200px window, design has 15px but this was 7px (wraps the same) */
 /* FAQ: Differ from design so narrow screen wrap limit is not noticeable */
-.c-callout__desc { padding-right: 1%; }
+.c-callout > p { padding-right: 1%; }
 
 
 
@@ -119,7 +124,7 @@ Styleguide Components.Callout
   background-color: var(--global-color-link-on-light--normal);
 }
 
-.c-callout__title {
+.c-callout > h2 {
   padding-bottom: 12px;
   margin-bottom: 12px;
   border-bottom: 1px solid var(--global-color-primary--xx-light);
@@ -128,7 +133,7 @@ Styleguide Components.Callout
   font-weight: var(--medium);
   color: var(--global-color-primary--xx-light); /* override `html-elements` */
 }
-.c-callout__desc {
+.c-callout > p {
   font-size: var(--global-font-size--large);
   font-weight: var(--medium);
   color: var(--global-color-primary--xx-light);
@@ -140,15 +145,15 @@ Styleguide Components.Callout
 
 /* Link */
 
-.c-callout--is-link:hover {
+a.c-callout:hover:hover {
   text-decoration: none;
 }
 
 /* To expand link to cover its container */
-.c-callout--is-link::before { @extend %x-article-link-stretch; content: ''; }
+a.c-callout::before { @extend %x-article-link-stretch; content: ''; }
 
 /* To give feedback on link hover and click */
-.c-callout--is-link:hover::before,
-.c-callout--is-link:active::before { outline-offset: 1rem; }
-.c-callout--is-link:hover::before { @extend %x-article-link-hover; }
-.c-callout--is-link:active::before { @extend %x-article-link-active; }
+a.c-callout:hover::before,
+a.c-callout:active::before { outline-offset: 1rem; }
+a.c-callout:hover::before { @extend %x-article-link-hover; }
+a.c-callout:active::before { @extend %x-article-link-active; }
