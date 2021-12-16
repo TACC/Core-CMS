@@ -143,18 +143,7 @@ Styleguide Components.Callout
 
 
 
-/* Link */
+/* As a Link */
 
-a.c-callout:hover:hover {
-  text-decoration: none;
-}
-
-/* To expand link to cover its container */
-a.c-callout { position: relative; }
-a.c-callout::before { @extend %x-article-link-stretch; content: ''; }
-
-/* To give feedback on link hover and click */
-a.c-callout:hover::before,
-a.c-callout:active::before { outline-offset: 1rem; }
-a.c-callout:hover::before { @extend %x-article-link-hover; }
-a.c-callout:active::before { @extend %x-article-link-active; }
+a.c-callout:hover { @extend %x-article-link-hover; text-decoration: none; }
+a.c-callout:active { @extend %x-article-link-active; }
