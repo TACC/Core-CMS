@@ -69,13 +69,11 @@ Styleguide Components.Callout
     column-gap: 40px;
   }
 
-  .c-callout > img,
-  .c-callout > figure {
+  .c-callout > :is(img, figure) {
     margin: 0; /* override Bootstrap */
 
   }
-  .c-callout--has-tall-figure > img,
-  .c-callout--has-tall-figure > figure {
+  .c-callout--has-tall-figure > :is(img, figure) {
     /* Ensure title and desc determine height of callout */
     /* SEE: https://stackoverflow.com/a/48943583/11817077 */
     height: 0;
@@ -100,8 +98,7 @@ Styleguide Components.Callout
 }
 
 /* To align figure to exact center (only relevant if content is smaller) */
-.c-callout > img, /* XXX: Untested */
-.c-callout > figure {
+.c-callout > :is(img, figure) {
   place-self: center;
 }
 /* To fit (expected) figure content to available space */
