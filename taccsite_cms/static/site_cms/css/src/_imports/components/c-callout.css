@@ -3,12 +3,11 @@ Callout
 
 Interrupt or end Sections with a "call to action".
 
-.c-callout--has-figure - Has a figure or image (as a direct child element)
 .c-callout--has-tall-figure - The image/media/etc. is taller than text content (This is edge-case utility. Image thumbnail option should be used instead.)
 
 Markup:
 <!-- Has Figure, Is Link -->
-<a href="#" class="c-callout c-callout--has-figure c-callout--is-figure">
+<a href="#" class="c-callout">
   <h2 class="c-callout__title">
     Quick Start Guide
   </h2>
@@ -41,14 +40,6 @@ Styleguide Components.Callout
 .c-callout {
   display: grid;
 }
-.c-callout--has-figure {
-  /* See @media queries */
-}
-.c-callout:not(.c-callout--has-figure) {
-  grid-template-areas:
-    'title'
-    'desc';
-}
 .c-callout > img,
 .c-callout > figure { grid-area: figure; }
 .c-callout > h2     { grid-area: title; }
@@ -58,21 +49,19 @@ Styleguide Components.Callout
   .c-callout {
     padding: 20px;
     text-align: left;
-  }
-  .c-callout--has-figure {
+
     grid-template-rows: auto 1fr;
     grid-template-columns: auto auto;
     grid-template-areas:
       'figure title'
       'figure desc';
-
-    column-gap: 40px;
   }
 
-  .c-callout > :is(img, figure) {
-    margin: 0; /* override Bootstrap */
+  /* Create gap without using `*-gap` property on container */
+  /* FAQ: Container does not know if it has figure but gap is only for figure */
+  .c-callout > figure { margin: 0; /* overwrite browser and Bootstrap */ }
+  .c-callout > :is(img, figure) { margin-right: 40px;}
 
-  }
   .c-callout--has-tall-figure > :is(img, figure) {
     /* Ensure title and desc determine height of callout */
     /* SEE: https://stackoverflow.com/a/48943583/11817077 */
@@ -85,27 +74,22 @@ Styleguide Components.Callout
   .c-callout {
     padding: 20px 40px;
     text-align: center;
-  }
-  .c-callout--has-figure {
+
     grid-template-areas:
       'figure'
       'title'
       'desc';
-
-    column-gap: 0px;
   }
-  .c-callout > figure { margin: 0 0 20px; /* override Bootstrap */ }
+
+  /* Create gap without using `*-gap` property on container */
+  /* FAQ: Container does not know if it has figure but gap is only for figure */
+  .c-callout > figure { margin: 0; /* overwrite browser and Bootstrap */ }
+  .c-callout > :is(img, figure) { margin-bottom: 20px;}
 }
 
 /* To align figure to exact center (only relevant if content is smaller) */
 .c-callout > :is(img, figure) {
   place-self: center;
-}
-/* To fit (expected) figure content to available space */
-.c-callout > img,
-.c-callout > figure > img {
-  max-height: 100%;
-  max-width: 100%;
 }
 
 /* To force wrap before full width (to match design) */
