@@ -11,6 +11,7 @@ Markup: c-card.html
 
 Styleguide Components.Card
 */
+@import url("_imports/tools/x-article-link.css");
 
 /* Modifiers */
 
@@ -31,10 +32,8 @@ a.c-card--frontera-about-page {
 
   text-decoration: none;
 }
-a.c-card--frontera-about-page:hover {
-  outline: 1px solid var(--global-color-accent--normal);
-  outline-offset: 1em;
-}
+a.c-card--frontera-about-page:hover { @extend %x-article-link-hover; }
+a.c-card--frontera-about-page:active { @extend %x-article-link-active; }
 
 /* Plugins: * > Image + Text */
 .c-card--frontera-about-page img + h3 {
