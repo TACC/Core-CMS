@@ -4,6 +4,7 @@ Callout
 Interrupt or end Sections with a "call to action".
 
 .c-callout--has-figure - Has a figure or image (as a direct child element)
+.c-callout--has-tall-figure - The image/media/etc. is taller than text content (This is edge-case utility. Image thumbnail option should be used instead.)
 
 Markup:
 <!-- Has Figure, Is Link -->
@@ -60,7 +61,7 @@ Styleguide Components.Callout
   }
   .c-callout--has-figure {
     grid-template-rows: auto 1fr;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: auto auto;
     grid-template-areas:
       'figure title'
       'figure desc';
@@ -72,6 +73,9 @@ Styleguide Components.Callout
   .c-callout > figure {
     margin: 0; /* override Bootstrap */
 
+  }
+  .c-callout--has-tall-figure > img,
+  .c-callout--has-tall-figure > figure {
     /* Ensure title and desc determine height of callout */
     /* SEE: https://stackoverflow.com/a/48943583/11817077 */
     height: 0;
