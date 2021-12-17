@@ -62,6 +62,12 @@ Styleguide Components.Callout
   .c-callout > figure { margin: 0; /* overwrite browser and Bootstrap */ }
   .c-callout > :is(img, figure) { margin-right: 40px;}
 
+  /* Make figure always span all rows */
+  /* MAGIC: Use any undocumented value or very high number. Hack?! */
+  .c-callout > :is(img, figure) {
+    grid-row-end: undefined; /* or `999` or `any-arbitrary-unused-name` */
+  }
+
   .c-callout--has-tall-figure > :is(img, figure) {
     /* Ensure title and desc determine height of callout */
     /* SEE: https://stackoverflow.com/a/48943583/11817077 */
@@ -109,7 +115,7 @@ Styleguide Components.Callout
   background-color: var(--global-color-link-on-light--normal);
 }
 
-.c-callout > h2 {
+.c-callout > :is(h1, h2, h3, h4, h5, h6) {
   padding-bottom: 12px;
   margin-bottom: 12px;
   border-bottom: 1px solid var(--global-color-primary--xx-light);
@@ -118,7 +124,7 @@ Styleguide Components.Callout
   font-weight: var(--medium);
   color: var(--global-color-primary--xx-light); /* override `html-elements` */
 }
-.c-callout > p {
+.c-callout > :not(h1, h2, h3, h4, h5, h6) {
   font-size: var(--global-font-size--large);
   font-weight: var(--medium);
   color: var(--global-color-primary--xx-light);
