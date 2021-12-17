@@ -93,14 +93,12 @@ Styleguide Components.Callout
   .c-callout > :is(img, figure) { margin-bottom: 20px;}
 }
 
-/* To align figure to exact center (only relevant if content is smaller) */
-.c-callout > :is(img, figure) {
-  place-self: center;
-}
+/* Align figure to exact center (only relevant if content is smaller) */
+.c-callout > :is(img, figure) { place-self: center; }
 
-/* To force wrap before full width (to match design) */
+/* Force wrap before full width (to match design) */
 /* NOTE: 1200px window, design has 15px but this was 7px (wraps the same) */
-/* FAQ: Differ from design so narrow screen wrap limit is not noticeable */
+/* FAQ: Using a percentage so narrow screen wrap limit is not noticeable */
 .c-callout > p { padding-right: 1%; }
 
 
