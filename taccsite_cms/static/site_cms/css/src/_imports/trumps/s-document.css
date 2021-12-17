@@ -72,6 +72,17 @@ p + dl.small {
   margin-bottom: 1rem; /* mirror Bootstrap `_reboot.css` <p> */
 }
 
+/* ELEMENTS: Inline Text Semantics */
+
+/* (any content or context) */ code,
+/* (content has only output) */ pre > samp {
+  background-color: var(--global-color-primary--x-light);
+
+  border-width: var(--global-border-width--normal);
+  border-style: solid;
+  border-color: var(--global-color-primary--light);
+}
+
 
 /* ELEMENTS: Image & Multimedia */
 
