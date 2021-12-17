@@ -171,12 +171,6 @@ code kbd {
 
 /* Code: any content or context) */ code,
 /* Code: content has only output */ pre > samp {
-  background-color: var(--global-color-primary--x-light);
-
-  border-width: var(--global-border-width--normal);
-  border-style: solid;
-  border-color: var(--global-color-primary--light);
-
   /* Undo Bootstrap */
   color: unset;
 }
