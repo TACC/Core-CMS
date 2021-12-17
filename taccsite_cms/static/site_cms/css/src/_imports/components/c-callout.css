@@ -115,6 +115,7 @@ Styleguide Components.Callout
   background-color: var(--global-color-link-on-light--normal);
 }
 
+/* Make all headings look the same */
 .c-callout > :is(h1, h2, h3, h4, h5, h6) {
   padding-bottom: 12px;
   margin-bottom: 12px;
@@ -124,10 +125,16 @@ Styleguide Components.Callout
   font-weight: var(--medium);
   color: var(--global-color-primary--xx-light); /* override `html-elements` */
 }
+
+/* Style non-headings */
 .c-callout > :not(h1, h2, h3, h4, h5, h6) {
+  color: var(--global-color-primary--xx-light);
+}
+/* FAQ: Ignore figures so figcaptions can be styled by other components */
+/* FAQ: Do not ignore images, so alt text is visible if image load fails */
+.c-callout > :not(h1, h2, h3, h4, h5, h6, figure) {
   font-size: var(--global-font-size--large);
   font-weight: var(--medium);
-  color: var(--global-color-primary--xx-light);
 }
 
 
