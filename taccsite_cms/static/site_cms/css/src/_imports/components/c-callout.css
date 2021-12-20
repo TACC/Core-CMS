@@ -40,10 +40,9 @@ Styleguide Components.Callout
 
   display: grid;
 }
-.c-callout > img,
-.c-callout > figure { grid-area: figure; }
-.c-callout > h2     { grid-area: title; }
-.c-callout > p      { grid-area: desc; }
+.c-callout > :is(img, figure)            { grid-area: figure; }
+.c-callout > :is(h1, h2, h3, h4, h5, h6) { grid-area: title; }
+.c-callout > p                           { grid-area: desc; }
 
 
 
@@ -141,6 +140,7 @@ Styleguide Components.Callout
 
 /* Make all headings look the same */
 .c-callout > :is(h1, h2, h3, h4, h5, h6) {
+  margin-top: 0;
   padding-bottom: 12px;
   margin-bottom: 12px;
   border-bottom: 1px solid var(--global-color-primary--xx-light);
