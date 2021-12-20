@@ -45,6 +45,10 @@ Styleguide Components.Callout
 .c-callout > h2     { grid-area: title; }
 .c-callout > p      { grid-area: desc; }
 
+
+
+/* Layout: Image */
+
 /* Ensure title and desc determine height of figure and callout */
 /* FAQ: Options that use `min-height: 0` have bug (narrow cell) on Firefox  */
 /* SEE: https://stackoverflow.com/a/48943583/11817077 */
@@ -66,6 +70,10 @@ Styleguide Components.Callout
 }
 /* To wrap figcaption at figure width */
 .c-callout > figure { width: min-content; }
+
+
+
+/* Layout: Wide Screen */
 
 @media only screen and (--narrow-and-above) {
   .c-callout {
@@ -89,6 +97,10 @@ Styleguide Components.Callout
     grid-row-end: undefined; /* or `999` or `any-arbitrary-unused-name` */
   }
 }
+
+
+
+/* Layout: Wide Screen */
 
 @media only screen and (--narrow-and-below) {
   .c-callout {
