@@ -3,8 +3,6 @@ Callout
 
 Interrupt or end Sections with a "call to action".
 
-.c-callout--has-tall-figure - The image/media/etc. is taller than text content (This is edge-case utility. Image thumbnail option should be used instead.)
-
 Markup:
 <!-- Has Figure, Is Link -->
 <a href="#" class="c-callout">
@@ -38,12 +36,29 @@ Styleguide Components.Callout
 /* Layout */
 
 .c-callout {
+  --figure-width: 310px;
+
   display: grid;
 }
 .c-callout > img,
 .c-callout > figure { grid-area: figure; }
 .c-callout > h2     { grid-area: title; }
 .c-callout > p      { grid-area: desc; }
+
+/* Ensure title and desc determine height of figure and callout */
+/* FAQ: Options that use `min-height: 0` have bug (narrow cell) on Firefox  */
+/* SEE: https://stackoverflow.com/a/48943583/11817077 */
+/* SEE: https://stackoverflow.com/a/61297418/11817077 */
+.c-callout > img,
+.c-callout > figure > img {
+  width: var(--figure-width); /* to trigger ratio */
+  aspect-ratio: 310 / 130;    /* to limit size */
+  object-fit: cover;          /* to crop overflow */
+}
+/* To let image grow, unless there is a figcaption */
+.c-callout > figure { height: 100%; }
+.c-callout > img,
+.c-callout > figure > img:only-child { min-height: 100%; }
 
 @media only screen and (--narrow-and-above) {
   .c-callout {
@@ -65,39 +80,6 @@ Styleguide Components.Callout
   /* MAGIC: Use any undocumented value or very high number. Hack?! */
   .c-callout > :is(img, figure) {
     grid-row-end: undefined; /* or `999` or `any-arbitrary-unused-name` */
-  }
-
-  /* Ensure title and desc determine height of figure and callout */
-  /* XXX: On Firefox, figure cell is narrower than image width */
-  /* SEE: https://stackoverflow.com/a/48943583/11817077 */
-  .c-callout--has-tall-figure > :is(img, figure) {
-    /*
-    height: 0;
-    min-height: 100%;
-    */
-  }
-
-  /* Ensure title and desc determine height of figure and callout */
-  /* XXX: On Firefox, figure cell is narrower than image width */
-  .c-callout {
-    --figure-max-height: 130px;
-  }
-  .c-callout--has-tall-figure > :is(img, figure) {
-    /* SEE: https://stackoverflow.com/a/61297418/11817077 */
-    /*
-    min-height: 100%;
-    max-height: var(--figure-max-height);
-    */
-  }
-
-  /* Ensure title and desc determine height of figure and callout */
-  .c-callout {
-    --figure-width: 130px;
-  }
-  .c-callout--has-tall-figure > :is(img, figure) {
-    width: var(--figure-width);
-    aspect-ratio: 310 / 130;
-    object-fit: cover;
   }
 }
 
