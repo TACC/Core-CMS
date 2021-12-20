@@ -50,8 +50,6 @@ Styleguide Components.Callout
     padding: 20px;
     text-align: left;
 
-    grid-template-rows: auto 1fr;
-    grid-template-columns: auto auto;
     grid-template-areas:
       'figure title'
       'figure desc';
@@ -62,17 +60,44 @@ Styleguide Components.Callout
   .c-callout > figure { margin: 0; /* overwrite browser and Bootstrap */ }
   .c-callout > :is(img, figure) { margin-right: 40px;}
 
-  /* Make figure always span all rows */
+  /* Resize title and desc cells to minimum height */
+  /* MAGIC: Setting arbitrary end to figure column shrinks text cell heights */
   /* MAGIC: Use any undocumented value or very high number. Hack?! */
   .c-callout > :is(img, figure) {
     grid-row-end: undefined; /* or `999` or `any-arbitrary-unused-name` */
   }
 
+  /* Ensure title and desc determine height of figure and callout */
+  /* XXX: On Firefox, figure cell is narrower than image width */
+  /* SEE: https://stackoverflow.com/a/48943583/11817077 */
   .c-callout--has-tall-figure > :is(img, figure) {
-    /* Ensure title and desc determine height of callout */
-    /* SEE: https://stackoverflow.com/a/48943583/11817077 */
+    /*
     height: 0;
     min-height: 100%;
+    */
+  }
+
+  /* Ensure title and desc determine height of figure and callout */
+  /* XXX: On Firefox, figure cell is narrower than image width */
+  .c-callout {
+    --figure-max-height: 130px;
+  }
+  .c-callout--has-tall-figure > :is(img, figure) {
+    /* SEE: https://stackoverflow.com/a/61297418/11817077 */
+    /*
+    min-height: 100%;
+    max-height: var(--figure-max-height);
+    */
+  }
+
+  /* Ensure title and desc determine height of figure and callout */
+  .c-callout {
+    --figure-width: 130px;
+  }
+  .c-callout--has-tall-figure > :is(img, figure) {
+    width: var(--figure-width);
+    aspect-ratio: 310 / 130;
+    object-fit: cover;
   }
 }
 
