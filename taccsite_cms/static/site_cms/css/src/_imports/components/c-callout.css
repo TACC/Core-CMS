@@ -50,9 +50,9 @@ Styleguide Components.Callout
 /* Layout: Figure / Image */
 
 /* Ensure title and desc determine height of figure and callout */
-/* FAQ: Options that use `min-height: 0` have bug (narrow cell) on Firefox  */
-/* SEE: https://stackoverflow.com/a/48943583/11817077 */
-/* SEE: https://stackoverflow.com/a/61297418/11817077 */
+/* FAQ: Options that use `min-height: 0` have bug (narrow cell) on Firefox:
+        - https://stackoverflow.com/a/48943583/11817077
+        - https://stackoverflow.com/a/61297418/11817077 */
 .c-callout > img,
 .c-callout > figure > img {
   object-fit: cover;
@@ -62,11 +62,10 @@ Styleguide Components.Callout
   /* CAVEAT: If using `aspect-ratio`:
               - image can grow beyond intrinsic size
               - `max-width|height` appears ineffectual
-              - `width|height` breaks `aspect-ratio`
-  */
+              - `width|height` breaks `aspect-ratio` */
 }
 
-/* To wrap figcaption at figure width */
+/* Wrap figcaption at figure width */
 .c-callout > figure { width: min-content; }
 
 
@@ -92,13 +91,13 @@ Styleguide Components.Callout
 
   /* Layout: Wide Screen: Figure / Image */
 
-  /* To trigger ratio and to limit stretch */
+  /* Trigger ratio, Limit stretch */
   .c-callout > img,
   .c-callout > figure > img {
     width: calc( var(--figure-width--no-units) * 1px);
     max-width: fit-content;
   }
-  /* To let image grow tall */
+  /* Let image grow tall */
   .c-callout > img {
     min-height: 100%;
   }
@@ -137,13 +136,13 @@ Styleguide Components.Callout
 
   /* Layout: Narrow Screen: Figure / Image */
 
-  /* To trigger ratio and to limit stretch */
+  /* Trigger ratio, Limit stretch */
   .c-callout > img,
   .c-callout > figure > img {
     height: calc( var(--figure-height--no-units) * 1px);
     max-height: fit-content;
   }
-  /* To let image grow wide */
+  /* Let image grow wide */
   .c-callout > img {
     min-width: 100%;
   }
