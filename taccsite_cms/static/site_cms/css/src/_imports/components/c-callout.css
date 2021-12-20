@@ -36,7 +36,8 @@ Styleguide Components.Callout
 /* Layout */
 
 .c-callout {
-  --figure-width: 310px;
+  --figure-width--no-units: 310;
+  --figure-height--no-units: 130;
 
   display: grid;
 }
@@ -46,7 +47,7 @@ Styleguide Components.Callout
 
 
 
-/* Layout: Image */
+/* Layout: Figure / Image */
 
 /* Ensure title and desc determine height of figure and callout */
 /* FAQ: Options that use `min-height: 0` have bug (narrow cell) on Firefox  */
@@ -54,19 +55,17 @@ Styleguide Components.Callout
 /* SEE: https://stackoverflow.com/a/61297418/11817077 */
 .c-callout > img,
 .c-callout > figure > img {
-  /* To limit size */
-  aspect-ratio: 310 / 130;
-  max-width: fit-content;
-  width: var(--figure-width); /* to trigger ratio */
-  object-fit: cover;          /* to crop overflow */
+  object-fit: cover;
+
+  aspect-ratio: var(--figure-width--no-units) / var(--figure-height--no-units);
+  /* NOTE: The required height or width property is set within media queries */
+  /* CAVEAT: If using `aspect-ratio`:
+              - image can grow beyond intrinsic size
+              - `max-width|height` appears ineffectual
+              - `width|height` breaks `aspect-ratio`
+  */
 }
-/* To let image grow tall, unless there is a figcaption */
-.c-callout > img,
-.c-callout > figure > img:only-child {
-  min-height: 100%;     /* WARNING: Image can grow beyond intrinsic height */
-  /* height: ...; */    /* WARNING: Makes `aspect-ratio` be ineffectual */
-  /* max-height: ...; *//* WARNING: Is ineffectual */
-}
+
 /* To wrap figcaption at figure width */
 .c-callout > figure { width: min-content; }
 
@@ -95,11 +94,26 @@ Styleguide Components.Callout
   .c-callout > :is(img, figure) {
     grid-row-end: undefined; /* or `999` or `any-arbitrary-unused-name` */
   }
+
+
+
+  /* Layout: Wide Screen: Figure / Image */
+
+  /* To trigger ratio and to limit stretch */
+  .c-callout > img,
+  .c-callout > figure > img {
+    width: calc( var(--figure-width--no-units) * 1px);
+    max-width: fit-content;
+  }
+  /* To let image grow tall */
+  .c-callout > img {
+    min-height: 100%;
+  }
 }
 
 
 
-/* Layout: Wide Screen */
+/* Layout: Narrow Screen */
 
 @media only screen and (--narrow-and-below) {
   .c-callout {
@@ -116,6 +130,21 @@ Styleguide Components.Callout
   /* FAQ: Container does not know if it has figure but gap is only for figure */
   .c-callout > figure { margin: 0; /* overwrite browser and Bootstrap */ }
   .c-callout > :is(img, figure) { margin-bottom: 20px;}
+
+
+
+  /* Layout: Narrow Screen: Figure / Image */
+
+  /* To trigger ratio and to limit stretch */
+  .c-callout > img,
+  .c-callout > figure > img {
+    height: calc( var(--figure-height--no-units) * 1px);
+    max-height: fit-content;
+  }
+  /* To let image grow wide */
+  .c-callout > img {
+    min-width: 100%;
+  }
 }
 
 /* Align figure to exact center (only relevant if content is smaller) */
