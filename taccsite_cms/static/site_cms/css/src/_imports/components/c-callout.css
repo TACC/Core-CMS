@@ -88,13 +88,6 @@ Styleguide Components.Callout
   .c-callout > figure { margin: 0; /* overwrite browser and Bootstrap */ }
   .c-callout > :is(img, figure) { margin-right: 40px;}
 
-  /* Resize title and desc cells to minimum height */
-  /* MAGIC: Setting arbitrary end to figure column shrinks text cell heights */
-  /* MAGIC: Use any undocumented value or very high number. Hack?! */
-  .c-callout > :is(img, figure) {
-    grid-row-end: undefined; /* or `999` or `any-arbitrary-unused-name` */
-  }
-
 
 
   /* Layout: Wide Screen: Figure / Image */
@@ -108,6 +101,15 @@ Styleguide Components.Callout
   /* To let image grow tall */
   .c-callout > img {
     min-height: 100%;
+  }
+
+
+
+  /* Resize title and desc cells to minimum height */
+  /* MAGIC: Setting arbitrary end to figure column shrinks text cell heights */
+  /* MAGIC: Use any undocumented value or very high number. Hack?! */
+  .c-callout > :is(img, figure) {
+    grid-row-end: undefined; /* or `999` or `any-arbitrary-unused-name` */
   }
 }
 
