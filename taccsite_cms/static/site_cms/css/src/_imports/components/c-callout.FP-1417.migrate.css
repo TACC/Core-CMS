@@ -1,0 +1,24 @@
+/* !!!: TEMPORARY (REMOVE AFTER MERGING FP-1415/7): For any site that has FP-1417 code AND pre–FP-1417 code, build these styles in isolation and save output in a snippet, so that you can override pre–FP-1417 code while still supporting FP-1417 code */
+
+@import url("_imports/tools/media-queries.css");
+
+/* Layout: Wide Screen */
+
+@media only screen and (--narrow-and-above) {
+  .c-callout:not(.old-c-callout) {
+    grid-template-areas:
+      'figure title'
+      'figure desc';
+  }
+}
+
+/* Layout: Narrow Screen */
+
+@media only screen and (--narrow-and-below) {
+  .c-callout:not(.old-c-callout) {
+    grid-template-areas:
+      'figure'
+      'title'
+      'desc';
+  }
+}
