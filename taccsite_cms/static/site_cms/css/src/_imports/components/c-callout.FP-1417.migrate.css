@@ -1,4 +1,5 @@
-/* !!!: TEMPORARY (REMOVE AFTER MERGING FP-1415/7): For any site that has FP-1417 code AND pre–FP-1417 code, build these styles in isolation and save output in a snippet, so that you can override pre–FP-1417 code while still supporting FP-1417 code */
+/* TODO: After FP-1417, Remove This File (which has CSS to undo conflicts) */
+/* NOTE: For any site that has FP-1417 code AND pre–FP-1417 code, build these styles in isolation and save output in a snippet, so that you can override pre–FP-1417 code while still supporting FP-1417 code */
 
 @import url("_imports/tools/media-queries.css");
 
