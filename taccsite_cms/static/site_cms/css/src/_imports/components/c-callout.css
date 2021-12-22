@@ -26,6 +26,10 @@ Styleguide Components.Callout
 .c-callout > :is(h1, h2, h3, h4, h5, h6) { grid-area: title; }
 .c-callout > p                           { grid-area: desc; }
 
+/* Let title `margin-top` and desc `margin-bottom` manage gap between them */
+/* FAQ: Bootstrap does this too but auto. pattern library has no Bootstrap */
+.c-callout > p { margin-top: 0; }
+
 
 
 /* Layout: Figure / Image */
