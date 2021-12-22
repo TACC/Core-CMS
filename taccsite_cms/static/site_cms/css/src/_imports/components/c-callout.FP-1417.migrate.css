@@ -17,6 +17,9 @@
       'figure title'
       'figure desc';
   }
+  .c-callout--has-figure {
+    column-gap: unset;
+  }
 }
 
 /* Layout: Narrow Screen */
@@ -27,6 +30,9 @@
       'figure'
       'title'
       'desc';
+  }
+  .c-callout--has-figure {
+    column-gap: unset;
   }
 }
 
