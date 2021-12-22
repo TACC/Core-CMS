@@ -1,4 +1,11 @@
-<div class="o-grid" style="--gap: 2em; grid-template-rows: min-content">
+<style>
+#c-callout.o-grid {
+  --gap: 3em;
+  grid-template-rows: min-content;
+  margin-inline: var(--gap);
+}
+</style>
+<div class="o-grid" id="c-callout">
   <aside class="c-callout">
     <h2>Style ▸ Text</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ullamcorper, lacus eu vulputate eleifend, nibh sem finibus mi, eget vulputate eros nulla et arcu.</p>
@@ -16,19 +23,19 @@
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ullamcorper, lacus eu vulputate eleifend, nibh sem finibus mi, eget vulputate eros nulla et arcu. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ullamcorper, lacus eu vulputate eleifend, nibh sem finibus mi, eget vulputate eros nulla et arcu.</p>
   </aside>
 
-  <a href="/ui-patterns/gh-83-c-callout/" class="c-callout">
+  <a href="#" class="c-callout">
     <h1>Link ▸ Image (Wide) + Text</h1>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ullamcorper, lacus eu vulputate eleifend, nibh sem finibus mi, eget vulputate eros nulla et arcu.</p>
     <img src="https://cep.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/fb/3f/fb3fd4c3-6360-4759-b607-f393b84558c0/spectrum-wide-320px.png__320x160_q85_subject_location-157%2C78_subsampling-2.png" alt="">
   </a>
 
-  <a href="/ui-patterns/gh-83-c-callout/" class="c-callout">
+  <a href="#" class="c-callout">
     <h1>Link ▸ Image (Tall) + Text</h1>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ullamcorper, lacus eu vulputate eleifend, nibh sem finibus mi, eget vulputate eros nulla et arcu.</p>
     <img src="https://cep.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/c9/eb/c9ebd744-14d3-43ed-bc2e-86ed96eeef8a/spectrum-tall-320px.png__160x320_q85_subject_location-76%2C160_subsampling-2.jpg" alt="">
   </a>
 
-  <a href="/ui-patterns/gh-83-c-callout/" class="c-callout">
+  <a href="#" class="c-callout">
     <h1>Link ▸ Image w/ Caption (Wide) + Text</h1>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ullamcorper, lacus eu vulputate eleifend, nibh sem finibus mi, eget vulputate eros nulla et arcu.</p>
     <figure>
@@ -37,7 +44,7 @@
     </figure>
   </a>
 
-  <a href="/ui-patterns/gh-83-c-callout/" class="c-callout">
+  <a href="#" class="c-callout">
     <h1>Link ▸ Image w/ Caption (Tall) + Text</h1>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ullamcorper, lacus eu vulputate eleifend, nibh sem finibus mi, eget vulputate eros nulla et arcu.</p>
     <figure>
@@ -56,7 +63,7 @@
   </a>
 
   <!-- TODO: After FP-1415, Remove This (Outdated Markup) -->
-  <a class="c-callout c-callout--has-figure c-callout--is-link" href="/ui-patterns/gh-83-c-callout/">
+  <a class="c-callout c-callout--has-figure c-callout--is-link" href="#">
     <h2 class="c-callout__title">👎 Callout ▸ Image (Tall)</h2>
     <p class="c-callout__desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ullamcorper, lacus eu vulputate eleifend, nibh sem finibus mi, eget vulputate eros nulla et arcu.</p>
     <figure class="c-callout__figure">
