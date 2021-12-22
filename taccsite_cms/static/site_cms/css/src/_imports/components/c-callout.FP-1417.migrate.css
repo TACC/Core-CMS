@@ -3,6 +3,12 @@
 
 @import url("_imports/tools/media-queries.css");
 
+/* Layout: Figure / Image */
+
+.c-callout__figure img {
+  max-width: unset;
+}
+
 /* Layout: Wide Screen */
 
 @media only screen and (--narrow-and-above) {
@@ -22,4 +28,17 @@
       'title'
       'desc';
   }
+}
+
+/* As a Link */
+
+.c-callout--is-link::before {
+  height: unset;
+  left: unset;
+  overflow: unset;
+}
+.c-callout--is-link:active::before,
+.c-callout--is-link:hover::before {
+  outline: unset;
+  outline-offset: unset;
 }
