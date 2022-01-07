@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - BM-22: BrainMap: Add UTHSC-SA Logo [and Remove SGCI Logo Text] (#414)
-- Task/FP-1289 Image Grid Pattern (#415)
+- FP-1289 Image Grid Pattern (#415)
 - FP-1291: C-Recognition Pattern (#416)
 - FP-1290: Card UI Pattern (Frontera About Page) (#420)
 
