@@ -225,10 +225,11 @@ TEMPLATES = [
                 'django_settings_export.settings_export'
             ],
             'libraries': {
-                # NOTE: These are an unnecessary alternative config, because taccsite_cms is in INSTALLED_APPS, but are comfortably explicit
+                # NOTE: These may be unnecessary alternative config, because taccsite_cms is in INSTALLED_APPS, but are comfortably explicit
                 # SEE: https://docs.djangoproject.com/en/3.1/howto/custom-template-tags/#code-layout
                 'custom_portal_settings': 'taccsite_cms.templatetags.custom_portal_settings',
                 'tacc_uri_shortcuts': 'taccsite_cms.templatetags.tacc_uri_shortcuts',
+                'preferred_tag_for_class': 'taccsite_cms.templatetags.preferred_tag_for_class',
             },
             'loaders': [
                 'django.template.loaders.filesystem.Loader',
@@ -423,6 +424,34 @@ SETTINGS_EXPORT_VARIABLE_NAME = 'settings'
 
 FEATURES = ''
 
+########################
+# PLUGIN SETTINGS
+########################
+
+# https://github.com/django-cms/djangocms-style
+DJANGOCMS_STYLE_CHOICES = [
+    # https://confluence.tacc.utexas.edu/x/c5TtDg
+    'o-section o-section--style-light',
+    'o-section o-section--style-dark',
+    'c-callout',
+    'c-recognition c-recognition--style-light',
+    'c-recognition c-recognition--style-dark',
+]
+DJANGOCMS_STYLE_TAGS_DEFAULT = 'Automatic'
+DJANGOCMS_STYLE_TAGS = [
+    # CMS editor may neglect tag so we support intelligent tag choice
+    # SEE: taccsite_cms/templatetags/preferred_tag_for_class.py
+    DJANGOCMS_STYLE_TAGS_DEFAULT,
+    # Ordered by expected usage
+    'section', 'article', 'header', 'footer', 'aside', 'div',
+    # Not expected but not unreasonable
+    'h1', 'h2', 'h3', 'h4', 'h5', 'h6'
+]
+
+########################
+# SETTINGS IMPORT & EXPORT
+########################
+
 try:
     from taccsite_cms.settings_custom import *
 except:
@@ -450,5 +479,6 @@ SETTINGS_EXPORT = [
     'FAVICON',
     'INCLUDES_CORE_PORTAL',
     'GOOGLE_ANALYTICS_PROPERTY_ID',
-    'GOOGLE_ANALYTICS_PRELOAD'
+    'GOOGLE_ANALYTICS_PRELOAD',
+    'DJANGOCMS_STYLE_TAGS_DEFAULT'
 ]
