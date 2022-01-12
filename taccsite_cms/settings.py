@@ -423,6 +423,38 @@ SETTINGS_EXPORT_VARIABLE_NAME = 'settings'
 
 FEATURES = ''
 
+########################
+# PLUGIN SETTINGS
+########################
+
+# https://github.com/django-cms/djangocms-style
+DJANGOCMS_STYLE_CHOICES = [
+    # https://confluence.tacc.utexas.edu/x/c5TtDg
+    'o-section o-section--style-light',
+    'o-section o-section--style-dark',
+    # RFE: Consider adding:
+    # 'c-callout',
+    # 'c-recognition c-recognition--style-light',
+    # 'c-recognition c-recognition--style-dark',
+    # et cetera
+]
+DJANGOCMS_STYLE_TAGS = [
+    # Even though <div> is often NOT the most semantic choice;
+    # CMS editor may neglect tag, any other tag could be inaccurate,
+    # and <div> is never inaccurate; so <div> is placed first 😞
+    # RFE: Support automatically choosing tag based on class name
+    # SEE: taccsite_cms/templatetags/preferred_tag_for_class.py
+    'div',
+    # Ordered by expected usage
+    'section', 'article', 'header', 'footer', 'aside',
+    # Not expected but not unreasonable
+    'h1', 'h2', 'h3', 'h4', 'h5', 'h6'
+]
+
+########################
+# IMPORT & EXPORT
+########################
+
 try:
     from taccsite_cms.settings_custom import *
 except:
