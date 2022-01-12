@@ -1,0 +1,27 @@
+/*
+Hide
+
+Different ways and reasons to hide elements. (More coming in GH-101.)
+
+.u-hide--visually               - Hide only for visual UI
+
+Styleguide Core.Trumps.Utilities.Hide
+*/
+/* TODO: (GH-101) Create n' import `x-hide` and provide more `u-hide` options */
+/* SEE: https://github.com/TACC/Core-CMS/pull/222 */
+
+/* To hide content only from visual interfaces */
+/* SEE: https://www.a11yproject.com/posts/2013-01-11-how-to-hide-content/ */
+.u-hide--visually:not(:focus, :active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+
+  /* Added by TACC based on other examples */
+  border: none;
+  padding: 0;
+}
