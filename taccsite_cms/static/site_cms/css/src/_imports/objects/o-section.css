@@ -105,7 +105,6 @@ Styleguide Objects.Section
 .o-section--style-dark h6 {
   color: var(--global-color-primary--xx-light);
 }
-/* FAQ: Banners should not touch a border of the following section */
 .o-section--style-dark:not(.o-section--banner)
 + .o-section--style-dark:not(.o-section--banner) {
   border-top: var(--hr-height) solid var(--global-color-primary--xx-light);
@@ -127,7 +126,6 @@ Styleguide Objects.Section
 .o-section--style-light h6 {
   color: var(--global-color-primary--xx-dark);
 }
-/* FAQ: Banners should not touch a border of the following section */
 .o-section--style-light:not(.o-section--banner)
 + .o-section--style-light:not(.o-section--banner) {
   border-top: var(--hr-height) solid var(--global-color-primary--normal);
