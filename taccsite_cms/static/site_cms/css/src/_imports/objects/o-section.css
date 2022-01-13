@@ -71,6 +71,9 @@ Styleguide Objects.Section
 
 /* Modifers: Intro */
 
+/* To hide empty an column of an intro */
+/* HACK: This assumes an intro has columns */
+/* FAQ: Only Frontera's temporary homepage uses `.o-section--intro` */
 .o-section--intro > :empty:not(img),
 .o-section--intro .u-empty {
   display: none;
