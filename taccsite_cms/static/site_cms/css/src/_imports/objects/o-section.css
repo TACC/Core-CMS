@@ -132,6 +132,8 @@ Styleguide Objects.Section
 }
 
 /* Modifers: Style: (Fake) Endless Background */
+/* FAQ: Allows background to escape `.container` (whether its self or parent) */
+/* SEE: "Tricks" section */
 
 [class*="o-section--style"] {
   /* To anchor the `position: absolute` pseudo-element */
@@ -236,3 +238,14 @@ Styleguide Objects.Section
 /* NOTE: A `z-index` > 0 is only necessary for sections before banner */
 /* CAVEAT: Any section pop-out el's can NOT overflow atop section after it */
 [class*="o-section--style"] { z-index: 1; }
+
+
+
+/* Tricks: /* Modifiers: Style */
+/* Tricks: /* Children: Banner Image */
+
+/* HACK: To hide `.o-section--style-…` & `.o-section__banner-image` overflow */
+main /* SEE: https://github.com/TACC/Core-CMS/pull/151 */,
+#content-wrap /* HACK: Using ID selector until <main> exists */ {
+  overflow: hidden;
+}
