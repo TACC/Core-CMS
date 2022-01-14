@@ -191,7 +191,7 @@ Styleguide Trumps.Scopes.ArticleList
 /* FP-1249: If <a> wraps list item, then no need to `x-article-link-stretch` */
 /* SEE: https://github.com/TACC/Core-CMS/pull/429 */
 .s-article-list--links p:not(:last-child) a:active {
-  position: static; /* oOverride html-elements.css `a:active` */
+  position: static; /* override html-elements.css `a:active` */
 }
 
 
