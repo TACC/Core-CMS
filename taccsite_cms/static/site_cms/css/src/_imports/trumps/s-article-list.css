@@ -188,8 +188,8 @@ Styleguide Trumps.Scopes.ArticleList
   @extend .x-article-link-hover--gapless;
 }
 /* Disable link click feedback because `x-article-link-stretch` is used */
-/* FAQ: Only the outline was moved not list item (weird) */
 /* FP-1249: If <a> wraps list item, then no need to `x-article-link-stretch` */
+/* SEE: https://github.com/TACC/Core-CMS/pull/429 */
 .s-article-list--links p:not(:last-child) a:active {
   position: static; /* oOverride html-elements.css `a:active` */
 }
