@@ -16,37 +16,9 @@ Styleguide Objects.Section
 
 /* Block */
 
-[class*="o-section--"] {
+.o-section {
   /* GH-99: Use standard spacing value */
-  /* NOTE: The Design varies, but this is the approx. average */
-  --vert-space: 4.5rem;
-  --horz-space: 4.5rem;
-
-  padding-top: var(--vert-space);
-  padding-bottom: var(--vert-space);
-}
-[class*="o-section--"] > [class*="o-section--"] {
-  --vert-space: 0;
-  --horz-space: 0;
-}
-
-/* Overwrite Bootstrap */
-[class*="o-section--"].container,
-[class*="o-section--"].container-fluid {
-  width: auto; /* Bootstrap forcing `width: 100%` prevented usable margin */
-  margin-left: var(--horz-space);
-  margin-right: var(--horz-space);
-}
-[class*="o-section--"].container {
-  --horz-space: auto;
-}
-/* To take control of padding away from Bootstrap on MOST screen sizes */
-@media (--x-narrow-and-above) {
-  [class*="o-section--"].container,
-  [class*="o-section--"].container-fluid {
-    padding-left: 0;
-    padding-right: 0;
-  }
+  padding-block: 4.5rem; /* designs vary but this is the approx. average */
 }
 
 
@@ -61,8 +33,7 @@ Styleguide Objects.Section
 /* Modifers: Banner */
 
 .o-section--banner {
-  --vert-space: 0;
-  --horz-space: 0;
+  padding-block: 0;
 
   gap: 0 !important; /* overwrite `o-section--layout-*` */
 }
@@ -162,6 +133,10 @@ Styleguide Objects.Section
   /* To horizontally center */
   left: 50%;
   transform: translateX(-50%);
+}
+/* Do not let nested sections extend beyond parent */
+.o-section [class*="o-section--style"]::before {
+  width: auto;
 }
 
 
