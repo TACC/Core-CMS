@@ -172,6 +172,9 @@ Styleguide Trumps.Scopes.ArticleList
 
 /* Expand link to cover its container */
 .s-article-list--links p:not(:last-child) { position: relative; }
+/* Prevent clickable area of link from changing */
+/* FAQ: Override html-elements.css `a:active` */
+.s-article-list--links p:not(:last-child) a:active { position: static; }
 .s-article-list--links p:not(:last-child) a::before {
   content: '';
 
