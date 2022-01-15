@@ -37,7 +37,11 @@ djangocms-admin-style==2.0.0
 djangocms-apphook-setup==0.4.1
 djangocms-attributes-field==2.0.0
 djangocms-blog==1.1.1
-djangocms-bootstrap4==2.0.0
+# Fix description of Bootstrap Container type choice from complex setting
+# TODO: After django-cms/djangocms-bootstrap4#145 merge, use official repo
+# SEE: https://github.com/django-cms/djangocms-bootstrap4/pull/145
+# djangocms-bootstrap4==2.0.0
+git+http://git@github.com/tacc-wbomar/djangocms-bootstrap4.git@quick/grid-container-support-nested-tuple-choices#egg=djangocms-bootstrap4
 djangocms-column==1.11.0
 djangocms-file==3.0.0
 djangocms-forms==0.2.5

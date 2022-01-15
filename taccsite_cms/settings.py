@@ -14,6 +14,8 @@ from glob import glob
 import ldap
 from django_auth_ldap.config import LDAPSearch, GroupOfNamesType
 
+from django.utils.translation import gettext_lazy as _
+
 SECRET_KEY = 'CHANGE_ME'
 def gettext(s): return s
 
@@ -422,6 +424,50 @@ HAYSTACK_CONNECTIONS = {
 SETTINGS_EXPORT_VARIABLE_NAME = 'settings'
 
 FEATURES = ''
+
+########################
+# PLUGIN SETTINGS
+########################
+
+# SEE: https://github.com/django-cms/djangocms-bootstrap4
+DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS = [
+    (_('Container'), (
+        ('container', _('Container')), # default
+        (
+            'container  o-section o-section--style-light',
+            _('Fluid, Light section')
+        ),
+        (
+            'container  o-section o-section--style-dark',
+            _('Fluid, Dark section')
+        ),
+    )),
+    (_('Fluid container'), (
+        ('container-fluid', _('Fluid')), # default
+        (
+            'container-fluid  o-section o-section--style-light',
+            _('Fluid, Light section')
+        ),
+        (
+            'container-fluid  o-section o-section--style-dark',
+            _('Fluid, Dark section')
+        ),
+    )),
+    (_('No container'), (
+        (
+            'o-section o-section--style-light',
+            _('Fluid, Light section')
+        ),
+        (
+            'o-section o-section--style-dark',
+            _('Fluid, Dark section')
+        ),
+    )),
+]
+
+########################
+# IMPORT & EXPORT
+########################
 
 try:
     from taccsite_cms.settings_custom import *
