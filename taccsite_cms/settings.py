@@ -443,7 +443,7 @@ DJANGOCMS_STYLE_TAGS = [
     # CMS editor may neglect tag, any other tag could be inaccurate,
     # and <div> is never inaccurate; so <div> is placed first 😞
     # RFE: Support automatically choosing tag based on class name
-    # SEE: taccsite_cms/templatetags/preferred_tag_for_class.py
+    # SEE: https://github.com/TACC/Core-CMS/pull/432
     'div',
     # Ordered by expected usage
     'section', 'article', 'header', 'footer', 'aside',
