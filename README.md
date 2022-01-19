@@ -1,3 +1,7 @@
+# ⚠️ Out of Date
+
+See [new README.md (draft)](https://github.com/TACC/Core-CMS/blob/quick/update-readme-since-settings-refactor/README.md). Feel free to leave comments in [PR #417](https://github.com/TACC/Core-CMS/pull/417).
+
 # TACC CORE-CMS
 
 ## Docker Setup
