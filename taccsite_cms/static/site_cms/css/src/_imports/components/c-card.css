@@ -1,0 +1,57 @@
+/*
+Card
+
+Container with content and action(s) about a single subject.
+
+> __ℹ️ Notice__: No default styling.
+
+.c-card--frontera-about-page - Container/Link with image and large heading below
+
+Markup: c-card.html
+
+Styleguide Components.Card
+*/
+@import url("_imports/tools/x-article-link.css");
+
+/* Modifiers */
+
+
+
+/* Modifiers: Frontera About Page */
+
+.c-card--frontera-about-page {
+  width: fit-content;
+
+  border-bottom: var(--global-border-width--normal) solid var(--global-color-primary--dark);
+  margin-bottom: 4.6rem;
+}
+
+/* Plugins: Link / Image with Link */
+a.c-card--frontera-about-page {
+  display: inline-block;
+
+  text-decoration: none;
+}
+a.c-card--frontera-about-page:hover { @extend %x-article-link-hover; }
+a.c-card--frontera-about-page:active { @extend %x-article-link-active; }
+
+/* Plugins: * > Image + Text */
+.c-card--frontera-about-page img + h3 {
+  margin-top: 1.6rem;
+}
+.c-card--frontera-about-page img ~ :last-child {
+  margin-bottom: 1.25rem;
+}
+
+/* Plugins: * > Image with Caption */
+.c-card--frontera-about-page figure {
+  margin: 0;
+}
+.c-card--frontera-about-page figcaption {
+  color: var(--global-color-primary--xx-dark);
+  font-size: var(--global-font-size--x-large);
+  font-weight: var(--bold);
+
+  margin-top: 1.6rem;
+  margin-bottom: 1.25rem;
+}

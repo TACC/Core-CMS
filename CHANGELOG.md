@@ -7,6 +7,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.12.1] - 2021-12-21: BM Branding; UI Patterns; Search Bar Design; UTRC Font
+
+### Added
+
+- BM-22: BrainMap: Add UTHSC-SA Logo [and Remove SGCI Logo Text] (#414)
+- FP-1289 Image Grid Pattern (#415)
+- FP-1291: C-Recognition Pattern (#416)
+- FP-1290: Card UI Pattern (Frontera About Page) (#420)
+
+### Changed
+
+- FP-1287: Redesign & Refactor Search Bar (#383)
+- UTRC-357/FP-1268: Retire v1 Styles (Use v2 Styles) (#360)
+- Quick: Move Code & Samp CSS from Site to Doc Page (#424)
+
+## [3.5.1] - 2021-11-18: Remove Sentence from Getting Started Doc
+
+### Fixed
+
+- Quick: Remove sentence from Getting Started doc (#410)
+
 ## [3.5.0] - 2021-11-15: Navbar Toggle Color; OOTB Remote Login; v3.3.0 Fixes
 
 ### Added
@@ -199,7 +220,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.0.0] - 2021-03-31
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.5.0...HEAD
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.12.1...HEAD
+[3.12.1]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.1
+[3.5.1]: https://github.com/TACC/Core-CMS/releases/tag/v3.5.1
 [3.5.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.5.0
 [3.3.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.3.0
 [3.0.7]: https://github.com/TACC/Core-CMS/releases/tag/v3.0.7

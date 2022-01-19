@@ -21,6 +21,7 @@
 /* Load custom element styles within custom element, not here */
 
 /* OBJECTS */
+@import url("_imports/objects/o-grid.css");
 @import url("_imports/objects/o-offset-content.css");
 @import url("_imports/objects/o-section.css");
 @import url("_imports/objects/o-site.css");
@@ -28,9 +29,11 @@
 /* COMPONENTS */
 /* GH-302: HELP: How should all of these become individually built files? */
 /* GH-302: FAQ: Individually built stylesheets could be loaded explicitely. */
+@import url("_imports/components/c-card.css");
 @import url("_imports/components/c-callout.css");
 @import url("_imports/components/c-data-list.css");
 @import url("_imports/components/c-footer.css");
+@import url("_imports/components/c-recognition.css");
 @import url("_imports/components/c-see-all-link.css");
 @import url("_imports/components/django.cms.css");
 @import url("_imports/components/django.cms.blog.css");
