@@ -32,4 +32,5 @@ Styleguide Settings.CustomProperties.Space
 
   --global-space--list-indent: 40px;   /* browser default (Firefox, Edge) */
   --global-space--beneath-main-content: 45px;
+  --global-space--grid-gap: 15px;      /* Bootstrap `.container` & `.row` */
 }
