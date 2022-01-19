@@ -1,7 +1,19 @@
 /*
 Section
 
-Horizontal
+A group of related content.
+
+To Do:
+- FP-1463: Extract `--layout` into `o-layout`
+- FP-1462: Extract `--banner` and `__banner into `c-banner`
+
+.o-section--style-light - light background, dark text
+.o-section--style-dark  - dark background, light text
+.o-section--layout-a - lay out children as two even columns
+.o-section--layout-b - lay out children as one wide column & one narrow column
+.o-section--layout-c - lay out children as one narrow column & one wide column
+.o-section--layout-d - lay out children as three even columns
+.o-section--banner - Add a banner with a background image, overlay, then content
 
 Markup: o-section.html
 
@@ -142,6 +154,7 @@ Styleguide Objects.Section
 
 
 /* Modifers: Layout */
+/* FP-1463: Extract to new object */
 
 .o-section--layout-a,
 .o-section--layout-b,
@@ -166,6 +179,7 @@ Styleguide Objects.Section
 
 
 /* Children: Banner Image */
+/* FP-1462: Extract to new banner component(s) */
 
 /* Added `.o-section--banner` to require parent modifier class in markup */
 .o-section--banner .o-section__banner-image {
@@ -189,6 +203,7 @@ Styleguide Objects.Section
 
 
 /* Children: Banner Overlay */
+/* FP-1462: Extract to new banner component(s) */
 
 /* Added `.o-section--banner` to require parent modifier class in markup */
 .o-section--banner .o-section__banner-overlay {
@@ -205,6 +220,7 @@ Styleguide Objects.Section
 
 
 /* Tricks: /* Children: Banner Image */
+/* FP-1462: Extract to new banner component(s) */
 
 /* HACK: To hide vertical overflow by placing sibling sections atop */
 /* NOTE: This selector assumes only a banner section has vertical overflow */

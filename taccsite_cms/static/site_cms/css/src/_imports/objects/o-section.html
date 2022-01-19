@@ -1,20 +1,38 @@
-<section class="o-section--style-dark">
-  <p><strong>Style "Dark"</strong></p>
-  <p>This section is styled dark, and <strong>must not</strong> have top border (because it does not have the same style section before it).</p>
+<section class="o-section {{modifier_class}}">
+  <p><strong>Section</strong></p>
+  <p>I am a Section. Use light Sections to wrap most content. Use dark Sectiosn to highlight some content.</p>
 </section>
-<section class="o-section--style-dark">
-  <p><strong>Style "Dark"</strong></p>
-  <p>This section is styled dark, and <strong>must</strong> a top border (because it does not have the same style section before it).</p>
+
+<hr />
+
+<section class="o-section {{modifier_class}}">
+  <p><strong>Section (First of a Pair)</strong></p>
+  <p>A Section directly below me will create a border between this Section and that Section.</p>
 </section>
-<section class="o-section--style-light">
-  <p><strong>Style "Light"</strong></p>
-  <p>This section is styled light, and <strong>must not</strong> have top border (because it does not have the same style section before it).</p>
+<section class="o-section {{modifier_class}}">
+  <p><strong>Section (Second of a Pair)</strong></p>
+  <p>A Section directly above me will create a border between this Section and that Section.</p>
 </section>
-<section class="o-section--style-light">
-  <p><strong>Style "Light"</strong></p>
-  <p>This section is styled light, and <strong>must</strong> have a top border (because it does not have the same style section before it).</p>
+
+<hr />
+
+<section class="o-section {{modifier_class}}">
+  <p><strong>Section (with Nested Sections)</strong></p>
+  <p>A dark Section and light Section can be nested within me.</p>
+  <p><small>A nested Section <em>could</em> be used to remove the standard Section spacing, but only as a way to distinguish a nested Section. (Nested Sections may not be something we want.)</small></p>
+  <div class="o-section {{modifier_class}}">
+    <p><strong>(Nested) Section</strong></p>
+    <p>I am nested.</p>
+  </div>
+  <div class="o-section {{modifier_class}}">
+    <p><strong>(Nested) Section</strong></p>
+    <p>I am nested.</p>
+  </div>
 </section>
-<section class="o-section--style-dark">
-  <p><strong>Style "Dark"</strong></p>
-  <p>This section is styled dark, and <strong>must not</strong> have top border (because it does not have the same style section before it).</p>
+
+<hr />
+
+<section class="o-section {{modifier_class}}">
+  <p><strong>Section (at Bottom of Page)</strong></p>
+  <p>At the bottom of a page: a dark Section will visually merge with the Footer, a light section will stand out above the Footer.</p>
 </section>
