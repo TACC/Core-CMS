@@ -7,7 +7,7 @@ Styles that allow re-usable layouts.
 %x-layout--b - Widest: one wide column & one narrow column
 %x-layout--c - Widest: one narrow column & one wide column
 %x-layout--d - Widest: three even columns
-%x-layout--d - Always: multiple even rows
+%x-layout--e - (deprecated) Always: multiple even rows
 
 Styleguide Tools.ExtendsAndMixins.Layout
 */
