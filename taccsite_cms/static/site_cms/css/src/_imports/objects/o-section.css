@@ -67,7 +67,7 @@ Styleguide Objects.Section
 
 
 /* Modifers: Intro */
-/* FP-1462/FP-1463: Extract to new ??? component */
+/* FP-1463: Extract to new layout object */
 
 /* To hide empty an column of an intro */
 /* HACK: This assumes an intro has columns */
@@ -170,7 +170,7 @@ Styleguide Objects.Section
 
 
 /* Modifers: Layout */
-/* FP-1463: Extract to new object */
+/* FP-1463: Extract to new layout object */
 
 .o-section--layout-a,
 .o-section--layout-b,
