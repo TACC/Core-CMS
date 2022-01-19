@@ -405,15 +405,6 @@ DJANGOCMS_FORMS_USE_HTML5_REQUIRED = False
 
 DJANGOCMS_FORMS_REDIRECT_DELAY = 1
 
-# DjangoCMS Style Plugin
-DJANGOCMS_STYLE_CHOICES = [
-    # Common UI pattern class combinations
-    'c-recognition c-recognition--style-light',
-    'c-recognition c-recognition--style-dark',
-    'o-section o-section--style-light',
-    'o-section o-section--style-dark',
-]
-
 # Elasticsearch Indexing
 HAYSTACK_ROUTERS = ['aldryn_search.router.LanguageRouter',]
 HAYSTACK_SIGNAL_PROCESSOR = 'taccsite_cms.signal_processor.RealtimeSignalProcessor'
@@ -431,6 +422,26 @@ HAYSTACK_CONNECTIONS = {
 SETTINGS_EXPORT_VARIABLE_NAME = 'settings'
 
 FEATURES = ''
+
+########################
+# PLUGIN SETTINGS
+########################
+
+# https://github.com/django-cms/djangocms-style
+DJANGOCMS_STYLE_CHOICES = [
+    # https://cep.tacc.utexas.edu/design-system/ui-patterns/o-section/
+    'o-section o-section--style-light',
+    'o-section o-section--style-dark',
+    # https://cep.tacc.utexas.edu/design-system/ui-patterns/c-callout/
+    'c-callout',
+    # https://cep.tacc.utexas.edu/design-system/ui-patterns/c-recognition/
+    'c-recognition c-recognition--style-light',
+    'c-recognition c-recognition--style-dark',
+]
+
+########################
+# IMPORT & EXPORT
+########################
 
 try:
     from taccsite_cms.settings_custom import *
