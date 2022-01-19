@@ -67,6 +67,7 @@ Styleguide Objects.Section
 
 
 /* Modifers: Intro */
+/* FP-1462/FP-1463: Extract to new ??? component */
 
 /* To hide empty an column of an intro */
 /* HACK: This assumes an intro has columns */
