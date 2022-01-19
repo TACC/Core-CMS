@@ -58,11 +58,9 @@ Styleguide Objects.Section
 
 /* Modifers: Banner */
 
-.o-section--banner {
-  padding-block: 0;
-
-  gap: 0 !important; /* overwrite `o-section--layout-*` */
-}
+.o-section--banner[class*="o-section--layout"] { gap: 0; }
+.o-section--banner.container { padding-inline: 0; }
+.o-section--banner.o-section { padding-block: 0; }
 
 
 
