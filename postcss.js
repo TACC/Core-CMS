@@ -35,20 +35,14 @@ function parallelCallback(err, results) {
 // SEE: https://www.npmjs.com/package/postcss#js-api
 /**
  * Build styles for the Core CMS
- * @param {boolean} [shouldFreezeVariables=false] - Whether to freeze values of custom properties
  */
-function buildStylesCore({shouldFreezeVariables = false} = {}) {
+function buildStylesCore() {
   let command;
   let sourceDir;
   let configDir;
 
-  if (shouldFreezeVariables === true) {
-    sourceDir = 'freeze_variables/';
-    configDir = 'conf/css/freeze_variables/';
-  } else {
-    sourceDir = '';
-    configDir = standardConfigDir;
-  }
+  sourceDir = '';
+  configDir = standardConfigDir;
 
   // Quote globbed paths to prevent OS from parsing them
   // SEE: https://github.com/postcss/postcss-cli/issues/142#issuecomment-310681302
@@ -80,9 +74,4 @@ parallel([
 
   // Build custom assets, except for Core
   () => { if (env.CUSTOM_ASSET_DIR !== 'core-cms') buildStylesCustom() },
-
-  // Temporarily build "frozen variables" from Core
-  // FAQ: This is an advanced solution to a problem that should not exist
-  () => { buildStylesCore({shouldFreezeVariables: true}) },
-  // NOTE: Do NOT support freezing variables for custom projects
 ], parallelCallback);
