@@ -20,18 +20,12 @@ Styleguide Trumps.Scopes.Document
 /* ELEMENTS: Content Sectioning */
 
 .s-document h2 {
-  margin: var(--global-space--large) 0 var(--global-space--normal);
+  margin-bottom: var(--global-space--normal);
 }
 
 .s-document h3 {
   margin-bottom: var(--global-space--normal);
 }
-
-/* Extra space above lesser headings */
-.s-document h3 { margin-top: 1em; }
-.s-document h4,
-.s-document h5,
-.s-document h6 { margin-top: 1.25em; }
 
 /* ELEMENTS: Text Content */
 
@@ -76,6 +70,17 @@ p + dl.small {
 .s-document p + details {
   margin-top: -0.75rem;
   margin-bottom: 1rem; /* mirror Bootstrap `_reboot.css` <p> */
+}
+
+/* ELEMENTS: Inline Text Semantics */
+
+/* (any content or context) */ code,
+/* (content has only output) */ pre > samp {
+  background-color: var(--global-color-primary--x-light);
+
+  border-width: var(--global-border-width--normal);
+  border-style: solid;
+  border-color: var(--global-color-primary--light);
 }
 
 

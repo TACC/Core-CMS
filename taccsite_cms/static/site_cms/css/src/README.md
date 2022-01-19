@@ -23,6 +23,7 @@ _This directory exists in `static/` __only__ because it is customary, using Djan
 | `site(.*).css` | styles that apply to the entire website i.e. global styles
 | `template.*.css` | styles that apply only to certain templates
 | `page.*.css` | styles that apply only to certain pages
+| `app.*.css` | styles that apply only to certain apps (a.k.a. plugins)
 
 ## Documentation Format
 

@@ -66,9 +66,18 @@
     <div id="content-wrap" class="o-site__body">
       <!-- This block used regardless. -->
       {% block content %}
+
+      {# To allow extra Container in page structure by hiding extra padding #}
+      <style type="text/css">
+        .container > .s-breadcrumbs + .container { padding-inline: 0; }
+      </style>
+
+      {# To wrap breadcrumbs in Container without relying on CMS editor #}
       <div class="container">
+        {% include "nav_cms_breadcrumbs.html" %}
         {% placeholder "content" %}
       </div>
+
       {% endblock content %}
       <!-- End of Block. -->
     </div>

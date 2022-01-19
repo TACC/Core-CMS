@@ -2,6 +2,7 @@ from haystack.signals import BaseSignalProcessor
 from django.db import models
 from django.core.management import call_command
 from cms import signals
+from cms.models.pagemodel import Page
 
 
 class RealtimeSignalProcessor(BaseSignalProcessor):
@@ -28,4 +29,5 @@ class RealtimeSignalProcessor(BaseSignalProcessor):
         models.signals.post_delete.disconnect(self.handle_save)
 
     def handle_save(self, **kwargs):
-        call_command('rebuild_index', '--noinput')
+        if type(kwargs.get('instance')) is Page:
+            call_command('rebuild_index', '--noinput')

@@ -7,6 +7,7 @@ Markup: o-section.html
 
 Styleguide Objects.Section
 */
+/* TODO: FP-1318: Move styling of tags (<a>, <h1–6>) to `s-section` */
 @import url("_imports/tools/media-queries.css");
 @import url("_imports/tools/x-layout.css");
 
@@ -66,12 +67,6 @@ Styleguide Objects.Section
 
   gap: 0 !important; /* overwrite `o-section--layout-*` */
 }
-/* To take control of padding away from Bootstrap on ALL screen sizes */
-.o-section--banner.container,
-.o-section--banner.container-fluid {
-  padding-left: 0;
-  padding-right: 0;
-}
 
 
 
@@ -91,11 +86,24 @@ Styleguide Objects.Section
 }
 
 /* Modifers: Style: Dark & Light */
+/* HELP: How can we change style of `o-section` content without overlap? */
+/* SEE: https://confluence.tacc.utexas.edu/x/DyUFDg */
 
 .o-section--style-dark,
 .o-section--style-dark::before {
   color: var(--global-color-primary--xx-light);
   background-color: var(--global-color-primary--xx-dark);
+}
+.o-section--style-dark a {
+  color: var(--global-color-link-on-dark--normal);
+}
+.o-section--style-dark h1,
+.o-section--style-dark h2,
+.o-section--style-dark h3,
+.o-section--style-dark h4,
+.o-section--style-dark h5,
+.o-section--style-dark h6 {
+  color: var(--global-color-primary--xx-light);
 }
 /* FAQ: Banners should not touch a border of the following section */
 .o-section--style-dark:not(.o-section--banner)
@@ -108,10 +116,21 @@ Styleguide Objects.Section
   color: var(--global-color-primary--dark);
   background-color: var(--global-color-primary--xx-light);
 }
+.o-section--style-light a {
+  color: var(--global-color-link-on-light--normal);
+}
+.o-section--style-light h1,
+.o-section--style-light h2,
+.o-section--style-light h3,
+.o-section--style-light h4,
+.o-section--style-light h5,
+.o-section--style-light h6 {
+  color: var(--global-color-primary--xx-dark);
+}
 /* FAQ: Banners should not touch a border of the following section */
 .o-section--style-light:not(.o-section--banner)
 + .o-section--style-light:not(.o-section--banner) {
-  border-top: var(--hr-height) solid var(--global-color-primary--xx-light);
+  border-top: var(--hr-height) solid var(--global-color-primary--normal);
 }
 
 /* Modifers: Style: (Fake) Endless Background */
@@ -153,7 +172,10 @@ Styleguide Objects.Section
 .o-section--layout-b,
 .o-section--layout-c,
 .o-section--layout-d {
-  gap: 3.0rem; /* GH-99: Use standard spacing value */
+  /* GH-99: Use standard spacing value */
+  --gap: 3.0rem; /* to allow instances to re-use the gap value */
+
+  gap: var(--gap);
 }
 .o-section--layout-a { @extend .x-layout--a; }
 .o-section--layout-b { @extend .x-layout--b; }
@@ -172,8 +194,6 @@ Styleguide Objects.Section
 
 /* Added `.o-section--banner` to require parent modifier class in markup */
 .o-section--banner .o-section__banner-image {
-  position: absolute;
-  z-index: 1;
 
   /* To size image to cover section dimensions but maintain ratio */
   /* CAVEAT: This causes image to overflow beyond section */
@@ -183,7 +203,9 @@ Styleguide Objects.Section
   min-height: 100%;
   object-fit: cover;
 
-  /* To vertically center image within section */
+  /* To center image within section */
+  position: absolute;
+  z-index: 1;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -197,20 +219,6 @@ Styleguide Objects.Section
 .o-section--banner .o-section__banner-overlay {
   position: relative;
   z-index: 2;
-
-  /* Avoids the need to add placeholder markup for empty column */
-  /* FAQ: The image "leaves" the column via `position: absolute` */
-  grid-column-start: 2;
-
-  background-color: rgba(var(--color-bkgd-rgb), 0.65);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-}
-.o-section--banner.o-section--style-dark .o-section__banner-overlay {
-  --color-bkgd-rgb: var(--global-color-primary--x-dark-rgb);
-}
-.o-section--banner.o-section--style-light .o-section__banner-overlay {
-  --color-bkgd-rgb: var(--global-color-primary--x-light-rgb);
 }
 
 
@@ -230,3 +238,14 @@ Styleguide Objects.Section
 /* NOTE: A `z-index` > 0 is only necessary for sections before banner */
 /* CAVEAT: Any section pop-out el's can NOT overflow atop section after it */
 [class*="o-section--style"] { z-index: 1; }
+
+
+
+
+
+/* Scope (should be moved to `s-section`) */
+/* NOTE: FP-1318: Other should-be-scope CSS (<a>, <h1–6>) is in this file */
+
+[class*="o-section--style"] .c-callout__title {
+  color: var(--global-color-primary--xx-light);
+}

@@ -11,20 +11,18 @@ Styles for elements within a header that has third-party code:
 - a subset of Bootstrap 3.3.7
   (for CMS body content, can affect navigation)
 
-Markup: s-header.html.twig
+Markup: s-header.twig.html
 
 Styleguide Trumps.Scopes.Header
 */
 
 /* WARNING: NO-R/EM: Until Frontera CMS drops Bootstrap 3.7.1 (for old design)…
-            No `em` nor `rem` allowed, because they aren't consitently reliable.
-            - On Frontera CMS, `1rem` = `10px` and `body { font-size: 15px }`
-            - On any other CMS, `1rem` = `16px` (browser default). */
+            `em` nor `rem` was not allowed because results were not consistent.
+            UPDATE: As of PR #312, this has likely changed (untested). */
 
 .s-header {
-  --text-color: var(--global-color-primary--xx-light);
-
   font-size: 16px; /* NO-R/EM: Overwrite `bootstrap.3.3.7.css` */
+  line-height: 1.4; /* `body` line-height differs between CMS, Portal, Docs */
 
   /* FAQ: Asssigning this font is only necessary for the User Guide,
           because it has a different `body` font. Otherwise, this style
@@ -35,15 +33,14 @@ Styleguide Trumps.Scopes.Header
   /* Copied from Portal (via `body`) */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* To hide border, set this in theme to match `--header-bkgd-color` value */
+  border-bottom: 1px solid env(--header-major-border-color);
 }
-
-
 
 /* Affiliation */
 
 /* SEE: taccsite_cms/static/site_cms/css/src/_imports/branding_logos.css */
-
-
 
 /* Logo */
 
@@ -54,11 +51,9 @@ Styleguide Trumps.Scopes.Header
   margin-right: 16px; /* NO-R/EM: 1rem (from Bootstrap via `.navbar-brand`) */
   padding: 0;
 
-  color: var(--text-color);
-  /* text-decoration: none; *//* already provided by Bootstrap */
+  color: env(--header-text-color);
+  /* text-decoration: none; */ /* already provided by Bootstrap */
 }
-
-
 
 /* Navigation */
 
@@ -78,7 +73,7 @@ Styleguide Trumps.Scopes.Header
   --nav-padding-vert: 5px;
   --nav-padding-horz: calc(16px + 20px);
 
-  background-color: var(--global-color-primary--xx-dark);
+  background-color: env(--header-bkgd-color);
   padding: var(--nav-padding-vert) var(--nav-padding-horz);
 }
 
@@ -107,14 +102,14 @@ Styleguide Trumps.Scopes.Header
   border-width: 0 0 var(--border-width);
   border-style: solid;
   border-color: var(--border-color);
-  margin-bottom: calc( var(--border-width) * -1 );
+  margin-bottom: calc(var(--border-width) * -1);
 }
 /* HACK: Using an ID selector, because Bootstrap has overspecific selectors */
 #s-header .nav-link,
 /* HACK: Support `span.nav-link` having children `a` and `a.dropdown-toggle-split` */
 #s-header .nav-link > a {
-  color: var(--text-color);
-  /* text-decoration: none; *//* already provided by Bootstrap */
+  color: env(--header-text-color);
+  /* text-decoration: none; */ /* already provided by Bootstrap */
 }
 
 /* Navigation: Links: Responsive Design */
@@ -128,35 +123,59 @@ Styleguide Trumps.Scopes.Header
   padding-left: 14px; /* NO-R/EM: .875rem (overwrite Bootstrap) */
 }
 
-
-
 /* Search */
-
-.s-header .s-search-bar,
-.s-header .s-search-bar::part(input),
-.s-header .s-search-bar::part(button) {
-  font-size: 16px; /* WARNING: Do not use `rem` until `html { 62.5%; }` */
-}
 
 /* Create a line between search bar and login */
 /* FAQ: The line should only exist if both elements are present */
-.s-header .s-search-bar ~ .s-portal-nav::before {
-  content: "";
-  width: 1px;
-  /* FAQ: Not `height`, cuz `.s-search-bar` (via `.form-inline`) is flexbox */
-  align-self: stretch;
-
-  background-color: rgb(255,255,255);
+.s-header .s-search-bar ~ .s-portal-nav {
+  border-left: 1px solid env(--header-minor-border-color);
 
   margin-left: 12px;
 }
 
+/* Dropdown */
 
+.dropdown-menu {
+  font-size: 16px; /* NO-R/EM: 1rem (from Bootstrap via `.dropdown-menu`) */
+}
 
 /* Icons */
 
 /* HACK: Using FontAwesome as placeholder */
 .s-header [class*="fa-"] {
-    width: 27px; /* NO-R/EM: 1.25em (from Portal `.fa`—FP-228 will deprecate it) */
-    text-align: center;
+  width: 27px; /* NO-R/EM: 1.25em (from Portal `.fa`—FP-228 will deprecate it) */
+  text-align: center;
+}
+
+/* Theme-based Icon Colors */
+
+/* Sets theme-based colors for selectors in themes that use third party images for icons or need color overrides. */
+/* This will eventually be superceded by GH-101. */
+
+/* For black icons:
+  - create a selector definition in s-header.css:
+    .selector-target {
+      filter: env(--targeted-selector);
+    };
+  - set the environment_variables value in theme.*.json to inverted value:
+    "environment-variables": {
+      ...
+      "--targeted-selector": "invert(100%)"
+    }
+*/
+
+/* For themed icons using a color:
+  - create a selector definition in s-header.css:
+    .selector-target {
+      mix-blend-mode: "overlay";
+      filter: env(--selector-theme-color);
+    };
+  - set the environment_variables value in theme.*.json to the desired color value:
+    "environment-variables": {
+      ...
+      "--selector-theme-color": "#ABCDEF"
+    } */
+
+.navbar-toggler-icon  {
+  filter: env(--menu-toggle-icon);
 }

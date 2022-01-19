@@ -2,9 +2,8 @@
 /* TODO: Convert to a component */
 
 /* WARNING: NO-R/EM: Until Frontera CMS drops Bootstrap 3.7.1 (for old design)…
-            No `em` nor `rem` allowed, because they aren't consitently reliable.
-            - On Frontera CMS, `1rem` = `10px` and `body { font-size: 15px }`
-            - On any other CMS, `1rem` = `16px` (browser default). */
+            `em` nor `rem` was not allowed because results were not consistent.
+            UPDATE: As of PR #312, this has likely changed (untested). */
 
 /* Shared by All Templates */
 
@@ -22,17 +21,16 @@
   /* FAQ: Do not use `48.78px`, because Safari only accepts whole numbers */
   height: 49px;
 
-
   background-color: var(--global-color-primary--xx-dark);
   color: var(--global-color-primary--xx-light);
-  border-bottom: 1px solid #aaa;
+  border-bottom: 1px solid var(--global-color-primary--normal);
 }
 
 .branding-seperator {
   width: 1px;
   height: 100%;
   max-height: var(--branding-logo-height);
-  border-left: solid 1px #fff;
+  border-left: solid 1px var(--global-color-primary--xx-light);
   margin: 0 15px;
   vertical-align: middle;
 }
@@ -42,6 +40,10 @@
   margin: 0;
   padding: 0;
   border: none;
+}
+
+.branding-logo--tall {
+  height: 35px;
 }
 
 /* Specific Brand Logo Selectors  */

@@ -7,10 +7,11 @@ Styles that allow re-usable layouts.
 %x-layout--b - Widest: one wide column & one narrow column
 %x-layout--c - Widest: one narrow column & one wide column
 %x-layout--d - Widest: three even columns
-%x-layout--d - Always: multiple even rows
+%x-layout--e - (deprecated) Always: multiple even rows
 
 Styleguide Tools.ExtendsAndMixins.Layout
 */
+@import url("_imports/tools/media-queries.css");
 
 
 
@@ -42,7 +43,7 @@ Styleguide Tools.ExtendsAndMixins.Layout
 
 @media (--medium-and-below) {
   .x-layout--b, /* DEPRECATED */
-  %x-layout--b { grid-template-columns: 1fr; }
+  %x-layout--b { grid-template-columns: minmax(0,1fr); }
 }
 @media (--medium-and-above) {
   .x-layout--b, /* DEPRECATED */
@@ -53,7 +54,7 @@ Styleguide Tools.ExtendsAndMixins.Layout
 
 @media (--medium-and-below) {
   .x-layout--c, /* DEPRECATED */
-  %x-layout--c { grid-template-columns: 1fr; }
+  %x-layout--c { grid-template-columns: minmax(0,1fr); }
 }
 @media (--medium-and-above) {
   .x-layout--c, /* DEPRECATED */
