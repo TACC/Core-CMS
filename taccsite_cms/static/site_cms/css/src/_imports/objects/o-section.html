@@ -1,36 +1,35 @@
 <section class="o-section {{modifier_class}}">
   <p><strong>Section</strong></p>
-  <p>I am a Section. Use light Sections to wrap most content. Use dark Sectiosn to highlight some content.</p>
+  <p>I am a Section. <small>Use light Sections to wrap most content. Use dark Sections to highlight some content.</small></p>
 </section>
 
-<hr />
+<br />
 
 <section class="o-section {{modifier_class}}">
   <p><strong>Section (First of a Pair)</strong></p>
-  <p>A Section directly below me will create a border between this Section and that Section.</p>
+  <p>A <strong>light</strong> or <strong>dark</strong> Section directly below me will create a border between both. <small>An <strong>un-styled</strong> Section never has a border.</small></p>
 </section>
 <section class="o-section {{modifier_class}}">
   <p><strong>Section (Second of a Pair)</strong></p>
-  <p>A Section directly above me will create a border between this Section and that Section.</p>
+  <p>A <strong>light</strong> or <strong>dark</strong> Section directly above me will create a border between both. <small>An <strong>un-styled</strong> Section never has a border.</small></p>
 </section>
 
-<hr />
+<br />
 
 <section class="o-section {{modifier_class}}">
   <p><strong>Section (with Nested Sections)</strong></p>
-  <p>A dark Section and light Section can be nested within me.</p>
-  <p><small>A nested Section <em>could</em> be used to remove the standard Section spacing, but only as a way to distinguish a nested Section. (Nested Sections may not be something we want.)</small></p>
-  <div class="o-section {{modifier_class}}">
-    <p><strong>(Nested) Section</strong></p>
+  <p>Sections can be nested within me. <small>A nested Section removes the standard Section spacing.</small></p>
+  <div class="o-section o-section--style-dark">
+    <p><strong>(Nested) Dark Section</strong></p>
     <p>I am nested.</p>
   </div>
-  <div class="o-section {{modifier_class}}">
-    <p><strong>(Nested) Section</strong></p>
+  <div class="o-section o-section--style-light">
+    <p><strong>(Nested) Light Section</strong></p>
     <p>I am nested.</p>
   </div>
 </section>
 
-<hr />
+<br />
 
 <section class="o-section {{modifier_class}}">
   <p><strong>Section (at Bottom of Page)</strong></p>

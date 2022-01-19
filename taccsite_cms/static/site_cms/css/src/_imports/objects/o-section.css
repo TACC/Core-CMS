@@ -4,16 +4,26 @@ Section
 A group of related content.
 
 To Do:
-- FP-1463: Extract `--layout` into `o-layout`
-- FP-1462: Extract `--banner` and `__banner into `c-banner`
+<details><summary>FP-1463: Extract layout pattern</summary>
 
-.o-section--style-light - light background, dark text
-.o-section--style-dark  - dark background, light text
+```
 .o-section--layout-a - lay out children as two even columns
 .o-section--layout-b - lay out children as one wide column & one narrow column
 .o-section--layout-c - lay out children as one narrow column & one wide column
-.o-section--layout-d - lay out children as three even columns
-.o-section--banner - Add a banner with a background image, overlay, then content
+.o-section--layout-d - lay out children as three even
+```
+
+</details>
+<details><summary>FP-1462: Extract banner pattern</summary>
+
+```
+.o-section--banner - add banner with background image, overlay, then content
+```
+
+</details>
+
+.o-section--style-light - light background, dark text
+.o-section--style-dark  - dark background, light text
 
 Markup: o-section.html
 
@@ -31,6 +41,10 @@ Styleguide Objects.Section
 .o-section {
   /* GH-99: Use standard spacing value */
   padding-block: 4.5rem; /* designs vary but this is the approx. average */
+}
+/* To distinguish nested sections */
+.o-section .o-section {
+  padding-block: 0;
 }
 
 
@@ -146,7 +160,7 @@ Styleguide Objects.Section
   left: 50%;
   transform: translateX(-50%);
 }
-/* Do not let nested sections extend beyond parent */
+/* To prevent nested sections from extending beyond parent */
 .o-section [class*="o-section--style"]::before {
   width: auto;
 }
