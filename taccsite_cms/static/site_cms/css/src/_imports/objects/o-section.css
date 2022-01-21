@@ -101,7 +101,6 @@ Styleguide Objects.Section
 .o-section--style-dark h6 {
   color: var(--global-color-primary--xx-light);
 }
-/* (Fake) Endless Background */
 .o-section--style-dark + .o-section--style-dark {
   border-top: var(--global-border-width--normal) solid
               var(--global-color-primary--xx-light);
@@ -123,7 +122,6 @@ Styleguide Objects.Section
 .o-section--style-light h6 {
   color: var(--global-color-primary--xx-dark);
 }
-/* (Fake) Endless Background */
 .o-section--style-light + .o-section--style-light {
   border-top: var(--global-border-width--normal) solid
               var(--global-color-primary--normal);
@@ -160,14 +158,8 @@ Styleguide Objects.Section
   left: 50%;
   transform: translateX(-50%);
 }
-/* To prevent nested sections from extending beyond parent */
-.o-section [class*="o-section--style"]::before {
-  width: auto;
-}
 /* Except for nested sections */
-.o-section .o-section {
-  content: "";
-}
+.o-section .o-section { content: ""; }
 
 
 
