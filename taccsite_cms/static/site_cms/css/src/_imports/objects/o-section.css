@@ -159,7 +159,7 @@ Styleguide Objects.Section
   transform: translateX(-50%);
 }
 /* Except for nested sections */
-.o-section .o-section { content: ""; }
+.o-section .o-section::before { content: none; }
 
 
 
