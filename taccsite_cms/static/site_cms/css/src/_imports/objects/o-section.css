@@ -83,12 +83,6 @@ Styleguide Objects.Section
 
 /* Modifers: Style */
 
-[class*="o-section--style"] + [class*="o-section--style"] {
-  border-top-width: var(--global-border-width--normal);
-  border-top-style: solid;
-  border-top-color: transparent;
-}
-
 /* Modifers: Style: Dark & Light */
 
 .o-section--style-dark,
@@ -109,7 +103,8 @@ Styleguide Objects.Section
 }
 /* (Fake) Endless Background */
 .o-section--style-dark + .o-section--style-dark {
-  border-top-color: var(--global-color-primary--xx-light);
+  border-top: var(--global-border-width--normal) solid
+              var(--global-color-primary--xx-light);
 }
 
 .o-section--style-light,
@@ -130,7 +125,8 @@ Styleguide Objects.Section
 }
 /* (Fake) Endless Background */
 .o-section--style-light + .o-section--style-light {
-  border-top-color: var(--global-color-primary--normal);
+  border-top: var(--global-border-width--normal) solid
+              var(--global-color-primary--normal);
 }
 
 /* Modifers: Style: (Fake) Endless Background */
