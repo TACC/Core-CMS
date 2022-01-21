@@ -40,11 +40,15 @@ Styleguide Objects.Section
 
 .o-section {
   /* GH-99: Use standard spacing value */
-  padding-block: 4.5rem; /* designs vary but this is the approx. average */
+  padding-block: 45px; /* designs vary but this is the approx. average */
 }
 /* To distinguish nested sections */
 .o-section .o-section {
-  padding-block: 0;
+  padding-block: 1em;
+
+  --hoz-space: 1em;
+  padding-inline: var(--hoz-space);
+  margin-inline: calc(-1 * var(--hoz-space));
 }
 
 
@@ -163,6 +167,10 @@ Styleguide Objects.Section
 /* To prevent nested sections from extending beyond parent */
 .o-section [class*="o-section--style"]::before {
   width: auto;
+}
+/* Except for nested sections */
+.o-section .o-section {
+  content: "";
 }
 
 
