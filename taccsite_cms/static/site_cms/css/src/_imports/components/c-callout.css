@@ -3,26 +3,7 @@ Callout
 
 Interrupt or end Sections with a "call to action".
 
-Markup:
-<!-- Has Figure, Is Link -->
-<a href="#" class="c-callout c-callout--has-figure c-callout--is-figure">
-  <h2 class="c-callout__title">
-    Quick Start Guide
-  </h2>
-  <p class="c-callout__desc">
-    Explore the Frontera User Guide to learn how to get started, see what Frontera offers, and get answers to your questions.
-  </p>
-  <figure class="c-callout__figure">...</figure>
-</a>
-<!-- No Figure, Not Link -->
-<aside class="c-callout">
-  <h2 class="c-callout__title">
-    Quick Start Guide
-  </h2>
-  <p class="c-callout__desc">
-    Explore the Frontera User Guide to learn how to get started, see what Frontera offers, and get answers to your questions.
-  </p>
-</aside>
+Markup: c-callout.html
 
 Styleguide Components.Callout
 */
@@ -36,72 +17,122 @@ Styleguide Components.Callout
 /* Layout */
 
 .c-callout {
+  --figure-width--no-units: 310;
+  --figure-height--no-units: 130;
+
   display: grid;
 }
-.c-callout--has-figure {
-  /* See @media queries */
+.c-callout > :is(img, figure)            { grid-area: figure; }
+.c-callout > :is(h1, h2, h3, h4, h5, h6) { grid-area: title; }
+.c-callout > p                           { grid-area: desc; }
+
+/* Let title `margin-top` and desc `margin-bottom` manage gap between them */
+/* FAQ: Bootstrap does this too but auto. pattern library has no Bootstrap */
+.c-callout > p { margin-top: 0; }
+
+
+
+/* Layout: Figure / Image */
+
+/* Ensure title and desc determine height of figure and callout */
+/* FAQ: Options that use `min-height: 0` have bug (narrow cell) on Firefox:
+        - https://stackoverflow.com/a/48943583/11817077
+        - https://stackoverflow.com/a/61297418/11817077 */
+.c-callout > img,
+.c-callout > figure > img {
+  object-fit: cover;
+
+  aspect-ratio: var(--figure-width--no-units) / var(--figure-height--no-units);
+  /* NOTE: The required height or width property is set within media queries */
+  /* CAVEAT: If using `aspect-ratio`:
+              - image can grow beyond intrinsic size
+              - `max-width|height` appears ineffectual
+              - `width|height` breaks `aspect-ratio` */
 }
-.c-callout:not(.c-callout--has-figure) {
-  grid-template-areas:
-    'title'
-    'desc';
-}
-.c-callout__figure { grid-area: figure; }
-.c-callout__title { grid-area: title; }
-.c-callout__desc { grid-area: desc; }
+
+/* Wrap figcaption at figure width */
+.c-callout > figure { width: min-content; }
+
+
+
+/* Layout: Wide Screen */
 
 @media only screen and (--narrow-and-above) {
   .c-callout {
     padding: 20px;
     text-align: left;
-  }
-  .c-callout--has-figure {
-    grid-template-rows: auto 1fr;
-    grid-template-columns: auto 1fr;
+
+    grid-template-columns: min-content; /* prevent extra horz. space in cell */
+    grid-template-rows: min-content;    /* prevent extra vert. space in cell */
     grid-template-areas:
       'figure title'
       'figure desc';
-
-    column-gap: 40px;
   }
-  .c-callout__figure { margin: 0; /* override Bootstrap */ }
+
+  /* Create gap without using `*-gap` property on container */
+  /* FAQ: Container does not know if it has figure but gap is only for figure */
+  .c-callout > figure { margin: 0; /* overwrite browser and Bootstrap */ }
+  .c-callout > :is(img, figure) { margin-right: 40px;}
+
+
+
+  /* Layout: Wide Screen: Figure / Image */
+
+  /* Trigger ratio, Limit stretch */
+  .c-callout > img,
+  .c-callout > figure > img {
+    width: calc( var(--figure-width--no-units) * 1px);
+    max-width: fit-content;
+  }
+  /* Let image grow tall */
+  .c-callout > img {
+    min-height: 100%;
+  }
 }
+
+
+
+/* Layout: Narrow Screen */
 
 @media only screen and (--narrow-and-below) {
   .c-callout {
     padding: 20px 40px;
     text-align: center;
-  }
-  .c-callout--has-figure {
+
     grid-template-areas:
       'figure'
       'title'
       'desc';
-
-    column-gap: 0px;
   }
-  .c-callout__figure { margin: 0 0 20px; /* override Bootstrap */ }
 
-  /* To "disable" image resize */
-  .c-callout__figure[data-transform],
-  .c-callout__figure[data-transform] img {
-    height: unset !important; /* overwrite inline style tag (via JavaScript) */
+  /* Create gap without using `*-gap` property on container */
+  /* FAQ: Container does not know if it has figure but gap is only for figure */
+  .c-callout > figure { margin: 0; /* overwrite browser and Bootstrap */ }
+  .c-callout > :is(img, figure) { margin-bottom: 20px;}
+
+
+
+  /* Layout: Narrow Screen: Figure / Image */
+
+  /* Trigger ratio, Limit stretch */
+  .c-callout > img,
+  .c-callout > figure > img {
+    height: calc( var(--figure-height--no-units) * 1px);
+    max-height: fit-content;
+  }
+  /* Let image grow wide */
+  .c-callout > img {
+    min-width: 100%;
   }
 }
 
-/* To align figure to exact center */
-.c-callout__figure {
-  place-self: center;
-}
-/* To fit (expected) figure content to available horizontal space */
-.c-callout__figure img {
-  max-width: 100%;
-}
+/* Align figure to exact center (only relevant if content is smaller) */
+.c-callout > :is(img, figure) { place-self: center; }
 
-/* To force wrap before full width (to match design) */
+/* Force wrap before full width (to match design) */
 /* NOTE: 1200px window, design has 15px but this was 7px (wraps the same) */
-/* FAQ: Differ from design so narrow screen wrap limit is not noticeable */
-.c-callout__desc { padding-right: 1%; }
+/* FAQ: Using a percentage so narrow screen wrap limit is not noticeable */
+.c-callout > p { padding-right: 1%; }
 
 
 
@@ -113,7 +144,9 @@ Styleguide Components.Callout
   background-color: var(--global-color-link-on-light--normal);
 }
 
-.c-callout__title {
+/* Make all headings look the same */
+.c-callout > :is(h1, h2, h3, h4, h5, h6) {
+  margin-top: 0;
   padding-bottom: 12px;
   margin-bottom: 12px;
   border-bottom: 1px solid var(--global-color-primary--xx-light);
@@ -125,27 +158,23 @@ Styleguide Components.Callout
 [class*="o-section--style"] .c-callout__title /* override o-section.css */ {
   color: var(--global-color-primary--xx-light); /* override h1–h6 styles */
 }
-.c-callout__desc {
-  font-size: var(--global-font-size--large);
-  font-weight: var(--medium);
+
+/* Style non-headings */
+.c-callout > :not(h1, h2, h3, h4, h5, h6) {
   color: var(--global-color-primary--xx-light);
 }
-
-
-
-
-
-/* Link */
-
-.c-callout--is-link:hover {
-  text-decoration: none;
+/* FAQ: Ignore figures so figcaptions can be styled by other components */
+/* FAQ: Do not ignore images, so alt text is visible if image load fails */
+.c-callout > :not(h1, h2, h3, h4, h5, h6, figure) {
+  font-size: var(--global-font-size--large);
+  font-weight: var(--medium);
 }
 
-/* To expand link to cover its container */
-.c-callout--is-link::before { @extend %x-article-link-stretch; content: ''; }
 
-/* To give feedback on link hover and click */
-.c-callout--is-link:hover::before,
-.c-callout--is-link:active::before { outline-offset: 1rem; }
-.c-callout--is-link:hover::before { @extend %x-article-link-hover; }
-.c-callout--is-link:active::before { @extend %x-article-link-active; }
+
+
+
+/* As a Link */
+
+a.c-callout:hover { @extend %x-article-link-hover; text-decoration: none; }
+a.c-callout:active { @extend %x-article-link-active; }
