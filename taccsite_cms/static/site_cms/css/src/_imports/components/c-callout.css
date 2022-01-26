@@ -141,8 +141,6 @@ Styleguide Components.Callout
 /* Style */
 
 .c-callout {
-  /* HELP: Should this color change if it is in a dark `o-section`? */
-  /* SEE: https://confluence.tacc.utexas.edu/x/DyUFDg */
   background-color: var(--global-color-link-on-light--normal);
 }
 
@@ -155,7 +153,12 @@ Styleguide Components.Callout
 
   font-size: var(--global-font-size--x-large);
   font-weight: var(--medium);
-  color: var(--global-color-primary--xx-light); /* override `html-elements` */
+}
+/* override html-elements.css */
+.c-callout > :is(h1, h2, h3, h4, h5, h6),
+/* override o-section.css */
+[class*="o-section--style"] .c-callout > :is(h1, h2, h3, h4, h5, h6) {
+  color: var(--global-color-primary--xx-light); /* override h1–h6 styles */
 }
 
 /* Style non-headings */
