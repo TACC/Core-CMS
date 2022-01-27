@@ -52,6 +52,10 @@ After you clone the repository locally, there are several configuration steps re
 
 #### Dependent
 
+##### If You Run this CMS Indepednent of [Core-Portal](https://github.com/TACC/Core-Portal/)
+
+Add `INCLUDES_CORE_PORTAL = False` to `taccsite_cms/settings_local.py` (to avoid [Not Found: core/markup/nav](https://github.com/TACC/Core-CMS/wiki/Not-Found%3A--core-markup-nav)).
+
 ##### If You Also Have a Local [Core-Portal](https://github.com/TACC/Core-Portal/) Instance
 
 Follow [How to Use a Custom Docker Compose File](https://github.com/TACC/Core-CMS/wiki/How-to-Use-a-Custom-Docker-Compose-File).
