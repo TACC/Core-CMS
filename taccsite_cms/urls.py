@@ -10,6 +10,7 @@ from django.contrib.auth import views
 from django.contrib.sitemaps.views import sitemap
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.views.static import serve
+from django.views.generic.base import TemplateView
 from taccsite_cms import remote_cms_auth as remote_cms_auth
 
 from django.http import request
@@ -24,8 +25,8 @@ urlpatterns = [
     url(r'^cms/logout/', views.LogoutView.as_view(), name='logout'),
 ]
 
+# Custom URLs only for Portal
 if getattr(settings, 'INCLUDES_CORE_PORTAL', True):
-    from django.views.generic.base import TemplateView
     urlpatterns += [
         # FAQ: Allow direct access to markup for Portal and User Guide to render
         url(r'^cms/nav/search/markup/$', TemplateView.as_view(template_name='nav_search.raw.html'), name='search_bar_markup'),
@@ -35,6 +36,12 @@ if getattr(settings, 'INCLUDES_CORE_PORTAL', True):
         url(r'^remote/login/$', remote_cms_auth.verify_and_auth, name='verify_and_auth'),
     ]
 
+# Custom URLs
+urlpatterns += [
+    url(r'^cms/sample/markup/$', TemplateView.as_view(template_name='snippets/sample-markup.html'), name='sample_markup'),
+]
+
+# Standard URLs
 urlpatterns += [
     url(r'^', include('cms.urls')),
 ]

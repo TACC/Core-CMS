@@ -1,0 +1,67 @@
+<style>
+body {
+  font-size: 0; /* remove extra visual space cause by markup whitespace */
+}
+iframe.full-size {
+  border: 0;
+  width: 100%;
+}
+</style>
+
+<iframe
+  src="{{ html|default:"/cms/sample/markup/" }}"
+  class="full-size"
+  onload="taccAutosizeIframe.resize(this, true)"
+></iframe>
+
+<script>
+  const taccAutosizeIframe = {
+    /**
+     * Resize given `<iframe>` once (or once and automatically afterward)
+     * @param {HTMLIFrameElement} iframe - The inline frame element to resize
+     * @param {boolean} shouldAutoResize - Whether to automatically resize
+     */
+    resize: function (iframe, shouldAutoResize) {
+      iframe.height = this.getHeight(iframe) + 'px';
+      // console.debug('Resized iframe');
+
+      // To trigger resize from iframe content, have iframe itself call:
+      // parent.resizeIframe(this.frameElement);
+      // SEE: https://stackoverflow.com/a/14618068/11817077
+
+      if (shouldAutoResize) {
+        this.resizeOnHeightChange(iframe);
+      }
+    },
+
+    /**
+     * Get height of a given `<iframe>`'s content
+     * @param {HTMLIFrameElement} iframe - The inline frame element to resize
+     */
+    getHeight: function (iframe) {
+      return iframe.contentWindow.document.body.scrollHeight;
+    },
+
+    /**
+     * On each animation, if `<iframe>` content height changes, resize iframe
+     * @param {HTMLIFrameElement} iframe - The inline frame element to resize
+     * @see https://stackoverflow.com/a/14618068/11817077
+     */
+    resizeOnHeightChange: function (iframe) {
+      let lastScrollHeight = this.getHeight(iframe);
+      let contentBody = iframe.contentWindow.document.body;
+
+      const watch = () => {
+        cancelAnimationFrame(watcher);
+
+        if (lastScrollHeight !== contentBody.scrollHeight) {
+          // console.log(`Should resize iframe because lastScrollHeight: '${lastScrollHeight}', contentBody.scrollHeight: '${contentBody.scrollHeight}'`);
+          this.resize(iframe);
+        }
+        lastScrollHeight = contentBody.scrollHeight;
+        watcher = window.requestAnimationFrame(watch);
+      };
+      let watcher = window.requestAnimationFrame(watch);
+    },
+  }
+</script>
