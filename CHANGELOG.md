@@ -7,6 +7,55 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.14.0] - 2022-01-25: Deprecate Callout Plugin; Guide Page Fix; Other Fixes
+
+### Added
+
+- FP-1415: Callout Pattern with Fixes sans Plugin (#427)
+    - Callout Plugin - Crop Images within Ratio (GH-329)
+
+### Changed
+
+- FP-1417: Callout CSS to Style Child Elements via Tag not Class (#425)
+- FP-1416: Callout Image Resize w/ JS not CSS (#421) (#422)
+
+### Fixed
+
+- FP-1422: (UTRC) Remove White Border Under Header (#435)
+- FP-1418: Callout Link Clickable Area Fix (#423)
+- FP-1416: Callout Image Resize w/ CSS not JS (#421) (#422)
+    - Callout Plugin - Fix Image Resize Caveat (GH-327)
+    - Element Transform Fails on Child Plugin Markup w/out Hack (GH-320)
+- FP-1435: Updates on Getting Started page (#428)
+- FP-1408: (Frontera) Fix Clickable Area of Article List Link (#429)
+- Remove a "Task/" from CHANGELOG entry (d773289)
+- Minor: Fix: x-layout CSS docblock typo (#434)
+
+### Removed
+
+- Deleted `resize_figure_to_fit` feature of Callout Plugin. (#421) (#422)
+- Deleted `elementTransformer` module and `SizeContentToFit` class. (#421)
+
+### Deprecated
+
+- Callout Plugin is unsupported. Replace with Callout Pattern. (#427)
+- Marked README.md as outdated & added link to new draft. (61b310b)
+
+## [3.12.1] - 2021-12-21: BM Branding; UI Patterns; Search Bar Design; UTRC Font
+
+### Added
+
+- BM-22: BrainMap: Add UTHSC-SA Logo [and Remove SGCI Logo Text] (#414)
+- FP-1289 Image Grid Pattern (#415)
+- FP-1291: C-Recognition Pattern (#416)
+- FP-1290: Card UI Pattern (Frontera About Page) (#420)
+
+### Changed
+
+- FP-1287: Redesign & Refactor Search Bar (#383)
+- UTRC-357/FP-1268: Retire v1 Styles (Use v2 Styles) (#360)
+- Quick: Move Code & Samp CSS from Site to Doc Page (#424)
+
 ## [3.5.1] - 2021-11-18: Remove Sentence from Getting Started Doc
 
 ### Fixed
@@ -205,7 +254,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.0.0] - 2021-03-31
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.5.1...HEAD
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.14.0...HEAD
+[3.14.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.14.0
+[3.12.1]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.1
 [3.5.1]: https://github.com/TACC/Core-CMS/releases/tag/v3.5.1
 [3.5.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.5.0
 [3.3.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.3.0
