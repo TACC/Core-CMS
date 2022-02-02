@@ -161,12 +161,10 @@ All CMS projects (besides the stand-alone CMS core), store project-specific reso
 
 [django-migrate]: https://docs.djangoproject.com/en/3.1/topics/migrations/
 [django-static]: https://docs.djangoproject.com/en/3.1/howto/static-files/
-[django-static-serve-dev]: https://docs.djangoproject.com/en/3.1/howto/static-files/#serving-static-files-during-development
+[django-static-serve-dev]: https://docs.djangoproject.com/en/2.2/howto/static-files/#serving-static-files-during-development
 
 [django-cms-migrate]: http://docs.django-cms.org/en/latest/how_to/install.html#database-tables
 [django-cms-su]: http://docs.django-cms.org/en/latest/how_to/install.html#admin-user
-
-[django-static-serve-dev]: https://docs.djangoproject.com/en/3.1/howto/static-files/#serving-static-files-during-development
 
 
 ### Static Files
