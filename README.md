@@ -60,7 +60,7 @@ Settings may be customized piecemeal by creating any of these files with just th
 | 2 | `settings_custom.py` | Settings specific to one CMS project (you can symlink to an existing file)† |
 | 3 | `settings_local.py` | Settings specific to a local development environment, not intended for others |
 
-\* This is a "Precedence" column. A file with a higher precedence value overrides one of a lower value.
+\* This is a "Precedence" column. [A file with a higher precedence value overrides one of a lower value.](https://github.com/TACC/Core-CMS/blob/929dc4b/taccsite_cms/settings.py#L458-L478)
 
 † Example (from project root): `ln -s ../taccsite_custom/name-of-project/settings_custom.py taccsite_cms/settings_custom.py`‡
 
