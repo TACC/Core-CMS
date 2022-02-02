@@ -137,13 +137,7 @@ All CMS projects (besides the stand-alone CMS core), store project-specific reso
 
     _You may create additional accounts as needed._
 
-    The CMS admin site should now be accessible at http://localhost:8000/admin (or at the port defined in a `docker-compose.custom.yml`).
-
-    Log in with the user that was created via the `createsuperuser` step.
-
-    > __Notice__: To log in with a TACC account using LDAP, create the account using the TACC username, then assign staff and/or superuser privileges. The assigned password can be any password and does __not__ need to be sent to the user. The CMS will __not__ attempt to validate with the assigned password unless LDAP authentication fails. __For production, create a strong password.__
-
-    > __Warning__: The CMS install will be fresh i.e. the CMS will __not__ be populated with production content.
+    > __Notice__: To log in with a TACC account using LDAP, create the account using the TACC username, then (as an admin or superuser) assign staff and/or superuser privileges. The assigned password can be any password and does __not__ need to be sent to the user. The CMS will __not__ attempt to validate with the assigned password unless LDAP authentication fails. __For production, create a strong password.__
 
 6. [Collect static files][django-static] for Django:
 
@@ -152,6 +146,22 @@ All CMS projects (besides the stand-alone CMS core), store project-specific reso
     ```
 
     _[If `DEBUG` is set to `True`, then this is automated via `python manage.py runserver`.][django-static-serve-dev]_
+
+7. Login to the admin web interface.
+
+    The CMS admin site should now be accessible at  http://localhost:8000/admin.\*
+
+    _You may log in as the superuser created via the `createsuperuser` command in an earlier step._
+
+    <sub>\* Or at the port defined in a `docker-compose.custom.yml`.</sub>
+
+8. Create the first page of your local CMS.
+
+    > __Warning__: The CMS install will be fresh i.e. the CMS will __not__ be populated with production content.
+
+    You may create pages as needed to test CMS development.
+
+    _In the future, you will be able to clone content from other CMS instances._
 
 
 [docker-exec-bash]: https://docs.docker.com/engine/reference/commandline/exec/#run-docker-exec-on-a-running-container
