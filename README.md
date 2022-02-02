@@ -48,7 +48,7 @@ After you clone the repository locally, there are several configuration steps re
     2. `git submodule update`\
         Downloads code from pinned commit of `cms-site-resources` repo to `taccsite_custom/`.
 
-\* A ["dotenv" file](https://hexdocs.pm/dotenvy/dotenv-file-format.html) is a file, with or without a name, that has the `.env` extension.
+<sub>\* A ["dotenv" file](https://hexdocs.pm/dotenvy/dotenv-file-format.html) is a file, with or without a name, that has the `.env` extension.</sub>
 
 #### Optional
 
@@ -60,11 +60,9 @@ Settings may be customized piecemeal by creating any of these files with just th
 | 2 | `settings_custom.py` | Settings specific to one CMS project (you can symlink to an existing file)† |
 | 3 | `settings_local.py` | Settings specific to a local development environment, not intended for others |
 
-\* This is a "Precedence" column. [A file with a higher precedence value overrides one of a lower value.](https://github.com/TACC/Core-CMS/blob/929dc4b/taccsite_cms/settings.py#L458-L478)
-
-† Example (from project root): `ln -s ../taccsite_custom/name-of-project/settings_custom.py taccsite_cms/settings_custom.py`‡
-
-‡ Where `name-of-project` matches a directory from `/taccsite_custom`.
+<sub>\* This is a "Precedence" column. [A file with a higher precedence value overrides one of a lower value.](https://github.com/TACC/Core-CMS/blob/929dc4b/taccsite_cms/settings.py#L458-L478)</sub>\
+<sub>† Example (from project root): `ln -s ../taccsite_custom/name-of-project/settings_custom.py taccsite_cms/settings_custom.py`‡</sub>\
+<sub>‡ Where `name-of-project` matches a directory from `/taccsite_custom`.</sub>
 
 ##### If You Run this CMS Independent of [Core-Portal](https://github.com/TACC/Core-Portal/)
 
@@ -82,9 +80,8 @@ All CMS projects (besides the stand-alone CMS core), store project-specific reso
 2. Update the `.env` file so `CUSTOM_ASSET_DIR=name-of-project`.\*
 3. Re-build static assets, so that project-specific assets are built. _See ["Static Files"](/README.md#static-files)._
 
-\* Where `name-of-project` matches a directory from `/taccsite_custom`.
-
-† Example (from project root): `ln -s ../taccsite_custom/name-of-project/settings_custom.py taccsite_cms/settings_custom.py`\*
+<sub>\* Where `name-of-project` matches a directory from `/taccsite_custom`.</sub>\
+<sub>† Example (from project root): `ln -s ../taccsite_custom/name-of-project/settings_custom.py taccsite_cms/settings_custom.py`\*</sub>
 
 
 ### Running the CMS
@@ -271,7 +268,7 @@ Not standardized. See [(internal) Formatting & Linting](https://confluence.tacc.
 
 Server-side CMS plugin testing is run through Python. Start docker container first by `docker exec -it core_cms bash`, Then run `python manage.py test path.to-dir.with.tests`\* from the project root folder to run backend tests and display a report at the bottom of the output.
 
-\* To run tests without console logging, run `python manage.py test path.to-dir.with.tests --nomigrations`.
+<sub>\* To run tests without console logging, run `python manage.py test path.to-dir.with.tests --nomigrations`.</sub>
 
 <!-- TODO: Make command recursively find all tests -->
 <!-- SEE: https://docs.djangoproject.com/en/2.2/topics/testing/overview/#running-tests -->
