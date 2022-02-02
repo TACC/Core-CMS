@@ -50,19 +50,7 @@ After you clone the repository locally, there are several configuration steps re
 
 \* A ["dotenv" file](https://hexdocs.pm/dotenvy/dotenv-file-format.html) is a file, with or without a name, that has the `.env` extension.
 
-#### Dependent
-
-##### If You Run this CMS Independent of [Core-Portal](https://github.com/TACC/Core-Portal/)
-
-Add `INCLUDES_CORE_PORTAL = False` to `taccsite_cms/settings_local.py` (to avoid [Not Found: `core/markup/nav/`](https://github.com/TACC/Core-CMS/wiki/Not-Found%3A--core-markup-nav)).
-
-##### If You Also Have a Local [Core-Portal](https://github.com/TACC/Core-Portal/) Instance
-
-Follow [How to Use a Custom Docker Compose File](https://github.com/TACC/Core-CMS/wiki/How-to-Use-a-Custom-Docker-Compose-File).
-
 #### Optional
-
-##### Custom Configuration
 
 Settings may be customized piecemeal by creating any of these files with just the settings to change:
 
@@ -78,7 +66,15 @@ Settings may be customized piecemeal by creating any of these files with just th
 
 ‡ Where `name-of-project` matches a directory from `/taccsite_custom`.
 
-##### Custom Resources per CMS Project
+##### If You Run this CMS Independent of [Core-Portal](https://github.com/TACC/Core-Portal/)
+
+Add `INCLUDES_CORE_PORTAL = False` to `taccsite_cms/settings_local.py` (to avoid [Not Found: `core/markup/nav/`](https://github.com/TACC/Core-CMS/wiki/Not-Found%3A--core-markup-nav)).
+
+##### If You Want to Use This With Local [Core-Portal](https://github.com/TACC/Core-Portal/) Instance
+
+Follow [How to Use a Custom Docker Compose File](https://github.com/TACC/Core-CMS/wiki/How-to-Use-a-Custom-Docker-Compose-File).
+
+##### If You Want to Test Custom Resources per CMS Project
 
 All CMS projects (besides the stand-alone CMS core), store project-specific resources in the `taccsite_custom` submodule.
 
