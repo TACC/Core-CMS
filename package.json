@@ -26,6 +26,7 @@
     "postcss-extend": "^1.0.5",
     "postcss-import": "^12.0.1",
     "postcss-preset-env": "^6.7.0",
+    "tacc-core-styles": "tacc-wbomar/Core-Styles.git#test/as-npm-package",
     "yarn": "^1.22.5"
   },
   "watch": {

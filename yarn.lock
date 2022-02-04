@@ -2494,6 +2494,10 @@ svgo@^1.0.0:
     unquote "~1.1.1"
     util.promisify "~1.0.0"
 
+tacc-core-styles@tacc-wbomar/Core-Styles.git#test/as-npm-package:
+  version "0.1.0"
+  resolved "https://codeload.github.com/tacc-wbomar/Core-Styles/tar.gz/3b28c3e4a65bf6af63851630129e83f58548a0e6"
+
 term-size@^2.1.0:
   version "2.2.0"
   resolved "https://registry.npmjs.org/term-size/-/term-size-2.2.0.tgz"
