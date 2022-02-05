@@ -6,7 +6,9 @@
   "scripts": {
     "prebuild": "python3 taccsite_cms/settings_to_json.py",
     "build": "npm run build:css",
-    "build:css": "node postcss.js",
+    "build:css": "npm run build:css:core && npm run build:css:project",
+    "build:css:core": "ncp node_modules/tacc-core-styles/dist taccsite_cms/static/site_cms/css/build",
+    "build:css:project": "node bin/build-project-css.js",
     "watch": "npm-watch"
   },
   "// scripts": {
@@ -17,15 +19,10 @@
   },
   "repository": "git@github.com:TACC/CORE-cms.git",
   "devDependencies": {
-    "async": "^3.2.0",
-    "cssnano": "^4.1.10",
     "dotenv": "^8.2.0",
+    "merge-lite": "^1.0.2",
+    "ncp": "^2.0.0",
     "npm-watch": "^0.7.0",
-    "postcss-cli": "^7.1.2",
-    "postcss-css-variables": "^0.17.0",
-    "postcss-extend": "^1.0.5",
-    "postcss-import": "^12.0.1",
-    "postcss-preset-env": "^6.7.0",
     "tacc-core-styles": "tacc-wbomar/Core-Styles.git#test/as-npm-package",
     "yarn": "^1.22.5"
   },
