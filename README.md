@@ -19,7 +19,7 @@ The base CMS code for TACC WMA Workspace Portals & Websites
 * Python 3.6.8
 * Nodejs 12.x (LTS)
 
-The Core Portal can be run using [Docker][1] and [Docker Compose][2]. You will
+The Core CMS can be run using [Docker][1] and [Docker Compose][2]. You will
 need both Docker and Docker Compose pre-installed on the system you wish to run the CMS
 on.
 
