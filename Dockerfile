@@ -3,6 +3,7 @@ FROM python:3.8.12-buster as python-base
 LABEL maintainer="TACC-ACI-WMA <wma_prtl@tacc.utexas.edu>"
 
 ARG DEBIAN_FRONTEND=noninteractive
+ARG PROJECT_NAME
 
 ENV PYTHONUNBUFFERED 1
 
@@ -25,4 +26,4 @@ WORKDIR /code
 RUN pip3 install --no-cache-dir -r requirements.txt
 
 # build assets
-RUN npm ci && npm run build
+RUN npm ci && npm run build --project=$PROJECT_NAME
