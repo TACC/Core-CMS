@@ -26,4 +26,10 @@ WORKDIR /code
 RUN pip3 install --no-cache-dir -r requirements.txt
 
 # build assets
-RUN npm ci && npm run build --project=$PROJECT_NAME
+RUN cd taccsite_custom\
+    # install node packages (`yarn 1.x` equivalent of `npm ci`)
+    && rm -rf node_modules && yarn install --frozen-lockfile\
+    # build certain static assets
+    && cd taccsite_custom && npm run build --project=$PROJECT_NAME\
+    # copy base core cms stylesheets to legacy path
+    && cp taccsite_custom/core-cms/static/core-cms/css/build taccsite_cms/static/site_cms/css/build
