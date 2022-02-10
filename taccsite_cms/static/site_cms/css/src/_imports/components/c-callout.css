@@ -62,8 +62,8 @@ Styleguide Components.Callout
     padding: 20px;
     text-align: left;
 
-    grid-template-columns: min-content; /* prevent extra horz. space in cell */
-    grid-template-rows: min-content;    /* prevent extra vert. space in cell */
+    grid-template-columns: min-content auto; /* prevent extra figure h. space */
+    grid-template-rows: auto min-content;    /* prevent extra title v. space */
     grid-template-areas:
       'figure title'
       'figure desc';
