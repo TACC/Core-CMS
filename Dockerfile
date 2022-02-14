@@ -13,9 +13,10 @@ RUN apt-get update && apt-get install -y \
     lcov valgrind vim \
     && pip3 install uwsgi
 
-# install node 12.x
+# install node 12.x (only for taccsite_custom)
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
 RUN apt-get install -y nodejs
+RUN npm install --global yarn
 
 # load files
 RUN mkdir /code
@@ -30,6 +31,6 @@ RUN cd taccsite_custom\
     # install node packages (`yarn 1.x` equivalent of `npm ci`)
     && rm -rf node_modules && yarn install --frozen-lockfile\
     # build certain static assets
-    && cd taccsite_custom && npm run build --project=$PROJECT_NAME\
+    && npm run build --project=$PROJECT_NAME\
     # copy base core cms stylesheets to legacy path
     && cp taccsite_custom/core-cms/static/core-cms/css/build taccsite_cms/static/site_cms/css/build
