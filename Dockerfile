@@ -33,4 +33,6 @@ RUN cd taccsite_custom\
     # build certain static assets
     && npm run build --project=$PROJECT_NAME\
     # copy base core cms stylesheets to legacy path
-    && cp taccsite_custom/core-cms/static/core-cms/css/build taccsite_cms/static/site_cms/css/build
+    && mkdir -p ../taccsite_cms/static/site_cms/css/build\
+    && cp -r core-cms/static/core-cms/css/build/*\
+        ../taccsite_cms/static/site_cms/css/build
