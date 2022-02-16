@@ -31,7 +31,7 @@ RUN cd taccsite_custom\
     # install node packages (`yarn 1.x` equivalent of `npm ci`)
     && rm -rf node_modules && yarn install --frozen-lockfile\
     # build certain static assets
-    && npm run build --project=$PROJECT_NAME\
+    && yarn build --project=$PROJECT_NAME\
     # copy base core cms stylesheets to legacy path
     && mkdir -p ../taccsite_cms/static/site_cms/css/build\
     && cp -r core-cms/static/core-cms/css/build/*\
