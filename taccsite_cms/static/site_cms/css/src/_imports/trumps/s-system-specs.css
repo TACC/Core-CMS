@@ -57,6 +57,17 @@ Styleguide Trumps.Scopes.SystemSpecs
 
 /* Sizes */
 
+@media only screen and (--wide-and-above) {
+    .s-system-specs {
+        --col-width--thin: 42%;
+    }
+
+    .s-system-specs > aside {
+        width: var(--col-width--thin);
+    }
+}
+
+
 @media only screen and (--medium-and-above) {
   .s-system-specs {
     --col-width--thin: 42%;
