@@ -17,6 +17,7 @@ from django_auth_ldap.config import LDAPSearch, GroupOfNamesType
 SECRET_KEY = 'CHANGE_ME'
 def gettext(s): return s
 
+
 DATA_DIR = os.path.dirname(os.path.dirname(__file__))
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -31,7 +32,7 @@ ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost', '*']   # In development.
 LDAP_ENABLED = True
 
 # Default portal authorization verification endpoint.
-CEP_AUTH_VERIFICATION_ENDPOINT =  'localhost' #'https://0.0.0.0:8000'
+CEP_AUTH_VERIFICATION_ENDPOINT = 'localhost'  # 'https://0.0.0.0:8000'
 
 ########################
 # DATABASE SETTINGS
@@ -150,7 +151,7 @@ NSF_BRANDING = [
     "True"
 ]
 
-BRANDING = [ TACC_BRANDING, UTEXAS_BRANDING ]
+BRANDING = [TACC_BRANDING, UTEXAS_BRANDING]
 
 LOGO = [
     "portal",
@@ -169,12 +170,12 @@ FAVICON = {
 
 INCLUDES_CORE_PORTAL = True
 
-LOGOUT_REDIRECT_URL='/'
+LOGOUT_REDIRECT_URL = '/'
 
-## using container name to avoid cep.dev dns issues locally
-## this will need to be updated for dev/pprd/prod systems
-## for example, CEP_AUTH_VERIFICATION_ENDPOINT=https://dev.cep.tacc.utexas.edu
-CEP_AUTH_VERIFICATION_ENDPOINT='http://django:6000'
+# using container name to avoid cep.dev dns issues locally
+# this will need to be updated for dev/pprd/prod systems
+# for example, CEP_AUTH_VERIFICATION_ENDPOINT=https://dev.cep.tacc.utexas.edu
+CEP_AUTH_VERIFICATION_ENDPOINT = 'http://django:6000'
 
 ########################
 # CLIENT BUILD SETTINGS
@@ -314,6 +315,8 @@ INSTALLED_APPS = [
 ]
 
 # Convert list of paths to list of dotted module names
+
+
 def get_subdirs_as_module_names(path):
     module_names = []
     for entry in os.scandir(path):
@@ -328,6 +331,7 @@ def get_subdirs_as_module_names(path):
             module_names.append(module_name)
     return module_names
 
+
 # Append CMS project paths as module names to INSTALLED_APPS
 # FAQ: This automatically looks into `/taccsite_custom` and creates an "App" for each directory within
 CUSTOM_CMS_DIR = os.path.join(BASE_DIR, 'taccsite_custom')
@@ -335,7 +339,7 @@ CUSTOM_CMS_DIR = os.path.join(BASE_DIR, 'taccsite_custom')
 INSTALLED_APPS_APPEND = get_subdirs_as_module_names(CUSTOM_CMS_DIR)
 INSTALLED_APPS = INSTALLED_APPS + INSTALLED_APPS_APPEND
 
-MIGRATION_MODULES = { }
+MIGRATION_MODULES = {}
 LANGUAGE_CODE = 'en'
 TIME_ZONE = 'America/Chicago'
 USE_I18N = True
@@ -389,7 +393,7 @@ DJANGOCMS_PICTURE_RATIO = 1.618
 # 0600 and Django doesn't fix it unless FILE_UPLOAD_PERMISSIONS is defined.
 # A tempfile is used when upload exceeds FILE_UPLOAD_MAX_MEMORY_SIZE.
 FILE_UPLOAD_PERMISSIONS = 0o644
-FILE_UPLOAD_MAX_MEMORY_SIZE = 20000000 # 20MB
+FILE_UPLOAD_MAX_MEMORY_SIZE = 20000000  # 20MB
 
 DJANGOCMS_AUDIO_ALLOWED_EXTENSIONS = ['mp3', 'ogg', 'wav']
 
@@ -406,7 +410,7 @@ DJANGOCMS_FORMS_USE_HTML5_REQUIRED = False
 DJANGOCMS_FORMS_REDIRECT_DELAY = 1
 
 # Elasticsearch Indexing
-HAYSTACK_ROUTERS = ['aldryn_search.router.LanguageRouter',]
+HAYSTACK_ROUTERS = ['aldryn_search.router.LanguageRouter', ]
 HAYSTACK_SIGNAL_PROCESSOR = 'taccsite_cms.signal_processor.RealtimeSignalProcessor'
 ALDRYN_SEARCH_DEFAULT_LANGUAGE = 'en'
 ALDRYN_SEARCH_REGISTER_APPHOOK = True
@@ -415,7 +419,7 @@ HAYSTACK_CONNECTIONS = {
         'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
         'URL': ES_HOSTS,
         'INDEX_NAME': ES_INDEX_PREFIX.format('cms'),
-        'KWARGS': {'http_auth': ES_AUTH }
+        'KWARGS': {'http_auth': ES_AUTH}
     }
 }
 
@@ -437,6 +441,18 @@ DJANGOCMS_STYLE_CHOICES = [
     # https://cep.tacc.utexas.edu/design-system/ui-patterns/c-recognition/
     'c-recognition c-recognition--style-light',
     'c-recognition c-recognition--style-dark',
+]
+DJANGOCMS_STYLE_TAGS = [
+    # Even though <div> is often NOT the most semantic choice;
+    # CMS editor may neglect tag, any other tag could be inaccurate,
+    # and <div> is never inaccurate; so <div> is placed first 😞
+    # RFE: Support automatically choosing tag based on class name
+    # SEE: https://github.com/TACC/Core-CMS/pull/432
+    'div',
+    # Ordered by expected usage
+    'section', 'article', 'header', 'footer', 'aside',
+    # Not expected but not unreasonable
+    'h1', 'h2', 'h3', 'h4', 'h5', 'h6'
 ]
 
 ########################
