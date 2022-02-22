@@ -1,13 +1,34 @@
 /*
 Section
 
-Horizontal
+A group of related content.
+
+To Do:
+<details><summary>FP-1463: Extract layout pattern</summary>
+
+```
+.o-section--layout-a - lay out children as two even columns
+.o-section--layout-b - lay out children as one wide column & one narrow column
+.o-section--layout-c - lay out children as one narrow column & one wide column
+.o-section--layout-d - lay out children as three even
+```
+
+</details>
+<details><summary>FP-1462: Extract banner pattern</summary>
+
+```
+.o-section--banner - add banner with background image, overlay, then content
+```
+
+</details>
+
+.o-section--style-light - light background, dark text
+.o-section--style-dark  - dark background, light text
 
 Markup: o-section.html
 
 Styleguide Objects.Section
 */
-/* TODO: FP-1318: Move styling of tags (<a>, <h1–6>) to `s-section` */
 @import url("_imports/tools/media-queries.css");
 @import url("_imports/tools/x-layout.css");
 
@@ -17,37 +38,17 @@ Styleguide Objects.Section
 
 /* Block */
 
-[class*="o-section--"] {
+.o-section {
   /* GH-99: Use standard spacing value */
-  /* NOTE: The Design varies, but this is the approx. average */
-  --vert-space: 4.5rem;
-  --horz-space: 4.5rem;
+  padding-block: 45px; /* designs vary but this is the approx. average */
+}
+/* To distinguish nested sections */
+.o-section .o-section {
+  padding-block: 1em;
 
-  padding-top: var(--vert-space);
-  padding-bottom: var(--vert-space);
-}
-[class*="o-section--"] > [class*="o-section--"] {
-  --vert-space: 0;
-  --horz-space: 0;
-}
-
-/* Overwrite Bootstrap */
-[class*="o-section--"].container,
-[class*="o-section--"].container-fluid {
-  width: auto; /* Bootstrap forcing `width: 100%` prevented usable margin */
-  margin-left: var(--horz-space);
-  margin-right: var(--horz-space);
-}
-[class*="o-section--"].container {
-  --horz-space: auto;
-}
-/* To take control of padding away from Bootstrap on MOST screen sizes */
-@media (--x-narrow-and-above) {
-  [class*="o-section--"].container,
-  [class*="o-section--"].container-fluid {
-    padding-left: 0;
-    padding-right: 0;
-  }
+  --hoz-space: 1em;
+  padding-inline: var(--hoz-space);
+  margin-inline: calc(-1 * var(--hoz-space));
 }
 
 
@@ -61,17 +62,18 @@ Styleguide Objects.Section
 
 /* Modifers: Banner */
 
-.o-section--banner {
-  --vert-space: 0;
-  --horz-space: 0;
-
-  gap: 0 !important; /* overwrite `o-section--layout-*` */
-}
+.o-section--banner[class*="o-section--layout"] { gap: 0; }
+.o-section--banner.container { padding-inline: 0; }
+.o-section--banner.o-section { padding-block: 0; }
 
 
 
 /* Modifers: Intro */
+/* FP-1463: Extract to new layout object */
 
+/* To hide empty an column of an intro */
+/* HACK: This assumes an intro has columns */
+/* FAQ: Only Frontera's temporary homepage uses `.o-section--intro` */
 .o-section--intro > :empty:not(img),
 .o-section--intro .u-empty {
   display: none;
@@ -81,13 +83,7 @@ Styleguide Objects.Section
 
 /* Modifers: Style */
 
-[class*="o-section--style"] {
-  --hr-height: var(--global-border-width--normal);
-}
-
 /* Modifers: Style: Dark & Light */
-/* HELP: How can we change style of `o-section` content without overlap? */
-/* SEE: https://confluence.tacc.utexas.edu/x/DyUFDg */
 
 .o-section--style-dark,
 .o-section--style-dark::before {
@@ -105,10 +101,9 @@ Styleguide Objects.Section
 .o-section--style-dark h6 {
   color: var(--global-color-primary--xx-light);
 }
-/* FAQ: Banners should not touch a border of the following section */
-.o-section--style-dark:not(.o-section--banner)
-+ .o-section--style-dark:not(.o-section--banner) {
-  border-top: var(--hr-height) solid var(--global-color-primary--xx-light);
+.o-section--style-dark + .o-section--style-dark {
+  border-top: var(--global-border-width--normal) solid
+              var(--global-color-primary--xx-light);
 }
 
 .o-section--style-light,
@@ -127,13 +122,14 @@ Styleguide Objects.Section
 .o-section--style-light h6 {
   color: var(--global-color-primary--xx-dark);
 }
-/* FAQ: Banners should not touch a border of the following section */
-.o-section--style-light:not(.o-section--banner)
-+ .o-section--style-light:not(.o-section--banner) {
-  border-top: var(--hr-height) solid var(--global-color-primary--normal);
+.o-section--style-light + .o-section--style-light {
+  border-top: var(--global-border-width--normal) solid
+              var(--global-color-primary--normal);
 }
 
 /* Modifers: Style: (Fake) Endless Background */
+/* FAQ: Allows background to escape `.container` (whether its self or parent) */
+/* SEE: "Tricks" section */
 
 [class*="o-section--style"] {
   /* To anchor the `position: absolute` pseudo-element */
@@ -156,17 +152,19 @@ Styleguide Objects.Section
   display: block;
   width: 100vw;
   top: 0;
-  /* FAQ: Covers space of following sibling's border without covering border */
-  bottom: calc(-1 * var(--hr-height));
+  bottom: 0;
 
   /* To horizontally center */
   left: 50%;
   transform: translateX(-50%);
 }
+/* Except for nested sections */
+.o-section .o-section::before { content: none; }
 
 
 
 /* Modifers: Layout */
+/* FP-1463: Extract to new layout object */
 
 .o-section--layout-a,
 .o-section--layout-b,
@@ -184,6 +182,15 @@ Styleguide Objects.Section
 
 
 
+/* Modifers: Banner */
+/* FP-1462: Extract to new banner component(s) */
+
+[class*="o-section--style"].o-section--banner + [class*="o-section--style"] {
+  border-top: none;
+}
+
+
+
 
 
 /* Children */
@@ -191,6 +198,7 @@ Styleguide Objects.Section
 
 
 /* Children: Banner Image */
+/* FP-1462: Extract to new banner component(s) */
 
 /* Added `.o-section--banner` to require parent modifier class in markup */
 .o-section--banner .o-section__banner-image {
@@ -214,6 +222,7 @@ Styleguide Objects.Section
 
 
 /* Children: Banner Overlay */
+/* FP-1462: Extract to new banner component(s) */
 
 /* Added `.o-section--banner` to require parent modifier class in markup */
 .o-section--banner .o-section__banner-overlay {
@@ -230,6 +239,7 @@ Styleguide Objects.Section
 
 
 /* Tricks: /* Children: Banner Image */
+/* FP-1462: Extract to new banner component(s) */
 
 /* HACK: To hide vertical overflow by placing sibling sections atop */
 /* NOTE: This selector assumes only a banner section has vertical overflow */
@@ -241,11 +251,11 @@ Styleguide Objects.Section
 
 
 
+/* Tricks: /* Modifiers: Style */
+/* Tricks: /* Children: Banner Image */
 
-
-/* Scope (should be moved to `s-section`) */
-/* NOTE: FP-1318: Other should-be-scope CSS (<a>, <h1–6>) is in this file */
-
-[class*="o-section--style"] .c-callout__title {
-  color: var(--global-color-primary--xx-light);
+/* HACK: To hide `.o-section--style-…` & `.o-section__banner-image` overflow */
+main /* SEE: https://github.com/TACC/Core-CMS/pull/151 */,
+#content-wrap /* HACK: Using ID selector until <main> exists */ {
+  overflow-x: hidden;
 }
