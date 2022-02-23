@@ -16,7 +16,6 @@ RUN apt-get update && apt-get install -y \
 # install node 12.x (only for taccsite_custom)
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
 RUN apt-get install -y nodejs
-RUN npm install --global yarn
 
 # load files
 RUN mkdir /code
@@ -27,12 +26,7 @@ WORKDIR /code
 RUN pip3 install --no-cache-dir -r requirements.txt
 
 # build assets
-RUN cd taccsite_custom\
-    # install node packages (`yarn 1.x` equivalent of `npm ci`)
-    && rm -rf node_modules && yarn install --frozen-lockfile\
-    # build certain static assets
-    ## (using npm because https://github.com/yarnpkg/yarn/issues/4581)
-    && npm run build --project=$PROJECT_NAME\
+RUN cd taccsite_custom && npm ci && npm run build --project=$PROJECT_NAME\
     # copy base core cms stylesheets to legacy path
     && mkdir -p ../taccsite_cms/static/site_cms/css/build\
     && cp -r core-cms/static/core-cms/css/build/*\
