@@ -39,6 +39,9 @@ Styleguide Objects.Section
 /* Block */
 
 .o-section {
+  --border-width: var(--global-border-width--normal);
+  --border-width--neg: calc(-1 * var(--border-width));
+
   /* GH-99: Use standard spacing value */
   padding-block: 45px; /* designs vary but this is the approx. average */
 }
@@ -84,11 +87,17 @@ Styleguide Objects.Section
 /* Modifers: Style */
 
 /* Modifers: Style: Dark & Light */
+/* FP-1470: Add cross-style code and variables when third style is added */
 
-.o-section--style-dark,
-.o-section--style-dark::before {
+.o-section--style-dark {
   color: var(--global-color-primary--xx-light);
   background-color: var(--global-color-primary--xx-dark);
+  box-shadow: 50vw 0 var(--global-color-primary--xx-dark),
+              -50vw 0 var(--global-color-primary--xx-dark);
+}
+.o-section--style-dark + .o-section--style-dark {
+  border-top: var(--border-width) solid
+              var(--global-color-primary--xx-light);
 }
 .o-section--style-dark a {
   color: var(--global-color-link-on-dark--normal);
@@ -101,15 +110,16 @@ Styleguide Objects.Section
 .o-section--style-dark h6 {
   color: var(--global-color-primary--xx-light);
 }
-.o-section--style-dark + .o-section--style-dark {
-  border-top: var(--global-border-width--normal) solid
-              var(--global-color-primary--xx-light);
-}
 
-.o-section--style-light,
-.o-section--style-light::before {
+.o-section--style-light {
   color: var(--global-color-primary--dark);
   background-color: var(--global-color-primary--xx-light);
+  box-shadow: 50vw 0 var(--global-color-primary--xx-light),
+              -50vw 0 var(--global-color-primary--xx-light);
+}
+.o-section--style-light + .o-section--style-light {
+  border-top: var(--border-width) solid
+              var(--global-color-primary--normal);
 }
 .o-section--style-light a {
   color: var(--global-color-link-on-light--normal);
@@ -122,44 +132,13 @@ Styleguide Objects.Section
 .o-section--style-light h6 {
   color: var(--global-color-primary--xx-dark);
 }
-.o-section--style-light + .o-section--style-light {
-  border-top: var(--global-border-width--normal) solid
-              var(--global-color-primary--normal);
-}
 
 /* Modifers: Style: (Fake) Endless Background */
 /* FAQ: Allows background to escape `.container` (whether its self or parent) */
-/* SEE: "Tricks" section */
+/* FP-1470: Move this to cross-style code when third style is added */
 
-[class*="o-section--style"] {
-  /* To anchor the `position: absolute` pseudo-element */
-  /* To allow `z-index` on children as necessary */
-  position: relative;
-
-  /* CAVEAT: We MUST maintain intentional horizontal overflow of pseudo-child */
-  overflow-x: visible !important; /* do not allow accidental hide of fake bkgd */
-}
-[class*="o-section--style"] > * {
-  /* To ensure children are above `position: absolute` pseudo-element */
-  position: relative;
-  z-index: 1;
-}
-[class*="o-section--style"]::before {
-  content: '';
-  z-index: 0; /* To ensure real element children are above this */
-
-  position: absolute;
-  display: block;
-  width: 100vw;
-  top: 0;
-  bottom: 0;
-
-  /* To horizontally center */
-  left: 50%;
-  transform: translateX(-50%);
-}
 /* Except for nested sections */
-.o-section .o-section::before { content: none; }
+.o-section .o-section { box-shadow: none; }
 
 
 
@@ -242,6 +221,7 @@ Styleguide Objects.Section
 /* FP-1462: Extract to new banner component(s) */
 
 /* HACK: To hide vertical overflow by placing sibling sections atop */
+[class*="o-section--style"] { position: relative; }
 /* NOTE: This selector assumes only a banner section has vertical overflow */
 /* CAVEAT: Any banner pop-out el's can NOT overflow atop sibling sections */
 [class*="o-section--style"].o-section--banner { z-index: 0; }
@@ -249,12 +229,7 @@ Styleguide Objects.Section
 /* CAVEAT: Any section pop-out el's can NOT overflow atop section after it */
 [class*="o-section--style"] { z-index: 1; }
 
-
-
-/* Tricks: /* Modifiers: Style */
-/* Tricks: /* Children: Banner Image */
-
-/* HACK: To hide `.o-section--style-…` & `.o-section__banner-image` overflow */
+/* HACK: To hide `.o-section__banner-image` overflow */
 main /* SEE: https://github.com/TACC/Core-CMS/pull/151 */,
 #content-wrap /* HACK: Using ID selector until <main> exists */ {
   overflow-x: hidden;
