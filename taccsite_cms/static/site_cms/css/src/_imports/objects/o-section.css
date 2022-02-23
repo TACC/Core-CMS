@@ -39,9 +39,6 @@ Styleguide Objects.Section
 /* Block */
 
 .o-section {
-  --border-width: var(--global-border-width--normal);
-  --border-width--neg: calc(-1 * var(--border-width));
-
   /* GH-99: Use standard spacing value */
   padding-block: 45px; /* designs vary but this is the approx. average */
 }
@@ -96,7 +93,7 @@ Styleguide Objects.Section
               -50vw 0 var(--global-color-primary--xx-dark);
 }
 .o-section--style-dark + .o-section--style-dark {
-  border-top: var(--border-width) solid
+  border-top: var(--global-border-width--normal) solid
               var(--global-color-primary--xx-light);
 }
 .o-section--style-dark a {
@@ -118,7 +115,7 @@ Styleguide Objects.Section
               -50vw 0 var(--global-color-primary--xx-light);
 }
 .o-section--style-light + .o-section--style-light {
-  border-top: var(--border-width) solid
+  border-top: var(--global-border-width--normal) solid
               var(--global-color-primary--normal);
 }
 .o-section--style-light a {
