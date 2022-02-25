@@ -7,6 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.15.0] - 2022-02-17: New Section Pattern; Critical Dependency Fix; Other
+
+### Added
+
+- FP-1318: Create Section Pattern via Style Plugin (#430)
+
+### Changes
+
+- Quick: (Texascale) Do Not Let Search Engines Index 2022 Pages (#443)
+- FP-1318: Revisit Section Pattern (#433)
+
+### Fixed
+
+- FP-1502: Fix Callout Title Height (#441)
+- FP-1285: CMS Critical Dependency Upgrade (#437)
+
+### Removed
+
+- UTRC-357/FP-1268: (UTRC) Remove old templates (#439)
+
 ## [3.14.0] - 2022-01-25: Deprecate Callout Plugin; Guide Page Fix; Other Fixes
 
 ### Added
@@ -254,7 +274,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.0.0] - 2021-03-31
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.14.0...HEAD
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.15.0...HEAD
+[3.15.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.15.0
 [3.14.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.14.0
 [3.12.1]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.1
 [3.5.1]: https://github.com/TACC/Core-CMS/releases/tag/v3.5.1

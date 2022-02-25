@@ -281,6 +281,7 @@ INSTALLED_APPS = [
     'djangocms_style',
     'djangocms_snippet',
     'djangocms_googlemap',
+    'djangocms_transfer',
     'djangocms_video',
     'djangocms_icon',
     'djangocms_bootstrap4',
