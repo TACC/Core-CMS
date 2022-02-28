@@ -8,10 +8,10 @@ __pycache__
 /public/media
 /sql
 /fcgi/django.fcgi
-/static/css/*.css
 
 ## Built Static Assets
 build
+!site_cms/css/build
 
 # Environment Variables
 docker_repo.var
