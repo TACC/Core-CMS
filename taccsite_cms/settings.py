@@ -281,6 +281,7 @@ INSTALLED_APPS = [
     'djangocms_style',
     'djangocms_snippet',
     'djangocms_googlemap',
+    'djangocms_transfer',
     'djangocms_video',
     'djangocms_icon',
     'djangocms_bootstrap4',
@@ -434,14 +435,14 @@ FEATURES = ''
 
 # https://github.com/django-cms/djangocms-style
 DJANGOCMS_STYLE_CHOICES = [
-    # https://confluence.tacc.utexas.edu/x/c5TtDg
+    # https://cep.tacc.utexas.edu/design-system/ui-patterns/o-section/
     'o-section o-section--style-light',
     'o-section o-section--style-dark',
-    # RFE: Consider adding:
-    # 'c-callout',
-    # 'c-recognition c-recognition--style-light',
-    # 'c-recognition c-recognition--style-dark',
-    # et cetera
+    # https://cep.tacc.utexas.edu/design-system/ui-patterns/c-callout/
+    'c-callout',
+    # https://cep.tacc.utexas.edu/design-system/ui-patterns/c-recognition/
+    'c-recognition c-recognition--style-light',
+    'c-recognition c-recognition--style-dark',
 ]
 DJANGOCMS_STYLE_TAGS = [
     # Even though <div> is often NOT the most semantic choice;
