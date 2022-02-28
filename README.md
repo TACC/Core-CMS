@@ -176,25 +176,28 @@ If you changes files in any `static/` directory, you may need to follow some of 
 
 #### Quick Start
 
-_All shell commands assume current working directory is `taccsite_custom/`._
+> __Notice__: All shell commands assume current working directory is `taccsite_custom/`.
 
-1. _(optional)_ Make changes to `name-of-project/static/name-of-project/css/src` files.\*†
+0. _(assumed)_ Install missing or out-of-date Node dependencies.\*
+1. _(optional)_ Make changes to `name-of-project/static/name-of-project/css/src` files.\†‡
 2. Build static files from source files.\
     Via shell:
     1. `npm run build` or\
-        `npm run build --project=name-of-project`\*
+        `npm run build --project=name-of-project`\†
 3. _(to debug)_ Review respective files' content in\
-    `name-of-project/static/name-of-project/css/build`.\*
-4. "Collect" static files. _See [How to Collect Static Files](#how-to-collect-static-files)._
-5. _(to debug)_ Confirm respective output changed in\
-    `/static/name-of-project/css/build`.\*
-6. Copy `core-cms` built assets to `site_cms` respective directory.\
+    `name-of-project/static/name-of-project/css/build`.\†
+4. Copy `core-cms` built assets to `site_cms` respective directory.\
     Via shell:
     1. `mkdir -p ../taccsite_cms/static/site_cms/css/build`
     2. `cp -r core-cms/static/core-cms/css/build/* ../taccsite_cms/static/site_cms/css/build`
+5. "Collect" static files. _See [How to Collect Static Files](#how-to-collect-static-files)._
+6. _(to debug)_ Confirm respective output changed in\
+    `/static/site_cms/css/build` and/or\
+    `/static/name-of-project/css/build`.\†
 
-<sub>\* Where `name-of-project` matches a directory from `/taccsite_custom`.</sub>\
-<sub>† To commit such changes, see [Changing Custom Resources](#changing-custom-resources)</sub>
+<sub>\* The recommended comman to install expected dependencies is `npm ci`.</sub>\
+<sub>† Where `name-of-project` matches a directory from `/taccsite_custom`.</sub>\
+<sub>‡ To commit such changes, see [Changing Custom Resources](#changing-custom-resources)</sub>
 
 #### How to Build Static Files
 
@@ -212,7 +215,7 @@ Certain static files are built __from__ source files __in__ `src` directories __
     npm run build --project=name-of-project
     ```
 
-<sub>\* You should run these commands in the container. _See [Running Commands in Container](#running-commands-in-container)._</sub>\
+<sub>\* You should run these commands in the container __from `/code/taccsite_custom/`__. _See [Running Commands in Container](#running-commands-in-container)._</sub>\
 <sub>† Where `name-of-project` matches a directory from `/taccsite_custom`.</sub>
 
 #### How to Collect Static Files
@@ -224,10 +227,10 @@ Whenever static files are changed, the CMS must be manually told to serve them.\
 1. [Collect static files][django-static] for Django: \*
 
     ```bash
-    python manage.py collectstatic
+    python manage.py collectstatic --no-input
     ```
 
-<sub>\* You should run these commands in the container. _See [Running Commands in Container](#running-commands-in-container)._</sub>
+<sub>\* You should run these commands in the container __from `/code/`__. _See [Running Commands in Container](#running-commands-in-container)._</sub>
 
 ### Changing Custom Resources
 
