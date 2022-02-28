@@ -34,25 +34,16 @@ After you clone the repository locally, there are several configuration steps re
 
 #### Required
 
-1. Create a `.env` file\* at the root of the project with this content:
+Initialize / Update submodules:
 
-    ```bash
-    CUSTOM_ASSET_DIR=example-cms
-    ```
-
-    Where `example-cms` is the project to be run. See [Custom Resources per CMS Project](#custom-resources-per-cms-project).
-
-1. Initialize / Update submodules.
-    1. `git submodule init`\
-        Adds `cms-site-resources` repo as submodule at `taccsite_custom/`. Only necessary once per `CORE-cms` repo clone.
-    2. `git submodule update`\
-        Downloads code from pinned commit of `cms-site-resources` repo to `taccsite_custom/`.
-
-<sub>\* A ["dotenv" file](https://hexdocs.pm/dotenvy/dotenv-file-format.html) is a file, with or without a name, that has the `.env` extension.</sub>
+1. `git submodule init`\
+    <sub>Adds [Core CMS Resources] repo as submodule at `taccsite_custom/`. Only necessary once per parent repo clone.</sub>
+2. `git submodule update`\
+    <sub>Downloads code from pinned commit of [Core CMS Resources] repo to `taccsite_custom/`.</sub>
 
 #### Optional
 
-Settings may be customized piecemeal by creating any of these files with just the settings to change:
+Settings may be customized piecemeal by adding, in any of these files, only the settings to change:
 
 | \* | File | Usage |
 | - | - | - |
@@ -61,8 +52,7 @@ Settings may be customized piecemeal by creating any of these files with just th
 | 3 | `settings_local.py` | Settings specific to a local development environment, not intended for others |
 
 <sub>\* This is a "Precedence" column. [A file with a higher precedence value overrides one of a lower value.](https://github.com/TACC/Core-CMS/blob/929dc4b/taccsite_cms/settings.py#L458-L478)</sub>\
-<sub>† Example (from project root): `ln -s ../taccsite_custom/name-of-project/settings_custom.py taccsite_cms/settings_custom.py`‡</sub>\
-<sub>‡ Where `name-of-project` matches a directory from `/taccsite_custom`.</sub>
+<sub>† See [If You Want to Test Custom Resources per CMS Project](#if-you-want-to-test-custom-resources-per-cms-project).</sub>
 
 ##### If You Run this CMS Independent of [Core-Portal](https://github.com/TACC/Core-Portal/)
 
@@ -76,9 +66,8 @@ Follow [How to Use a Custom Docker Compose File](https://github.com/TACC/Core-CM
 
 All CMS projects (besides the stand-alone CMS core), store project-specific resources in the `taccsite_custom` submodule.
 
-1. Create a `taccsite_cms/settings_custom.py` symlink to `taccsite_custom/name-of-project/settings_custom.py`.\*†
-2. Update the `.env` file so `CUSTOM_ASSET_DIR=name-of-project`.\*
-3. Re-build static assets, so that project-specific assets are built. _See ["Static Files"](/README.md#static-files)._
+1. Create `taccsite_cms/settings_custom.py` symlink to `taccsite_custom/name-of-project/settings_custom.py`.\*†
+2. Build project-specific static files. _See [Static Files](/README.md#static-files)._
 
 <sub>\* Where `name-of-project` matches a directory from `/taccsite_custom`.</sub>\
 <sub>† Example (from project root): `ln -s ../taccsite_custom/name-of-project/settings_custom.py taccsite_cms/settings_custom.py`\*</sub>
@@ -181,50 +170,50 @@ All CMS projects (besides the stand-alone CMS core), store project-specific reso
 
 If you changes files in any `static/` directory, you may need to follow some of these steps.
 
-> __Notice__: We configured Django to ignore `src` directories during [`collectstatic`][django-static], so templates can __not__ directly load source files.
+> __Notice__: We configured Django to [ignore `src` directories][ignore-src-dirs] during [`collectstatic`][django-static], so templates can __not__ directly load source files.
+
+[ignore-src-dirs]: https://github.com/TACC/Core-CMS/blob/7b62db1/taccsite_cms/django/contrib/staticfiles_custom/apps.py
 
 #### Quick Start
 
-1. _(optional)_ Make changes to `/taccsite_cms/static/…/src` files.
-2. Build static files from source files via:
-    - _(manually, for any ready changes)_ `npm run build`
-    - _(automatically, on source change)_ `npm run watch`
-3. _(to debug)_ Review respective `/taccsite_cms/static/…/build` files' content.
+_All shell commands assume current working directory is `taccsite_custom/`._
+
+1. _(optional)_ Make changes to `name-of-project/static/name-of-project/css/src` files.\*†
+2. Build static files from source files.\
+    Via shell:
+    1. `npm run build` or\
+        `npm run build --project=name-of-project`\*
+3. _(to debug)_ Review respective files' content in\
+    `name-of-project/static/name-of-project/css/build`.\*
 4. "Collect" static files. _See [How to Collect Static Files](#how-to-collect-static-files)._
-5. _(to debug)_ Confirm respective `/static/…/build` output changed.
+5. _(to debug)_ Confirm respective output changed in\
+    `/static/name-of-project/css/build`.\*
+6. Copy `core-cms` built assets to `site_cms` respective directory.\
+    Via shell:
+    1. `mkdir -p ../taccsite_cms/static/site_cms/css/build`
+    2. `cp -r core-cms/static/core-cms/css/build/* ../taccsite_cms/static/site_cms/css/build`
+
+<sub>\* Where `name-of-project` matches a directory from `/taccsite_custom`.</sub>\
+<sub>† To commit such changes, see [Changing Custom Resources](#changing-custom-resources)</sub>
 
 #### How to Build Static Files
 
 Certain static files are built __from__ source files __in__ `src` directories __to__ compiled files __in__ `build` directories.
 
-> __Using `docker-compose.yml`__: Run these commands in bash session within container (because files are __not__ re-synced).
-
-> __Using `docker-compose.dev.yml` or `docker-compose.custom.yml`__: Run these commands on local machine __or__ in bash session within container (because files are re-synced).
-
-- [Start a bash session][docker-exec-bash] into the CMS container:
-
-    > __Notice__: If you have a `docker-compose.custom.yml`, then change  `core_cms` in this command to the `cms`: `container_name` in the `docker-compose.custom.yml`.
-
-    ```bash
-    docker exec -it core_cms /bin/bash
-    ```
-
-1. Build static resources:
+1. Build static resources: \*
 
     ```bash
     npm run build
     ```
 
-2. _(optional)_ [Watch][npm-pkg-watch] files, and re-build when source files change:
+    or †
 
     ```bash
-    npm run watch
+    npm run build --project=name-of-project
     ```
 
-    > __Notice__: This feature is __not__ reliable for _all_ changes on _all_ relevant files.
-
-[npm-cli-install]: https://docs.npmjs.com/cli/install
-[npm-pkg-watch]: https://www.npmjs.com/package/npm-watch
+<sub>\* You should run these commands in the container. _See [Running Commands in Container](#running-commands-in-container)._</sub>\
+<sub>† Where `name-of-project` matches a directory from `/taccsite_custom`.</sub>
 
 #### How to Collect Static Files
 
@@ -232,40 +221,52 @@ Whenever static files are changed, the CMS must be manually told to serve them.\
 
 <!-- TODO: [Automatically perform `collectstatic`](https://stackoverflow.com/q/59339571/11817077) -->
 
-1. [Start a bash session][docker-exec-bash] into the CMS container:
-
-    > __Notice__: If you have a `docker-compose.custom.yml`, then change  `core_cms` in this command to the `cms`: `container_name` in the `docker-compose.custom.yml`.
-
-    ```bash
-    docker exec -it core_cms /bin/bash
-    ```
-
-2. [Collect static files][django-static] for Django:
+1. [Collect static files][django-static] for Django: \*
 
     ```bash
     python manage.py collectstatic
     ```
 
-### Custom Resources
+<sub>\* You should run these commands in the container. _See [Running Commands in Container](#running-commands-in-container)._</sub>
+
+### Changing Custom Resources
 
 If you need to change files within `/taccsite_custom`:
 
 1. Follow instructions and directory structure of `example-cms`.
 2. Create/Edit files in a child directory of `/taccsite_custom`.
 3. Reference other projects in `/taccsite_custom`.
-4. _(for static asset changes)_ Build static assets.
-5. _(for template changes)_ Restart server.
+4. _(to test static file changes)_ Build static files.\*
+5. _(to test template changes)_ Restart server.
 6. Commit changes:
-    1. In `/taccsite_custom` submodule repo, commit changes (__not__ to `main`).
+    1. In `/taccsite_custom` submodule repo, commit changes (__not__ to `main` branch).
     2. In this parent repo, add `/taccsite_custom` change.
-    3. In this parent repo, commit changes (__not__ to `main`).
+    3. In this parent repo, commit changes (__not__ to `main` branch).
 
     _For more detailed steps, see [How to Change Submodule Branch Commit](https://github.com/TACC/Core-CMS/wiki/How-to-Change-Submodule-Branch-Commit)._
+
+<sub>To learn more, see [Static Files](#static-files).</sub>
+
+
+## Running Commands in Container
+
+__If using `docker-compose.yml` then__ run certain commands via shell within container (because files are __not__ re-synced with local machine).
+
+__If using `docker-compose.dev.yml` or `docker-compose.custom.yml` then__ run certain commands __either__ on local machine __or__ via shell within container (because files are re-synced with local machine).
+
+To [enter shell within container][docker-exec-bash]: \*
+
+```bash
+docker exec -it core_cms /bin/bash
+```
+
+<sub>\* __If using `docker-compose.custom.yml`, then__ change  `core_cms` to its `cms:` `container_name`.</sub>
 
 
 ## Setting up Search Index
 
 See [How to Build Search Index](https://github.com/TACC/Core-CMS/wiki/How-to-Build-Search-Index).
+
 
 ## Linting and Formatting Conventions
 
@@ -330,6 +331,7 @@ Sign your commits ([see this link](https://help.github.com/en/github/authenticat
 [Core Portal Deployments]: https://github.com/TACC/Core-Portal-Deployments
 [Camino]: https://github.com/TACC/Camino
 [Core CMS]: https://github.com/TACC/Core-CMS
+[Core CMS Resources]: https://github.com/TACC/Core-CMS-Resources
 [Core Portal]: https://github.com/TACC/Core-Portal
 [1]: https://docs.docker.com/get-docker/
 [2]: https://docs.docker.com/compose/install/
