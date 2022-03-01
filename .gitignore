@@ -9,9 +9,11 @@ __pycache__
 /sql
 /fcgi/django.fcgi
 
-## Built Static Assets
+# Node & NPM
+## built stylesheets
 build
-!site_cms/css/build
+## dependencies
+node_modules
 
 # Environment Variables
 docker_repo.var
