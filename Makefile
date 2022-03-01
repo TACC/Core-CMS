@@ -7,7 +7,7 @@ DOCKER_IMAGE_LOCAL := $(DOCKERHUB_REPO):local
 
 .PHONY: build
 build:
-	docker build --tag $(DOCKER_IMAGE) --build-arg PROJECT_NAME=$(PROJECT_NAME) .
+	docker build -t $(DOCKER_IMAGE) --build-arg PROJECT_NAME=$(PROJECT_NAME) .
 	docker tag $(DOCKER_IMAGE) $(DOCKER_IMAGE_LATEST)
 
 .PHONY: publish

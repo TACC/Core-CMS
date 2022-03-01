@@ -10,12 +10,11 @@ __pycache__
 /fcgi/django.fcgi
 
 # Node & NPM
-## built stylesheets
+## built Static files
 build
-## dependencies
-node_modules
+!build/README.md
 
-# Environment Variables
+# environment variables
 docker_repo.var
 
 # Static and Media folders
@@ -55,6 +54,9 @@ atlassian-ide-plugin.xml
 
 # Version file for source distribution
 RELEASE-VERSION
+
+# Dependencies
+node_modules
 
 #######################################
 #####   From HTML5 Boilerplate   ######
