@@ -61,8 +61,7 @@ Settings may be customized piecemeal by adding, in any of these files, only the 
 | 3 | `settings_local.py` | Settings specific to a local development environment, not intended for others |
 
 <sub>\* This is a "Precedence" column. [A file with a higher precedence value overrides one of a lower value.](https://github.com/TACC/Core-CMS/blob/929dc4b/taccsite_cms/settings.py#L458-L478)</sub>\
-<sub>† Example (from project root): `ln -s ../taccsite_custom/name-of-project/settings_custom.py taccsite_cms/settings_custom.py`‡</sub>\
-<sub>‡ Where `name-of-project` matches a directory from `/taccsite_custom`.</sub>
+<sub>† See [If You Want to Test Custom Resources per CMS Project](#if-you-want-to-test-custom-resources-per-cms-project).</sub>
 
 ##### If You Run this CMS Independent of [Core-Portal](https://github.com/TACC/Core-Portal/)
 
@@ -205,6 +204,7 @@ If you changes files in any `static/` directory, you may need to follow some of 
 <sub>‡ To commit such changes, see [Changing Custom Resources](#changing-custom-resources)</sub>
 
 #### How to Build Static Files
+
 Certain static files are built __from__ source files __in__ `src` directories __to__ compiled files __in__ `build` directories.
 
 1. Build static resources: \*
