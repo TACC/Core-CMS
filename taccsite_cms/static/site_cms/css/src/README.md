@@ -34,13 +34,18 @@ _This directory exists in `static/` __only__ because it is customary, using Djan
 
 ```css
 /* DO NOT ADD STYLES HERE; ONLY IMPORT OTHER STYLESHEETS */
+
 /* Organize via ITCSS */
 /* SEE: https://confluence.tacc.utexas.edu/x/IAA9Cw */
+
 /* SETTINGS */
 /* … */
+
 ...
+
 /* COMPONENTS */
 /* … */
+
 ...
 ```
 
