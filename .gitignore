@@ -8,6 +8,7 @@ __pycache__
 /public/media
 /sql
 /fcgi/django.fcgi
+/static/css/*.css
 
 # Node & NPM
 ## built Static files
