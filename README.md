@@ -7,6 +7,8 @@ The base CMS code for TACC WMA Workspace Portals & Websites
 
 - [Camino], a Docker container-based deployment scheme
 - [Core Portal], the base Portal code for TACC WMA CMS Websites
+- [Core CMS Styles], the custom UI pattern code for TACC WMA CMS Websites
+- [Core CMS Resources], the custom CMS code for TACC WMA CMS Websites
 - [Core Portal Deployments], private repository that facilitates deployments of [Core Portal] images via [Camino] and Jenkins
 
 
@@ -66,7 +68,7 @@ Follow [How to Use a Custom Docker Compose File](https://github.com/TACC/Core-CM
 
 All CMS projects (besides the stand-alone CMS core), store project-specific resources in the `taccsite_custom` submodule.
 
-1. Create `taccsite_cms/settings_custom.py` symlink to `taccsite_custom/name-of-project/settings_custom.py`.\*†
+1. Create a `taccsite_cms/settings_custom.py` symlink to `taccsite_custom/name-of-project/settings_custom.py`.\*†
 2. Build project-specific static files. _See [Static Files](/README.md#static-files)._
 
 <sub>\* Where `name-of-project` matches a directory from `/taccsite_custom`.</sub>\
@@ -176,26 +178,20 @@ If you changes files in any `static/` directory, you may need to follow some of 
 
 #### Quick Start
 
-> __Notice__: All shell commands assume current working directory is `taccsite_custom/`.
-
 0. _(assumed)_ Install missing or out-of-date Node dependencies.\*
-1. _(optional)_ Make changes to `name-of-project/static/name-of-project/css/src` files.\†‡
+1. _(optional)_ Make changes to `/taccsite_custom/name-of-project/static/name-of-project/css/src` files.\†‡
 2. Build static files from source files.\
     Via shell:
     1. `npm run build` or\
         `npm run build --project=name-of-project`\†
 3. _(to debug)_ Review respective files' content in\
-    `name-of-project/static/name-of-project/css/build`.\†
-4. Copy `core-cms` built assets to `site_cms` respective directory.\
-    Via shell:
-    1. `mkdir -p ../taccsite_cms/static/site_cms/css/build`
-    2. `cp -r core-cms/static/core-cms/css/build/* ../taccsite_cms/static/site_cms/css/build`
-5. "Collect" static files. _See [How to Collect Static Files](#how-to-collect-static-files)._
-6. _(to debug)_ Confirm respective output changed in\
-    `/static/site_cms/css/build` and/or\
-    `/static/name-of-project/css/build`.\†
+    `/taccsite_custom/name-of-project/static/name-of-project/css/build`.\†
+4. "Collect" static files. _See [How to Collect Static Files](#how-to-collect-static-files)._
+5. _(to debug)_ Confirm respective output changed in\
+    `/taccsite_cms/static/site_cms/css/build` and/or\
+    `/taccsite_custom/static/name-of-project/css/build`.\†
 
-<sub>\* The recommended comman to install expected dependencies is `npm ci`.</sub>\
+<sub>\* The recommended command to install expected dependencies is `npm ci`.</sub>\
 <sub>† Where `name-of-project` matches a directory from `/taccsite_custom`.</sub>\
 <sub>‡ To commit such changes, see [Changing Custom Resources](#changing-custom-resources)</sub>
 
@@ -334,6 +330,7 @@ Sign your commits ([see this link](https://help.github.com/en/github/authenticat
 [Core Portal Deployments]: https://github.com/TACC/Core-Portal-Deployments
 [Camino]: https://github.com/TACC/Camino
 [Core CMS]: https://github.com/TACC/Core-CMS
+[Core Styles]: https://github.com/TACC/Core-Styles
 [Core CMS Resources]: https://github.com/TACC/Core-CMS-Resources
 [Core Portal]: https://github.com/TACC/Core-Portal
 [1]: https://docs.docker.com/get-docker/
