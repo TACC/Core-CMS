@@ -14,7 +14,7 @@ __pycache__
 build
 !build/README.md
 
-# environment variables
+## environment variables
 docker_repo.var
 
 # Static and Media folders

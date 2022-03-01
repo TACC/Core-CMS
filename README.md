@@ -36,12 +36,11 @@ After you clone the repository locally, there are several configuration steps re
 
 #### Required
 
-Initialize / Update submodules:
-
-1. `git submodule init`\
-    <sub>Adds [Core CMS Resources] repo as submodule at `taccsite_custom/`. Only necessary once per parent repo clone.</sub>
-2. `git submodule update`\
-    <sub>Downloads code from pinned commit of [Core CMS Resources] repo to `taccsite_custom/`.</sub>
+1. Initialize / Update submodules:
+    1. `git submodule init`\
+        <sub>Adds [Core CMS Resources] repo as submodule at `taccsite_custom/`. Only necessary once per parent repo clone.</sub>
+    2. `git submodule update`\
+        <sub>Downloads code from pinned commit of [Core CMS Resources] repo to `taccsite_custom/`.</sub>
 
 #### Optional
 
