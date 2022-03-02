@@ -95,7 +95,11 @@ Styleguide Objects.Section
   background-color: var(--global-color-primary--xx-dark);
   box-shadow: var(--box-shadow--fake-bkgd);
 }
-.o-section--style-dark + .o-section--style-dark {
+.o-section--style-dark + .o-section--style-dark:not(.container) {
+  border-top: var(--global-border-width--normal) solid
+              var(--global-color-primary--xx-light);
+}
+.o-section--style-dark + .o-section--style-dark.container {
   @extend %x-fake-border--inset-horz-top;
 
   --fb--line-width: var(--global-border-width--normal);
@@ -125,7 +129,11 @@ Styleguide Objects.Section
   background-color: var(--global-color-primary--xx-light);
   box-shadow: var(--box-shadow--fake-bkgd);
 }
-.o-section--style-light + .o-section--style-light {
+.o-section--style-light + .o-section--style-light:not(.container) {
+  border-top: var(--global-border-width--normal) solid
+              var(--global-color-primary--normal);
+}
+.o-section--style-light + .o-section--style-light.container {
   @extend %x-fake-border--inset-horz-top;
 
   --fb--line-width: var(--global-border-width--normal);
