@@ -10,15 +10,14 @@ const outFile = root + '/../taccsite_cms/static/site_cms/css/src/_version.css';
 const ver = process.env.npm_package_version;
 const rev = getGitRev().substring(0, 7);
 
-const output = `/*! @tacc/core-cms#${rev} (≥ v${ver}) | MIT License | github.com/TACC/Core-CMS-Resources */`;
+const output = `/*! @tacc/core-cms#${rev} (≥ v${ver}) | MIT License | github.com/TACC/Core-CMS */`;
 
 /**
  * Get the Git revision of the current working directory code
- * @param {string} [gitDir='.git'] - Path to Git directory
  * @return {string}
  * @see https://stackoverflow.com/a/34518749/11817077
  */
-function getGitRev(gitDir='.git') {
+function getGitRev() {
   let rev = fs.readFileSync('.git/HEAD').toString().trim();
   const revFile = '.git/' + rev.substring(5);
 
