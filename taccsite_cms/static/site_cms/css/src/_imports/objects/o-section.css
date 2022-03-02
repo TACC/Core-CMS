@@ -31,6 +31,7 @@ Styleguide Objects.Section
 */
 @import url("_imports/tools/media-queries.css");
 @import url("_imports/tools/x-layout.css");
+@import url("_imports/tools/x-fake-border.css");
 
 
 
@@ -87,14 +88,22 @@ Styleguide Objects.Section
 /* FP-1470: Add cross-style code and variables when third style is added */
 
 .o-section--style-dark {
+  --box-shadow--fake-bkgd: 50vw 0 var(--global-color-primary--xx-dark),
+                          -50vw 0 var(--global-color-primary--xx-dark);
+
   color: var(--global-color-primary--xx-light);
   background-color: var(--global-color-primary--xx-dark);
-  box-shadow: 50vw 0 var(--global-color-primary--xx-dark),
-              -50vw 0 var(--global-color-primary--xx-dark);
+  box-shadow: var(--box-shadow--fake-bkgd);
 }
 .o-section--style-dark + .o-section--style-dark {
-  border-top: var(--global-border-width--normal) solid
-              var(--global-color-primary--xx-light);
+  @extend %x-fake-border--inset-horz-top;
+
+  --fb--line-width: var(--global-border-width--normal);
+  --fb--line-color: var(--global-color-primary--xx-light);
+  --fb--inset-width: var(--global-space--grid-gap);
+  --fb--inset-color: var(--global-color-primary--xx-dark);
+
+  --fb--shadow-below: var(--box-shadow--fake-bkgd);
 }
 .o-section--style-dark a {
   color: var(--global-color-link-on-dark--normal);
@@ -109,14 +118,22 @@ Styleguide Objects.Section
 }
 
 .o-section--style-light {
+  --box-shadow--fake-bkgd: 50vw 0 var(--global-color-primary--xx-light),
+                          -50vw 0 var(--global-color-primary--xx-light);
+
   color: var(--global-color-primary--dark);
   background-color: var(--global-color-primary--xx-light);
-  box-shadow: 50vw 0 var(--global-color-primary--xx-light),
-              -50vw 0 var(--global-color-primary--xx-light);
+  box-shadow: var(--box-shadow--fake-bkgd);
 }
 .o-section--style-light + .o-section--style-light {
-  border-top: var(--global-border-width--normal) solid
-              var(--global-color-primary--normal);
+  @extend %x-fake-border--inset-horz-top;
+
+  --fb--line-width: var(--global-border-width--normal);
+  --fb--line-color: var(--global-color-primary--xx-dark);
+  --fb--inset-width: var(--global-space--grid-gap);
+  --fb--inset-color: var(--global-color-primary--xx-light);
+
+  --fb--shadow-below: var(--box-shadow--fake-bkgd);
 }
 .o-section--style-light a {
   color: var(--global-color-link-on-light--normal);
@@ -162,7 +179,7 @@ Styleguide Objects.Section
 /* FP-1462: Extract to new banner component(s) */
 
 [class*="o-section--style"].o-section--banner + [class*="o-section--style"] {
-  border-top: none;
+  box-shadow: var(--box-shadow--fake-bkgd);
 }
 
 
