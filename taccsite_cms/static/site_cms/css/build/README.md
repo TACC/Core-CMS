@@ -1,4 +1,4 @@
-# TACC CMS - Minified & Processed Files
+# TACC CMS - Stylesheets - Built
 
 DO __NOT__ AUTHOR STYLESHEETS HERE!
 
