@@ -68,8 +68,10 @@ Styleguide Trumps.Scopes.SystemSpecs
   }
   .s-system-specs > div,
   .s-system-specs > aside {
-    width: var(--col-width--thin);
     padding-inline: var(--col-padding);
+  }
+  .s-system-specs > div {
+    width: var(--col-width--thin);
   }
   .s-system-specs > figure {
     width: var(--col-width--wide);
@@ -77,7 +79,11 @@ Styleguide Trumps.Scopes.SystemSpecs
   }
 }
 
-
+@media only screen and (--wide-and-above) {
+    .s-system-specs > aside {
+        width: var(--col-width--thin);
+    }
+}
 
 /* Position */
 

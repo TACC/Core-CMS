@@ -7,6 +7,60 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.15.0] - 2022-02-17: New Section Pattern; Critical Dependency Fix; Other
+
+### Added
+
+- FP-1318: Create Section Pattern via Style Plugin (#430)
+
+### Changes
+
+- Quick: (Texascale) Do Not Let Search Engines Index 2022 Pages (#443)
+- FP-1318: Revisit Section Pattern (#433)
+
+### Fixed
+
+- FP-1502: Fix Callout Title Height (#441)
+- FP-1285: CMS Critical Dependency Upgrade (#437)
+
+### Removed
+
+- UTRC-357/FP-1268: (UTRC) Remove old templates (#439)
+
+## [3.14.0] - 2022-01-25: Deprecate Callout Plugin; Guide Page Fix; Other Fixes
+
+### Added
+
+- FP-1415: Callout Pattern with Fixes sans Plugin (#427)
+    - Callout Plugin - Crop Images within Ratio (GH-329)
+
+### Changed
+
+- FP-1417: Callout CSS to Style Child Elements via Tag not Class (#425)
+- FP-1416: Callout Image Resize w/ JS not CSS (#421) (#422)
+
+### Fixed
+
+- FP-1422: (UTRC) Remove White Border Under Header (#435)
+- FP-1418: Callout Link Clickable Area Fix (#423)
+- FP-1416: Callout Image Resize w/ CSS not JS (#421) (#422)
+    - Callout Plugin - Fix Image Resize Caveat (GH-327)
+    - Element Transform Fails on Child Plugin Markup w/out Hack (GH-320)
+- FP-1435: Updates on Getting Started page (#428)
+- FP-1408: (Frontera) Fix Clickable Area of Article List Link (#429)
+- Remove a "Task/" from CHANGELOG entry (d773289)
+- Minor: Fix: x-layout CSS docblock typo (#434)
+
+### Removed
+
+- Deleted `resize_figure_to_fit` feature of Callout Plugin. (#421) (#422)
+- Deleted `elementTransformer` module and `SizeContentToFit` class. (#421)
+
+### Deprecated
+
+- Callout Plugin is unsupported. Replace with Callout Pattern. (#427)
+- Marked README.md as outdated & added link to new draft. (61b310b)
+
 ## [3.12.1] - 2021-12-21: BM Branding; UI Patterns; Search Bar Design; UTRC Font
 
 ### Added
@@ -220,7 +274,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.0.0] - 2021-03-31
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.12.1...HEAD
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.15.0...HEAD
+[3.15.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.15.0
+[3.14.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.14.0
 [3.12.1]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.1
 [3.5.1]: https://github.com/TACC/Core-CMS/releases/tag/v3.5.1
 [3.5.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.5.0
