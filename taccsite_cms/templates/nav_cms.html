@@ -9,3 +9,8 @@
   {# FAQ: If template is included with `only`, then it does NOT render `show_menu` #}
   {% show_menu 0 100 1 100 "cms_menu.html" %}
 </ul>
+<script type="module">
+  import findLinksAndSetTargets from '/static/site_cms/js/modules/setTargetForExternalLinks.js';
+
+  findLinksAndSetTargets();
+</script>
