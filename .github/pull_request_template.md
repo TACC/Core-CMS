@@ -1,23 +1,26 @@
 ## Overview
 
+…
 
+## Related
 
-## Related Tickets
-
-* #123
 * [FP-123](https://jira.tacc.utexas.edu/browse/FP-123)
 
-## Summary of Changes
+### Required By || Requires
 
+* https://github.com/TACC/Core-CMS-Resources/pull/117
 
+## Changes
 
-## Testing Steps
+…
+
+## Testing
 
 1.
 
-## UI Photos
+## Screenshots
 
-
-
+…
 ## Notes
 
+…
