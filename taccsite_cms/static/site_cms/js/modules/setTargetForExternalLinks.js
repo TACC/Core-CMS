@@ -1,5 +1,5 @@
 /**
- * Set external links to open in new tab
+ * Set external links (automatically discovered) to open in new tab
  * @param {object} [options] - Optional parameters
  * @param {array.<string>} [options.pathsToExernalSite=[]] - A list of relative URL paths that should be treated like external URLs
  * @param {HTMLElement|Document} [options.scopeElement=document] - The element within which to search for links
