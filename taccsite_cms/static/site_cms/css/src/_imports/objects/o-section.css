@@ -119,6 +119,8 @@ Styleguide Objects.Section
   background-color: var(--color--bkgd);
   box-shadow: var(--box-shadow--fake-bkgd);
 }
+/* CAVEAT: No borders for nested sections */
+/* FAQ: Nested sections were an afterhought anyway; no design uses them */
 [class*="o-section--style"] [class*="o-section--style"] {
   box-shadow: none;
 }
