@@ -89,18 +89,21 @@ Styleguide Objects.Section
 
 .o-section--style-light {
   --color--text: var(--global-color-primary--dark);
+  --color--text-strong: var(--global-color-primary--xx-dark);
   --color--bkgd: var(--global-color-primary--xx-light);
   --color--line: var(--global-color-primary--normal);
   --color--link: var(--global-color-link-on-light--normal);
 }
 .o-section--style-muted {
-  --color--text: var(--global-color-primary--xx-dark);
+  --color--text: var(--global-color-primary--x-dark);
+  --color--text-strong: var(--global-color-primary--xx-dark);
   --color--bkgd: var(--global-color-primary--x-light);
   --color--line: var(--global-color-primary--dark);
   --color--link: var(--global-color-link-on-light--normal);
 }
 .o-section--style-dark {
-  --color--text: var(--global-color-primary--xx-light);
+  --color--text: var(--global-color-primary--x-light);
+  --color--text-strong: var(--global-color-primary--xx-light);
   --color--bkgd: var(--global-color-primary--xx-dark);
   --color--line: var(--global-color-primary--xx-light);
   --color--link: var(--global-color-link-on-dark--normal);
@@ -159,7 +162,7 @@ Styleguide Objects.Section
   color: var(--color--link);
 }
 [class*="o-section--style"] :is(h1, h2, h3, h4, h5, h6) {
-  color: var(--color--text);
+  color: var(--color--text-strong);
 }
 
 
