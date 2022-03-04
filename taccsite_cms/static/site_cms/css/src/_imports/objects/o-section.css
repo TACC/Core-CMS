@@ -144,8 +144,12 @@ Styleguide Objects.Section
 
   --fb--shadow-below: var(--box-shadow--fake-bkgd);
 }
+.o-section--style-light + .o-section--style-light.container,
+.o-section--style-dark + .o-section--style-dark.container {
+  @extend %x-fake-border--inset-horz-top;
+}
 .o-section--style-muted.container {
-  @extend %x-fake-border--inset-horz-bottom;
+  @extend %x-fake-border--inset-horz-both;
 }
 
 /* Modifers: Style: Child Text */

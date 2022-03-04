@@ -9,11 +9,23 @@
 {# The {{ html }} allows DjangoCMS Snippet to pass in class names #}
 <section class="o-section {{modifier_class}} {{ html }}">
   <p><strong>Section (First of a Pair)</strong></p>
-  <p>A <strong>light</strong> or <strong>muted</strong> or <strong>dark</strong> Section directly below me will create a border between both. <small>An <strong>un-styled</strong> Section never has a border.</small></p>
+  <p>A Section of the same style directly after me will create a border between both. <small>An <strong>un-styled</strong> Section never has a border.</small></p>
 </section>
 <section class="o-section {{modifier_class}} {{ html }}">
   <p><strong>Section (Second of a Pair)</strong></p>
-  <p>A <strong>light</strong> or <strong>muted</strong> or <strong>dark</strong> Section directly above me will create a border between both. <small>An <strong>un-styled</strong> Section never has a border.</small></p>
+  <p>A Section of the same style directly after me will create a border between both. <small>An <strong>un-styled</strong> Section never has a border.</small></p>
+</section>
+
+<br />
+
+{# The {{ html }} allows DjangoCMS Snippet to pass in class names #}
+<section class="container  o-section {{modifier_class}} {{ html }}">
+  <p><strong>Container Section (First of a Pair)</strong></p>
+  <p>A <code>.container</code> Section has Container padding and a fake border.</small></p>
+</section>
+<section class="container  o-section {{modifier_class}} {{ html }}">
+  <p><strong>Container Section (First of a Pair)</strong></p>
+  <p>A <code>.container</code> Section has Container padding and a fake border.</small></p>
 </section>
 
 <br />
