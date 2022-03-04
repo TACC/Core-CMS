@@ -1,7 +1,7 @@
 {# The {{ html }} allows DjangoCMS Snippet to pass in class names #}
 <section class="o-section {{modifier_class}} {{ html }}">
   <p><strong>Section</strong></p>
-  <p>I am a Section. <small>Use light Sections to wrap most content. Use dark Sections to highlight some content.</small></p>
+  <p>I am a Section. <small>Use light Sections to wrap most content. Use muted Sections to gently highlight some content. Use dark Sections to strongly highlight some content.</small></p>
 </section>
 
 <br />
@@ -9,11 +9,27 @@
 {# The {{ html }} allows DjangoCMS Snippet to pass in class names #}
 <section class="o-section {{modifier_class}} {{ html }}">
   <p><strong>Section (First of a Pair)</strong></p>
-  <p>A <strong>light</strong> or <strong>dark</strong> Section directly below me will create a border between both. <small>An <strong>un-styled</strong> Section never has a border.</small></p>
+  <p>A <strong>light</strong> or <strong>muted</strong> or <strong>dark</strong> Section directly below me will create a border between both. <small>An <strong>un-styled</strong> Section never has a border.</small></p>
 </section>
 <section class="o-section {{modifier_class}} {{ html }}">
   <p><strong>Section (Second of a Pair)</strong></p>
-  <p>A <strong>light</strong> or <strong>dark</strong> Section directly above me will create a border between both. <small>An <strong>un-styled</strong> Section never has a border.</small></p>
+  <p>A <strong>light</strong> or <strong>muted</strong> or <strong>dark</strong> Section directly above me will create a border between both. <small>An <strong>un-styled</strong> Section never has a border.</small></p>
+</section>
+
+<br />
+
+{# The {{ html }} allows DjangoCMS Snippet to pass in class names #}
+<section class="o-section {{modifier_class}} {{ html }}">
+  <p><strong>Section (before Muted Section)</strong></p>
+  <p>A pair of <strong>light</strong> or <strong>dark</strong> Sections may have a <strong>muted</strong> Section between them.</p>
+</section>
+<section class="o-section o-section--style-muted">
+  <p><strong>(Muted) Section</strong></p>
+  <p>A <strong>muted</strong> Section would appear between two <strong>light</strong> or <strong>dark</strong> Sections. <small>It probably would not appear between two <strong>muted</strong> Sections.</small></p>
+</section>
+<section class="o-section {{modifier_class}} {{ html }}">
+  <p><strong>Section (before Muted Section)</strong></p>
+  <p>A pair of <strong>light</strong> or <strong>dark</strong> Sections may have a <strong>muted</strong> Section between them.</p>
 </section>
 
 <br />
@@ -24,6 +40,10 @@
   <p>Sections can be nested within me. <small>A nested Section removes the standard Section spacing.</small></p>
   <div class="o-section o-section--style-dark">
     <p><strong>(Nested) Dark Section</strong></p>
+    <p>I am nested.</p>
+  </div>
+  <div class="o-section o-section--style-muted">
+    <p><strong>(Nested) Muted Section</strong></p>
     <p>I am nested.</p>
   </div>
   <div class="o-section o-section--style-light">

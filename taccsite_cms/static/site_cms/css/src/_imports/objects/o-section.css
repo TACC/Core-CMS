@@ -92,6 +92,12 @@ Styleguide Objects.Section
   --color--line: var(--global-color-primary--normal);
   --color--link: var(--global-color-link-on-light--normal);
 }
+.o-section--style-muted {
+  --color--text: var(--global-color-primary--xx-dark);
+  --color--bkgd: var(--global-color-primary--x-light);
+  --color--line: var(--global-color-primary--dark);
+  --color--link: var(--global-color-link-on-light--normal);
+}
 .o-section--style-dark {
   --color--text: var(--global-color-primary--xx-light);
   --color--bkgd: var(--global-color-primary--xx-dark);
@@ -116,13 +122,19 @@ Styleguide Objects.Section
 /* Modifers: Style: Line Between Matching Sections */
 
 /* Pure sections can use just a border */
-[class*="o-section--style"] + [class*="o-section--style"]:not(.container) {
-  border-top: var(--global-border-width--normal) solid
-              var(--color--line);
+.o-section--style-light + .o-section--style-light:not(.container),
+/* any muted instance */ .o-section--style-muted:not(.container),
+.o-section--style-dark + .o-section--style-dark:not(.container) {
+  border-top: var(--global-border-width--normal) solid var(--color--line);
+}
+.o-section--style-muted:not(.container) {
+  border-bottom: var(--global-border-width--normal) solid var(--color--line);
 }
 
 /* Container-based sections need a border that ignores padding */
-[class*="o-section--style"] + [class*="o-section--style"].container {
+.o-section--style-light + .o-section--style-light.container,
+/* any muted instance */ .o-section--style-muted.container,
+.o-section--style-dark + .o-section--style-dark.container {
   @extend %x-fake-border--inset-horz-top;
 
   --fb--line-width: var(--global-border-width--normal);
@@ -131,6 +143,9 @@ Styleguide Objects.Section
   --fb--inset-color: var(--color--bkgd);
 
   --fb--shadow-below: var(--box-shadow--fake-bkgd);
+}
+.o-section--style-muted.container {
+  @extend %x-fake-border--inset-horz-bottom;
 }
 
 /* Modifers: Style: Child Text */
