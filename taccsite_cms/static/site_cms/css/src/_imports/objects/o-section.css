@@ -3,6 +3,8 @@ Section
 
 A group of related content.
 
+_Nested sections are an afterthought. No official design uses them._
+
 To Do:
 <details><summary>FP-1463: Extract layout pattern</summary>
 
@@ -112,6 +114,7 @@ Styleguide Objects.Section
 /* Modifers: Style: Text & Background */
 
 [class*="o-section--style"] {
+  --line-width: var(--global-border-width--normal);
   --box-shadow--fake-bkgd: 50vw 0 var(--color--bkgd),
                           -50vw 0 var(--color--bkgd);
 
@@ -119,8 +122,7 @@ Styleguide Objects.Section
   background-color: var(--color--bkgd);
   box-shadow: var(--box-shadow--fake-bkgd);
 }
-/* CAVEAT: No borders for nested sections */
-/* FAQ: Nested sections were an afterhought anyway; no design uses them */
+/* Nested sections must not stretch to page edge */
 [class*="o-section--style"] [class*="o-section--style"] {
   box-shadow: none;
 }
@@ -130,23 +132,25 @@ Styleguide Objects.Section
 /* Pure sections can use just a border */
 .o-section--style-light + .o-section--style-light:not(.container),
 .o-section--style-dark + .o-section--style-dark:not(.container) {
-  border-top: var(--global-border-width--normal) solid var(--color--line);
+  border-top: var(--line-width) solid var(--color--line);
+}
+/* any muted section */ .o-section--style-muted {
+  border-top: var(--line-width) solid var(--color--line);
+  border-bottom: var(--line-width) solid var(--color--line);
 }
 
-/* Muted sections have border that extends to page edge (like background) */
+/* Muted sections have border that extends to page edges (like background) */
 .o-section--style-muted {
   --box-shadow--fake-bkgd:
-    /* background (duplicated definition) */
-    50vw 0 var(--color--bkgd),
-    -50vw 0 var(--color--bkgd),
-    /* three-part fake top border (extends to page edge) */
-    33vw 1px var(--color--line),
-    0 1px var(--color--line),
-    -33vw 1px var(--color--line),
-    /* three-part fake bottom border (extends to page edge) */
-    33vw -1px var(--color--line),
-    0 -1px var(--color--line),
-    -33vw -1px var(--color--line);
+    /* re-build fake background but shorter by two lines' widths */
+    50vw 0 0 calc(-1 * var(--line-width)) var(--color--bkgd),
+    -50vw 0 0 calc(-1 * var(--line-width)) var(--color--bkgd),
+    /* fake top border to page edges using mostly-hidden fake background */
+    33vw 0 var(--color--line),
+    -33vw 0 var(--color--line),
+    /* fake bottom border to page edges using mostly-hidden fake background */
+    33vw 0px var(--color--line),
+    -33vw 0px var(--color--line);
 }
 
 /* Container-based light and dark sections need a border that ignores padding */
