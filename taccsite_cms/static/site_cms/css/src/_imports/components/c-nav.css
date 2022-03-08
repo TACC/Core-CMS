@@ -31,6 +31,7 @@ Styleguide Components.Nav
 
 nav.c-nav--boxed {
   --small-indent: calc(var(--global-space--list-indent) / 2);
+  --large-indent: var(--global-space--list-indent);
 
   width: fit-content;
   padding-block: var(--small-indent);
@@ -40,35 +41,33 @@ nav.c-nav--boxed {
   line-height: 2em;
 }
 
+/* unordered list */
+nav.c-nav--boxed ul {
+  list-style-type: none; /* remove bullets, then reduce padding left */
+  padding-left: var(--small-indent); /* overwrite `html-elements.css` */
+  padding-right: var(--large-indent);
+}
+/* no list */
+nav.c-nav--boxed.c-nav--no-list {
+  /* has no bullets, thus smaller padding left */
+  padding-left: var(--small-indent);
+  padding-right: var(--large-indent);
+}
+
 /* any list */
 nav.c-nav--boxed :is(ul,ol) {
   margin: 0;
-}
-
-/* unordered list */
-nav.c-nav--boxed ul {
-  list-style-type: none;
-}
-
-/* no list */
-nav.c-nav--boxed.c-nav--no-list {
-  padding-left: var(--small-indent);
-  padding-right: var(--small-indent);
 }
 
 /* Modifiers: Boxed: Wide Screen */
 
 @media (--narrow-and-above) {
 
-  /* unordered list */
-  nav.c-nav--boxed ul {
-    padding-left: var(--small-indent);
-    padding-right: var(--global-space--list-indent);
-  }
   /* ordered list */
   nav.c-nav--boxed ol {
-    padding-left: var(--global-space--list-indent);
-    padding-right: var(--global-space--list-indent);
+    /* retain bullets, which (wide screen) need large padding so retain it */
+    /* padding-left: var(--large-indent); *//* comes from `html-elements.css` */
+    padding-right: var(--large-indent);
   }
 
 }
@@ -77,10 +76,11 @@ nav.c-nav--boxed.c-nav--no-list {
 
 @media (--narrow-and-below) {
 
-  /* any list */
-  nav.c-nav--boxed :is(ul,ol) {
-    padding-left: var(--small-indent);
-    padding-right: var(--global-space--list-indent);
+  /* ordered list */
+  nav.c-nav--boxed ol {
+    /* retain bullets, which (narrow screen) do not need large padding left */
+    padding-left: var(--small-indent); /* overwrite `html-elements.css` */
+    padding-right: var(--large-indent);
   }
 
 }
@@ -120,7 +120,7 @@ nav.c-nav--no-list > a {
 
 @media (--narrow-and-below) {
 
-  /* regular list */
+  /* any list */
   nav.c-nav :is(ul,ol) {
     display: flex;
     flex-wrap: wrap;
@@ -136,7 +136,6 @@ nav.c-nav--no-list > a {
     /* Re-align content to container (after they were spaced via margin) */
     transform: translateX(calc(-1 * var(--space-between-inline-items)));
   }
-
   /* unordered list */
   nav.c-nav ul { list-style-type: none; }
 
