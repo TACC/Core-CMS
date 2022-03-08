@@ -3,6 +3,8 @@ Section
 
 A group of related content.
 
+_Nested sections are an afterthought. No official design uses them._
+
 To Do:
 <details><summary>FP-1463: Extract layout pattern</summary>
 
@@ -23,6 +25,7 @@ To Do:
 </details>
 
 .o-section--style-light - light background, dark text
+.o-section--style-muted - dull light background, dark text
 .o-section--style-dark  - dark background, light text
 
 Markup: o-section.html
@@ -84,83 +87,93 @@ Styleguide Objects.Section
 
 /* Modifers: Style */
 
-/* Modifers: Style: Dark & Light */
-/* FP-1470: Add cross-style code and variables when third style is added */
+/* Modifers: Style: Options */
 
+.o-section--style-light {
+  --color--text: var(--global-color-primary--dark);
+  --color--text-strong: var(--global-color-primary--xx-dark);
+  --color--bkgd: var(--global-color-primary--xx-light);
+  --color--line: var(--global-color-primary--normal);
+  --color--link: var(--global-color-link-on-light--normal);
+}
+.o-section--style-muted {
+  --color--text: var(--global-color-primary--x-dark);
+  --color--text-strong: var(--global-color-primary--xx-dark);
+  --color--bkgd: var(--global-color-primary--x-light);
+  --color--line: var(--global-color-primary--dark);
+  --color--link: var(--global-color-link-on-light--normal);
+}
 .o-section--style-dark {
-  --box-shadow--fake-bkgd: 50vw 0 var(--global-color-primary--xx-dark),
-                          -50vw 0 var(--global-color-primary--xx-dark);
+  --color--text: var(--global-color-primary--x-light);
+  --color--text-strong: var(--global-color-primary--xx-light);
+  --color--bkgd: var(--global-color-primary--xx-dark);
+  --color--line: var(--global-color-primary--xx-light);
+  --color--link: var(--global-color-link-on-dark--normal);
+}
 
-  color: var(--global-color-primary--xx-light);
-  background-color: var(--global-color-primary--xx-dark);
+/* Modifers: Style: Text & Background */
+
+[class*="o-section--style"] {
+  --line-width: var(--global-border-width--normal);
+  --box-shadow--fake-bkgd: 50vw 0 var(--color--bkgd),
+                          -50vw 0 var(--color--bkgd);
+
+  color: var(--color--text);
+  background-color: var(--color--bkgd);
   box-shadow: var(--box-shadow--fake-bkgd);
 }
-.o-section--style-dark + .o-section--style-dark:not(.container) {
-  border-top: var(--global-border-width--normal) solid
-              var(--global-color-primary--xx-light);
+/* Nested sections must not stretch to page edge */
+[class*="o-section--style"] [class*="o-section--style"] {
+  box-shadow: none;
 }
+
+/* Modifers: Style: Line Between Matching Sections */
+
+/* Pure sections can use just a border */
+.o-section--style-light + .o-section--style-light:not(.container),
+.o-section--style-dark + .o-section--style-dark:not(.container) {
+  border-top: var(--line-width) solid var(--color--line);
+}
+/* any muted section */ .o-section--style-muted {
+  border-top: var(--line-width) solid var(--color--line);
+  border-bottom: var(--line-width) solid var(--color--line);
+}
+
+/* Muted sections have border that extends to page edges (like background) */
+.o-section--style-muted {
+  --box-shadow--fake-bkgd:
+    /* re-build fake background but shorter by two lines' widths */
+    50vw 0 0 calc(-1 * var(--line-width)) var(--color--bkgd),
+    -50vw 0 0 calc(-1 * var(--line-width)) var(--color--bkgd),
+    /* fake top border to page edges using mostly-hidden fake background */
+    33vw 0 var(--color--line),
+    -33vw 0 var(--color--line),
+    /* fake bottom border to page edges using mostly-hidden fake background */
+    33vw 0px var(--color--line),
+    -33vw 0px var(--color--line);
+}
+
+/* Container-based light and dark sections need a border that ignores padding */
+.o-section--style-light + .o-section--style-light.container,
 .o-section--style-dark + .o-section--style-dark.container {
   @extend %x-fake-border--inset-horz-top;
 
   --fb--line-width: var(--global-border-width--normal);
-  --fb--line-color: var(--global-color-primary--xx-light);
+  --fb--line-color: var(--color--line);
   --fb--inset-width: var(--global-space--grid-gap);
-  --fb--inset-color: var(--global-color-primary--xx-dark);
+  --fb--inset-color: var(--color--bkgd);
 
   --fb--shadow-below: var(--box-shadow--fake-bkgd);
 }
-.o-section--style-dark a {
-  color: var(--global-color-link-on-dark--normal);
-}
-.o-section--style-dark h1,
-.o-section--style-dark h2,
-.o-section--style-dark h3,
-.o-section--style-dark h4,
-.o-section--style-dark h5,
-.o-section--style-dark h6 {
-  color: var(--global-color-primary--xx-light);
-}
 
-.o-section--style-light {
-  --box-shadow--fake-bkgd: 50vw 0 var(--global-color-primary--xx-light),
-                          -50vw 0 var(--global-color-primary--xx-light);
+/* Modifers: Style: Child Text */
 
-  color: var(--global-color-primary--dark);
-  background-color: var(--global-color-primary--xx-light);
-  box-shadow: var(--box-shadow--fake-bkgd);
+[class*="o-section--style"] a {
+  color: var(--color--link);
 }
-.o-section--style-light + .o-section--style-light:not(.container) {
-  border-top: var(--global-border-width--normal) solid
-              var(--global-color-primary--normal);
+[class*="o-section--style"] :is(h1, h2, h3, h4, h5, h6) {
+  color: var(--color--text-strong);
 }
-.o-section--style-light + .o-section--style-light.container {
-  @extend %x-fake-border--inset-horz-top;
-
-  --fb--line-width: var(--global-border-width--normal);
-  --fb--line-color: var(--global-color-primary--xx-dark);
-  --fb--inset-width: var(--global-space--grid-gap);
-  --fb--inset-color: var(--global-color-primary--xx-light);
-
-  --fb--shadow-below: var(--box-shadow--fake-bkgd);
-}
-.o-section--style-light a {
-  color: var(--global-color-link-on-light--normal);
-}
-.o-section--style-light h1,
-.o-section--style-light h2,
-.o-section--style-light h3,
-.o-section--style-light h4,
-.o-section--style-light h5,
-.o-section--style-light h6 {
-  color: var(--global-color-primary--xx-dark);
-}
-
-/* Modifers: Style: (Fake) Endless Background */
-/* FAQ: Allows background to escape `.container` (whether its self or parent) */
-/* FP-1470: Move this to cross-style code when third style is added */
-
-/* Except for nested sections */
-.o-section .o-section { box-shadow: none; }
 
 
 
