@@ -443,7 +443,8 @@ DJANGOCMS_STYLE_CHOICES = [
     'c-recognition c-recognition--style-light',
     'c-recognition c-recognition--style-dark',
     # https://cep.tacc.utexas.edu/design-system/ui-patterns/c-floating-nav/
-    'c-floating-nav',
+    'c-nav',
+    'c-nav c-nav--boxed',
 ]
 DJANGOCMS_STYLE_TAGS = [
     # Even though <div> is often NOT the most semantic choice;

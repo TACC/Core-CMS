@@ -1,0 +1,125 @@
+/*
+Nav
+
+A list of navigation links that flows inline on narrow screens.
+
+To enforce appropriate semantic HTML, a `<nav>` is required.
+
+For list-like navigation, use `<ul>` or `<ol>` (with children `<li>`). Inside this kind of nav, markup whitespace is __not__ rendered.
+
+To support a navigation not as a list and with direct `<a>` children, add class `c-nav--no-list`. Inside this kind of nav, markup whitespace __is__ rendered.﹡
+
+﹡ To remove whitespace with CSS would break or complicate font-size cascade.
+
+- c-nav--boxed - Surrounded by a box
+
+Markup: c-nav.html
+
+Styleguide Components.Nav
+*/
+@import url("_imports/tools/media-queries.css");
+
+
+
+
+
+/* Base i.e. Container */
+
+nav.c-nav {
+  --space-between-inline-items: 0.5em;
+}
+
+
+
+
+
+/* Modifiers */
+
+
+
+/* Modifiers: Boxed */
+
+nav.c-nav--boxed {
+  --small-indent: calc(var(--global-space--list-indent) / 2);
+
+  width: fit-content;
+  padding-block: var(--small-indent);
+
+  border: var(--global-border--normal);
+
+  line-height: 2em;
+}
+
+/* any list */
+nav.c-nav--boxed :is(ul,ol) {
+  margin: 0;
+}
+
+/* unordered list */
+nav.c-nav--boxed ul {
+  list-style-type: none;
+
+  padding-left: var(--small-indent);
+  padding-right: var(--global-space--list-indent);
+}
+
+/* ordered list */
+nav.c-nav--boxed ol {
+  /* padding-left: "set by `html-elements.css`" */
+  padding-right: var(--global-space--list-indent);
+}
+
+/* no list */
+nav.c-nav--boxed.c-nav--no-list {
+  padding-left: var(--small-indent);
+  padding-right: var(--small-indent);
+}
+
+/* Modifiers: No List */
+
+/* This is not a true modifier. It is required to support certain markup. */
+/* SEE: stylesheet docblock, "no list" comments, `...--no-list` selectors */
+
+
+
+
+
+/* Content */
+
+
+
+/* no list */
+nav.c-nav--no-list {
+  margin-left: calc(-1 * var(--space-between-inline-items));
+}
+nav.c-nav--no-list > a {
+  display: inline-block;
+
+  margin-left: var(--space-between-inline-items);
+}
+
+
+
+/* Content: Narrow Screen */
+
+@media (--narrow-and-below) {
+
+  /* regular list */
+  nav.c-nav :is(ul,ol) {
+    display: flex;
+    flex-wrap: wrap;
+
+    margin-left: calc(-1 * var(--space-between-inline-items));
+    list-style-position: inside;
+  }
+  nav.c-nav :is(ul,ol):not(.c-nav--boxed :is(ul,ol)) {
+    padding-left: unset;
+  }
+  nav.c-nav :is(ul,ol) li {
+    margin-left: var(--space-between-inline-items);
+  }
+
+  /* unordered list */
+  nav.c-nav ul { list-style-type: none; }
+
+}

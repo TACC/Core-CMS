@@ -26,3 +26,9 @@ Styleguide Components.DjangoCMS
 .cms-ready :target {
   scroll-margin-top: env(--cms-toolbar-height);
 }
+
+/* Prevent top-sticking content from scrolling behind Django CMS header */
+.cms-ready .sticky-top,
+.cms-ready .position-sticky.fixed-top {
+  top: env(--cms-toolbar-height);
+}
