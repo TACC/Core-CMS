@@ -1,27 +1,30 @@
-<strong>Unordered List</strong>
-<nav class="c-floating-nav">
+{# The {{ html }} allows DjangoCMS Snippet to pass in class names #}
+
+<h3>Unordered List</h3>
+<nav class="c-floating-nav {{modifier_class}} {{ html }}">
   <ul>
     <li><a href="#alabama">Alabama</a></li>
     <li><a href="#alaska">Alaska</a></li>
-    <li><a href="#arizona">Arizonia</a></li>
+    <li><a href="#arizona">Arizona</a></li>
     <li><a href="#arkansas">Arkansas</a></li>
   </ul>
 </nav>
 
-<strong>Ordered List</strong>
-<nav class="c-floating-nav">
+<h3>Ordered List</h3>
+<nav class="c-floating-nav {{modifier_class}} {{ html }}">
   <ol>
     <li><a href="#alabama">Alabama</a></li>
     <li><a href="#alaska">Alaska</a></li>
-    <li><a href="#arizona">Arizonia</a></li>
+    <li><a href="#arizona">Arizona</a></li>
     <li><a href="#arkansas">Arkansas</a></li>
   </ol>
 </nav>
 
-<strong>Free-Flowing Links</strong>
-<nav class="c-floating-nav">
+<h3>No List</h3>
+<p>(requires <code>c-floating-nav--no-list</code>)</p>
+<nav class="c-floating-nav c-floating-nav--no-list {{modifier_class}} {{ html }}">
   <a href="#alabama">Alabama</a>
   <a href="#alaska">Alaska</a>
-  <a href="#arizona">Arizonia</a>
+  <a href="#arizona">Arizona</a>
   <a href="#arkansas">Arkansas</a>
 </nav>

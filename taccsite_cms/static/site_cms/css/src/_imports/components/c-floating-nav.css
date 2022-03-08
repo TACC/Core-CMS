@@ -5,7 +5,11 @@ A list of navigation links that:
 - sticks to top left on wide screens
 - flows inline on narrow screens.
 
-To enforce appropriate semantic HTML, a <nav> is required.
+To enforce appropriate semantic HTML, a `<nav>` is required.
+
+To support a `<nav>` with no list and direct `<a>` children, add extra modifier class `c-floating-nav--no-list`.
+
+- c-floating-nav--boxed - Surrounded by a box
 
 Markup: c-floating-nav.html
 
@@ -27,36 +31,94 @@ nav.c-floating-nav {
   top: env(--cms-toolbar-height);
 }
 
+
+
+
+
+/* Modifiers */
+
+
+
+/* Modifiers: Boxed */
+
+/* Modifiers: Boxed: Container */
+nav.c-floating-nav--boxed {
+  --small-indent: calc(var(--global-space--list-indent) / 2);
+
+  width: fit-content;
+
+  border: var(--global-border--normal);
+
+  list-style-type: none;
+}
+
+/* Modifiers: Boxed: Content */
+
+nav.c-floating-nav--boxed :is(ul,ol),
+nav.c-floating-nav--boxed.c-floating-nav--no-list {
+  padding-block: var(--small-indent);
+}
+
+/* any list */
+nav.c-floating-nav--boxed :is(ul,ol) {
+  margin: 0;
+}
+/* unordered list */
+nav.c-floating-nav--boxed ul {
+  list-style-type: none;
+
+  padding-left: var(--small-indent);
+  padding-right: var(--global-space--list-indent);
+}
+/* ordered list */
+nav.c-floating-nav--boxed ol {
+  /* padding-left: "set by `html-elements.css`" */
+  padding-right: var(--global-space--list-indent);
+}
+/* no list */
+nav.c-floating-nav--boxed.c-floating-nav--no-list {
+  padding-left: var(--small-indent);
+  padding-right: var(--small-indent);
+}
+
+
+
+
+
 /* Content */
 
 nav.c-floating-nav {
   --space-between-inline-items: 0.5em;
 }
 
-/* free-flowing links */
-nav.c-floating-nav > a {
+/* no list */
+nav.c-floating-nav--no-list > a {
   display: inline-block;
 }
-nav.c-floating-nav > a + a {
+nav.c-floating-nav--no-list > a + a {
   margin-left: var(--space-between-inline-items);
 }
+
+
 
 /* Content: Narrow Screen */
 
 @media (--narrow-and-below) {
 
-  /* regular lists */
+  /* regular list */
   nav.c-floating-nav :is(ul,ol) {
     display: flex;
     flex-wrap: wrap;
 
     margin-left: calc(-1 * var(--space-between-inline-items));
+    padding-left: unset;
+    list-style-position: inside;
   }
-  nav.c-floating-nav ul { list-style-type: none; }
-  nav.c-floating-nav ol { list-style-position: inside; }
-
   nav.c-floating-nav :is(ul,ol) li {
     margin-left: var(--space-between-inline-items);
   }
+
+  /* unordered list */
+  nav.c-floating-nav ul { list-style-type: none; }
 
 }
