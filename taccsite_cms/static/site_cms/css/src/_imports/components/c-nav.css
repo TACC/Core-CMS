@@ -48,15 +48,6 @@ nav.c-nav--boxed :is(ul,ol) {
 /* unordered list */
 nav.c-nav--boxed ul {
   list-style-type: none;
-
-  padding-left: var(--small-indent);
-  padding-right: var(--global-space--list-indent);
-}
-
-/* ordered list */
-nav.c-nav--boxed ol {
-  /* padding-left: "set by `html-elements.css`" */
-  padding-right: var(--global-space--list-indent);
 }
 
 /* no list */
@@ -64,6 +55,37 @@ nav.c-nav--boxed.c-nav--no-list {
   padding-left: var(--small-indent);
   padding-right: var(--small-indent);
 }
+
+/* Modifiers: Boxed: Wide Screen */
+
+@media (--narrow-and-above) {
+
+  /* unordered list */
+  nav.c-nav--boxed ul {
+    padding-left: var(--small-indent);
+    padding-right: var(--global-space--list-indent);
+  }
+  /* ordered list */
+  nav.c-nav--boxed ol {
+    padding-left: var(--global-space--list-indent);
+    padding-right: var(--global-space--list-indent);
+  }
+
+}
+
+/* Modifiers: Boxed: Narrow Screen */
+
+@media (--narrow-and-below) {
+
+  /* any list */
+  nav.c-nav--boxed :is(ul,ol) {
+    padding-left: var(--small-indent);
+    padding-right: var(--global-space--list-indent);
+  }
+
+}
+
+
 
 /* Modifiers: No List */
 
@@ -83,13 +105,13 @@ nav.c-nav {
 }
 
 /* no list */
-nav.c-nav--no-list {
-  margin-left: calc(-1 * var(--space-between-inline-items));
-}
 nav.c-nav--no-list > a {
   display: inline-block;
 
+  /* Space content via margin (must then be re-aligned with container) */
   margin-left: var(--space-between-inline-items);
+  /* Re-align content to container (after they were spaced via margin) */
+  transform: translateX(calc(-1 * var(--space-between-inline-items)));
 }
 
 
@@ -103,14 +125,16 @@ nav.c-nav--no-list > a {
     display: flex;
     flex-wrap: wrap;
 
-    margin-left: calc(-1 * var(--space-between-inline-items));
     list-style-position: inside;
   }
   nav.c-nav :is(ul,ol):not(.c-nav--boxed :is(ul,ol)) {
     padding-left: unset;
   }
   nav.c-nav :is(ul,ol) li {
+    /* Space content via margin (must then be re-aligned with container) */
     margin-left: var(--space-between-inline-items);
+    /* Re-align content to container (after they were spaced via margin) */
+    transform: translateX(calc(-1 * var(--space-between-inline-items)));
   }
 
   /* unordered list */
