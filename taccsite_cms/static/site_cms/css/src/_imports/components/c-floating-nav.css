@@ -1,0 +1,62 @@
+/*
+Floating Nav
+
+A list of navigation links that:
+- sticks to top left on wide screens
+- flows inline on narrow screens.
+
+To enforce appropriate semantic HTML, a <nav> is required.
+
+Markup: c-floating-nav.html
+
+Styleguide Components.FloatingNav
+*/
+@import url("_imports/tools/media-queries.css");
+
+
+
+
+
+/* Container */
+
+nav.c-floating-nav {
+  position: sticky;
+  top: 0;
+}
+.cms-ready nav.c-floating-nav {
+  top: env(--cms-toolbar-height);
+}
+
+/* Content */
+
+nav.c-floating-nav {
+  --space-between-inline-items: 0.5em;
+}
+
+/* free-flowing links */
+nav.c-floating-nav > a {
+  display: inline-block;
+}
+nav.c-floating-nav > a + a {
+  margin-left: var(--space-between-inline-items);
+}
+
+/* Content: Narrow Screen */
+
+@media (--narrow-and-below) {
+
+  /* regular lists */
+  nav.c-floating-nav :is(ul,ol) {
+    display: flex;
+    flex-wrap: wrap;
+
+    margin-left: calc(-1 * var(--space-between-inline-items));
+  }
+  nav.c-floating-nav ul { list-style-type: none; }
+  nav.c-floating-nav ol { list-style-position: inside; }
+
+  nav.c-floating-nav :is(ul,ol) li {
+    margin-left: var(--space-between-inline-items);
+  }
+
+}
