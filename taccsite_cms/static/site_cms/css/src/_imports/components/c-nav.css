@@ -41,48 +41,41 @@ nav.c-nav--boxed {
   line-height: 2em;
 }
 
+/* any list */
+nav.c-nav--boxed :is(ul,ol) {
+  margin: 0;
+}
+
+/* Modifiers: Boxed: Padding */
+
 /* unordered list */
 nav.c-nav--boxed ul {
   list-style-type: none; /* remove bullets, then reduce padding left */
   padding-left: var(--small-indent); /* overwrite `html-elements.css` */
   padding-right: var(--large-indent);
 }
-/* no list */
-nav.c-nav--boxed.c-nav--no-list {
-  /* has no bullets, thus smaller padding left */
-  padding-left: var(--small-indent);
-  padding-right: var(--large-indent);
-}
 
-/* any list */
-nav.c-nav--boxed :is(ul,ol) {
-  margin: 0;
-}
-
-/* Modifiers: Boxed: Wide Screen */
-
+/* ordered list */
 @media (--narrow-and-above) {
-
-  /* ordered list */
   nav.c-nav--boxed ol {
     /* retain bullets, which (wide screen) need large padding so retain it */
     /* padding-left: var(--large-indent); *//* comes from `html-elements.css` */
     padding-right: var(--large-indent);
   }
-
 }
-
-/* Modifiers: Boxed: Narrow Screen */
-
 @media (--narrow-and-below) {
-
-  /* ordered list */
   nav.c-nav--boxed ol {
     /* retain bullets, which (narrow screen) do not need large padding left */
     padding-left: var(--small-indent); /* overwrite `html-elements.css` */
     padding-right: var(--large-indent);
   }
+}
 
+/* no list */
+nav.c-nav--boxed.c-nav--no-list {
+  /* has no bullets, thus smaller padding left */
+  padding-left: var(--small-indent);
+  padding-right: var(--large-indent);
 }
 
 
