@@ -1,7 +1,7 @@
 /*
 Nav
 
-A list of navigation links that flows inline on narrow screens.
+Navigation links that flows inline on narrow screens.
 
 To enforce appropriate semantic HTML, a `<nav>` is required.
 
@@ -18,16 +18,6 @@ Markup: c-nav.html
 Styleguide Components.Nav
 */
 @import url("_imports/tools/media-queries.css");
-
-
-
-
-
-/* Base i.e. Container */
-
-nav.c-nav {
-  --space-between-inline-items: 0.5em;
-}
 
 
 
@@ -87,6 +77,10 @@ nav.c-nav--boxed.c-nav--no-list {
 /* Content */
 
 
+
+nav.c-nav {
+  --space-between-inline-items: 0.5em;
+}
 
 /* no list */
 nav.c-nav--no-list {
