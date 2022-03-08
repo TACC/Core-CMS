@@ -442,8 +442,8 @@ DJANGOCMS_STYLE_CHOICES = [
     # https://cep.tacc.utexas.edu/design-system/ui-patterns/c-recognition/
     'c-recognition c-recognition--style-light',
     'c-recognition c-recognition--style-dark',
-    # https://cep.tacc.utexas.edu/design-system/ui-patterns/c-floating-nav/
-    'c-nav',
+    # https://cep.tacc.utexas.edu/design-system/ui-patterns/c-nav/
+    'c-nav', # bare-bones instance
     'c-nav c-nav--boxed',
 ]
 DJANGOCMS_STYLE_TAGS = [
