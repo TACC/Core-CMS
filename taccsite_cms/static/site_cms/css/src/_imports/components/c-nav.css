@@ -50,22 +50,23 @@ nav.c-nav--boxed :is(ul,ol) {
 
 /* unordered list */
 nav.c-nav--boxed ul {
-  list-style-type: none; /* remove bullets, then reduce padding left */
+  list-style-type: none; /* to remove bullets (must then reduce padding left) */
   padding-left: var(--small-indent); /* overwrite `html-elements.css` */
   padding-right: var(--large-indent);
 }
 
-/* ordered list */
+/* ordered list (wide) */
 @media (--narrow-and-above) {
   nav.c-nav--boxed ol {
-    /* retain bullets, which (wide screen) need large padding so retain it */
+    /* We retain bullets, which (wide screen) need large padding (so keep it) */
     /* padding-left: var(--large-indent); *//* comes from `html-elements.css` */
     padding-right: var(--large-indent);
   }
 }
+/* ordered list (narrow) */
 @media (--narrow-and-below) {
   nav.c-nav--boxed ol {
-    /* retain bullets, which (narrow screen) do not need large padding left */
+    /* We retain bullets, which (narrow screen) don't need large padding left */
     padding-left: var(--small-indent); /* overwrite `html-elements.css` */
     padding-right: var(--large-indent);
   }
@@ -73,7 +74,7 @@ nav.c-nav--boxed ul {
 
 /* no list */
 nav.c-nav--boxed.c-nav--no-list {
-  /* has no bullets, thus smaller padding left */
+  /* Has no bullets, thus smaller padding left */
   padding-left: var(--small-indent);
   padding-right: var(--large-indent);
 }
@@ -101,9 +102,9 @@ nav.c-nav {
 nav.c-nav--no-list > a {
   display: inline-block;
 
-  /* Space content via margin (must then be re-aligned with container) */
+  /* To space content via margin (must then be re-aligned with container) */
   margin-left: var(--space-between-inline-items);
-  /* Re-align content to container (after they were spaced via margin) */
+  /* To re-align content to container (after they were spaced via margin) */
   transform: translateX(calc(-1 * var(--space-between-inline-items)));
 }
 
@@ -118,17 +119,20 @@ nav.c-nav--no-list > a {
     display: flex;
     flex-wrap: wrap;
 
+    /* To prevent overlap of any lists' decorators (when items are inline) */
     list-style-position: inside;
   }
   nav.c-nav :is(ul,ol):not(.c-nav--boxed :is(ul,ol)) {
+    /* To remove padding because list decorators are `...position: inside` */
     padding-left: unset;
   }
   nav.c-nav :is(ul,ol) li {
-    /* Space content via margin (must then be re-aligned with container) */
+    /* To space content via margin (must then be re-aligned with container) */
     margin-left: var(--space-between-inline-items);
-    /* Re-align content to container (after they were spaced via margin) */
+    /* To re-align content to container (after they were spaced via margin) */
     transform: translateX(calc(-1 * var(--space-between-inline-items)));
   }
+
   /* unordered list */
   nav.c-nav ul { list-style-type: none; }
 
