@@ -273,7 +273,9 @@ INSTALLED_APPS = [
     'treebeard',  # Replaces mptt.
     'djangocms_text_ckeditor',
     'filer',
+    'meta',
     'easy_thumbnails',
+    'djangocms_page_meta',
     'djangocms_column',
     'djangocms_file',
     'djangocms_link',
@@ -426,8 +428,6 @@ HAYSTACK_CONNECTIONS = {
 
 SETTINGS_EXPORT_VARIABLE_NAME = 'settings'
 
-FEATURES = ''
-
 ########################
 # PLUGIN SETTINGS
 ########################
@@ -456,6 +456,13 @@ DJANGOCMS_STYLE_TAGS = [
     'h1', 'h2', 'h3', 'h4', 'h5', 'h6'
 ]
 
+# https://github.com/nephila/django-meta
+META_SITE_PROTOCOL = 'http'
+META_USE_SITES = True
+META_USE_OG_PROPERTIES = True
+META_USE_TWITTER_PROPERTIES = True
+META_USE_SCHEMAORG_PROPERTIES = True
+
 ########################
 # IMPORT & EXPORT
 ########################
@@ -480,7 +487,6 @@ except:
 
 SETTINGS_EXPORT = [
     'DEBUG',
-    'FEATURES',
     'THEME',
     'BRANDING',
     'LOGO',
