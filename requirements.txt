@@ -49,6 +49,7 @@ djangocms-picture==3.0.0
 djangocms-snippet==3.0.0
 djangocms-style==3.0.0
 djangocms-text-ckeditor==3.10.0
+djangocms-transfer==1.0.0
 djangocms-video==3.0.0
 django-test-without-migrations==0.6
 docopt==0.6.2
@@ -69,7 +70,7 @@ lxml==4.5.2
 mccabe==0.6.1
 packaging==20.4
 parso==0.7.1
-Pillow==7.2.0
+Pillow==9.0.0
 pip-upgrader==1.4.15
 pluggy==0.13.1
 psycopg2==2.8.6

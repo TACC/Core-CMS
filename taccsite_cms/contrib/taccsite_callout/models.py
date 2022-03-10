@@ -25,13 +25,6 @@ class TaccsiteCallout(AbstractLink):
         max_length=200,
     )
 
-    resize_figure_to_fit = models.BooleanField(
-        verbose_name=_('Resize any image to fit'),
-        help_text=_('Make image shorter or taller to match the height of text beside it (as it would be without the image).'),
-        blank=False,
-        default=False
-    )
-
     attributes = fields.AttributesField()
 
     def get_short_description(self):
