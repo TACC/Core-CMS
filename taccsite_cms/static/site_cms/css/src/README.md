@@ -1,4 +1,4 @@
-# TACC CMS - Stylesheets
+# TACC CMS - Stylesheets - Source
 
 AUTHOR STYLESHEETS HERE!
 
@@ -13,8 +13,8 @@ _This directory exists in `static/` __only__ because it is customary, using Djan
 ## Rules
 
 1. Files __must__ import styles from [`./_imports/`](./_imports).
-1. Files __must__ be [named with appropriate format](#Naming%20Format).
-1. Files __must__ be [documented in appropriate format](#Documentation%20Format).
+1. Files __must__ be [named with appropriate format](#naming-format).
+1. Files __must__ be [documented in appropriate format](#documentation-format).
 
 ## Naming Format
 

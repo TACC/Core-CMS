@@ -14,13 +14,6 @@ from .models import TaccsiteCallout
 
 
 
-
-# Constants
-
-RESIZE_FIGURE_FIELD_NAME = get_model_field_name(TaccsiteCallout, 'resize_figure_to_fit')
-
-
-
 # Plugin
 
 @plugin_pool.register_plugin
@@ -72,9 +65,7 @@ class TaccsiteCalloutPlugin(LinkPlugin):
         }),
         (_('Advanced settings'), {
             'classes': ('collapse',),
-            'description': 'Only use the "' + RESIZE_FIGURE_FIELD_NAME + '" in emergencies. It is preferable to resize the image. <small>When the "Advanced settings" field "' + RESIZE_FIGURE_FIELD_NAME + '" is checked, the image may disappear after saving this plugin (because of a JavaScript race condition). Using a server-side solution would eliminate this caveat.</small>',
             'fields': (
-                'resize_figure_to_fit',
                 'attributes',
             )
         }),

@@ -7,9 +7,121 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.15.0] - 2022-02-17: New Section Pattern; Critical Dependency Fix; Other
+
+### Added
+
+- FP-1318: Create Section Pattern via Style Plugin (#430)
+
+### Changes
+
+- Quick: (Texascale) Do Not Let Search Engines Index 2022 Pages (#443)
+- FP-1318: Revisit Section Pattern (#433)
+
+### Fixed
+
+- FP-1502: Fix Callout Title Height (#441)
+- FP-1285: CMS Critical Dependency Upgrade (#437)
+
+### Removed
+
+- UTRC-357/FP-1268: (UTRC) Remove old templates (#439)
+
+## [3.14.0] - 2022-01-25: Deprecate Callout Plugin; Guide Page Fix; Other Fixes
+
+### Added
+
+- FP-1415: Callout Pattern with Fixes sans Plugin (#427)
+    - Callout Plugin - Crop Images within Ratio (GH-329)
+
+### Changed
+
+- FP-1417: Callout CSS to Style Child Elements via Tag not Class (#425)
+- FP-1416: Callout Image Resize w/ JS not CSS (#421) (#422)
+
+### Fixed
+
+- FP-1422: (UTRC) Remove White Border Under Header (#435)
+- FP-1418: Callout Link Clickable Area Fix (#423)
+- FP-1416: Callout Image Resize w/ CSS not JS (#421) (#422)
+    - Callout Plugin - Fix Image Resize Caveat (GH-327)
+    - Element Transform Fails on Child Plugin Markup w/out Hack (GH-320)
+- FP-1435: Updates on Getting Started page (#428)
+- FP-1408: (Frontera) Fix Clickable Area of Article List Link (#429)
+- Remove a "Task/" from CHANGELOG entry (d773289)
+- Minor: Fix: x-layout CSS docblock typo (#434)
+
+### Removed
+
+- Deleted `resize_figure_to_fit` feature of Callout Plugin. (#421) (#422)
+- Deleted `elementTransformer` module and `SizeContentToFit` class. (#421)
+
+### Deprecated
+
+- Callout Plugin is unsupported. Replace with Callout Pattern. (#427)
+- Marked README.md as outdated & added link to new draft. (61b310b)
+
+## [3.12.1] - 2021-12-21: BM Branding; UI Patterns; Search Bar Design; UTRC Font
+
+### Added
+
+- BM-22: BrainMap: Add UTHSC-SA Logo [and Remove SGCI Logo Text] (#414)
+- FP-1289 Image Grid Pattern (#415)
+- FP-1291: C-Recognition Pattern (#416)
+- FP-1290: Card UI Pattern (Frontera About Page) (#420)
+
+### Changed
+
+- FP-1287: Redesign & Refactor Search Bar (#383)
+- UTRC-357/FP-1268: Retire v1 Styles (Use v2 Styles) (#360)
+- Quick: Move Code & Samp CSS from Site to Doc Page (#424)
+
+## [3.5.1] - 2021-11-18: Remove Sentence from Getting Started Doc
+
+### Fixed
+
+- Quick: Remove sentence from Getting Started doc (#410)
+
+## [3.5.0] - 2021-11-15: Navbar Toggle Color; OOTB Remote Login; v3.3.0 Fixes
+
+### Added
+
+- COOKS-108: Navbar Toggler Icon Color [per Theme] (#402)
+
+### Changed
+
+- Update settings.py: Haystack Connection INDEX_NAME (#374)
+- Update settings.py: CEP_AUTH_VERIFICATION_ENDPOINT (#375)
+
+### Fixed
+
+- COOKS-108: Navbar Toggler Icon Color [Fix for "Has Dark Logo" Theme] (#402)
+- Hotfix/FP-1234: Texascale: Remove Category Page Title Margin Top (#388)
+- Hotfix/FP-1338: Offset Content to be Full Width on Narrow Window (#406)
+- Hotfix/FP-1332: Horz. Scrollbar Caused by Sections (#403)
+- Hotfix/FP-1331: Do Not Hide Header Drodpowns (#404)
+- Hotfix/FP-1330: Frontera: Fix Favicon Load on Standard Template (#401)
+- Hotfix/FP-1333: Callout Title Color (#405)
+
+## [3.3.0] - 2021-11-04: Brainmap Project; Fix Standard Template; Fix Header Links
+
+### Added
+
+- Quick: [v3.0.7] Changelog (#389, #390, #391)
+- BM-5/BM-19: Add Brainmap Project (#393, #398)
+- Quick: (for BM-19) New CSS Branding Logo Class (#392)
+- task/FP-263: Add Frontera Favicon (update submodule) (#394)
+
+### Changed
+
+- Noop: Reduce verbosity of nested dropdown comment (#396)
+- Noop: Fix Comment Typo & Move Styles Down Under It (#364)
+
 ### Fixed
 
 - Bugfix/FP-1277: Extra Margin from Container by User on Standard Template (#370)
+- FP-1235: Do not support dropdown menu text as link (#395)
+- Hotfix: Fix Branding Links not Opening in New Window (#397)
 
 ## [3.0.7] - 2021-10-26: Hotfixes (mostly for Frontera); Rename Unused Component
 
@@ -162,7 +274,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.0.0] - 2021-03-31
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.0.7...HEAD
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.15.0...HEAD
+[3.15.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.15.0
+[3.14.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.14.0
+[3.12.1]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.1
+[3.5.1]: https://github.com/TACC/Core-CMS/releases/tag/v3.5.1
+[3.5.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.5.0
+[3.3.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.3.0
 [3.0.7]: https://github.com/TACC/Core-CMS/releases/tag/v3.0.7
 [3.0.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.0.0
 [2.5.2]: https://github.com/TACC/Core-CMS/releases/tag/v2.5.2

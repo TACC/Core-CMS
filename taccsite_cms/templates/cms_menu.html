@@ -1,4 +1,4 @@
-{% load menu_tags %}
+{% load menu_tags tacc_uri_shortcuts %}
 
 {# TODO: GL-36/GL-44: Implement dropdown to support more than one tier #}
 {# NOTE: This template content is copied from a third-party plugin that we do not use nor need #}
@@ -7,30 +7,26 @@
 {% for child in children %}
 <li class="nav-item{% if child.selected or child.ancestor %} active{% endif %}{% if child.children %} dropdown{% endif %}">
   {% if child.children %}
-  <span class="nav-link">
-    <a href="{{ child.attr.redirect_url|default:child.get_absolute_url }}">
-      {{ child.get_menu_title|safe }}
-      {% if child.selected %}<span class="sr-only">(current)</span>{% endif %}
-    </a>
     <a
       href=""
-      class="dropdown-toggle dropdown-toggle-split"
+      class="nav-link dropdown-toggle"
       data-toggle="dropdown"
       aria-haspopup="true"
       aria-expanded="false">
+      {{ child.get_menu_title|safe }}
+      {% if child.selected %}<span class="sr-only">(current)</span>{% endif %}
       <span class="sr-only">Toggle Dropdown</span>
     </a>
     <div class="dropdown-menu" role="menu" aria-labelledby="navbarDropdown">
       {# Bootstrap4 does not support submenus, so nor do we (and other users). See https://github.com/twbs/bootstrap/pull/6342. #}
       {% for grandchild in child.children %}
-      <a class="dropdown-item{% if grandchild.selected %} active{% endif %}" href="{{ grandchild.attr.redirect_url|default:grandchild.get_absolute_url }}" role="menuitem">
+      <a class="dropdown-item{% if grandchild.selected %} active{% endif %}" href="{{ grandchild|get_menu_uri }}" role="menuitem" {% target_blank grandchild|get_menu_uri %}>
         {{ grandchild.get_menu_title|safe }}
         {% if grandchild.selected %}<span class="sr-only">(current)</span>{% endif %}
       </a>
       {% endfor %}
-  </span>
   {% else %}
-  <a class="nav-link" href="{{ child.attr.redirect_url|default:child.get_absolute_url }}">
+  <a class="nav-link" href="{{ child|get_menu_uri }}" {% target_blank child|get_menu_uri %}>
     {{ child.get_menu_title|safe }}
     {% if child.selected %}<span class="sr-only">(current)</span>{% endif %}
   </a>
