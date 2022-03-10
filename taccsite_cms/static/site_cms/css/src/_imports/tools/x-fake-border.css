@@ -1,0 +1,72 @@
+/*
+Fake Border
+
+Fake borders that have features unavailable to regular borders
+
+(custom property a.k.a. variable prefix `fb` stands for __f__ake __b__order)
+
+%x-fake-border--inset-horz-top - A top border that is not full width
+%x-fake-border--inset-horz-both - Borders top & bottom that are not full width
+%x-fake-border--inset-horz-bottom - A bottom border that is not full width
+
+Styleguide Tools.ExtendsAndMixins.Overlay
+*/
+
+/*
+Inset Border
+
+To create the border, three lines are drawn via these private variables:
+- `--fb--line` (the fake border on one side of element box)
+- `--fb--start` (a perpindicular strip to shorten the start of the line)
+- `--fb--end` (a perpindicular strip to shorten the end of the line)
+
+To customize the lines, there are some public variables:
+- `--fb--line-width` (default: 0px) (add unit so `calc()` will not fail)
+- `--fb--line-color` (default: transparent)
+- `--fb--inset-width` (default: 0px) (add unit so `calc()` will not fail)
+- `--fb--inset-color` (default: transparent)
+- `--fb--shadow-above` (default: 0 0 transparent)
+- `--fb--shadow-below` (default: 0 0 transparent)
+
+To avoid overwriting an existing `box-shadow`, use the public shadow variables:
+- `--fb--shadow-above: var(--YOUR-existing-shadow-ABOVE-fake-border)`
+- `--fb--shadow-below: var(--YOUR-existing-shadow-BELOW-fake-border)`
+*/
+%x-fake-border--inset-horz {
+  --fb--line-width: 0px; /* CAVEAT: add unit so `calc()` will not fail */
+  --fb--line-color: transparent;
+
+  --fb--inset-width: 0px; /* CAVEAT: add unit so `calc()` will not fail */
+  --fb--inset-color: transparent;
+
+  /* --fb--line: */
+  --fb--start: inset calc( 1 * var(--fb--inset-width)) 0 var(--fb--inset-color);
+  --fb--end: inset calc(-1 * var(--fb--inset-width)) 0 var(--fb--inset-color);
+
+  --fb:
+    var(--fb--start), /* cover the start of the line */
+    var(--fb--end),   /* cover the end of the line */
+    var(--fb--line);  /* draw the line underneath */
+
+  box-shadow:
+    var(--fb--shadow-above, 0 0 transparent),
+    var(--fb),
+    var(--fb--shadow-below, 0 0 transparent)
+}
+%x-fake-border--inset-horz-top {
+  @extend %x-fake-border--inset-horz;
+
+  --fb--line: inset 0 calc( 1 * var(--fb--line-width)) var(--fb--line-color);
+}
+%x-fake-border--inset-horz-both {
+  @extend %x-fake-border--inset-horz;
+
+  --fb--line: inset 0 calc( 1 * var(--fb--line-width)) var(--fb--line-color),
+              inset 0 calc(-1 * var(--fb--line-width)) var(--fb--line-color);
+}
+%x-fake-border--inset-horz-bottom {
+  @extend %x-fake-border--inset-horz;
+
+  --fb--line: inset 0 calc(-1 * var(--fb--line-width)) var(--fb--line-color);
+}
+/* TODO: As needed, create `--inset-vert-left`, `--inset-vert-right` */
