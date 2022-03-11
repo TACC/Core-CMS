@@ -267,5 +267,5 @@ Styleguide Objects.Section
 /* HACK: To hide `.o-section__banner-image` overflow */
 main /* SEE: https://github.com/TACC/Core-CMS/pull/151 */,
 #content-wrap /* HACK: Using ID selector until <main> exists */ {
-  overflow-x: clip;
+  overflow-x: hidden;
 }

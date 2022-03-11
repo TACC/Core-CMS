@@ -4,11 +4,6 @@
   "name": "has-dark-logo",
 
   "environment-variables": {
-
-    "// CMS": "",
-    "--cms-toolbar-height": "46px",
-    "// --cms-toolbar-height": "shows when logged in (or if user tried login)",
-
     "// HEADER": "",
     "--header-text-color": "var(--global-color-primary--x-dark)",
     "--header-bkgd-color": "var(--global-color-primary--x-light)",
