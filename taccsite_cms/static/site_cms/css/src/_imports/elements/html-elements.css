@@ -79,10 +79,16 @@ h3 {
   margin-bottom: 15px; /* overwrite Bootstrap */
 }
 h4, h5, h6 {
-  font-size: var(--global-font-size--small);
   margin-bottom: 7px; /* overwrite Bootstrap */
-
+}
+h4 {
+  font-size: var(--global-font-size--large);
+}
+h4, h5 {
   text-transform: uppercase;
+}
+h5, h6 {
+  font-size: var(--global-font-size--medium);
 }
 
 
