@@ -18,7 +18,7 @@
   },
   "author": "TACC ACI WMA <wma-portals@gmail.com>",
   "devDependencies": {
-    "@tacc/core-styles": "git+https://git@github.com/tacc-wbomar/Core-Styles.git#core-cms/updates-since-v3.15.0"
+    "@tacc/core-styles": "git+https://git@github.com/tacc-wbomar/Core-Styles.git"
   },
   "// devDependencies": {
     "@tacc/core-styles": "To force HTTPS, 'git+https://git@github.com'",
