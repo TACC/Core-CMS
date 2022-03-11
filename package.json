@@ -14,8 +14,14 @@
   },
   "repository": "git@github.com:TACC/Core-CMS.git",
   "dependencies": {
-    "@tacc/core-styles": "git+https://git@github.com/tacc-wbomar/Core-Styles.git#core-cms/updates-since-v3.15.0",
     "node-cmd": "^5.0.0"
   },
-  "author": "TACC ACI WMA <wma-portals@gmail.com>"
+  "author": "TACC ACI WMA <wma-portals@gmail.com>",
+  "devDependencies": {
+    "@tacc/core-styles": "git+https://git@github.com/tacc-wbomar/Core-Styles.git#core-cms/updates-since-v3.15.0"
+  },
+  "// devDependencies": {
+    "@tacc/core-styles": "To force HTTPS, 'git+https://git@github.com'",
+    "// SEE": "https://github.com/npm/cli/issues/2610"
+  }
 }
