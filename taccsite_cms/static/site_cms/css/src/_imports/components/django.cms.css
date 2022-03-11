@@ -11,15 +11,24 @@ Reference:
 Styleguide Components.DjangoCMS
 */
 
-/* Prevent excess scrollbar when CMS admin is logged in */
+/* Prevent excess scrollbar when logged into Django CMS */
 /* NOTE: This code does NOT work */
 /*
 .cms-ready body {
   /* FAQ: CMS dynamically adds `margin-top` to `head` to fit toolbar height *\/
   /* WARNING: If the dynamic(!) header margin changes, then so should this *\/
   /* RFC: Consider creating JavaScript snippet (via CMS?) to solve this *\/
-  --head-margin-top: 46px;
-
-  height: calc(100vh - var(--head-margin-top));
+  height: calc(100vh - env(--cms-toolbar-height));
 }
 */
+
+/* Prevent anchor links from scrolling behind Django CMS header */
+.cms-ready :target {
+  scroll-margin-top: env(--cms-toolbar-height);
+}
+
+/* Prevent top-sticking content from scrolling behind Django CMS header */
+.cms-ready .sticky-top,
+.cms-ready .position-sticky.fixed-top {
+  top: env(--cms-toolbar-height);
+}
