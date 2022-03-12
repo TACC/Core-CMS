@@ -4,7 +4,7 @@
 __pycache__
 
 # Shell
-git_annotate_existing_tags
+_git_annotate_existing_tags
 
 # Project
 /public/static
