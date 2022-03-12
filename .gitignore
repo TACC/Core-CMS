@@ -3,6 +3,9 @@
 *.pyo
 __pycache__
 
+# Shell
+git_annotate_existing_tags
+
 # Project
 /public/static
 /public/media
