@@ -11,46 +11,46 @@
 # Fix: Run this script to retroactively annotate lightweight tags.
 #      (Note, this script also re-annotates annotated tags.)
 
-function annotate() {
-  local date=$1
-  local file=$2
-  local hash=$3
+# make output directory
+OUTPUT_DIR='_git_annotate_existing_tags'
+mkdir -p "$OUTPUT_DIR"
 
-  GIT_COMMITTER_DATE=$date \
-  git tag --annotate --force --file $file $tag $hash
-}
-
+# define how to save current status of tag annotation
 function save_tag_summary() {
   local path=$1
 
   echo "$(git tag --format='%(creatordate)%09%(refname:strip=2)   %(taggerdate)   %(contents)')" > $path
 }
 
-for tag in "$@"
-do
-  # get data for tag (some is new for annotation, some must be preserved)
-  date="$(echo $(git tag --format='%(creatordate)' --list $tag))"
-  msg="$(git tag --format='%(contents)' --list $tag)"
-  hash="$(git rev-list -n 1 $tag)"
+# define how to annotate tags (will also re-annotate tags)
+function annotate() {
+  local tag=$1
 
-  # make output directory
-  output_dir='_git_annotate_existing_tags'
-  mkdir -p "$output_dir"
+  # get data for tag (some is new for annotation, some must be preserved)
+  local date="$(echo $(git tag --format='%(creatordate)' --list $tag))"
+  local msg="$(git tag --format='%(contents)' --list $tag)"
+  local hash="$(git rev-list -n 1 $tag)"
 
   # save message to file to preserve new lines
-  msg_file_path="$output_dir/message.temp"
+  local msg_file_path="$OUTPUT_DIR/message.temp"
   echo "$msg" > $msg_file_path
 
-  # save current status to file for comparison
-  save_tag_summary "$output_dir/summary_before.temp"
-
-  # show the user what we will do, then do it
+  # tell the user what we will do
   echo "Annotate tag $(printf "%9s" $tag) (commit ${hash:0:7}) with date \"$date\" and retain its message \"${msg:0:30}...\"."
-  annotate "$date" "$msg_file_path" "$hash"
 
-  # save new status to file for comparison
-  save_tag_summary "$output_dir/summary_after.temp"
+  # annotate
+  GIT_COMMITTER_DATE=$date \
+  git tag --annotate --force --file "$msg_file_path" "$tag" "$hash"
 
   # clean up
   rm $msg_file_path
-done
+}
+
+# save current status to file for comparison
+save_tag_summary "$OUTPUT_DIR/summary_before.temp"
+
+# annotate each tag passed
+for tag in "$@"; do annotate "$tag"; done
+
+# save new status to file for comparison
+save_tag_summary "$OUTPUT_DIR/summary_after.temp"
