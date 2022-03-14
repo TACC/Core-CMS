@@ -10,6 +10,8 @@
 #         https://github.com/github/feedback/discussions/4924
 # Fix: Run this script to retroactively annotate lightweight tags.
 #      (Note, this script also re-annotates annotated tags.)
+# Alt: See answers to https://stackoverflow.com/q/21738647/11817077
+#      (These solutions are more elegant but might not preserve all lines, including new lines, in tag message.)
 
 # make output directory
 OUTPUT_DIR='_git_annotate_existing_tags'
