@@ -5,9 +5,9 @@
 const fs = require('fs');
 const childProcess = require('child_process');
 
+const package = require('../package.json');
 const root = __dirname;
 const outFile = root + '/../taccsite_cms/static/site_cms/css/src/_version.css';
-
 
 /**
  * Whether a Git revision look like something we can use
@@ -43,10 +43,13 @@ function getGitRev() {
  */
 (async function writeRevToFile() {
   // FP-1544: IF tags are annotated THEN replace ver + rev with `git describe`
-  const ver = process.env.npm_package_version;
+  const ver = package.version;
   const rev = await getGitRev().substring(0, 7);
+
   const cssVersion = `#${rev} (≥ v${ver})`;
-  const output = `/*! @tacc/core-styles${cssVersion} | MIT License | github.com/TACC/Core-Styles */` + "\n";
+  const cssLicense = package.license;
+
+  const output = `/*! @tacc/core-styles${cssVersion} | ${cssLicense} | github.com/TACC/Core-Styles */` + "\n";
 
   console.log(`Updating CSS version to ${cssVersion}`);
 
