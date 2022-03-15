@@ -16,6 +16,7 @@
   "dependencies": {
     "node-cmd": "^5.0.0"
   },
+  "homepage": "https://github.com/TACC/Core-CMS",
   "author": "TACC ACI WMA <wma-portals@gmail.com>",
   "devDependencies": {
     "@tacc/core-styles": "git+https://git@github.com/tacc-wbomar/Core-Styles.git#core-cms/updates-since-v3.15.0"
