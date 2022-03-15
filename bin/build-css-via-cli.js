@@ -5,20 +5,17 @@
 const cmd = require('node-cmd');
 
 const ROOT = __dirname + '/..';
+const CORE_NAME = 'core-cms';
 const PROJECT_NAME = process.env.npm_config_project || undefined;
 
-build(PROJECT_NAME);
-
-/**
- * Execute command to build CSS for Core and optional project/directory
- * @param {string} [projectName] - The name of the custom project's directory
- */
-function build( projectName ) {
-  const corePath = getPath('taccsite_cms', 'site_cms');
-  const projectPath = getPath('taccsite_custom/' + projectName, projectName);
+/** Execute command to build CSS for Core and optional project/directory */
+(() => {
+  const corePath = _getPath('taccsite_cms', 'site_cms');
+  const projectPath = _getPath('taccsite_custom/' + PROJECT_NAME, PROJECT_NAME);
 
   // To illustrate Project is built on top of Core:
   // // build Core first
+  console.log(`Building Core styles:`);
   cmd.runSync(`
     core-styles build\
     --input-dir "${ROOT}/${corePath}/src"\
@@ -28,7 +25,8 @@ function build( projectName ) {
     --verbose\
   `);
   // // build Project next (if at all)
-  if (projectName) {
+  if (PROJECT_NAME && PROJECT_NAME !== CORE_NAME ) {
+    console.log(`Building "${PROJECT_NAME}" styles:`);
     cmd.runSync(`
       core-styles build\
       --input-dir "${ROOT}/${projectPath}/src"\
@@ -39,7 +37,7 @@ function build( projectName ) {
       --verbose\
     `);
   }
-}
+})();
 
 /**
  * Get path to CSS resources
@@ -47,6 +45,6 @@ function build( projectName ) {
  * @param {string} [subDirName=dirName] - The name of the sub-directory
  * @return {string}
  */
-function getPath( dirName, subDirName ) {
+function _getPath( dirName, subDirName ) {
   return dirName + '/static/' + (subDirName || dirName) + '/css';
 }
