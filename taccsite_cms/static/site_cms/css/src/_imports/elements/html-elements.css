@@ -58,8 +58,9 @@ Reference:
 Styleguide Elements.ContentSectioning
 */
 
-main {
-  padding-bottom: var(--global-space-beneath-main-content);
+main /* SEE: https://github.com/TACC/Core-CMS/pull/151 */,
+#content-wrap /* HACK: Using ID selector until <main> exists */ {
+  padding-bottom: var(--global-space--above-footer);
 }
 
 h1, h2, h3, h4, h5, h6 {
