@@ -10,7 +10,7 @@ const PROJECT_NAME = process.env.npm_config_project || undefined;
 build(PROJECT_NAME);
 
 /**
- * Execute command to build CSS for Core and optional given project/directory
+ * Execute command to build CSS for Core and optional project/directory
  * @param {string} [projectName] - The name of the custom project's directory
  */
 function build( projectName ) {
@@ -20,20 +20,20 @@ function build( projectName ) {
   // To illustrate Project is built on top of Core:
   // // build Core first
   cmd.runSync(`
-    core-styles\
+    core-styles build\
     --input-dir "${ROOT}/${corePath}/src"\
     --output-dir "${ROOT}/${corePath}/build"\
-    --custom-config-files\
+    --custom-configs\
       "${ROOT}/${corePath}/.postcssrc.yml"\
     --verbose\
   `);
   // // build Project next (if at all)
   if (projectName) {
     cmd.runSync(`
-      core-styles\
+      core-styles build\
       --input-dir "${ROOT}/${projectPath}/src"\
       --output-dir "${ROOT}/${projectPath}/build"\
-      --custom-config-files\
+      --custom-configs\
         "${ROOT}/${corePath}/.postcssrc.yml"\
         "${ROOT}/${projectPath}/.postcssrc.yml"\
       --verbose\

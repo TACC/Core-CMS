@@ -5,7 +5,7 @@
   "description": "Any custom code for all new and updated TACC CMS sites.",
   "scripts": {
     "build": "npm run build:css --project=$npm_config_project",
-    "build:css": "bin/update-css-version.js && bin/build-css-via-cli.js"
+    "build:css": "bin/version-css-via-cli.js && bin/build-css-via-cli.js"
   },
   "// scripts": {
     "build": "Run all build commands for Core and given project",
@@ -18,7 +18,7 @@
   },
   "author": "TACC ACI WMA <wma-portals@gmail.com>",
   "devDependencies": {
-    "@tacc/core-styles": "git+https://git@github.com/tacc-wbomar/Core-Styles.git#core-cms/updates-since-v3.15.0"
+    "@tacc/core-styles": "git+https://git@github.com/tacc-wbomar/Core-Styles.git#test/add-version-to-cli"
   },
   "// devDependencies": {
     "@tacc/core-styles": "To force HTTPS, 'git+https://git@github.com'",
