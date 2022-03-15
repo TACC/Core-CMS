@@ -12,6 +12,10 @@
     "build:help": "The `$npm_config_` allows `npm run build --project=...`",
     "build:css": "Build stylesheets from source files for any project"
   },
+  "engines": {
+    "node": ">=15.x",
+    "npm": ">=7.x"
+  },
   "repository": "git@github.com:TACC/Core-CMS.git",
   "dependencies": {
     "node-cmd": "^5.0.0"
@@ -19,7 +23,7 @@
   "homepage": "https://github.com/TACC/Core-CMS",
   "author": "TACC ACI WMA <wma-portals@gmail.com>",
   "devDependencies": {
-    "@tacc/core-styles": "git+https://git@github.com/tacc-wbomar/Core-Styles.git"
+    "@tacc/core-styles": "git+https://git@github.com/tacc-wbomar/Core-Styles.git#core-cms/updates-since-v3.15.0"
   },
   "// devDependencies": {
     "@tacc/core-styles": "To force HTTPS, 'git+https://git@github.com'",
