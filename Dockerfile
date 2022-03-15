@@ -13,8 +13,8 @@ RUN apt-get update && apt-get install -y \
     lcov valgrind vim \
     && pip3 install uwsgi
 
-# install node 15.x
-RUN curl -sL https://deb.nodesource.com/setup_15.x | bash -
+# install node 16.x
+RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
 RUN apt-get install -y nodejs
 
 # load files
