@@ -1,6 +1,13 @@
 {% extends "guide.html" %}
 
 {% block guide %}
+  {# HACK: New markup (`<figure>`) or some classnames may be better, but new guides/docs are coming, so I'm solving this quick #}
+  <style>
+  /* To prevent image link from being as wide as col (even when image is not) */
+  .col p ~ a {
+    display: inline-block;
+  }
+  </style>
   <div class="row">
     <div class="col">
       <h2>
@@ -50,7 +57,9 @@
         as XSEDE is a CILogon Identity Provider.
       </p>
 
-      <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/b2/a8/b2a856d2-e079-48f1-8785-dbf758534510/picture1.png__1170x0_q85_subsampling-2_upscale.png" />
+      <a href="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/b2/a8/b2a856d2-e079-48f1-8785-dbf758534510/picture1.png__1170x0_q85_subsampling-2_upscale.png" target="_blank">
+        <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/b2/a8/b2a856d2-e079-48f1-8785-dbf758534510/picture1.png__1170x0_q85_subsampling-2_upscale.png" />
+      </a>
 
       <p>
         After successfully authenticating at your chosen Identity Provider, you are redirected back to CILogon, where you can find your Certificate Subject that you will need to copy and paste in the next step:
@@ -64,7 +73,9 @@
         and select "Account Profile" from the main menu under the "Home" dropdown.
       </p>
 
-      <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/d9/a7/d9a7c353-416b-44b1-9c16-3014d6308b01/picture2.png__1170x0_q85_subsampling-2_upscale.png" />
+      <a href="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/d9/a7/d9a7c353-416b-44b1-9c16-3014d6308b01/picture2.png__1170x0_q85_subsampling-2_upscale.png" target="_blank">
+        <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/d9/a7/d9a7c353-416b-44b1-9c16-3014d6308b01/picture2.png__1170x0_q85_subsampling-2_upscale.png" />
+      </a>
 
       <p>
         On the left of the page is a list of account actions, select "Manage DNs". You will be presented with a list of the DNs currently associated with your TACC account and a text field to associate a new DN to your account. Enter the Certificate Subject obtained from
@@ -72,7 +83,9 @@
         in the text field. Click the button to "Associate DN". This will associate the new DN with your account. Please note, it may take up to 30 minutes for this change to propagate to all TACC systems.
       </p>
 
-      <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/06/b0/06b0c288-90cc-4bd0-9650-45d25497bbc5/picture3.png__1170x0_q85_subsampling-2_upscale.png" />
+      <a href="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/06/b0/06b0c288-90cc-4bd0-9650-45d25497bbc5/picture3.png__1170x0_q85_subsampling-2_upscale.png" target="_blank">
+        <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/06/b0/06b0c288-90cc-4bd0-9650-45d25497bbc5/picture3.png__1170x0_q85_subsampling-2_upscale.png" />
+      </a>
     </div>
   </div>
 
@@ -92,23 +105,31 @@
         and log in.
       </p>
 
-      <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/64/ec/64ec67d5-29fb-4a8c-84bf-d8e52860083a/picture4.png__1170x0_q85_subsampling-2_upscale.png" />
+      <a href="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/64/ec/64ec67d5-29fb-4a8c-84bf-d8e52860083a/picture4.png__1170x0_q85_subsampling-2_upscale.png" target="_blank">
+        <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/64/ec/64ec67d5-29fb-4a8c-84bf-d8e52860083a/picture4.png__1170x0_q85_subsampling-2_upscale.png" />
+      </a>
 
       <p>
         Upon successful login you, you will be directed to the "File Manager" landing page.
       </p>
 
-      <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/04/cc/04cc029b-9af8-4cb0-8698-943ae93d9e0e/picture5.png__1170x0_q85_subsampling-2_upscale.png" />
+      <a href="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/04/cc/04cc029b-9af8-4cb0-8698-943ae93d9e0e/picture5.png__1170x0_q85_subsampling-2_upscale.png" target="_blank">
+        <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/04/cc/04cc029b-9af8-4cb0-8698-943ae93d9e0e/picture5.png__1170x0_q85_subsampling-2_upscale.png" />
+      </a>
 
       <p>Click on Endpoints.</p>
 
-      <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/14/a5/14a540bd-9666-449c-be18-ef18456faf42/picture6.png__1170x0_q85_subsampling-2_upscale.png" />
+      <a href="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/14/a5/14a540bd-9666-449c-be18-ef18456faf42/picture6.png__1170x0_q85_subsampling-2_upscale.png" target="_blank">
+        <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/14/a5/14a540bd-9666-449c-be18-ef18456faf42/picture6.png__1170x0_q85_subsampling-2_upscale.png" />
+      </a>
 
       <p>
         Click “+ Create new endpoint” and follow the instructions to set up your desktop/laptop as an endpoint.
       </p>
 
-      <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/71/94/71947964-5a11-4bb3-ab5e-b8b2ae1b1c86/picture7.png__1170x0_q85_subsampling-2_upscale.png" />
+      <a href="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/71/94/71947964-5a11-4bb3-ab5e-b8b2ae1b1c86/picture7.png__1170x0_q85_subsampling-2_upscale.png" target="_blank">
+        <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/71/94/71947964-5a11-4bb3-ab5e-b8b2ae1b1c86/picture7.png__1170x0_q85_subsampling-2_upscale.png" />
+      </a>
 
       <p>
         Enter a Display Name to identify your local endpoint like My Laptop, My Desktop at Home, etcetera and then click Generate Setup Key and click copy to copy the Personal Setup Key.
@@ -124,11 +145,15 @@
         Click on “File Manager”, and next click on the Collection field. You can choose "Your collections" and click on "My Laptop" to select the created endpoint to your computer.
       </p>
 
-      <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/6f/ee/6feecdb0-0abc-4732-85a0-88f3e58a361f/picture8.png__1170x0_q85_subsampling-2_upscale.png" />
+      <a href="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/6f/ee/6feecdb0-0abc-4732-85a0-88f3e58a361f/picture8.png__1170x0_q85_subsampling-2_upscale.png" target="_blank">
+        <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/6f/ee/6feecdb0-0abc-4732-85a0-88f3e58a361f/picture8.png__1170x0_q85_subsampling-2_upscale.png" />
+      </a>
 
       <p>You can now access the files on your desktop/laptop via Globus.</p>
 
-      <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/0f/3d/0f3daa28-6632-4d3e-a964-706d33dc2fa3/picture9.png__1170x0_q85_subsampling-2_upscale.png" />
+      <a href="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/0f/3d/0f3daa28-6632-4d3e-a964-706d33dc2fa3/picture9.png__1170x0_q85_subsampling-2_upscale.png" target="_blank">
+        <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/0f/3d/0f3daa28-6632-4d3e-a964-706d33dc2fa3/picture9.png__1170x0_q85_subsampling-2_upscale.png" />
+      </a>
 
       <p>
         You can also click on Panels to look at two endpoints at the same time. In the other transfer endpoint, search for "TACC" and select the appropriate allocation storage system (Frontera, Stampede2, Corral, Ranch, etcetera) for the desired data.
@@ -160,7 +185,9 @@
         </dl>
       </details>
 
-      <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/5b/7a/5b7adb5f-da51-4dd0-9b84-44ce69c41da6/picture10.png__1170x0_q85_subsampling-2_upscale.png" />
+      <a href="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/5b/7a/5b7adb5f-da51-4dd0-9b84-44ce69c41da6/picture10.png__1170x0_q85_subsampling-2_upscale.png" target="_blank">
+        <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/5b/7a/5b7adb5f-da51-4dd0-9b84-44ce69c41da6/picture10.png__1170x0_q85_subsampling-2_upscale.png" />
+      </a>
 
       <p>
         After successfully authenticating, you will be redirected back to Globus and you will now be able to access your data on the allocation storage system (Frontera, Stampede2, Corral, Ranch):
@@ -221,7 +248,9 @@
           <ul>
             <li>
               <p>You will find the Project Id on your “My Projects” list in the second column.</p>
-              <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/53/f4/53f40efb-3207-44e8-a84c-59a2a97a9b56/picture11_a2cps.png__1170x0_q85_subsampling-2_upscale.png" />
+              <a href="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/53/f4/53f40efb-3207-44e8-a84c-59a2a97a9b56/picture11_a2cps.png__1170x0_q85_subsampling-2_upscale.png" target="_blank">
+                <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/53/f4/53f40efb-3207-44e8-a84c-59a2a97a9b56/picture11_a2cps.png__1170x0_q85_subsampling-2_upscale.png" />
+              </a>
             </li>
             <li>
               <p>If you are viewing a project, the Project Id will be appended to the URL in your browser as:

@@ -41,15 +41,6 @@ Styleguide Trumps.Scopes.Document
   blockquote { width: 600px; }
 }
 
-.s-document figure {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.s-document figcaption {
-  font-weight: bold;
-}
-
 /* Treat nested definition lists like other nested lists */
 /* NOTE: See `../elments/html-elements.html` for `dl dl` reference styles */
 p + dl.small {
@@ -87,10 +78,17 @@ p + dl.small {
 /* ELEMENTS: Image & Multimedia */
 
 /* NOTE: The `data_transfer.html` template uses <figure>'s */
-.s-document img/*:not(figure > img)*/ {
+.s-document img {
   display: block;
-  max-width: 75%;
+  width: 100%;
+  max-width: 800px;
 
+  border: var(--global-border--normal);
+}
+.s-document i.icon--as-image {
+  font-size: 2.8em; /* body line-height * 2 */
+  display: inline-block;
+  padding: 0.25em;
   border: var(--global-border--normal);
 }
 

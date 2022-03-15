@@ -1,24 +1,4 @@
 {% extends "base.html" %}
 {% load cms_tags %}
 
-{% block assets_custom %}
-  {{ block.super }}
-
-  {# TODO: FP-1318: Solve section overflow in `o-section` code #}
-  <style>
-  /* To hide `.o-section--style-…` and `.o-section__banner-image` overflow */
-  /* FAQ: Isolate from other templates to avoid unexpected side-effects */
-  main,
-  /* HACK: Using ID until upstream updates markup via `quick/create-and-document-element-stylesheets` */
-  #content-wrap { overflow: hidden; }
-  </style>
-  <style type="text/css">
-  main,
-  /* HACK: Using ID until upstream updates markup via `quick/create-and-document-element-stylesheets` */
-  #content-wrap {
-      padding-bottom: var(--global-space--beneath-main-content);
-  }
-  </style>
-{% endblock assets_custom %}
-
 {% block title %}{% page_attribute "page_title" %}{% endblock title %}
