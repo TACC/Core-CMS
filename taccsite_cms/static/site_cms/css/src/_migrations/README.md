@@ -6,6 +6,8 @@ These folders' styles are only to be imported by other stylesheets.
 
 CMS websites that were migrated from earlier instances may need these styles.
 
+> ⚠ When all old websites are ported and redesigned, this folder may be deleted.
+
 ## Rules
 
 1. Folders __must__ include any top-of-file comments from source file.
