@@ -2,7 +2,7 @@
   "name": "@tacc/core-cms",
   "version": "3.15.0",
   "license": "MIT",
-  "description": "Any custom code for all new and updated TACC CMS sites.",
+  "description": "The core CMS codebase for all new and updated TACC CMS sites.",
   "scripts": {
     "build": "npm run build:css",
     "build:css": "bin/version-css-via-cli.js && bin/build-css-via-cli.js"
