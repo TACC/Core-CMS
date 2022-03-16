@@ -4,12 +4,11 @@
   "license": "MIT",
   "description": "Any custom code for all new and updated TACC CMS sites.",
   "scripts": {
-    "build": "npm run build:css --project=$npm_config_project",
+    "build": "npm run build:css",
     "build:css": "bin/version-css-via-cli.js && bin/build-css-via-cli.js"
   },
   "// scripts": {
     "build": "Run all build commands for Core and given project",
-    "build:help": "The `$npm_config_` allows `npm run build --project=...`",
     "build:css": "Build stylesheets from source files for any project"
   },
   "engines": {
