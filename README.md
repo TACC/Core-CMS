@@ -267,7 +267,7 @@ If you need to change files within `/taccsite_custom`:
 4. Restart the CMS server.[^3]†
 
 <sub>\* You should run this command in the container __from `/code/`__. _See [Running Commands in Container](#running-commands-in-container)._</sub>\
-<sub>† See [Restarting the CMS Server](#restarting-the-cms-server)._</sub>
+<sub>† See [Restarting the CMS Server](#restarting-the-cms-server).</sub>
 
 
 ## Running Commands in Container
