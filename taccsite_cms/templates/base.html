@@ -1,4 +1,4 @@
-{% load cms_tags staticfiles sekizai_tags cache i18n %}
+{% load cms_tags staticfiles sekizai_tags cache i18n meta %}
 <!doctype html>
 <html
   id="page-{{ request.current_page.id }}"
@@ -6,13 +6,8 @@
   data-page-id="{{ request.current_page.reverse_id }}"
   class="{% block template_class %}{% endblock template_class %}">
 
-{% if settings.FEATURES.blog %}
-  {# FAQ: Conditional includes are intentionally verbose #}
-  {# SEE: https://confluence.tacc.utexas.edu/x/QwI9Cw #}
-  {% with path="djangocms_blog_head.html" %}{% include path %}{% endwith %}
-{% else %}
-<head>
-{% endif %}
+{# SEE: https://github.com/nephila/django-meta/blob/1.7.0/docs/rendering.rst #}
+<head {% meta_namespaces %}>
   <!-- Early Site Scripts. -->
   {# Debugging Support. #}
   {% include "debug_js.html" with settings=settings %}
@@ -24,14 +19,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  {% if settings.FEATURES.blog %}
   <!-- Metadata: Social Media. -->
-    {% block meta %}
-      {# FAQ: Conditional includes are intentionally verbose #}
-      {# SEE: https://confluence.tacc.utexas.edu/x/QwI9Cw #}
-      {% with path="djangocms_page_meta.html" %}{% include path %}{% endwith %}
-    {% endblock meta %}
-  {% endif %}
+  {% block meta %}
+    {# FAQ: Conditional includes are intentionally verbose #}
+    {# SEE: https://confluence.tacc.utexas.edu/x/QwI9Cw #}
+    {% with path="djangocms_page_meta.html" %}{% include path %}{% endwith %}
+  {% endblock meta %}
 
   <!-- Site Font and/or Custom Font. -->
   {# The core site font (can be replaced or accompanied by custom font/s) #}
