@@ -18,9 +18,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- FP-1423: Fix medium width negative space for system spec. (#444) 
+- FP-1423: System Specs Layout Bug at Medium Width Screen (#444) 
 - FP-1341: Update README.md Since Settings Refactor (#417) 
-- FP-1525: UTRC: Fix typo from FP-1318 (#447)
+- FP-1525: UTRC: Fix Homepage Whitespace (#447)
 - FP-1359: Callout Plugin Active+Focus State Anomaly within Dark Section (#449)
 - FP-1524: Section Pattern: [Fix] Extended Background (#446)
 - FP-1470: Section Pattern: Third Style (and Fix to Dark Style) (#458)
