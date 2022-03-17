@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [3.19.0] - 2022-03-17: Plugin Transfer & Classnames; ECEP CMS; Fix v3.15 & ES
+## [3.19.0] - 2022-03-17: Plugin Transfer, Classes; ECEP CMS; Fix v3.15, Safe ES
 
 ### Added
 
