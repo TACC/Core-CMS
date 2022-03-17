@@ -25,6 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - FP-1524: Section Pattern: [Fix] Extended Background (#446)
 - FP-1470: Section Pattern: Third Style (and Fix to Dark Style) (#458)
 - FP-1451: Open CMS External Links in New Window (Works on Portal) (#453)
+- FP-1410: Shrink Guide Images & Add Links to Open in New Tab (#462)
 
 ### Security
 
