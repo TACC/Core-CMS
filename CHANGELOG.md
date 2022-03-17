@@ -7,6 +7,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.19.0] - 2022-03-17: Plugin Transfer & Classnames; ECEP CMS; Fix v3.15 & ES
+
+### Added
+
+- Test: Install djangocms-transfer (#411)
+- FP-1414: More Classnames for Django CMS Style Plugin (#419)
+- GH-110: Add PR template (#454)
+- Added [...] new ECEP portal CMS. (00eca44, 156a3d1)
+
+### Fixed
+
+- FP-1423: Fix medium width negative space for system spec. (#444) 
+- FP-1341: Update README.md Since Settings Refactor (#417) 
+- FP-1525: UTRC: Fix typo from FP-1318 (#447)
+- FP-1359: Callout Plugin Active+Focus State Anomaly within Dark Section (#449)
+- FP-1524: Section Pattern: [Fix] Extended Background (#446)
+- FP-1470: Section Pattern: Third Style (and Fix to Dark Style) (#458)
+- FP-1451: Open CMS External Links in New Window (Works on Portal) (#453)
+
+### Security
+
+- FP-1540: Hotfix: Update ES to Fix Security Issue (#456)
+
 ## [3.15.0] - 2022-02-17: New Section Pattern; Critical Dependency Fix; Other
 
 ### Added
