@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "core-cms"
+name = "tacc-core-cms-backend"
 version = "1.0.0"
 description = "DjangoCMS backend for the TACC ACI-WMA Core-CMS Codebase."
 authors = ["TACC-WMA <wma-portals@tacc.utexas.edu>"]
