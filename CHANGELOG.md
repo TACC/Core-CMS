@@ -300,7 +300,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.0.0] - 2021-03-31
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.15.0...HEAD
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.19.0...HEAD
+[3.19.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.19.0
 [3.15.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.15.0
 [3.14.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.14.0
 [3.12.1]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.1
