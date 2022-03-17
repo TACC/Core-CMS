@@ -1,11 +1,11 @@
 [tool.poetry]
 name = "core-cms"
-version = "0.1.0"
-description = "TACC ACI-WMA Core-CMS Codebase"
-authors = ["John Gentle <taoteg@gmail.com>"]
+version = "1.0.0"
+description = "DjangoCMS backend for the TACC ACI-WMA Core-CMS Codebase."
+authors = ["TACC-WMA <wma-portals@tacc.utexas.edu>"]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.7"
 
 [tool.poetry.dev-dependencies]
 
