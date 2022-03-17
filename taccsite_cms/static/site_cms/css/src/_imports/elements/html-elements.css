@@ -79,10 +79,16 @@ h3 {
   margin-bottom: 15px; /* overwrite Bootstrap */
 }
 h4, h5, h6 {
-  font-size: var(--global-font-size--small);
   margin-bottom: 7px; /* overwrite Bootstrap */
-
+}
+h4 {
+  font-size: var(--global-font-size--large);
+}
+h4, h5 {
   text-transform: uppercase;
+}
+h5, h6 {
+  font-size: var(--global-font-size--medium);
 }
 
 
@@ -105,6 +111,8 @@ Reference:
 Styleguide Elements.TextContent
 */
 
+/* Lists */
+
 ol, ul,
 dl dl /* Treat nested definition lists like other nested lists */ {
   padding-left: var(--global-space--list-indent);
@@ -116,6 +124,16 @@ ol ol, ol ul, ul ol, ul ul {
 dt {
   margin-bottom: .5rem; /* overwrite Bootstrap */
   font-weight: initial; /* overwrite Bootstrap */
+}
+
+li {
+  line-height: 1.6;
+}
+
+/* Misc. */
+
+hr {
+  margin-block: 2em;
 }
 
 
