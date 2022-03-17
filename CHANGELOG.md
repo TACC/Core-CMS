@@ -44,11 +44,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - FP-1502: Fix Callout Title Height (#441)
-- FP-1285: CMS Critical Dependency Upgrade (#437)
 
 ### Removed
 
 - UTRC-357/FP-1268: (UTRC) Remove old templates (#439)
+
+### Security
+
+- FP-1285: CMS Critical Dependency Upgrade (#437)
 
 ## [3.14.0] - 2022-01-25: Deprecate Callout Plugin; Guide Page Fix; Other Fixes
 
