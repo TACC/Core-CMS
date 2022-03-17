@@ -254,6 +254,21 @@ If you need to change files within `/taccsite_custom`:
 
 <sub>To learn more, see [Static Files](#static-files).</sub>
 
+### Customizing Text in Admin UI
+
+1. Create file `/taccsite_cms/locale/en/LC_MESSAGES/django.po`.
+2. Add this content to the file for just the strings to translate.
+3. Build the `.mo` file: \*
+
+    ```bash
+    django-admin compilemessages
+    ```
+
+4. Restart the CMS server.[^3]†
+
+<sub>\* You should run this command in the container __from `/code/`__. _See [Running Commands in Container](#running-commands-in-container)._</sub>\
+<sub>† See [Restarting the CMS Server](#restarting-the-cms-server)._</sub>\
+
 
 ## Running Commands in Container
 
@@ -269,6 +284,9 @@ docker exec -it core_cms /bin/bash
 
 <sub>\* __If using `docker-compose.custom.yml`, then__ change  `core_cms` to its `cms:` `container_name`.</sub>
 
+## Restarting the CMS Server
+
+See [How to Restart the CMS Server](https://github.com/TACC/Core-CMS/wiki/How-to-Restart-the-CMS-Server).
 
 ## Setting up Search Index
 
