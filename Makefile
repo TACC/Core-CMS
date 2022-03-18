@@ -5,11 +5,11 @@ DOCKER_IMAGE_LATEST := $(DOCKERHUB_REPO):latest
 
 .PHONY: build
 build:
-	docker-compose -f docker-compose.yml build
+	docker-compose -f ./docker-compose.yml build
 
 .PHONY: build-full
 build-full:
-	docker build -t $(DOCKER_IMAGE) --target production -f Dockerfile .
+	docker build -t $(DOCKER_IMAGE) --target production -f ./Dockerfile .
 
 .PHONY: publish
 publish:
