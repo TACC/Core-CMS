@@ -7,6 +7,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.19.0] - 2022-03-17: Plugin Transfer, Classes; ECEP CMS; Fix v3.15, Safe ES
+
+### Added
+
+- Test: Install djangocms-transfer (#411)
+- FP-1414: More Classnames for Django CMS Style Plugin (#419)
+- GH-110: Add PR template (#454)
+- Added [...] new ECEP portal CMS. (00eca44, 156a3d1)
+
+### Fixed
+
+- FP-1423: System Specs Layout Bug at Medium Width Screen (#444) 
+- FP-1341: Update README.md Since Settings Refactor (#417) 
+- FP-1525: UTRC: Fix Homepage Whitespace (#447)
+- FP-1359: Callout Plugin Active+Focus State Anomaly within Dark Section (#449)
+- FP-1524: Section Pattern: [Fix] Extended Background (#446)
+- FP-1470: Section Pattern: Third Style (and Fix to Dark Style) (#458)
+- FP-1451: Open CMS External Links in New Window (Works on Portal) (#453)
+- FP-1410: Shrink Guide Images & Add Links to Open in New Tab (#462)
+
+### Security
+
+- FP-1540: Hotfix: Update ES to Fix Security Issue (#456)
+
 ## [3.15.0] - 2022-02-17: New Section Pattern; Critical Dependency Fix; Other
 
 ### Added
@@ -21,11 +45,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - FP-1502: Fix Callout Title Height (#441)
-- FP-1285: CMS Critical Dependency Upgrade (#437)
 
 ### Removed
 
 - UTRC-357/FP-1268: (UTRC) Remove old templates (#439)
+
+### Security
+
+- FP-1285: CMS Critical Dependency Upgrade (#437)
 
 ## [3.14.0] - 2022-01-25: Deprecate Callout Plugin; Guide Page Fix; Other Fixes
 
@@ -274,7 +301,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.0.0] - 2021-03-31
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.15.0...HEAD
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.19.0...HEAD
+[3.19.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.19.0
 [3.15.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.15.0
 [3.14.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.14.0
 [3.12.1]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.1
