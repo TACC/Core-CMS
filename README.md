@@ -182,7 +182,8 @@ If you changes files in any `static/` directory, you may need to follow some of 
 2. Build static files from source files.\
     Via shell:
     1. `npm run build` or\
-        `npm run build --project=name-of-project`\†
+        `npm run build --project=name-of-project`\† or\
+        `npm run build ... --build-id=optional-identifier`§
 3. _(to debug)_ Review respective files' content in\
     `/taccsite_custom/name-of-project/static/name-of-project/css/build`.\†
 4. "Collect" static files. _See [How to Collect Static Files](#how-to-collect-static-files)._
@@ -192,7 +193,8 @@ If you changes files in any `static/` directory, you may need to follow some of 
 
 <sub>\* The recommended command to install expected dependencies is `npm ci`.</sub>\
 <sub>† Where `name-of-project` matches a directory from `/taccsite_custom`.</sub>\
-<sub>‡ To commit such changes, see [Changing Custom Resources](#changing-custom-resources)</sub>
+<sub>‡ To commit such changes, see [Changing Custom Resources](#changing-custom-resources).</sub>\
+<sub>§ A build ID can tag files (like preserved comment in stylesheet).</sub>
 
 #### How to Build Static Files
 

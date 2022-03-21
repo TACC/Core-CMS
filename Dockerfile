@@ -4,6 +4,7 @@ LABEL maintainer="TACC-ACI-WMA <wma_prtl@tacc.utexas.edu>"
 
 ARG DEBIAN_FRONTEND=noninteractive
 ARG PROJECT_NAME
+ARG BUILD_ID
 
 ENV PYTHONUNBUFFERED 1
 
@@ -27,4 +28,4 @@ RUN pip3 install --no-cache-dir -r requirements.txt
 
 # build assets
 RUN npm ci
-RUN npm run build --project=$PROJECT_NAME
+RUN npm run build --project=$PROJECT_NAME --build-id=$BUILD_ID
