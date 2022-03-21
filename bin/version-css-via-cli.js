@@ -12,5 +12,4 @@ cmd.runSync(`
   core-styles version\
   --output-path "${outputPath}"\
   --build-id "${BUILD_ID}"\
-  --verbose\
 `);
