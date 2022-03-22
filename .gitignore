@@ -14,8 +14,6 @@ __pycache__
 ## built Static files
 build
 !build/README.md
-## temporary files
-_version.css
 
 ## environment variables
 docker_repo.var
