@@ -4,15 +4,15 @@ DOCKER_TAG ?= $(shell git rev-parse --short HEAD)
 BUILD_ID := $(shell git describe --always)
 DOCKER_IMAGE := $(DOCKERHUB_REPO):$(DOCKER_TAG)
 DOCKER_IMAGE_LATEST := $(DOCKERHUB_REPO):latest
-DOCKER_IMAGE_LOCAL := $(DOCKERHUB_REPO):local
 
 .PHONY: build
 build:
-	docker build -t $(DOCKER_IMAGE) \
-		--build-arg PROJECT_NAME=$(PROJECT_NAME) \
-		--build-arg BUILD_ID=$(BUILD_ID) \
-		.
-	docker tag $(DOCKER_IMAGE) $(DOCKER_IMAGE_LATEST)
+	docker-compose -f ./docker-compose.yml build
+
+.PHONY: build-full
+build-full:
+	docker build -t $(DOCKER_IMAGE) --build-arg PROJECT_NAME=$(PROJECT_NAME) \
+		--build-arg BUILD_ID=$(BUILD_ID) --target production -f ./Dockerfile .
 
 .PHONY: publish
 publish:
@@ -20,11 +20,17 @@ publish:
 
 .PHONY: publish-latest
 publish-latest:
+	docker tag $(DOCKER_IMAGE) $(DOCKER_IMAGE_LATEST)
 	docker push $(DOCKER_IMAGE_LATEST)
 
 .PHONY: start
 start:
 	docker-compose -f docker-compose.yml up
 
-requirements-frozen.txt: build
-	docker run --rm $(DOCKER_IMAGE) pip freeze > $@
+.PHONY: stop
+stop:
+	docker-compose -f docker-compose.yml down
+
+.PHONY: stop-verbose
+stop-v:
+	docker-compose -f docker-compose.yml down -v
