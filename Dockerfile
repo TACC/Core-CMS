@@ -28,4 +28,4 @@ RUN pip3 install --no-cache-dir -r requirements.txt
 
 # build assets
 RUN npm ci
-RUN npm run build --project=$PROJECT_NAME --build-id=$BUILD_ID
+RUN npm run build --project="$PROJECT_NAME" --build-id="$BUILD_ID"
