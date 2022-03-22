@@ -6,7 +6,18 @@ const cmd = require('node-cmd');
 
 const ROOT = __dirname + '/..';
 const CORE_NAME = 'core-cms';
+
+/**
+ * The name of the project to build
+ * @external string
+ */
 const PROJECT_NAME = process.env.npm_config_project || undefined;
+
+/**
+ * An ID to distinguish the build
+ * @external string
+ */
+const BUILD_ID = process.env.npm_config_build_id || undefined;
 
 /** Execute command to build CSS for Core and optional project/directory */
 (() => {
@@ -22,6 +33,7 @@ const PROJECT_NAME = process.env.npm_config_project || undefined;
     --output-dir "${ROOT}/${corePath}/build"\
     --custom-configs\
       "${ROOT}/${corePath}/.postcssrc.yml"\
+    --build-id "${BUILD_ID}"\
     --verbose\
   `);
   // // build Project next (if at all)
@@ -34,6 +46,7 @@ const PROJECT_NAME = process.env.npm_config_project || undefined;
       --custom-configs\
         "${ROOT}/${corePath}/.postcssrc.yml"\
         "${ROOT}/${projectPath}/.postcssrc.yml"\
+      --build-id "${BUILD_ID}"\
       --verbose\
     `);
   }

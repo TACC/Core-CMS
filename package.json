@@ -5,7 +5,7 @@
   "description": "The core CMS codebase for all new and updated TACC CMS sites.",
   "scripts": {
     "build": "npm run build:css",
-    "build:css": "bin/version-css-via-cli.js && bin/build-css-via-cli.js"
+    "build:css": "bin/build-css-via-cli.js"
   },
   "engines": {
     "node": ">=15.x",
