@@ -6,7 +6,7 @@ All templates specific to the Core CMS __must__ be placed in this directory (or 
 
 ## Page Templates
 
-To make certain templates available as page templates for CMS editors, update `_CMS_TEMPLATES` secret.
+To make certain templates available as page templates for CMS editors, update `CMS_TEMPLATES` secret.
 
 ## Overwrite Apps or Plugins
 
