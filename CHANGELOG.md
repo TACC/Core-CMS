@@ -116,6 +116,14 @@ formerly known as v3.12.1 published on Fri Dec 17 13:30:44 2021 -0600
 - UTRC-357/FP-1268: Retire v1 Styles (Use v2 Styles) (#360)
 - Quick: Move Code & Samp CSS from Site to Doc Page (#424)
 
+## [3.1.1] - 2021-11-18: Remove Sentence from Getting Started Doc
+
+formerly known as v3.5.1 published on Thu Nov 18 12:55:28 2021 -0600
+
+### Fixed
+
+- Quick: Remove sentence from Getting Started doc (#410)
+
 ## [3.1.0] - 2021-11-15: Navbar Toggle Color; OOTB Remote Login; v3.3.0 Fixes
 
 formerly known as v3.5.0 published on Fri Nov 12 15:41:38 2021 -0600
@@ -318,17 +326,17 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 ## [2.0.0] - 2021-03-31
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.19.0...HEAD
-[3.19.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.19.0
-[3.15.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.15.0
-[3.14.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.14.0
-[3.12.1]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.1
-[3.5.1]: https://github.com/TACC/Core-CMS/releases/tag/v3.5.1
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.5.0...HEAD
 [3.5.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.5.0
+[3.4.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.4.0
 [3.3.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.3.0
-[3.0.7]: https://github.com/TACC/Core-CMS/releases/tag/v3.0.7
+[3.2.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.2.0
+[3.1.1]: https://github.com/TACC/Core-CMS/releases/tag/v3.1.1
+[3.1.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.1.0
+[3.0.2]: https://github.com/TACC/Core-CMS/releases/tag/v3.0.2
+[3.0.1]: https://github.com/TACC/Core-CMS/releases/tag/v3.0.1
 [3.0.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.0.0
-[2.5.2]: https://github.com/TACC/Core-CMS/releases/tag/v2.5.2
+[2.2.0]: https://github.com/TACC/Core-CMS/releases/tag/v2.2.0
 [2.1.1]: https://github.com/TACC/Core-CMS/releases/tag/v2.1.1
 [2.1.0]: https://github.com/TACC/Core-CMS/releases/tag/v2.1.0
 [2.0.0]: https://github.com/TACC/Core-CMS/releases/tag/v2.0.0
