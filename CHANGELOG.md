@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.5.2] - 2022-03-23: Fix v3.5.1 ProTX Bug
+
+### Fixed
+
+- Hotfix: Remove Old ProTX Templates from Its Settings (#470)
+
+## [3.5.1] - 2022-03-23: Fix v3.5.0 Deploy Fail
+
+### Fixed
+
+- Hotfix/Resolve README CMS Deploy Fail (#469)
+
 ## [3.5.0] - 2022-03-17: Plugin Transfer, Classes; ECEP CMS; Fix v3.15, Safe ES
 
 formerly known as v3.19.0 published on Thu Mar 17 10:58:00 2022 -0500
@@ -326,7 +338,9 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 ## [2.0.0] - 2021-03-31
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.5.0...HEAD
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.5.2...HEAD
+[3.5.2]: https://github.com/TACC/Core-CMS/releases/tag/v3.5.2
+[3.5.1]: https://github.com/TACC/Core-CMS/releases/tag/v3.5.1
 [3.5.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.5.0
 [3.4.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.4.0
 [3.3.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.3.0
