@@ -7,31 +7,40 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [3.19.0] - 2022-03-17: Plugin Transfer, Classes; ECEP CMS; Fix v3.15, Safe ES
+## [3.5.0] - 2022-03-17: Plugin Transfer, Classes; ECEP CMS; Fix v3.15, Safe ES
+
+formerly known as v3.19.0 published on Thu Mar 17 10:58:00 2022 -0500
 
 ### Added
 
 - Test: Install djangocms-transfer (#411)
 - FP-1414: More Classnames for Django CMS Style Plugin (#419)
 - GH-110: Add PR template (#454)
-- Added [...] new ECEP portal CMS. (00eca44, 156a3d1)
+- `taccsite_cms`
+    - Added [...] new ECEP portal CMS. (00eca44, 156a3d1)
+
+### Changed
+
+- FP-1461: Convert Core CMS to Poetry (#468)
 
 ### Fixed
 
-- FP-1423: System Specs Layout Bug at Medium Width Screen (#444) 
+- FP-1423: System Specs Layout Bug at Medium Width Screen (#444)
 - FP-1341: Update README.md Since Settings Refactor (#417) 
 - FP-1525: UTRC: Fix Homepage Whitespace (#447)
 - FP-1359: Callout Plugin Active+Focus State Anomaly within Dark Section (#449)
 - FP-1524: Section Pattern: [Fix] Extended Background (#446)
 - FP-1470: Section Pattern: Third Style (and Fix to Dark Style) (#458)
 - FP-1451: Open CMS External Links in New Window (Works on Portal) (#453)
-- FP-1410: Shrink Guide Images & Add Links to Open in New Tab (#462)
+- FP-1410: Shrink Guide Images & Add Links to Open in New Tab (https://github.com/TACC/Core-CMS/pull/462)
 
 ### Security
 
 - FP-1540: Hotfix: Update ES to Fix Security Issue (#456)
 
-## [3.15.0] - 2022-02-17: New Section Pattern; Critical Dependency Fix; Other
+## [3.4.0] - 2022-02-17: New Section Pattern; Critical Dependency Fix; Other
+
+formerly known as v3.15.0 published on Wed Feb 16 15:32:04 2022 -0600
 
 ### Added
 
@@ -54,7 +63,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - FP-1285: CMS Critical Dependency Upgrade (#437)
 
-## [3.14.0] - 2022-01-25: Deprecate Callout Plugin; Guide Page Fix; Other Fixes
+## [3.3.0] - 2022-01-25: Deprecate Callout Plugin; Guide Page Fix; Other Fixes
+
+formerly known as v3.14.0 published on Tue Jan 25 21:38:47 2022 -0600
 
 ### Added
 
@@ -88,7 +99,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Callout Plugin is unsupported. Replace with Callout Pattern. (#427)
 - Marked README.md as outdated & added link to new draft. (61b310b)
 
-## [3.12.1] - 2021-12-21: BM Branding; UI Patterns; Search Bar Design; UTRC Font
+## [3.2.0] - 2021-12-21: BM Branding; UI Patterns; Search Bar Design; UTRC Font
+
+formerly known as v3.12.1 published on Fri Dec 17 13:30:44 2021 -0600
 
 ### Added
 
@@ -103,13 +116,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - UTRC-357/FP-1268: Retire v1 Styles (Use v2 Styles) (#360)
 - Quick: Move Code & Samp CSS from Site to Doc Page (#424)
 
-## [3.5.1] - 2021-11-18: Remove Sentence from Getting Started Doc
+## [3.1.0] - 2021-11-15: Navbar Toggle Color; OOTB Remote Login; v3.3.0 Fixes
 
-### Fixed
-
-- Quick: Remove sentence from Getting Started doc (#410)
-
-## [3.5.0] - 2021-11-15: Navbar Toggle Color; OOTB Remote Login; v3.3.0 Fixes
+formerly known as v3.5.0 published on Fri Nov 12 15:41:38 2021 -0600
 
 ### Added
 
@@ -130,17 +139,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Hotfix/FP-1330: Frontera: Fix Favicon Load on Standard Template (#401)
 - Hotfix/FP-1333: Callout Title Color (#405)
 
-## [3.3.0] - 2021-11-04: Brainmap Project; Fix Standard Template; Fix Header Links
+## [3.0.2] - 2021-11-04: Brainmap Project; Fix Standard Template; Fix Header Links
+
+formerly known as v3.3.0 published on Thu Nov 4 16:48:33 2021 -0500
 
 ### Added
 
-- Quick: [v3.0.7] Changelog (#389, #390, #391)
-- BM-5/BM-19: Add Brainmap Project (#393, #398)
-- Quick: (for BM-19) New CSS Branding Logo Class (#392)
-- task/FP-263: Add Frontera Favicon (update submodule) (#394)
+- `taccsite_custom`
+    - BM-5/BM-19: Add Brainmap Project (#393, #398)
+    - Quick: (for BM-19) New CSS Branding Logo Class (#392)
+    - task/FP-263: Add Frontera Favicon (update submodule) (#394)
 
 ### Changed
 
+- Quick: [v3.0.7] Changelog (#389, #390, #391)
 - Noop: Reduce verbosity of nested dropdown comment (#396)
 - Noop: Fix Comment Typo & Move Styles Down Under It (#364)
 
@@ -150,11 +162,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - FP-1235: Do not support dropdown menu text as link (#395)
 - Hotfix: Fix Branding Links not Opening in New Window (#397)
 
-## [3.0.7] - 2021-10-26: Hotfixes (mostly for Frontera); Rename Unused Component
+## [3.0.1] - 2021-10-26: Hotfixes (mostly for Frontera); Rename Unused Component
+
+formerly known as v3.0.7 published on Wed Oct 27 18:15:43 2021 -0500
 
 ### Changed
 
-- task/FP-1260 Rename Component ReadMore to ShowMore (#376)
+- (Noop) task/FP-1260 Rename Component ReadMore to ShowMore (#376)
 
 ### Fixed
 
@@ -228,13 +242,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `taccsite_custom`
   - GH-89: Remove SysMon Snippet (TACC/Core-CMS-Resources#67)
 
-## [2.5.2] - 2021-07-16: Fix Publish Bug; Texascale 2020; Polish
+## [2.2.0] - 2021-07-16: Fix Publish Bug; Texascale 2020; Polish
+
+formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 ### Added
 
-- Major: Texascale 2020 (#256)
 - GH-253: Initial Pattern Library Template & Styles (#25)
 - Quick: Set Version & Add Changelog (#252)
+- `taccsite_custom`
+    - Major: Texascale 2020 (#256)
 
 ### Changed
 
