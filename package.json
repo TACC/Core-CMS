@@ -17,16 +17,16 @@
   },
   "repository": "git@github.com:TACC/CORE-cms.git",
   "devDependencies": {
-    "async": "^3.2.0",
-    "cssnano": "^4.1.10",
-    "dotenv": "^8.2.0",
+    "async": "^3.2.3",
+    "cssnano": "^5.1.5",
+    "dotenv": "^8.6.0",
     "npm-watch": "^0.7.0",
-    "postcss-cli": "^7.1.2",
+    "postcss": "^8.4.12",
+    "postcss-cli": "^9.1.0",
     "postcss-css-variables": "^0.18.0",
     "postcss-extend": "^1.0.5",
-    "postcss-import": "^12.0.1",
-    "postcss-preset-env": "^6.7.0",
-    "yarn": "^1.22.5"
+    "postcss-import": "^14.1.0",
+    "postcss-preset-env": "^7.4.3"
   },
   "watch": {
     "build:css": {
