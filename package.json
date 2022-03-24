@@ -1,21 +1,13 @@
 {
-  "name": "portal-cms",
-  "version": "2.1.0",
+  "name": "core-cms",
+  "version": "3.5.2",
   "license": "MIT",
-  "description": "The core CMS codebase for all new and updated TACC CMS sites.",
-  "scripts": {
-    "prebuild": "python3 taccsite_cms/settings_to_json.py",
-    "build": "npm run build:css",
-    "build:css": "node postcss.js",
-    "watch": "npm-watch"
+  "author": "TACC ACI WMA <wma-portals@gmail.com>",
+  "description": "The TACC ACI-WMA Core CMS codebase sed by TACC Portals.",
+  "engines": {
+    "node": "17.8.0",
+    "npm": "8.5.5"
   },
-  "// scripts": {
-    "prebuild": "Export Django settings to JSON (for Node to use)",
-    "build": "Run all static file build commands",
-    "build:css": "Build stylesheets from source files",
-    "watch": "Build static files when source files change"
-  },
-  "repository": "git@github.com:TACC/CORE-cms.git",
   "devDependencies": {
     "async": "^3.2.3",
     "cssnano": "^5.1.5",
@@ -27,6 +19,22 @@
     "postcss-extend": "^1.0.5",
     "postcss-import": "^14.1.0",
     "postcss-preset-env": "^7.4.3"
+  },
+  "repository": "git@github.com:TACC/CORE-cms.git",
+  "resolutions": {
+    "dot-prop": ">=5.2.0"
+  },
+  "scripts": {
+    "prebuild": "python3 taccsite_cms/settings_to_json.py",
+    "build": "npm run build:css",
+    "build:css": "node postcss.js",
+    "watch": "npm-watch"
+  },
+  "// scripts": {
+    "prebuild": "Export Django settings to JSON (for Node to use)",
+    "build": "Run all static file build commands",
+    "build:css": "Build stylesheets from source files",
+    "watch": "Build static files when source files change"
   },
   "watch": {
     "build:css": {
@@ -41,9 +49,5 @@
   "// watch": {
     "build:css": "macOS requires object-based conifguration",
     "build:css // SEE": "https://github.com/M-Zuber/npm-watch/issues/35"
-  },
-  "resolutions": {
-    "dot-prop": ">=5.2.0"
-  },
-  "author": "TACC ACI WMA <wma-portals@gmail.com>"
+  }
 }
