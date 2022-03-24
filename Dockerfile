@@ -51,7 +51,7 @@ RUN poetry install
 # `production` image is used for deployed runtime environments
 FROM python-base as production
 
-# install node 12.x
+# install node
 RUN curl -sL https://deb.nodesource.com/setup_17.x | bash -
 RUN apt-get install -y nodejs
 
