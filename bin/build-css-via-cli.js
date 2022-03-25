@@ -3,21 +3,15 @@
 /** Build CSS using the Core-Styles CLI */
 
 const cmd = require('node-cmd');
+const mininmist = require('minimist');
 
 const ROOT = __dirname + '/..';
 const CORE_NAME = 'core-cms';
+const ARGS = mininmist(process.argv.slice(2));
 
-/**
- * The name of the project to build
- * @external string
- */
-const PROJECT_NAME = process.argv['project'] || undefined;
 
-/**
- * An ID to distinguish the build
- * @external string
- */
-const BUILD_ID = process.argv['build-id'] || undefined;
+const PROJECT_NAME = ARGS['project'] || undefined;
+const BUILD_ID = ARGS['build-id'] || undefined;
 
 /** Execute command to build CSS for Core and optional project/directory */
 (() => {
