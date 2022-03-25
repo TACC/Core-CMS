@@ -1,21 +1,24 @@
 {
   "name": "@tacc/core-cms",
-  "version": "3.15.0",
+  "version": "3.5.2",
   "license": "MIT",
-  "description": "The core CMS codebase for all new and updated TACC CMS sites.",
+  "author": "TACC ACI WMA <wma-portals@gmail.com>",
+  "description": "The TACC ACI-WMA Core CMS codebase used by TACC Portals.",
+  "engines": {
+    "node": "17.8.0",
+    "npm": "8.5.5"
+  },
+  "devDependencies": {
+    "@tacc/core-styles": "git+https://git@github.com/tacc-wbomar/Core-Styles.git",
+    "minimist": "^1.2.6",
+    "node-cmd": "^5.0.0"
+  },
+  "repository": "git@github.com:TACC/Core-CMS.git",
+  "resolutions": {
+    "dot-prop": ">=5.2.0"
+  },
   "scripts": {
     "build": "bin/build-css-via-cli.js --project=$npm_config_project --build-id=$npm_config_build_id"
   },
-  "engines": {
-    "node": ">=15.x",
-    "npm": ">=7.x"
-  },
-  "repository": "git@github.com:TACC/Core-CMS.git",
-  "homepage": "https://github.com/TACC/Core-CMS",
-  "author": "TACC ACI WMA <wma-portals@gmail.com>",
-  "devDependencies": {
-    "@tacc/core-styles": "git+https://git@github.com/tacc-wbomar/Core-Styles.git#core-cms/updates-since-v3.15.0",
-    "minimist": "^1.2.6",
-    "node-cmd": "^5.0.0"
-  }
+  "homepage": "https://github.com/TACC/Core-CMS"
 }
