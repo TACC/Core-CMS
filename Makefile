@@ -11,7 +11,7 @@ build:
 
 .PHONY: build-full
 build-full:
-	docker build -t $(DOCKER_IMAGE) --build-arg PROJECT_NAME=$(PROJECT_NAME) --build-arg BUILD_ID=$(BUILD_ID) --target production -f ./Dockerfile .
+	docker build -t $(DOCKER_IMAGE) --target production -f ./Dockerfile .
 
 .PHONY: publish
 publish:
@@ -24,7 +24,7 @@ publish-latest:
 
 .PHONY: start
 start:
-	docker-compose -f docker-compose.yml up
+	docker-compose -f docker-compose.yml up --build-arg PROJECT_NAME=$(PROJECT_NAME) --build-arg BUILD_ID=$(BUILD_ID)
 
 .PHONY: stop
 stop:
