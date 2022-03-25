@@ -66,4 +66,4 @@ WORKDIR /code
 
 # build assets
 RUN npm ci
-RUN npm run build --project="$PROJECT_NAME" --build-id="$BUILD_ID"
+RUN npm run build --project="test_PROJECT_NAME" --build-id="test_BUILD_ID"
