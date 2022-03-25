@@ -9,6 +9,7 @@ const ROOT = __dirname + '/..';
 const CORE_NAME = 'core-cms';
 const ARGS = mininmist(process.argv.slice(2));
 
+console.log('process.argv', process.argv);
 
 const PROJECT_NAME = ARGS['project'] || undefined;
 const BUILD_ID = ARGS['build-id'] || undefined;
