@@ -11,13 +11,13 @@ const CORE_NAME = 'core-cms';
  * The name of the project to build
  * @external string
  */
-const PROJECT_NAME = process.env.npm_config_project || undefined;
+const PROJECT_NAME = process.argv['project'] || undefined;
 
 /**
  * An ID to distinguish the build
  * @external string
  */
-const BUILD_ID = process.env.npm_config_build_id || undefined;
+const BUILD_ID = process.argv['build-id'] || undefined;
 
 /** Execute command to build CSS for Core and optional project/directory */
 (() => {
