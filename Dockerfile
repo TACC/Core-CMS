@@ -67,5 +67,4 @@ COPY . /code
 WORKDIR /code
 
 # build assets
-RUN npm ci
-RUN npm run build --project=$PROJECT_NAME --build-id=$BUILD_ID
+RUN npm ci && npm run build --project=$PROJECT_NAME --build-id=$BUILD_ID
