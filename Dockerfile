@@ -5,8 +5,6 @@ LABEL maintainer="TACC-ACI-WMA <wma_prtl@tacc.utexas.edu>"
 ARG DEBIAN_FRONTEND=noninteractive
 ARG PROJECT_NAME
 ARG BUILD_ID
-ENV PROJECT_NAME=$PROJECT_NAME
-ENV BUILD_ID=$BUILD_ID
 
 ENV PYTHONUNBUFFERED 1
 
@@ -67,4 +65,7 @@ COPY . /code
 WORKDIR /code
 
 # build assets
-RUN npm ci && npm run build --project=$PROJECT_NAME --build-id=$BUILD_ID
+ENV PROJECT_NAME=$PROJECT_NAME
+ENV BUILD_ID=$BUILD_ID
+RUN npm ci
+RUN npm run build --project=$PROJECT_NAME --build-id=$BUILD_ID
