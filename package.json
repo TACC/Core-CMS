@@ -14,9 +14,6 @@
     "node-cmd": "^5.0.0"
   },
   "repository": "git@github.com:TACC/Core-CMS.git",
-  "resolutions": {
-    "dot-prop": ">=5.2.0"
-  },
   "scripts": {
     "build": "bin/build-css-via-cli.js --project=$npm_config_project --build-id=$npm_config_build_id"
   },
