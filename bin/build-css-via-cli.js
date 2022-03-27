@@ -9,8 +9,8 @@ const ROOT = __dirname + '/..';
 const CORE_NAME = 'core-cms';
 const ARGS = mininmist(process.argv.slice(2));
 
-const PROJECT_NAME = ARGS['project'] || undefined;
-const BUILD_ID = ARGS['build-id'] || undefined;
+const PROJECT_NAME = ARGS['project'];
+const BUILD_ID = ARGS['build-id'];
 
 /** Execute command to build CSS for Core and optional project/directory */
 (() => {
