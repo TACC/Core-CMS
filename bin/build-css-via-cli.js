@@ -2,6 +2,7 @@
 
 /** Build CSS using the Core-Styles CLI */
 
+const fs = require('fs');
 const cmd = require('node-cmd');
 const mininmist = require('minimist');
 
@@ -14,16 +15,23 @@ const BUILD_ID = ARGS['build-id'] || '';
 
 /** Build stylesheets for Core and (optional) project */
 (() => {
+  // Get style paths
   const corePath = _getPath('taccsite_cms', 'site_cms');
   const projectPath = _getPath('taccsite_custom/' + PROJECT_NAME, PROJECT_NAME);
   const hasProject = (PROJECT_NAME && PROJECT_NAME !== CORE_NAME);
-  const configPaths = (hasProject) ? [
-    `${ROOT}/${corePath}/.postcssrc.yml`,
-    `${ROOT}/${projectPath}/.postcssrc.yml` // project can customize core build
-  ] : [
-    `${ROOT}/${corePath}/.postcssrc.yml`
-  ];
 
+  // Get config paths
+  const coreConfigPath = `${ROOT}/${corePath}/.postcssrc.yml`;
+  const projectConfigPath = `${ROOT}/${projectPath}/.postcssrc.yml`;
+  const configPaths = [coreConfigPath];
+
+  // Always add relevant available project config
+  // FAQ: Project can customize Core build (e.g. theme changes CSS env. values)
+  if (hasProject && fs.existsSync(projectConfigPath)) {
+    configPaths.push(projectConfigPath);
+  }
+
+  // Build
   _build('Core', corePath, configPaths, BUILD_ID);
   if (hasProject) {
     _build(PROJECT_NAME, projectPath, configPaths, BUILD_ID);
