@@ -16,6 +16,14 @@ const BUILD_ID = ARGS['build-id'] || '';
 (() => {
   const corePath = _getPath('taccsite_cms', 'site_cms');
   const projectPath = _getPath('taccsite_custom/' + PROJECT_NAME, PROJECT_NAME);
+  const hasProject = (PROJECT_NAME && PROJECT_NAME !== CORE_NAME);
+  const configPaths = (hasProject) ? [
+    `${ROOT}/${corePath}/.postcssrc.yml`,
+    `${ROOT}/${projectPath}/.postcssrc.yml` // project can customize core build
+  ] : [
+    `${ROOT}/${corePath}/.postcssrc.yml`
+  ];
+  const configs = '"' + configPaths.join('" "') + '"';
 
   // To illustrate Project is built on top of Core:
   // // build Core first
@@ -24,21 +32,18 @@ const BUILD_ID = ARGS['build-id'] || '';
     core-styles build\
     --input-dir "${ROOT}/${corePath}/src"\
     --output-dir "${ROOT}/${corePath}/build"\
-    --custom-configs\
-      "${ROOT}/${corePath}/.postcssrc.yml"\
+    --custom-configs ${configs}\
     --build-id "${BUILD_ID}"\
     --verbose\
   `);
   // // build Project next (if at all)
-  if (PROJECT_NAME && PROJECT_NAME !== CORE_NAME ) {
+  if (hasProject) {
     console.log(`Building "${PROJECT_NAME}" styles:`);
     cmd.runSync(`
       core-styles build\
       --input-dir "${ROOT}/${projectPath}/src"\
       --output-dir "${ROOT}/${projectPath}/build"\
-      --custom-configs\
-        "${ROOT}/${corePath}/.postcssrc.yml"\
-        "${ROOT}/${projectPath}/.postcssrc.yml"\
+      --custom-configs ${configs}\
       --build-id "${BUILD_ID}"\
       --verbose\
     `);
