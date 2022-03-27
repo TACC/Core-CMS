@@ -8,7 +8,7 @@ const mininmist = require('minimist');
 
 const ROOT = __dirname + '/..';
 const CORE_NAME = 'core-cms';
-const ARGS = mininmist(process.argv.slice(2));
+const ARGS = mininmist( process.argv.slice( 2 ) );
 
 const PROJECT_NAME = ARGS['project'] || '';
 const BUILD_ID = ARGS['build-id'] || '';
@@ -17,24 +17,24 @@ const BUILD_ID = ARGS['build-id'] || '';
 (() => {
   // Get style paths
   const corePath = _getPath('taccsite_cms', 'site_cms');
-  const projectPath = _getPath('taccsite_custom/' + PROJECT_NAME, PROJECT_NAME);
-  const hasProject = (PROJECT_NAME && PROJECT_NAME !== CORE_NAME);
+  const projPath = _getPath(`taccsite_custom/${PROJECT_NAME}`, PROJECT_NAME );
+  const hasProject = ( PROJECT_NAME && PROJECT_NAME !== CORE_NAME );
 
   // Get config paths
-  const coreConfigPath = `${ROOT}/${corePath}/.postcssrc.yml`;
-  const projectConfigPath = `${ROOT}/${projectPath}/.postcssrc.yml`;
-  const configPaths = [coreConfigPath];
+  const coreConfPath = `${ROOT}/${corePath}/.postcssrc.yml`;
+  const projConfPath = `${ROOT}/${projPath}/.postcssrc.yml`;
+  const confPaths = [coreConfPath];
 
   // Always add relevant available project config
   // FAQ: Project can customize Core build (e.g. theme changes CSS env. values)
-  if (hasProject && fs.existsSync(projectConfigPath)) {
-    configPaths.push(projectConfigPath);
+  if ( hasProject && fs.existsSync( projConfPath ) ) {
+    confPaths.push( projConfPath );
   }
 
   // Build
-  _build('Core', corePath, configPaths, BUILD_ID);
-  if (hasProject) {
-    _build(PROJECT_NAME, projectPath, configPaths, BUILD_ID);
+  _build('Core', corePath, confPaths, BUILD_ID );
+  if ( hasProject ) {
+    _build( PROJECT_NAME, projPath, confPaths, BUILD_ID );
   }
 })();
 
@@ -45,7 +45,7 @@ const BUILD_ID = ARGS['build-id'] || '';
  * @param {array.string} configs - The list of config file paths
  * @param {string} id - The value to identify the build
  */
- function _build(name, path, configs, id) {
+ function _build( name, path, configs, id ) {
   const configValues = '"' + configs.join('" "') + '"';
 
   console.log(`Building "${name}" styles:`);
@@ -66,5 +66,5 @@ const BUILD_ID = ARGS['build-id'] || '';
  * @return {string}
  */
  function _getPath( dirName, subDirName ) {
-  return dirName + '/static/' + (subDirName || dirName) + '/css';
+  return dirName + '/static/' + ( subDirName || dirName ) + '/css';
 }
