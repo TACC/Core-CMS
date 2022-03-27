@@ -3,8 +3,6 @@ FROM python:3.8.12-buster as python-base
 LABEL maintainer="TACC-ACI-WMA <wma_prtl@tacc.utexas.edu>"
 
 ARG DEBIAN_FRONTEND=noninteractive
-ARG PROJECT_NAME
-ARG BUILD_ID
 
 ENV PYTHONUNBUFFERED 1
 
@@ -66,6 +64,6 @@ WORKDIR /code
 
 # build assets
 RUN npm ci
-ENV PROJECT_NAME=$PROJECT_NAME
-ENV BUILD_ID=$BUILD_ID
+ARG PROJECT_NAME
+ARG BUILD_ID
 RUN npm run build --project=$PROJECT_NAME --build-id=$BUILD_ID
