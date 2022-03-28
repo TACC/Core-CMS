@@ -1,6 +1,6 @@
 # TACC CMS - Templates
 
-All templates specific to the Core CMS __must__ be placed in this directory (or child directories)..
+All templates specific to the Core CMS __must__ be placed in this directory (or child directories).
 
 > __Remember__: Changes to a template require a server restart to take effect. Changes to secrets (which trigger a reload of `settings.py`) will restart the server.
 
