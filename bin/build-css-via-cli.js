@@ -48,6 +48,7 @@ const BUILD_ID = ARGS['build-id'] || '';
  function _build( name, path, configs, id ) {
   const configValues = '"' + configs.join('" "') + '"';
 
+  console.log(`Overriding config with:`, configs );
   console.log(`Building "${name}" styles:`);
   cmd.runSync(`
     core-styles build\
