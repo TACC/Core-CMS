@@ -28,7 +28,7 @@ Styleguide Components.DjangoCMS
 }
 
 /* Prevent top-sticking content from scrolling behind Django CMS header */
-.cms-ready .sticky-top,
-.cms-ready .position-sticky.fixed-top {
+.cms-ready .sticky-top /* Bootstrap class */,
+.cms-ready .position-sticky.fixed-top /* Bootstrap class */ {
   top: env(--cms-toolbar-height);
 }

@@ -133,7 +133,7 @@ li {
 /* Misc. */
 
 hr {
-  margin-block: 2em;
+  margin-block: var(--global-space--hr-margin);
 }
 
 
