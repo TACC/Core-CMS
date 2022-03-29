@@ -109,14 +109,17 @@ urlpatterns += [
 # - Users can choose alt. templates from `templates/djangocms_blog/plugins/*`.
 # - Devs can customize alt. templates at `templates/djangocms_blog/plugins/*`.
 BLOG_PLUGIN_TEMPLATE_FOLDERS = (
-    ('plugins/default', 'Default template'),
-    # ('plugins/alternate', 'Alternate template'),
+    # ('plugins', 'Default'),
+    # ('plugins/alternate', 'Alternate'),
 )
 
-# Blog/News: Change default values for the auto-setup of one `BlogConfig`
+# Change default values for the auto-setup of one `BlogConfig`
 # SEE: https://github.com/nephila/djangocms-blog/issues/629
 BLOG_AUTO_SETUP = True # Set to False after setup (minimize overhead)
 BLOG_AUTO_HOME_TITLE ='Home'
 BLOG_AUTO_BLOG_TITLE = 'News'
 BLOG_AUTO_APP_TITLE = 'News'
 BLOG_AUTO_NAMESPACE = 'News'
+
+# Miscellaneous settings
+BLOG_ENABLE_COMMENTS = False

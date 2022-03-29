@@ -6,5 +6,5 @@ More than one set of `./plugins` may exist, by:
 
 ## Reference
 
-- [Templates](https://djangocms-blog.readthedocs.io/en/latest/features/templates.html)
-- [Settings](https://djangocms-blog.readthedocs.io/en/latest/settings.html)
+- [Templates](https://djangocms-blog.readthedocs.io/en/release-1.1.x/features/templates.html)
+- [Settings](https://djangocms-blog.readthedocs.io/en/release-1.1.x/settings.html)
