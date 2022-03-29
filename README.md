@@ -219,7 +219,7 @@ Certain static files are built __from__ source files __in__ `src` directories __
     npm run build --project=name-of-project
     ```
 
-<sub>\* You should run these commands in the container __from `/code/taccsite_custom/`__. _See [Running Commands in Container](#running-commands-in-container)._</sub>\
+<sub>\* You should run these commands in the container __from `/code/`__. _See [Running Commands in Container](#running-commands-in-container)._</sub>\
 <sub>† Where `name-of-project` matches a directory from `/taccsite_custom`.</sub>
 
 #### How to Collect Static Files
