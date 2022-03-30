@@ -129,6 +129,11 @@ dt {
 li {
   line-height: 1.6;
 }
+/* Add space between ordered list items */
+/* FAQ: Use case is <ol> for numbered paragraphs in text content */
+ol > li {
+  margin-bottom: 0.5em;
+}
 
 /* Misc. */
 
