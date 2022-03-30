@@ -14,6 +14,8 @@ from glob import glob
 import ldap
 from django_auth_ldap.config import LDAPSearch, GroupOfNamesType
 
+from django.utils.translation import gettext_lazy as _
+
 SECRET_KEY = 'CHANGE_ME'
 def gettext(s): return s
 
@@ -390,6 +392,15 @@ DJANGOCMS_PICTURE_RESPONSIVE_IMAGES_VIEWPORT_BREAKPOINTS = [
     576, 768, 992, 1200, 1400, 1680, 1920
 ]
 DJANGOCMS_PICTURE_RATIO = 1.618
+DJANGOCMS_PICTURE_ALIGN = [
+    ('left', _('Align left')),
+    ('right', _('Align right')),
+    ('center', _('Align center')),
+    (_('Offset'), (
+        ('offset-left', _('Offset left')),
+        ('offset-right', _('Offset right')),
+    )),
+]
 
 # FILE UPLOAD VALUES MUST BE SET!
 # Set in correlation with the `client_max_body_size    20m;` value in /etc/nginx/proxy.conf.
