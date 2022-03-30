@@ -118,10 +118,10 @@ dt {
   font-weight: initial; /* overwrite Bootstrap */
 }
 
-/* Add space between ordered list items */
-/* FAQ: Use case is <ol> for numbered paragraphs in text content */
-ol > li {
-  margin-bottom: 0.5em;
+/* Add space between all list items */
+/* FAQ: Use case is list items with as much text as a paragraph */
+li + li {
+  margin-top: 0.5em;
 }
 
 
