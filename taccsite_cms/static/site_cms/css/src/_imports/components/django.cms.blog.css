@@ -1,0 +1,21 @@
+/*
+Django CMS Blog Components
+
+Components for [Django CMS Blog](https://djangocms-blog.readthedocs.io) UI. These classes are authored in templates of third-party origin, but they have no third-party styles.
+
+Reference:
+
+- [Django CMS Blog Templates (`.blog-` Classes)](https://github.com/nephila/djangocms-blog/tree/1.1.1/djangocms_blog/templates/djangocms_blog)
+
+Styleguide Components.DjangoCMS.Blog
+*/
+
+
+
+/* .blog-content */
+
+/* Add space between all list items */
+/* FAQ: Use case is list items with as much text as a paragraph */
+.blog-content li + li {
+  margin-top: 0.5em;
+}

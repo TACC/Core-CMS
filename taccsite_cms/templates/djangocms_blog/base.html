@@ -1,7 +1,9 @@
-{% extends "djangocms_blog/base.html" %}
+{% extends CMS_TEMPLATE %}
+{% load static %}
 
-{# To ensure Blog page shows metadata #}
+{# FAQ: To ensure Blog page shows metadata (instruction from maintainer) #}
 {# SEE: https://github.com/nephila/djangocms-blog/issues/613#issuecomment-681147460 #}
+{# TODO: Update blog to ≥1.2.0, remove this block, test meta still works #}
 {% block meta %}
     {% if meta %}
         {% include "meta/meta.html" %}
@@ -9,3 +11,10 @@
         {{ block.super }}
     {% endif %}
 {% endblock meta %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'site_cms/css/build/app.blog.css' %}">
+<div class="app app-blog">
+    {% block content_blog %}{% endblock %}
+</div>
+{% endblock content %}
