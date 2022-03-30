@@ -10,6 +10,11 @@ Reference:
 
 Styleguide Trumps.DjangoCMS.Picture
 */
+@import url("_imports/objects/o-offset-content.css");
+
+
+
+/* Default Values */
 
 /* Support default alignment classes */
 .align-right { float: right; }
@@ -19,3 +24,12 @@ Styleguide Trumps.DjangoCMS.Picture
 /* Try to auto clear image floats */
 .align-left + *:not(img) { clear: left; }
 .align-right + *:not(img) { clear: right; }
+
+
+
+
+/* TACC Values */
+
+/* Support default alignment classes */
+.align-offset-right { @extend .o-offset-content--right }
+.align-offset-left { @extend .o-offset-content--left }
