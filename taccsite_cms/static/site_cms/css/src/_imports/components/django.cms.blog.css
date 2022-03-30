@@ -12,10 +12,74 @@ Styleguide Components.DjangoCMS.Blog
 
 
 
-/* .blog-content */
+@custom-selector :--article-page article.post-detail;
+@custom-selector :--article-item article:not(.post-detail);
+
+@custom-selector :--article-meta ul.post-detail:not(.tags);
+@custom-selector :--article-tags ul.post-detail.tags;
+
+
+
+/* Article */
+
+/* Article - Header */
+
+ul.post-detail {
+  list-style: none;
+
+  padding-left: 0; /* overwrite html-elements.css */
+  margin-bottom: 0; /* overwrite Bootstrap `reboot.css` */
+
+  font-size: var(--global-font-size--medium);
+}
+
+/* Article - Content */
 
 /* Add space between all list items */
 /* FAQ: Use case is list items with as much text as a paragraph */
 .blog-content li + li {
   margin-top: 0.5em;
+}
+
+
+
+
+/* Article Page */
+
+/* Article Page - Header */
+
+:--article-page header {
+  width: max-content;
+  min-width: 620px;
+}
+
+:--article-page :--article-meta {
+  display: flex;
+  justify-content: space-between;
+}
+
+:--article-page h2 {
+  font-size: var(--global-font-size--xxx-large);
+}
+:--article-page h3 {
+  font-style: italic;
+  font-weight: normal;
+  font-size: var(--global-font-size--large);
+}
+
+:--article-page :is(h3, :not(h3) + :--article-meta) {
+  padding-top: 17px;
+  border-top: var(--global-border-width--normal) solid var(--global-color-primary--dark);
+}
+
+/* Article Page - Media & Content */
+
+:--article-page :is(.blog-visual, .blog-content) {
+  margin-block: 45px;
+}
+
+/* Article Page - Content */
+
+:--article-page .blog-content {
+  max-width: 665px;
 }
