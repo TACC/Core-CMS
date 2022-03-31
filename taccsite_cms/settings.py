@@ -393,12 +393,18 @@ DJANGOCMS_PICTURE_RESPONSIVE_IMAGES_VIEWPORT_BREAKPOINTS = [
 ]
 DJANGOCMS_PICTURE_RATIO = 1.618
 DJANGOCMS_PICTURE_ALIGN = [
-    ('left', _('Align left')),
-    ('right', _('Align right')),
-    ('center', _('Align center')),
-    (_('Offset'), (
+    (_('Align (Always)'), (
+        ('left', _('Align left')),
+        ('right', _('Align right')),
+        ('center', _('Align center')),
+    )),
+    (_('Offset (on Wide Screen)'), (
         ('offset-left', _('Offset left')),
         ('offset-right', _('Offset right')),
+    )),
+    (_('Align (Always) & Offset (on Wide Screen)'), (
+        ('and-offset-left', _('Align & Offset left')),
+        ('and-offset-right', _('Align & Offset right')),
     )),
 ]
 

@@ -35,14 +35,28 @@ Styleguide Trumps.DjangoCMS.Picture
 }
 
 /* Try to auto clear image floats */
-.align-left + *:not(img) { clear: left; }
-.align-right + *:not(img) { clear: right; }
+.align-left + *:not(img) { clear: left }
+.align-right + *:not(img) { clear: right }
 
 
 
 
 /* TACC Values */
 
-/* Support default alignment classes */
-.align-offset-right { @extend .o-offset-content--right }
-.align-offset-left { @extend .o-offset-content--left }
+/* Support custom alignment classes */
+.align-offset-right {
+  @extend .o-offset-content--right;
+}
+.align-offset-left {
+  @extend .o-offset-content--left;
+}
+
+/* Support all alignment classes */
+.align-and-offset-right {
+  @extend .o-offset-content--right;
+  @extend .align-right;
+}
+.align-and-offset-left {
+  @extend .o-offset-content--left;
+  @extend .align-left;
+}
