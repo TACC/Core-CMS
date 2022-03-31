@@ -10,7 +10,7 @@ Styleguide Objects.OffsetContent
 .o-offset-content--left,
 .o-offset-content--right {
   --offset-distance: 8.5vw; /* NOTE: Value is from Texascale.org 2020 */
-	--buffer: 30px; /* double Bootstrap `.col` padding */
+	--buffer: calc( 2 * var(--global-space--grid-gap) );
 }
 
 @media only screen and (--medium-and-above) {
