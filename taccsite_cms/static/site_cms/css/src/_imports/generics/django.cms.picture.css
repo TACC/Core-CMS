@@ -21,11 +21,11 @@ Styleguide Trumps.DjangoCMS.Picture
 .align-left {
   margin-bottom: var(--global-space--grid-gap);
 }
-.align-right  {
+.align-right {
   float: right;
   margin-left: var(--global-space--grid-gap);
 }
-.align-left   {
+.align-left {
   float: left;
   margin-right: var(--global-space--grid-gap);
 }
@@ -35,8 +35,8 @@ Styleguide Trumps.DjangoCMS.Picture
 }
 
 /* Try to auto clear image floats */
-.align-left + *:not(img) { clear: left }
 .align-right + *:not(img) { clear: right }
+.align-left + *:not(img) { clear: left }
 
 
 
@@ -44,19 +44,5 @@ Styleguide Trumps.DjangoCMS.Picture
 /* TACC Values */
 
 /* Support custom alignment classes */
-.align-offset-right {
-  @extend .o-offset-content--right;
-}
-.align-offset-left {
-  @extend .o-offset-content--left;
-}
-
-/* Support all alignment classes */
-.align-and-offset-right {
-  @extend .o-offset-content--right;
-  @extend .align-right;
-}
-.align-and-offset-left {
-  @extend .o-offset-content--left;
-  @extend .align-left;
-}
+.align-offset-right { @extend .o-offset-content--right }
+.align-offset-left { @extend .o-offset-content--left }

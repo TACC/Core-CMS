@@ -402,10 +402,6 @@ DJANGOCMS_PICTURE_ALIGN = [
         ('offset-left', _('Offset left')),
         ('offset-right', _('Offset right')),
     )),
-    (_('Align (Always) & Offset (on Wide Screen)'), (
-        ('and-offset-left', _('Align & Offset left')),
-        ('and-offset-right', _('Align & Offset right')),
-    )),
 ]
 
 # FILE UPLOAD VALUES MUST BE SET!
