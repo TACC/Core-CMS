@@ -17,9 +17,22 @@ Styleguide Trumps.DjangoCMS.Picture
 /* Default Values */
 
 /* Support default alignment classes */
-.align-right { float: right; }
-.align-left { float: left; }
-.align-center { margin-inline: auto; display: block; }
+.align-right,
+.align-left {
+  margin-bottom: var(--global-space--grid-gap);
+}
+.align-right  {
+  float: right;
+  margin-left: var(--global-space--grid-gap);
+}
+.align-left   {
+  float: left;
+  margin-right: var(--global-space--grid-gap);
+}
+.align-center {
+  display: block;
+  margin-inline: auto;
+}
 
 /* Try to auto clear image floats */
 .align-left + *:not(img) { clear: left; }
