@@ -9,7 +9,7 @@ Styleguide Objects.OffsetContent
 
 .o-offset-content--left,
 .o-offset-content--right {
-  --offset-distance: 8.5vw; /* NOTE: Value is from Texascale.org 2020 */
+  --offset-distance: min(30vw, 410px);
 	--buffer: calc( 2 * var(--global-space--grid-gap) );
 }
 
@@ -29,7 +29,7 @@ Styleguide Objects.OffsetContent
 @media only screen and (--medium-and-above) and (--max-wide-and-below) {
   .o-offset-content--left,
   .o-offset-content--right {
-    max-width: 50%;
+    max-width: 560px;
   }
   /* Apply negative margin only when using offset value */
 	.o-offset-content--right {

@@ -1,0 +1,19 @@
+/*
+Figure (Bootstrap)
+
+Add to Bootstrap styles. See:
+
+- [Bootstrap Figures](https://getbootstrap.com/docs/4.0/content/figures/)
+
+Styleguide Components.Bootstrap.Figure
+*/
+
+:is(figure, .figure) > img {
+  margin-bottom: 20px;
+}
+figcaption, .figure-caption {
+  color: var(--global-color-primary--dark);
+  font-size: var(--global-font-size--medium);
+  border-top: var(--global-border-width--normal) solid var(--global-color-primary--normal);
+  padding-top: 12px;
+}
