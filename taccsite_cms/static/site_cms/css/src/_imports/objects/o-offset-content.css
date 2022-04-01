@@ -32,6 +32,10 @@ Styleguide Objects.OffsetContent
 		margin-right: var(--buffer);
 	}
 	.o-offset-content--left + .o-offset-content--left { clear: left; }
+
+  .figure:is(:--o-offset-content) .figure-caption {
+    padding-right: 125px;
+  }
 }
 @media only screen and (--medium-and-above) and (--max-wide-and-below) {
   :--o-offset-content {
