@@ -49,8 +49,7 @@ ul.post-detail {
 /* Article Page - Header */
 
 :--article-page header {
-  width: max-content;
-  min-width: 620px;
+  width: 620px;
 }
 
 :--article-page :--article-meta {
@@ -67,7 +66,7 @@ ul.post-detail {
   font-size: var(--global-font-size--large);
 }
 
-:--article-page :is(h3, :not(h3) + :--article-meta) {
+:--article-page :is(h3, h2 + :--article-meta) {
   padding-top: 17px;
   border-top: var(--global-border-width--normal) solid var(--global-color-primary--dark);
 }
