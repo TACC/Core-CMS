@@ -1,19 +1,19 @@
 {% load i18n easy_thumbnails_tags cms_tags %}
 
-<ul class="post-detail">
+<ul class="post-detail attr">
     {% if post.author %}
     <li>
         {% trans "by" %} <a href="{% url 'djangocms_blog:posts-author' post.author.get_username %}">{% if post.author.get_full_name %}{{ post.author.get_full_name }}{% else %}{{ post.author }}{% endif %}</a>
     </li>
     {% endif %}
-    <li class="date-published">
+    <li class="date date-published">
       <span>Published:</span>
       <time datetime="{{ post.date_published }}">
         {{ post.date_published|date:"DATE_FORMAT" }}
       </time>
     </li>
     {% if post.date_featured %}
-    <li class="date-featured">
+    <li class="date date-featured">
       <span>Published:</span>
       <time datetime="{{ post.date_featured }}">
           {{ post.date_featured|date:"DATE_FORMAT" }}

@@ -15,9 +15,6 @@ Styleguide Components.DjangoCMS.Blog
 @custom-selector :--article-page article.post-detail;
 @custom-selector :--article-item article:not(.post-detail);
 
-@custom-selector :--article-meta ul.post-detail:not(.tags);
-@custom-selector :--article-tags ul.post-detail.tags;
-
 
 
 /* Article */
@@ -52,7 +49,7 @@ ul.post-detail {
   width: 620px;
 }
 
-:--article-page :--article-meta {
+:--article-page .attr {
   display: flex;
   justify-content: space-between;
 }
@@ -66,7 +63,7 @@ ul.post-detail {
   font-size: var(--global-font-size--large);
 }
 
-:--article-page :is(h3, h2 + :--article-meta) {
+:--article-page :is(h3, h2 + .attr) {
   padding-top: 17px;
   border-top: var(--global-border-width--normal) solid var(--global-color-primary--dark);
 }
