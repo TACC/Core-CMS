@@ -241,6 +241,10 @@ TEMPLATES = [
     },
 ]
 
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'taccsite_cms', 'locale'),
+]
+
 MIDDLEWARE = [
     'cms.middleware.utils.ApphookReloadMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

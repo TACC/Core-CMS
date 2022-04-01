@@ -72,6 +72,10 @@ ul.post-detail {
   border-top: var(--global-border-width--normal) solid var(--global-color-primary--dark);
 }
 
+:--article-page .date-published span {
+  display: none;
+}
+
 /* Article Page - Media & Content */
 
 :--article-page :is(.blog-visual, .blog-content) {
@@ -81,5 +85,6 @@ ul.post-detail {
 /* Article Page - Content */
 
 :--article-page .blog-content {
+  font-size: var(--global-font-size--large);
   max-width: 665px;
 }

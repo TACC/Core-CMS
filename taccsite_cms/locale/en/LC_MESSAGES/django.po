@@ -1,0 +1,4 @@
+#: djangocms-blog
+#: templates/djangocms_blog/includes/blog_meta.html:6
+msgid "by"
+msgstr "by:"
