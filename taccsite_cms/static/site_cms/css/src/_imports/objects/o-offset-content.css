@@ -7,8 +7,15 @@ Styleguide Objects.OffsetContent
 */
 @import url("_imports/tools/media-queries.css");
 
-.o-offset-content--left,
-.o-offset-content--right {
+
+
+@custom-selector :--o-offset-content
+  .o-offset-content--left,
+  .o-offset-content--right;
+
+
+
+:--o-offset-content {
   --offset-distance: min(30vw, 410px);
 	--buffer: calc( 2 * var(--global-space--grid-gap) );
 }
@@ -27,8 +34,7 @@ Styleguide Objects.OffsetContent
 	.o-offset-content--left + .o-offset-content--left { clear: left; }
 }
 @media only screen and (--medium-and-above) and (--max-wide-and-below) {
-  .o-offset-content--left,
-  .o-offset-content--right {
+  :--o-offset-content {
     max-width: 560px;
   }
   /* Apply negative margin only when using offset value */
