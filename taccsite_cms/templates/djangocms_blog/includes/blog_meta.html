@@ -2,36 +2,39 @@
 
 <ul class="post-detail attr">
     {% if post.author %}
-    <li>
-        {% trans "by" %} <a href="{% url 'djangocms_blog:posts-author' post.author.get_username %}">{% if post.author.get_full_name %}{{ post.author.get_full_name }}{% else %}{{ post.author }}{% endif %}</a>
+    <li class="byline">
+        <span>{% trans "by" %}</span>&nbsp;
+        <a href="{% url 'djangocms_blog:posts-author' post.author.get_username %}">{% if post.author.get_full_name %}{{ post.author.get_full_name }}{% else %}{{ post.author }}{% endif %}</a>
     </li>
     {% endif %}
     <li class="date date-published">
-      <span>Published:</span>
+      <span>{% trans "Published" %}</span>&nbsp;
       <time datetime="{{ post.date_published }}">
         {{ post.date_published|date:"DATE_FORMAT" }}
       </time>
     </li>
     {% if post.date_featured %}
     <li class="date date-featured">
-      <span>Published:</span>
+      <span>{% trans "Published" %}</span>&nbsp;
       <time datetime="{{ post.date_featured }}">
           {{ post.date_featured|date:"DATE_FORMAT" }}
       </time>
     </li>
     {% endif %}
 </ul>
-<ul class="post-detail tags">
+<ul class="post-detail categories">{% spaceless %}
     {% if post.categories.exists %}
         {% for category in post.categories.all %}
             {% if category.slug %}
-                <li class="category_{{ forloop.counter }}"><a href="{% url 'djangocms_blog:posts-category' category=category.slug %}" class="blog-categories-{{ category.count }}">{{ category.name }}</a>{% if not forloop.last %}, {% endif %}</li>
+                <li class="category_{{ forloop.counter }}"><a href="blog-category {% url 'djangocms_blog:posts-category' category=category.slug %}" class="blog-categories-{{ category.count }}">{{ category.name }}</a>{% if not forloop.last %}, {% endif %}</li>
             {% endif %}
         {% endfor %}
     {% endif %}
+{% endspaceless %}</ul>
+<ul class="post-detail tags">{% spaceless %}
     {% if post.tags.exists %}
         {% for tag in post.tags.all %}
-            <li class="tag_{{ forloop.counter }}"><a href="{% url 'djangocms_blog:posts-tagged' tag=tag.slug %}" class="blog-tag blog-tag-{{ tag.count }}">{{ tag.name }}</a>{% if not forloop.last %}, {% endif %}</li>
+            <li class="tag_{{ forloop.counter }}"><a href="{% url 'djangocms_blog:posts-tagged' tag=tag.slug %}" class="blog-tag blog-tag-{{ tag.count }}">{{ tag.name }}</a></li>
         {% endfor %}
     {% endif %}
-</ul>
+{% endspaceless %}</ul>
