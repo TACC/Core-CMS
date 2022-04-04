@@ -3,6 +3,25 @@
 msgid "by"
 msgstr "by:"
 
+#: djangocms-blog
+#: cms_appconfig.py:39
+msgid ""
+"If left empty the image size will have to be set for every newly created "
+"post."
+msgstr ""
+"If left empty the image size will have to be set for every newly created "
+"post. "
+"And any post that unsets its image size will use this setting value."
+
+#: djangocms-blog
+#: cms_appconfig.py:45
+msgid ""
+"If left empty the thumbnail image size will have to be set for every newly "
+"created post."
+msgstr ""
+"If left empty the thumbnail image size will have to be set for every newly "
+"created post. "
+"And any post that unsets its thumbnail image size will use this setting value."
 
 
 #: djangocms-picture
