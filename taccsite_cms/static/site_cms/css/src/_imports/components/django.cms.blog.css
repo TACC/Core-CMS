@@ -165,7 +165,7 @@ ul.post-detail {
 :--article-item .tags { align-items: center }
 
 /* To truncate all metadata */
-:--article-item .attr li {
+:--article-item :is(.byline, .date) {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
