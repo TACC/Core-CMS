@@ -106,8 +106,6 @@ ul.post-detail {
 
 :--article-item {
   display: grid;
-  column-gap: 50px;
-
   grid-template-areas:
     'media head'
     'media desc';
@@ -224,6 +222,17 @@ ul.post-detail {
 }
 :--article-item .categories:empty:before {
   content: 'Uncategorized';
+}
+
+
+
+/* Article Item - Visual */
+
+/* NOTE: Space added to content not container cuz container is always present */
+/* HELP: How to add space to omni-present container only if image exists
+         and not need to duplicate, maintain, and edit `blog_item.html`? */
+:--article-item .blog-visual * {
+  margin-right: 50px;
 }
 
 
