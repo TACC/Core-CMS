@@ -254,11 +254,18 @@ ul.post-detail {
 
 /* Article Item - Footer */
 
-:--article-item footer          { position: relative }
-:--article-item footer a        {
+:--article-item footer {
+  position: relative;
+}
+:--article-item footer a {
   @extend %x-article-link-stretch;
   @extend %x-article-link-text;
 }
-:--article-item footer a:hover  { @extend %x-article-link-hover;
-                                  --outline-offset: var(--buffer); }
-:--article-item footer a:active { @extend %x-article-link-active }
+:--article-item footer a:hover {
+  --outline-offset: var(--buffer);
+
+  @extend %x-article-link-hover;
+}
+:--article-item footer a:active {
+  @extend %x-article-link-active;
+}
