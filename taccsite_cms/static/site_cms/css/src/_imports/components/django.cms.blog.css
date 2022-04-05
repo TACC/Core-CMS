@@ -10,6 +10,7 @@ Reference:
 Styleguide Components.DjangoCMS.Blog
 */
 @import url("_imports/tools/x-truncate.css");
+@import url("_imports/tools/x-article-link.css");
 
 
 
@@ -105,6 +106,8 @@ ul.post-detail {
 /* Article Item */
 
 :--article-item {
+  --buffer: 20px;
+
   display: grid;
   grid-template-areas:
     'media head'
@@ -113,11 +116,9 @@ ul.post-detail {
 :--article-item header        { grid-area: head }
 :--article-item .blog-visual  { grid-area: media }
 :--article-item .blog-lead    { grid-area: desc }
-:--article-item footer        { display: none }
+:--article-item footer        { grid-area: 1 / 1 / -1 / -1 }
 
 :--article-item + article {
-  --buffer: 20px;
-
   margin-top: var(--buffer);
   border-top: var(--global-border-width--normal) solid var(--global-color-primary--dark);
   padding-top: var(--buffer);
@@ -247,3 +248,13 @@ ul.post-detail {
   line-height: 1.5;
   color: var(--global-color-primary--dark);
 }
+
+
+
+/* Article Item - Footer */
+
+:--article-item footer          { position: relative }
+:--article-item footer a        { @extend %x-article-link-stretch }
+:--article-item footer a:hover  { @extend %x-article-link-hover;
+                                  --outline-offset: var(--buffer); }
+:--article-item footer a:active { @extend %x-article-link-active }
