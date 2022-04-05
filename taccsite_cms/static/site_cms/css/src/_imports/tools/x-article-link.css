@@ -37,13 +37,15 @@ Styleguide Tools.ExtendsAndMixins.ArticleLink
 /* To give link state (pseudo-class) feedback */
 .x-article-link-hover,
 %x-article-link-hover {
+  --outline-offset: 1em;
+
   outline: 1px solid var(--global-color-accent--normal);
 
-  outline-offset: 1em;
+  outline-offset: var(--outline-offset, 1em);
 }
 .x-article-link-hover--gapless,
 %x-article-link-hover--gapless {
-  outline-offset: 0;
+  --outline-offset: 0;
 }
 
 /* To give link active state feedback */
