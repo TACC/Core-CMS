@@ -18,7 +18,7 @@ Styleguide Components.DjangoCMS.Blog
 /* Article */
 
 @custom-selector :--article-page article.post-detail;
-@custom-selector :--article-item article:not(.post-detail);
+@custom-selector :--article-item .blog-list article;
 
 
 
@@ -115,7 +115,7 @@ ul.post-detail {
 :--article-item .blog-lead    { grid-area: desc }
 :--article-item footer        { display: none }
 
-:--article-item + :--article-item {
+:--article-item + article {
   --buffer: 20px;
 
   margin-top: var(--buffer);
