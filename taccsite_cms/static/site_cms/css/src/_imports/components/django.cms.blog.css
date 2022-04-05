@@ -258,3 +258,11 @@ ul.post-detail {
 :--article-item footer a:hover  { @extend %x-article-link-hover;
                                   --outline-offset: var(--buffer); }
 :--article-item footer a:active { @extend %x-article-link-active }
+
+/* To hide link text but retain link element */
+/* TODO: Make this reusable (Frontera can use instead of its trick) */
+:--article-item footer a {
+  line-height: 0;
+  font-size: 0;
+  color: transparent;
+}
