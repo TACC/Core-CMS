@@ -2,5 +2,8 @@
 {% load cms_tags %}
 
 {% block content_blog %}
-<section class="container">{{ block.super }}</section>
+<section class="container">
+    {% include "nav_cms_breadcrumbs.html" %}
+    {{ block.super }}
+</section>
 {% endblock content_blog %}
