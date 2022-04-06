@@ -29,7 +29,7 @@
     {% if post.categories.exists %}
         {% for category in post.categories.all %}
             {% if category.slug %}
-                <li class="category_{{ forloop.counter }}"><a href="blog-category {% url 'djangocms_blog:posts-category' category=category.slug %}" class="blog-categories-{{ category.count }}">{{ category.name }}</a>{% if not forloop.last %}, {% endif %}</li>
+                <li class="category_{{ forloop.counter }}"><a href="{% url 'djangocms_blog:posts-category' category=category.slug %}" class="blog-categories-{{ category.count }}">{{ category.name }}</a>{% if not forloop.last %}, {% endif %}</li>
             {% endif %}
         {% endfor %}
     {% endif %}
