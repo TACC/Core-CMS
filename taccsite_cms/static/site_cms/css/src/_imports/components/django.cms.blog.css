@@ -9,6 +9,7 @@ Reference:
 
 Styleguide Components.DjangoCMS.Blog
 */
+@import url("_imports/tools/selectors.css");
 @import url("_imports/tools/x-truncate.css");
 @import url("_imports/tools/x-article-link.css");
 
@@ -117,7 +118,6 @@ ul.post-detail {
 :--article-item header        { grid-area: head }
 :--article-item .blog-visual  { grid-area: media }
 :--article-item .blog-lead    { grid-area: desc }
-:--article-item footer        { grid-area: 1 / 1 / -1 / -1 }
 
 :--article-item + article {
   margin-top: var(--buffer);
@@ -254,18 +254,25 @@ ul.post-detail {
 
 /* Article Item - Footer */
 
-:--article-item footer {
-  position: relative;
+.read-more a:hover {
+  --outline-offset: var(--buffer);
+  @extend %x-article-link-hover;
 }
-:--article-item footer a {
+.read-more a:active {
+  @extend %x-article-link-active;
+}
+
+/* If not editing, "read more" covers article */
+html:not(:--cms-edit-mode) .read-more { grid-area: 1 / 1 / -1 / -1 }
+html:not(:--cms-edit-mode) .read-more { position: relative; }
+html:not(:--cms-edit-mode) .read-more a {
   @extend %x-article-link-stretch;
   @extend %x-article-link-text;
 }
-:--article-item footer a:hover {
-  --outline-offset: var(--buffer);
-
-  @extend %x-article-link-hover;
-}
-:--article-item footer a:active {
-  @extend %x-article-link-active;
+/* If editing, "read more" at bottom (let CMS user know) */
+html:--cms-edit-mode .read-more { grid-area: 3 / 1 / 4 / -1 }
+html:--cms-edit-mode .read-more::after {
+  content: 'This link only shows when editing.';
+  font-size: smaller;
+  opacity: 0.5;
 }
