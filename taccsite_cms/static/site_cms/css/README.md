@@ -17,4 +17,4 @@ See [repo `README.md` at "Static Files"](/README.md#static-files).
 
 [Core CMS]: https://github.com/TACC/Core-CMS
 [Core CMS Resources]: https://github.com/TACC/Core-CMS-Resources
-[Core Styles]: https://github.com/tacc-wbomar/Core-Styles
+[Core Styles]: https://github.com/TACC/Core-Styles
