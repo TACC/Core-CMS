@@ -10,14 +10,16 @@
     {% endif %}
     <li class="date date-published">
       <span>{% trans "Published" %}</span>&nbsp;
-      <time datetime="{{ post.date_published }}">
+      <time datetime="{{ post.date_published }}"
+            title="{{ post.date_published }}">
         {{ post.date_published|date:"DATE_FORMAT" }}
       </time>
     </li>
     {% if post.date_featured %}
     <li class="date date-featured">
       <span>{% trans "Published" %}</span>&nbsp;
-      <time datetime="{{ post.date_featured }}">
+      <time datetime="{{ post.date_featured }}"
+            title="{{ post.date_featured }}">
           {{ post.date_featured|date:"DATE_FORMAT" }}
       </time>
     </li>
