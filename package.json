@@ -1,5 +1,5 @@
 {
-  "name": "core-cms",
+  "name": "@tacc/core-cms",
   "version": "3.5.2",
   "license": "MIT",
   "author": "TACC ACI WMA <wma-portals@gmail.com>",
@@ -9,45 +9,13 @@
     "npm": "8.5.5"
   },
   "devDependencies": {
-    "async": "^3.2.3",
-    "cssnano": "^5.1.5",
-    "dotenv": "^8.6.0",
-    "npm-watch": "^0.7.0",
-    "postcss": "^8.4.12",
-    "postcss-cli": "^9.1.0",
-    "postcss-css-variables": "^0.18.0",
-    "postcss-extend": "^1.0.5",
-    "postcss-import": "^14.1.0",
-    "postcss-preset-env": "^7.4.3"
+    "@tacc/core-styles": "git+https://git@github.com/TACC/Core-Styles.git",
+    "minimist": "^1.2.6",
+    "node-cmd": "^5.0.0"
   },
-  "repository": "git@github.com:TACC/CORE-cms.git",
-  "resolutions": {
-    "dot-prop": ">=5.2.0"
-  },
+  "repository": "git@github.com:TACC/Core-CMS.git",
   "scripts": {
-    "prebuild": "python3 taccsite_cms/settings_to_json.py",
-    "build": "npm run build:css",
-    "build:css": "node postcss.js",
-    "watch": "npm-watch"
+    "build": "bin/build-css-via-cli.js --project=$npm_config_project --build-id=$npm_config_build_id"
   },
-  "// scripts": {
-    "prebuild": "Export Django settings to JSON (for Node to use)",
-    "build": "Run all static file build commands",
-    "build:css": "Build stylesheets from source files",
-    "watch": "Build static files when source files change"
-  },
-  "watch": {
-    "build:css": {
-      "patterns": [
-        "./taccsite_cms/static/site_cms/css/src",
-        "./taccsite_custom/**/static/**/css/src"
-      ],
-      "extensions": "css",
-      "runOnChangeOnly": false
-    }
-  },
-  "// watch": {
-    "build:css": "macOS requires object-based conifguration",
-    "build:css // SEE": "https://github.com/M-Zuber/npm-watch/issues/35"
-  }
+  "homepage": "https://github.com/TACC/Core-CMS"
 }
