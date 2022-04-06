@@ -16,6 +16,24 @@ Styleguide Components.DjangoCMS.Blog
 
 
 
+/* Blog */
+
+.app-blog {
+  --item-buffer: 20px;
+}
+
+
+
+
+
+/* List */
+
+.blog-list header {
+  margin-bottom: var(--item-buffer);
+}
+
+
+
 
 /* Article */
 
@@ -108,8 +126,6 @@ ul.post-detail {
 /* Article Item */
 
 :--article-item {
-  --buffer: 20px;
-
   display: grid;
   grid-template-areas:
     'media head'
@@ -120,9 +136,9 @@ ul.post-detail {
 :--article-item .blog-lead    { grid-area: desc }
 
 :--article-item + article {
-  margin-top: var(--buffer);
+  margin-top: var(--item-buffer);
   border-top: var(--global-border-width--normal) solid var(--global-color-primary--dark);
-  padding-top: var(--buffer);
+  padding-top: var(--item-buffer);
 }
 
 
@@ -258,7 +274,7 @@ ul.post-detail {
 /* Article Item - Footer */
 
 .read-more a:hover {
-  --outline-offset: var(--buffer);
+  --outline-offset: var(--item-buffer);
   @extend %x-article-link-hover;
 }
 .read-more a:active {
