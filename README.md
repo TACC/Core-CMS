@@ -7,7 +7,7 @@ The base CMS code for TACC WMA Workspace Portals & Websites
 
 - [Camino], a Docker container-based deployment scheme
 - [Core Portal], the base Portal code for TACC WMA CMS Websites
-- [Core CMS Styles], the custom UI pattern code for TACC WMA CMS Websites
+- [Core Styles], the custom UI pattern code for TACC WMA CMS Websites
 - [Core CMS Resources], the custom CMS code for TACC WMA CMS Websites
 - [Core Portal Deployments], private repository that facilitates deployments of [Core Portal] images via [Camino] and Jenkins
 
@@ -55,11 +55,11 @@ Settings may be customized piecemeal by adding, in any of these files, only the 
 <sub>\* This is a "Precedence" column. [A file with a higher precedence value overrides one of a lower value.](https://github.com/TACC/Core-CMS/blob/929dc4b/taccsite_cms/settings.py#L458-L478)</sub>\
 <sub>† See [If You Want to Test Custom Resources per CMS Project](#if-you-want-to-test-custom-resources-per-cms-project).</sub>
 
-##### If You Run this CMS Independent of [Core-Portal](https://github.com/TACC/Core-Portal/)
+##### If You Run this CMS Independent of [Core Portal]
 
 Add `INCLUDES_CORE_PORTAL = False` to `taccsite_cms/settings_local.py` (to avoid [Not Found: `core/markup/nav/`](https://github.com/TACC/Core-CMS/wiki/Not-Found%3A--core-markup-nav)).
 
-##### If You Want to Use This With Local [Core-Portal](https://github.com/TACC/Core-Portal/) Instance
+##### If You Want to Use This With Local [Core Portal] Instance
 
 Follow [How to Use a Custom Docker Compose File](https://github.com/TACC/Core-CMS/wiki/How-to-Use-a-Custom-Docker-Compose-File).
 
@@ -259,7 +259,7 @@ If you need to change files within `node_modules/@tacc/core-styles/source`:
 2. Make and commit changes.
 3. Open pull request.
 4. After PR is merged.
-5. In [Core-CMS], update [Core-Styles] module commit:
+5. In [Core CMS], update [Core Styles] module commit:
 
   ```bash
   npm install git+https://git@github.com/TACC/Core-Styles.git
@@ -269,7 +269,7 @@ If you need to change files within `node_modules/@tacc/core-styles/source`:
 
 #### Testing Core Styles Changes Locally
 
-If you need to test file changes with [Core-CMS] changes:
+If you need to test file changes with [Core CMS] changes:
 
 1. Clone [Core Styles].
 2. Allow live edit of node module via your [Core Styles] clone:
@@ -288,14 +288,14 @@ If you need to test file changes with [Core-CMS] changes:
     npm install postcss-cli --no-save
     ```
 
-4. Make changes in your [Core-Styles] clone as necessary.
+4. Make changes in your [Core Styles] clone as necessary.
 5. Build changes.\*
 
 <sub>\* See [How to Build Static Files](#how-to-build-static-files).</sub>
 
 #### Testing Core Styles Changes Remotely
 
-If you need to test [Core-CMS] and [Core-Styles] changes on a server:
+If you need to test [Core CMS] and [Core Styles] changes on a server:
 
 1. Push changes onto a [Core Styles] branch (not `main`).
 2. Install [Core Styles] at that branch:
