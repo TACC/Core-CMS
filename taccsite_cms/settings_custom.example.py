@@ -49,7 +49,7 @@ CMS_TEMPLATES = (
 _CUSTOM_BRANDING = [
     "sgci",
     "brainmap-cms/img/org_logos/sgci-logo-sans-text.svg",
-    "branding-logo--tall",
+    "branding-logo--short",
     "https://sciencegateways.org/",
     "_blank",
     "SGCI Logo",
