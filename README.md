@@ -251,6 +251,66 @@ If you need to change files within `/taccsite_custom`:
 <sub>To learn more, see [Static Files](#static-files).</sub>
 
 
+### Changing Core Styles
+
+If you need to change files within `node_modules/@tacc/core-styles/source`:
+
+1. Clone [Core Styles].
+2. Make and commit changes.
+3. Open pull request.
+4. After PR is merged.
+5. In [Core-CMS], update [Core-Styles] module commit:
+
+  ```bash
+  npm install git+https://git@github.com/TACC/Core-Styles.git
+  ```
+
+6. Commit changes.
+
+#### Testing Core Styles Changes Locally
+
+If you need to test file changes with [Core-CMS] changes:
+
+1. Clone [Core Styles].
+2. Allow live edit of node module via your [Core Styles] clone:
+
+    ```bash
+    cd path-to-Core-Styles
+    npm link
+    cd path-to-Core-CMS
+    npm link @tacc/core-styles
+    ```
+
+3. Re-install [Core Styles] dependency `postcss-cli`:
+
+    ```bash
+    # cd path-to-Core-CMS
+    npm install postcss-cli --no-save
+    ```
+
+4. Make changes in your [Core-Styles] clone as necessary.
+5. Build changes.\*
+
+<sub>\* See [How to Build Static Files](#how-to-build-static-files).</sub>
+
+#### Testing Core Styles Changes Remotely
+
+If you need to test [Core-CMS] and [Core-Styles] changes on a server:
+
+1. Push changes onto a [Core Styles] branch (not `main`).
+2. Install [Core Styles] at that branch:
+
+    ```bash
+    # cd path-to-Core-CMS
+    npm install --save-dev git+https://git@github.com/TACC/Core-Styles.git#your-branch-name
+    ```
+
+3. Deploy changes to test server.\*
+
+<sub>\* See [Deployment Steps](#deployment-steps).</sub>
+
+
+
 ## Running Commands in Container
 
 __If using `docker-compose.yml` then__ run certain commands via shell within container (because files are __not__ re-synced with local machine).
