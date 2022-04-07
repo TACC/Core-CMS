@@ -7,6 +7,7 @@ The base CMS code for TACC WMA Workspace Portals & Websites
 
 - [Camino], a Docker container-based deployment scheme
 - [Core Portal], the base Portal code for TACC WMA CMS Websites
+- [Core Styles], the custom UI pattern code for TACC WMA CMS Websites
 - [Core CMS Resources], the custom CMS code for TACC WMA CMS Websites
 - [Core Portal Deployments], private repository that facilitates deployments of [Core Portal] images via [Camino] and Jenkins
 
@@ -35,20 +36,11 @@ After you clone the repository locally, there are several configuration steps re
 
 #### Required
 
-1. Create a `.env` file\*† at the root of the project with this content:
-
-    ```bash
-    CUSTOM_ASSET_DIR=name-of-project
-    ```
-
-1. Initialize / Update submodules.
+1. Initialize / Update submodules:
     1. `git submodule init`\
         <sub>Adds [Core CMS Resources] repo as submodule at `taccsite_custom/`. Only necessary once per parent repo clone.</sub>
     2. `git submodule update`\
         <sub>Downloads code from pinned commit of [Core CMS Resources] repo to `taccsite_custom/`.</sub>
-
-<sub>\* A ["dotenv" file](https://hexdocs.pm/dotenvy/dotenv-file-format.html) is a file, with or without a name, that has the `.env` extension.</sub>\
-<sub>† Where `name-of-project` matches a directory from `/taccsite_custom`.</sub>
 
 #### Optional
 
@@ -63,11 +55,11 @@ Settings may be customized piecemeal by adding, in any of these files, only the 
 <sub>\* This is a "Precedence" column. [A file with a higher precedence value overrides one of a lower value.](https://github.com/TACC/Core-CMS/blob/929dc4b/taccsite_cms/settings.py#L458-L478)</sub>\
 <sub>† See [If You Want to Test Custom Resources per CMS Project](#if-you-want-to-test-custom-resources-per-cms-project).</sub>
 
-##### If You Run this CMS Independent of [Core-Portal](https://github.com/TACC/Core-Portal/)
+##### If You Run this CMS Independent of [Core Portal]
 
 Add `INCLUDES_CORE_PORTAL = False` to `taccsite_cms/settings_local.py` (to avoid [Not Found: `core/markup/nav/`](https://github.com/TACC/Core-CMS/wiki/Not-Found%3A--core-markup-nav)).
 
-##### If You Want to Use This With Local [Core-Portal](https://github.com/TACC/Core-Portal/) Instance
+##### If You Want to Use This With Local [Core Portal] Instance
 
 Follow [How to Use a Custom Docker Compose File](https://github.com/TACC/Core-CMS/wiki/How-to-Use-a-Custom-Docker-Compose-File).
 
@@ -76,8 +68,7 @@ Follow [How to Use a Custom Docker Compose File](https://github.com/TACC/Core-CM
 All CMS projects (besides the stand-alone CMS core), store project-specific resources in the `taccsite_custom` submodule.
 
 1. Create a `taccsite_cms/settings_custom.py` symlink to `taccsite_custom/name-of-project/settings_custom.py`.\*†
-2. Update the `.env` file so `CUSTOM_ASSET_DIR=name-of-project`.\*
-3. Build project-specific static files. _See [Static Files](/README.md#static-files)._
+2. Build project-specific static files. _See [Static Files](/README.md#static-files)._
 
 <sub>\* Where `name-of-project` matches a directory from `/taccsite_custom`.</sub>\
 <sub>† Example (from project root): `ln -s ../taccsite_custom/name-of-project/settings_custom.py taccsite_cms/settings_custom.py`\*</sub>
@@ -187,21 +178,26 @@ If you changes files in any `static/` directory, you may need to follow some of 
 #### Quick Start
 
 0. _(assumed)_ Install missing or out-of-date Node dependencies.\*
-1. _(optional)_ Make changes to `/taccsite_custom/name-of-project/static/name-of-project/css/src` files.\†‡
+1. _(optional)_ Make changes to `/taccsite_custom/name-of-project/static/name-of-project/css/src` files. †‡
 2. Build static files from source files.\
     Via shell:
-    1. `npm run build` or\
-        `npm run build --project=name-of-project`\†
+    1. `npm run build`\
+        or\
+        `npm run build --project=name-of-project` †\
+        or\
+        `npm run build (...) --build-id=optional-identifier` §
 3. _(to debug)_ Review respective files' content in\
-    `/taccsite_custom/name-of-project/static/name-of-project/css/build`.\†
+    `/taccsite_custom/name-of-project/static/name-of-project/css/build`. †
 4. "Collect" static files. _See [How to Collect Static Files](#how-to-collect-static-files)._
-5. _(to debug)_ Confirm respective output changed in\
-    `/taccsite_cms/static/site_cms/css/build` and/or\
-    `/taccsite_custom/static/name-of-project/css/build`.\†
+5. _(to debug)_ Confirm respective output changed in:\
+    `/taccsite_cms/static/site_cms/css/build`\
+    and/or\
+    `/taccsite_custom/static/name-of-project/css/build` †
 
 <sub>\* The recommended command to install expected dependencies is `npm ci`.</sub>\
 <sub>† Where `name-of-project` matches a directory from `/taccsite_custom`.</sub>\
-<sub>‡ To commit such changes, see [Changing Custom Resources](#changing-custom-resources)</sub>
+<sub>‡ To commit such changes, see [Changing Custom Resources](#changing-custom-resources).</sub>\
+<sub>§ A build ID can tag files (e.g. preserved comment in stylesheet).</sub>
 
 #### How to Build Static Files
 
@@ -253,6 +249,66 @@ If you need to change files within `/taccsite_custom`:
     _For more detailed steps, see [How to Change Submodule Branch Commit](https://github.com/TACC/Core-CMS/wiki/How-to-Change-Submodule-Branch-Commit)._
 
 <sub>To learn more, see [Static Files](#static-files).</sub>
+
+
+### Changing Core Styles
+
+If you need to change files within `node_modules/@tacc/core-styles/source`:
+
+1. Clone [Core Styles].
+2. Make and commit changes.
+3. Open pull request.
+4. After PR is merged.
+5. In [Core CMS], update [Core Styles] module commit:
+
+  ```bash
+  npm install git+https://git@github.com/TACC/Core-Styles.git
+  ```
+
+6. Commit changes.
+
+#### Testing Core Styles Changes Locally
+
+If you need to test file changes with [Core CMS] changes:
+
+1. Clone [Core Styles].
+2. Allow live edit of node module via your [Core Styles] clone:
+
+    ```bash
+    cd path-to-Core-Styles
+    npm link
+    cd path-to-Core-CMS
+    npm link @tacc/core-styles
+    ```
+
+3. Re-install [Core Styles] dependency `postcss-cli`:
+
+    ```bash
+    # cd path-to-Core-CMS
+    npm install postcss-cli --no-save
+    ```
+
+4. Make changes in your [Core Styles] clone as necessary.
+5. Build changes.\*
+
+<sub>\* See [How to Build Static Files](#how-to-build-static-files).</sub>
+
+#### Testing Core Styles Changes Remotely
+
+If you need to test [Core CMS] and [Core Styles] changes on a server:
+
+1. Push changes onto a [Core Styles] branch (not `main`).
+2. Install [Core Styles] at that branch:
+
+    ```bash
+    # cd path-to-Core-CMS
+    npm install --save-dev git+https://git@github.com/TACC/Core-Styles.git#your-branch-name
+    ```
+
+3. Deploy changes to test server.\*
+
+<sub>\* See [Deployment Steps](#deployment-steps).</sub>
+
 
 
 ## Running Commands in Container
@@ -338,6 +394,7 @@ Sign your commits ([see this link](https://help.github.com/en/github/authenticat
 [Core Portal Deployments]: https://github.com/TACC/Core-Portal-Deployments
 [Camino]: https://github.com/TACC/Camino
 [Core CMS]: https://github.com/TACC/Core-CMS
+[Core Styles]: https://github.com/TACC/Core-Styles
 [Core CMS Resources]: https://github.com/TACC/Core-CMS-Resources
 [Core Portal]: https://github.com/TACC/Core-Portal
 [1]: https://docs.docker.com/get-docker/
