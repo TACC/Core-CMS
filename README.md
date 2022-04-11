@@ -281,6 +281,8 @@ If you need to test file changes with [Core CMS] changes:
     npm link @tacc/core-styles
     ```
 
+    _**Do** use `--save`.\* Do **not** commit the changes to `package.json` **nor** `package-lock.json`._
+
 3. Re-install [Core Styles] dependency `postcss-cli`:
 
     ```bash
@@ -289,9 +291,10 @@ If you need to test file changes with [Core CMS] changes:
     ```
 
 4. Make changes in your [Core Styles] clone as necessary.
-5. Build changes.\*
+5. Build changes.†
 
-<sub>\* See [How to Build Static Files](#how-to-build-static-files).</sub>
+<sub>\* Use of `npm link` _without `--save`_ is overwritten by `npm install`. See [details](https://github.com/npm/cli/issues/2380#issuecomment-1029967927).</sub>\
+<sub>† See [How to Build Static Files](#how-to-build-static-files).</sub>
 
 #### Testing Core Styles Changes Remotely
 
