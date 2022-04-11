@@ -1,3 +1,23 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+# The "Plural-Forms" fixes a bug (https://stackoverflow.com/a/64525866/11817077)
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Last-Translator: Wesley B\n"
+"Language-Team: TACC-ACI-WMA <wma_prtl@tacc.utexas.edu>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+
+
 #: djangocms-blog
 #: templates/djangocms_blog/includes/blog_meta.html:6
 msgid "by"
