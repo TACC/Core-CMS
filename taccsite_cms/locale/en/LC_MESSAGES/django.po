@@ -24,6 +24,7 @@ msgstr ""
 "And any post that unsets its thumbnail image size will use this setting value."
 
 
+
 #: djangocms-picture
 #: models.py:117
 msgid "Aligns the image according to the selected option."
