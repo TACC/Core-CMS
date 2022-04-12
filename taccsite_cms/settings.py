@@ -84,7 +84,7 @@ CMS_TEMPLATES = (
 CMS_PERMISSION = True
 
 ########################
-# GOOGLE ANALYTICS
+# TACC: GOOGLE ANALYTICS
 ########################
 
 # To use during dev, Tracking Protection in browser needs to be turned OFF.
