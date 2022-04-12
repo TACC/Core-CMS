@@ -124,3 +124,7 @@ BLOG_AUTO_NAMESPACE = 'News'
 
 # Miscellaneous settings
 BLOG_ENABLE_COMMENTS = False
+
+# TACC settings
+TACC_BLOG_SHOW_CATEGORIES = True
+TACC_BLOG_SHOW_TAGS = True

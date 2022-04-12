@@ -180,6 +180,13 @@ LOGOUT_REDIRECT_URL = '/'
 CEP_AUTH_VERIFICATION_ENDPOINT = 'http://django:6000'
 
 ########################
+# TACC: NEWS/BLOG
+########################
+
+TACC_BLOG_SHOW_CATEGORIES = True
+TACC_BLOG_SHOW_TAGS = True
+
+########################
 # CLIENT BUILD SETTINGS
 ########################
 
@@ -508,5 +515,7 @@ SETTINGS_EXPORT = [
     'FAVICON',
     'INCLUDES_CORE_PORTAL',
     'GOOGLE_ANALYTICS_PROPERTY_ID',
-    'GOOGLE_ANALYTICS_PRELOAD'
+    'GOOGLE_ANALYTICS_PRELOAD',
+    'TACC_BLOG_SHOW_CATEGORIES',
+    'TACC_BLOG_SHOW_TAGS'
 ]
