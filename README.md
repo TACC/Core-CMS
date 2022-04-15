@@ -278,7 +278,7 @@ If you need to test file changes with [Core CMS] changes:
     cd path-to-Core-Styles
     npm link
     cd path-to-Core-CMS
-    npm link @tacc/core-styles
+    npm link @tacc/core-styles --save
     ```
 
     _**Do** use `--save`.\* Do **not** commit the changes to `package.json` **nor** `package-lock.json`._
