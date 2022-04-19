@@ -1,4 +1,4 @@
-FROM python:3.8.12-buster as python-base
+FROM python:3.8-buster as python-base
 
 LABEL maintainer="TACC-ACI-WMA <wma_prtl@tacc.utexas.edu>"
 
@@ -51,8 +51,8 @@ RUN poetry install
 # `production` image is used for deployed runtime environments
 FROM python-base as production
 
-# install node 12.x
-RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
+# install node
+RUN curl -sL https://deb.nodesource.com/setup_17.x | bash -
 RUN apt-get install -y nodejs
 
 COPY --from=builder-base $PYSETUP_PATH $PYSETUP_PATH
@@ -63,4 +63,7 @@ COPY . /code
 WORKDIR /code
 
 # build assets
-RUN npm ci && npm run build
+RUN npm ci
+ARG PROJECT_NAME
+ARG BUILD_ID
+RUN npm run build --project=$PROJECT_NAME --build-id=$BUILD_ID
