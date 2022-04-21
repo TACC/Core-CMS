@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [3.6.0] - 2022-04-15: CSS to Core-Styles, BM Logo Tweaks, Dependency Updates
 
-### Changes
+### Changed
 
 - FP-1496: CSS Build to Core-Styles (#448, c4e1a8ec, e5d4b2b, 8e2467e, 13f9833)
 - BM-29/30: Brainmap Logo Tweaks (SGCI/UTHSCSA) (#476)
