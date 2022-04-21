@@ -16,7 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- fix(templatetags): assumed menu item redirect_url (81a01c1, 7afcef9)
+- Quick: Fix redirect_url so News Category Template Does Not Crash (81a01c1, 7afcef9)
 
 ### Removed
 
