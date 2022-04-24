@@ -7,6 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.6.0] - 2022-04-15: CSS to Core-Styles, BM Logo Tweaks, Dependency Updates
+
+### Changed
+
+- FP-1496: CSS Build to Core-Styles (#448, c4e1a8ec, e5d4b2b, 8e2467e, 13f9833)
+- BM-29/30: Brainmap Logo Tweaks (SGCI/UTHSCSA) (#476)
+
+### Fixed
+
+- Quick: Fix redirect_url so News Category Template Does Not Crash (81a01c1, 7afcef9)
+
+### Removed
+
+- Quick: Remove Unused JavaScript (#475)
+
+### Security
+
+- FP-1564: Update Core-CMS Dependencies (#471, 1eaccec, 00fa517)
+
 ## [3.5.2] - 2022-03-23: Fix v3.5.1 ProTX Bug
 
 ### Fixed
@@ -338,7 +357,8 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 ## [2.0.0] - 2021-03-31
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.5.2...HEAD
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.6.0...HEAD
+[3.6.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.6.0
 [3.5.2]: https://github.com/TACC/Core-CMS/releases/tag/v3.5.2
 [3.5.1]: https://github.com/TACC/Core-CMS/releases/tag/v3.5.1
 [3.5.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.5.0
