@@ -56,15 +56,12 @@
 <body class="o-site  {% block page_type_class %}{% endblock page_type_class %}">
   {% cms_toolbar %}
 
-  <!-- Custom Navigation Block per Site to Customize the Site Header Branding. -->
   <header class="o-site__head">
     {% include "header.html" %}
   </header>
 
-  <!-- Page content. -->
   <main class="o-site__body">
-    <!-- This block used regardless. -->
-    {% block content %}
+  {% block content %}
 
     {# To allow extra Container in page structure by hiding extra padding #}
     <style type="text/css">
@@ -77,25 +74,23 @@
       {% placeholder "content" %}
     </div>
 
-    {% endblock content %}
-    <!-- End of Block. -->
+  {% endblock content %}
   </main>
 
-  <!-- Footer block. -->
   <footer class="c-footer  s-footer  o-site__foot">
-    {% block footer %}
+  {% block footer %}
+
     {% static_placeholder "footer-content" or %}
     <p>©2020 Texas Advanced Computing Center, The University of Texas at Austin, Office of the Vice President for Research.</p>
     {% endstatic_placeholder %}
-    {% endblock footer %}
+
+  {% endblock footer %}
   </footer>
 
   <!-- Site Assets (Delayed). -->
-  {# The core site assets (late load) (can NOT be replaced by custom assets) #}
   {% include 'assets_site_delayed.html' %}
 
   <!-- Custom Assets (Delayed). -->
-  {# Placeholder for custom assets (late load) #}
   {% block assets_custom_delayed %}
   {% include 'assets_custom_delayed.html' %}
   {% endblock assets_custom_delayed %}
