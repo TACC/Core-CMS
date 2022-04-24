@@ -84,7 +84,7 @@ CMS_TEMPLATES = (
 CMS_PERMISSION = True
 
 ########################
-# GOOGLE ANALYTICS
+# TACC: GOOGLE ANALYTICS
 ########################
 
 # To use during dev, Tracking Protection in browser needs to be turned OFF.
@@ -110,6 +110,10 @@ ES_HOSTS = 'http://elasticsearch:9200'
 ES_INDEX_PREFIX = 'cms-dev-{}'
 ES_DOMAIN = 'http://localhost:8000'
 
+########################
+# TACC: (DEPRECATED)
+########################
+
 """
 Optional theming of CMS (certain themes may only affect some elements)
 Usage:
@@ -117,6 +121,10 @@ Usage:
 - 'has-dark-logo'
 """
 THEME = None
+
+########################
+# TACC: BRANDING
+########################
 
 TACC_BRANDING = [
     "tacc",
@@ -153,6 +161,10 @@ NSF_BRANDING = [
 
 BRANDING = [TACC_BRANDING, UTEXAS_BRANDING]
 
+########################
+# TACC: LOGOS
+########################
+
 LOGO = [
     "portal",
     "site_cms/img/org_logos/portal.png",
@@ -167,6 +179,10 @@ LOGO = [
 FAVICON = {
     "img_file_src": "site_cms/img/favicons/favicon.ico"
 }
+
+########################
+# TACC: PORTAL
+########################
 
 INCLUDES_CORE_PORTAL = True
 
@@ -325,7 +341,8 @@ INSTALLED_APPS = [
 def get_subdirs_as_module_names(path):
     module_names = []
     for entry in os.scandir(path):
-        if entry.is_dir():
+        is_app = entry.path.find('_readme') == -1
+        if entry.is_dir() and is_app:
             # FAQ: There are different root paths to tweak:
             #      - Containers use `/code/…`
             #      - Python Venvs use `/srv/taccsite/…`
