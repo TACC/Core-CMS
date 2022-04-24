@@ -1,4 +1,5 @@
 /* https://github.com/TACC/Core-Styles/blob/main/source/_imports/settings/props.space.css */
+@import url("_imports/settings/props.space.css");
 
 :root {
   /* SEE: https://confluence.tacc.utexas.edu/x/dYAZCg */
