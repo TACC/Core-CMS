@@ -12,9 +12,11 @@ _This directory exists in `static/` __only__ because it is customary, using Djan
 
 ## Rules
 
-1. Files __must__ import styles from [`./_imports/`](./_imports).
+1. Files __must__ import styles from [Core Styles].[^1]
 1. Files __must__ be [named with appropriate format](#naming-format).
 1. Files __must__ be [documented in appropriate format](#documentation-format).
+
+[^1]: The `_migrations` directory is a short-term exception.
 
 ## Naming Format
 
@@ -24,6 +26,9 @@ _This directory exists in `static/` __only__ because it is customary, using Djan
 | `template.*.css` | styles that apply only to certain templates
 | `page.*.css` | styles that apply only to certain pages
 | `app.*.css` | styles that apply only to certain apps (a.k.a. plugins)
+| `migrate.*.css` | styles that apply to websites that have been migrated[^2]
+
+[^2]: When sensible, use the migration folder name, i.e. `migrate.v1_v2.css`.
 
 ## Documentation Format
 
@@ -43,3 +48,8 @@ _This directory exists in `static/` __only__ because it is customary, using Djan
 
 ...
 ```
+
+
+<!-- Link Aliases -->
+
+[Core Styles]: https://github.com/TACC/Core-Styles

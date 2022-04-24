@@ -1,49 +1,21 @@
 {
-  "name": "portal-cms",
-  "version": "2.1.0",
+  "name": "@tacc/core-cms",
+  "version": "3.5.2",
   "license": "MIT",
-  "description": "The core CMS codebase for all new and updated TACC CMS sites.",
-  "scripts": {
-    "prebuild": "python3 taccsite_cms/settings_to_json.py",
-    "build": "npm run build:css",
-    "build:css": "node postcss.js",
-    "watch": "npm-watch"
+  "author": "TACC ACI WMA <wma-portals@gmail.com>",
+  "description": "The TACC ACI-WMA Core CMS codebase used by TACC Portals.",
+  "engines": {
+    "node": "17.8.0",
+    "npm": "8.5.5"
   },
-  "// scripts": {
-    "prebuild": "Export Django settings to JSON (for Node to use)",
-    "build": "Run all static file build commands",
-    "build:css": "Build stylesheets from source files",
-    "watch": "Build static files when source files change"
-  },
-  "repository": "git@github.com:TACC/CORE-cms.git",
   "devDependencies": {
-    "async": "^3.2.0",
-    "cssnano": "^4.1.10",
-    "dotenv": "^8.2.0",
-    "npm-watch": "^0.7.0",
-    "postcss-cli": "^7.1.2",
-    "postcss-css-variables": "^0.17.0",
-    "postcss-extend": "^1.0.5",
-    "postcss-import": "^12.0.1",
-    "postcss-preset-env": "^6.7.0",
-    "yarn": "^1.22.5"
+    "@tacc/core-styles": "git+https://git@github.com/TACC/Core-Styles.git#task/FP-1378-consistent-space-above-footer",
+    "minimist": "^1.2.6",
+    "node-cmd": "^5.0.0"
   },
-  "watch": {
-    "build:css": {
-      "patterns": [
-        "./taccsite_cms/static/site_cms/css/src",
-        "./taccsite_custom/**/static/**/css/src"
-      ],
-      "extensions": "css",
-      "runOnChangeOnly": false
-    }
+  "repository": "git@github.com:TACC/Core-CMS.git",
+  "scripts": {
+    "build": "bin/build-css-via-cli.js --project=$npm_config_project --build-id=$npm_config_build_id"
   },
-  "// watch": {
-    "build:css": "macOS requires object-based conifguration",
-    "build:css // SEE": "https://github.com/M-Zuber/npm-watch/issues/35"
-  },
-  "resolutions": {
-    "dot-prop": ">=5.2.0"
-  },
-  "author": "TACC ACI WMA <wma-portals@gmail.com>"
+  "homepage": "https://github.com/TACC/Core-CMS"
 }
