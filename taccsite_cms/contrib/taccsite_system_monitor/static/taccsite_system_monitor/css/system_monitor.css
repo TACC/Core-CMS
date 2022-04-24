@@ -1,0 +1,82 @@
+/*
+System Monitor a.k.a. SysMon
+
+Styles for the system monitor table that assumes external code:
+
+- custom properties
+  (for `--global-...`)
+- Bootstrap
+  (for badge)
+- Iconworks
+  (for icon)
+
+Styleguide Trumps.Scopes.SystemMonitor
+*/
+
+/* Container */
+
+.s-system-monitor {
+  font-size: 1.4rem;
+  min-width: 320px;
+}
+
+/* Table */
+
+.s-system-monitor table {
+  /* vert. `padding` + vert. `border-spacing` + `border-width` = 14px */
+  padding: 6px 0;
+
+  border: 1px solid var(--global-color-primary--xx-light);
+  border-radius: 9px;
+  border-spacing: 14px 7px; /* Overwrite Bootstrap 3 */
+  border-collapse: separate; /* Overwrite Bootstrap 4 */
+}
+.s-system-monitor thead > tr {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.s-system-monitor th {
+  font-weight: var(--bold);
+}
+.s-system-monitor td {
+  font-weight: var(--medium);
+}
+
+/* Overwrite Bootstrap Class */
+.s-system-monitor .table {
+  margin-bottom: 0px;
+}
+.s-system-monitor .table-dark {
+  color: var(--global-color-primary--normal);
+  background-color: var(--global-color-primary--xx-dark);
+}
+.s-system-monitor .table thead th {
+  border-bottom: 1px solid var(--global-color-primary--dark);
+}
+.s-system-monitor .table th,
+.s-system-monitor .table td {
+  vertical-align: middle;
+  border: none;
+  padding: 0 0 5px;
+}
+.s-system-monitor .table td {
+  padding: 0;
+}
+
+/* Status Label */
+
+.s-system-monitor .badge {
+  font-family: Roboto;
+}
+
+/* Overwrite Bootstrap */
+.s-system-monitor .badge {
+  border-radius: 3px;
+  font-size: 1.3rem;
+  font-weight: normal;
+}
+
+/* Overwrite IconWorks */
+.s-system-monitor .iconworks:before {
+  padding-right: 0.5em;
+}

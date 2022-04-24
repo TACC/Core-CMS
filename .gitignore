@@ -16,7 +16,6 @@ build
 !build/README.md
 
 ## environment variables
-.env
 docker_repo.var
 
 # Static and Media folders
@@ -28,6 +27,8 @@ repo_name.var
 # Secrets and Customizations
 taccsite_cms/secrets.py
 *.custom.yml
+*settings_custom*.py
+*settings_local*.py
 
 # Makefile var
 cms_name.var

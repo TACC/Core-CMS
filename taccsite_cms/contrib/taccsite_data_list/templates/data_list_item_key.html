@@ -1,0 +1,9 @@
+{% load cms_tags %}
+
+{% if instance.use_plugin_as_key and instance.child_plugin_instances|length %}
+  {% for plugin_instance in instance.child_plugin_instances %}
+    {% render_plugin plugin_instance %}
+  {% endfor %}
+{% else %}
+  {{ instance.key }}
+{% endif %}
