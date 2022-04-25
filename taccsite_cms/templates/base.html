@@ -49,48 +49,41 @@
 <body class="o-site  {% block page_type_class %}{% endblock page_type_class %}">
   {% cms_toolbar %}
 
-  <!-- Custom Navigation Block per Site to Customize the Site Header Branding. -->
-  <div class="o-site__head">
+  <header class="o-site__head">
     {% include "header.html" %}
-  </div>
+  </header>
 
-  <!-- Page content. -->
-  <div id="cms-content" class="o-site o-site__body">
-    <div id="content-wrap" class="o-site__body">
-      <!-- This block used regardless. -->
-      {% block content %}
+  <main id="cms-content" class="o-site__body">
+  {% block content %}
 
-      {# To allow extra Container in page structure by hiding extra padding #}
-      <style type="text/css">
-        .container > .s-breadcrumbs + .container { padding-inline: 0; }
-      </style>
+    {# To allow extra Container in page structure by hiding extra padding #}
+    <style type="text/css">
+      .container > .s-breadcrumbs + .container { padding-inline: 0; }
+    </style>
 
-      {# To wrap breadcrumbs in Container without relying on CMS editor #}
-      <div class="container">
-        {% include "nav_cms_breadcrumbs.html" %}
-        {% placeholder "content" %}
-      </div>
-
-      {% endblock content %}
-      <!-- End of Block. -->
+    {# To wrap breadcrumbs in Container without relying on CMS editor #}
+    <div class="container">
+      {% include "nav_cms_breadcrumbs.html" %}
+      {% placeholder "content" %}
     </div>
 
-    <!-- Footer block. -->
-    <footer class="c-footer  s-footer  o-site__foot">
-      {% block footer %}
-      {% static_placeholder "footer-content" or %}
-      <p>©2020 Texas Advanced Computing Center, The University of Texas at Austin, Office of the Vice President for Research.</p>
-      {% endstatic_placeholder %}
-      {% endblock footer %}
-    </footer>
-  </div>
+  {% endblock content %}
+  </main>
+
+  <footer class="c-footer  s-footer  o-site__foot">
+  {% block footer %}
+
+    {% static_placeholder "footer-content" or %}
+    <p>©2020 Texas Advanced Computing Center, The University of Texas at Austin, Office of the Vice President for Research.</p>
+    {% endstatic_placeholder %}
+
+  {% endblock footer %}
+  </footer>
 
   <!-- Site Assets (Delayed). -->
-  {# The core site assets (late load) (can NOT be replaced by custom assets) #}
   {% include 'assets_site_delayed.html' %}
 
   <!-- Custom Assets (Delayed). -->
-  {# Placeholder for custom assets (late load) #}
   {% block assets_custom_delayed %}
   {% include 'assets_custom_delayed.html' %}
   {% endblock assets_custom_delayed %}
