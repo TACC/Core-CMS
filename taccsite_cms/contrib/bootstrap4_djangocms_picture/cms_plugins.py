@@ -9,6 +9,9 @@ try:
     from djangocms_picture.cms_plugins import PicturePlugin
     from djangocms_bootstrap4.contrib.bootstrap4_picture.cms_plugins import Bootstrap4PicturePlugin
 
+    # To clairfy for users how this plugin differs from Generic > Image
+    Bootstrap4PicturePlugin.name = _('Picture / Image (Responsive)')
+
     # To re-register generic Picture plugin
     # SEE: https://github.com/django-cms/djangocms-bootstrap4/blob/master/djangocms_bootstrap4/contrib/bootstrap4_picture/cms_plugins.py#L54
     plugin_pool.register_plugin(PicturePlugin)
