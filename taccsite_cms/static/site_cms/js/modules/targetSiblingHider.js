@@ -13,13 +13,13 @@ export default class TargetSiblingHider {
    * @param {boolean} [options.mustCreateShowAllLink=true] - Whether to create "show all" link
    * @param {boolean} [options.mustScrollToTarget=false] - Whether to scroll to target element
    * @param {array<string>} [options.showAllLinkClassNames=[]] - List of extra classnames for "show all" link (only works with `mustCreateShowAllLink: true`)
+   * @param {HTMLElement} [options.showAllLink] - A "show all" link to use
    * @param {HTMLElement} [options.scopeElement=document] - The element within which to control toggling
    * @param {string} [options.ancestorSelector] - Whether & How to select ancestor to toggle (instead of target)
    * @param {array<HTMLElement>} [options.ignoreElements] - A list of elements to not hide nor show
    */
   constructor( options ) {
     this.#opts = Object.assign({
-      mustCreateShowAllLink: true,
       scopeElement: document,
       showAllLinkClassNames: [],
       ignoreElements: []
@@ -27,21 +27,28 @@ export default class TargetSiblingHider {
 
     this.showAllLink;
 
-    if ( this.#opts.mustCreateShowAllLink ) {
+    if ( ! options.mustCreateShowAllLink && ! options.showAllLink ) {
+      console.error('A "Show All" link must be provided or auto-created. Pass either "mustCreateShowAllLink" or "showAllLink".');
+    }
+    if ( options.mustCreateShowAllLink && options.showAllLink ) {
+      console.error('A "Show All" link can not be both provided and auto-created. Pass either "mustCreateShowAllLink" or "showAllLink".');
+    }
+
+    if ( this.#opts.mustCreateShowAllLink === true ) {
       this.showAllLink = this.createShowAllLink({
         classNames: this.#opts.showAllLinkClassNames
       });
-    } else {
-      this.showAllLink = this.#opts.scopeElement.getElementsByClassName(
-        this.#CLASSNAME.showAll
-      );
+      this.#opts.scopeElement.prepend( this.showAllLink );
+    } else if ( this.#opts.showAllLink ) {
+      this.showAllLink = this.#opts.showAllLink;
+      this.showAllLink.classList.add( this.#CLASSNAME.showAll );
+      this.showAllLink.href = '#'; /* triggers hide on click */
     }
 
-    this.showAllLink.addEventListener('click', this.showAll(
-      this.#opts.scopeElement
-    ));
+    this.showAllLink.addEventListener('click',
+      this.showAll( this.#opts.scopeElement )
+    );
     this.hide( this.showAllLink );
-    this.#opts.scopeElement.prepend( this.showAllLink );
 
     if ( this.#opts.mustScrollToTarget ) {
       this.enableScrollFix();
@@ -57,7 +64,7 @@ export default class TargetSiblingHider {
 
       const target = document.getElementById( location.hash.substring(1) );
 
-      // Check because our "show all" link's empty hash results in no target
+      // Check because auto "show all" link's empty hash results in no target
       if ( target ) {
         const elementsToHide = this.getElementsToHide( target );
 
