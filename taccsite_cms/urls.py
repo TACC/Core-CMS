@@ -41,6 +41,11 @@ urlpatterns += [
     url(r'^', include('cms.urls')),
 ]
 
+if apps.is_installed('pattern_library'):
+    urlpatterns.insert(0,
+        path('pattern-library/', include('pattern_library.urls'))
+    )
+
 # This is only needed when using runserver.
 if settings.DEBUG:
     urlpatterns += [
