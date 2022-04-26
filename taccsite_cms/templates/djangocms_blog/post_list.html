@@ -5,7 +5,9 @@
 {% block content_blog %}
 <section class="container">
     {% include "nav_cms_breadcrumbs.html" %}
+    {% spaceless %}
     {{ block.super }}
+    {% endspaceless %}
 </section>
 {% endblock content_blog %}
 
