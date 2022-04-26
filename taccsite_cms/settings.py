@@ -459,6 +459,9 @@ DJANGOCMS_STYLE_CHOICES = [
     # https://cep.tacc.utexas.edu/design-system/ui-patterns/c-recognition/
     'c-recognition c-recognition--style-light',
     'c-recognition c-recognition--style-dark',
+    # https://cep.tacc.utexas.edu/design-system/ui-patterns/c-nav/
+    'c-nav', # bare-bones instance
+    'c-nav c-nav--boxed',
 ]
 DJANGOCMS_STYLE_TAGS = [
     # Even though <div> is often NOT the most semantic choice;
@@ -468,7 +471,7 @@ DJANGOCMS_STYLE_TAGS = [
     # SEE: https://github.com/TACC/Core-CMS/pull/432
     'div',
     # Ordered by expected usage
-    'section', 'article', 'header', 'footer', 'aside',
+    'section', 'article', 'header', 'footer', 'aside', 'nav',
     # Not expected but not unreasonable
     'h1', 'h2', 'h3', 'h4', 'h5', 'h6'
 ]
