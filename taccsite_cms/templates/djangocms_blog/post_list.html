@@ -3,12 +3,19 @@
 {% load cms_tags i18n %}
 
 {% block content_blog %}
-<section class="container">
+<div class="container">
     {% include "nav_cms_breadcrumbs.html" %}
+    {# FAQ: The extended template adds `spaceless` but it fails #}
     {% spaceless %}
-    {{ block.super }}
+      {{ block.super }}
     {% endspaceless %}
-</section>
+    <script>
+      /* HACK: To replace « & » of "« Previous" & "Next »" with < & > */
+      [ ...document.querySelectorAll('.pagination a') ].forEach( a => {
+        a.innerText = a.innerText.replace('«', '<').replace('»', '>');
+      });
+    </script>
+</div>
 {% endblock content_blog %}
 
 {% block blog_title %}
