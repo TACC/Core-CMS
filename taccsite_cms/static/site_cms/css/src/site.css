@@ -11,8 +11,8 @@
 @import url("_imports/settings/max-width.css");
 /* Unique to CMS */
 @import url("./_imports/settings/color.css");
-@import url("./_imports/settings/space.css");
 @import url("./_imports/settings/font.css");
+@import url("./_imports/settings/space.css");
 
 /* GENERICS */
 /* Bootstrap performs much of this */
