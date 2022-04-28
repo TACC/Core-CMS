@@ -7,11 +7,12 @@
 
 /* SETTINGS */
 
-/* CAVEAT: This is already imported in `site.css`, but necessary here to
+/* CAVEAT: These are already imported in `site.css`, but necessary here to
            override Portal (which also loads `site.header.css`), so font
            variables are unfortunately overwritten 1x in CMS, 2x in Portal */
 /* TODO: Find a way to be modular, but not redundant; perhaps `env()` vars */
-@import url("./_imports/settings/font.css");
+@import url("_imports/settings/font.css");
+/* Unique to CMS */ @import url("./_imports/settings/font.css");
 
 /* TRUMPS */
 
