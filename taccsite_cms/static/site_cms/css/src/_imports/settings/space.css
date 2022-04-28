@@ -1,5 +1,3 @@
-@import url("_imports/settings/space.css");
-
 :root {
   --global-space--hr-margin: 30px;     /* constant unit allows consistency */
 }
