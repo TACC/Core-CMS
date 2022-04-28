@@ -6,5 +6,6 @@
 /* SEE: https://confluence.tacc.utexas.edu/x/IAA9Cw */
 
 /* COMPONENTS */
-@import url("_imports/components/django.cms.blog.css");
-@import url("_imports/components/django.cms.post.css");
+/* Unique to CMS */
+@import url("./_imports/components/django.cms.blog.css");
+@import url("./_imports/components/django.cms.post.css");

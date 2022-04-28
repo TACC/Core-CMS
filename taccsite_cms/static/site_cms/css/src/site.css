@@ -4,16 +4,16 @@
 /* SEE: https://confluence.tacc.utexas.edu/x/IAA9Cw */
 
 /* SETTINGS */
-/* Shared with Portal */
 @import url("_imports/settings/border.css");
+@import url("_imports/settings/max-width.css");
 /* Unique to CMS */
-@import url("_imports/settings/color.css");
-@import url("_imports/settings/props.max-width.css");
-@import url("_imports/settings/props.space.css");
-@import url("_imports/settings/font.css");
+@import url("./_imports/settings/color.css");
+@import url("./_imports/settings/space.css");
+@import url("./_imports/settings/font.css");
 
 /* GENERICS */
 /* Bootstrap performs much of this */
+/* NOTE: Font styles are loaded earlier than this stylesheet */
 
 /* ELEMENTS */
 /* Bootstrap performs much of this */
@@ -27,8 +27,6 @@
 @import url("_imports/objects/o-site.css");
 
 /* COMPONENTS */
-/* GH-302: HELP: How should all of these become individually built files? */
-/* GH-302: FAQ: Individually built stylesheets could be loaded explicitely. */
 @import url("_imports/components/c-card.css");
 @import url("_imports/components/c-callout.css");
 @import url("_imports/components/c-data-list.css");
@@ -36,10 +34,11 @@
 @import url("_imports/components/c-footer.css");
 @import url("_imports/components/c-recognition.css");
 @import url("_imports/components/c-see-all-link.css");
-@import url("_imports/components/django.cms.css");
-@import url("_imports/components/django.cms.blog.css");
-@import url("_imports/components/django.cms.post.css");
 @import url("_imports/components/bootstrap.container.css");
+/* Unique to CMS */
+@import url("./_imports/components/django.cms.css");
+@import url("./_imports/components/django.cms.blog.css");
+@import url("./_imports/components/django.cms.post.css");
 
 /* TRUMPS */
 @import url("_imports/trumps/s-breadcrumbs.css");

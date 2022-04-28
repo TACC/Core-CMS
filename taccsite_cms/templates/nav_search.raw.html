@@ -3,9 +3,7 @@
           so Portal and User Guide can render this markup into their markup. -->
 
 <style type="text/css">
-  /* Hide search bar before all relevant styles have loaded */
-  /* FAQ: Manage visibility of search bar to avoid FOUC */
-  /* HACK: GH-101: Resolve via dynamically-added `[data-status="loaded"]` */
+  /* SEE: https://github.com/TACC/Core-Styles/blob/main/source/_imports/elements/tacc-search-bar.md */
   :host { visibility: hidden; height: 0; }
 </style>
 <link rel="stylesheet" href="{% static 'site_cms/css/build/site.tacc-search-bar.css' %}">
