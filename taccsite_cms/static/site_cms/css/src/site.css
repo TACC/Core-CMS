@@ -5,13 +5,10 @@
 
 /* SETTINGS */
 @import url("_imports/settings/border.css");
-@import url("_imports/settings/color.css");
-/* Unique to CMS */ @import url("./_imports/settings/color.css");
+/* Unique to CMS */    @import url("./_imports/settings/color.css");
 @import url("_imports/settings/max-width.css");
-@import url("_imports/settings/space.css");
-/* Unique to CMS */ @import url("./_imports/settings/space.css");
-@import url("_imports/settings/font.css");
-/* Unique to CMS */ @import url("./_imports/settings/font.css");
+/* Unique to CMS */    @import url("./_imports/settings/space.css");
+/* Unique to CMS */    @import url("./_imports/settings/font.css");
 
 /* GENERICS */
 /* Bootstrap performs much of this */
@@ -36,9 +33,9 @@
 @import url("_imports/components/c-footer.css");
 @import url("_imports/components/c-recognition.css");
 @import url("_imports/components/c-see-all-link.css");
-/* Unique to CMS */ @import url("./_imports/components/django.cms.css");
-/* Unique to CMS */ @import url("./_imports/components/django.cms.blog.css");
-/* Unique to CMS */ @import url("./_imports/components/django.cms.post.css");
+/* Unique to CMS */    @import url("./_imports/components/django.cms.css");
+/* Unique to CMS */    @import url("./_imports/components/django.cms.blog.css");
+/* Unique to CMS */    @import url("./_imports/components/django.cms.post.css");
 @import url("_imports/components/bootstrap.container.css");
 
 /* TRUMPS */
