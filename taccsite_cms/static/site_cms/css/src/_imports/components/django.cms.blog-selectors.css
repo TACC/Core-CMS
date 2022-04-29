@@ -1,5 +1,0 @@
-/* To make these selectors easier to remember (rather than add classnames) */
-/* FAQ: Avoiding changing blog templates to limit app upgrade maintenance */
-@custom-selector :--article article;
-@custom-selector :--article-page article.post-detail;
-@custom-selector :--article-item .blog-list article;
