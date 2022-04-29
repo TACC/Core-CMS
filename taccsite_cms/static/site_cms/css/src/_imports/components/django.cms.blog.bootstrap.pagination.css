@@ -1,0 +1,28 @@
+/*
+Django CMS Blog Pagination (Bootstrap)
+
+Style the minimal Bootstrap pagination used by [Django CMS Blog](https://djangocms-blog.readthedocs.io) templates. See:
+
+- [Bootstrap Pagination](https://getbootstrap.com/docs/4.0/components/pagination/)
+- [Django CMS Post List](https://github.com/nephila/djangocms-blog/blob/1.1.1/djangocms_blog/templates/djangocms_blog/post_list.html)
+
+Styleguide Components.Bootstrap.Pagination
+*/
+@import url("@tacc/core-styles/source/_imports/components/c-page.css");
+
+
+
+.pagination {
+  @extend .c-page-list;
+
+  margin-block: calc( var(--post-buffer) * 2 );
+
+  width: fit-content;
+  margin-inline: auto;
+}
+.pagination a,
+.pagination span {
+  @extend .c-page-end;
+
+  padding-block: 0;
+}
