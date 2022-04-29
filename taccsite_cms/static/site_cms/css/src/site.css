@@ -14,7 +14,6 @@
 
 /* GENERICS */
 /* Bootstrap performs much of this */
-@import url("_imports/generics/django.cms.picture.css");
 @import url("_imports/generics/figures.css");
 
 /* ELEMENTS */
@@ -39,6 +38,7 @@
 @import url("_imports/components/c-recognition.css");
 @import url("_imports/components/c-see-all-link.css");
 @import url("_imports/components/django.cms.css");
+@import url("./_imports/components/django.cms.picture.css");
 @import url("_imports/components/bootstrap.container.css");
 
 /* TRUMPS */
