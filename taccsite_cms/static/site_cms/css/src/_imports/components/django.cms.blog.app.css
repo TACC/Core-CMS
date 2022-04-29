@@ -8,12 +8,19 @@ Reference:
 Styleguide Components.DjangoCMS.Blog.App
 */
 @import url("@tacc/core-styles/source/_imports/components/bootstrap.pagination.css");
-@import url("@tacc/core-styles/source/_imports/tools/x-truncate.css");
-@import url("@tacc/core-styles/source/_imports/tools/x-article-link.css");
 
-@import url("_imports/tools/selectors.css");
+@import url("./django.cms.blog.app.page.css");
+@import url("./django.cms.blog.app.item.css");
 
 
+
+
+
+/* Variables */
+
+.app-blog {
+  --blog-item-buffer: 20px;
+}
 
 
 
@@ -27,23 +34,7 @@ Styleguide Components.DjangoCMS.Blog.App
 
 
 
-
-
-/* Blog */
-
-.app-blog {
-  --post-buffer: 20px;
-}
-
-
-
-
-
-/* Article */
-
-
-
-/* Article - Header */
+/* Header */
 
 ul.post-detail {
   list-style: none;
@@ -56,310 +47,19 @@ ul.post-detail {
 
 
 
-/* Article - Content */
-
-/* Add space between all list items */
-/* FAQ: Use case is list items with as much text as a paragraph */
-.blog-content li + li {
-  margin-top: 0.5em;
-}
+/* Metadata */
 
 /* To (optionally) hide tags & categories */
 .app-blog.no-tags :--article .tags,
 .app-blog.no-categories :--article .categories {
   display: none;
 }
-.app-blog.no-categories:not(.no-tags) :--article-item header {
-  --row-one-areas: 'tags tags';
-}
-.app-blog.no-tags:not(.no-categories) :--article-item header {
-  --row-one-areas: 'cats cats';
-}
-.app-blog.no-categories.no-tags :--article-item header {
-  --row-one-areas: 'none none';
-}
 
 
 
 
+/* Pagination */
 
-/* Article Page */
-
-:--article-page {
-  max-width: 665px;
-}
-
-
-
-/* Article Page - Header */
-
-:--article-page .attr {
-  display: flex;
-  justify-content: space-between;
-}
-
-:--article-page header h2 {
-  font-size: var(--global-font-size--xxx-large);
-}
-:--article-page header h3 {
-  font-style: italic;
-  font-weight: normal;
-  font-size: var(--global-font-size--large);
-}
-
-:--article-page header :is(h3, h2 + .attr) {
-  padding-top: 17px;
-  border-top: var(--global-border-width--normal) solid var(--global-color-primary--dark);
-}
-
-:--article-page .date-published span {
-  display: none;
-}
-
-
-
-/* Article Page - Media & Content */
-
-:--article-page :is(.blog-visual, .blog-content) {
-  --post-main-image-buffer: 45px;
-
-  margin-block: var(--post-main-image-buffer);
-}
-
-
-
-/* Article Page - Media */
-
-:--article-page .blog-visual {
-  float: left;
-  margin-right: var(--post-main-image-buffer);
-}
-/* To mimic Bootstrap `.img-fluid` */
-:--article-page .blog-visual img {
-  max-width: 100%;
-  height: auto;
-}
-
-
-
-/* Article Page - Content */
-
-:--article-page .blog-content {
-  font-size: var(--global-font-size--normal);
-  line-height: 2;
-}
-
-
-
-
-
-/* Article Item */
-
-:--article-item {
-  display: grid;
-
-  grid-template-areas:
-    'media head'
-    'media desc';
-
-  /* To have shrinkwrapped media and flexible text content */
-  grid-template-columns: minmax(0, max-content) 1fr;
-}
-:--article-item header        { grid-area: head }
-:--article-item .blog-visual  { grid-area: media }
-:--article-item .blog-lead    { grid-area: desc }
-
-/* FAQ: :--article-item + :--article-item is NOT the same */
-:--article-item + article {
-  margin-top: var(--post-buffer);
-  border-top: var(--global-border-width--normal) solid var(--global-color-primary--dark);
-  padding-top: var(--post-buffer);
-}
-
-
-
-/* Article Item - Header */
-
-/* Article Item - Header - Container */
-
-:--article-item header {
-  display: grid;
-  position: relative; /* for `position: absolute` children */
-
-  min-width: 0; /* to support truncation */
-
-  grid-template-areas:
-    var(--row-one-areas, 'cats tags')
-                         'attr attr'
-                         'head subh';
-
-  /* To truncate 'subh' fully before truncating 'head' */
-  /* CAVEAT: 'cats' is truncated but 'tags' never is */
-  grid-template-columns: minmax(0, max-content) 1fr;
-}
-:--article-item h3          { grid-area: head }
-:--article-item h4          { grid-area: subh }
-:--article-item .attr       { grid-area: attr }
-:--article-item .categories { grid-area: cats }
-:--article-item .tags {
-  grid-area: tags;
-
-  /* To span top row and align right */
-  justify-content: end;
-}
-.app-blog.no-categories.no-tags :--article-item header {
-  grid-template-areas:
-    'head subh'
-    'attr attr';
-}
-.app-blog.no-categories.no-tags :--article-item header {
-  margin-bottom: 20px;
-}
-.app-blog:not(.no-categories.no-tags) :--article-item header {
-  margin-bottom: 5px;
-}
-
-/* Article Item - Header & Metadata */
-
-/* Article Item - Metadata - Content (Structure) */
-:--article-item .attr,
-:--article-item .tags {
-  display: flex;
-  flex-wrap: nowrap;
-  flex-direction: row;
-  gap: 2em;
-}
-:--article-item .tags { align-items: center }
-
-/* To truncate all metadata */
-:--article-item :is(.byline, .date) {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-
-  /* To allow truncation */
-  min-width: 0;
-
-  /* To limit text to one line */
-  height: 1.4em; /* ~ line-height */
-  overflow: hidden;
-}
-:--article-item .date span,
-:--article-item .byline a,
-:--article-item .tags li,
-:--article-item .categories li,
-:--article-item .categories::before { @extend %x-truncate--one-line }
-
-:--article-item .tags:empty,
-:--article-item .categories:empty { display: none }
-
-:--article-item .date { order: -1 }
-
-/* Article Item - Header - Content (Skin) */
-:--article-item h3,
-:--article-item h4 {
-  @extend %x-truncate--one-line;
-
-  margin-block: unset; /* overwrite html-elements.css */
-  font-size: var(--global-font-size--large);
-}
-:--article-item h4 {
-  text-transform: none; /* overwrite html-elements.css */
-
-  /* To style subtitle differently than title */
-  /* CAVEAT: Font-weight change switches to font that has different alignment */
-  transform: translateY(2px); /* HACK: tweak vertical alignment */
-  font-weight: var(--regular);
-}
-:--article-item h4::before { content: ': ' }
-:--article-item h3 a {
-  color: var(--global-color-primary--xx-dark);
-}
-
-/* Article Item - Metadata - Content (Skin) */
-:--article-item li {
-  line-height: unset; /* overwrite html-elements.css */
-}
-
-:--article-item .attr {
-  margin-block: 2px 6px;
-
-  font-size: var(--global-font-size--x-small);
-  color: var(--global-color-primary--dark);
-}
-:--article-item .attr a { color: inherit }
-
-:--article-item .categories {
-  font-weight: var(--bold);
-  font-size: var(--global-font-size--x-small);
-  text-transform: uppercase;
-}
-:--article-item .categories a { color: var(--global-color-primary--xx-dark) }
-
-/* NOTE: Mimicking .attr styles until we have a design */
-:--article-item .tags {
-  font-size: var(--global-font-size--x-small);
-  color: var(--global-color-primary--dark);
-}
-:--article-item .tags a { color: inherit }
-
-
-
-/* Article Item - Visual */
-
-:--article-item .blog-visual:not(:empty) {
-  /* Design requires same-width image boxes */
-  /* IDEA: Should we import a Django setting for image width? */
-  width: 255px; /* should be equal to max width of "MAIN IMAGE THUMBNAIL" */
-
-  margin-right: 50px;
-
-  /* To align any image inside */
-  /* FAQ: Images SHOULD use cropped thumbnail option, which makes this moot,
-          but user MIGHT instead use thumbnail option with inconsistent width */
-  display: grid;
-  justify-items: center;
-}
-:--article-item .blog-visual:empty {
-  display: none;
-}
-
-
-
-/* Article Item - Content */
-
-.blog-lead {
-  @extend %x-truncate--many-lines;
-  --lines: 3;
-
-  line-height: 1.5;
-  color: var(--global-color-primary--dark);
-}
-.blog-lead p:last-child { margin-bottom: 0 /* overwrite Boostrap */ }
-
-
-
-/* Article Item - Footer */
-
-.read-more a:hover {
-  --outline-offset: var(--post-buffer);
-  @extend %x-article-link-hover;
-}
-.read-more a:active {
-  @extend %x-article-link-active;
-}
-
-/* If not editing, "read more" covers article */
-html:not(:--cms-edit-mode) .read-more { grid-area: 1 / 1 / -1 / -1 }
-html:not(:--cms-edit-mode) .read-more { position: relative; }
-html:not(:--cms-edit-mode) .read-more a {
-  @extend %x-article-link-stretch;
-  @extend %x-article-link-text;
-}
-/* If editing, "read more" at bottom (let CMS user know) */
-html:--cms-edit-mode .read-more { grid-area: 3 / 1 / 4 / -1 }
-html:--cms-edit-mode .read-more::after {
-  content: 'This link only shows when editing.';
-  font-size: smaller;
-  opacity: 0.5;
+.pagination {
+  margin-block: calc( var(--blog-item-buffer) * 2 );
 }

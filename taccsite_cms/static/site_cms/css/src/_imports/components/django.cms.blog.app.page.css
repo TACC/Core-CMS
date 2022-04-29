@@ -1,0 +1,88 @@
+/*
+Django CMS Blog App Page (Article/Post) Components
+
+Reference:
+
+- [`post_detail.html`](https://github.com/nephila/djangocms-blog/blob/1.1.1/djangocms_blog/templates/djangocms_blog/post_detail.html)
+
+Styleguide Components.DjangoCMS.Blog.App.Page
+*/
+
+
+
+
+
+/* Variables */
+
+:--article-page {
+  max-width: 665px;
+}
+
+
+
+
+
+/* Header (Structure) */
+
+:--article-page .attr {
+  display: flex;
+  justify-content: space-between;
+}
+
+:--article-page header h2 {
+  font-size: var(--global-font-size--xxx-large);
+}
+:--article-page header h3 {
+  font-style: italic;
+  font-weight: normal;
+  font-size: var(--global-font-size--large);
+}
+
+:--article-page header :is(h3, h2 + .attr) {
+  padding-top: 17px;
+  border-top: var(--global-border-width--normal) solid var(--global-color-primary--dark);
+}
+
+:--article-page .date-published span {
+  display: none;
+}
+
+
+
+
+
+/* Media & Content */
+
+:--article-page :is(.blog-visual, .blog-content) {
+  --blog-page-main-image-buffer: 45px;
+
+  margin-block: var(--blog-page-main-image-buffer);
+}
+
+
+
+/* Media & Content - Media */
+
+:--article-page .blog-visual {
+  float: left;
+  margin-right: var(--blog-page-main-image-buffer);
+}
+/* To mimic Bootstrap `.img-fluid` */
+:--article-page .blog-visual img {
+  max-width: 100%;
+  height: auto;
+}
+
+
+
+/* Media & Content - Content */
+
+:--article-page .blog-content {
+  font-size: var(--global-font-size--normal);
+  line-height: 2;
+}
+/* Add space between all list items */
+/* FAQ: Use case is list items with as much text as a paragraph */
+:--article-page .blog-content li + li {
+  margin-top: 0.5em;
+}
