@@ -10,7 +10,6 @@ Reference:
 
 Styleguide Trumps.DjangoCMS.Picture
 */
-@import url("_imports/objects/o-offset-content.css");
 
 
 
@@ -37,12 +36,3 @@ Styleguide Trumps.DjangoCMS.Picture
 /* Try to auto clear image floats */
 .align-right + *:not(img) { clear: right }
 .align-left + *:not(img) { clear: left }
-
-
-
-
-/* TACC Values */
-
-/* Support custom alignment classes */
-.align-offset-right { @extend .o-offset-content--right }
-.align-offset-left { @extend .o-offset-content--left }
