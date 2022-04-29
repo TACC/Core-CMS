@@ -44,6 +44,12 @@ msgstr ""
 "And any post that unsets its thumbnail image size will use this setting value."
 
 #: djangocms-blog
+#: templates/djangocms_blog/includes/blog_item.html:24
+# this link text only appears for a CMS editor
+msgid "read more"
+msgstr "open article"
+
+#: djangocms-blog
 #: templates/djangocms_blog/post_list.html:29
 msgid "previous"
 msgstr "Previous"

@@ -10,9 +10,13 @@
       {{ block.super }}
     {% endspaceless %}
     <script>
-      /* HACK: To replace « & » of "« Previous" & "Next »" with < & > */
+      /* HACK: To replace « and » of "« Previous" and "Next »" with < and > */
       [ ...document.querySelectorAll('.pagination a') ].forEach( a => {
         a.innerText = a.innerText.replace('«', '<').replace('»', '>');
+      });
+      /* HACK: To remove " »" from "read more »" */
+      [ ...document.querySelectorAll('.read-more a') ].forEach( a => {
+        a.innerText = a.innerText.replace(' »', '');
       });
     </script>
 </div>
