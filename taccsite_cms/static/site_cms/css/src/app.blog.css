@@ -1,5 +1,5 @@
 /* DO NOT ADD STYLES HERE; ONLY IMPORT OTHER STYLESHEETS */
 
-/* Styles for the blog app pages (not blog plugins on site) */
-/* SEE: taccsite_cms/static/site_cms/css/src/site.blog.css */
+/* Styles for blog app pages (not blog plugins that can be anywhere on site) */
+/* SEE: taccsite_cms/static/site_cms/css/src/site.css */
 @import url("_imports/components/django.cms.blog.app.css");
