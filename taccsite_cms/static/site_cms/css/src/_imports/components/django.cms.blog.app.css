@@ -38,6 +38,10 @@ Styleguide Components.DjangoCMS.Blog.App
 
 /* Header */
 
+.blog-list > header {
+  margin-bottom: var(--blog-item-buffer);
+}
+
 ul.post-detail {
   list-style: none;
 
