@@ -17,6 +17,7 @@
 
 /* ELEMENTS */
 /* Bootstrap performs much of this */
+@import url("_imports/elements/figure.css");
 @import url("_imports/elements/html-elements.css");
 /* Load custom element styles within custom element, not here */
 
@@ -37,9 +38,9 @@
 @import url("_imports/components/c-recognition.css");
 @import url("_imports/components/c-see-all-link.css");
 @import url("_imports/components/django.cms.css");
-@import url("_imports/components/django.cms.blog.css");
-@import url("_imports/components/django.cms.post.css");
+@import url("./_imports/components/django.cms.picture.css");
 @import url("_imports/components/bootstrap.container.css");
+@import url("_imports/components/bootstrap.figure.css");
 
 /* TRUMPS */
 @import url("_imports/trumps/s-breadcrumbs.css");

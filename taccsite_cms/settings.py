@@ -14,6 +14,8 @@ from glob import glob
 import ldap
 from django_auth_ldap.config import LDAPSearch, GroupOfNamesType
 
+from django.utils.translation import gettext_lazy as _
+
 SECRET_KEY = 'CHANGE_ME'
 def gettext(s): return s
 
@@ -194,6 +196,13 @@ LOGOUT_REDIRECT_URL = '/'
 CEP_AUTH_VERIFICATION_ENDPOINT = 'http://django:6000'
 
 ########################
+# TACC: NEWS/BLOG
+########################
+
+TACC_BLOG_SHOW_CATEGORIES = True
+TACC_BLOG_SHOW_TAGS = True
+
+########################
 # CLIENT BUILD SETTINGS
 ########################
 
@@ -255,6 +264,10 @@ TEMPLATES = [
     },
 ]
 
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'taccsite_cms', 'locale'),
+]
+
 MIDDLEWARE = [
     'cms.middleware.utils.ApphookReloadMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -289,7 +302,9 @@ INSTALLED_APPS = [
     'treebeard',  # Replaces mptt.
     'djangocms_text_ckeditor',
     'filer',
+    'meta',
     'easy_thumbnails',
+    'djangocms_page_meta',
     'djangocms_column',
     'djangocms_file',
     'djangocms_link',
@@ -404,6 +419,11 @@ DJANGOCMS_PICTURE_RESPONSIVE_IMAGES_VIEWPORT_BREAKPOINTS = [
     576, 768, 992, 1200, 1400, 1680, 1920
 ]
 DJANGOCMS_PICTURE_RATIO = 1.618
+DJANGOCMS_PICTURE_ALIGN = [
+    ('left', _('Align left')),
+    ('right', _('Align right')),
+    ('center', _('Align center')),
+]
 
 # FILE UPLOAD VALUES MUST BE SET!
 # Set in correlation with the `client_max_body_size    20m;` value in /etc/nginx/proxy.conf.
@@ -443,8 +463,6 @@ HAYSTACK_CONNECTIONS = {
 
 SETTINGS_EXPORT_VARIABLE_NAME = 'settings'
 
-FEATURES = ''
-
 ########################
 # PLUGIN SETTINGS
 ########################
@@ -476,6 +494,13 @@ DJANGOCMS_STYLE_TAGS = [
     'h1', 'h2', 'h3', 'h4', 'h5', 'h6'
 ]
 
+# https://github.com/nephila/django-meta
+META_SITE_PROTOCOL = 'http'
+META_USE_SITES = True
+META_USE_OG_PROPERTIES = True
+META_USE_TWITTER_PROPERTIES = True
+META_USE_SCHEMAORG_PROPERTIES = True
+
 ########################
 # IMPORT & EXPORT
 ########################
@@ -500,12 +525,13 @@ except:
 
 SETTINGS_EXPORT = [
     'DEBUG',
-    'FEATURES',
     'THEME',
     'BRANDING',
     'LOGO',
     'FAVICON',
     'INCLUDES_CORE_PORTAL',
     'GOOGLE_ANALYTICS_PROPERTY_ID',
-    'GOOGLE_ANALYTICS_PRELOAD'
+    'GOOGLE_ANALYTICS_PRELOAD',
+    'TACC_BLOG_SHOW_CATEGORIES',
+    'TACC_BLOG_SHOW_TAGS'
 ]
