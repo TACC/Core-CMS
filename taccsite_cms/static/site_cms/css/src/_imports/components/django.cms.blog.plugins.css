@@ -1,0 +1,15 @@
+/*
+Django CMS Blog Plugin Components
+
+These plugins can be loaded anywhere on the site, not just on blog pages.
+
+Reference:
+
+- [Django CMS Blog Plugin Templates](https://github.com/nephila/djangocms-blog/tree/1.1.1/djangocms_blog/templates/djangocms_blog/plugins)
+
+Styleguide Components.DjangoCMS.Blog.Plugins
+*/
+
+/* No styles yet. Not loaded yet. */
+/* HELP: How to load for entire site, but only if blog is installed? */
+/* IDEA: Use Python setting conditional in assets_site.html to load CSS file */
