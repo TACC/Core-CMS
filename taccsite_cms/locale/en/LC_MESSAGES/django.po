@@ -1,0 +1,84 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+# The "Plural-Forms" fixes a bug (https://stackoverflow.com/a/64525866/11817077)
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Last-Translator: Wesley B\n"
+"Language-Team: TACC-ACI-WMA <wma_prtl@tacc.utexas.edu>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+
+
+#: djangocms-blog
+#: templates/djangocms_blog/includes/blog_meta.html:6
+msgid "by"
+msgstr "by:"
+
+#: djangocms-blog
+#: cms_appconfig.py:39
+msgid ""
+"If left empty the image size will have to be set for every newly created "
+"post."
+msgstr ""
+"If left empty the image size must be set for every newly created "
+"post. "
+"And any post that unsets its image size will use this setting value."
+
+#: djangocms-blog
+#: cms_appconfig.py:45
+msgid ""
+"If left empty the thumbnail image size will have to be set for every newly "
+"created post."
+msgstr ""
+"If left empty the thumbnail image size must be set for every newly "
+"created post. "
+"And any post that unsets its thumbnail image size will use this setting value."
+
+#: djangocms-blog
+#: templates/djangocms_blog/includes/blog_item.html:24
+# this link text only appears for a CMS editor
+msgid "read more"
+msgstr "open article"
+
+#: djangocms-blog
+#: templates/djangocms_blog/post_list.html:29
+msgid "previous"
+msgstr "Previous"
+
+#: djangocms-blog
+#: templates/djangocms_blog/post_list.html:35
+msgid "next"
+msgstr "Next"
+
+
+
+#: djangocms-picture
+#: models.py:117
+msgid "Aligns the image according to the selected option."
+msgstr "Aligns the image according to the selected option. WARNING: Alignment behavior changes if \"Caption text\" is added."
+
+#: djangocms-picture
+#: models.py:123
+msgid "Provide a description, attribution, copyright or other information."
+msgstr "Provide a description, attribution, copyright or other information. WARNING: Adding caption text will change the behavior of \"Alignment\"."
+
+
+
+#: site-cms(djangocms-blog)
+#: templates/djangocms_blog/includes/blog_meta.html:6
+msgid "Published"
+msgstr "Published:"
+
+#: site-cms(djangocms-blog)
+#: templates/djangocms_blog/post_list.html:6
+msgid "News"
+msgstr ""

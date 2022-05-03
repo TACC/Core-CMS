@@ -1,11 +1,14 @@
 /*
 Django CMS Blog Components
 
-Components for [Django CMS Blog](https://djangocms-blog.readthedocs.io) UI. These classes are authored in templates of third-party origin, but they have no third-party styles.
+Components for [Django CMS Blog](https://djangocms-blog.readthedocs.io) UI. These classes are authored in templates of third-party origin that offers no styles. These styles are split between app page UI and plugin UI.
 
 Reference:
 
-- [Django CMS Blog `.blog-` Class Components](https://github.com/TACC/CORE-cms/tree/main/taccsite_cms/templates/djangocms_blog)
+- [Django CMS Blog](https://github.com/nephila/djangocms-blog/tree/1.1.1/djangocms_blog)
 
 Styleguide Components.DjangoCMS.Blog
 */
+
+/* NOTE: Author styles in relevant prefixed stylsheets */
+/* FAQ: This file is just KSS-format CSS documentation */
