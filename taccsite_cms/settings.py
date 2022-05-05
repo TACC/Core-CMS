@@ -507,21 +507,18 @@ META_USE_SCHEMAORG_PROPERTIES = True
 
 try:
     from taccsite_cms.settings_custom import *
-except:
-    None
-    # do nothing
+except ModuleNotFoundError:
+    pass
 
 try:
     from taccsite_cms.secrets import *
-except:
-    None
-    # do nothing
+except ModuleNotFoundError:
+    pass
 
 try:
     from taccsite_cms.settings_local import *
-except:
-    None
-    # do nothing
+except ModuleNotFoundError:
+    pass
 
 SETTINGS_EXPORT = [
     'DEBUG',
