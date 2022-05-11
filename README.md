@@ -234,11 +234,14 @@ Whenever static files are changed, the CMS must be manually told to serve them.\
 
 ### Changing Custom Resources
 
+If you need to get the latest files into `/taccsite_custom` from [Core CMS Resources]:
+
+1. [How to Change Submodule Branch Commit](https://github.com/TACC/Core-CMS/wiki/How-to-Change-Submodule-Branch-Commit)
+
 If you need to change files within `/taccsite_custom`:
 
 1. Follow instructions and directory structure of `example-cms`.
 2. Create/Edit files in a child directory of `/taccsite_custom`.
-    - If you already made the changes, and you just want to get them into core, then checkout the branch (or commit) with your changes.
 4. Reference other projects in `/taccsite_custom`.
 5. _(to test static file changes)_ Build static files.\*
 6. _(to test template changes)_ Restart server.
@@ -246,8 +249,6 @@ If you need to change files within `/taccsite_custom`:
     1. In `/taccsite_custom` submodule repo, commit changes (__not__ to `main` branch).
     2. In this parent repo, add `/taccsite_custom` change.
     3. In this parent repo, commit changes (__not__ to `main` branch).
-
-    _For more detailed steps, see [How to Change Submodule Branch Commit](https://github.com/TACC/Core-CMS/wiki/How-to-Change-Submodule-Branch-Commit)._
 
 <sub>To learn more, see [Static Files](#static-files).</sub>
 
