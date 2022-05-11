@@ -238,10 +238,11 @@ If you need to change files within `/taccsite_custom`:
 
 1. Follow instructions and directory structure of `example-cms`.
 2. Create/Edit files in a child directory of `/taccsite_custom`.
-3. Reference other projects in `/taccsite_custom`.
-4. _(to test static file changes)_ Build static files.\*
-5. _(to test template changes)_ Restart server.
-6. Commit changes:
+    - If you already made the changes, and you just want to get them into core, then checkout the branch (or commit) with your changes.
+4. Reference other projects in `/taccsite_custom`.
+5. _(to test static file changes)_ Build static files.\*
+6. _(to test template changes)_ Restart server.
+7. Commit changes:
     1. In `/taccsite_custom` submodule repo, commit changes (__not__ to `main` branch).
     2. In this parent repo, add `/taccsite_custom` change.
     3. In this parent repo, commit changes (__not__ to `main` branch).
