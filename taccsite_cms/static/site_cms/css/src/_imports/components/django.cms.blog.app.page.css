@@ -16,6 +16,7 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 
 :--article-page {
   max-width: 665px;
+  margin-inline: auto;
 }
 
 
