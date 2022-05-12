@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Overwrite text in the  DjangoCMS admin UI.
+Overwrite text in the DjangoCMS admin UI.
 
 ## Use Cases
 
