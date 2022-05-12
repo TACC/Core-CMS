@@ -1,0 +1,71 @@
+/*
+Django CMS Blog App Components
+
+These styles are only for the blog app pages (list pages, article pages).
+
+Reference:
+
+- [Django CMS Blog App Templates](https://github.com/nephila/djangocms-blog/tree/1.1.1/djangocms_blog/templates/djangocms_blog)
+
+Styleguide Components.DjangoCMS.Blog.App
+*/
+@import url("@tacc/core-styles/source/_imports/components/bootstrap.pagination.css");
+
+@import url("./django.cms.blog.app.page.css");
+@import url("./django.cms.blog.app.item.css");
+
+
+
+
+
+/* Variables */
+
+.app-blog {
+  --blog-item-buffer: 20px;
+}
+
+
+
+/* Selectors */
+
+/* To make these selectors easier to remember (rather than add classnames) */
+/* FAQ: Avoiding changing blog templates to limit app upgrade maintenance */
+@custom-selector :--article article;
+@custom-selector :--article-page article.post-detail;
+@custom-selector :--article-item .blog-list article;
+
+
+
+/* Header */
+
+.blog-list > header {
+  margin-bottom: var(--blog-item-buffer);
+}
+
+ul.post-detail {
+  list-style: none;
+
+  padding-left: 0; /* overwrite html-elements.css */
+  margin-bottom: 0; /* overwrite Bootstrap `reboot.css` */
+
+  font-size: var(--global-font-size--medium);
+}
+
+
+
+/* Metadata */
+
+/* To (optionally) hide tags & categories */
+.app-blog.no-tags :--article .tags,
+.app-blog.no-categories :--article .categories {
+  display: none;
+}
+
+
+
+
+/* Pagination */
+
+.pagination {
+  margin-block: calc( var(--blog-item-buffer) * 2 );
+}
