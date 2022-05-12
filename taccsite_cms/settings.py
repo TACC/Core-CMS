@@ -16,6 +16,8 @@ from django_auth_ldap.config import LDAPSearch, GroupOfNamesType
 
 from django.utils.translation import gettext_lazy as _
 
+from .bin.get_dirs_as_app_names import get_dirs_as_app_names
+
 SECRET_KEY = 'CHANGE_ME'
 def gettext(s): return s
 
@@ -228,13 +230,12 @@ MEDIA_ROOT = os.path.join(DATA_DIR, 'media')
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        # FAQ: List custom directory first, so custom templates take precedence
-        # SEE: https://docs.djangoproject.com/en/2.2/topics/templates/#configuration
-        'DIRS': glob(
-            os.path.join(BASE_DIR, 'taccsite_custom')
-        ) + [
+        'DIRS': [
+            # FP-1645: Remove DIRS
+            os.path.join(BASE_DIR, 'taccsite_custom'),
             os.path.join(BASE_DIR, 'taccsite_cms', 'templates')
         ],
+        'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.contrib.auth.context_processors.auth',
@@ -251,15 +252,11 @@ TEMPLATES = [
                 'django_settings_export.settings_export'
             ],
             'libraries': {
-                # NOTE: These are an unnecessary alternative config, because taccsite_cms is in INSTALLED_APPS, but are comfortably explicit
+                # Unnecessary but explicit
                 # SEE: https://docs.djangoproject.com/en/3.1/howto/custom-template-tags/#code-layout
                 'custom_portal_settings': 'taccsite_cms.templatetags.custom_portal_settings',
                 'tacc_uri_shortcuts': 'taccsite_cms.templatetags.tacc_uri_shortcuts',
             },
-            'loaders': [
-                'django.template.loaders.filesystem.Loader',
-                'django.template.loaders.app_directories.Loader'
-            ],
         },
     },
 ]
@@ -283,7 +280,11 @@ MIDDLEWARE = [
     'cms.middleware.language.LanguageCookieMiddleware'
 ]
 
-INSTALLED_APPS = [
+# Get CMS project paths as app names
+CMS_PROJECT_DIR = os.path.join(BASE_DIR, 'taccsite_custom')
+CMS_PROJECT_APPS = get_dirs_as_app_names(CMS_PROJECT_DIR)
+
+INSTALLED_APPS = CMS_PROJECT_APPS + [
     'djangocms_admin_style',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -345,32 +346,6 @@ INSTALLED_APPS = [
     'taccsite_cms.contrib.taccsite_system_monitor',
     'taccsite_cms.contrib.taccsite_data_list'
 ]
-
-# Convert list of paths to list of dotted module names
-
-
-def get_subdirs_as_module_names(path):
-    module_names = []
-    for entry in os.scandir(path):
-        is_app = entry.path.find('_readme') == -1
-        if entry.is_dir() and is_app:
-            # FAQ: There are different root paths to tweak:
-            #      - Containers use `/code/…`
-            #      - Python Venvs use `/srv/taccsite/…`
-            module_name = entry.path \
-                .replace(os.path.sep + 'code' + os.path.sep, '') \
-                .replace(os.path.sep + 'srv' + os.path.sep + 'taccsite' + os.path.sep, '') \
-                .replace(os.path.sep, '.')
-            module_names.append(module_name)
-    return module_names
-
-
-# Append CMS project paths as module names to INSTALLED_APPS
-# FAQ: This automatically looks into `/taccsite_custom` and creates an "App" for each directory within
-CUSTOM_CMS_DIR = os.path.join(BASE_DIR, 'taccsite_custom')
-
-INSTALLED_APPS_APPEND = get_subdirs_as_module_names(CUSTOM_CMS_DIR)
-INSTALLED_APPS = INSTALLED_APPS + INSTALLED_APPS_APPEND
 
 MIGRATION_MODULES = {}
 LANGUAGE_CODE = 'en'
