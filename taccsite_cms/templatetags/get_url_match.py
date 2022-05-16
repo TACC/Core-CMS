@@ -8,7 +8,7 @@ def get_url_match(context, pattern):
     """
     Custom Template Filter `get_url_match`
 
-    Use: Render string from URI that matches given pattern.
+    Use: Render string that matches given pattern from current page URL.
 
     Load custom filter into template:
         {% load get_url_match %}
