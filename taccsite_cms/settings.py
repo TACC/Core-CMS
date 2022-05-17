@@ -280,32 +280,47 @@ MIDDLEWARE = [
     'cms.middleware.language.LanguageCookieMiddleware'
 ]
 
+
+# Application definition
+
 # Get CMS project paths as app names
 CMS_PROJECT_DIR = os.path.join(BASE_DIR, 'taccsite_custom')
 CMS_PROJECT_APPS = get_dirs_as_app_names(CMS_PROJECT_DIR)
 
 INSTALLED_APPS = CMS_PROJECT_APPS + [
+    # optional, but used in most projects
     'djangocms_admin_style',
+
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.admin',
     'django.contrib.sites',
     'django.contrib.sitemaps',
-    # Customize 'django.contrib.staticfiles'
+    # customize 'django.contrib.staticfiles'
     # SEE: https://stackoverflow.com/q/57921970/11817077
     # 'django.contrib.staticfiles',
     'taccsite_cms.django.contrib.staticfiles_custom',
     'django.contrib.messages',
+
+    # key django CMS modules
     'cms',
     'menus',
     'sekizai',
     'treebeard',  # Replaces mptt.
+
+    # the default CKEditor - optional, but used in most projects
     'djangocms_text_ckeditor',
+
+    # Django Filer - optional, but used in most projects
     'filer',
-    'meta',
     'easy_thumbnails',
+
+    # required by django CMS Blog
+    'meta',
     'djangocms_page_meta',
+
+    # some content plugins - optional, but used in most projects
     'djangocms_column',
     'djangocms_file',
     'djangocms_link',
@@ -316,6 +331,8 @@ INSTALLED_APPS = CMS_PROJECT_APPS + [
     'djangocms_transfer',
     'djangocms_video',
     'djangocms_icon',
+
+    # optional django CMS Bootstrap 4 modules
     'djangocms_bootstrap4',
     'djangocms_bootstrap4.contrib.bootstrap4_alerts',
     'djangocms_bootstrap4.contrib.bootstrap4_badge',
@@ -331,13 +348,23 @@ INSTALLED_APPS = CMS_PROJECT_APPS + [
     'djangocms_bootstrap4.contrib.bootstrap4_picture',
     'djangocms_bootstrap4.contrib.bootstrap4_tabs',
     'djangocms_bootstrap4.contrib.bootstrap4_utilities',
-    'haystack',
-    'aldryn_apphooks_config',
-    'test_without_migrations',
+
+    # miscellaneous
+    'haystack',                # search index
+    'aldryn_apphooks_config',  # search index & django CMS Blog
+    'test_without_migrations', # run tests faster
+
+    # core TACC CMS
+    # HELP: If this were top of list, would TACC/Core-CMS/pull/169 fix break?
     'taccsite_cms',
+
+    # django CMS Blog requirements
+    # IDEA: Extend Bootstrap apps instead of overwrite
     'taccsite_cms.contrib.bootstrap4_djangocms_link',
     'taccsite_cms.contrib.bootstrap4_djangocms_picture',
-    # FP-1231: Convert our CMS plugins to stand-alone apps
+    # TODO: Deprecate these plugins (except taccsite_system_monitor)
+    # TODO: For taccsite_system_monitor use repo package:
+    #       https://github.com/wesleyboar/Core-CMS-Plugin-System-Monitor
     'taccsite_cms.contrib.taccsite_blockquote',
     'taccsite_cms.contrib.taccsite_callout',
     'taccsite_cms.contrib.taccsite_sample',
