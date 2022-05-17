@@ -1,10 +1,12 @@
+import re
+
 from django import template
 from urllib.parse import urlparse
 
 register = template.Library()
 
-@register.filter(takes_context=True)
-def get_url_match(context, pattern):
+@register.filter
+def get_url_match(path, pattern):
     """
     Custom Template Filter `get_url_match`
 
@@ -14,23 +16,34 @@ def get_url_match(context, pattern):
         {% load get_url_match %}
 
     Template inline usage:
-        {# given path '.../2020/...' (does something) #}
+        {# given path '.../2019/...', does nothing #}
         {% if path|get_url_match:"/20\d\d/" %}
-            # do something
+            {# condition evaluates to False #}
         {% endif %}
 
-        {# given path '.../1921/...' (does nothing) #}
+        {# given path '.../2020/...', does something #}
         {% if path|get_url_match:"/20\d\d/" %}
-            # do something
+            {# condition evaluates to True #}
         {% endif %}
+
+        {# given path '.../2021/...', prints complete match #}
+        {% with year_path=path|get_url_match:"/20\d\d/" %}
+            <pre>{{ year_path }}</pre> {# prints complete match #}
+        {% endwith %}
+
+        {# given path '.../2022/...', prints matched content #}
+        {% with year_slug=path|get_url_match:"/(20\d\d)/" %}
+            <pre>{{ year_slug }}</pre> {# prints match within the (…) #}
+        {% endwith %}
     """
-    request = context['request']
-    req_uri = request.build_absolute_uri('/')
-    req_url = urlparse(req_uri)
-    req_path = req.path
+    result = re.search(pattern, path)
 
-    match = re.search(pattern, req_path)
-    if match:
-        return match[0]
+    if result:
+        try:
+            match = result.group(1)
+        except IndexError:
+            match = result[0]
     else:
-        return False
+        match = False
+
+    return match
