@@ -283,6 +283,8 @@ MIDDLEWARE = [
     'cms.middleware.language.LanguageCookieMiddleware'
 ]
 
+# Application definition
+
 INSTALLED_APPS = [
     # optional, but used in most projects
     'djangocms_admin_style',
