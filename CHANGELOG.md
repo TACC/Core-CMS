@@ -7,6 +7,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.7.0] - 2022-05-13: Patterns, News/Blog App, SciVis & APCD, Improvements
+
+### Added
+
+- Quick: ECEP Custom Styles w/ Caveats (#478)
+- Added the sciviscolor updates to the subrepo. (ba3a60f)
+- ECEP-114: Members Page (Nav Pattern, Typography, Sticky Position) (#464, #481)
+- ECEP-113: News/Blog (Core, ECEP, Texascale) (#466)
+- Update submodule to include APCD (#486)
+
+### Changed
+
+- GH-149: Polish base.html markup (#151)
+- Quick: Un-Deprecate Bootstrap Picture (#474)
+- chore(tup-231): re-order and reduce comments (#484)
+- Improve handling of missing custom settings (#485)
+- docs(README): taccsite_custom clarity (4070121)
+- docs(README): improve git submod use instructions (cb56b56)
+
+### Fixed
+
+- chore: fix typo in typography template (07fcb5c)
+- TUP-231: Part 1 of N to Core-UI (Fix Core-CMS / Core-Styles Mismatch) (#482)
+- Task/fp 1378 consistent space above footer (#480)
+
 ## [3.6.0] - 2022-04-15: CSS to Core-Styles, BM Logo Tweaks, Dependency Updates
 
 ### Changed
@@ -357,7 +382,8 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 ## [2.0.0] - 2021-03-31
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.6.0...HEAD
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.7.0...HEAD
+[3.7.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.7.0
 [3.6.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.6.0
 [3.5.2]: https://github.com/TACC/Core-CMS/releases/tag/v3.5.2
 [3.5.1]: https://github.com/TACC/Core-CMS/releases/tag/v3.5.1
