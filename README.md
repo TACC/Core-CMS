@@ -255,7 +255,7 @@ If you need to change files within `/taccsite_custom`:
 ### Customizing Text in Admin UI
 
 1. Create file `/taccsite_cms/locale/en/LC_MESSAGES/django.po`.
-2. Add this content to the file for just the strings to translate.
+2. Add to the file only the strings to translate and the appropriate comments for that string.
 3. Build the `.mo` file: \*
 
     ```bash
