@@ -3,8 +3,6 @@
 {% load cms_tags i18n %}
 
 {% block content_blog %}
-<div class="container">
-    {% include "nav_cms_breadcrumbs.html" %}
     {# FAQ: The extended template adds `spaceless` but it fails #}
     {% spaceless %}
       {{ block.super }}
@@ -19,7 +17,6 @@
         a.innerText = a.innerText.replace(' »', '');
       });
     </script>
-</div>
 {% endblock content_blog %}
 
 {% block blog_title %}

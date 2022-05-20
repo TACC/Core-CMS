@@ -16,7 +16,7 @@ from django_auth_ldap.config import LDAPSearch, GroupOfNamesType
 
 from django.utils.translation import gettext_lazy as _
 
-from .bin.get_dirs_as_app_names import get_dirs_as_app_names
+from .bin.get_template_dirs import get_template_dirs
 
 SECRET_KEY = 'CHANGE_ME'
 def gettext(s): return s
@@ -127,6 +127,21 @@ Usage:
 THEME = None
 
 ########################
+# TACC: CMS PROJECT
+########################
+
+TACC_CUSTOM_ROOT = 'taccsite_custom'
+# TACC_CUSTOM_NAME = os.getenv('PROJECT_NAME') # !!!: Not working
+TACC_CUSTOM_NAME = 'texascale-org' # !!!: Must use external value
+
+if (TACC_CUSTOM_NAME):
+    TACC_CUSTOM_DIR = os.path.join(TACC_CUSTOM_ROOT, TACC_CUSTOM_NAME)
+    TACC_CUSTOM_APP = TACC_CUSTOM_DIR.replace(os.path.sep, '.')
+else:
+    TACC_CUSTOM_DIR = ''
+    TACC_CUSTOM_APP = ''
+
+########################
 # TACC: BRANDING
 ########################
 
@@ -220,7 +235,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'taccsite_cms', 'static'),
     # os.path.join(BASE_DIR, 'taccsite_cms', 'en', 'static'),
 ) + tuple(glob(
-    os.path.join(BASE_DIR, 'taccsite_custom', '*', 'static')
+    os.path.join(BASE_DIR, TACC_CUSTOM_ROOT, '*', 'static')
 ))
 
 # User Uploaded Files Location.
@@ -230,12 +245,8 @@ MEDIA_ROOT = os.path.join(DATA_DIR, 'media')
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            # FP-1645: Remove DIRS
-            os.path.join(BASE_DIR, 'taccsite_custom'),
-            os.path.join(BASE_DIR, 'taccsite_cms', 'templates')
-        ],
-        'APP_DIRS': True,
+        'DIRS': get_template_dirs(BASE_DIR, 'taccsite_cms', TACC_CUSTOM_DIR),
+        'APP_DIRS': True, # allows core to overwrite other apps' templates
         'OPTIONS': {
             'context_processors': [
                 'django.contrib.auth.context_processors.auth',
@@ -283,11 +294,7 @@ MIDDLEWARE = [
 
 # Application definition
 
-# Get CMS project paths as app names
-CMS_PROJECT_DIR = os.path.join(BASE_DIR, 'taccsite_custom')
-CMS_PROJECT_APPS = get_dirs_as_app_names(CMS_PROJECT_DIR)
-
-INSTALLED_APPS = CMS_PROJECT_APPS + [
+INSTALLED_APPS = [
     # optional, but used in most projects
     'djangocms_admin_style',
 
@@ -373,6 +380,11 @@ INSTALLED_APPS = CMS_PROJECT_APPS + [
     'taccsite_cms.contrib.taccsite_system_monitor',
     'taccsite_cms.contrib.taccsite_data_list'
 ]
+if (TACC_CUSTOM_APP):
+    print('Using custom CMS: ' + TACC_CUSTOM_APP)
+    INSTALLED_APPS = [TACC_CUSTOM_APP] + INSTALLED_APPS
+else:
+    print('Using core CMS (no customization)')
 
 MIGRATION_MODULES = {}
 LANGUAGE_CODE = 'en'
@@ -508,17 +520,7 @@ META_USE_SCHEMAORG_PROPERTIES = True
 ########################
 
 try:
-    from taccsite_cms.settings_custom import *
-except ModuleNotFoundError:
-    pass
-
-try:
     from taccsite_cms.secrets import *
-except ModuleNotFoundError:
-    pass
-
-try:
-    from taccsite_cms.settings_local import *
 except ModuleNotFoundError:
     pass
 
