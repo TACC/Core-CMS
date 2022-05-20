@@ -76,10 +76,13 @@ All CMS projects (besides the stand-alone CMS core), store project-specific reso
 
 ### Running the CMS
 
-1. [Build][docker-compose-build] the CMS and database images:
+1. [Build][docker-compose-build] the CMS image for Core __or__ custom CMS:
 
     ```bash
     docker-compose build
+    ```
+    ```
+    docker-compose build --build-arg PROJECT_NAME=$(PROJECT_NAME) #
     ```
 
     Or, if you have a `docker-compose.custom.yml`, then:
@@ -87,6 +90,11 @@ All CMS projects (besides the stand-alone CMS core), store project-specific reso
     ```bash
     docker-compose -f docker-compose.custom.yml build
     ```
+    ```
+    docker-compose -f docker-compose.custom.yml build --build-arg PROJECT_NAME=$(PROJECT_NAME) #
+    ```
+
+    <sub># Where `PROJECT_NAME` matches a directory from `/taccsite_custom`.</sub>
 
 2. [Create and run][docker-compose-up] the CMS and database containers:
 

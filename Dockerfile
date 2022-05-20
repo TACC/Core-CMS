@@ -67,3 +67,6 @@ RUN npm ci
 ARG PROJECT_NAME
 ARG BUILD_ID
 RUN npm run build --project=$PROJECT_NAME --build-id=$BUILD_ID
+
+# env vars whose availability was delayed (for layer optimization)
+ENV PROJECT_NAME=$PROJECT_NAME

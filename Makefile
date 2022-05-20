@@ -7,7 +7,7 @@ DOCKER_IMAGE_LATEST := $(DOCKERHUB_REPO):latest
 
 .PHONY: build
 build:
-	docker-compose -f ./docker-compose.yml build
+	docker-compose -f ./docker-compose.yml build --build-arg PROJECT_NAME=$(PROJECT_NAME)
 
 .PHONY: build-full
 build-full:

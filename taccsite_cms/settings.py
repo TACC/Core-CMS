@@ -131,8 +131,7 @@ THEME = None
 ########################
 
 TACC_CUSTOM_ROOT = 'taccsite_custom'
-# TACC_CUSTOM_NAME = os.getenv('PROJECT_NAME') # !!!: Not working
-TACC_CUSTOM_NAME = 'texascale-org' # !!!: Must use external value
+TACC_CUSTOM_NAME = os.getenv('PROJECT_NAME')
 
 if (TACC_CUSTOM_NAME):
     TACC_CUSTOM_DIR = os.path.join(TACC_CUSTOM_ROOT, TACC_CUSTOM_NAME)
