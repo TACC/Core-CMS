@@ -245,7 +245,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': get_template_dirs(BASE_DIR, 'taccsite_cms', TACC_CUSTOM_DIR),
-        'APP_DIRS': True, # allows core to overwrite other apps' templates
+        'APP_DIRS': True, # let us overwrite templates of apps (e.g. blog, core)
         'OPTIONS': {
             'context_processors': [
                 'django.contrib.auth.context_processors.auth',

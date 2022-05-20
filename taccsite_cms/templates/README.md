@@ -6,6 +6,10 @@ All templates specific to the Core CMS __must__ be placed in this directory (or 
 
 To make certain templates available as page templates for CMS editors, update `CMS_TEMPLATES` setting.
 
+> __Note__: Changes to `CMS_TEMPLATES` require a server restart to take effect.\*
+
+<sub>\* Hint: touch secrets, settings_custom, or settings_local to trigger reload of settings which will restart the server.</sub>
+
 ## Overwrite Apps or Plugins
 
 1. Create sub-directory named the same as the Python module directory of the app/plugin.
