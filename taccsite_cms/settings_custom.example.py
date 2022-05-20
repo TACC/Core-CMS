@@ -82,7 +82,7 @@ FAVICON = {
 # NEWS / BLOG
 ########################
 
-INSTALLED_APPS = INSTALLED_APPS + [
+INSTALLED_APPS += [
     # 'filer',              # already in Core
     # 'easy_thumbnails',    # already in Core
     'parler',
