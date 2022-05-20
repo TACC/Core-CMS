@@ -295,7 +295,7 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.sites',
     'django.contrib.sitemaps',
-    # Customize 'django.contrib.staticfiles'
+    # customize 'django.contrib.staticfiles'
     # SEE: https://stackoverflow.com/q/57921970/11817077
     # 'django.contrib.staticfiles',
     'taccsite_cms.django.contrib.staticfiles_custom',
@@ -347,7 +347,7 @@ INSTALLED_APPS = [
     'djangocms_bootstrap4.contrib.bootstrap4_tabs',
     'djangocms_bootstrap4.contrib.bootstrap4_utilities',
 
-    # TACC: miscellaneous
+    # miscellaneous
     'haystack',                # search index
     'aldryn_apphooks_config',  # search index & django CMS Blog
     'test_without_migrations', # run tests faster
