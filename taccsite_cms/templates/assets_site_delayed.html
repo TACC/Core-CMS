@@ -1,3 +1,5 @@
+{% load cms_tags %}
+
 {# For assets that should be loaded after all others. #}
 {% comment %}
 Consider asset load via `assets_site`, not `assets_site_delayed`:
@@ -7,7 +9,7 @@ Consider asset load via `assets_site`, not `assets_site_delayed`:
 
 {# NOTE: Fonts may be loaded early via `assets_font` #}
 
-
+{% block assets %}
 
 <!-- Site Assets (Delayed): Scripts. -->
 {# FAQ: Bootstrap can use jQuery, Popper, then its own script #}
@@ -22,3 +24,5 @@ Consider asset load via `assets_site`, not `assets_site_delayed`:
 <!-- FP-526: Stop using Font Awesome icons; start using Cortal icons -->
 <link id="css-portal-font" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css" />
 {% endif %}
+
+{% endblock assets %}

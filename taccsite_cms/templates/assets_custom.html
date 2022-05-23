@@ -1,4 +1,4 @@
-{% load staticfiles %}
+{% load cms_tags static %}
 
 {# Load assets as external files, to cache independently of markup. #}
 {% comment %}
@@ -9,12 +9,14 @@ FAQ: IF a script or style is better cached with markup, THEN:
 
 {# NOTE: Fonts may be loaded early via `assets_font` #}
 
-
+{% block assets %}
 
 <!-- Custom Site Assets: Favicon. -->
 {% with settings.FAVICON as favicon %}
 <link rel="icon" href="{% static favicon.img_file_src %}" type="image/x-icon" />
 {% endwith %}
+
+{% endblock assets %}
 
 
 
@@ -22,7 +24,7 @@ FAQ: IF a script or style is better cached with markup, THEN:
 
 {# Example #}
 {% comment %}
-  {% block assets_custom %}
+  {% block assets %}
     {{ block.super }}
 
     {# Example: Custom Site Assets. #}
@@ -37,5 +39,5 @@ FAQ: IF a script or style is better cached with markup, THEN:
     {# WARNING: Undesired use case. Create re-usable code instead. #}
     {# SEE: https://confluence.tacc.utexas.edu/x/54AZCg #}
 
-  {% endblock assets_custom %}
+  {% endblock assets %}
 {% endcomment %}

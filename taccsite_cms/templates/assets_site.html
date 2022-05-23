@@ -1,5 +1,4 @@
-{% load staticfiles %}
-{# @var settings #}
+{% load cms_tags static %}
 
 {# Load assets as external files, to cache independently of markup. #}
 {% comment %}
@@ -10,7 +9,7 @@ FAQ: IF a script or style is better cached with markup, THEN:
 
 {# NOTE: Fonts may be loaded early via `assets_font` #}
 
-
+{% block assets %}
 
 <!-- Site Assets: Styles. -->
 <link id="css-bootstrap" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -18,6 +17,8 @@ FAQ: IF a script or style is better cached with markup, THEN:
 {# CAVEAT: Requires `npm run build` step before running the Django project. #}
 <link id="css-site" rel="stylesheet" href="{% static 'site_cms/css/build/site.css' %}">
 <link id="css-site-header" rel="stylesheet" href="{% static 'site_cms/css/build/site.header.css' %}">
+
+{% endblock assets %}
 
 
 

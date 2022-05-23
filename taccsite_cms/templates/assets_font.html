@@ -1,27 +1,28 @@
 {# Load web fonts early #}
 {# SEE: https://confluence.tacc.utexas.edu/x/B4COCw #}
-{% load staticfiles %}
+{% load cms_tags static %}
 
-
+{% block assets %}
 
 <link id="css-site-font" rel="stylesheet" href="{% static 'site_cms/css/build/site.fonts.css' %}">
 <link id="css-site-font--backup" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
 
+{% endblock assets %}
 
 
 {# Example #}
 {% comment %}
 
   {# Example: Custom font that replaces Site font. #}
-  {% block assets_font %}
+  {% block assets %}
     <link rel="stylesheet" href="https://use.typekit.net/xnr7bof.css" />
-  {% endblock assets_font %}
+  {% endblock assets %}
 
   {# Example: Custom font that accompanies Site font. #}
-  {% block assets_font %}
+  {% block assets %}
     {{ block.super }}
 
     <link rel="stylesheet" href="https://use.typekit.net/xnr7bof.css" />
-  {% endblock assets_font %}
+  {% endblock assets %}
 
 {% endcomment %}

@@ -1,3 +1,5 @@
+{% load cms_tags %}
+
 {# For assets that should be loaded after all others. #}
 {% comment %}
 Consider asset load via `assets_custom`, not `assets_custom_delayed`:
@@ -7,13 +9,15 @@ Consider asset load via `assets_custom`, not `assets_custom_delayed`:
 
 {# NOTE: Fonts may be loaded early via `assets_font` #}
 
+{% block assets %}
 
+{% endblock assets %}
 
 {# Do NOT directly load project-specific assets here; see `/taccsite_custom` #}
 
 {# Example #}
 {% comment %}
-  {% block assets_custom_delayed %}
+  {% block assets %}
     {{ block.super }}
 
     {# Example: Custom Site Assets. #}
@@ -28,5 +32,5 @@ Consider asset load via `assets_custom`, not `assets_custom_delayed`:
     {# WARNING: Undesired use case. Create re-usable code instead. #}
     {# SEE: https://confluence.tacc.utexas.edu/x/54AZCg #}
 
-  {% endblock assets_custom_delayed %}
+  {% endblock assets %}
 {% endcomment %}
