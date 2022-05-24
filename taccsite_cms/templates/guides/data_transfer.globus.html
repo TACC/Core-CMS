@@ -1,4 +1,5 @@
 {% extends "guide.html" %}
+{% load cms_tags staticfiles %}
 
 {% block guide %}
   {# HACK: New markup (`<figure>`) or some classnames may be better, but new guides/docs are coming, so I'm solving this quick #}
@@ -57,8 +58,8 @@
         as XSEDE is a CILogon Identity Provider.
       </p>
 
-      <a href="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/b2/a8/b2a856d2-e079-48f1-8785-dbf758534510/picture1.png__1170x0_q85_subsampling-2_upscale.png" target="_blank">
-        <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/b2/a8/b2a856d2-e079-48f1-8785-dbf758534510/picture1.png__1170x0_q85_subsampling-2_upscale.png" />
+      <a href="{% static 'site_cms/img/guides/data_transfer.globus/step-1a-get-dn.png' %}" target="_blank">
+        <img src="{% static 'site_cms/img/guides/data_transfer.globus/step-1a-get-dn.png' %}" />
       </a>
 
       <p>
@@ -73,8 +74,8 @@
         and select "Account Profile" from the main menu under the "Home" dropdown.
       </p>
 
-      <a href="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/d9/a7/d9a7c353-416b-44b1-9c16-3014d6308b01/picture2.png__1170x0_q85_subsampling-2_upscale.png" target="_blank">
-        <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/d9/a7/d9a7c353-416b-44b1-9c16-3014d6308b01/picture2.png__1170x0_q85_subsampling-2_upscale.png" />
+      <a href="{% static 'site_cms/img/guides/data_transfer.globus/step-1b-tacc-profile.png' %}" target="_blank">
+        <img src="{% static 'site_cms/img/guides/data_transfer.globus/step-1b-tacc-profile.png' %}" />
       </a>
 
       <p>
@@ -83,8 +84,8 @@
         in the text field. Click the button to "Associate DN". This will associate the new DN with your account. Please note, it may take up to 30 minutes for this change to propagate to all TACC systems.
       </p>
 
-      <a href="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/06/b0/06b0c288-90cc-4bd0-9650-45d25497bbc5/picture3.png__1170x0_q85_subsampling-2_upscale.png" target="_blank">
-        <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/06/b0/06b0c288-90cc-4bd0-9650-45d25497bbc5/picture3.png__1170x0_q85_subsampling-2_upscale.png" />
+      <a href="{% static 'site_cms/img/guides/data_transfer.globus/step-1c-asociate-dn.png' %}" target="_blank">
+        <img src="{% static 'site_cms/img/guides/data_transfer.globus/step-1c-asociate-dn.png' %}" />
       </a>
     </div>
   </div>
@@ -105,30 +106,30 @@
         and log in.
       </p>
 
-      <a href="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/64/ec/64ec67d5-29fb-4a8c-84bf-d8e52860083a/picture4.png__1170x0_q85_subsampling-2_upscale.png" target="_blank">
-        <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/64/ec/64ec67d5-29fb-4a8c-84bf-d8e52860083a/picture4.png__1170x0_q85_subsampling-2_upscale.png" />
+      <a href="{% static 'site_cms/img/guides/data_transfer.globus/step-2a-login.png' %}" target="_blank">
+        <img src="{% static 'site_cms/img/guides/data_transfer.globus/step-2a-login.png' %}" />
       </a>
 
       <p>
         Upon successful login you, you will be directed to the "File Manager" landing page.
       </p>
 
-      <a href="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/04/cc/04cc029b-9af8-4cb0-8698-943ae93d9e0e/picture5.png__1170x0_q85_subsampling-2_upscale.png" target="_blank">
-        <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/04/cc/04cc029b-9af8-4cb0-8698-943ae93d9e0e/picture5.png__1170x0_q85_subsampling-2_upscale.png" />
+      <a href="{% static 'site_cms/img/guides/data_transfer.globus/step-2b-file-manager.png' %}" target="_blank">
+        <img src="{% static 'site_cms/img/guides/data_transfer.globus/step-2b-file-manager.png' %}" />
       </a>
 
       <p>Click on Endpoints.</p>
 
-      <a href="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/14/a5/14a540bd-9666-449c-be18-ef18456faf42/picture6.png__1170x0_q85_subsampling-2_upscale.png" target="_blank">
-        <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/14/a5/14a540bd-9666-449c-be18-ef18456faf42/picture6.png__1170x0_q85_subsampling-2_upscale.png" />
+      <a href="{% static 'site_cms/img/guides/data_transfer.globus/step-2c-endpoints.png' %}" target="_blank">
+        <img src="{% static 'site_cms/img/guides/data_transfer.globus/step-2c-endpoints.png' %}" />
       </a>
 
       <p>
         Click “+ Create new endpoint” and follow the instructions to set up your desktop/laptop as an endpoint.
       </p>
 
-      <a href="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/71/94/71947964-5a11-4bb3-ab5e-b8b2ae1b1c86/picture7.png__1170x0_q85_subsampling-2_upscale.png" target="_blank">
-        <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/71/94/71947964-5a11-4bb3-ab5e-b8b2ae1b1c86/picture7.png__1170x0_q85_subsampling-2_upscale.png" />
+      <a href="{% static 'site_cms/img/guides/data_transfer.globus/step-2d-access-computer.png' %}" target="_blank">
+        <img src="{% static 'site_cms/img/guides/data_transfer.globus/step-2d-access-computer.png' %}" />
       </a>
 
       <p>
@@ -145,14 +146,14 @@
         Click on “File Manager”, and next click on the Collection field. You can choose "Your collections" and click on "My Laptop" to select the created endpoint to your computer.
       </p>
 
-      <a href="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/6f/ee/6feecdb0-0abc-4732-85a0-88f3e58a361f/picture8.png__1170x0_q85_subsampling-2_upscale.png" target="_blank">
-        <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/6f/ee/6feecdb0-0abc-4732-85a0-88f3e58a361f/picture8.png__1170x0_q85_subsampling-2_upscale.png" />
+      <a href="{% static 'site_cms/img/guides/data_transfer.globus/step-2d-create-endpoint.png' %}" target="_blank">
+        <img src="{% static 'site_cms/img/guides/data_transfer.globus/step-2d-create-endpoint.png' %}" />
       </a>
 
       <p>You can now access the files on your desktop/laptop via Globus.</p>
 
-      <a href="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/0f/3d/0f3daa28-6632-4d3e-a964-706d33dc2fa3/picture9.png__1170x0_q85_subsampling-2_upscale.png" target="_blank">
-        <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/0f/3d/0f3daa28-6632-4d3e-a964-706d33dc2fa3/picture9.png__1170x0_q85_subsampling-2_upscale.png" />
+      <a href="{% static 'site_cms/img/guides/data_transfer.globus/step-2e-your-collections.png' %}" target="_blank">
+        <img src="{% static 'site_cms/img/guides/data_transfer.globus/step-2e-your-collections.png' %}" />
       </a>
 
       <p>
@@ -185,8 +186,8 @@
         </dl>
       </details>
 
-      <a href="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/5b/7a/5b7adb5f-da51-4dd0-9b84-44ce69c41da6/picture10.png__1170x0_q85_subsampling-2_upscale.png" target="_blank">
-        <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/5b/7a/5b7adb5f-da51-4dd0-9b84-44ce69c41da6/picture10.png__1170x0_q85_subsampling-2_upscale.png" />
+      <a href="{% static 'site_cms/img/guides/data_transfer.globus/step-2f-select-system.png' %}" target="_blank">
+        <img src="{% static 'site_cms/img/guides/data_transfer.globus/step-2f-select-system.png' %}" />
       </a>
 
       <p>
@@ -247,13 +248,47 @@
 
           <ul>
             <li>
-              <p>You will find the Project Id on your “My Projects” list in the second column.</p>
-              <a href="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/53/f4/53f40efb-3207-44e8-a84c-59a2a97a9b56/picture11_a2cps.png__1170x0_q85_subsampling-2_upscale.png" target="_blank">
-                <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/53/f4/53f40efb-3207-44e8-a84c-59a2a97a9b56/picture11_a2cps.png__1170x0_q85_subsampling-2_upscale.png" />
+              <p>You will find the Project ID on your “My Projects” list in the second column.</p>
+              <a href="{% static 'site_cms/img/guides/data_transfer.globus/step-2g-project-id.CEP.png' %}" target="_blank">
+                <img src="{% static 'site_cms/img/guides/data_transfer.globus/step-2g-project-id.CEP.png' %}" />
               </a>
+
+              <details class="small"><summary>Examples:</summary>
+                <dl>
+                  <dt>3DEM</dt>
+                  <dd>
+                    <a href="{% static 'site_cms/img/guides/data_transfer.globus/step-2g-project-id.3DEM.png' %}" target="_blank">
+                      <img src="{% static 'site_cms/img/guides/data_transfer.globus/step-2g-project-id.3DEM.png' %}" />
+                    </a>
+                  </dd>
+                  <dt>A2CPS</dt>
+                  <dd>
+                    <a href="{% static 'site_cms/img/guides/data_transfer.globus/step-2g-project-id.A2CPS.png' %}" target="_blank">
+                      <img src="{% static 'site_cms/img/guides/data_transfer.globus/step-2g-project-id.A2CPS.png' %}" />
+                    </a>
+                  </dd>
+                  <dt>ECCO</dt>
+                  <dd>
+                    <a href="{% static 'site_cms/img/guides/data_transfer.globus/step-2g-project-id.ECCO.png' %}" target="_blank">
+                      <img src="{% static 'site_cms/img/guides/data_transfer.globus/step-2g-project-id.ECCO.png' %}" />
+                    </a>
+                  </dd>
+                  <dt>PT2050</dt>
+                  <dd>
+                    <a href="{% static 'site_cms/img/guides/data_transfer.globus/step-2g-project-id.PT2050.png' %}" target="_blank">
+                      <img src="{% static 'site_cms/img/guides/data_transfer.globus/step-2g-project-id.PT2050.png' %}" />
+                    </a>
+                  </dd>
+                  <dt>UTRC</dt>
+                  <dd>
+                    <a href="{% static 'site_cms/img/guides/data_transfer.globus/step-2g-project-id.UTRC.png' %}" target="_blank">
+                      <img src="{% static 'site_cms/img/guides/data_transfer.globus/step-2g-project-id.UTRC.png' %}" />
+                    </a>
+                  </dd>
+              </details>
             </li>
             <li>
-              <p>If you are viewing a project, the Project Id will be appended to the URL in your browser as:
+              <p>If you are viewing a project, the Project ID will be appended to the URL in your browser as:
                 <pre><code>https://<kbd>portal.domain</kbd>/workbench/data/tapis/projects/<kbd>portal</kbd>.project.<kbd>PORTAL-ProjectIDNumber</kbd></code></pre>
 
                 <details class="small"><summary>Examples:</summary>
