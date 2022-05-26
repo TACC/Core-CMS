@@ -7,15 +7,15 @@
 
 /* SETTINGS */
 
-/* CAVEAT: This is already imported in `site.css`, but necessary here to
+/* CAVEAT: These are already imported in `site.css`, but necessary here to
            override Portal (which also loads `site.header.css`), so font
            variables are unfortunately overwritten 1x in CMS, 2x in Portal */
 /* TODO: Find a way to be modular, but not redundant; perhaps `env()` vars */
-@import url("_imports/settings/font.css");
+/* Unique to CMS */
+@import url("./_imports/settings/font.css");
 
 /* TRUMPS */
 
-/* Shared with Portal */
 /* FP-526: Consider loading Cortal icons with <link> as delayed asset */
 /* NOTE: This import is duplicated from `icon.css` because `@font-face` is ineffectual in Shadow DOM (where `site.tacc-search-bar.css` is loaded) */
 /* SEE: https://bugs.chromium.org/p/chromium/issues/detail?id=336876 */
@@ -26,7 +26,6 @@
         - the Portal nav
         - the CMS nav
 */
-/* Unique to CMS */
 @import url("_imports/trumps/s-header.css");
 @import url("_imports/trumps/s-portal-nav.css");
 @import url("_imports/trumps/s-cms-nav.css");

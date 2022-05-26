@@ -79,25 +79,21 @@ FAVICON = {
 }
 
 ########################
-# BLOG & SOCIAL METADATA
+# NEWS / BLOG
 ########################
 
-# Install required apps
-INSTALLED_APPS += [
-    # Blog/News
-    # 'filer',              # already added
-    # 'easy_thumbnails',    # already added
+tacc_app_index = INSTALLED_APPS.index('taccsite_cms')
+INSTALLED_APPS[tacc_app_index:tacc_app_index] = [
+    # 'filer',              # already in Core
+    # 'easy_thumbnails',    # already in Core
     'parler',
     'taggit',
     'taggit_autosuggest',
-    'meta',                 # also supports `djangocms_page_meta`
+    # 'meta',               # already in Core
     'sortedm2m',
     'djangocms_blog',
-
-    # Metadata
-    'djangocms_page_meta',
 ]
-# CAVEAT: 'taggit_autosuggest' requires the following is added to `urls.py`
+# REQ: 'taggit_autosuggest' requires the following is added to `urls.py`
 """
 urlpatterns += [
     # Support `taggit_autosuggest` (from `djangocms-blog`)
@@ -105,23 +101,26 @@ urlpatterns += [
 ]
 """
 
-# Metadata: Configure
-META_SITE_PROTOCOL = 'http'
-META_USE_SITES = True
-META_USE_OG_PROPERTIES = True
-META_USE_TWITTER_PROPERTIES = True
-META_USE_GOOGLEPLUS_PROPERTIES = True # django-meta 1.x+
-# META_USE_SCHEMAORG_PROPERTIES=True  # django-meta 2.x+
-
-# Blog/News: Set custom paths for templates
+# Paths for alternate templates that user can choose for blog-specific plugin
+# - Devs can customize core templates at `templates/djangocms_blog/`.
+# - Users can choose alt. templates from `templates/djangocms_blog/plugins/*`.
+# - Devs can customize alt. templates at `templates/djangocms_blog/plugins/*`.
 BLOG_PLUGIN_TEMPLATE_FOLDERS = (
-    ('plugins/default', 'Default template'),    # i.e. `templates/djangocms_blog/plugins/default/`
-    ('plugins/default-clone', 'Clone of default template'),  # i.e. `templates/djangocms_blog/plugins/default-clone/`
+    ('plugins', 'Default'),
+    # ('plugins/alternate', 'Alternate'),
 )
 
-# Blog/News: Change default values for the auto-setup of one `BlogConfig`
+# Change default values for the auto-setup of one `BlogConfig`
 # SEE: https://github.com/nephila/djangocms-blog/issues/629
-BLOG_AUTO_SETUP = True
+BLOG_AUTO_SETUP = True # Set to False after setup (minimize overhead)
 BLOG_AUTO_HOME_TITLE ='Home'
 BLOG_AUTO_BLOG_TITLE = 'News'
 BLOG_AUTO_APP_TITLE = 'News'
+BLOG_AUTO_NAMESPACE = 'News'
+
+# Miscellaneous settings
+BLOG_ENABLE_COMMENTS = False
+
+# TACC settings
+TACC_BLOG_SHOW_CATEGORIES = True
+TACC_BLOG_SHOW_TAGS = True
