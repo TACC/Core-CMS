@@ -1,4 +1,4 @@
-@import url("@tacc/core-styles/source/_imports/settings/color.css");
+@import url("@tacc/core-styles/src/lib/_imports/settings/color.css");
 
 :root {
   /* CAVEAT: A standard accent color definition is pending more designs */
