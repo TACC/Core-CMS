@@ -45,15 +45,15 @@ const BUILD_ID = ARGS['build-id'] || '';
  * @param {array.string} configs - The list of config file paths
  * @param {string} id - The value to identify the build
  */
- function _build( name, path, configs, id ) {
+function _build( name, path, configs, id ) {
   const configValues = '"' + configs.join('" "') + '"';
 
   console.log(`Overriding config with:`, configs );
   console.log(`Building "${name}" styles:`);
   cmd.runSync(`
     core-styles build\
-    --input-dir "${ROOT}/${path}/src"\
-    --output-dir "${ROOT}/${path}/build"\
+    --input "${ROOT}/${path}/src/**/*.css"\
+    --output "${ROOT}/${path}/build"\
     --custom-configs ${configValues}\
     --build-id "${id}"\
     --verbose\
@@ -66,6 +66,6 @@ const BUILD_ID = ARGS['build-id'] || '';
  * @param {string} [subDirName=dirName] - The name of the sub-directory
  * @return {string}
  */
- function _getPath( dirName, subDirName ) {
+function _getPath( dirName, subDirName ) {
   return dirName + '/static/' + ( subDirName || dirName ) + '/css';
 }

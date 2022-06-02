@@ -1,10 +1,11 @@
 {% extends "guide.html" %}
+{% load static %}
 
 {% block guide %}
   <style>
   /* To override 800px (from stylesheet) which is too big for these images */
   .s-document img {
-    max-width: 570px;
+    max-width: 670px;
   }
   </style>
   <div class="row">
@@ -214,8 +215,8 @@
         Once you have identified the location of the files, you can right-click on them and select either Get Info (on Mac) or Properties (on Windows) to view the path location on your local system.
       </p>
       <figure id="figure1">
-        <a href="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/6c/ea/6ceacba9-7824-4925-b924-dd317040b629/picture1.png__1170x0_q85_subsampling-2_upscale.png" target="_blank">
-          <img style="max-width: 380px;" src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/6c/ea/6ceacba9-7824-4925-b924-dd317040b629/picture1.png__1170x0_q85_subsampling-2_upscale.png" />
+        <a href="{% static 'site_cms/img/guides/data_transfer/1-determine-path.png' %}" target="_blank">
+          <img style="max-width: 380px;" src="{% static 'site_cms/img/guides/data_transfer/1-determine-path.png' %}" />
         </a>
         <figcaption>
           Figure 1. Use Get Info to determine “Where” the path of your data file(s) is
@@ -442,8 +443,8 @@ Changing to:
       </p>
 
       <figure id="figure2">
-        <a href="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/a9/9f/a99fa278-ae07-4b5e-9219-f9db3c2c89d5/picture2.png__1170x0_q85_subsampling-2_upscale.png" target="_blank">
-          <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/a9/9f/a99fa278-ae07-4b5e-9219-f9db3c2c89d5/picture2.png__1170x0_q85_subsampling-2_upscale.png" />
+        <a href="{% static 'site_cms/img/guides/data_transfer/2-open-connection-context.png' %}" target="_blank">
+          <img src="{% static 'site_cms/img/guides/data_transfer/2-open-connection-context.png' %}" />
         </a>
         <figcaption>
           Figure 2. Windows Cyberduck and “Open Connection” setup screen
@@ -459,8 +460,8 @@ Changing to:
         <em>If you have not done so already, replace the “Path” with the path to your individualized transfer directory.</em>
       </p>
       <figure id="figure3">
-        <a href="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/10/fb/10fbbb2a-dcd8-44d8-9ade-fb4ed3df8487/picture3.png__1170x0_q85_subsampling-2_upscale.png" target="_blank">
-          <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/10/fb/10fbbb2a-dcd8-44d8-9ade-fb4ed3df8487/picture3.png__1170x0_q85_subsampling-2_upscale.png" />
+        <a href="{% static 'site_cms/img/guides/data_transfer/3-open-connection-modal.png' %}" target="_blank">
+          <img src="{% static 'site_cms/img/guides/data_transfer/3-open-connection-modal.png' %}" />
         </a>
         <figcaption>
           Figure 3. Windows “Open Connection” setup screen
@@ -494,8 +495,8 @@ Changing to:
         <kbd>host</kbd>. Add your TACC username and password in the spaces provided. If the “More Options” area is not shown, click the small triangle or button to expand the window; this will allow you to enter the path to your transfer directory, <kbd>/transfer/directory/path</kbd>, so that when Cyberduck opens the connection you will immediately be in your individualized transfer directory on the system. As you fill out the information, Cyberduck will create the bookmark for you. Exit out of the setup screen and click on your newly created bookmark to launch the connection.
       </p>
       <figure id="figure4">
-        <a href="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/fa/b3/fab3edd6-c7a6-46dc-8103-09917ef02240/picture4.png__1170x0_q85_subsampling-2_upscale.png" target="_blank">
-          <img src="https://a2cps-staging.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/fa/b3/fab3edd6-c7a6-46dc-8103-09917ef02240/picture4.png__1170x0_q85_subsampling-2_upscale.png" />
+        <a href="{% static 'site_cms/img/guides/data_transfer/4-new-bookmark.png' %}" target="_blank">
+          <img src="{% static 'site_cms/img/guides/data_transfer/4-new-bookmark.png' %}" />
         </a>
         <figcaption>Figure 4. macOS “New Bookmark” setup screen</figcaption>
       </figure>
