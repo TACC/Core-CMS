@@ -268,74 +268,6 @@ If you need to change files within `/taccsite_custom`:
 <sub>† See [Restarting the CMS Server](#restarting-the-cms-server).</sub>
 
 
-### Changing Core Styles
-
-If you need to change files within `node_modules/@tacc/core-styles/source`:
-
-1. Clone [Core Styles].
-2. Make and commit changes.
-3. Open pull request.
-4. After PR is merged.
-5. In [Core CMS], update [Core Styles] module commit:
-
-  ```bash
-  npm install git+https://git@github.com/TACC/Core-Styles.git
-  ```
-
-6. Commit changes.
-
-#### Testing Core Styles Changes Locally
-
-If you need to test file changes with [Core CMS] changes:
-
-0. You should stash, commit, or revert any changes to `package.json` or `package-lock.json`.
-1. Clone [Core Styles].
-2. Allow live edit of node module via your [Core Styles] clone:
-
-    ```bash
-    cd path-to-Core-Styles
-    npm link
-    cd path-to-Core-CMS
-    npm link @tacc/core-styles --save
-    ```
-
-    _**Do** use `--save`.\* Do **not** commit the changes to `package.json` **nor** `package-lock.json`._
-
-3. Re-install [Core Styles] dependency `postcss-cli`:
-
-    ```bash
-    # cd path-to-Core-CMS
-    npm install postcss-cli --no-save
-    ```
-
-4. Make changes in your [Core Styles] clone as necessary.
-5. Build changes.†
-6. Undo changes to `package.json` and `package-lock.json`.
-    - _Warning: Do __not__ commit `npm link`'s automatic changes to `package.json` and `package-lock.json`!_
-
-- __Notice__: If you run `npm install` or `npm ci`, the live-edit link is destroyed. Repeat these steps to restore it._
-
-<sub>\* Use of `npm link` _without `--save`_ is overwritten by `npm install`. See [details](https://github.com/npm/cli/issues/2380#issuecomment-1029967927).</sub>\
-<sub>† See [How to Build Static Files](#how-to-build-static-files).</sub>
-
-#### Testing Core Styles Changes Remotely
-
-If you need to test [Core CMS] and [Core Styles] changes on a server:
-
-1. Push changes onto a [Core Styles] branch (not `main`).
-2. Install [Core Styles] at that branch:
-
-    ```bash
-    # cd path-to-Core-CMS
-    npm install --save-dev git+https://git@github.com/TACC/Core-Styles.git#your-branch-name
-    ```
-
-3. Deploy changes to test server.\*
-
-<sub>\* See [Deployment Steps](#deployment-steps).</sub>
-
-
-
 ## Running Commands in Container
 
 __If using `docker-compose.yml` then__ run certain commands via shell within container (because files are __not__ re-synced with local machine).
@@ -406,6 +338,23 @@ We use a modifed version of [GitFlow](https://datasift.github.io/gitflow/Introdu
     - `task/` for features and updates
     - `bug/` for bugfixes
     - `fix/` for hotfixes
+
+#### Testing Core Styles Changes Locally
+
+1. Clone [Core Styles] (if you haven't already).
+2. Tell project to temporarily use your [Core Styles] clone:
+    ```bash
+    npm link path-to/Core-Styles # e.g. npm link ../Core-Styles
+    npm install postcss-cli --no-save # fix bug with npm link + CSS build
+    ```
+
+3. Make changes in your [Core Styles] clone as necessary.
+4. [Build static files.]((#how-to-build-static-files))
+5. Test changes.
+6. Commit successful changes to a [Core Styles] branch.
+
+> __Notice__: [If you run `npm install` or `npm ci`, the link is destroyed.](https://github.com/npm/cli/issues/2380#issuecomment-1029967927) Repeat the above steps to restore it.
+
 
 ### Best Practices
 
