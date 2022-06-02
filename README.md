@@ -371,7 +371,7 @@ Sign your commits ([see this link](https://help.github.com/en/github/authenticat
 [Core Portal Deployments]: https://github.com/TACC/Core-Portal-Deployments
 [Camino]: https://github.com/TACC/Camino
 [Core CMS]: https://github.com/TACC/Core-CMS
-[Core Styles]: https://github.com/TACC/tup-ui/tree/main/libs/core-styles
+[Core Styles]: https://github.com/TACC/Core-Styles
 [Core CMS Resources]: https://github.com/TACC/Core-CMS-Resources
 [Core Portal]: https://github.com/TACC/Core-Portal
 [1]: https://docs.docker.com/get-docker/
