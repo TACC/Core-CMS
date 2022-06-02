@@ -349,8 +349,9 @@ We use a modifed version of [GitFlow](https://datasift.github.io/gitflow/Introdu
     ```
 
 3. Make changes in your [Core Styles] clone as necessary.
-4. [Build static files]((#how-to-build-static-files)).
+4. [Build static files.]((#how-to-build-static-files))
 5. Test changes.
+6. Commit successful changes to a [Core Styles] branch.
 
 > __Notice__: [If you run `npm install` or `npm ci`, the link is destroyed.](https://github.com/npm/cli/issues/2380#issuecomment-1029967927) Repeat the above steps to restore it.
 
