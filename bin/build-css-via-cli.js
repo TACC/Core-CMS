@@ -52,7 +52,7 @@ function _build( name, path, configs, id ) {
   console.log(`Building "${name}" styles:`);
   cmd.runSync(`
     core-styles build\
-    --input "${ROOT}/${path}/src"\
+    --input "${ROOT}/${path}/src/**/*.css"\
     --output "${ROOT}/${path}/build"\
     --custom-configs ${configValues}\
     --build-id "${id}"\
