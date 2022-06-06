@@ -10,8 +10,7 @@
   },
   "devDependencies": {
     "@tacc/core-styles": "^0.5.1",
-    "minimist": "^1.2.6",
-    "node-cmd": "^5.0.0"
+    "minimist": "^1.2.6"
   },
   "repository": "git@github.com:TACC/Core-CMS.git",
   "scripts": {
