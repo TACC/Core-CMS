@@ -78,15 +78,19 @@ DJANGOCMS_FORMS_FIELDSETS = (
         },
     ),
     (
-        _('Submission settings (broken features)'),
+        _('Submission settings (unavailable features)'),
         {
             'classes': ('collapse',),
             'description': 'Choose storage options to capture form data. You can enter an e-mail address to which to e-mail form submissions.',
             'fields': (
+                # Submitting form with 'email_to' defined causes server error
+                # FAQ: We may need to setup some django e-mail server for these
                 'email_to',
                 'email_from',
                 'email_subject',
                 'email_uploaded_files',
+                # Uncertain whether this works
+                # FAQ: It may not work only cuz of general form submission error
                 'spam_protection',
             ),
         },
