@@ -74,11 +74,12 @@ DJANGOCMS_FORMS_FIELDSETS = (
             'description': 'Whether to save form data.',
             'fields': (
                 'save_data',
+                'spam_protection',
             ),
         },
     ),
     (
-        _('Submission settings (unavailable features)'),
+        _('Submission e-mail (unavailable feature)'),
         {
             'classes': ('collapse',),
             'description': 'Choose storage options to capture form data. You can enter an e-mail address to which to e-mail form submissions.',
@@ -89,9 +90,6 @@ DJANGOCMS_FORMS_FIELDSETS = (
                 'email_from',
                 'email_subject',
                 'email_uploaded_files',
-                # Uncertain whether this works
-                # FAQ: It may not work only cuz of general form submission error
-                'spam_protection',
             ),
         },
     ),
