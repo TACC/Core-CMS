@@ -1,0 +1,83 @@
+{# https://github.com/avryhof/djangocms-forms/blob/30f4643/djangocms_forms/templates/djangocms_forms/form_template/default.html #}
+{% load cms_tags  djangocms_forms_tags i18n sekizai_tags static %}
+
+<div class="forms" id="{{ instance.form_id }}">
+	{% if instance.title %}
+		<h3 class="title">{{ instance.title }}</h3>
+	{% endif %}
+	{% if instance.description %}
+		<div class="description">
+			{{ instance.description|safe }}
+		</div>
+	{% endif %}
+	<div class="form-wrapper">
+		<form action="{{ form.submission_url }}" method="POST" {% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
+			<aside class="form-errors" style="display:none;"></aside>
+			{% for field in form.visible_fields %}
+        {# {{ field|input_class }} is django widget name lowercase #}
+        {# https://docs.djangoproject.com/en/2.2/ref/forms/widgets/ #}
+        {# {{ field.css_classes }} are 'required', 'error' #}
+        {# https://docs.djangoproject.com/en/2.2/ref/forms/api/#django.forms.BoundField.css_classes #}
+				<fieldset class="field-wrapper {{ field|input_class }} {{ field.css_classes }}{% if field|is_honeypot %} u-hide--visually{% endif %}">
+					<aside class="field-errors" style="display:none;">
+            {# populated by JavaScript #}
+            <!--<ul class="errorlist">
+              </li>...</li>
+            </ul>-->
+          </aside>
+					{% if field|is_checkbox %}
+						{{ field }}
+					{% endif %}
+					<label for="{{ field.id_for_label }}">
+						{{ field.label }}{% if field|is_required %}<span class="asterisk">*</span>{% endif %}
+					</label>
+					{% if not field|is_checkbox %}
+						{{ field }}
+					{% endif %}
+					{% if field.help_text %}
+						<p id="help-text-{{ field.auto_id }}" class="help-text"><small>{{ field.help_text|safe }}</small></p>
+					{% endif %}
+				</fieldset>
+			{% endfor %}
+			{% csrf_token %}
+			{% for hidden in form.hidden_fields %}
+				{{ hidden }}
+			{% endfor %}
+			<button type="submit" value="{{ instance.submit_btn_txt }}">{{ instance.submit_btn_txt }}</button>
+		</form>
+	</div>
+  {# Testing to date shows this used only for ReCaptcha #}
+  {# Other submissions use CMS messaging i.e. <div class="cms-messages"> #}
+	<div class="form-success" style="display: none;">
+		{% if instance.post_submit_msg %}
+			<p>{{ instance.post_submit_msg|safe }}</p>
+		{% else %}
+            <h4>{% trans 'Submission successful' %}</h4>
+            <p>{% trans 'Your form has been successfully submitted.' %}</p>
+		{% endif %}
+	</div>
+</div>
+
+{% addtoblock "css" %}
+    {% if instance.use_honeypot %}
+        <style type="text/css">
+            .visuallyhidden { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
+        </style>
+    {% endif %}
+{% endaddtoblock %}
+{% addtoblock "js" %}
+    {% if instance.use_recaptcha %}
+        <script src="https://www.google.com/recaptcha/api.js?onload=reCapctchaOnloadCallback&render=explicit" async defer></script>
+    {% endif %}
+	<script src="{% static 'js/djangocms_forms/libs/jquery.form.min.js' %}"></script>
+	<script src="{% static 'js/djangocms_forms/jquery.djangocms-forms.js' %}"></script>
+
+	<script type="text/javascript">
+		$(function() {
+		  $('.forms').cmsForms({
+			  'reCaptchaSiteKey': '{{ recaptcha_site_key }}',
+			  'redirectDelay': {{ redirect_delay|default:1000 }}
+		  });
+		});
+	</script>
+{% endaddtoblock %}
