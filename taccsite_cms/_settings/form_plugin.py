@@ -36,7 +36,7 @@ DJANGOCMS_FORMS_SPAM_PROTECTIONS = (
 )
 DEFAULT_SPAM_PROTECTION = 0
 
-# Improve form legibility and conceal broken features
+# Improve form legibility and conceal unavailable features
 # https://github.com/avryhof/djangocms-forms/blob/97d7c21/djangocms_forms/cms_plugins.py#L69-L121
 DJANGOCMS_FORMS_FIELDSETS = (
     (None, {'fields': ('name', 'form_template',),}),
