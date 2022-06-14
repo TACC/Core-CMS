@@ -2,6 +2,7 @@
 
 :root {
   --global-font-family--sans: "Benton Sans", "Roboto", sans-serif;
+  --global-font-family--sans-alt: "Roboto", sans-serif;
   --global-font-family--serif: Times, sans-serif;
   --global-font-family--mono: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 
