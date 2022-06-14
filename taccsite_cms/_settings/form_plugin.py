@@ -26,8 +26,8 @@ DJANGOCMS_FORMS_USE_HTML5_REQUIRED = True
 # DJANGOCMS_FORMS_REDIRECT_DELAY = 1000
 
 # The default value is only for test and dev
-# DJANGO_FORMS_RECAPTCHA_PUBLIC_KEY = ''
-# DJANGO_FORMS_RECAPTCHA_SECRET_KEY = ''
+# DJANGO_FORMS_RECAPTCHA_PUBLIC_KEY = '' # set in Deployments repo, not here
+# DJANGO_FORMS_RECAPTCHA_SECRET_KEY = '' # set on sever directly, not here
 
 DJANGOCMS_FORMS_SPAM_PROTECTIONS = (
     (0, _('None')),
