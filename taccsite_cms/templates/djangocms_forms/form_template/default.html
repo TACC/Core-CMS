@@ -6,9 +6,9 @@
 		<h3 class="title">{{ instance.title }}</h3>
 	{% endif %}
 	{% if instance.description %}
-		<div class="description">
+		<p class="description">
 			{{ instance.description|safe }}
-		</div>
+		</p>
 	{% endif %}
 	<div class="form-wrapper">
 		<form action="{{ form.submission_url }}" method="POST" {% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
@@ -18,7 +18,7 @@
         {# https://docs.djangoproject.com/en/2.2/ref/forms/widgets/ #}
         {# {{ field.css_classes }} are 'required', 'error' #}
         {# https://docs.djangoproject.com/en/2.2/ref/forms/api/#django.forms.BoundField.css_classes #}
-				<fieldset class="field-wrapper {{ field|input_class }} {{ field.css_classes }}{% if field|is_honeypot %} u-hide--visually{% endif %}">
+				<div class="field-wrapper {{ field|input_class }} {{ field.css_classes }}{% if field|is_honeypot %} u-hide--visually{% endif %}">
 					<aside class="field-errors" style="display:none;">
             {# populated by JavaScript #}
             <!--<ul class="errorlist">
@@ -35,15 +35,17 @@
 						{{ field }}
 					{% endif %}
 					{% if field.help_text %}
-						<p id="help-text-{{ field.auto_id }}" class="help-text"><small>{{ field.help_text|safe }}</small></p>
+						<p id="help-text-{{ field.auto_id }}" class="help-text">{{ field.help_text|safe }}</p>
 					{% endif %}
-				</fieldset>
+				</div>
 			{% endfor %}
 			{% csrf_token %}
 			{% for hidden in form.hidden_fields %}
 				{{ hidden }}
 			{% endfor %}
-			<button type="submit" value="{{ instance.submit_btn_txt }}">{{ instance.submit_btn_txt }}</button>
+			<div class="button-wrapper submit">
+			  <button type="submit" value="{{ instance.submit_btn_txt }}">{{ instance.submit_btn_txt }}</button>
+      </div>
 		</form>
 	</div>
   {# Testing to date shows this used only for ReCaptcha #}
