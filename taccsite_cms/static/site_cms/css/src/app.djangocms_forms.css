@@ -1,0 +1,5 @@
+/* DO NOT ADD STYLES HERE; ONLY IMPORT OTHER STYLESHEETS */
+
+/* Styles for django cms form plugin */
+@import url("_imports/elements/form.css");
+@import url("_imports/components/django.cms.forms.css");

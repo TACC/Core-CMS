@@ -1,0 +1,40 @@
+/*
+Forms
+
+Elements that create forms which the user can fill out and submit to the Web site or application.
+
+```
+<form> <fieldset> <legend> <label> <input> <select> <optgroup> <option> <textarea> <button> <output> <progress> <meter> <datalist>
+```
+
+Reference:
+
+- [HTML element reference: Forms | MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Forms)
+
+Styleguide Elements.Forms
+*/
+
+form {
+  font-family: var(--global-font-family--sans-alt);
+}
+
+label {
+  display: block;
+  font-size: var(--global-font-size--small);
+}
+label:not(:first-child):not() {
+  margin-top: 2rem; /* mimic <p> `margin-bottom` */
+  /* margin-bottom: 0.5rem; *//* mimic Bootstrap _reboot.css */
+}
+fieldset:not(:last-child) {
+  margin-bottom: 3.5rem;
+}
+
+input,
+select,
+textarea {
+  padding: 15px 10px;
+}
+input[type="time"] {
+  font-family: var(--global-font-family--mono);
+}
