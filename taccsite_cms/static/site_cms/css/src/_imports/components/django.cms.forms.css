@@ -48,7 +48,7 @@ p.help-text:last-child {
 .field-wrapper.checkboxinput {
   display: inline-grid;
 
-  column-gap: 0.5em;
+  column-gap: 0.25em;
   align-items: baseline;
   grid-template-columns: min-content auto; /* shrink input, let label extend */
   grid-template-areas:
