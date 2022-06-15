@@ -19,12 +19,7 @@
         {# {{ field.css_classes }} are 'required', 'error' #}
         {# https://docs.djangoproject.com/en/2.2/ref/forms/api/#django.forms.BoundField.css_classes #}
 				<div class="field-wrapper {{ field|input_class }} {{ field.css_classes }}{% if field|is_honeypot %} u-hide--visually{% endif %}">
-					<aside class="field-errors" style="display:none;">
-            {# populated by JavaScript #}
-            <!--<ul class="errorlist">
-              </li>...</li>
-            </ul>-->
-          </aside>
+					<aside class="field-errors" style="display:none;"></aside>
 					{% if field|is_checkbox %}
 						{{ field }}
 					{% endif %}
