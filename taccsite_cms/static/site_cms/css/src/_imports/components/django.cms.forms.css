@@ -34,14 +34,39 @@ p.help-text:last-child {
 
 .field-wrapper {
   margin-bottom: 2rem; /* mimic <p> `margin-bottom` */
+}
 
+.field-wrapper:not(.checkboxinput) {
   display: flex;
   flex-direction: column;
   align-items: start; /* i.e. prevent stretch */
 }
-.field-wrapper > .field-errors {
+.field-wrapper:not(.checkboxinput) > .field-errors {
   order: 1; /* i.e. move to end */
 }
+
+.field-wrapper.checkboxinput {
+  display: inline-grid;
+
+  column-gap: 0.5em;
+  align-items: baseline;
+  grid-template-columns: min-content auto; /* shrink input, let label extend */
+  grid-template-areas:
+    'error _____'
+    'input label'
+    'notes notes';
+}
+.field-wrapper.checkboxinput .field-errors { grid-area: error; }
+.field-wrapper.checkboxinput input         { grid-area: input; }
+.field-wrapper.checkboxinput label         { grid-area: label; }
+.field-wrapper.checkboxinput .help-text    { grid-area: notes; }
+.field-wrapper.checkboxinput label {
+  margin-bottom: 0; /* overwrite forms.css label */
+}
+
+
+
+/* Errors */
 
 .field-errors {
   font-size: var(--global-font-size--small);
@@ -53,7 +78,7 @@ p.help-text:last-child {
 
 
 
-/* Field: Types */
+/* Lists */
 
 ul.radioselect,
 ul.checkboxselectmultiple {
