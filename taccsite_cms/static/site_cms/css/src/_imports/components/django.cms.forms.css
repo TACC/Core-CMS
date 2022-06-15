@@ -32,11 +32,23 @@ p.help-text:last-child {
 
 /* Field */
 
+.field-wrapper {
+  margin-bottom: 2rem; /* mimic <p> `margin-bottom` */
+
+  display: flex;
+  flex-direction: column;
+  align-items: start; /* i.e. prevent stretch */
+}
+.field-wrapper > .field-errors {
+  order: 1; /* i.e. move to end */
+}
+
 .field-errors {
   font-size: var(--global-font-size--small);
 }
-.field-wrapper {
-  margin-bottom: 2rem; /* mimic <p> `margin-bottom` */
+.field-errors ul {
+  margin-top: 1rem; /* mimic ul margin-bottom */
+  margin-bottom: 0; /* overwrite ul margin-bottom */
 }
 
 
