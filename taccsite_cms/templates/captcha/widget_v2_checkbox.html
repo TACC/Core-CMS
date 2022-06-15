@@ -1,0 +1,9 @@
+{# https://github.com/torchbox/django-recaptcha/blob/4921a6c/captcha/templates/captcha/includes/js_v2_checkbox.html #}
+{# We can override template, but widget UI customization is limited #}
+{# https://developers.google.com/recaptcha/docs/display#config #}
+
+{% include "captcha/includes/js_v2_checkbox.html" %}
+<div class="g-recaptcha" data-theme="light"
+    {% for name, value in widget.attrs.items %}{% if value is not False %} {{ name }}{% if value is not True %}="{{ value|stringformat:'s' }}"{% endif %}{% endif %}{% endfor %}
+>
+</div>
