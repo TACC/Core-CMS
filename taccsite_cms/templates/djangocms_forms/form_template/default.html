@@ -61,18 +61,18 @@
 </div>
 
 {% addtoblock "css" %}
-    <link rel="stylesheet" href="{% static 'site_cms/css/build/app.forms.css' %}" />
+  {# TACC: Added call to load plugin-specific CSS #}
+  <link rel="stylesheet" href="{% static 'site_cms/css/build/app.forms.css' %}" />
 
-    {% if instance.use_honeypot %}
-        <style type="text/css">
-            .visuallyhidden { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
-        </style>
-    {% endif %}
+  {% if instance.use_honeypot %}
+    <style type="text/css">
+      .visuallyhidden { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
+    </style>
+  {% endif %}
 {% endaddtoblock %}
 {% addtoblock "js" %}
-    {% if instance.use_recaptcha %}
-        <script src="https://www.google.com/recaptcha/api.js?onload=reCapctchaOnloadCallback&render=explicit" async defer></script>
-    {% endif %}
+  {# TACC: Removed duplicate call to recaptcha/api.js load #}
+  {# TACC: FAQ: Plugin 'django-recaptcha' already loads it sans excess params #}
 	<script src="{% static 'js/djangocms_forms/libs/jquery.form.min.js' %}"></script>
 	<script src="{% static 'js/djangocms_forms/jquery.djangocms-forms.js' %}"></script>
 
