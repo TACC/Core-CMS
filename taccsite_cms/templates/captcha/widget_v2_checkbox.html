@@ -1,0 +1,8 @@
+{# https://github.com/torchbox/django-recaptcha/blob/4921a6c/captcha/templates/captcha/widget_v2_checkbox.html #}
+{% include "captcha/includes/js_v2_checkbox.html" %}
+{# TACC: To change default attr, also add '{% ifnotequal name "data-size" %}' #}
+<div class="g-recaptcha"
+  {% for name, value in widget.attrs.items %}{% if value is not False %} {{ name }}{% if value is not True %}="{{ value|stringformat:'s' }}"{% endif %}{% endif %}{% endfor %}
+>
+</div>
+{# TACC: To customize further, see '../widget_v2_checkbox.custom...' #}

@@ -22,6 +22,8 @@ urlpatterns = [
 
     url(r'^admin/', admin.site.urls),  # NOQA
     url(r'^cms/logout/', views.LogoutView.as_view(), name='logout'),
+
+    url(r'^', include('djangocms_forms.urls')),
 ]
 
 if getattr(settings, 'INCLUDES_CORE_PORTAL', True):

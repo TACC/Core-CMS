@@ -14,6 +14,11 @@ from glob import glob
 import ldap
 from django_auth_ldap.config import LDAPSearch, GroupOfNamesType
 
+from taccsite_cms._settings.form_plugin import *
+from taccsite_cms._settings.form_plugin import (
+    _INSTALLED_APPS as form_plugin_INSTALLED_APPS
+)
+
 SECRET_KEY = 'CHANGE_ME'
 def gettext(s): return s
 
@@ -90,16 +95,6 @@ CMS_PERMISSION = True
 # To use during dev, Tracking Protection in browser needs to be turned OFF.
 GOOGLE_ANALYTICS_PROPERTY_ID = "UA-123ABC@%$&-#"
 GOOGLE_ANALYTICS_PRELOAD = True
-
-########################
-# CMS FORMS
-########################
-
-# Create CMS Forms
-# SEE: https://pypi.org/project/djangocms-forms/
-# SEE: https://www.google.com/recaptcha/admin/create
-DJANGOCMS_FORMS_RECAPTCHA_PUBLIC_KEY = ""
-DJANGOCMS_FORMS_RECAPTCHA_SECRET_KEY = ""
 
 ########################
 # ELASTICSEARCH
@@ -318,6 +313,9 @@ INSTALLED_APPS = [
     'haystack',
     'aldryn_apphooks_config',
     'test_without_migrations',
+
+] + form_plugin_INSTALLED_APPS + [
+
     'taccsite_cms',
     'taccsite_cms.contrib.bootstrap4_djangocms_link',
     'taccsite_cms.contrib.bootstrap4_djangocms_picture',
@@ -414,18 +412,6 @@ FILE_UPLOAD_PERMISSIONS = 0o644
 FILE_UPLOAD_MAX_MEMORY_SIZE = 20000000  # 20MB
 
 DJANGOCMS_AUDIO_ALLOWED_EXTENSIONS = ['mp3', 'ogg', 'wav']
-
-# Djangocms Forms Settings.
-# SEE: https://github.com/mishbahr/djangocms-forms#configuration
-DJANGOCMS_FORMS_PLUGIN_MODULE = ('Generic')
-DJANGOCMS_FORMS_PLUGIN_NAME = ('Form')
-
-DJANGOCMS_FORMS_TEMPLATES = (
-    ('djangocms_forms/form_template/default.html', ('Default')),
-)
-DJANGOCMS_FORMS_USE_HTML5_REQUIRED = False
-
-DJANGOCMS_FORMS_REDIRECT_DELAY = 1
 
 # Elasticsearch Indexing
 HAYSTACK_ROUTERS = ['aldryn_search.router.LanguageRouter', ]

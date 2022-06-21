@@ -1,0 +1,7 @@
+@import url("./c-button--from-future-core-styles.css");
+
+.c-button {
+  --max-width: unset;
+
+  font-size: 1.6rem;
+}
