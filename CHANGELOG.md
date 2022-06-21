@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.6.0-4-b293de7] - 2022-06-21: Form Plugin, Changelog v3.6.0 Unreleased Link
+
+### Added
+
+- feat(frontera): accent color vars (eb7c282)
+- feat(v3.6.0): tup 230 make form plugin work (#500)
+
+### Changed
+
+- chore(version): v3.6.0 changelog, unreleased link (0c376b1)
+
 ## [3.6.0] - 2022-04-15: CSS to Core-Styles, BM Logo Tweaks, Dependency Updates
 
 ### Changes
@@ -357,7 +368,8 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 ## [2.0.0] - 2021-03-31
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.6.0...release/v3.6.0
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.6.0-4-b293de7...HEAD
+[3.6.0-4-b293de7]: https://github.com/TACC/Core-CMS/releases/tag/v3.6.0-4-b293de7
 [3.6.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.6.0
 [3.5.2]: https://github.com/TACC/Core-CMS/releases/tag/v3.5.2
 [3.5.1]: https://github.com/TACC/Core-CMS/releases/tag/v3.5.1
