@@ -113,3 +113,14 @@ _INSTALLED_APPS = [
     'django.forms',            # support form template override
     'captcha',                 # support recaptcha for djangocms_forms
 ]
+
+########################
+# DJANGO: RECAPTCHA
+########################
+
+# To properly avoid client error about using test keys
+# RECAPTCHA_PUBLIC_KEY = '__this_must_be_on_server_not_here__'
+# RECAPTCHA_SECRET_KEY = '__this_must_be_on_server_not_here__'
+
+# To silence server error about using test keys
+# SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
