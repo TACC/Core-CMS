@@ -39,6 +39,8 @@
 @import url("_imports/components/django.cms.blog.css");
 @import url("_imports/components/django.cms.post.css");
 @import url("_imports/components/bootstrap.container.css");
+/* Unique to CMS */
+@import url("./_imports/components/c-button.css");
 
 /* TRUMPS */
 @import url("_imports/trumps/s-breadcrumbs.css");

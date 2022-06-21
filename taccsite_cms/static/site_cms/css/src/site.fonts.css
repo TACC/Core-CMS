@@ -5,3 +5,8 @@
 
 /* GENERICS */
 @import url("_imports/generics/fonts.css");
+
+/* TUP-230: Post-v3.6.X, should be in ./_imports/settings/font.css */
+:root {
+  --global-font-family--sans-alt: "Roboto", sans-serif;
+}
