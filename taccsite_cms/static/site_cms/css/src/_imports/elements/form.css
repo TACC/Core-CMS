@@ -13,6 +13,7 @@ Reference:
 
 Styleguide Elements.Forms
 */
+@import url("_imports/tools/media-queries.css");
 
 form {
   font-family: var(--global-font-family--sans-alt);
@@ -35,7 +36,6 @@ fieldset:not(:last-child) {
 input,
 select,
 textarea {
-  padding: 15px 10px;
   border: var(--global-border--normal);
 }
 input:not(
@@ -51,4 +51,19 @@ textarea {
 input[type="time"],
 input[type="date"] {
   font-family: var(--global-font-family--mono);
+}
+
+@media (pointer: coarse) {
+  input,
+  select,
+  textarea {
+    padding: 15px 10px;
+  }
+}
+@media (pointer: fine), (pointer: none) {
+  input,
+  select,
+  textarea {
+    padding: 5px 10px;
+  }
 }
