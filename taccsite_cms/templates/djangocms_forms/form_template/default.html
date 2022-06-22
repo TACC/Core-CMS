@@ -24,7 +24,7 @@
 						{{ field }}
 					{% endif %}
 					<label for="{{ field.id_for_label }}">
-						{{ field.label }}{% if field|is_required %}<span class="asterisk">*</span>{% endif %}
+						{{ field.label }}{% if field|is_required %}<span class="asterisk">(required)</span>{% endif %}
 					</label>
 					{% if not field|is_checkbox %}
 						{{ field }}
