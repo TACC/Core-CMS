@@ -13,7 +13,6 @@ Reference:
 
 Styleguide Elements.Forms
 */
-@import url("_imports/tools/media-queries.css");
 
 form {
   font-family: var(--global-font-family--sans-alt);
