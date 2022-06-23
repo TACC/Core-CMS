@@ -7,7 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [3.6.0-4-b293de7] - 2022-06-21: Form Plugin, Changelog v3.6.0 Unreleased Link
+## [3.6.0-6-_______] - 2022-06-22: Form Plugin UI Fixes, Add ADCP Resources Dir
+
+### Added
+
+- Update submodule to include APCD [...] (#502)
+
+## Fixed
+
+- V3.6.0/form plugin fixes (#501)
+
+## [3.6.0-4-b293de7] - 2022-06-20: Form Plugin, Changelog v3.6.0 Unreleased Link
 
 ### Added
 
@@ -368,7 +378,8 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 ## [2.0.0] - 2021-03-31
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.6.0-4-b293de7...HEAD
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.6.0-6-_______...HEAD
+[3.6.0-6-_______]: https://github.com/TACC/Core-CMS/releases/tag/v3.6.0-6-_______
 [3.6.0-4-b293de7]: https://github.com/TACC/Core-CMS/releases/tag/v3.6.0-4-b293de7
 [3.6.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.6.0
 [3.5.2]: https://github.com/TACC/Core-CMS/releases/tag/v3.5.2
