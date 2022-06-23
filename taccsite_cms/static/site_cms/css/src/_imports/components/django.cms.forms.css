@@ -64,6 +64,16 @@ p.help-text:last-child {
   margin-bottom: 0; /* overwrite forms.css label */
 }
 
+:root {
+  /* TUP-271: Add to & Import from @core-styles */
+  /* https://github.com/TACC/tup-ui/blob/c5454ba/libs/core-styles/src/lib/_imports/settings/color.css */
+  --global-color-danger--dark: #ab1717;
+}
+.asterisk {
+  margin-left: 0.5em;
+  color: var(--global-color-danger--dark);
+}
+
 
 
 /* Errors */
