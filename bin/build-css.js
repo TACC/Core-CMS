@@ -3,7 +3,7 @@
 /** Build CSS using the Core-Styles CLI */
 
 const fs = require('fs');
-const cmd = require('node-cmd');
+const buildStylesheets = require('@tacc/core-styles').buildStylesheets;
 const mininmist = require('minimist');
 
 const ROOT = __dirname + '/..';
@@ -50,14 +50,14 @@ function _build( name, path, configs, id ) {
 
   console.log(`Overriding config with:`, configs );
   console.log(`Building "${name}" styles:`);
-  cmd.runSync(`
-    core-styles build\
-    --input "${ROOT}/${path}/src/**/*.css"\
-    --output "${ROOT}/${path}/build"\
-    --custom-configs ${configValues}\
-    --build-id "${id}"\
-    --verbose\
-  `);
+  buildStylesheets(
+    `${ROOT}/${path}/src/**/*.css`,
+    `${ROOT}/${path}/build`, {
+      customConfigs: configs,
+      verbose: true,
+      buildId: id
+    }
+  );
 }
 
 /**
