@@ -9,7 +9,7 @@
     "npm": "^8.5.5"
   },
   "devDependencies": {
-    "@tacc/core-styles": "https://gitpkg.now.sh/TACC/tup-ui/libs/core-styles?after/styles-version-bump--fp-1663-system-spec-figure-styles",
+    "@tacc/core-styles": "^0.6.0-beta.1",
     "minimist": "^1.2.6"
   },
   "repository": "git@github.com:TACC/Core-CMS.git",
