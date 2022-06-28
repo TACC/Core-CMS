@@ -9,7 +9,7 @@
     "npm": "^8.5.5"
   },
   "devDependencies": {
-    "@tacc/core-styles": "^0.6.0-beta.1",
+    "@tacc/core-styles": "^0.6.0-beta.2",
     "minimist": "^1.2.6"
   },
   "repository": "git@github.com:TACC/Core-CMS.git",
