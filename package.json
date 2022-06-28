@@ -9,7 +9,7 @@
     "npm": "^8.5.5"
   },
   "devDependencies": {
-    "@tacc/core-styles": "https://gitpkg.now.sh/TACC/tup-ui/libs/core-styles?core-styles/v0.6.0--fp-1665-excess-space-above-footer",
+    "@tacc/core-styles": "^0.6.0-beta.3",
     "minimist": "^1.2.6"
   },
   "repository": "git@github.com:TACC/Core-CMS.git",
