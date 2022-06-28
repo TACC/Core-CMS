@@ -46,14 +46,14 @@
   {% render_block "css" %}
 </head>
 
-<body class="o-site  {% block page_type_class %}{% endblock page_type_class %}">
+<body class="{% block page_type_class %}{% endblock page_type_class %}">
   {% cms_toolbar %}
 
-  <header class="o-site__head">
+  <header>
     {% include "header.html" %}
   </header>
 
-  <main id="cms-content" class="o-site__body">
+  <main id="cms-content">
   {% block content %}
 
     {# To allow extra Container in page structure by hiding extra padding #}
@@ -70,7 +70,7 @@
   {% endblock content %}
   </main>
 
-  <footer class="c-footer  s-footer  o-site__foot">
+  <footer class="c-footer  s-footer">
   {% block footer %}
 
     {% static_placeholder "footer-content" or %}
