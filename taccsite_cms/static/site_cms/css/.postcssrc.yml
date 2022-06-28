@@ -6,7 +6,7 @@ plugins:
     # is relative to only one of these directories in this order.
     path:
       - 'taccsite_cms/static/site_cms/css/src' # Core-CMS CSS source files
-      - 'node_modules/@tacc/core-styles/source' # Core-Styles CSS source files
+      - 'node_modules/@tacc/core-styles/src/lib' # Core-Styles CSS source files
   postcss-env-function:
     importFrom:
-      - 'node_modules/@tacc/core-styles/source/_themes/default.json'
+      - 'node_modules/@tacc/core-styles/src/lib/_themes/default.json'
