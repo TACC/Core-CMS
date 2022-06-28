@@ -17,7 +17,6 @@
 
 /* ELEMENTS */
 /* Bootstrap performs much of this */
-@import url("_imports/elements/figure.css");
 @import url("_imports/elements/html-elements.css");
 /* Load custom element styles within custom element, not here */
 
