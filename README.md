@@ -7,7 +7,7 @@ The base CMS code for TACC WMA Workspace Portals & Websites
 
 - [Camino], a Docker container-based deployment scheme
 - [Core Portal], the base Portal code for TACC WMA CMS Websites
-- [Core Styles], the custom UI pattern code for TACC WMA CMS Websites
+- [Core Styles], the shared UI pattern code for TACC WMA CMS Websites
 - [Core CMS Resources], the custom CMS code for TACC WMA CMS Websites
 - [Core Portal Deployments], private repository that facilitates deployments of [Core Portal] images via [Camino] and Jenkins
 
@@ -252,68 +252,20 @@ If you need to change files within `/taccsite_custom`:
 
 <sub>To learn more, see [Static Files](#static-files).</sub>
 
+### Customizing Text in Admin UI
 
-### Changing Core Styles
-
-If you need to change files within `node_modules/@tacc/core-styles/source`:
-
-1. Clone [Core Styles].
-2. Make and commit changes.
-3. Open pull request.
-4. After PR is merged.
-5. In [Core CMS], update [Core Styles] module commit:
-
-  ```bash
-  npm install git+https://git@github.com/TACC/Core-Styles.git
-  ```
-
-6. Commit changes.
-
-#### Testing Core Styles Changes Locally
-
-If you need to test file changes with [Core CMS] changes:
-
-1. Clone [Core Styles].
-2. Allow live edit of node module via your [Core Styles] clone:
+1. Create file `/taccsite_cms/locale/en/LC_MESSAGES/django.po`.
+2. Add to the file only the strings to translate and the appropriate comments for that string.
+3. Build the `.mo` file: \*
 
     ```bash
-    cd path-to-Core-Styles
-    npm link
-    cd path-to-Core-CMS
-    npm link @tacc/core-styles --save
+    django-admin compilemessages
     ```
 
-    _**Do** use `--save`.\* Do **not** commit the changes to `package.json` **nor** `package-lock.json`._
+4. Restart the CMS server.[^3]†
 
-3. Re-install [Core Styles] dependency `postcss-cli`:
-
-    ```bash
-    # cd path-to-Core-CMS
-    npm install postcss-cli --no-save
-    ```
-
-4. Make changes in your [Core Styles] clone as necessary.
-5. Build changes.†
-
-<sub>\* Use of `npm link` _without `--save`_ is overwritten by `npm install`. See [details](https://github.com/npm/cli/issues/2380#issuecomment-1029967927).</sub>\
-<sub>† See [How to Build Static Files](#how-to-build-static-files).</sub>
-
-#### Testing Core Styles Changes Remotely
-
-If you need to test [Core CMS] and [Core Styles] changes on a server:
-
-1. Push changes onto a [Core Styles] branch (not `main`).
-2. Install [Core Styles] at that branch:
-
-    ```bash
-    # cd path-to-Core-CMS
-    npm install --save-dev git+https://git@github.com/TACC/Core-Styles.git#your-branch-name
-    ```
-
-3. Deploy changes to test server.\*
-
-<sub>\* See [Deployment Steps](#deployment-steps).</sub>
-
+<sub>\* You should run this command in the container __from `/code/`__. _See [Running Commands in Container](#running-commands-in-container)._</sub>\
+<sub>† See [Restarting the CMS Server](#restarting-the-cms-server).</sub>
 
 
 ## Running Commands in Container
@@ -330,6 +282,9 @@ docker exec -it core_cms /bin/bash
 
 <sub>\* __If using `docker-compose.custom.yml`, then__ change  `core_cms` to its `cms:` `container_name`.</sub>
 
+## Restarting the CMS Server
+
+See [How to Restart the CMS Server](https://github.com/TACC/Core-CMS/wiki/How-to-Restart-the-CMS-Server).
 
 ## Setting up Search Index
 
@@ -384,6 +339,23 @@ We use a modifed version of [GitFlow](https://datasift.github.io/gitflow/Introdu
     - `bug/` for bugfixes
     - `fix/` for hotfixes
 
+#### Testing Core Styles Changes Locally
+
+1. Clone [Core Styles] (if you haven't already).
+2. Tell project to temporarily use your [Core Styles] clone:
+    ```bash
+    npm link path-to/Core-Styles # e.g. npm link ../Core-Styles
+    npm install postcss-cli --no-save # fix bug with npm link + CSS build
+    ```
+
+3. Make changes in your [Core Styles] clone as necessary.
+4. [Build static files.]((#how-to-build-static-files))
+5. Test changes.
+6. Commit successful changes to a [Core Styles] branch.
+
+> __Notice__: [If you run `npm install` or `npm ci`, the link is destroyed.](https://github.com/npm/cli/issues/2380#issuecomment-1029967927) Repeat the above steps to restore it.
+
+
 ### Best Practices
 
 Sign your commits ([see this link](https://help.github.com/en/github/authenticating-to-github/managing-commit-signature-verification) for help)
@@ -399,7 +371,7 @@ Sign your commits ([see this link](https://help.github.com/en/github/authenticat
 [Core Portal Deployments]: https://github.com/TACC/Core-Portal-Deployments
 [Camino]: https://github.com/TACC/Camino
 [Core CMS]: https://github.com/TACC/Core-CMS
-[Core Styles]: https://github.com/TACC/Core-Styles
+[Core Styles]: https://github.com/TACC/tup-ui/tree/main/libs/core-styles
 [Core CMS Resources]: https://github.com/TACC/Core-CMS-Resources
 [Core Portal]: https://github.com/TACC/Core-Portal
 [1]: https://docs.docker.com/get-docker/

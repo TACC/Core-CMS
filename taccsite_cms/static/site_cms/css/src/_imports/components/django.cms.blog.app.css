@@ -9,7 +9,7 @@ Reference:
 
 Styleguide Components.DjangoCMS.Blog.App
 */
-@import url("@tacc/core-styles/source/_imports/components/bootstrap.pagination.css");
+@import url("@tacc/core-styles/src/lib/_imports/components/bootstrap.pagination.css");
 
 @import url("./django.cms.blog.app.page.css");
 @import url("./django.cms.blog.app.item.css");
