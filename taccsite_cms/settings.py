@@ -226,10 +226,9 @@ TEMPLATES = [
                 'django_settings_export.settings_export'
             ],
             'libraries': {
-                # NOTE: These are an unnecessary alternative config, because taccsite_cms is in INSTALLED_APPS, but are comfortably explicit
-                # SEE: https://docs.djangoproject.com/en/3.1/howto/custom-template-tags/#code-layout
                 'custom_portal_settings': 'taccsite_cms.templatetags.custom_portal_settings',
                 'tacc_uri_shortcuts': 'taccsite_cms.templatetags.tacc_uri_shortcuts',
+                'get_url_match': 'taccsite_cms.templatetags.get_url_match',
             },
             'loaders': [
                 'django.template.loaders.filesystem.Loader',
