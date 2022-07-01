@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.4.0-1-g0c5cbd1] - 2022-07-01: Support Annual Texascale Stylesheets
+
+### Added
+
+- V3.4.0/fp 1439 yearly site theme for texascale (#508)
+
 ## [3.14.0] - 2022-01-25: Deprecate Callout Plugin; Guide Page Fix; Other Fixes
 
 ### Added
@@ -254,7 +260,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.0.0] - 2021-03-31
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.14.0...HEAD
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.4.0-1-g0c5cbd1...HEAD
+[3.4.0-1-g0c5cbd1]: https://github.com/TACC/Core-CMS/releases/tag/v3.4.0-1-g0c5cbd1
 [3.14.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.14.0
 [3.12.1]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.1
 [3.5.1]: https://github.com/TACC/Core-CMS/releases/tag/v3.5.1
