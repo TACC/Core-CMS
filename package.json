@@ -1,6 +1,6 @@
 {
   "name": "@tacc/core-cms",
-  "version": "3.7.0",
+  "version": "3.7.11",
   "license": "MIT",
   "author": "TACC ACI WMA <wma-portals@gmail.com>",
   "description": "The TACC ACI-WMA Core CMS codebase used by TACC Portals.",
@@ -9,13 +9,12 @@
     "npm": "^8.5.5"
   },
   "devDependencies": {
-    "@tacc/core-styles": "^0.5.1",
-    "minimist": "^1.2.6",
-    "node-cmd": "^5.0.0"
+    "@tacc/core-styles": "^0.6.0",
+    "minimist": "^1.2.6"
   },
   "repository": "git@github.com:TACC/Core-CMS.git",
   "scripts": {
-    "build": "bin/build-css-via-cli.js --project=$npm_config_project --build-id=$npm_config_build_id"
+    "build": "bin/build-css.js --project=$npm_config_project --build-id=$npm_config_build_id"
   },
   "homepage": "https://github.com/TACC/Core-CMS"
 }
