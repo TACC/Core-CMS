@@ -15,9 +15,12 @@ from django.utils.translation import gettext_lazy as _
 # https://github.com/avryhof/django-recaptcha/
 ########################
 
-# Set on sever directly, not here
-# RECAPTCHA_PUBLIC_KEY = '' # set in Deployments repo, not here
-# RECAPTCHA_SECRET_KEY = '' # set on sever directly, not here
+# To properly avoid client error about using test keys
+# RECAPTCHA_PUBLIC_KEY = '__this_must_be_on_server_not_here__'
+# RECAPTCHA_SECRET_KEY = '__this_must_be_on_server_not_here__'
+
+# To silence server error about using test keys
+# SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
 
 ########################
 # DJANGOCMS_FORMS
