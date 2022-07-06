@@ -23,10 +23,9 @@ Styleguide Components.DjangoCMS.Blog.App
 .help-text {
   font-size: var(--global-font-size--small);
   font-style: italic;
-  margin-top: 0.5rem; /* mimic Bootstrap _reboot.css label { margin-bottom } */
 }
-p.help-text:last-child {
-  margin-bottom: 0;
+:not(ul) + .help-text {
+  margin-top: 0.3em; /* mimic Bootstrap _reboot.css label { margin-bottom } */
 }
 
 
@@ -49,8 +48,8 @@ p.help-text:last-child {
 .field-wrapper.checkboxinput {
   display: inline-grid;
 
-  column-gap: 0.25em;
-  align-items: baseline;
+  column-gap: 0.5em;
+  align-items: center;
   grid-template-columns: min-content auto; /* shrink input, let label extend */
   grid-template-areas:
     'error _____'
@@ -62,6 +61,17 @@ p.help-text:last-child {
 .field-wrapper.checkboxinput label         { grid-area: label; }
 .field-wrapper.checkboxinput .help-text    { grid-area: notes; }
 .field-wrapper.checkboxinput label {
+  margin-bottom: 0; /* overwrite forms.css label */
+}
+
+ul.radioselect label,
+ul.checkboxselectmultiple label {
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+}
+ul.radioselect li:last-child label,
+ul.checkboxselectmultiple li:last-child label {
   margin-bottom: 0; /* overwrite forms.css label */
 }
 
