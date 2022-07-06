@@ -69,6 +69,18 @@ p.help-text:last-child {
   margin-left: 0.5em;
   color: var(--global-color-danger--dark);
 }
+/* To replace markup text "*" with new text "(required)" */
+.asterisk {
+  width: 0;
+  display: inline-block;
+  visibility: hidden;
+  line-height: 0;
+}
+.asterisk::after {
+  content: '(required)';
+  visibility: visible;
+  line-height: initial;
+}
 
 
 
