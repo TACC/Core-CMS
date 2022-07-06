@@ -11,18 +11,12 @@ Reference:
 Styleguide Components.DjangoCMS.Blog.App
 */
 
+
+
+/* Content */
+
 .description {
   margin-block: 25px;
-}
-
-.field-errors {
-  font-size: var(--global-font-size--small);
-}
-.field-wrapper {
-  margin-bottom: 2rem; /* mimic <p> `margin-bottom` */
-}
-.button-wrapper {
-  margin-top: 35px;
 }
 
 .help-text {
@@ -32,4 +26,71 @@ Styleguide Components.DjangoCMS.Blog.App
 }
 p.help-text:last-child {
   margin-bottom: 0;
+}
+
+
+
+/* Field */
+
+.field-wrapper {
+  margin-bottom: 2rem; /* mimic <p> `margin-bottom` */
+}
+
+.field-wrapper:not(.checkboxinput) {
+  display: flex;
+  flex-direction: column;
+  align-items: start; /* i.e. prevent stretch */
+}
+.field-wrapper:not(.checkboxinput) > .field-errors {
+  order: 1; /* i.e. move to end */
+}
+
+.field-wrapper.checkboxinput {
+  display: inline-grid;
+
+  column-gap: 0.25em;
+  align-items: baseline;
+  grid-template-columns: min-content auto; /* shrink input, let label extend */
+  grid-template-areas:
+    'error _____'
+    'input label'
+    'notes notes';
+}
+.field-wrapper.checkboxinput .field-errors { grid-area: error; }
+.field-wrapper.checkboxinput input         { grid-area: input; }
+.field-wrapper.checkboxinput label         { grid-area: label; }
+.field-wrapper.checkboxinput .help-text    { grid-area: notes; }
+.field-wrapper.checkboxinput label {
+  margin-bottom: 0; /* overwrite forms.css label */
+}
+
+
+
+/* Errors */
+
+.field-errors {
+  font-size: var(--global-font-size--small);
+}
+.field-errors ul {
+  margin-top: 1rem; /* mimic ul margin-bottom */
+  margin-bottom: 0; /* overwrite ul margin-bottom */
+}
+
+
+
+/* Lists */
+
+ul.radioselect,
+ul.checkboxselectmultiple {
+  list-style: none;
+
+  padding-left: 0;
+}
+
+
+
+/* Layout */
+
+.button-wrapper {
+  margin-top: 35px;
 }

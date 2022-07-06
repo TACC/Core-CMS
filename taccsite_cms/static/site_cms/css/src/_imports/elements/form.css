@@ -19,10 +19,12 @@ form {
 }
 
 label {
-  display: block;
   font-size: var(--global-font-size--small);
 }
-label:not(:first-child):not() {
+label:not(input[type="checkbox"] + label) {
+  display: block;
+}
+label:not(:first-child) {
   margin-top: 2rem; /* mimic <p> `margin-bottom` */
   /* margin-bottom: 0.5rem; *//* mimic Bootstrap _reboot.css */
 }
@@ -34,7 +36,10 @@ input,
 select,
 textarea {
   padding: 15px 10px;
+  border: var(--global-border--normal);
 }
-input[type="time"] {
+
+input[type="time"],
+input[type="date"] {
   font-family: var(--global-font-family--mono);
 }
