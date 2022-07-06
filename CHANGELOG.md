@@ -7,6 +7,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.7.11] - 2022-07-06: v3.7.0 Fixes, New Core-Styles, ECEP/TUP/Frontera Tweaks
+
+### Added
+
+- Task/ecepweb-205-logos (#509)
+- feat(frontera): accent color vars (d5748c9)
+- TUP-271: [update to latest core-styles] (#495, #496, #489, #494, a49d9e7, d3f0a0b)
+
+### Changed
+
+- FP-1550: Document Custom Text in Admin UI (#467)
+- feat(tup-151): center news articles (#488)
+- chore(core-styles): build css via JS not CLI (#497)
+- docs(README): [update npm link & core-styles] (981e7f9, ad0306b, a3a0acb, 4249f5b)
+
+### Fixed
+
+- Fix/v3.7.0 major bugs a.k.a. After/tup 271 (#507)
+- fix(node): allow greater node & npm versions
+- Bugfix/fp 1542 do not use a2cps url (#493)
+- fix: load fa icons even if no portal (#504)
+
+### Removed
+
+- feat(tup): no LDAP (#499)
+
 ## [3.7.0] - 2022-05-13: Patterns, News/Blog App, SciVis & APCD, Improvements
 
 ### Added
@@ -382,7 +408,8 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 ## [2.0.0] - 2021-03-31
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.7.0...HEAD
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.7.11...HEAD
+[3.7.11]: https://github.com/TACC/Core-CMS/releases/tag/v3.7.11
 [3.7.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.7.0
 [3.6.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.6.0
 [3.5.2]: https://github.com/TACC/Core-CMS/releases/tag/v3.5.2
