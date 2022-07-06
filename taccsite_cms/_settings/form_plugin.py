@@ -11,6 +11,15 @@ from django.utils.translation import gettext_lazy as _
 # https://github.com/avryhof/djangocms-forms/issues/8
 
 ########################
+# DJANGO_RECAPTCHA
+# https://github.com/avryhof/django-recaptcha/
+########################
+
+# Set on sever directly, not here
+# RECAPTCHA_PUBLIC_KEY = '' # set in Deployments repo, not here
+# RECAPTCHA_SECRET_KEY = '' # set on sever directly, not here
+
+########################
 # DJANGOCMS_FORMS
 # https://github.com/avryhof/djangocms-forms/
 ########################
@@ -24,10 +33,6 @@ from django.utils.translation import gettext_lazy as _
 DJANGOCMS_FORMS_USE_HTML5_REQUIRED = True
 
 # DJANGOCMS_FORMS_REDIRECT_DELAY = 1000
-
-# The default value is only for test and dev
-# DJANGO_FORMS_RECAPTCHA_PUBLIC_KEY = ''
-# DJANGO_FORMS_RECAPTCHA_SECRET_KEY = ''
 
 DJANGOCMS_FORMS_SPAM_PROTECTIONS = (
     (0, _('None')),
