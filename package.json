@@ -9,7 +9,7 @@
     "npm": "^8.5.5"
   },
   "devDependencies": {
-    "@tacc/core-styles": "^0.6.0",
+    "@tacc/core-styles": "https://gitpkg.now.sh/TACC/tup-ui/libs/core-styles?task/tup-308-what-forms-should-get-from-core",
     "minimist": "^1.2.6"
   },
   "repository": "git@github.com:TACC/Core-CMS.git",

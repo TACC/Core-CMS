@@ -35,11 +35,35 @@ fieldset:not(:last-child) {
 input,
 select,
 textarea {
-  padding: 15px 10px;
   border: var(--global-border--normal);
+}
+input:not(
+  [type="time"],
+  [type="date"],
+  [type="checkbox"],
+  [type="radio"]
+),
+select,
+textarea {
+  width: 100%;
 }
 
 input[type="time"],
 input[type="date"] {
   font-family: var(--global-font-family--mono);
+}
+
+@media (pointer: coarse) {
+  input,
+  select,
+  textarea {
+    padding: 15px 10px;
+  }
+}
+@media (pointer: fine), (pointer: none) {
+  input,
+  select,
+  textarea {
+    padding: 5px 10px;
+  }
 }
