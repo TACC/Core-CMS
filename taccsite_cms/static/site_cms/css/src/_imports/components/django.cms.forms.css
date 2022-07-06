@@ -10,6 +10,7 @@ Reference:
 
 Styleguide Components.DjangoCMS.Blog.App
 */
+@import url("@tacc/core-styles/src/lib/_imports/components/c-button.css");
 
 
 
@@ -93,4 +94,13 @@ ul.checkboxselectmultiple {
 
 .button-wrapper {
   margin-top: 35px;
+}
+
+
+
+/* Button */
+
+.button-wrapper button {
+  @extend .c-button;
+  @extend .c-button--primary;
 }
