@@ -346,6 +346,7 @@ INSTALLED_APPS = [
     'haystack',                # search index
     'aldryn_apphooks_config',  # search index & django CMS Blog
     'test_without_migrations', # run tests faster
+
 ] + form_plugin_INSTALLED_APPS + [
 
     # core TACC CMS
