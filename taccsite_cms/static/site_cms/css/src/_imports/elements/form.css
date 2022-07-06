@@ -20,13 +20,12 @@ form {
 
 label {
   font-size: var(--global-font-size--small);
+
+  line-height: normal;
+  margin-bottom: 0.75em;
 }
-label:not(input[type="checkbox"] + label) {
+:not(input[type="checkbox"]) + label {
   display: block;
-}
-label:not(:first-child) {
-  margin-top: 2rem; /* mimic <p> `margin-bottom` */
-  /* margin-bottom: 0.5rem; *//* mimic Bootstrap _reboot.css */
 }
 fieldset:not(:last-child) {
   margin-bottom: 3.5rem;

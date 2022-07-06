@@ -49,7 +49,7 @@ p.help-text:last-child {
 .field-wrapper.checkboxinput {
   display: inline-grid;
 
-  column-gap: 0.25em;
+  column-gap: 0.5em;
   align-items: baseline;
   grid-template-columns: min-content auto; /* shrink input, let label extend */
   grid-template-areas:
@@ -63,6 +63,13 @@ p.help-text:last-child {
 .field-wrapper.checkboxinput .help-text    { grid-area: notes; }
 .field-wrapper.checkboxinput label {
   margin-bottom: 0; /* overwrite forms.css label */
+}
+
+ul.radioselect label,
+ul.checkboxselectmultiple label {
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
 }
 
 .asterisk {
