@@ -409,7 +409,7 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 v2.0.0 Production release as of Mar 31, 2021.
 
 [unreleased]: https://github.com/TACC/Core-CMS/compare/v3.7.11...HEAD
-[3.7.11]: https://github.com/TACC/Core-CMS/releases/tag/v3.7._
+[3.7.11]: https://github.com/TACC/Core-CMS/releases/tag/v3.7.11
 [3.7.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.7.0
 [3.6.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.6.0
 [3.5.2]: https://github.com/TACC/Core-CMS/releases/tag/v3.5.2
