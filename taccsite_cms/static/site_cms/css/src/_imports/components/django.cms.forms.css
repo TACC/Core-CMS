@@ -8,7 +8,7 @@ Reference:
 - [Django CMS Form Default Template](https://github.com/avryhof/djangocms-forms/blob/master/djangocms_forms/templates/djangocms_forms/form_template/default.html)
 - [TACC's Django CMS Form Default Template](https://github.com/TACC/Core-CMS/blob/master/taccsite_cms/templates/djangocms_forms/form_template/default.html)
 
-Styleguide Components.DjangoCMS.Blog.App
+Styleguide Components.DjangoCMS.Forms.App
 */
 @import url("@tacc/core-styles/src/lib/_imports/components/c-button.css");
 
