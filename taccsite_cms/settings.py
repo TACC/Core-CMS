@@ -505,6 +505,11 @@ DJANGOCMS_STYLE_TAGS = [
     'h1', 'h2', 'h3', 'h4', 'h5', 'h6'
 ]
 
+DJANGOCMS_FORMS_FORMAT_CHOICES = (
+    ("csv", _("CSV")),
+    ("json", _("JSON")),
+)
+
 # https://github.com/nephila/django-meta
 META_SITE_PROTOCOL = 'http'
 META_USE_SITES = True
