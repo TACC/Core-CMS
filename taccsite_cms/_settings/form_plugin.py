@@ -103,6 +103,11 @@ DJANGOCMS_FORMS_FIELDSETS = (
     ),
 )
 
+DJANGOCMS_FORMS_FORMAT_CHOICES = (
+    ("csv", _("CSV")),
+    ("json", _("JSON")),
+)
+
 ########################
 # DJANGO
 # https://docs.djangoproject.com/en/2.2/ref/settings/#form-renderer
