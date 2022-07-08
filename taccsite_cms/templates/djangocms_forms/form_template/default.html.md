@@ -9,6 +9,6 @@ But, to avoid that[^1], the two changes have been performed other ways:
 
 [^1]: Avoid editing the template because it does not use `block`s (which means we need to clone the whole template; which means if the [original template] changes, and we update form plugin, ours will become out of date).
 
-[original template]: https://github.com/avryhof/djangocms-forms/blob/30f4643/djangocms_forms/templates/djangocms_forms/form_template/default.html
+[original template]: https://github.com/avryhof/djangocms-forms/blob/ab38b22/djangocms_forms/templates/djangocms_forms/form_template/default.html
 [1]: https://github.com/avryhof/djangocms-forms/pull/12
 [2]: ../../../static/site_cms/css/src/_imports/components/django.cms.forms.css#L103
