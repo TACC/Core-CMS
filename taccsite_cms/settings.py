@@ -454,6 +454,14 @@ DJANGOCMS_PICTURE_ALIGN = [
     (_('Offset (wide screens)'), (
         ('offset-left', _('Offset left')),
         ('offset-right', _('Offset right')),
+        (
+            'offset-left limit-caption-width',
+            _('Offset left (limit caption width)')
+        ),
+        (
+            'offset-right limit-caption-width',
+            _('Offset right (limit caption width)')
+        ),
     )),
 ]
 

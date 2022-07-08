@@ -10,6 +10,7 @@ Reference:
 Styleguide Components.DjangoCMS.Picture
 */
 @import url("_imports/objects/o-offset-content.css");
+@import url("_imports/tools/media-queries.css");
 @import url("_imports/tools/x-figure.css");
 
 
@@ -48,18 +49,22 @@ img.align-center + figcaption {
 img.align-offset-right + figcaption {
   @extend .o-offset-content--right;
 }
-img.align-offset-right + figcaption {
-  width: var(--figure-width); /* to not overlap main content */
-  margin-left: 0;             /* to not push main content */
+@media only screen and (--medium-and-above) {
+  img.align-offset-right.limit-caption-width + figcaption {
+    width: var(--figure-width); /* to not overlap main content */
+    margin-left: 0;             /* to not push main content */
+  }
 }
 
 .align-offset-left,
 img.align-offset-left + figcaption {
   @extend .o-offset-content--left;
 }
-img.align-offset-left + figcaption {
-  width: var(--figure-width); /* to not overlap main content */
-  margin-right: 0;            /* to not push main content */
+@media only screen and (--medium-and-above) {
+  img.align-offset-left.limit-caption-width + figcaption {
+    width: var(--figure-width); /* to not overlap main content */
+    margin-right: 0;            /* to not push main content */
+  }
 }
 
 
