@@ -9,29 +9,87 @@ Reference:
 
 Styleguide Components.DjangoCMS.Picture
 */
+@import url("_imports/objects/o-offset-content.css");
+@import url("_imports/tools/x-figure.css");
 
 
-
-/* Default Values */
 
 /* Support default alignment classes */
+
 .align-right,
-.align-left {
-  margin-bottom: var(--global-space--grid-gap);
-}
-.align-right {
+img.align-right + figcaption {
   float: right;
   margin-left: var(--global-space--grid-gap);
+  margin-bottom: var(--global-space--grid-gap);
 }
-.align-left {
+.align-left,
+img.align-left + figcaption {
   float: left;
   margin-right: var(--global-space--grid-gap);
+  margin-bottom: var(--global-space--grid-gap);
 }
-.align-center {
-  display: block;
+.align-center,
+img.align-center + figcaption {
+  display: table;
   margin-inline: auto;
+  margin-bottom: var(--global-space--grid-gap);
 }
 
+
+
+/* Support TACC offset classes */
+
+.align-offset-right + figcaption,
+.align-offset-left + figcaption {
+  --figure-width: calc(var(--offset-distance) - var(--buffer));
+}
+
+.align-offset-right,
+img.align-offset-right + figcaption {
+  @extend .o-offset-content--right;
+}
+img.align-offset-right + figcaption {
+  width: var(--figure-width); /* to not overlap main content */
+  margin-left: 0;             /* to not push main content */
+}
+
+.align-offset-left,
+img.align-offset-left + figcaption {
+  @extend .o-offset-content--left;
+}
+img.align-offset-left + figcaption {
+  width: var(--figure-width); /* to not overlap main content */
+  margin-right: 0;            /* to not push main content */
+}
+
+
+
+/* Support default alignment & TACC offset classes */
+
+figure > img.align-center,
+figure > img.align-right,
+figure > img.align-offset-right,
+figure > img.align-left,
+figure > img.align-offset-left {
+  @extend %x-figure-img;
+}
+img.align-center + figcaption,
+img.align-right + figcaption,
+img.align-offset-right + figcaption,
+img.align-left + figcaption,
+img.align-offset-left + figcaption {
+  @extend %x-figcaption;
+}
+
+
+
 /* Try to auto clear image floats */
-.align-right + *:not(img) { clear: right }
-.align-left + *:not(img) { clear: left }
+
+.align-right + *:not(img),
+.align-offset-right + *:not(img) {
+  clear: right;
+}
+.align-left + *:not(img),
+.align-offset-left + *:not(img) {
+  clear: left;
+}

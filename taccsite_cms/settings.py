@@ -446,9 +446,15 @@ DJANGOCMS_PICTURE_RESPONSIVE_IMAGES_VIEWPORT_BREAKPOINTS = [
 ]
 DJANGOCMS_PICTURE_RATIO = 1.618
 DJANGOCMS_PICTURE_ALIGN = [
-    ('left', _('Align left')),
-    ('right', _('Align right')),
-    ('center', _('Align center')),
+    (_('Align'), (
+        ('left', _('Align left')),
+        ('right', _('Align right')),
+        ('center', _('Align center')),
+    )),
+    (_('Offset (wide screens)'), (
+        ('offset-left', _('Offset left')),
+        ('offset-right', _('Offset right')),
+    )),
 ]
 
 # FILE UPLOAD VALUES MUST BE SET!

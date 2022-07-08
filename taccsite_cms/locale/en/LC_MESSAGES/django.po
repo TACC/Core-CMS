@@ -64,12 +64,12 @@ msgstr "Next"
 #: djangocms-picture
 #: models.py:117
 msgid "Aligns the image according to the selected option."
-msgstr "Aligns the image according to the selected option. WARNING: Alignment behavior changes if \"Caption text\" is added."
+msgstr "Aligns the image according to the selected option. NOTICE: Images within news article text should have \"Caption text\"."
 
 #: djangocms-picture
 #: models.py:123
 msgid "Provide a description, attribution, copyright or other information."
-msgstr "Provide a description, attribution, copyright or other information. WARNING: Adding caption text will change the behavior of \"Alignment\"."
+msgstr "Provide a description, attribution, copyright or other information. NOTICE: Caption text looks much better with an \"Alignment\"."
 
 
 
