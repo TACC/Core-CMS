@@ -48,7 +48,7 @@ djangocms-blog = "1.1.1"
 djangocms-bootstrap4 = "2.0.0"
 djangocms-column = "1.11.0"
 djangocms-file = "3.0.0"
-djangocms-forms-maintained = { git = "https://github.com/avryhof/djangocms-forms", rev = "ab38b2239b93c8a275cee3b4b1a7880731486c07" }
+djangocms-forms-maintained = { git = "https://github.com/avryhof/djangocms-forms", rev = "eaa6415efeefc8a3018450d0ca7b864e0e4b9dd2" }
 djangocms-googlemap = "2.0.0"
 djangocms-icon = "2.0.0"
 djangocms-link = "3.0.0"
