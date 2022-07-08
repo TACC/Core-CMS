@@ -451,7 +451,7 @@ DJANGOCMS_PICTURE_ALIGN = [
         ('right', _('Align right')),
         ('center', _('Align center')),
     )),
-    (_('Offset (wide screens)'), (
+    (_('Offset (for narrow columns) (on wide screens)'), (
         ('offset-left', _('Offset left')),
         ('offset-right', _('Offset right')),
         (
