@@ -3,19 +3,21 @@
   "version": "3.7.11",
   "license": "MIT",
   "author": "TACC ACI WMA <wma-portals@gmail.com>",
-  "description": "The TACC ACI-WMA Core CMS codebase used by TACC Portals.",
+  "description": "The TACC ACI-WMA Core CMS stylesheets.",
   "engines": {
     "node": "^17.8.0",
     "npm": "^8.5.5"
   },
   "devDependencies": {
-    "@tacc/core-styles": "^0.6.0",
+    "@tacc/core-styles": "https://gitpkg.now.sh/TACC/tup-ui/libs/core-styles?task/fp-1499-cms-pattern-library",
     "minimist": "^1.2.6"
   },
   "repository": "git@github.com:TACC/Core-CMS.git",
   "scripts": {
-    "build": "bin/build-css.js --project=$npm_config_project --build-id=$npm_config_build_id && npm run copy:demo",
-    "copy:demo": "cp -R node_modules/@tacc/core-styles/demo/ taccsite_ui # You may ignore symlink 'cp: symlink: ../___.css: File exists' output"
+    "build": "npm run build:css && npm run build:demo",
+    "build:css": "bin/build-css.js --project=$npm_config_project --build-id=$npm_config_build_id",
+    "build:demo": "fractal build",
+    "start": "fractal start --sync"
   },
   "homepage": "https://github.com/TACC/Core-CMS"
 }

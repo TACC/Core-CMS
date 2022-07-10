@@ -352,8 +352,9 @@ We use a modifed version of [GitFlow](https://datasift.github.io/gitflow/Introdu
 5. Test changes.
 6. Commit successful changes to a [Core Styles] branch.
 
-> __Notice__: [If you run `npm install` or `npm ci`, the link is destroyed.](https://github.com/npm/cli/issues/2380#issuecomment-1029967927) Repeat the above steps to restore it.
+> __Notice__: [If you run `npm install` or `npm ci`, the link is destroyed.](https://github.com/npm/cli/issues/2380#issuecomment-1029967927) Repeat the `… link …` step to restore it.
 
+> __Warning__: Using `npm link` causes `npm run build:demo` to fail. _A solution may be found by understanding [frctl/fractal#821's resolution](https://github.com/frctl/fractal/issues/821#issuecomment-769168488)._
 
 ### Best Practices
 
