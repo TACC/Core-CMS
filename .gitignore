@@ -17,12 +17,14 @@ build
 
 ## environment variables
 docker_repo.var
+repo_name.var
 
 # Static and Media folders
 /static
 /media
 
-repo_name.var
+# UI Pattern Demo
+/taccsite_ui
 
 # Secrets and Customizations
 taccsite_cms/secrets.py

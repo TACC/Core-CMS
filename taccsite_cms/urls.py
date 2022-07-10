@@ -35,6 +35,8 @@ if getattr(settings, 'INCLUDES_CORE_PORTAL', True):
         url(r'^remote/login/$', remote_cms_auth.verify_and_auth, name='verify_and_auth'),
     ]
 
+urlpatterns += static('/ui-patterns/', document_root=settings.TACC_UI_ROOT)
+
 urlpatterns += [
     url(r'^', include('cms.urls')),
 ]
