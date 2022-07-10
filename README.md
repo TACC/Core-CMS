@@ -344,8 +344,7 @@ We use a modifed version of [GitFlow](https://datasift.github.io/gitflow/Introdu
 1. Clone [Core Styles] (if you haven't already).
 2. Tell project to temporarily use your [Core Styles] clone:
     ```bash
-    npm link path-to/Core-Styles # e.g. npm link ../Core-Styles
-    npm install postcss-cli --no-save # fix bug with npm link + CSS build
+    npx link path-to/core-styles # e.g. npx link ../tup-ui/libs/core-styles
     ```
 
 3. Make changes in your [Core Styles] clone as necessary.
