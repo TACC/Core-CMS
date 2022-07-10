@@ -14,8 +14,8 @@
   },
   "repository": "git@github.com:TACC/Core-CMS.git",
   "scripts": {
-    "build": "bin/build-css.js --project=$npm_config_project --build-id=$npm_config_build_id && npm run build:ui-patterns",
-    "build:ui-patterns": "cp -R node_modules/@tacc/core-styles/demo taccsite_ui"
+    "build": "bin/build-css.js --project=$npm_config_project --build-id=$npm_config_build_id && npm run copy:demo",
+    "copy:demo": "cp -R node_modules/@tacc/core-styles/demo/ taccsite_ui # You may ignore symlink 'cp: symlink: ../___.css: File exists' output"
   },
   "homepage": "https://github.com/TACC/Core-CMS"
 }
