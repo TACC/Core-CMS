@@ -11,11 +11,14 @@ themeConfig.styles = [
 ];
 const theme = mandelbrot(themeConfig);
 
-const coreStylesRoot = path.dirname(require.resolve('@tacc/core-styles'));
+const coreStylesRoot = path.join(
+  path.dirname(require.resolve('@tacc/core-styles')),
+  // The '../' exits 'src/' which require.resolve returns a file from
+  '../'
+);
 
 fractal.components.set('path',
-  // FAQ: The '../' (a) avoids a 'src/src' path, (b) shows path is in 'src/'
-  path.join(coreStylesRoot, '../src/lib/_imports')
+  path.join(coreStylesRoot, 'src/lib/_imports')
 );
 
 fractal.web.set('static.path',
