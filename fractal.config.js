@@ -6,10 +6,13 @@ const mandelbrot = require('@frctl/mandelbrot');
 const fractal = require('@tacc/core-styles/fractal.config.js');
 const themeConfig = require('@tacc/core-styles/fractal.config.theme.js');
 
-themeConfig.styles = [
-  'default'
-];
-const theme = mandelbrot(themeConfig);
+const theme = mandelbrot(Object.assign(themeConfig, {
+  skin: Object.assign(themeConfig.skin, {
+    accent: '#000000',
+    complement: '#ffffff',
+    links: '#877453',
+  })
+}));
 
 const coreStylesRoot = path.join(
   path.dirname(require.resolve('@tacc/core-styles')),
@@ -20,6 +23,19 @@ const coreStylesRoot = path.join(
 fractal.components.set('path',
   path.join(coreStylesRoot, 'src/lib/_imports')
 );
+fractal.components.set('default.context', {
+  styles: {
+    internal: [
+      '/settings/border.css',
+      '/settings/max-width.css',
+    ],
+    external: [
+      '/static/site_cms/css/build/color.css',
+      '/static/site_cms/css/build/font.css',
+      '/static/site_cms/css/build/space.css',
+    ]
+  }
+});
 
 fractal.web.set('static.path',
   path.join(coreStylesRoot, 'dist')
