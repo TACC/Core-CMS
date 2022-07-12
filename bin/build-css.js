@@ -3,8 +3,13 @@
 /** Build CSS using the Core-Styles CLI */
 
 const fs = require('fs');
+const path = require('path');
 const buildStylesheets = require('@tacc/core-styles').buildStylesheets;
 const mininmist = require('minimist');
+
+const { getSourcePath } = require(
+  path.join( __dirname, '../bin/get-path.js')
+);
 
 const ROOT = __dirname + '/..';
 const CORE_NAME = 'core-cms';
@@ -16,8 +21,16 @@ const BUILD_ID = ARGS['build-id'] || '';
 /** Build stylesheets for Core and (optional) project */
 (() => {
   // Get style paths
-  const corePath = _getPath('taccsite_cms', 'site_cms');
-  const projPath = _getPath(`taccsite_custom/${PROJECT_NAME}`, PROJECT_NAME );
+  const corePath = getSourcePath(
+    'taccsite_cms',
+    'site_cms',
+    'css'
+  );
+  const projPath = getSourcePath(
+    'taccsite_custom/' + PROJECT_NAME,
+    PROJECT_NAME,
+    'css'
+  );
   const hasProject = ( PROJECT_NAME && PROJECT_NAME !== CORE_NAME );
 
   // Get config paths
@@ -58,14 +71,4 @@ function _build( name, path, configs, id ) {
       buildId: id
     }
   );
-}
-
-/**
- * Get path to CSS resources
- * @param {string} dirName - The name of the directory
- * @param {string} [subDirName=dirName] - The name of the sub-directory
- * @return {string}
- */
-function _getPath( dirName, subDirName ) {
-  return dirName + '/static/' + ( subDirName || dirName ) + '/css';
 }
