@@ -9,6 +9,8 @@
     "npm": "^8.5.5"
   },
   "devDependencies": {
+    "@frctl/fractal": "^1.5.13",
+    "@frctl/mandelbrot": "^1.10.1",
     "@tacc/core-styles": "https://gitpkg.now.sh/TACC/tup-ui/libs/core-styles?task/fp-1499-cms-pattern-library",
     "minimist": "^1.2.6"
   },
