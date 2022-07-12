@@ -8,8 +8,6 @@ const themeConfig = require('@tacc/core-styles/fractal.config.theme.js');
 
 const theme = mandelbrot(Object.assign(themeConfig, {
   skin: Object.assign(themeConfig.skin, {
-    accent: '#000000',
-    complement: '#ffffff',
     links: '#877453',
   })
 }));
