@@ -16,4 +16,14 @@ function getSourcePath( dirName, appName, end ) {
   return path.join( dirName, 'static', subDirName, end );
 }
 
-module.exports = { getSourcePath };
+/**
+ * Get Django static file path
+ * @param {string} appName - The name of the app directory
+ * @param {string} [end] - Any thing to append to the path
+ * @return {string}
+ */
+function getStaticFilePath( appName, end ) {
+  return path.join( 'static', appName, end );
+}
+
+module.exports = { getSourcePath, getStaticFilePath };

@@ -1,7 +1,18 @@
 'use strict';
 
+const fs = require('fs');
 const path = require('path');
 const mandelbrot = require('@frctl/mandelbrot');
+const minimist = require('minimist');
+
+const { getStaticFilePath } = require( __dirname + '/bin/get-path.js');
+
+const args = minimist( process.argv.slice( 2 ) );
+let projectName = args['project'] || '';
+    projectName = ( projectName !== 'core-cms' ) ? projectName : '';
+const projectCSSFile = projectName
+  ? getStaticFilePath( projectName, 'css/build/site.css')
+  : null;
 
 const fractal = require('@tacc/core-styles/fractal.config.js');
 const themeConfig = require('@tacc/core-styles/fractal.config.theme.js');
@@ -23,15 +34,12 @@ fractal.components.set('path',
 );
 fractal.components.set('default.context', {
   styles: {
-    internal: [
-      '/settings/border.css',
-      '/settings/max-width.css',
-    ],
     external: [
-      '/static/site_cms/css/build/color.css',
-      '/static/site_cms/css/build/font.css',
-      '/static/site_cms/css/build/space.css',
-    ]
+      'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css',
+      '/static/site_cms/css/build/site.css'
+    ].concat(
+      ( projectCSSFile ) ? [ '/' + projectCSSFile ] : []
+    )
   }
 });
 
