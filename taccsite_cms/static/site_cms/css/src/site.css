@@ -36,6 +36,7 @@
 @import url("_imports/components/bootstrap.container.css");
 @import url("_imports/components/bootstrap.figure.css");
 /* Unique to CMS */
+@import url("./_imports/components/c-button.css");
 @import url("./_imports/components/django.cms.css");
 @import url("./_imports/components/django.cms.blog.css");
 @import url("./_imports/components/django.cms.post.css");
