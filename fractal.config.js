@@ -15,7 +15,7 @@ const projectCSSFile = projectName
   : null;
 
 const fractal = require('@tacc/core-styles/fractal.config.js');
-const themeConfig = require('@tacc/core-styles/fractal.config.theme.js');
+const themeConfig = require('@tacc/core-styles/fractal.theme.js');
 
 const theme = mandelbrot(Object.assign(themeConfig, {
   skin: Object.assign(themeConfig.skin, {
