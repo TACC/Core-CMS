@@ -34,12 +34,14 @@ fractal.components.set('path',
 );
 fractal.components.set('default.context', {
   styles: {
-    external: [
-      'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css',
-      '/static/site_cms/css/build/site.css'
-    ].concat(
-      ( projectCSSFile ) ? [ '/' + projectCSSFile ] : []
-    )
+    external: {
+      global: [
+        'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css',
+        '/static/site_cms/css/build/site.css'
+      ].concat(
+        ( projectCSSFile ) ? [ '/' + projectCSSFile ] : []
+      )
+    }
   }
 });
 
