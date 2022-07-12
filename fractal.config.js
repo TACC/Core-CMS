@@ -1,18 +1,10 @@
 'use strict';
 
-const fs = require('fs');
 const path = require('path');
 const mandelbrot = require('@frctl/mandelbrot');
-const minimist = require('minimist');
 
 const { getStaticFilePath } = require( __dirname + '/bin/get-path.js');
 
-const args = minimist( process.argv.slice( 2 ) );
-let projectName = args['project'] || '';
-    projectName = ( projectName !== 'core-cms' ) ? projectName : '';
-const projectCSSFile = projectName
-  ? getStaticFilePath( projectName, 'css/build/site.css')
-  : null;
 
 const fractal = require('@tacc/core-styles/fractal.config.js');
 const themeConfig = require('@tacc/core-styles/fractal.theme.js');
@@ -38,12 +30,38 @@ fractal.components.set('default.context', {
       global: [
         'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css',
         '/static/site_cms/css/build/site.css'
-      ].concat(
-        ( projectCSSFile ) ? [ '/' + projectCSSFile ] : []
-      )
+      ]
     }
   }
 });
+
+
+
+fractal.cli.command(
+  'build-project [project]',
+  function buildProject( args, done ) {
+    // The Core site is named 'core-cms', but its Python app name is 'site_cms'
+    const coreName = 'site_cms';
+    let   projName = args.project || coreName;
+          projName = ( projName === 'core-cms' ) ? coreName : projName;
+
+    const context = this.fractal.components.get('default.context');
+    const projCSSFile = getStaticFilePath( projName, 'css/build/site.css');
+
+    if ( projName ) {
+      context.styles.external.global.push( projCSSFile );
+    }
+    this.fractal.components.set('default.context', context);
+
+    this.fractal.cli.exec('build');
+
+    done();
+  }, {
+    description: 'Lists components in the project'
+  }
+);
+
+
 
 fractal.web.set('static.path',
   path.join(coreStylesRoot, 'dist')
