@@ -15,27 +15,15 @@ from django.utils.translation import gettext_lazy as _
 # https://github.com/avryhof/django-recaptcha/
 ########################
 
-# To properly avoid client error about using test keys
-# RECAPTCHA_PUBLIC_KEY = '__this_must_be_on_server_not_here__'
-# RECAPTCHA_SECRET_KEY = '__this_must_be_on_server_not_here__'
-
-# To silence server error about using test keys
-# SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
+# To properly avoid client error about using test keys,
+# define RECAPTCHA_..._KEY settings on client-facing servers
 
 ########################
 # DJANGOCMS_FORMS
 # https://github.com/avryhof/djangocms-forms/
 ########################
 
-# DJANGOCMS_FORMS_PLUGIN_MODULE = ('Generic')
-# DJANGOCMS_FORMS_PLUGIN_NAME = ('Form')
-
-# DJANGOCMS_FORMS_TEMPLATES = (
-#     ('djangocms_forms/form_template/default.html', ('Default')),
-# )
 DJANGOCMS_FORMS_USE_HTML5_REQUIRED = True
-
-# DJANGOCMS_FORMS_REDIRECT_DELAY = 1000
 
 DJANGOCMS_FORMS_SPAM_PROTECTIONS = (
     (0, _('None')),
