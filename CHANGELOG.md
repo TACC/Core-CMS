@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [3.7.11-1-g97eed73] - 2022-07-15: Fix Submodule Pointer
+## [3.7.12] - 2022-07-15: Fix Submodule Pointer
 
 ### Fixed
 
@@ -453,9 +453,9 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 ## [2.0.0] - 2021-03-31
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.7.11-1-g97eed73...HEAD
-[3.7.11-1-g97eed73]: https://github.com/TACC/Core-CMS/releases/tag/v3.7.11-1-g97eed73
-[3.8.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.8.0
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.8.0...HEAD
+[3.7.12]: https://github.com/TACC/Core-CMS/releases/tag/v3.7.12
+[3.8.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.8.0s
 [3.7.11]: https://github.com/TACC/Core-CMS/releases/tag/v3.7.11
 [3.4.0-1-g0c5cbd1]: https://github.com/TACC/Core-CMS/releases/tag/v3.4.0-1-g0c5cbd1
 [3.6.0-8-gd1dbcab]: https://github.com/TACC/Core-CMS/releases/tag/v3.6.0-8-gd1dbcab
