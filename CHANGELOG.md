@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [3.7.11] - 2022-07-06: v3.7.0 Fixes, New Core-Styles, ECEP/TUP/Frontera Tweaks
+## [3.7.11] - 2022-07-06: v3.7.0 Fixes, New Core-Styles, ECEP/TUP/FP Tweaks
 
 ### Added
 
@@ -32,6 +32,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 
 - feat(tup): no LDAP (#499)
+
+## [3.4.0-1-g0c5cbd1] - 2022-07-01: Support Annual Texascale Stylesheets]
+
+### Added
+
+- V3.4.0/fp 1439 yearly site theme for texascale (#508)
+
+## [3.6.0-8-gd1dbcab] - 2022-06-23: Form Plugin UI Fixes, Add ADCP Resources Dir
+
+### Added
+
+- Update submodule to include APCD [...] (#502)
+
+### Fixed
+
+- V3.6.0/form plugin fixes (#501)
+
+## [3.6.0-4-gb293de7] - 2022-06-21: Form Plugin
+
+### Added
+
+- feat(frontera): accent color vars (eb7c282)
+- feat(v3.6.0): tup 230 make form plugin work (#500)
 
 ## [3.7.0] - 2022-05-13: Patterns, News/Blog App, SciVis & APCD, Improvements
 
@@ -410,6 +433,9 @@ v2.0.0 Production release as of Mar 31, 2021.
 
 [unreleased]: https://github.com/TACC/Core-CMS/compare/v3.7.11...HEAD
 [3.7.11]: https://github.com/TACC/Core-CMS/releases/tag/v3.7.11
+[3.4.0-1-g0c5cbd1]: https://github.com/TACC/Core-CMS/releases/tag/v3.4.0-1-g0c5cbd1
+[3.6.0-8-gd1dbcab]: https://github.com/TACC/Core-CMS/releases/tag/v3.6.0-8-gd1dbcab
+[3.6.0-4-gb293de7]: https://github.com/TACC/Core-CMS/releases/tag/v3.6.0-4-gb293de7
 [3.7.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.7.0
 [3.6.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.6.0
 [3.5.2]: https://github.com/TACC/Core-CMS/releases/tag/v3.5.2
