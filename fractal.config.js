@@ -44,6 +44,9 @@ fractal.components.set('default.context', {
     }
   }
 });
+if ( projectCSSFile ) {
+  fractal.cli.log(`+ Included CSS for "${projectName}": '${projectCSSFile}'`);
+}
 
 fractal.web.set('static.path',
   path.join(coreStylesRoot, 'dist')
