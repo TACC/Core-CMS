@@ -11,7 +11,7 @@ const args = minimist( process.argv.slice( 2 ) );
 let projectName = args['project'] || '';
     projectName = ( projectName !== 'core-cms' ) ? projectName : '';
 const projectCSSFile = projectName
-  ? getStaticFilePath( projectName, 'css/build/site.css')
+  ? path.join( '/', getStaticFilePath( projectName, 'css/build/site.css') )
   : null;
 
 const fractal = require('@tacc/core-styles/fractal.config.js');
@@ -39,7 +39,7 @@ fractal.components.set('default.context', {
         'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css',
         '/static/site_cms/css/build/site.css'
       ].concat(
-        ( projectCSSFile ) ? [ '/' + projectCSSFile ] : []
+        ( projectCSSFile ) ? [ projectCSSFile ] : []
       )
     }
   }
