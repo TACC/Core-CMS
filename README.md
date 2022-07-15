@@ -268,6 +268,20 @@ If you need to change files within `/taccsite_custom`:
 <sub>† See [Restarting the CMS Server](#restarting-the-cms-server).</sub>
 
 
+### UI Pattern Library
+
+This demo shows [Core Styles] with `site.css` from either [Core CMS] or a [Core CMS Resources] project.
+
+1. Build UI patterns demo: \*†
+
+    ```bash
+    npm run build:demo --project=name-of-project
+    ```
+
+<sub>\* You should run these commands in the container __from `/code/`__. _See [Running Commands in Container](#running-commands-in-container)._</sub>\
+<sub>† Where `name-of-project` is "core-cms" or matches a directory from `/taccsite_custom`. __A project name is required.__</sub>
+
+
 ## Running Commands in Container
 
 __If using `docker-compose.yml` then__ run certain commands via shell within container (because files are __not__ re-synced with local machine).
