@@ -359,6 +359,19 @@ We use a modifed version of [GitFlow](https://datasift.github.io/gitflow/Introdu
 
 Sign your commits ([see this link](https://help.github.com/en/github/authenticating-to-github/managing-commit-signature-verification) for help)
 
+### Release Workflow
+
+Only appointed team members may release versions.
+
+1. Create new branch for version bump.
+1. Update `CHANGELOG.md`.
+1. Update version via `npm version N.N.N` (run from `.../core-styles/`).
+1. Commit, push, PR, review, merge.
+1. Tag version i.e.
+    1. `git tag -a vN.N.N -m "vN.N.N"`
+    2. `git push origin core-styles-vN.N.N`
+1. Author a release via GitHub (choose the tag from previous step).
+
 ### Resources
 
 * [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
