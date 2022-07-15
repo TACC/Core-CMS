@@ -369,7 +369,7 @@ Only appointed team members may release versions.
 1. Commit, push, PR, review, merge.
 1. Tag version i.e.
     1. `git tag -a vN.N.N -m "vN.N.N"`
-    2. `git push origin core-styles-vN.N.N`
+    2. `git push origin vN.N.N`
 1. Author a release via GitHub (choose the tag from previous step).
 
 ### Resources
