@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [3.8.0] - 2022-07-14: Form Plugin, Document Release & NPM Link, v3.7.11 Fix
+## [3.8.0] - 2022-07-14: Form Plugin, Document Release & NPM Link, Fix Banner
 
 ### Added
 
