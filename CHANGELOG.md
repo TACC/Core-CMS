@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.8.0] - 2022-07-14: Form Plugin
+
+### Added
+
+- feat(tup-308): working form plugin (aka tup-230) (#498)
+
+### Changed
+
+- docs(README): npm link instructions (#511)
+- chore: author release process [...] (#514)
+
+### Fixed
+
+- fix(ecep-cms): global accent colors full suite
+- fix(core-styles, frontera, utrc): fp-1723 section banner overflow mgmt (#513)
+
 ## [3.7.11] - 2022-07-06: v3.7.0 Fixes, New Core-Styles, ECEP/TUP/FP Tweaks
 
 ### Added
@@ -431,7 +447,8 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 ## [2.0.0] - 2021-03-31
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.7.11...HEAD
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.8.0...HEAD
+[3.8.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.8.0
 [3.7.11]: https://github.com/TACC/Core-CMS/releases/tag/v3.7.11
 [3.4.0-1-g0c5cbd1]: https://github.com/TACC/Core-CMS/releases/tag/v3.4.0-1-g0c5cbd1
 [3.6.0-8-gd1dbcab]: https://github.com/TACC/Core-CMS/releases/tag/v3.6.0-8-gd1dbcab
