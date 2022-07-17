@@ -268,7 +268,7 @@ If you need to change files within `/taccsite_custom`:
 <sub>† See [Restarting the CMS Server](#restarting-the-cms-server).</sub>
 
 
-### UI Pattern Library
+### UI Pattern Demo
 
 This demo shows [Core Styles] with `site.css` from either [Core CMS] or a [Core CMS Resources] project.
 
