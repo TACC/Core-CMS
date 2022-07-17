@@ -3,13 +3,10 @@
 /** Build CSS using the Core-Styles CLI */
 
 const fs = require('fs');
-const path = require('path');
 const buildStylesheets = require('@tacc/core-styles').buildStylesheets;
 const mininmist = require('minimist');
 
-const { getSourcePath } = require(
-  path.join( __dirname, '../bin/get-path.js')
-);
+const { getSourcePath } = require( __dirname + '/../bin/get-path.js');
 
 const ROOT = __dirname + '/..';
 const CORE_NAME = 'core-cms';
