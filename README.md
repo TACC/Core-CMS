@@ -348,7 +348,7 @@ We use a modifed version of [GitFlow](https://datasift.github.io/gitflow/Introdu
     ```
 
 3. Make changes in your [Core Styles] clone as necessary.
-4. [Build static files.]((#how-to-build-static-files))
+4. [Build static files.](#how-to-build-static-files)
 5. Test changes.
 6. Commit successful changes to a [Core Styles] branch.
 
