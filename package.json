@@ -11,7 +11,7 @@
   "devDependencies": {
     "@frctl/fractal": "^1.5.13",
     "@frctl/mandelbrot": "^1.10.1",
-    "@tacc/core-styles": "https://gitpkg.now.sh/TACC/tup-ui/libs/core-styles?task/fp-1499-cms-pattern-library",
+    "@tacc/core-styles": "^0.7.0",
     "minimist": "^1.2.6"
   },
   "repository": "git@github.com:TACC/Core-CMS.git",
