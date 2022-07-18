@@ -34,6 +34,7 @@ fractal.components.set('path',
 // (for stylesheets)
 fractal.components.set('default.context', {
   styles: {
+    shouldSkipBase: true, // true, because site.css includes components
     external: {
       global: [
         'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css',
