@@ -2,4 +2,4 @@
 
 /* Styles for blog app pages (not blog plugins which can be anywhere on site) */
 /* FAQ: For blog plugin styles, see `./django.cms.blog.plugins.css` */
-@import url("_imports/components/django.cms.blog.app.css");
+@import url("./_imports/components/django.cms.blog.app.css");

@@ -4,9 +4,8 @@
 /* SEE: https://confluence.tacc.utexas.edu/x/IAA9Cw */
 
 /* SETTINGS */
-@import url("_imports/settings/border.css");
-@import url("_imports/settings/max-width.css");
-/* Unique to CMS */
+@import url("@tacc/core-styles/src/lib/_imports/settings/border.css");
+@import url("@tacc/core-styles/src/lib/_imports/settings/max-width.css");
 @import url("./_imports/settings/color.css");
 @import url("./_imports/settings/space.css");
 @import url("./_imports/settings/font.css");
@@ -17,27 +16,25 @@
 
 /* ELEMENTS */
 /* Bootstrap performs much of this */
-@import url("_imports/elements/html-elements.css");
-/* Unique to CMS */
+@import url("@tacc/core-styles/src/lib/_imports/elements/html-elements.css");
 @import url("./_imports/elements/form.css");
-/* Load custom element styles within custom element, not here */
+/* NOTE: Load any custom element styles within the custom element, not here */
 
 /* OBJECTS */
-@import url("_imports/objects/o-grid.css");
-@import url("_imports/objects/o-offset-content.css");
-@import url("_imports/objects/o-section.css");
+@import url("@tacc/core-styles/src/lib/_imports/objects/o-grid.css");
+@import url("@tacc/core-styles/src/lib/_imports/objects/o-offset-content.css");
+@import url("@tacc/core-styles/src/lib/_imports/objects/o-section.css");
 
 /* COMPONENTS */
-@import url("_imports/components/c-card.css");
-@import url("_imports/components/c-callout.css");
-@import url("_imports/components/c-data-list.css");
-@import url("_imports/components/c-nav.css");
-@import url("_imports/components/c-footer.css");
-@import url("_imports/components/c-recognition.css");
-@import url("_imports/components/c-see-all-link.css");
-@import url("_imports/components/bootstrap.container.css");
-@import url("_imports/components/bootstrap.figure.css");
-/* Unique to CMS */
+@import url("@tacc/core-styles/src/lib/_imports/components/c-card.css");
+@import url("@tacc/core-styles/src/lib/_imports/components/c-callout.css");
+@import url("@tacc/core-styles/src/lib/_imports/components/c-data-list.css");
+@import url("@tacc/core-styles/src/lib/_imports/components/c-nav.css");
+@import url("@tacc/core-styles/src/lib/_imports/components/c-footer.css");
+@import url("@tacc/core-styles/src/lib/_imports/components/c-recognition.css");
+@import url("@tacc/core-styles/src/lib/_imports/components/c-see-all-link.css");
+@import url("@tacc/core-styles/src/lib/_imports/components/bootstrap.container.css");
+@import url("@tacc/core-styles/src/lib/_imports/components/bootstrap.figure.css");
 @import url("./_imports/components/c-button.css");
 @import url("./_imports/components/django.cms.css");
 @import url("./_imports/components/django.cms.blog.css");
@@ -46,7 +43,7 @@
 @import url("./_imports/components/django.cms.picture.css");
 
 /* TRUMPS */
-@import url("_imports/trumps/s-breadcrumbs.css");
-@import url("_imports/trumps/s-footer.css");
-@import url("_imports/trumps/s-blockquote.css");
-@import url("_imports/trumps/u-empty.css");
+@import url("@tacc/core-styles/src/lib/_imports/trumps/s-breadcrumbs.css");
+@import url("@tacc/core-styles/src/lib/_imports/trumps/s-footer.css");
+@import url("@tacc/core-styles/src/lib/_imports/trumps/s-blockquote.css");
+@import url("@tacc/core-styles/src/lib/_imports/trumps/u-empty.css");

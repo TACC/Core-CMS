@@ -4,4 +4,4 @@
 /* SEE: https://confluence.tacc.utexas.edu/x/IAA9Cw */
 
 /* TRUMPS */
-@import url("_imports/trumps/s-system-specs.css");
+@import url("@tacc/core-styles/src/lib/_imports/trumps/s-system-specs.css");
