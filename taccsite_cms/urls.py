@@ -39,7 +39,6 @@ if getattr(settings, 'INCLUDES_CORE_PORTAL', True):
 
 try:
     from .urls_custom import custom_urls
-    print(custom_urls)
     urlpatterns += custom_urls
 except ImportError:
     pass
