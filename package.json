@@ -9,7 +9,7 @@
     "npm": "^8.5.5"
   },
   "devDependencies": {
-    "@tacc/core-styles": "https://gitpkg.now.sh/TACC/tup-ui/libs/core-styles?task/fp-1721-image-captions-and-offsets",
+    "@tacc/core-styles": "github:TACC/Core-Styles#task/fp-1721-image-captions-and-offsets",
     "minimist": "^1.2.6"
   },
   "repository": "git@github.com:TACC/Core-CMS.git",
