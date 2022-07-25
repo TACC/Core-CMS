@@ -43,8 +43,6 @@ try:
 except ImportError:
     pass
 
-urlpatterns += static('/ui-patterns/', document_root=settings.TACC_UI_ROOT)
-
 urlpatterns += [
     url(r'^', include('cms.urls')),
 ]
