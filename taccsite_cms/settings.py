@@ -198,6 +198,12 @@ TACC_BLOG_SHOW_CATEGORIES = True
 TACC_BLOG_SHOW_TAGS = True
 
 ########################
+# TACC: UI PATTERN DEMO
+########################
+
+TACC_UI_ROOT = os.path.join(DATA_DIR, 'taccsite_ui')
+
+########################
 # CLIENT BUILD SETTINGS
 ########################
 
