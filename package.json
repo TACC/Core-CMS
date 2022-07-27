@@ -9,7 +9,7 @@
     "npm": "^8.5.5"
   },
   "devDependencies": {
-    "@tacc/core-styles": "^0.7.0-beta",
+    "@tacc/core-styles": "https://github.com/TACC/tup-ui/blob/test/core-styles-tarball-install/libs/core-styles/tacc-core-styles-0.7.0-test.tgz?raw=true",
     "minimist": "^1.2.6"
   },
   "repository": "git@github.com:TACC/Core-CMS.git",
