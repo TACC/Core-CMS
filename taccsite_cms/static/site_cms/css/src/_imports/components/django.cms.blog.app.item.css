@@ -245,7 +245,6 @@ html:not(:--cms-edit-mode) .read-more a {
 
 /* If editing, hide "read more" */
 /* FAQ: User can: edit by double clicking abstract; visit by clicking title */
-html:--cms-edit-mode .read-more { grid-area: 3 / 1 / 4 / -1 }
-html:--cms-edit-mode .read-more::after {
+html:--cms-edit-mode .read-more {
   display: none;
 }
