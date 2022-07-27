@@ -344,21 +344,33 @@ We use a modifed version of [GitFlow](https://datasift.github.io/gitflow/Introdu
 1. Clone [Core Styles] (if you haven't already).
 2. Tell project to temporarily use your [Core Styles] clone:
     ```bash
-    npm link path-to/Core-Styles # e.g. npm link ../Core-Styles
-    npm install postcss-cli --no-save # fix bug with npm link + CSS build
+    npx link path-to/core-styles # e.g. npx link ../tup-ui/libs/core-styles
     ```
 
 3. Make changes in your [Core Styles] clone as necessary.
-4. [Build static files.]((#how-to-build-static-files))
+4. [Build static files.](#how-to-build-static-files)
 5. Test changes.
 6. Commit successful changes to a [Core Styles] branch.
 
-> __Notice__: [If you run `npm install` or `npm ci`, the link is destroyed.](https://github.com/npm/cli/issues/2380#issuecomment-1029967927) Repeat the above steps to restore it.
+> __Notice__: [If you run `npm install` or `npm ci`, the link is destroyed.](https://github.com/npm/cli/issues/2380#issuecomment-1029967927) Repeat the `… link …` step to restore it.
 
 
 ### Best Practices
 
 Sign your commits ([see this link](https://help.github.com/en/github/authenticating-to-github/managing-commit-signature-verification) for help)
+
+### Release Workflow
+
+Only appointed team members may release versions.
+
+1. Create new branch for version bump.
+1. Update `CHANGELOG.md`.
+1. Update version via `npm version N.N.N` (run from `.../core-styles/`).
+1. Commit, push, PR, review, merge.
+1. Tag version i.e.
+    1. `git tag -a vN.N.N -m "vN.N.N"`
+    2. `git push origin vN.N.N`
+1. Author a release via GitHub (choose the tag from previous step).
 
 ### Resources
 

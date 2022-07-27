@@ -22,6 +22,8 @@ urlpatterns = [
 
     url(r'^admin/', admin.site.urls),  # NOQA
     url(r'^cms/logout/', views.LogoutView.as_view(), name='logout'),
+
+    url(r'^', include('djangocms_forms.urls')),
 ]
 
 if getattr(settings, 'INCLUDES_CORE_PORTAL', True):
@@ -34,6 +36,12 @@ if getattr(settings, 'INCLUDES_CORE_PORTAL', True):
         url(r'^cms/header/logo/markup/$', TemplateView.as_view(template_name='header_logo.html'), name='header_logo_markup'),
         url(r'^remote/login/$', remote_cms_auth.verify_and_auth, name='verify_and_auth'),
     ]
+
+try:
+    from .urls_custom import custom_urls
+    urlpatterns += custom_urls
+except ImportError:
+    pass
 
 urlpatterns += [
     url(r'^', include('cms.urls')),

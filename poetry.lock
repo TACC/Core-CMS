@@ -308,6 +308,17 @@ python-versions = "*"
 Django = ">=2.1"
 
 [[package]]
+name = "django-recaptcha"
+version = "3.0.0"
+description = "Django recaptcha form field/widget app."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+django = "*"
+
+[[package]]
 name = "django-sekizai"
 version = "2.0.0"
 description = "Django Sekizai"
@@ -526,8 +537,8 @@ django-filer = ">=1.7"
 djangocms-attributes-field = ">=1"
 
 [[package]]
-name = "djangocms-forms"
-version = "0.2.5"
+name = "djangocms-forms-maintained"
+version = "202011091152"
 description = "The easiest and most flexible Django CMS Form builder w/ ReCaptcha v2 support!"
 category = "main"
 optional = false
@@ -537,6 +548,7 @@ python-versions = "*"
 django-appconf = "*"
 django-cms = ">=3.0"
 django-ipware = "*"
+django-recaptcha = "*"
 hashids = "*"
 jsonfield = "*"
 requests = "*"
@@ -826,7 +838,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 parso = ">=0.7.0,<0.8.0"
 
 [package.extras]
-qa = ["flake8 (==3.7.9)"]
+qa = ["flake8 (3.7.9)"]
 testing = ["Django (<3.1)", "colorama", "docopt", "pytest (>=3.9.0,<5.0.0)"]
 
 [[package]]
@@ -1105,7 +1117,7 @@ idna = {version = ">=2.5,<4", markers = "python_version >= \"3\""}
 urllib3 = ">=1.21.1,<1.27"
 
 [package.extras]
-socks = ["PySocks (>=1.5.6,!=1.5.7)", "win-inet-pton"]
+socks = ["PySocks (>=1.5.6,<1.5.7 || >1.5.7)", "win-inet-pton"]
 use_chardet_on_py3 = ["chardet (>=3.0.2,<5)"]
 
 [[package]]
@@ -1212,7 +1224,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, <4"
 [package.extras]
 brotli = ["brotlipy (>=0.6.0)"]
 secure = ["pyOpenSSL (>=0.14)", "cryptography (>=1.3.4)", "idna (>=2.0.0)", "certifi", "ipaddress"]
-socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
+socks = ["PySocks (>=1.5.6,<1.5.7 || >1.5.7,<2.0)"]
 
 [[package]]
 name = "urlobject"
@@ -1277,7 +1289,7 @@ testing = ["jaraco.itertools", "func-timeout"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "ede4ded5906287ebc533a39066285a4aa70377909a594c51f34fe0c8f72da0a6"
+content-hash = "8515ec924f9be13f59a965c2328565289c11c642a3ed1c79a3a3ad16396f91b7"
 
 [metadata.files]
 aldryn-apphooks-config = [
@@ -1378,6 +1390,10 @@ django-polymorphic = [
     {file = "django-polymorphic-3.0.0.tar.gz", hash = "sha256:9d886f19f031d26bb1391c055ed9be06fb226a04a4cec1842b372c58873b3caa"},
     {file = "django_polymorphic-3.0.0-py2.py3-none-any.whl", hash = "sha256:73b75eb44ea302bd32820f8661e469509d245ce7f7ff09cd2ad149e5c42034ff"},
 ]
+django-recaptcha = [
+    {file = "django-recaptcha-3.0.0.tar.gz", hash = "sha256:253197051288923cae675d7eff91b619e3775311292a5dbaf27a8a55ffebc670"},
+    {file = "django_recaptcha-3.0.0-py3-none-any.whl", hash = "sha256:1aed69fd6ac8fd9e99e52665392ae6748f8b6339ace656fad779fe0c6c915a52"},
+]
 django-sekizai = [
     {file = "django-sekizai-2.0.0.tar.gz", hash = "sha256:e829f09b0d6bf01ee5cde05de1fb3faf2fbc5df66dc4dc280fbaac224ca4336f"},
     {file = "django_sekizai-2.0.0-py3-none-any.whl", hash = "sha256:5c5e16845d37ce822fc655ce79ec02715191b3d03330b550997bcb842cf24fdf"},
@@ -1446,8 +1462,9 @@ djangocms-file = [
     {file = "djangocms-file-3.0.0.tar.gz", hash = "sha256:61f8df1ee136c0202fa65b9fe87024f3ceece66262ddd0cccfffbe979170ffdd"},
     {file = "djangocms_file-3.0.0-py3-none-any.whl", hash = "sha256:6918717355488c764941d56813362e7ab497f3a4cd73e71e2d4c0f09bff79687"},
 ]
-djangocms-forms = [
-    {file = "djangocms-forms-0.2.5.tar.gz", hash = "sha256:83719b7bec66f935fc30698d81541d52cf35a45bef27089cd8899fa9d4d19d36"},
+djangocms-forms-maintained = [
+    {file = "djangocms-forms-maintained-202011091152.tar.gz", hash = "sha256:d3d45179e4d536ca2e6cd1a62f5c39e130417b2e4163d1f1510e8d78ac2839d7"},
+    {file = "djangocms_forms_maintained-202011091152-py2.py3-none-any.whl", hash = "sha256:973d1df55bb8742718b20ec576dc7d153b9264b1abd824d4e1561caf4a615b0a"},
 ]
 djangocms-googlemap = [
     {file = "djangocms-googlemap-2.0.0.tar.gz", hash = "sha256:1e63f2e3adb6278b401881476aa3795560bd4a441e3509310044316bf9c9b867"},
