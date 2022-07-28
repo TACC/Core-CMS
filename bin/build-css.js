@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-/** Build CSS using the Core-Styles CLI */
+/** Build CSS using the Core-Styles API */
 
 const fs = require('fs');
 const buildStylesheets = require('@tacc/core-styles').buildStylesheets;
