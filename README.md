@@ -339,18 +339,7 @@ We use a modifed version of [GitFlow](https://datasift.github.io/gitflow/Introdu
 
 #### Testing Core Styles Changes Locally
 
-1. Clone [Core Styles] (if you haven't already).
-2. Tell project to temporarily use your [Core Styles] clone:
-    ```bash
-    npx link path-to/core-styles # e.g. npx link ../tup-ui/libs/core-styles
-    ```
-
-3. Make changes in your [Core Styles] clone as necessary.
-4. [Build static files.](#how-to-build-static-files)
-5. Test changes.
-6. Commit successful changes to a [Core Styles] branch.
-
-> __Notice__: [If you run `npm install` or `npm ci`, the link is destroyed.](https://github.com/npm/cli/issues/2380#issuecomment-1029967927) Repeat the `… link …` step to restore it.
+See [Locally Develop CMS and Styles](https://github.com/TACC/Core-CMS/wiki/Locally-Develop-CMS-and-Styles).
 
 
 ### Best Practices
