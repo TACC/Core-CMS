@@ -1,0 +1,15 @@
+{
+  "name": "@tacc/core-cms-ui",
+  "version": "3.8.0",
+  "license": "MIT",
+  "author": "TACC ACI WMA <wma-portals@gmail.com>",
+  "description": "A UI patterm demo for the TACC ACI-WMA Core CMS.",
+  "devDependencies": {
+    "@frctl/fractal": "^1.5.13",
+    "@frctl/mandelbrot": "^1.10.1"
+  },
+  "scripts": {
+    "start": "fractal start --sync",
+    "build": "fractal build --project=$npm_config_project"
+  }
+}
