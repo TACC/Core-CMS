@@ -271,14 +271,20 @@ If you need to change files within `/taccsite_custom`:
 
 This demo shows [Core Styles] with `site.css` from either [Core CMS] or a [Core CMS Resources] project.
 
-1. Build UI patterns demo: \*†
+1. Navigate to `/taccsite_ui`.
+2. Build UI patterns demo: \*
 
     ```bash
-    npm run build:demo --project=name-of-project
+    npm run build --project=name-of-project
     ```
 
-<sub>\* You should run these commands in the container __from `/code/`__. _See [Running Commands in Container](#running-commands-in-container)._</sub>\
-<sub>† Where `name-of-project` is "core-cms" or matches a directory from `/taccsite_custom`. __A project name is required.__</sub>
+3. Serve the demo:
+
+    ```bash
+    npx serve dist
+    ```
+
+<sub>\* Where `name-of-project` is "core-cms" or matches a directory from `/taccsite_custom`. __A project name is required.__</sub>
 
 
 ## Running Commands in Container
