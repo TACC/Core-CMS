@@ -305,8 +305,6 @@ Server-side CMS plugin testing is run through Python. Start docker container fir
 <!-- TODO: Make command recursively find all tests -->
 <!-- SEE: https://docs.djangoproject.com/en/2.2/topics/testing/overview/#running-tests -->
 
-Client-side stylesheet plugin testing is done manually. Run `npm run build` from any folder in this project, then review output in `taccsite_cms/static/site_cms/css/build/_test.css`, to ensure plugins are working correctly.
-
 ### Test Coverage
 
 Coverage is sent to codecov on commits to the repo (see Github Actions for branch to see branch coverage). Ideally we only merge positive code coverage changes to `main`.
