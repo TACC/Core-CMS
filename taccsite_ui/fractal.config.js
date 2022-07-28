@@ -11,7 +11,6 @@ const themeConfig = require('./fractal.theme.js');
 // Get project
 // (name)
 const args = minimist( process.argv.slice( 2 ));
-fractal.cli.log(args['project']);
 let cmsName = 'core-cms';
 let projName = args['project'] || '';
     projName = ( projName !== cmsName ) ? projName : '';
