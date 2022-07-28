@@ -1,20 +1,7 @@
-# TACC CMS - Stylesheets
+# TACC CMS - CSS
 
-Stylesheets are built from source code entry point files located in `./src/*`. Stylesheets are built to static asset artifact directory `./build/*`.
+1. Author stylesheets in `/taccsite_styles/src`.
+2. Build stylesheets with `npm run build` step.
+3. Collect and serve built stylesheets with django `collectstatic` step.
 
-Add new stylesheets into these locations to be picked up by the `npm run build` task and the django `collectstatic` steps.
-
-See [repo `README.md` at "Static Files"](/README.md#static-files).
-
-## Development
-
-- (Standard) Style TACC UI patterns in [Core Styles].
-- (Exception) Style CMS-specific UI in [Core CMS].
-- (Exception) Style project-specific UI in [Core CMS Resources].
-
-
-<!-- Link Aliases -->
-
-[Core CMS]: https://github.com/TACC/Core-CMS
-[Core CMS Resources]: https://github.com/TACC/Core-CMS-Resources
-[Core Styles]: https://github.com/TACC/tup-ui/tree/main/libs/core-styles
+See [project `README.md` at "Building Static Resources"](/README.md#Building%20Static%20Resources).

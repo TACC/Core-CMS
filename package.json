@@ -14,7 +14,7 @@
   },
   "repository": "git@github.com:TACC/Core-CMS.git",
   "scripts": {
-    "build": "bin/build-css.js --project=$npm_config_project --build-id=$npm_config_build_id"
+    "build": "taccsite_styles/bin/build.js --project=$npm_config_project --build-id=$npm_config_build_id"
   },
   "homepage": "https://github.com/TACC/Core-CMS"
 }
