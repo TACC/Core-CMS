@@ -18,7 +18,7 @@
   "scripts": {
     "build": "npm run build:css && npm run build:css-demo",
     "build:css": "bin/build-css.js --project=$npm_config_project --build-id=$npm_config_build_id",
-    "start:css-demo": "cd taccsite_ui && fractal start --sync",
+    "start:css-demo": "cd taccsite_ui && npx serve dist",
     "build:css-demo": "cd taccsite_ui && fractal build --project=$npm_config_project"
   },
   "homepage": "https://github.com/TACC/Core-CMS"
