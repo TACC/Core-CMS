@@ -9,12 +9,17 @@
     "npm": "^8.5.5"
   },
   "devDependencies": {
-    "@tacc/core-styles": "^0.7.0-beta",
+    "@frctl/fractal": "^1.5.13",
+    "@frctl/mandelbrot": "^1.10.1",
+    "@tacc/core-styles": "https://github.com/TACC/tup-ui/blob/task/fp-1499-ui-pattern-demo/libs/core-styles/tacc-core-styles-0.8.0-beta.tgz?raw=true",
     "minimist": "^1.2.6"
   },
   "repository": "git@github.com:TACC/Core-CMS.git",
   "scripts": {
-    "build": "bin/build-css.js --project=$npm_config_project --build-id=$npm_config_build_id"
+    "build": "npm run build:css && npm run build:css-demo",
+    "build:css": "bin/build-css.js --project=$npm_config_project --build-id=$npm_config_build_id",
+    "start:css-demo": "cd taccsite_ui && fractal start --sync",
+    "build:css-demo": "cd taccsite_ui && fractal build --project=$npm_config_project"
   },
   "homepage": "https://github.com/TACC/Core-CMS"
 }
