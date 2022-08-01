@@ -14,6 +14,9 @@ __pycache__
 ## built Static files
 build
 !build/README.md
+## ignore files copied from core-styles
+## (in the future, get all fonts from core-styles, and reduce this to **/fonts)
+**/fonts/BentonSans-*
 
 ## environment variables
 docker_repo.var
