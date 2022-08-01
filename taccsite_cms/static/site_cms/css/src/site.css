@@ -17,9 +17,8 @@
 
 /* ELEMENTS */
 /* Bootstrap performs much of this */
-@import url("_imports/elements/html-elements.css");
-/* Unique to CMS */
-@import url("./_imports/elements/form.css");
+@import url("@tacc/core-styles/src/lib/_imports/elements/html-elements.cms.css");
+@import url("@tacc/core-styles/src/lib/_imports/elements/form.cms.css");
 /* Load custom element styles within custom element, not here */
 
 /* OBJECTS */
