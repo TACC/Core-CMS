@@ -1,7 +1,8 @@
 @import url("@tacc/core-styles/src/lib/_imports/components/c-button.css");
+@import url("../settings/font.css");
 
 .c-button {
   --max-width: unset;
 
-  font-size: 1.6rem;
+  font-size: var(--global-font-size--medium);
 }
