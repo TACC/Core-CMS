@@ -116,6 +116,7 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 }
 :--article-item h4::before { content: ': ' }
 :--article-item h3 a {
+  display: block; /* to prevent grid blowout */
   color: var(--global-color-primary--xx-dark);
 }
 
