@@ -102,9 +102,11 @@ Styleguide Components.DjangoCMS.Blog.App.Item
   margin-block: unset; /* overwrite html-elements.css */
   font-size: var(--global-font-size--large);
 }
+:--article-item h3 a, /* truncate a not h3 so :focus-visible is not cropped */
 :--article-item h4 {
   @extend %x-truncate--one-line;
-
+}
+:--article-item h4 {
   text-transform: none; /* overwrite html-elements.css */
 
   /* To style subtitle differently than title */
