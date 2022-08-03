@@ -55,11 +55,7 @@ fractal.web.set('static.path', __dirname + '/styles');
 fractal.web.set('builder.dest', __dirname + '/dist');
 
 // Customize theme
-const theme = mandelbrot( Object.assign( themeConfig, {
-  skin: Object.assign( themeConfig.skin, {
-    links: '#877453',
-  })
-}));
+const theme = mandelbrot( themeConfig );
 fractal.web.theme( theme );
 
 // Export
