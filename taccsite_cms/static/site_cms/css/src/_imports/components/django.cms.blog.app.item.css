@@ -99,12 +99,12 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 
 :--article-item h3,
 :--article-item h4 {
-  @extend %x-truncate--one-line;
-
   margin-block: unset; /* overwrite html-elements.css */
   font-size: var(--global-font-size--large);
 }
 :--article-item h4 {
+  @extend %x-truncate--one-line;
+
   text-transform: none; /* overwrite html-elements.css */
 
   /* To style subtitle differently than title */
