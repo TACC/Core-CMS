@@ -239,17 +239,18 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 /* To support vertical layouts at narrow viewports */
 @media (--narrow-and-below) {
   :--article-item .blog-visual:not(:empty) {
+    height: 140px; /* for consistent image height */
     margin-bottom: 15px;
   }
   :--article-item .blog-visual img {
-    width: 100%; /* CAVEAT: artifically enlarges image */
-    height: auto;
+    max-width: 100%; /* to prevent overflow if column is narrower */
+    height: auto; /* to maintain aspect ratio if width changes */
   }
 }
 /* To support horizontal layouts at wide viewports */
 @media (--narrow-and-above) {
   :--article-item .blog-visual:not(:empty) {
-    width: 255px; /* for consistent image width (as per design) */
+    width: 255px; /* for consistent image width */
     margin-right: 50px;
   }
 }
