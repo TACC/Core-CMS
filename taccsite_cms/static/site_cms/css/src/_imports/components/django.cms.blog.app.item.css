@@ -114,7 +114,9 @@ Styleguide Components.DjangoCMS.Blog.App.Item
   transform: translateY(2px); /* HACK: tweak vertical alignment */
   font-weight: var(--regular);
 }
-:--article-item h4::before { content: ': ' }
+:--article-item h4::before {
+  content: ': ';
+}
 :--article-item h3 a {
   display: block; /* to prevent grid blowout */
   color: var(--global-color-primary--xx-dark);
