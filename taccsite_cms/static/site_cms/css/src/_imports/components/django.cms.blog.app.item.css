@@ -242,7 +242,7 @@ Styleguide Components.DjangoCMS.Blog.App.Item
     margin-bottom: 15px;
   }
   :--article-item .blog-visual img {
-    width: 100%;
+    width: 100%; /* CAVEAT: artifically enlarges image */
     height: auto;
   }
 }
