@@ -78,6 +78,11 @@ export default class TargetSiblingHider {
           // Fix only seems necessary for first event, so clean up
           this.disableScrollFix();
         }
+
+        // To restore focus to targets whose focus is lost on successive toggles
+        if ( document.activeElement !== target ) {
+          target.focus();
+        }
       }
     });
   }
