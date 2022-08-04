@@ -1,7 +1,9 @@
 {% load cms_tags staticfiles sekizai_tags cache i18n meta %}
+{% get_current_language as lang_code %}
 <!doctype html>
 <html
   id="page-{{ request.current_page.id }}"
+  lang="{{ lang_code }}"
   {# FAQ: Only available if set in page's "Advanced" settings #}
   data-page-id="{{ request.current_page.reverse_id }}"
   class="{% block template_class %}{% endblock template_class %}">
