@@ -14,9 +14,12 @@
       [ ...document.querySelectorAll('.pagination a') ].forEach( a => {
         a.innerText = a.innerText.replace('«', '<').replace('»', '>');
       });
-      /* HACK: To remove " »" from "read more »" */
+      /* HACK: To manipulate "read more" link */
       [ ...document.querySelectorAll('.read-more a') ].forEach( a => {
+        /* To remove " »" from "read more »" */
         a.innerText = a.innerText.replace(' »', '');
+        /* To disallow focus (because article header link is ample) */
+        a.tabIndex = -1;
       });
     </script>
 </div>
