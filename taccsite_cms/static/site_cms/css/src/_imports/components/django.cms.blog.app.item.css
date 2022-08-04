@@ -135,10 +135,12 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 
 :--article-item h3,
 :--article-item h4 {
-  @extend %x-truncate--one-line;
-
   margin-block: unset; /* overwrite html-elements.css */
   font-size: var(--global-font-size--large);
+}
+:--article-item h3 a, /* truncate a not h3 so :focus-visible is not cropped */
+:--article-item h4 {
+  @extend %x-truncate--one-line;
 }
 :--article-item h4 {
   text-transform: none; /* overwrite html-elements.css */
@@ -148,8 +150,11 @@ Styleguide Components.DjangoCMS.Blog.App.Item
   transform: translateY(2px); /* HACK: tweak vertical alignment */
   font-weight: var(--regular);
 }
-:--article-item h4::before { content: ': ' }
+:--article-item h4::before {
+  content: ': ';
+}
 :--article-item h3 a {
+  display: block; /* to prevent grid blowout */
   color: var(--global-color-primary--xx-dark);
 }
 
