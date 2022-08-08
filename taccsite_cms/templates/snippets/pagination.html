@@ -1,0 +1,39 @@
+{% load tacc_uri_shortcuts %}
+{% site_uri as site_uri %}
+
+{# IMPORTANT: Pass HTML as a list of space-delimited numbers eg. "1 2 3 …" #}
+
+<div class="c-page-list">
+  {% with prev_page_slug=site_uri.slug|add:"-1" curr_page_slug=site_uri.slug next_page_slug=site_uri.slug|add:"+1" page_list=html %}
+
+  {% if prev_page_slug == 0 %}
+    <a href="../{{ prev_page_slug }}" class="c-button c-button--as-link c-page-end" data-test="A" disabled>
+      &lt; Previous
+    </a>
+  {% else %}
+    <a href="../{{ prev_page_slug }}" class="c-button c-button--as-link c-page-end" data-test="B">
+      &lt; Previous
+    </a>
+  {% endif %}
+
+  {% with pages=page_list|default:"1" %}
+    {% for page in pages.split %}
+      <a href="../{{ page }}"
+        class="c-button c-button--secondary c-button--size-small {% if curr_page_slug == page %}c-button--is-active{% endif %} c-page-item c-page-link c-page-link--always-click">
+        {{ page }}
+      </a>
+    {% endfor %}
+  {% endwith %}
+
+  {% if next_page_slug == 6 %}
+    <a href="../{{ next_page_slug }}" class="c-button c-button--as-link c-page-end" disabled>
+      Next &gt;
+    </a>
+  {% else %}
+    <a href="../{{ next_page_slug }}" class="c-button c-button--as-link c-page-end">
+      Next &gt;
+    </a>
+  {% endif %}
+
+  {% endwith %}
+</div>
