@@ -1,6 +1,7 @@
 from django import template
 from urllib.parse import urlparse
 from django.utils.html import format_html
+from os.path import normpath, basename
 
 register = template.Library()
 
@@ -13,11 +14,13 @@ def site_uri(context):
 
     Load custom tag into template:
         {% load tacc_uri_shortcuts %}
+        {% site_uri as site_uri %}
 
     Template inline usage:
         {% site_uri.absolute_uri %}
         {% site_uri.scheme %}
         {% site_uri.host %}
+        {% site_uri.slug %}
 
     Example:
         <a href="{% site_uri.absolute_uri %}">site URL (on dev)</a>
@@ -30,6 +33,8 @@ def site_uri(context):
     return {
         # NOTE: Alternative is `{{ request.scheme }}://{{ request.get_host }}`
         'absolute_uri': absolute_uri,
+
+        'slug': basename(normpath(request.path_info)),
 
         # WARNING: These assume context of template matches site host.
         #          To avoid this, consider the Site module.
