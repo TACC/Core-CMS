@@ -5,8 +5,8 @@
   "author": "TACC ACI WMA <wma-portals@gmail.com>",
   "description": "The TACC ACI-WMA Core CMS codebase used by TACC Portals.",
   "engines": {
-    "node": "^17.8.0",
-    "npm": "^8.5.5"
+    "node": "^16.14.0",
+    "npm": "^8.3.0"
   },
   "devDependencies": {
     "@frctl/fractal": "^1.5.13",
