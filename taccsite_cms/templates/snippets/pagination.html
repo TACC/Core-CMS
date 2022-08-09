@@ -1,8 +1,8 @@
 {% load tacc_uri_shortcuts %}
 {% site_uri as site_uri %}
 
+{# FAQ: https://confluence.tacc.utexas.edu/x/84N9E #}
 {# IMPORTANT: Pass HTML as a list of space-delimited numbers eg. "1 2 3 …" #}
-{# FAQ: https://confluence.tacc.utexas.edu/display/~wbomar/Django+CMS+-+Admin+Guide+-+Pagination #}
 
 <div class="c-page-list">
   {% with prev_page_slug=site_uri.slug|add:"-1" curr_page_slug=site_uri.slug next_page_slug=site_uri.slug|add:"+1" page_list=html %}
