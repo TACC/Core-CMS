@@ -24,6 +24,7 @@
 
 /* OBJECTS */
 @import url("_imports/objects/o-grid.css");
+@import url("_imports/objects/o-float-content.css");
 @import url("_imports/objects/o-offset-content.css");
 @import url("_imports/objects/o-section.css");
 
