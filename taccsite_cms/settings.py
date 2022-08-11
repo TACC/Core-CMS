@@ -59,27 +59,31 @@ DATABASES = {
 AUTHENTICATION_BACKENDS = [
     "django.contrib.auth.backends.ModelBackend",
     "taccsite_cms.remote_cms_auth.CorePortalAuthBackend",
-    "django_auth_ldap.backend.LDAPBackend"
 ]
 
 ''' LDAP Auth Settings '''
-AUTH_LDAP_SERVER_URI = "ldap://ldap.tacc.utexas.edu"
-AUTH_LDAP_CONNECTION_OPTIONS = {ldap.OPT_REFERRALS: 0}
-AUTH_LDAP_START_TLS = True
-AUTH_LDAP_BIND_AS_AUTHENTICATING_USER = True
-AUTH_LDAP_BIND_DN = ""
-AUTH_LDAP_BIND_PASSWORD = ""
-AUTH_LDAP_AUTHORIZE_ALL_USERS = True
+if LDAP_ENABLED:
+    AUTHENTICATION_BACKENDS += [
+        "django_auth_ldap.backend.LDAPBackend"
+    ]
 
-AUTH_LDAP_USER_SEARCH = LDAPSearch(
-    "ou=People,dc=tacc,dc=utexas,dc=edu", ldap.SCOPE_SUBTREE, "(uid=%(user)s)"
-)
+    AUTH_LDAP_SERVER_URI = "ldap://ldap.tacc.utexas.edu"
+    AUTH_LDAP_CONNECTION_OPTIONS = {ldap.OPT_REFERRALS: 0}
+    AUTH_LDAP_START_TLS = True
+    AUTH_LDAP_BIND_AS_AUTHENTICATING_USER = True
+    AUTH_LDAP_BIND_DN = ""
+    AUTH_LDAP_BIND_PASSWORD = ""
+    AUTH_LDAP_AUTHORIZE_ALL_USERS = True
 
-AUTH_LDAP_USER_ATTR_MAP = {
-    "first_name": "givenName",
-    "last_name": "sn",
-    "email": "mail",
-}
+    AUTH_LDAP_USER_SEARCH = LDAPSearch(
+        "ou=People,dc=tacc,dc=utexas,dc=edu", ldap.SCOPE_SUBTREE, "(uid=%(user)s)"
+    )
+
+    AUTH_LDAP_USER_ATTR_MAP = {
+        "first_name": "givenName",
+        "last_name": "sn",
+        "email": "mail",
+    }
 
 SITE_ID = 1
 
