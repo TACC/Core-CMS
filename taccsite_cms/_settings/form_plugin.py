@@ -10,6 +10,14 @@ from django.utils.translation import gettext_lazy as _
 # (No success hiding those formats from editor)
 # https://github.com/avryhof/djangocms-forms/issues/8
 
+# Unable to submit files
+# > AttributeError at /forms/submit/
+# ```
+#   File "/opt/pysetup/.venv/src/djangocms-forms-maintained/djangocms_forms/fields.py", line 42, in clean
+#     if uploaded_file._size > self.max_upload_size:
+# AttributeError: 'InMemoryUploadedFile' object has no attribute '_size'
+# ```
+
 ########################
 # DJANGO_RECAPTCHA
 # https://github.com/avryhof/django-recaptcha/
@@ -67,26 +75,24 @@ DJANGOCMS_FORMS_FIELDSETS = (
     (
         _('Submission settings'),
         {
-            'description': 'Whether to save form data.',
+            'description': 'You can choose to set from which, and to which, e-mail address to send form submissions and/or to save submitted form data in the CMS database',
             'fields': (
+                'email_to',
+                'email_from',
+                'email_subject',
+                # 'email_uploaded_files', # file upload not yet supported
                 'save_data',
                 'spam_protection',
             ),
         },
     ),
     (
-        _('Submission e-mail (unavailable feature)'),
+        _('Limitations ⚠️'),
         {
-            'classes': ('collapse',),
-            'description': 'Choose storage options to capture form data. You can enter an e-mail address to which to e-mail form submissions.',
-            'fields': (
-                # Submitting form with 'email_to' defined causes server error
-                # FAQ: We may need to setup some django e-mail server for these
-                'email_to',
-                'email_from',
-                'email_subject',
-                'email_uploaded_files',
-            ),
+            'description': '<ol>\
+                <li>File upload is not supported.</li>\
+            </ol>',
+            'fields': ()
         },
     ),
 )
