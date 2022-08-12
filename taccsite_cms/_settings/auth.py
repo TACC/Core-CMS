@@ -7,9 +7,11 @@
 
 # To disable LDAP:
 #
-# 1. In custom or local settings, duplicate the AUTHENTICATION_BACKENDS setting.
-# 2. Remove the '...LDAPBackend' entry.
-# 3. If 'INCLUDES_CORE_PORTAL = False', remove '...CorePortalAuthBackend' entry.
+# 0. Edit custom or local settings for CMS project.
+# 1. Set 'LDAP_ENABLED = False'.
+# 2. Duplicate the 'AUTHENTICATION_BACKENDS' setting.
+# 3. Remove its '...LDAPBackend' entry.
+# 4. If 'INCLUDES_CORE_PORTAL = False', remove '...CorePortalAuthBackend' entry.
 #
 # RFE: Use INCLUDES_CORE_PORTAL to toggle '...CorePortalAuthBackend'.
 
