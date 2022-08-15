@@ -10,34 +10,70 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 @import url("@tacc/core-styles/src/lib/_imports/tools/x-article-link.css");
 @import url("@tacc/core-styles/src/lib/_imports/tools/x-truncate.css");
 
+@import url("_imports/tools/media-queries.css");
 @import url("_imports/tools/selectors.css");
 
 
 
 
 
-/* (Structure) */
+/* List */
+
+/* To have two columns at certain viewport widths */
+@media (--xx-narrow-to-x-narrow), (--x-narrow-to-narrow) {
+  :--article-list {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: 40px;
+  }
+  :--article-list > :where(header, nav) {
+    grid-column: 1 / -1;
+  }
+}
+
+
+
+
+
+/* Item */
+
+
+
+/* Item (Structure) */
 
 :--article-item {
   display: grid;
 
-  grid-template-areas:
-    'media head'
-    'media desc';
+  border-bottom: var(--global-border-width--normal) solid var(--global-color-primary--dark);
+  margin-bottom: var(--blog-item-buffer);
+  padding-bottom: var(--blog-item-buffer);
+}
 
-  /* To have shrinkwrapped media and flexible text content */
-  grid-template-columns: minmax(0, max-content) 1fr;
+/* To have vertical layout for narrow viewports */
+@media (--narrow-and-below) {
+  :--article-item {
+    grid-template-areas:
+      'media'
+      'head'
+      'desc';
+    /* To prevent content from overflowing cell */
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+/* To have horizontal layout for wide viewports */
+@media (--narrow-and-above) {
+  :--article-item {
+    grid-template-areas:
+      'media head'
+      'media desc';
+    /* To have shrinkwrapped media and flexible text content */
+    grid-template-columns: minmax(0, max-content) 1fr;
+  }
 }
 :--article-item header        { grid-area: head }
 :--article-item .blog-visual  { grid-area: media }
 :--article-item .blog-lead    { grid-area: desc }
 
-/* FAQ: `:--article-item + :--article-item` ≠ `:--article-item + article` */
-:--article-item + article {
-  margin-top: var(--blog-item-buffer);
-  border-top: var(--global-border-width--normal) solid var(--global-color-primary--dark);
-  padding-top: var(--blog-item-buffer);
-}
 
 
 
@@ -196,20 +232,32 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 /* Visual */
 
 :--article-item .blog-visual:not(:empty) {
-  /* Design requires same-width image boxes */
-  /* IDEA: Should we import a Django setting for image width? */
-  width: 255px; /* should be equal to max width of "MAIN IMAGE THUMBNAIL" */
-
-  margin-right: 50px;
-
-  /* To align any image inside */
-  /* FAQ: Images SHOULD use cropped thumbnail option, which makes this moot,
-          but user MIGHT instead use thumbnail option with inconsistent width */
+  /* To align any small image inside (useless with some image sizes) */
   display: grid;
+  align-items: center;
   justify-items: center;
 }
 :--article-item .blog-visual:empty {
   display: none;
+}
+
+/* To support vertical layouts at narrow viewports */
+@media (--narrow-and-below) {
+  :--article-item .blog-visual:not(:empty) {
+    height: 140px; /* for consistent image height */
+    margin-bottom: 15px;
+  }
+  :--article-item .blog-visual img {
+    max-width: 100%; /* to prevent overflow if column is narrower */
+    height: auto; /* to maintain aspect ratio if width changes */
+  }
+}
+/* To support horizontal layouts at wide viewports */
+@media (--narrow-and-above) {
+  :--article-item .blog-visual:not(:empty) {
+    width: 255px; /* for consistent image width */
+    margin-right: 50px;
+  }
 }
 
 
