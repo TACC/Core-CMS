@@ -85,6 +85,15 @@ Styleguide Components.DjangoCMS.Blog.App.Page
   }
 }
 
+/* To prevent footer on right side of page */
+/* FAQ: Because of `:--article-page .blog-visual`'s `float: left` */
+:--article-page .blog-visual + .blog-content::after {
+  /* from Bootstrap `clearfix` */
+  display: block;
+  content: "";
+  clear: both;
+}
+
 
 
 /* Media & Content - Content */
