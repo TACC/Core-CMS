@@ -1,6 +1,6 @@
 /* IMPORTANT: Unnecessary if we use djangocms-text-ckeditor@5.0.0 */
 
-@import url("https://raw.githubusercontent.com/django-cms/djangocms-text-ckeditor/3.10.0/djangocms_text_ckeditor/static/djangocms_text_ckeditor/css/cms.ckeditor.css");
+@import url("https://combinatronics.com/django-cms/djangocms-text-ckeditor/3.10.0/djangocms_text_ckeditor/static/djangocms_text_ckeditor/css/cms.ckeditor.css");
 
 /* https://github.com/django-cms/djangocms-text-ckeditor/pull/590 */
 textarea.cke_source { max-height: inherit; }
