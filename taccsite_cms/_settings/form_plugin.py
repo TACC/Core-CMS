@@ -75,7 +75,7 @@ DJANGOCMS_FORMS_FIELDSETS = (
     (
         _('Submission settings'),
         {
-            'description': 'You can choose to set from which, and to which, e-mail address to send form submissions and/or to save submitted form data in the CMS database. <small>The "SENDER_EMAIL_ADDRESS" may remain blank, so server default no-reply address would be used.</small>',
+            'description': 'You can choose to set from which, and to which, e-mail address to send form submissions and/or to save submitted form data in the CMS database. <small>The CMS default <em>from</em> address (<code>DEFAULT_FROM_EMAIL</code>) will be used if "SENDER EMAIL ADDRESS" is blank.</small>',
             'fields': (
                 'email_to',
                 'email_from',
