@@ -19,7 +19,7 @@ The base CMS code for TACC WMA Workspace Portals & Websites
 * Docker 20.10.7
 * Docker Compose 1.29.2
 * Python 3.6.8
-* Nodejs 12.x (LTS)
+* Nodejs 16.x (LTS)
 
 The Core CMS can be run using [Docker][1] and [Docker Compose][2]. You will
 need both Docker and Docker Compose pre-installed on the system you wish to run the CMS
@@ -267,6 +267,24 @@ If you need to change files within `/taccsite_custom`:
 <sub>\* You should run this command in the container __from `/code/`__. _See [Running Commands in Container](#running-commands-in-container)._</sub>\
 <sub>† See [Restarting the CMS Server](#restarting-the-cms-server).</sub>
 
+### UI Pattern Demo
+
+This demo shows [Core Styles] with `site.css` from either [Core CMS] or a [Core CMS Resources] project.
+
+1. Build UI patterns demo: \*
+
+    ```bash
+    npm run build:css-demo --project=name-of-project
+    ```
+
+2. Serve the demo:
+
+    ```bash
+    npm run start:css-demo
+    ```
+
+<sub>\* Where `name-of-project` is "core-cms" or matches a directory from `/taccsite_custom`. __A project name is required.__</sub>
+
 
 ## Running Commands in Container
 
@@ -340,7 +358,6 @@ We use a modifed version of [GitFlow](https://datasift.github.io/gitflow/Introdu
 #### Testing Core Styles Changes Locally
 
 See [Locally Develop CMS and Styles](https://github.com/TACC/Core-CMS/wiki/Locally-Develop-CMS-and-Styles).
-
 
 ### Best Practices
 
