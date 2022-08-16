@@ -11,12 +11,7 @@ from django.utils.translation import gettext_lazy as _
 # https://github.com/avryhof/djangocms-forms/issues/8
 
 # Unable to submit files
-# > AttributeError at /forms/submit/
-# ```
-#   File "/opt/pysetup/.venv/src/djangocms-forms-maintained/djangocms_forms/fields.py", line 42, in clean
-#     if uploaded_file._size > self.max_upload_size:
-# AttributeError: 'InMemoryUploadedFile' object has no attribute '_size'
-# ```
+# https://github.com/avryhof/djangocms-forms/issues/14
 
 ########################
 # DJANGO_RECAPTCHA
