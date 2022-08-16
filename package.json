@@ -9,7 +9,7 @@
     "npm": "^8.5.5"
   },
   "devDependencies": {
-    "@tacc/core-styles": "^0.7.0-beta",
+    "@tacc/core-styles": "github:TACC/Core-Styles#task/TUP-196--client-login-component--ui-updates",
     "minimist": "^1.2.6"
   },
   "repository": "git@github.com:TACC/Core-CMS.git",
