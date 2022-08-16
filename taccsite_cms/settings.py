@@ -17,6 +17,7 @@ from django_auth_ldap.config import LDAPSearch, GroupOfNamesType
 from django.utils.translation import gettext_lazy as _
 
 from taccsite_cms._settings.auth import *
+from taccsite_cms._settings.email import *
 from taccsite_cms._settings.form_plugin import *
 from taccsite_cms._settings.form_plugin import (
     _INSTALLED_APPS as form_plugin_INSTALLED_APPS

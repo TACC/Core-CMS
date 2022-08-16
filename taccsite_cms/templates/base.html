@@ -76,7 +76,7 @@
   {% block footer %}
 
     {% static_placeholder "footer-content" or %}
-    <p>©2020 Texas Advanced Computing Center, The University of Texas at Austin, Office of the Vice President for Research.</p>
+    <p>©{% now "Y" %} Texas Advanced Computing Center, The University of Texas at Austin, Office of the Vice President for Research.</p>
     {% endstatic_placeholder %}
 
   {% endblock footer %}
