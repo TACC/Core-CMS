@@ -1,6 +1,7 @@
 """Configure django authentication"""
 
 import ldap
+from django_auth_ldap.config import LDAPSearch
 
 ########################
 # DJANGO
