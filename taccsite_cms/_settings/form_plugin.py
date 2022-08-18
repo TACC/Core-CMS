@@ -70,15 +70,6 @@ DJANGOCMS_FORMS_FIELDSETS = (
             ),
         },
     ),
-    (
-        _('Limitations ⚠️'),
-        {
-            'description': '<ol>\
-                <li>File upload is not supported.</li>\
-            </ol>',
-            'fields': ()
-        },
-    ),
 )
 
 DJANGOCMS_FORMS_FORMAT_CHOICES = (
