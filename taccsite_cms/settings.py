@@ -53,6 +53,84 @@ DATABASES = {
     }
 }
 
+
+
+########################
+# LOGGING 
+########################
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'default': {
+            'format': '[DJANGO] %(levelname)s %(asctime)s UTC %(module)s '
+                      '%(name)s.%(funcName)s:%(lineno)s: %(message)s'
+        },
+        'metrics': {
+            'format': '[METRICS] %(levelname)s %(asctime)s UTC %(module)s '
+                      '%(name)s.%(funcName)s:%(lineno)s: %(message)s'
+        },
+    },
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'default',
+        },
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': '/var/log/cms/cms.log',
+            'maxBytes': 1024*1024*5,  # 5 MB
+            'backupCount': 5,
+            'formatter': 'default',
+        },
+        'metrics_console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'metrics',
+        },
+        'metrics_file': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': '/var/log/cms/metrics.log',
+            'maxBytes': 1024*1024*5,  # 5 MB
+            'backupCount': 5,
+            'formatter': 'metrics',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console', 'file'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        'portal': {
+            'handlers': ['console', 'file'],
+            'level': 'DEBUG',
+        },
+        'metrics': {
+            'handlers': ['metrics_console', 'metrics_file'],
+            'level': 'DEBUG',
+        },
+        'paramiko': {
+            'handlers': ['console'],
+            'level': 'DEBUG'
+        },
+        'celery': {
+            'handlers': ['console', 'file'],
+            'level': 'INFO',
+        },
+        'daphne': {
+            'handlers': [
+                'console',
+            ],
+            'level': 'INFO'
+        }
+    },
+}
+
 ########################
 # (some) CMS SETTINGS
 ########################
