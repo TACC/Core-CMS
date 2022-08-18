@@ -9,7 +9,7 @@ Reference:
 
 Styleguide Components.DjangoCMS.Blog.App
 */
-@import url("@tacc/core-styles/source/_imports/components/bootstrap.pagination.css");
+@import url("@tacc/core-styles/src/lib/_imports/components/bootstrap.pagination.css");
 
 @import url("./django.cms.blog.app.page.css");
 @import url("./django.cms.blog.app.item.css");
@@ -32,6 +32,7 @@ Styleguide Components.DjangoCMS.Blog.App
 /* FAQ: Avoiding changing blog templates to limit app upgrade maintenance */
 @custom-selector :--article article;
 @custom-selector :--article-page article.post-detail;
+@custom-selector :--article-list .blog-list;
 @custom-selector :--article-item .blog-list article;
 
 
