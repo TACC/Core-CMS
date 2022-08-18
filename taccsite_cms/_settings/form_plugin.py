@@ -3,17 +3,6 @@
 from django.utils.translation import gettext_lazy as _
 
 ########################
-# KNOWN ISSUES
-########################
-
-# Unable to export to Excel nor YAML
-# (No success hiding those formats from editor)
-# https://github.com/avryhof/djangocms-forms/issues/8
-
-# Unable to submit files
-# https://github.com/avryhof/djangocms-forms/issues/14
-
-########################
 # DJANGO_RECAPTCHA
 # https://github.com/avryhof/django-recaptcha/
 ########################
