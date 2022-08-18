@@ -11,8 +11,6 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import logging
 import os
 from glob import glob
-import ldap
-from django_auth_ldap.config import LDAPSearch, GroupOfNamesType
 
 from django.utils.translation import gettext_lazy as _
 
