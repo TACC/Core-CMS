@@ -67,7 +67,8 @@ Follow [How to Use a Custom Docker Compose File](https://github.com/TACC/Core-CM
 
 All CMS projects (besides the stand-alone CMS core), store project-specific resources in the `taccsite_custom` submodule.
 
-1. Create a `taccsite_cms/settings_custom.py` symlink to `taccsite_custom/name-of-project/settings_custom.py`.\*†
+1. Create a `taccsite_cms/settings_custom.py` symlink to `taccsite_custom/name-of-project/settings_custom.py`
+*†
 2. Build project-specific static files. _See [Static Files](/README.md#static-files)._
 
 <sub>\* Where `name-of-project` matches a directory from `/taccsite_custom`.</sub>\
@@ -139,7 +140,7 @@ All CMS projects (besides the stand-alone CMS core), store project-specific reso
 
 7. Login to the admin web interface.
 
-    The CMS admin site should now be accessible at  http://localhost:8000/admin.\*
+    The CMS admin site should now be accessible at http://localhost:8000/admin .*
 
     _You may log in as the superuser created via the `createsuperuser` command in an earlier step._
 
