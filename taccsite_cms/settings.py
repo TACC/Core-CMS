@@ -11,11 +11,11 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import logging
 import os
 from glob import glob
-import ldap
-from django_auth_ldap.config import LDAPSearch, GroupOfNamesType
 
 from django.utils.translation import gettext_lazy as _
 
+from taccsite_cms._settings.auth import *
+from taccsite_cms._settings.email import *
 from taccsite_cms._settings.form_plugin import *
 from taccsite_cms._settings.form_plugin import (
     _INSTALLED_APPS as form_plugin_INSTALLED_APPS
@@ -35,9 +35,6 @@ DEBUG = True       # False for Prod.
 # ALLOWED_HOSTS = ['hostname.tacc.utexas.edu', 'host.ip.v4.address', '0.0.0.0', 'localhost', '127.0.0.1']   # In production.
 ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost', '*']   # In development.
 
-# Requires django-auth-ldap ≥ 2.0.0
-LDAP_ENABLED = True
-
 # Default portal authorization verification endpoint.
 CEP_AUTH_VERIFICATION_ENDPOINT = 'localhost'  # 'https://0.0.0.0:8000'
 
@@ -56,30 +53,87 @@ DATABASES = {
     }
 }
 
-AUTHENTICATION_BACKENDS = [
-    "django.contrib.auth.backends.ModelBackend",
-    "taccsite_cms.remote_cms_auth.CorePortalAuthBackend",
-    "django_auth_ldap.backend.LDAPBackend"
-]
 
-''' LDAP Auth Settings '''
-AUTH_LDAP_SERVER_URI = "ldap://ldap.tacc.utexas.edu"
-AUTH_LDAP_CONNECTION_OPTIONS = {ldap.OPT_REFERRALS: 0}
-AUTH_LDAP_START_TLS = True
-AUTH_LDAP_BIND_AS_AUTHENTICATING_USER = True
-AUTH_LDAP_BIND_DN = ""
-AUTH_LDAP_BIND_PASSWORD = ""
-AUTH_LDAP_AUTHORIZE_ALL_USERS = True
 
-AUTH_LDAP_USER_SEARCH = LDAPSearch(
-    "ou=People,dc=tacc,dc=utexas,dc=edu", ldap.SCOPE_SUBTREE, "(uid=%(user)s)"
-)
+########################
+# LOGGING 
+########################
 
-AUTH_LDAP_USER_ATTR_MAP = {
-    "first_name": "givenName",
-    "last_name": "sn",
-    "email": "mail",
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'default': {
+            'format': '[DJANGO] %(levelname)s %(asctime)s UTC %(module)s '
+                      '%(name)s.%(funcName)s:%(lineno)s: %(message)s'
+        },
+        'metrics': {
+            'format': '[METRICS] %(levelname)s %(asctime)s UTC %(module)s '
+                      '%(name)s.%(funcName)s:%(lineno)s: %(message)s'
+        },
+    },
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'default',
+        },
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': '/var/log/cms/cms.log',
+            'maxBytes': 1024*1024*5,  # 5 MB
+            'backupCount': 5,
+            'formatter': 'default',
+        },
+        'metrics_console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'metrics',
+        },
+        'metrics_file': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': '/var/log/cms/metrics.log',
+            'maxBytes': 1024*1024*5,  # 5 MB
+            'backupCount': 5,
+            'formatter': 'metrics',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console', 'file'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        'portal': {
+            'handlers': ['console', 'file'],
+            'level': 'DEBUG',
+        },
+        'metrics': {
+            'handlers': ['metrics_console', 'metrics_file'],
+            'level': 'DEBUG',
+        },
+        'paramiko': {
+            'handlers': ['console'],
+            'level': 'DEBUG'
+        },
+        'celery': {
+            'handlers': ['console', 'file'],
+            'level': 'INFO',
+        },
+        'daphne': {
+            'handlers': [
+                'console',
+            ],
+            'level': 'INFO'
+        }
+    },
 }
+
+########################
+# (some) CMS SETTINGS
+########################
 
 SITE_ID = 1
 
