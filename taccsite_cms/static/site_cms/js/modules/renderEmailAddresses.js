@@ -1,10 +1,10 @@
 /**
  * Names of the URL search parameter and the input field
  * @typedef {Object} AttrNames
- * @property {string} [host] - Which attr. has host
- * @property {string} [domain] - Which attr. has domain
- * @property {string} [subject] - Which attr. has subject
- * @property {string} [body] - Which attr. has body
+ * @property {string} [user] - Which attr. has user name
+ * @property {string} [domain] - Which attr. has mail domain
+ * @property {string} [subject] - Which attr. has mail subject
+ * @property {string} [body] - Which attr. has mail body
  */
 
 /**
@@ -12,7 +12,7 @@
  * @enum {string}
  */
 const ATTRIBUTE_NAMES = {
-  host: 'data-host',
+  user: 'data-user',
   domain: 'data-domain',
   subject: 'data-subject',
   body: 'data-body',
@@ -24,12 +24,12 @@ const ATTRIBUTE_NAMES = {
  * @param {AttrNames} attributes - The names of attributes with e-mail data
  */
 function _updateHref(element, attributes) {
-  const host = element.getAttribute(attributes.host);
+  const user = element.getAttribute(attributes.user);
   const domain = element.getAttribute(attributes.domain);
   const subject = element.getAttribute(attributes.subject);
   const body = element.getAttribute(attributes.body);
 
-  element.href = 'mailto:' + host + '@' + domain;
+  element.href = 'mailto:' + user + '@' + domain;
   if (subject || body) {
     element.href += '?';
   }
@@ -54,7 +54,7 @@ export default function renderEmailAddresses(
   scopeElement = document,
   attributes
 ) {
-  const selector = '[' + attributes.host + '][' + attributes.domain + ']';
+  const selector = '[' + attributes.user + '][' + attributes.domain + ']';
   const attributesMerged = Object.assign(attributes, ATTRIBUTE_NAMES);
 
   scopeElement.querySelectorAll(selector).forEach(linkEl => {
