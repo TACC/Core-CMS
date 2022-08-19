@@ -26,6 +26,9 @@ repo_name.var
 /static
 /media
 
+# UI Pattern Demo
+/taccsite_ui/dist
+
 # Secrets and Customizations
 taccsite_cms/secrets.py
 *.custom.yml
