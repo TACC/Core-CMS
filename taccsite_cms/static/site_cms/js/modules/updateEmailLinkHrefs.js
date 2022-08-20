@@ -1,14 +1,14 @@
 /**
- * Names of the URL search parameter and the input field
+ * Names of the attributes storing e-mail data
  * @typedef {Object} AttrNames
- * @property {string} [user] - Which attr. has user name
- * @property {string} [domain] - Which attr. has mail domain
- * @property {string} [subject] - Which attr. has mail subject
- * @property {string} [body] - Which attr. has mail body
+ * @property {string} [user] - Which attribute has user name
+ * @property {string} [domain] - Which attribute has e-mail domain
+ * @property {string} [subject] - Which attribute has e-mail subject
+ * @property {string} [body] - Which attribute has e-mail body
  */
 
 /**
- * The default names for attributes
+ * The default values for {AttrNames}
  * @enum {string}
  */
 const ATTRIBUTE_NAMES = {
@@ -19,9 +19,9 @@ const ATTRIBUTE_NAMES = {
 };
 
 /**
- * Update link href from `[data-email="…"]` to `href="mailto:…"`
+ * Update `href` attribute, of one e-mail link, based on data attributes
  * @param {HTMLElement} element - The link element to update
- * @param {AttrNames} attributes - The names of attributes with e-mail data
+ * @param {AttrNames} attributes - The names of attributes storing e-mail data
  */
 function _updateHref(element, attributes) {
   const user = element.getAttribute(attributes.user);
@@ -45,12 +45,12 @@ function _updateHref(element, attributes) {
 }
 
 /**
- * Update hyperlinks from `[data-email="…"]` to `href="mailto:…"`
+ * Update `href` attribute, of all e-mail links, based on data attributes
  * @param {HTMLElement} [scopeElement=document] - Element within which to search for links
  * @param {AttrNames} attributes - The names of attributes with e-mail data
  * @return {boolean}
  */
-export default function renderEmailAddresses(
+export default function updateEmailLinkHrefs(
   scopeElement = document,
   attributes
 ) {
