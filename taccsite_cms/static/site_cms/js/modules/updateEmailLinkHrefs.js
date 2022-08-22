@@ -97,13 +97,13 @@ function _updateHref(element, attributes, fakeText) {
 /**
  * Update `href` attribute, of all e-mail links, based on data attributes
  * @param {HTMLElement} [scopeElement=document] - Element within which to search for links
- * @param {AttrNames} [attributes] - The names of attributes with e-mail data
  * @param {string} [fakeText] - False text manually added into address
+ * @param {AttrNames} [attributes] - The names of attributes with e-mail data
  */
 export default function updateEmailLinkHrefs(
   scopeElement = document,
-  attributes = ATTRIBUTE_NAMES,
-  fakeText = FAKE_TEXT
+  fakeText = FAKE_TEXT,
+  attributes = ATTRIBUTE_NAMES
 ) {
   const attrs = Object.assign(attributes, ATTRIBUTE_NAMES);
   const selector = [

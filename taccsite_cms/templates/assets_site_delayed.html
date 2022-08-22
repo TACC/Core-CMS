@@ -19,8 +19,9 @@ Consider asset load via `assets_site`, not `assets_site_delayed`:
   import updateEmailLinkHrefs from '/static/site_cms/js/modules/updateEmailLinkHrefs.js';
 
   const scopeElement = document.getElementById('cms-content');
+  const fakeText = '__REMOVE_THIS__';
 
-  updateEmailLinkHrefs(scopeElement, {
+  updateEmailLinkHrefs(scopeElement, fakeText, {
     user: 'data-user',
     domain: 'data-domain',
     subject: 'data-subject',
