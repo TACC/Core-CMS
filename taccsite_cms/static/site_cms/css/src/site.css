@@ -51,3 +51,4 @@
 @import url("_imports/trumps/s-footer.css");
 @import url("_imports/trumps/s-blockquote.css");
 @import url("_imports/trumps/u-empty.css");
+@import url("@tacc/core-styles/src/lib/_imports/trumps/u-mailto-text-replace.css");
