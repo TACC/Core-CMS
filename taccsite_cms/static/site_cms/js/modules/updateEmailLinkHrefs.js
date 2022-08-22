@@ -32,21 +32,31 @@ const SHOULD_DEBUG = window.DEBUG;
 
 /**
  * Get the e-mail based on available data
- * @param {string} options
+ * @param {object} options
  * @param {string} [options.href]
- * @param {string} [options.user]
- * @param {string} [options.domain]
  * @param {string} [options.fakeText] - False text manually added into address
  */
-function _getEmail({href, fakeText, user, domain} = {}) {
+function _getEmail({href, fakeText} = {}) {
   const emailOld = href.replace('mailto:', '');
-  const emailFix = emailOld.replace(fakeText, '');
-  const emailNew = (user && domain) ? user + '@' + domain : undefined;
-  const email = emailNew || emailFix || emailOld;
+  const email = emailOld.replace(fakeText, '');
 
-  if (SHOULD_DEBUG) console.debug({emailOld, emailFix, emailNew, email});
+  if (SHOULD_DEBUG) console.debug({emailOld, email});
 
   return email;
+}
+
+/**
+ * Get user and domain based on email
+ * @param {string} email
+ */
+function _getEmailParts(email) {
+  const parts = email.split('@');
+  const user = parts[0];
+  const domain = parts[1];
+
+  if (SHOULD_DEBUG) console.debug({email, parts, user, domain});
+
+  return {user, domain};
 }
 
 /**
@@ -77,28 +87,43 @@ function _createQuery({subject, body} = {}) {
 }
 
 /**
- * Update `href` attribute, of one e-mail link, based on data attributes
+ * Edit `href` attribute, of one e-mail link, based on given data
  * @param {HTMLElement} element - The link element to update
- * @param {AttrNames} [attributes] - The names of attributes storing e-mail data
- * @param {string} [fakeText] - False text manually added into address
+ * @param {string} fakeText - False text manually added into address
+ * @param {AttrNames} attributes - The names of attributes storing e-mail data
  */
-function _updateHref(element, attributes, fakeText) {
-  const user = element.getAttribute(attributes.user);
-  const domain = element.getAttribute(attributes.domain);
+function _editHref(element, fakeText, attributes) {
   const subject = element.getAttribute(attributes.subject);
   const body = element.getAttribute(attributes.body);
 
-  const email = _getEmail({href: element.href, user, domain, fakeText});
+  const email = _getEmail({href: element.href, fakeText});
   const query = _createQuery({body, subject});
 
+  // So link opens mail program with correct address
   element.href = 'mailto:' + email + query;
+}
+
+/**
+ * Add data attributes, of one e-mail link, based on given data
+ * (CSS can use these to hide fake e-mail and show reconstructed e-mail)
+ * @param {HTMLElement} element - The link element to update
+ * @param {string} fakeText - False text manually added into address
+ * @param {AttrNames} attributes - The names of attributes storing e-mail data
+ */
+function _addData(element, fakeText, attributes) {
+  const email = _getEmail({href: element.href, fakeText});
+  const {user, domain} = _getEmailParts(email);
+
+  // So CSS can replace link text with virtual address
+  element.setAttribute(attributes.user, user);
+  element.setAttribute(attributes.domain, domain);
 }
 
 /**
  * Update `href` attribute, of all e-mail links, based on data attributes
  * @param {HTMLElement} [scopeElement=document] - Element within which to search for links
- * @param {string} [fakeText] - False text manually added into address
- * @param {AttrNames} [attributes] - The names of attributes with e-mail data
+ * @param {string} [fakeText=FAKE_TEXT] - False text manually added into address
+ * @param {AttrNames} [attributes=ATTRIBUTE_NAMES] - The names of attributes with e-mail data
  */
 export default function updateEmailLinkHrefs(
   scopeElement = document,
@@ -106,18 +131,12 @@ export default function updateEmailLinkHrefs(
   attributes = ATTRIBUTE_NAMES
 ) {
   const attrs = Object.assign(attributes, ATTRIBUTE_NAMES);
-  const selector = [
-    // For fake text, only search <a>, cuz <link> (irrelevant) supports `href`
-    'a[href*="' + fakeText + '"]',
-    // For attributes, search any element, so custom elements are supported
-    '[' + attrs.body + ']',
-    '[' + attrs.subject + ']',
-    '[' + attrs.user + '][' + attrs.domain + ']',
-  ].join(', ');
+  const selector = 'a[href*="' + fakeText + '"]';
 
   scopeElement.querySelectorAll(selector).forEach(linkEl => {
-    const updateHref = _updateHref.bind(this, linkEl, attrs, fakeText);
+    _addData(linkEl, fakeText, attrs);
 
-    linkEl.addEventListener('click', updateHref, {once: true});
+    const editHref = _editHref.bind(this, linkEl, fakeText, attrs);
+    linkEl.addEventListener('click', editHref, {once: true});
   });
 }
