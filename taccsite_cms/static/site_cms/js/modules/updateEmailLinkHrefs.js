@@ -25,6 +25,12 @@ const ATTRIBUTE_NAMES = {
 const FAKE_TEXT = '__REMOVE_THIS__';
 
 /**
+ * Whether to log debug info to console
+ * @const {string}
+ */
+const SHOULD_DEBUG = window.DEBUG;
+
+/**
  * Get the e-mail based on available data
  * @param {string} options
  * @param {string} [options.href]
@@ -38,7 +44,7 @@ function _getEmail({href, fakeText, user, domain} = {}) {
   const emailNew = (user && domain) ? user + '@' + domain : undefined;
   const email = emailNew || emailFix || emailOld;
 
-  // console.debug({emailOld, emailFix, emailNew, email});
+  if (SHOULD_DEBUG) console.debug({emailOld, emailFix, emailNew, email});
 
   return email;
 }
@@ -64,6 +70,8 @@ function _createQuery({subject, body} = {}) {
   if (body) {
     query += 'body=' + body;
   }
+
+  if (SHOULD_DEBUG) console.debug({subject, body, query});
 
   return query;
 }
