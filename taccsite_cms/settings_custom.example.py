@@ -1,5 +1,5 @@
 '''
-A `settings_custom.py` file can override default values in settings.py
+A `settings_custom.py` file can override default values in `settings.py`.
 
 The file is loaded after default settings but before settings assignment is complete, so we can override settings in:
 - _either_ `settings_custom.py` (usually set in custom sites)
