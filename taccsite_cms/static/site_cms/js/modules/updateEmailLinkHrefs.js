@@ -1,4 +1,26 @@
 /**
+ * Update `href` attribute, of all e-mail links, based on data attributes
+ * @param {HTMLElement} [scopeElement=document] - Element within which to search for links
+ * @param {string} [fakeText=FAKE_TEXT] - False text manually added into address
+ * @param {AttrNames} [attributes=ATTRIBUTE_NAMES] - The names of attributes with e-mail data
+ */
+ export default function updateEmailLinkHrefs(
+  scopeElement = document,
+  fakeText = FAKE_TEXT,
+  attributes = ATTRIBUTE_NAMES
+) {
+  const attrs = Object.assign(attributes, ATTRIBUTE_NAMES);
+  const selector = 'a[href*="' + fakeText + '"]';
+
+  scopeElement.querySelectorAll(selector).forEach(linkEl => {
+    _addData(linkEl, fakeText, attrs);
+
+    const editHref = _editHref.bind(this, linkEl, fakeText, attrs);
+    linkEl.addEventListener('click', editHref, {once: true});
+  });
+}
+
+/**
  * Names of the attributes storing e-mail data
  * @typedef {Object} AttrNames
  * @property {string} [user] - Which attribute has user name
@@ -117,26 +139,4 @@ function _addData(element, fakeText, attributes) {
   // So CSS can replace link text with virtual address
   element.setAttribute(attributes.user, user);
   element.setAttribute(attributes.domain, domain);
-}
-
-/**
- * Update `href` attribute, of all e-mail links, based on data attributes
- * @param {HTMLElement} [scopeElement=document] - Element within which to search for links
- * @param {string} [fakeText=FAKE_TEXT] - False text manually added into address
- * @param {AttrNames} [attributes=ATTRIBUTE_NAMES] - The names of attributes with e-mail data
- */
-export default function updateEmailLinkHrefs(
-  scopeElement = document,
-  fakeText = FAKE_TEXT,
-  attributes = ATTRIBUTE_NAMES
-) {
-  const attrs = Object.assign(attributes, ATTRIBUTE_NAMES);
-  const selector = 'a[href*="' + fakeText + '"]';
-
-  scopeElement.querySelectorAll(selector).forEach(linkEl => {
-    _addData(linkEl, fakeText, attrs);
-
-    const editHref = _editHref.bind(this, linkEl, fakeText, attrs);
-    linkEl.addEventListener('click', editHref, {once: true});
-  });
 }
