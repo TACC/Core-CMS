@@ -5,7 +5,7 @@ description = "DjangoCMS backend for the TACC ACI-WMA Core-CMS Codebase."
 authors = ["TACC-WMA <wma-portals@tacc.utexas.edu>"]
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = ">=3.8,<4.0"
 aldryn-apphooks-config = "0.6.0"
 aldryn-boilerplates = "0.8.0"
 aldryn-common = "1.0.5"
@@ -114,6 +114,7 @@ wrapt = "1.12.1"
 yapf = "0.30.0"
 YURL = "1.0.0"
 zipp = "3.1.0"
+ipython = "^8.4.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

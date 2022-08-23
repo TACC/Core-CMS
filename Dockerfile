@@ -57,6 +57,9 @@ RUN apt-get install -y nodejs
 
 COPY --from=builder-base $PYSETUP_PATH $PYSETUP_PATH
 
+# Make CMS logs
+RUN mkdir -p /var/log/cms
+
 # load files
 RUN mkdir /code
 COPY . /code
