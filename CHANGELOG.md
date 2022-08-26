@@ -13,8 +13,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - feat(bm): FP-1798 link logo to home not ext site (0bf5e12)
 
-## [Unreleased]
-
 ## [3.8.0] - 2022-07-14: Form Plugin, Document Release & NPM Link, Fix Banner
 
 ### Added
@@ -455,7 +453,8 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 ## [2.0.0] - 2021-03-31
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.8.0...HEAD
+[Unreleased]: https://github.com/TACC/Core-CMS/compare/v3.8.1...HEAD
+[3.8.1]: https://github.com/TACC/Core-CMS/releases/tag/v3.8.1
 [3.8.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.8.0
 [3.7.11]: https://github.com/TACC/Core-CMS/releases/tag/v3.7.11
 [3.4.0-1-g0c5cbd1]: https://github.com/TACC/Core-CMS/releases/tag/v3.4.0-1-g0c5cbd1
