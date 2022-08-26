@@ -1,0 +1,21 @@
+{% extends "guide.html" %}
+{% load cms_tags staticfiles tacc_uri_shortcuts %}
+
+{% block guide %}
+  {% site_uri as site_uri %}
+  <div class="row">
+    <div class="col">
+      <h1>Getting Started</h1>
+
+      <h3>Account Holders</h3>
+
+      <p>If you already have an account, you may log in by clicking the &quot; Log in&quot; link at the top right of the page.</p>
+
+      <h3 id="create-account">Creating an Account</h3>
+
+      <p>Before you can access the Portal, you must first have an active account with TACC.</p>
+
+      <p>If you are a new TACC user, you may sign up for a new TACC account at <a href="{{ site_uri.absolute_uri }}register" target="_blank">{{ site_uri.absolute_uri }}register</a>.</p>
+    </div>
+  </div>
+{% endblock guide %}
