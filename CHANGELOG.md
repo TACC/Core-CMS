@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.8.1] - 2022-08-26: Change BrainMap Logo URL to Hoem Page not Ext. Page
+
+### Changed
+
+- feat(bm): FP-1798 link logo to home not ext site (0bf5e12)
+
+## [Unreleased]
+
 ## [3.8.0] - 2022-07-14: Form Plugin, Document Release & NPM Link, Fix Banner
 
 ### Added
