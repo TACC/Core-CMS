@@ -1,6 +1,0 @@
-@import url("@tacc/core-styles/src/lib/_imports/settings/space.css");
-
-:root {
-  --global-space--hr-buffer-above: 10px;
-  --global-space--hr-buffer-below: 30px;
-}
