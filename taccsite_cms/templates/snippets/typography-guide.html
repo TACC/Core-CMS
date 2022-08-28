@@ -1,8 +1,12 @@
-<h1>Typography</h1>
+{% load staticfiles %}
 
-<hr />
+<link rel="stylesheet" href="{% static 'site_cms/css/build/template.guide.css' %}">
 
-<section>
+{% with lorem_ipsum="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fringilla consequat mauris, ut dictum ante faucibus eu. Curabitur eget facilisis nisl. Fusce placerat sed magna sed sagittis. Aenean sagittis ex vel justo viverra lobortis. Phasellus efficitur, nisi id tempus iaculis, nisi metus dictum magna, ac aliquet ante ante eget lacus. Mauris auctor congue lobortis. Maecenas congue pharetra scelerisque. Sed tristique ipsum nec eros sollicitudin, non elementum odio accumsan. Duis auctor gravida commodo." %}
+<div class="s-document s-guide-doc">
+  <h1>Typography</h1>
+
+  <hr />
 
   <h2>Typefaces</h2>
   <style>
@@ -12,7 +16,6 @@
     .c-family--serif { font-family: var(--global-font-family--serif); }
     .c-family--sans { font-family: var(--global-font-family--sans); }
   </style>
-
   <section>
     <h3>Sans</h3>
     <p class="c-family--sans">
@@ -34,11 +37,7 @@
     </div>
   </section>
 
-</section>
-<section>
-
   <h2>Font Sizes</h2>
-
   <section>
     <h3>All Sizes</h3>
     <div>
@@ -59,19 +58,31 @@
     </div>
   </section>
   <section>
-    <h3>Headings</h3>
+    <h3>Headings <small>With Heading Beneath</small></h3>
     <div>
-      <h1>Heading One</h1>
-      <h2>Heading Two</h2>
-      <h3>Heading Three</h3>
-      <h4>Heading Four</h4>
-      <h5>Heading Five</h5>
-      <h6>Heading Six</h6>
+      <h1>Heading 1</h1>
+      <h2>Heading 2</h2>
+      <h3>Heading 3</h3>
+      <h4>Heading 4</h4>
+      <h5>Heading 5</h5>
+      <h6>Heading 6</h6>
+    </div>
+    <h3>Headings <small>With Content Beneath</small></h3>
+    <div>
+      <h1>Heading 1</h1>
+      <p>{{ lorem_ipsum }}</p>
+      <h2>Heading 2</h2>
+      <p>{{ lorem_ipsum }}</p>
+      <h3>Heading 3</h3>
+      <p>{{ lorem_ipsum }}</p>
+      <h4>Heading 4</h4>
+      <p>{{ lorem_ipsum }}</p>
+      <h5>Heading 5</h5>
+      <p>{{ lorem_ipsum }}</p>
+      <h6>Heading 6</h6>
+      <p>{{ lorem_ipsum }}</p>
     </div>
   </section>
-
-</section>
-<section>
 
   <h2>Font Weights</h2>
   <style>
@@ -79,7 +90,7 @@
       border: var(--global-border--normal);
       padding: 1em;
       text-align: center;
-      display: inline-block;
+      display: inline-block !important; /* overwrite .s-guide-doc figure */
     }
     .c-weight + .c-weight {
       margin-left: 1em;
@@ -92,7 +103,7 @@
     .c-weight--bold .c-weight__sample { font-weight: var(--bold); }
   </style>
 
-<section class="c-weight-list">
+  <section class="c-weight-list">
     <h3>Sans</h3>
     <figure class="c-weight c-weight--regular">
       <p class="c-weight__sample c-family--sans">Aa</p>
@@ -120,4 +131,5 @@
     </figure>
   </section>
 
-</section>
+</div>
+{% endwith %}
