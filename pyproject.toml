@@ -45,7 +45,10 @@ djangocms-admin-style = "2.0.0"
 djangocms-apphook-setup = "0.4.1"
 djangocms-attributes-field = "2.0.0"
 djangocms-blog = "1.1.1"
-djangocms-bootstrap4 = { git = "https://github.com/tacc-wbomar/djangocms-bootstrap4.git", branch = "quick/grid-container-support-nested-tuple-choices" }
+djangocms-bootstrap4 = {
+  git = "https://github.com/django-cms/djangocms-bootstrap4.git",
+  rev = "7543e87" # 13 commits (over two years) since 2.0.0
+}
 djangocms-column = "1.11.0"
 djangocms-file = "3.0.0"
 djangocms-forms = "0.2.5"
