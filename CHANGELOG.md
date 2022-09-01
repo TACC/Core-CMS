@@ -7,6 +7,77 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.7.12] - 2022-07-15: Fix Submodule Pointer
+
+### Fixed
+
+- chore(submod): use submod main commit for v3.7.11 (#516)
+
+## [3.8.0] - 2022-07-14: Form Plugin, Document Release & NPM Link, Fix Banner
+
+### Added
+
+- feat(tup-308): working form plugin (aka tup-230) (#498)
+
+### Changed
+
+- docs(README): npm link instructions (#511)
+- chore: author release process [...] (#514)
+
+### Fixed
+
+- fix(ecep-cms): global accent colors full suite
+- fix(core-styles, frontera, utrc): fp-1723 section banner overflow mgmt (#513)
+
+## [3.7.11] - 2022-07-06: v3.7.0 Fixes, New Core-Styles, ECEP/TUP/FP Tweaks
+
+### Added
+
+- Task/ecepweb-205-logos (#509)
+- feat(frontera): accent color vars (d5748c9)
+- TUP-271: [update to latest core-styles] (#495, #496, #489, #494, a49d9e7, d3f0a0b)
+
+### Changed
+
+- FP-1550: Document Custom Text in Admin UI (#467)
+- feat(tup-151): center news articles (#488)
+- chore(core-styles): build css via JS not CLI (#497)
+- docs(README): [update npm link & core-styles] (981e7f9, ad0306b, a3a0acb, 4249f5b)
+
+### Fixed
+
+- Fix/v3.7.0 major bugs a.k.a. After/tup 271 (#507)
+- fix(node): allow greater node & npm versions
+- Bugfix/fp 1542 do not use a2cps url (#493)
+- fix: load fa icons even if no portal (#504)
+
+### Removed
+
+- feat(tup): no LDAP (#499)
+
+## [3.4.0-1-g0c5cbd1] - 2022-07-01: Support Annual Texascale Stylesheets]
+
+### Added
+
+- V3.4.0/fp 1439 yearly site theme for texascale (#508)
+
+## [3.6.0-8-gd1dbcab] - 2022-06-23: Form Plugin UI Fixes, Add ADCP Resources Dir
+
+### Added
+
+- Update submodule to include APCD [...] (#502)
+
+### Fixed
+
+- V3.6.0/form plugin fixes (#501)
+
+## [3.6.0-4-gb293de7] - 2022-06-21: Form Plugin
+
+### Added
+
+- feat(frontera): accent color vars (eb7c282)
+- feat(v3.6.0): tup 230 make form plugin work (#500)
+
 ## [3.7.0] - 2022-05-13: Patterns, News/Blog App, SciVis & APCD, Improvements
 
 ### Added
@@ -382,7 +453,13 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 ## [2.0.0] - 2021-03-31
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.7.0...HEAD
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.8.0...HEAD
+[3.7.12]: https://github.com/TACC/Core-CMS/releases/tag/v3.7.12
+[3.8.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.8.0
+[3.7.11]: https://github.com/TACC/Core-CMS/releases/tag/v3.7.11
+[3.4.0-1-g0c5cbd1]: https://github.com/TACC/Core-CMS/releases/tag/v3.4.0-1-g0c5cbd1
+[3.6.0-8-gd1dbcab]: https://github.com/TACC/Core-CMS/releases/tag/v3.6.0-8-gd1dbcab
+[3.6.0-4-gb293de7]: https://github.com/TACC/Core-CMS/releases/tag/v3.6.0-4-gb293de7
 [3.7.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.7.0
 [3.6.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.6.0
 [3.5.2]: https://github.com/TACC/Core-CMS/releases/tag/v3.5.2

@@ -16,6 +16,7 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 
 :--article-page {
   max-width: 665px;
+  margin-inline: auto;
 }
 
 
@@ -63,14 +64,34 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 
 /* Media & Content - Media */
 
-:--article-page .blog-visual {
-  float: left;
-  margin-right: var(--blog-page-main-image-buffer);
-}
 /* To mimic Bootstrap `.img-fluid` */
 :--article-page .blog-visual img {
   max-width: 100%;
   height: auto;
+}
+/* To support vertical layouts at narrow viewports */
+@media (--x-narrow-and-below) {
+  :--article-page .blog-visual {
+    display: grid;
+    justify-content: center;
+    margin-bottom: var(--blog-page-main-image-buffer);
+  }
+}
+/* To support horizontal layouts at wide viewports */
+@media (--x-narrow-and-above) {
+  :--article-page .blog-visual {
+    float: left;
+    margin-right: var(--blog-page-main-image-buffer);
+  }
+}
+
+/* To prevent footer on right side of page */
+/* FAQ: Because of `:--article-page .blog-visual`'s `float: left` */
+:--article-page .blog-visual + .blog-content::after {
+  /* from Bootstrap `clearfix` */
+  display: block;
+  content: "";
+  clear: both;
 }
 
 

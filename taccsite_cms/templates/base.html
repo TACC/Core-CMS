@@ -1,7 +1,9 @@
 {% load cms_tags staticfiles sekizai_tags cache i18n meta %}
+{% get_current_language as lang_code %}
 <!doctype html>
 <html
   id="page-{{ request.current_page.id }}"
+  lang="{{ lang_code }}"
   {# FAQ: Only available if set in page's "Advanced" settings #}
   data-page-id="{{ request.current_page.reverse_id }}"
   class="{% block template_class %}{% endblock template_class %}">
@@ -46,14 +48,14 @@
   {% render_block "css" %}
 </head>
 
-<body class="o-site  {% block page_type_class %}{% endblock page_type_class %}">
+<body class="{% block page_type_class %}{% endblock page_type_class %}">
   {% cms_toolbar %}
 
-  <header class="o-site__head">
+  <header>
     {% include "header.html" %}
   </header>
 
-  <main id="cms-content" class="o-site__body">
+  <main id="cms-content">
   {% block content %}
 
     {# To allow extra Container in page structure by hiding extra padding #}
@@ -70,11 +72,11 @@
   {% endblock content %}
   </main>
 
-  <footer class="c-footer  s-footer  o-site__foot">
+  <footer class="c-footer  s-footer">
   {% block footer %}
 
     {% static_placeholder "footer-content" or %}
-    <p>©2020 Texas Advanced Computing Center, The University of Texas at Austin, Office of the Vice President for Research.</p>
+    <p>©{% now "Y" %} Texas Advanced Computing Center, The University of Texas at Austin, Office of the Vice President for Research.</p>
     {% endstatic_placeholder %}
 
   {% endblock footer %}

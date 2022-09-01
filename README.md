@@ -7,7 +7,7 @@ The base CMS code for TACC WMA Workspace Portals & Websites
 
 - [Camino], a Docker container-based deployment scheme
 - [Core Portal], the base Portal code for TACC WMA CMS Websites
-- [Core Styles], the custom UI pattern code for TACC WMA CMS Websites
+- [Core Styles], the shared UI pattern code for TACC WMA CMS Websites
 - [Core CMS Resources], the custom CMS code for TACC WMA CMS Websites
 - [Core Portal Deployments], private repository that facilitates deployments of [Core Portal] images via [Camino] and Jenkins
 
@@ -19,7 +19,7 @@ The base CMS code for TACC WMA Workspace Portals & Websites
 * Docker 20.10.7
 * Docker Compose 1.29.2
 * Python 3.6.8
-* Nodejs 12.x (LTS)
+* Nodejs 16.x (LTS)
 
 The Core CMS can be run using [Docker][1] and [Docker Compose][2]. You will
 need both Docker and Docker Compose pre-installed on the system you wish to run the CMS
@@ -67,7 +67,8 @@ Follow [How to Use a Custom Docker Compose File](https://github.com/TACC/Core-CM
 
 All CMS projects (besides the stand-alone CMS core), store project-specific resources in the `taccsite_custom` submodule.
 
-1. Create a `taccsite_cms/settings_custom.py` symlink to `taccsite_custom/name-of-project/settings_custom.py`.\*†
+1. Create a `taccsite_cms/settings_custom.py` symlink to `taccsite_custom/name-of-project/settings_custom.py`
+*†
 2. Build project-specific static files. _See [Static Files](/README.md#static-files)._
 
 <sub>\* Where `name-of-project` matches a directory from `/taccsite_custom`.</sub>\
@@ -139,7 +140,7 @@ All CMS projects (besides the stand-alone CMS core), store project-specific reso
 
 7. Login to the admin web interface.
 
-    The CMS admin site should now be accessible at  http://localhost:8000/admin.\*
+    The CMS admin site should now be accessible at http://localhost:8000/admin .*
 
     _You may log in as the superuser created via the `createsuperuser` command in an earlier step._
 
@@ -267,68 +268,23 @@ If you need to change files within `/taccsite_custom`:
 <sub>\* You should run this command in the container __from `/code/`__. _See [Running Commands in Container](#running-commands-in-container)._</sub>\
 <sub>† See [Restarting the CMS Server](#restarting-the-cms-server).</sub>
 
+### UI Pattern Demo
 
-### Changing Core Styles
+This demo shows [Core Styles] with `site.css` from either [Core CMS] or a [Core CMS Resources] project.
 
-If you need to change files within `node_modules/@tacc/core-styles/source`:
-
-1. Clone [Core Styles].
-2. Make and commit changes.
-3. Open pull request.
-4. After PR is merged.
-5. In [Core CMS], update [Core Styles] module commit:
-
-  ```bash
-  npm install git+https://git@github.com/TACC/Core-Styles.git
-  ```
-
-6. Commit changes.
-
-#### Testing Core Styles Changes Locally
-
-If you need to test file changes with [Core CMS] changes:
-
-1. Clone [Core Styles].
-2. Allow live edit of node module via your [Core Styles] clone:
+1. Build UI patterns demo: \*
 
     ```bash
-    cd path-to-Core-Styles
-    npm link
-    cd path-to-Core-CMS
-    npm link @tacc/core-styles --save
+    npm run build:css-demo --project=name-of-project
     ```
 
-    _**Do** use `--save`.\* Do **not** commit the changes to `package.json` **nor** `package-lock.json`._
-
-3. Re-install [Core Styles] dependency `postcss-cli`:
+2. Serve the demo:
 
     ```bash
-    # cd path-to-Core-CMS
-    npm install postcss-cli --no-save
+    npm run start:css-demo
     ```
 
-4. Make changes in your [Core Styles] clone as necessary.
-5. Build changes.†
-
-<sub>\* Use of `npm link` _without `--save`_ is overwritten by `npm install`. See [details](https://github.com/npm/cli/issues/2380#issuecomment-1029967927).</sub>\
-<sub>† See [How to Build Static Files](#how-to-build-static-files).</sub>
-
-#### Testing Core Styles Changes Remotely
-
-If you need to test [Core CMS] and [Core Styles] changes on a server:
-
-1. Push changes onto a [Core Styles] branch (not `main`).
-2. Install [Core Styles] at that branch:
-
-    ```bash
-    # cd path-to-Core-CMS
-    npm install --save-dev git+https://git@github.com/TACC/Core-Styles.git#your-branch-name
-    ```
-
-3. Deploy changes to test server.\*
-
-<sub>\* See [Deployment Steps](#deployment-steps).</sub>
-
+<sub>\* Where `name-of-project` is "core-cms" or matches a directory from `/taccsite_custom`. __A project name is required.__</sub>
 
 
 ## Running Commands in Container
@@ -368,8 +324,6 @@ Server-side CMS plugin testing is run through Python. Start docker container fir
 <!-- TODO: Make command recursively find all tests -->
 <!-- SEE: https://docs.djangoproject.com/en/2.2/topics/testing/overview/#running-tests -->
 
-Client-side stylesheet plugin testing is done manually. Run `npm run build` from any folder in this project, then review output in `taccsite_cms/static/site_cms/css/build/_test.css`, to ensure plugins are working correctly.
-
 ### Test Coverage
 
 Coverage is sent to codecov on commits to the repo (see Github Actions for branch to see branch coverage). Ideally we only merge positive code coverage changes to `main`.
@@ -402,9 +356,26 @@ We use a modifed version of [GitFlow](https://datasift.github.io/gitflow/Introdu
     - `bug/` for bugfixes
     - `fix/` for hotfixes
 
+#### Testing Core Styles Changes Locally
+
+See [Locally Develop CMS and Styles](https://github.com/TACC/Core-CMS/wiki/Locally-Develop-CMS-and-Styles).
+
 ### Best Practices
 
 Sign your commits ([see this link](https://help.github.com/en/github/authenticating-to-github/managing-commit-signature-verification) for help)
+
+### Release Workflow
+
+Only appointed team members may release versions.
+
+1. Create new branch for version bump.
+1. Update `CHANGELOG.md`.
+1. Update version via `npm version N.N.N` (run from `.../core-styles/`).
+1. Commit, push, PR, review, merge.
+1. Tag version i.e.
+    1. `git tag -a vN.N.N -m "vN.N.N"`
+    2. `git push origin vN.N.N`
+1. Author a release via GitHub (choose the tag from previous step).
 
 ### Resources
 
@@ -417,7 +388,7 @@ Sign your commits ([see this link](https://help.github.com/en/github/authenticat
 [Core Portal Deployments]: https://github.com/TACC/Core-Portal-Deployments
 [Camino]: https://github.com/TACC/Camino
 [Core CMS]: https://github.com/TACC/Core-CMS
-[Core Styles]: https://github.com/TACC/Core-Styles
+[Core Styles]: https://github.com/TACC/tup-ui/tree/main/libs/core-styles
 [Core CMS Resources]: https://github.com/TACC/Core-CMS-Resources
 [Core Portal]: https://github.com/TACC/Core-Portal
 [1]: https://docs.docker.com/get-docker/

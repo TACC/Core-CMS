@@ -7,37 +7,73 @@ Reference:
 
 Styleguide Components.DjangoCMS.Blog.App.Item
 */
-@import url("@tacc/core-styles/source/_imports/tools/x-article-link.css");
-@import url("@tacc/core-styles/source/_imports/tools/x-truncate.css");
+@import url("@tacc/core-styles/src/lib/_imports/tools/x-article-link.css");
+@import url("@tacc/core-styles/src/lib/_imports/tools/x-truncate.css");
 
+@import url("_imports/tools/media-queries.css");
 @import url("_imports/tools/selectors.css");
 
 
 
 
 
-/* (Structure) */
+/* List */
+
+/* To have two columns at certain viewport widths */
+@media (--xx-narrow-to-x-narrow), (--x-narrow-to-narrow) {
+  :--article-list {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: 40px;
+  }
+  :--article-list > :where(header, nav) {
+    grid-column: 1 / -1;
+  }
+}
+
+
+
+
+
+/* Item */
+
+
+
+/* Item (Structure) */
 
 :--article-item {
   display: grid;
 
-  grid-template-areas:
-    'media head'
-    'media desc';
+  border-bottom: var(--global-border-width--normal) solid var(--global-color-primary--dark);
+  margin-bottom: var(--blog-item-buffer);
+  padding-bottom: var(--blog-item-buffer);
+}
 
-  /* To have shrinkwrapped media and flexible text content */
-  grid-template-columns: minmax(0, max-content) 1fr;
+/* To have vertical layout for narrow viewports */
+@media (--narrow-and-below) {
+  :--article-item {
+    grid-template-areas:
+      'media'
+      'head'
+      'desc';
+    /* To prevent content from overflowing cell */
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+/* To have horizontal layout for wide viewports */
+@media (--narrow-and-above) {
+  :--article-item {
+    grid-template-areas:
+      'media head'
+      'media desc';
+    /* To have shrinkwrapped media and flexible text content */
+    grid-template-columns: minmax(0, max-content) 1fr;
+  }
 }
 :--article-item header        { grid-area: head }
 :--article-item .blog-visual  { grid-area: media }
 :--article-item .blog-lead    { grid-area: desc }
 
-/* FAQ: `:--article-item + :--article-item` ≠ `:--article-item + article` */
-:--article-item + article {
-  margin-top: var(--blog-item-buffer);
-  border-top: var(--global-border-width--normal) solid var(--global-color-primary--dark);
-  padding-top: var(--blog-item-buffer);
-}
 
 
 
@@ -99,10 +135,12 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 
 :--article-item h3,
 :--article-item h4 {
-  @extend %x-truncate--one-line;
-
   margin-block: unset; /* overwrite html-elements.css */
   font-size: var(--global-font-size--large);
+}
+:--article-item h3 a, /* truncate a not h3 so :focus-visible is not cropped */
+:--article-item h4 {
+  @extend %x-truncate--one-line;
 }
 :--article-item h4 {
   text-transform: none; /* overwrite html-elements.css */
@@ -112,8 +150,11 @@ Styleguide Components.DjangoCMS.Blog.App.Item
   transform: translateY(2px); /* HACK: tweak vertical alignment */
   font-weight: var(--regular);
 }
-:--article-item h4::before { content: ': ' }
+:--article-item h4::before {
+  content: ': ';
+}
 :--article-item h3 a {
+  display: block; /* to prevent grid blowout */
   color: var(--global-color-primary--xx-dark);
 }
 
@@ -191,20 +232,32 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 /* Visual */
 
 :--article-item .blog-visual:not(:empty) {
-  /* Design requires same-width image boxes */
-  /* IDEA: Should we import a Django setting for image width? */
-  width: 255px; /* should be equal to max width of "MAIN IMAGE THUMBNAIL" */
-
-  margin-right: 50px;
-
-  /* To align any image inside */
-  /* FAQ: Images SHOULD use cropped thumbnail option, which makes this moot,
-          but user MIGHT instead use thumbnail option with inconsistent width */
+  /* To align any small image inside (useless with some image sizes) */
   display: grid;
+  align-items: center;
   justify-items: center;
 }
 :--article-item .blog-visual:empty {
   display: none;
+}
+
+/* To support vertical layouts at narrow viewports */
+@media (--narrow-and-below) {
+  :--article-item .blog-visual:not(:empty) {
+    height: 140px; /* for consistent image height */
+    margin-bottom: 15px;
+  }
+  :--article-item .blog-visual img {
+    max-width: 100%; /* to prevent overflow if column is narrower */
+    height: auto; /* to maintain aspect ratio if width changes */
+  }
+}
+/* To support horizontal layouts at wide viewports */
+@media (--narrow-and-above) {
+  :--article-item .blog-visual:not(:empty) {
+    width: 255px; /* for consistent image width */
+    margin-right: 50px;
+  }
 }
 
 
@@ -228,7 +281,7 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 
 /* Footer */
 
-/* If not editing, "read more" spans atop the article item */
+/* If not editing, stretch "read more" atop the article */
 html:not(:--cms-edit-mode) .read-more a:hover {
   --outline-offset: var(--blog-item-buffer);
   @extend %x-article-link-hover;
@@ -243,12 +296,8 @@ html:not(:--cms-edit-mode) .read-more a {
   @extend %x-article-link-text;
 }
 
-/* If editing, "read more" sits under article item nad has a note */
-html:--cms-edit-mode .read-more { grid-area: 3 / 1 / 4 / -1 }
-html:--cms-edit-mode .read-more::after {
-  /* To let editor know */
-  content: '(This link only shows when editing. Or you can click the title.)';
-  margin-left: 1em;
-  font-size: smaller;
-  opacity: 0.5;
+/* If editing, hide "read more" */
+/* FAQ: User can: edit by double clicking abstract; visit by clicking title */
+html:--cms-edit-mode .read-more {
+  display: none;
 }

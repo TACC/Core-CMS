@@ -5,7 +5,7 @@ description = "DjangoCMS backend for the TACC ACI-WMA Core-CMS Codebase."
 authors = ["TACC-WMA <wma-portals@tacc.utexas.edu>"]
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = ">=3.8,<4.0"
 aldryn-apphooks-config = "0.6.0"
 aldryn-boilerplates = "0.8.0"
 aldryn-common = "1.0.5"
@@ -51,7 +51,7 @@ djangocms-bootstrap4 = {
 }
 djangocms-column = "1.11.0"
 djangocms-file = "3.0.0"
-djangocms-forms = "0.2.5"
+djangocms-forms-maintained = { git = "https://github.com/avryhof/djangocms-forms", rev = "d8a69efd2f447ee2f940c7b6f5b8b088c9cb79ed" }
 djangocms-googlemap = "2.0.0"
 djangocms-icon = "2.0.0"
 djangocms-link = "3.0.0"
@@ -117,6 +117,7 @@ wrapt = "1.12.1"
 yapf = "0.30.0"
 YURL = "1.0.0"
 zipp = "3.1.0"
+ipython = "^8.4.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

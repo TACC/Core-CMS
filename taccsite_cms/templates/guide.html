@@ -12,6 +12,7 @@
 
 {% block content %}
 <div class="container  s-document  s-guide-doc">
+  {% include "nav_cms_breadcrumbs.html" %}
   {% block guide %}
     {% placeholder "content" %}
   {% endblock guide %}

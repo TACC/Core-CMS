@@ -11,10 +11,15 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import logging
 import os
 from glob import glob
-import ldap
-from django_auth_ldap.config import LDAPSearch, GroupOfNamesType
 
 from django.utils.translation import gettext_lazy as _
+
+from taccsite_cms._settings.auth import *
+from taccsite_cms._settings.email import *
+from taccsite_cms._settings.form_plugin import *
+from taccsite_cms._settings.form_plugin import (
+    _INSTALLED_APPS as form_plugin_INSTALLED_APPS
+)
 
 SECRET_KEY = 'CHANGE_ME'
 def gettext(s): return s
@@ -29,9 +34,6 @@ DEBUG = True       # False for Prod.
 # Specify allowed hosts or use an asterisk to allow any host and simplify the config.
 # ALLOWED_HOSTS = ['hostname.tacc.utexas.edu', 'host.ip.v4.address', '0.0.0.0', 'localhost', '127.0.0.1']   # In production.
 ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost', '*']   # In development.
-
-# Requires django-auth-ldap ≥ 2.0.0
-LDAP_ENABLED = True
 
 # Default portal authorization verification endpoint.
 CEP_AUTH_VERIFICATION_ENDPOINT = 'localhost'  # 'https://0.0.0.0:8000'
@@ -51,30 +53,87 @@ DATABASES = {
     }
 }
 
-AUTHENTICATION_BACKENDS = [
-    "django.contrib.auth.backends.ModelBackend",
-    "taccsite_cms.remote_cms_auth.CorePortalAuthBackend",
-    "django_auth_ldap.backend.LDAPBackend"
-]
 
-''' LDAP Auth Settings '''
-AUTH_LDAP_SERVER_URI = "ldap://ldap.tacc.utexas.edu"
-AUTH_LDAP_CONNECTION_OPTIONS = {ldap.OPT_REFERRALS: 0}
-AUTH_LDAP_START_TLS = True
-AUTH_LDAP_BIND_AS_AUTHENTICATING_USER = True
-AUTH_LDAP_BIND_DN = ""
-AUTH_LDAP_BIND_PASSWORD = ""
-AUTH_LDAP_AUTHORIZE_ALL_USERS = True
 
-AUTH_LDAP_USER_SEARCH = LDAPSearch(
-    "ou=People,dc=tacc,dc=utexas,dc=edu", ldap.SCOPE_SUBTREE, "(uid=%(user)s)"
-)
+########################
+# LOGGING 
+########################
 
-AUTH_LDAP_USER_ATTR_MAP = {
-    "first_name": "givenName",
-    "last_name": "sn",
-    "email": "mail",
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'default': {
+            'format': '[DJANGO] %(levelname)s %(asctime)s UTC %(module)s '
+                      '%(name)s.%(funcName)s:%(lineno)s: %(message)s'
+        },
+        'metrics': {
+            'format': '[METRICS] %(levelname)s %(asctime)s UTC %(module)s '
+                      '%(name)s.%(funcName)s:%(lineno)s: %(message)s'
+        },
+    },
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'default',
+        },
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': '/var/log/cms/cms.log',
+            'maxBytes': 1024*1024*5,  # 5 MB
+            'backupCount': 5,
+            'formatter': 'default',
+        },
+        'metrics_console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'metrics',
+        },
+        'metrics_file': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': '/var/log/cms/metrics.log',
+            'maxBytes': 1024*1024*5,  # 5 MB
+            'backupCount': 5,
+            'formatter': 'metrics',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console', 'file'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        'portal': {
+            'handlers': ['console', 'file'],
+            'level': 'DEBUG',
+        },
+        'metrics': {
+            'handlers': ['metrics_console', 'metrics_file'],
+            'level': 'DEBUG',
+        },
+        'paramiko': {
+            'handlers': ['console'],
+            'level': 'DEBUG'
+        },
+        'celery': {
+            'handlers': ['console', 'file'],
+            'level': 'INFO',
+        },
+        'daphne': {
+            'handlers': [
+                'console',
+            ],
+            'level': 'INFO'
+        }
+    },
 }
+
+########################
+# (some) CMS SETTINGS
+########################
 
 SITE_ID = 1
 
@@ -92,16 +151,6 @@ CMS_PERMISSION = True
 # To use during dev, Tracking Protection in browser needs to be turned OFF.
 GOOGLE_ANALYTICS_PROPERTY_ID = "UA-123ABC@%$&-#"
 GOOGLE_ANALYTICS_PRELOAD = True
-
-########################
-# CMS FORMS
-########################
-
-# Create CMS Forms
-# SEE: https://pypi.org/project/djangocms-forms/
-# SEE: https://www.google.com/recaptcha/admin/create
-DJANGOCMS_FORMS_RECAPTCHA_PUBLIC_KEY = ""
-DJANGOCMS_FORMS_RECAPTCHA_SECRET_KEY = ""
 
 ########################
 # ELASTICSEARCH
@@ -352,6 +401,8 @@ INSTALLED_APPS = [
     'aldryn_apphooks_config',  # search index & django CMS Blog
     'test_without_migrations', # run tests faster
 
+] + form_plugin_INSTALLED_APPS + [
+
     # core TACC CMS
     # HELP: If this were top of list, would TACC/Core-CMS/pull/169 fix break?
     'taccsite_cms',
@@ -461,18 +512,6 @@ FILE_UPLOAD_MAX_MEMORY_SIZE = 20000000  # 20MB
 
 DJANGOCMS_AUDIO_ALLOWED_EXTENSIONS = ['mp3', 'ogg', 'wav']
 
-# Djangocms Forms Settings.
-# SEE: https://github.com/mishbahr/djangocms-forms#configuration
-DJANGOCMS_FORMS_PLUGIN_MODULE = ('Generic')
-DJANGOCMS_FORMS_PLUGIN_NAME = ('Form')
-
-DJANGOCMS_FORMS_TEMPLATES = (
-    ('djangocms_forms/form_template/default.html', ('Default')),
-)
-DJANGOCMS_FORMS_USE_HTML5_REQUIRED = False
-
-DJANGOCMS_FORMS_REDIRECT_DELAY = 1
-
 # Elasticsearch Indexing
 HAYSTACK_ROUTERS = ['aldryn_search.router.LanguageRouter', ]
 HAYSTACK_SIGNAL_PROCESSOR = 'taccsite_cms.signal_processor.RealtimeSignalProcessor'
@@ -580,6 +619,14 @@ except ModuleNotFoundError:
 try:
     from taccsite_cms.settings_local import *
 except ModuleNotFoundError:
+    pass
+
+try:
+    from taccsite_cms import custom_app_settings
+    INSTALLED_APPS += getattr(custom_app_settings, 'CUSTOM_APPS', [])
+    STATICFILES_DIRS += getattr(custom_app_settings , 'STATICFILES_DIRS', ())
+    MIDDLEWARE += getattr(custom_app_settings , 'CUSTOM_MIDDLEWARE', ())
+except ImportError:
     pass
 
 SETTINGS_EXPORT = [
