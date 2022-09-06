@@ -6,9 +6,9 @@
 /* SETTINGS */
 @import url("_imports/settings/border.css");
 @import url("_imports/settings/max-width.css");
+@import url("@tacc/core-styles/src/lib/_imports/settings/space.css");
 /* Unique to CMS */
 @import url("./_imports/settings/color.css");
-@import url("./_imports/settings/space.css");
 @import url("./_imports/settings/font.css");
 
 /* GENERICS */
