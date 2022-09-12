@@ -1,0 +1,55 @@
+/*
+Django CMS Form Hacks
+
+Render temporary messages to warn users and admins about unsupported feature(s) of the Django CMS Form plugin.
+
+Reference:
+
+- [FP-1808](https://jira.tacc.utexas.edu/browse/FP-1808)
+
+Styleguide Components.DjangoCMS.Forms.Hacks
+*/
+@import url("_imports/tools/selectors.css");
+/* TACC/Core-CMS#531: When merged, import and extend `.c-message(...)` */
+/* @import url("@tacc/core-styles/src/lib/_imports/components/c-message.css"); */
+
+@custom-selector :--problem-field
+  .field-wrapper.checkboxselectmultiple.required;
+
+/* HACK: Messages about a required multi-checkbox field */
+:--problem-field > label::after {
+  display: block;
+  margin-top: 0.5em;
+
+  /* To mimic c-message */
+  /* https://github.com/TACC/tup-ui/blob/main/libs/core-styles/src/lib/_imports/components/c-message.css */
+  padding: 15px 20px;
+  border: var(--global-border--thick);
+  font-size: var(--global-font-size--small);
+  /* TACC/Core-CMS#531: When merged, import and extend `.c-message(...)` */
+  /* @extend .c-message; */
+}
+/* To give error to admin */
+html:--cms-edit-mode :--problem-field > label::after {
+  content: 'A multi checkbox field that is required is not well implemented. Do not require this field or replace it with multiple required Yes/No radio fields.';
+
+  /* To mimic c-message c-message-error */
+  /* https://github.com/TACC/tup-ui/blob/main/libs/core-styles/src/lib/_imports/components/c-message.css */
+  color: var(--global-color-danger--dark);
+  background-color: var(--global-color-danger--weak);
+  border-color: var(--global-color-danger--normal);
+  /* TACC/Core-CMS#531: When merged, import and extend `.c-message(...)` */
+  /* @extend .c-message--error; */
+}
+/* To give warning to user */
+html:not(:--cms-edit-mode) :--problem-field > label::after {
+  content: 'This field is not well implemented. Select all boxes to bypass the error with this field.';
+
+  /* To mimic c-message c-message-warning */
+  /* https://github.com/TACC/tup-ui/blob/main/libs/core-styles/src/lib/_imports/components/c-message.css */
+  color: var(--global-color-warning--dark);
+  background-color: var(--global-color-warning--weak);
+  border-color: var(--global-color-warning--normal);
+  /* TACC/Core-CMS#531: When merged, import and extend `.c-message(...)` */
+  /* @extend .c-message--warning; */
+}
