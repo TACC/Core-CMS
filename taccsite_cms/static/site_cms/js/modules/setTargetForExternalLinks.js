@@ -1,4 +1,10 @@
 /**
+ * Whether to log debug info to console
+ * @const {string}
+ */
+const SHOULD_DEBUG = window.DEBUG;
+
+/**
  * Set external links (automatically discovered) to open in new tab
  * @param {object} [options] - Optional parameters
  * @param {array.<string>} [options.pathsToExernalSite=[]] - A list of relative URL paths that should be treated like external URLs
@@ -20,6 +26,7 @@
         return false;
       }
 
+      const isMailto = (link.href.indexOf('mailto:') === 0);
       const hasExternalRedirect = pathsToExernalSite.some(path => {
           return _doPathsMatch(path, link.pathname);
       });
@@ -27,13 +34,15 @@
       const isExternal = (link.origin !== document.location.origin);
       const isInternal = (link.host === document.location.host);
       const shouldOpenInNewWindow = (
-          ! isInternal && (isExternal || hasExternalRedirect)
+          ! isInternal && (isExternal || hasExternalRedirect) && ! isMailto
       );
 
       if ( shouldOpenInNewWindow ) {
           if (link.target !== '_blank') {
               link.target = '_blank';
-              console.debug(`Link ${link.href} now opens in new tab`);
+              if (SHOULD_DEBUG) {
+                console.debug(`Link ${link.href} now opens in new tab`);
+              }
           }
       }
   });
