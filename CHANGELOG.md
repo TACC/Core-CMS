@@ -5,7 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [Unreleased][unreleased]
+
+## [3.8.1] - 2022-08-26: Change BrainMap Logo URL to Hoem Page not Ext. Page
+
+### Changed
+
+- feat(bm): FP-1798 link logo to home not ext site (0bf5e12)
 
 ## [3.7.12] - 2022-07-15: Fix Submodule Pointer
 
@@ -453,7 +459,8 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 ## [2.0.0] - 2021-03-31
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.8.0...HEAD
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.8.1...HEAD
+[3.8.1]: https://github.com/TACC/Core-CMS/compare/v3.8.1
 [3.7.12]: https://github.com/TACC/Core-CMS/releases/tag/v3.7.12
 [3.8.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.8.0
 [3.7.11]: https://github.com/TACC/Core-CMS/releases/tag/v3.7.11
