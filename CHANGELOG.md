@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [3.9.1] - 2022-09-16: Core Styles v0.8.7 (Hotfix)
 
+### Fixed
+
 - fix(core-styles): v0.8.7 (path fix) (f33957e)
 
 ## [3.9.0] - 2022-09-14: Custom Apps, A11y, UI Demo, Logging, Docs, Fixes
