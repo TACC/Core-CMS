@@ -6,9 +6,9 @@ Load standard fonts for a TACC website.
 Usage:
   ```
   .something {
-    // BentonSans-MediumItalic
+    // BentonSans-RegularItalic
     font-family: 'Benton Sans';
-    font-weight: 500;
+    font-weight: 400;
     font-style: italic;
   }
   ```
@@ -26,6 +26,14 @@ Styleguide Generics.Fonts
   src: url("/static/frontera-cms/fonts/archive/BentonSans-Regular.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Benton Sans';
+  src: url("/static/frontera-cms/fonts/archive/BentonSans-RegularItalic.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
   font-display: swap;
 }
 
