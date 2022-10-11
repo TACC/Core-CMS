@@ -2,7 +2,7 @@ version: "3"
 services:
   cms:
     build: .
-    image: taccwma/core-cms:latest
+    image: taccwma/core-portal-cms:latest
     volumes:
       - .:/code
     ports:
