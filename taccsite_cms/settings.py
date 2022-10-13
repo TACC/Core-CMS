@@ -56,7 +56,7 @@ DATABASES = {
 
 
 ########################
-# LOGGING 
+# LOGGING
 ########################
 
 LOGGING = {
@@ -236,6 +236,8 @@ FAVICON = {
 ########################
 
 INCLUDES_CORE_PORTAL = True
+INCLUDES_PORTAL_NAV = INCLUDES_CORE_PORTAL
+INCLUDES_SEARCH_BAR = INCLUDES_CORE_PORTAL
 
 LOGOUT_REDIRECT_URL = '/'
 
