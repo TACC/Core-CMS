@@ -6,9 +6,9 @@ from requests.auth import HTTPBasicAuth
 
 class DjangoRt:
     def __init__(self):
-        self.rtHost = getattr(settings, 'RT_HOST')
-        self.rtUn = getattr(settings, 'RT_UN')
-        self.rtPw = getattr(settings, 'RT_PW')
+        self.rtHost = getattr(settings, 'RT_HOST', '')
+        self.rtUn = getattr(settings, 'RT_UN', '')
+        self.rtPw = getattr(settings, 'RT_PW', '')
         self.rtQueue = getattr(settings, 'RT_QUEUE', '')
 
         self.tracker = rt.Rt(self.rtHost, self.rtUn, self.rtPw, http_auth=HTTPBasicAuth(self.rtUn, self.rtPw))
