@@ -10,6 +10,7 @@ from django.contrib.auth import views
 from django.contrib.sitemaps.views import sitemap
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.views.static import serve
+from django.views.generic.base import TemplateView
 from taccsite_cms import remote_cms_auth as remote_cms_auth
 
 from django.http import request
@@ -36,7 +37,7 @@ if getattr(settings, 'INCLUDES_CORE_PORTAL', True):
         url(r'^cms/header/logo/markup/$', TemplateView.as_view(template_name='header_logo.html'), name='header_logo_markup'),
 
         # To provide markup when Portal is missing
-        re_path('core/markup/nav', TemplateView.as_view(template_name='nav_portal.raw.html'), name='portal_nav_markup'),
+        url(r'^core/markup/nav/$', TemplateView.as_view(template_name='nav_portal.raw.html'), name='portal_nav_markup'),
 
         # To support remote authentication
         url(r'^remote/login/$', remote_cms_auth.verify_and_auth, name='verify_and_auth'),
