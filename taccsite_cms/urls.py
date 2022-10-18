@@ -25,9 +25,6 @@ urlpatterns = [
     url(r'^cms/logout/', views.LogoutView.as_view(), name='logout'),
 
     url(r'^', include('djangocms_forms.urls')),
-
-    # To provide markup when Portal is missing
-    url(r'^core/markup/nav/$', TemplateView.as_view(template_name='nav_portal.raw.html'), name='portal_nav_markup'),
 ]
 
 if getattr(settings, 'INCLUDES_CORE_PORTAL', True):
@@ -49,6 +46,10 @@ except ImportError:
     pass
 
 urlpatterns += [
+    # To provide markup when Portal is missing
+    url(r'^core/markup/nav/$', TemplateView.as_view(template_name='nav_portal.raw.html'), name='portal_nav_markup'),
+
+    # The Django CMS urls
     url(r'^', include('cms.urls')),
 ]
 
