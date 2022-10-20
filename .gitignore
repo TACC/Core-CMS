@@ -14,9 +14,11 @@ __pycache__
 ## built Static files
 build
 !build/README.md
-## ignore files copied from core-styles
-## (in the future, get all fonts from core-styles, and reduce this to **/fonts)
-**/fonts/BentonSans-*
+## ignore fonts copied from Core-Styles
+**/fonts
+## (except Cortal fonts)
+## TODO: get Cortal from Core-Styles (then remove this exception)
+!**/fonts/Cortal-Icons-*
 
 ## environment variables
 docker_repo.var
