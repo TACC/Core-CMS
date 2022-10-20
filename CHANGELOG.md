@@ -5,7 +5,57 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [Unreleased][unreleased]
+
+## [3.9.1] - 2022-09-16: Core Styles v0.8.7 (Hotfix)
+
+### Fixed
+
+- fix(core-styles): v0.8.7 (path fix) (f33957e)
+
+## [3.9.0] - 2022-09-14: Custom Apps, A11y, UI Demo, Logging, Docs, Fixes
+
+### Added
+
+- Support custom apps through config. (#517)
+- Task/ecepweb 210 members pages accessibility (#528)
+- Task/ecepweb 209 news pages accessibility (#529)
+- Task/ecepweb 209 news pages responsive design (#530)
+- feat: fp-1736 allow form to send email (#536, #550)
+- Task/fp 1499 ui pattern demo (#527)
+- chore: fp-1778 apcd assets from Core-CMS-Resources (#543)
+- task/FP-1780 -- core cms logging (#544)
+- add ipython to django shell (#542)
+- feat: ecep-215 o-float-content--left|right (#534)
+- chore(ecep): archive and add page members snippets (9c6d5e4)
+- FP-1790: apcd, favicon & fake logo (#547)
+- feat(ecep): ecep-214 safe emails in content (#546)
+- feat(core-styles): install 0.8.6 (#553)
+
+### Changed
+
+- chore(css): update docs & comments (#525)
+- chore(ecep): hide news byline (ebfc9df, #519)
+- docs: [miscellaneous] (d344b5d, cdcd9e1, 775429c, fa126ce, af2ef90, e4bf7ae)
+- docs: add settings_local.example.py (#539)
+- TUP-321: Make it Clearer How to Disable LDAP Settings (#537)
+- feat(bm): FP-1798 link logo to home not ext site (94a17b3)
+
+### Fixed
+
+- fix(templates): programatic current year in footer (#538)
+- Fix/tup 151 news article fixes and tweaks (#523)
+- fix(django): implement djangocms-text-ckeditor#568 (#540, #541)
+- fix: fp-1782 form plugin file upload (#545)
+- Task/fp 1801 guides breadcrumbs headings (#549)
+- Bug/fp 1798 external nav link (still) not open in new window (#548)
+- feat(css): warn user of unsupported form field (#551)
+
+## [3.8.1] - 2022-08-26: Change BrainMap Logo URL to Hoem Page not Ext. Page
+
+### Changed
+
+- feat(bm): FP-1798 link logo to home not ext site (0bf5e12)
 
 ## [3.7.12] - 2022-07-15: Fix Submodule Pointer
 
@@ -453,7 +503,10 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 ## [2.0.0] - 2021-03-31
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.8.0...HEAD
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.9.1...HEAD
+[3.9.1]: https://github.com/TACC/Core-CMS/compare/v3.9.1
+[3.9.0]: https://github.com/TACC/Core-CMS/compare/v3.9.0
+[3.8.1]: https://github.com/TACC/Core-CMS/compare/v3.8.1
 [3.7.12]: https://github.com/TACC/Core-CMS/releases/tag/v3.7.12
 [3.8.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.8.0
 [3.7.11]: https://github.com/TACC/Core-CMS/releases/tag/v3.7.11

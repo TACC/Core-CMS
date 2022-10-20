@@ -8,7 +8,8 @@ The base CMS code for TACC WMA Workspace Portals & Websites
 - [Camino], a Docker container-based deployment scheme
 - [Core Portal], the base Portal code for TACC WMA CMS Websites
 - [Core Styles], the shared UI pattern code for TACC WMA CMS Websites
-- [Core CMS Resources], the custom CMS code for TACC WMA CMS Websites
+- [Core CMS Resources], the custom CMS code (old solution) for TACC WMA CMS Websites
+- [Core CMS Custom], the custom CMS code (new solution) for TACC WMA CMS Websites
 - [Core Portal Deployments], private repository that facilitates deployments of [Core Portal] images via [Camino] and Jenkins
 
 
@@ -34,15 +35,7 @@ Machine, which is required to run Docker on Mac/Windows hosts.
 
 After you clone the repository locally, there are several configuration steps required to prepare the project.
 
-#### Required
-
-1. Initialize / Update submodules:
-    1. `git submodule init`\
-        <sub>Adds [Core CMS Resources] repo as submodule at `taccsite_custom/`. Only necessary once per parent repo clone.</sub>
-    2. `git submodule update`\
-        <sub>Downloads code from pinned commit of [Core CMS Resources] repo to `taccsite_custom/`.</sub>
-
-#### Optional
+#### Settings
 
 Settings may be customized piecemeal by adding, in any of these files, only the settings to change:
 
@@ -53,23 +46,36 @@ Settings may be customized piecemeal by adding, in any of these files, only the 
 | 3 | `settings_local.py` | Settings specific to a local development environment, not intended for others |
 
 <sub>\* This is a "Precedence" column. [A file with a higher precedence value overrides one of a lower value.](https://github.com/TACC/Core-CMS/blob/929dc4b/taccsite_cms/settings.py#L458-L478)</sub>\
-<sub>† See [If You Want to Test Custom Resources per CMS Project](#if-you-want-to-test-custom-resources-per-cms-project).</sub>
+<sub>† See [If You Want to Test Custom CMS Projects](#if-you-want-to-test-custom-cms-projects).</sub>
 
-##### If You Run this CMS Independent of [Core Portal]
+#### If You Run this CMS Independent of [Core Portal]
 
 Add `INCLUDES_CORE_PORTAL = False` to `taccsite_cms/settings_local.py` (to avoid [Not Found: `core/markup/nav/`](https://github.com/TACC/Core-CMS/wiki/Not-Found%3A--core-markup-nav)).
 
-##### If You Want to Use This With Local [Core Portal] Instance
+#### If You Want to Use This With Local [Core Portal] Instance
 
 Follow [How to Use a Custom Docker Compose File](https://github.com/TACC/Core-CMS/wiki/How-to-Use-a-Custom-Docker-Compose-File).
 
-##### If You Want to Test Custom Resources per CMS Project
+#### If You Want to Test Custom CMS Projects
 
-All CMS projects (besides the stand-alone CMS core), store project-specific resources in the `taccsite_custom` submodule.
+##### [Core CMS Custom]
 
-1. Create a `taccsite_cms/settings_custom.py` symlink to `taccsite_custom/name-of-project/settings_custom.py`
+These projects are independently developed and have project-specific resources.
+
+You do __not__ need to clone __nor__ set up this [Core CMS] repo to work on those projects.
+
+##### [Core CMS Resources]
+
+These projects store project-specific resources in the `taccsite_custom` submodule.
+
+1. Initialize / Update submodules:
+    1. `git submodule init`\
+        <sub>Adds [Core CMS Resources] repo as submodule at `taccsite_custom/`. Only necessary once per parent repo clone.</sub>
+    2. `git submodule update`\
+        <sub>Downloads code from pinned commit of [Core CMS Resources] repo to `taccsite_custom/`.</sub>
+2. Create a `taccsite_cms/settings_custom.py` symlink to `taccsite_custom/name-of-project/settings_custom.py`
 *†
-2. Build project-specific static files. _See [Static Files](/README.md#static-files)._
+3. Build project-specific static files. _See [Static Files](/README.md#static-files)._
 
 <sub>\* Where `name-of-project` matches a directory from `/taccsite_custom`.</sub>\
 <sub>† Example (from project root): `ln -s ../taccsite_custom/name-of-project/settings_custom.py taccsite_cms/settings_custom.py`\*</sub>
@@ -196,9 +202,10 @@ If you changes files in any `static/` directory, you may need to follow some of 
     `/taccsite_custom/static/name-of-project/css/build` †
 
 <sub>\* The recommended command to install expected dependencies is `npm ci`.</sub>\
-<sub>† Where `name-of-project` matches a directory from `/taccsite_custom`.</sub>\
-<sub>‡ To commit such changes, see [Changing Custom Resources](#changing-custom-resources).</sub>\
-<sub>§ A build ID can tag files (e.g. preserved comment in stylesheet).</sub>
+<sub>† Where `name-of-project` matches a directory from `/taccsite_custom`.‡</sub>\
+<sub>‡ If your custom CMS project is in [Core CMS Custom], you do __not__ need this step.</sub>\
+<sub>§ To commit such changes, see [Changing Custom Resources](#changing-custom-resources).</sub>\
+<sub>‖ A build ID can tag files (e.g. preserved comment in stylesheet).</sub>
 
 #### How to Build Static Files
 
@@ -217,7 +224,8 @@ Certain static files are built __from__ source files __in__ `src` directories __
     ```
 
 <sub>\* You should run these commands in the container __from `/code/`__. _See [Running Commands in Container](#running-commands-in-container)._</sub>\
-<sub>† Where `name-of-project` matches a directory from `/taccsite_custom`.</sub>
+<sub>† Where `name-of-project` matches a directory from `/taccsite_custom`.‡</sub>\
+<sub>‡ If your custom CMS project is in [Core CMS Custom], you do __not__ need this step.</sub>
 
 #### How to Collect Static Files
 
@@ -390,6 +398,7 @@ Only appointed team members may release versions.
 [Core CMS]: https://github.com/TACC/Core-CMS
 [Core Styles]: https://github.com/TACC/tup-ui/tree/main/libs/core-styles
 [Core CMS Resources]: https://github.com/TACC/Core-CMS-Resources
+[Core CMS Custom]: https://github.com/TACC/Core-CMS-Custom
 [Core Portal]: https://github.com/TACC/Core-Portal
 [1]: https://docs.docker.com/get-docker/
 [2]: https://docs.docker.com/compose/install/
