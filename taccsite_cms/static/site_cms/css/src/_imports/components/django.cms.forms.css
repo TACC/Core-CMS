@@ -40,7 +40,21 @@ Styleguide Components.DjangoCMS.Forms
 .field-wrapper:not(.checkboxinput) {
   display: flex;
   flex-direction: column;
-  align-items: start; /* i.e. prevent stretch */
+}
+.field-wrapper:not(
+  .dateinput,
+  .timeinput,
+  .radioselect,
+  .checkboxinput
+) {
+  align-items: stretch;
+}
+.field-wrapper:is(
+  .dateinput,
+  .timeinput,
+  .radioselect
+) {
+  align-items: start;
 }
 .field-wrapper:not(.checkboxinput) > .field-errors {
   order: 1; /* i.e. move to end */
