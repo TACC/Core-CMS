@@ -39,16 +39,20 @@ if getattr(settings, 'INCLUDES_CORE_PORTAL', True):
         url(r'^remote/login/$', remote_cms_auth.verify_and_auth, name='verify_and_auth'),
     ]
 
+# Let custom CMS apps override any URLs below
 try:
     from .urls_custom import custom_urls
     urlpatterns += custom_urls
 except ImportError:
     pass
 
-urlpatterns += [
-    # To provide markup when Portal is missing
-    url(r'^core/markup/nav/$', TemplateView.as_view(template_name='nav_portal.raw.html'), name='portal_nav_markup'),
+if getattr(settings, 'INCLUDES_PORTAL_NAV', True):
+    urlpatterns += [
+        # To provide markup when Portal is missing
+        url(r'^core/markup/nav/$', TemplateView.as_view(template_name='nav_portal.raw.html'), name='portal_nav_markup'),
+    ]
 
+urlpatterns += [
     # The Django CMS urls
     url(r'^', include('cms.urls')),
 ]
