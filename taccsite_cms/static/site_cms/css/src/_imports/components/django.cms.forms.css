@@ -142,7 +142,8 @@ ul.checkboxselectmultiple {
 
 /* Button */
 
-.button-wrapper button {
+.form-button,
+.button-wrapper button[type="submit"] {
   @extend .c-button;
   @extend .c-button--primary;
 }
