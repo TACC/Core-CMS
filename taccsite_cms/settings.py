@@ -270,7 +270,9 @@ STATICFILES_DIRS = (
     # os.path.join(BASE_DIR, 'taccsite_cms', 'en', 'static'),
 ) + tuple(glob(
     os.path.join(BASE_DIR, 'taccsite_custom', '*', 'static')
-))
+)) + (
+    ('ui', os.path.join(BASE_DIR, 'taccsite_ui', 'dist')),
+)
 
 # User Uploaded Files Location.
 MEDIA_URL = '/media/'
