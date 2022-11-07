@@ -33,23 +33,13 @@ Styleguide Components.DjangoCMS.Forms
   ul, /* FAQ: Lists already have margin-bottom */
   label /* FAQ: Labels already have margin-bottom */
 ) + .help-text {
-    margin-top: 0.3em; /* mimic Bootstrap _reboot.css label margin-bottom *\/
+    margin-top: 0.3em; /* mimic Bootstrap _reboot.css label margin-bottom */
 }
 /* To prevent help text font-style from affecting any tags */
 /* FAQ: Help text can contain inline elements like <samp> */
 /* FAQ: Help text can be (ab)used to add headings between form fields */
 .help-text > :not(details, a, samp) {
   font-style: initial;
-}
-
-
-
-/* Labels */
-
-.help-text .field-wrapper:first-child label {
-  /* To mimic .field-wrapper `margin-bottom: 2rem` */
-  /* IDEA: Change .field-wrapper margin to be on top except for first */
-  margin-top: 2rem;
 }
 
 
