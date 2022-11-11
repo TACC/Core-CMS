@@ -55,6 +55,7 @@ def limit_visibility_in_menu(context, menu_item):
     # FAQ: Example Logic
     #
     # if (
+    #     user.is_superuser or
     #     page_id == 'certain_groups_only_page' and has_certain_groups(user) or
     #     page_id == 'some_group_only_page' and is_specific_group(user) or
     #     not bool(page_id)
