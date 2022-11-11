@@ -15,23 +15,36 @@ Styleguide Components.DjangoCMS.Forms
 
 
 
-/* Content */
+/* Title & Description */
 
 .description {
   margin-block: 25px;
 }
 
+
+
+/* Help Text */
+
 .help-text {
   font-size: var(--global-font-size--small);
   font-style: italic;
 }
-:not(ul) + .help-text {
-  margin-top: 0.3em; /* mimic Bootstrap _reboot.css label { margin-bottom } */
+:not(
+  ul, /* FAQ: Lists already have margin-bottom */
+  label /* FAQ: Labels already have margin-bottom */
+) + .help-text {
+    margin-top: 0.3em; /* mimic Bootstrap _reboot.css label margin-bottom */
+}
+/* To prevent help text font-style from affecting any tags */
+/* FAQ: Help text can contain inline elements like <samp> */
+/* FAQ: Help text can be (ab)used to add headings between form fields */
+.help-text > :not(details, a, samp) {
+  font-style: initial;
 }
 
 
 
-/* Field */
+/* Fields */
 
 .field-wrapper {
   margin-bottom: 2rem; /* mimic <p> `margin-bottom` */
@@ -40,21 +53,6 @@ Styleguide Components.DjangoCMS.Forms
 .field-wrapper:not(.checkboxinput) {
   display: flex;
   flex-direction: column;
-}
-.field-wrapper:not(
-  .dateinput,
-  .timeinput,
-  .radioselect,
-  .checkboxinput
-) {
-  align-items: stretch;
-}
-.field-wrapper:is(
-  .dateinput,
-  .timeinput,
-  .radioselect
-) {
-  align-items: start;
 }
 .field-wrapper:not(.checkboxinput) > .field-errors {
   order: 1; /* i.e. move to end */
@@ -90,21 +88,49 @@ ul.checkboxselectmultiple li:last-child label {
   margin-bottom: 0; /* overwrite forms.css label */
 }
 
-.asterisk {
+/* Field: Required, Asterisk, Important */
+
+.field-wrapper.required > label {
+  font-weight: var(--bold);
+}
+.field-wrapper.required > label .asterisk {
+  font-weight: var(--regular);
+}
+
+/* To not render space from markup between label and asterisk */
+/* FAQ: The `:has(sup, sub)` prevents a <sup>7</sup> from being too high/low */
+.field-wrapper.required:has(label .asterisk) label:has(sub, sup) {
+  display: flex;
+  align-items: center;
+}
+
+.field-wrapper .asterisk {
   margin-left: 0.5em;
+}
+.field-wrapper.required .asterisk {
   color: var(--global-color-danger--dark);
 }
-/* To replace markup text "*" with new text "(required)" */
-.asterisk {
+.field-wrapper:not(.required) .asterisk
+/* NOTE: Manual markup ONLY; form plugin can't render non-required asterisk */ {
+  color: var(--global-color-warning--dark);
+}
+/* To replace asterisk character with text */
+.field-wrapper .asterisk {
   width: 0;
   display: inline-block;
   visibility: hidden;
   line-height: 0;
 }
-.asterisk::after {
-  content: '(required)';
+.field-wrapper .asterisk::after {
   visibility: visible;
   line-height: initial;
+}
+.field-wrapper.required .asterisk::after {
+  content: '(required)';
+}
+.field-wrapper:not(.required) .asterisk::after
+/* NOTE: Manual markup ONLY; form plugin can't render non-required asterisk */ {
+  content: '(important)';
 }
 
 
