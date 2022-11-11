@@ -14,7 +14,7 @@ register = template.Library()
 #
 # 1. Clone this file into the app's matching directory.
 # 2. The CMS should add Page IDs and User Groups as needed.
-# 3. The example functions and example logic may be built upon or replaced
+# 3. The example functions and example logic may be built upon or replaced.
 
 # FAQ: Example Functions
 #
