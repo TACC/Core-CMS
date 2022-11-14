@@ -1,0 +1,13 @@
+/* Allow making all hyperlinks "irregular" styles */
+
+@import url("_imports/tools/x-link.css");
+
+a {
+  @extend .x-link--irregular;
+}
+a:hover {
+  @extend .x-link--irregular--hover;
+}
+a:active {
+  @extend .x-link--irregular--active;
+}
