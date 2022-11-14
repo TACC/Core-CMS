@@ -15,9 +15,10 @@ let cmsName = 'core-cms';
 let projName = args['project'] || '';
     projName = ( projName !== cmsName ) ? projName : '';
 // (stylesheet)
-const cmsCSSFile = 'cms/site.css';
+const escapeDemoDir = '/../..'; // i.e. back out of '/static/ui'
+const cmsCSSFile = `${escapeDemoDir}/static/site_cms/css/build/site.css`;
 const projCSSFile = ( projName )
-  ? `projects/${projName}/static/${projName}/css/build/site.css`
+  ? `${escapeDemoDir}/static/${projName}/css/build/site.css`
   : null;
 
 // Set source paths
@@ -28,13 +29,11 @@ fractal.components.set('path', __dirname + '/patterns');
 fractal.components.set('default.context', {
   styles: {
     shouldSkipBase: true, // true, because site.css includes components
-    internal: {
-      global: [ cmsCSSFile ].concat( ( projCSSFile ) ? [ projCSSFile ] : [] )
-    },
     external: {
       global: [
-        'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'
-      ]
+        'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css',
+        cmsCSSFile,
+      ].concat( ( projCSSFile ) ? [ projCSSFile ] : [] )
     }
   }
 });
@@ -44,14 +43,7 @@ if ( projCSSFile ) {
 }
 
 // Set website paths
-/*
-fractal.web.set('static.path',
-  path.dirname( require.resolve('@tacc/core-styles')) +
-  '/..' + // exits 'src/' which is at the end of what require.resolve returns
-  '/dist'
-);
-*/
-fractal.web.set('static.path', __dirname + '/styles');
+fractal.web.set('static.path', __dirname + '/../node_modules/@tacc/core-styles/build');
 fractal.web.set('builder.dest', __dirname + '/dist');
 
 // Customize theme
