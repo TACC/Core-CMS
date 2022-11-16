@@ -36,6 +36,8 @@
 @import url("_imports/objects/o-float-content.css");
 @import url("_imports/objects/o-offset-content.css");
 @import url("_imports/objects/o-section.css");
+@import url("@tacc/core-styles/src/lib/_imports/objects/o-fixed-header-table.css");
+@import url("@tacc/core-styles/src/lib/_imports/objects/o-table-wrap.css");
 
 /* COMPONENTS */
 @import url("_imports/components/c-card.css");
