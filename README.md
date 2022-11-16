@@ -41,9 +41,9 @@ Settings may be customized piecemeal by adding, in any of these files, only the 
 
 | \* | File | Usage |
 | - | - | - |
-| 1 | `secrets.py` | Sensitive setting we would never commit to GitHub, like DB creds and secret values |
-| 2 | `settings_custom.py` | Settings specific to one CMS project (you can symlink to an existing file)† |
-| 3 | `settings_local.py` | Settings specific to a local development environment, not intended for others |
+| 1 | `taccsite_cms/secrets.py` | Sensitive setting we would never commit to GitHub, like DB creds and secret values |
+| 2 | `taccsite_cms/settings_custom.py` | Settings specific to one CMS project (you can symlink to an existing file)† |
+| 3 | `taccsite_cms/settings_local.py` | Settings specific to a local development environment, not intended for others |
 
 <sub>\* This is a "Precedence" column. [A file with a higher precedence value overrides one of a lower value.](https://github.com/TACC/Core-CMS/blob/929dc4b/taccsite_cms/settings.py#L458-L478)</sub>\
 <sub>† See [If You Want to Test Custom CMS Projects](#if-you-want-to-test-custom-cms-projects).</sub>
