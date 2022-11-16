@@ -59,7 +59,9 @@ INCLUDES_PORTAL_NAV = False
 
 #### If You Want to Use This With Local [Core Portal] Instance
 
-Follow [How to Use a Custom Docker Compose File](https://github.com/TACC/Core-CMS/wiki/How-to-Use-a-Custom-Docker-Compose-File).
+_Not recommended yet._ Follow [How to Use a Custom Docker Compose File](https://github.com/TACC/Core-CMS/wiki/How-to-Use-a-Custom-Docker-Compose-File) and [Locally Develop CMS Portal Docs](https://github.com/TACC/Core-CMS/wiki/Locally-Develop-CMS---Portal---Docs).⚠️
+
+> __Warning__: Tedious and cumbersome. There may be a simpler way. Only one (or maybe few) employee(s) have succeeded.
 
 #### If You Want to Test Custom CMS Projects
 
