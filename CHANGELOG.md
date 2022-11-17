@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.8.2] - 2022-11-16: New BrainMap Logo URL & Accent Colors
+
+### Changed
+
+- feat(taccsite_custom): bm-41 new logo (off of cms v3.8.1) (#570)
+
 ## [3.8.1] - 2022-08-26: Change BrainMap Logo URL to Hoem Page not Ext. Page
 
 ### Changed
@@ -453,7 +459,8 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 ## [2.0.0] - 2021-03-31
 v2.0.0 Production release as of Mar 31, 2021.
 
-[Unreleased]: https://github.com/TACC/Core-CMS/compare/v3.8.1...HEAD
+[Unreleased]: https://github.com/TACC/Core-CMS/compare/v3.8.2...HEAD
+[3.8.2]: https://github.com/TACC/Core-CMS/releases/tag/v3.8.2
 [3.8.1]: https://github.com/TACC/Core-CMS/releases/tag/v3.8.1
 [3.8.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.8.0
 [3.7.11]: https://github.com/TACC/Core-CMS/releases/tag/v3.7.11
