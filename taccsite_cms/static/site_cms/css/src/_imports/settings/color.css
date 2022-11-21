@@ -2,26 +2,8 @@
 
 :root {
 
-  /* Accent */
-  /* CAVEAT: A standard accent color definition is pending more designs */
-  /* NOTE: The new Frontera and TACC designs both have brown and blue accents */
-
-  --global-color-accent--x-light: #F2DFBD; /* originally #e3d7fd */
-  --global-color-accent--light: #BDA374;   /* originally #a387ed */
-  --global-color-accent--normal: #877453;  /* originally #784fe8 */
-  --global-color-accent--dark: #64563E;    /* originally #6039cc */
-  --global-color-accent--x-dark: #403014;  /* originally #3d189b */
-
-  --global-color-accent--alt: #E0D8C9;     /* originally #d2cce7 */
-  --global-color-accent--weak: #9D702140;  /* originally #6039cc40 */
-
-
-
   /* Link */
-
-  /* CAVEAT: Not accessible within paragraph text (edge case as of 2021-08) */
-  --global-color-link-on-light--normal: #003399;
-  /* WARNING: This color is from Dev not Design (not rendered as of 2021-08) */
-  --global-color-link-on-dark--normal: #0088FF;
+  --global-color-link-on-light--normal: var(--global-color-accent--normal);
+  --global-color-link-on-dark--normal: var(--global-color-accent--xxx-light);
 
 }

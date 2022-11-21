@@ -41,20 +41,27 @@ Settings may be customized piecemeal by adding, in any of these files, only the 
 
 | \* | File | Usage |
 | - | - | - |
-| 1 | `secrets.py` | Sensitive setting we would never commit to GitHub, like DB creds and secret values |
-| 2 | `settings_custom.py` | Settings specific to one CMS project (you can symlink to an existing file)† |
-| 3 | `settings_local.py` | Settings specific to a local development environment, not intended for others |
+| 1 | `taccsite_cms/secrets.py` | Sensitive setting we would never commit to GitHub, like DB creds and secret values |
+| 2 | `taccsite_cms/settings_custom.py` | Settings specific to one CMS project (you can symlink to an existing file)† |
+| 3 | `taccsite_cms/settings_local.py` | Settings specific to a local development environment, not intended for others |
 
 <sub>\* This is a "Precedence" column. [A file with a higher precedence value overrides one of a lower value.](https://github.com/TACC/Core-CMS/blob/929dc4b/taccsite_cms/settings.py#L458-L478)</sub>\
 <sub>† See [If You Want to Test Custom CMS Projects](#if-you-want-to-test-custom-cms-projects).</sub>
 
 #### If You Run this CMS Independent of [Core Portal]
 
-Add `INCLUDES_CORE_PORTAL = False` to `taccsite_cms/settings_local.py` (to avoid [Not Found: `core/markup/nav/`](https://github.com/TACC/Core-CMS/wiki/Not-Found%3A--core-markup-nav)).
+To avoid nav layout error and page error [Not Found: `core/markup/nav/`](https://github.com/TACC/Core-CMS/wiki/Not-Found%3A--core-markup-nav), add these settings to `taccsite_cms/settings_local.py`:
+
+```
+INCLUDES_CORE_PORTAL = False
+INCLUDES_PORTAL_NAV = False
+```
 
 #### If You Want to Use This With Local [Core Portal] Instance
 
-Follow [How to Use a Custom Docker Compose File](https://github.com/TACC/Core-CMS/wiki/How-to-Use-a-Custom-Docker-Compose-File).
+_Not recommended yet._ Follow [How to Use a Custom Docker Compose File](https://github.com/TACC/Core-CMS/wiki/How-to-Use-a-Custom-Docker-Compose-File) and [Locally Develop CMS Portal Docs](https://github.com/TACC/Core-CMS/wiki/Locally-Develop-CMS---Portal---Docs).
+
+> __Warning__: Tedious and cumbersome. There may be a simpler way. Only one (or maybe few) employee(s) have succeeded.
 
 #### If You Want to Test Custom CMS Projects
 

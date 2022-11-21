@@ -56,7 +56,7 @@ DATABASES = {
 
 
 ########################
-# LOGGING 
+# LOGGING
 ########################
 
 LOGGING = {
@@ -236,6 +236,8 @@ FAVICON = {
 ########################
 
 INCLUDES_CORE_PORTAL = True
+INCLUDES_PORTAL_NAV = INCLUDES_CORE_PORTAL
+INCLUDES_SEARCH_BAR = INCLUDES_CORE_PORTAL
 
 LOGOUT_REDIRECT_URL = '/'
 
@@ -268,7 +270,9 @@ STATICFILES_DIRS = (
     # os.path.join(BASE_DIR, 'taccsite_cms', 'en', 'static'),
 ) + tuple(glob(
     os.path.join(BASE_DIR, 'taccsite_custom', '*', 'static')
-))
+)) + (
+    ('ui', os.path.join(BASE_DIR, 'taccsite_ui', 'dist')),
+)
 
 # User Uploaded Files Location.
 MEDIA_URL = '/media/'
@@ -600,6 +604,8 @@ SETTINGS_EXPORT = [
     'LOGO',
     'FAVICON',
     'INCLUDES_CORE_PORTAL',
+    'INCLUDES_PORTAL_NAV',
+    'INCLUDES_SEARCH_BAR',
     'GOOGLE_ANALYTICS_PROPERTY_ID',
     'GOOGLE_ANALYTICS_PRELOAD',
     'TACC_BLOG_SHOW_CATEGORIES',
