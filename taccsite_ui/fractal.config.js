@@ -40,7 +40,7 @@ if ( projCSSFile ) {
 }
 
 // Set website paths
-fractal.web.set('static.path', __dirname + '/../node_modules/@tacc/core-styles/build');
+fractal.web.set('static.path', __dirname + '/../node_modules/@tacc/core-styles/dist');
 fractal.web.set('builder.dest', __dirname + '/dist');
 
 // Customize theme
