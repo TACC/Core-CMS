@@ -28,7 +28,6 @@ Styleguide Generics.Fonts
   font-style: normal;
   font-display: swap;
 }
-
 @font-face {
   font-family: 'Benton Sans';
   src: url("/static/frontera-cms/fonts/archive/BentonSans-RegularItalic.otf") format("opentype");
