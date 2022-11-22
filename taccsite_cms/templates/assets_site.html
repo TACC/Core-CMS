@@ -13,15 +13,33 @@ FAQ: IF a script or style is better cached with markup, THEN:
 
 
 <!-- Site Assets: Styles. -->
+{% if settings.TACC_CORE_STYLES_VERSION == 0 %}
+
 <link id="css-bootstrap" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 {# CAVEAT: Requires `npm run build` step before running the Django project. #}
 <link id="css-site" rel="stylesheet" href="{% static 'site_cms/css/build/site.css' %}">
 <link id="css-site-header" rel="stylesheet" href="{% static 'site_cms/css/build/site.header.css' %}">
 
+{% elif settings.TACC_CORE_STYLES_VERSION == 1 %}
+
+<style>
+  @import url("https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css") layer(foundation);
+
+  {# CAVEAT: Requires `npm run build` step before running the Django project. #}
+  {# TODO: Host Core-Styles static files on a CDN #}
+
+  @import url("{% static 'site_cms/css/build/core-styles.base.css' %}") layer(base);
+  @import url("{% static 'site_cms/css/build/core-styles.header.css' %}") layer(base);
+
+  @import url("{% static 'site_cms/css/build/core-styles.cms.css' %}") layer(project);
+</style>
+
+{% endif %}
 
 
-{# Portal & Docs #}
+
+{# "CEPv2" Portal & Frontera Docs #}
 {# FAQ: Websites that load CMS header should load these assets in this order #}
 {% comment %}
   {# To load externally-hosted font which is in the font stack of CMS styles #}
