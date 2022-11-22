@@ -13,12 +13,16 @@
   import * as registerCustomElement from '/static/site_cms/js/modules/registerCustomElement.js';
 
   const template = document.getElementById('s-search-bar').firstElementChild;
+
+  {% if settings.TACC_CORE_STYLES_VERSION == 0 %}
   /* Load necessary Bootstrap outside raw markup so CMS */
   /* FAQ: CMS, Portal, User Guide each use a different Bootstrap file */
   /* TODO: After CMS redesign, use only one Bootstrap version (Portal's) */
   template.content.prepend(
     document.getElementById('css-bootstrap').cloneNode(true)
   );
+  {% endif %}
+
   registerCustomElement.fromTemplate(template, 'tacc-search-bar');
 </script>
 
