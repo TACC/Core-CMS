@@ -11,7 +11,7 @@ Reference:
 Styleguide Components.DjangoCMS.Forms
 */
 @import url("@tacc/core-styles/src/lib/_imports/components/c-button.css");
-@import url("./django.cms.forms.hacks.css");
+@import url("./django-cms-forms-hacks.css");
 
 
 
@@ -82,6 +82,7 @@ ul.checkboxselectmultiple label {
   display: flex;
   gap: 0.5em;
   align-items: center;
+  font-weight: revert; /* undo html-elements.cms.css */
 }
 ul.radioselect li:last-child label,
 ul.checkboxselectmultiple li:last-child label {
@@ -95,13 +96,6 @@ ul.checkboxselectmultiple li:last-child label {
 }
 .field-wrapper.required > label .asterisk {
   font-weight: var(--regular);
-}
-
-/* To not render space from markup between label and asterisk */
-/* FAQ: The `:has(sup, sub)` prevents a <sup>7</sup> from being too high/low */
-.field-wrapper.required:has(label .asterisk) label:has(sub, sup) {
-  display: flex;
-  align-items: center;
 }
 
 .field-wrapper .asterisk {

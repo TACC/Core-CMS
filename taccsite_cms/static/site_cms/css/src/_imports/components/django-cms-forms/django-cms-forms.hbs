@@ -1,0 +1,328 @@
+<div class="forms">
+
+  <h3 class="title">Title of Form</h3>
+  <div class="description">
+    I describe the form, but not very well.
+  </div>
+
+  <div class="form-wrapper">
+    <form action="" method="POST" enctype="multipart/form-data">
+      <div class="form-errors" style="display:none;"></div>
+
+      <div class="field-wrapper textinput required">
+        <div class="field-errors" style="display:none;"></div>
+
+        <label for="name">
+          Name<span class="asterisk">*</span>
+        </label>
+
+        <input
+          type="text"
+          name="name"
+          required=""
+          placeholder="Your name"
+          class="textinput"
+          id="name"
+        />
+
+        <div id="help-text-name" class="help-text">
+          We use this to identify your submission.
+        </div>
+      </div>
+
+      <div class="field-wrapper select">
+        <div class="field-errors" style="display:none;"></div>
+
+        <label for="favorite-fruit">Favorite Fruit</label>
+
+        <select name="favorite-fruit" class="choicefield" id="favorite-fruit">
+          <option value="" selected="">
+            Please select an option
+          </option>
+
+          <option value="Apple">Apple</option>
+
+          <option value="Banana">Banana</option>
+
+          <option value="Cherry">Cherry</option>
+
+          <option value="Durian">Durian</option>
+
+          <option value="Other">Other</option>
+
+          <option value="Whatever">Whatever</option>
+        </select>
+
+        <div id="help-text-favorite-fruit" class="help-text">
+          Choose your favorite fruit.
+        </div>
+      </div>
+
+      <div class="field-wrapper timeinput">
+        <div class="field-errors" style="display:none;"></div>
+
+        <label for="wake-up-time">Wake Up Time</label>
+
+        <input
+          type="time"
+          name="wake-up-time"
+          class="timeinput"
+          id="wake-up-time"
+        />
+
+        <div id="help-text-wake-up-time" class="help-text">
+          We use this to know when to wake you up.
+        </div>
+      </div>
+
+      <div class="field-wrapper radioselect">
+        <div class="field-errors" style="display:none;"></div>
+
+        <label for="radio-stations_0">Radio stations</label>
+
+        <ul id="radio-stations" class="radioselect">
+          <li>
+            <label for="radio-stations_0">
+              <input
+                type="radio"
+                name="radio-stations"
+                value="LX 1234"
+                class="radioselect"
+                id="radio-stations_0"
+              />
+              LX 1234
+            </label>
+          </li>
+          <li>
+            <label for="radio-stations_1">
+              <input
+                type="radio"
+                name="radio-stations"
+                value="LOVE 45"
+                class="radioselect"
+                id="radio-stations_1"
+              />
+              LOVE 45
+            </label>
+          </li>
+          <li>
+            <label for="radio-stations_2">
+              <input
+                type="radio"
+                name="radio-stations"
+                value="OLD 555"
+                class="radioselect"
+                id="radio-stations_2"
+              />
+              OLD 555
+            </label>
+          </li>
+        </ul>
+
+        <div id="help-text-radio-stations" class="help-text">
+          Which radio stations do you prefer?
+        </div>
+      </div>
+
+      <div class="field-wrapper checkboxinput">
+        <div class="field-errors" style="display:none;"></div>
+
+        <input
+          type="checkbox"
+          name="checking-out"
+          class="booleanfield"
+          id="checking-out"
+        />
+
+        <label for="checking-out">Checking Out?</label>
+
+        <div id="help-text-checking-out" class="help-text">
+          Are you checking out today?
+        </div>
+      </div>
+
+      <div class="field-wrapper checkboxselectmultiple required">
+        <div class="field-errors" style="display:none;"></div>
+
+        <label for="">
+          Which fish do you want?<span class="asterisk">*</span>
+        </label>
+
+        <ul id="which-fish-do-you-want" class="checkboxselectmultiple">
+          <li>
+            <label for="which-fish-do-you-want_0">
+              <input
+                type="checkbox"
+                name="which-fish-do-you-want"
+                value="one fish"
+                required="required"
+                class="checkboxselectmultiple"
+                id="which-fish-do-you-want_0"
+              />
+              one fish
+            </label>
+          </li>
+          <li>
+            <label for="which-fish-do-you-want_1">
+              <input
+                type="checkbox"
+                name="which-fish-do-you-want"
+                value="two fish"
+                required="required"
+                class="checkboxselectmultiple"
+                id="which-fish-do-you-want_1"
+              />
+              two fish
+            </label>
+          </li>
+          <li>
+            <label for="which-fish-do-you-want_2">
+              <input
+                type="checkbox"
+                name="which-fish-do-you-want"
+                value="red fish"
+                required="required"
+                class="checkboxselectmultiple"
+                id="which-fish-do-you-want_2"
+              />
+              red fish
+            </label>
+          </li>
+          <li>
+            <label for="which-fish-do-you-want_3">
+              <input
+                type="checkbox"
+                name="which-fish-do-you-want"
+                value="blue fish"
+                required="required"
+                class="checkboxselectmultiple"
+                id="which-fish-do-you-want_3"
+              />
+              blue fish
+            </label>
+          </li>
+          <li>
+            <label for="which-fish-do-you-want_4">
+              <input
+                type="checkbox"
+                name="which-fish-do-you-want"
+                value="all the fish"
+                required="required"
+                class="checkboxselectmultiple"
+                id="which-fish-do-you-want_4"
+              />
+              all the fish
+            </label>
+          </li>
+        </ul>
+      </div>
+
+      <div class="field-wrapper select">
+        <div class="field-errors" style="display:none;"></div>
+
+        <label for="hangry-time">Hangry Time</label>
+
+        <select name="hangry-time" class="choicefield" id="hangry-time">
+          <option value="" selected="">
+            Please select an option
+          </option>
+
+          <option value="Morning">Morning</option>
+
+          <option value="Noon">Noon</option>
+
+          <option value="Afternoon">Afternoon</option>
+
+          <option value="Evening">Evening</option>
+
+          <option value="Night">Night</option>
+
+          <option value="Midnight">Midnight</option>
+        </select>
+
+        <div id="help-text-hangry-time" class="help-text">
+          At which time of day do you get hangry?
+        </div>
+      </div>
+
+      <div class="field-wrapper textarea">
+        <div class="field-errors" style="display:none;"></div>
+
+        <label for="life-story">Life Story</label>
+
+        <textarea
+          name="life-story"
+          cols="40"
+          rows="10"
+          class="textarea"
+          id="life-story"
+        ></textarea>
+
+        <div id="help-text-life-story" class="help-text">
+          Go on, tell me everything.
+        </div>
+      </div>
+
+      <div class="field-wrapper dateinput">
+        <div class="field-errors" style="display:none;"></div>
+
+        <label for="what-day-is-it">What day is it?</label>
+
+        <input
+          type="date"
+          name="what-day-is-it"
+          class="dateinput"
+          id="what-day-is-it"
+        />
+
+        <div id="help-text-what-day-is-it" class="help-text">
+          Please enter today's date.
+        </div>
+      </div>
+
+      <div class="field-wrapper clearablefileinput">
+        <div class="field-errors" style="display:none;"></div>
+
+        <label for="your-favorite-picture">Your favorite picture</label>
+
+        <input
+          type="file"
+          name="your-favorite-picture"
+          class="filefield"
+          id="your-favorite-picture"
+        />
+
+        <div id="help-text-your-favorite-picture" class="help-text">
+          Upload your favorite image.
+          <small>
+            Supported types:
+            <code>.jpeg</code>,<code>.jpg</code>,<code>.gif</code>,<code>.png</code>
+          </small>
+        </div>
+      </div>
+
+      <div class="field-wrapper recaptchav2checkbox required">
+        <div class="field-errors" style="display:none;"></div>
+
+        <label for="recaptcha_g9y93gP8">
+          Are you a robot?<span class="asterisk">*</span>
+        </label>
+
+        <script src="https://www.google.com/recaptcha/api.js"></script>
+        <script type="text/javascript">
+          // Submit function to be called, after reCAPTCHA was successful. var
+          onSubmit_9e32f28ccb9545109ff6ae891f9af324 = function(token){" "}
+          {console.log("reCAPTCHA validated for 'data-widget-uuid=\"9e32f28ccb9545109ff6ae891f9af324\"'")};
+        </script>
+        <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI" required="" id="recaptcha_g9y93gP8" data-widget-uuid="9e32f28ccb9545109ff6ae891f9af324" data-callback="onSubmit_9e32f28ccb9545109ff6ae891f9af324" data-size="normal"></div>
+      </div>
+
+      <div class="button-wrapper submit">
+        <button class="form-button" type="submit" value="Submit (Custom Text)">
+          Submit (Custom Text)
+        </button>
+      </div>
+    </form>
+  </div>
+
+</div>
