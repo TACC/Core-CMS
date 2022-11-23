@@ -1,0 +1,6 @@
+/* DO NOT ADD STYLES HERE; ONLY IMPORT OTHER STYLESHEETS */
+
+/* TODO: Host Core-Styles static files on a CDN */
+@import url("./_core-styles/core-styles.base.css");
+@import url("./_core-styles/core-styles.cms.css");
+@import url("./_core-styles/core-styles.header.css");

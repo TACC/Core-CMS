@@ -27,15 +27,10 @@ FAQ: IF a script or style is better cached with markup, THEN:
   {# https://confluence.tacc.utexas.edu/x/b53tDg #}
   @layer foundation, base, project;
 
-  @import url("https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css") layer(foundation);
-
-  {# CAVEAT: Requires `npm run build` step before running the Django project. #}
-  {# TODO: Host Core-Styles static files on a CDN #}
-  @import url("{% static 'site_cms/css/build/core-styles.base.css' %}") layer(base);
-  @import url("{% static 'site_cms/css/build/core-styles.cms.css' %}") layer(base);
-  @import url("{% static 'site_cms/css/build/core-styles.header.css' %}") layer(base);
+  @import url("{% static 'site_cms/css/build/0-foundation.css' %}") layer(foundation);
+  @import url("{% static 'site_cms/css/build/1-base.css' %}") layer(base);
+  @import url("{% static 'site_cms/css/build/2-project.css' %}") layer(project);
 </style>
-<link href="{% static 'site_cms/css/build/project.global.css' %}" rel="stylesheet">
 
 {% endif %}
 

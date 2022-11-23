@@ -16,10 +16,14 @@ let projName = args['project'] || '';
     projName = ( projName !== cmsName ) ? projName : '';
 // (stylesheet)
 const escapeDemoDir = '/../..'; // i.e. back out of '/static/ui'
-const cmsCSSFile = `${escapeDemoDir}/static/site_cms/css/build/site.css`;
-const projCSSFile = ( projName )
-  ? `${escapeDemoDir}/static/${projName}/css/build/site.css`
-  : null;
+const cmsCSSFiles = [
+  `${escapeDemoDir}/static/site_cms/css/build/0-foundation.css`,
+  `${escapeDemoDir}/static/site_cms/css/build/1-base.css`,
+  `${escapeDemoDir}/static/site_cms/css/build/2-project.css`
+];
+const projCSSFiles = ( projName )
+  ? [`${escapeDemoDir}/static/${projName}/css/build/site.css`]
+  : [];
 
 // Set source paths
 // (for components)
@@ -30,13 +34,15 @@ fractal.components.set('default.context', {
   styles: {
     shouldSkipBase: true, // true, because site.css includes components
     external: {
-      global: [ cmsCSSFile ].concat( ( projCSSFile ) ? [ projCSSFile ] : [] )
+      global: cmsCSSFiles.concat( projCSSFiles )
     }
   }
 });
-fractal.cli.log(`+ Included CSS for "${cmsName}": '${cmsCSSFile}'`);
-if ( projCSSFile ) {
-  fractal.cli.log(`+ Included CSS for "${projName}": '${projCSSFile}'`);
+fractal.cli.log(`+ Included CSS for "${cmsName}"`);
+cmsCSSFiles.forEach( file => { fractal.cli.log(file) });
+if ( projCSSFiles.length > 0 ) {
+  fractal.cli.log(`+ Included CSS for "${projName}"`);
+  projCSSFiles.forEach( file => { fractal.cli.log(file) });
 }
 
 // Set website paths

@@ -1,5 +1,3 @@
-@import url("@tacc/core-styles/src/lib/_imports/settings/font.css");
-
 :root {
   --global-font-family--sans: var(--global-font-family--sans--cms);
 
