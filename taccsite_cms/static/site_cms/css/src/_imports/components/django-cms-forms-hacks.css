@@ -21,6 +21,9 @@ Styleguide Components.DjangoCMS.Forms.Hacks
   display: block;
   margin-top: 0.5em;
 
+  /* To override styles inherited from `django-cms-forms.css` */
+  font-weight: normal;
+
   /* To mimic c-message */
   /* https://github.com/TACC/tup-ui/blob/main/libs/core-styles/src/lib/_imports/components/c-message.css */
   padding: 15px 20px;
