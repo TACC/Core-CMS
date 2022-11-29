@@ -1,5 +1,1 @@
-preview: '@preview.cms'
-context:
-  styles:
-    shouldSkipBase: false
 label: Django CMS Forms

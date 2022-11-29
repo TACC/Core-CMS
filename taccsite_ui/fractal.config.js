@@ -17,13 +17,29 @@ let projName = args['project'] || '';
 // (stylesheet)
 const escapeDemoDir = '/../..'; // i.e. back out of '/static/ui'
 const cmsCSSFiles = [
-  `${escapeDemoDir}/static/site_cms/css/build/0-foundation.css`,
-  `${escapeDemoDir}/static/site_cms/css/build/1-base.css`,
-  `${escapeDemoDir}/static/site_cms/css/build/2-project.css`
+  {
+    isInternal: false,
+    layer: 'foundation',
+    path: `${escapeDemoDir}/static/site_cms/css/build/0-foundation.css`,
+  },
+  {
+    isInternal: false,
+    layer: 'base',
+    path: `${escapeDemoDir}/static/site_cms/css/build/1-base.css`,
+  },
+  {
+    isInternal: false,
+    layer: 'project',
+    path: `${escapeDemoDir}/static/site_cms/css/build/2-project.css`,
+  },
 ];
-const projCSSFiles = ( projName )
-  ? [`${escapeDemoDir}/static/${projName}/css/build/site.css`]
-  : [];
+const projCSSFiles = ( projName ) ? [
+  {
+    isInternal: false,
+    layer: 'cosmetic',
+    path: `${escapeDemoDir}/static/${projName}/css/build/site.css`
+  },
+] : [];
 
 // Set source paths
 // (for components)
@@ -31,18 +47,16 @@ fractal.components.set('exclude', '*.md');
 fractal.components.set('path', __dirname + '/patterns');
 // (for stylesheets)
 fractal.components.set('default.context', {
-  styles: {
-    shouldSkipBase: true, // true, because site.css includes components
-    external: {
-      global: cmsCSSFiles.concat( projCSSFiles )
-    }
-  }
+  shouldSkipCMS: true, // true, because CMS loads its own styles
+  shouldSkipBootstrap: true, // true, because CMS loads its own styles
+  shouldSkipPattern: true, // true, because CMS loads patterns itself
+  globalStyles: cmsCSSFiles.concat( projCSSFiles )
 });
 fractal.cli.log(`+ Included CSS for "${cmsName}"`);
-cmsCSSFiles.forEach( file => { fractal.cli.log(file) });
+cmsCSSFiles.forEach( file => { fractal.cli.log(file.path) });
 if ( projCSSFiles.length > 0 ) {
   fractal.cli.log(`+ Included CSS for "${projName}"`);
-  projCSSFiles.forEach( file => { fractal.cli.log(file) });
+  projCSSFiles.forEach( file => { fractal.cli.log(file.path) });
 }
 
 // Set website paths
