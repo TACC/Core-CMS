@@ -11,7 +11,7 @@ plugins:
     importFrom:
       - 'node_modules/@tacc/core-styles/src/lib/_themes/default.json'
   postcss-replace:
-    # @tacc/core-styles 'dist/' uses `./fonts`, while src uses `../../fonts`
-    pattern: (.\/fonts\/|..\/..\/fonts\/)
+    # @tacc/core-styles: 'src/' uses `fonts/`, 'dist/' uses `../../fonts/`
+    pattern: (..\/..\/fonts\/|fonts/)
     data:
       replaceAll: /static/site_cms/fonts/
