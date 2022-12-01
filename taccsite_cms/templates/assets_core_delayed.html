@@ -1,22 +1,13 @@
-{# For assets that should be loaded after all others. #}
-{% comment %}
-Consider asset load via `assets_site`, not `assets_site_delayed`:
-  - Styles should not need a delayed load time.
-  - Scripts can use `defer` or `async` attr's to manage load time.
-{% endcomment %}
+{# SEE: ./assets_core.md #}
+{% load staticfiles %}
 
-{# NOTE: Fonts may be loaded early via `assets_font` #}
-
-
-
-<!-- Site Assets (Delayed): Scripts. -->
 {# FAQ: Bootstrap can use jQuery, Popper, then its own script #}
 {# SEE: https://getbootstrap.com/docs/4.0/getting-started/introduction/#starter-template #}
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script type="module">
-  import updateEmailLinkHrefs from '/static/site_cms/js/modules/updateEmailLinkHrefs.js';
+  import updateEmailLinkHrefs from '{% static "site_cms/js/modules/updateEmailLinkHrefs.js" %}';
 
   const scopeElement = document.getElementById('cms-content');
   const fakeText = '__REMOVE_THIS__';
@@ -28,8 +19,3 @@ Consider asset load via `assets_site`, not `assets_site_delayed`:
     body: 'data-body'
   });
 </script>
-
-<!-- Site Assets (Delayed): Font Icons -->
-{# FAQ: Not loaded in `assets_font.html` because these is NOT font for content which should avoid FOUT, FOIT, FOFT; but decorative, thus superfluous, icons #}
-<!-- FP-526: Stop using Font Awesome icons; start using Cortal icons -->
-<link id="css-portal-font" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css" />

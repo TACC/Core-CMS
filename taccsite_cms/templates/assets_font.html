@@ -3,18 +3,9 @@
 {% load staticfiles %}
 
 
-{% if settings.TACC_CORE_STYLES_VERSION == 0 %}
 
 <link id="css-site-font" rel="stylesheet" href="{% static 'site_cms/css/build/site.fonts.css' %}">
 <link id="css-site-font--backup" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
-
-{% elif settings.TACC_CORE_STYLES_VERSION == 1 %}
-
-{# TODO: Determine whether and how to load Core-Styles fonts early #}
-{# FAQ: They are currently loaded from Core-Styles (settings/font.css) #}
-{# https://github.com/TACC/Core-Styles/blob/7faef4f/src/lib/_imports/settings/font.css#L22 #}
-
-{% endif %}
 
 
 

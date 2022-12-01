@@ -20,17 +20,27 @@ const cmsCSSFiles = [
   {
     isInternal: false,
     layer: 'foundation',
-    path: `${escapeDemoDir}/static/site_cms/css/build/0-foundation.css`,
+    path: `${escapeDemoDir}/static/site_cms/css/build/core-styles.base.css`,
   },
   {
     isInternal: false,
     layer: 'base',
-    path: `${escapeDemoDir}/static/site_cms/css/build/1-base.css`,
+    path: `${escapeDemoDir}/static/site_cms/css/build/core-styles.base.css`,
+  },
+  {
+    isInternal: false,
+    layer: 'base',
+    path: `${escapeDemoDir}/static/site_cms/css/build/core-styles.cms.css`,
+  },
+  {
+    isInternal: false,
+    layer: 'base',
+    path: `${escapeDemoDir}/static/site_cms/css/build/core-styles.header.css`,
   },
   {
     isInternal: false,
     layer: 'project',
-    path: `${escapeDemoDir}/static/site_cms/css/build/2-project.css`,
+    path: `${escapeDemoDir}/static/site_cms/css/build/site.cms.css`,
   },
 ];
 const projCSSFiles = ( projName ) ? [

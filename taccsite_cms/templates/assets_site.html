@@ -1,5 +1,4 @@
 {% load staticfiles %}
-{# @var settings #}
 
 {# Load assets as external files, to cache independently of markup. #}
 {% comment %}
@@ -13,26 +12,12 @@ FAQ: IF a script or style is better cached with markup, THEN:
 
 
 <!-- Site Assets: Styles. -->
-{% if settings.TACC_CORE_STYLES_VERSION == 0 %}
 
 <link id="css-bootstrap" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 {# CAVEAT: Requires `npm run build` step before running the Django project. #}
 <link id="css-site" rel="stylesheet" href="{% static 'site_cms/css/build/site.css' %}">
 <link id="css-site-header" rel="stylesheet" href="{% static 'site_cms/css/build/site.header.css' %}">
-
-{% elif settings.TACC_CORE_STYLES_VERSION == 1 %}
-
-<style>
-  {# https://confluence.tacc.utexas.edu/x/b53tDg #}
-  @layer foundation, base, project;
-
-  @import url("{% static 'site_cms/css/build/0-foundation.css' %}") layer(foundation);
-  @import url("{% static 'site_cms/css/build/1-base.css' %}") layer(base);
-  @import url("{% static 'site_cms/css/build/2-project.css' %}") layer(project);
-</style>
-
-{% endif %}
 
 
 
