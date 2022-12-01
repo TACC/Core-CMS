@@ -52,5 +52,5 @@ _This directory exists in `static/` __only__ because it is customary, using Djan
 
 <!-- Link Aliases -->
 
-[Core Styles]: https://github.com/TACC/tup-ui/tree/main/libs/core-styles
+[Core Styles]: https://github.com/TACC/Core-Styles
 [CMS UI Organization]: https://confluence.tacc.utexas.edu/x/54AZCg
