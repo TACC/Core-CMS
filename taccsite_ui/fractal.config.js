@@ -20,7 +20,7 @@ const cmsCSSFiles = [
   {
     isInternal: false,
     layer: 'foundation',
-    path: `${escapeDemoDir}/static/site_cms/css/build/core-styles.base.css`,
+    path: 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css',
   },
   {
     isInternal: false,
