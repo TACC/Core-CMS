@@ -18,6 +18,16 @@
 <div class="app app-blog
   {% if not settings.TACC_BLOG_SHOW_CATEGORIES %}no-categories{% endif %}
   {% if not settings.TACC_BLOG_SHOW_TAGS %}no-tags{% endif %}
+  {% if post.categories.exists %}
+  app-blog-has-categories
+  {% for tag in post.categories.all %}
+  app-blog-category-{{ tag.slug }}
+  {% endfor %}{% endif %}
+  {% if post.tags.exists %}
+  app-blog-has-tags
+  {% for tag in post.tags.all %}
+  app-blog-tag-{{ tag.slug }}
+  {% endfor %}{% endif %}
 ">
     {% block content_blog %}{% endblock %}
 </div>
