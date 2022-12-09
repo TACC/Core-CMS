@@ -4,3 +4,14 @@
 
 /* https://github.com/django-cms/djangocms-text-ckeditor/pull/590 */
 textarea.cke_source { max-height: inherit; }
+
+/* To stretch plugin editor content height */
+.cke_reset_all/* ← for specificiity */ .cke_dialog_ui_vbox {
+    position: relative;
+}
+.cke_dialog_ui_vbox table {
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
