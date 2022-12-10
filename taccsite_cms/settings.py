@@ -570,6 +570,11 @@ META_USE_OG_PROPERTIES = True
 META_USE_TWITTER_PROPERTIES = True
 META_USE_SCHEMAORG_PROPERTIES = True
 
+# https://github.com/django-cms/djangocms-text-ckeditor
+CKEDITOR_SETTINGS = {
+    'autoParagraph': False
+}
+
 ########################
 # IMPORT & EXPORT
 ########################
