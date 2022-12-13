@@ -40,6 +40,7 @@
 @import url("@tacc/core-styles/src/lib/_imports/objects/o-table-wrap.css");
 
 /* COMPONENTS */
+@import url("@tacc/core-styles/src/lib/_imports/components/c-button.css");
 @import url("_imports/components/c-card.css");
 @import url("_imports/components/c-callout.css");
 @import url("_imports/components/c-data-list.css");
