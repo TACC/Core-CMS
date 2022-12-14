@@ -18,6 +18,7 @@
 /* Unique to CMS */
 @import url("./_imports/settings/color.css");
 @import url("./_imports/settings/font.css");
+@import url("./_migrations/v1_v0-core-styles.css");
 
 /* GENERICS */
 /* Bootstrap performs much of this */
