@@ -87,7 +87,8 @@ UTEXAS_BRANDING = [
 # CUSTOM PORTAL BRANDING
 ########################
 
-_CUSTOM_BRANDING = [
+# Edit this config as needed for the project branding used in the navigation bar header.
+CUSTOM_BRANDING = [
     "portal",
     "example-cms/img/org_logos/portal.png",
     "branding-logo--short",
@@ -98,22 +99,23 @@ _CUSTOM_BRANDING = [
     "True",
 ]
 
-# Generic Portals.
-#BRANDING = [ TACC_BRANDING, UTEXAS_BRANDING ]
-
-# NSF Funded Portals.
-#BRANDING = [ NSF_BRANDING ] + [ TACC_BRANDING, UTEXAS_BRANDING ]
-
-# NSF Funded & Custom Branded Portals.
-#BRANDING = [ NSF_BRANDING ] + [ TACC_BRANDING, UTEXAS_BRANDING ] + [ _CUSTOM_BRANDING ]
+# Generic TACC Portals.
+BRANDING = [ TACC_BRANDING, UTEXAS_BRANDING ]
 
 # Custom Branded Portals (Non-NSF).
-BRANDING = [ TACC_BRANDING, UTEXAS_BRANDING ] + [ _CUSTOM_BRANDING ]
+#BRANDING = [ TACC_BRANDING, UTEXAS_BRANDING, CUSTOM_BRANDING ]
+
+# NSF Funded Generic TACC Portals.
+#BRANDING = [ NSF_BRANDING, TACC_BRANDING, UTEXAS_BRANDING ]
+
+# NSF Funded & Custom Branded Portals.
+#BRANDING = [ NSF_BRANDING, TACC_BRANDING, UTEXAS_BRANDING, CUSTOM_BRANDING ]
 
 ########################
 # TACC: LOGOS
 ########################
 
+# Edit this config as needed for the project logo used in the navigation bar.
 LOGO =  [
     "example",
     "example-cms/img/org_logos/portal.png",
@@ -125,6 +127,7 @@ LOGO =  [
     "True"
 ]
 
+# Edit this config as needed for the project favicon used in the browser navbar.
 FAVICON = {
     "img_file_src": "example-cms/img/org_logos/favicon.ico"
 }
