@@ -1,0 +1,36 @@
+# WARNING: The `extends` keyword is NOT supported in Compose version 3.x
+# SEE: https://docs.docker.com/compose/extends/#extending-services
+version: "3"
+services:
+  cms:
+    extends:
+      file: docker-compose.example-cms.yml
+      service: cms
+    volumes:
+      # Prevent volume sync from host to container for specific directories
+      # FAQ: Prevents overwrite of container directory with empty host directory (which would happen with `static/` and `build/` on a clean setup)
+      # SEE: https://confluence.tacc.utexas.edu/x/DwAODQ (Solution E)
+      #   The /static` dir is populated by `python … collectstatic` command
+      - /code/static
+      #   Any `.../build` dirs are populated by `npm … build` command
+      #   HACK: No confirmed support for dir globbing, so block all of `static/`
+      - /code/taccsite_cms/static
+      #   CAVEAT: CMS projects must add a line to ignore thier `...build/` dirs
+      - /code/taccsite_custom/example-cms/static
+
+  postgres:
+    extends:
+      file: docker-compose.example-cms.yml
+      service: postgres
+
+  elasticsearch:
+    extends:
+      file: docker-compose.example-cms.yml
+      service: elasticsearch
+
+volumes:
+  core_cms_postgres_data:
+  core_cms_es_data:
+
+networks:
+  core_cms_net:
