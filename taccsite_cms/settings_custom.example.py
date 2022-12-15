@@ -112,7 +112,7 @@ BRANDING = [ TACC_BRANDING, UTEXAS_BRANDING ]
 #BRANDING = [ NSF_BRANDING, TACC_BRANDING, UTEXAS_BRANDING, CUSTOM_BRANDING ]
 
 ########################
-# TACC: LOGOS
+# PORTAL LOGO / FAVICON
 ########################
 
 # Edit this config as needed for the project logo used in the navigation bar.
