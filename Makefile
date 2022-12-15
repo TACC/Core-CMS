@@ -13,6 +13,10 @@ build:
 build-full:
 	docker build -t $(DOCKER_IMAGE) --target production --build-arg PROJECT_NAME=$(PROJECT_NAME) --build-arg BUILD_ID=$(BUILD_ID) -f ./Dockerfile .
 
+.PHONY: example
+example:
+	docker-compose -f ./docker-compose.example.yml up
+
 .PHONY: publish
 publish:
 	docker push $(DOCKER_IMAGE)
