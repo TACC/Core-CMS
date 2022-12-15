@@ -33,6 +33,7 @@ repo_name.var
 
 # Secrets and Customizations
 taccsite_cms/secrets.py
+*secrets*.py
 *.custom.yml
 *settings_custom*.py
 *settings_local*.py

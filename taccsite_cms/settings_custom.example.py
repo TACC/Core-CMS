@@ -43,39 +43,90 @@ CMS_TEMPLATES = (
 )
 
 ########################
-# TACC: BRANDING
+# NSF BRANDING
+########################
+
+NSF_BRANDING = [
+    "nsf",
+    "example-cms/img/org_logos/nsf-white.png",
+    "branding-nsf",
+    "https://www.nsf.gov/",
+    "_blank",
+    "NSF Logo",
+    "anonymous",
+    "True"
+]
+
+########################
+# TACC BRANDING
+########################
+
+TACC_BRANDING = [
+    "tacc",
+    "example-cms/img/org_logos/tacc-white.png",
+    "branding-tacc",
+    "https://www.tacc.utexas.edu/",
+    "_blank",
+    "TACC Logo",
+    "anonymous",
+    "True"
+]
+
+UTEXAS_BRANDING = [
+    "utexas",
+    "example-cms/img/org_logos/utaustin-white.png",
+    "branding-utaustin",
+    "https://www.utexas.edu/",
+    "_blank",
+    "University of Texas at Austin Logo",
+    "anonymous",
+    "True"
+]
+
+########################
+# CUSTOM PORTAL BRANDING
 ########################
 
 _CUSTOM_BRANDING = [
-    "sgci",
-    "brainmap-cms/img/org_logos/sgci-logo-sans-text.svg",
+    "portal",
+    "example-cms/img/org_logos/portal.png",
     "branding-logo--short",
-    "https://sciencegateways.org/",
+    "https://cep.tacc.utexas.edu",
     "_blank",
-    "SGCI Logo",
+    "Portal Logo",
     "anonymous",
     "True",
 ]
 
-BRANDING = [ TACC_BRANDING, UTEXAS_BRANDING, NSF_BRANDING, _CUSTOM_BRANDING ]
+# Generic Portals.
+#BRANDING = [ TACC_BRANDING, UTEXAS_BRANDING ]
+
+# NSF Funded Portals.
+#BRANDING = [ NSF_BRANDING ] + [ TACC_BRANDING, UTEXAS_BRANDING ]
+
+# NSF Funded & Custom Branded Portals.
+#BRANDING = [ NSF_BRANDING ] + [ TACC_BRANDING, UTEXAS_BRANDING ] + [ _CUSTOM_BRANDING ]
+
+# Custom Branded Portals (Non-NSF).
+BRANDING = [ TACC_BRANDING, UTEXAS_BRANDING ] + [ _CUSTOM_BRANDING ]
 
 ########################
 # TACC: LOGOS
 ########################
 
 LOGO =  [
-    "brainmap",
-    "brainmap-cms/img/org_logos/brainmap-logo.png",
+    "example",
+    "example-cms/img/org_logos/portal.png",
     "",
-    "https://brainmap.org",
+    "/",
     "_self",
-    "BrainMap Logo",
+    "Placeholder Logo for CMS/Portal",
     "anonymous",
     "True"
 ]
 
 FAVICON = {
-    "img_file_src": "brainmap-cms/img/org_logos/favicon.ico"
+    "img_file_src": "example-cms/img/org_logos/favicon.ico"
 }
 
 ########################
