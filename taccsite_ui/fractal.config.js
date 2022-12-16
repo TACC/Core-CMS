@@ -25,6 +25,11 @@ const cmsCSSFiles = [
   {
     isInternal: false,
     layer: 'base',
+    path: `${escapeDemoDir}/static/site_cms/css/build/core-styles.demo.css`
+  },
+  {
+    isInternal: false,
+    layer: 'base',
     path: `${escapeDemoDir}/static/site_cms/css/build/core-styles.base.css`,
   },
   {
