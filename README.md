@@ -93,7 +93,7 @@ These projects store project-specific resources in the `taccsite_custom` submodu
 1. [Build][docker-compose-build] the CMS and database images:
 
     ```bash
-    docker-compose build
+    make build
     ```
 
     Or, if you have a `docker-compose.custom.yml`, then:
@@ -105,7 +105,7 @@ These projects store project-specific resources in the `taccsite_custom` submodu
 2. [Create and run][docker-compose-up] the CMS and database containers:
 
     ```bash
-    docker-compose up
+    make start
     ```
 
     Or, if you have a `docker-compose.custom.yml`, then:
@@ -123,7 +123,15 @@ These projects store project-specific resources in the `taccsite_custom` submodu
     docker exec -it core_cms /bin/bash
     ```
 
-4. [Run migrations][django-cms-migrate] for Django CMS:
+4. [Build static files](#static-files) for Core-CMS:
+
+    ```bash
+    npm run build --project=core-cms
+    ```
+
+    > __Notice__: If developing a [Core CMS Resources] site, replace `core-cms` with the relevant directory from `/taccsite_custom`.
+
+5. [Run migrations][django-cms-migrate] for Django CMS:
 
     ```bash
     python manage.py migrate
@@ -131,7 +139,7 @@ These projects store project-specific resources in the `taccsite_custom` submodu
 
     _This is like a Django CMS wrapper around [Django migrations][django-migrate]._
 
-5. [Create a superuser][django-cms-su] for Django CMS:
+6. [Create a superuser][django-cms-su] for Django CMS:
 
     > __Notice__: A TACC username is required for LDAP access, but any password can be used. The password will be validated against LDAP first, if that fails, it will be validated against the password assigned during the following command's interface. __For production, create a strong password.__
 
@@ -143,7 +151,7 @@ These projects store project-specific resources in the `taccsite_custom` submodu
 
     > __Notice__: To log in with a TACC account using LDAP, create the account using the TACC username, then (as an admin or superuser) assign staff and/or superuser privileges. The assigned password can be any password and does __not__ need to be sent to the user. The CMS will __not__ attempt to validate with the assigned password unless LDAP authentication fails. __For production, create a strong password.__
 
-6. [Collect static files][django-static] for Django:
+7. [Collect static files][django-static] for Django:
 
     ```bash
     python manage.py collectstatic
@@ -151,7 +159,7 @@ These projects store project-specific resources in the `taccsite_custom` submodu
 
     _[If `DEBUG` is set to `True`, then this is automated via `python manage.py runserver`.][django-static-serve-dev]_
 
-7. Login to the admin web interface.
+8. Login to the admin web interface.
 
     The CMS admin site should now be accessible at http://localhost:8000/admin .*
 
@@ -159,7 +167,7 @@ These projects store project-specific resources in the `taccsite_custom` submodu
 
     <sub>\* Or at the port defined in a `docker-compose.custom.yml`.</sub>
 
-8. Create the first page of your local CMS.
+9. Create the first page of your local CMS.
 
     > __Warning__: The CMS install will be fresh i.e. the CMS will __not__ be populated with production content.
 
@@ -195,9 +203,7 @@ If you changes files in any `static/` directory, you may need to follow some of 
 1. _(optional)_ Make changes to `/taccsite_custom/name-of-project/static/name-of-project/css/src` files. †‡
 2. Build static files from source files.\
     Via shell:
-    1. `npm run build`\
-        or\
-        `npm run build --project=name-of-project` †\
+    1. `npm run build --project=name-of-project` †\
         or\
         `npm run build (...) --build-id=optional-identifier` §
 3. _(to debug)_ Review respective files' content in\
@@ -209,7 +215,7 @@ If you changes files in any `static/` directory, you may need to follow some of 
     `/taccsite_custom/static/name-of-project/css/build` †
 
 <sub>\* The recommended command to install expected dependencies is `npm ci`.</sub>\
-<sub>† Where `name-of-project` matches a directory from `/taccsite_custom`.‡</sub>\
+<sub>† Where `name-of-project` is either `core-cms` or a directory from `/taccsite_custom`.‡</sub>\
 <sub>‡ If your custom CMS project is in [Core CMS Custom], you do __not__ need this step.</sub>\
 <sub>§ To commit such changes, see [Changing Custom Resources](#changing-custom-resources).</sub>\
 <sub>‖ A build ID can tag files (e.g. preserved comment in stylesheet).</sub>
@@ -218,20 +224,14 @@ If you changes files in any `static/` directory, you may need to follow some of 
 
 Certain static files are built __from__ source files __in__ `src` directories __to__ compiled files __in__ `build` directories.
 
-1. Build static resources: \*
-
-    ```bash
-    npm run build
-    ```
-
-    or †
+1. Build static resources: \*†
 
     ```bash
     npm run build --project=name-of-project
     ```
 
 <sub>\* You should run these commands in the container __from `/code/`__. _See [Running Commands in Container](#running-commands-in-container)._</sub>\
-<sub>† Where `name-of-project` matches a directory from `/taccsite_custom`.‡</sub>\
+<sub>† Where `name-of-project` is either `core-cms` or a directory from `/taccsite_custom`.‡</sub>\
 <sub>‡ If your custom CMS project is in [Core CMS Custom], you do __not__ need this step.</sub>
 
 #### How to Collect Static Files
