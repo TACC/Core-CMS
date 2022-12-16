@@ -19,11 +19,6 @@ const escapeDemoDir = '/../..'; // i.e. back out of '/static/ui'
 const cmsCSSFiles = [
   {
     isInternal: false,
-    layer: 'foundation',
-    path: 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css',
-  },
-  {
-    isInternal: false,
     layer: 'base',
     path: `${escapeDemoDir}/static/site_cms/css/build/core-styles.demo.css`
   },
@@ -31,21 +26,6 @@ const cmsCSSFiles = [
     isInternal: false,
     layer: 'base',
     path: `${escapeDemoDir}/static/site_cms/css/build/core-styles.base.css`,
-  },
-  {
-    isInternal: false,
-    layer: 'base',
-    path: `${escapeDemoDir}/static/site_cms/css/build/core-styles.cms.css`,
-  },
-  {
-    isInternal: false,
-    layer: 'base',
-    path: `${escapeDemoDir}/static/site_cms/css/build/core-styles.header.css`,
-  },
-  {
-    isInternal: false,
-    layer: 'project',
-    path: `${escapeDemoDir}/static/site_cms/css/build/site.cms.css`,
   },
 ];
 const projCSSFiles = ( projName ) ? [
@@ -62,9 +42,7 @@ fractal.components.set('exclude', '*.md');
 fractal.components.set('path', __dirname + '/patterns');
 // (for stylesheets)
 fractal.components.set('default.context', {
-  shouldSkipCMS: true, // true, because CMS loads its own styles
-  shouldSkipBootstrap: true, // true, because CMS loads its own styles
-  shouldSkipPattern: true, // true, because CMS loads patterns itself
+  shouldSkipPattern: true, // true, because …base.css loads most components
   globalStyles: cmsCSSFiles.concat( projCSSFiles )
 });
 fractal.cli.log(`+ Included CSS for "${cmsName}"`);
