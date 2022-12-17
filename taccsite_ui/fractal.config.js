@@ -20,19 +20,19 @@ const cmsCSSFiles = [
   {
     isInternal: false,
     layer: 'base',
-    path: `${escapeDemoDir}/static/site_cms/css/build/core-styles.demo.css`
+    path: `${escapeDemoDir}/static/site_cms/css/build/core-styles.cms.css`,
   },
   {
     isInternal: false,
-    layer: 'base',
-    path: `${escapeDemoDir}/static/site_cms/css/build/core-styles.base.css`,
+    layer: 'project',
+    path: `${escapeDemoDir}/static/site_cms/css/build/site.cms.css`
   },
 ];
 const projCSSFiles = ( projName ) ? [
   {
     isInternal: false,
     layer: 'cosmetic',
-    path: `${escapeDemoDir}/static/${projName}/css/build/site.css`
+    path: `${escapeDemoDir}/static/${projName}/css/build/site.cms.css`
   },
 ] : [];
 
@@ -43,7 +43,17 @@ fractal.components.set('path', __dirname + '/patterns');
 // (for stylesheets)
 fractal.components.set('default.context', {
   shouldSkipPattern: true, // true, because …base.css loads most components
-  globalStyles: cmsCSSFiles.concat( projCSSFiles )
+  globalStyles: [{
+    isInternal: false,
+    layer: 'base',
+    path: `${escapeDemoDir}/static/site_cms/css/build/core-styles.demo.css`
+  },
+  {
+    isInternal: false,
+    layer: 'base',
+    path: `${escapeDemoDir}/static/site_cms/css/build/core-styles.base.css`,
+  }],
+  cmsStyles: cmsCSSFiles.concat( projCSSFiles )
 });
 fractal.cli.log(`+ Included CSS for "${cmsName}"`);
 cmsCSSFiles.forEach( file => { fractal.cli.log(file.path) });
