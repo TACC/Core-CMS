@@ -7,6 +7,7 @@ const minimist = require('minimist');
 // Get base config
 const fractal = require('@tacc/core-styles/fractal.config.js');
 const themeConfig = require('./fractal.theme.js');
+const defaultContext = fractal.components.get('default.context');
 
 // Get project
 // (name)
@@ -17,11 +18,7 @@ let projName = args['project'] || '';
 // (stylesheet)
 const escapeDemoDir = '/../..'; // i.e. back out of '/static/ui'
 const cmsCSSFiles = [
-  {
-    isInternal: false,
-    layer: 'base',
-    path: `${escapeDemoDir}/static/site_cms/css/build/core-styles.cms.css`,
-  },
+  ...defaultContext.cmsStyles,
   {
     isInternal: false,
     layer: 'project',
@@ -42,17 +39,8 @@ fractal.components.set('exclude', '*.md');
 fractal.components.set('path', __dirname + '/patterns');
 // (for stylesheets)
 fractal.components.set('default.context', {
+  ...fractal.components.get('default.context'),
   shouldSkipPattern: true, // true, because …base.css loads most components
-  globalStyles: [{
-    isInternal: false,
-    layer: 'base',
-    path: `${escapeDemoDir}/static/site_cms/css/build/core-styles.demo.css`
-  },
-  {
-    isInternal: false,
-    layer: 'base',
-    path: `${escapeDemoDir}/static/site_cms/css/build/core-styles.base.css`,
-  }],
   cmsStyles: cmsCSSFiles.concat( projCSSFiles )
 });
 fractal.cli.log(`+ Included CSS for "${cmsName}"`);
