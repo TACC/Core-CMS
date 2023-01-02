@@ -41,8 +41,9 @@ services:
       - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
       - core_cms_es_data:/usr/share/elasticsearch/data
     container_name: core_cms_elasticsearch
-    ports:
-      - 9201:9200
+    # To enable debugging of Elasticsearch outside containers, set ports
+    # ports:
+    #   - 9201:9200
     networks:
       - core_cms_net
 
