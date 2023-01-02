@@ -6,7 +6,7 @@ services:
     volumes:
       - .:/code
     ports:
-      - 8000:8000
+      - 127.0.0.1:8000:8000
     command: ["python3", "manage.py", "runserver", "0.0.0.0:8000"]
     container_name: core_cms
     hostname: core_cms
@@ -41,9 +41,8 @@ services:
       - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
       - core_cms_es_data:/usr/share/elasticsearch/data
     container_name: core_cms_elasticsearch
-    # To enable debugging of Elasticsearch outside containers, set ports
-    # ports:
-    #   - 9201:9200
+    ports:
+      - 127.0.0.1:9201:9200
     networks:
       - core_cms_net
 
