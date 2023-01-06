@@ -546,15 +546,29 @@ SETTINGS_EXPORT_VARIABLE_NAME = 'settings'
 
 # https://github.com/django-cms/djangocms-style
 DJANGOCMS_STYLE_CHOICES = [
-    # https://cep.tacc.utexas.edu/design-system/ui-patterns/o-section/
+    # https://dev.tup.tacc.utexas.edu/static/ui/components/detail/c-card--default.html
+    'card',
+    'card--plain',
+    'card--standard',
+    'card--image-top',
+    'card--image-bottom',
+    'card--image-right',
+    'card--image-left',
+    # https://dev.tup.tacc.utexas.edu/static/ui/components/detail/o-section.html
+    'section',
+    'section--light',
+    'section--muted',
+    'section--dark',
+    'o-section',
     'o-section o-section--style-light',
+    'o-section o-section--style-muted',
     'o-section o-section--style-dark',
-    # https://cep.tacc.utexas.edu/design-system/ui-patterns/c-callout/
+    # https://dev.tup.tacc.utexas.edu/design-system/pattern-library-manual/c-callout/
     'c-callout',
-    # https://cep.tacc.utexas.edu/design-system/ui-patterns/c-recognition/
+    # https://dev.tup.tacc.utexas.edu/design-system/pattern-library-manual/c-recognition/
     'c-recognition c-recognition--style-light',
     'c-recognition c-recognition--style-dark',
-    # https://cep.tacc.utexas.edu/design-system/ui-patterns/c-nav/
+    # https://ecepalliance.org/alliance-members/
     'c-nav', # bare-bones instance
     'c-nav c-nav--boxed',
 ]
