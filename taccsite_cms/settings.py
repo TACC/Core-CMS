@@ -575,6 +575,12 @@ CKEDITOR_SETTINGS = {
     'autoParagraph': False
 }
 
+# https://github.com/django-cms/djangocms-video
+DJANGOCMS_VIDEO_TEMPLATES = [
+    ('responsive', _('Responsive (Width 100%)')),
+    ('default', _('Default')),
+]
+
 ########################
 # IMPORT & EXPORT
 ########################
