@@ -1,10 +1,11 @@
-{# https://github.com/django-cms/djangocms-video/tree/3.0.0/djangocms_video/templates/djangocms_video/default #}
+{# https://github.com/django-cms/djangocms-video/blob/3.0.0/djangocms_video/templates/djangocms_video/default/video_player.html #}
 {% load i18n cms_tags %}
 
+{# TACC: #}
+{% block content_video %}
+{# /TACC #}
+
 {% if instance.embed_link %}
-    {# TACC: #}
-    <div class="embed-responsive">
-    {# /TACC #}
     {# show iframe if embed_link is provided #}
     <iframe src="{{ instance.embed_link_with_parameters }}" {{ instance.attributes_str }} frameborder="0" allowfullscreen="true"></iframe>
     {% with disabled=instance.embed_link %}
@@ -12,9 +13,6 @@
             {% render_plugin plugin %}
         {% endfor %}
     {% endwith %}
-    {# TACC: #}
-    </div>
-    {# /TACC #}
 {% else %}
     {# render <source> or <track> plugins #}
     <video controls {{ instance.attributes_str }}
@@ -28,9 +26,13 @@
 
 {% comment %}
     # Available variables:
-    {{ instance.template }}
+    {{ instance.template }}
     {{ instance.label }}
     {{ instance.embed_link }}
     {{ instance.poster }}
-    {{ instance.attributes_str }}
+    {{ instance.attributes_str }}
 {% endcomment %}
+
+{# TACC: #}
+{% endblock content_video %}
+{# /TACC #}
