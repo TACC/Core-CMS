@@ -10,47 +10,83 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 
 @custom-selector :--multimedia-page .app-blog-category-multimedia;
 
-/* To pull media to top of page and size it */
-:--multimedia-page :--article-page {
-    --media-width: 100%;
+/* To move breadcrumbs atop article */
+:--multimedia-page article.post-detail .blog-visual {
+    float: unset;
+    margin-right: unset;
+    margin-block: unset;
+}
+:--multimedia-page .container {
+    display: grid;
+    grid-template-areas:
+        'breadcrumbs'
+        'article';
+}
+:--multimedia-page .s-breadcrumbs {
+    grid-area: breadcrumbs;
+    z-index: 1;
+}
+:--multimedia-page .post-detail {
+    grid-area: article;
+    grid-row-start: breadcrumbs-start;
+}
+
+/* To move image to top of article */
+:--multimedia-page .post-detail {
+    display: grid;
+    grid-template-areas:
+        'visual'
+        'header'
+        'content';
+}
+:--multimedia-page header { grid-area: header; }
+:--multimedia-page .blog-visual { grid-area: visual; }
+:--multimedia-page .blog-content { grid-area: content; }
+
+/* To style header atop media */
+:--multimedia-page header {
+    --media-overlap: 200px;
+
+    z-index: 1;
+    background-color: var(--global-color-background--app);
+    position: realtive;
+    margin-top: var(--media-overlap);
+}
+
+/* To stretch media to full width */
+:--multimedia-page {
+    /* NOTE: Use CMS image thumbnail option at this height to avoid caveats */
+    /* CAVEAT: A taller image will be cropped (but match design layout) */
+    /* CAVEAT: A shorter image will not overlap header enough to match design */
     --media-height: 680px;
 
-    margin-top: var(--media-height);
+    position: relative; /* to constrain absolute position of media */
 }
-:--multimedia-page :--article-page .blog-visual {
+:--multimedia-page .blog-visual {
+    text-align: center; /* to center media */
+
     position: absolute;
-    top: 0;
     left: 0;
-    width: var(--media-width);
+    right: 0;
+
     height: var(--media-height);
 }
-:--multimedia-page :--article-page .blog-visual img,
-:--multimedia-page :--article-page .blog-visual iframe {
-    width: 100%;
-    height: 100%;
+:--multimedia-page header {
+    /* FAQ: Content must move to show image which is out of flow */
+    margin-top: calc( var(--media-height) - var(--media-overlap) );
 }
 
 /* To pad title and content without reducing width */
-:--multimedia-page :--article-page header,
-:--multimedia-page :--article-page .blog-content {
+:--multimedia-page header,
+:--multimedia-page .blog-content {
     --pad: 15px;
 
     margin-inline: calc( -1 * var(--pad) ); /* prevent width reduction */
+    padding-inline: var(--pad);
 }
-:--multimedia-page :--article-page header {
-    padding: var(--pad) var(--pad) 0;
+:--multimedia-page header {
+    padding-top: var(--pad);
 }
-:--multimedia-page :--article-page .blog-content {
-    padding: 0 var(--pad) var(--pad);
-}
-
-/* To style header atop media */
-:--multimedia-page :--article-page header {
-    position: relative;
-    z-index: 1;
-    background-color: var(--global-color-background--app);
-    margin-top: -200px;
-}
-:--multimedia-page :--article-page header h2 {
-    margin-top: 0;
+:--multimedia-page .blog-content {
+    padding-bottom: var(--pad);
 }
