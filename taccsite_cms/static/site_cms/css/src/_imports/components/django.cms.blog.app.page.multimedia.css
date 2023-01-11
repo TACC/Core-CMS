@@ -52,6 +52,11 @@ Styleguide Components.DjangoCMS.Blog.App.Page
     position: realtive;
     margin-top: var(--media-overlap);
 }
+:--multimedia-page header h2 {
+    /* NOTE: Not necessary on dev.tup (thus later probably core-styles v1+) */
+    /* https://dev.tup.tacc.utexas.edu/admin/djangocms_snippet/snippet/30 */
+    margin-top: 0;
+}
 
 /* To stretch media to full width */
 :--multimedia-page {
