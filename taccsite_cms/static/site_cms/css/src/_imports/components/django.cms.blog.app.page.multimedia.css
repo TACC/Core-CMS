@@ -75,6 +75,7 @@ Styleguide Components.DjangoCMS.Blog.App.Page
     right: 0;
 
     height: var(--media-height);
+    overflow-y: hidden;
 }
 :--multimedia-page header {
     /* FAQ: Content must move to show image which is out of flow */
