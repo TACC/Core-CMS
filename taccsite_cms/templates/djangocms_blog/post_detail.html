@@ -9,7 +9,7 @@
 
 {# /TACC #}
 {# TACC (define whether this is a multimedia post): #}
-{% blog_post_is_multimedia post as is_multimedia_post %}
+{% blog_post_is_multimedia post settings.TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY as is_multimedia_post %}
 {# /TACC #}
 <article id="post-{{ post.slug }}" class="post-item post-detail">
     <header>
