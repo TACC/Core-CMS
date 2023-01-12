@@ -252,6 +252,8 @@ CEP_AUTH_VERIFICATION_ENDPOINT = 'http://django:6000'
 
 TACC_BLOG_SHOW_CATEGORIES = True
 TACC_BLOG_SHOW_TAGS = True
+# To make any "Multimedia" (`multimedia`) category post require custom media
+# TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY = 'multimedia'
 
 ########################
 # TACC: CORE STYLES
@@ -646,4 +648,5 @@ SETTINGS_EXPORT = [
     'TACC_BLOG_SHOW_CATEGORIES',
     'TACC_BLOG_SHOW_TAGS',
     'TACC_CORE_STYLES_VERSION'
+    'TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY'
 ]
