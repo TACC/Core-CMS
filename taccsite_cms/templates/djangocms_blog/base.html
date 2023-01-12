@@ -20,8 +20,8 @@
   {% if not settings.TACC_BLOG_SHOW_TAGS %}no-tags{% endif %}
   {% if post.categories.exists %}
   app-blog-has-categories
-  {% for tag in post.categories.all %}
-  app-blog-category-{{ tag.slug }}
+  {% for cat in post.categories.all %}
+  app-blog-category-{{ cat.slug }}
   {% endfor %}{% endif %}
   {% if post.tags.exists %}
   app-blog-has-tags
