@@ -2,7 +2,7 @@
 @import url("@tacc/core-styles/src/lib/_imports/components/c-message.css");
 @import url('@tacc/core-styles/src/lib/_imports/tools/x-link.css');
 
-@import url("./django-cms-forms-hacks.css");
+@import url("./django-cms-forms.hacks.css");
 
 
 
@@ -82,13 +82,6 @@ ul.checkboxselectmultiple li:last-child label {
 
 /* Field: Required, Asterisk, Important */
 
-.field-wrapper > label {
-  font-weight: var(--bold);
-}
-.field-wrapper > label .asterisk {
-  font-weight: var(--regular);
-}
-
 .field-wrapper .asterisk {
   margin-left: 0.5em;
 }
@@ -143,7 +136,7 @@ ul.checkboxselectmultiple li:last-child label {
   @extend .c-message;
   @extend .c-message--type-error;
   @extend .c-message--scope-section;
-  @extend .c-message--scope-section.c-message--type-error;
+  @extend .c-message--type-error.c-message--scope-section;
 }
 .field-errors li {
   @extend .c-message;
