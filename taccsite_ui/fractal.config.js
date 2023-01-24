@@ -51,7 +51,9 @@ if ( projCSSFiles.length > 0 ) {
 }
 
 // Set website paths
-fractal.web.set('static.path', __dirname + '/../taccsite_cms/static/site_cms/css/build');
+// FAQ: Setting static.path results in `shouldSkipPattern: false` letting ONLY Core-CMS assets load, because that directory ONLY has Core-CMS assets
+// FAQ: Not setting static.path results in `shouldSkipPattern: false` letting ONLY Core-Styles assets load, because Core-Styles cofnig loads ONLY its assets
+// fractal.web.set('static.path', __dirname + '/../taccsite_cms/static/site_cms/css/build');
 fractal.web.set('builder.dest', __dirname + '/dist');
 
 // Customize theme

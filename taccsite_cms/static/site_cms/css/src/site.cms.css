@@ -11,3 +11,5 @@
 @import url("./_imports/components/django-cms-forms.css");
 @import url("./_imports/components/django.cms.post.css");
 @import url("./_imports/components/django.cms.picture.css");
+
+@import url("./_imports/trumps/s-drop-cap.css");

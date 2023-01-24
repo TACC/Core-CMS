@@ -1,4 +1,3 @@
-/* This CSS is EXAMPLE code for a client. It is NOT part of the pattern. */
 @import url('../tools/x-drop-cap.css');
 
 .s-drop-cap > p:first-of-type::first-letter {
