@@ -3,8 +3,11 @@
 @import url("@tacc/core-styles/src/lib/_imports/components/align.css");
 
 /* Try to auto-clear image floats */
+/* WARNING: The commented solution clears float BUT also negates float */
+/*
 .align-right + *:not(img) { clear: right }
 .align-left + *:not(img) { clear: left }
+*/
 
 /* To apply djangocms-bootstrap4/…_picture class styles from parent to image */
 /* FAQ: TACC/Core-CMS moves (side effect) Picture classes to <figure> or <a> */
