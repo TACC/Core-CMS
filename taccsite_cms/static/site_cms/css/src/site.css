@@ -26,19 +26,13 @@
 
 /* ELEMENTS */
 /* Bootstrap performs much of this */
-@import url("@tacc/core-styles/src/lib/_imports/elements/html-elements.cms.css");
-@import url("@tacc/core-styles/src/lib/_imports/elements/form.cms.css");
+/* Core-Styles provides much of this */
 @import url("@tacc/core-styles/src/lib/_imports/elements/links.css");
 @import url("@tacc/core-styles/src/lib/_imports/elements/table.css");
 /* Load custom element styles within custom element, not here */
 
 /* OBJECTS */
-@import url("_imports/objects/o-grid.css");
-@import url("_imports/objects/o-float-content.css");
-@import url("_imports/objects/o-offset-content.css");
-@import url("_imports/objects/o-section.css");
-@import url("@tacc/core-styles/src/lib/_imports/objects/o-fixed-header-table.css");
-@import url("@tacc/core-styles/src/lib/_imports/objects/o-table-wrap.css");
+/* Core-Styles provides much of this */
 
 /* COMPONENTS */
 @import url("@tacc/core-styles/src/lib/_imports/components/c-button.css");
