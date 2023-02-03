@@ -601,6 +601,7 @@ CKEDITOR_SETTINGS = {
 
 # https://github.com/django-cms/djangocms-video
 DJANGOCMS_VIDEO_TEMPLATES = [
+    ('responsive-auto', _('Responsive - Automatic')),
     ('responsive-16by9', _('Responsive - 16 by 9')),
     ('responsive-4by3', _('Responsive - 4 by 3')),
     ('responsive-1by1', _('Responsive - 1 by 1')),
