@@ -29,6 +29,7 @@
   app-blog-tag-{{ tag.slug }}
   {% endfor %}{% endif %}
 ">
+    {% include './tacc/layout-choice-form.html' %}
     {% block content_blog %}{% endblock %}
 </div>
 {% endblock content %}
