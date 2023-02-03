@@ -15,9 +15,11 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 
 
 
-/* Variables */
+/* Root */
 
 :--article-page {
+  --header-buffer: calc( var(--global-space--grid-gap) / 2 );
+
   max-width: 665px;
   margin-inline: auto;
 }
@@ -33,17 +35,21 @@ Styleguide Components.DjangoCMS.Blog.App.Page
   justify-content: space-between;
 }
 
+:--article-page header h1,
 :--article-page header h2 {
+  margin-bottom: var(--header-buffer);
+}
+:--article-page header h1 {
   font-size: var(--global-font-size--xxx-large);
 }
-:--article-page header h3 {
+:--article-page header h2 {
   font-style: italic;
   font-weight: normal;
   font-size: var(--global-font-size--large);
 }
 
-:--article-page header :is(h3, h2 + .attr) {
-  padding-top: 17px;
+:--article-page header :is(h2, h1 + .attr) {
+  padding-top: var(--header-buffer);
   border-top: var(--global-border-width--normal) solid var(--global-color-primary--dark);
 }
 

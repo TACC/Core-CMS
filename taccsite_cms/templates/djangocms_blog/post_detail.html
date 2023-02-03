@@ -13,9 +13,9 @@
 {# /TACC #}
 <article id="post-{{ post.slug }}" class="post-item post-detail">
     <header>
-        <h2>{% render_model post "title" %}</h2>
+        <h1>{% render_model post "title" %}</h1>
         {% if post.subtitle %}
-            <h3>{% render_model post "subtitle" %}</h3>
+        <h2>{% render_model post "subtitle" %}</h2>
         {% endif %}
         {% block blog_meta %}
             {% include "djangocms_blog/includes/blog_meta.html" %}
