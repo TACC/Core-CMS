@@ -32,6 +32,8 @@
                 <li class="category_{{ forloop.counter }}"><a href="{% url 'djangocms_blog:posts-category' category=category.slug %}" class="blog-categories-{{ category.slug }}">{{ category.name }}</a>{% if not forloop.last %}, {% endif %}</li>
             {% endif %}
         {% endfor %}
+    {% else %}
+      <li class="category_none">{% trans "Uncategorized" %}</li>
     {% endif %}
 {% endspaceless %}</ul>
 <ul class="post-detail tags">{% spaceless %}
