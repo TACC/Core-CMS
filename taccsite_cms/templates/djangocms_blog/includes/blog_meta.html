@@ -21,7 +21,7 @@
     </li>
     {% if post.date_featured %}
     <li class="date date-featured">
-      <span>{% trans "Published" %}</span>&nbsp;
+      <span>{% trans "Featured" %}</span>&nbsp;
       <time datetime="{{ post.date_featured }}"
             title="{{ post.date_featured }}">
           {{ post.date_featured|date:"DATE_FORMAT" }}
