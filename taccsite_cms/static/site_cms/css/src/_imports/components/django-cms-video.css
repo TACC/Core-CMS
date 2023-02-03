@@ -3,6 +3,6 @@
   /* To overwrite Bootstrap _embed */
   position: unset;
   top: unset;
-  bottom: 0;
-  left: 0;
+  bottom: unset;
+  left: unset;
 }
