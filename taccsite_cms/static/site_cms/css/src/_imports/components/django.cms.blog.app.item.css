@@ -225,12 +225,6 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 
 /* Visual */
 
-:--article-item .blog-visual:not(:empty) {
-  /* To align any small image inside (useless with some image sizes) */
-  display: grid;
-  align-items: center;
-  justify-items: center;
-}
 :--article-item .blog-visual:empty {
   display: none;
 }
