@@ -66,6 +66,8 @@ Styleguide Components.DjangoCMS.Blog.App.Item
       'media desc';
     /* To shrinkwrap media and flexible text content */
     grid-template-columns: minmax(0, max-content) 1fr;
+    /* To let 'desc' take remaining space (removes gap between head and desc) */
+    grid-template-rows: min-content 1fr;
 }
 @media (--narrow-and-below) {
   :--article-item {
