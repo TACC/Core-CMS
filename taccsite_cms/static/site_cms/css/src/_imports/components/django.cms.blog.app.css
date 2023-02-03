@@ -36,6 +36,8 @@ Styleguide Components.DjangoCMS.Blog.App
 @custom-selector :--article-list--as-list .blog-list:not(.as-grid);
 @custom-selector :--article-list--as-grid .blog-list.as-grid;
 @custom-selector :--article-item .blog-list article;
+@custom-selector :--article-item--in-list .blog-list:not(.as-grid) article;
+@custom-selector :--article-item--in-grid .blog-list.as-grid article;
 
 
 
@@ -49,10 +51,6 @@ Styleguide Components.DjangoCMS.Blog.App
 
 
 /* Header */
-
-.blog-list > header {
-  margin-bottom: var(--blog-item-buffer);
-}
 
 ul.post-detail {
   list-style: none;
