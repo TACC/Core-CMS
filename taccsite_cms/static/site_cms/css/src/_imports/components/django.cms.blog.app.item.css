@@ -156,14 +156,13 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 
 /* Header - Metadata (Structure) */
 
-:--article-item .attr,
 :--article-item .tags {
   display: flex;
   flex-wrap: nowrap;
   flex-direction: row;
   gap: 2em;
+  align-items: center;
 }
-:--article-item .tags { align-items: center }
 
 /* To truncate all metadata */
 :--article-item :is(.byline, .date) {
@@ -186,8 +185,6 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 
 :--article-item .tags:empty,
 :--article-item .categories:empty { display: none }
-
-:--article-item .date { order: -1 }
 
 
 

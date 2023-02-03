@@ -71,6 +71,14 @@ ul.post-detail {
   display: none;
 }
 
+.app-blog .attr {
+  display: flex;
+  justify-content: space-between;
+}
+.app-blog .date {
+  order: -1
+}
+
 
 
 
