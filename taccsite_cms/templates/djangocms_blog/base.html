@@ -30,7 +30,7 @@
   {% endfor %}{% endif %}
 ">
     <form id="layout-choice">
-      <input type="radio" value="list" name="layout" id="layout-choice-list">
+      <input type="radio" value="list" name="layout" id="layout-choice-list" checked>
       <label for="layout-choice-list">
         <i class="icon icon-burger">List</i>
       </label>
@@ -45,10 +45,10 @@
 <script type="module">
   import switchLayout from '/static/site_cms/js/modules/switchLayout.js';
 
-  const content = document.getElementsByClassName('blog-list')[0];
   const form = document.getElementById('layout-choice');
+  const content = document.getElementsByClassName('blog-list')[0];
   const formChoices = form.querySelectorAll('input[name="layout"]');
 
-  switchLayout( content, form, formChoices );
+  switchLayout( content, formChoices );
 </script>
 {% endblock content %}

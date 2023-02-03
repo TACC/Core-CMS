@@ -10,32 +10,38 @@ const LAYOUT_CLASS_DICT = {
 /**
  * Change class of element based on choice from a form
  * @param {HTMLElement} content - The element on which to switch layout class
- * @param {HTMLElement} form - The form by which user chooses layout
  * @param {HTMLNodeList} formChoices - The elements by which user chooses layout
  * @param {object.<string, string>} [layoutClassDict=LAYOUT_CLASS_DICT] - Class name for each layout
  */
 export default function switchLayout(
   content,
-  form,
   formChoices,
-  layoutClassNames = LAYOUT_CLASS_DICT
+  layoutClassDict = LAYOUT_CLASS_DICT
 ) {
-  // To submit on radio select
   [ ...formChoices ].forEach( choice => {
-    choice.addEventListener('click', form.submit );
-  });
+    choice.addEventListener('click', () => {
+      const layout = getLayout( formChoices );
 
-  // To swap layout on form submit
-  form.addEventListener('submit', () => {
+      switchClass( content, layout, layoutClassDict );
+    });
+  });
+}
+
+/**
+ * To get the chosen layout
+ * @param {HTMLNodeList} formChoices - The elements by which user chooses layout
+ * @returns {string}
+ * @see https://stackoverflow.com/a/36894871
+ */
+function getLayout(formChoices) {
     let layout;
     for ( const choice of formChoices ) {
         if ( choice.checked ) {
-            layout = radioButton.value;
+            layout = choice.value;
             break;
         }
     }
-    switchClass( content, layout, layoutClassNames );
-  });
+    return layout;
 }
 
 /**
@@ -43,20 +49,24 @@ export default function switchLayout(
  * @param {HTMLElement} content - The element on which to switch layout class
  * @param {string} layout - The layout to use
  * @param {object.<string, string>} [layoutClassDict=LAYOUT_CLASS_DICT] - Class name for each layout
- * @returns {boolean}
  * @see https://stackoverflow.com/a/36894871
  */
 function switchClass( content, layout, layoutClassDict ) {
-  if ( layout in layoutClassDict ) {
-    content.classList.add(layoutClassDict[layout]);
-  } else {
-    console.info(`The layout "${layout}" is unknown`);
+  let layoutClass;
+
+  // Remove unselected
+  for ( const layoutName in layoutClassDict ) {
+    if ( layoutName !== layout ) {
+      layoutClass = layoutClassDict[layoutName];
+      content.classList.remove( layoutClass );
+    }
   }
 
-  for ( const layoutClass of layoutClassDict ) {
-    if ( layoutClass !== layout ) {
-      content.classList.remove(layoutClassDict[layout]);
-      break;
-    }
+  // Add selected
+  if ( layout in layoutClassDict ) {
+    layoutClass = layoutClassDict[layout];
+    content.classList.add( layoutClass );
+  } else {
+    console.info(`The layout "${layout}" is unknown`);
   }
 }
