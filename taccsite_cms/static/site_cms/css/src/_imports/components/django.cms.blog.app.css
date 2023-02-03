@@ -33,8 +33,6 @@ Styleguide Components.DjangoCMS.Blog.App
 @custom-selector :--article article;
 @custom-selector :--article-page article.post-detail;
 @custom-selector :--article-list .blog-list;
-@custom-selector :--article-list--as-list .blog-list:not(.as-grid);
-@custom-selector :--article-list--as-grid .blog-list.as-grid;
 @custom-selector :--article-item .blog-list article;
 
 
