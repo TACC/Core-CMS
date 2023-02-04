@@ -101,7 +101,7 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 
 :--article-page .blog-lead,
 :--article-page .blog-content {
-  font-size: var(--global-font-size--normal);
+  font-size: var(--global-font-size--medium);
   line-height: 2;
 }
 /* Add space between all list items */
