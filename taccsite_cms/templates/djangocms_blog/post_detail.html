@@ -1,5 +1,5 @@
 {% extends "djangocms_blog/post_detail.html" %}
-{% load i18n easy_thumbnails_tags cms_tags blog_post_is_multimedia %}
+{% load i18n easy_thumbnails_tags cms_tags blog_post_is_multimedia blog_post_is_show_abstract %}
 
 {% block content_blog %}{% spaceless %}
 {# TACC (wrap and add breadcrumbs): #}
@@ -8,8 +8,9 @@
 {% include "nav_cms_breadcrumbs.html" %}
 
 {# /TACC #}
-{# TACC (define whether this is a multimedia post): #}
+{# TACC (define whether this is a special post): #}
 {% blog_post_is_multimedia post settings.TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY as is_multimedia_post %}
+{% blog_post_is_show_abstract post settings.TACC_BLOG_SHOW_ABSTRACT_TAG as is_show_abstract_post %}
 {# /TACC #}
 <article id="post-{{ post.slug }}" class="post-item post-detail">
     <header>
@@ -34,6 +35,19 @@
     {% endif %}
     {# TACC (do not let source end spaceless-ness prematurely): #}
     {# {% endspaceless %} #}
+    {# /TACC #}
+    {# TACC (print abstract for some posts e.g. an external article): #}
+    {% if is_show_abstract_post %}
+        {# TACC (copied from source app's includes/blog_item.html): #}
+        <div class="blog-lead">
+            {% if not TRUNCWORDS_COUNT %}
+                {% render_model post "abstract" "" "" "safe" %}
+            {% else %}
+                {% render_model post "abstract" "" "" "truncatewords_html:TRUNCWORDS_COUNT|safe"  %}
+            {% endif %}
+        </div>
+        {# /TACC #}
+    {% endif %}
     {# /TACC #}
     {% if post.app_config.use_placeholder %}
         <div class="blog-content">{% render_placeholder post.content %}</div>
