@@ -9,12 +9,14 @@
     {% spaceless %}
       {{ block.super }}
     {% endspaceless %}
-    <script>
+    <script id="blog-post-text-manipulation">
       /* HACK: To replace « and » of "« Previous" and "Next »" with < and > */
+      {# FAQ: Using JavaScript let us avoid cloning includes/blog_item.html #}
       [ ...document.querySelectorAll('.pagination a') ].forEach( a => {
         a.innerText = a.innerText.replace('«', '<').replace('»', '>');
       });
       /* HACK: To manipulate "read more" link */
+      {# FAQ: Using JavaScript let us avoid cloning includes/blog_item.html #}
       [ ...document.querySelectorAll('.read-more a') ].forEach( a => {
         /* To remove " »" from "read more »" */
         a.innerText = a.innerText.replace(' »', '');
