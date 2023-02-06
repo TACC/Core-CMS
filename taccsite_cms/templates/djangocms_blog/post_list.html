@@ -24,6 +24,25 @@
         a.tabIndex = -1;
       });
     </script>
+    <script id="blog-post-tag-classes-to-article">
+      /* HACK: To add class to article for each tag present */
+      {# FAQ: Using JavaScript let us avoid cloning includes/blog_item.html #}
+      const blogList = document.querySelector('.blog-list');
+      const articles = blogList.querySelectorAll('article');
+      [ ...articles ].forEach( article => {
+        const tags = article.querySelectorAll('.blog-tag');
+        [ ...tags ].forEach( tag => {
+          console.log({tag});
+          const classNames = tag.classList;
+          classNames.forEach( className => {
+            const isBlogTag = ( className.indexOf('blog-tag-') === 0 );
+            if ( isBlogTag ) {
+              article.classList.add(`has-${className}`);
+            }
+          });
+        });
+      });
+    </script>
 </div>
 {% endblock content_blog %}
 
