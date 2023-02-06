@@ -34,7 +34,6 @@
       [ ...articles ].forEach( article => {
         const tags = article.querySelectorAll('.blog-tag');
         [ ...tags ].forEach( tag => {
-          console.log({tag});
           const classNames = tag.classList;
           classNames.forEach( className => {
             const isBlogTag = ( className.indexOf('blog-tag-') === 0 );
