@@ -98,12 +98,14 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 
 /* Media & Content - Content */
 
+:--article-page .blog-lead,
 :--article-page .blog-content {
-  font-size: var(--global-font-size--normal);
+  font-size: var(--global-font-size--medium);
   line-height: 2;
 }
 /* Add space between all list items */
 /* FAQ: Use case is list items with as much text as a paragraph */
+:--article-page .blog-lead li + li,
 :--article-page .blog-content li + li {
   margin-top: 0.5em;
 }
