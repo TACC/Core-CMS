@@ -4,12 +4,12 @@
 
 {% block canonical_url %}<link rel="canonical" href="{{ view.get_view_url }}"/>{% endblock canonical_url %}
 
+{% block content_blog %}
 {# TACC (wrap list in container w/ breadcrumbs to mimic other page layouts): #}
 <div class="container">
 {% include "nav_cms_breadcrumbs.html" %}
 {# /TACC #}
 
-{% block content_blog %}
 <section class="blog-list">
     {% block blog_title %}
     <header>
@@ -48,9 +48,9 @@
     </nav>
     {% endif %}
 </section>
-{% endblock %}
-{% endspaceless %}
 
 {# TACC (wrap list in container w/ breadcrumbs to mimic other page layouts): #}
 </div>
 {# /TACC #}
+{% endblock %}
+{% endspaceless %}
