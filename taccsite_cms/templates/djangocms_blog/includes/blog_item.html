@@ -1,7 +1,9 @@
 {# https://github.com/nephila/djangocms-blog/blob/1.1.1/djangocms_blog/templates/djangocms_blog/includes/blog_item.html #}
 {% load djangocms_blog i18n easy_thumbnails_tags cms_tags %}
 
-<article id="post-{{ post.slug }}" class="post-item">
+{# TACC (include category & tag class names): #}
+<article id="post-{{ post.slug }}" class="post-item {% include './blog_cats.html' with prefix='has-' %} {% include './blog_tags.html' with prefix='has-' %}">
+{# /TACC #}
     <header>
         <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
         {% if post.subtitle %}
