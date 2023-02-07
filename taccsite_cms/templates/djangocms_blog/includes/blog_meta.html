@@ -53,7 +53,10 @@
             {% if category.slug %}
                 {# TACC (fix bug nephila/djangocms-blog#711): #}
                 {# TACC (remove hard-coded comma so CSS handles separator): #}
-                <li class="category_{{ forloop.counter }}"><a href="{% url 'djangocms_blog:posts-category' category=category.slug %}" class="blog-categories-{{ category.slug }}">{{ category.name }}</a></li>
+                {# TACC (rename `blog-categories-…` to `blog-category-…`): #}
+                <li class="category_{{ forloop.counter }}"><a href="{% url 'djangocms_blog:posts-category' category=category.slug %}" class="blog-category-{{ category.slug }}">{{ category.name }}</a></li>
+                {# /TACC #}
+                {# /TACC #}
                 {# /TACC #}
             {% endif %}
         {% endfor %}
@@ -69,6 +72,8 @@
             {# TACC (fix bug nephila/djangocms-blog#711): #}
             {# TACC (remove hard-coded comma so CSS handles separator): #}
             <li class="tag_{{ forloop.counter }}"><a href="{% url 'djangocms_blog:posts-tagged' tag=tag.slug %}" class="blog-tag blog-tag-{{ tag.slug }}">{{ tag.name }}</a></li>
+            {# /TACC #}
+            {# /TACC #}
             {# /TACC #}
         {% endfor %}
     {% endif %}
