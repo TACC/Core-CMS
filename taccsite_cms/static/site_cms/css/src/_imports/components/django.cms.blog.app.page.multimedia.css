@@ -8,7 +8,7 @@ Reference:
 Styleguide Components.DjangoCMS.Blog.App.Page
 */
 
-@custom-selector :--multimedia-page .app-blog-category-multimedia;
+@custom-selector :--multimedia-page .app-blog.has-blog-category-multimedia;
 
 /* To move breadcrumbs atop article */
 :--multimedia-page article.post-detail .blog-visual {
