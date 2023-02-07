@@ -126,8 +126,12 @@ Styleguide Components.DjangoCMS.Blog.App.Page
   margin-inline: auto;
 }
 
-:--article-page .blog-content .blockquote[class*="text-"] {
-  text-align: left !important; /* overwrite Bootstrap .text-... !important */
+/* To always align Bootstrap blockquote text left */
+/* FAQ: Boostrap, loaded in foundation layer, used !important */
+@layer foundation {
+  :--article-page .blog-content .blockquote[class*="text-"] {
+    text-align: left !important; /* overwrite Bootstrap .text-... !important */
+  }
 }
 
 /* To remove margin on narrow screens */
