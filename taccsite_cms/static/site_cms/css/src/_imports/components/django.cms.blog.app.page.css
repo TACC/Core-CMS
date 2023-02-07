@@ -111,15 +111,26 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 
 
 /* Media & Content - Alignment */
+/* FAQ: The .align-... classes come from Bootstrap Picture */
+/* FAQ: The .blockquote.text-... classes come from Bootstrap Blockquote */
 
-:--article-page .blog-content .align-left {
+:--article-page .blog-content .align-left,
+:--article-page .blog-content .blockquote.text-left {
   @extend .o-offset-content--left;
 }
-:--article-page .blog-content .align-right {
+:--article-page .blog-content .align-right,
+:--article-page .blog-content .blockquote.text-right {
   @extend .o-offset-content--right;
 }
 :--article-page .blog-content .align-center {
   max-width: 100%; /* overwrite @tacc/core-styles/…/components/align.css */
+}
+:--article-page .blog-content .blockquote.text-center {
+  margin-inline: auto;
+}
+
+:--article-page .blog-content .blockquote[class*="text-"] {
+  text-align: left !important; /* overwrite Bootstrap .text-... !important */
 }
 
 /* To remove margin on narrow screens */
