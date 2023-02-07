@@ -177,11 +177,6 @@ Styleguide Components.DjangoCMS.Blog.App.Item
   height: 1.4em; /* ~ line-height */
   overflow: hidden;
 }
-:--article-item .date span,
-:--article-item .byline a,
-:--article-item .tags li,
-:--article-item .categories li,
-:--article-item .categories::before { @extend %x-truncate--one-line }
 
 :--article-item .tags:empty,
 :--article-item .categories:empty { display: none }
