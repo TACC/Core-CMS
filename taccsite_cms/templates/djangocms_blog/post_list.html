@@ -1,53 +1,17 @@
 {# https://github.com/nephila/djangocms-blog/blob/1.1.1/djangocms_blog/templates/djangocms_blog/post_list.html #}
-{% extends "djangocms_blog/post_list.html" %}
-{% load cms_tags i18n %}
+{% extends "djangocms_blog/base.html" %}
+{% load i18n easy_thumbnails_tags %}{% spaceless %}
+
+{% block canonical_url %}<link rel="canonical" href="{{ view.get_view_url }}"/>{% endblock canonical_url %}
+
+{# TACC (wrap list in container w/ breadcrumbs to mimic other page layouts): #}
+<div class="container">
+{% include "nav_cms_breadcrumbs.html" %}
+{# /TACC #}
 
 {% block content_blog %}
-<div class="container">
-    {% include "nav_cms_breadcrumbs.html" %}
-    {# FAQ: The extended template adds `spaceless` but it fails #}
-    {% spaceless %}
-      {{ block.super }}
-    {% endspaceless %}
-    <script id="blog-post-text-manipulation">
-      /* HACK: To replace « and » of "« Previous" and "Next »" with < and > */
-      {# FAQ: Using JavaScript let us avoid cloning includes/blog_item.html #}
-      [ ...document.querySelectorAll('.pagination a') ].forEach( a => {
-        a.innerText = a.innerText.replace('«', '<').replace('»', '>');
-      });
-      /* HACK: To manipulate "read more" link */
-      {# FAQ: Using JavaScript let us avoid cloning includes/blog_item.html #}
-      [ ...document.querySelectorAll('.read-more a') ].forEach( a => {
-        /* To remove " »" from "read more »" */
-        a.innerText = a.innerText.replace(' »', '');
-        /* To disallow focus (because article header link is ample) */
-        a.tabIndex = -1;
-      });
-    </script>
-    <script id="blog-post-tag-classes-to-article" type="module">
-      /* HACK: To add class to article for each tag present */
-      {# NOTE: Not used yet; can be used to style article based on tag or cat #}
-      {# FAQ: TUP CMS was going to use this in Phase 1, but now for Phase 2 #}
-      {# FAQ: Using JavaScript let us avoid cloning includes/blog_item.html #}
-      const blogList = document.querySelector('.blog-list');
-      const articles = blogList.querySelectorAll('article');
-      [ ...articles ].forEach( article => {
-        const tags = article.querySelectorAll('.blog-tag');
-        [ ...tags ].forEach( tag => {
-          const classNames = tag.classList;
-          classNames.forEach( className => {
-            const isBlogTag = ( className.indexOf('blog-tag-') === 0 );
-            if ( isBlogTag ) {
-              article.classList.add(`has-${className}`);
-            }
-          });
-        });
-      });
-    </script>
-</div>
-{% endblock content_blog %}
-
-{% block blog_title %}
+<section class="blog-list">
+    {% block blog_title %}
     <header>
         <h1>
         {% if author %}{% trans "Articles by" %} {{ author.get_full_name }}
@@ -57,4 +21,36 @@
         {% else %}{% trans "News" %}{% endif %}
         </h1>
     </header>
+    {% endblock %}
+    {% for post in post_list %}
+        {% include "djangocms_blog/includes/blog_item.html" with post=post image="true" TRUNCWORDS_COUNT=TRUNCWORDS_COUNT %}
+    {% empty %}
+    <p class="blog-empty">{% trans "No article found." %}</p>
+    {% endfor %}
+    {% if author or archive_date or tagged_entries %}
+    <p class="blog-back"><a href="{% url 'djangocms_blog:posts-latest' %}">{% trans "Back" %}</a></p>
+    {% endif %}
+    {% if is_paginated %}
+    <nav class="{% firstof css_grid instance.css_grid %} pagination">
+        {% if page_obj.has_previous %}
+            {# TACC (swap '«' with '<'): #}
+            <a href="?{{ view.page_kwarg }}={{ page_obj.previous_page_number }}">&lt; {% trans "previous" %}</a>
+            {# /TACC #}
+        {% endif %}
+        <span class="current">
+            {% trans "Page" %} {{ page_obj.number }} {% trans "of" %} {{ paginator.num_pages }}
+        </span>
+        {% if page_obj.has_next %}
+            {# TACC (swap '»' with '>'): #}
+            <a href="?{{ view.page_kwarg }}={{ page_obj.next_page_number }}">{% trans "next" %} &gt;</a>
+            {# /TACC #}
+        {% endif %}
+    </nav>
+    {% endif %}
+</section>
 {% endblock %}
+{% endspaceless %}
+
+{# TACC (wrap list in container w/ breadcrumbs to mimic other page layouts): #}
+</div>
+{# /TACC #}

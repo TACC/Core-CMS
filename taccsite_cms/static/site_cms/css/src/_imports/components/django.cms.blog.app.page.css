@@ -41,7 +41,6 @@ Styleguide Components.DjangoCMS.Blog.App.Page
   font-weight: normal;
   font-size: var(--global-font-size--large);
 }
-
 :--article-page header :is(h2, h1 + .attr) {
   padding-top: var(--header-buffer);
   border-top: var(--global-border-width--normal) solid var(--global-color-primary--dark);
