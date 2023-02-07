@@ -11,7 +11,7 @@ textarea.cke_source { max-height: inherit; }
 .cke_reset_all/* ← for specificiity */ .cke_dialog_ui_vbox {
     position: relative;
 }
-.cke_dialog_ui_vbox table {
+.cke_dialog_ui_vbox > table {
     position: absolute;
     height: 100%;
     left: 0;

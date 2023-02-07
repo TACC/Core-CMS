@@ -266,14 +266,16 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 
 /* Content */
 
-.blog-lead {
+:--article-item .blog-lead {
   @extend %x-truncate--many-lines;
   --lines: 3;
 
   line-height: 1.5;
   color: var(--global-color-primary--dark);
 }
-.blog-lead p:last-child { margin-bottom: 0 /* overwrite Boostrap */ }
+:--article-item .blog-lead p:last-child {
+  margin-bottom: 0 /* overwrite Boostrap */
+}
 
 
 

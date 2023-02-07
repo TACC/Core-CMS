@@ -252,6 +252,9 @@ CEP_AUTH_VERIFICATION_ENDPOINT = 'http://django:6000'
 
 TACC_BLOG_SHOW_CATEGORIES = True
 TACC_BLOG_SHOW_TAGS = True
+# To flag posts of certain category or tag, so template can take special action
+TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY = 'sample_value_e_g__mutlimedia__'
+TACC_BLOG_SHOW_ABSTRACT_TAG = 'sample_value_e_g__redirect__'
 
 ########################
 # CLIENT BUILD SETTINGS
@@ -576,6 +579,14 @@ CKEDITOR_SETTINGS = {
     'stylesSet': 'tacc:/static/djangocms_text_ckeditor/ckeditor/styles.js',
 }
 
+# https://github.com/django-cms/djangocms-video
+DJANGOCMS_VIDEO_TEMPLATES = [
+    ('responsive-16by9', _('Responsive - 16 by 9')),
+    ('responsive-4by3', _('Responsive - 4 by 3')),
+    ('responsive-1by1', _('Responsive - 1 by 1')),
+    ('responsive-21by9', _('Responsive - 21 by 9')),
+]
+
 ########################
 # IMPORT & EXPORT
 ########################
@@ -615,5 +626,7 @@ SETTINGS_EXPORT = [
     'GOOGLE_ANALYTICS_PROPERTY_ID',
     'GOOGLE_ANALYTICS_PRELOAD',
     'TACC_BLOG_SHOW_CATEGORIES',
-    'TACC_BLOG_SHOW_TAGS'
+    'TACC_BLOG_SHOW_TAGS',
+    'TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY',
+    'TACC_BLOG_SHOW_ABSTRACT_TAG'
 ]

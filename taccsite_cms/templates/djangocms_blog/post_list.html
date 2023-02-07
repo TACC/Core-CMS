@@ -9,17 +9,39 @@
     {% spaceless %}
       {{ block.super }}
     {% endspaceless %}
-    <script>
+    <script id="blog-post-text-manipulation">
       /* HACK: To replace « and » of "« Previous" and "Next »" with < and > */
+      {# FAQ: Using JavaScript let us avoid cloning includes/blog_item.html #}
       [ ...document.querySelectorAll('.pagination a') ].forEach( a => {
         a.innerText = a.innerText.replace('«', '<').replace('»', '>');
       });
       /* HACK: To manipulate "read more" link */
+      {# FAQ: Using JavaScript let us avoid cloning includes/blog_item.html #}
       [ ...document.querySelectorAll('.read-more a') ].forEach( a => {
         /* To remove " »" from "read more »" */
         a.innerText = a.innerText.replace(' »', '');
         /* To disallow focus (because article header link is ample) */
         a.tabIndex = -1;
+      });
+    </script>
+    <script id="blog-post-tag-classes-to-article" type="module">
+      /* HACK: To add class to article for each tag present */
+      {# NOTE: Not used yet; can be used to style article based on tag or cat #}
+      {# FAQ: TUP CMS was going to use this in Phase 1, but now for Phase 2 #}
+      {# FAQ: Using JavaScript let us avoid cloning includes/blog_item.html #}
+      const blogList = document.querySelector('.blog-list');
+      const articles = blogList.querySelectorAll('article');
+      [ ...articles ].forEach( article => {
+        const tags = article.querySelectorAll('.blog-tag');
+        [ ...tags ].forEach( tag => {
+          const classNames = tag.classList;
+          classNames.forEach( className => {
+            const isBlogTag = ( className.indexOf('blog-tag-') === 0 );
+            if ( isBlogTag ) {
+              article.classList.add(`has-${className}`);
+            }
+          });
+        });
       });
     </script>
 </div>

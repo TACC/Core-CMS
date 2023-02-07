@@ -1,9 +1,74 @@
 {% extends "djangocms_blog/post_detail.html" %}
-{% load cms_tags %}
+{% load i18n easy_thumbnails_tags cms_tags blog_post_is_multimedia blog_post_is_show_abstract %}
 
-{% block content_blog %}
+{% block content_blog %}{% spaceless %}
+{# TACC (wrap and add breadcrumbs): #}
+
 <section class="container">
-    {% include "nav_cms_breadcrumbs.html" %}
-    {{ block.super }}
+{% include "nav_cms_breadcrumbs.html" %}
+
+{# /TACC #}
+{# TACC (define whether this is a special post): #}
+{% blog_post_is_multimedia post settings.TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY as is_multimedia_post %}
+{% blog_post_is_show_abstract post settings.TACC_BLOG_SHOW_ABSTRACT_TAG as is_show_abstract_post %}
+{# /TACC #}
+<article id="post-{{ post.slug }}" class="post-item post-detail">
+    <header>
+        <h2>{% render_model post "title" %}</h2>
+        {% if post.subtitle %}
+            <h3>{% render_model post "subtitle" %}</h3>
+        {% endif %}
+        {% block blog_meta %}
+            {% include "djangocms_blog/includes/blog_meta.html" %}
+        {% endblock %}
+    </header>
+    {# TACC (multimedia styles are incompatible with thumbnail): #}
+    {# {% if not post.main_image_id %} #}
+    {% if is_multimedia_post or not post.main_image_id %}
+    {# /TACC #}
+        <div class="blog-visual">{% render_placeholder post.media %}</div>
+    {% else %}
+    <div class="blog-visual">
+        {% thumbnail post.main_image post.full_image_options.size crop=post.full_image_options.crop upscale=post.full_image_options.upscale subject_location=post.main_image.subject_location  as thumb %}
+        <img src="{{ thumb.url }}" alt="{{ post.main_image.default_alt_text }}" width="{{ thumb.width }}" height="{{ thumb.height }}" />
+    </div>
+    {% endif %}
+    {# TACC (do not let source end spaceless-ness prematurely): #}
+    {# {% endspaceless %} #}
+    {# /TACC #}
+    {# TACC (print abstract for some posts e.g. an external article): #}
+    {% if is_show_abstract_post %}
+        {# TACC (copied from source app's includes/blog_item.html): #}
+        <div class="blog-lead">
+            {% if not TRUNCWORDS_COUNT %}
+                {% render_model post "abstract" "" "" "safe" %}
+            {% else %}
+                {% render_model post "abstract" "" "" "truncatewords_html:TRUNCWORDS_COUNT|safe"  %}
+            {% endif %}
+        </div>
+        {# /TACC #}
+    {% endif %}
+    {# /TACC #}
+    {% if post.app_config.use_placeholder %}
+        <div class="blog-content">{% render_placeholder post.content %}</div>
+    {% else %}
+        <div class="blog-content">{% render_model post "post_text" "post_text" "" "safe" %}</div>
+    {% endif %}
+    {% if view.liveblog_enabled %}
+        {% include "liveblog/includes/post_detail.html" %}
+    {% endif %}
+    {% if post.related.exists %}
+        <section class="post-detail-list">
+        {% for related in post.related.all %}
+            {% include "djangocms_blog/includes/blog_item.html" with post=related image="true" TRUNCWORDS_COUNT=TRUNCWORDS_COUNT %}
+        {% endfor %}
+        </section>
+    {% endif %}
+</article>
+{# TACC (end wrap and end spaceless-ness later than source): #}
+
 </section>
+{% endspaceless %}
+
+{# /TACC #}
 {% endblock content_blog %}
