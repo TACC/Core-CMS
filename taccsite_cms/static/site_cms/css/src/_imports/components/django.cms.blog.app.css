@@ -71,7 +71,7 @@ ul.post-detail {
   display: none;
 }
 
-.app-blog .attr {
+.app-blog .attrs {
   display: flex;
   justify-content: space-between;
 }
