@@ -156,26 +156,18 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 
 /* Header - Metadata (Structure) */
 
+:--article-item .attrs {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 :--article-item .tags {
   display: flex;
   flex-wrap: nowrap;
   flex-direction: row;
   gap: 2em;
   align-items: center;
-}
-
-/* To truncate all metadata */
-:--article-item :is(.byline, .date) {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-
-  /* To allow truncation */
-  min-width: 0;
-
-  /* To limit text to one line */
-  height: 1.4em; /* ~ line-height */
-  overflow: hidden;
 }
 
 :--article-item .tags:empty,
