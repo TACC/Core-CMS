@@ -12,30 +12,30 @@ Use regex to convert the `<option>`s from HTML to Python Django CMS instructions
 
 - Find:
 
-    ```regexp
-    [\n\s]*<option[\n\s]*value=".+"[\n\s]*title="[\s\w]+ \| [\s\w]+ \| ([\s\w]+)"[\n\s]*>\n[\s]*[\s\w]+ \| [\s\w]+ \| [\s\w]+</option>
-    ```
+  ```regexp
+  [\n\s]*<option[\n\s]*value=".+"[\n\s]*title="[\s\w]+ \| [\s\w]+ \| ([\s\w]+)"[\n\s]*>\n[\s]*[\s\w]+ \| [\s\w]+ \| [\s\w]+</option>
+  ```
 
 - Replace:
 
-    ```text
-    group.permissions.add( Permission.objects.get(name='$1') )\n
-    ```
+  ```text
+  group.permissions.add( Permission.objects.get(name='$1') )\n
+  ```
 
 ## Program Permissions
 
 1. Create a python script in this directory named after the group e.g. `news_writer_advanced.py`.
 2. Add this starter code:
 
-    ```py
-    from django.contrib.auth.models import Group, Permission
-    from django.core.management import BaseCommand
+   ```py
+   from django.contrib.auth.models import Group, Permission
+   from django.core.management import BaseCommand
 
-    def set_group_perms():
-        group, was_created = Group.objects.get_or_create(
-          name='__GROUP_NAME__'
-        )
-    ```
+   def set_group_perms():
+       group, was_created = Group.objects.get_or_create(
+         name='__GROUP_NAME__'
+       )
+   ```
 
 3. Change `__GROUP_NAME__` to the name of the group to add permissions for e.g. `News Writer (Advanced)`.
 4. Within the `handle` method, add all the commands from the "Convert Permissions" step.
@@ -52,11 +52,11 @@ Use regex to convert the `<option>`s from HTML to Python Django CMS instructions
 1. Open a shell into the CMS container e.g. `docker exec -it core_cms /bin/bash`.
 2. In the shell, open a Python shell i.e. `python`.
 3. In the Python shell, run these commands:
-    1. `import os`
-    2. `import django`
-    3. `os.environ.setdefault("DJANGO_SETTINGS_MODULE", "taccsite_cms.settings")`
-    4. `django.setup()`
-    5. any lines to debug from any scripts
+   1. `import os`
+   2. `import django`
+   3. `os.environ.setdefault("DJANGO_SETTINGS_MODULE", "taccsite_cms.settings")`
+   4. `django.setup()`
+   5. any lines to debug from any scripts
 
 ## Reference
 
