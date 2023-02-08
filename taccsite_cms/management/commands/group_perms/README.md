@@ -58,7 +58,7 @@ Use regex to convert the `<option>`s from HTML to Python Django CMS instructions
    2. `import django`
    3. `os.environ.setdefault("DJANGO_SETTINGS_MODULE", "taccsite_cms.settings")`
    4. `django.setup()`
-   5. any lines to debug from any scripts
+   5. Any additional debugging code or scripts you want to execute.
 
 ## Reference
 
