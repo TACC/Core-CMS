@@ -1,4 +1,4 @@
-# Programatically Add Groups & Permissions to CMS
+# Programmatically Add Groups & Permissions to CMS
 
 ## Get Permissions
 
