@@ -46,7 +46,7 @@ Use regex to convert the `<option>`s from HTML to Python Django CMS instructions
 
 1. Open a shell into the CMS container e.g. `docker exec -it core_cms /bin/bash`.
 2. In the shell, run the group/permission command e.g. `python manage.py set_group_perms news_writer_advanced`.
-3. Open the CMS admin interface e.g. [https://localhost:8000/admin].
+3. Open the CMS admin interface e.g. [https://localhost:8000/admin](https://localhost:8000/admin).
 4. In the CMS admin, verify group permissions are as you intend.
 
 ## Debug Command
