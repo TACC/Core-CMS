@@ -72,24 +72,19 @@ ul.post-detail {
   display: none;
 }
 
-.app-blog .attrs {
+.app-blog .attrs,
+.app-blog .tags,
+.app-blog .categories {
   display: flex;
   flex-direction: row;
+  gap: 1em;
+}
+.app-blog .attrs {
   justify-content: space-between;
 }
 .app-blog .date {
   order: -1
 }
-
-.app-blog .tags,
-.app-blog .categories {
-  display: flex;
-  flex-wrap: nowrap;
-  flex-direction: row;
-  gap: 1em;
-  align-items: center;
-}
-
 
 
 
