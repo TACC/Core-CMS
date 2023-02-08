@@ -2,7 +2,7 @@
 {% get_current_language as lang_code %}
 <!doctype html>
 <html
-  id="page-{{ request.current_page.reverse_id }}"
+  id="page-{% block html_page_id %}{{ request.current_page.reverse_id }}{% endblock html_page_id %}"
   lang="{{ lang_code }}"
   {# FAQ: Only available if set in page's "Advanced" settings #}
   data-page-id="{{ request.current_page.reverse_id }}"
