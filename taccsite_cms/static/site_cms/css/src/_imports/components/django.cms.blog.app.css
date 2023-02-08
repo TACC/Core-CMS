@@ -73,10 +73,19 @@ ul.post-detail {
 
 .app-blog .attrs {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
 }
 .app-blog .date {
   order: -1
+}
+
+.app-blog .tags {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  gap: 2em;
+  align-items: center;
 }
 
 

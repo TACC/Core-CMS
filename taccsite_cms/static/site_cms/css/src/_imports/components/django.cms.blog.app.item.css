@@ -154,27 +154,6 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 
 
 
-/* Header - Metadata (Structure) */
-
-:--article-item .attrs {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-:--article-item .tags {
-  display: flex;
-  flex-wrap: nowrap;
-  flex-direction: row;
-  gap: 2em;
-  align-items: center;
-}
-
-:--article-item .tags:empty,
-:--article-item .categories:empty { display: none }
-
-
-
 /* Header - Metadata (Skin) */
 
 :--article-item li {
