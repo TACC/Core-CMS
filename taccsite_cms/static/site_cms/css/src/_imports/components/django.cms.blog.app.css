@@ -86,7 +86,7 @@ ul.post-detail {
   display: flex;
   flex-wrap: nowrap;
   flex-direction: row;
-  gap: 2em;
+  gap: 1em;
   align-items: center;
 }
 
