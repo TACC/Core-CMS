@@ -62,5 +62,6 @@ Use regex to convert the `<option>`s from HTML to Python Django CMS instructions
 
 ## Reference
 
+- ["Next Steps" for this feature](https://github.com/TACC/Core-CMS/pull/598#issuecomment-1423258767)
 - [Programmatically create a django group with permissions](https://stackoverflow.com/q/22250352/11817077)
 - [Writing custom django-admin commands](https://docs.djangoproject.com/en/2.2/howto/custom-management-commands/)
