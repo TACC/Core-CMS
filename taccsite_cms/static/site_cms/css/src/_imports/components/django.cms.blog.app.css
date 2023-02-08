@@ -52,6 +52,7 @@ Styleguide Components.DjangoCMS.Blog.App
 
 /* Header */
 
+/* FAQ: No .app-blog in selector because .post-detail can appear in plugins */
 ul.post-detail {
   list-style: none;
 
