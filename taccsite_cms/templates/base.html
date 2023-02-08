@@ -6,7 +6,7 @@
   lang="{{ lang_code }}"
   {# FAQ: Only available if set in page's "Advanced" settings #}
   data-page-id="{{ request.current_page.reverse_id }}"
-  class="{% block template_class %}{% endblock template_class %}">
+  class="{% block html_page_class %}{% endblock html_page_class %}">
 
 {# SEE: https://github.com/nephila/django-meta/blob/1.7.0/docs/rendering.rst #}
 <head {% meta_namespaces %}>
