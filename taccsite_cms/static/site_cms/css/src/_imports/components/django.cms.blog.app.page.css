@@ -26,7 +26,7 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 
 /* Header (Structure) */
 
-:--article-page .attr {
+:--article-page .attrs {
   display: flex;
   justify-content: space-between;
 }
@@ -40,7 +40,7 @@ Styleguide Components.DjangoCMS.Blog.App.Page
   font-size: var(--global-font-size--large);
 }
 
-:--article-page header :is(h3, h2 + .attr) {
+:--article-page header :is(h3, h2 + .attrs) {
   padding-top: 17px;
   border-top: var(--global-border-width--normal) solid var(--global-color-primary--dark);
 }
@@ -99,12 +99,14 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 
 /* Media & Content - Content */
 
+:--article-page .blog-lead,
 :--article-page .blog-content {
-  font-size: var(--global-font-size--normal);
+  font-size: var(--global-font-size--medium);
   line-height: 2;
 }
 /* Add space between all list items */
 /* FAQ: Use case is list items with as much text as a paragraph */
+:--article-page .blog-lead li + li,
 :--article-page .blog-content li + li {
   margin-top: 0.5em;
 }

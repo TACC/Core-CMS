@@ -1,5 +1,6 @@
+{# https://github.com/nephila/djangocms-blog/blob/1.1.1/djangocms_blog/templates/djangocms_blog/post_detail.html #}
 {% extends "djangocms_blog/post_detail.html" %}
-{% load i18n easy_thumbnails_tags cms_tags blog_post_is_multimedia %}
+{% load i18n easy_thumbnails_tags cms_tags blog_post_use_custom_media blog_post_is_show_abstract %}
 
 {% block content_blog %}{% spaceless %}
 {# TACC (wrap and add breadcrumbs): #}
@@ -8,8 +9,9 @@
 {% include "nav_cms_breadcrumbs.html" %}
 
 {# /TACC #}
-{# TACC (define whether this is a multimedia post): #}
-{% blog_post_is_multimedia post settings.TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY as is_multimedia_post %}
+{# TACC (define whether this is a special post): #}
+{% blog_post_use_custom_media post settings.TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY as use_custom_media %}
+{% blog_post_is_show_abstract post settings.TACC_BLOG_SHOW_ABSTRACT_TAG as is_show_abstract_post %}
 {# /TACC #}
 <article id="post-{{ post.slug }}" class="post-item post-detail">
     <header>
@@ -21,9 +23,9 @@
             {% include "djangocms_blog/includes/blog_meta.html" %}
         {% endblock %}
     </header>
-    {# TACC (multimedia styles are incompatible with thumbnail): #}
+    {# TACC (support custom media even with thumbnail): #}
     {# {% if not post.main_image_id %} #}
-    {% if is_multimedia_post or not post.main_image_id %}
+    {% if use_custom_media or not post.main_image_id %}
     {# /TACC #}
         <div class="blog-visual">{% render_placeholder post.media %}</div>
     {% else %}
@@ -34,6 +36,19 @@
     {% endif %}
     {# TACC (do not let source end spaceless-ness prematurely): #}
     {# {% endspaceless %} #}
+    {# /TACC #}
+    {# TACC (print abstract for some posts e.g. an external article): #}
+    {% if is_show_abstract_post %}
+        {# TACC (copied from source app's includes/blog_item.html): #}
+        <div class="blog-lead">
+            {% if not TRUNCWORDS_COUNT %}
+                {% render_model post "abstract" "" "" "safe" %}
+            {% else %}
+                {% render_model post "abstract" "" "" "truncatewords_html:TRUNCWORDS_COUNT|safe"  %}
+            {% endif %}
+        </div>
+        {# /TACC #}
+    {% endif %}
     {# /TACC #}
     {% if post.app_config.use_placeholder %}
         <div class="blog-content">{% render_placeholder post.content %}</div>
