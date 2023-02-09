@@ -1,6 +1,8 @@
 {# https://github.com/nephila/djangocms-blog/blob/1.1.1/djangocms_blog/templates/djangocms_blog/includes/blog_meta.html #}
 {% load i18n easy_thumbnails_tags cms_tags %}
 
+<big>{{ post.publish }}</big>
+
 {# TACC (add class so CSS can target this element): #}
 <ul class="post-detail attrs">
 {# /TACC #}
@@ -20,7 +22,9 @@
       {% if post.date_published %}
       {# /TACC #}
       {# TACC (add <span> and &nbsp; so whitespace can be stripped): #}
-      <span>{% trans "Published" %}</span>&nbsp;
+      {# TACC ("Published" vs "To be published"): #}
+      <span>{% if post.publish %}{% trans "Published" %}{% else %}{% trans "To be published" %}{% endif %}</span>&nbsp;
+      {# /TACC #}
       {# /TACC #}
       {# TACC (wrap with <time> tag because it should be so): #}
       <time datetime="{{ post.date_published }}"
