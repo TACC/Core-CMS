@@ -95,47 +95,7 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 /* Header (Structure) */
 
 :--article-item header {
-  display: grid;
-  position: relative; /* for `position: absolute` children */
-
-  min-width: 0; /* to support truncation */
-
-  grid-template-areas:
-    var(--row-one-areas, 'cats tags')
-                         'attr attr'
-                         'head subh';
-
-  /* To truncate 'subh' fully before truncating 'head' */
-  /* CAVEAT: 'cats' is truncated but 'tags' never is */
-  grid-template-columns: minmax(0, max-content) 1fr;
-}
-:--article-item h3          { grid-area: head }
-:--article-item h4          { grid-area: subh }
-:--article-item .attrs      { grid-area: attr }
-:--article-item .categories { grid-area: cats }
-:--article-item .tags {
-  grid-area: tags;
-
-  /* To span top row and align right */
-  justify-content: end;
-}
-
-/* To (optionally) hide tags & categories */
-.app-blog.no-categories.no-tags :--article-item header {
-  grid-template-areas:
-    'head subh'
-    'attr attr';
-
-  margin-bottom: 20px;
-}
-.app-blog:not(.no-categories.no-tags) :--article-item header {
   margin-bottom: 5px;
-}
-.app-blog.no-categories:not(.no-tags) :--article-item header {
-  --row-one-areas: 'tags tags';
-}
-.app-blog.no-tags:not(.no-categories) :--article-item header {
-  --row-one-areas: 'cats cats';
 }
 
 

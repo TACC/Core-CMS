@@ -52,8 +52,44 @@ Styleguide Components.DjangoCMS.Blog.App
 
 /* Header */
 
-/* FAQ: No .app-blog in selector because .post-detail can appear in plugins */
-ul.post-detail {
+.app-blog header {
+  --row-meta: 'cats tags'
+              'attr attr';
+  --row-head: 'head head'
+              'subh subh';
+
+  display: grid;
+  grid-template-areas:
+    var(--row-meta)
+    var(--row-head);
+}
+:--article-page h1,
+:--article-item h3    { grid-area: head }
+:--article-page h2,
+:--article-item h4    { grid-area: subh }
+.app-blog .attrs      { grid-area: attr }
+.app-blog .categories { grid-area: cats }
+.app-blog .tags       { grid-area: tags }
+
+/* To align tags ot the right */
+.app-blog .tags {
+  justify-content: end;
+}
+
+/* To conditionally hide tags & categories */
+.app-blog.no-categories:not(.no-tags) header {
+  --row-meta: 'tags tags'
+              'attr attr';
+}
+.app-blog.no-tags:not(.no-categories) header {
+  --row-meta: 'cats cats'
+              'attr attr';
+}
+.app-blog.no-categories.no-tags header {
+  --row-meta: 'attr attr';
+}
+
+.app-blog ul.post-detail {
   list-style: none;
 
   padding-left: 0; /* overwrite html-elements.css */
