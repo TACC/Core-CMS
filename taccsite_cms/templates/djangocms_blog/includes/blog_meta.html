@@ -17,7 +17,7 @@
     {# TACC (add class so CSS can target this element): #}
     <li class="date date-published">
       {# TACC (show date if featured otherwise show "Unpublished"): #}
-      {% if post.date_featured %}
+      {% if post.date_published %}
       {# /TACC #}
       {# TACC (add <span> and &nbsp; so whitespace can be stripped): #}
       <span>{% trans "Published" %}</span>&nbsp;
