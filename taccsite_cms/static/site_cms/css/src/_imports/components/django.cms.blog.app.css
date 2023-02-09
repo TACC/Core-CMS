@@ -33,7 +33,11 @@ Styleguide Components.DjangoCMS.Blog.App
 @custom-selector :--article article;
 @custom-selector :--article-page article.post-detail;
 @custom-selector :--article-list .blog-list;
+@custom-selector :--article-list--as-list .blog-list:not(.as-grid);
+@custom-selector :--article-list--as-grid .blog-list.as-grid;
 @custom-selector :--article-item .blog-list article;
+@custom-selector :--article-item--in-list .blog-list:not(.as-grid) article;
+@custom-selector :--article-item--in-grid .blog-list.as-grid article;
 
 
 
@@ -48,11 +52,44 @@ Styleguide Components.DjangoCMS.Blog.App
 
 /* Header */
 
-.blog-list > header {
-  margin-bottom: var(--blog-item-buffer);
+.app-blog header {
+  --row-meta: 'cats tags'
+              'attr attr';
+  --row-head: 'head head'
+              'subh subh';
+
+  display: grid;
+  grid-template-areas:
+    var(--row-meta)
+    var(--row-head);
+}
+:--article-page h1,
+:--article-item h3    { grid-area: head }
+:--article-page h2,
+:--article-item h4    { grid-area: subh }
+.app-blog .attrs      { grid-area: attr }
+.app-blog .categories { grid-area: cats }
+.app-blog .tags       { grid-area: tags }
+
+/* To align tags ot the right */
+.app-blog .tags {
+  justify-content: end;
 }
 
-ul.post-detail {
+/* To conditionally hide tags & categories */
+.app-blog.no-categories:not(.no-tags) header {
+  --row-meta: 'tags tags'
+              'attr attr';
+}
+.app-blog.no-tags:not(.no-categories) header {
+  --row-meta: 'cats cats'
+              'attr attr';
+}
+.app-blog.no-categories.no-tags header {
+  --row-meta: 'attr attr';
+}
+
+.app-blog ul.post-detail {
   list-style: none;
 
   padding-left: 0; /* overwrite html-elements.css */
@@ -71,6 +108,19 @@ ul.post-detail {
   display: none;
 }
 
+.app-blog .attrs,
+.app-blog .tags,
+.app-blog .categories {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+}
+.app-blog .attrs {
+  justify-content: space-between;
+}
+.app-blog .date {
+  order: -1
+}
 
 
 

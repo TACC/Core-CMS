@@ -15,9 +15,11 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 
 
 
-/* Variables */
+/* Root */
 
 :--article-page {
+  --header-buffer: calc( var(--global-space--grid-gap) / 2 );
+
   max-width: 665px;
   margin-inline: auto;
 }
@@ -28,27 +30,25 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 
 /* Header (Structure) */
 
-:--article-page .attrs {
-  display: flex;
-  justify-content: space-between;
+:--article-page header {
+  grid-template-areas:
+    var(--row-head)
+    var(--row-meta);
 }
-
+:--article-page header h1,
 :--article-page header h2 {
+  margin-bottom: var(--header-buffer);
+}
+:--article-page header h1 {
   font-size: var(--global-font-size--xxx-large);
 }
-:--article-page header h3 {
-  font-style: italic;
+:--article-page header h2 {
   font-weight: normal;
   font-size: var(--global-font-size--large);
 }
-
-:--article-page header :is(h3, h2 + .attrs) {
-  padding-top: 17px;
+:--article-page header :is(h2, h1 + .attrs) {
+  padding-top: var(--header-buffer);
   border-top: var(--global-border-width--normal) solid var(--global-color-primary--dark);
-}
-
-:--article-page .date-published span {
-  display: none;
 }
 
 
@@ -116,15 +116,27 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 
 
 /* Media & Content - Alignment */
+/* FAQ: The .align-... classes come from Bootstrap Picture */
+/* FAQ: The .blockquote.text-... classes come from Bootstrap Blockquote */
 
-:--article-page .blog-content .align-left {
+:--article-page .blog-content .align-left,
+:--article-page .blog-content .blockquote.text-left {
   @extend .o-offset-content--left;
 }
-:--article-page .blog-content .align-right {
+:--article-page .blog-content .align-right,
+:--article-page .blog-content .blockquote.text-right {
   @extend .o-offset-content--right;
 }
-:--article-page .blog-content .align-center {
-  max-width: 100%; /* overwrite @tacc/core-styles/…/components/align.css */
+:--article-page .blog-content .blockquote.text-center {
+  margin-inline: auto;
+}
+
+/* To always align Bootstrap blockquote text left */
+/* FAQ: Boostrap, loaded in foundation layer, used !important */
+@layer foundation {
+  :--article-page .blog-content .blockquote[class*="text-"] {
+    text-align: left !important; /* overwrite Bootstrap .text-... !important */
+  }
 }
 
 /* To remove margin on narrow screens */
