@@ -20,6 +20,8 @@ def set_group_perms():
     group.permissions.add( Permission.objects.get(name='Can view bootstrap4 picture') )
     group.permissions.add( Permission.objects.get(name='Can change cms plugin') )
     group.permissions.add( Permission.objects.get(name='Can view cms plugin') )
+    group.permissions.add( Permission.objects.get(name='Can add cms plugin') )
+    group.permissions.add( Permission.objects.get(name='Can delete cms plugin') )
     group.permissions.add( Permission.objects.get(name='Can change page') )
     group.permissions.add( Permission.objects.get(name='Can view page') )
     group.permissions.add( Permission.objects.get(name='Can use Structure mode') )
