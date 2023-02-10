@@ -206,4 +206,7 @@ Styleguide Components.DjangoCMS.Blog.App.Item
   /* To stretch link to cover footer */
   /* TODO: Try to retire `x-article-link-stretch` */
   display: grid;
+
+  /* To hide link text */
+  font-size: 0;
 }
