@@ -196,8 +196,14 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 
 /* Footer */
 
-/* If editing, hide "read more" */
-/* FAQ: User can: edit by double clicking abstract; visit by clicking title */
-html:--cms-edit-mode .read-more {
-  display: none;
+/* Use "read more" link to make image clickable */
+.read-more {
+  /* To take up */
+  grid-row-start: 1;
+  grid-column-start: 1;
+  grid-row-end: span 2;
+
+  /* To stretch link to cover footer */
+  /* TODO: Try to retire `x-article-link-stretch` */
+  display: grid;
 }
