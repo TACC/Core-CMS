@@ -16,11 +16,13 @@
     {% endif %}
     {# TACC (add class so CSS can target this element): #}
     <li class="date date-published">
-      {# TACC (show date if featured otherwise show "Unpublished"): #}
+      {# TACC (show date if published otherwise show "Unpublished"): #}
       {% if post.date_published %}
       {# /TACC #}
       {# TACC (add <span> and &nbsp; so whitespace can be stripped): #}
-      <span>{% trans "Published" %}</span>&nbsp;
+      {# TACC ("Published" vs "To be published"): #}
+      <span>{% if post.publish %}{% trans "Published" %}{% else %}{% trans "To be published" %}{% endif %}</span>&nbsp;
+      {# /TACC #}
       {# /TACC #}
       {# TACC (wrap with <time> tag because it should be so): #}
       <time datetime="{{ post.date_published }}"
@@ -30,7 +32,7 @@
       {# TACC (wrap with <time> tag because it should be so): #}
       </time>
       {# /TACC #}
-      {# TACC (show date if featured otherwise show "Unpublished"): #}
+      {# TACC (show date if published otherwise show "Unpublished"): #}
       {% else %}
       <span>{% trans "Unpublished" %}</span>
       {% endif %}
