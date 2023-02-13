@@ -1,0 +1,41 @@
+from django.contrib.auth.models import Group, Permission
+from django.core.management import BaseCommand
+
+def set_group_perms():
+    group, was_created = Group.objects.get_or_create(
+        name='Content Editor (Basic)'
+    )
+
+    group.permissions.add( Permission.objects.get(name='Can add bootstrap4 link') )
+    group.permissions.add( Permission.objects.get(name='Can change bootstrap4 link') )
+    group.permissions.add( Permission.objects.get(name='Can delete bootstrap4 link') )
+    group.permissions.add( Permission.objects.get(name='Can view bootstrap4 link') )
+    group.permissions.add( Permission.objects.get(name='Can add bootstrap4 media') )
+    group.permissions.add( Permission.objects.get(name='Can change bootstrap4 media') )
+    group.permissions.add( Permission.objects.get(name='Can view bootstrap4 media') )
+    group.permissions.add( Permission.objects.get(name='Can add bootstrap4 media body') )
+    group.permissions.add( Permission.objects.get(name='Can change bootstrap4 media body') )
+    group.permissions.add( Permission.objects.get(name='Can view bootstrap4 media body') )
+    group.permissions.add( Permission.objects.get(name='Can add bootstrap4 picture') )
+    group.permissions.add( Permission.objects.get(name='Can change bootstrap4 picture') )
+    group.permissions.add( Permission.objects.get(name='Can view bootstrap4 picture') )
+    group.permissions.add( Permission.objects.get(name='Can change page') )
+    group.permissions.add( Permission.objects.get(name='Can use Structure mode') )
+    group.permissions.add( Permission.objects.get(name='Can add link') )
+    group.permissions.add( Permission.objects.get(name='Can change link') )
+    group.permissions.add( Permission.objects.get(name='Can delete link') )
+    group.permissions.add( Permission.objects.get(name='Can view link') )
+    group.permissions.add( Permission.objects.get(name='Can add picture') )
+    group.permissions.add( Permission.objects.get(name='Can change picture') )
+    group.permissions.add( Permission.objects.get(name='Can view picture') )
+    group.permissions.add( Permission.objects.get(name='Can change text') )
+    group.permissions.add( Permission.objects.get(name='Can view text') )
+    group.permissions.add( Permission.objects.get(name='Can add file') )
+    group.permissions.add( Permission.objects.get(name='Can view file') )
+    group.permissions.add( Permission.objects.get(name='Can add Folder') )
+    group.permissions.add( Permission.objects.get(name='Can use directory listing') )
+    group.permissions.add( Permission.objects.get(name='Can view Folder') )
+    group.permissions.add( Permission.objects.get(name='Can add image') )
+    group.permissions.add( Permission.objects.get(name='Can delete image') )
+    group.permissions.add( Permission.objects.get(name='Can view image') )
+    group.permissions.add( Permission.objects.get(name='Can view thumbnail option') )
