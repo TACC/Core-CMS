@@ -7,7 +7,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 ENV PYTHONUNBUFFERED 1
 
 # https://python-poetry.org/docs/configuration/#using-environment-variables
-ENV POETRY_VERSION=1.1.0 \
+ENV POETRY_VERSION=1.2.0 \
     POETRY_HOME="/opt/poetry" \
     POETRY_VIRTUALENVS_IN_PROJECT=true \
     POETRY_NO_INTERACTION=1 \
@@ -28,7 +28,7 @@ RUN apt-get update && apt-get install -y \
 RUN pip3 install --upgrade pip setuptools wheel
 
 # Install Poetry - respects $POETRY_VERSION & $POETRY_HOME
-RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python3
+RUN curl -sSL https://install.python-poetry.org | python3 -
 
 # copy project requirement files here to ensure they will be cached.
 WORKDIR $PYSETUP_PATH
