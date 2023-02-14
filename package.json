@@ -11,7 +11,7 @@
   "devDependencies": {
     "@frctl/fractal": "^1.5.14",
     "@frctl/mandelbrot": "^1.10.1",
-    "@tacc/core-styles": "github:TACC/Core-Styles#391ef74",
+    "@tacc/core-styles": "github:TACC/Core-Styles#e9d14e6",
     "minimist": "^1.2.6"
   },
   "repository": "git@github.com:TACC/Core-CMS.git",
