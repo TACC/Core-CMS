@@ -264,8 +264,6 @@ TACC_BLOG_SHOW_TAGS = True
 TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY = 'sample_value_e_g__mutlimedia__'
 TACC_BLOG_SHOW_ABSTRACT_TAG = 'sample_value_e_g__redirect__'
 
-
-
 ########################
 # TACC: CORE STYLES
 ########################
@@ -273,6 +271,8 @@ TACC_BLOG_SHOW_ABSTRACT_TAG = 'sample_value_e_g__redirect__'
 # Only use integer numbers (not "v1", not "0.11.0"),
 # so templates can load based on simple comparisons
 TACC_CORE_STYLES_VERSION = 0
+
+
 
 ########################
 # CLIENT BUILD SETTINGS
