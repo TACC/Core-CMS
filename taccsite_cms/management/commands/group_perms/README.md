@@ -39,16 +39,16 @@ Use regex to convert the `<option>`s from HTML to Python Django CMS instructions
 1. Create a python script in this directory named after the group e.g. `news_writer_advanced.py`.
 2. Add this starter code:
 
-  ```py
-  from django.contrib.auth.models import Group, Permission
-  from django.contrib.contenttypes.models import ContentType
-  from django.core.management import BaseCommand
+    ```py
+    from django.contrib.auth.models import Group, Permission
+    from django.contrib.contenttypes.models import ContentType
+    from django.core.management import BaseCommand
 
-   def set_group_perms():
-       group, was_created = Group.objects.get_or_create(
-         name='__GROUP_NAME__'
-       )
-   ```
+    def set_group_perms():
+        group, was_created = Group.objects.get_or_create(
+          name='__GROUP_NAME__'
+        )
+    ```
 
 3. Change `__GROUP_NAME__` to the name of the group to add permissions for e.g. `News Writer (Advanced)`.
 4. Within the `handle` method, add all the commands from the "Convert Permissions" step.
