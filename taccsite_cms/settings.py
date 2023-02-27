@@ -144,6 +144,8 @@ CMS_TEMPLATES = (
 
 CMS_PERMISSION = True
 
+
+
 ########################
 # TACC: GOOGLE ANALYTICS
 ########################
@@ -232,6 +234,12 @@ FAVICON = {
 }
 
 ########################
+# TACC: SEARCH
+########################
+
+SEARCH_QUERY_PARAM_NAME = 'query_string'
+
+########################
 # TACC: PORTAL
 ########################
 
@@ -255,6 +263,8 @@ TACC_BLOG_SHOW_TAGS = True
 # To flag posts of certain category or tag, so template can take special action
 TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY = 'sample_value_e_g__mutlimedia__'
 TACC_BLOG_SHOW_ABSTRACT_TAG = 'sample_value_e_g__redirect__'
+
+
 
 ########################
 # CLIENT BUILD SETTINGS
@@ -627,5 +637,6 @@ SETTINGS_EXPORT = [
     'TACC_BLOG_SHOW_CATEGORIES',
     'TACC_BLOG_SHOW_TAGS',
     'TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY',
-    'TACC_BLOG_SHOW_ABSTRACT_TAG'
+    'TACC_BLOG_SHOW_ABSTRACT_TAG',
+    'SEARCH_QUERY_PARAM_NAME',
 ]
