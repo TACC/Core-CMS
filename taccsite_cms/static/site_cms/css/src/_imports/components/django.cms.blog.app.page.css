@@ -7,7 +7,7 @@ Reference:
 
 Styleguide Components.DjangoCMS.Blog.App.Page
 */
-@import url("@tacc/core-styles/src/lib/_imports/objects/o-offset-content.css");
+@import url("https://unpkg.com/@tacc/core-styles@0.11.0/src/lib/_imports/objects/o-offset-content.css");
 
 @import url("./django.cms.blog.app.page.multimedia.css");
 

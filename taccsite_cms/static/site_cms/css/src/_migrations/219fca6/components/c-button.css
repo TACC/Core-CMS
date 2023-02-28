@@ -1,0 +1,6 @@
+@import url("https://unpkg.com/@tacc/core-styles@0.11.0/dist/components/c-button.css");
+@import url("../settings/font.css");
+
+.c-button:not(.c-button--as-link) {
+  font-size: var(--global-font-size--small);
+}

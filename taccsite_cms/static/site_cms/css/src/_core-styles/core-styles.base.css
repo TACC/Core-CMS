@@ -1,2 +1,2 @@
 /* TODO: Host Core-Styles static files on a CDN */
-@import url("@tacc/core-styles/dist/core-styles.base.css");
+@import url("https://unpkg.com/@tacc/core-styles@0.11.0/dist/core-styles.base.css");

@@ -1,6 +1,6 @@
 /* Allow supporting `u-mailto-text-replace` on all hyperlinks */
 
-@import url("@tacc/core-styles/src/lib/_imports/tools/x-mailto-text-replace.css");
+@import url("https://unpkg.com/@tacc/core-styles@0.11.0/src/lib/_imports/tools/x-mailto-text-replace.css");
 
 a[data-user][data-domain] {
   @extend %x-mailto-text-replace;

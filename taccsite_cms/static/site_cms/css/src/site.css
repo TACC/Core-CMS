@@ -4,20 +4,20 @@
 /* SEE: https://confluence.tacc.utexas.edu/x/IAA9Cw */
 
 /* FAQ: File paths are functional, but not consistent:
-        - Local files are prepended with `./imports/`.
-        - Remote files are prepended with `@tacc/core-styles/src/lib/_imports/`.
-        - Automatic file locators are prepended with `_imports/`.﹡
+        - Local file paths start with `./`.
+        - Remote file paths start with `https://..@tacc/core-styles.../`.
+        - Automatic file paths start with `_imports/`.﹡
 
-        ﹡ Files is first searched for locally, then remotely.
+        ﹡ Files are first searched for locally, then remotely.
 */
 
 /* SETTINGS */
 @import url("_imports/settings/border.css");
 @import url("_imports/settings/max-width.css");
-@import url("@tacc/core-styles/src/lib/_imports/settings/space.css");
+@import url("https://unpkg.com/@tacc/core-styles@0.11.0/dist/settings/space.css");
 /* Unique to CMS */
-@import url("./_imports/settings/color.css");
-@import url("./_imports/settings/font.css");
+@import url("./_migrations/219fca6/settings/color.css");
+@import url("./_migrations/219fca6/settings/font.css");
 @import url("./_migrations/v1_v0-core-styles.css");
 
 /* GENERICS */
@@ -27,15 +27,15 @@
 /* ELEMENTS */
 /* Bootstrap performs much of this */
 /* Core-Styles provides much of this */
-@import url("@tacc/core-styles/src/lib/_imports/elements/links.css");
-@import url("@tacc/core-styles/src/lib/_imports/elements/table.css");
+@import url("https://unpkg.com/@tacc/core-styles@0.11.0/dist/elements/links.css");
+@import url("https://unpkg.com/@tacc/core-styles@0.11.0/dist/elements/table.css");
 /* Load custom element styles within custom element, not here */
 
 /* OBJECTS */
 /* Core-Styles provides much of this */
 
 /* COMPONENTS */
-@import url("@tacc/core-styles/src/lib/_imports/components/c-button.css");
+@import url("https://unpkg.com/@tacc/core-styles@0.11.0/dist/components/c-button.css");
 @import url("_imports/components/c-card.css");
 @import url("_imports/components/c-callout.css");
 @import url("_imports/components/c-data-list.css");
@@ -43,22 +43,22 @@
 @import url("_imports/components/c-footer.css");
 @import url("_imports/components/c-recognition.css");
 @import url("_imports/components/c-see-all-link.css");
-@import url("@tacc/core-styles/src/lib/_imports/components/bootstrap.container.css");
+@import url("https://unpkg.com/@tacc/core-styles@0.11.0/dist/components/bootstrap.container.css");
 @import url("_imports/components/bootstrap.figure.css");
-@import url("@tacc/core-styles/src/lib/_imports/components/bootstrap.modal.css");
+@import url("https://unpkg.com/@tacc/core-styles@0.11.0/dist/components/bootstrap.modal.css");
 /* Unique to CMS */
-@import url("./_imports/components/c-button.css");
-@import url("./_imports/components/django.cms.css");
-@import url("./_imports/components/django.cms.blog.css");
-@import url("./_imports/components/django-cms-forms.css");
-@import url("./_imports/components/django.cms.post.css");
-@import url("./_imports/components/django.cms.picture.css");
+@import url("./_migrations/219fca6/components/c-button.css");
+@import url("./_migrations/219fca6/components/django.cms.css");
+@import url("./_migrations/219fca6/components/django.cms.blog.css");
+@import url("./_migrations/219fca6/components/django-cms-forms.css");
+@import url("./_migrations/219fca6/components/django.cms.post.css");
+@import url("./_migrations/219fca6/components/django.cms.picture.css");
 
 /* TRUMPS */
 @import url("_imports/trumps/s-breadcrumbs.css");
 @import url("_imports/trumps/s-footer.css");
 @import url("_imports/trumps/s-blockquote.css");
-@import url("@tacc/core-styles/src/lib/_imports/trumps/s-irregular-links.css");
+@import url("https://unpkg.com/@tacc/core-styles@0.11.0/dist/trumps/s-irregular-links.css");
 @import url("_imports/trumps/u-empty.css");
-@import url("@tacc/core-styles/src/lib/_imports/trumps/u-mailto-text-replace.css");
-@import url("@tacc/core-styles/src/lib/_imports/trumps/s-affixed-input-wrapper.css");
+@import url("https://unpkg.com/@tacc/core-styles@0.11.0/dist/trumps/u-mailto-text-replace.css");
+@import url("https://unpkg.com/@tacc/core-styles@0.11.0/dist/trumps/s-affixed-input-wrapper.css");
