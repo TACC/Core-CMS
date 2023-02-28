@@ -4,7 +4,7 @@ from django.core.management import BaseCommand
 
 def set_group_perms():
     group, was_created = Group.objects.get_or_create(
-        name='Content Editor (Advanced)'
+        name='Image Editor (Advanced)'
     )
 
     model_name = 'page'.lower().replace(' ', '')
@@ -38,6 +38,22 @@ def set_group_perms():
     model_name = 'bootstrap4 picture'.lower().replace(' ', '')
     content_type = ContentType.objects.get(app_label='bootstrap4_picture', model=model_name)
     group.permissions.add( Permission.objects.get(name='Can view bootstrap4 picture', content_type=content_type) )
+
+    model_name = 'cms plugin'.lower().replace(' ', '')
+    content_type = ContentType.objects.get(app_label='cms', model=model_name)
+    group.permissions.add( Permission.objects.get(name='Can add cms plugin', content_type=content_type) )
+
+    model_name = 'cms plugin'.lower().replace(' ', '')
+    content_type = ContentType.objects.get(app_label='cms', model=model_name)
+    group.permissions.add( Permission.objects.get(name='Can change cms plugin', content_type=content_type) )
+
+    model_name = 'cms plugin'.lower().replace(' ', '')
+    content_type = ContentType.objects.get(app_label='cms', model=model_name)
+    group.permissions.add( Permission.objects.get(name='Can delete cms plugin', content_type=content_type) )
+
+    model_name = 'cms plugin'.lower().replace(' ', '')
+    content_type = ContentType.objects.get(app_label='cms', model=model_name)
+    group.permissions.add( Permission.objects.get(name='Can view cms plugin', content_type=content_type) )
 
     model_name = 'link'.lower().replace(' ', '')
     content_type = ContentType.objects.get(app_label='djangocms_link', model=model_name)
