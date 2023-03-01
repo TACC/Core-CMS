@@ -40,7 +40,7 @@
   {# The core site assets (can NOT be replaced by custom assets) #}
   {% include 'assets_site.html' %}
 
-{% elif settings.TACC_CORE_STYLES_VERSION == 1 %}
+{% elif settings.TACC_CORE_STYLES_VERSION >= 1 %}
 
   <!-- Core Assets. -->
   {% include 'assets_core.html' %}
@@ -98,7 +98,7 @@
   <!-- Site Assets (Delayed). -->
   {% include 'assets_site_delayed.html' %}
 
-{% elif settings.TACC_CORE_STYLES_VERSION == 1 %}
+{% elif settings.TACC_CORE_STYLES_VERSION >= 1 %}
 
   <!-- Core Assets (Delayed). -->
   {% include 'assets_core_delayed.html' %}
