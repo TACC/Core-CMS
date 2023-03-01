@@ -18,6 +18,7 @@
 /* Unique to CMS */
 @import url("./_imports/settings/color.css");
 @import url("./_imports/settings/font.css");
+@import url("./_migrations/v1_v0-core-styles.css");
 
 /* GENERICS */
 /* Bootstrap performs much of this */
@@ -25,19 +26,16 @@
 
 /* ELEMENTS */
 /* Bootstrap performs much of this */
-@import url("@tacc/core-styles/src/lib/_imports/elements/html-elements.cms.css");
-@import url("@tacc/core-styles/src/lib/_imports/elements/form.cms.css");
+/* Core-Styles provides much of this */
 @import url("@tacc/core-styles/src/lib/_imports/elements/links.css");
 @import url("@tacc/core-styles/src/lib/_imports/elements/table.css");
 /* Load custom element styles within custom element, not here */
 
 /* OBJECTS */
-@import url("_imports/objects/o-grid.css");
-@import url("_imports/objects/o-float-content.css");
-@import url("_imports/objects/o-offset-content.css");
-@import url("_imports/objects/o-section.css");
+/* Core-Styles provides much of this */
 
 /* COMPONENTS */
+@import url("@tacc/core-styles/src/lib/_imports/components/c-button.css");
 @import url("_imports/components/c-card.css");
 @import url("_imports/components/c-callout.css");
 @import url("_imports/components/c-data-list.css");
@@ -52,7 +50,7 @@
 @import url("./_imports/components/c-button.css");
 @import url("./_imports/components/django.cms.css");
 @import url("./_imports/components/django.cms.blog.css");
-@import url("./_imports/components/django.cms.forms.css");
+@import url("./_imports/components/django-cms-forms.css");
 @import url("./_imports/components/django.cms.post.css");
 @import url("./_imports/components/django.cms.picture.css");
 

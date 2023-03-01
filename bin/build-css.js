@@ -17,13 +17,11 @@ const BUILD_ID = ARGS['build-id'] || '';
 (() => {
   // Get style paths
   const corePath = _getPath('taccsite_cms', 'site_cms');
-  const demoPath = 'node_modules/@tacc/core-styles';
   const projPath = _getPath(`taccsite_custom/${PROJECT_NAME}`, PROJECT_NAME );
   const hasProject = ( PROJECT_NAME && PROJECT_NAME !== CORE_NAME );
 
   // Get config paths
   const coreConfPath = `${ROOT}/${corePath}/.postcssrc.yml`;
-  const demoConfPath = coreConfPath;
   const projConfPath = `${ROOT}/${projPath}/.postcssrc.yml`;
   const confPaths = [coreConfPath];
 
@@ -45,14 +43,6 @@ const BUILD_ID = ARGS['build-id'] || '';
     output: `${ROOT}/${corePath}/build`,
     opts: {...defaultOpts, ...{
       customConfigs: confPaths
-    }}
-  });
-  _build('Demo', {
-    input: `${ROOT}/${demoPath}/src/**/*.css`,
-    output: `${ROOT}/${demoPath}/build`,
-    opts: {...defaultOpts, ...{
-      customConfigs: [demoConfPath],
-      baseMirrorDir: `${ROOT}/${demoPath}/src/lib/_imports`
     }}
   });
   if ( hasProject ) {

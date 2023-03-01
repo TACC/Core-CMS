@@ -1,0 +1,13 @@
+/*
+Core CMS font sizes before Core-Styles v1.1.0
+HOW: Migrated original font-sizes to here
+SRC: https://github.com/TACC/Core-Styles/blob/v1.0.0/src/lib/_imports/settings/font.css#L35-L41
+SEE: https://confluence.tacc.utexas.edu/x/nh4FDg
+*/
+:root {
+  --global-font-size--x-small: 1.1rem;
+  --global-font-size--small: 1.4rem;
+  --global-font-size--medium: 1.6rem;
+  --global-font-size--large: 2.0rem;
+  --global-font-size--x-large: 2.6rem;
+}

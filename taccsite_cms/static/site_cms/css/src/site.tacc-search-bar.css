@@ -8,7 +8,7 @@
 /* TRUMPS */
 
 /* Shared with Portal */
-@import url("_imports/trumps/icon.css");
+@import url("@tacc/core-styles/dist/components/cortal.icon.css");
 @import url("_imports/trumps/u-hide.css");
 @import url("_imports/trumps/tacc-search-bar.css");
 
