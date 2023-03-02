@@ -65,7 +65,7 @@ const BUILD_ID = ARGS['build-id'] || '';
  * @param {@tacc/core-styles.buildStylesheets.opts} opts.opts - Advanced options
  */
 function _build( name, opts ) {
-  console.log(`Overriding config with:`, opts.customConfigs );
+  console.log(`Overriding config with:`, opts.opts.customConfigs );
   console.log(`Building "${name}" styles:`);
   buildStylesheets( opts.input, opts.output, opts.opts );
 }
