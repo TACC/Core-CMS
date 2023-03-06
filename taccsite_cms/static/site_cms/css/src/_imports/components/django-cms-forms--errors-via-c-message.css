@@ -1,0 +1,23 @@
+@import url("@tacc/core-styles/src/lib/_imports/components/c-message.css");
+@import url("@tacc/core-styles/src/lib/_imports/components/c-message--expanded.css");
+
+
+
+/* Errors */
+
+.form-errors {
+  @extend :--c-message;
+  @extend :--c-message--type;
+  @extend :--c-message--type-error;
+  @extend :--c-message--scope;
+  @extend :--c-message--scope-section;
+  @extend :--c-message--type-error:--c-message--scope-section;
+}
+.field-errors li {
+  @extend :--c-message;
+  @extend :--c-message--type;
+  @extend :--c-message--type-error;
+  @extend :--c-message--scope;
+  @extend :--c-message--scope-inline;
+  @extend :--c-message--type-error:--c-message--scope-inline;
+}
