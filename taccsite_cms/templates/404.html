@@ -1,0 +1,13 @@
+{# https://github.com/TACC/Core-CMS/blob/c8844e1/taccsite_cms/templates/assets_custom.html #}
+{% extends "base.html" %}
+{% load cms_tags %}
+
+{% block title %}404{% endblock title %}
+
+{# To remove breadcrumbs #}
+{% block content %}
+    <div class="container">
+      <h1>404</h1>
+      <p>Page Not Found</p>
+    </div>
+{% endblock content %}
