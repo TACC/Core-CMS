@@ -50,7 +50,7 @@
         "
     {% endif %}
     {# TACC (assign attributes to parent): #}
-    {% if not instance.caption_text and not picture_link %}
+    {% if not instance.caption_text and not picture_link and instance.child_plugin_instances %}
     {{ instance.attributes_str }}
     {% endif %}
     {# /TACC #}
