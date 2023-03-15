@@ -65,10 +65,10 @@
         {# TACC (support children as caption content): #}
         {# <figcaption>{{ instance.caption_text }}</figcaption> #}
         <figcaption>
-            {{ instance.caption_text }}
-            {% for plugin in instance.child_plugin_instances %}
-                {% render_plugin plugin %}
-            {% endfor %}
+        {{ instance.caption_text }}
+        {% for plugin in instance.child_plugin_instances %}
+            {% render_plugin plugin %}
+        {% endfor %}
         </figcaption>
         {# /TACC #}
     </figure>
