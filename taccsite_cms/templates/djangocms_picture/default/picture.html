@@ -16,15 +16,13 @@
 {% endif %}
 
 {# start render figure/figcaption #}
-{% if instance.caption_text %}
+{# TACC (support children as caption content): #}
+{# {% if instance.caption_text %} #}
+{% if instance.caption_text or instance.child_plugin_instances %}
     {# TACC (assign attributes to parent): #}
     {# <figure> #}
     <figure {{ instance.attributes_str }}>
     {# /TACC #}
-{% endif %}
-{# TACC (support children as caption content): #}
-{% if instance.child_plugin_instances %}
-    <figure {{ instance.attributes_str }}>
 {% endif %}
 {# /TACC #}
 {# end render figure/figcaption #}
@@ -62,20 +60,19 @@
 {# /TACC #}
 
 {# start render figure/figcaption #}
-{% if instance.caption_text %}
-        <figcaption>{{ instance.caption_text }}</figcaption>
-    </figure>
-{% endif %}
-{# TACC (support children as caption content): #}
-{% if instance.child_plugin_instances %}
+{# {% if instance.caption_text %} #}
+{% if instance.caption_text or instance.child_plugin_instances %}
+        {# TACC (support children as caption content): #}
+        {# <figcaption>{{ instance.caption_text }}</figcaption> #}
         <figcaption>
+        {{ instance.caption_text }}
         {% for plugin in instance.child_plugin_instances %}
             {% render_plugin plugin %}
         {% endfor %}
         </figcaption>
+        {# /TACC #}
     </figure>
 {% endif %}
-{# /TACC #}
 {# end render figure/figcaption #}
 
 {% if picture_link %}
