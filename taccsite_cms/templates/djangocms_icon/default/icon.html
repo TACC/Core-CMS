@@ -1,0 +1,7 @@
+{% load cms_tags static %}
+
+{% if '-logo' in instance.icon %}
+  {% include 'djangocms_icon/includes/logos.html' %}
+{% else %}
+  {% include 'djangocms_icon/includes/icon.html' %}
+{% endif %}
