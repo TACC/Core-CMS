@@ -102,7 +102,7 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 }
 :--article-item h3          { grid-area: head }
 :--article-item h4          { grid-area: subh }
-:--article-item .attr       { grid-area: attr }
+:--article-item .attrs      { grid-area: attr }
 :--article-item .categories { grid-area: cats }
 :--article-item .tags {
   grid-area: tags;
@@ -162,7 +162,7 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 
 /* Header - Metadata (Structure) */
 
-:--article-item .attr,
+:--article-item .attrs,
 :--article-item .tags {
   display: flex;
   flex-wrap: nowrap;
@@ -203,13 +203,13 @@ Styleguide Components.DjangoCMS.Blog.App.Item
   line-height: unset; /* overwrite html-elements.css */
 }
 
-:--article-item .attr {
+:--article-item .attrs {
   margin-block: 2px 6px;
 
   font-size: var(--global-font-size--x-small);
   color: var(--global-color-primary--dark);
 }
-:--article-item .attr a { color: inherit }
+:--article-item .attrs a { color: inherit }
 
 :--article-item .categories {
   font-weight: var(--bold);
@@ -218,7 +218,7 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 }
 :--article-item .categories a { color: var(--global-color-primary--xx-dark) }
 
-/* NOTE: Mimicking .attr styles until we have a design */
+/* NOTE: Mimicking .attrs styles until we have a design */
 :--article-item .tags {
   font-size: var(--global-font-size--x-small);
   color: var(--global-color-primary--dark);
@@ -266,14 +266,16 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 
 /* Content */
 
-.blog-lead {
+:--article-item .blog-lead {
   @extend %x-truncate--many-lines;
   --lines: 3;
 
   line-height: 1.5;
   color: var(--global-color-primary--dark);
 }
-.blog-lead p:last-child { margin-bottom: 0 /* overwrite Boostrap */ }
+:--article-item .blog-lead p:last-child {
+  margin-bottom: 0 /* overwrite Boostrap */
+}
 
 
 

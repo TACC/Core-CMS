@@ -18,6 +18,8 @@
 <div class="app app-blog
   {% if not settings.TACC_BLOG_SHOW_CATEGORIES %}no-categories{% endif %}
   {% if not settings.TACC_BLOG_SHOW_TAGS %}no-tags{% endif %}
+  {% if post %} {% include './includes/blog_cats.html' with prefix='has-' %} {% include './includes/blog_tags.html' with prefix='has-' %}
+  {% endif %}
 ">
     {% block content_blog %}{% endblock %}
 </div>
