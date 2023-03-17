@@ -1,6 +1,6 @@
 {
-    "//": "https://www.npmjs.com/package/@tacc/core-styles",
     "iconClass": "icon",
+    "// icons": "https://github.com/TACC/Core-Styles/blob/main/src/lib/_imports/components/cortal.icon.font.css",
     "icons": [
         "icon-add-file",
         "icon-alert",
