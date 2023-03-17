@@ -32,7 +32,6 @@ repo_name.var
 /taccsite_ui/dist
 
 # Secrets and Customizations
-taccsite_cms/secrets.py
 *secrets*.py
 *.custom.yml
 *settings_custom*.py
