@@ -1,10 +1,10 @@
 {# https://github.com/django-cms/djangocms-icon/blob/2.0.0/djangocms_icon/templates/djangocms_icon/includes/icon.html #}
-{# @var path, path_is_static #}
+{# @var path #}
 {% load cms_tags static %}
 
 {# FAQ: The <span> allows Django CMS editor to edit via double-click #}
 <span class="has-svg {{ instance.icon }}{% if instance.attributes.class %} {{ instance.attributes.class }}{% endif %}" aria-hidden="true"{% for key, value in instance.attributes.items %}{% if key != 'class' %}{{ key }}="{{ value }}" {% endif %}{% endfor %}>
   <svg role="presentation">
-    <use href="{% if path_is_static %}{% static path %}{% else %}{{ path }}{% endif %}#{{ instance.icon }}"></use>
+    <use href="{% static path %}#{{ instance.icon }}"></use>
   </svg>
 </span>
