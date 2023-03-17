@@ -2,7 +2,7 @@
 {% load cms_tags %}
 
 {% if '-logo' in instance.icon %}
-  {% include 'djangocms_icon/includes/svg.html' with path="site_cms/img/icons/logos.svg" path_is_static=True %}
+  {% include 'djangocms_icon/includes/svg.html' with path="site_cms/img/icons/logos.svg" %}
 {% else %}
   {% include 'djangocms_icon/includes/icon.html' %}
 {% endif %}
