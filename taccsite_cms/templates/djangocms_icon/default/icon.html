@@ -1,0 +1,8 @@
+{# https://github.com/django-cms/djangocms-icon/blob/2.0.0/djangocms_icon/templates/djangocms_icon/default/icon.html #}
+{% load cms_tags %}
+
+{% if '-logo' in instance.icon %}
+  {% include 'djangocms_icon/includes/logos.html' %}
+{% else %}
+  {% include 'djangocms_icon/includes/icon.html' %}
+{% endif %}
