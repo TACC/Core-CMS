@@ -121,19 +121,10 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 }
 
 :--article-item .attrs {
-  margin-block: 2px 6px;
-
   font-size: var(--global-font-size--x-small);
   color: var(--global-color-primary--dark);
 }
 :--article-item .attrs a { color: inherit }
-
-:--article-item .categories {
-  font-weight: var(--bold);
-  font-size: var(--global-font-size--x-small);
-  text-transform: uppercase;
-}
-:--article-item .categories a { color: var(--global-color-primary--xx-dark) }
 
 /* NOTE: Mimicking .attrs styles until we have a design */
 :--article-item .tags {
@@ -188,6 +179,12 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 }
 :--article-item .blog-lead p:last-child {
   margin-bottom: 0 /* overwrite Boostrap */
+}
+
+/* To undo inline content styles */
+/* FAQ: In case author pasted such markup from another source */
+.blog-list article .blog-lead [style] {
+    all: revert !important; /* force undo all inline styles */
 }
 
 

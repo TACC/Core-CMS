@@ -10,6 +10,7 @@ Reference:
 Styleguide Components.DjangoCMS.Blog.App
 */
 @import url("@tacc/core-styles/src/lib/_imports/components/bootstrap.pagination.css");
+@import url("@tacc/core-styles/src/lib/_imports/components/c-tag.css");
 
 @import url("./django.cms.blog.app.page.css");
 @import url("./django.cms.blog.app.item.css");
@@ -93,7 +94,7 @@ Styleguide Components.DjangoCMS.Blog.App
   list-style: none;
 
   padding-left: 0; /* overwrite html-elements.css */
-  margin-bottom: 0; /* overwrite Bootstrap `reboot.css` */
+  margin-bottom: 0.25em; /* overwrite html-elements.css */
 
   font-size: var(--global-font-size--medium);
 }
@@ -121,6 +122,19 @@ Styleguide Components.DjangoCMS.Blog.App
 .app-blog .date {
   order: -1
 }
+
+/* FAQ: Uses `:where()` to reduce specificity so colors are easily overridden */
+:where(.app-blog .categories a) {
+  @extend :--c-tag;
+
+  display: inline-block;
+
+  color: var(--global-color-primary--xx-light);
+  background-color: var(--global-color-primary--xx-dark);
+
+  font-size: var(--global-font-size--x-small);
+}
+
 
 
 
