@@ -10,6 +10,7 @@ Reference:
 Styleguide Components.DjangoCMS.Blog.App
 */
 @import url("@tacc/core-styles/src/lib/_imports/components/bootstrap.pagination.css");
+@import url("@tacc/core-styles/src/lib/_imports/components/c-tag.css");
 
 @import url("./django.cms.blog.app.page.css");
 @import url("./django.cms.blog.app.item.css");
@@ -121,6 +122,18 @@ Styleguide Components.DjangoCMS.Blog.App
 .app-blog .date {
   order: -1
 }
+
+.app-blog .categories a {
+  @extend :--c-tag;
+
+  display: inline-block;
+
+  color: var(--global-color-primary--xx-light);
+  background-color: var(--global-color-primary--xx-dark);
+
+  font-size: var(--global-font-size--x-small);
+}
+
 
 
 
