@@ -63,6 +63,15 @@ Styleguide Components.DjangoCMS.Blog.App.Page
   margin-block: var(--blog-page-main-image-buffer);
 }
 
+/* To undo inline content styles */
+/* FAQ: In case author pasted such markup from another source */
+:--article-page .blog-content [style]:not(
+    [data-style="admin"], /* HACK: So CMS admin can override this */
+    [id^="flickrembed_"] * /* HACK: So Flickr slideshow works */
+) {
+    all: revert !important; /* force undo all inline styles */
+}
+
 
 
 /* Media & Content - Media */

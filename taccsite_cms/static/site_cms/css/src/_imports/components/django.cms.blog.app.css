@@ -94,7 +94,7 @@ Styleguide Components.DjangoCMS.Blog.App
   list-style: none;
 
   padding-left: 0; /* overwrite html-elements.css */
-  margin-bottom: 0; /* overwrite Bootstrap `reboot.css` */
+  margin-bottom: 0.25em; /* overwrite html-elements.css */
 
   font-size: var(--global-font-size--medium);
 }
