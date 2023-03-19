@@ -123,7 +123,8 @@ Styleguide Components.DjangoCMS.Blog.App
   order: -1
 }
 
-.app-blog .categories a {
+/* FAQ: Uses `:where()` to reduce specificity so colors are easily overridden */
+:where(.app-blog .categories a) {
   @extend :--c-tag;
 
   display: inline-block;
