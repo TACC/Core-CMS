@@ -22,7 +22,7 @@ Styleguide Components.DjangoCMS.Blog.App
 /* Variables */
 
 .app-blog {
-  --blog-item-buffer: 20px;
+  --article-buffer: 20px;
 }
 
 
@@ -54,15 +54,13 @@ Styleguide Components.DjangoCMS.Blog.App
 /* Header */
 
 .app-blog header {
-  --row-meta: 'cats tags'
-              'attr attr';
-  --row-head: 'head head'
-              'subh subh';
-
   display: grid;
   grid-template-areas:
-    var(--row-meta)
-    var(--row-head);
+    'cats'
+    'tags'
+    'attr'
+    'head'
+    'subh';
 }
 :--article-page h1,
 :--article-item h3    { grid-area: head }
@@ -71,24 +69,6 @@ Styleguide Components.DjangoCMS.Blog.App
 .app-blog .attrs      { grid-area: attr }
 .app-blog .categories { grid-area: cats }
 .app-blog .tags       { grid-area: tags }
-
-/* To align tags ot the right */
-.app-blog .tags {
-  justify-content: end;
-}
-
-/* To conditionally hide tags & categories */
-.app-blog.no-categories:not(.no-tags) header {
-  --row-meta: 'tags tags'
-              'attr attr';
-}
-.app-blog.no-tags:not(.no-categories) header {
-  --row-meta: 'cats cats'
-              'attr attr';
-}
-.app-blog.no-categories.no-tags header {
-  --row-meta: 'attr attr';
-}
 
 .app-blog ul.post-detail {
   list-style: none;
@@ -103,12 +83,7 @@ Styleguide Components.DjangoCMS.Blog.App
 
 /* Metadata */
 
-/* To (optionally) hide tags & categories */
-.app-blog.no-tags :--article .tags,
-.app-blog.no-categories :--article .categories {
-  display: none;
-}
-
+/* To layout data */
 .app-blog .attrs,
 .app-blog .tags,
 .app-blog .categories {
@@ -123,6 +98,19 @@ Styleguide Components.DjangoCMS.Blog.App
   order: -1
 }
 
+/* To conditionally hide tags & categories */
+.app-blog.no-tags :--article .tags,
+.app-blog.no-categories :--article .categories {
+  display: none;
+}
+
+/* To hide empty tags & categories */
+:--article .tags:empty,
+:--article .categories:empty {
+  display: none;
+}
+
+/* To style categories as "tags" (the UI pattern) */
 /* FAQ: Uses `:where()` to reduce specificity so colors are easily overridden */
 :where(.app-blog .categories a) {
   @extend :--c-tag;
@@ -135,11 +123,20 @@ Styleguide Components.DjangoCMS.Blog.App
   font-size: var(--global-font-size--x-small);
 }
 
+/* To style tags as "pills" (the UI pattern) */
+/* FAQ: Uses `:where()` to reduce specificity so colors are easily overridden */
+:where(.app-blog .tags a) {
+  /* TODO: When available in Core-Styles, uncomment this */
+  /* @extend :--c-pill; */
+
+  background-color: var(--global-color-primary--light);
+}
+
 
 
 
 /* Pagination */
 
 .pagination {
-  margin-block: calc( var(--blog-item-buffer) * 2 );
+  margin-block: calc( var(--article-buffer) * 2 );
 }

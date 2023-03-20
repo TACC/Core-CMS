@@ -41,14 +41,12 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 }
 :--article-page header h1 {
   font-size: var(--global-font-size--xxx-large);
+
+  border-bottom: var(--global-border-width--normal) solid var(--global-color-primary--dark);
 }
 :--article-page header h2 {
   font-weight: normal;
   font-size: var(--global-font-size--large);
-}
-:--article-page header :is(h2, h1 + .attrs) {
-  padding-top: var(--header-buffer);
-  border-top: var(--global-border-width--normal) solid var(--global-color-primary--dark);
 }
 
 
@@ -58,15 +56,16 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 /* Media & Content */
 
 :--article-page :is(.blog-visual, .blog-content) {
-  --blog-page-main-image-buffer: 45px;
+  --blog-item-media-buffer: 45px;
 
-  margin-block: var(--blog-page-main-image-buffer);
+  margin-block: var(--blog-item-media-buffer) 60px;
 }
 
 /* To undo inline content styles */
 /* FAQ: In case author pasted such markup from another source */
 :--article-page .blog-content [style]:not(
     [data-style="admin"], /* HACK: So CMS admin can override this */
+    /* TODO: When using Core-Styles .c-news keep `flickrembed_` only in TACC */
     [id^="flickrembed_"] * /* HACK: So Flickr slideshow works */
 ) {
     all: revert !important; /* force undo all inline styles */
@@ -86,14 +85,14 @@ Styleguide Components.DjangoCMS.Blog.App.Page
   :--article-page .blog-visual {
     display: grid;
     justify-content: center;
-    margin-bottom: var(--blog-page-main-image-buffer);
+    margin-bottom: var(--blog-item-media-buffer);
   }
 }
 /* To support horizontal layouts at wide viewports */
 @media (--x-narrow-and-above) {
   :--article-page .blog-visual {
     float: left;
-    margin-right: var(--blog-page-main-image-buffer);
+    margin-right: var(--blog-item-media-buffer);
   }
 }
 
@@ -128,6 +127,7 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 /* FAQ: The .align-... classes come from Bootstrap Picture */
 /* FAQ: The .blockquote.text-... classes come from Bootstrap Blockquote */
 
+/* TODO: When extending Core-Styles c-news, .blockquote... is only for TACC */
 :--article-page .blog-content .align-left,
 :--article-page .blog-content .blockquote.text-left {
   @extend .o-offset-content--left;
@@ -142,6 +142,7 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 
 /* To always align Bootstrap blockquote text left */
 /* FAQ: Boostrap, loaded in foundation layer, used !important */
+/* TODO: When extending Core-Styles c-news, .blockquote... is only for TACC */
 @layer foundation {
   :--article-page .blog-content .blockquote[class*="text-"] {
     text-align: left !important; /* overwrite Bootstrap .text-... !important */
