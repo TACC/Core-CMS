@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load cms_tags %}
+
+{% block title %}404{% endblock title %}
+
+{# To remove breadcrumbs and use markup like many of our sites' pages #}
+{% block content %}
+    <div class="container">
+      <section class="o-section">
+        <h1>404</h1>
+        <h2>Page Not Found</h2>
+      </section>
+    </div>
+{% endblock content %}
