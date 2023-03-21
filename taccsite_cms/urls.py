@@ -57,6 +57,17 @@ urlpatterns += [
     url(r'^', include('cms.urls')),
 ]
 
+# Error pages
+# TODO: Create error page that an authorized CMS user can edit
+# https://groups.google.com/g/django-cms-developers/c/FJlj_Kv8xHs
+# REF: Many solutions online return 404 page, but not 404 status code
+# http://www.ilian.io/custom-404-not-found-page-with-django-cms/
+# https://stackoverflow.com/a/44519606/11817077
+# https://blog.maestropublishing.com/2019/11/custom-404-page-for-django-cms.html
+from django.utils.functional import curry
+from django.views.defaults import page_not_found
+handler404 = curry(page_not_found, template_name='404.html')
+
 # This is only needed when using runserver.
 if settings.DEBUG:
     urlpatterns += [

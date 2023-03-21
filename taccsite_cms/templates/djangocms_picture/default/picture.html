@@ -1,7 +1,9 @@
 {# https://github.com/django-cms/djangocms-picture/blob/3.0.0/djangocms_picture/templates/djangocms_picture/default/picture.html #}
 {# TACC (mimic v3.0.0 to v4.0.0 changes): #}
+{# TACC (support children as caption content): #}
 {# {% load thumbnail %} #}
-{% load thumbnail l10n %}
+{% load thumbnail l10n cms_tags %}
+{# /TACC #}
 {# /TACC #}
 
 {% if picture_link %}
@@ -14,12 +16,15 @@
 {% endif %}
 
 {# start render figure/figcaption #}
-{% if instance.caption_text %}
+{# TACC (support children as caption content): #}
+{# {% if instance.caption_text %} #}
+{% if instance.caption_text or instance.child_plugin_instances %}
     {# TACC (assign attributes to parent): #}
     {# <figure> #}
     <figure {{ instance.attributes_str }}>
     {# /TACC #}
 {% endif %}
+{# /TACC #}
 {# end render figure/figcaption #}
 
 
@@ -45,7 +50,7 @@
         "
     {% endif %}
     {# TACC (assign attributes to parent): #}
-    {% if not instance.caption_text and not picture_link %}
+    {% if not instance.caption_text and not picture_link and not instance.child_plugin_instances %}
     {{ instance.attributes_str }}
     {% endif %}
     {# /TACC #}
@@ -55,8 +60,17 @@
 {# /TACC #}
 
 {# start render figure/figcaption #}
-{% if instance.caption_text %}
-        <figcaption>{{ instance.caption_text }}</figcaption>
+{# {% if instance.caption_text %} #}
+{% if instance.caption_text or instance.child_plugin_instances %}
+        {# TACC (support children as caption content): #}
+        {# <figcaption>{{ instance.caption_text }}</figcaption> #}
+        <figcaption>
+        {{ instance.caption_text }}
+        {% for plugin in instance.child_plugin_instances %}
+            {% render_plugin plugin %}
+        {% endfor %}
+        </figcaption>
+        {# /TACC #}
     </figure>
 {% endif %}
 {# end render figure/figcaption #}
