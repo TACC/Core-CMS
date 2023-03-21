@@ -596,6 +596,27 @@ DJANGOCMS_VIDEO_TEMPLATES = [
     ('responsive-21by9', _('Responsive - 21 by 9')),
 ]
 
+# DJANGOCMS_ICON SETTINGS
+# https://github.com/django-cms/djangocms-icon
+
+ICON_PATH = os.path.join('taccsite_cms', 'static', 'site_cms', 'img', 'icons')
+
+LOGO_ICONFILE = os.path.join(BASE_DIR, ICON_PATH, 'logos.json')
+with open(LOGO_ICONFILE, 'r') as f:
+    LOGO_ICONS = f.read()
+
+CORTAL_ICONFILE = os.path.join(BASE_DIR, ICON_PATH, 'cortal.json')
+with open(CORTAL_ICONFILE, 'r') as f:
+    CORTAL_ICONS = f.read()
+
+DJANGOCMS_ICON_SETS = [
+    # The SVG icon set must be first or icon selection is not remembered on edit
+    # HELP: Icon previews are blank if editor switches from SVG set to icon set
+    # https://github.com/django-cms/djangocms-icon/issues/9
+    (LOGO_ICONS, '', _('Logo SVGs')),
+    (CORTAL_ICONS, 'icon', _('TACC "Cortal" Icons')),
+]
+
 ########################
 # IMPORT & EXPORT
 ########################
