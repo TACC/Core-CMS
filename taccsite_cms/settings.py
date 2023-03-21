@@ -586,7 +586,8 @@ META_USE_SCHEMAORG_PROPERTIES = True
 # https://github.com/django-cms/djangocms-text-ckeditor
 CKEDITOR_SETTINGS = {
     'autoParagraph': False,
-    'stylesSet': 'tacc:/static/djangocms_text_ckeditor/ckeditor/styles.js',
+    'stylesSet': 'default:/static/js/addons/ckeditor.wysiwyg.js',
+    'contentsCss': ['/static/djangocms_text_ckeditor/ckeditor/contents.css'],
 }
 
 # https://github.com/django-cms/djangocms-video
