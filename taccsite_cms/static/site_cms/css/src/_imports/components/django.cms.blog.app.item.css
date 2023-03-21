@@ -109,10 +109,6 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 :--article-item h3 {
   margin-bottom: unset; /* overwrite Core-Styles headings--cms.css */
 }
-:--article-item h3 a {
-  color: var(--global-color-primary--xx-dark);
-}
-
 :--article-item h4 {
   display: none;
 }
