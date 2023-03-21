@@ -32,8 +32,11 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 
 :--article-page header {
   grid-template-areas:
-    var(--row-head)
-    var(--row-meta);
+    'head'
+    'subh'
+    'cats'
+    'tags'
+    'attr';
 }
 :--article-page header h1,
 :--article-page header h2 {
