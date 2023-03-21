@@ -1,4 +1,4 @@
-{# @var className #}
+{# @var className, settings #}
 
 {# Encapsulate search bar as custom element, so styles do not bleed out #}
 {# IDEA: Should CMS use React component or Portal's React use custom element #}
@@ -28,5 +28,5 @@
   import * as inputFieldValue from '/static/site_cms/js/modules/inputFieldValue.js';
 
   const shadowRoot = document.getElementById('s-search-bar').shadowRoot;
-  inputFieldValue.update(shadowRoot, 'query_string');
+  inputFieldValue.update(shadowRoot, '{{ settings.SEARCH_QUERY_PARAM_NAME }}');
 </script>

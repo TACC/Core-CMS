@@ -1,0 +1,12 @@
+{
+    "svg": true,
+    "spritePath": "site_cms/img/icons/logos.svg",
+    "// iconClass": "Must be blank or svg template <use> hash includes a space",
+    "iconClass": "",
+    "icons": [
+        "tacc-formal-logo",
+        "nsf-logo",
+        "ut-informal-logo",
+        "ut-primary-logo"
+    ]
+}

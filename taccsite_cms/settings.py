@@ -144,6 +144,8 @@ CMS_TEMPLATES = (
 
 CMS_PERMISSION = True
 
+
+
 ########################
 # TACC: GOOGLE ANALYTICS
 ########################
@@ -232,6 +234,12 @@ FAVICON = {
 }
 
 ########################
+# TACC: SEARCH
+########################
+
+SEARCH_QUERY_PARAM_NAME = 'query_string'
+
+########################
 # TACC: PORTAL
 ########################
 
@@ -255,6 +263,8 @@ TACC_BLOG_SHOW_TAGS = True
 # To flag posts of certain category or tag, so template can take special action
 TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY = 'sample_value_e_g__mutlimedia__'
 TACC_BLOG_SHOW_ABSTRACT_TAG = 'sample_value_e_g__redirect__'
+
+
 
 ########################
 # CLIENT BUILD SETTINGS
@@ -587,6 +597,27 @@ DJANGOCMS_VIDEO_TEMPLATES = [
     ('responsive-21by9', _('Responsive - 21 by 9')),
 ]
 
+# DJANGOCMS_ICON SETTINGS
+# https://github.com/django-cms/djangocms-icon
+
+ICON_PATH = os.path.join('taccsite_cms', 'static', 'site_cms', 'img', 'icons')
+
+LOGO_ICONFILE = os.path.join(BASE_DIR, ICON_PATH, 'logos.json')
+with open(LOGO_ICONFILE, 'r') as f:
+    LOGO_ICONS = f.read()
+
+CORTAL_ICONFILE = os.path.join(BASE_DIR, ICON_PATH, 'cortal.json')
+with open(CORTAL_ICONFILE, 'r') as f:
+    CORTAL_ICONS = f.read()
+
+DJANGOCMS_ICON_SETS = [
+    # The SVG icon set must be first or icon selection is not remembered on edit
+    # HELP: Icon previews are blank if editor switches from SVG set to icon set
+    # https://github.com/django-cms/djangocms-icon/issues/9
+    (LOGO_ICONS, '', _('Logo SVGs')),
+    (CORTAL_ICONS, 'icon', _('TACC "Cortal" Icons')),
+]
+
 ########################
 # IMPORT & EXPORT
 ########################
@@ -628,5 +659,6 @@ SETTINGS_EXPORT = [
     'TACC_BLOG_SHOW_CATEGORIES',
     'TACC_BLOG_SHOW_TAGS',
     'TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY',
-    'TACC_BLOG_SHOW_ABSTRACT_TAG'
+    'TACC_BLOG_SHOW_ABSTRACT_TAG',
+    'SEARCH_QUERY_PARAM_NAME',
 ]
