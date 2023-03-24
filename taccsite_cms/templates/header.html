@@ -22,10 +22,10 @@
     {# GL-6: Remove need for different `className` values #}
     {% if settings.INCLUDES_PORTAL_NAV or settings.INCLUDES_SEARCH_BAR %}
       {# FAQ: If template were included with `only`, then it would NOT render `show_menu` #}
-      {% include "nav_cms.html" with className="navbar-nav" %}
+      {% include "nav_cms.html" with className="navbar-nav  mr-auto" %}
 
       {# NOTE: As of 2022-10, search is only available with a Portal #}
-      {% if settings.INCLUDES_SEARCH_BAR %}{% include "nav_search.html" with className="form-inline  ml-auto" settings=settings only %}{% endif %}
+      {% if settings.INCLUDES_SEARCH_BAR %}{% include "nav_search.html" with className="form-inline" settings=settings only %}{% endif %}
       {% if settings.INCLUDES_PORTAL_NAV %}{% include "nav_portal.html" with className="navbar-nav" settings=settings only %}{% endif %}
     {% else %}
       {# FAQ: If template were included with `only`, then it would NOT render `show_menu` #}
