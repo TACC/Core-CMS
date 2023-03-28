@@ -244,8 +244,8 @@ SEARCH_QUERY_PARAM_NAME = 'query_string'
 ########################
 
 INCLUDES_CORE_PORTAL = True
-INCLUDES_PORTAL_NAV = INCLUDES_CORE_PORTAL
-INCLUDES_SEARCH_BAR = INCLUDES_CORE_PORTAL
+INCLUDES_PORTAL_NAV = True
+INCLUDES_SEARCH_BAR = True
 
 LOGOUT_REDIRECT_URL = '/'
 
@@ -607,7 +607,9 @@ META_USE_SCHEMAORG_PROPERTIES = True
 
 # https://github.com/django-cms/djangocms-text-ckeditor
 CKEDITOR_SETTINGS = {
-    'autoParagraph': False
+    'autoParagraph': False,
+    'stylesSet': 'default:/static/js/addons/ckeditor.wysiwyg.js',
+    'contentsCss': ['/static/djangocms_text_ckeditor/ckeditor/contents.css'],
 }
 
 # https://github.com/django-cms/djangocms-video
