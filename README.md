@@ -52,9 +52,10 @@ Settings may be customized piecemeal by adding, in any of these files, only the 
 
 To avoid nav layout error and page error [Not Found: `core/markup/nav/`](https://github.com/TACC/Core-CMS/wiki/Not-Found%3A--core-markup-nav), add these settings to `taccsite_cms/settings_local.py`:
 
-```
+```py
 INCLUDES_CORE_PORTAL = False
 INCLUDES_PORTAL_NAV = False
+INCLUDES_SEARCH_BAR = False
 ```
 
 #### If You Want to Use This With Local [Core Portal] Instance
