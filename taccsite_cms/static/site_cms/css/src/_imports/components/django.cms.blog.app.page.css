@@ -8,6 +8,8 @@ Reference:
 Styleguide Components.DjangoCMS.Blog.App.Page
 */
 @import url("@tacc/core-styles/src/lib/_imports/objects/o-offset-content.css");
+@import url("@tacc/core-styles/src/lib/_imports/tools/x-figure.css");
+@import url("@tacc/core-styles/src/lib/_imports/tools/x-blockquote.css");
 
 @import url("./django.cms.blog.app.page.multimedia.css");
 
@@ -20,7 +22,7 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 :--article-page {
   --header-buffer: calc( var(--global-space--grid-gap) / 2 );
 
-  max-width: 665px;
+  max-width: 775px;
   margin-inline: auto;
 }
 
@@ -179,5 +181,43 @@ Styleguide Components.DjangoCMS.Blog.App.Page
   :--article-page .blog-content .align-right,
   :--article-page .blog-content .align-left {
     max-width: 50%;
+  }
+}
+
+
+
+
+
+/* Components & Elements */
+
+/* To style elements that are or have captions */
+:--article-page {
+  & figure,
+  & p.caption,
+  & .embed-responsive {
+    @extend .x-figure;
+  }
+  & figcaption,
+  & p.caption {
+    @extend .x-figure-caption;
+  }
+
+  & blockquote {
+    @extend .x-blockquote;
+  }
+  & blockquote footer {
+    @extend .x-blockquote-caption;
+  }
+}
+
+/* To fix caption styles for `.embed-responsive` */
+:--article-page {
+  /* To hide `.embed-…` margin-bottom */
+  & .embed-responsive + p.caption {
+      margin-top: calc( var(--buffer-middle) - var(--buffer-below) );
+  }
+  /* To remove extra whitespace beneath embeded content */
+  & .embed-responsive > * {
+      display: block;
   }
 }
