@@ -2,6 +2,16 @@
 
 :root {
 
+  /* Accent */
+  --global-color-accent--x-light: #caddfe;
+  --global-color-accent--light: #86aeff;
+  --global-color-accent--normal: #003399;
+  --global-color-accent--dark: #002266;
+  --global-color-accent--x-dark: #001133;
+
+  --global-color-accent--alt: #dfeafe;
+  --global-color-accent--weak: #00226640;
+
   /* Link */
   --global-color-link-on-light--normal: var(--global-color-accent--normal);
   --global-color-link-on-dark--normal: var(--global-color-accent--xxx-light);
