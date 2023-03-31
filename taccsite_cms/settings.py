@@ -244,8 +244,8 @@ SEARCH_QUERY_PARAM_NAME = 'query_string'
 ########################
 
 INCLUDES_CORE_PORTAL = True
-INCLUDES_PORTAL_NAV = INCLUDES_CORE_PORTAL
-INCLUDES_SEARCH_BAR = INCLUDES_CORE_PORTAL
+INCLUDES_PORTAL_NAV = True
+INCLUDES_SEARCH_BAR = True
 
 LOGOUT_REDIRECT_URL = '/'
 
@@ -607,7 +607,9 @@ META_USE_SCHEMAORG_PROPERTIES = True
 
 # https://github.com/django-cms/djangocms-text-ckeditor
 CKEDITOR_SETTINGS = {
-    'autoParagraph': False
+    'autoParagraph': False,
+    'stylesSet': 'default:/static/js/addons/ckeditor.wysiwyg.js',
+    'contentsCss': ['/static/djangocms_text_ckeditor/ckeditor/contents.css'],
 }
 
 # https://github.com/django-cms/djangocms-video
@@ -617,6 +619,27 @@ DJANGOCMS_VIDEO_TEMPLATES = [
     ('responsive-4by3', _('Responsive - 4 by 3')),
     ('responsive-1by1', _('Responsive - 1 by 1')),
     ('responsive-21by9', _('Responsive - 21 by 9')),
+]
+
+# DJANGOCMS_ICON SETTINGS
+# https://github.com/django-cms/djangocms-icon
+
+ICON_PATH = os.path.join('taccsite_cms', 'static', 'site_cms', 'img', 'icons')
+
+LOGO_ICONFILE = os.path.join(BASE_DIR, ICON_PATH, 'logos.json')
+with open(LOGO_ICONFILE, 'r') as f:
+    LOGO_ICONS = f.read()
+
+CORTAL_ICONFILE = os.path.join(BASE_DIR, ICON_PATH, 'cortal.json')
+with open(CORTAL_ICONFILE, 'r') as f:
+    CORTAL_ICONS = f.read()
+
+DJANGOCMS_ICON_SETS = [
+    # The SVG icon set must be first or icon selection is not remembered on edit
+    # HELP: Icon previews are blank if editor switches from SVG set to icon set
+    # https://github.com/django-cms/djangocms-icon/issues/9
+    (LOGO_ICONS, '', _('Logo SVGs')),
+    (CORTAL_ICONS, 'icon', _('TACC "Cortal" Icons')),
 ]
 
 ########################
