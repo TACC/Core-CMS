@@ -192,11 +192,11 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 
 /* To style elements that are or have captions */
 :--article-page figure,
-:--article-page p.caption,
 :--article-page .embed-responsive {
   @extend .x-figure;
 }
-:--article-page figcaption {
+:--article-page figcaption,
+:--article-page p.caption {
   @extend .x-figure-caption;
 }
 
