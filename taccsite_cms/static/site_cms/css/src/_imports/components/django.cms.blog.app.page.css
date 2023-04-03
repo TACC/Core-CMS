@@ -208,12 +208,7 @@ Styleguide Components.DjangoCMS.Blog.App.Page
   @extend .x-blockquote-caption;
 }
 
-/* To fix caption styles for `.embed-responsive` */
-:--article-page .embed-responsive + p.caption {
-  /* To hide `.embed-…` margin-bottom */
-  margin-top: calc( var(--buffer-middle) - var(--buffer-below) );
-}
+/* To remove extra whitespace beneath embeded content */
 :--article-page .embed-responsive > * {
-  /* To remove extra whitespace beneath embeded content */
   display: block;
 }
