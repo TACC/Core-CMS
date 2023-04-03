@@ -196,8 +196,7 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 :--article-page .embed-responsive {
   @extend .x-figure;
 }
-:--article-page figcaption,
-:--article-page p.caption {
+:--article-page figcaption {
   @extend .x-figure-caption;
 }
 
