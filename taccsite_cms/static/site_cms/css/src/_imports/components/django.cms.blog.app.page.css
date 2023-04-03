@@ -191,33 +191,29 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 /* Components & Elements */
 
 /* To style elements that are or have captions */
-:--article-page {
-  & figure,
-  & p.caption,
-  & .embed-responsive {
-    @extend .x-figure;
-  }
-  & figcaption,
-  & p.caption {
-    @extend .x-figure-caption;
-  }
+:--article-page figure,
+:--article-page p.caption,
+:--article-page .embed-responsive {
+  @extend .x-figure;
+}
+:--article-page figcaption,
+:--article-page p.caption {
+  @extend .x-figure-caption;
+}
 
-  & blockquote {
-    @extend .x-blockquote;
-  }
-  & blockquote footer {
-    @extend .x-blockquote-caption;
-  }
+:--article-page blockquote {
+  @extend .x-blockquote;
+}
+:--article-page blockquote footer {
+  @extend .x-blockquote-caption;
 }
 
 /* To fix caption styles for `.embed-responsive` */
-:--article-page {
+:--article-page .embed-responsive + p.caption {
   /* To hide `.embed-…` margin-bottom */
-  & .embed-responsive + p.caption {
-      margin-top: calc( var(--buffer-middle) - var(--buffer-below) );
-  }
+  margin-top: calc( var(--buffer-middle) - var(--buffer-below) );
+}
+:--article-page .embed-responsive > * {
   /* To remove extra whitespace beneath embeded content */
-  & .embed-responsive > * {
-      display: block;
-  }
+  display: block;
 }
