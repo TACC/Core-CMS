@@ -155,6 +155,12 @@ GOOGLE_ANALYTICS_PROPERTY_ID = "UA-123ABC@%$&-#"
 GOOGLE_ANALYTICS_PRELOAD = True
 
 ########################
+# TACC: SEARCH
+########################
+
+SEARCH_QUERY_PARAM_NAME = 'query_string'
+
+########################
 # ELASTICSEARCH
 ########################
 
@@ -246,12 +252,6 @@ LOGO = [
 FAVICON = {
     "img_file_src": "site_cms/img/favicons/favicon.ico"
 }
-
-########################
-# TACC: SEARCH
-########################
-
-SEARCH_QUERY_PARAM_NAME = 'query_string'
 
 ########################
 # TACC: PORTAL
