@@ -3,7 +3,9 @@ from django.db import models
 from django.core.management import call_command
 from cms import signals
 from cms.models.pagemodel import Page
+from django.conf import settings
 
+should_rebuild_index = settings.SEARCH_ENGINE == settings.SearchEngines.ELASTIC
 
 class RealtimeSignalProcessor(BaseSignalProcessor):
     """
@@ -29,5 +31,6 @@ class RealtimeSignalProcessor(BaseSignalProcessor):
         models.signals.post_delete.disconnect(self.handle_save)
 
     def handle_save(self, **kwargs):
-        if type(kwargs.get('instance')) is Page:
-            call_command('rebuild_index', '--noinput')
+        if should_rebuild_index:
+            if type(kwargs.get('instance')) is Page:
+                call_command('rebuild_index', '--noinput')

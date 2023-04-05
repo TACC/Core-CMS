@@ -158,30 +158,42 @@ GOOGLE_ANALYTICS_PRELOAD = True
 # TACC: SEARCH
 ########################
 
-SEARCH_QUERY_PARAM_NAME = 'query_string'
+SearchEngines = Enum('SearchEngines', ['ELASTIC', 'GOOGLE'])
+
+SEARCH_ENGINE = SearchEngines.ELASTIC
+if SEARCH_ENGINE == SearchEngines.GOOGLE:
+    SEARCH_QUERY_PARAM_NAME = 'q'
+    SEARCH_APPS = []
+else:
+    SEARCH_QUERY_PARAM_NAME = 'query_string'
+    SEARCH_APPS = [
+        'haystack',
+        'aldryn_apphooks_config',
+    ]
 
 ########################
 # ELASTICSEARCH
 ########################
 
-ES_AUTH = 'username:password'
-ES_HOSTS = 'http://elasticsearch:9200'
-ES_INDEX_PREFIX = 'cms-dev-{}'
-ES_DOMAIN = 'http://localhost:8000'
+if SEARCH_ENGINE == SearchEngines.ELASTIC:
+    ES_AUTH = 'username:password'
+    ES_HOSTS = 'http://elasticsearch:9200'
+    ES_INDEX_PREFIX = 'cms-dev-{}'
+    ES_DOMAIN = 'http://localhost:8000'
 
-# Elasticsearch Indexing
-HAYSTACK_ROUTERS = ['aldryn_search.router.LanguageRouter', ]
-HAYSTACK_SIGNAL_PROCESSOR = 'taccsite_cms.signal_processor.RealtimeSignalProcessor'
-ALDRYN_SEARCH_DEFAULT_LANGUAGE = 'en'
-ALDRYN_SEARCH_REGISTER_APPHOOK = True
-HAYSTACK_CONNECTIONS = {
-    'default': {
-        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
-        'URL': ES_HOSTS,
-        'INDEX_NAME': ES_INDEX_PREFIX.format('cms'),
-        'KWARGS': {'http_auth': ES_AUTH}
+    # Elasticsearch Indexing
+    HAYSTACK_ROUTERS = ['aldryn_search.router.LanguageRouter', ]
+    HAYSTACK_SIGNAL_PROCESSOR = 'taccsite_cms.signal_processor.RealtimeSignalProcessor'
+    ALDRYN_SEARCH_DEFAULT_LANGUAGE = 'en'
+    ALDRYN_SEARCH_REGISTER_APPHOOK = True
+    HAYSTACK_CONNECTIONS = {
+        'default': {
+            'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+            'URL': ES_HOSTS,
+            'INDEX_NAME': ES_INDEX_PREFIX.format('cms'),
+            'KWARGS': {'http_auth': ES_AUTH}
+        }
     }
-}
 
 ########################
 # TACC: (DEPRECATED)
@@ -428,9 +440,13 @@ INSTALLED_APPS = [
     'djangocms_bootstrap4.contrib.bootstrap4_utilities',
 
     # miscellaneous
-    'haystack',                # search index
     'aldryn_apphooks_config',  # search index & django CMS Blog
     'test_without_migrations', # run tests faster
+
+    # search
+    *[
+        app for app in SEARCH_APPS if app not in INSTALLED_APPS
+    ]
 
 ] + form_plugin_INSTALLED_APPS + [
 
@@ -661,5 +677,6 @@ SETTINGS_EXPORT = [
     'TACC_BLOG_SHOW_TAGS',
     'TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY',
     'TACC_BLOG_SHOW_ABSTRACT_TAG',
+    'SEARCH_ENGINE',
     'SEARCH_QUERY_PARAM_NAME',
 ]
