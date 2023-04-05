@@ -14,6 +14,8 @@ from glob import glob
 
 from django.utils.translation import gettext_lazy as _
 
+from taccsite_cms.utils.search import SearchEngines
+
 from taccsite_cms._settings.auth import *
 from taccsite_cms._settings.email import *
 from taccsite_cms._settings.form_plugin import *
@@ -158,19 +160,14 @@ GOOGLE_ANALYTICS_PRELOAD = True
 # TACC: SEARCH
 ########################
 
-# TODO: Consider adding 'GOOGLE' as an option
-# SEE: https://github.com/TACC/tup-ui/blob/6eb9412/apps/tup-cms/src/taccsite_cms/settings_custom.py#L101
-SearchEngines = Enum('SearchEngines', ['ELASTIC', 'OTHER'])
-
 SEARCH_ENGINE = SearchEngines.ELASTIC
 SEARCH_QUERY_PARAM_NAME = 'query_string'
+SEARCH_APPS = [
+    'haystack',
+    'aldryn_apphooks_config',
+]
 
-if SEARCH_ENGINE == SearchEngines.ELASTIC:
-    SEARCH_APPS = [
-        'haystack',
-        'aldryn_apphooks_config',
-    ]
-else:
+if SEARCH_ENGINE != SearchEngines.ELASTIC:
     SEARCH_APPS = []
 
 ########################
@@ -445,11 +442,6 @@ INSTALLED_APPS = [
     'aldryn_apphooks_config',  # search index & django CMS Blog
     'test_without_migrations', # run tests faster
 
-    # search
-    *[
-        app for app in SEARCH_APPS if app not in INSTALLED_APPS
-    ]
-
 ] + form_plugin_INSTALLED_APPS + [
 
     # core TACC CMS
@@ -470,6 +462,12 @@ INSTALLED_APPS = [
     'taccsite_cms.contrib.taccsite_system_specs',
     'taccsite_cms.contrib.taccsite_system_monitor',
     'taccsite_cms.contrib.taccsite_data_list'
+]
+
+# search apps
+tacc_app_index = INSTALLED_APPS.index('taccsite_cms')
+INSTALLED_APPS[tacc_app_index:tacc_app_index] = [
+    app for app in SEARCH_APPS if app not in INSTALLED_APPS
 ]
 
 # Convert list of paths to list of dotted module names

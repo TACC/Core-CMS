@@ -3,9 +3,11 @@ from django.db import models
 from django.core.management import call_command
 from cms import signals
 from cms.models.pagemodel import Page
-from django.conf import settings
 
-should_rebuild_index = settings.SEARCH_ENGINE == settings.SearchEngines.ELASTIC
+from taccsite_cms.settings import SEARCH_ENGINE
+from taccsite_cms.utils.search import SearchEngines
+
+should_rebuild_index = SEARCH_ENGINE == SearchEngines.ELASTIC
 
 class RealtimeSignalProcessor(BaseSignalProcessor):
     """
