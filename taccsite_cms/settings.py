@@ -155,6 +155,12 @@ GOOGLE_ANALYTICS_PROPERTY_ID = "UA-123ABC@%$&-#"
 GOOGLE_ANALYTICS_PRELOAD = True
 
 ########################
+# TACC: SEARCH
+########################
+
+SEARCH_QUERY_PARAM_NAME = 'query_string'
+
+########################
 # ELASTICSEARCH
 ########################
 
@@ -162,6 +168,20 @@ ES_AUTH = 'username:password'
 ES_HOSTS = 'http://elasticsearch:9200'
 ES_INDEX_PREFIX = 'cms-dev-{}'
 ES_DOMAIN = 'http://localhost:8000'
+
+# Elasticsearch Indexing
+HAYSTACK_ROUTERS = ['aldryn_search.router.LanguageRouter', ]
+HAYSTACK_SIGNAL_PROCESSOR = 'taccsite_cms.signal_processor.RealtimeSignalProcessor'
+ALDRYN_SEARCH_DEFAULT_LANGUAGE = 'en'
+ALDRYN_SEARCH_REGISTER_APPHOOK = True
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+        'URL': ES_HOSTS,
+        'INDEX_NAME': ES_INDEX_PREFIX.format('cms'),
+        'KWARGS': {'http_auth': ES_AUTH}
+    }
+}
 
 ########################
 # TACC: (DEPRECATED)
@@ -232,12 +252,6 @@ LOGO = [
 FAVICON = {
     "img_file_src": "site_cms/img/favicons/favicon.ico"
 }
-
-########################
-# TACC: SEARCH
-########################
-
-SEARCH_QUERY_PARAM_NAME = 'query_string'
 
 ########################
 # TACC: PORTAL
@@ -536,20 +550,6 @@ FILE_UPLOAD_PERMISSIONS = 0o644
 FILE_UPLOAD_MAX_MEMORY_SIZE = 20000000  # 20MB
 
 DJANGOCMS_AUDIO_ALLOWED_EXTENSIONS = ['mp3', 'ogg', 'wav']
-
-# Elasticsearch Indexing
-HAYSTACK_ROUTERS = ['aldryn_search.router.LanguageRouter', ]
-HAYSTACK_SIGNAL_PROCESSOR = 'taccsite_cms.signal_processor.RealtimeSignalProcessor'
-ALDRYN_SEARCH_DEFAULT_LANGUAGE = 'en'
-ALDRYN_SEARCH_REGISTER_APPHOOK = True
-HAYSTACK_CONNECTIONS = {
-    'default': {
-        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
-        'URL': ES_HOSTS,
-        'INDEX_NAME': ES_INDEX_PREFIX.format('cms'),
-        'KWARGS': {'http_auth': ES_AUTH}
-    }
-}
 
 SETTINGS_EXPORT_VARIABLE_NAME = 'settings'
 
