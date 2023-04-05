@@ -158,18 +158,20 @@ GOOGLE_ANALYTICS_PRELOAD = True
 # TACC: SEARCH
 ########################
 
-SearchEngines = Enum('SearchEngines', ['ELASTIC', 'GOOGLE'])
+# TODO: Consider adding 'GOOGLE' as an option
+# SEE: https://github.com/TACC/tup-ui/blob/6eb9412/apps/tup-cms/src/taccsite_cms/settings_custom.py#L101
+SearchEngines = Enum('SearchEngines', ['ELASTIC'])
 
 SEARCH_ENGINE = SearchEngines.ELASTIC
-if SEARCH_ENGINE == SearchEngines.GOOGLE:
-    SEARCH_QUERY_PARAM_NAME = 'q'
-    SEARCH_APPS = []
-else:
-    SEARCH_QUERY_PARAM_NAME = 'query_string'
+SEARCH_QUERY_PARAM_NAME = 'query_string'
+
+if SEARCH_ENGINE == SearchEngines.ELASTIC:
     SEARCH_APPS = [
         'haystack',
         'aldryn_apphooks_config',
     ]
+else:
+    SEARCH_APPS = []
 
 ########################
 # ELASTICSEARCH
