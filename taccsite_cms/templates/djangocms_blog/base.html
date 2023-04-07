@@ -14,7 +14,9 @@
 {% endblock meta %}
 
 {% block content %}
-<link rel="stylesheet" href="{% static 'site_cms/css/build/app.blog.css' %}">
+<style>
+  @import url("/static/site_cms/css/build/app.blog.css") layer(project);
+</style>
 <div class="app app-blog
   {% if not settings.TACC_BLOG_SHOW_CATEGORIES %}no-categories{% endif %}
   {% if not settings.TACC_BLOG_SHOW_TAGS %}no-tags{% endif %}
