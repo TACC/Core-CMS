@@ -111,8 +111,7 @@ Styleguide Components.DjangoCMS.Blog.App
 }
 
 /* To style categories as "tags" (the UI pattern) */
-/* FAQ: Uses `:where()` to reduce specificity so colors are easily overridden */
-:where(.app-blog .categories a) {
+.app-blog .categories a {
   @extend :--c-tag;
 
   display: inline-block;
@@ -124,8 +123,7 @@ Styleguide Components.DjangoCMS.Blog.App
 }
 
 /* To style tags as "pills" (the UI pattern) */
-/* FAQ: Uses `:where()` to reduce specificity so colors are easily overridden */
-:where(.app-blog .tags a) {
+.app-blog .tags a {
   /* TODO: When available in Core-Styles, uncomment this */
   /* @extend :--c-pill; */
 
