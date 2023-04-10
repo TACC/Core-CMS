@@ -8,8 +8,6 @@ Reference:
 Styleguide Components.DjangoCMS.Blog.App.Page
 */
 @import url("@tacc/core-styles/src/lib/_imports/objects/o-offset-content.css");
-@import url("@tacc/core-styles/src/lib/_imports/tools/x-figure.css");
-@import url("@tacc/core-styles/src/lib/_imports/tools/x-blockquote.css");
 
 @import url("./django.cms.blog.app.page.multimedia.css");
 
@@ -182,32 +180,4 @@ Styleguide Components.DjangoCMS.Blog.App.Page
   :--article-page .blog-content .align-left {
     max-width: 50%;
   }
-}
-
-
-
-
-
-/* Components & Elements */
-
-/* To style elements that are or have captions */
-:--article-page figure,
-:--article-page .embed-responsive {
-  @extend .x-figure;
-}
-:--article-page figcaption,
-:--article-page p.caption {
-  @extend .x-figure-caption;
-}
-
-:--article-page blockquote {
-  @extend .x-blockquote;
-}
-:--article-page blockquote footer {
-  @extend .x-blockquote-caption;
-}
-
-/* To remove extra whitespace beneath embeded content */
-:--article-page .embed-responsive > * {
-  display: block;
 }
