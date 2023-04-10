@@ -1,0 +1,15 @@
+{% load staticfiles %}
+
+<script type="module">
+  import updateEmailLinkHrefs from '{% static "site_cms/js/modules/updateEmailLinkHrefs.js" %}';
+
+  const scopeElement = document.getElementById('cms-content');
+  const fakeText = '__REMOVE_THIS__';
+
+  updateEmailLinkHrefs(scopeElement, fakeText, {
+    user: 'data-user',
+    domain: 'data-domain',
+    subject: 'data-subject',
+    body: 'data-body'
+  });
+</script>
