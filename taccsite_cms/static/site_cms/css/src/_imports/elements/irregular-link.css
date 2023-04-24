@@ -1,4 +1,6 @@
 /* Allow making all hyperlinks "irregular" styles */
+/* FAQ: Only included by a project as client wants it */
+/* SEE: https://ecepalliance.org/ (<style id="site-css-links">) */
 
 @import url("_imports/tools/x-link.css");
 
