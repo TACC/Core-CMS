@@ -3,6 +3,6 @@
 /* NOTE: This file exists so User Guide can load header styles only it needs */
 
 /* FAQ: User Guide lacks the vars that _imports/trumps/s-header.css expects */
-@import url("_imports/settings/border.css");
+@import url("https://unpkg.com/@tacc/core-styles@0.12.0/dist/settings/border.css");
 /* Unique to CMS */
 @import url("./_imports/settings/color.css");
