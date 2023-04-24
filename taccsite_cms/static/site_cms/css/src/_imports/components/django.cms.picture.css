@@ -1,6 +1,6 @@
 /* To support djangocms-picture plugin unstyled default alignment classes */
 /* SEE: https://github.com/django-cms/djangocms-picture/blob/2.3.0/djangocms_picture/models.py#L24-L34 */
-@import url("https://unpkg.com/@tacc/core-styles@0.11.0/dist/components/align.css");
+@import url("https://unpkg.com/@tacc/core-styles@0.12.0/dist/components/align.css");
 
 /* Try to auto-clear image floats */
 /* WARNING: The commented solution clears float BUT also negates float */

@@ -2,7 +2,7 @@
 /* FAQ: Only included by a project as client wants it */
 /* SEE: https://ecepalliance.org/about/leadership/ */
 
-@import url("https://unpkg.com/@tacc/core-styles@0.11.0/src/lib/_imports/tools/x-mailto-text-replace.css");
+@import url("https://unpkg.com/@tacc/core-styles@0.12.0/src/lib/_imports/tools/x-mailto-text-replace.css");
 
 a[data-user][data-domain] {
   @extend %x-mailto-text-replace;
