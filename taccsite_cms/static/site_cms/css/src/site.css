@@ -12,8 +12,8 @@
 */
 
 /* SETTINGS */
-@import url("_imports/settings/border.css");
-@import url("_imports/settings/max-width.css");
+@import url("https://unpkg.com/@tacc/core-styles@0.11.0/dist/settings/border.css");
+@import url("https://unpkg.com/@tacc/core-styles@0.11.0/dist/settings/max-width.css");
 @import url("https://unpkg.com/@tacc/core-styles@0.11.0/dist/settings/space.css");
 /* Unique to CMS */
 @import url("./_migrations/219fca6/settings/color.css");
@@ -36,15 +36,15 @@
 
 /* COMPONENTS */
 @import url("https://unpkg.com/@tacc/core-styles@0.11.0/dist/components/c-button.css");
-@import url("_imports/components/c-card.css");
-@import url("_imports/components/c-callout.css");
-@import url("_imports/components/c-data-list.css");
-@import url("_imports/components/c-nav.css");
-@import url("_imports/components/c-footer.css");
-@import url("_imports/components/c-recognition.css");
-@import url("_imports/components/c-see-all-link.css");
+@import url("https://unpkg.com/@tacc/core-styles@0.11.0/dist/components/c-card.css");
+@import url("https://unpkg.com/@tacc/core-styles@0.11.0/dist/components/c-callout.css");
+@import url("https://unpkg.com/@tacc/core-styles@0.11.0/dist/components/c-data-list.css");
+@import url("https://unpkg.com/@tacc/core-styles@0.11.0/dist/components/c-nav.css");
+@import url("https://unpkg.com/@tacc/core-styles@0.11.0/dist/components/c-footer.css");
+@import url("https://unpkg.com/@tacc/core-styles@0.11.0/dist/components/c-recognition.css");
+@import url("https://unpkg.com/@tacc/core-styles@0.11.0/dist/components/c-see-all-link.css");
 @import url("https://unpkg.com/@tacc/core-styles@0.11.0/dist/components/bootstrap.container.css");
-@import url("_imports/components/bootstrap.figure.css");
+@import url("https://unpkg.com/@tacc/core-styles@0.11.0/dist/components/bootstrap.figure.css");
 @import url("https://unpkg.com/@tacc/core-styles@0.11.0/dist/components/bootstrap.modal.css");
 /* Unique to CMS */
 @import url("./_migrations/219fca6/components/c-button.css");
@@ -55,10 +55,10 @@
 @import url("./_migrations/219fca6/components/django.cms.picture.css");
 
 /* TRUMPS */
-@import url("_imports/trumps/s-breadcrumbs.css");
-@import url("_imports/trumps/s-footer.css");
-@import url("_imports/trumps/s-blockquote.css");
+@import url("https://unpkg.com/@tacc/core-styles@0.11.0/dist/trumps/s-breadcrumbs.css");
+@import url("https://unpkg.com/@tacc/core-styles@0.11.0/dist/trumps/s-footer.css");
+@import url("https://unpkg.com/@tacc/core-styles@0.11.0/dist/trumps/s-blockquote.css");
 @import url("https://unpkg.com/@tacc/core-styles@0.11.0/dist/trumps/s-irregular-links.css");
-@import url("_imports/trumps/u-empty.css");
+@import url("https://unpkg.com/@tacc/core-styles@0.11.0/dist/trumps/u-empty.css");
 @import url("https://unpkg.com/@tacc/core-styles@0.11.0/dist/trumps/u-mailto-text-replace.css");
 @import url("https://unpkg.com/@tacc/core-styles@0.11.0/dist/trumps/s-affixed-input-wrapper.css");
