@@ -7,7 +7,7 @@
 <button
   class="g-recaptcha  c-button c-button--secondary"
   id="tacc-spam-toggle-{{ widget_uuid }}"
-  data-sitekey="{% for name, value in widget.attrs.items %}{% ifequal name 'data-sitekey' %}{{ value }}{% endifequal %}{% endfor %}"
+  data-sitekey="{% for name, value in widget.attrs.items %}{% if name == 'data-sitekey' %}{{ value }}{% endif %}{% endfor %}"
   data-callback="onSubmit_{{ widget_uuid }}"
   data-badge="bottomright"
   hidden

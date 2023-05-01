@@ -44,7 +44,7 @@ CEP_AUTH_VERIFICATION_ENDPOINT = 'localhost'  # 'https://0.0.0.0:8000'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'PORT': '5432',
         'NAME': 'taccsite',
         'USER': 'postgresadmin',
