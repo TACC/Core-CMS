@@ -1,5 +1,5 @@
-@import url("https://unpkg.com/@tacc/core-styles@0.12.0/src/lib/_imports/components/c-button.css");
-@import url("https://unpkg.com/@tacc/core-styles@0.12.0/src/lib/_imports/components/c-message.css");
+@import url("@tacc/core-styles/src/lib/_imports/components/c-button.css");
+@import url("@tacc/core-styles/src/lib/_imports/components/c-message.css");
 
 @import url("./django-cms-forms.hacks.css");
 @import url("./django-cms-forms--errors-via-c-message.css");
