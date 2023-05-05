@@ -1,8 +1,20 @@
-@import url("https://unpkg.com/@tacc/core-styles@0.12.0/src/lib/_imports/components/c-button.css");
-@import url("https://unpkg.com/@tacc/core-styles@0.12.0/src/lib/_imports/components/c-message.css");
-@import url('https://unpkg.com/@tacc/core-styles@0.12.0/src/lib/_imports/tools/x-link.css');
+/*
+Django CMS Form Components
 
-@import url("./django-cms-forms-hacks.css");
+These styles are only for forms created by the Django CMS Form plugin.
+
+Reference:
+
+- [Django CMS Form Default Template](https://github.com/avryhof/djangocms-forms/blob/master/djangocms_forms/templates/djangocms_forms/form_template/default.html)
+- [TACC's Django CMS Form Default Template](https://github.com/TACC/Core-CMS/blob/master/taccsite_cms/templates/djangocms_forms/form_template/default.html)
+
+Styleguide Components.DjangoCMS.Forms
+*/
+@import url("https://unpkg.com/@tacc/core-styles@0.12.0/src/lib/_imports/components/c-button.css");
+@import url("./django.cms.forms.hacks.css");
+
+
+
 
 
 
@@ -73,7 +85,6 @@ ul.checkboxselectmultiple label {
   display: flex;
   gap: 0.5em;
   align-items: center;
-  font-weight: revert; /* undo html-elements.cms.css */
 }
 ul.radioselect li:last-child label,
 ul.checkboxselectmultiple li:last-child label {
@@ -82,11 +93,18 @@ ul.checkboxselectmultiple li:last-child label {
 
 /* Field: Required, Asterisk, Important */
 
-.field-wrapper > label {
+.field-wrapper.required > label {
   font-weight: var(--bold);
 }
-.field-wrapper > label .asterisk {
+.field-wrapper.required > label .asterisk {
   font-weight: var(--regular);
+}
+
+/* To not render space from markup between label and asterisk */
+/* FAQ: The `:has(sup, sub)` prevents a <sup>7</sup> from being too high/low */
+.field-wrapper.required:has(label .asterisk) label:has(sub, sup) {
+  display: flex;
+  align-items: center;
 }
 
 .field-wrapper .asterisk {
@@ -122,33 +140,12 @@ ul.checkboxselectmultiple li:last-child label {
 
 /* Errors */
 
+.field-errors {
+  font-size: var(--global-font-size--small);
+}
 .field-errors ul {
   margin-top: 1rem; /* mimic ul margin-bottom */
-}
-.form-errors ul,
-.field-errors ul {
   margin-bottom: 0; /* overwrite ul margin-bottom */
-}
-.form-errors {
-  margin-bottom: 1rem; /* mimic ul margin-bottom */
-}
-
-.form-errors ul,
-.field-errors ul {
-  list-style: none;
-  padding-inline: 0;
-}
-
-.form-errors {
-  @extend .c-message;
-  @extend .c-message--type-error;
-  @extend .c-message--scope-section;
-  @extend .c-message--scope-section.c-message--type-error;
-}
-.field-errors li {
-  @extend .c-message;
-  @extend .c-message--type-error;
-  @extend .c-message--scope-inline;
 }
 
 
@@ -174,21 +171,8 @@ ul.checkboxselectmultiple {
 
 /* Button */
 
-/* To style obvious buttons that neglect class */
+.form-button,
 .button-wrapper button[type="submit"] {
   @extend .c-button;
   @extend .c-button--primary;
-}
-
-.form-button {
-  @extend .c-button;
-}
-.form-button[type="submit"] {
-  @extend .c-button--primary;
-}
-.form-button:where(:not([type="submit"], [type="reset"])) {
-  @extend .c-button--secondary;
-}
-.form-button[type="reset"] {
-  @extend .c-button--tertiary;
 }

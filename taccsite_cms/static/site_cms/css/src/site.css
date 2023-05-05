@@ -17,12 +17,18 @@
 
 /* ELEMENTS */
 /* Bootstrap performs much of this */
+@import url("https://unpkg.com/@tacc/core-styles@0.12.0/src/lib/_imports/elements/html-elements.cms.css");
+@import url("https://unpkg.com/@tacc/core-styles@0.12.0/src/lib/_imports/elements/form.cms.css");
 /* Core-Styles provides much of this */
 @import url("https://unpkg.com/@tacc/core-styles@0.12.0/src/lib/_imports/elements/links.css");
 @import url("https://unpkg.com/@tacc/core-styles@0.12.0/src/lib/_imports/elements/table.css");
 /* Load custom element styles within custom element, not here */
 
 /* OBJECTS */
+@import url("https://unpkg.com/@tacc/core-styles@0.12.0/_imports/objects/o-grid.css");
+@import url("https://unpkg.com/@tacc/core-styles@0.12.0/_imports/objects/o-float-content.css");
+@import url("https://unpkg.com/@tacc/core-styles@0.12.0/_imports/objects/o-offset-content.css");
+@import url("https://unpkg.com/@tacc/core-styles@0.12.0/_imports/objects/o-section.css");
 /* Core-Styles provides much of this */
 
 /* COMPONENTS */
@@ -40,7 +46,10 @@
 /* Unique to CMS */
 @import url("./_migrations/v3-9_v3-10/components/c-button.css");
 @import url("./_migrations/v3-9_v3-10/components/django.cms.css");
-@import url("./_migrations/v3-9_v3-10/components/django-cms-forms.css");
+@import url("./_migrations/v3-9_v3-10/components/django.cms.blog.css");
+@import url("./_migrations/v3-9_v3-10/components/django.cms.forms.css");
+@import url("./_migrations/v3-9_v3-10/components/django-cms-icon.css");
+@import url("./_migrations/v3-9_v3-10/components/django.cms.post.css");
 @import url("./_migrations/v3-9_v3-10/components/django.cms.picture.css");
 
 /* TRUMPS */
