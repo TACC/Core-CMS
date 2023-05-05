@@ -1,0 +1,5 @@
+@import url("https://unpkg.com/@tacc/core-styles@0.12.0/src/lib/_imports/tools/media-queries.css");
+
+@custom-media --xx-narrow-and-below (width < 380px);
+@custom-media --xx-narrow-and-above (width >= 380px);
+@custom-media --xx-narrow-to-x-narrow (380px <= width < 576px);

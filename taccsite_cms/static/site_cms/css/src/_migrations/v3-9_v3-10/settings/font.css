@@ -1,4 +1,4 @@
-@import url("../../v1_v0-core-styles/settings/font.css");
+@import url("https://unpkg.com/@tacc/core-styles@0.12.0/src/lib/_imports/settings/font.css");
 
 :root {
   --global-font-family--sans: var(--global-font-family--sans--cms);
