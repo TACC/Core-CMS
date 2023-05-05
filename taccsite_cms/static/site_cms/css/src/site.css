@@ -8,8 +8,8 @@
 @import url("https://unpkg.com/@tacc/core-styles@0.12.0/src/lib/_imports/settings/max-width.css");
 @import url("https://unpkg.com/@tacc/core-styles@0.12.0/src/lib/_imports/settings/space.css");
 /* Unique to CMS */
-@import url("./_migrations/219fca6/settings/color.css");
-@import url("./_migrations/219fca6/settings/font.css");
+@import url("./_migrations/v3-9_v3-10/settings/color.css");
+@import url("./_migrations/v3-9_v3-10/settings/font.css");
 @import url("./_migrations/v1_v0-core-styles.css");
 
 /* GENERICS */
@@ -39,10 +39,10 @@
 @import url("https://unpkg.com/@tacc/core-styles@0.12.0/src/lib/_imports/components/bootstrap.figure.css");
 @import url("https://unpkg.com/@tacc/core-styles@0.12.0/src/lib/_imports/components/bootstrap.modal.css");
 /* Unique to CMS */
-@import url("./_migrations/219fca6/components/c-button.css");
-@import url("./_migrations/219fca6/components/django.cms.css");
-@import url("./_migrations/219fca6/components/django-cms-forms.css");
-@import url("./_migrations/219fca6/components/django.cms.picture.css");
+@import url("./_migrations/v3-9_v3-10/components/c-button.css");
+@import url("./_migrations/v3-9_v3-10/components/django.cms.css");
+@import url("./_migrations/v3-9_v3-10/components/django-cms-forms.css");
+@import url("./_migrations/v3-9_v3-10/components/django.cms.picture.css");
 
 /* TRUMPS */
 @import url("https://unpkg.com/@tacc/core-styles@0.12.0/src/lib/_imports/trumps/s-breadcrumbs.css");
