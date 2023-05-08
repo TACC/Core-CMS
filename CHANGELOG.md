@@ -7,6 +7,36 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [3.10.0] - 2023-05-08: Example, WYSIWYG, DemData, Icons, 404, SVGs, Query
+
+### Added
+
+- Task/update example cms defaults (#577) (bee18dc)
+- feat(settings): wysiwyg customization (#595) (5a5eeef)
+- Pulled in DemData site resources. (a88925d) (1ef0df9)
+- feat(djangocms_icon): support cortal font & svg logos (#611) (dc76cb0)
+- feat: minimal 404 error page (ea034fc) (95aefe1)
+- feat: svg logos, branding & social, plus templates (#608) (129295b)
+- feat(img): social media logo svgs (1a90e16)
+- feat(settings): tup-437, SEARCH_QUERY_PARAM_NAME (#604) (bdda2f1)
+
+### Changed
+
+- chore(core-styles): v0.13.0 (b462ea2)
+- chore: retire env()-based themes (Core-CMS v3.9) (#632) (c40c723)
+- chore(settings): tacc search above elasticsearch (a54bd43)
+- chore(settings): most of elasticsearch in one spot (e03418f)
+- docs(management): create "User groups (page)" first (2b222c2)
+- chore(taccsite_cms): texascale, robots.txt status (b22aaa8)
+- docs: improve release process steps
+
+### Fixed
+
+- fix(texascale): restore pre-v3.9.1 heading styles (5934b2e)
+- fix: explicit INCLUDES_PORTAL_NAV & …_SEARCH_BAR (01d2505)
+- fix: portal nav not to touch cms menu if no search (#614) (06d159a)
+- fix(bin): console log undefined to real array (7dbab46)
+
 ## [3.9.2] - 2023-02-14: Poetry URL & Version (Hotfix)
 
 ### Fixed
@@ -509,7 +539,8 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 ## [2.0.0] - 2021-03-31
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.9.2...HEAD
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.10.0...HEAD
+[3.10.0]: https://github.com/TACC/Core-CMS/compare/v3.10.0
 [3.9.2]: https://github.com/TACC/Core-CMS/compare/v3.9.2
 [3.9.1]: https://github.com/TACC/Core-CMS/compare/v3.9.1
 [3.9.0]: https://github.com/TACC/Core-CMS/compare/v3.9.0
