@@ -1,7 +1,0 @@
-span.has-svg {
-  display: inline-block;
-}
-span.has-svg > svg {
-  width: 100%;
-  height: 100%;
-}
