@@ -5,6 +5,9 @@
 /* Organize via ITCSS */
 /* SEE: https://confluence.tacc.utexas.edu/x/IAA9Cw */
 
+/* THEME */
+@import url("@tacc/core-styles/src/lib/_imports/theme.default.css");
+
 /* SETTINGS */
 /* CAVEAT: These are already imported in `site.css`, but necessary here to
            override Portal (which also loads `site.header.css`), so font
