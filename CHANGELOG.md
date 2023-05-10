@@ -11,10 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- fix(css): add missing theme vars (#634) (49d5769)
-- bugfix: security for example-cms docker compose (#627) (f491975)
+- fix(css): add missing theme vars (#634)
+- bugfix: security for example-cms docker compose (#627)
 - fix: (protx-cms) getting-started <hN> levels (f2efa45)
-- fix: (frontera) system_monitor colors (#635) (6ede445)
+- fix: (frontera) system_monitor colors (#635)
 - fix(taccsite_custom): wrong commit pointer (31a2e7e)
 
 ## [3.10.0] - 2023-05-08: Example, WYSIWYG, DemData, Icons, 404, SVGs, Query
