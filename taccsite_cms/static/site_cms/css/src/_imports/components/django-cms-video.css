@@ -1,0 +1,8 @@
+.embed-responsive:not([class*="embed-responsive-"])
+:is(.embed-responsive-item, embed, iframe, object, video) {
+  /* To overwrite Bootstrap _embed */
+  position: unset;
+  top: unset;
+  bottom: unset;
+  left: unset;
+}

@@ -407,7 +407,7 @@ Only appointed team members may release versions.
 [Core Portal Deployments]: https://github.com/TACC/Core-Portal-Deployments
 [Camino]: https://github.com/TACC/Camino
 [Core CMS]: https://github.com/TACC/Core-CMS
-[Core Styles]: https://github.com/TACC/tup-ui/tree/main/libs/core-styles
+[Core Styles]: https://github.com/TACC/Core-Styles
 [Core CMS Resources]: https://github.com/TACC/Core-CMS-Resources
 [Core CMS Custom]: https://github.com/TACC/Core-CMS-Custom
 [Core Portal]: https://github.com/TACC/Core-Portal
