@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [3.10.1] - 2023-05-10: Fixes for Core-CMS v3.10 and ProTX CMS v3.9
+
+### Fixed
+
+- fix(css): add missing theme vars (#634) (49d5769)
+- bugfix: security for example-cms docker compose (#627) (f491975)
+- fix: (protx-cms) getting-started <hN> levels (f2efa45)
+- fix: (frontera) system_monitor colors (#635) (6ede445)
+- fix(taccsite_custom): wrong commit pointer (31a2e7e)
+
 ## [3.10.0] - 2023-05-08: Example, WYSIWYG, DemData, Icons, 404, SVGs, Query
 
 ### Added
@@ -537,9 +547,11 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 - FP-526: Update Portal Nav (Fix Sample Markup, Remove Old Config) (#251)
 
 ## [2.0.0] - 2021-03-31
+
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.10.0...HEAD
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.10.1...HEAD
+[3.10.1]: https://github.com/TACC/Core-CMS/compare/v3.10.1
 [3.10.0]: https://github.com/TACC/Core-CMS/compare/v3.10.0
 [3.9.2]: https://github.com/TACC/Core-CMS/compare/v3.9.2
 [3.9.1]: https://github.com/TACC/Core-CMS/compare/v3.9.1
