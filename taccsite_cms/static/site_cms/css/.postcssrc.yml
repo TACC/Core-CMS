@@ -12,7 +12,10 @@ plugins:
       - 'taccsite_cms/static/site_cms/css/src' # Core-CMS CSS source files
       - 'node_modules/@tacc/core-styles/src/lib' # Core-Styles CSS source files
   postcss-replace:
-    # @tacc/core-styles: 'src/' uses `fonts/`, 'dist/' uses `../../fonts/`
-    pattern: (..\/..\/fonts\/|fonts/)
+    # @tacc/core-styles 'src/' uses `("../../fonts/` or `('../../fonts/`
+    # @tacc/core-styles 'dist/' uses `(fonts/`
+    # Core-CMS 'src/site.…' uses `(fonts/`
+    # Core-CMS 'dist/' is not parsed
+    pattern: (?<="|'|\()(..\/..\/fonts\/|fonts\/)
     data:
       replaceAll: /static/site_cms/fonts/
