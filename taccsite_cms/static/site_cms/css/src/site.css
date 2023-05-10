@@ -11,6 +11,9 @@
         ﹡ Files is first searched for locally, then remotely.
 */
 
+/* THEME */
+@import url("@tacc/core-styles/src/lib/_imports/theme.default.css");
+
 /* SETTINGS */
 @import url("_imports/settings/border.css");
 @import url("_imports/settings/max-width.css");
