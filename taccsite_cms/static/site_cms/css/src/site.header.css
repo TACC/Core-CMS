@@ -6,16 +6,14 @@
 /* SEE: https://confluence.tacc.utexas.edu/x/IAA9Cw */
 
 /* SETTINGS */
-
 /* CAVEAT: These are already imported in `site.css`, but necessary here to
            override Portal (which also loads `site.header.css`), so font
            variables are unfortunately overwritten 1x in CMS, 2x in Portal */
-/* TODO: Find a way to be modular, but not redundant; perhaps `env()` vars */
+/* TODO: Find a way to be modular, but not redundant */
 /* Unique to CMS */
 @import url("./_imports/settings/font.css");
 
 /* TRUMPS */
-
 /* FP-526: Consider loading Cortal icons with <link> as delayed asset */
 /* NOTE: This import is duplicated from `icon.css` because `@font-face` is ineffectual in Shadow DOM (where `site.tacc-search-bar.css` is loaded) */
 /* SEE: https://bugs.chromium.org/p/chromium/issues/detail?id=336876 */
@@ -31,6 +29,5 @@
 @import url("_imports/trumps/s-cms-nav.css");
 
 /* UNORGANIZED */
-
 /* TODO: Convert to a component */
 @import url("_imports/branding_logos.css");
