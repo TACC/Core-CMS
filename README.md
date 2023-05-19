@@ -392,6 +392,7 @@ Only appointed team members may release versions.
 1. Create release and tag on GitHub.
 1. Replace Github's unannotated tag with an annotated one:\
    `git pull`
+   `git checkout vN.N.N`
    `git tag -d vN.N.N`
    `git tag -a vN.N.N -m "feat: vN.N.N"`
    `git push --tags --force`
