@@ -99,6 +99,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Bug/fp 1798 external nav link (still) not open in new window (#548)
 - feat(css): warn user of unsupported form field (#551)
 
+## [3.8.2] - 2022-11-16: New BrainMap Logo URL & Accent Colors
+
+### Changed
+
+- feat(taccsite_custom): bm-41 new logo (off of cms v3.8.1) (#570)
+
 ## [3.8.1] - 2022-08-26: Change BrainMap Logo URL to Hoem Page not Ext. Page
 
 ### Changed
@@ -558,9 +564,10 @@ v2.0.0 Production release as of Mar 31, 2021.
 [3.9.2]: https://github.com/TACC/Core-CMS/compare/v3.9.2
 [3.9.1]: https://github.com/TACC/Core-CMS/compare/v3.9.1
 [3.9.0]: https://github.com/TACC/Core-CMS/compare/v3.9.0
-[3.8.1]: https://github.com/TACC/Core-CMS/compare/v3.8.1
-[3.7.12]: https://github.com/TACC/Core-CMS/releases/tag/v3.7.12
+[3.8.2]: https://github.com/TACC/Core-CMS/releases/tag/v3.8.2
+[3.8.1]: https://github.com/TACC/Core-CMS/releases/tag/v3.8.1
 [3.8.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.8.0
+[3.7.12]: https://github.com/TACC/Core-CMS/releases/tag/v3.7.12
 [3.7.11]: https://github.com/TACC/Core-CMS/releases/tag/v3.7.11
 [3.4.0-1-g0c5cbd1]: https://github.com/TACC/Core-CMS/releases/tag/v3.4.0-1-g0c5cbd1
 [3.6.0-8-gd1dbcab]: https://github.com/TACC/Core-CMS/releases/tag/v3.6.0-8-gd1dbcab
