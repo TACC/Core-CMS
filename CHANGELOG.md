@@ -47,7 +47,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - fix: portal nav not to touch cms menu if no search (#614)
 - fix(bin): console log undefined to real array (7dbab46)
 - fix: pattern demo repair suite (#568)
-  - changes default accent from blue to purple
+  - changes default accent from blue to purple (fe3c242)
 
 ## [3.9.2] - 2023-02-14: Poetry URL & Version (Hotfix)
 
