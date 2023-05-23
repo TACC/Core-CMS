@@ -2,7 +2,7 @@
 /* FAQ: Only included by a project as client wants it */
 /* SEE: https://ecepalliance.org/ (<style id="site-css-links">) */
 
-@import url("_imports/tools/x-link.css");
+@import url("@tacc/core-styles/src/lib/_imports/tools/x-link.css");
 
 a {
   @extend .x-link--irregular;

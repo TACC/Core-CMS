@@ -1,6 +1,10 @@
 {% load static %}
 
+{% if settings.TACC_CORE_STYLES_VERSION == 0 %}
+<link rel="stylesheet" href="{% static 'site_cms/css/build/site.template.guide.css' %}">
+{% elif settings.TACC_CORE_STYLES_VERSION >= 1 %}
 <link rel="stylesheet" href="{% static 'site_cms/css/build/template.guide.css' %}">
+{% endif %}
 
 {% with lorem_ipsum="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fringilla consequat mauris, ut dictum ante faucibus eu. Curabitur eget facilisis nisl. Fusce placerat sed magna sed sagittis. Aenean sagittis ex vel justo viverra lobortis. Phasellus efficitur, nisi id tempus iaculis, nisi metus dictum magna, ac aliquet ante ante eget lacus. Mauris auctor congue lobortis. Maecenas congue pharetra scelerisque. Sed tristique ipsum nec eros sollicitudin, non elementum odio accumsan. Duis auctor gravida commodo." %}
 <div class="s-document s-guide-doc">
