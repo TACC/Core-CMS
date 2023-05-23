@@ -9,7 +9,7 @@ Reference:
 
 Styleguide Components.DjangoCMS.Forms.Hacks
 */
-@import url("_imports/tools/selectors.css");
+@import url("../tools/selectors.css");
 /* TACC/Core-CMS#531: When merged, import and extend `.c-message(...)` */
 /* @import url("@tacc/core-styles/src/lib/_imports/components/c-message.css"); */
 

@@ -1,7 +1,1 @@
-/* DO NOT ADD STYLES HERE; ONLY IMPORT OTHER STYLESHEETS */
-
-/* Organize via ITCSS */
-/* SEE: https://confluence.tacc.utexas.edu/x/IAA9Cw */
-
-/* GENERICS */
-@import url("@tacc/core-styles/src/lib/_imports/generics/fonts.css");
+/*! @tacc/core-cms v3.10.1 | MIT | github.com/TACC/Core-CMS */@font-face{font-display:swap;font-family:Benton Sans;font-style:normal;font-weight:400;src:url(/static/site_cms/fonts/BentonSans-Regular.otf) format("opentype")}@font-face{font-display:swap;font-family:Benton Sans;font-style:normal;font-weight:700;src:url(/static/site_cms/fonts/BentonSans-Bold.otf) format("opentype")}@font-face{font-display:swap;font-family:Benton Sans;font-style:normal;font-weight:500;src:url(/static/site_cms/fonts/BentonSans-Medium.otf) format("opentype")}@font-face{font-display:swap;font-family:Benton Sans;font-style:italic;font-weight:500;src:url(/static/site_cms/fonts/BentonSans-MediumItalic.otf) format("opentype")}
