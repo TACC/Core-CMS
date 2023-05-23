@@ -274,7 +274,7 @@ TACC_BLOG_SHOW_ABSTRACT_TAG = 'sample_value_e_g__redirect__'
 
 # Only use integer numbers (not "v1", not "0.11.0"),
 # so templates can load based on simple comparisons
-TACC_CORE_STYLES_VERSION = 2
+TACC_CORE_STYLES_VERSION = 0
 
 ########################
 # CLIENT BUILD SETTINGS
