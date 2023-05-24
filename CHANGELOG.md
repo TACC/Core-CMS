@@ -7,6 +7,48 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [3.10.1] - 2023-05-10: Fixes for Core-CMS v3.10 and ProTX CMS v3.9
+
+### Fixed
+
+- fix(css): add missing theme vars (#634)
+- bugfix: security for example-cms docker compose (#627)
+- fix: (protx-cms) getting-started <hN> levels (f2efa45)
+- fix: (frontera) system_monitor colors (#635)
+- fix(taccsite_custom): wrong commit pointer (31a2e7e)
+
+## [3.10.0] - 2023-05-08: Example, WYSIWYG, DemData, Icons, 404, SVGs, Query
+
+### Added
+
+- Task/update example cms defaults (#577)
+- feat(settings): wysiwyg customization (#595)
+- Pulled in DemData site resources. (a88925d)
+- feat(djangocms_icon): support cortal font & svg logos (#611)
+- feat: minimal 404 error page (ea034fc) (95aefe1)
+- feat: svg logos, branding & social, plus templates (#608)
+- feat(img): social media logo svgs (1a90e16)
+- feat(settings): tup-437, SEARCH_QUERY_PARAM_NAME (#604)
+
+### Changed
+
+- chore(core-styles): v0.13.0 (b462ea2)
+- chore: retire env()-based themes (Core-CMS v3.9) (#632)
+- chore(settings): tacc search above elasticsearch (a54bd43)
+- chore(settings): most of elasticsearch in one spot (e03418f)
+- docs(management): create "User groups (page)" first (2b222c2)
+- chore(taccsite_cms): texascale, robots.txt status (b22aaa8)
+- docs: improve release process steps
+
+### Fixed
+
+- fix(texascale): restore pre-v3.9.1 heading styles (5934b2e)
+- fix: explicit INCLUDES_PORTAL_NAV & …_SEARCH_BAR (01d2505)
+- fix: portal nav not to touch cms menu if no search (#614)
+- fix(bin): console log undefined to real array (7dbab46)
+- fix: pattern demo repair suite (#568)
+  - changes default accent from blue to purple (fe3c242)
+
 ## [3.9.2] - 2023-02-14: Poetry URL & Version (Hotfix)
 
 ### Fixed
@@ -56,6 +98,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Task/fp 1801 guides breadcrumbs headings (#549)
 - Bug/fp 1798 external nav link (still) not open in new window (#548)
 - feat(css): warn user of unsupported form field (#551)
+
+## [3.8.2] - 2022-11-16: New BrainMap Logo URL & Accent Colors
+
+### Changed
+
+- feat(taccsite_custom): bm-41 new logo (off of cms v3.8.1) (#570)
 
 ## [3.8.1] - 2022-08-26: Change BrainMap Logo URL to Hoem Page not Ext. Page
 
@@ -507,15 +555,19 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 - FP-526: Update Portal Nav (Fix Sample Markup, Remove Old Config) (#251)
 
 ## [2.0.0] - 2021-03-31
+
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.9.2...HEAD
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.10.1...HEAD
+[3.10.1]: https://github.com/TACC/Core-CMS/compare/v3.10.1
+[3.10.0]: https://github.com/TACC/Core-CMS/compare/v3.10.0
 [3.9.2]: https://github.com/TACC/Core-CMS/compare/v3.9.2
 [3.9.1]: https://github.com/TACC/Core-CMS/compare/v3.9.1
 [3.9.0]: https://github.com/TACC/Core-CMS/compare/v3.9.0
-[3.8.1]: https://github.com/TACC/Core-CMS/compare/v3.8.1
-[3.7.12]: https://github.com/TACC/Core-CMS/releases/tag/v3.7.12
+[3.8.2]: https://github.com/TACC/Core-CMS/releases/tag/v3.8.2
+[3.8.1]: https://github.com/TACC/Core-CMS/releases/tag/v3.8.1
 [3.8.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.8.0
+[3.7.12]: https://github.com/TACC/Core-CMS/releases/tag/v3.7.12
 [3.7.11]: https://github.com/TACC/Core-CMS/releases/tag/v3.7.11
 [3.4.0-1-g0c5cbd1]: https://github.com/TACC/Core-CMS/releases/tag/v3.4.0-1-g0c5cbd1
 [3.6.0-8-gd1dbcab]: https://github.com/TACC/Core-CMS/releases/tag/v3.6.0-8-gd1dbcab

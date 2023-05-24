@@ -386,12 +386,16 @@ Only appointed team members may release versions.
 
 1. Create new branch for version bump.
 1. Update `CHANGELOG.md`.
-1. Update version via `npm version N.N.N` (run from `.../core-styles/`).
+1. Update version via:\
+   `npm version N.N.N`
 1. Commit, push, PR, review, merge.
-1. Tag version i.e.
-    1. `git tag -a vN.N.N -m "vN.N.N"`
-    2. `git push origin vN.N.N`
-1. Author a release via GitHub (choose the tag from previous step).
+1. Create release and tag on GitHub.
+1. Replace Github's unannotated tag with an annotated one:\
+   `git pull`
+   `git checkout vN.N.N`
+   `git tag -d vN.N.N`
+   `git tag -a vN.N.N -m "feat: vN.N.N"`
+   `git push --tags --force`
 
 ### Resources
 

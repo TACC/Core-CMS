@@ -187,18 +187,6 @@ HAYSTACK_CONNECTIONS = {
 }
 
 ########################
-# TACC: (DEPRECATED)
-########################
-
-"""
-Optional theming of CMS (certain themes may only affect some elements)
-Usage:
-- None (standard theme)
-- 'has-dark-logo'
-"""
-THEME = None
-
-########################
 # TACC: BRANDING
 ########################
 
@@ -651,7 +639,6 @@ except ImportError:
 
 SETTINGS_EXPORT = [
     'DEBUG',
-    'THEME',
     'BRANDING',
     'LOGO',
     'FAVICON',
