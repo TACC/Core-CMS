@@ -550,7 +550,7 @@ SETTINGS_EXPORT_VARIABLE_NAME = 'settings'
 
 # https://github.com/django-cms/djangocms-style
 DJANGOCMS_STYLE_CHOICES = [
-    # https://dev.tup.tacc.utexas.edu/static/ui/components/detail/c-card--default.html
+    # https://tacc.utexas.edu/static/ui/components/detail/c-card--default.html
     'card',
     'card--plain',
     'card--standard',
@@ -558,7 +558,7 @@ DJANGOCMS_STYLE_CHOICES = [
     'card--image-bottom',
     'card--image-right',
     'card--image-left',
-    # https://dev.tup.tacc.utexas.edu/static/ui/components/detail/o-section.html
+    # https://tacc.utexas.edu/static/ui/components/detail/o-section.html
     'section',
     'section--light',
     'section--muted',
@@ -567,9 +567,9 @@ DJANGOCMS_STYLE_CHOICES = [
     'o-section o-section--style-light',
     'o-section o-section--style-muted',
     'o-section o-section--style-dark',
-    # https://dev.tup.tacc.utexas.edu/design-system/pattern-library-manual/c-callout/
+    # https://cep.tacc.utexas.edu/design-system/ui-patterns/c-callout/
     'c-callout',
-    # https://dev.tup.tacc.utexas.edu/design-system/pattern-library-manual/c-recognition/
+    # https://cep.tacc.utexas.edu/design-system/ui-patterns/c-recognition/
     'c-recognition c-recognition--style-light',
     'c-recognition c-recognition--style-dark',
     # https://ecepalliance.org/alliance-members/
