@@ -33,8 +33,8 @@ const SHOULD_DEBUG = window.DEBUG;
       // FAQ: I am literally double-checking, because I don't trust JavaScript
       const isExternal = (link.origin !== document.location.origin);
       const isInternal = (link.host === document.location.host);
-      const shouldOpenInNewWindow = (
-          ! isInternal && (isExternal || hasExternalRedirect) && ! isMailto
+      const shouldOpenInNewWindow = hasExternalRedirect || (
+          ! isInternal && isExternal && ! isMailto
       );
 
       if ( shouldOpenInNewWindow ) {
