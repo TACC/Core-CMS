@@ -15,7 +15,6 @@ const SHOULD_DEBUG = window.DEBUG;
  * @param {object} [options] - Optional parameters
  * @param {array.<string>} [options.pathsToExernalSite=[]] - (DEPRECATED) A list of relative URL paths that should be treated like external URLs
  * @param {array.<string|RegExp>} [options.pathsToForceSetTarget=[]] - A list of relative URL paths (or patterns) that should trigger setting a target
- * @param {string} [options.target="_blank"] - The value for the target attribute
  * @param {HTMLElement|Document} [options.scopeElement=document] - The element within which to search for links
  * @param {setTargetCallback} [options.setTargetCallback] - A callback for after a target is set
  */
@@ -64,8 +63,8 @@ const SHOULD_DEBUG = window.DEBUG;
       );
 
       if ( shouldSetTarget ) {
-          if (link.target !== target) {
-              link.target = target;
+          if (link.target !== '_blank') {
+              link.target = '_blank';
               if (SHOULD_DEBUG) {
                 console.debug(`Link ${link.href} now opens in new tab`);
               }
