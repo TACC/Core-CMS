@@ -11,11 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- fix(templates): bump home_portal `<hN>` levels by #640
-- fix(brainmap-cms): #556 missing items from #570 by #645
-- fix(tup-cms): make search field required input by #646
-- chore(deps): bump socket.io-parser from 4.2.1 to 4.2.3 by #647
-- fix(js): DES-2498 auto new window ignores redirect by #649
+- fix(templates): bump home_portal `<hN>` levels (#640)
+- fix(brainmap-cms): #556 missing items from #570 (#645)
+- fix(tup-cms): make search field required input (#646)
+- chore(deps): bump socket.io-parser from 4.2.1 to 4.2.3 (#647)
+- fix(js): DES-2498 auto new window ignores redirect by (#649)
 
 ## [3.10.1] - 2023-05-10: Fixes for Core-CMS v3.10 and ProTX CMS v3.9
 
