@@ -905,6 +905,28 @@ django-cms = ">=3.7"
 djangocms-attributes-field = ">=1"
 
 [[package]]
+name = "djangocms-tacc-image-gallery"
+version = "0.1.1"
+description = ""
+category = "main"
+optional = false
+python-versions = "*"
+files = []
+develop = false
+
+[package.dependencies]
+Django = ">=2.2.27"
+django-cms = ">=3.7.4,<4"
+django-sekizai = ">=2.0"
+djangocms-picture = ">=3.0,<4.0"
+
+[package.source]
+type = "git"
+url = "https://github.com/wesleyboar/Core-CMS-Plugin-Image-Gallery.git"
+reference = "v0.1.1"
+resolved_reference = "b128698d71495e2b37edf86a86827a31ca097f37"
+
+[[package]]
 name = "djangocms-text-ckeditor"
 version = "3.10.0"
 description = "Text Plugin for django CMS with CKEditor support"
@@ -2303,4 +2325,4 @@ testing = ["func-timeout", "jaraco.itertools"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8,<4.0"
-content-hash = "15623e1f790d1e837f9bd5e2a9aa78947816746fa77c6d537bf3ae3a00f357d6"
+content-hash = "907bbd03a12a558d497b7b32917c588235c48721439b84aea9c2807cb9e55492"

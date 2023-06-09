@@ -56,6 +56,7 @@ djangocms-page-meta = "0.10.0"
 djangocms-picture = "3.0.0"
 djangocms-snippet = "3.0.0"
 djangocms-style = "3.0.0"
+djangocms-tacc-image-gallery = { git = "https://github.com/wesleyboar/Core-CMS-Plugin-Image-Gallery.git", rev = "v0.1.1" }
 djangocms-text-ckeditor = "3.10.0"
 djangocms-transfer = "1.0.0"
 djangocms-video = "3.0.0"
