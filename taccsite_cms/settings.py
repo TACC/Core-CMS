@@ -426,10 +426,12 @@ INSTALLED_APPS = [
     # HELP: If this were top of list, would TACC/Core-CMS/pull/169 fix break?
     'taccsite_cms',
 
-    # django CMS Blog requirements
+    # django CMS Bootstrap
     # IDEA: Extend Bootstrap apps instead of overwrite
     'taccsite_cms.contrib.bootstrap4_djangocms_link',
     'taccsite_cms.contrib.bootstrap4_djangocms_picture',
+
+    # TACC CMS Plugins
     # TODO: Deprecate these plugins (except taccsite_system_monitor)
     # TODO: For taccsite_system_monitor use repo package:
     #       https://github.com/wesleyboar/Core-CMS-Plugin-System-Monitor
