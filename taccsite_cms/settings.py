@@ -432,15 +432,15 @@ INSTALLED_APPS = [
     'taccsite_cms.contrib.bootstrap4_djangocms_picture',
 
     # TACC CMS Plugins
-    # TODO: Deprecate these plugins (except taccsite_system_monitor)
-    # TODO: For taccsite_system_monitor use repo package:
-    #       https://github.com/wesleyboar/Core-CMS-Plugin-System-Monitor
+    # TODO: Use https://github.com/wesleyboar/Core-CMS-Plugin-System-Monitor
+    'taccsite_cms.contrib.taccsite_system_monitor',
+
+    # TACC CMS Plugins - DECPRECATED
     'taccsite_cms.contrib.taccsite_blockquote',
     'taccsite_cms.contrib.taccsite_callout',
     'taccsite_cms.contrib.taccsite_sample',
     'taccsite_cms.contrib.taccsite_offset',
     'taccsite_cms.contrib.taccsite_system_specs',
-    'taccsite_cms.contrib.taccsite_system_monitor',
     'taccsite_cms.contrib.taccsite_data_list'
 ]
 
