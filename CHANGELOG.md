@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+...
+
 ## [3.11.0-alpha.1] - 2023-06-02: Open New Window Script Regex and Callback
 
 ### Added
