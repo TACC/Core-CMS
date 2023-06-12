@@ -1,0 +1,6 @@
+/* To style lightGallery (https://www.lightgalleryjs.com/) */
+@import url("@tacc/core-styles/src/lib/_imports/trumps/s-image-grid.css");
+
+.lightgallery {
+  @extend .s-image-grid;
+}
