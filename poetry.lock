@@ -906,7 +906,7 @@ djangocms-attributes-field = ">=1"
 
 [[package]]
 name = "djangocms-tacc-image-gallery"
-version = "0.1.1"
+version = "0.1.2"
 description = ""
 category = "main"
 optional = false
@@ -923,8 +923,8 @@ djangocms-picture = ">=3.0,<4.0"
 [package.source]
 type = "git"
 url = "https://github.com/wesleyboar/Core-CMS-Plugin-Image-Gallery.git"
-reference = "v0.1.1"
-resolved_reference = "b128698d71495e2b37edf86a86827a31ca097f37"
+reference = "v0.1.2"
+resolved_reference = "005d3c44b9bcdc3a1b65ac1186dd5132ee802709"
 
 [[package]]
 name = "djangocms-text-ckeditor"
@@ -2325,4 +2325,4 @@ testing = ["func-timeout", "jaraco.itertools"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8,<4.0"
-content-hash = "907bbd03a12a558d497b7b32917c588235c48721439b84aea9c2807cb9e55492"
+content-hash = "ad9d60928cdc39448c6deb67e96d67a44c56174748ba3f2212644cf9b0f66e06"
