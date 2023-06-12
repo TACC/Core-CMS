@@ -7,6 +7,8 @@ Reference:
 
 Styleguide Components.DjangoCMS.Blog.App.Page
 */
+@import url("@tacc/core-styles/src/lib/_imports/objects/o-offset-content.css");
+
 @import url("./django.cms.blog.app.page.multimedia.css");
 
 
@@ -109,4 +111,48 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 :--article-page .blog-lead li + li,
 :--article-page .blog-content li + li {
   margin-top: 0.5em;
+}
+
+
+
+/* Media & Content - Alignment */
+
+:--article-page .blog-content .align-left {
+  @extend .o-offset-content--left;
+}
+:--article-page .blog-content .align-right {
+  @extend .o-offset-content--right;
+}
+:--article-page .blog-content .align-center {
+  max-width: 100%; /* overwrite @tacc/core-styles/…/components/align.css */
+}
+
+/* To remove margin on narrow screens */
+/* To overwrite @tacc/core-styles/…/components/align.css */
+@media (--narrow-and-below) {
+  :--article-page .blog-content .align-center,
+  :--article-page .blog-content .align-right,
+  :--article-page .blog-content .align-left {
+    max-width: unset;
+  }
+  :--article-page .blog-content .align-right,
+  :--article-page .blog-content .align-left {
+    float: unset;
+    margin-bottom: unset;
+  }
+  :--article-page .blog-content .align-right {
+    margin-left: unset;
+  }
+  :--article-page .blog-content .align-left {
+    margin-right: unset;
+  }
+}
+
+/* To reduce image width on medium screens */
+@media (--narrow-and-above) and (--medium-and-below) {
+  :--article-page .blog-content .align-center,
+  :--article-page .blog-content .align-right,
+  :--article-page .blog-content .align-left {
+    max-width: 50%;
+  }
 }

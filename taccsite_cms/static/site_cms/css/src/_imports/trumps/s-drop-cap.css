@@ -1,0 +1,5 @@
+@import url('../tools/x-drop-cap.css');
+
+.s-drop-cap > p:first-of-type::first-letter {
+  @extend .x-drop-cap;
+}
