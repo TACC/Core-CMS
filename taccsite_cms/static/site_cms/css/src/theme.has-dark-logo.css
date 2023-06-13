@@ -2,4 +2,4 @@
 
 /* NOTE: This file exists so that Portal can load non-default theme styles */
 
-@import url("@tacc/core-styles/src/lib/_imports/theme.has-dark-logo.css");
+@import url("@tacc/core-styles/dist/core-styles.theme.has-dark-logo.css");
