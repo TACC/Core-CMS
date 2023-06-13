@@ -7,6 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+...
+
+## [3.11.0-alpha.1] - 2023-06-02: Open New Window Script Regex and Callback
+
+### Added
+
+- feat(js): DES-2496 auto new tab, regex + callbacks (#651)
+
+## [3.10.2] - 2023-06-01: Require Search Input, Fix Override of New Window Open
+
+### Fixed
+
+- fix(templates): bump home_portal `<hN>` levels (#640)
+- fix(brainmap-cms): #556 missing items from #570 (#645)
+- fix(tup-cms): make search field required input (#646)
+- chore(deps): bump socket.io-parser from 4.2.1 to 4.2.3 (#647)
+- fix(js): DES-2498 auto new window ignores redirect by (#649)
+
 ## [3.10.1] - 2023-05-10: Fixes for Core-CMS v3.10 and ProTX CMS v3.9
 
 ### Fixed
@@ -558,7 +576,9 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.10.1...HEAD
+[unreleased]: https://github.com/TACC/Core-CMS/compare/3.11.0-alpha.1..HEAD
+[3.11.0-alpha.1]: https://github.com/TACC/Core-CMS/compare/3.11.0-alpha.1
+[3.10.2]: https://github.com/TACC/Core-CMS/compare/v3.10.2
 [3.10.1]: https://github.com/TACC/Core-CMS/compare/v3.10.1
 [3.10.0]: https://github.com/TACC/Core-CMS/compare/v3.10.0
 [3.9.2]: https://github.com/TACC/Core-CMS/compare/v3.9.2

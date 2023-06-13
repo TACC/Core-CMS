@@ -4,10 +4,11 @@
 {% block assets_custom %}
 	{{ block.super }}
 
-  <link
-    rel="stylesheet"
-    href="{% static 'site_cms/css/build/template.home_portal.css' %}"
-  >
+  {% if settings.TACC_CORE_STYLES_VERSION == 0 %}
+  <link rel="stylesheet" href="{% static 'site_cms/css/build/site.template.home_portal.css' %}" />
+  {% elif settings.TACC_CORE_STYLES_VERSION >= 1 %}
+  <link rel="stylesheet" href="{% static 'site_cms/css/build/template.home_portal.css' %}" />
+  {% endif %}
 {% endblock assets_custom %}
 
 {% block content %}

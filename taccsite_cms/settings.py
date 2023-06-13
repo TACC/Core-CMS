@@ -272,6 +272,14 @@ TACC_BLOG_SHOW_ABSTRACT_TAG = 'sample_value_e_g__redirect__'
 
 
 ########################
+# TACC: CORE STYLES
+########################
+
+# Only use integer numbers (not "v1", not "0.11.0"),
+# so templates can load based on simple comparisons
+TACC_CORE_STYLES_VERSION = 0
+
+########################
 # CLIENT BUILD SETTINGS
 ########################
 
@@ -429,19 +437,21 @@ INSTALLED_APPS = [
     # HELP: If this were top of list, would TACC/Core-CMS/pull/169 fix break?
     'taccsite_cms',
 
-    # django CMS Blog requirements
+    # django CMS Bootstrap
     # IDEA: Extend Bootstrap apps instead of overwrite
     'taccsite_cms.contrib.bootstrap4_djangocms_link',
     'taccsite_cms.contrib.bootstrap4_djangocms_picture',
-    # TODO: Deprecate these plugins (except taccsite_system_monitor)
-    # TODO: For taccsite_system_monitor use repo package:
-    #       https://github.com/wesleyboar/Core-CMS-Plugin-System-Monitor
+
+    # TACC CMS Plugins
+    # TODO: Use https://github.com/wesleyboar/Core-CMS-Plugin-System-Monitor
+    'taccsite_cms.contrib.taccsite_system_monitor',
+
+    # TACC CMS Plugins - DECPRECATED
     'taccsite_cms.contrib.taccsite_blockquote',
     'taccsite_cms.contrib.taccsite_callout',
     'taccsite_cms.contrib.taccsite_sample',
     'taccsite_cms.contrib.taccsite_offset',
     'taccsite_cms.contrib.taccsite_system_specs',
-    'taccsite_cms.contrib.taccsite_system_monitor',
     'taccsite_cms.contrib.taccsite_data_list'
 ]
 
@@ -542,15 +552,24 @@ SETTINGS_EXPORT_VARIABLE_NAME = 'settings'
 
 # https://github.com/django-cms/djangocms-style
 DJANGOCMS_STYLE_CHOICES = [
-    # https://cep.tacc.utexas.edu/design-system/ui-patterns/o-section/
+    'card',
+    'card--plain',
+    'card--standard',
+    'card--image-top',
+    'card--image-bottom',
+    'card--image-right',
+    'card--image-left',
+    'section',
+    'section--light',
+    'section--muted',
+    'section--dark',
+    'o-section',
     'o-section o-section--style-light',
+    'o-section o-section--style-muted',
     'o-section o-section--style-dark',
-    # https://cep.tacc.utexas.edu/design-system/ui-patterns/c-callout/
     'c-callout',
-    # https://cep.tacc.utexas.edu/design-system/ui-patterns/c-recognition/
     'c-recognition c-recognition--style-light',
     'c-recognition c-recognition--style-dark',
-    # https://cep.tacc.utexas.edu/design-system/ui-patterns/c-nav/
     'c-nav', # bare-bones instance
     'c-nav c-nav--boxed',
 ]
@@ -583,6 +602,7 @@ CKEDITOR_SETTINGS = {
 
 # https://github.com/django-cms/djangocms-video
 DJANGOCMS_VIDEO_TEMPLATES = [
+    ('responsive-auto', _('Responsive - Automatic')),
     ('responsive-16by9', _('Responsive - 16 by 9')),
     ('responsive-4by3', _('Responsive - 4 by 3')),
     ('responsive-1by1', _('Responsive - 1 by 1')),
@@ -649,6 +669,7 @@ SETTINGS_EXPORT = [
     'GOOGLE_ANALYTICS_PRELOAD',
     'TACC_BLOG_SHOW_CATEGORIES',
     'TACC_BLOG_SHOW_TAGS',
+    'TACC_CORE_STYLES_VERSION',
     'TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY',
     'TACC_BLOG_SHOW_ABSTRACT_TAG',
     'SEARCH_QUERY_PARAM_NAME',

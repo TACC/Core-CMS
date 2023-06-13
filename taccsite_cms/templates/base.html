@@ -28,6 +28,8 @@
     {% with path="djangocms_page_meta.html" %}{% include path %}{% endwith %}
   {% endblock meta %}
 
+{% if settings.TACC_CORE_STYLES_VERSION == 0 %}
+
   <!-- Site Font and/or Custom Font. -->
   {# The core site font (can be replaced or accompanied by custom font/s) #}
   {% block assets_font %}
@@ -38,8 +40,17 @@
   {# The core site assets (can NOT be replaced by custom assets) #}
   {% include 'assets_site.html' %}
 
+{% elif settings.TACC_CORE_STYLES_VERSION >= 1 %}
+
+  <!-- Core Assets. -->
+  {% include 'assets_core.html' %}
+  {% block assets_core_project %}
+  {% include 'assets_core_cms.html' %}
+  {% endblock assets_core_project %}
+
+{% endif %}
+
   <!-- Custom Assets. -->
-  {# Placeholder for custom assets #}
   {% block assets_custom %}
   {% include 'assets_custom.html' %}
   {% endblock assets_custom %}
@@ -82,8 +93,17 @@
   {% endblock footer %}
   </footer>
 
+{% if settings.TACC_CORE_STYLES_VERSION == 0 %}
+
   <!-- Site Assets (Delayed). -->
   {% include 'assets_site_delayed.html' %}
+
+{% elif settings.TACC_CORE_STYLES_VERSION >= 1 %}
+
+  <!-- Core Assets (Delayed). -->
+  {% include 'assets_core_delayed.html' %}
+
+{% endif %}
 
   <!-- Custom Assets (Delayed). -->
   {% block assets_custom_delayed %}
