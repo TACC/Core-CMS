@@ -9,6 +9,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ...
 
+## [3.11.0] - 2023-06-12: Optional Core-Styles v2, Open New Window Script Feat's
+
+### Added
+
+- feat(core-styles): v2 (#569) (5e32c8a)
+- feat: poetry 1.4.0 (#653) (a98dfe1)
+- feat(js): DES-2496 auto new tab, regex + callbacks (#651) (3e448cc)
+
+### Fixed
+
+- fix: taccsite_system_monitor is not deprecated (301c7cf)
+- chore(settings): fix inaccurate comment (2e80a70)
+- docs(CHANGELOG): formatting of 3.10.2 changes (5f07c9e)
+
 ## [3.11.0-alpha.1] - 2023-06-02: Open New Window Script Regex and Callback
 
 ### Added
@@ -576,7 +590,8 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/3.11.0-alpha.1..HEAD
+[unreleased]: https://github.com/TACC/Core-CMS/compare/3.11.0..HEAD
+[3.11.0]: https://github.com/TACC/Core-CMS/compare/3.11.0
 [3.11.0-alpha.1]: https://github.com/TACC/Core-CMS/compare/3.11.0-alpha.1
 [3.10.2]: https://github.com/TACC/Core-CMS/compare/v3.10.2
 [3.10.1]: https://github.com/TACC/Core-CMS/compare/v3.10.1
