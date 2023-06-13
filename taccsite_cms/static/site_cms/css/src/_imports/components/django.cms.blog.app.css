@@ -51,6 +51,15 @@ Styleguide Components.DjangoCMS.Blog.App
 
 
 
+/* Generic */
+
+.app-blog {
+  /* To control absolute position of descendants e.g. `.blog-visual` */
+  position: relative;
+}
+
+
+
 /* Header */
 
 .app-blog header {

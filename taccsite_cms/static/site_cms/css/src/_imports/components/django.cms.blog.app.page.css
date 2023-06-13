@@ -139,6 +139,9 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 :--article-page .blog-content .blockquote.text-right {
   @extend .o-offset-content--right;
 }
+:--article-page .blog-content .align-center {
+  max-width: 100%;
+}
 :--article-page .blog-content .blockquote.text-center {
   margin-inline: auto;
 }

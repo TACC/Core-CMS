@@ -10,7 +10,7 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 @import url("@tacc/core-styles/src/lib/_imports/tools/x-article-link.css");
 @import url("@tacc/core-styles/src/lib/_imports/tools/x-truncate.css");
 
-@import url("_imports/tools/media-queries.css");
+@import url("../tools/media-queries.css");
 
 
 
