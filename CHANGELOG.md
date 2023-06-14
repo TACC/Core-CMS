@@ -9,6 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ...
 
+## [3.11.1] - 2023-06-13: Do Not Assign Non-Existent Color Variable
+
+### Fixed
+
+- fix: unreleased link to main not head (8bd1c58)
+- fix: v3.11.0 css overwrite by non-existent color (#658)
+
 ## [3.11.0] - 2023-06-12: Optional Core-Styles v2, Open New Window Script Feat's
 
 ### Added
@@ -590,7 +597,8 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/3.11.0..HEAD
+[unreleased]: https://github.com/TACC/Core-CMS/compare/3.11.1...main
+[3.11.1]: https://github.com/TACC/Core-CMS/compare/3.11.1
 [3.11.0]: https://github.com/TACC/Core-CMS/compare/3.11.0
 [3.11.0-alpha.1]: https://github.com/TACC/Core-CMS/compare/3.11.0-alpha.1
 [3.10.2]: https://github.com/TACC/Core-CMS/compare/v3.10.2
