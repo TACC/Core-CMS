@@ -9,6 +9,36 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ...
 
+## [3.12.0-alpha] - 2023-06-14: Django 3; Redesign Blog/News + Related Patterns
+
+### Added
+
+- feat: styles v2.9.0 → s-image-grid → lightgallery (#655)
+- feat(css): figure, caption, etc styles; whole site (#624)
+- feat(css): migrate tup-cms styles to core-cms (part 2) (#620)
+- feat(css): migrate tup-cms styles to core-cms (part 1) (#616)
+- Task/tup 395 cmd news styles from tup cms (#612)
+- feat(core-styles): change accent color from purple to blue (#617)
+- feat: tup-398, improve blog css & layout toggle (#613)
+- feat(djangocms_blog): simple article link & "to be published" (#599)
+- feat(blog): tup-395, styles (#587)
+- feat: auto-responsive video embed (#590)
+- Task/tup 395 cmd news layout switch (#589)
+- feat(core-styles): base, cms, docs, portal re-org (#586)
+
+### Changed
+
+- Update to Django 3.2 (for TUP CMS) (#626)
+- chore: load static not staticfiles (#629)
+- chore(core-styles): tup-cms table updates (#603)
+
+### Fixed
+
+- Bugfix/news tags all black (#622)
+- fix: add+use core-styles.wysiwyg.css not copied code (#618)
+- fix: portal nav not to touch cms menu if no search (#615)
+- fix(templates): djangcms_picture, alignment issues (#588)
+
 ## [3.11.1] - 2023-06-13: Do Not Assign Non-Existent Color Variable
 
 ### Fixed
@@ -597,7 +627,8 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/3.11.1...main
+[unreleased]: https://github.com/TACC/Core-CMS/compare/3.12.0-alpha...main
+[3.12.0-alpha]: https://github.com/TACC/Core-CMS/compare/3.12.0-alpha
 [3.11.1]: https://github.com/TACC/Core-CMS/compare/3.11.1
 [3.11.0]: https://github.com/TACC/Core-CMS/compare/3.11.0
 [3.11.0-alpha.1]: https://github.com/TACC/Core-CMS/compare/3.11.0-alpha.1
