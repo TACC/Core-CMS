@@ -9,6 +9,44 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ...
 
+## [3.11.1] - 2023-06-13: Do Not Assign Non-Existent Color Variable
+
+### Fixed
+
+- fix: unreleased link to main not head (8bd1c58)
+- fix: v3.11.0 css overwrite by non-existent color (#658)
+
+## [3.11.0] - 2023-06-12: Optional Core-Styles v2, Open New Window Script Feat's
+
+### Added
+
+- feat(core-styles): v2 (#569) (5e32c8a)
+- feat: poetry 1.4.0 (#653) (a98dfe1)
+- feat(js): DES-2496 auto new tab, regex + callbacks (#651) (3e448cc)
+
+### Fixed
+
+- fix: taccsite_system_monitor is not deprecated (301c7cf)
+- chore(settings): fix inaccurate comment (2e80a70)
+- docs(CHANGELOG): formatting of 3.10.2 changes (5f07c9e)
+
+## [3.11.0-beta.2] - 2023-05-23: Core-Styles v2 Backwards-Compatible
+
+### Added
+
+- feat(core-styles): v2 (#569) + support CMS that needs v0 (#605)
+
+### Fixed
+
+- fix(tup-cms): make search field required input (#646)
+- chore(taccsite_custom): main after merge (f3994b3)
+
+## [3.11.0-beta.1] - 2023-05-22: Core-Styles v2 Backwards-Compatible
+
+### Added
+
+- feat(core-styles): v2 (#569) + support CMS that needs v0 (#605)
+
 ## [3.11.0-alpha.1] - 2023-06-02: Open New Window Script Regex and Callback
 
 ### Added
@@ -66,6 +104,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - fix(bin): console log undefined to real array (7dbab46)
 - fix: pattern demo repair suite (#568)
   - changes default accent from blue to purple (fe3c242)
+
+## [3.9.3] - 2023-05-12: Fix Text Editor Opening Too Slow
+
+### Fixed
+
+- fix(ckeditor): text editor opens too slow (#643)
 
 ## [3.9.2] - 2023-02-14: Poetry URL & Version (Hotfix)
 
@@ -576,14 +620,19 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/3.11.0-alpha.1..HEAD
-[3.11.0-alpha.1]: https://github.com/TACC/Core-CMS/compare/3.11.0-alpha.1
-[3.10.2]: https://github.com/TACC/Core-CMS/compare/v3.10.2
-[3.10.1]: https://github.com/TACC/Core-CMS/compare/v3.10.1
-[3.10.0]: https://github.com/TACC/Core-CMS/compare/v3.10.0
-[3.9.2]: https://github.com/TACC/Core-CMS/compare/v3.9.2
-[3.9.1]: https://github.com/TACC/Core-CMS/compare/v3.9.1
-[3.9.0]: https://github.com/TACC/Core-CMS/compare/v3.9.0
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.11.1...main
+[3.11.1]: https://github.com/TACC/Core-CMS/releases/tag/v3.11.1
+[3.11.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.11.0
+[3.11.0-beta.2]: https://github.com/TACC/Core-CMS/releases/tag/v3.11.0-beta.2
+[3.11.0-beta.1]: https://github.com/TACC/Core-CMS/releases/tag/v3.11.0-beta.1
+[3.11.0-alpha.1]: https://github.com/TACC/Core-CMS/releases/tag/v3.11.0-alpha.1
+[3.10.2]: https://github.com/TACC/Core-CMS/releases/tag/v3.10.2
+[3.10.1]: https://github.com/TACC/Core-CMS/releases/tag/v3.10.1
+[3.10.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.10.0
+[3.9.3]: https://github.com/TACC/Core-CMS/releases/tag/v3.9.3
+[3.9.2]: https://github.com/TACC/Core-CMS/releases/tag/v3.9.2
+[3.9.1]: https://github.com/TACC/Core-CMS/releases/tag/v3.9.1
+[3.9.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.9.0
 [3.8.2]: https://github.com/TACC/Core-CMS/releases/tag/v3.8.2
 [3.8.1]: https://github.com/TACC/Core-CMS/releases/tag/v3.8.1
 [3.8.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.8.0
