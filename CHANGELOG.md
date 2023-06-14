@@ -614,18 +614,18 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/3.11.1...main
-[3.11.1]: https://github.com/TACC/Core-CMS/compare/3.11.1
-[3.11.0]: https://github.com/TACC/Core-CMS/compare/3.11.0
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.11.1...main
+[3.11.1]: https://github.com/TACC/Core-CMS/releases/tag/v3.11.1
+[3.11.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.11.0
 [3.11.0-beta.2]: https://github.com/TACC/Core-CMS/releases/tag/v3.11.0-beta.2
 [3.11.0-beta.1]: https://github.com/TACC/Core-CMS/releases/tag/v3.11.0-beta.1
-[3.11.0-alpha.1]: https://github.com/TACC/Core-CMS/compare/3.11.0-alpha.1
-[3.10.2]: https://github.com/TACC/Core-CMS/compare/v3.10.2
-[3.10.1]: https://github.com/TACC/Core-CMS/compare/v3.10.1
-[3.10.0]: https://github.com/TACC/Core-CMS/compare/v3.10.0
-[3.9.2]: https://github.com/TACC/Core-CMS/compare/v3.9.2
-[3.9.1]: https://github.com/TACC/Core-CMS/compare/v3.9.1
-[3.9.0]: https://github.com/TACC/Core-CMS/compare/v3.9.0
+[3.11.0-alpha.1]: https://github.com/TACC/Core-CMS/releases/tag/v3.11.0-alpha.1
+[3.10.2]: https://github.com/TACC/Core-CMS/releases/tag/v3.10.2
+[3.10.1]: https://github.com/TACC/Core-CMS/releases/tag/v3.10.1
+[3.10.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.10.0
+[3.9.2]: https://github.com/TACC/Core-CMS/releases/tag/v3.9.2
+[3.9.1]: https://github.com/TACC/Core-CMS/releases/tag/v3.9.1
+[3.9.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.9.0
 [3.8.2]: https://github.com/TACC/Core-CMS/releases/tag/v3.8.2
 [3.8.1]: https://github.com/TACC/Core-CMS/releases/tag/v3.8.1
 [3.8.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.8.0
