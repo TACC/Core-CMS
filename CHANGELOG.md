@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ...
 
-## [3.12.0-alpha] - 2023-06-14: Django 3; Redesign Blog/News + Related Patterns
+## [3.12.0-alpha.1] - 2023-06-14: Django 3; Redesign Blog/News + Related Patterns
 
 ### Added
 
@@ -627,8 +627,8 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/3.12.0-alpha...main
-[3.12.0-alpha]: https://github.com/TACC/Core-CMS/compare/3.12.0-alpha
+[unreleased]: https://github.com/TACC/Core-CMS/compare/3.12.0-alpha.1...main
+[3.12.0-alpha.1]: https://github.com/TACC/Core-CMS/compare/3.12.0-alpha.1
 [3.11.1]: https://github.com/TACC/Core-CMS/compare/3.11.1
 [3.11.0]: https://github.com/TACC/Core-CMS/compare/3.11.0
 [3.11.0-alpha.1]: https://github.com/TACC/Core-CMS/compare/3.11.0-alpha.1
