@@ -30,6 +30,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - chore(settings): fix inaccurate comment (2e80a70)
 - docs(CHANGELOG): formatting of 3.10.2 changes (5f07c9e)
 
+## [3.11.0-beta.2] - 2023-05-23: Core-Styles v2 Backwards-Compatible
+
+### Added
+
+- feat(core-styles): v2 (#569) + support CMS that needs v0 (#605)
+
+### Fixed
+
+- fix(tup-cms): make search field required input (#646)
+- chore(taccsite_custom): main after merge (f3994b3)
+
+## [3.11.0-beta.1] - 2023-05-22: Core-Styles v2 Backwards-Compatible
+
+### Added
+
+- feat(core-styles): v2 (#569) + support CMS that needs v0 (#605)
+
 ## [3.11.0-alpha.1] - 2023-06-02: Open New Window Script Regex and Callback
 
 ### Added
@@ -600,6 +617,8 @@ v2.0.0 Production release as of Mar 31, 2021.
 [unreleased]: https://github.com/TACC/Core-CMS/compare/3.11.1...main
 [3.11.1]: https://github.com/TACC/Core-CMS/compare/3.11.1
 [3.11.0]: https://github.com/TACC/Core-CMS/compare/3.11.0
+[3.11.0-beta.2]: https://github.com/TACC/Core-CMS/releases/tag/v3.11.0-beta.2
+[3.11.0-beta.1]: https://github.com/TACC/Core-CMS/releases/tag/v3.11.0-beta.1
 [3.11.0-alpha.1]: https://github.com/TACC/Core-CMS/compare/3.11.0-alpha.1
 [3.10.2]: https://github.com/TACC/Core-CMS/compare/v3.10.2
 [3.10.1]: https://github.com/TACC/Core-CMS/compare/v3.10.1
