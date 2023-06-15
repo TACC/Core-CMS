@@ -922,7 +922,7 @@ djangocms-picture = ">=3.0,<4.0"
 
 [package.source]
 type = "git"
-url = "https://github.com/wesleyboar/Core-CMS-Plugin-Image-Gallery.git"
+url = "https://github.com/TACC/Core-CMS-Plugin-Image-Gallery.git"
 reference = "v0.1.2"
 resolved_reference = "005d3c44b9bcdc3a1b65ac1186dd5132ee802709"
 
@@ -2325,4 +2325,4 @@ testing = ["func-timeout", "jaraco.itertools"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8,<4.0"
-content-hash = "ad9d60928cdc39448c6deb67e96d67a44c56174748ba3f2212644cf9b0f66e06"
+content-hash = "d505ebbeafb2092e2079a87260e91c8710af7596ca5a8c2d6a7fe4585885e36e"
