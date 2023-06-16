@@ -9,6 +9,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ...
 
+## [3.11.3] - 2023-06-16: CSS Import Paths, Boainmap Logo, Core-Styles v2.9.1
+
+### Changed
+
+- feat(taccsite_custom): explicit source css imports (7f25379)
+
+### Fixed
+
+- fix(core-styles): v2.9.1 (4894e4f)
+- fix(taccsite_custom): brainmap logo missing text (7cda385)
+
 ## [3.11.2] - 2023-06-15: Fix Accent Color From Purple Back to Blue
 
 ### Fixed
@@ -627,7 +638,8 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.11.2...main
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.11.3...main
+[3.11.3]: https://github.com/TACC/Core-CMS/releases/tag/v3.11.3
 [3.11.2]: https://github.com/TACC/Core-CMS/releases/tag/v3.11.2
 [3.11.1]: https://github.com/TACC/Core-CMS/releases/tag/v3.11.1
 [3.11.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.11.0
