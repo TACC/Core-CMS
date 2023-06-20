@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ...
 
-## [3.11.3] - 2023-06-16: CSS Import Paths, Boainmap Logo, Core-Styles v2.9.1
+## [3.11.3] - 2023-06-16: CSS Import Paths, Brainmap Logo, Core-Styles v2.9.1
 
 ### Changed
 
