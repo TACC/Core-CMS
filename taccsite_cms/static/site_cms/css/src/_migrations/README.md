@@ -34,7 +34,7 @@ SRC: https://bitbucket.org/taccaci/frontera/src/master/client/css/bootstrap.min.
 
 | Format | Description |
 | :- | :- |
+| `A/` | as of old "A"[^1]
 | `A_B/` | from old "A" to new "B"[^1]
-| `v1_v2/` | from Core__V1__ CMS (pre-2020) to Core__V2__ CMS (2020+)
 
-[^1]: Where "A" and "B" represent a version, or historical state, of the CMS.
+[^1]: Where "A" and "B" represent a version, or historical state, of the CMS. E.g. `v1_v2/` from Core CMS @ __v1__.N.N (pre-2020) to Core CMS @ __v2__.N.N (2020+).

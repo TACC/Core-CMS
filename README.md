@@ -52,9 +52,10 @@ Settings may be customized piecemeal by adding, in any of these files, only the 
 
 To avoid nav layout error and page error [Not Found: `core/markup/nav/`](https://github.com/TACC/Core-CMS/wiki/Not-Found%3A--core-markup-nav), add these settings to `taccsite_cms/settings_local.py`:
 
-```
+```py
 INCLUDES_CORE_PORTAL = False
 INCLUDES_PORTAL_NAV = False
+INCLUDES_SEARCH_BAR = False
 ```
 
 #### If You Want to Use This With Local [Core Portal] Instance
@@ -385,12 +386,16 @@ Only appointed team members may release versions.
 
 1. Create new branch for version bump.
 1. Update `CHANGELOG.md`.
-1. Update version via `npm version N.N.N` (run from `.../core-styles/`).
+1. Update version via:\
+   `npm version N.N.N`
 1. Commit, push, PR, review, merge.
-1. Tag version i.e.
-    1. `git tag -a vN.N.N -m "vN.N.N"`
-    2. `git push origin vN.N.N`
-1. Author a release via GitHub (choose the tag from previous step).
+1. Create release and tag on GitHub.
+1. Replace Github's unannotated tag with an annotated one:\
+   `git pull`
+   `git checkout vN.N.N`
+   `git tag -d vN.N.N`
+   `git tag -a vN.N.N -m "feat: vN.N.N"`
+   `git push --tags --force`
 
 ### Resources
 

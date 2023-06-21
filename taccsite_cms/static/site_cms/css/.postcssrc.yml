@@ -2,16 +2,20 @@
 # SEE: https://github.com/TACC/Core-Styles/blob/main/.postcssrc.base.yml
 plugins:
   postcss-import:
+    # HELP: Do not use implicit load ever, and then remove it
+    # NOTE: Last found use was in taccsite_custom/…/migrate.v1_v2.css
+    #       via repo-wide regex `@import url\("(?!./|../|http|@tacc|\{%)`
+    #       on 2023-05-08 @ 11:45 am on TACC/Core-CMS-Resources#177
     # In any source file, every @import path, not prepended with "./" nor "../",
     # is relative to only one of these directories in this order.
     path:
       - 'taccsite_cms/static/site_cms/css/src' # Core-CMS CSS source files
       - 'node_modules/@tacc/core-styles/src/lib' # Core-Styles CSS source files
-  postcss-env-function:
-    importFrom:
-      - 'node_modules/@tacc/core-styles/src/lib/_themes/default.json'
   postcss-replace:
-    # @tacc/core-styles: 'src/' uses `fonts/`, 'dist/' uses `../../fonts/`
-    pattern: (..\/..\/fonts\/|fonts/)
+    # @tacc/core-styles 'src/' uses `("../../fonts/` or `('../../fonts/`
+    # @tacc/core-styles 'dist/' uses `(fonts/`
+    # Core-CMS 'src/site.…' uses `(fonts/`
+    # Core-CMS 'dist/' is not parsed
+    pattern: (?<="|'|\()(..\/..\/fonts\/|fonts\/)
     data:
       replaceAll: /static/site_cms/fonts/

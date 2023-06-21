@@ -155,6 +155,12 @@ GOOGLE_ANALYTICS_PROPERTY_ID = "UA-123ABC@%$&-#"
 GOOGLE_ANALYTICS_PRELOAD = True
 
 ########################
+# TACC: SEARCH
+########################
+
+SEARCH_QUERY_PARAM_NAME = 'query_string'
+
+########################
 # ELASTICSEARCH
 ########################
 
@@ -163,17 +169,19 @@ ES_HOSTS = 'http://elasticsearch:9200'
 ES_INDEX_PREFIX = 'cms-dev-{}'
 ES_DOMAIN = 'http://localhost:8000'
 
-########################
-# TACC: (DEPRECATED)
-########################
-
-"""
-Optional theming of CMS (certain themes may only affect some elements)
-Usage:
-- None (standard theme)
-- 'has-dark-logo'
-"""
-THEME = None
+# Elasticsearch Indexing
+HAYSTACK_ROUTERS = ['aldryn_search.router.LanguageRouter', ]
+HAYSTACK_SIGNAL_PROCESSOR = 'taccsite_cms.signal_processor.RealtimeSignalProcessor'
+ALDRYN_SEARCH_DEFAULT_LANGUAGE = 'en'
+ALDRYN_SEARCH_REGISTER_APPHOOK = True
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+        'URL': ES_HOSTS,
+        'INDEX_NAME': ES_INDEX_PREFIX.format('cms'),
+        'KWARGS': {'http_auth': ES_AUTH}
+    }
+}
 
 ########################
 # TACC: BRANDING
@@ -234,18 +242,12 @@ FAVICON = {
 }
 
 ########################
-# TACC: SEARCH
-########################
-
-SEARCH_QUERY_PARAM_NAME = 'query_string'
-
-########################
 # TACC: PORTAL
 ########################
 
 INCLUDES_CORE_PORTAL = True
-INCLUDES_PORTAL_NAV = INCLUDES_CORE_PORTAL
-INCLUDES_SEARCH_BAR = INCLUDES_CORE_PORTAL
+INCLUDES_PORTAL_NAV = True
+INCLUDES_SEARCH_BAR = True
 
 LOGOUT_REDIRECT_URL = '/'
 
@@ -432,19 +434,22 @@ INSTALLED_APPS = [
     # HELP: If this were top of list, would TACC/Core-CMS/pull/169 fix break?
     'taccsite_cms',
 
-    # django CMS Blog requirements
+    # django CMS Bootstrap
     # IDEA: Extend Bootstrap apps instead of overwrite
     'taccsite_cms.contrib.bootstrap4_djangocms_link',
     'taccsite_cms.contrib.bootstrap4_djangocms_picture',
-    # TODO: Deprecate these plugins (except taccsite_system_monitor)
-    # TODO: For taccsite_system_monitor use repo package:
-    #       https://github.com/wesleyboar/Core-CMS-Plugin-System-Monitor
+
+    # TACC CMS Plugins
+    'djangocms_tacc_image_gallery',
+    # TODO: Use https://github.com/wesleyboar/Core-CMS-Plugin-System-Monitor
+    'taccsite_cms.contrib.taccsite_system_monitor',
+
+    # TACC CMS Plugins - DECPRECATED
     'taccsite_cms.contrib.taccsite_blockquote',
     'taccsite_cms.contrib.taccsite_callout',
     'taccsite_cms.contrib.taccsite_sample',
     'taccsite_cms.contrib.taccsite_offset',
     'taccsite_cms.contrib.taccsite_system_specs',
-    'taccsite_cms.contrib.taccsite_system_monitor',
     'taccsite_cms.contrib.taccsite_data_list'
 ]
 
@@ -537,20 +542,6 @@ FILE_UPLOAD_MAX_MEMORY_SIZE = 20000000  # 20MB
 
 DJANGOCMS_AUDIO_ALLOWED_EXTENSIONS = ['mp3', 'ogg', 'wav']
 
-# Elasticsearch Indexing
-HAYSTACK_ROUTERS = ['aldryn_search.router.LanguageRouter', ]
-HAYSTACK_SIGNAL_PROCESSOR = 'taccsite_cms.signal_processor.RealtimeSignalProcessor'
-ALDRYN_SEARCH_DEFAULT_LANGUAGE = 'en'
-ALDRYN_SEARCH_REGISTER_APPHOOK = True
-HAYSTACK_CONNECTIONS = {
-    'default': {
-        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
-        'URL': ES_HOSTS,
-        'INDEX_NAME': ES_INDEX_PREFIX.format('cms'),
-        'KWARGS': {'http_auth': ES_AUTH}
-    }
-}
-
 SETTINGS_EXPORT_VARIABLE_NAME = 'settings'
 
 ########################
@@ -559,7 +550,6 @@ SETTINGS_EXPORT_VARIABLE_NAME = 'settings'
 
 # https://github.com/django-cms/djangocms-style
 DJANGOCMS_STYLE_CHOICES = [
-    # https://dev.tup.tacc.utexas.edu/static/ui/components/detail/c-card--default.html
     'card',
     'card--plain',
     'card--standard',
@@ -567,7 +557,6 @@ DJANGOCMS_STYLE_CHOICES = [
     'card--image-bottom',
     'card--image-right',
     'card--image-left',
-    # https://dev.tup.tacc.utexas.edu/static/ui/components/detail/o-section.html
     'section',
     'section--light',
     'section--muted',
@@ -576,12 +565,9 @@ DJANGOCMS_STYLE_CHOICES = [
     'o-section o-section--style-light',
     'o-section o-section--style-muted',
     'o-section o-section--style-dark',
-    # https://dev.tup.tacc.utexas.edu/design-system/pattern-library-manual/c-callout/
     'c-callout',
-    # https://dev.tup.tacc.utexas.edu/design-system/pattern-library-manual/c-recognition/
     'c-recognition c-recognition--style-light',
     'c-recognition c-recognition--style-dark',
-    # https://ecepalliance.org/alliance-members/
     'c-nav', # bare-bones instance
     'c-nav c-nav--boxed',
 ]
@@ -607,7 +593,9 @@ META_USE_SCHEMAORG_PROPERTIES = True
 
 # https://github.com/django-cms/djangocms-text-ckeditor
 CKEDITOR_SETTINGS = {
-    'autoParagraph': False
+    'autoParagraph': False,
+    'stylesSet': 'default:/static/js/addons/ckeditor.wysiwyg.js',
+    'contentsCss': ['/static/djangocms_text_ckeditor/ckeditor/contents.css'],
 }
 
 # https://github.com/django-cms/djangocms-video
@@ -669,7 +657,6 @@ except ImportError:
 
 SETTINGS_EXPORT = [
     'DEBUG',
-    'THEME',
     'BRANDING',
     'LOGO',
     'FAVICON',

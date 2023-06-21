@@ -43,39 +43,93 @@ CMS_TEMPLATES = (
 )
 
 ########################
-# TACC: BRANDING
+# NSF BRANDING
 ########################
 
-_CUSTOM_BRANDING = [
-    "sgci",
-    "brainmap-cms/img/org_logos/sgci-logo-sans-text.svg",
-    "branding-logo--short",
-    "https://sciencegateways.org/",
+NSF_BRANDING = [
+    "nsf",
+    "example-cms/img/org_logos/nsf-white.png",
+    "branding-nsf",
+    "https://www.nsf.gov/",
     "_blank",
-    "SGCI Logo",
-    "anonymous",
-    "True",
-]
-
-BRANDING = [ TACC_BRANDING, UTEXAS_BRANDING, NSF_BRANDING, _CUSTOM_BRANDING ]
-
-########################
-# TACC: LOGOS
-########################
-
-LOGO =  [
-    "brainmap",
-    "brainmap-cms/img/org_logos/brainmap-logo.png",
-    "",
-    "https://brainmap.org",
-    "_self",
-    "BrainMap Logo",
+    "NSF Logo",
     "anonymous",
     "True"
 ]
 
+########################
+# TACC BRANDING
+########################
+
+TACC_BRANDING = [
+    "tacc",
+    "example-cms/img/org_logos/tacc-white.png",
+    "branding-tacc",
+    "https://www.tacc.utexas.edu/",
+    "_blank",
+    "TACC Logo",
+    "anonymous",
+    "True"
+]
+
+UTEXAS_BRANDING = [
+    "utexas",
+    "example-cms/img/org_logos/utaustin-white.png",
+    "branding-utaustin",
+    "https://www.utexas.edu/",
+    "_blank",
+    "University of Texas at Austin Logo",
+    "anonymous",
+    "True"
+]
+
+########################
+# CUSTOM PORTAL BRANDING
+########################
+
+# Edit this config as needed for the project branding used in the navigation bar header.
+CUSTOM_BRANDING = [
+    "portal",
+    "example-cms/img/org_logos/portal.png",
+    "branding-logo--short",
+    "https://cep.tacc.utexas.edu",
+    "_blank",
+    "Portal Logo",
+    "anonymous",
+    "True",
+]
+
+# Generic TACC Portals.
+BRANDING = [ TACC_BRANDING, UTEXAS_BRANDING ]
+
+# Custom Branded Portals (Non-NSF).
+#BRANDING = [ TACC_BRANDING, UTEXAS_BRANDING, CUSTOM_BRANDING ]
+
+# NSF Funded Generic TACC Portals.
+#BRANDING = [ NSF_BRANDING, TACC_BRANDING, UTEXAS_BRANDING ]
+
+# NSF Funded & Custom Branded Portals.
+#BRANDING = [ NSF_BRANDING, TACC_BRANDING, UTEXAS_BRANDING, CUSTOM_BRANDING ]
+
+########################
+# PORTAL LOGO / FAVICON
+########################
+
+# Edit this config as needed for the project logo used in the navigation bar.
+LOGO =  [
+    "example",
+    "example-cms/img/org_logos/portal.png",
+    "",
+    "/",
+    "_self",
+    "Placeholder Logo for CMS/Portal",
+    "anonymous",
+    "True"
+]
+
+# Edit this config as needed for the project favicon used in the browser navbar.
 FAVICON = {
-    "img_file_src": "brainmap-cms/img/org_logos/favicon.ico"
+    "img_file_src": "example-cms/img/org_logos/favicon.ico"
 }
 
 ########################

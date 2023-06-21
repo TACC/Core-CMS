@@ -8,7 +8,11 @@
   /* SEE: https://github.com/TACC/Core-Styles/blob/main/source/_imports/elements/tacc-search-bar.md */
   :host { visibility: hidden; height: 0; }
 </style>
+{% if settings.TACC_CORE_STYLES_VERSION == 0 %}
 <link rel="stylesheet" href="{% static 'site_cms/css/build/site.tacc-search-bar.css' %}">
+{% elif settings.TACC_CORE_STYLES_VERSION >= 1 %}
+<link rel="stylesheet" href="{% static 'site_cms/css/build/element.tacc-search-bar.css' %}">
+{% endif %}
 
 <form part="form" method="get" action="/search">
   <label for="header-search" class="u-hide--visually" part="label">
@@ -21,7 +25,7 @@
     name="{{ settings.SEARCH_QUERY_PARAM_NAME }}"
     placeholder="Search"
     data-testid="input"
-    autocomplete="off" minlength="3"
+    autocomplete="off" minlength="3" required
     value="" />
   <input type="hidden" name="page" value="1" />
 
