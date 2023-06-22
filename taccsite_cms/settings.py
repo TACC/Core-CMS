@@ -38,13 +38,16 @@ ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost', '*']   # In development.
 # Default portal authorization verification endpoint.
 CEP_AUTH_VERIFICATION_ENDPOINT = 'localhost'  # 'https://0.0.0.0:8000'
 
+# https://docs.djangoproject.com/en/3.0/ref/clickjacking/#how-to-use-it
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+
 ########################
 # DATABASE SETTINGS
 ########################
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'PORT': '5432',
         'NAME': 'taccsite',
         'USER': 'postgresadmin',
@@ -265,8 +268,6 @@ TACC_BLOG_SHOW_TAGS = True
 # To flag posts of certain category or tag, so template can take special action
 TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY = 'sample_value_e_g__mutlimedia__'
 TACC_BLOG_SHOW_ABSTRACT_TAG = 'sample_value_e_g__redirect__'
-
-
 
 ########################
 # TACC: CORE STYLES
