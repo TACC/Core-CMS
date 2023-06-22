@@ -461,8 +461,8 @@ def get_subdirs_as_module_names(path):
     module_names = []
     for entry in os.scandir(path):
         is_app = (
-            entry.path.find('_readme') == -1 or
-            entry.path.find('demdata') == -1
+            entry.path.find('_readme') == -1 and
+            entry.path.find('demdata-') == -1
         )
         if entry.is_dir() and is_app:
             # FAQ: There are different root paths to tweak:
