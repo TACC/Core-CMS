@@ -155,7 +155,7 @@ These projects store project-specific resources in the `taccsite_custom` submodu
 7. [Collect static files][django-static] for Django:
 
     ```bash
-    python manage.py collectstatic
+    python manage.py collectstatic --no-input
     ```
 
     _[If `DEBUG` is set to `True`, then this is automated via `python manage.py runserver`.][django-static-serve-dev]_
@@ -164,7 +164,7 @@ These projects store project-specific resources in the `taccsite_custom` submodu
 
     The CMS admin site should now be accessible at http://localhost:8000/admin .*
 
-    _You may log in as the superuser created via the `createsuperuser` command in an earlier step._
+    _You should log in as the superuser created via the `createsuperuser` command in an earlier step._
 
     <sub>\* Or at the port defined in a `docker-compose.custom.yml`.</sub>
 
@@ -172,9 +172,13 @@ These projects store project-specific resources in the `taccsite_custom` submodu
 
     > __Warning__: The CMS install will be fresh i.e. the CMS will __not__ be populated with production content.
 
+    To be guided through page creation, visit http://localhost:8000/ .*
+
     You may create pages as needed to test CMS development.
 
     _In the future, you will be able to clone content from other CMS instances._
+
+    <sub>\* Or at the port defined in a `docker-compose.custom.yml`.</sub>
 
 
 [docker-exec-bash]: https://docs.docker.com/engine/reference/commandline/exec/#run-docker-exec-on-a-running-container
