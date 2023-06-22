@@ -124,9 +124,10 @@ These projects store project-specific resources in the `taccsite_custom` submodu
     docker exec -it core_cms /bin/bash
     ```
 
-4. [Build static files](#static-files) for Core-CMS:
+4. Install dependencies and [Build static files](#static-files) for Core-CMS:
 
     ```bash
+    npm ci
     npm run build --project=core-cms
     ```
 
