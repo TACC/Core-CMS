@@ -57,6 +57,7 @@ To commit changes to a custom project:
 <!-- Link Aliases -->
 
 [Core CMS]: https://github.com/TACC/Core-CMS
+[Core Styles]: https://github.com/TACC/Core-Styles
 [Core CMS Resources]: https://github.com/TACC/Core-CMS-Resources
 [Core CMS Custom]: https://github.com/TACC/Core-CMS-Custom
 
