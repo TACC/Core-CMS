@@ -4,6 +4,10 @@
 
 Not standardized. Read [(internal) Formatting & Linting](https://confluence.tacc.utexas.edu/x/HoBGCw).
 
+## Best Practices
+
+- [Sign your commits.](https://help.github.com/en/github/authenticating-to-github/managing-commit-signature-verification)
+
 ## Development Workflow
 
 We use a modifed version of [GitFlow](https://datasift.github.io/gitflow/IntroducingGitFlow.html).
@@ -31,9 +35,22 @@ Our [development site] is always up-to-date with `main` branch.
 
 Our [production site] is built from a specific commit.
 
-## Best Practices
+## Release Project
 
-- [Sign your commits.](https://help.github.com/en/github/authenticating-to-github/managing-commit-signature-verification)
+Only appointed team members may release versions.
+
+1. Create new branch for version bump.
+1. Update `CHANGELOG.md`.
+1. Update version via:\
+   `npm version N.N.N`
+1. Commit, push, PR, review, merge.
+1. Create release and tag on GitHub.
+1. Replace Github's unannotated tag with an annotated one:
+   - `git pull`
+   - `git checkout vN.N.N`
+   - `git tag -d vN.N.N`
+   - `git tag -a vN.N.N -m "feat: vN.N.N"`
+   - `git push --tags --force`
 
 <!-- Link Aliases -->
 
