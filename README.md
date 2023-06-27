@@ -7,8 +7,8 @@ The base CMS code for TACC WMA Workspace Portals & Websites
 ## Table of Contents
 
 - [Related Repositories](#related-repositories)
-- [Project Architecture](#project-architecture)
 - [Project Customization]
+- [Project Architecture](#project-architecture)
 - [Prerequisites](#prerequisites)
 - [Start Project](#start-project)
 - [Update Project](#update-project)
@@ -25,6 +25,10 @@ The base CMS code for TACC WMA Workspace Portals & Websites
 - [Core CMS Custom], the new solution for extensions of the [Core CMS] project
 - [Core Portal Deployments], private repository that facilitates deployments of [Core Portal] images via [Camino] and Jenkins
 
+## Project Customization
+
+To work on a new or existing website, read [Project Customization].
+
 ## Project Architecture
 
 | directory | contents |
@@ -34,13 +38,6 @@ The base CMS code for TACC WMA Workspace Portals & Websites
 | `taccsite_cms` | settings for [Core CMS] |
 | `taccsite_custom` | [Git submodule][Git Submodules] of [Core CMS Resources] |
 | `taccsite_ui` | files to build [TACC UI Patterns] |
-
-## Project Customization
-
-Read [Project Customization] to learn how to:
-
-- create a new TACC CMS website
-- work on an existing TACC CMS website
 
 ## Prerequisites
 
