@@ -7,6 +7,7 @@ Not standardized. Read [(internal) Formatting & Linting](https://confluence.tacc
 ## Best Practices
 
 - [Sign your commits.](https://help.github.com/en/github/authenticating-to-github/managing-commit-signature-verification)
+- [Learn Markdown.](https://bitbucket.org/tutorials/markdowndemo)
 
 ## Development Workflow
 

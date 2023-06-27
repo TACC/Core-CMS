@@ -16,6 +16,7 @@ The base CMS code for TACC WMA Workspace Portals & Websites
 - [Debug Project](#debug-project)
 - [Build & Deploy Project](#build--deploy-project)
 - [Contributing](#contributing)
+- [Resources](#resources)
 
 ## Related Repositories
 
@@ -141,9 +142,6 @@ Follow "Core-CMS" section of [How To Build & Deploy][Build & Deploy Project].
 To contribute, first read [How to Contirbute][Contributing].
 
 ## Resources
-
-- [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
-- [Tapis Project (Formerly Agave)](https://tacc-cloud.readthedocs.io/projects/agave/en/latest/)
 
 ### Commands
 
