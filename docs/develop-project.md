@@ -1,5 +1,7 @@
 # Develop Project
 
+Read [Django CMS User Guide] for CMS user instructions.
+
 ## Table of Contents
 
 - [Build Static Files](#build-static-files)
@@ -88,3 +90,5 @@ See [Locally Develop CMS and Styles](https://github.com/TACC/Core-CMS/wiki/Local
 [Core Styles]: https://github.com/TACC/Core-Styles
 
 [restart server]: https://github.com/TACC/Core-CMS/wiki/How-to-Restart-the-CMS-Server
+
+[Django CMS User Guide]: https://confluence.tacc.utexas.edu/x/FgDqCw

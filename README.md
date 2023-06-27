@@ -12,7 +12,7 @@ The base CMS code for TACC WMA Workspace Portals & Websites
 - [Prerequisites](#prerequisites)
 - [Start Project](#start-project)
 - [Update Project](#update-project)
-- [Develop Project]
+- [Develop Project](#develop-project)
 - [Debug Project]
 - [Build & Deploy Project] (at "Core-CMS" section)
 
@@ -130,6 +130,8 @@ Update an existing local CMS instance.
 
 ## Develop Project
 
+Read [Django CMS User Guide] for CMS user instructions.
+
 Read [Develop Project] for developer instructions.
 
 ## Debug Project
@@ -193,6 +195,7 @@ Only appointed team members may release versions.
 
 [TACC UI Patterns]: https://tacc.utexas.edu/static/ui/
 [Build & Deploy Project]: https://confluence.tacc.utexas.edu/x/Lo99E
+[Django CMS User Guide]: https://confluence.tacc.utexas.edu/x/FgDqCw
 
 [Project Customization]: ./docs/project-customization.md
 [Develop Project]: ./docs/develop-project.md
