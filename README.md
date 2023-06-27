@@ -7,7 +7,7 @@ The base CMS code for TACC WMA Workspace Portals & Websites
 ## Table of Contents
 
 - [Related Repositories](#related-repositories)
-- [Project Customization]
+- [Project Customization](#project-customization)
 - [Project Architecture](#project-architecture)
 - [Prerequisites](#prerequisites)
 - [Start Project](#start-project)
