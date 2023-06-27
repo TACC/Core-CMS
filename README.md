@@ -44,9 +44,8 @@ To work on a new or existing website, read [Project Customization].
 
 - [Docker] ≥ v20
 - [Docker Compose] ≥ v1
-- [Python] ≥ v3.8
 
-A CMS project is run using [Docker] and [Docker Compose]. Both must be pre-installed on the system on which you will run the CMS.
+A CMS project is run using Docker and Docker Compose. Both must be pre-installed on the system on which you will run the CMS.
 
 > **Note**
 > On a Mac or a Windows machine, we recommended you install
