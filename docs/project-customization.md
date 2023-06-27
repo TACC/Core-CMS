@@ -45,7 +45,7 @@ To compile CSS static files:
 ```sh
 docker exec -it core_cms /bin/bash
 # That opens a command prompt within the container.
-    npm run build:css --project="core-cms"
+    npm run build:css --project="custom_project_dir"
 ```
 
 This process allows use of future-proof CSS via [Core Styles].
