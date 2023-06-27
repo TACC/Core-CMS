@@ -48,7 +48,8 @@ To work on a new or existing website, read [Project Customization].
 
 A CMS project is run using [Docker] and [Docker Compose]. Both must be pre-installed on the system on which you will run the CMS.
 
-[^2]: On a Mac or a Windows machine, we recommended you install
+> **Note**
+> On a Mac or a Windows machine, we recommended you install
 [Docker Desktop](https://www.docker.com/products/docker-desktop), which will install both Docker and Docker Compose as well as Docker Machine, which is required to run Docker on Mac/Windows hosts.
 
 ## Start Project
