@@ -35,7 +35,7 @@ Our [development site] is always up-to-date with `main` branch.
 
 Our [production site] is built from a specific commit.
 
-## Release Project
+## Release Workflow
 
 Only appointed team members may release versions.
 
