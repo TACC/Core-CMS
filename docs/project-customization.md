@@ -16,9 +16,16 @@ Work on the project **only** via [Core CMS Custom].
 
 ### Update Project
 
-To update `/taccsite_custom` to have specific content from [Core CMS Resources]:
+To update `/taccsite_custom` to have _pinned_ content from [Core CMS Resources]:
 
-- Read [How to Change Submodule Branch Commit](https://github.com/TACC/Core-CMS/wiki/How-to-Change-Submodule-Branch-Commit).
+1. `git submodule update`
+
+To update `/taccsite_custom` to have _different_ content from [Core CMS Resources]:
+
+1. `cd taccsite_custom`
+2. Checkout desired [Core CMS Resources] branch.
+3. `git pull`
+4. `cd ../`
 
 To make CMS on local machine register changes to files in `/taccsite_custom`:
 
@@ -53,6 +60,9 @@ To commit changes to a custom project:
 4. `cd ../`
 5. Add `/taccsite_custom` change.
 6. Commit changes to a [Core CMS] branch.
+
+> **Note**
+> For a more thorough walkthrough, read [How to Change Submodule Branch Commit](https://github.com/TACC/Core-CMS/wiki/How-to-Change-Submodule-Branch-Commit).
 
 <!-- Link Aliases -->
 
