@@ -155,7 +155,7 @@ Only appointed team members may release versions.
 
 ## Contributing
 
-Read [Contributing] for miscellaneous tips.
+To contribute, first read [How to Contirbute][Contributing].
 
 ## Resources
 
