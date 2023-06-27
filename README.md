@@ -13,8 +13,9 @@ The base CMS code for TACC WMA Workspace Portals & Websites
 - [Start Project](#start-project)
 - [Update Project](#update-project)
 - [Develop Project](#develop-project)
-- [Debug Project]
+- [Debug Project](#debug-project)
 - [Build & Deploy Project] (at "Core-CMS" section)
+- [Contributing](#contributing)
 
 ## Related Repositories
 
@@ -137,7 +138,7 @@ Read [Debug Project] for miscellaneous tips.
 
 ## Build & Deploy Project
 
-Follow "Core-CMS-Resources" section of [How To Build & Deploy][Build & Deploy Project].
+Follow "Core-CMS" section of [How To Build & Deploy][Build & Deploy Project].
 
 ## Release Project
 
@@ -158,7 +159,7 @@ Only appointed team members may release versions.
 
 ## Contributing
 
-
+Read [Contributing] for miscellaneous tips.
 
 ## Resources
 
@@ -197,3 +198,4 @@ Only appointed team members may release versions.
 [Project Customization]: ./docs/project-customization.md
 [Develop Project]: ./docs/develop-project.md
 [Debug Project]: ./docs/debug-project.md
+[Contributing]: ./docs/contributing.md
