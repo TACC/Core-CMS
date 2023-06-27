@@ -16,9 +16,9 @@ Work on the project **only** via [Core CMS Custom].
 
 ### Update Project
 
-To update `/taccsite_custom` to have the latest [Core CMS Resources]:
+To update `/taccsite_custom` to have specific content from [Core CMS Resources]:
 
-1. [How to Change Submodule Branch Commit](https://github.com/TACC/Core-CMS/wiki/How-to-Change-Submodule-Branch-Commit)
+- Read [How to Change Submodule Branch Commit](https://github.com/TACC/Core-CMS/wiki/How-to-Change-Submodule-Branch-Commit).
 
 To make CMS on local machine register changes to files in `/taccsite_custom`:
 
@@ -30,18 +30,18 @@ To make CMS on local machine register changes to files in `/taccsite_custom`:
 
 ### Build CSS
 
-All CSS static files are built:
+To compile CSS static files:
 
 - **from** source files **in** `src` directories
 - **to** compiled files **in** `build` directories
-
-This allows use of future-proof CSS via [Core-Styles].
 
 ```sh
 docker exec -it core_cms /bin/bash
 # That opens a command prompt within the container.
     npm run build:css --project="core-cms"
 ```
+
+This process allows use of future-proof CSS via [Core Styles].
 
 ### Commit Changes
 
