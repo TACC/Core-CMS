@@ -1,5 +1,9 @@
 # TACC Core CMS
 
+> **Note**
+> This branch is specific to https://tacc.utexas.edu,
+> which is far ahead of https://github.com/TACC/Core-CMS `main`.
+
 The base CMS code for TACC WMA Workspace Portals & Websites
 
 
