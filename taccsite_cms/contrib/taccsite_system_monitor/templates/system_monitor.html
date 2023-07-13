@@ -1,6 +1,6 @@
 {% load static %}
 
-<link rel="stylesheet" href="{% static "taccsite_system_monitor/css/system_monitor.css" %}" />
+<link nonce="{{ CSP_NONCE }}" rel="stylesheet" href="{% static "taccsite_system_monitor/css/system_monitor.css" %}" />
 
 <div {# class="s-system-monitor" #}{{ instance.attributes_str }}
   id="system-monitor-{{ instance.id }}">
@@ -31,7 +31,7 @@
   </table>
 </div>
 
-<script type="module">
+<script nonce="{{ CSP_NONCE }}" type="module">
   import { SystemMonitor } from '{% static "taccsite_system_monitor/js/system_monitor.js" %}';
 
   const hostname = '{{ instance.system }}';

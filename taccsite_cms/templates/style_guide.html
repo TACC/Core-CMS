@@ -5,9 +5,9 @@
   {{ block.super }}
 
   {% if settings.TACC_CORE_STYLES_VERSION == 0 %}
-  <link rel="stylesheet" href="{% static 'site_cms/css/build/site.template.style-guide.css' %}" />
+  <link nonce="{{ CSP_NONCE }}" rel="stylesheet" href="{% static 'site_cms/css/build/site.template.style-guide.css' %}" />
   {% elif settings.TACC_CORE_STYLES_VERSION >= 1 %}
-  <link rel="stylesheet" href="{% static 'site_cms/css/build/template.style-guide.css' %}" />
+  <link nonce="{{ CSP_NONCE }}" rel="stylesheet" href="{% static 'site_cms/css/build/template.style-guide.css' %}" />
   {% endif %}
 {% endblock assets_custom %}
 

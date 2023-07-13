@@ -11,7 +11,7 @@
  * @param {boolean} [options.mustWrapStarter=true] - Whether to wrap "startElement" also
  * @param {HTMLElement} [options.scopeElement=document] - The element within which to search for elements to wrap
  * @example
- * <script type="module">
+ * <script nonce="{{ CSP_NONCE }}" type="module">
  *   import wrapElements from '...';
  *   wrapElements('h3', 'hr', 'article', { wrapStarter: true });
  * </script>
