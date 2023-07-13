@@ -9,7 +9,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ...
 
+## [3.11.4] - 2023-07-11: Fix v3.11.3 Bad Submodule Pointer (taccsite_custom)
+
+### Fixed
+
+- fix(taccsite_custom): wrong pointer in v3.11.3 (#668)
+
 ## [3.11.3] - 2023-06-16: CSS Import Paths, Brainmap Logo, Core-Styles v2.9.1
+
+> **Warning**
+> This accidentally breaks all https://github.com/TACC/Core-CMS-Resources projects.
+> Use https://github.com/TACC/Core-CMS/releases/tag/v3.11.4 or greater instead.
 
 ### Changed
 
@@ -638,7 +648,8 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.11.3...main
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.11.4...main
+[3.11.4]: https://github.com/TACC/Core-CMS/releases/tag/v3.11.4
 [3.11.3]: https://github.com/TACC/Core-CMS/releases/tag/v3.11.3
 [3.11.2]: https://github.com/TACC/Core-CMS/releases/tag/v3.11.2
 [3.11.1]: https://github.com/TACC/Core-CMS/releases/tag/v3.11.1

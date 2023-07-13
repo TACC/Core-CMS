@@ -2,6 +2,13 @@
 /* SEE: https://github.com/django-cms/djangocms-picture/blob/2.3.0/djangocms_picture/models.py#L24-L34 */
 @import url("@tacc/core-styles/src/lib/_imports/components/align.css");
 
+/* Allow anchor tag to wrap like a block but still behave inline */
+/* FAQ: TACC/Core-CMS causes this tag-class combination, so it must manage it */
+/* FAQ: TACC/Core-CMS moves (side effect) Picture classes to <figure> or <a> */
+a.img-fluid {
+  display: inline-block;
+}
+
 /* Try to auto-clear image floats */
 /* WARNING: The commented solution clears float BUT also negates float */
 /*
