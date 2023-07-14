@@ -6,6 +6,8 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 ENV PYTHONUNBUFFERED 1
 
+FROM python-base as production
+
 RUN apt-get update && apt-get install -y \
     build-essential python3-dev \
     libldap2-dev libsasl2-dev ldap-utils tox \
