@@ -6,7 +6,7 @@
 {% block assets_custom %}
 {{ block.super }}
 
-<script>
+<script  nonce="{{ CSP_NONCE }}" nonce="{{ CSP_NONCE }}">
   console.info('Core `sidebar_left.html` loads no custom assets');
 </script>
 {% endblock assets_custom %}
@@ -21,7 +21,7 @@
 {% endblock content %}
 
 {% block assets_custom_delayed %}
-<script>
+<script  nonce="{{ CSP_NONCE }}" nonce="{{ CSP_NONCE }}">
   console.info('Core `sidebar_left.html` loads no (delayed) custom assets');
 </script>
 {% endblock assets_custom_delayed %}

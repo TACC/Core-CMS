@@ -342,8 +342,8 @@
           Are you a robot?<span class="asterisk">*</span>
         </label>
 
-        <script src="https://www.google.com/recaptcha/api.js"></script>
-        <script type="text/javascript">
+        <script nonce="{{ CSP_NONCE }}" src="https://www.google.com/recaptcha/api.js"></script>
+        <script nonce="{{ CSP_NONCE }}" type="text/javascript">
           // Submit function to be called, after reCAPTCHA was successful. var
           onSubmit_9e32f28ccb9545109ff6ae891f9af324 = function(token){" "}
           {console.log("reCAPTCHA validated for 'data-widget-uuid=\"9e32f28ccb9545109ff6ae891f9af324\"'")};
@@ -367,7 +367,7 @@
 
 </div>
 
-<script type="module">
+<script nonce="{{ CSP_NONCE }}" type="module">
   import toggleFieldErrors from '{{ path "/components/raw/c-form/toggle-field-errors.js" }}';
 
   document.addEventListener('DOMContentLoaded', () => {
@@ -379,7 +379,7 @@
     });
   });
 </script>
-<script type="module">
+<script nonce="{{ CSP_NONCE }}" type="module">
   import toggleRequiredFields from '{{ path "/components/raw/c-form/toggle-required-fields.js" }}';
 
   document.addEventListener('DOMContentLoaded', () => {
@@ -393,7 +393,7 @@
     });
   });
 </script>
-<script type="module">
+<script nonce="{{ CSP_NONCE }}" type="module">
   document.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector('form');
 

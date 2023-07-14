@@ -5,4 +5,4 @@
 {% if settings.DEBUG %}
   <script>window.DEBUG = true;</script>
 {% endif %}
-<script src="{% static 'site_cms/js/debug.js' %}"></script>
+<script nonce="{{ CSP_NONCE }}" src="{% static 'site_cms/js/debug.js' %}"></script>

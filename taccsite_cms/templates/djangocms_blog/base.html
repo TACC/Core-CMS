@@ -16,9 +16,9 @@
 {% block content %}
 
 {% if settings.TACC_CORE_STYLES_VERSION == 0 %}
-<link rel="stylesheet" href="{% static 'site_cms/css/build/site.app.blog.css' %}">
+<link nonce="{{ CSP_NONCE }}" nonce="{{ CSP_NONCE }}" rel="stylesheet" href="{% static 'site_cms/css/build/site.app.blog.css' %}">
 {% elif settings.TACC_CORE_STYLES_VERSION >= 1 %}
-<link rel="stylesheet" href="{% static 'site_cms/css/build/app.blog.css' %}">
+<link nonce="{{ CSP_NONCE }}" nonce="{{ CSP_NONCE }}" rel="stylesheet" href="{% static 'site_cms/css/build/app.blog.css' %}">
 {% endif %}
 
 <div class="app app-blog

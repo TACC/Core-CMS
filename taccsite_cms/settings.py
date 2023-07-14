@@ -345,6 +345,8 @@ LOCALE_PATHS = [
 ]
 
 MIDDLEWARE = [
+        # Adding CSP before any response processing happens.
+    'csp.middleware.CSPMiddleware',
     'cms.middleware.utils.ApphookReloadMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -376,6 +378,9 @@ INSTALLED_APPS = [
     # 'django.contrib.staticfiles',
     'taccsite_cms.django.contrib.staticfiles_custom',
     'django.contrib.messages',
+
+    # CSP: exposes nonce into global context
+    'csp.context_processors.nonce', 
 
     # key django CMS modules
     'cms',
@@ -627,6 +632,50 @@ DJANGOCMS_ICON_SETS = [
     (LOGO_ICONS, '', _('Logo SVGs')),
     (CORTAL_ICONS, 'icon', _('TACC "Cortal" Icons')),
 ]
+
+"""
+SETTINGS: CSP
+"""
+CSP_CONNECT_SRC = [
+    "'self'",
+    "ws:",
+    "wss:",
+    "*.google-analytics.com",
+    "*.googletagmanager.com"
+]
+CSP_DEFAULT_SRC = ["'none'"]
+CSP_FONT_SRC = [
+    "'self'",
+    "data:",
+    "*.bootstrapcdn.com",
+    "cdnjs.cloudflare.com",
+	"*.googleapis.com",
+    "*.gstatic.com",
+]
+CSP_FRAME_SRC = ["'self'"]
+CSP_IMG_SRC = [
+    "'self'",
+    "data:",
+    "*.google-analytics.com",
+    "*.googletagmanager.com"
+]
+CSP_STYLE_SRC = [
+    "'self'",
+    "*.bootstrapcdn.com",
+    "cdnjs.cloudflare.com",
+	"*.googleapis.com",
+    "*.gstatic.com",
+    "'unsafe-inline'",
+]
+CSP_SCRIPT_SRC = [
+    "'self'",
+    "'unsafe-inline'",
+]
+
+CSP_INCLUDE_NONCE_IN = ['script-src', 'style-src']
+
+# By default report only until all issues are resolved
+CSP_REPORT_ONLY = True
 
 ########################
 # IMPORT & EXPORT

@@ -1,14 +1,14 @@
 {% if settings.GOOGLE_ANALYTICS_PROPERTY_ID %}
   {% if settings.DEBUG %}
-    <script>
+    <script nonce="{{ CSP_NONCE }}">
       console.log("No metrics will be collected for this user.");
     </script>
   {% else %}
     <!-- Global site tag (gtag.js) & Google Analytics Code for Site.  -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id={{ settings.GOOGLE_ANALYTICS_PROPERTY_ID }}"></script>
+    <script nonce="{{ CSP_NONCE }}" async src="https://www.googletagmanager.com/gtag/js?id={{ settings.GOOGLE_ANALYTICS_PROPERTY_ID }}"></script>
 
     <!-- Analytics Code -->
-    <script>
+    <script nonce="{{ CSP_NONCE }}">
       var dntStatus = 0;
       // console.log(debugState, dntStatus);
 
