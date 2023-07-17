@@ -20,11 +20,73 @@ from glob import glob
 def gettext(s): return s
 
 
+# Rename CMS v3 secrets to work on v2.
+def v3_to_v2_secrets(v3_settings_module):
+    for key in dir(v3_settings_module):
+        value = getattr(v3_settings_module, key)
+        should_rename = not key.startswith('_')
+        print('Renamed v3 secret from "' + key + '" to "_' + key + '"')
+        setattr(v3_settings_module, '_' + key, value)
+        delattr(v3_settings_module, key)
+
+    return v3_settings_module
+
+class VersionNotSupportedException(Exception):
+    "Raised when a version was incorrectly assumed"
+    pass
+
 # Import secret values dynamically without breaking portal.
 def getsecrets():
     new_secrets = {};                                                                           # Var to hold secret values once imported succesfully.
     # Check for production secrets.
     try:
+        print('Checking for all secrets and settings values')
+        import taccsite_cms.default_secrets as default_secrets        # Default demo values (works for basic local dev out of the box)
+        new_secrets = default_secrets
+
+        try:
+            import taccsite_cms.settings_custom as settings_custom
+        except ModuleNotFoundError:
+            pass
+        try:
+            import taccsite_cms.secrets as secrets
+        except ModuleNotFoundError:
+            pass
+        try:
+            import taccsite_cms.settings_local as settings_local
+        except ModuleNotFoundError:
+            pass
+
+        if settings_custom:
+            for key in dir(settings_custom):
+                if not key.startswith('_'):
+                    value = getattr(settings_custom, key)
+                    setattr(new_secrets, key, value)
+        if secrets:
+            for key in dir(secrets):
+                if not key.startswith('_'):
+                    value = getattr(secrets, key)
+                    setattr(new_secrets, key, value)
+        if settings_local:
+            for key in dir(settings_local):
+                if not key.startswith('_'):
+                    value = getattr(settings_local, key)
+                    setattr(new_secrets, key, value)
+
+        if (
+            new_secrets.TACC_SETTINGS_VERSION and
+            new_secrets.TACC_SETTINGS_VERSION > 2
+        ):
+            print('Using available secrets and settings values')
+
+            print('new_secrets')
+            print(dir(new_secrets))
+
+            new_secrets_renamed = v3_to_v2_secrets(new_secrets)
+            return new_secrets_renamed
+        else:
+            raise VersionNotSupportedException
+    except VersionNotSupportedException as err:
         print('Checking for secret production values')
         import taccsite_cms.secrets as secrets                                       # Prod/Staging/Local Dev values (used instead of the default values if present)
         new_secrets = secrets
