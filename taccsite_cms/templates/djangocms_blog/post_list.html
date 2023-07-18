@@ -13,13 +13,29 @@
 <section class="blog-list">
     {% block blog_title %}
     <header>
+        {# TACC (use greater heading level): #}
+        {# TACC (do not use large header until core-styles.cms.css): #}
+        {% if settings.TACC_CORE_STYLES_VERSION >= 1 %}
         <h1>
+        {% else %}
+        <h2>
+        {% endif %}
+        {# /TACC #}
+        {# /TACC #}
         {% if author %}{% trans "Articles by" %} {{ author.get_full_name }}
         {% elif archive_date %}{% trans "Archive" %} &ndash; {% if month %}{{ archive_date|date:'F' }} {% endif %}{{ year }}
         {% elif tagged_entries %}{% trans "Tag" %} &ndash; {{ tagged_entries|capfirst }}
         {% elif category %}{% trans "Category" %} &ndash; {{ category }}
         {% else %}{% trans "News" %}{% endif %}
+        {# TACC (use greater heading level): #}
+        {# TACC (do not use large header until core-styles.cms.css): #}
+        {% if settings.TACC_CORE_STYLES_VERSION >= 1 %}
         </h1>
+        {% else %}
+        </h2>
+        {% endif %}
+        {# /TACC #}
+        {# /TACC #}
     </header>
     {% endblock %}
     {% for post in post_list %}
