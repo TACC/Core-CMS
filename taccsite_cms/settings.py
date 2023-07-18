@@ -269,8 +269,6 @@ TACC_BLOG_SHOW_TAGS = True
 TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY = 'sample_value_e_g__mutlimedia__'
 TACC_BLOG_SHOW_ABSTRACT_TAG = 'sample_value_e_g__redirect__'
 
-
-
 ########################
 # TACC: CORE STYLES
 ########################
@@ -443,6 +441,7 @@ INSTALLED_APPS = [
     'taccsite_cms.contrib.bootstrap4_djangocms_picture',
 
     # TACC CMS Plugins
+    'djangocms_tacc_image_gallery',
     # TODO: Use https://github.com/wesleyboar/Core-CMS-Plugin-System-Monitor
     'taccsite_cms.contrib.taccsite_system_monitor',
 
@@ -461,7 +460,10 @@ INSTALLED_APPS = [
 def get_subdirs_as_module_names(path):
     module_names = []
     for entry in os.scandir(path):
-        is_app = entry.path.find('_readme') == -1
+        is_app = (
+            entry.path.find('_readme') == -1 and
+            entry.path.find('demdata-') == -1
+        )
         if entry.is_dir() and is_app:
             # FAQ: There are different root paths to tweak:
             #      - Containers use `/code/…`
