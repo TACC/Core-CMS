@@ -1,6 +1,6 @@
 {
   "name": "@tacc/core-cms",
-  "version": "3.11.3",
+  "version": "3.11.4",
   "license": "MIT",
   "author": "TACC ACI WMA <wma-portals@gmail.com>",
   "description": "The TACC ACI-WMA Core CMS codebase used by TACC Portals.",
@@ -11,7 +11,7 @@
   "devDependencies": {
     "@frctl/fractal": "^1.5.14",
     "@frctl/mandelbrot": "^1.10.1",
-    "@tacc/core-styles": "^2.9.1",
+    "@tacc/core-styles": "^2.11.0",
     "minimist": "^1.2.6"
   },
   "repository": "git@github.com:TACC/Core-CMS.git",
