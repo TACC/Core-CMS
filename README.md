@@ -166,7 +166,6 @@ To contribute, first read [How to Contirbute][Contributing].
 
 [Docker]: https://docs.docker.com/get-docker/
 [Docker Compose]: https://docs.docker.com/compose/install/
-[Python]: https://www.python.org/downloads/
 
 [TACC UI Patterns]: https://tacc.utexas.edu/static/ui/
 [Build & Deploy Project]: https://confluence.tacc.utexas.edu/x/Lo99E
