@@ -9,19 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ...
 
-## [3.12.0] - 2023-07-18: Django 3, Redesign Blog, Fix Accent Hue, Gallery Plugin
-
-### Included
-
-- [3.12.0-alpha.9]: Remove Migrated Projects from Submodule
-- [3.12.0-alpha.8]: Re-Sync dev/tup-cms, main, taccsite_custom
-- [3.12.0-alpha.7]: Core-Styles v2.9.1 to v2.11.0
-- [3.12.0-alpha.6]: Display a.img-fluid as Inline Block
-- [3.12.0-alpha.5]: Remove demdata-cms, Merge v3.11.3
-- [3.12.0-alpha.4]: Gallery Updates, Style Fixes, taccsite_custom Update
-- [3.12.0-alpha.3]: Install Image Gallery Plugin
-- [3.12.0-alpha.2]: Fix v3.10 Accent Color From Purple Back to Blue
-- [3.12.0-alpha.1]: Django 3; Redesign Blog/News + Related Patterns
+## [3.12.0-alpha.10] - 2023-07-18: Conditional Blog/News Markup, Better README
 
 ### Fixed
 
@@ -774,8 +762,8 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.12.0...main
-[3.12.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.0
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.12.0-alpha.10...main
+[3.12.0-alpha.10]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.0-alpha.10
 [3.12.0-alpha.9]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.0-alpha.9
 [3.12.0-alpha.8]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.0-alpha.8
 [3.12.0-alpha.7]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.0-alpha.7
