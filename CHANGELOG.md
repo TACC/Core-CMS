@@ -9,13 +9,131 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ...
 
+## [3.12.0-alpha.10] - 2023-07-18: ⚠️ Conditional Blog/News Markup, Better README
+
+> **Warning**
+> All projects that have attempted to serve this version return a 500 error.
+> Problem uncertain. Solution unknown.
+
+### Fixed
+
+- fix(dev/tup-cms): blog/news markup (bugs found on ecep) #674
+
+### Changed
+
+- docs: simpler readme + add small docs (#665)
+
+## [3.12.0-alpha.9] - 2023-07-13: Remove Migrated Projects from Submodule
+
+## Removed
+
+- chore(taccsite_custom): remove migrated projects (afb6f21)
+
+## [3.12.0-alpha.8] - 2023-07-13: Re-Sync dev/tup-cms, main, taccsite_custom
+
+### Fixed
+
+- re-sync `dev/tup-cms` and `main` and their submodule pointers
+
+## [3.12.0-alpha.7] - 2023-07-12: Core-Styles v2.9.1 to v2.11.0
+
+### Added
+
+- feat: core-styles v2.9.1 to v2.11.0 (#671)
+
+## [3.12.0-alpha.6] - 2023-07-12: Display a.img-fluid as Inline Block
+
+### Fixed
+
+- fix(css): anchor around image not supporting margin (#670) (7b51038)
+
+### Removed
+
+- chore(taccsite_custom): delete acpd-cms dir (c615079)
+- chore(taccsite_custom): delete tup-cms dir (fa3c101)
+- chore(taccsite_custom): delete demdata (#666)
+
+## [3.12.0-alpha.5] - 2023-06-22: Remove demdata-cms, Merge v3.11.3
+
+### Added
+
+- feat: v3.11.3 (#664)
+
+### Changed
+
+- feat: add djangocms_tacc_image_gallery (#654)[^1]
+- feat(taccsite_custom): demdata-cms, css from tup (#606)
+
+---
+
+[^1]: Already available since https://github.com/TACC/Core-CMS/releases/tag/v3.12.0-alpha.3 and https://github.com/TACC/Core-CMS/releases/tag/v3.12.0-alpha.4 but now it comes officially from the trunk.
+
+## [3.12.0-alpha.4] - 2023-06-16: Gallery Updates, Style Fixes, taccsite_custom Update
+
+### Added
+
+- feat: s-image-grid → lightgallery (#663)
+
+### Changed
+
+- feat(taccsite_custom): explicit source css imports (7f25379)
+
+### Fixed
+
+- fix: update [image gallery] plugin to v0.1.3 (1358d36)
+- fix(core-styles): v2.9.1 (4894e4f)
+- fix(taccsite_custom): brainmap logo missing text (7cda385)
+
+## [3.12.0-alpha.3] - 2023-06-15: Install Image Gallery Plugin
+
+### Added
+
+- feat: add djangocms_tacc_image_gallery (un-styled) (#654)
+
+## [3.12.0-alpha.2] - 2023-06-15: Fix v3.10 Accent Color From Purple Back to Blue
+
+### Fixed
+
+- feat(css): accent color from purple to blue (#660)
+- fix(css): bump text editor css core-styles to v2.9 (#661)
+
+## [3.12.0-alpha.1] - 2023-06-14: Django 3; Redesign Blog/News + Related Patterns
+
+### Added
+
+- feat: styles v2.9.0 → s-image-grid → lightgallery (#655)
+- feat(css): figure, caption, etc styles; whole site (#624)
+- feat(css): migrate tup-cms styles to core-cms (part 2) (#620)
+- feat(css): migrate tup-cms styles to core-cms (part 1) (#616)
+- Task/tup 395 cmd news styles from tup cms (#612)
+- feat(core-styles): change accent color from purple to blue (#617)
+- feat: tup-398, improve blog css & layout toggle (#613)
+- feat(djangocms_blog): simple article link & "to be published" (#599)
+- feat(blog): tup-395, styles (#587)
+- feat: auto-responsive video embed (#590)
+- Task/tup 395 cmd news layout switch (#589)
+- feat(core-styles): base, cms, docs, portal re-org (#586)
+
+### Changed
+
+- Update to Django 3.2 (for TUP CMS) (#626)
+- chore: load static not staticfiles (#629)
+- chore(core-styles): tup-cms table updates (#603)
+
+### Fixed
+
+- Bugfix/news tags all black (#622)
+- fix: add+use core-styles.wysiwyg.css not copied code (#618)
+- fix: portal nav not to touch cms menu if no search (#615)
+- fix(templates): djangcms_picture, alignment issues (#588)
+
 ## [3.11.4] - 2023-07-11: Fix v3.11.3 Bad Submodule Pointer (taccsite_custom)
 
 ### Fixed
 
 - fix(taccsite_custom): wrong pointer in v3.11.3 (#668)
 
-## [3.11.3] - 2023-06-16: CSS Import Paths, Brainmap Logo, Core-Styles v2.9.1
+## [3.11.3] - 2023-06-16: ⚠️ CSS Import Paths, Brainmap Logo, Core-Styles v2.9.1
 
 > **Warning**
 > This accidentally breaks all https://github.com/TACC/Core-CMS-Resources projects.
@@ -648,7 +766,17 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.11.4...main
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.12.0-alpha.10...main
+[3.12.0-alpha.10]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.0-alpha.10
+[3.12.0-alpha.9]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.0-alpha.9
+[3.12.0-alpha.8]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.0-alpha.8
+[3.12.0-alpha.7]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.0-alpha.7
+[3.12.0-alpha.6]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.0-alpha.6
+[3.12.0-alpha.5]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.0-alpha.5
+[3.12.0-alpha.4]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.0-alpha.4
+[3.12.0-alpha.3]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.0-alpha.3
+[3.12.0-alpha.2]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.0-alpha.2
+[3.12.0-alpha.1]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.0-alpha.1
 [3.11.4]: https://github.com/TACC/Core-CMS/releases/tag/v3.11.4
 [3.11.3]: https://github.com/TACC/Core-CMS/releases/tag/v3.11.3
 [3.11.2]: https://github.com/TACC/Core-CMS/releases/tag/v3.11.2

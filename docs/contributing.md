@@ -56,8 +56,4 @@ Only appointed team members may release versions.
 <!-- Link Aliases -->
 
 [development site]: https://dev.cep.tacc.utexas.edu
-
-> **Note**
-> The accessible behind the TACC Network
-
 [production site]: https://prod.cep.tacc.utexas.edu
