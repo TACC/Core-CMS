@@ -12,8 +12,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [3.12.0-alpha.10] - 2023-07-18: ⚠️ Conditional Blog/News Markup, Better README
 
 > **Warning**
-> Any https://github.com/TACC/Core-CMS-Resources projects serving this return 500.
-> No known solution yet.
+> All projects that have attempted to serve this version return a 500 error.
+> Problem uncertain. Solution unknown.
 
 ### Fixed
 
