@@ -21,6 +21,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Update Django to v3.2 (#625) (#581)
+- feat(dev/tup-cms): django3, blog/news styles + related patterns (#581)
 - docs: simpler readme + add small docs (#665)
 
 ## [3.12.0-alpha.9] - 2023-07-13: Remove Migrated Projects from Submodule
