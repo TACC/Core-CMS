@@ -9,7 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ...
 
-## [3.12.0-alpha.10] - 2023-07-18: Conditional Blog/News Markup, Better README
+## [3.12.0-alpha.10] - 2023-07-18: ⚠️ Conditional Blog/News Markup, Better README
+
+> **Warning**
+> Any https://github.com/TACC/Core-CMS-Resources projects serving this return 500.
+> No known solution yet.
 
 ### Fixed
 
@@ -129,7 +133,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - fix(taccsite_custom): wrong pointer in v3.11.3 (#668)
 
-## [3.11.3] - 2023-06-16: CSS Import Paths, Brainmap Logo, Core-Styles v2.9.1
+## [3.11.3] - 2023-06-16: ⚠️ CSS Import Paths, Brainmap Logo, Core-Styles v2.9.1
 
 > **Warning**
 > This accidentally breaks all https://github.com/TACC/Core-CMS-Resources projects.
