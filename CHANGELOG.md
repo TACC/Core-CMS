@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [3.12.0-alpha.11] - 2023-07-25: Fix v3.12.0-alpha.10 Crash (Incomplete)
 
 > **Warning**
-> This does not fix all custom projects. It:
+> This does not fix all custom projects.
 > - [It fixes only **some** projects.](https://github.com/TACC/Core-CMS/pull/676)
 > - [It documents **how to fix** others.](https://github.com/TACC/Core-CMS-Resources/blob/ca1366b/docs/upgrade-project.md)
 > - [It does **not** work on TACC/Core-CMS-Custom.](https://github.com/TACC/Core-CMS-Custom/pull/175)
