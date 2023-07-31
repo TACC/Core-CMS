@@ -1,3 +1,2 @@
-/* SEE: ../../site_cms/css/src/_imports/django-cms-forms.css */
-/* FAQ: We uses future syntax that must be processed to work in the present;
-        and the process does not support outputting files to this directory */
+/* SEE: @tacc/core-styles/dist/components/c-form.css */
+/* FAQ: Already available c-form (which styles all TACC/Core-Styles forms) */
