@@ -9,3 +9,11 @@ h1 + h2,
 h1 + hr {
   margin-top: 21px;
 }
+
+/* To restore font size of buttons (whose text appears ot small on TAPIS) */
+/* https://confluence.tacc.utexas.edu/x/_YqkEQ */
+/* https://tapis-project.org/documentation/ */
+.btn {
+  /* FAQ: Bootstrap 1rem = browser default html 16px, but TACC sets html 10px */
+  font-size: 16px;
+}
