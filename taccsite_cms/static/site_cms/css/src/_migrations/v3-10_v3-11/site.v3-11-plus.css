@@ -1,0 +1,8 @@
+/* DO NOT ADD STYLES HERE; ONLY IMPORT OTHER STYLESHEETS */
+
+/* WARNING: Only import new stylesheets that will not break old site designs */
+
+/* Organize via ITCSS */
+/* https://confluence.tacc.utexas.edu/x/IAA9Cw */
+
+@import url("./_imports/components/django-cms-video.css");
