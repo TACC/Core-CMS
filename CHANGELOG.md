@@ -9,6 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ...
 
+## [3.11.5] - 2023-08-15: Document `v3-10_v3-11`, Fix Responsive Video Player
+
+### Fixed
+
+- docs: paper trail for v3-10_v3-11/ (off of v3.11.4) (#681)
+- fix: render/style responsive video/audio player (off of v3.11.4) (#684)
+
 ## [3.11.4] - 2023-07-11: Fix v3.11.3 Bad Submodule Pointer (taccsite_custom)
 
 ### Fixed
@@ -644,7 +651,8 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.11.4...main
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.11.5...main
+[3.11.5]: https://github.com/TACC/Core-CMS/releases/tag/v3.11.5
 [3.11.4]: https://github.com/TACC/Core-CMS/releases/tag/v3.11.4
 [3.11.3]: https://github.com/TACC/Core-CMS/releases/tag/v3.11.3
 [3.11.2]: https://github.com/TACC/Core-CMS/releases/tag/v3.11.2
