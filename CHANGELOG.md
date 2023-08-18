@@ -10,12 +10,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ...
 
 
-## [3.12.0-alpha.12] - 2023-08-18: Fix Support for Core-CMS-Custom
+## [3.12.0-alpha.12] - 2023-08-18: Fix Core-CMS-Custom Support
 
 > **Warning**
-> This does not fix all custom projects.
-> - [It fixes only **some** projects.](https://github.com/TACC/Core-CMS/pull/676)
-> - [It documents **how to fix** others.](https://github.com/TACC/Core-CMS-Resources/blob/ca1366b/docs/upgrade-project.md)
+> To use this release, ensure your [CMS project is upgraded](https://github.com/TACC/Core-CMS-Resources/blob/ca1366b/docs/upgrade-project.md).
 
 ### Fixed
 
