@@ -50,7 +50,7 @@ Only appointed team members may release versions.
    - `git pull`
    - `git checkout vN.N.N`
    - `git tag -d vN.N.N`
-   - `git tag -a vN.N.N -m "feat: vN.N.N"`
+   - `git tag -a vN.N.N -m "chore: vN.N.N"`
    - `git push --tags --force`
 
 <!-- Link Aliases -->
