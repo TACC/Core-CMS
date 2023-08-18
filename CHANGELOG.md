@@ -9,6 +9,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ...
 
+
+## [3.12.0-alpha.12] - 2023-08-18: Fix Support for Core-CMS-Custom
+
+> **Warning**
+> This does not fix all custom projects.
+> - [It fixes only **some** projects.](https://github.com/TACC/Core-CMS/pull/676)
+> - [It documents **how to fix** others.](https://github.com/TACC/Core-CMS-Resources/blob/ca1366b/docs/upgrade-project.md)
+
+### Fixed
+
+- fix: do not serve ui demo unless it exists (#688)
+- fix: render/style responsive video/audio player (off of main) (#685)
+
+### Changed
+
+- docs: paper trail for v3-10_v3-11/ (off of main) (#682)
+- chore: the LinkedIn link should be https (e6d5cc4d)
+- feat: add instagram, hide twitter (#680)
+- docs: cms admin uses ad hoc styles, so can tacc (#679)
+- style: remove extra letters in changelog (c14fe36e)
+
 ## [3.12.0-alpha.11] - 2023-07-25: Fix v3.12.0-alpha.10 Crash (Incomplete)
 
 > **Warning**
@@ -779,7 +800,8 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.12.0-alpha.11...main
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.12.0-alpha.12...main
+[3.12.0-alpha.12]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.0-alpha.12
 [3.12.0-alpha.11]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.0-alpha.11
 [3.12.0-alpha.10]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.0-alpha.10
 [3.12.0-alpha.9]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.0-alpha.9
