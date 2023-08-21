@@ -55,6 +55,7 @@ docker exec -it core_cms /bin/bash
     docker exec -it core_cms /bin/bash
     # That opens a command prompt within the container.
         cd /code
+        apt-get install gettext
         django-admin compilemessages
     ```
 
