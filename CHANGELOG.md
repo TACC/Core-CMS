@@ -11,12 +11,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [3.12.0-beta.1] - 2023-08-22: Set `SESSION_COOKIE_SECURE = True`, Fix UI Demo
 
-- chore(taccsite_custom): delete migrated cms's (#690)
+### Added
+
 - feat: do not let news editors add plain images (#691)
+
+### Fixed
+
 - fix: serve ui demo if it exists (#692)
-- docs: fix broken link (customize admin ui text) (#694)
-- enhance: improve admin UI permissions error text (#693)
 - hotfix: set SESSION_COOKIE_SECURE = True (#695)
+- docs: fix broken link (customize admin ui text) (#694)
+
+### Changed
+
+- chore(taccsite_custom): delete migrated cms's (#690)
+- enhance: improve admin UI permissions error text (#693)
 
 ## [3.11.6] - 2023-08-22: Set `SESSION_COOKIE_SECURE = True`
 
