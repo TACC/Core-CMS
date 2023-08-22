@@ -9,6 +9,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ...
 
+## [3.12.0-beta.2] - 2023-08-22: Re-Sync taccsite_custom Pointer
+
+> **Warning**
+> To use this release, ensure your [CMS project is upgraded](https://github.com/TACC/Core-CMS-Resources/blob/ca1366b/docs/upgrade-project.md).
+
+### Fixed
+
+- fix(taccsite_custom): point submodule to main (1775c45)
+
 ## [3.12.0-beta.1] - 2023-08-22: Set `SESSION_COOKIE_SECURE = True`, Fix UI Demo
 
 > **Warning**
