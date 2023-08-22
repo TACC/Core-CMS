@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [3.9.3] - 2023-05-12: Fix Text Editor Opening Too Slow
+
+### Fixed
+
+- fix(ckeditor): text editor opens too slow (#643)
+
+## [3.9.2] - 2023-02-14: Poetry URL & Version (Hotfix)
+
+### Fixed
+
+- fix: poetry install url & version (#602)
+
 ## [3.9.1] - 2022-09-16: Core Styles v0.8.7 (Hotfix)
 
 ### Fixed
@@ -503,7 +515,9 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 ## [2.0.0] - 2021-03-31
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.9.1...HEAD
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.9.3...HEAD
+[3.9.3]: https://github.com/TACC/Core-CMS/compare/v3.9.3
+[3.9.2]: https://github.com/TACC/Core-CMS/compare/v3.9.2
 [3.9.1]: https://github.com/TACC/Core-CMS/compare/v3.9.1
 [3.9.0]: https://github.com/TACC/Core-CMS/compare/v3.9.0
 [3.8.1]: https://github.com/TACC/Core-CMS/compare/v3.8.1
