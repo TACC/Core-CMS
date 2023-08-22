@@ -9,6 +9,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ...
 
+## [3.12.0-beta.1] - 2023-08-22: Set `SESSION_COOKIE_SECURE = True`, Fix UI Demo
+
+### Added
+
+- feat: do not let news editors add plain images (#691)
+
+### Fixed
+
+- fix: serve ui demo if it exists (#692)
+- hotfix: set SESSION_COOKIE_SECURE = True (#695)
+- docs: fix broken link (customize admin ui text) (#694)
+
+### Changed
+
+- chore(taccsite_custom): delete migrated cms's (#690)
+- enhance: improve admin UI permissions error text (#693)
+
+## [3.11.6] - 2023-08-22: Set `SESSION_COOKIE_SECURE = True`
+
+### Fixed
+
+- fix(taccsite_custom): wrong pointer in v3.11.3 (#668)
 
 ## [3.12.0-alpha.12] - 2023-08-18: Fix Core-CMS-Custom Support
 
@@ -27,6 +49,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - feat: add instagram, hide twitter (#680)
 - docs: cms admin uses ad hoc styles, so can tacc (#679)
 - style: remove extra letters in changelog (c14fe36e)
+
+## [3.11.5] - 2023-08-15: Document `v3-10_v3-11`, Fix Responsive Video Player
+
+### Fixed
+
+- docs: paper trail for v3-10_v3-11/ (#681)
+- fix: render/style responsive video/audio player (#684)
 
 ## [3.12.0-alpha.11] - 2023-07-25: Fix v3.12.0-alpha.10 Crash (Incomplete)
 
@@ -798,7 +827,8 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.12.0-alpha.12...main
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.12.0-beta.1...main
+[3.12.0-beta.1]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.0-beta.1
 [3.12.0-alpha.12]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.0-alpha.12
 [3.12.0-alpha.11]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.0-alpha.11
 [3.12.0-alpha.10]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.0-alpha.10
@@ -811,6 +841,8 @@ v2.0.0 Production release as of Mar 31, 2021.
 [3.12.0-alpha.3]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.0-alpha.3
 [3.12.0-alpha.2]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.0-alpha.2
 [3.12.0-alpha.1]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.0-alpha.1
+[3.11.6]: https://github.com/TACC/Core-CMS/releases/tag/v3.11.6
+[3.11.5]: https://github.com/TACC/Core-CMS/releases/tag/v3.11.5
 [3.11.4]: https://github.com/TACC/Core-CMS/releases/tag/v3.11.4
 [3.11.3]: https://github.com/TACC/Core-CMS/releases/tag/v3.11.3
 [3.11.2]: https://github.com/TACC/Core-CMS/releases/tag/v3.11.2
