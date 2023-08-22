@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [3.9.5] - 2023-08-22: Set `SESSION_COOKIE_SECURE = True`
+
+### Fixed
+
+- hotfix: set SESSION_COOKIE_SECURE = True (off of v3.9.4) (#702)
+
 ## [3.9.4] - 2023-08-22: Approx. Retroactive APCD-CMS Nov 2022 Release
 
 > **Note**
@@ -542,7 +548,9 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 ## [2.0.0] - 2021-03-31
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.9.3...HEAD
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.9.5...HEAD
+[3.9.5]: https://github.com/TACC/Core-CMS/compare/v3.9.5
+[3.9.4]: https://github.com/TACC/Core-CMS/compare/v3.9.4
 [3.9.3]: https://github.com/TACC/Core-CMS/compare/v3.9.3
 [3.9.2]: https://github.com/TACC/Core-CMS/compare/v3.9.2
 [3.9.1]: https://github.com/TACC/Core-CMS/compare/v3.9.1
