@@ -636,6 +636,10 @@ DJANGOCMS_ICON_SETS = [
     (CORTAL_ICONS, 'icon', _('TACC "Cortal" Icons')),
 ]
 
+DJANGOCMS_ICON_TEMPLATES = [
+    ('show_label', 'Show Label'),
+]
+
 ########################
 # IMPORT & EXPORT
 ########################
