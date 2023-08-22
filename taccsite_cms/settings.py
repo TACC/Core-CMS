@@ -38,6 +38,9 @@ ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost', '*']   # In development.
 # Default portal authorization verification endpoint.
 CEP_AUTH_VERIFICATION_ENDPOINT = 'localhost'  # 'https://0.0.0.0:8000'
 
+# whether the session cookie should be secure (https:// only)
+SESSION_COOKIE_SECURE = True
+
 ########################
 # DATABASE SETTINGS
 ########################
