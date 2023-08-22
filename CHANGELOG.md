@@ -9,6 +9,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ...
 
+## [3.12.0-beta.1] - 2023-08-22: Set `SESSION_COOKIE_SECURE = True`, Fix UI Demo
+
+- chore(taccsite_custom): delete migrated cms's (#690)
+- feat: do not let news editors add plain images (#691)
+- fix: serve ui demo if it exists (#692)
+- docs: fix broken link (customize admin ui text) (#694)
+- enhance: improve admin UI permissions error text (#693)
+- hotfix: set SESSION_COOKIE_SECURE = True (#695)
+
 ## [3.11.6] - 2023-08-22: Set `SESSION_COOKIE_SECURE = True`
 
 ### Fixed
@@ -810,7 +819,8 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.12.0-alpha.12...main
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.12.0-beta.1...main
+[3.12.0-beta.1]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.0-beta.1
 [3.12.0-alpha.12]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.0-alpha.12
 [3.12.0-alpha.11]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.0-alpha.11
 [3.12.0-alpha.10]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.0-alpha.10
