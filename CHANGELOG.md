@@ -7,6 +7,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [3.9.4] - 2023-08-22: `SESSION_COOKIE_SECURE = True`, Much of v3.10.0
+
+### Combined
+
+- fix(ckeditor): text editor opens too slow (#643)
+- feat(core-styles): v0.10.0 (#567)
+- feat: fp-1837 limit nav menu item visibility by group (#566)
+- feat(taccsite-cms): demdata-cms, old build solution (#564)
+- feat(css): fp-1828 move apcd styles to core (#565)
+- chore(core-styles): tup-293 dependency updates (#563)
+- feat: fp-1500 serve ui pattern lib (as static files) (#562)
+- fix: tup-340 portal nav not loading (#561)
+- fix(css): fp-1791 button auto width & django cms form button tweak (#560)
+- docs(readme): update INCLUDES_ setting gotchas (83c19245)
+- docs(example-cms): add new INCLUDES_ settings (88773a09)
+- chore: latest core-cms-resources & core-styles v0.9.0 (#559)
+- chore: fp-1903 sync tup-ui login component changes to core-styles (#531)
+- feat: tup-340 allow include portal nav and/or search bar via settings (#557)
+- Task/FP-1854 - Add RT package and update poetry version (#558) (like #602)
+- feat(taccsite_custom): BM-26 new logo and favicon (#556)
+- docs(README): Core CMS Resources v Core CMS Custom (be110b09)
+- docs(changelog): v3.9.1 missing sub-title (ff737a3f)
+- fix(core-styles): v0.8.7 (path fix) (f33957e6)
+
 ## [3.9.3] - 2023-05-12: Fix Text Editor Opening Too Slow
 
 ### Fixed
