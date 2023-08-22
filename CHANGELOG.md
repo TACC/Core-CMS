@@ -7,9 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
-## [3.9.4] - 2023-08-22: `SESSION_COOKIE_SECURE = True`, Much of v3.10.0
+## [3.9.4] - 2023-08-22: Approx. Retroactive APCD-CMS Nov 2022 Release
 
-### Combined
+> **Note**
+> This is an attempt to tag the CMS as of the [most recent prod. deploy](https://github.com/TACC/Core-Portal-Deployments/commit/d82170a) of [APCD at `3a439bad`](https://github.com/TACC/Core-CMS-Custom/blob/3a439bad/apcd-cms/Dockerfile#L1) with [TACC/Core-CMS at #567](https://github.com/TACC/Core-CMS/pull/567) plus v3.9.3's #643.
+
+### All
 
 - fix(ckeditor): text editor opens too slow (#643)
 - feat(core-styles): v0.10.0 (#567)
