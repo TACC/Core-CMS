@@ -14,6 +14,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > **Warning**
 > To use this release, ensure your [CMS project is upgraded](https://github.com/TACC/Core-CMS-Resources/blob/ca1366b/docs/upgrade-project.md).
 
+> **Warning**
+> The UI demo will **not** load. Failed in [TACC/tup-ui#301](https://github.com/TACC/tup-ui/pull/301).
+
 ### Fixed
 
 - fix(taccsite_custom): point submodule to main (1775c45)
@@ -23,9 +26,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > **Warning**
 > Unable to build. Use https://github.com/TACC/Core-CMS/releases/tag/v3.12.0-beta.2 instead.
 
+> **Warning**
+> The UI demo is **not** successfully fixed by #692.
+
 ### Fixed
 
-- fix: serve ui demo if it exists (#692)
+- ~~fix: serve ui demo if it exists (#692)~~
 - hotfix: set SESSION_COOKIE_SECURE = True (#695)
 - docs: fix broken link (customize admin ui text) (#694)
 
