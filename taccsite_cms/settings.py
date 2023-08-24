@@ -41,6 +41,9 @@ CEP_AUTH_VERIFICATION_ENDPOINT = 'localhost'  # 'https://0.0.0.0:8000'
 # https://docs.djangoproject.com/en/3.0/ref/clickjacking/#how-to-use-it
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
+# whether the session cookie should be secure (https:// only)
+SESSION_COOKIE_SECURE = True
+
 ########################
 # DATABASE SETTINGS
 ########################

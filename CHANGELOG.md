@@ -9,6 +9,76 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ...
 
+## [3.12.0-beta.2] - 2023-08-22: Re-Sync taccsite_custom Pointer
+
+> **Warning**
+> To use this release, ensure your [CMS project is upgraded](https://github.com/TACC/Core-CMS-Resources/blob/ca1366b/docs/upgrade-project.md).
+
+> **Warning**
+> The UI demo will **not** load. Failed in [TACC/tup-ui#301](https://github.com/TACC/tup-ui/pull/301).
+
+### Fixed
+
+- fix(taccsite_custom): point submodule to main (1775c45)
+
+## [3.12.0-beta.1] - 2023-08-22: ⚠️ Set `SESSION_COOKIE_SECURE = True`, Fix UI Demo
+
+> **Warning**
+> Unable to build. Use https://github.com/TACC/Core-CMS/releases/tag/v3.12.0-beta.2 instead.
+
+> **Warning**
+> The UI demo is **not** successfully fixed by #692.
+
+### Fixed
+
+- ~~fix: serve ui demo if it exists (#692)~~
+- hotfix: set SESSION_COOKIE_SECURE = True (#695)
+- docs: fix broken link (customize admin ui text) (#694)
+
+### Changed
+
+- feat: do not let news editors add plain images (#691)
+- chore(taccsite_custom): delete migrated cms's (#690)
+- enhance: improve admin UI permissions error text (#693)
+
+## [3.11.6] - 2023-08-22: Set `SESSION_COOKIE_SECURE = True`
+
+### Fixed
+
+- fix(taccsite_custom): wrong pointer in v3.11.3 (#668)
+
+## [3.9.5] - 2023-08-22: Set `SESSION_COOKIE_SECURE = True`
+
+### Fixed
+
+- hotfix: set SESSION_COOKIE_SECURE = True (off of v3.9.4) (#702)
+
+## [3.9.4] - 2023-08-22: Approx. Retroactive APCD-CMS Nov 2022 Release
+
+> **Note**
+> This is an attempt to tag the CMS as of the [most recent prod. deploy](https://github.com/TACC/Core-Portal-Deployments/commit/d82170a) of [APCD at `3a439bad`](https://github.com/TACC/Core-CMS-Custom/blob/3a439bad/apcd-cms/Dockerfile#L1) with [TACC/Core-CMS at #567](https://github.com/TACC/Core-CMS/pull/567) plus v3.9.3's #643.
+
+### All
+
+- fix(ckeditor): text editor opens too slow (#643)
+- feat(core-styles): v0.10.0 (#567)
+- feat: fp-1837 limit nav menu item visibility by group (#566)
+- feat(taccsite-cms): demdata-cms, old build solution (#564)
+- feat(css): fp-1828 move apcd styles to core (#565)
+- chore(core-styles): tup-293 dependency updates (#563)
+- feat: fp-1500 serve ui pattern lib (as static files) (#562)
+- fix: tup-340 portal nav not loading (#561)
+- fix(css): fp-1791 button auto width & django cms form button tweak (#560)
+- docs(readme): update INCLUDES_ setting gotchas (83c19245)
+- docs(example-cms): add new INCLUDES_ settings (88773a09)
+- chore: latest core-cms-resources & core-styles v0.9.0 (#559)
+- chore: fp-1903 sync tup-ui login component changes to core-styles (#531)
+- feat: tup-340 allow include portal nav and/or search bar via settings (#557)
+- Task/FP-1854 - Add RT package and update poetry version (#558) (like #602)
+- feat(taccsite_custom): BM-26 new logo and favicon (#556)
+- docs(README): Core CMS Resources v Core CMS Custom (be110b09)
+- docs(changelog): v3.9.1 missing sub-title (ff737a3f)
+- fix(core-styles): v0.8.7 (path fix) (f33957e6)
 
 ## [3.12.0-alpha.12] - 2023-08-18: Fix Core-CMS-Custom Support
 
@@ -27,6 +97,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - feat: add instagram, hide twitter (#680)
 - docs: cms admin uses ad hoc styles, so can tacc (#679)
 - style: remove extra letters in changelog (c14fe36e)
+
+## [3.11.5] - 2023-08-15: Document `v3-10_v3-11`, Fix Responsive Video Player
+
+### Fixed
+
+- docs: paper trail for v3-10_v3-11/ (#681)
+- fix: render/style responsive video/audio player (#684)
 
 ## [3.12.0-alpha.11] - 2023-07-25: Fix v3.12.0-alpha.10 Crash (Incomplete)
 
@@ -798,7 +875,8 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.12.0-alpha.12...main
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.12.0-beta.1...main
+[3.12.0-beta.1]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.0-beta.1
 [3.12.0-alpha.12]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.0-alpha.12
 [3.12.0-alpha.11]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.0-alpha.11
 [3.12.0-alpha.10]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.0-alpha.10
@@ -811,6 +889,8 @@ v2.0.0 Production release as of Mar 31, 2021.
 [3.12.0-alpha.3]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.0-alpha.3
 [3.12.0-alpha.2]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.0-alpha.2
 [3.12.0-alpha.1]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.0-alpha.1
+[3.11.6]: https://github.com/TACC/Core-CMS/releases/tag/v3.11.6
+[3.11.5]: https://github.com/TACC/Core-CMS/releases/tag/v3.11.5
 [3.11.4]: https://github.com/TACC/Core-CMS/releases/tag/v3.11.4
 [3.11.3]: https://github.com/TACC/Core-CMS/releases/tag/v3.11.3
 [3.11.2]: https://github.com/TACC/Core-CMS/releases/tag/v3.11.2
@@ -822,6 +902,8 @@ v2.0.0 Production release as of Mar 31, 2021.
 [3.10.2]: https://github.com/TACC/Core-CMS/releases/tag/v3.10.2
 [3.10.1]: https://github.com/TACC/Core-CMS/releases/tag/v3.10.1
 [3.10.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.10.0
+[3.9.5]: https://github.com/TACC/Core-CMS/releases/tag/v3.9.5
+[3.9.4]: https://github.com/TACC/Core-CMS/releases/tag/v3.9.4
 [3.9.3]: https://github.com/TACC/Core-CMS/releases/tag/v3.9.3
 [3.9.2]: https://github.com/TACC/Core-CMS/releases/tag/v3.9.2
 [3.9.1]: https://github.com/TACC/Core-CMS/releases/tag/v3.9.1
