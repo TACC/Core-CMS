@@ -299,10 +299,10 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'taccsite_custom', '*', 'static')
 ))
 
-# If the UI Pattern Library exists, serve it at .../ui
-staticfiles_dir_ui = os.path.join(BASE_DIR, 'taccsite_ui', 'dist')
-if os.path.exists(staticfiles_dir_ui):
-    STATICFILES_DIRS += (('ui', staticfiles_dir_ui),)
+# Serve UI Demo (if it exists) at .../ui
+ui_demo_dir = os.path.join(BASE_DIR, 'taccsite_ui', 'dist')
+if os.path.exists(ui_demo_dir):
+    STATICFILES_DIRS += (('ui', ui_demo_dir),)
 
 # User Uploaded Files Location.
 MEDIA_URL = '/media/'
