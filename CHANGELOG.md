@@ -9,6 +9,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ...
 
+## [3.12.0-beta.3] - 2023-08-28: Fix UI Demo (For Real)
+
+> **Warning**
+> To use this release, ensure your [CMS project is upgraded](https://github.com/TACC/Core-CMS-Resources/blob/ca1366b/docs/upgrade-project.md).
+
+### Fixed
+
+- fix: our dev dependencies are actually for prod (#708)
+- fix: ui demo for core and clients (#706)
+
 ## [3.12.0-beta.2] - 2023-08-22: Re-Sync taccsite_custom Pointer
 
 > **Warning**
@@ -875,7 +885,9 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.12.0-beta.1...main
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.12.0-beta.3...main
+[3.12.0-beta.3]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.0-beta.3
+[3.12.0-beta.2]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.0-beta.2
 [3.12.0-beta.1]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.0-beta.1
 [3.12.0-alpha.12]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.0-alpha.12
 [3.12.0-alpha.11]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.0-alpha.11
