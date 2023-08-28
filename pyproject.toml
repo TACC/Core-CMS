@@ -45,6 +45,7 @@ djangocms-admin-style = "2.0.0"
 djangocms-apphook-setup = "0.4.1"
 djangocms-attributes-field = "2.1.0"
 djangocms-blog = "^1.2"
+# djangocms-bootstrap4 commit to remove deprecated imports: https://github.com/django-cms/djangocms-bootstrap4/pull/162
 djangocms-bootstrap4 = { git = "https://github.com/django-cms/djangocms-bootstrap4", rev = "2fc7f14c2b7b53882faf6830289b5052f775965f" }
 djangocms-column = "^2.0"
 djangocms-file = "3.0.0"
