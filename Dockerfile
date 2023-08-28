@@ -69,4 +69,4 @@ WORKDIR /code
 RUN npm ci
 ARG PROJECT_NAME
 ARG BUILD_ID
-RUN npm run build:css --project=$PROJECT_NAME --build-id=$BUILD_ID
+RUN npm run build --project=$PROJECT_NAME --build-id=$BUILD_ID
