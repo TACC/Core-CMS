@@ -65,22 +65,16 @@ docker exec -it core_cms /bin/bash
 
 A demo of any documented CSS modules from [Core Styles] and [Core CMS].
 
-1. Build:
+1. Build and serve:
 
     ```sh
     docker exec -it core_cms /bin/bash
     # That opens a command prompt within the container.
-        npm run build:css-demo --project="core-cms"
+        npm run build:ui-demo
+        python manage.py collectstatic --no-input
     ```
 
-2. Serve:
-
-    This feature is not built-in yet. You have options:
-
-    | option | steps |
-    | - | - |
-    | clone small Django app  | [working app in tup-ui](https://github.com/TACC/tup-ui/tree/v1.0.5/apps/ui-patterns) |
-    | serve locally with Node | `npx serve taccsite_ui/dist` |
+2. Open http://localhost:8000/static/ui/index.html.
 
 ## Develop with [Core Styles] Simultaneously
 
