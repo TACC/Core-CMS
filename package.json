@@ -16,7 +16,7 @@
   },
   "repository": "git@github.com:TACC/Core-CMS.git",
   "scripts": {
-    "build": "npm run build:css",
+    "build": "npm run build:css && npm run build:ui-demo",
     "build:css": "bin/build-css.js --project=$npm_config_project --build-id=$npm_config_build_id",
     "postbuild:css": "cp -r node_modules/@tacc/core-styles/src/lib/fonts/* taccsite_cms/static/site_cms/fonts",
     "build:ui-demo": "cd taccsite_ui && fractal build",
