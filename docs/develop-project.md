@@ -73,8 +73,7 @@ A demo of any documented CSS modules from [Core Styles] and [Core CMS].
         npm run build:ui-demo
     ```
 
-2. [Restart the CMS server.][restart server]
-3. Open http://localhost:8000/static/ui/index.html.
+2. Open http://localhost:8000/static/ui/index.html.
 
 ## Develop with [Core Styles] Simultaneously
 
