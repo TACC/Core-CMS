@@ -17,7 +17,7 @@
   {% include 'analytics.html' %}
 
   <!-- Metadata. -->
-  <title>{% block title %} This is my new project home page {% endblock title %}</title>
+  <title>{% block title %}{% page_attribute "page_title" %}{% endblock title %}</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
