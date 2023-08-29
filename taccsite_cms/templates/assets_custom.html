@@ -5,16 +5,8 @@ FAQ: IF a script or style is better cached with markup, THEN:
   - Such a script belongs inline after relevant markup, not via this block
 {% endcomment %}
 
-{# NOTE: Fonts may be loaded early via `assets_font` #}
-
-
-
-{# Do NOT directly load project-specific assets here; see `/taccsite_custom` #}
-
 {# Example #}
 {% comment %}
-  {% block assets_custom %}
-    {{ block.super }}
 
     {# Example: Custom Site Assets. #}
     <link rel="stylesheet" href="{% static '__PROJECT__/css/build/site.css' %}">
@@ -28,5 +20,9 @@ FAQ: IF a script or style is better cached with markup, THEN:
     {# WARNING: Undesired use case. Create re-usable code instead. #}
     {# SEE: https://confluence.tacc.utexas.edu/x/54AZCg #}
 
-  {% endblock assets_custom %}
+    {# Example: Custom Fonts. #}
+    {% block assets_font %}
+      <!-- SEE: ./assets_font.html for examples -->
+    {% endblock assets_font %}
+
 {% endcomment %}
