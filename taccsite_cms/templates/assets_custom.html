@@ -1,5 +1,3 @@
-{% load static %}
-
 {# Load assets as external files, to cache independently of markup. #}
 {% comment %}
 FAQ: IF a script or style is better cached with markup, THEN:
@@ -8,13 +6,6 @@ FAQ: IF a script or style is better cached with markup, THEN:
 {% endcomment %}
 
 {# NOTE: Fonts may be loaded early via `assets_font` #}
-
-
-
-<!-- Custom Site Assets: Favicon. -->
-{% with settings.FAVICON as favicon %}
-<link rel="icon" href="{% static favicon.img_file_src %}" type="image/x-icon" />
-{% endwith %}
 
 
 
