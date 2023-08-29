@@ -55,6 +55,7 @@ docker exec -it core_cms /bin/bash
     docker exec -it core_cms /bin/bash
     # That opens a command prompt within the container.
         cd /code
+        apt-get install gettext
         django-admin compilemessages
     ```
 
@@ -69,17 +70,11 @@ A demo of any documented CSS modules from [Core Styles] and [Core CMS].
     ```sh
     docker exec -it core_cms /bin/bash
     # That opens a command prompt within the container.
-        npm run build:css-demo --project="core-cms"
+        npm run build:ui-demo
     ```
 
-2. Serve:
-
-    This feature is not built-in yet. You have options:
-
-    | option | steps |
-    | - | - |
-    | clone small Django app  | [working app in tup-ui](https://github.com/TACC/tup-ui/tree/v1.0.5/apps/ui-patterns) |
-    | serve locally with Node | `npx serve taccsite_ui/dist` |
+2. Give the server time to automatically restart.
+3. Open http://localhost:8000/static/ui/index.html.
 
 ## Develop with [Core Styles] Simultaneously
 

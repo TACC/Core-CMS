@@ -41,6 +41,9 @@ CEP_AUTH_VERIFICATION_ENDPOINT = 'localhost'  # 'https://0.0.0.0:8000'
 # https://docs.djangoproject.com/en/3.0/ref/clickjacking/#how-to-use-it
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
+# whether the session cookie should be secure (https:// only)
+SESSION_COOKIE_SECURE = True
+
 ########################
 # DATABASE SETTINGS
 ########################
@@ -294,9 +297,12 @@ STATICFILES_DIRS = (
     # os.path.join(BASE_DIR, 'taccsite_cms', 'en', 'static'),
 ) + tuple(glob(
     os.path.join(BASE_DIR, 'taccsite_custom', '*', 'static')
-)) + (
-    ('ui', os.path.join(BASE_DIR, 'taccsite_ui', 'dist')),
-)
+))
+
+# Serve UI Demo (if it exists) at .../ui
+ui_demo_dir = os.path.join(BASE_DIR, 'taccsite_ui', 'dist')
+if os.path.exists(ui_demo_dir):
+    STATICFILES_DIRS += (('ui', ui_demo_dir),)
 
 # User Uploaded Files Location.
 MEDIA_URL = '/media/'

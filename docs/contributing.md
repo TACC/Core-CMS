@@ -43,15 +43,14 @@ Only appointed team members may release versions.
 1. Create new branch for version bump.
 1. Update `CHANGELOG.md`.
 1. Update version via:\
-   `npm version N.N.N`
+  `npm version N.N.N`
 1. Commit, push, PR, review, merge.
 1. Create release and tag on GitHub.
-1. Replace Github's unannotated tag with an annotated one:
-   - `git pull`
-   - `git checkout vN.N.N`
-   - `git tag -d vN.N.N`
-   - `git tag -a vN.N.N -m "feat: vN.N.N"`
-   - `git push --tags --force`
+1. Annotate Github's tag:\
+  `bin/annotate-tag.sh vN.N.N`\
+  (where `N.N.N` is the version tag)
+1. Overwrite remote tag with annotated one:\
+  `git push --tags --force`
 
 <!-- Link Aliases -->
 
