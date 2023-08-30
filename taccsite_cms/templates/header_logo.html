@@ -1,5 +1,5 @@
 {# @var logo, className #}
-{% load staticfiles custom_portal_settings %}
+{% load static custom_portal_settings %}
 
 {% with settings.LOGO as logo %}
   {% with filename=logo|index:1 selectors=logo|index:2 targeturl=logo|index:3 targettype=logo|index:4 accessibility=logo|index:5 corstype=logo|index:6 visibility=logo|index:7 %}

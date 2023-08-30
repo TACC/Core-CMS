@@ -1,10 +1,6 @@
-@import url("@tacc/core-styles/src/lib/_imports/settings/font.css");
-
 :root {
-  --global-font-family--sans: var(--global-font-family--sans--cms);
-
   /* FAQ: Used by TACC/Core-Styles `s-header` */
-  /* FAQ: Overwritten by TACC/Core-CMS-Resource:/texascale-org `props.font` */
+  /* FAQ: Overwritten by TACC/Core-CMS-Resource:/texascale_org `props.font` */
   --global-font-family: var(--global-font-family--sans);
 
   /* To overwrite Boostrap */

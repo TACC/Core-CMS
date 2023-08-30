@@ -16,7 +16,7 @@ services:
       #   HACK: No confirmed support for dir globbing, so block all of `static/`
       - /code/taccsite_cms/static
       #   CAVEAT: CMS projects must add a line to ignore thier `...build/` dirs
-      - /code/taccsite_custom/example-cms/static
+      - /code/taccsite_custom/example_cms/static
 
   postgres:
     extends:

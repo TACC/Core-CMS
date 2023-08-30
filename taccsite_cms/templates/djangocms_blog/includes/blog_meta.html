@@ -16,9 +16,13 @@
     {% endif %}
     {# TACC (add class so CSS can target this element): #}
     <li class="date date-published">
-    {# /TACC #}
+      {# TACC (show date if published otherwise show "Unpublished"): #}
+      {% if post.date_published %}
+      {# /TACC #}
       {# TACC (add <span> and &nbsp; so whitespace can be stripped): #}
-      <span>{% trans "Published" %}</span>&nbsp;
+      {# TACC ("Published" vs "To be published"): #}
+      <span>{% if post.publish %}{% trans "Published" %}{% else %}{% trans "To be published" %}{% endif %}</span>&nbsp;
+      {# /TACC #}
       {# /TACC #}
       {# TACC (wrap with <time> tag because it should be so): #}
       <time datetime="{{ post.date_published }}"
@@ -28,13 +32,20 @@
       {# TACC (wrap with <time> tag because it should be so): #}
       </time>
       {# /TACC #}
+      {# TACC (show date if published otherwise show "Unpublished"): #}
+      {% else %}
+      <span>{% trans "Unpublished" %}</span>
+      {% endif %}
+      {# /TACC #}
     </li>
     {% if post.date_featured %}
     {# TACC (add class so CSS can target this element): #}
     <li class="date date-featured">
     {# /TACC #}
       {# TACC (add <span> and &nbsp; so whitespace can be stripped): #}
-      <span>{% trans "Published" %}</span>&nbsp;
+      {# TACC (fix from text "Published" to text "Featured"): #}
+      <span>{% trans "Featured" %}</span>&nbsp;
+      {# /TACC #}
       {# /TACC #}
       <time datetime="{{ post.date_featured }}"
             title="{{ post.date_featured }}">
@@ -60,6 +71,8 @@
                 {# /TACC #}
             {% endif %}
         {% endfor %}
+    {% else %}
+      <li class="category_none">{% trans "Uncategorized" %}</li>
     {% endif %}
 {# TACC (distinguish categories and tags via class): #}
 {# TACC (strip whitespace): #}

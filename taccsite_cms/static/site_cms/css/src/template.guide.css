@@ -5,7 +5,7 @@
 
 /* TRUMPS */
 
-@import url("_imports/trumps/s-document.css");
-@import url("_imports/trumps/s-guide-doc.css");
-@import url("_imports/trumps/s-inline-dl.css");
-@import url("_imports/trumps/u-nested-text-content.css");
+@import url("@tacc/core-styles/src/lib/_imports/trumps/s-document.css");
+@import url("@tacc/core-styles/src/lib/_imports/trumps/s-guide-doc.css");
+@import url("@tacc/core-styles/src/lib/_imports/trumps/s-inline-dl.css");
+@import url("@tacc/core-styles/src/lib/_imports/trumps/u-nested-text-content.css");

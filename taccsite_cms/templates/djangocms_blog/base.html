@@ -14,13 +14,23 @@
 {% endblock meta %}
 
 {% block content %}
-<link rel="stylesheet" href="{% static 'site_cms/css/build/app.blog.css' %}">
+
+{% if settings.TACC_CORE_STYLES_VERSION == 0 %}
+<link rel="stylesheet" href="{% static 'site_cms/css/build/site.app.blog.css' %}">
+{% elif settings.TACC_CORE_STYLES_VERSION >= 1 %}
+<style>
+  @import url("{% static 'site_cms/css/build/app.blog.css' %}") layer(project);
+</style>
+{% endif %}
+
 <div class="app app-blog
   {% if not settings.TACC_BLOG_SHOW_CATEGORIES %}no-categories{% endif %}
   {% if not settings.TACC_BLOG_SHOW_TAGS %}no-tags{% endif %}
   {% if post %} {% include './includes/blog_cats.html' with prefix='has-' %} {% include './includes/blog_tags.html' with prefix='has-' %}
   {% endif %}
 ">
+    {% include './tacc/layout-choice-form.html' with list_selector='.blog-list' %}
     {% block content_blog %}{% endblock %}
 </div>
+
 {% endblock content %}
