@@ -112,13 +112,7 @@ def set_group_perms():
 
     model_name = 'image'.lower().replace(' ', '')
     content_type = ContentType.objects.get(app_label='filer', model=model_name)
-    group.permissions.add( Permission.objects.get(name='Can add image', content_type=content_type) )
-    model_name = 'image'.lower().replace(' ', '')
-    content_type = ContentType.objects.get(app_label='filer', model=model_name)
     group.permissions.add( Permission.objects.get(name='Can change image', content_type=content_type) )
-    model_name = 'image'.lower().replace(' ', '')
-    content_type = ContentType.objects.get(app_label='filer', model=model_name)
-    group.permissions.add( Permission.objects.get(name='Can delete image', content_type=content_type) )
     model_name = 'image'.lower().replace(' ', '')
     content_type = ContentType.objects.get(app_label='filer', model=model_name)
     group.permissions.add( Permission.objects.get(name='Can view image', content_type=content_type) )
