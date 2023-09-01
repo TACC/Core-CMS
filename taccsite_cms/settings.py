@@ -21,6 +21,10 @@ from taccsite_cms._settings.form_plugin import (
     _INSTALLED_APPS as form_plugin_INSTALLED_APPS
 )
 
+########################
+# DJANGO
+########################
+
 SECRET_KEY = 'CHANGE_ME'
 def gettext(s): return s
 
