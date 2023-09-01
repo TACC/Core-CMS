@@ -35,9 +35,6 @@ DEBUG = True       # False for Prod.
 # ALLOWED_HOSTS = ['hostname.tacc.utexas.edu', 'host.ip.v4.address', '0.0.0.0', 'localhost', '127.0.0.1']   # In production.
 ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost', '*']   # In development.
 
-# Default portal authorization verification endpoint.
-CEP_AUTH_VERIFICATION_ENDPOINT = 'localhost'  # 'https://0.0.0.0:8000'
-
 # https://docs.djangoproject.com/en/3.0/ref/clickjacking/#how-to-use-it
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
