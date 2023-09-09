@@ -78,6 +78,7 @@ Styleguide Components.DjangoCMS.Blog.App
 .app-blog .attrs      { grid-area: attr }
 .app-blog .categories { grid-area: cats }
 .app-blog .tags       { grid-area: tags }
+.app-blog .links      { grid-area: link }
 
 .app-blog ul.post-detail {
   list-style: none;
@@ -139,6 +140,19 @@ Styleguide Components.DjangoCMS.Blog.App
   background-color: var(--global-color-primary--light);
 }
 
+
+
+/* Social Media */
+
+.app-blog .logos--social {
+    display: grid;
+    gap: var(--gap, 0);
+    grid-auto-flow: column;
+    justify-content: center;
+}
+.app-blog .logos--social svg {
+    height: 2.5rem;
+}
 
 
 

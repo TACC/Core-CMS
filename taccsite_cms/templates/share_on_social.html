@@ -1,14 +1,16 @@
 {# @var className #}
 
+{% with request.scheme|add:"://"|add:request.get_host|add:request.path as url %}
 <nav class="logos--social {{className}}">
-  <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.path }}" target="_blank" class="logos__facebook">
+  <a href="https://www.facebook.com/sharer/sharer.php?u={{ url }}" target="_blank" class="logos__facebook">
     <svg viewbox="0 0 25 25">
       <use href="/static/site_cms/img/org_logos/facebook.svg#facebook-icon"></use>
     </svg>
   </a>
-  <a href="https://www.linkedin.com/cws/share?url={{ request.path }}" target="_blank" class="logos__linkedin">
+  <a href="https://www.linkedin.com/cws/share?url={{ url }}" target="_blank" class="logos__linkedin">
     <svg viewbox="0 0 25 25">
       <use href="/static/site_cms/img/org_logos/linkedin.svg#linkedin-icon"></use>
     </svg>
   </a>
-<nav>
+</nav>
+{% endwith %}

@@ -36,7 +36,8 @@ Styleguide Components.DjangoCMS.Blog.App.Page
     'subh'
     'cats'
     'tags'
-    'attr';
+    'attr'
+    'link';
 }
 :--article-page header h1,
 :--article-page header h2 {
