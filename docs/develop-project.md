@@ -19,27 +19,11 @@ All CSS static files are built:
 
 This allows use of future-proof CSS via [Core-Styles].
 
-1. Enter Container:
-
-    ```sh
-    docker exec -it core_cms /bin/bash
-    # This opens a command prompt within the container.
-    ```
-
-2. Install Dependencies:
-
-    > **Note**
-    > Only necessary for a new container.
-
-    ```sh
-    npm ci
-    ```
-
-3. Build Assets:
-
-    ```sh
+```sh
+docker exec -it core_cms /bin/bash
+# That opens a command prompt within the container.
     npm run build:css --project="core-cms"
-    ```
+```
 
 ## Collect Static Files
 
