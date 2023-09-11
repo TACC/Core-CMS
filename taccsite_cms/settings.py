@@ -274,6 +274,12 @@ TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY = 'sample_value_e_g__mutlimedia__'
 TACC_BLOG_SHOW_ABSTRACT_TAG = 'sample_value_e_g__redirect__'
 
 ########################
+# TACC: SOCIAL MEDIA
+########################
+
+TACC_SOCIAL_SHARE_PLATFORMS = ['facebook', 'linkedin']
+
+########################
 # TACC: CORE STYLES
 ########################
 
@@ -682,5 +688,6 @@ SETTINGS_EXPORT = [
     'TACC_CORE_STYLES_VERSION',
     'TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY',
     'TACC_BLOG_SHOW_ABSTRACT_TAG',
+    'TACC_SOCIAL_SHARE_PLATFORMS',
     'SEARCH_QUERY_PARAM_NAME',
 ]
