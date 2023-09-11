@@ -145,13 +145,12 @@ Styleguide Components.DjangoCMS.Blog.App
 /* Social Media */
 
 .app-blog .logos--social {
-    display: grid;
-    gap: var(--gap, 0);
-    grid-auto-flow: column;
-    justify-content: center;
+  justify-content: end;
+  display: flex;
+  gap: 0.25em;
 }
 .app-blog .logos--social svg {
-    height: 2.5rem;
+  height: var(--global-font-size--x-large);
 }
 
 
