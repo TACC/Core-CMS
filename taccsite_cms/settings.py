@@ -469,6 +469,7 @@ def get_subdirs_as_module_names(path):
     for entry in os.scandir(path):
         is_app = (
             entry.path.find('_readme') == -1 and # explains common project dirs
+            entry.path.find('-org') == -1 and    # deprecated Texascale templates
             entry.path.find('-cms') == -1 and    # deprecated project templates
             entry.path.find('docs') == -1        # documentation beyond README
         )
