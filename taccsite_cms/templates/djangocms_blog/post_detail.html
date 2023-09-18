@@ -38,6 +38,11 @@
         {% block blog_meta %}
             {% include "djangocms_blog/includes/blog_meta.html" %}
         {% endblock %}
+        {# TACC (add social media sharing links): #}
+        {% block blog_share %}
+          {% include "share_on_social.html" with className="links" %}
+        {% endblock %}
+        {# /TACC #}
     </header>
     {# TACC (support custom media even with thumbnail): #}
     {# {% if not post.main_image_id %} #}
