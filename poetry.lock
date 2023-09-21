@@ -859,8 +859,8 @@ unidecode = "*"
 [package.source]
 type = "git"
 url = "https://github.com/TACC/djangocms-forms"
-reference = "95489d535b8e03c98fcbf9a3d848f1139c896241"
-resolved_reference = "95489d535b8e03c98fcbf9a3d848f1139c896241"
+reference = "fd7c7a33309c5b7cc380f392ec3344851c606bc2"
+resolved_reference = "fd7c7a33309c5b7cc380f392ec3344851c606bc2"
 
 [[package]]
 name = "djangocms-googlemap"
@@ -2476,4 +2476,4 @@ testing = ["func-timeout", "jaraco.itertools"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8,<4.0"
-content-hash = "3fa5254e66c9678e3b6ba581a2072f156c372af71960e410cae418639916fe58"
+content-hash = "b7cdae435a603549f92d1664ea7250c0d3ad58cb6283416d7de2c156cf10235a"
