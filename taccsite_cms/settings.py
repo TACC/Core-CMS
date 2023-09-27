@@ -390,7 +390,7 @@ INSTALLED_APPS = [
     # customize 'django.contrib.staticfiles'
     # SEE: https://stackoverflow.com/q/57921970/11817077
     # 'django.contrib.staticfiles',
-    'taccsite_cms.django.contrib.staticfiles_custom',
+    'taccsite_cms.django.contrib.staticfiles_custom.apps.TaccStaticFilesConfig',
     'django.contrib.messages',
 
     # key django CMS modules
