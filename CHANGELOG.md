@@ -9,6 +9,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ...
 
+## [3.12.0-beta.4] - 2023-09-27:  Django 4 Upgrade plus Misc. Features
+
+### Added
+
+- feat: restore css and js blocks (#716)
+- Bump Django version to 4.2 (#707)
+- feat: social media quick share links (inactive) (#711)
+- feat(management): text & media editor groups (#600)
+- feat: texascale, cms v3.12.0 beta (#713)
+- feat(taccsite_custom): neuronex-cms→_3dem_cms@3.12 (479ea0c)
+
+## Documentation
+
+- docs: [miscellaneous] (bea4943, bd7064b, 808fb14, 502fa3a, f1af7ad, 842cb66)
+
+### Fixed
+
+- Revert "feat: do not let news editors add plain images (#691)" (#715)
+
 ## [3.12.0-beta.3] - 2023-08-28: Fix UI Demo (For Real)
 
 > **Warning**
