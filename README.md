@@ -104,7 +104,13 @@ Set up a new local CMS instance.
 
 ## Update Project
 
-Update an existing local CMS instance.
+To update an existing CMS instance
+
+### New Major Version (or v3.12)
+
+Read [Upgrade Project] for developer instructions.
+
+### New Minor or Patch Version (or Branch)
 
 1. If CMS `Dockerfile` changed, rebuild Docker Containers:
 
@@ -173,5 +179,6 @@ To contribute, first read [How to Contirbute][Contributing].
 
 [Project Customization]: ./docs/project-customization.md
 [Develop Project]: ./docs/develop-project.md
+[Upgrade Project]: ./docs/upgrade-project.md
 [Debug Project]: ./docs/debug-project.md
 [Contributing]: ./docs/contributing.md
