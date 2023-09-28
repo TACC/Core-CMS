@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [3.12.0-beta.5] - 2023-09-28: Revert Django 4 Upgrade
 
+> **Warning**
+> To use this release, ensure your [CMS project is upgraded](https://github.com/TACC/Core-CMS-Resources/blob/ca1366b/docs/upgrade-project.md).
+
 ### Fixed
 
 - Revert "Bump Django version to 4.2 (#707)" (467a327)
