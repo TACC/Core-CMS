@@ -112,7 +112,7 @@ Read [Upgrade Project] for developer instructions.
 
 ### New Minor or Patch Version (or Branch)
 
-1. If CMS `Dockerfile` changed, rebuild Docker Containers:
+- If CMS `Dockerfile` changed, rebuild Docker Containers:
 
     ```sh
     make stop
@@ -120,14 +120,34 @@ Read [Upgrade Project] for developer instructions.
     make start
     ```
 
-2. If static assets or database models changed, update the Django Application:
+- If anything else changed, update the Django application:
 
     ```sh
     docker exec -it core_cms /bin/bash
-    # That opens a command prompt within the container.
-        python manage.py migrate
-        python manage.py collectstatic --no-input
+    # This opens a command prompt within the container.
     ```
+
+  Run relevant commands within the container:
+
+  - If **styles** changed:
+
+      ```sh
+      npm ci
+      npm run build:css --project="core-cms"
+      python manage.py collectstatic --no-input
+      ```
+
+  - If **assets** changed:
+
+      ```sh
+      python manage.py collectstatic --no-input
+      ```
+
+  - If **models** changed:
+
+      ```sh
+      python manage.py migrate
+      ```
 
 ## Develop Project
 

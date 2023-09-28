@@ -8,7 +8,8 @@
 
 ## from v3 to v4
 
-Upgrade your CMS database to Postgres v14.9.
+1. Upgrade your CMS database to Postgres v14.9.
+2. [Update Project]. (Assume everything changed.)
 
 ## from v3.N to v3.12
 
@@ -45,6 +46,10 @@ Then:
     +   ('custom-project-dir/templates/fullwidth.html', 'DEPRECATED Full Width'),
     ```
 
+### Update Project
+
+Follow [Update Project] instrcutions. (Assume everything changed.)
+
 ### After Deploy
 
 1. Change template of every page on project to **not** use deprecated template.
@@ -52,4 +57,8 @@ Then:
 
 ## from v2 to v3
 
-Undocumented. Contact a primary contributor for assistance.
+**Undocumented.** Contact a primary contributor for assistance.
+
+<!-- Link Aliases -->
+
+[Update Project]: ../README.md#new-minor-or-patch-version-or-branch
