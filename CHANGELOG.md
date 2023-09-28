@@ -9,6 +9,41 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ...
 
+## [4.0.0] - 2023-09-28: Django 3 & 4 Upgrade; New Features; New Styles
+
+## Added
+
+* feat: add djangocms_tacc_image_gallery by @wesleyboar in https://github.com/TACC/Core-CMS/pull/654
+* feat: core-styles v2.9.1 to v2.11.0 by @wesleyboar in https://github.com/TACC/Core-CMS/pull/671
+* feat(dev/tup-cms): django3, blog/news styles + related patterns by @wesleyboar in https://github.com/TACC/Core-CMS/pull/581
+* Update Django to v3.2 by @jarosenb in https://github.com/TACC/Core-CMS/pull/625
+* feat: v3.12.0-alpha.10 by @wesleyboar in https://github.com/TACC/Core-CMS/pull/675
+* feat: add instagram, hide twitter by @wesleyboar in https://github.com/TACC/Core-CMS/pull/680
+* enhance: improve admin UI permissions error text by @wesleyboar in https://github.com/TACC/Core-CMS/pull/693
+* feat(management): text & media editor groups by @wesleyboar in https://github.com/TACC/Core-CMS/pull/600
+* feat: texascale, cms v3.12.0 beta by @wesleyboar in https://github.com/TACC/Core-CMS/pull/713
+* feat: social media quick share links (inactive) by @wesleyboar in https://github.com/TACC/Core-CMS/pull/711
+* Bump Django version to 4.2 by @jarosenb in https://github.com/TACC/Core-CMS/pull/707
+* feat: restore css and js blocks by @wesleyboar in https://github.com/TACC/Core-CMS/pull/716
+
+## Fixed
+
+* fix(css): anchor around image not supporting margin by @wesleyboar in https://github.com/TACC/Core-CMS/pull/670
+* fix: render/style responsive video/audio player (…) by @wesleyboar in https://github.com/TACC/Core-CMS/pull/685
+* fix: do not serve ui demo unless it exists by @wesleyboar in https://github.com/TACC/Core-CMS/pull/688
+* fix: serve ui demo if it exists by @wesleyboar in https://github.com/TACC/Core-CMS/pull/692
+* hotfix: set SESSION_COOKIE_SECURE = True by @rstijerina in https://github.com/TACC/Core-CMS/pull/695
+* fix: our dev dependencies are actually for prod by @wesleyboar in https://github.com/TACC/Core-CMS/pull/708
+* fix: ui demo for core and clients by @wesleyboar in https://github.com/TACC/Core-CMS/pull/706
+
+## Documented
+
+* docs: simpler readme + add small docs by @wesleyboar in https://github.com/TACC/Core-CMS/pull/665
+* docs: paper trail for v3-10_v3-11/ (…) by @wesleyboar in https://github.com/TACC/Core-CMS/pull/682
+* docs: fix broken link (customize admin ui text) by @wesleyboar in https://github.com/TACC/Core-CMS/pull/694
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v3.11.6...v4.0.0
+
 ## [3.12.0-beta.5] - 2023-09-28: Revert Django 4 Upgrade
 
 > **Warning**
@@ -919,7 +954,8 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.12.0-beta.5...main
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.0.0...main
+[4.0.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.0.0
 [3.12.0-beta.5]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.0-beta.5
 [3.12.0-beta.4]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.0-beta.4
 [3.12.0-beta.3]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.0-beta.3
