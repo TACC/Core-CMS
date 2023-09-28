@@ -15,12 +15,11 @@
 
 ### Redirect Deprecated Templates
 
-**If** the custom project directory:
+**If** your custom project directory has any `templates/*.html` e.g.
 
-- has any `templates/*.html` e.g.
-  - `templates/standard.html`
-  - `templates/fullwidth.html`
-  - `templates/home.html`
+- `taccsite_custom/custom_project_dir/templates/standard.html`
+- `taccsite_custom/custom_project_dir/templates/fullwidth.html`
+- `taccsite_custom/custom_project_dir/templates/home.html`
 
 Then:
 
