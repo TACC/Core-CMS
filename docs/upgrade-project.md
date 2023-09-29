@@ -13,6 +13,25 @@
 
 ## from v3.N to v3.12
 
+1. [Rename Custom Project Directory](#rename-custom-project-directory)
+2. [Redirect Deprecated Templates](#redirect-deprecated-templates)
+3. [Update Project For Deploy](#update-project-for-deploy)
+4. [Clean Up After Deploy](#clean-up-after-deploy)
+
+### Rename Custom Project Directory
+
+**If** your custom project directory name has dashes, e.g.
+
+`taccsite_custom/custom-project-dir`
+
+**Then**:
+
+1. Rename all `custom-project-dir` directories to `custom_project_dir`.
+2. Update all `custom-project-dir` references to `custom_project_dir`.
+
+> **Important**
+> A custom project directory name is a Django application. A Django application name must be "a valid Python identifier".
+
 ### Redirect Deprecated Templates
 
 **If** your custom project directory has any `templates/*.html` e.g.
@@ -21,7 +40,7 @@
 - `taccsite_custom/custom_project_dir/templates/fullwidth.html`
 - `taccsite_custom/custom_project_dir/templates/home.html`
 
-Then:
+**Then**:
 
 1. Copy the templates to become deprecated templates:
     - from `custom_project_dir/templates`
@@ -45,11 +64,11 @@ Then:
     +   ('custom-project-dir/templates/fullwidth.html', 'DEPRECATED Full Width'),
     ```
 
-### Update Project
+### Update Project For Deploy
 
 Follow [Update Project] instrcutions. (Assume everything changed.)
 
-### After Deploy
+### Clean Up After Deploy
 
 1. Change template of every page on project to **not** use deprecated template.
 2. Remove its deprecated templates from repository.
