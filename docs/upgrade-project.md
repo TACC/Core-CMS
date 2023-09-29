@@ -9,7 +9,7 @@
 ## from v3 to v4
 
 1. Upgrade your CMS database to Postgres v14.9.
-2. [Update Project]. (Assume everything changed.)
+2. [Update Project] (Assume everything changed.)
 
 ## from v3.N to v3.12
 
