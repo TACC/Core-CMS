@@ -42,6 +42,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * docs: paper trail for v3-10_v3-11/ (…) by @wesleyboar in https://github.com/TACC/Core-CMS/pull/682
 * docs: fix broken link (customize admin ui text) by @wesleyboar in https://github.com/TACC/Core-CMS/pull/694
 * docs: manage styles and scripts by @wesleyboar in https://github.com/TACC/Core-CMS/pull/717
+* hotfix: turn off github pages for now by @wesleyboar in https://github.com/TACC/Core-CMS/pull/722
 
 **Full Changelog**: https://github.com/TACC/Core-CMS/compare/v3.11.6...v4.0.0
 
