@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ...
 
-## [4.0.0] - 2023-09-28: Django 3 & 4 Upgrade; New Features; New Styles
+## [4.0.0] - 2023-09-28: Django 3 & 4 Upgrade; New Features & Styles
 
 ## Added
 
