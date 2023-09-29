@@ -104,7 +104,7 @@ Set up a new local CMS instance.
 
 ## Update Project
 
-To update an existing CMS instance
+To update an existing CMS instance.
 
 ### New Major Version (or v3.12)
 
