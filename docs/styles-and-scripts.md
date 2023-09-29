@@ -35,7 +35,7 @@
 
     - either **before** content
 
-      ```html
+      ```django
       {% block assets_custom %}
         {{ block.super }}
         <!-- ... -->
@@ -44,7 +44,7 @@
 
       <details><summary>for entire <strong>site</strong></summary>
 
-      ```html
+      ```django
         <link rel="stylesheet" href="{% static '__PROJECT__/css/build/site.css' %}">
         <script src="{% static '__PROJECT__/js/site.js' %}"></script>
       ```
@@ -53,7 +53,7 @@
 
       <details><summary>for one <strong>template</strong></summary>
 
-      ```html
+      ```django
         <link rel="stylesheet" href="{% static '__PROJECT__/css/build/template.___.css' %}">
         <script src="{% static '__PROJECT__/js/template.___.js' %}"></script>
       ```
@@ -69,7 +69,7 @@
 
     - or **after** content
 
-      ```html
+      ```django
       {% block assets_custom_delayed %}
         {{ block.super }}
         <!-- ... -->
@@ -78,7 +78,7 @@
 
       <details><summary>for entire <strong>site</strong></summary>
 
-      ```html
+      ```django
         <link rel="stylesheet" href="{% static '__PROJECT__/css/build/site.css' %}">
         <script src="{% static '__PROJECT__/js/site.js' %}"></script>
       ```
@@ -87,7 +87,7 @@
 
       <details><summary>for one <strong>template</strong></summary>
 
-      ```html
+      ```django
         <link rel="stylesheet" href="{% static '__PROJECT__/css/build/template.___.css' %}">
         <script src="{% static '__PROJECT__/js/template.___.js' %}"></script>
       ```
@@ -113,7 +113,7 @@
 
 ##### Styles
 
-```html
+```django
 {% block css %}
   {{ block.super }}
   <style>
@@ -127,7 +127,7 @@
 
 ##### Script
 
-```html
+```django
 {% block js %}
   {{ block.super }}
   <script type="module">
