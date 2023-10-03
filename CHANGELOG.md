@@ -55,7 +55,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * Revert "Bump Django version to 4.2 (#707)" (467a327)
 
-## [3.12.0-beta.4] - 2023-09-27:  Django 4 Upgrade plus Misc. Features
+## [3.12.0-beta.4] - 2023-09-27: Django 4 Upgrade plus Misc. Features
 
 > **Warning**
 > To use this release, ensure your CMS project database uses Postgres v14.9.
