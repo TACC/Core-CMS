@@ -1,6 +1,6 @@
 {
   "name": "@tacc/core-cms",
-  "version": "3.12.0-beta.5",
+  "version": "4.0.0",
   "license": "MIT",
   "author": "TACC ACI WMA <wma-portals@gmail.com>",
   "description": "The TACC ACI-WMA Core CMS codebase used by TACC Portals.",
