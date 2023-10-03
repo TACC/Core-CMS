@@ -104,15 +104,9 @@ Set up a new local CMS instance.
 
 ## Update Project
 
-To update an existing CMS instance.
+Update an existing local CMS instance.
 
-### New Major Version (or v3.12)
-
-Read [Upgrade Project] for developer instructions.
-
-### New Minor or Patch Version (or Branch)
-
-- If CMS `Dockerfile` changed, rebuild Docker Containers:
+1. If CMS `Dockerfile` changed, rebuild Docker Containers:
 
     ```sh
     make stop
@@ -120,34 +114,14 @@ Read [Upgrade Project] for developer instructions.
     make start
     ```
 
-- If anything else changed, update the Django application:
+2. If static assets or database models changed, update the Django Application:
 
     ```sh
     docker exec -it core_cms /bin/bash
-    # This opens a command prompt within the container.
+    # That opens a command prompt within the container.
+        python manage.py migrate
+        python manage.py collectstatic --no-input
     ```
-
-  Run relevant commands within the container:
-
-  - If **styles** changed:
-
-      ```sh
-      npm ci
-      npm run build:css --project="core-cms"
-      python manage.py collectstatic --no-input
-      ```
-
-  - If **assets** changed:
-
-      ```sh
-      python manage.py collectstatic --no-input
-      ```
-
-  - If **models** changed:
-
-      ```sh
-      python manage.py migrate
-      ```
 
 ## Develop Project
 
@@ -199,6 +173,5 @@ To contribute, first read [How to Contirbute][Contributing].
 
 [Project Customization]: ./docs/project-customization.md
 [Develop Project]: ./docs/develop-project.md
-[Upgrade Project]: ./docs/upgrade-project.md
 [Debug Project]: ./docs/debug-project.md
 [Contributing]: ./docs/contributing.md
