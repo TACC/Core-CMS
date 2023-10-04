@@ -9,7 +9,12 @@
 ## from v3 to v4
 
 1. Upgrade your CMS database to Postgres v14.9.
-2. [Update Project] (Assume everything changed.)
+2. Update code that uses [features removed in Django 4](https://docs.djangoproject.com/en/4.2/releases/4.0/#features-removed-in-4-0) e.g.
+    - `django.conf.urls.url()`
+    - `django.utils.encoding.force_text()`
+    - `django.utils.translation.ugettext...`
+3. Bookmark [backwards incompatible changes in Django 4](https://docs.djangoproject.com/en/4.2/releases/4.0/#backwards-incompatible-changes-in-4-0).
+4. [Update Project] (Assume everything changed.)
 
 ## from v3.N to v3.12
 
