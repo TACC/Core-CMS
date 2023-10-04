@@ -4,7 +4,7 @@
 {% with settings.TACC_SOCIAL_SHARE_PLATFORMS as platforms %}
 <nav class="logos--social {{className}}">
   {% block text_before %}
-  <span class="logos__text-before">share this — </span>
+  <span class="logos__text-before">share this:</span>
   {% endblock text_before %}
 {% if platforms|length == 0 %}
   <!-- No entries found in settings.TACC_SOCIAL_SHARE_PLATFORMS -->
