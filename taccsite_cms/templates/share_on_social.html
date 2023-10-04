@@ -3,6 +3,9 @@
 {% with request.scheme|add:"://"|add:request.get_host|add:request.path as url %}
 {% with settings.TACC_SOCIAL_SHARE_PLATFORMS as platforms %}
 <nav class="logos--social {{className}}">
+  {% block text_before %}
+  <span class="logos__text-before">share this:</span>
+  {% endblock text_before %}
 {% if platforms|length == 0 %}
   <!-- No entries found in settings.TACC_SOCIAL_SHARE_PLATFORMS -->
 {% else %}
@@ -20,6 +23,15 @@
     </svg>
   </a>
   {% endif %}
+  {% if 'email' in platforms %}
+  <a href="mailto:?body={{ url }}" target="_blank" class="logos__email">
+    <svg viewbox="0 0 25 25">
+      <use href="/static/site_cms/img/org_logos/email.svg#email-icon"></use>
+    </svg>
+  </a>
+  {% endif %}
+  {% block text_after %}
+  {% endblock text_after %}
 {% endif %}
 </nav>
 {% endwith %}

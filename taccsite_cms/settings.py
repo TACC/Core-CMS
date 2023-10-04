@@ -279,7 +279,7 @@ TACC_BLOG_SHOW_ABSTRACT_TAG = 'sample_value_e_g__redirect__'
 
 # TODO: Enable ONLY after TUP-590
 TACC_SOCIAL_SHARE_PLATFORMS = []
-# TACC_SOCIAL_SHARE_PLATFORMS = ['facebook', 'linkedin']
+# TACC_SOCIAL_SHARE_PLATFORMS = ['facebook', 'linkedin', 'email']
 
 ########################
 # TACC: CORE STYLES
