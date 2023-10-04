@@ -9,9 +9,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ...
 
+## [4.1.0] - 2023-10-04: New E-Mail Share Link, Full-Size Social Icons
+
+### Added
+
+* feat(taccsite_custom): texascale social media link by @wesleyboar in https://github.com/TACC/Core-CMS/pull/725
+
+### Documented
+
+* docs: upgrade-project django 4 removed features (01db7dd0)
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.0.0...v4.1.0
+
 ## [4.0.0] - 2023-09-28: Django 3 & 4 Upgrade; New Features & Styles
 
-## Added
+### Added
 
 * feat: add djangocms_tacc_image_gallery by @wesleyboar in https://github.com/TACC/Core-CMS/pull/654
 * feat: core-styles v2.9.1 to v2.11.0 by @wesleyboar in https://github.com/TACC/Core-CMS/pull/671
@@ -26,7 +38,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Bump Django version to 4.2 by @jarosenb in https://github.com/TACC/Core-CMS/pull/707
 * feat: restore css and js blocks by @wesleyboar in https://github.com/TACC/Core-CMS/pull/716
 
-## Fixed
+### Fixed
 
 * fix(css): anchor around image not supporting margin by @wesleyboar in https://github.com/TACC/Core-CMS/pull/670
 * fix: render/style responsive video/audio player (…) by @wesleyboar in https://github.com/TACC/Core-CMS/pull/685
@@ -36,7 +48,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * fix: our dev dependencies are actually for prod by @wesleyboar in https://github.com/TACC/Core-CMS/pull/708
 * fix: ui demo for core and clients by @wesleyboar in https://github.com/TACC/Core-CMS/pull/706
 
-## Documented
+### Documented
 
 * docs: simpler readme + add small docs by @wesleyboar in https://github.com/TACC/Core-CMS/pull/665
 * docs: paper trail for v3-10_v3-11/ (…) by @wesleyboar in https://github.com/TACC/Core-CMS/pull/682
@@ -956,7 +968,8 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.0.0...main
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.1.0...main
+[4.1.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.1.0
 [4.0.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.0.0
 [3.12.0-beta.5]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.0-beta.5
 [3.12.0-beta.4]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.0-beta.4
