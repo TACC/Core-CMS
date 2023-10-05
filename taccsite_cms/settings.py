@@ -21,6 +21,10 @@ from taccsite_cms._settings.form_plugin import (
     _INSTALLED_APPS as form_plugin_INSTALLED_APPS
 )
 
+########################
+# DJANGO
+########################
+
 SECRET_KEY = 'CHANGE_ME'
 def gettext(s): return s
 
@@ -34,9 +38,6 @@ DEBUG = True       # False for Prod.
 # Specify allowed hosts or use an asterisk to allow any host and simplify the config.
 # ALLOWED_HOSTS = ['hostname.tacc.utexas.edu', 'host.ip.v4.address', '0.0.0.0', 'localhost', '127.0.0.1']   # In production.
 ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost', '*']   # In development.
-
-# Default portal authorization verification endpoint.
-CEP_AUTH_VERIFICATION_ENDPOINT = 'localhost'  # 'https://0.0.0.0:8000'
 
 # https://docs.djangoproject.com/en/3.0/ref/clickjacking/#how-to-use-it
 X_FRAME_OPTIONS = 'SAMEORIGIN'
@@ -138,7 +139,7 @@ LOGGING = {
 }
 
 ########################
-# (some) CMS SETTINGS
+# DJANGO CMS SETTINGS
 ########################
 
 SITE_ID = 1
@@ -273,6 +274,14 @@ TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY = 'sample_value_e_g__mutlimedia__'
 TACC_BLOG_SHOW_ABSTRACT_TAG = 'sample_value_e_g__redirect__'
 
 ########################
+# TACC: SOCIAL MEDIA
+########################
+
+# TODO: Enable ONLY after TUP-590
+TACC_SOCIAL_SHARE_PLATFORMS = []
+# TACC_SOCIAL_SHARE_PLATFORMS = ['facebook', 'linkedin', 'email']
+
+########################
 # TACC: CORE STYLES
 ########################
 
@@ -299,10 +308,10 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'taccsite_custom', '*', 'static')
 ))
 
-# If the UI Pattern Library exists, serve it at .../ui
-staticfiles_dir_ui = os.path.join(BASE_DIR, 'taccsite_ui', 'dist')
-if os.path.exists(staticfiles_dir_ui):
-    STATICFILES_DIRS += (('ui', staticfiles_dir_ui),)
+# Serve UI Demo (if it exists) at .../ui
+ui_demo_dir = os.path.join(BASE_DIR, 'taccsite_ui', 'dist')
+if os.path.exists(ui_demo_dir):
+    STATICFILES_DIRS += (('ui', ui_demo_dir),)
 
 # User Uploaded Files Location.
 MEDIA_URL = '/media/'
@@ -381,7 +390,7 @@ INSTALLED_APPS = [
     # customize 'django.contrib.staticfiles'
     # SEE: https://stackoverflow.com/q/57921970/11817077
     # 'django.contrib.staticfiles',
-    'taccsite_cms.django.contrib.staticfiles_custom',
+    'taccsite_cms.django.contrib.staticfiles_custom.apps.TaccStaticFilesConfig',
     'django.contrib.messages',
 
     # key django CMS modules
@@ -468,6 +477,7 @@ def get_subdirs_as_module_names(path):
     for entry in os.scandir(path):
         is_app = (
             entry.path.find('_readme') == -1 and # explains common project dirs
+            entry.path.find('-org') == -1 and    # deprecated Texascale templates
             entry.path.find('-cms') == -1 and    # deprecated project templates
             entry.path.find('docs') == -1        # documentation beyond README
         )
@@ -681,5 +691,6 @@ SETTINGS_EXPORT = [
     'TACC_CORE_STYLES_VERSION',
     'TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY',
     'TACC_BLOG_SHOW_ABSTRACT_TAG',
+    'TACC_SOCIAL_SHARE_PLATFORMS',
     'SEARCH_QUERY_PARAM_NAME',
 ]
