@@ -133,34 +133,34 @@
   <p>The Core portal utilizes a wide variety of technologies developed by multiple technology vendors. Below is a list of the primary libraries, frameworks and APIs leveraged in the core portal tech stack.</p>
 
   <dl class="s-inline-dl">
+    <dt>React</dt>
+      <dd>The JavaScript framework providing all client-side functionality. This is the broswer-based client the user interacts with when accessing the portal.</dd>
+
     <dt>NginX</dt>
-      <dd>When user sends http request to call the CEP URL, it goes to nginx webserver, a proxy, intermediary for requests from clients seeking resources from other&nbsp;servers. Nginx carry the request to the Web Server Gateway.</dd>
+      <dd>The nginx webserver is as a proxy for all portal users, acting as intermediary for requests from clients seeking resources from the server. Nginx curries the request to the appropriate backend server.</dd>
 
     <dt>WSGI</dt>
-      <dd>Web Server Gateway Interface, a calling convention for a web hosting server to forward requests to web applications or frameworks written in the Python programming language. It forwards the CEP user request to Django.</dd>
+      <dd>Web Server Gateway Interface, a calling convention for a web hosting server to forward requests to web applications or frameworks written in the Python programming language. It forwards the CEP user request to DjangoCMS and Django as appropriate.</dd>
+
+    <dt>DjangoCMS</dt>
+    <dd>The Content Management System used in the core portal architecture for all static web content and portal project branding.</dd>
 
     <dt>Django</dt>
-      <dd>A backend server manages the requests and response cycle. Pass the CEP user request to Angular and the return back information (Python base)</dd>
-
-    <dt>Angular</dt>
-      <dd>The JavaScript framework taking care of all the frontend client-side requests, activities that taking place on that page, Requests method such as get, post, put.</dd>
+    <dd>A backend server application framework that manages the requests and response cycle. Django provides all of the functionality (exposed via the React client) for interacting with the TACC ecosystem, TAPIS APIs and any integrated portal resources.</dd>
 
     <dt>PostgreSQL</dt>
-      <dd>The object-relational database management system</dd>
+    <dd>The object-relational database management system that supports all CEP portals.</dd>
 
-    <dt>Agave Platform</dt>
-      <dd>is an open source, science-as-a-service API platform, securely manage, move, and share data metadata, shared high performance computing (HPC) Cloud, and Big Data resources under a single, web-friendly REST API. Run code, simplifies building web portals that use back-end computing, and run executable systems.</dd>
+    <dt>TAPIS Project</dt>
+    <dd>TAPIS is an open source, science-as-a-service API platform, to securely manage data/metadata, and expose high performance computing (HPC) resources under a single, web-friendly REST API. The TAPIS API simplifies building web portals that use back-end computing and run remote jobs against execution systems.</dd>
 
-    <dt>RABBITMQ</dt>
-      <dd>The portal Messages Broker, enterprise messaging system modeled on the Advanced Message Queuing Protocol (AMQP) standard. a message broker that acts as an intermediary platform to processing communication between two applications.</dd>
+    <dt>RabbitMQ</dt>
+    <dd>The portal Message Broker, RabbitMQ provides enterprise messaging system modeled on the Advanced Message Queuing Protocol (AMQP) standard. It functions as a message broker that acts as an intermediary platform to processing communication between two applications (in this case between Django and Celery Workers, which execute all tasks asynchronously for the portal).</dd>
 
-    <dt>CELERY</dt>
-      <dd>A Distributed message passing queue.</dd>
+    <dt>Celery</dt>
+    <dd>A Distributed message passing queue for distributing asynchronous processes across execution resources to enable non-blocking code execution in Django and support SPA-like behavior in the React client.</dd>
 
     <dt>HPC</dt>
-      <dd>High Performance Computers, TACC super computer resources (Frontera, Stampede, etc.)</dd>
-
-    <dt>CMS</dt>
-      <dd>The Content Management System used in the core portal.</dd>
+    <dd>High Performance Computers are the primary resource available at TACC in the form of Frontera, Stampede2, and Longhorn6, to name only a few available HPC systems. Different projects target different HPC resources based on the kind of research and code execution workflows required by each individual project.</dd>
   </dl>
 {% endblock guide %}
