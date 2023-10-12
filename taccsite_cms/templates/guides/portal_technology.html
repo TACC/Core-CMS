@@ -5,36 +5,40 @@
 
   <h2>Portal Overview</h2>
 
-  <p>CEP, Core Experience Portal, is the core engine for all TACC portal projects. The primary goal of the Core Portal project is to establish a codebase that can be used as a springboard for all future portal projects undertaken by TACC. By establishing a common codebase for all portal efforts, we can better maintaining alignment between the core capabilities and technologies supported across all TACC portals. There will be unique requirements in some portal projects, but CEP should provide an "out-of-the-box" framework for rapidly deploying a new portal project with all the common capabilities already in place and compliant with current best practices and conventions at TACC.</p>
+  <p>The TACC CEP, short for Core Experience Portal, is the core engine for all TACC portal projects. The primary objective for the Core Experience Portal is to establish and grow a codebase that can be used as a common baseline for all future portal projects undertaken at TACC. By cultivating this common codebase for all of our portal projects, we maintain better alignment between the core capabilities and technologies supported across all of the TACC portals. While some projects do have unique requirements, CEP provides an "out-of-the-box" framework for rapidly deploying a ready-to-use project infrastructure that includes all the common TACC portal capabilities pre-configured and in compliance with TACC's current best practices.</p>
 
-  <h3>Common Portal Capabilities:</h3>
+  <h3>Common Portal Capabilities</h3>
 
   <ul>
-    <li><strong>Dedicated VM</strong> resources for each portal (varies by portal requirements)</li>
-    <li>An <strong>isolated tenant</strong> for integration into the TACC ecosystem via the portal</li>
-    <li>A <strong>CMS</strong> for adding/editing content within static portal pages</li>
-    <li>Integrated <strong>Elastic Search</strong></li>
-    <li>An <strong>Issue Tracking &amp; Ticketing System</strong> (integrated with the TACC RT ticketing system)</li>
-    <li>User account <strong>authentication</strong> (requires a TACC account)</li>
-    <li>A user-based <strong>Dashboard</strong> to monitor project activity and resource utilization</li>
-    <li>A shared <strong>Community Data</strong> storage system for collaborative data</li>
-    <li>A <strong>Private Data</strong> storage system for individual data</li>
-    <li><strong>Execution Systems</strong> for running applications</li>
-    <li>An <strong>Application Launcher</strong> for accessing public and private applications</li>
-    <li>A shared <strong>My Projects</strong> storage system for non-public group projects</li>
+    <li><strong>Dedicated VM</strong> resources for each portal (varies by portal requirements).</li>
+    <li>An <strong>Isolated Tenant</strong> for seamless integration of the portal into the TACC ecosystem.</li>
+    <li>A <strong>CMS</strong> for adding and editing content within static portal pages.</li>
+    <li>Integrated <strong>Search</strong> capability using a variety of available technologies.</li>
+    <li>An <strong>Issue Tracking &amp; Ticketing System</strong> integrated into the TACC RT ticketing system.</li>
+    <li><strong>User Authentication</strong> and onboarding controls for portal access (requires a TACC account).</li>
+    <li>A user <strong>Dashboard</strong> to monitor project activity and resource utilization.</li>
+    <li>A shared <strong>Community Data</strong> storage system for collaborative data access.</li>
+    <li>A <strong>Private Data</strong> storage system for an individual user's data.</li>
+    <li><strong>Execution Systems</strong> for running applications on TACC resources.</li>
+    <li>An <strong>Application Launcher</strong> for accessing public and private applications.</li>
+    <li>A shared <strong>My Projects</strong> storage system for non-public group projects.</li>
     <li>A <strong>Public Data</strong> storage area for unauthenticated access to published work or data sets.</li>
   </ul>
 
-  <h3>CEP Major Components:</h3>
+  <h3>CEP Major Components</h3>
 
   <ul>
-    <li>General Content Management</li>
+    <li>Content Management</li>
     <li>My Account</li>
     <li>My Dashboard</li>
     <li>Data Files (Data Depot)</li>
     <li>Applications (workspace)</li>
     <li>Search</li>
     <li>Notifications</li>
+    <li>Allocations</li>
+    <li>Jobs History</li>
+    <li>Systems Status</li>
+    <li>Portal Documentation & Guides</li>
   </ul>
 
   <p><em>Note: Any additional portal capabilities required by a project need to be identified and planned for independently.</em></p>
@@ -46,15 +50,12 @@
   <dl class="s-inline-dl">
     <dt>Layer 4</dt>
     <dd>The user-facing web portal that enables users to interact with Agave through a browser-based GUI.</dd>
-
     <dt>Layer 3</dt>
     <dd>The Agave API that exposes access to Layer 2 and Layer 1 resources over a RESTful API as well as via a CLI for programmatic interaction with resources.</dd>
-
     <dt>Layer 2</dt>
     <dd>The middleware service that enables data management, job creation, and job scheduling (eg. Slurm, Kubernetes) across all layer 1 resources.</dd>
-
     <dt>Layer 1</dt>
-    <dd>The physical infrastructure (storage, HPC and Cloud systems) where data and applications are stored, manipulated, and executed (Corral, Stampede2, Lonestar5, etc.).</dd>
+    <dd>The physical infrastructure (storage, HPC and cloud systems) where data and applications are stored, manipulated, and executed (Corral, Frontera, Stampede2, Lonestar6, etc.).</dd>
   </dl>
 
   <p>
