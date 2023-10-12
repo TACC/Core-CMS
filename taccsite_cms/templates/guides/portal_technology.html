@@ -92,39 +92,41 @@
 
   <h3>Web Portal</h3>
 
-  <p>A web-based portal using TAPIS to manage apps, data storage, reconfigurable workflows, and HPC resource interactions. The architecture for the web portal provides data management, analysis, and simulation capabilities to users through a unified web interface. The dashboard provides an overview of jobs, data storage, allocations, and system resource status. Users will primarily interact with the portal under the <em>My Account</em> view or the <em>My Dashboard</em> view. The portal dashboard includes dedicated interfaces for <em>Data Files</em>, <em>Applications</em>, <em>Allocations</em>, <em>History</em>, and <em>System Status</em>.</p>
+  <p>A web-based portal using TAPIS to manage apps, data storage, reconfigurable workflows, and HPC resource interactions. The architecture for the web portal provides data management, analysis, and simulation capabilities to users through a unified web interface. The dashboard provides an overview of jobs, data storage, allocations, and system resource status. Users will primarily interact with the portal under the <em>My Account</em> view or the <em>My Dashboard</em> view, which includes dedicated interfaces for <em>Data Files</em>, <em>Applications</em>, <em>Allocations</em>, <em>History</em>, and <em>System Status</em>.</p>
 
   <h3>My Dashboard</h3>
 
-  <p>The dashboard displays availability of TACC resources, and user allocation usages. The CEP infrastructure runs on TACC hosted Virtual Machines, Django/Angular web portal with responsive layout. Every Portal project will have a dedicated VM resources. system status instrumentation will be provided via APIs. The AngularJS framework works by first reading the HTML page, which has additional custom tag attributes embedded into it. Angular interprets those attributes as directives to bind input or output parts of the page to a model that is represented by standard JavaScript variables. The values of those JavaScript variables can be manually set within the code, or retrieved from static or dynamic JSON resources.</p>
+  <p>The dashboard presents users with a unified interface to enable their research. The <em>Data Files</em> view is where users can manage their data and shared data resources. The <em>Applications</em> view allows users to select and execute various applications (both remote execution and interactive jobs). The <em>Allocations</em> view allows users to view and request available allocation resources for their projects as well as monitor who has access to said resources. The <em>History</em> view logs all jobs the user has executed (or is currently executing) with options to view the job details and output location. The <em>System Status</em> view displays detailed operational status information about the available HPC systems, including queue states, jobs currently running/waiting in queue, and the number of idle nodes on the resource.</p>  
 
   <h3>Data Files</h3>
 
-  <p>Data Files is a collection of storage spaces where user and project data are located, stored, and ultimately organized by users to curate publications and share information. Data Repository is the place where experimental and simulation results are stored for long term. Working storage is the area to share and collaborate with data that is not yet published, Workspace to allow for the analysis of data, a gateway to large scale HPC resources and simulation tools. The data is organized in three categories:</p>
+  <p>Data Files is a collection of storage spaces where user and project data are located, stored, and organized by users to curate publications and share information. These storage systems are integrated into the portal such that users can store research and experimental or collected data for ongoing projects, share their data with other portal users to foster collaboration on unpublished research, use their data as inputs for scheduled jobs or interactive analysis, and in some cases share the findings with the public. There are five categories of storage system in the portal:</p>
 
   <ul>
-    <li><strong>My Data</strong> drive hosts any data the user decides to store there. This is also the default storage device for application output data from the Workspace. Within the MyData space, users can organize, manipulate, view, copy the data to an external storage resource.</li>
-    <li><strong>My Projects</strong> view displays the projects the user has created or has been shared with by another team member. Within this scope, files associated with a specific project can be manipulated, tagged, organized, and published through the Data Curation workflow, where publications automatically receive a DOI.</li>
-    <li><strong>Community Data</strong> view displays non-curated user-contributed data for public use.</li>
+    <li><em>My Data</em> systems can exist on Work or Scratch. These systems host data that is only accessible to the authenticated portal user. This is the default storage system for all application output data. Within the MyData space, users can organize, manipulate, view, and copy the data to other storage resources.</li>
+    <li><em>Shared Workspaces</em> display any workspaces the user has created or that another user has shared with the user. Within this context, files associated with a specific project can be manipulated, tagged, organized, and published through the Data Curation workflow, where publications automatically receive a DOI.</li>
+    <li><em>Community Data</em> displays non-curated user-contributed data shared with all users who have access to the portal.</li>
+    <li><em>Public Data</em> exposes curated data for making research findings publicly available.</li>
+    <li><em>Cloud storage</em> systems expose third-party storage resources that have been integrated into the portal user's account (i.e. - Google Drive, Box, UT Box).
   </ul>
 
   <h3>Applications</h3>
 
-  <p>APPS are executable code available for invocation through Agave’s Jobs service on a specific execution system. If a single code needs to be run on multiple systems, each combination and system needs to be defined as an app. Code that can be forked at the command line or submitted to a batch scheduler can be registered as an Agave app and run through the Jobs service. The user sends a request by filling in the application inputs and job details on CEP portal. The app is packaged with 3 files:</p>
+  <p>Applications are executable code available for invocation through the TAPIS Jobs service on a specific execution system. If a single code needs to be run on multiple systems, each combination and system needs to be defined as an app. Code that can be forked at the command line or submitted to a batch scheduler can be registered as a TAPIS app and run through the Jobs service. The user sends a request by populating the application inputs and job details in the portal. Applications are packaged together using three files:</p>
 
   <dl class="s-inline-dl  u-nested-text-content">
-    <dt>App.json</dt><dd>JSON file with application definitions and parameters such as (name, version, label).</dd>
-    <dt>Wrapper.sh</dt><dd>wrapper file, shell script which executes the job on HPC/Docker.</dd>
-    <dt>Test.sh</dt><dd>runs a test before the job is launched and cleans up the files.</dd>
+    <dt>App.json</dt><dd>A JSON file with application definitions and input parameters (i.e. - name, version, label).</dd>
+    <dt>Wrapper.sh</dt><dd>A shell script which executes the job on the targeted resource (i.e. - an HPC system or virtualized container).</dd>
+    <dt>Test.sh</dt><dd>A test script that is run before the job is launched to validate job inputs and parameters.</dd>
   </dl>
 
   <h3>Notifications</h3>
 
-  <p>Notification Bell enables the user to view information and status of submitted jobs.</p>
+  <p>The dashboard includes a notification icon (to the right of the History menu link) that indicates the number of unviewed notifications the use has. Selecting the history area enables the user to view the status and detailed information about all submitted jobs.</p>
 
   <h3>Search</h3>
 
-  <p>CEP has a multi-tenant capable full-text search engine with an HTTP web interface and schema-free JSON documents based on ElasticSearch. Users can search for data files, or text.</p>
+  <p>CEP has a multi-tenant capable full-text search engine based on ElasticSearch and Google. Users can search for data files or text that appears on static content pages in the CMS or within the names of files that are stored on the available storage systems for the given user.</p>
 
   <h2>Environment</h2>
 
