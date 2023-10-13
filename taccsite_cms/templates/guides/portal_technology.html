@@ -115,8 +115,8 @@
   <p>Applications are executable code available for invocation through the TAPIS Jobs service on a specific execution system. If a single code needs to be run on multiple systems, each combination and system needs to be defined as an app. Code that can be forked at the command line or submitted to a batch scheduler can be registered as a TAPIS app and run through the Jobs service. The user sends a request by populating the application inputs and job details in the portal. Applications are packaged together using three files:</p>
 
   <dl class="s-inline-dl  u-nested-text-content">
-    <dt>App.json</dt><dd>A JSON file with application definitions and input parameters (i.e. - name, version, label).</dd>
-    <dt>Wrapper.sh</dt><dd>A shell script which executes the job on the targeted resource (i.e. - an HPC system or virtualized container).</dd>
+    <dt>App.json</dt><dd>A JSON file with application definitions and input parameters (i.e. name, version, label).</dd>
+    <dt>Wrapper.sh</dt><dd>A shell script which executes the job on the targeted resource (i.e. an HPC system or virtualized container).</dd>
     <dt>Test.sh</dt><dd>A test script that is run before the job is launched to validate job inputs and parameters.</dd>
   </dl>
 
