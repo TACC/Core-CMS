@@ -2,8 +2,8 @@
 .c-button--secondary,
 .c-button--tertiary,
 .c-button--is-active {
-  padding: 10px 20px;
+  padding: 10px 30px;
 
-  font-size: var(--global-font-size--small);
+  font-size: var(--global-font-size--x-small);
   text-transform: uppercase;
 }
