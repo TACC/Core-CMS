@@ -28,17 +28,17 @@
   <h3>CEP Major Components</h3>
 
   <ul>
-    <li>Content Management</li>
+    <li><abbr>CMS</abbr> (Content Management System)</li>
     <li>My Account</li>
-    <li>My Dashboard</li>
-    <li>Data Files (Data Depot)</li>
+    <li>Dashboard</li>
+    <li>Data Files</li>
     <li>Applications</li>
     <li>Search</li>
     <li>Notifications</li>
     <li>Allocations</li>
     <li>Jobs History</li>
     <li>Systems Status</li>
-    <li>Portal Documentation & Guides</li>
+    <li>Portal Documentation &amp; Guides</li>
   </ul>
 
   <p><em>Note: Any additional portal capabilities required by a project need to be identified and planned for independently.</em></p>
@@ -90,49 +90,53 @@
 
   <h2>Frontend (Client-side)</h2>
 
+  <p>A web-based portal using TAPIS to manage apps, data storage, reconfigurable workflows, and HPC resource interactions. The architecture for the web portal provides data management, analysis, and simulation capabilities to users through a unified web interface. The dashboard provides an overview of jobs, data storage, allocations, and system resource status. Users will primarily interact with the portal under the <em>My Account</em> view or the <em>My Dashboard</em> view, which includes dedicated interfaces for <em>Data Files</em>, <em>Applications</em>, <em>Allocations</em>, <em>History</em>, and <em>System Status</em>.</p>
+
   <dl class="s-inline-dl">
-  <dt>Web Portal</dt>
-  <dd>A web-based portal using TAPIS to manage apps, data storage, reconfigurable workflows, and HPC resource interactions. The architecture for the web portal provides data management, analysis, and simulation capabilities to users through a unified web interface. The dashboard provides an overview of jobs, data storage, allocations, and system resource status. Users will primarily interact with the portal under the <em>My Account</em> view or the <em>My Dashboard</em> view, which includes dedicated interfaces for <em>Data Files</em>, <em>Applications</em>, <em>Allocations</em>, <em>History</em>, and <em>System Status</em>.</dd>
+    <dt>My Account</dt>
+    <dd>This view provides information about the user's profile, password management, activated licenses for applications, and integrated third-party applications/resources.</dd>
 
-  <dt>My Account</dt>
-  <dd>This view provides information about the user's profile, password management, activated licenses for applications, and integrated third-party applications/resources.</dd>
+    <dt>Dashboard</dt>
+    <dd>
+      <p>The dashboard presents users with a unified interface to enable their research.</p>
+      <dl class="s-inline-dl  u-nested-text-content">
+        <dt>Data Files</dt>
+        <dd>This view is where users can manage their data and shared data resources.</dd>
+        <dt>Applications</dt><dd>This view allows users to select and execute various applications (both remote execution and interactive jobs).</dd>
+        <dt>Allocations</dt><dd>This view allows users to view and request available allocation resources for their projects as well as monitor who has access to said resources.</dd>
+        <dt>History</dt><dd>This view logs all jobs the user has executed (or is currently executing) with options to view the job details and output location.</dd>
+        <dt>System Status</dt><dd>This view displays detailed operational status information about the available HPC systems, including queue states, jobs currently running/waiting in queue, and the number of idle nodes on the resource.</dd>
+      </dl>
+    </dd>
 
-  <dt>My Dashboard</dt>
-  <dd>The dashboard presents users with a unified interface to enable their research.</dd>
+    <dt>Data Files</dt>
+    <dd>
+      <p>Data Files is a collection of storage spaces where user and project data are located, stored, and organized by users to curate publications and share information. These storage systems are integrated into the portal such that users can store research and experimental or collected data for ongoing projects, share their data with other portal users to foster collaboration on unpublished research, use their data as inputs for scheduled jobs or interactive analysis, and in some cases share the findings with the public. There are five categories of storage system in the portal:</p>
+      <dl class="s-inline-dl  u-nested-text-content">
+        <dt>My Data</dt><dd>These systems can exist on Work or Scratch. These systems host data that is only accessible to the authenticated portal user. This is the default storage system for all application output data. Within the MyData space, users can organize, manipulate, view, and copy the data to other storage resources.</dd>
+        <dt>Shared Workspaces</dt><dd>Displays any workspaces the user has created or that another user has shared with the user. Within this context, files associated with a specific project can be manipulated, tagged, organized, and published through the Data Curation workflow, where publications automatically receive a DOI.</dd>
+        <dt>Community Data</dt><dd>Displays non-curated user-contributed data shared with all users who have access to the portal.</dd>
+        <dt>Public Data</dt><dd>Exposes curated data for making research findings publicly available.</dd>
+        <dt>Cloud storage</dt><dd>These systems expose third-party storage resources that have been integrated into the portal user's account (i.e. - Google Drive, Box, UT Box).</dd>
+      </dl>
+    </dd>
 
-  <dl class="s-inline-dl  u-nested-text-content">
-    <dt>Data Files</dt><dd>This view is where users can manage their data and shared data resources.</dd>
-    <dt>Applications</dt><dd>This view allows users to select and execute various applications (both remote execution and interactive jobs).</dd>
-    <dt>Allocations</dt><dd>This view allows users to view and request available allocation resources for their projects as well as monitor who has access to said resources.</dd>
-    <dt>History</dt><dd>This view logs all jobs the user has executed (or is currently executing) with options to view the job details and output location.</dd>
-    <dt>System Status</dt><dd>This view displays detailed operational status information about the available HPC systems, including queue states, jobs currently running/waiting in queue, and the number of idle nodes on the resource.</dd>
+    <dt>Applications</dt>
+    <dd>
+      <p>Applications are executable code available for invocation through the TAPIS Jobs service on a specific execution system. If a single code needs to be run on multiple systems, each combination and system needs to be defined as an app. Code that can be forked at the command line or submitted to a batch scheduler can be registered as a TAPIS app and run through the Jobs service. The user sends a request by populating the application inputs and job details in the portal. Applications are packed as three distinct components:</p>
+      <dl class="s-inline-dl  u-nested-text-content">
+        <dt>App.json</dt><dd>A JSON file with application definitions and input parameters (i.e. name, version, label).</dd>
+        <dt>Wrapper.sh</dt><dd>A shell script which executes the job on the targeted resource (i.e. an HPC system or virtualized container).</dd>
+        <dt>Test.sh</dt><dd>A test script that is run before the job is launched to validate job inputs and parameters.</dd>
+      </dl>
+    </dd>
+
+    <dt>Notifications</dt>
+    <dd>The dashboard includes a notification icon (to the right of the History menu link) that indicates the number of unviewed notifications the use has. Selecting the history area enables the user to view the status and detailed information about all submitted jobs.</dd>
+
+    <dt>Search</dt>
+    <dd>CEP has a multi-tenant capable full-text search engine based on ElasticSearch and Google. Users can search for data files or text that appears on static content pages in the CMS or within the names of files that are stored on the available storage systems for the given user.</dd>
   </dl>
-
-  <dt>Data Files</dt>
-  <dd>Data Files is a collection of storage spaces where user and project data are located, stored, and organized by users to curate publications and share information. These storage systems are integrated into the portal such that users can store research and experimental or collected data for ongoing projects, share their data with other portal users to foster collaboration on unpublished research, use their data as inputs for scheduled jobs or interactive analysis, and in some cases share the findings with the public. There are five categories of storage system in the portal:</dd>
-
-  <dl class="s-inline-dl  u-nested-text-content">
-    <dt>My Data</dt><dd>These systems can exist on Work or Scratch. These systems host data that is only accessible to the authenticated portal user. This is the default storage system for all application output data. Within the MyData space, users can organize, manipulate, view, and copy the data to other storage resources.</dd>
-    <dt>Shared Workspaces</dt><dd>Displays any workspaces the user has created or that another user has shared with the user. Within this context, files associated with a specific project can be manipulated, tagged, organized, and published through the Data Curation workflow, where publications automatically receive a DOI.</dd>
-    <dt>Community Data</dt><dd>Displays non-curated user-contributed data shared with all users who have access to the portal.</dd>
-    <dt>Public Data</dt><dd>Exposes curated data for making research findings publicly available.</dd>
-    <dt>Cloud storage</dt><dd>These systems expose third-party storage resources that have been integrated into the portal user's account (i.e. - Google Drive, Box, UT Box).</dd>
-  </dl>
-
-  <dt>Applications</dt>
-  <dd>Applications are executable code available for invocation through the TAPIS Jobs service on a specific execution system. If a single code needs to be run on multiple systems, each combination and system needs to be defined as an app. Code that can be forked at the command line or submitted to a batch scheduler can be registered as a TAPIS app and run through the Jobs service. The user sends a request by populating the application inputs and job details in the portal. Applications are packed as three distinct components:</dd>
-
-  <dl class="s-inline-dl  u-nested-text-content">
-    <dt>App.json</dt><dd>A JSON file with application definitions and input parameters (i.e. name, version, label).</dd>
-    <dt>Wrapper.sh</dt><dd>A shell script which executes the job on the targeted resource (i.e. an HPC system or virtualized container).</dd>
-    <dt>Test.sh</dt><dd>A test script that is run before the job is launched to validate job inputs and parameters.</dd>
-  </dl>
-
-  <dt>Notifications</dt>
-  <dd>The dashboard includes a notification icon (to the right of the History menu link) that indicates the number of unviewed notifications the use has. Selecting the history area enables the user to view the status and detailed information about all submitted jobs.</dd>
-
-  <dt>Search</dt>
-  <dd>CEP has a multi-tenant capable full-text search engine based on ElasticSearch and Google. Users can search for data files or text that appears on static content pages in the CMS or within the names of files that are stored on the available storage systems for the given user.</dd>
 
   <h2>Environment</h2>
 
