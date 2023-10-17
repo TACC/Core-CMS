@@ -7,12 +7,12 @@ The base CMS code for TACC WMA Workspace Portals & Websites
 ## Table of Contents
 
 - [Related Repositories](#related-repositories)
-- [Project Customization](#project-customization)
 - [Project Architecture](#project-architecture)
 - [Prerequisites](#prerequisites)
-- [Start Project](#start-project)
+- [Getting Started](#getting-started)
 - [Update Project](#update-project)
 - [Develop Project](#develop-project)
+  - [Develop a Custom Project](#develop-a-custom-project)
 - [Debug Project](#debug-project)
 - [Build & Deploy Project](#build--deploy-project)
 - [Contributing](#contributing)
@@ -27,10 +27,6 @@ The base CMS code for TACC WMA Workspace Portals & Websites
 - [Core CMS Custom], the new solution for extensions of the [Core CMS] project
 - [Core Portal Deployments], private repository that facilitates deployments of [Core Portal] images via [Camino] and Jenkins
 
-## Project Customization
-
-To work on a new or existing website, read [Project Customization].
-
 ## Project Architecture
 
 | directory | contents |
@@ -43,20 +39,28 @@ To work on a new or existing website, read [Project Customization].
 
 ## Prerequisites
 
-- [Docker] ≥ v20
-- [Docker Compose] ≥ v1
+* [Docker]
+  * [Docker Engine] ≥ v20
+  * [Docker Compose]
 
-A CMS project is run using Docker and Docker Compose. Both must be pre-installed on the system on which you will run the CMS.
+> **Important**
+> We recommend you install the Docker Desktop application. Alternatively, you may install both Docker Engine and Docker Compose.
 
-> **Note**
-> On a Mac or a Windows machine, we recommended you install
-[Docker Desktop](https://www.docker.com/products/docker-desktop), which will install both Docker and Docker Compose as well as Docker Machine, which is required to run Docker on Mac/Windows hosts.
+## Getting Started
 
-## Start Project
+> **Important**
+> To develop a new or existing custom CMS website for a TACC client, do **not** clone this repository. Instead, read [Develop a Custom Project]. To develop on the Core CMS (upon which our other CMS are built) continute reading.
 
 Set up a new local CMS instance.
 
-0. Core CMS:
+0. [Clone this Repository.](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
+1. Enter the Repository Clone:
+
+    ```sh
+    cd Core-CMS
+    ```
+
+2. Add Core CMS Settings:
 
     Create a `taccsite_cms/settings_local.py` with content from `settings_local.example.py`, e.g.
 
@@ -64,18 +68,21 @@ Set up a new local CMS instance.
     cp taccsite_cms/settings_local.example.py taccsite_cms/settings_local.py
     ```
 
-1. Docker Containers:
+3. Build & Start the Docker Containers:
 
     ```sh
     make start
     ```
 
+4. Enter the CMS Docker Container:
+
+    (This opens a command prompt within the container.)
+
     ```sh
     docker exec -it core_cms /bin/bash
-    # This opens a command prompt within the container.
     ```
 
-2. Django Application:
+5. Run the Django Application:
 
     (Run these commands within the container.)
 
@@ -84,20 +91,19 @@ Set up a new local CMS instance.
     python manage.py createsuperuser
     # To use default "Username" and skip "Email address", press Enter at both prompts.
     # At "Password" prompts, you may use an easy-to-remember password.
-    npm ci
-    npm run build:css --project="core-cms"
     python manage.py collectstatic --no-input
+
     ```
 
-3. Django CMS:
+6. Open Django CMS:
     1. Open http://localhost:8000/.
     2. Login with the credentials you defined in step 2.
     3. Create one CMS page.\
         (With "New page" highlighted, click "Next" button.)
         - This page will automatically be your local homepage.
 
-> **Note**
-> A local machine CMS will be empty. It will **not** have content from staging nor production. To have that, follow and adapt instructions to [copy a database](https://confluence.tacc.utexas.edu/x/W4DZDg).
+> **Important**
+> A local machine CMS will be empty. It will **not** have content from staging **nor** production. If you need that, follow and adapt instructions to [copy a database](https://confluence.tacc.utexas.edu/x/W4DZDg).
 
 > **Note**
 > A local machine CMS does **not** include **nor** integrate with an instance of [Core Portal]. To attempt to do that, follow [How to Use a Custom Docker Compose File](https://github.com/TACC/Core-CMS/wiki/How-to-Use-a-Custom-Docker-Compose-File) and [Locally Develop CMS Portal Docs](https://github.com/TACC/Core-CMS/wiki/Locally-Develop-CMS---Portal---Docs). **Help welcome.**
@@ -155,6 +161,10 @@ Read [Django CMS User Guide] for CMS user instructions.
 
 Read [Develop Project] for developer instructions.
 
+### Develop a Custom CMS Project
+
+To develop a new or existing custom CMS website for a client, read [Project Customization].
+
 ## Debug Project
 
 Read [Debug Project] for miscellaneous tips.
@@ -197,7 +207,7 @@ To contribute, first read [How to Contirbute][Contributing].
 [Build & Deploy Project]: https://confluence.tacc.utexas.edu/x/Lo99E
 [Django CMS User Guide]: https://confluence.tacc.utexas.edu/x/FgDqCw
 
-[Project Customization]: ./docs/project-customization.md
+[Develop a Custom Project]: ./docs/develop-custom-project.md
 [Develop Project]: ./docs/develop-project.md
 [Upgrade Project]: ./docs/upgrade-project.md
 [Debug Project]: ./docs/debug-project.md
