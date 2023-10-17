@@ -161,9 +161,9 @@ Read [Django CMS User Guide] for CMS user instructions.
 
 Read [Develop Project] for developer instructions.
 
-### Develop a Custom CMS Project
+### Develop a Custom Project
 
-To develop a new or existing custom CMS website for a client, read [Project Customization].
+To develop a new or existing custom CMS website for a client, read [Develop a Custom Project].
 
 ## Debug Project
 
