@@ -1,6 +1,4 @@
-# WARNING: The `extends` keyword is NOT supported in Compose version 3.x
-# SEE: https://docs.docker.com/compose/extends/#extending-services
-version: "3"
+version: "3" # https://github.com/compose-spec/compose-spec/blob/3814397/spec.md#version-top-level-element
 services:
   cms:
     extends:

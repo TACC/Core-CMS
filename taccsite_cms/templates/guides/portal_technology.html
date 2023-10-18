@@ -5,36 +5,40 @@
 
   <h2>Portal Overview</h2>
 
-  <p>CEP, Core Experience Portal, is the core engine for all TACC portal projects. The primary goal of the Core Portal project is to establish a codebase that can be used as a springboard for all future portal projects undertaken by TACC. By establishing a common codebase for all portal efforts, we can better maintaining alignment between the core capabilities and technologies supported across all TACC portals. There will be unique requirements in some portal projects, but CEP should provide an "out-of-the-box" framework for rapidly deploying a new portal project with all the common capabilities already in place and compliant with current best practices and conventions at TACC.</p>
+  <p>The TACC CEP, short for Core Experience Portal, is the core engine for all TACC portal projects. The primary objective for the Core Experience Portal is to establish and grow a codebase that can be used as a common baseline for all future portal projects undertaken at TACC. By cultivating this common codebase for all of our portal projects, we maintain better alignment between the core capabilities and technologies supported across all of the TACC portals. While some projects do have unique requirements, CEP provides an "out-of-the-box" framework for rapidly deploying a ready-to-use project infrastructure that includes all the common TACC portal capabilities pre-configured and in compliance with TACC's current best practices.</p>
 
-  <h3>Common Portal Capabilities:</h3>
+  <h3>Common Portal Capabilities</h3>
 
   <ul>
-    <li><strong>Dedicated VM</strong> resources for each portal (varies by portal requirements)</li>
-    <li>An <strong>isolated tenant</strong> for integration into the TACC ecosystem via the portal</li>
-    <li>A <strong>CMS</strong> for adding/editing content within static portal pages</li>
-    <li>Integrated <strong>Elastic Search</strong></li>
-    <li>An <strong>Issue Tracking &amp; Ticketing System</strong> (integrated with the TACC RT ticketing system)</li>
-    <li>User account <strong>authentication</strong> (requires a TACC account)</li>
-    <li>A user-based <strong>Dashboard</strong> to monitor project activity and resource utilization</li>
-    <li>A shared <strong>Community Data</strong> storage system for collaborative data</li>
-    <li>A <strong>Private Data</strong> storage system for individual data</li>
-    <li><strong>Execution Systems</strong> for running applications</li>
-    <li>An <strong>Application Launcher</strong> for accessing public and private applications</li>
-    <li>A shared <strong>My Projects</strong> storage system for non-public group projects</li>
+    <li><strong>Dedicated VM</strong> resources for each portal (varies by portal requirements).</li>
+    <li>An <strong>Isolated Tenant</strong> for seamless integration of the portal into the TACC ecosystem.</li>
+    <li>A <strong>CMS</strong> for adding and editing content within static portal pages.</li>
+    <li>Integrated <strong>Search</strong> capability using a variety of available technologies.</li>
+    <li>An <strong>Issue Tracking &amp; Ticketing System</strong> integrated into the TACC RT ticketing system.</li>
+    <li><strong>User Authentication</strong> and onboarding controls for portal access (requires a TACC account).</li>
+    <li>A user <strong>Dashboard</strong> to monitor project activity and resource utilization.</li>
+    <li>A shared <strong>Community Data</strong> storage system for collaborative data access.</li>
+    <li>A <strong>Private Data</strong> storage system for an individual user's data.</li>
+    <li><strong>Execution Systems</strong> for running applications on TACC resources.</li>
+    <li>An <strong>Application Launcher</strong> for accessing public and private applications.</li>
+    <li>A shared <strong>My Projects</strong> storage system for non-public group projects.</li>
     <li>A <strong>Public Data</strong> storage area for unauthenticated access to published work or data sets.</li>
   </ul>
 
-  <h3>CEP Major Components:</h3>
+  <h3>CEP Major Components</h3>
 
   <ul>
-    <li>General Content Management</li>
+    <li><abbr>CMS</abbr> (Content Management System)</li>
     <li>My Account</li>
-    <li>My Dashboard</li>
-    <li>Data Files (Data Depot)</li>
-    <li>Applications (workspace)</li>
+    <li>Dashboard</li>
+    <li>Data Files</li>
+    <li>Applications</li>
     <li>Search</li>
     <li>Notifications</li>
+    <li>Allocations</li>
+    <li>Jobs History</li>
+    <li>Systems Status</li>
+    <li>Portal Documentation &amp; Guides</li>
   </ul>
 
   <p><em>Note: Any additional portal capabilities required by a project need to be identified and planned for independently.</em></p>
@@ -45,115 +49,128 @@
 
   <dl class="s-inline-dl">
     <dt>Layer 4</dt>
-    <dd>The user-facing web portal that enables users to interact with Agave through a browser-based GUI.</dd>
+    <dd>The user-facing web portal that enables users to interact with TAPIS through a browser-based GUI.</dd>
 
     <dt>Layer 3</dt>
-    <dd>The Agave API that exposes access to Layer 2 and Layer 1 resources over a RESTful API as well as via a CLI for programmatic interaction with resources.</dd>
+    <dd>The TAPIS API that exposes access to Layer 2 and Layer 1 resources over a RESTful API as well as via a CLI for programmatic interaction with resources.</dd>
 
     <dt>Layer 2</dt>
-    <dd>The middleware service that enables data management, job creation, and job scheduling (eg. Slurm, Kubernetes) across all layer 1 resources.</dd>
+    <dd>The middleware service that enables data management, job creation, and job scheduling (e.g. Slurm, Kubernetes) across all Layer 1 resources.</dd>
 
     <dt>Layer 1</dt>
-    <dd>The physical infrastructure (storage, HPC and Cloud systems) where data and applications are stored, manipulated, and executed (Corral, Stampede2, Lonestar5, etc.).</dd>
+    <dd>The physical infrastructure (storage, HPC and cloud systems) where data and applications are stored, manipulated, and executed (Corral, Frontera, Stampede2, Lonestar6, etc.).</dd>
   </dl>
 
-  <p>
+  {% comment %} Need an updated diagram for portal architecture still. {% endcomment %}
+  {% comment %} <p>
     <img src="https://cep-web-staging-01.tacc.utexas.edu/media/filer_public_thumbnails/filer_public/4e/de/4ede0716-07fb-455c-a3a4-ef0cc8b36857/image2018-12-13_15-26-55.png__400x225_q85_crop_subsampling-2_upscale.png" alt="Portal high-level architecture diagram as a triangle pointing up and segmented into four layers, where the top is layer 4 and the bottom is layer 1">
-  </p>
+  </p> {% endcomment %}
 
   <h2>Backend (Server-side)</h2>
 
   <dl class="s-inline-dl">
-    <dt>Agave Platform</dt>
-    <dd>(<a href="http://agaveapi.co" rel="nofollow" target="_blank">http://agaveapi.co</a>) An open source, science-as-a-service API platform that provides HPC and file management integrations. (Agave is developed in-house).</p>
+    <dt>TAPIS</dt>
+    <dd> The <a href="//tapis-project.org/" rel="nofollow" target="_blank">TAPIS Project</a> is an open source, science-as-a-service API platform that provides HPC and file management integration. TAPIS, short for TACC APIs, is developed and maintained by TACC.</dd>
 
     <dt>HPC Connectivity</dt>
-    <dd>From within the portal access to HPC is primarily through Agave. Agave calls in turn submit jobs through Slurm. Multiple platforms are used based on the particular application (or simply for availability) -- Lonestar5 and Stampede2 are the primary target platforms for app deployment</dd>
+    <dd>From within the portal access to HPC systems is primarily through TAPIS. TAPIS calls in turn submit jobs through Slurm. Multiple platforms are used based on the particular application (or based on availability) -- Frontera, Lonestar6 and Stampede2 are the primary target platforms for application deployments.</dd>
 
     <dt>File Storage</dt>
-    <dd>Files are stored on Corral, a mirrored GPFS storage facility, and backed up to Ranch. From the web interface, all File I/O is done through Agave calls, to maintain consistent metadata. Users also have the option to upload through Globus online, or through public cloud storage facilities (Dropbox, Box, Google Drive) -- the web integration of the cloud providers pushes imports through Agave to keep metadata consistent.</dd>
+    <dd>Files are stored on Corral, a mirrored GPFS storage facility, and backed up to Ranch, TACC's long term tape-based storage system. From the web interface, all file I/O is done through TAPIS calls, to maintain consistent metadata. Users also have the option to upload through Globus online, or through public cloud storage facilities like Dropbox, Box, Google Drive. Cloud-based data imports are called through TAPIS in order to maintain consistent metadata within the TACC ecosystem.</dd>
 
     <dt>Applications</dt>
-    <dd>Portal applications have three distinct components. The applications themselves are installed on the execution systems -- HPC platforms, or containers that run within the virtual infrastructure. Applications are then registered with the API -they are defined as Agave application records, pointing to a zip file on corral, with associated metadata records for further use. a JSON document for each application defines the UI. Runtime instruction inputs are supplied by the jobs created by portal through Agave. Agave also supplies callbacks for updates on a given job’s status. More details on application deployment are provided in the section entitled “Extensibility”. Application templates are available at the template GitHub repository.</dd>
+    <dd>Portal applications are installed on the execution systems (the HPC platforms) or in containers that run on virtual infrastructure. Applications are then registered with the TAPIS API where they are defined as TAPIS application records, pointing to a zip file on Corral collocated with the application's associated metadata records. A JSON document for each application defines the UI exposed in the Portal. Runtime instruction inputs are supplied by the jobs created by portal users through TAPIS. TAPIS also supplies callbacks for updates on job statuses.</dd>
 
     <dt>API</dt>
-    <dd> API manager (APIM) sits in front of Agave core handles auth, proxying/routing, client management, analytics, rate limiting, and many other features. It provides a unified namespace for the entire API to be hosted behind.</dd>
+    <dd>The API manager (APIM) sits in front of TAPIS core and handles user authentication/authorization, proxying/routing, client management, analytics, rate limiting, and many other features. It provides a unified namespace for the entire API to be hosted under.</dd>
 
     <dt>Projects API</dt>
-    <dd> Returns project listings and associated files utilizing the Django framework.</dd>
+    <dd>This API returns project listings and associated files utilizing the Django framework.</dd>
   </dl>
 
   <h2>Frontend (Client-side)</h2>
 
-  <h3>Web-based Portals</h3>
+  <p>A web-based portal using TAPIS to manage apps, data storage, reconfigurable workflows, and HPC resource interactions. The architecture for the web portal provides data management, analysis, and simulation capabilities to users through a unified web interface. The dashboard provides an overview of jobs, data storage, allocations, and system resource status. Users will primarily interact with the portal under the <em>My Account</em> view or the <em>My Dashboard</em> view, which includes dedicated interfaces for <em>Data Files</em>, <em>Applications</em>, <em>Allocations</em>, <em>History</em>, and <em>System Status</em>.</p>
 
-  <p>Portals using Agave to manage apps, data storage, reconfigurable workflows, and to interact with HPC resources. The architecture for the web portal that provides data management, analysis, and simulation capabilities to users through a web interface. The dashboard provides overview of jobs status, data storage, allocations, and system status. Users will primarily interact with the portal through the Workbench which will include: Manage Account, Data Files, Application Workspace, Search, and Help.</p>
+  <dl class="s-inline-dl">
+    <dt>My Account</dt>
+    <dd>This view provides information about the user's profile, password management, activated licenses for applications, and integrated third-party applications/resources.</dd>
 
-  <h3>My Dashboard</h3>
+    <dt>Dashboard</dt>
+    <dd>
+      <p>The dashboard presents users with a unified interface to enable their research.</p>
+      <dl class="s-inline-dl  u-nested-text-content">
+        <dt>Data Files</dt>
+        <dd>This view is where users can manage their data and shared data resources.</dd>
+        <dt>Applications</dt><dd>This view allows users to select and execute various applications (both remote execution and interactive jobs).</dd>
+        <dt>Allocations</dt><dd>This view allows users to view and request available allocation resources for their projects as well as monitor who has access to said resources.</dd>
+        <dt>History</dt><dd>This view logs all jobs the user has executed (or is currently executing) with options to view the job details and output location.</dd>
+        <dt>System Status</dt><dd>This view displays detailed operational status information about the available HPC systems, including queue states, jobs currently running/waiting in queue, and the number of idle nodes on the resource.</dd>
+      </dl>
+    </dd>
 
-  <p>The dashboard displays availability of TACC resources, and user allocation usages. The CEP infrastructure runs on TACC hosted Virtual Machines, Django/Angular web portal with responsive layout. Every Portal project will have a dedicated VM resources. system status instrumentation will be provided via APIs. The AngularJS framework works by first reading the HTML page, which has additional custom tag attributes embedded into it. Angular interprets those attributes as directives to bind input or output parts of the page to a model that is represented by standard JavaScript variables. The values of those JavaScript variables can be manually set within the code, or retrieved from static or dynamic JSON resources.</p>
+    <dt>Data Files</dt>
+    <dd>
+      <p>Data Files is a collection of storage spaces where user and project data are located, stored, and organized by users to curate publications and share information. These storage systems are integrated into the portal such that users can store research and experimental or collected data for ongoing projects, share their data with other portal users to foster collaboration on unpublished research, use their data as inputs for scheduled jobs or interactive analysis, and in some cases share the findings with the public. There are five categories of storage system in the portal:</p>
+      <dl class="s-inline-dl  u-nested-text-content">
+        <dt>My Data</dt><dd>These systems can exist on Work or Scratch. These systems host data that is only accessible to the authenticated portal user. This is the default storage system for all application output data. Within the MyData space, users can organize, manipulate, view, and copy the data to other storage resources.</dd>
+        <dt>Shared Workspaces</dt><dd>Displays any workspaces the user has created or that another user has shared with the user. Within this context, files associated with a specific project can be manipulated, tagged, organized, and published through the Data Curation workflow, where publications automatically receive a DOI.</dd>
+        <dt>Community Data</dt><dd>Displays non-curated user-contributed data shared with all users who have access to the portal.</dd>
+        <dt>Public Data</dt><dd>Exposes curated data for making research findings publicly available.</dd>
+        <dt>Cloud storage</dt><dd>These systems expose third-party storage resources that have been integrated into the portal user's account (i.e. - Google Drive, Box, UT Box).</dd>
+      </dl>
+    </dd>
 
-  <h3>Data Files</h3>
+    <dt>Applications</dt>
+    <dd>
+      <p>Applications are executable code available for invocation through the TAPIS Jobs service on a specific execution system. If a single code needs to be run on multiple systems, each combination and system needs to be defined as an app. Code that can be forked at the command line or submitted to a batch scheduler can be registered as a TAPIS app and run through the Jobs service. The user sends a request by populating the application inputs and job details in the portal. Applications are packed as three distinct components:</p>
+      <dl class="s-inline-dl  u-nested-text-content">
+        <dt>App.json</dt><dd>A JSON file with application definitions and input parameters (i.e. name, version, label).</dd>
+        <dt>Wrapper.sh</dt><dd>A shell script which executes the job on the targeted resource (i.e. an HPC system or virtualized container).</dd>
+        <dt>Test.sh</dt><dd>A test script that is run before the job is launched to validate job inputs and parameters.</dd>
+      </dl>
+    </dd>
 
-  <p>Data Files is a collection of storage spaces where user and project data are located, stored, and ultimately organized by users to curate publications and share information. Data Repository is the place where experimental and simulation results are stored for long term. Working storage is the area to share and collaborate with data that is not yet published, Workspace to allow for the analysis of data, a gateway to large scale HPC resources and simulation tools. The data is organized in three categories:</p>
+    <dt>Notifications</dt>
+    <dd>The dashboard includes a notification icon (to the right of the History menu link) that indicates the number of unviewed notifications the use has. Selecting the history area enables the user to view the status and detailed information about all submitted jobs.</dd>
 
-  <ul>
-    <li><strong>My Data</strong> drive hosts any data the user decides to store there. This is also the default storage device for application output data from the Workspace. Within the MyData space, users can organize, manipulate, view, copy the data to an external storage resource.</li>
-    <li><strong>My Projects</strong> view displays the projects the user has created or has been shared with by another team member. Within this scope, files associated with a specific project can be manipulated, tagged, organized, and published through the Data Curation workflow, where publications automatically receive a DOI.</li>
-    <li><strong>Community Data</strong> view displays non-curated user-contributed data for public use.</li>
-  </ul>
-
-  <h3>Applications</h3>
-
-  <p>APPS are executable code available for invocation through Agave’s Jobs service on a specific execution system. If a single code needs to be run on multiple systems, each combination and system needs to be defined as an app. Code that can be forked at the command line or submitted to a batch scheduler can be registered as an Agave app and run through the Jobs service. The user sends a request by filling in the application inputs and job details on CEP portal. The app is packaged with 3 files:</p>
-
-  <dl class="s-inline-dl  u-nested-text-content">
-    <dt>App.json</dt><dd>JSON file with application definitions and parameters such as (name, version, label).</dd>
-    <dt>Wrapper.sh</dt><dd>wrapper file, shell script which executes the job on HPC/Docker.</dd>
-    <dt>Test.sh</dt><dd>runs a test before the job is launched and cleans up the files.</dd>
+    <dt>Search</dt>
+    <dd>CEP has a multi-tenant capable full-text search engine based on ElasticSearch and Google. Users can search for data files or text that appears on static content pages in the CMS or within the names of files that are stored on the available storage systems for the given user.</dd>
   </dl>
-
-  <h3>Notifications</h3>
-
-  <p>Notification Bell enables the user to view information and status of submitted jobs.</p>
-
-  <h3>Search</h3>
-
-  <p>CEP has a multi-tenant capable full-text search engine with an HTTP web interface and schema-free JSON documents based on ElasticSearch. Users can search for data files, or text.</p>
 
   <h2>Environment</h2>
 
   <p>The Core portal utilizes a wide variety of technologies developed by multiple technology vendors. Below is a list of the primary libraries, frameworks and APIs leveraged in the core portal tech stack.</p>
 
   <dl class="s-inline-dl">
+    <dt>React</dt>
+      <dd>The JavaScript framework providing all client-side functionality. This is the broswer-based client the user interacts with when accessing the portal.</dd>
+
     <dt>NginX</dt>
-      <dd>When user sends http request to call the CEP URL, it goes to nginx webserver, a proxy, intermediary for requests from clients seeking resources from other&nbsp;servers. Nginx carry the request to the Web Server Gateway.</dd>
+      <dd>The nginx webserver is as a proxy for all portal users, acting as intermediary for requests from clients seeking resources from the server. Nginx routes requests to the appropriate backend server.</dd>
 
     <dt>WSGI</dt>
-      <dd>Web Server Gateway Interface, a calling convention for a web hosting server to forward requests to web applications or frameworks written in the Python programming language. It forwards the CEP user request to Django.</dd>
+    <dd>Web Server Gateway Interface, a calling convention for a web hosting server to forward requests to web applications or frameworks written in the Python programming language. It forwards the CEP user request to DjangoCMS and Django as appropriate.</dd>
+
+    <dt>DjangoCMS</dt>
+    <dd>The Content Management System used in the core portal architecture for all static web content and portal project branding.</dd>
 
     <dt>Django</dt>
-      <dd>A backend server manages the requests and response cycle. Pass the CEP user request to Angular and the return back information (Python base)</dd>
-
-    <dt>Angular</dt>
-      <dd>The JavaScript framework taking care of all the frontend client-side requests, activities that taking place on that page, Requests method such as get, post, put.</dd>
+    <dd>A backend server application framework that manages the requests and response cycle. Django provides all of the functionality (exposed via the React client) for interacting with the TACC ecosystem, TAPIS APIs and any integrated portal resources.</dd>
 
     <dt>PostgreSQL</dt>
-      <dd>The object-relational database management system</dd>
+    <dd>The object-relational database management system that supports all CEP portals.</dd>
 
-    <dt>Agave Platform</dt>
-      <dd>is an open source, science-as-a-service API platform, securely manage, move, and share data metadata, shared high performance computing (HPC) Cloud, and Big Data resources under a single, web-friendly REST API. Run code, simplifies building web portals that use back-end computing, and run executable systems.</dd>
+    <dt>TAPIS Project</dt>
+    <dd>TAPIS is an open source, science-as-a-service API platform, to securely manage data/metadata, and expose high performance computing (HPC) resources under a single, web-friendly REST API. The TAPIS API simplifies building web portals that use back-end computing and run remote jobs against execution systems.</dd>
 
-    <dt>RABBITMQ</dt>
-      <dd>The portal Messages Broker, enterprise messaging system modeled on the Advanced Message Queuing Protocol (AMQP) standard. a message broker that acts as an intermediary platform to processing communication between two applications.</dd>
+    <dt>RabbitMQ</dt>
+    <dd>The portal Message Broker, RabbitMQ provides enterprise messaging system modeled on the Advanced Message Queuing Protocol (AMQP) standard. It functions as a message broker that acts as an intermediary platform to processing communication between two applications (in this case between Django and Celery Workers, which execute all tasks asynchronously for the portal).</dd>
 
-    <dt>CELERY</dt>
-      <dd>A Distributed message passing queue.</dd>
+    <dt>Celery</dt>
+    <dd>A Distributed message passing queue for distributing asynchronous processes across execution resources to enable non-blocking code execution in Django and support SPA-like behavior in the React client.</dd>
 
     <dt>HPC</dt>
-      <dd>High Performance Computers, TACC super computer resources (Frontera, Stampede, etc.)</dd>
-
-    <dt>CMS</dt>
-      <dd>The Content Management System used in the core portal.</dd>
+    <dd>High Performance Computers are the primary resource available at TACC in the form of Frontera, Stampede2, and Longhorn6, to name only a few available HPC systems. Different projects target different HPC resources based on the kind of research and code execution workflows required by each individual project.</dd>
   </dl>
 {% endblock guide %}
