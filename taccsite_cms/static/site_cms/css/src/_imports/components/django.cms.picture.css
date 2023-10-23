@@ -9,9 +9,6 @@ a.img-fluid {
   display: inline-block;
 }
 
-img.align-center {
-  display: block;
-}
 
 /* Try to auto-clear image floats */
 /* WARNING: The commented solution clears float BUT also negates float */
