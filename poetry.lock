@@ -464,14 +464,14 @@ files = [
 
 [[package]]
 name = "django-meta"
-version = "2.4.0"
+version = "2.3.0"
 description = "Pluggable app for handling webpage meta tags and OpenGraph properties"
 category = "main"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "django-meta-2.4.0.tar.gz", hash = "sha256:4319ba348640b28bf11e0107a18a5704b9456ab3d670f8e03b566aa0171b2720"},
-    {file = "django_meta-2.4.0-py2.py3-none-any.whl", hash = "sha256:5f725c66851bc311e8d0428c07abf6ffcd715fadfb51e4d7a2e5b5f2a2fa669b"},
+    {file = "django-meta-2.3.0.tar.gz", hash = "sha256:a7011d48dd83046b22671209f1baef236314932b41553fe5eb4f3f2fa682c2f3"},
+    {file = "django_meta-2.3.0-py2.py3-none-any.whl", hash = "sha256:d8f2386b5e475545ae7f2c58c27673ff0b29915af589463d3400828657b5360f"},
 ]
 
 [package.extras]
@@ -862,8 +862,8 @@ unidecode = "*"
 [package.source]
 type = "git"
 url = "https://github.com/TACC/djangocms-forms"
-reference = "63ead9288c2ea65139124698bffc0ad01d182afa"
-resolved_reference = "63ead9288c2ea65139124698bffc0ad01d182afa"
+reference = "fd7c7a33309c5b7cc380f392ec3344851c606bc2"
+resolved_reference = "fd7c7a33309c5b7cc380f392ec3344851c606bc2"
 
 [[package]]
 name = "djangocms-googlemap"
@@ -2480,4 +2480,4 @@ testing = ["func-timeout", "jaraco.itertools"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8,<4.0"
-content-hash = "5c638c2bc697da7a5157d650df2614688ab227455efb85f71656f0bd5edd9101"
+content-hash = "7fe72b0eebad5b22e57134a4b01d72595be5c666dd22ec117eae9b8cf7c67bf9"
