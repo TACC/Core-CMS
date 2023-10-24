@@ -15,4 +15,6 @@
 @import url("./_imports/components/django-cms-video.css");
 @import url("./_imports/components/lightgallery.css");
 
+@import url("./_imports/generics/pseudo-elements.css");
+
 @import url("./_imports/trumps/s-drop-cap.css");
