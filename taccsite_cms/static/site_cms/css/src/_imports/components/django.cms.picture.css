@@ -9,6 +9,9 @@ a.img-fluid {
   display: inline-block;
 }
 
+/* Support centering originating from Core-Styles */
+/* FAQ: We set display in client, so Core-Styles does not assume display */
+/* SEE: https://github.com/TACC/Core-Styles/blob/dd2bbb0/src/lib/_imports/components/align.css#L16-L19 */
 img.align-center {
   display: block;
 }
