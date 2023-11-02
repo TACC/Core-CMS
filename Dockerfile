@@ -1,15 +1,12 @@
 FROM python:3.8-buster as python-base
 LABEL maintainer="TACC-ACI-WMA <wma_prtl@tacc.utexas.edu>"
-
+ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y \
     build-essential python3-dev \
     libldap2-dev libsasl2-dev ldap-utils tox \
     lcov valgrind vim \
     && pip3 install uwsgi
 
-RUN pip3 install --upgrade pip setuptools wheel
-
-ARG DEBIAN_FRONTEND=noninteractive
 ENV PYTHONUNBUFFERED 1
 ENV PATH="/root/.local/bin:$PATH"
 
@@ -18,6 +15,7 @@ ENV POETRY_VERSION=1.4.0 \
     POETRY_VIRTUALENVS_CREATE=false \
     POETRY_NO_INTERACTION=1
 
+RUN pip3 install --upgrade pip setuptools wheel
 # Install Poetry - respects $POETRY_VERSION & $POETRY_HOME
 RUN curl -sSL https://install.python-poetry.org | python3 -
 RUN mkdir /code
@@ -50,5 +48,3 @@ RUN mkdir -p /var/log/cms
 
 # load files
 COPY --from=node_build /code/ /code
-WORKDIR /code
-
