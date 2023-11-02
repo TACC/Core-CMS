@@ -12,5 +12,5 @@
 
 :--c-button {
   font-weight: var(--bold);
-  letter-spacing: 0.5em;
+  letter-spacing: 0.05em;
 }
