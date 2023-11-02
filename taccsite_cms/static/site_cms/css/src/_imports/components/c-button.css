@@ -1,3 +1,5 @@
+@import url("@tacc/core-styles/src/lib/_imports/components/c-button.selectors.css");
+
 .c-button--primary,
 .c-button--secondary,
 .c-button--tertiary,
@@ -6,4 +8,8 @@
 
   font-size: var(--global-font-size--small);
   text-transform: uppercase;
+}
+
+:--c-button {
+  font-weight: var(--bold);
 }
