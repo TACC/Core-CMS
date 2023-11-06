@@ -4,3 +4,8 @@
 .lightgallery {
   @extend .s-image-grid;
 }
+
+.lg-sub-html a {
+  /* FAQ: The `!important` overrides styles from plugin, in <anonymous> layer */
+  color: var(--global-color-link-on-dark--normal) !important;
+}
