@@ -165,6 +165,7 @@ GOOGLE_ANALYTICS_PRELOAD = True
 # TACC: SEARCH
 ########################
 
+# To customize site search
 SEARCH_PATH = '/search'
 SEARCH_QUERY_PARAM_NAME = 'query_string'
 
