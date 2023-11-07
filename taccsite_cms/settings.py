@@ -165,6 +165,7 @@ GOOGLE_ANALYTICS_PRELOAD = True
 # TACC: SEARCH
 ########################
 
+SEARCH_PATH = '/search'
 SEARCH_QUERY_PARAM_NAME = 'query_string'
 
 ########################
