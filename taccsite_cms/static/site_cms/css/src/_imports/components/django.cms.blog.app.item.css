@@ -12,6 +12,8 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 
 @import url("../tools/media-queries.css");
 
+@import url("./django.cms.blog.selectors.css");
+
 
 
 
