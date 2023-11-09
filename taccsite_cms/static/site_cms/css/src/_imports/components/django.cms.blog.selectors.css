@@ -7,6 +7,6 @@
 @custom-selector :--article-list .blog-list;
 @custom-selector :--article-list--as-list :--article-list:not(.as-grid);
 @custom-selector :--article-list--as-grid :--article-list.as-grid;
-@custom-selector :--article-item .blog-list article;
+@custom-selector :--article-item :--article-list article;
 @custom-selector :--article-item--in-list :--article-list--as-list article;
 @custom-selector :--article-item--in-grid :--article-list--as-grid article;
