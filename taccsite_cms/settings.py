@@ -165,6 +165,8 @@ GOOGLE_ANALYTICS_PRELOAD = True
 # TACC: SEARCH
 ########################
 
+# To customize site search
+SEARCH_PATH = '/search'
 SEARCH_QUERY_PARAM_NAME = 'query_string'
 
 ########################
@@ -692,5 +694,6 @@ SETTINGS_EXPORT = [
     'TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY',
     'TACC_BLOG_SHOW_ABSTRACT_TAG',
     'TACC_SOCIAL_SHARE_PLATFORMS',
+    'SEARCH_PATH',
     'SEARCH_QUERY_PARAM_NAME',
 ]
