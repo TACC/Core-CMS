@@ -1,0 +1,11 @@
+/* To highlight targeted content */
+:target {
+    outline: var(--global-border-width--x-thick) solid transparent;
+    outline-offset: var(--global-border-width--xx-thick);
+    animation: focus 2s;
+}
+@keyframes focus {
+   from {
+        outline-color: var(--global-color-accent--tertiary);
+    }
+}
