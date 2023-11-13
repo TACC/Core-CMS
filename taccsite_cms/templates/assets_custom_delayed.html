@@ -5,16 +5,8 @@ Consider asset load via `assets_custom`, not `assets_custom_delayed`:
   - Scripts can use `defer` or `async` attr's to manage load time.
 {% endcomment %}
 
-{# NOTE: Fonts may be loaded early via `assets_font` #}
-
-
-
-{# Do NOT directly load project-specific assets here; see `/taccsite_custom` #}
-
 {# Example #}
 {% comment %}
-  {% block assets_custom_delayed %}
-    {{ block.super }}
 
     {# Example: Custom Site Assets. #}
     <link rel="stylesheet" href="{% static '__PROJECT__/css/build/site.css' %}">
@@ -28,5 +20,4 @@ Consider asset load via `assets_custom`, not `assets_custom_delayed`:
     {# WARNING: Undesired use case. Create re-usable code instead. #}
     {# SEE: https://confluence.tacc.utexas.edu/x/54AZCg #}
 
-  {% endblock assets_custom_delayed %}
 {% endcomment %}
