@@ -6,10 +6,6 @@ def set_group_perms():
         name='News Writer (Basic)'
     )
 
-    group.permissions.add( Permission.objects.get(name='Can add bootstrap4 link') )
-    group.permissions.add( Permission.objects.get(name='Can change bootstrap4 link') )
-    group.permissions.add( Permission.objects.get(name='Can delete bootstrap4 link') )
-    group.permissions.add( Permission.objects.get(name='Can view bootstrap4 link') )
     group.permissions.add( Permission.objects.get(name='Can add bootstrap4 picture') )
     group.permissions.add( Permission.objects.get(name='Can change bootstrap4 picture') )
     group.permissions.add( Permission.objects.get(name='Can delete bootstrap4 picture') )

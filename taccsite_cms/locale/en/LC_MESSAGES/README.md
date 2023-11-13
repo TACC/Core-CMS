@@ -11,5 +11,4 @@ Overwrite text in the DjangoCMS admin UI.
 
 ## Instructions
 
-- [`README.md` "Customizing Text in Admin UI"](/README.md#Customizing-Text-in-Admin-UI)
-- [PR #467 (see "Testing" section)](https://github.com/TACC/Core-CMS/pull/467)
+- [`docs/develop-project.md` at "Customize Admin UI Text"](../../../../docs/develop-project.md#customize-admin-ui-text)

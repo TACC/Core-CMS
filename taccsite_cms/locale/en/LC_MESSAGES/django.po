@@ -17,6 +17,42 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 
+#: django-cms
+#: https://github.com/django-cms/django-cms/blob/4.0.0/cms/models/permissionmodels.py#L105-L106
+msgid ""
+"Users can't publish a page without permissions to change the page. Edit "
+"permissions required."
+msgstr ""
+"Users can't publish a page without permissions to edit the page. Ensure "
+"user has \"Can edit\" permission."
+
+#: django-cms
+#: https://github.com/django-cms/django-cms/blob/4.0.0/cms/models/permissionmodels.py#L110-L111
+msgid ""
+"Users can't change page advanced settings without permissions to change the "
+"page. Edit permissions required."
+msgstr ""
+"Users can't change page advanced settings without permissions to change the "
+"page. Ensure user has \"Can edit\" permission."
+
+#: django-cms
+#: https://github.com/django-cms/django-cms/blob/4.0.0/cms/models/permissionmodels.py#L115-L116
+msgid ""
+"Users can't change page permissions without permissions to change the page. "
+"Edit permissions required."
+msgstr ""
+"Users can't change page permissions without permissions to change the page. "
+"Ensure user has \"Can edit\" permission."
+
+#: django-cms
+#: https://github.com/django-cms/django-cms/blob/4.0.0/cms/models/permissionmodels.py#L120-L121
+msgid ""
+"Users can't move a page without permissions to change the page. Edit "
+"permissions required."
+msgstr ""
+"Users can't move a page without permissions to change the page. "
+"Ensure user has \"Can edit\" permission."
+
 
 #: djangocms-blog
 #: templates/djangocms_blog/includes/blog_meta.html:6
