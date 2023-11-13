@@ -27,7 +27,7 @@ django-formtools = "2.2"
 django-haystack = "3.2.1"
 django-ipware = "3.0.1"
 django-js-asset = "1.2.2"
-django-meta = "^2.1"
+django-meta = "~2.3.0"
 django-mptt = "0.14.0"
 django-parler = "2.3"
 django-polymorphic = "3.0.0"
@@ -49,7 +49,7 @@ djangocms-blog = "^1.2"
 djangocms-bootstrap4 = { git = "https://github.com/django-cms/djangocms-bootstrap4", rev = "2fc7f14c2b7b53882faf6830289b5052f775965f" }
 djangocms-column = "^2.0"
 djangocms-file = "3.0.0"
-djangocms-forms-maintained = { git = "https://github.com/TACC/djangocms-forms", rev = "fd7c7a33309c5b7cc380f392ec3344851c606bc2" }
+djangocms-forms-maintained = { git = "https://github.com/TACC/djangocms-forms", rev = "63ead9288c2ea65139124698bffc0ad01d182afa" }
 djangocms-googlemap = "2.0.0"
 djangocms-icon = "2.0.0"
 djangocms-link = "^3.1"
