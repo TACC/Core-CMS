@@ -1,12 +1,9 @@
 @import url("@tacc/core-styles/src/lib/_imports/settings/color.css");
 
 :root {
-  /* CAVEAT: A standard accent color definition is pending more designs */
-  /* NOTE: The new Frontera and TACC designs both have brown and blue accents */
-  --global-color-accent--normal: #877453;
 
-  /* CAVEAT: Not accessible within paragraph text (edge case as of 2021-08) */
-  --global-color-link-on-light--normal: #003399;
-  /* WARNING: This color is from Dev not Design (not rendered as of 2021-08) */
-  --global-color-link-on-dark--normal: #0088FF;
+  /* Link */
+  --global-color-link-on-light--normal: var(--global-color-accent--normal);
+  --global-color-link-on-dark--normal: var(--global-color-accent--xxx-light);
+
 }

@@ -18,7 +18,7 @@
 
 1.
 
-## Screenshots
+## UI
 
 …
 

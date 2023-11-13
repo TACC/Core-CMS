@@ -10,9 +10,11 @@ Reference:
 Styleguide Components.DjangoCMS.Blog.App
 */
 @import url("@tacc/core-styles/src/lib/_imports/components/bootstrap.pagination.css");
+@import url("@tacc/core-styles/src/lib/_imports/components/c-tag.css");
 
 @import url("./django.cms.blog.app.page.css");
 @import url("./django.cms.blog.app.item.css");
+@import url("./django.cms.blog.selectors.css");
 
 
 
@@ -21,32 +23,45 @@ Styleguide Components.DjangoCMS.Blog.App
 /* Variables */
 
 .app-blog {
-  --blog-item-buffer: 20px;
+  --article-buffer: 20px;
 }
 
 
 
-/* Selectors */
+/* Generic */
 
-/* To make these selectors easier to remember (rather than add classnames) */
-/* FAQ: Avoiding changing blog templates to limit app upgrade maintenance */
-@custom-selector :--article article;
-@custom-selector :--article-page article.post-detail;
-@custom-selector :--article-item .blog-list article;
+.app-blog {
+  /* To control absolute position of descendants e.g. `.blog-visual` */
+  position: relative;
+}
 
 
 
 /* Header */
 
-.blog-list > header {
-  margin-bottom: var(--blog-item-buffer);
+.app-blog header {
+  display: grid;
+  grid-template-areas:
+    'cats'
+    'tags'
+    'attr'
+    'head'
+    'subh';
 }
+:--article-page h1,
+:--article-item h3    { grid-area: head }
+:--article-page h2,
+:--article-item h4    { grid-area: subh }
+.app-blog .attrs      { grid-area: attr }
+.app-blog .categories { grid-area: cats }
+.app-blog .tags       { grid-area: tags }
+.app-blog .links      { grid-area: link }
 
-ul.post-detail {
+.app-blog ul.post-detail {
   list-style: none;
 
   padding-left: 0; /* overwrite html-elements.css */
-  margin-bottom: 0; /* overwrite Bootstrap `reboot.css` */
+  margin-bottom: 0.25em; /* overwrite html-elements.css */
 
   font-size: var(--global-font-size--medium);
 }
@@ -55,17 +70,70 @@ ul.post-detail {
 
 /* Metadata */
 
-/* To (optionally) hide tags & categories */
+/* To layout data */
+.app-blog .attrs,
+.app-blog .tags,
+.app-blog .categories {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+}
+.app-blog .attrs {
+  justify-content: space-between;
+}
+.app-blog .date {
+  order: -1
+}
+
+/* To conditionally hide tags & categories */
 .app-blog.no-tags :--article .tags,
 .app-blog.no-categories :--article .categories {
   display: none;
 }
 
+/* To hide empty tags & categories */
+:--article .tags:empty,
+:--article .categories:empty {
+  display: none;
+}
+
+/* To style categories as "tags" (the UI pattern) */
+.app-blog .categories a {
+  @extend :--c-tag;
+
+  display: inline-block;
+
+  color: var(--global-color-primary--xx-light);
+  background-color: var(--global-color-primary--xx-dark);
+
+  font-size: var(--global-font-size--x-small);
+}
+
+/* To style tags as "pills" (the UI pattern) */
+.app-blog .tags a {
+  /* TODO: When available in Core-Styles, uncomment this */
+  /* @extend :--c-pill; */
+
+  background-color: var(--global-color-primary--light);
+}
+
+
+
+/* Social Media */
+
+.app-blog .logos--social {
+  justify-content: end;
+  display: flex;
+  gap: 0.25em;
+}
+.app-blog .logos--social svg {
+  height: var(--global-font-size--x-large);
+}
 
 
 
 /* Pagination */
 
 .pagination {
-  margin-block: calc( var(--blog-item-buffer) * 2 );
+  margin-block: calc( var(--article-buffer) * 2 );
 }
