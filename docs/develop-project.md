@@ -22,7 +22,7 @@ All CSS static files are built:
 - **from** source files **in** `src` directories
 - **to** compiled files **in** `build` directories
 
-This allows use of future-proof CSS via [Core-Styles].
+This allows use of future-proof CSS via [Core Styles].
 
 1. Enter Container:
 

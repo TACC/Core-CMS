@@ -14,6 +14,7 @@ Styleguide Components.DjangoCMS.Blog.App
 
 @import url("./django.cms.blog.app.page.css");
 @import url("./django.cms.blog.app.item.css");
+@import url("./django.cms.blog.selectors.css");
 
 
 
@@ -24,21 +25,6 @@ Styleguide Components.DjangoCMS.Blog.App
 .app-blog {
   --article-buffer: 20px;
 }
-
-
-
-/* Selectors */
-
-/* To make these selectors easier to remember (rather than add classnames) */
-/* FAQ: Avoiding changing blog templates to limit app upgrade maintenance */
-@custom-selector :--article article;
-@custom-selector :--article-page article.post-detail;
-@custom-selector :--article-list .blog-list;
-@custom-selector :--article-list--as-list .blog-list:not(.as-grid);
-@custom-selector :--article-list--as-grid .blog-list.as-grid;
-@custom-selector :--article-item .blog-list article;
-@custom-selector :--article-item--in-list .blog-list:not(.as-grid) article;
-@custom-selector :--article-item--in-grid .blog-list.as-grid article;
 
 
 

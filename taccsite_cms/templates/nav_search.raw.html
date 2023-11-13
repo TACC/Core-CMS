@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="{% static 'site_cms/css/build/element.tacc-search-bar.css' %}">
 {% endif %}
 
-<form part="form" method="get" action="/search">
+<form part="form" method="get" action="{{ settings.SEARCH_PATH }}">
   <label for="header-search" class="u-hide--visually" part="label">
     Search
   </label>
