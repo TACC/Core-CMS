@@ -56,6 +56,7 @@
   {% endblock assets_custom %}
 
   <!-- Ad Hoc Styles. -->
+  {% block css %}{% endblock %}
   {% render_block "css" %}
 </head>
 
@@ -111,6 +112,7 @@
   {% endblock assets_custom_delayed %}
 
   <!-- Ad Hoc Scripts. -->
+  {% block js %}{% endblock %}
   {% render_block "js" %}
 </body>
 

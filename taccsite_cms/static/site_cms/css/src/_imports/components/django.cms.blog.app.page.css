@@ -10,6 +10,7 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 @import url("@tacc/core-styles/src/lib/_imports/objects/o-offset-content.css");
 
 @import url("./django.cms.blog.app.page.multimedia.css");
+@import url("./django.cms.blog.selectors.css");
 
 
 
@@ -32,11 +33,11 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 
 :--article-page header {
   grid-template-areas:
-    'head'
-    'subh'
-    'cats'
-    'tags'
-    'attr';
+    'head head'
+    'subh subh'
+    'cats link'
+    'tags tags'
+    'attr attr';
 }
 :--article-page header h1,
 :--article-page header h2 {
@@ -130,7 +131,8 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 /* FAQ: The .align-... classes come from Bootstrap Picture */
 /* FAQ: The .blockquote.text-... classes come from Bootstrap Blockquote */
 
-/* TODO: When extending Core-Styles c-news, .blockquote... is only for TACC */
+/* TODO: When extending Core-Styles c-news, .blockquote... is only for CMS */
+/* FAQ: .blockquote... is only for CMS, cuz `.align-…` is from Core-Styles */
 :--article-page .blog-content .align-left,
 :--article-page .blog-content .blockquote.text-left {
   @extend .o-offset-content--left;
@@ -148,7 +150,8 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 
 /* To always align Bootstrap blockquote text left */
 /* FAQ: Boostrap, loaded in foundation layer, used !important */
-/* TODO: When extending Core-Styles c-news, .blockquote... is only for TACC */
+/* TODO: When extending Core-Styles c-news, .blockquote... is only for CMS */
+/* FAQ: .blockquote... is only for CMS, cuz `.align-…` is from Core-Styles */
 @layer foundation {
   :--article-page .blog-content .blockquote[class*="text-"] {
     text-align: left !important; /* overwrite Bootstrap .text-... !important */

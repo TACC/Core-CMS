@@ -14,6 +14,7 @@ Styleguide Components.DjangoCMS.Blog.App
 
 @import url("./django.cms.blog.app.page.css");
 @import url("./django.cms.blog.app.item.css");
+@import url("./django.cms.blog.selectors.css");
 
 
 
@@ -23,30 +24,6 @@ Styleguide Components.DjangoCMS.Blog.App
 
 .app-blog {
   --article-buffer: 20px;
-}
-
-
-
-/* Selectors */
-
-/* To make these selectors easier to remember (rather than add classnames) */
-/* FAQ: Avoiding changing blog templates to limit app upgrade maintenance */
-@custom-selector :--article article;
-@custom-selector :--article-page article.post-detail;
-@custom-selector :--article-list .blog-list;
-@custom-selector :--article-list--as-list .blog-list:not(.as-grid);
-@custom-selector :--article-list--as-grid .blog-list.as-grid;
-@custom-selector :--article-item .blog-list article;
-@custom-selector :--article-item--in-list .blog-list:not(.as-grid) article;
-@custom-selector :--article-item--in-grid .blog-list.as-grid article;
-
-
-
-/* Generic */
-
-.app-blog {
-  /* To control absolute position of descendants e.g. `.blog-visual` */
-  position: relative;
 }
 
 
@@ -78,6 +55,7 @@ Styleguide Components.DjangoCMS.Blog.App
 .app-blog .attrs      { grid-area: attr }
 .app-blog .categories { grid-area: cats }
 .app-blog .tags       { grid-area: tags }
+.app-blog .links      { grid-area: link }
 
 .app-blog ul.post-detail {
   list-style: none;
@@ -139,6 +117,18 @@ Styleguide Components.DjangoCMS.Blog.App
   background-color: var(--global-color-primary--light);
 }
 
+
+
+/* Social Media */
+
+.app-blog .logos--social {
+  justify-content: end;
+  display: flex;
+  gap: 0.25em;
+}
+.app-blog .logos--social svg {
+  height: var(--global-font-size--x-large);
+}
 
 
 

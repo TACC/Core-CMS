@@ -165,6 +165,8 @@ GOOGLE_ANALYTICS_PRELOAD = True
 # TACC: SEARCH
 ########################
 
+# To customize site search
+SEARCH_PATH = '/search'
 SEARCH_QUERY_PARAM_NAME = 'query_string'
 
 ########################
@@ -272,6 +274,14 @@ TACC_BLOG_SHOW_TAGS = True
 # To flag posts of certain category or tag, so template can take special action
 TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY = 'sample_value_e_g__mutlimedia__'
 TACC_BLOG_SHOW_ABSTRACT_TAG = 'sample_value_e_g__redirect__'
+
+########################
+# TACC: SOCIAL MEDIA
+########################
+
+# TODO: Enable ONLY after TUP-590
+TACC_SOCIAL_SHARE_PLATFORMS = []
+# TACC_SOCIAL_SHARE_PLATFORMS = ['facebook', 'linkedin', 'email']
 
 ########################
 # TACC: CORE STYLES
@@ -382,7 +392,7 @@ INSTALLED_APPS = [
     # customize 'django.contrib.staticfiles'
     # SEE: https://stackoverflow.com/q/57921970/11817077
     # 'django.contrib.staticfiles',
-    'taccsite_cms.django.contrib.staticfiles_custom',
+    'taccsite_cms.django.contrib.staticfiles_custom.apps.TaccStaticFilesConfig',
     'django.contrib.messages',
 
     # key django CMS modules
@@ -683,5 +693,7 @@ SETTINGS_EXPORT = [
     'TACC_CORE_STYLES_VERSION',
     'TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY',
     'TACC_BLOG_SHOW_ABSTRACT_TAG',
+    'TACC_SOCIAL_SHARE_PLATFORMS',
+    'SEARCH_PATH',
     'SEARCH_QUERY_PARAM_NAME',
 ]
