@@ -1,18 +1,15 @@
-{% load cms_tags staticfiles sekizai_tags cache i18n %}
+{% load cms_tags static sekizai_tags cache i18n meta %}
+{% get_current_language as lang_code %}
 <!doctype html>
 <html
-  id="page-{{ request.current_page.id }}"
+  id="page-{% block html_page_id %}{{ request.current_page.reverse_id }}{% endblock html_page_id %}"
+  lang="{{ lang_code }}"
   {# FAQ: Only available if set in page's "Advanced" settings #}
   data-page-id="{{ request.current_page.reverse_id }}"
-  class="{% block template_class %}{% endblock template_class %}">
+  class="{% block html_page_class %}{% endblock html_page_class %}">
 
-{% if settings.FEATURES.blog %}
-  {# FAQ: Conditional includes are intentionally verbose #}
-  {# SEE: https://confluence.tacc.utexas.edu/x/QwI9Cw #}
-  {% with path="djangocms_blog_head.html" %}{% include path %}{% endwith %}
-{% else %}
-<head>
-{% endif %}
+{# SEE: https://github.com/nephila/django-meta/blob/1.7.0/docs/rendering.rst #}
+<head {% meta_namespaces %}>
   <!-- Early Site Scripts. -->
   {# Debugging Support. #}
   {% include "debug_js.html" with settings=settings %}
@@ -24,14 +21,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  {% if settings.FEATURES.blog %}
   <!-- Metadata: Social Media. -->
-    {% block meta %}
-      {# FAQ: Conditional includes are intentionally verbose #}
-      {# SEE: https://confluence.tacc.utexas.edu/x/QwI9Cw #}
-      {% with path="djangocms_page_meta.html" %}{% include path %}{% endwith %}
-    {% endblock meta %}
-  {% endif %}
+  {% block meta %}
+    {# FAQ: Conditional includes are intentionally verbose #}
+    {# SEE: https://confluence.tacc.utexas.edu/x/QwI9Cw #}
+    {% with path="djangocms_page_meta.html" %}{% include path %}{% endwith %}
+  {% endblock meta %}
+
+{% if settings.TACC_CORE_STYLES_VERSION == 0 %}
 
   <!-- Site Font and/or Custom Font. -->
   {# The core site font (can be replaced or accompanied by custom font/s) #}
@@ -43,24 +40,34 @@
   {# The core site assets (can NOT be replaced by custom assets) #}
   {% include 'assets_site.html' %}
 
+{% elif settings.TACC_CORE_STYLES_VERSION >= 1 %}
+
+  <!-- Core Assets. -->
+  {% include 'assets_core.html' %}
+  {% block assets_core_project %}
+  {% include 'assets_core_cms.html' %}
+  {% endblock assets_core_project %}
+
+{% endif %}
+
   <!-- Custom Assets. -->
-  {# Placeholder for custom assets #}
   {% block assets_custom %}
   {% include 'assets_custom.html' %}
   {% endblock assets_custom %}
 
-  <!-- CMS Admin Styles. -->
+  <!-- Ad Hoc Styles. -->
+  {% block css %}{% endblock %}
   {% render_block "css" %}
 </head>
 
-<body class="o-site  {% block page_type_class %}{% endblock page_type_class %}">
+<body class="{% block page_type_class %}{% endblock page_type_class %}">
   {% cms_toolbar %}
 
-  <header class="o-site__head">
+  <header>
     {% include "header.html" %}
   </header>
 
-  <main id="cms-content" class="o-site__body">
+  <main id="cms-content">
   {% block content %}
 
     {# To allow extra Container in page structure by hiding extra padding #}
@@ -77,25 +84,35 @@
   {% endblock content %}
   </main>
 
-  <footer class="c-footer  s-footer  o-site__foot">
+  <footer class="c-footer  s-footer">
   {% block footer %}
 
     {% static_placeholder "footer-content" or %}
-    <p>©2020 Texas Advanced Computing Center, The University of Texas at Austin, Office of the Vice President for Research.</p>
+    <p>©{% now "Y" %} Texas Advanced Computing Center, The University of Texas at Austin, Office of the Vice President for Research.</p>
     {% endstatic_placeholder %}
 
   {% endblock footer %}
   </footer>
 
+{% if settings.TACC_CORE_STYLES_VERSION == 0 %}
+
   <!-- Site Assets (Delayed). -->
   {% include 'assets_site_delayed.html' %}
+
+{% elif settings.TACC_CORE_STYLES_VERSION >= 1 %}
+
+  <!-- Core Assets (Delayed). -->
+  {% include 'assets_core_delayed.html' %}
+
+{% endif %}
 
   <!-- Custom Assets (Delayed). -->
   {% block assets_custom_delayed %}
   {% include 'assets_custom_delayed.html' %}
   {% endblock assets_custom_delayed %}
 
-  <!-- CMS Admin Scripts. -->
+  <!-- Ad Hoc Scripts. -->
+  {% block js %}{% endblock %}
   {% render_block "js" %}
 </body>
 

@@ -11,8 +11,19 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import logging
 import os
 from glob import glob
-import ldap
-from django_auth_ldap.config import LDAPSearch, GroupOfNamesType
+
+from django.utils.translation import gettext_lazy as _
+
+from taccsite_cms._settings.auth import *
+from taccsite_cms._settings.email import *
+from taccsite_cms._settings.form_plugin import *
+from taccsite_cms._settings.form_plugin import (
+    _INSTALLED_APPS as form_plugin_INSTALLED_APPS
+)
+
+########################
+# DJANGO
+########################
 
 SECRET_KEY = 'CHANGE_ME'
 def gettext(s): return s
@@ -28,11 +39,11 @@ DEBUG = True       # False for Prod.
 # ALLOWED_HOSTS = ['hostname.tacc.utexas.edu', 'host.ip.v4.address', '0.0.0.0', 'localhost', '127.0.0.1']   # In production.
 ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost', '*']   # In development.
 
-# Requires django-auth-ldap ≥ 2.0.0
-LDAP_ENABLED = True
+# https://docs.djangoproject.com/en/3.0/ref/clickjacking/#how-to-use-it
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
-# Default portal authorization verification endpoint.
-CEP_AUTH_VERIFICATION_ENDPOINT = 'localhost'  # 'https://0.0.0.0:8000'
+# whether the session cookie should be secure (https:// only)
+SESSION_COOKIE_SECURE = True
 
 ########################
 # DATABASE SETTINGS
@@ -40,7 +51,7 @@ CEP_AUTH_VERIFICATION_ENDPOINT = 'localhost'  # 'https://0.0.0.0:8000'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'PORT': '5432',
         'NAME': 'taccsite',
         'USER': 'postgresadmin',
@@ -49,30 +60,87 @@ DATABASES = {
     }
 }
 
-AUTHENTICATION_BACKENDS = [
-    "django.contrib.auth.backends.ModelBackend",
-    "taccsite_cms.remote_cms_auth.CorePortalAuthBackend",
-    "django_auth_ldap.backend.LDAPBackend"
-]
 
-''' LDAP Auth Settings '''
-AUTH_LDAP_SERVER_URI = "ldap://ldap.tacc.utexas.edu"
-AUTH_LDAP_CONNECTION_OPTIONS = {ldap.OPT_REFERRALS: 0}
-AUTH_LDAP_START_TLS = True
-AUTH_LDAP_BIND_AS_AUTHENTICATING_USER = True
-AUTH_LDAP_BIND_DN = ""
-AUTH_LDAP_BIND_PASSWORD = ""
-AUTH_LDAP_AUTHORIZE_ALL_USERS = True
 
-AUTH_LDAP_USER_SEARCH = LDAPSearch(
-    "ou=People,dc=tacc,dc=utexas,dc=edu", ldap.SCOPE_SUBTREE, "(uid=%(user)s)"
-)
+########################
+# LOGGING
+########################
 
-AUTH_LDAP_USER_ATTR_MAP = {
-    "first_name": "givenName",
-    "last_name": "sn",
-    "email": "mail",
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'default': {
+            'format': '[DJANGO] %(levelname)s %(asctime)s UTC %(module)s '
+                      '%(name)s.%(funcName)s:%(lineno)s: %(message)s'
+        },
+        'metrics': {
+            'format': '[METRICS] %(levelname)s %(asctime)s UTC %(module)s '
+                      '%(name)s.%(funcName)s:%(lineno)s: %(message)s'
+        },
+    },
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'default',
+        },
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': '/var/log/cms/cms.log',
+            'maxBytes': 1024*1024*5,  # 5 MB
+            'backupCount': 5,
+            'formatter': 'default',
+        },
+        'metrics_console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'metrics',
+        },
+        'metrics_file': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': '/var/log/cms/metrics.log',
+            'maxBytes': 1024*1024*5,  # 5 MB
+            'backupCount': 5,
+            'formatter': 'metrics',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console', 'file'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        'portal': {
+            'handlers': ['console', 'file'],
+            'level': 'DEBUG',
+        },
+        'metrics': {
+            'handlers': ['metrics_console', 'metrics_file'],
+            'level': 'DEBUG',
+        },
+        'paramiko': {
+            'handlers': ['console'],
+            'level': 'DEBUG'
+        },
+        'celery': {
+            'handlers': ['console', 'file'],
+            'level': 'INFO',
+        },
+        'daphne': {
+            'handlers': [
+                'console',
+            ],
+            'level': 'INFO'
+        }
+    },
 }
+
+########################
+# DJANGO CMS SETTINGS
+########################
 
 SITE_ID = 1
 
@@ -83,6 +151,8 @@ CMS_TEMPLATES = (
 
 CMS_PERMISSION = True
 
+
+
 ########################
 # TACC: GOOGLE ANALYTICS
 ########################
@@ -92,14 +162,12 @@ GOOGLE_ANALYTICS_PROPERTY_ID = "UA-123ABC@%$&-#"
 GOOGLE_ANALYTICS_PRELOAD = True
 
 ########################
-# CMS FORMS
+# TACC: SEARCH
 ########################
 
-# Create CMS Forms
-# SEE: https://pypi.org/project/djangocms-forms/
-# SEE: https://www.google.com/recaptcha/admin/create
-DJANGOCMS_FORMS_RECAPTCHA_PUBLIC_KEY = ""
-DJANGOCMS_FORMS_RECAPTCHA_SECRET_KEY = ""
+# To customize site search
+SEARCH_PATH = '/search'
+SEARCH_QUERY_PARAM_NAME = 'query_string'
 
 ########################
 # ELASTICSEARCH
@@ -110,17 +178,19 @@ ES_HOSTS = 'http://elasticsearch:9200'
 ES_INDEX_PREFIX = 'cms-dev-{}'
 ES_DOMAIN = 'http://localhost:8000'
 
-########################
-# TACC: (DEPRECATED)
-########################
-
-"""
-Optional theming of CMS (certain themes may only affect some elements)
-Usage:
-- None (standard theme)
-- 'has-dark-logo'
-"""
-THEME = None
+# Elasticsearch Indexing
+HAYSTACK_ROUTERS = ['aldryn_search.router.LanguageRouter', ]
+HAYSTACK_SIGNAL_PROCESSOR = 'taccsite_cms.signal_processor.RealtimeSignalProcessor'
+ALDRYN_SEARCH_DEFAULT_LANGUAGE = 'en'
+ALDRYN_SEARCH_REGISTER_APPHOOK = True
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+        'URL': ES_HOSTS,
+        'INDEX_NAME': ES_INDEX_PREFIX.format('cms'),
+        'KWARGS': {'http_auth': ES_AUTH}
+    }
+}
 
 ########################
 # TACC: BRANDING
@@ -185,6 +255,8 @@ FAVICON = {
 ########################
 
 INCLUDES_CORE_PORTAL = True
+INCLUDES_PORTAL_NAV = True
+INCLUDES_SEARCH_BAR = True
 
 LOGOUT_REDIRECT_URL = '/'
 
@@ -192,6 +264,32 @@ LOGOUT_REDIRECT_URL = '/'
 # this will need to be updated for dev/pprd/prod systems
 # for example, CEP_AUTH_VERIFICATION_ENDPOINT=https://dev.cep.tacc.utexas.edu
 CEP_AUTH_VERIFICATION_ENDPOINT = 'http://django:6000'
+
+########################
+# TACC: NEWS/BLOG
+########################
+
+TACC_BLOG_SHOW_CATEGORIES = True
+TACC_BLOG_SHOW_TAGS = True
+# To flag posts of certain category or tag, so template can take special action
+TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY = 'sample_value_e_g__mutlimedia__'
+TACC_BLOG_SHOW_ABSTRACT_TAG = 'sample_value_e_g__redirect__'
+
+########################
+# TACC: SOCIAL MEDIA
+########################
+
+# TODO: Enable ONLY after TUP-590
+TACC_SOCIAL_SHARE_PLATFORMS = []
+# TACC_SOCIAL_SHARE_PLATFORMS = ['facebook', 'linkedin', 'email']
+
+########################
+# TACC: CORE STYLES
+########################
+
+# Only use integer numbers (not "v1", not "0.11.0"),
+# so templates can load based on simple comparisons
+TACC_CORE_STYLES_VERSION = 0
 
 ########################
 # CLIENT BUILD SETTINGS
@@ -211,6 +309,11 @@ STATICFILES_DIRS = (
 ) + tuple(glob(
     os.path.join(BASE_DIR, 'taccsite_custom', '*', 'static')
 ))
+
+# Serve UI Demo (if it exists) at .../ui
+ui_demo_dir = os.path.join(BASE_DIR, 'taccsite_ui', 'dist')
+if os.path.exists(ui_demo_dir):
+    STATICFILES_DIRS += (('ui', ui_demo_dir),)
 
 # User Uploaded Files Location.
 MEDIA_URL = '/media/'
@@ -242,7 +345,7 @@ TEMPLATES = [
                 'django_settings_export.settings_export'
             ],
             'libraries': {
-                # NOTE: These may be unnecessary alternative config, because taccsite_cms is in INSTALLED_APPS, but are comfortably explicit
+                # Unnecessary but explicit
                 # SEE: https://docs.djangoproject.com/en/3.1/howto/custom-template-tags/#code-layout
                 'custom_portal_settings': 'taccsite_cms.templatetags.custom_portal_settings',
                 'tacc_uri_shortcuts': 'taccsite_cms.templatetags.tacc_uri_shortcuts',
@@ -254,6 +357,10 @@ TEMPLATES = [
             ],
         },
     },
+]
+
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'taccsite_cms', 'locale'),
 ]
 
 MIDDLEWARE = [
@@ -271,26 +378,42 @@ MIDDLEWARE = [
     'cms.middleware.language.LanguageCookieMiddleware'
 ]
 
+# Application definition
+
 INSTALLED_APPS = [
+    # optional, but used in most projects
     'djangocms_admin_style',
+
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.admin',
     'django.contrib.sites',
     'django.contrib.sitemaps',
-    # Customize 'django.contrib.staticfiles'
+    # customize 'django.contrib.staticfiles'
     # SEE: https://stackoverflow.com/q/57921970/11817077
     # 'django.contrib.staticfiles',
-    'taccsite_cms.django.contrib.staticfiles_custom',
+    'taccsite_cms.django.contrib.staticfiles_custom.apps.TaccStaticFilesConfig',
     'django.contrib.messages',
+
+    # key django CMS modules
     'cms',
     'menus',
     'sekizai',
     'treebeard',  # Replaces mptt.
+
+    # the default CKEditor - optional, but used in most projects
     'djangocms_text_ckeditor',
+
+    # Django Filer - optional, but used in most projects
     'filer',
     'easy_thumbnails',
+
+    # required by django CMS Blog
+    'meta',
+    'djangocms_page_meta',
+
+    # some content plugins - optional, but used in most projects
     'djangocms_column',
     'djangocms_file',
     'djangocms_link',
@@ -301,6 +424,8 @@ INSTALLED_APPS = [
     'djangocms_transfer',
     'djangocms_video',
     'djangocms_icon',
+
+    # optional django CMS Bootstrap 4 modules
     'djangocms_bootstrap4',
     'djangocms_bootstrap4.contrib.bootstrap4_alerts',
     'djangocms_bootstrap4.contrib.bootstrap4_badge',
@@ -316,19 +441,34 @@ INSTALLED_APPS = [
     'djangocms_bootstrap4.contrib.bootstrap4_picture',
     'djangocms_bootstrap4.contrib.bootstrap4_tabs',
     'djangocms_bootstrap4.contrib.bootstrap4_utilities',
-    'haystack',
-    'aldryn_apphooks_config',
-    'test_without_migrations',
+
+    # miscellaneous
+    'haystack',                # search index
+    'aldryn_apphooks_config',  # search index & django CMS Blog
+    'test_without_migrations', # run tests faster
+
+] + form_plugin_INSTALLED_APPS + [
+
+    # core TACC CMS
+    # HELP: If this were top of list, would TACC/Core-CMS/pull/169 fix break?
     'taccsite_cms',
+
+    # django CMS Bootstrap
+    # IDEA: Extend Bootstrap apps instead of overwrite
     'taccsite_cms.contrib.bootstrap4_djangocms_link',
     'taccsite_cms.contrib.bootstrap4_djangocms_picture',
-    # FP-1231: Convert our CMS plugins to stand-alone apps
+
+    # TACC CMS Plugins
+    'djangocms_tacc_image_gallery',
+    # TODO: Use https://github.com/wesleyboar/Core-CMS-Plugin-System-Monitor
+    'taccsite_cms.contrib.taccsite_system_monitor',
+
+    # TACC CMS Plugins - DECPRECATED
     'taccsite_cms.contrib.taccsite_blockquote',
     'taccsite_cms.contrib.taccsite_callout',
     'taccsite_cms.contrib.taccsite_sample',
     'taccsite_cms.contrib.taccsite_offset',
     'taccsite_cms.contrib.taccsite_system_specs',
-    'taccsite_cms.contrib.taccsite_system_monitor',
     'taccsite_cms.contrib.taccsite_data_list'
 ]
 
@@ -338,7 +478,12 @@ INSTALLED_APPS = [
 def get_subdirs_as_module_names(path):
     module_names = []
     for entry in os.scandir(path):
-        is_app = entry.path.find('_readme') == -1
+        is_app = (
+            entry.path.find('_readme') == -1 and # explains common project dirs
+            entry.path.find('-org') == -1 and    # deprecated Texascale templates
+            entry.path.find('-cms') == -1 and    # deprecated project templates
+            entry.path.find('docs') == -1        # documentation beyond README
+        )
         if entry.is_dir() and is_app:
             # FAQ: There are different root paths to tweak:
             #      - Containers use `/code/…`
@@ -405,6 +550,11 @@ DJANGOCMS_PICTURE_RESPONSIVE_IMAGES_VIEWPORT_BREAKPOINTS = [
     576, 768, 992, 1200, 1400, 1680, 1920
 ]
 DJANGOCMS_PICTURE_RATIO = 1.618
+DJANGOCMS_PICTURE_ALIGN = [
+    ('left', _('Align left')),
+    ('right', _('Align right')),
+    ('center', _('Align center')),
+]
 
 # FILE UPLOAD VALUES MUST BE SET!
 # Set in correlation with the `client_max_body_size    20m;` value in /etc/nginx/proxy.conf.
@@ -416,35 +566,7 @@ FILE_UPLOAD_MAX_MEMORY_SIZE = 20000000  # 20MB
 
 DJANGOCMS_AUDIO_ALLOWED_EXTENSIONS = ['mp3', 'ogg', 'wav']
 
-# Djangocms Forms Settings.
-# SEE: https://github.com/mishbahr/djangocms-forms#configuration
-DJANGOCMS_FORMS_PLUGIN_MODULE = ('Generic')
-DJANGOCMS_FORMS_PLUGIN_NAME = ('Form')
-
-DJANGOCMS_FORMS_TEMPLATES = (
-    ('djangocms_forms/form_template/default.html', ('Default')),
-)
-DJANGOCMS_FORMS_USE_HTML5_REQUIRED = False
-
-DJANGOCMS_FORMS_REDIRECT_DELAY = 1
-
-# Elasticsearch Indexing
-HAYSTACK_ROUTERS = ['aldryn_search.router.LanguageRouter', ]
-HAYSTACK_SIGNAL_PROCESSOR = 'taccsite_cms.signal_processor.RealtimeSignalProcessor'
-ALDRYN_SEARCH_DEFAULT_LANGUAGE = 'en'
-ALDRYN_SEARCH_REGISTER_APPHOOK = True
-HAYSTACK_CONNECTIONS = {
-    'default': {
-        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
-        'URL': ES_HOSTS,
-        'INDEX_NAME': ES_INDEX_PREFIX.format('cms'),
-        'KWARGS': {'http_auth': ES_AUTH}
-    }
-}
-
 SETTINGS_EXPORT_VARIABLE_NAME = 'settings'
-
-FEATURES = ''
 
 ########################
 # PLUGIN SETTINGS
@@ -452,14 +574,26 @@ FEATURES = ''
 
 # https://github.com/django-cms/djangocms-style
 DJANGOCMS_STYLE_CHOICES = [
-    # https://cep.tacc.utexas.edu/design-system/ui-patterns/o-section/
+    'card',
+    'card--plain',
+    'card--standard',
+    'card--image-top',
+    'card--image-bottom',
+    'card--image-right',
+    'card--image-left',
+    'section',
+    'section--light',
+    'section--muted',
+    'section--dark',
+    'o-section',
     'o-section o-section--style-light',
+    'o-section o-section--style-muted',
     'o-section o-section--style-dark',
-    # https://cep.tacc.utexas.edu/design-system/ui-patterns/c-callout/
     'c-callout',
-    # https://cep.tacc.utexas.edu/design-system/ui-patterns/c-recognition/
     'c-recognition c-recognition--style-light',
     'c-recognition c-recognition--style-dark',
+    'c-nav', # bare-bones instance
+    'c-nav c-nav--boxed',
 ]
 DJANGOCMS_STYLE_TAGS_DEFAULT = 'Automatic'
 DJANGOCMS_STYLE_TAGS = [
@@ -467,9 +601,53 @@ DJANGOCMS_STYLE_TAGS = [
     # SEE: taccsite_cms/templatetags/preferred_tag_for_class.py
     DJANGOCMS_STYLE_TAGS_DEFAULT,
     # Ordered by expected usage
-    'section', 'article', 'header', 'footer', 'aside', 'div',
+    'section', 'article', 'header', 'footer', 'aside', 'nav', 'div',
     # Not expected but not unreasonable
     'h1', 'h2', 'h3', 'h4', 'h5', 'h6'
+]
+
+# https://github.com/nephila/django-meta
+META_SITE_PROTOCOL = 'http'
+META_USE_SITES = True
+META_USE_OG_PROPERTIES = True
+META_USE_TWITTER_PROPERTIES = True
+META_USE_SCHEMAORG_PROPERTIES = True
+
+# https://github.com/django-cms/djangocms-text-ckeditor
+CKEDITOR_SETTINGS = {
+    'autoParagraph': False,
+    'stylesSet': 'default:/static/js/addons/ckeditor.wysiwyg.js',
+    'contentsCss': ['/static/djangocms_text_ckeditor/ckeditor/contents.css'],
+}
+
+# https://github.com/django-cms/djangocms-video
+DJANGOCMS_VIDEO_TEMPLATES = [
+    ('responsive-auto', _('Responsive - Automatic')),
+    ('responsive-16by9', _('Responsive - 16 by 9')),
+    ('responsive-4by3', _('Responsive - 4 by 3')),
+    ('responsive-1by1', _('Responsive - 1 by 1')),
+    ('responsive-21by9', _('Responsive - 21 by 9')),
+]
+
+# DJANGOCMS_ICON SETTINGS
+# https://github.com/django-cms/djangocms-icon
+
+ICON_PATH = os.path.join('taccsite_cms', 'static', 'site_cms', 'img', 'icons')
+
+LOGO_ICONFILE = os.path.join(BASE_DIR, ICON_PATH, 'logos.json')
+with open(LOGO_ICONFILE, 'r') as f:
+    LOGO_ICONS = f.read()
+
+CORTAL_ICONFILE = os.path.join(BASE_DIR, ICON_PATH, 'cortal.json')
+with open(CORTAL_ICONFILE, 'r') as f:
+    CORTAL_ICONS = f.read()
+
+DJANGOCMS_ICON_SETS = [
+    # The SVG icon set must be first or icon selection is not remembered on edit
+    # HELP: Icon previews are blank if editor switches from SVG set to icon set
+    # https://github.com/django-cms/djangocms-icon/issues/9
+    (LOGO_ICONS, '', _('Logo SVGs')),
+    (CORTAL_ICONS, 'icon', _('TACC "Cortal" Icons')),
 ]
 
 ########################
@@ -478,31 +656,44 @@ DJANGOCMS_STYLE_TAGS = [
 
 try:
     from taccsite_cms.settings_custom import *
-except:
-    None
-    # do nothing
+except ModuleNotFoundError:
+    pass
 
 try:
     from taccsite_cms.secrets import *
-except:
-    None
-    # do nothing
+except ModuleNotFoundError:
+    pass
 
 try:
     from taccsite_cms.settings_local import *
-except:
-    None
-    # do nothing
+except ModuleNotFoundError:
+    pass
+
+try:
+    from taccsite_cms import custom_app_settings
+    INSTALLED_APPS += getattr(custom_app_settings, 'CUSTOM_APPS', [])
+    STATICFILES_DIRS += getattr(custom_app_settings , 'STATICFILES_DIRS', ())
+    MIDDLEWARE += getattr(custom_app_settings , 'CUSTOM_MIDDLEWARE', ())
+except ImportError:
+    pass
 
 SETTINGS_EXPORT = [
     'DEBUG',
-    'FEATURES',
-    'THEME',
     'BRANDING',
     'LOGO',
     'FAVICON',
     'INCLUDES_CORE_PORTAL',
+    'INCLUDES_PORTAL_NAV',
+    'INCLUDES_SEARCH_BAR',
     'GOOGLE_ANALYTICS_PROPERTY_ID',
     'GOOGLE_ANALYTICS_PRELOAD',
     'DJANGOCMS_STYLE_TAGS_DEFAULT'
+    'TACC_BLOG_SHOW_CATEGORIES',
+    'TACC_BLOG_SHOW_TAGS',
+    'TACC_CORE_STYLES_VERSION',
+    'TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY',
+    'TACC_BLOG_SHOW_ABSTRACT_TAG',
+    'TACC_SOCIAL_SHARE_PLATFORMS',
+    'SEARCH_PATH',
+    'SEARCH_QUERY_PARAM_NAME',
 ]

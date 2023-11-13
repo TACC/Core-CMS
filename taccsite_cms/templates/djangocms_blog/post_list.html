@@ -1,18 +1,41 @@
+{# https://github.com/nephila/djangocms-blog/blob/1.1.1/djangocms_blog/templates/djangocms_blog/post_list.html #}
 {% extends "djangocms_blog/base.html" %}
 {% load i18n easy_thumbnails_tags %}{% spaceless %}
 
 {% block canonical_url %}<link rel="canonical" href="{{ view.get_view_url }}"/>{% endblock canonical_url %}
 
 {% block content_blog %}
+{# TACC (wrap list in container w/ breadcrumbs to mimic other page layouts): #}
+<div class="container">
+{% include "nav_cms_breadcrumbs.html" %}
+{# /TACC #}
+
 <section class="blog-list">
     {% block blog_title %}
     <header>
+        {# TACC (use greater heading level): #}
+        {# TACC (do not use large header until core-styles.cms.css): #}
+        {% if settings.TACC_CORE_STYLES_VERSION >= 1 %}
+        <h1>
+        {% else %}
         <h2>
+        {% endif %}
+        {# /TACC #}
+        {# /TACC #}
         {% if author %}{% trans "Articles by" %} {{ author.get_full_name }}
         {% elif archive_date %}{% trans "Archive" %} &ndash; {% if month %}{{ archive_date|date:'F' }} {% endif %}{{ year }}
         {% elif tagged_entries %}{% trans "Tag" %} &ndash; {{ tagged_entries|capfirst }}
-        {% elif category %}{% trans "Category" %} &ndash; {{ category }}{% endif %}
+        {% elif category %}{% trans "Category" %} &ndash; {{ category }}
+        {% else %}{% trans "News" %}{% endif %}
+        {# TACC (use greater heading level): #}
+        {# TACC (do not use large header until core-styles.cms.css): #}
+        {% if settings.TACC_CORE_STYLES_VERSION >= 1 %}
+        </h1>
+        {% else %}
         </h2>
+        {% endif %}
+        {# /TACC #}
+        {# /TACC #}
     </header>
     {% endblock %}
     {% for post in post_list %}
@@ -26,16 +49,24 @@
     {% if is_paginated %}
     <nav class="{% firstof css_grid instance.css_grid %} pagination">
         {% if page_obj.has_previous %}
-            <a href="?{{ view.page_kwarg }}={{ page_obj.previous_page_number }}">&laquo; {% trans "previous" %}</a>
+            {# TACC (swap '«' with '<'): #}
+            <a href="?{{ view.page_kwarg }}={{ page_obj.previous_page_number }}">&lt; {% trans "previous" %}</a>
+            {# /TACC #}
         {% endif %}
         <span class="current">
             {% trans "Page" %} {{ page_obj.number }} {% trans "of" %} {{ paginator.num_pages }}
         </span>
         {% if page_obj.has_next %}
-            <a href="?{{ view.page_kwarg }}={{ page_obj.next_page_number }}">{% trans "next" %} &raquo;</a>
+            {# TACC (swap '»' with '>'): #}
+            <a href="?{{ view.page_kwarg }}={{ page_obj.next_page_number }}">{% trans "next" %} &gt;</a>
+            {# /TACC #}
         {% endif %}
     </nav>
     {% endif %}
 </section>
+
+{# TACC (wrap list in container w/ breadcrumbs to mimic other page layouts): #}
+</div>
+{# /TACC #}
 {% endblock %}
 {% endspaceless %}

@@ -1,0 +1,214 @@
+/*
+Django CMS Blog App Item (Post/Article in a List) Components
+
+Reference:
+
+- [`includes/blog_item.html`](https://github.com/nephila/djangocms-blog/blob/1.1.1/djangocms_blog/templates/djangocms_blog/includes/blog_item.html)
+
+Styleguide Components.DjangoCMS.Blog.App.Item
+*/
+@import url("@tacc/core-styles/src/lib/_imports/tools/x-article-link.css");
+@import url("@tacc/core-styles/src/lib/_imports/tools/x-truncate.css");
+
+@import url("../tools/media-queries.css");
+
+@import url("./django.cms.blog.selectors.css");
+
+
+
+
+
+/* List */
+
+/* To support rendering list as a grid */
+:--article-list--as-grid {
+  display: grid;
+  grid-template-columns: repeat( auto-fit, minmax(350px, 1fr) );
+  column-gap: var(--global-space--pattern-pad);
+}
+/* So page title spans all columns */
+:--article-list--as-grid > header {
+  grid-column: 1 / -1;
+}
+
+
+
+
+
+/* Item */
+
+
+
+/* Item (Structure) */
+
+/* For basic layout */
+:--article-item {
+  display: grid;
+
+  column-gap: 50px; /* for horz. space between image and content */
+
+  border-bottom: var(--global-border-width--normal) solid var(--global-color-primary--dark);
+  margin-bottom: var(--article-buffer);
+  padding-bottom: var(--article-buffer);
+}
+:--article-item header        { grid-area: head }
+:--article-item .blog-visual  { grid-area: media }
+:--article-item .blog-lead    { grid-area: desc }
+
+/* For layout options */
+.x-blog-grid-item {
+    grid-template-areas:
+      'media'
+      'head'
+      'desc';
+    /* To prevent content from overflowing cell */
+    grid-template-columns: minmax(0, 1fr);
+    /* To prevent vertical stretch of rows */
+    grid-auto-rows: min-content;
+}
+.x-blog-list-item {
+    grid-template-areas:
+      'media head'
+      'media desc';
+    /* To shrinkwrap media and flexible text content */
+    grid-template-columns: minmax(0, max-content) 1fr;
+    /* To let 'desc' take remaining space (removes gap between head and desc) */
+    grid-template-rows: min-content 1fr;
+}
+@media (--narrow-and-below) {
+  :--article-item {
+    @extend .x-blog-grid-item;
+  }
+}
+@media (--narrow-and-above) {
+  :--article-item--in-list {
+    @extend .x-blog-list-item;
+  }
+  :--article-item--in-grid {
+    @extend .x-blog-grid-item;
+  }
+}
+
+
+
+
+
+
+/* Header */
+
+
+
+/* Header (Structure) */
+
+:--article-item header {
+  margin-bottom: 5px;
+}
+
+
+
+/* Header - Title */
+
+:--article-item h3 {
+  margin-bottom: unset; /* overwrite Core-Styles headings--cms.css */
+}
+:--article-item h4 {
+  display: none;
+}
+
+
+
+/* Header - Metadata (Skin) */
+
+:--article-item li {
+  line-height: unset; /* overwrite html-elements.css */
+}
+
+:--article-item .attrs {
+  color: var(--global-color-primary--dark);
+}
+:--article-item .attrs a {
+  color: inherit;
+}
+
+
+
+
+
+/* Visual */
+
+:--article-item .blog-visual:empty {
+  display: none;
+}
+
+/* To support vertical article layouts */
+/* FAQ: In simple layouts, the media element is the grid cell */
+/* FAQ: In complex layouts, the media element is within the grid cell */
+.x-blog-grid-item-media-cell {
+  margin-bottom: 15px; /* to add space between image and content */
+}
+.x-blog-grid-item-media-element-in-cell {
+  max-width: 100%; /* to prevent overflow if column is narrower than image */
+  height: auto; /* to preserve ratio if width is reduced (by max-width: 100%) */
+}
+@media (--narrow-and-below) {
+  :--article-item .blog-visual {
+    @extend .x-blog-grid-item-media-cell;
+    & img { @extend .x-blog-grid-item-media-element-in-cell; }
+  }
+}
+@media (--narrow-and-above) {
+  :--article-item--in-grid .blog-visual {
+    @extend .x-blog-grid-item-media-cell;
+    & img { @extend .x-blog-grid-item-media-element-in-cell; }
+  }
+}
+
+
+
+
+
+/* Content */
+
+/* <time> as a header tag may not be relevant as of Oct. 17, 23 */
+:--article-item time:not(:is(h1, h2, h3, h4, h5, h6) *) {
+  color: var(--global-color-accent--secondary);
+  font-weight: var(--medium);
+  text-transform: uppercase;
+}
+
+:--article-item .blog-lead {
+  @extend %x-truncate--many-lines;
+  --lines: 4;
+
+  line-height: 1.5;
+  color: var(--global-color-primary--dark);
+}
+:--article-item .blog-lead p:last-child {
+  margin-bottom: 0 /* overwrite core-styles.cms */
+}
+
+/* To undo inline content styles */
+/* FAQ: In case author pasted such markup from another source */
+:--article-item .blog-lead [style] {
+    all: revert !important; /* force undo all inline styles */
+}
+
+
+
+
+
+/* Footer */
+
+/* To make image clickable via "read more" link */
+/* FAQ: This is not available via c-news, because c-news assumes
+        if image should be clickable, client would wrap it in a link */
+.read-more {
+  /* To cover the image exactly */
+  display: grid;
+  grid-row-start: 1;
+  grid-column-start: 1;
+  grid-row-end: span 2;
+
+  /* To hide link text */
+  font-size: 0;
+}

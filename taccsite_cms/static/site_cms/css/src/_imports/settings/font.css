@@ -1,0 +1,10 @@
+:root {
+  /* FAQ: Used by TACC/Core-Styles `s-header` */
+  /* FAQ: Overwritten by TACC/Core-CMS-Resource:/texascale_cms `props.font` */
+  --global-font-family: var(--global-font-family--sans);
+
+  /* To overwrite Boostrap */
+  --font-family-sans-serif: var(--global-font-family--sans);
+  /* CAVEAT: Ineffectual for <code>, <kbd>, <pre>, <samp> */
+  --font-family-monospace: var(--global-font-family--mono);
+}

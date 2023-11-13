@@ -1,5 +1,5 @@
 '''
-A `settings_custom.py` file can override default values in settings.py
+A `settings_custom.py` file can override default values in `settings.py`.
 
 The file is loaded after default settings but before settings assignment is complete, so we can override settings in:
 - _either_ `settings_custom.py` (usually set in custom sites)
@@ -43,61 +43,115 @@ CMS_TEMPLATES = (
 )
 
 ########################
-# TACC: BRANDING
+# NSF BRANDING
 ########################
 
-_CUSTOM_BRANDING = [
-    "sgci",
-    "brainmap-cms/img/org_logos/sgci-logo-sans-text.svg",
-    "branding-logo--short",
-    "https://sciencegateways.org/",
+NSF_BRANDING = [
+    "nsf",
+    "example-cms/img/org_logos/nsf-white.png",
+    "branding-nsf",
+    "https://www.nsf.gov/",
     "_blank",
-    "SGCI Logo",
-    "anonymous",
-    "True",
-]
-
-BRANDING = [ TACC_BRANDING, UTEXAS_BRANDING, NSF_BRANDING, _CUSTOM_BRANDING ]
-
-########################
-# TACC: LOGOS
-########################
-
-LOGO =  [
-    "brainmap",
-    "brainmap-cms/img/org_logos/brainmap-logo.png",
-    "",
-    "https://brainmap.org",
-    "_self",
-    "BrainMap Logo",
+    "NSF Logo",
     "anonymous",
     "True"
 ]
 
+########################
+# TACC BRANDING
+########################
+
+TACC_BRANDING = [
+    "tacc",
+    "example-cms/img/org_logos/tacc-white.png",
+    "branding-tacc",
+    "https://www.tacc.utexas.edu/",
+    "_blank",
+    "TACC Logo",
+    "anonymous",
+    "True"
+]
+
+UTEXAS_BRANDING = [
+    "utexas",
+    "example-cms/img/org_logos/utaustin-white.png",
+    "branding-utaustin",
+    "https://www.utexas.edu/",
+    "_blank",
+    "University of Texas at Austin Logo",
+    "anonymous",
+    "True"
+]
+
+########################
+# CUSTOM PORTAL BRANDING
+########################
+
+# Edit this config as needed for the project branding used in the navigation bar header.
+CUSTOM_BRANDING = [
+    "portal",
+    "example-cms/img/org_logos/portal.png",
+    "branding-logo--short",
+    "https://cep.tacc.utexas.edu",
+    "_blank",
+    "Portal Logo",
+    "anonymous",
+    "True",
+]
+
+# Generic TACC Portals.
+BRANDING = [ TACC_BRANDING, UTEXAS_BRANDING ]
+
+# Custom Branded Portals (Non-NSF).
+#BRANDING = [ TACC_BRANDING, UTEXAS_BRANDING, CUSTOM_BRANDING ]
+
+# NSF Funded Generic TACC Portals.
+#BRANDING = [ NSF_BRANDING, TACC_BRANDING, UTEXAS_BRANDING ]
+
+# NSF Funded & Custom Branded Portals.
+#BRANDING = [ NSF_BRANDING, TACC_BRANDING, UTEXAS_BRANDING, CUSTOM_BRANDING ]
+
+########################
+# PORTAL LOGO / FAVICON
+########################
+
+# Edit this config as needed for the project logo used in the navigation bar.
+LOGO =  [
+    "example",
+    "example-cms/img/org_logos/portal.png",
+    "",
+    "/",
+    "_self",
+    "Placeholder Logo for CMS/Portal",
+    "anonymous",
+    "True"
+]
+
+# Edit this config as needed for the project favicon used in the browser navbar.
+# If `INCLUDES_CORE_PORTAL = True` and you set `FAVICON`, then:
+# https://github.com/TACC/Core-CMS-Custom/blob/d4c93af/docs/port-project.md#has-a-core-portal
 FAVICON = {
-    "img_file_src": "brainmap-cms/img/org_logos/favicon.ico"
+    "img_file_src": "example-cms/img/org_logos/favicon.ico"
 }
 
 ########################
-# BLOG & SOCIAL METADATA
+# NEWS / BLOG
 ########################
 
-# Install required apps
-INSTALLED_APPS += [
-    # Blog/News
-    # 'filer',              # already added
-    # 'easy_thumbnails',    # already added
+from taccsite_cms.settings import INSTALLED_APPS
+
+tacc_app_index = INSTALLED_APPS.index('taccsite_cms')
+INSTALLED_APPS[tacc_app_index:tacc_app_index] = [
+    # 'filer',              # already in Core
+    # 'easy_thumbnails',    # already in Core
     'parler',
     'taggit',
     'taggit_autosuggest',
-    'meta',                 # also supports `djangocms_page_meta`
+    # 'meta',               # already in Core
     'sortedm2m',
     'djangocms_blog',
-
-    # Metadata
-    'djangocms_page_meta',
 ]
-# CAVEAT: 'taggit_autosuggest' requires the following is added to `urls.py`
+# REQ: 'taggit_autosuggest' requires the following is added to `urls.py`
 """
 urlpatterns += [
     # Support `taggit_autosuggest` (from `djangocms-blog`)
@@ -105,23 +159,26 @@ urlpatterns += [
 ]
 """
 
-# Metadata: Configure
-META_SITE_PROTOCOL = 'http'
-META_USE_SITES = True
-META_USE_OG_PROPERTIES = True
-META_USE_TWITTER_PROPERTIES = True
-META_USE_GOOGLEPLUS_PROPERTIES = True # django-meta 1.x+
-# META_USE_SCHEMAORG_PROPERTIES=True  # django-meta 2.x+
-
-# Blog/News: Set custom paths for templates
+# Paths for alternate templates that user can choose for blog-specific plugin
+# - Devs can customize core templates at `templates/djangocms_blog/`.
+# - Users can choose alt. templates from `templates/djangocms_blog/plugins/*`.
+# - Devs can customize alt. templates at `templates/djangocms_blog/plugins/*`.
 BLOG_PLUGIN_TEMPLATE_FOLDERS = (
-    ('plugins/default', 'Default template'),    # i.e. `templates/djangocms_blog/plugins/default/`
-    ('plugins/default-clone', 'Clone of default template'),  # i.e. `templates/djangocms_blog/plugins/default-clone/`
+    ('plugins', 'Default'),
+    # ('plugins/alternate', 'Alternate'),
 )
 
-# Blog/News: Change default values for the auto-setup of one `BlogConfig`
+# Change default values for the auto-setup of one `BlogConfig`
 # SEE: https://github.com/nephila/djangocms-blog/issues/629
-BLOG_AUTO_SETUP = True
+BLOG_AUTO_SETUP = True # Set to False after setup (minimize overhead)
 BLOG_AUTO_HOME_TITLE ='Home'
 BLOG_AUTO_BLOG_TITLE = 'News'
 BLOG_AUTO_APP_TITLE = 'News'
+BLOG_AUTO_NAMESPACE = 'News'
+
+# Miscellaneous settings
+BLOG_ENABLE_COMMENTS = False
+
+# TACC settings
+TACC_BLOG_SHOW_CATEGORIES = True
+TACC_BLOG_SHOW_TAGS = True

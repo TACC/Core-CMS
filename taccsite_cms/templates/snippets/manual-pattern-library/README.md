@@ -23,7 +23,7 @@ Each pattern has an `.html` and `.content.html` template.
 
 - `.html` has logic only DjangoCMS can read.
 - `.content.html` has logic DjangoCMS __and__ [KSS] can read.
-- `.content.html` symlinks to `/taccsite_cms/static/css/src/…`.
+- `.content.html` symlinks to `/node_modules/@tacc/core-styles/src/…`.
 
 [KSS]: https://warpspire.com/kss/
 [etc.]: https://confluence.tacc.utexas.edu/x/FADMBQ

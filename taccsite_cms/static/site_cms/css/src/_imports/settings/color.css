@@ -1,0 +1,9 @@
+@import url("@tacc/core-styles/src/lib/_imports/settings/color.css");
+
+:root {
+
+  /* Link */
+  --global-color-link-on-light--normal: var(--global-color-accent--normal);
+  --global-color-link-on-dark--normal: var(--global-color-accent--xxx-light);
+
+}
