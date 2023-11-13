@@ -4,11 +4,16 @@ Read [Django CMS User Guide] for CMS user instructions.
 
 ## Table of Contents
 
+- [Add Styles & Scripts](#add-styles--scripts)
 - [Build Static Files](#build-static-files)
 - [Collect Static Files](#collect-static-files)
 - [Customize Admin UI Text](#customize-admin-ui-text)
 - [Demo UI Patterns](#demo-ui-patterns)
 - [Develop with Core Styles Simultaneously](#develop-with-core-styles-simultaneously)
+
+## Add Styles & Scripts
+
+To add styles or scripts, first read [Styles and Scripts].
 
 ## Build Static Files
 
@@ -17,13 +22,29 @@ All CSS static files are built:
 - **from** source files **in** `src` directories
 - **to** compiled files **in** `build` directories
 
-This allows use of future-proof CSS via [Core-Styles].
+This allows use of future-proof CSS via [Core Styles].
 
-```sh
-docker exec -it core_cms /bin/bash
-# That opens a command prompt within the container.
+1. Enter Container:
+
+    ```sh
+    docker exec -it core_cms /bin/bash
+    # This opens a command prompt within the container.
+    ```
+
+2. Install Dependencies:
+
+    > **Note**
+    > Only necessary for a new container.
+
+    ```sh
+    npm ci
+    ```
+
+3. Build Assets:
+
+    ```sh
     npm run build:css --project="core-cms"
-```
+    ```
 
 ## Collect Static Files
 
@@ -87,3 +108,5 @@ See [Locally Develop CMS and Styles](https://github.com/TACC/Core-CMS/wiki/Local
 [restart server]: https://github.com/TACC/Core-CMS/wiki/How-to-Restart-the-CMS-Server
 
 [Django CMS User Guide]: https://confluence.tacc.utexas.edu/x/FgDqCw
+
+[Styles and Scripts]: ./styles-and-scripts.md

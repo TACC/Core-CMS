@@ -5,6 +5,8 @@
 
 @import url("./_imports/settings/font.css");
 
+@import url("./_imports/generics/pseudo-elements.css");
+
 @import url("./_imports/elements/figure-caption-blockquote.css");
 
 @import url("./_imports/components/c-button.css");

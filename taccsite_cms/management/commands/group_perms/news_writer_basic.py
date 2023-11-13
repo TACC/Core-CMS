@@ -30,5 +30,6 @@ def set_group_perms():
     group.permissions.add( Permission.objects.get(name='Can change video player') )
     group.permissions.add( Permission.objects.get(name='Can delete video player') )
     group.permissions.add( Permission.objects.get(name='Can view video player') )
+    group.permissions.add( Permission.objects.get(name='Can add image') )
     group.permissions.add( Permission.objects.get(name='Can change image') )
     group.permissions.add( Permission.objects.get(name='Can view image') )
