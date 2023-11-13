@@ -16,9 +16,11 @@
 {% block content %}
 
 {% if settings.TACC_CORE_STYLES_VERSION == 0 %}
-<link nonce="{{ CSP_NONCE }}" nonce="{{ CSP_NONCE }}" rel="stylesheet" href="{% static 'site_cms/css/build/site.app.blog.css' %}">
+<link nonce="{{ CSP_NONCE }}" rel="stylesheet" href="{% static 'site_cms/css/build/site.app.blog.css' %}">
 {% elif settings.TACC_CORE_STYLES_VERSION >= 1 %}
-<link nonce="{{ CSP_NONCE }}" nonce="{{ CSP_NONCE }}" rel="stylesheet" href="{% static 'site_cms/css/build/app.blog.css' %}">
+<style nonce="{{ CSP_NONCE }}">
+  @import url("{% static 'site_cms/css/build/app.blog.css' %}") layer(project);
+</style>
 {% endif %}
 
 <div class="app app-blog
@@ -27,7 +29,7 @@
   {% if post %} {% include './includes/blog_cats.html' with prefix='has-' %} {% include './includes/blog_tags.html' with prefix='has-' %}
   {% endif %}
 ">
-    {% include './tacc/layout-choice-form.html' %}
+    {% include './tacc/layout-choice-form.html' with list_selector='.blog-list' %}
     {% block content_blog %}{% endblock %}
 </div>
 

@@ -11,7 +11,8 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 @import url("@tacc/core-styles/src/lib/_imports/tools/x-truncate.css");
 
 @import url("../tools/media-queries.css");
-@import url("../tools/selectors.css");
+
+@import url("./django.cms.blog.selectors.css");
 
 
 
@@ -19,16 +20,15 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 
 /* List */
 
-/* To have two columns at certain viewport widths */
-@media (--xx-narrow-to-x-narrow), (--x-narrow-to-narrow) {
-  :--article-list {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    column-gap: 40px;
-  }
-  :--article-list > :where(header, nav) {
-    grid-column: 1 / -1;
-  }
+/* To support rendering list as a grid */
+:--article-list--as-grid {
+  display: grid;
+  grid-template-columns: repeat( auto-fit, minmax(350px, 1fr) );
+  column-gap: var(--global-space--pattern-pad);
+}
+/* So page title spans all columns */
+:--article-list--as-grid > header {
+  grid-column: 1 / -1;
 }
 
 
@@ -41,38 +41,53 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 
 /* Item (Structure) */
 
+/* For basic layout */
 :--article-item {
   display: grid;
 
-  border-bottom: var(--global-border-width--normal) solid var(--global-color-primary--dark);
-  margin-bottom: var(--blog-item-buffer);
-  padding-bottom: var(--blog-item-buffer);
-}
+  column-gap: 50px; /* for horz. space between image and content */
 
-/* To have vertical layout for narrow viewports */
-@media (--narrow-and-below) {
-  :--article-item {
+  border-bottom: var(--global-border-width--normal) solid var(--global-color-primary--dark);
+  margin-bottom: var(--article-buffer);
+  padding-bottom: var(--article-buffer);
+}
+:--article-item header        { grid-area: head }
+:--article-item .blog-visual  { grid-area: media }
+:--article-item .blog-lead    { grid-area: desc }
+
+/* For layout options */
+.x-blog-grid-item {
     grid-template-areas:
       'media'
       'head'
       'desc';
     /* To prevent content from overflowing cell */
     grid-template-columns: minmax(0, 1fr);
-  }
+    /* To prevent vertical stretch of rows */
+    grid-auto-rows: min-content;
 }
-/* To have horizontal layout for wide viewports */
-@media (--narrow-and-above) {
-  :--article-item {
+.x-blog-list-item {
     grid-template-areas:
       'media head'
       'media desc';
-    /* To have shrinkwrapped media and flexible text content */
+    /* To shrinkwrap media and flexible text content */
     grid-template-columns: minmax(0, max-content) 1fr;
+    /* To let 'desc' take remaining space (removes gap between head and desc) */
+    grid-template-rows: min-content 1fr;
+}
+@media (--narrow-and-below) {
+  :--article-item {
+    @extend .x-blog-grid-item;
   }
 }
-:--article-item header        { grid-area: head }
-:--article-item .blog-visual  { grid-area: media }
-:--article-item .blog-lead    { grid-area: desc }
+@media (--narrow-and-above) {
+  :--article-item--in-list {
+    @extend .x-blog-list-item;
+  }
+  :--article-item--in-grid {
+    @extend .x-blog-grid-item;
+  }
+}
 
 
 
@@ -86,114 +101,19 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 /* Header (Structure) */
 
 :--article-item header {
-  display: grid;
-  position: relative; /* for `position: absolute` children */
-
-  min-width: 0; /* to support truncation */
-
-  grid-template-areas:
-    var(--row-one-areas, 'cats tags')
-                         'attr attr'
-                         'head subh';
-
-  /* To truncate 'subh' fully before truncating 'head' */
-  /* CAVEAT: 'cats' is truncated but 'tags' never is */
-  grid-template-columns: minmax(0, max-content) 1fr;
-}
-:--article-item h3          { grid-area: head }
-:--article-item h4          { grid-area: subh }
-:--article-item .attrs      { grid-area: attr }
-:--article-item .categories { grid-area: cats }
-:--article-item .tags {
-  grid-area: tags;
-
-  /* To span top row and align right */
-  justify-content: end;
-}
-
-/* To (optionally) hide tags & categories */
-.app-blog.no-categories.no-tags :--article-item header {
-  grid-template-areas:
-    'head subh'
-    'attr attr';
-
-  margin-bottom: 20px;
-}
-.app-blog:not(.no-categories.no-tags) :--article-item header {
   margin-bottom: 5px;
-}
-.app-blog.no-categories:not(.no-tags) :--article-item header {
-  --row-one-areas: 'tags tags';
-}
-.app-blog.no-tags:not(.no-categories) :--article-item header {
-  --row-one-areas: 'cats cats';
 }
 
 
 
 /* Header - Title */
 
-:--article-item h3,
-:--article-item h4 {
-  margin-block: unset; /* overwrite html-elements.css */
-  font-size: var(--global-font-size--large);
-}
-:--article-item h3 a, /* truncate a not h3 so :focus-visible is not cropped */
-:--article-item h4 {
-  @extend %x-truncate--one-line;
+:--article-item h3 {
+  margin-bottom: unset; /* overwrite Core-Styles headings--cms.css */
 }
 :--article-item h4 {
-  text-transform: none; /* overwrite html-elements.css */
-
-  /* To style subtitle differently than title */
-  /* CAVEAT: Font-weight change switches to font that has different alignment */
-  transform: translateY(2px); /* HACK: tweak vertical alignment */
-  font-weight: var(--regular);
+  display: none;
 }
-:--article-item h4::before {
-  content: ': ';
-}
-:--article-item h3 a {
-  display: block; /* to prevent grid blowout */
-  color: var(--global-color-primary--xx-dark);
-}
-
-
-
-/* Header - Metadata (Structure) */
-
-:--article-item .attrs,
-:--article-item .tags {
-  display: flex;
-  flex-wrap: nowrap;
-  flex-direction: row;
-  gap: 2em;
-}
-:--article-item .tags { align-items: center }
-
-/* To truncate all metadata */
-:--article-item :is(.byline, .date) {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-
-  /* To allow truncation */
-  min-width: 0;
-
-  /* To limit text to one line */
-  height: 1.4em; /* ~ line-height */
-  overflow: hidden;
-}
-:--article-item .date span,
-:--article-item .byline a,
-:--article-item .tags li,
-:--article-item .categories li,
-:--article-item .categories::before { @extend %x-truncate--one-line }
-
-:--article-item .tags:empty,
-:--article-item .categories:empty { display: none }
-
-:--article-item .date { order: -1 }
 
 
 
@@ -204,26 +124,11 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 }
 
 :--article-item .attrs {
-  margin-block: 2px 6px;
-
-  font-size: var(--global-font-size--x-small);
   color: var(--global-color-primary--dark);
 }
-:--article-item .attrs a { color: inherit }
-
-:--article-item .categories {
-  font-weight: var(--bold);
-  font-size: var(--global-font-size--x-small);
-  text-transform: uppercase;
+:--article-item .attrs a {
+  color: inherit;
 }
-:--article-item .categories a { color: var(--global-color-primary--xx-dark) }
-
-/* NOTE: Mimicking .attrs styles until we have a design */
-:--article-item .tags {
-  font-size: var(--global-font-size--x-small);
-  color: var(--global-color-primary--dark);
-}
-:--article-item .tags a { color: inherit }
 
 
 
@@ -231,32 +136,30 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 
 /* Visual */
 
-:--article-item .blog-visual:not(:empty) {
-  /* To align any small image inside (useless with some image sizes) */
-  display: grid;
-  align-items: center;
-  justify-items: center;
-}
 :--article-item .blog-visual:empty {
   display: none;
 }
 
-/* To support vertical layouts at narrow viewports */
+/* To support vertical article layouts */
+/* FAQ: In simple layouts, the media element is the grid cell */
+/* FAQ: In complex layouts, the media element is within the grid cell */
+.x-blog-grid-item-media-cell {
+  margin-bottom: 15px; /* to add space between image and content */
+}
+.x-blog-grid-item-media-element-in-cell {
+  max-width: 100%; /* to prevent overflow if column is narrower than image */
+  height: auto; /* to preserve ratio if width is reduced (by max-width: 100%) */
+}
 @media (--narrow-and-below) {
-  :--article-item .blog-visual:not(:empty) {
-    height: 140px; /* for consistent image height */
-    margin-bottom: 15px;
-  }
-  :--article-item .blog-visual img {
-    max-width: 100%; /* to prevent overflow if column is narrower */
-    height: auto; /* to maintain aspect ratio if width changes */
+  :--article-item .blog-visual {
+    @extend .x-blog-grid-item-media-cell;
+    & img { @extend .x-blog-grid-item-media-element-in-cell; }
   }
 }
-/* To support horizontal layouts at wide viewports */
 @media (--narrow-and-above) {
-  :--article-item .blog-visual:not(:empty) {
-    width: 255px; /* for consistent image width */
-    margin-right: 50px;
+  :--article-item--in-grid .blog-visual {
+    @extend .x-blog-grid-item-media-cell;
+    & img { @extend .x-blog-grid-item-media-element-in-cell; }
   }
 }
 
@@ -266,15 +169,28 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 
 /* Content */
 
+/* <time> as a header tag may not be relevant as of Oct. 17, 23 */
+:--article-item time:not(:is(h1, h2, h3, h4, h5, h6) *) {
+  color: var(--global-color-accent--secondary);
+  font-weight: var(--medium);
+  text-transform: uppercase;
+}
+
 :--article-item .blog-lead {
   @extend %x-truncate--many-lines;
-  --lines: 3;
+  --lines: 4;
 
   line-height: 1.5;
   color: var(--global-color-primary--dark);
 }
 :--article-item .blog-lead p:last-child {
-  margin-bottom: 0 /* overwrite Boostrap */
+  margin-bottom: 0 /* overwrite core-styles.cms */
+}
+
+/* To undo inline content styles */
+/* FAQ: In case author pasted such markup from another source */
+:--article-item .blog-lead [style] {
+    all: revert !important; /* force undo all inline styles */
 }
 
 
@@ -283,23 +199,16 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 
 /* Footer */
 
-/* If not editing, stretch "read more" atop the article */
-html:not(:--cms-edit-mode) .read-more a:hover {
-  --outline-offset: var(--blog-item-buffer);
-  @extend %x-article-link-hover;
-}
-html:not(:--cms-edit-mode) .read-more a:active {
-  @extend %x-article-link-active;
-}
-html:not(:--cms-edit-mode) .read-more { grid-area: 1 / 1 / -1 / -1 }
-html:not(:--cms-edit-mode) .read-more { position: relative; }
-html:not(:--cms-edit-mode) .read-more a {
-  @extend %x-article-link-stretch;
-  @extend %x-article-link-text;
-}
+/* To make image clickable via "read more" link */
+/* FAQ: This is not available via c-news, because c-news assumes
+        if image should be clickable, client would wrap it in a link */
+.read-more {
+  /* To cover the image exactly */
+  display: grid;
+  grid-row-start: 1;
+  grid-column-start: 1;
+  grid-row-end: span 2;
 
-/* If editing, hide "read more" */
-/* FAQ: User can: edit by double clicking abstract; visit by clicking title */
-html:--cms-edit-mode .read-more {
-  display: none;
+  /* To hide link text */
+  font-size: 0;
 }

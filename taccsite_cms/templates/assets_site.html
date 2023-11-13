@@ -1,4 +1,4 @@
-{% load staticfiles %}
+{% load static %}
 
 {# Load assets as external files, to cache independently of markup. #}
 {% comment %}
@@ -15,10 +15,10 @@ FAQ: IF a script or style is better cached with markup, THEN:
 
 <link nonce="{{ CSP_NONCE }}" id="css-bootstrap" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-{# CAVEAT: Requires `npm run build` step before running the Django project. #}
 <link nonce="{{ CSP_NONCE }}" id="css-site" rel="stylesheet" href="{% static 'site_cms/css/build/site.css' %}">
 <link nonce="{{ CSP_NONCE }}" id="css-site-header" rel="stylesheet" href="{% static 'site_cms/css/build/site.header.css' %}">
-
+{# CAVEAT: Requires `npm run build:css` step #}
+<link nonce="{{ CSP_NONCE }}" id="css-site-v3-11+" rel="stylesheet" href="{% static 'site_cms/css/build/site.v3-11-plus.css' %}">
 
 
 {# Impacts the clients "CEPv2" Portal & Frontera Docs #}

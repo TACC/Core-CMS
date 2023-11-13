@@ -1,3 +1,5 @@
+{# @var list_selector #}
+
 {# To support user changing layout of news list #}
 {# FAQ: The form is hidden, because styles are not complete #}
 {# FAQ: The script is active, so new styles can be tested on a server #}
@@ -15,7 +17,9 @@
   import switchLayout from '/static/site_cms/js/modules/switchLayout.js';
 
   const form = document.getElementById('layout-choice');
-  const content = document.getElementsByClassName('blog-list')[0];
+  const content = document.querySelector(
+    '{{ list_selector|default:".blog-list" }}'
+  );
   const formChoices = form.querySelectorAll('input[name="layout"]');
 
   switchLayout( content, formChoices );

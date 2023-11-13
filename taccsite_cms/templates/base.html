@@ -1,4 +1,4 @@
-{% load cms_tags staticfiles sekizai_tags cache i18n meta %}
+{% load cms_tags static sekizai_tags cache i18n meta %}
 {% get_current_language as lang_code %}
 <!doctype html>
 <html
@@ -55,7 +55,8 @@
   {% include 'assets_custom.html' %}
   {% endblock assets_custom %}
 
-  <!-- CMS Admin Styles. -->
+  <!-- Ad Hoc Styles. -->
+  {% block css %}{% endblock %}
   {% render_block "css" %}
 </head>
 
@@ -110,7 +111,8 @@
   {% include 'assets_custom_delayed.html' %}
   {% endblock assets_custom_delayed %}
 
-  <!-- CMS Admin Scripts. -->
+  <!-- Ad Hoc Scripts. -->
+  {% block js %}{% endblock %}
   {% render_block "js" %}
 </body>
 
