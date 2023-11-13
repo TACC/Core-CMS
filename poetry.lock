@@ -802,8 +802,8 @@ static-ace = ["djangocms-static-ace"]
 [package.source]
 type = "git"
 url = "https://github.com/django-cms/djangocms-bootstrap4"
-reference = "b17bad6ad755cd40a3062e6ac692419136c27630"
-resolved_reference = "b17bad6ad755cd40a3062e6ac692419136c27630"
+reference = "2fc7f14c2b7b53882faf6830289b5052f775965f"
+resolved_reference = "2fc7f14c2b7b53882faf6830289b5052f775965f"
 
 [[package]]
 name = "djangocms-column"
@@ -2490,4 +2490,4 @@ testing = ["func-timeout", "jaraco.itertools"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8,<4.0"
-content-hash = "195949a236fac8073946482c52e80eb2a0327a5bc02660c43b11085b29a1b57e"
+content-hash = "e4d6818ec120c903878f2fa45d6c297f67fd9ca38c997dea9aa9bf730cbb518f"
