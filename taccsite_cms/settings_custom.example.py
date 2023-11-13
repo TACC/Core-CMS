@@ -128,6 +128,8 @@ LOGO =  [
 ]
 
 # Edit this config as needed for the project favicon used in the browser navbar.
+# If `INCLUDES_CORE_PORTAL = True` and you set `FAVICON`, then:
+# https://github.com/TACC/Core-CMS-Custom/blob/d4c93af/docs/port-project.md#has-a-core-portal
 FAVICON = {
     "img_file_src": "example-cms/img/org_logos/favicon.ico"
 }

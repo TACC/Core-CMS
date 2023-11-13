@@ -1,37 +1,56 @@
-/*
-Django CMS Picture
+/* To support djangocms-picture plugin unstyled default alignment classes */
+/* SEE: https://github.com/django-cms/djangocms-picture/blob/2.3.0/djangocms_picture/models.py#L24-L34 */
+@import url("@tacc/core-styles/src/lib/_imports/components/align.css");
 
-Classes from [Django CMS Picture](https://github.com/django-cms/djangocms-picture#readme).
-
-Reference:
-
-- [Django CMS Picture `.align-` Classes](https://github.com/django-cms/djangocms-picture/blob/2.3.0/djangocms_picture/models.py#L24-L34)
-
-Styleguide Components.DjangoCMS.Picture
-*/
-
-
-
-/* Default Values */
-
-/* Support default alignment classes */
-.align-right,
-.align-left {
-  margin-bottom: var(--global-space--grid-gap);
+/* Allow anchor tag to wrap like a block but still behave inline */
+/* FAQ: TACC/Core-CMS causes this tag-class combination, so it must manage it */
+/* FAQ: TACC/Core-CMS moves (side effect) Picture classes to <figure> or <a> */
+a.img-fluid {
+  display: inline-block;
 }
-.align-right {
-  float: right;
-  margin-left: var(--global-space--grid-gap);
-}
-.align-left {
-  float: left;
-  margin-right: var(--global-space--grid-gap);
-}
-.align-center {
+
+/* Support centering originating from Core-Styles */
+/* FAQ: We set display in client, so Core-Styles does not assume display */
+/* SEE: https://github.com/TACC/Core-Styles/blob/dd2bbb0/src/lib/_imports/components/align.css#L16-L19 */
+img.align-center {
   display: block;
-  margin-inline: auto;
 }
 
-/* Try to auto clear image floats */
+/* Try to auto-clear image floats */
+/* WARNING: The commented solution clears float BUT also negates float */
+/*
 .align-right + *:not(img) { clear: right }
 .align-left + *:not(img) { clear: left }
+*/
+
+/* To apply djangocms-bootstrap4/…_picture class styles from parent to image */
+/* FAQ: TACC/Core-CMS moves (side effect) Picture classes to <figure> or <a> */
+/* SEE: taccsite_cms/templates/djangocms_picture/default/picture.html */
+:is(figure, a).img-fluid img {
+  max-width: 100%;
+  height: auto;
+}
+:is(figure, a).img-thumbnail img {
+  padding: 0.25rem;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 1rem; /* NOTE: Bootstrap used 0.25rem */
+  max-width: 100%;
+  height: auto;
+}
+:is(figure, a).rounded {
+  /* NOTE: Bootstrap used 0.25rem */
+  border-radius: 1rem !important; /* overwrite Bootstrap (uses !important) */
+}
+/* To undo some djangocms-bootstrap4/…_picture class styles on parent */
+/* FAQ: The duplicate styles on parent tags look odd or are unnecessary */
+:is(figure, a).img-thumbnail {
+  padding: unset;
+  background-color: unset;
+  border: unset;
+  border-radius: unset;
+}
+:is(figure, a).rounded {
+  border-radius: unset !important; /* overwrite Bootstrap (uses !important) */
+}
+

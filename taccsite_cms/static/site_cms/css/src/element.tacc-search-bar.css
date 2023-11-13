@@ -8,9 +8,9 @@
 /* TRUMPS */
 
 /* Shared with Portal */
-@import url("_imports/trumps/icon.css");
-@import url("_imports/trumps/u-hide.css");
-@import url("_imports/trumps/tacc-search-bar.css");
+@import url("@tacc/core-styles/src/lib/_imports/components/cortal.icon.css");
+@import url("@tacc/core-styles/src/lib/_imports/trumps/u-hide.css");
+@import url("@tacc/core-styles/src/lib/_imports/trumps/tacc-search-bar.css");
 
 /* ELEMENTS */
 /* HACK: "ELEMENTS" should be loaded __before__ "TRUMPS" */
@@ -18,4 +18,4 @@
 /* Load search bar after all relevant styles have loaded */
 /* FAQ: Manage visibility of search bar to avoid FOUC */
 /* HACK: GH-101: Resolve via  dynamically-added `[data-status="loaded"]` */
-@import url("_imports/elements/tacc-search-bar.css");
+@import url("@tacc/core-styles/src/lib/_imports/elements/tacc-search-bar.css");

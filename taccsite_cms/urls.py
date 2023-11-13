@@ -4,7 +4,8 @@ from __future__ import absolute_import, print_function, unicode_literals
 from cms.sitemaps import CMSSitemap
 from django.conf import settings
 from django.conf.urls.static import static
-from django.conf.urls import include, url
+from django.conf.urls import include
+from django.urls import re_path as url
 from django.contrib import admin
 from django.contrib.auth import views
 from django.contrib.sitemaps.views import sitemap
@@ -64,7 +65,7 @@ urlpatterns += [
 # http://www.ilian.io/custom-404-not-found-page-with-django-cms/
 # https://stackoverflow.com/a/44519606/11817077
 # https://blog.maestropublishing.com/2019/11/custom-404-page-for-django-cms.html
-from django.utils.functional import curry
+from functools import partial as curry
 from django.views.defaults import page_not_found
 handler404 = curry(page_not_found, template_name='404.html')
 

@@ -6,7 +6,7 @@ const themeConfig = require('@tacc/core-styles/fractal.theme.js');
 // Extend base theme
 const newThemeConfig = Object.assign( themeConfig, {
   skin: Object.assign( themeConfig.skin, {
-    links: '#877453',
+    links: '#003399', // from tup-cms
   })
 });
 

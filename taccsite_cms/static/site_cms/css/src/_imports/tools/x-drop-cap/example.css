@@ -1,0 +1,9 @@
+/* This CSS is EXAMPLE code for a client. It is NOT part of the pattern. */
+/* (only works on TACC clients using PostCSS) */
+/*
+@import url('../x-drop-cap.css');
+
+.element-whose-first-paragraph-needs-drop-cap > p:first-of-type::first-letter {
+  @extend .x-drop-cap;
+}
+*/

@@ -15,13 +15,34 @@
 {# /TACC #}
 <article id="post-{{ post.slug }}" class="post-item post-detail">
     <header>
+        {# TACC (use greater heading level): #}
+        {# TACC (do not use large header until core-styles.cms.css): #}
+        {% if settings.TACC_CORE_STYLES_VERSION >= 1 %}
+        <h1>{% render_model post "title" %}</h1>
+        {% else %}
         <h2>{% render_model post "title" %}</h2>
+        {% endif %}
+        {# /TACC #}
+        {# /TACC #}
         {% if post.subtitle %}
+            {# TACC (use greater heading level): #}
+            {# TACC (do not use large header until core-styles.cms.css): #}
+            {% if settings.TACC_CORE_STYLES_VERSION >= 1 %}
+            <h2>{% render_model post "subtitle" %}</h2>
+            {% else %}
             <h3>{% render_model post "subtitle" %}</h3>
+            {% endif %}
+            {# /TACC #}
+            {# /TACC #}
         {% endif %}
         {% block blog_meta %}
             {% include "djangocms_blog/includes/blog_meta.html" %}
         {% endblock %}
+        {# TACC (add social media sharing links): #}
+        {% block blog_share %}
+          {% include "share_on_social.html" with className="links" %}
+        {% endblock %}
+        {# /TACC #}
     </header>
     {# TACC (support custom media even with thumbnail): #}
     {# {% if not post.main_image_id %} #}

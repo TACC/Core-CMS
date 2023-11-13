@@ -7,16 +7,21 @@ Reference:
 
 Styleguide Components.DjangoCMS.Blog.App.Page
 */
+@import url("@tacc/core-styles/src/lib/_imports/objects/o-offset-content.css");
+
 @import url("./django.cms.blog.app.page.multimedia.css");
+@import url("./django.cms.blog.selectors.css");
 
 
 
 
 
-/* Variables */
+/* Root */
 
 :--article-page {
-  max-width: 665px;
+  --header-buffer: calc( var(--global-space--grid-gap) / 2 );
+
+  max-width: 775px;
   margin-inline: auto;
 }
 
@@ -26,27 +31,26 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 
 /* Header (Structure) */
 
-:--article-page .attrs {
-  display: flex;
-  justify-content: space-between;
+:--article-page header {
+  grid-template-areas:
+    'head head'
+    'subh subh'
+    'cats link'
+    'tags tags'
+    'attr attr';
 }
-
+:--article-page header h1,
 :--article-page header h2 {
-  font-size: var(--global-font-size--xxx-large);
+  margin-bottom: var(--header-buffer);
 }
-:--article-page header h3 {
-  font-style: italic;
+:--article-page header h1 {
+  font-size: var(--global-font-size--xxx-large);
+
+  border-bottom: var(--global-border-width--normal) solid var(--global-color-primary--dark);
+}
+:--article-page header h2 {
   font-weight: normal;
   font-size: var(--global-font-size--large);
-}
-
-:--article-page header :is(h3, h2 + .attrs) {
-  padding-top: 17px;
-  border-top: var(--global-border-width--normal) solid var(--global-color-primary--dark);
-}
-
-:--article-page .date-published span {
-  display: none;
 }
 
 
@@ -56,9 +60,19 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 /* Media & Content */
 
 :--article-page :is(.blog-visual, .blog-content) {
-  --blog-page-main-image-buffer: 45px;
+  --blog-item-media-buffer: 45px;
 
-  margin-block: var(--blog-page-main-image-buffer);
+  margin-block: var(--blog-item-media-buffer) 60px;
+}
+
+/* To undo inline content styles */
+/* FAQ: In case author pasted such markup from another source */
+:--article-page .blog-content [style]:not(
+    [data-style="admin"], /* HACK: So CMS admin can override this */
+    /* TODO: When using Core-Styles .c-news keep `flickrembed_` only in TACC */
+    [id^="flickrembed_"] * /* HACK: So Flickr slideshow works */
+) {
+    all: revert !important; /* force undo all inline styles */
 }
 
 
@@ -75,14 +89,14 @@ Styleguide Components.DjangoCMS.Blog.App.Page
   :--article-page .blog-visual {
     display: grid;
     justify-content: center;
-    margin-bottom: var(--blog-page-main-image-buffer);
+    margin-bottom: var(--blog-item-media-buffer);
   }
 }
 /* To support horizontal layouts at wide viewports */
 @media (--x-narrow-and-above) {
   :--article-page .blog-visual {
     float: left;
-    margin-right: var(--blog-page-main-image-buffer);
+    margin-right: var(--blog-item-media-buffer);
   }
 }
 
@@ -109,4 +123,67 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 :--article-page .blog-lead li + li,
 :--article-page .blog-content li + li {
   margin-top: 0.5em;
+}
+
+
+
+/* Media & Content - Alignment */
+/* FAQ: The .align-... classes come from Bootstrap Picture */
+/* FAQ: The .blockquote.text-... classes come from Bootstrap Blockquote */
+
+/* TODO: When extending Core-Styles c-news, .blockquote... is only for CMS */
+/* FAQ: .blockquote... is only for CMS, cuz `.align-…` is from Core-Styles */
+:--article-page .blog-content .align-left,
+:--article-page .blog-content .blockquote.text-left {
+  @extend .o-offset-content--left;
+}
+:--article-page .blog-content .align-right,
+:--article-page .blog-content .blockquote.text-right {
+  @extend .o-offset-content--right;
+}
+:--article-page .blog-content .align-center {
+  max-width: 100%;
+}
+:--article-page .blog-content .blockquote.text-center {
+  margin-inline: auto;
+}
+
+/* To always align Bootstrap blockquote text left */
+/* FAQ: Boostrap, loaded in foundation layer, used !important */
+/* TODO: When extending Core-Styles c-news, .blockquote... is only for CMS */
+/* FAQ: .blockquote... is only for CMS, cuz `.align-…` is from Core-Styles */
+@layer foundation {
+  :--article-page .blog-content .blockquote[class*="text-"] {
+    text-align: left !important; /* overwrite Bootstrap .text-... !important */
+  }
+}
+
+/* To remove margin on narrow screens */
+/* To overwrite @tacc/core-styles/…/components/align.css */
+@media (--narrow-and-below) {
+  :--article-page .blog-content .align-center,
+  :--article-page .blog-content .align-right,
+  :--article-page .blog-content .align-left {
+    max-width: unset;
+  }
+  :--article-page .blog-content .align-right,
+  :--article-page .blog-content .align-left {
+    float: unset;
+    margin-bottom: unset;
+  }
+  :--article-page .blog-content .align-right {
+    margin-left: unset;
+  }
+  :--article-page .blog-content .align-left {
+    margin-right: unset;
+  }
+}
+
+/* To reduce image width on medium screens */
+@media (--narrow-and-above) and (--medium-and-below) {
+  :--article-page .blog-content .align-center,
+  :--article-page .blog-content .align-right,
+  :--article-page .blog-content .align-left {
+    max-width: 50%;
+  }
 }

@@ -1,0 +1,11 @@
+/* To style lightGallery (https://www.lightgalleryjs.com/) */
+@import url("@tacc/core-styles/src/lib/_imports/trumps/s-image-grid.css");
+
+.lightgallery {
+  @extend .s-image-grid;
+}
+
+.lg-sub-html a {
+  /* FAQ: The `!important` overrides styles from plugin, in <anonymous> layer */
+  color: var(--global-color-link-on-dark--normal) !important;
+}

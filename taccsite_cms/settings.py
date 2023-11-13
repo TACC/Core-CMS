@@ -21,6 +21,10 @@ from taccsite_cms._settings.form_plugin import (
     _INSTALLED_APPS as form_plugin_INSTALLED_APPS
 )
 
+########################
+# DJANGO
+########################
+
 SECRET_KEY = 'CHANGE_ME'
 def gettext(s): return s
 
@@ -35,8 +39,11 @@ DEBUG = True       # False for Prod.
 # ALLOWED_HOSTS = ['hostname.tacc.utexas.edu', 'host.ip.v4.address', '0.0.0.0', 'localhost', '127.0.0.1']   # In production.
 ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost', '*']   # In development.
 
-# Default portal authorization verification endpoint.
-CEP_AUTH_VERIFICATION_ENDPOINT = 'localhost'  # 'https://0.0.0.0:8000'
+# https://docs.djangoproject.com/en/3.0/ref/clickjacking/#how-to-use-it
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+
+# whether the session cookie should be secure (https:// only)
+SESSION_COOKIE_SECURE = True
 
 ########################
 # DATABASE SETTINGS
@@ -44,7 +51,7 @@ CEP_AUTH_VERIFICATION_ENDPOINT = 'localhost'  # 'https://0.0.0.0:8000'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'PORT': '5432',
         'NAME': 'taccsite',
         'USER': 'postgresadmin',
@@ -132,7 +139,7 @@ LOGGING = {
 }
 
 ########################
-# (some) CMS SETTINGS
+# DJANGO CMS SETTINGS
 ########################
 
 SITE_ID = 1
@@ -158,6 +165,8 @@ GOOGLE_ANALYTICS_PRELOAD = True
 # TACC: SEARCH
 ########################
 
+# To customize site search
+SEARCH_PATH = '/search'
 SEARCH_QUERY_PARAM_NAME = 'query_string'
 
 ########################
@@ -266,7 +275,21 @@ TACC_BLOG_SHOW_TAGS = True
 TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY = 'sample_value_e_g__mutlimedia__'
 TACC_BLOG_SHOW_ABSTRACT_TAG = 'sample_value_e_g__redirect__'
 
+########################
+# TACC: SOCIAL MEDIA
+########################
 
+# TODO: Enable ONLY after TUP-590
+TACC_SOCIAL_SHARE_PLATFORMS = []
+# TACC_SOCIAL_SHARE_PLATFORMS = ['facebook', 'linkedin', 'email']
+
+########################
+# TACC: CORE STYLES
+########################
+
+# Only use integer numbers (not "v1", not "0.11.0"),
+# so templates can load based on simple comparisons
+TACC_CORE_STYLES_VERSION = 0
 
 ########################
 # CLIENT BUILD SETTINGS
@@ -285,9 +308,12 @@ STATICFILES_DIRS = (
     # os.path.join(BASE_DIR, 'taccsite_cms', 'en', 'static'),
 ) + tuple(glob(
     os.path.join(BASE_DIR, 'taccsite_custom', '*', 'static')
-)) + (
-    ('ui', os.path.join(BASE_DIR, 'taccsite_ui', 'dist')),
-)
+))
+
+# Serve UI Demo (if it exists) at .../ui
+ui_demo_dir = os.path.join(BASE_DIR, 'taccsite_ui', 'dist')
+if os.path.exists(ui_demo_dir):
+    STATICFILES_DIRS += (('ui', ui_demo_dir),)
 
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
@@ -368,7 +394,7 @@ INSTALLED_APPS = [
     # customize 'django.contrib.staticfiles'
     # SEE: https://stackoverflow.com/q/57921970/11817077
     # 'django.contrib.staticfiles',
-    'taccsite_cms.django.contrib.staticfiles_custom',
+    'taccsite_cms.django.contrib.staticfiles_custom.apps.TaccStaticFilesConfig',
     'django.contrib.messages',
 
     # key django CMS modules
@@ -428,19 +454,22 @@ INSTALLED_APPS = [
     # HELP: If this were top of list, would TACC/Core-CMS/pull/169 fix break?
     'taccsite_cms',
 
-    # django CMS Blog requirements
+    # django CMS Bootstrap
     # IDEA: Extend Bootstrap apps instead of overwrite
     'taccsite_cms.contrib.bootstrap4_djangocms_link',
     'taccsite_cms.contrib.bootstrap4_djangocms_picture',
-    # TODO: Deprecate these plugins (except taccsite_system_monitor)
-    # TODO: For taccsite_system_monitor use repo package:
-    #       https://github.com/wesleyboar/Core-CMS-Plugin-System-Monitor
+
+    # TACC CMS Plugins
+    'djangocms_tacc_image_gallery',
+    # TODO: Use https://github.com/wesleyboar/Core-CMS-Plugin-System-Monitor
+    'taccsite_cms.contrib.taccsite_system_monitor',
+
+    # TACC CMS Plugins - DECPRECATED
     'taccsite_cms.contrib.taccsite_blockquote',
     'taccsite_cms.contrib.taccsite_callout',
     'taccsite_cms.contrib.taccsite_sample',
     'taccsite_cms.contrib.taccsite_offset',
     'taccsite_cms.contrib.taccsite_system_specs',
-    'taccsite_cms.contrib.taccsite_system_monitor',
     'taccsite_cms.contrib.taccsite_data_list'
 ]
 
@@ -450,7 +479,12 @@ INSTALLED_APPS = [
 def get_subdirs_as_module_names(path):
     module_names = []
     for entry in os.scandir(path):
-        is_app = entry.path.find('_readme') == -1
+        is_app = (
+            entry.path.find('_readme') == -1 and # explains common project dirs
+            entry.path.find('-org') == -1 and    # deprecated Texascale templates
+            entry.path.find('-cms') == -1 and    # deprecated project templates
+            entry.path.find('docs') == -1        # documentation beyond README
+        )
         if entry.is_dir() and is_app:
             # FAQ: There are different root paths to tweak:
             #      - Containers use `/code/…`
@@ -541,15 +575,24 @@ SETTINGS_EXPORT_VARIABLE_NAME = 'settings'
 
 # https://github.com/django-cms/djangocms-style
 DJANGOCMS_STYLE_CHOICES = [
-    # https://cep.tacc.utexas.edu/design-system/ui-patterns/o-section/
+    'card',
+    'card--plain',
+    'card--standard',
+    'card--image-top',
+    'card--image-bottom',
+    'card--image-right',
+    'card--image-left',
+    'section',
+    'section--light',
+    'section--muted',
+    'section--dark',
+    'o-section',
     'o-section o-section--style-light',
+    'o-section o-section--style-muted',
     'o-section o-section--style-dark',
-    # https://cep.tacc.utexas.edu/design-system/ui-patterns/c-callout/
     'c-callout',
-    # https://cep.tacc.utexas.edu/design-system/ui-patterns/c-recognition/
     'c-recognition c-recognition--style-light',
     'c-recognition c-recognition--style-dark',
-    # https://cep.tacc.utexas.edu/design-system/ui-patterns/c-nav/
     'c-nav', # bare-bones instance
     'c-nav c-nav--boxed',
 ]
@@ -582,6 +625,7 @@ CKEDITOR_SETTINGS = {
 
 # https://github.com/django-cms/djangocms-video
 DJANGOCMS_VIDEO_TEMPLATES = [
+    ('responsive-auto', _('Responsive - Automatic')),
     ('responsive-16by9', _('Responsive - 16 by 9')),
     ('responsive-4by3', _('Responsive - 4 by 3')),
     ('responsive-1by1', _('Responsive - 1 by 1')),
@@ -648,7 +692,10 @@ SETTINGS_EXPORT = [
     'GOOGLE_ANALYTICS_PRELOAD',
     'TACC_BLOG_SHOW_CATEGORIES',
     'TACC_BLOG_SHOW_TAGS',
+    'TACC_CORE_STYLES_VERSION',
     'TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY',
     'TACC_BLOG_SHOW_ABSTRACT_TAG',
+    'TACC_SOCIAL_SHARE_PLATFORMS',
+    'SEARCH_PATH',
     'SEARCH_QUERY_PARAM_NAME',
 ]

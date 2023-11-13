@@ -11,4 +11,4 @@ But, to avoid that[^1], the two changes have been performed other ways:
 
 [original template]: https://github.com/avryhof/djangocms-forms/blob/ab38b22/djangocms_forms/templates/djangocms_forms/form_template/default.html
 [1]: https://github.com/avryhof/djangocms-forms/pull/12
-[2]: ../../../static/site_cms/css/src/_imports/components/django.cms.forms.css#L103
+[2]: ../../../static/site_cms/css/src/_imports/components/django-cms-forms.css#L167
