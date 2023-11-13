@@ -31,33 +31,43 @@ const BUILD_ID = ARGS['build-id'] || '';
     confPaths.push( projConfPath );
   }
 
-  // Build
-  _build('Core', corePath, confPaths, BUILD_ID );
+  // Prepare for build
+  defaultOpts = {
+    verbose: true,
+    buildId: BUILD_ID
+  }
+
+  // Build styles
+  _build('Core', {
+    input: `${ROOT}/${corePath}/src/**/*.css`,
+    output: `${ROOT}/${corePath}/build`,
+    opts: {...defaultOpts, ...{
+      customConfigs: confPaths
+    }}
+  });
   if ( hasProject ) {
-    _build( PROJECT_NAME, projPath, confPaths, BUILD_ID );
+    _build( PROJECT_NAME, {
+      input: `${ROOT}/${projPath}/src/**/*.css`,
+      output: `${ROOT}/${projPath}/build`,
+      opts: {...defaultOpts, ...{
+        customConfigs: confPaths
+      }}
+    });
   }
 })();
 
 /**
  * Execute command to build stylesheets
  * @param {string} name - The name of the project
- * @param {string} path - The path to the project source CSS
- * @param {array.string} configs - The list of config file paths
- * @param {string} id - The value to identify the build
+ * @param {object} opts - The value to identify the build
+ * @param {string} opts.input - The path to project source CSS
+ * @param {string} opts.output - The path to put the built CSS
+ * @param {@tacc/core-styles.buildStylesheets.opts} opts.opts - Advanced options
  */
-function _build( name, path, configs, id ) {
-  const configValues = '"' + configs.join('" "') + '"';
-
-  console.log(`Overriding config with:`, configs );
+function _build( name, opts ) {
+  console.log(`Overriding config with:`, opts.opts.customConfigs );
   console.log(`Building "${name}" styles:`);
-  buildStylesheets(
-    `${ROOT}/${path}/src/**/*.css`,
-    `${ROOT}/${path}/build`, {
-      customConfigs: configs,
-      verbose: true,
-      buildId: id
-    }
-  );
+  buildStylesheets( opts.input, opts.output, opts.opts );
 }
 
 /**

@@ -1,38 +1,72 @@
 {# https://github.com/nephila/djangocms-blog/blob/1.1.1/djangocms_blog/templates/djangocms_blog/post_list.html #}
-{% extends "djangocms_blog/post_list.html" %}
-{% load cms_tags i18n %}
+{% extends "djangocms_blog/base.html" %}
+{% load i18n easy_thumbnails_tags %}{% spaceless %}
+
+{% block canonical_url %}<link rel="canonical" href="{{ view.get_view_url }}"/>{% endblock canonical_url %}
 
 {% block content_blog %}
+{# TACC (wrap list in container w/ breadcrumbs to mimic other page layouts): #}
 <div class="container">
-    {% include "nav_cms_breadcrumbs.html" %}
-    {# FAQ: The extended template adds `spaceless` but it fails #}
-    {% spaceless %}
-      {{ block.super }}
-    {% endspaceless %}
-    <script>
-      /* HACK: To replace « and » of "« Previous" and "Next »" with < and > */
-      [ ...document.querySelectorAll('.pagination a') ].forEach( a => {
-        a.innerText = a.innerText.replace('«', '<').replace('»', '>');
-      });
-      /* HACK: To manipulate "read more" link */
-      [ ...document.querySelectorAll('.read-more a') ].forEach( a => {
-        /* To remove " »" from "read more »" */
-        a.innerText = a.innerText.replace(' »', '');
-        /* To disallow focus (because article header link is ample) */
-        a.tabIndex = -1;
-      });
-    </script>
-</div>
-{% endblock content_blog %}
+{% include "nav_cms_breadcrumbs.html" %}
+{# /TACC #}
 
-{% block blog_title %}
+<section class="blog-list">
+    {% block blog_title %}
     <header>
+        {# TACC (use greater heading level): #}
+        {# TACC (do not use large header until core-styles.cms.css): #}
+        {% if settings.TACC_CORE_STYLES_VERSION >= 1 %}
+        <h1>
+        {% else %}
         <h2>
+        {% endif %}
+        {# /TACC #}
+        {# /TACC #}
         {% if author %}{% trans "Articles by" %} {{ author.get_full_name }}
         {% elif archive_date %}{% trans "Archive" %} &ndash; {% if month %}{{ archive_date|date:'F' }} {% endif %}{{ year }}
         {% elif tagged_entries %}{% trans "Tag" %} &ndash; {{ tagged_entries|capfirst }}
         {% elif category %}{% trans "Category" %} &ndash; {{ category }}
         {% else %}{% trans "News" %}{% endif %}
+        {# TACC (use greater heading level): #}
+        {# TACC (do not use large header until core-styles.cms.css): #}
+        {% if settings.TACC_CORE_STYLES_VERSION >= 1 %}
+        </h1>
+        {% else %}
         </h2>
+        {% endif %}
+        {# /TACC #}
+        {# /TACC #}
     </header>
+    {% endblock %}
+    {% for post in post_list %}
+        {% include "djangocms_blog/includes/blog_item.html" with post=post image="true" TRUNCWORDS_COUNT=TRUNCWORDS_COUNT %}
+    {% empty %}
+    <p class="blog-empty">{% trans "No article found." %}</p>
+    {% endfor %}
+    {% if author or archive_date or tagged_entries %}
+    <p class="blog-back"><a href="{% url 'djangocms_blog:posts-latest' %}">{% trans "Back" %}</a></p>
+    {% endif %}
+    {% if is_paginated %}
+    <nav class="{% firstof css_grid instance.css_grid %} pagination">
+        {% if page_obj.has_previous %}
+            {# TACC (swap '«' with '<'): #}
+            <a href="?{{ view.page_kwarg }}={{ page_obj.previous_page_number }}">&lt; {% trans "previous" %}</a>
+            {# /TACC #}
+        {% endif %}
+        <span class="current">
+            {% trans "Page" %} {{ page_obj.number }} {% trans "of" %} {{ paginator.num_pages }}
+        </span>
+        {% if page_obj.has_next %}
+            {# TACC (swap '»' with '>'): #}
+            <a href="?{{ view.page_kwarg }}={{ page_obj.next_page_number }}">{% trans "next" %} &gt;</a>
+            {# /TACC #}
+        {% endif %}
+    </nav>
+    {% endif %}
+</section>
+
+{# TACC (wrap list in container w/ breadcrumbs to mimic other page layouts): #}
+</div>
+{# /TACC #}
 {% endblock %}
+{% endspaceless %}

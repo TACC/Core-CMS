@@ -1,7 +1,16 @@
-@import url("@tacc/core-styles/src/lib/_imports/components/c-button.css");
+@import url("@tacc/core-styles/src/lib/_imports/components/c-button.selectors.css");
 
-.c-button {
-  --max-width: unset;
+:--c-button--primary,
+:--c-button--secondary,
+:--c-button--tertiary,
+:--c-button--is-active {
+  padding: 10px 20px;
 
-  font-size: 1.6rem;
+  font-size: var(--global-font-size--small);
+  text-transform: uppercase;
+}
+
+:--c-button {
+  font-weight: var(--bold);
+  letter-spacing: 0.05em;
 }

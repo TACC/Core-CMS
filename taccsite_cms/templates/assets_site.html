@@ -1,5 +1,4 @@
-{% load staticfiles %}
-{# @var settings #}
+{% load static %}
 
 {# Load assets as external files, to cache independently of markup. #}
 {% comment %}
@@ -13,15 +12,16 @@ FAQ: IF a script or style is better cached with markup, THEN:
 
 
 <!-- Site Assets: Styles. -->
+
 <link id="css-bootstrap" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-{# CAVEAT: Requires `npm run build` step before running the Django project. #}
 <link id="css-site" rel="stylesheet" href="{% static 'site_cms/css/build/site.css' %}">
 <link id="css-site-header" rel="stylesheet" href="{% static 'site_cms/css/build/site.header.css' %}">
+{# CAVEAT: Requires `npm run build:css` step #}
+<link id="css-site-v3-11+" rel="stylesheet" href="{% static 'site_cms/css/build/site.v3-11-plus.css' %}">
 
 
-
-{# Portal & Docs #}
+{# Impacts the clients "CEPv2" Portal & Frontera Docs #}
 {# FAQ: Websites that load CMS header should load these assets in this order #}
 {% comment %}
   {# To load externally-hosted font which is in the font stack of CMS styles #}

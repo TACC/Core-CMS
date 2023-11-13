@@ -1,5 +1,5 @@
 DOCKERHUB_REPO := taccwma/$(shell cat ./docker_repo.var)
-PROJECT_NAME := $(shell cat ./docker_repo.var)
+PROJECT_NAME := $(shell cat ./project_name.var)
 DOCKER_TAG ?= $(shell git rev-parse --short HEAD)
 BUILD_ID := $(shell git describe --always)
 DOCKER_IMAGE := $(DOCKERHUB_REPO):$(DOCKER_TAG)
@@ -12,6 +12,10 @@ build:
 .PHONY: build-full
 build-full:
 	docker build -t $(DOCKER_IMAGE) --target production --build-arg PROJECT_NAME=$(PROJECT_NAME) --build-arg BUILD_ID=$(BUILD_ID) -f ./Dockerfile .
+
+.PHONY: example
+example:
+	docker-compose -f ./docker-compose.example.yml up
 
 .PHONY: publish
 publish:

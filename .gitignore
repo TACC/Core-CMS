@@ -14,6 +14,11 @@ __pycache__
 ## built Static files
 build
 !build/README.md
+## ignore fonts copied from Core-Styles
+**/fonts
+## (except Cortal fonts)
+## TODO: get Cortal from Core-Styles (then remove this exception)
+!**/fonts/Cortal-Icons-*
 
 ## environment variables
 docker_repo.var
@@ -27,7 +32,7 @@ repo_name.var
 /taccsite_ui/dist
 
 # Secrets and Customizations
-taccsite_cms/secrets.py
+*secrets*.py
 *.custom.yml
 *settings_custom*.py
 *settings_local*.py

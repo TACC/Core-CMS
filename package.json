@@ -1,6 +1,6 @@
 {
   "name": "@tacc/core-cms",
-  "version": "3.8.0",
+  "version": "4.1.0",
   "license": "MIT",
   "author": "TACC ACI WMA <wma-portals@gmail.com>",
   "description": "The TACC ACI-WMA Core CMS codebase used by TACC Portals.",
@@ -8,18 +8,20 @@
     "node": "^16.14.0",
     "npm": "^8.3.0"
   },
-  "devDependencies": {
-    "@frctl/fractal": "^1.5.13",
+  "dependencies": {
+    "@frctl/fractal": "^1.5.14",
     "@frctl/mandelbrot": "^1.10.1",
-    "@tacc/core-styles": "github:TACC/Core-Styles#task/FP-1801-guides-breadcrumbs-headings",
+    "@tacc/core-styles": "^2.11.0",
     "minimist": "^1.2.6"
   },
   "repository": "git@github.com:TACC/Core-CMS.git",
   "scripts": {
-    "build": "npm run build:css && npm run build:css-demo",
+    "build": "npm run build:css && npm run build:ui-demo",
     "build:css": "bin/build-css.js --project=$npm_config_project --build-id=$npm_config_build_id",
-    "start:css-demo": "cd taccsite_ui && npx serve dist",
-    "build:css-demo": "cd taccsite_ui && fractal build --project=$npm_config_project"
+    "postbuild:css": "cp -r node_modules/@tacc/core-styles/src/lib/fonts/* taccsite_cms/static/site_cms/fonts",
+    "build:ui-demo": "cd taccsite_ui && fractal build",
+    "prebuild:ui-demo": "cp -r node_modules/@tacc/core-styles/src/lib/_imports/_preview.hbs taccsite_cms/static/site_cms/css/src/_imports/",
+    "postbuild:ui-demo": "rm taccsite_cms/static/site_cms/css/src/_imports/_preview.hbs"
   },
   "homepage": "https://github.com/TACC/Core-CMS"
 }

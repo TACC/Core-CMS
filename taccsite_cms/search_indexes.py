@@ -9,7 +9,7 @@ from django.utils import timezone
 from django.test import RequestFactory
 
 from django.utils.html import strip_tags
-from django.utils.encoding import force_text
+from django.utils.encoding import force_str as force_text
 
 from cms.models import Title, CMSPlugin, Page
 # from cms.toolbar.toolbar import CMSToolbar
