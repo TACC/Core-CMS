@@ -1,0 +1,131 @@
+{% extends "guide.html" %}
+
+{% load cms_tags static tacc_uri_shortcuts %}
+
+{% block guide %}
+<div class="row">
+    <div class="col">
+        <h1>Getting Started</h1>
+
+        <h2>Account Holders</h2>
+
+        <p>If you already have an account, you may <a href="/login">log in</a> by clicking the <q><i class="icon icon-user" role="image"></i> Log in</q> link at the top right of the page.</p>
+
+        <h2 id="create-account">Creating an Account</h2>
+
+        <p>Before you can access the Portal, you must first have an active account with TACC.</p>
+
+        <p>If you are a new TACC user, you may <a href="https://www.tacc.utexas.edu/use-tacc/getting-started/">create an account or request an alloction</a>. Then you will need to return to this page.</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <h2 id="request-access-before-login">Logging In for the First Time</h2>
+        <p>Your initial login to the Portal begins an onboarding process.</p>
+        <div class="row">
+            <div class="col">
+                <p><img alt="The Portal homepage with active login link." class="img-fluid" src="/static/site_cms/img/guides/login-portal.from-home.jpg" /></p>
+            </div>
+            <div class="col">
+                <p>You may now <a href="/login">log in</a> to the Portal clicking the <q><i class="icon icon-user" role="image"></i> Log in</q> link at the top right of the page.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p><img alt="The TACC/TAPIs login form." class="img-fluid" src="{% static 'site_cms/img/guides/login-tapis.form.png' %}" /></p>
+            </div>
+            <div class="col">
+                <p>At the authentication page, please enter your TACC username and password.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p><img alt="The TACC/TAPIs approval step." class="img-fluid" src="{% static 'site_cms/img/guides/login-tapis.approval.png' %}" /></p>
+            </div>
+            <div class="col">
+                <p>When asked, click the <strong>Connect</strong> button.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <h3 id="request-access">Requesting Access</h3>
+        <p>To use the Portal, you may need to have an active allocation on TACC resources. If you are PI eligible,
+            you may request your own allocations.</p>
+        <div class="row">
+            <div class="col">
+                <p><img alt="A sample Portal account onboarding with 'Requesting Access' step pending action." class="img-fluid" src="/static/site_cms/img/guides/onboarding-access.userwait.png" /></p>
+            </div>
+            <div class="col">
+                <p>If you are a new TACC user that does not have an active project, you may request to be added to one. Please click <strong>Request Portal Access</strong> in the Account Onboarding. A request to be added to an allocation will be generated on your behalf.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p><img alt="A sample Portal account onboarding with 'Requesting Access' step in progress." class="img-fluid" src="/static/site_cms/img/guides/onboarding-access.staffwait.png" /></p>
+            </div>
+            <div class="col">
+                <p>Your request will be reviewed by TACC staff. When you have been approved, you will receive an e-mail notification.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p><img alt="A sample Portal account onboarding with 'Requesting Access' step complete." class="img-fluid" src="/static/site_cms/img/guides/onboarding-access.completed.png" /></p>
+            </div>
+            <div class="col">
+                <p>Your account now has an allocation on the necessary TACC resources. You may proceed to the next step.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <h3 id="check-project">Checking Project Membership</h3>
+        <p>To use the Portal, you may need to have memebrship on a project. If you are PI eligible, you may
+            request your own project. Alternatively, you may request to be added to a project through the <a href="/workbench/onboarding/setup" target="_blank">Account Onboarding</a>.</p>
+        <div class="row">
+            <div class="col">
+                <p><img alt="A sample Portal account onboarding with 'Checking Project Membership' step pending action." class="img-fluid" src="/static/site_cms/img/guides/onboarding-project.userwait.png" /></p>
+            </div>
+            <div class="col">
+                <p>If you are a new TACC user that does not have an active project, you may request to be added to one. Please click <strong>Request Project Access</strong> in the Account Onboarding. A request to be added to a project will be generated on your behalf.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p><img alt="A sample Portal account onboarding with 'Checking Project Membership' step in progress." class="img-fluid" src="/static/site_cms/img/guides/onboarding-project.staffwait.png" /></p>
+            </div>
+            <div class="col">
+                <p>Your request will be reviewed by TACC staff. When you have been approved, you will receive an e-mail notification.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p><img alt="A sample Portal account onboarding with 'Checking Project Membership' step complete." class="img-fluid" src="/static/site_cms/img/guides/onboarding-project.completed.png" /></p>
+            </div>
+            <div class="col">
+                <p>Your account now has access to a project on the Portal. You may proceed to the next step of the Account Onboarding.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <h3 id="other-steps">Other Steps</h3>
+        <p>Onboarding for the specific Portal you use may require additional onboarding steps, like:</p>
+        <ul>
+            <li>Creating Storage Systems</li>
+        </ul>
+        <div class="row">
+            <div class="col">
+                <p><img alt="A sample Portal account onboarding with all steps complete." class="img-fluid" src="/static/site_cms/img/guides/onboarding.completed.jpg" /></p>
+            </div>
+            <div class="col">
+                <p>Please follow the Account Onboarding until all steps are complete.</p>
+                <p>Once your Account Onboarding is complete, you may click <strong>Access Dashboard</strong>, or navigate to the Dashboard with the now-enabled sidebar.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock guide %}
