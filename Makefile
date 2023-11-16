@@ -1,9 +1,10 @@
 DOCKERHUB_REPO := taccwma/$(shell cat ./docker_repo.var)
-PROJECT_NAME := $(shell cat ./project_name.var)
 DOCKER_TAG ?= $(shell git rev-parse --short HEAD)
-BUILD_ID := $(shell git describe --always)
 DOCKER_IMAGE := $(DOCKERHUB_REPO):$(DOCKER_TAG)
 DOCKER_IMAGE_LATEST := $(DOCKERHUB_REPO):latest
+
+PROJECT_NAME := $(shell cat ./project_name.var)
+BUILD_ID := $(shell git describe --always)
 
 .PHONY: build
 build:
