@@ -12,7 +12,11 @@ build:
 
 .PHONY: build-full
 build-full:
-	docker build -t $(DOCKER_IMAGE) --target production --build-arg PROJECT_NAME=$(PROJECT_NAME) --build-arg BUILD_ID=$(BUILD_ID) -f ./Dockerfile .
+	docker build -t $(DOCKER_IMAGE) \
+		--target production \
+		--build-arg PROJECT_NAME="$(PROJECT_NAME)" \
+		--build-arg BUILD_ID="$(BUILD_ID)" \
+		-f ./Dockerfile .
 
 .PHONY: example
 example:
