@@ -48,7 +48,11 @@ RUN npm ci
 COPY . /code/
 ARG PROJECT_NAME
 ARG BUILD_ID
-RUN npm run build --project=$PROJECT_NAME --build-id=$BUILD_ID
+RUN if [ "$NEEDS_DEMO" = "true" ]; then \
+        npm run build --project="$PROJECT_NAME" --build-id="$BUILD_ID"; \
+    else \
+        npm run build:css --project="$PROJECT_NAME" --build-id="$BUILD_ID"; \
+    fi
 
 
 
