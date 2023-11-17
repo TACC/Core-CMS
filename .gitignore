@@ -22,7 +22,8 @@ build
 
 ## environment variables
 docker_repo.var
-repo_name.var
+needs_demo.var
+project_name.var
 
 # Static and Media folders
 /static
