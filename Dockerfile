@@ -47,6 +47,7 @@ RUN npm ci
 # Build assets
 COPY . /code/
 ARG PROJECT_NAME
+ARG NEEDS_DEMO
 ARG BUILD_ID
 RUN if [ "$NEEDS_DEMO" == "true" ]; then \
         npm run build --project="$PROJECT_NAME" --build-id="$BUILD_ID"; \
