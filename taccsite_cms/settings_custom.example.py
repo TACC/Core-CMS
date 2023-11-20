@@ -182,3 +182,10 @@ BLOG_ENABLE_COMMENTS = False
 # TACC settings
 TACC_BLOG_SHOW_CATEGORIES = True
 TACC_BLOG_SHOW_TAGS = True
+
+########################
+# CLIENT BUILD SETTINGS
+########################
+
+# TACC/Core-CMS-Resources#75: Load custom urls.py so we can add urlpatterns for taggit_autosuggest
+ROOT_URLCONF = 'taccsite_custom.example_cms.urls'
