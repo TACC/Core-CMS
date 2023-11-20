@@ -3,7 +3,7 @@ from django import template
 register = template.Library()
 
 @register.simple_tag
-def blog_post_is_in_category(post=None, category_slug=''):
+def blog_post_is_in_category(post=None, current_category=None, category_slug=''):
     """
     Custom Template Tag `blog_post_is_in_category`
 
@@ -24,9 +24,10 @@ def blog_post_is_in_category(post=None, category_slug=''):
         ../templates/djangocms_blog/post_list.html
     """
     is_in_category = False
-    if post.categories.exists:
-        for category in post.categories.all():
-            if category.slug == category_slug:
-                is_in_category = True
+    if not current_category.slug == category_slug:
+        if post.categories.exists:
+            for category in post.categories.all():
+                if category.slug == category_slug:
+                    is_in_category = True
 
     return is_in_category

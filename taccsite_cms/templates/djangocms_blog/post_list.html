@@ -40,7 +40,7 @@
     {% endblock %}
     {% for post in post_list %}
         {# TACC (when listing, exclude posts that are not of certain categories): #}
-        {% blog_post_is_in_category post 'exclude' as should_exclude_post %}
+        {% blog_post_is_in_category post category 'exclude' as should_exclude_post %}
         {% if not should_exclude_post %}
             {% include "djangocms_blog/includes/blog_item.html" with post=post image="true" TRUNCWORDS_COUNT=TRUNCWORDS_COUNT %}
         {% endif %}
