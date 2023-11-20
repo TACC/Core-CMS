@@ -1,6 +1,6 @@
 {# https://github.com/nephila/djangocms-blog/blob/1.1.1/djangocms_blog/templates/djangocms_blog/post_list.html #}
 {% extends "djangocms_blog/base.html" %}
-{% load i18n easy_thumbnails_tags %}{% spaceless %}
+{% load i18n easy_thumbnails_tags blog_post_is_in_category %}{% spaceless %}
 
 {% block canonical_url %}<link rel="canonical" href="{{ view.get_view_url }}"/>{% endblock canonical_url %}
 
@@ -39,7 +39,12 @@
     </header>
     {% endblock %}
     {% for post in post_list %}
-        {% include "djangocms_blog/includes/blog_item.html" with post=post image="true" TRUNCWORDS_COUNT=TRUNCWORDS_COUNT %}
+        {# TACC (when listing, exclude posts that are not of certain categories): #}
+        {% blog_post_is_in_category post 'exclude' as should_exclude_post %}
+        {% if not should_exclude_post %}
+            {% include "djangocms_blog/includes/blog_item.html" with post=post image="true" TRUNCWORDS_COUNT=TRUNCWORDS_COUNT %}
+        {% endif %}
+        {# /TACC #}
     {% empty %}
     <p class="blog-empty">{% trans "No article found." %}</p>
     {% endfor %}
