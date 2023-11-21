@@ -48,7 +48,7 @@ CMS_TEMPLATES = (
 
 NSF_BRANDING = [
     "nsf",
-    "example-cms/img/org_logos/nsf-white.png",
+    "example_cms/img/org_logos/nsf-white.png",
     "branding-nsf",
     "https://www.nsf.gov/",
     "_blank",
@@ -63,7 +63,7 @@ NSF_BRANDING = [
 
 TACC_BRANDING = [
     "tacc",
-    "example-cms/img/org_logos/tacc-white.png",
+    "example_cms/img/org_logos/tacc-white.png",
     "branding-tacc",
     "https://www.tacc.utexas.edu/",
     "_blank",
@@ -74,7 +74,7 @@ TACC_BRANDING = [
 
 UTEXAS_BRANDING = [
     "utexas",
-    "example-cms/img/org_logos/utaustin-white.png",
+    "example_cms/img/org_logos/utaustin-white.png",
     "branding-utaustin",
     "https://www.utexas.edu/",
     "_blank",
@@ -90,7 +90,7 @@ UTEXAS_BRANDING = [
 # Edit this config as needed for the project branding used in the navigation bar header.
 CUSTOM_BRANDING = [
     "portal",
-    "example-cms/img/org_logos/portal.png",
+    "example_cms/img/org_logos/portal.png",
     "branding-logo--short",
     "https://cep.tacc.utexas.edu",
     "_blank",
@@ -118,7 +118,7 @@ BRANDING = [ TACC_BRANDING, UTEXAS_BRANDING ]
 # Edit this config as needed for the project logo used in the navigation bar.
 LOGO =  [
     "example",
-    "example-cms/img/org_logos/portal.png",
+    "example_cms/img/org_logos/portal.png",
     "",
     "/",
     "_self",
@@ -131,7 +131,7 @@ LOGO =  [
 # If `INCLUDES_CORE_PORTAL = True` and you set `FAVICON`, then:
 # https://github.com/TACC/Core-CMS-Custom/blob/d4c93af/docs/port-project.md#has-a-core-portal
 FAVICON = {
-    "img_file_src": "example-cms/img/org_logos/favicon.ico"
+    "img_file_src": "example_cms/img/org_logos/favicon.ico"
 }
 
 ########################
@@ -182,3 +182,10 @@ BLOG_ENABLE_COMMENTS = False
 # TACC settings
 TACC_BLOG_SHOW_CATEGORIES = True
 TACC_BLOG_SHOW_TAGS = True
+
+########################
+# CLIENT BUILD SETTINGS
+########################
+
+# TACC/Core-CMS-Resources#75: Load custom urls.py so we can add urlpatterns for taggit_autosuggest
+ROOT_URLCONF = 'taccsite_custom.example_cms.urls'
