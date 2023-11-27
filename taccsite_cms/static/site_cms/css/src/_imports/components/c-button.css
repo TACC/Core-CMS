@@ -1,18 +1,20 @@
 @import url("@tacc/core-styles/src/lib/_imports/components/c-button.selectors.css");
 @import url("@tacc/core-styles/src/lib/_imports/tools/selectors.form.css");
 
-:--c-button--primary,
-:--c-button--secondary,
-:--c-button--tertiary,
-:--c-button--is-active,
-:--form__button {
-  padding: 10px 20px;
 
-  font-size: var(--global-font-size--small);
-  text-transform: uppercase;
+:--main-content {
+  & :--c-button,
+  & :--form__button {
+    padding: 10px 20px;
+
+    font-size: var(--global-font-size--small);
+
+    font-weight: var(--bold);
+    letter-spacing: 0.05em;
+  }
 }
 
-:--c-button {
-  font-weight: var(--bold);
-  letter-spacing: 0.05em;
+:--c-button,
+:--form__button {
+  text-transform: uppercase;
 }
