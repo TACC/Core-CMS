@@ -9,3 +9,22 @@
 @import url("@tacc/core-styles/src/lib/_imports/trumps/s-guide-doc.css");
 @import url("@tacc/core-styles/src/lib/_imports/trumps/s-inline-dl.css");
 @import url("@tacc/core-styles/src/lib/_imports/trumps/u-nested-text-content.css");
+
+/* NOTE: The Portal v3 / Core-Styles v2 docs are unexpected.
+         The plan was for all documentation to be in docs.tacc.utexas.edu.
+         These might not look great on all guide pages. Improve at will. */
+
+h2:not(:first-of-type),
+.row:not(:first-of-type) h2 {
+  margin-top: var(--global-space--hr-buffer-above);
+
+  border-top-width: var(--global-border-width--normal);
+  border-top-color: var(--global-color-primary--dark);
+  border-top-style: solid;
+
+  padding-top: var(--global-space--hr-buffer-below);
+}
+
+h3, h4, h5, h6 {
+  margin-top: 2em;
+}

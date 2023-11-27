@@ -147,6 +147,14 @@ SITE_ID = 1
 CMS_TEMPLATES = (
     ('standard.html', 'Standard'),
     ('fullwidth.html', 'Full Width'),
+
+    ('guide.html', 'Guide'),
+    ('guides/getting_started.v3.html', 'Guide: Getting Started (v3)'),
+    ('guides/getting_started.tam.html', 'Guide: Getting Started (TAM)'),
+    ('guides/getting_started.v2.html', 'Guide: Getting Started (v2)'),
+    ('guides/data_transfer.html', 'Guide: Data Transfer'),
+    ('guides/data_transfer.globus.html', 'Guide: Globus Data Transfer'),
+    ('guides/portal_technology.html', 'Guide: Portal Technology Stack'),
 )
 
 CMS_PERMISSION = True
