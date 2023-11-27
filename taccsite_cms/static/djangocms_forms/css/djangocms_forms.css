@@ -1,2 +1,3 @@
-/* SEE: @tacc/core-styles/dist/components/c-form.css */
-/* FAQ: Already available c-form (which styles all TACC/Core-Styles forms) */
+/* SEE: ../../site_cms/css/src/app.blog.css */
+/* FAQ: We uses future syntax that must be processed to work in the present;
+        and the process does not support outputting files to this directory */
