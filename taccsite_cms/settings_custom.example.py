@@ -153,9 +153,11 @@ INSTALLED_APPS[tacc_app_index:tacc_app_index] = [
 ]
 # REQ: 'taggit_autosuggest' requires the following is added to `urls.py`
 """
+from django.urls import re_path, include
+
 urlpatterns += [
     # Support `taggit_autosuggest` (from `djangocms-blog`)
-    url(r'^taggit_autosuggest/', include('taggit_autosuggest.urls')),
+    re_path(r'^taggit_autosuggest/', include('taggit_autosuggest.urls')),
 ]
 """
 
