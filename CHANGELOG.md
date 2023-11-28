@@ -38,6 +38,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Documented
 
 * docs(README): Getting Started & Custom Project by @wesleyboar in https://github.com/TACC/Core-CMS/pull/733
+* docs: update docs since TACC/Core-CMS#741 by @wesleyboar in https://github.com/TACC/Core-CMS/pull/755
 
 ### New Contributors
 
