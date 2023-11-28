@@ -40,7 +40,7 @@ The base CMS code for TACC WMA Workspace Portals & Websites
 ## Prerequisites
 
 * [Docker]
-  * [Docker Engine] ≥ v20
+  * Docker Engine ≥ v20
   * [Docker Compose]
 
 > **Important**
@@ -70,9 +70,12 @@ Set up a new local CMS instance.
 
 3. Build & Start the Docker Containers:
 
-    ```sh
-    make start
-    ```
+    | For Testing | For Developing & Testing |
+    | - | - |
+    | `make start` | `docker-compose -f ./docker-compose.dev.yml up` |
+
+    > **Note**
+    > This will make the terminal window busy. To run commands after this, **either** open a new terminal window **or** run `docker-compose -f ./docker-compose.dev.yml up --detach` instead.
 
 4. Enter the CMS Docker Container:
 
@@ -80,9 +83,10 @@ Set up a new local CMS instance.
 
     ```sh
     docker exec -it core_cms /bin/bash
+    # This opens a command prompt within the container
     ```
 
-5. Run the Django Application:
+5. Update the Django Application:
 
     (Run these commands within the container.)
 
@@ -118,42 +122,24 @@ Read [Upgrade Project] for developer instructions.
 
 ### New Minor or Patch Version (or Branch)
 
-- If CMS `Dockerfile` changed, rebuild Docker Containers:
+#### For Testing
 
-    ```sh
-    make stop
-    make build
-    make start
-    ```
+```sh
+make stop
+make build
+make start
+```
 
-- If anything else changed, update the Django application:
+#### For Development & Testing
 
-    ```sh
-    docker exec -it core_cms /bin/bash
-    # This opens a command prompt within the container.
-    ```
-
-  Run relevant commands within the container:
-
-  - If **styles** changed:
-
-      ```sh
-      npm ci
-      npm run build:css --project="core-cms"
-      python manage.py collectstatic --no-input
-      ```
-
-  - If **assets** changed:
-
-      ```sh
-      python manage.py collectstatic --no-input
-      ```
-
-  - If **models** changed:
-
-      ```sh
-      python manage.py migrate
-      ```
+| If this changed | Run this command |
+| - | - |
+| Dockerfile | `npm ci` |
+| Node dependencies | `npm ci` |
+| CSS stylesheets | `npm run build:css` |
+| UI Demo | `npm run build:ui-demo` |
+| Assets e.g.<br><small>images, stylesheets, JavaScript</small> | `docker exec -it core_cms sh -c "python manage.py collectstatic --no-input"` |
+| Python models | `docker exec -it core_cms sh -c "python manage.py migrate"` |
 
 ## Develop Project
 
