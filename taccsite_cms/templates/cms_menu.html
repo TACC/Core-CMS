@@ -15,7 +15,9 @@
       class="nav-link dropdown-toggle"
       data-toggle="dropdown"
       aria-haspopup="true"
-      aria-expanded="false">
+      aria-expanded="false"
+      role="button"
+      >
       {{ child.get_menu_title|safe }}
       {% if child.selected %}<span class="sr-only">(current)</span>{% endif %}
       <span class="sr-only">Toggle Dropdown</span>
