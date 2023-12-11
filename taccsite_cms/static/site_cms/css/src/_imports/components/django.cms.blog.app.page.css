@@ -109,6 +109,17 @@ Styleguide Components.DjangoCMS.Blog.App.Page
   clear: both;
 }
 
+/* To support gallery feature */
+/* SEE: ./lightgallery.css */
+.app-blog .lightgallery {
+  --min-width: 230px;
+}
+@supports selector(:has(*)) {
+  .app-blog .lightgallery a:has(figcaption) {
+    align-items: start;
+  }
+}
+
 
 
 /* Media & Content - Content */
@@ -164,7 +175,7 @@ Styleguide Components.DjangoCMS.Blog.App.Page
   :--article-page .blog-content .align-center,
   :--article-page .blog-content .align-right,
   :--article-page .blog-content .align-left {
-    max-width: unset;
+    max-width: 100%;
   }
   :--article-page .blog-content .align-right,
   :--article-page .blog-content .align-left {
