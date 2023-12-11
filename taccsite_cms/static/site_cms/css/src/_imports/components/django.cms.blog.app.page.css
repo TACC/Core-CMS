@@ -169,7 +169,6 @@ Styleguide Components.DjangoCMS.Blog.App.Page
   :--article-page .blog-content .align-right,
   :--article-page .blog-content .align-left {
     float: unset;
-    margin-bottom: unset;
   }
   :--article-page .blog-content .align-right {
     margin-left: unset;
