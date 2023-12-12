@@ -17,13 +17,13 @@
       aria-haspopup="true"
       aria-expanded="false"
       role="button"
-      id="navbarDropdown"
+      id="navbarDropdown--{{child.get_menu_title|slugify}}"
       >
       {{ child.get_menu_title|safe }}
       {% if child.selected %}<span class="sr-only">(current)</span>{% endif %}
       <span class="sr-only">Toggle Dropdown</span>
     </a>
-    <div class="dropdown-menu" role="menu" aria-labelledby="navbarDropdown">
+    <div class="dropdown-menu" role="menu" aria-labelledby="navbarDropdown--{{child.get_menu_title|slugify}}">
       {# Bootstrap4 does not support submenus, so nor do we (and other users). See https://github.com/twbs/bootstrap/pull/6342. #}
       {% for grandchild in child.children %}
       {% limit_visibility_in_menu grandchild as can_view %}
