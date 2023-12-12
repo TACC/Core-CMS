@@ -114,6 +114,8 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 .app-blog .lightgallery {
   --min-width: 230px;
 }
+/* TODO: Review this code when client wants thumbnail captions */
+/* WARNING: This seems to not do what it is expected to do */
 @supports selector(:has(*)) {
   .app-blog .lightgallery a:has(figcaption) {
     align-items: start;
