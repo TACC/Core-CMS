@@ -152,6 +152,7 @@ INSTALLED_APPS[tacc_app_index:tacc_app_index] = [
     'djangocms_blog',
 ]
 # REQ: 'taggit_autosuggest' requires the following is added to `urls.py`
+# FAQ: For local Core-CMS or any Core-CMS-Custom app, add to `urls_custom.py`
 """
 from django.urls import re_path, include
 
