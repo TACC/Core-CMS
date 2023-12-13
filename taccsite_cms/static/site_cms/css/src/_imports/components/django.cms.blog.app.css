@@ -85,6 +85,12 @@ Styleguide Components.DjangoCMS.Blog.App
   order: -1
 }
 
+
+/* To always hide byline prefix */
+.app-blog .byline > span {
+  display: none;
+}
+
 /* To conditionally hide tags & categories */
 .app-blog.no-tags :--article .tags,
 .app-blog.no-categories :--article .categories {
