@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [4.2.1] - 2023-12-11: Blog Page Image Layout Fixes
+
+### Fixed
+
+* hotfix: restore margin-bottom for narrow-screen blog images by @wesleyboar in https://github.com/TACC/Core-CMS/pull/759
+* Feat/tup 631 migrate blog page css from tup by @wesleyboar in https://github.com/TACC/Core-CMS/pull/756
+
+### Documented
+
+* docs: prevent TACC/Core-CMS-Custom#254 in future by @wesleyboar in 49c91ea
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.2.0...v4.2.1
+
 ## [4.2.0] - 2023-11-28: New CMS Styles, Update Core-Styles, Misc. Fixes, Docs
 
 ### Added
@@ -1005,7 +1018,8 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.2.0...main
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.2.1...main
+[4.2.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.2.1
 [4.2.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.2.0
 [4.1.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.1.0
 [4.0.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.0.0
