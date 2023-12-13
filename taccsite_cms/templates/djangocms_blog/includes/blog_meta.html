@@ -9,9 +9,7 @@
     <li class="byline">
     {# /TACC #}
         {# TACC (add <span> so "by" can be styled): #}
-        {# TACC (add &nbsp; so whitespace can be stripped): #}
-        <span>{% trans "by" %}</span>&nbsp;
-        {# /TACC #}
+        <span>{% trans "by" %}</span>
         {# /TACC #}
         <a href="{% url 'djangocms_blog:posts-author' post.author.get_username %}">{% if post.author.get_full_name %}{{ post.author.get_full_name }}{% else %}{{ post.author }}{% endif %}</a>
     </li>
