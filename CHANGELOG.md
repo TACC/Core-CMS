@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [4.3.0] - 2023-12-13: New Setting to Hide "Published" Text, Fix Accessibility
+
+### Added
+
+* task/tup551 Hide published text unless editing by @R-Tomas-Gonzalez in https://github.com/TACC/Core-CMS/pull/763
+
+### Fixed
+
+* fix: tup 595 accessibility by @wesleyboar in https://github.com/TACC/Core-CMS/pull/761
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.2.1...v4.2.2
+
 ## [4.2.1] - 2023-12-11: Blog Page Image Layout Fixes
 
 ### Fixed
@@ -1018,7 +1030,8 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.2.1...main
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.3.0...main
+[4.3.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.3.0
 [4.2.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.2.1
 [4.2.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.2.0
 [4.1.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.1.0
