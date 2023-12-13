@@ -21,7 +21,9 @@
       {# /TACC #}
       {# TACC (add <span> and &nbsp; so whitespace can be stripped): #}
       {# TACC ("Published" vs "To be published"): #}
-      <span>{% if post.publish and settings.TACC_BLOG_SHOW_PUB_TEXT %}{% trans "Published" %}{% else %}{% trans "To be published" %}{% endif %}</span>&nbsp;
+      {% if settings.TACC_BLOG_SHOW_PUB_TEXT %}
+        <span>{% if post.publish %}{% trans "Published" %}{% else %}{% trans "To be published" %}{% endif %}</span>&nbsp;
+      {% endif %}
       {# /TACC #}
       {# /TACC #}
       {# TACC (wrap with <time> tag because it should be so): #}
