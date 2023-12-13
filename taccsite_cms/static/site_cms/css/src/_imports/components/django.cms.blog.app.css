@@ -71,18 +71,11 @@ Styleguide Components.DjangoCMS.Blog.App
 /* Metadata */
 
 /* To layout data */
-.app-blog .attrs {
-  display: flex;
-  flex-direction: column;
-}
 .app-blog .tags,
 .app-blog .categories {
   display: flex;
   flex-direction: row;
   gap: 1em;
-}
-.app-blog .date {
-  order: -1;
 }
 
 

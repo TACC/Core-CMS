@@ -57,6 +57,20 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 
 
 
+/* Metadata */
+
+:--article-page .attrs {
+  display: flex;
+  flex-direction: column;
+}
+:--article-page .date {
+  order: -1;
+}
+
+
+
+
+
 /* Media & Content */
 
 :--article-page :is(.blog-visual, .blog-content) {
