@@ -41,18 +41,14 @@ Styleguide Components.DjangoCMS.Blog.App
 
 .app-blog header {
   display: grid;
-  grid-template-areas:
-    'cats'
-    'tags'
-    'attr'
-    'head'
-    'subh';
+  column-gap: 1em;
 }
 :--article-page h1,
 :--article-item h3    { grid-area: head }
 :--article-page h2,
 :--article-item h4    { grid-area: subh }
 .app-blog .attrs      { grid-area: attr }
+.app-blog .dates      { grid-area: date }
 .app-blog .categories { grid-area: cats }
 .app-blog .tags       { grid-area: tags }
 .app-blog .links      { grid-area: link }
@@ -61,7 +57,6 @@ Styleguide Components.DjangoCMS.Blog.App
   list-style: none;
 
   padding-left: 0; /* overwrite html-elements.css */
-  margin-bottom: 0.25em; /* overwrite html-elements.css */
 
   font-size: var(--global-font-size--medium);
 }
@@ -125,7 +120,11 @@ Styleguide Components.DjangoCMS.Blog.App
   display: flex;
   gap: 0.25em;
 }
+.app-blog .logos--social a {
+  height: fit-content; /* remove whitespace */
+}
 .app-blog .logos--social svg {
+  display: block; /* remove whitespace */
   height: var(--global-font-size--x-large);
 }
 

@@ -101,6 +101,15 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 /* Header (Structure) */
 
 :--article-item header {
+  grid-template-areas:
+    'cats tags'
+    'date attr'
+    'head head'
+    'subh subh';
+  justify-content: space-between;
+}
+
+:--article-item header {
   margin-bottom: 5px;
 }
 
@@ -136,16 +145,7 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 
 /* Metadata */
 
-:--article-item .attrs {
-  display: flex;
-  flex-direction: row;
-}
-:--article-item .attrs {
-  justify-content: space-between;
-}
-:--article-item .date {
-  order: -1;
-}
+/* … */
 
 
 
