@@ -135,11 +135,11 @@ make start
 | | If this changed | Run this command |
 | - | - | - |
 | 0 | Dockerfile | `make build` then re-start the container |
-| 1 | Node dependencies | `npm ci` |
-| 2 | CSS stylesheets | `npm run build:css` |
-| 3 | UI Demo | `npm run build:ui-demo` |
-| 4 |  Assets e.g.<br><small>images, stylesheets, JavaScript</small> | `docker exec -it core_cms sh -c "python manage.py collectstatic --no-input"` |
-| 5 | Python models | `docker exec -it core_cms sh -c "python manage.py migrate"` |
+| 1 | Python models | `docker exec -it core_cms sh -c "python manage.py migrate"` |
+| 2 | Node dependencies | `npm ci` |
+| 3 | CSS stylesheets | `npm run build:css` |
+| 4 | UI Demo | `npm run build:ui-demo` |
+| 5 |  Assets e.g.<br><small>images, stylesheets, JavaScript</small> | `docker exec -it core_cms sh -c "python manage.py collectstatic --no-input"` |
 
 ## Develop Project
 
