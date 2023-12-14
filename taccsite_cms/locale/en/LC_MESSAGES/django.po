@@ -105,8 +105,8 @@ msgstr "Provide a description, attribution, copyright or other information. WARN
 
 #: site-cms(djangocms-blog)
 #: templates/djangocms_blog/includes/blog_meta.html:6
-msgid "Published"
-msgstr "Published:"
+msgid "To be published"
+msgstr ""
 
 #: site-cms(djangocms-blog)
 #: templates/djangocms_blog/post_list.html:6
