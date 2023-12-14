@@ -71,18 +71,17 @@ Styleguide Components.DjangoCMS.Blog.App
 /* Metadata */
 
 /* To layout data */
-.app-blog .attrs,
 .app-blog .tags,
 .app-blog .categories {
   display: flex;
   flex-direction: row;
   gap: 1em;
 }
-.app-blog .attrs {
-  justify-content: space-between;
-}
-.app-blog .date {
-  order: -1
+
+
+/* To always hide byline prefix */
+.app-blog .byline > span {
+  display: none;
 }
 
 /* To conditionally hide tags & categories */
@@ -126,7 +125,11 @@ Styleguide Components.DjangoCMS.Blog.App
   display: flex;
   gap: 0.25em;
 }
+.app-blog .logos--social a {
+  height: fit-content; /* remove whitespace */
+}
 .app-blog .logos--social svg {
+  display: block; /* remove whitespace */
   height: var(--global-font-size--x-large);
 }
 
