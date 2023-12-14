@@ -134,23 +134,6 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 
 
 
-/* Metadata */
-
-:--article-item .attrs {
-  display: flex;
-  flex-direction: row;
-}
-:--article-item .attrs {
-  justify-content: space-between;
-}
-:--article-item .date {
-  order: -1;
-}
-
-
-
-
-
 /* Visual */
 
 :--article-item .blog-visual:empty {
