@@ -97,8 +97,8 @@ A demo of any documented CSS modules from [Core Styles] and [Core CMS].
     ```sh
     docker exec -it core_cms sh -c "python manage.py collectstatic --no-input"
     ```
-3. Give the server time to automatically restart.
-4. Open http://localhost:8000/static/ui/index.html.
+
+3. Open http://localhost:8000/static/ui/index.html.
 
 ## Develop with [Core Styles] Simultaneously
 
