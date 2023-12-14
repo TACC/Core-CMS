@@ -139,7 +139,7 @@ make start
 | 2 | Node dependencies | `npm ci` |
 | 3 | CSS stylesheets | `npm run build:css` |
 | 4 | UI Demo | `npm run build:ui-demo` |
-| 5 |  Assets e.g.<br><sub>images, stylesheets, JavaScript, UI demo</sub> | `docker exec -it core_cms sh -c "python manage.py collectstatic --no-input"` |
+| 5 |  Assets e.g.<br><sup>images, stylesheets, JavaScript, UI demo</sup> | `docker exec -it core_cms sh -c "python manage.py collectstatic --no-input"` |
 
 ## Develop Project
 
