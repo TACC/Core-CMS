@@ -7,4 +7,6 @@
 
   /* Not yet available on Firefox */
   initial-letter: 3;
+  /* Support for Safari */
+  -webkit-initial-letter: 3;
 }
