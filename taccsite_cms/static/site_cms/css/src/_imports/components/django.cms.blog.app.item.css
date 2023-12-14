@@ -126,7 +126,9 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 
 
 
-/* Header - Metadata (Skin) */
+
+
+/* Metadata */
 
 :--article-item li {
   line-height: unset; /* overwrite html-elements.css */
@@ -138,14 +140,6 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 :--article-item .attrs a {
   color: inherit;
 }
-
-
-
-
-
-/* Metadata */
-
-/* … */
 
 
 
@@ -185,13 +179,6 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 
 
 /* Content */
-
-/* <time> as a header tag may not be relevant as of Oct. 17, 23 */
-:--article-item time:not(:is(h1, h2, h3, h4, h5, h6) *) {
-  color: var(--global-color-accent--secondary);
-  font-weight: var(--medium);
-  text-transform: uppercase;
-}
 
 :--article-item .blog-lead {
   @extend %x-truncate--many-lines;

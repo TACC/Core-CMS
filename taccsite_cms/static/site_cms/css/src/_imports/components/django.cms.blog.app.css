@@ -73,7 +73,6 @@ Styleguide Components.DjangoCMS.Blog.App
   gap: 1em;
 }
 
-
 /* To always hide byline prefix */
 .app-blog .byline > span {
   display: none;
@@ -109,6 +108,13 @@ Styleguide Components.DjangoCMS.Blog.App
   /* @extend :--c-pill; */
 
   background-color: var(--global-color-primary--light);
+}
+
+/* To style dates */
+.app-blog time {
+  color: var(--global-color-accent--secondary);
+  font-weight: var(--medium);
+  text-transform: uppercase;
 }
 
 
