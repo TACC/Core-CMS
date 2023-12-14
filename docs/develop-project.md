@@ -101,6 +101,7 @@ See [Locally Develop CMS and Styles](https://github.com/TACC/Core-CMS/wiki/Local
 
 <!-- Link Aliases -->
 
+[Core CMS]: https://github.com/TACC/Core-CMS
 [Core Styles]: https://github.com/TACC/Core-Styles
 [Core CMS Resources]: https://github.com/TACC/Core-CMS-Resources
 
