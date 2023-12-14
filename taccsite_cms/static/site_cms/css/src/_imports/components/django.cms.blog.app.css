@@ -120,11 +120,7 @@ Styleguide Components.DjangoCMS.Blog.App
   display: flex;
   gap: 0.25em;
 }
-.app-blog .logos--social a {
-  height: fit-content; /* remove whitespace */
-}
 .app-blog .logos--social svg {
-  display: block; /* remove whitespace */
   height: var(--global-font-size--x-large);
 }
 
