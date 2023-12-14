@@ -53,6 +53,12 @@ msgstr ""
 "Users can't move a page without permissions to change the page. "
 "Ensure user has \"Can edit\" permission."
 
+
+#: djangocms-blog
+#: templates/djangocms_blog/includes/blog_meta.html:6
+msgid "by"
+msgstr "by:"
+
 #: djangocms-blog
 #: cms_appconfig.py:39
 msgid ""
