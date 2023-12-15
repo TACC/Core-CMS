@@ -1,5 +1,15 @@
-@import url('../tools/x-drop-cap.css');
+@supports (initial-letter: 3){
+  .s-drop-cap > p:first-of-type::first-letter {
+    padding-right: 1em; /* approx: `1em` of normal text */
+    initial-letter: 3;
+  }
+}
 
-.s-drop-cap > p:first-of-type::first-letter {
-  @extend .x-drop-cap;
+@supports (-webkit-initial-letter: 3) {
+  .s-drop-cap > p:first-of-type::first-letter {
+    padding-right: 1em; /* approx: `1em` of normal text */
+    margin-left: -1em; /* remove apprx. space on left side of text */
+    -webkit-initial-letter: 3;
+    font-family: Arial;
+  }
 }
