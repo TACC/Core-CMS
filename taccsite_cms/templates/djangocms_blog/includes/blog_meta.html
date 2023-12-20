@@ -63,15 +63,34 @@
 {# /TACC #}
     {% if post.categories.exists %}
         {% for category in post.categories.all %}
-            {% if category.slug %}
-                {# TACC (fix bug nephila/djangocms-blog#711): #}
-                {# TACC (remove hard-coded comma so CSS handles separator): #}
-                {# TACC (rename `blog-categories-…` to `blog-category-…`): #}
-                <li class="category_{{ forloop.counter }}"><a href="{% url 'djangocms_blog:posts-category' category=category.slug %}" class="blog-category-{{ category.slug }}">{{ category.name }}</a></li>
-                {# /TACC #}
-                {# /TACC #}
-                {# /TACC #}
-            {% endif %}
+            {% with allowed_slugs='press-release, feature-story'%}
+                {% if category.slug in allowed_slugs %}
+                    <li class="category_{{ forloop.counter }}">
+                        <a href="{% url 'djangocms_blog:posts-category' category=category.slug %}" 
+                        class="blog-category-{{ category.slug }}">{{ category.name }}</a>
+                    </li>
+                {% endif %}
+            {% endwith %}
+        {% endfor %}
+        {% for category in post.categories.all %}
+            {% with allowed_slugs='multimedia, podcast'%}
+                {% if category.slug in allowed_slugs %}
+                    <li class="category_{{ forloop.counter }}">
+                        <a href="{% url 'djangocms_blog:posts-category' category=category.slug %}" 
+                        class="blog-category-{{ category.slug }}">{{ category.name }}</a>
+                    </li>
+                {% endif %}
+            {% endwith %}
+        {% endfor %}
+        {% for category in post.categories.all %}
+            {% with all_allowed_slugs='press-release, feature-story, multimedia, podcast' %}
+                {% if category.slug not in all_allowed_slugs %}
+                    <li class="category_{{ forloop.counter }}">
+                        <a href="{% url 'djangocms_blog:posts-category' category=category.slug %}" 
+                        class="blog-category-{{ category.slug }}">{{ category.name }}</a>
+                    </li>
+                {% endif %}
+            {% endwith %}
         {% endfor %}
     {% else %}
       <li class="category_none">{% trans "Uncategorized" %}</li>
