@@ -61,40 +61,7 @@
 <ul class="post-detail categories">{% spaceless %}
 {# /TACC #}
 {# /TACC #}
-    {% if post.categories.exists %}
-        {% for category in post.categories.all %}
-            {% with allowed_slugs='press-release, feature-story'%}
-                {% if category.slug in allowed_slugs %}
-                    <li class="category_{{ forloop.counter }}">
-                        <a href="{% url 'djangocms_blog:posts-category' category=category.slug %}" 
-                        class="blog-category-{{ category.slug }}">{{ category.name }}</a>
-                    </li>
-                {% endif %}
-            {% endwith %}
-        {% endfor %}
-        {% for category in post.categories.all %}
-            {% with allowed_slugs='multimedia, podcast'%}
-                {% if category.slug in allowed_slugs %}
-                    <li class="category_{{ forloop.counter }}">
-                        <a href="{% url 'djangocms_blog:posts-category' category=category.slug %}" 
-                        class="blog-category-{{ category.slug }}">{{ category.name }}</a>
-                    </li>
-                {% endif %}
-            {% endwith %}
-        {% endfor %}
-        {% for category in post.categories.all %}
-            {% with all_allowed_slugs='press-release, feature-story, multimedia, podcast' %}
-                {% if category.slug not in all_allowed_slugs %}
-                    <li class="category_{{ forloop.counter }}">
-                        <a href="{% url 'djangocms_blog:posts-category' category=category.slug %}" 
-                        class="blog-category-{{ category.slug }}">{{ category.name }}</a>
-                    </li>
-                {% endif %}
-            {% endwith %}
-        {% endfor %}
-    {% else %}
-      <li class="category_none">{% trans "Uncategorized" %}</li>
-    {% endif %}
+{% include './blog_meta_cats_organized.html' %}
 {# TACC (distinguish categories and tags via class): #}
 {# TACC (strip whitespace): #}
 {% endspaceless %}</ul>
