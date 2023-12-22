@@ -5,30 +5,20 @@ register = template.Library()
 
 @register.filter
 def filter_categories(categories):
-    # Create two different arrays of information in the order requested
-    allowed_slugs_1 = ['press-release', 'feature-story']
-    allowed_slugs_2 = ['multimedia', 'podcast']
+    ordered_list = ['press-release', 'feature-story', 'multimedia', 'podcast']
 
-    # Create a dictionary that labels each list in the order we would like
-    # OrderedDict will keep this in place for us
-    filtered_categories = OrderedDict([
-        ('allowed_1', []),
-        ('allowed_2', []),
-        ('other', [])
-    ])
-
-    # Iterate through each category and enter it into to the respective list
-    for category in categories:
-        if category.slug in allowed_slugs_1:
-            filtered_categories['allowed_1'].append(category)
-        elif category.slug in allowed_slugs_2:
-            filtered_categories['allowed_2'].append(category)
+    # Create a dictionary to store the indices of elements in the ordered list
+    order_indices = {element: index for index, element in enumerate(ordered_list)}
+    
+    # Custom sorting function based on the indices in the ordered list
+    def custom_sort(item):
+        if item.slug in order_indices:
+            return order_indices[item.slug]
         else:
-            filtered_categories['other'].append(category)
+            # For items not found in the ordered list, place them at the end
+            return len(ordered_list)
+    
+    # Sort the categories list based on the custom sorting function
+    sorted_categories = sorted(categories, key=custom_sort)
 
-    # Create a new list where we will add in each list
-    concatenated_list = []
-    for key in filtered_categories:
-        concatenated_list.extend(filtered_categories[key])
-
-    return concatenated_list
+    return sorted_categories
