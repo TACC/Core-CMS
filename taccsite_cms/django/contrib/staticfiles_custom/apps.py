@@ -12,5 +12,5 @@ class TaccStaticFilesConfig(StaticFilesConfig):
         'CVS', '.*', '*~',
         # Added by TACC
         # WARNING: Ignores these from non-TACC static's also
-        'README.md', "*src/*.css"
+        'src', 'README.md'
     ]

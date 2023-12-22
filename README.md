@@ -95,7 +95,7 @@ Set up a new local CMS instance.
     python manage.py createsuperuser
     # To use default "Username" and skip "Email address", press Enter at both prompts.
     # At "Password" prompts, you may use an easy-to-remember password.
-    python manage.py collectstatic --no-input --ignore assets/*/font*.css
+    python manage.py collectstatic --no-input
 
     ```
 
@@ -138,7 +138,7 @@ make start
 | Node dependencies | `npm ci` |
 | CSS stylesheets | `npm run build:css` |
 | UI Demo | `npm run build:ui-demo` |
-| Assets e.g.<br><small>images, stylesheets, JavaScript</small> | `docker exec -it core_cms sh -c "python manage.py collectstatic --no-input --ignore assets/*/font*.css"` |
+| Assets e.g.<br><small>images, stylesheets, JavaScript</small> | `docker exec -it core_cms sh -c "python manage.py collectstatic --no-input"` |
 | Python models | `docker exec -it core_cms sh -c "python manage.py migrate"` |
 
 ## Develop Project
