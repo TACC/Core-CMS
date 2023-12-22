@@ -1,5 +1,5 @@
 {% load i18n %}
-{% load blog_meta_cats_organized %}
+{% load blog_cats_organized %}
 
 {% if post.categories.exists %}
     {% with post.categories.all|filter_categories as filtered %}
