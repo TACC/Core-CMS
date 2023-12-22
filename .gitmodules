@@ -1,4 +1,4 @@
 [submodule "taccsite_custom"]
 	path = taccsite_custom
 	url = git@github.com:TACC/Core-CMS-Resources.git
-	branch = task/37-per-site-assets
+	branch = chore/tup-677-css-django-vite-interoperability
