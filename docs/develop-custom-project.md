@@ -44,7 +44,7 @@ To compile CSS static files:
 
 ```sh
 npm run build:css --project="custom_project_dir"
-docker exec -it core_cms sh -c "python manage.py collectstatic --no-input --ignore assets/*/font*.css"
+docker exec -it core_cms sh -c "python manage.py collectstatic --no-input"
 
 ```
 
