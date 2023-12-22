@@ -45,7 +45,7 @@ This allows use of future-proof CSS via [Core Styles].
 3. [Collect Static Files](#collect-static-files):
 
     ```sh
-    docker exec -it core_cms sh -c "python manage.py collectstatic --no-input --ignore assets/*/font*.css"
+    docker exec -it core_cms sh -c "python manage.py collectstatic --no-input"
     ```
 
 ## Collect Static Files
@@ -53,7 +53,7 @@ This allows use of future-proof CSS via [Core Styles].
 Whenever files in a `static/` directory are changed, the CMS must be manually told to serve them:
 
 ```sh
-docker exec -it core_cms sh -c "python manage.py collectstatic --no-input --ignore assets/*/font*.css"
+docker exec -it core_cms sh -c "python manage.py collectstatic --no-input"
 ```
 
 > **Note**
