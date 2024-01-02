@@ -1,5 +1,5 @@
 {# https://github.com/django-cms/djangocms-icon/blob/2.0.0/djangocms_icon/templates/djangocms_icon/includes/icon.html #}
-{# @var path #}
+{# @var path, show_label #}
 {% load cms_tags static %}
 
 {# FAQ: The <span> allows Django CMS editor to edit via double-click #}
@@ -8,3 +8,4 @@
     <use href="{% static path %}#{{ instance.icon }}"></use>
   </svg>
 </span>
+{% if show_label %} <span>{{ instance.label }}</span>{% endif %}
