@@ -7,6 +7,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [4.4.0] - 2023-01-03: News Article Drop-Cap, Category Order, Fixes
+
+### Added
+
+* Task/tup-671 News Article Drop-Cap by @R-Tomas-Gonzalez in https://github.com/TACC/Core-CMS/pull/777
+* task/tup-555 order news article categories by @R-Tomas-Gonzalez in https://github.com/TACC/Core-CMS/pull/776
+
+### Fixed
+
+* fix: social media icons excess whitespace by @wesleyboar in https://github.com/TACC/Core-CMS/pull/770
+* task/tup-557 Fixes drop cap articles for Core-CMS by @R-Tomas-Gonzalez in https://github.com/TACC/Core-CMS/pull/775
+
+### Documented
+
+* [fixed typos and unclear instructions] by @wesleyboar in 258d4d5, 2e0aaa2, a0e202d, 16b7500, aa2e1be, 8e8f110, cb4e9ab
+
+### Removed
+
+* task/tup-551 Hide publish text from blog header by @R-Tomas-Gonzalez in https://github.com/TACC/Core-CMS/pull/771
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.3.0...v4.4.0
+
 ## [4.3.0] - 2023-12-13: New Setting to Hide "Published" Text, Fix Accessibility
 
 ### Added
@@ -1030,7 +1052,8 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.3.0...main
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.4.0...main
+[4.4.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.4.0
 [4.3.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.3.0
 [4.2.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.2.1
 [4.2.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.2.0
