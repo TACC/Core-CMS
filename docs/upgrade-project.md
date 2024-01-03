@@ -52,7 +52,7 @@
     - to `custom-project-dir/templates`
 
     > **Warning**
-    > The name `custom_project_dir` **must** match the old name as it was, including dashes.
+    > The name `custom-project-dir` **must** match the old name as it was, including dashes.
 
 2. Edit the deprecated templates to extend the new templates e.g.
 
