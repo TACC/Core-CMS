@@ -71,6 +71,12 @@
 
 ### Update Project For Deploy
 
+### For a Deployed Website
+
+Follow [How To Build & Deploy a CMS Website](https://tacc-main.atlassian.net/wiki/x/2AVv).
+
+### For a Local Instance
+
 Follow [Update Project] instrcutions. (Assume everything changed.)
 
 ### Clean Up After Deploy
