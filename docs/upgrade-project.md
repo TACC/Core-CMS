@@ -75,7 +75,7 @@ Follow [Update Project] instrcutions. (Assume everything changed.)
 
 ### Clean Up After Deploy
 
-1. Change template of every page on project to **not** use deprecated template.
+1. Change template of every page on the CMS to **not** use deprecated template.
 2. Remove its deprecated templates from repository.
 
 ## from v2 to v3
