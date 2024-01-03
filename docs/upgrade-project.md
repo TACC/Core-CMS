@@ -15,10 +15,10 @@
     - `django.utils.translation.ugettext...`
 3. Bookmark [backwards incompatible changes in Django 4](https://docs.djangoproject.com/en/4.2/releases/4.0/#backwards-incompatible-changes-in-4-0).
 4. Deploy and test.
-    | | |
+    | Given a … | Then … |
     | - | - |
     | Deployed Website | Follow [How To Build & Deploy a CMS Website](https://tacc-main.atlassian.net/wiki/x/2AVv). |
-    | Local Instance | Follow [Update Project] instrcutions. (Assume everything changed.) |
+    | Local Instance | Follow [Update Project] instructions. (Assume everything changed.) |
 
 ## from v3.N to v3.12
 
@@ -81,7 +81,7 @@ Follow [How To Build & Deploy a CMS Website](https://tacc-main.atlassian.net/wik
 
 #### For a Local Instance
 
-Follow [Update Project] instrcutions. (Assume everything changed.)
+Follow [Update Project] instructions. (Assume everything changed.)
 
 ### Clean Up After Deploy
 
