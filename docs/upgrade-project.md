@@ -20,7 +20,7 @@
 
 1. [Rename Custom Project Directory](#rename-custom-project-directory)
 2. [Redirect Deprecated Templates](#redirect-deprecated-templates)
-3. [Update Project For Deploy](#update-project-for-deploy)
+3. [Deploy And Test](#deploy-and-test)
 4. [Clean Up After Deploy](#clean-up-after-deploy)
 
 ### Rename Custom Project Directory
@@ -69,13 +69,13 @@
     +   ('custom-project-dir/templates/fullwidth.html', 'DEPRECATED Full Width'),
     ```
 
-### Update Project For Deploy
+### Deploy And Test
 
-### For a Deployed Website
+#### For a Deployed Website
 
 Follow [How To Build & Deploy a CMS Website](https://tacc-main.atlassian.net/wiki/x/2AVv).
 
-### For a Local Instance
+#### For a Local Instance
 
 Follow [Update Project] instrcutions. (Assume everything changed.)
 
