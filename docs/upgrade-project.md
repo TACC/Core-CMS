@@ -14,13 +14,17 @@
     - `django.utils.encoding.force_text()`
     - `django.utils.translation.ugettext...`
 3. Bookmark [backwards incompatible changes in Django 4](https://docs.djangoproject.com/en/4.2/releases/4.0/#backwards-incompatible-changes-in-4-0).
-4. [Update Project] (Assume everything changed.)
+4. Deploy and test.
+    | Given a … | Then … |
+    | - | - |
+    | Deployed Website | Follow [How To Build & Deploy a CMS Website](https://tacc-main.atlassian.net/wiki/x/2AVv). |
+    | Local Instance | Follow [Update Project] instructions. (Assume everything changed.) |
 
 ## from v3.N to v3.12
 
 1. [Rename Custom Project Directory](#rename-custom-project-directory)
 2. [Redirect Deprecated Templates](#redirect-deprecated-templates)
-3. [Update Project For Deploy](#update-project-for-deploy)
+3. [Deploy And Test](#deploy-and-test)
 4. [Clean Up After Deploy](#clean-up-after-deploy)
 
 ### Rename Custom Project Directory
@@ -52,7 +56,7 @@
     - to `custom-project-dir/templates`
 
     > **Warning**
-    > The name `custom_project_dir` **must** match the old name as it was, including dashes.
+    > The name `custom-project-dir` **must** match the old name as it was, including dashes.
 
 2. Edit the deprecated templates to extend the new templates e.g.
 
@@ -69,13 +73,19 @@
     +   ('custom-project-dir/templates/fullwidth.html', 'DEPRECATED Full Width'),
     ```
 
-### Update Project For Deploy
+### Deploy And Test
 
-Follow [Update Project] instrcutions. (Assume everything changed.)
+#### For a Deployed Website
+
+Follow [How To Build & Deploy a CMS Website](https://tacc-main.atlassian.net/wiki/x/2AVv).
+
+#### For a Local Instance
+
+Follow [Update Project] instructions. (Assume everything changed.)
 
 ### Clean Up After Deploy
 
-1. Change template of every page on project to **not** use deprecated template.
+1. Change template of every page on the CMS to **not** use deprecated template.
 2. Remove its deprecated templates from repository.
 
 ## from v2 to v3
