@@ -14,7 +14,11 @@
     - `django.utils.encoding.force_text()`
     - `django.utils.translation.ugettext...`
 3. Bookmark [backwards incompatible changes in Django 4](https://docs.djangoproject.com/en/4.2/releases/4.0/#backwards-incompatible-changes-in-4-0).
-4. [Update Project] (Assume everything changed.)
+4. Deploy and test.
+    | | |
+    | - | - |
+    | Deployed Website | Follow [How To Build & Deploy a CMS Website](https://tacc-main.atlassian.net/wiki/x/2AVv). |
+    | Local Instance | Follow [Update Project] instrcutions. (Assume everything changed.) |
 
 ## from v3.N to v3.12
 
