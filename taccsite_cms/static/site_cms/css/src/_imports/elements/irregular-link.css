@@ -2,14 +2,4 @@
 /* FAQ: Only included by a project as client wants it */
 /* SEE: https://ecepalliance.org/ (<style id="site-css-links">) */
 
-@import url("@tacc/core-styles/src/lib/_imports/tools/x-link.css");
-
-a {
-  @extend .x-link--irregular;
-}
-a:hover {
-  @extend .x-link--irregular--hover;
-}
-a:active {
-  @extend .x-link--irregular--active;
-}
+@import url("@tacc/core-styles/src/lib/_imports/elements/irregular-link.css");
