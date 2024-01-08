@@ -7,7 +7,91 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
-...
+## [4.4.0] - 2023-01-03: News Article Drop-Cap, Category Order, Fixes
+
+### Added
+
+* Task/tup-671 News Article Drop-Cap by @R-Tomas-Gonzalez in https://github.com/TACC/Core-CMS/pull/777
+* task/tup-555 order news article categories by @R-Tomas-Gonzalez in https://github.com/TACC/Core-CMS/pull/776
+
+### Fixed
+
+* fix: social media icons excess whitespace by @wesleyboar in https://github.com/TACC/Core-CMS/pull/770
+* task/tup-557 Fixes drop cap articles for Core-CMS by @R-Tomas-Gonzalez in https://github.com/TACC/Core-CMS/pull/775
+
+### Documented
+
+* [fixed typos and unclear instructions] by @wesleyboar in 258d4d5, 2e0aaa2, a0e202d, 16b7500, aa2e1be, 8e8f110, cb4e9ab
+
+### Removed
+
+* task/tup-551 Hide publish text from blog header by @R-Tomas-Gonzalez in https://github.com/TACC/Core-CMS/pull/771
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.3.0...v4.4.0
+
+## [4.3.0] - 2023-12-13: New Setting to Hide "Published" Text, Fix Accessibility
+
+### Added
+
+* task/tup551 Hide published text unless editing by @R-Tomas-Gonzalez in https://github.com/TACC/Core-CMS/pull/763
+
+### Fixed
+
+* fix: tup 595 accessibility by @wesleyboar in https://github.com/TACC/Core-CMS/pull/761
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.2.1...v4.2.2
+
+## [4.2.1] - 2023-12-11: Blog Page Image Layout Fixes
+
+### Fixed
+
+* hotfix: restore margin-bottom for narrow-screen blog images by @wesleyboar in https://github.com/TACC/Core-CMS/pull/759
+* Feat/tup 631 migrate blog page css from tup by @wesleyboar in https://github.com/TACC/Core-CMS/pull/756
+
+### Documented
+
+* docs: prevent TACC/Core-CMS-Custom#254 in future by @wesleyboar in 49c91ea
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.2.0...v4.2.1
+
+## [4.2.0] - 2023-11-28: New CMS Styles, Update Core-Styles, Misc. Fixes, Docs
+
+### Added
+
+* Task/wi 33 Update "Portal Technology Stack" by @taoteg in https://github.com/TACC/Core-CMS/pull/730
+* feat/tup-630: Migrate django.cms.blog.app.item to core-cms by @R-Tomas-Gonzalez in https://github.com/TACC/Core-CMS/pull/734
+* Feat/tup-632: django.cms.picture.css to core-cms by @R-Tomas-Gonzalez in https://github.com/TACC/Core-CMS/pull/736
+* feat/tup-633: Migrate lightgallery to core-cms by @R-Tomas-Gonzalez in https://github.com/TACC/Core-CMS/pull/737
+* feat/tup-634: Migrate pseudo-elements to core-cms by @R-Tomas-Gonzalez in https://github.com/TACC/Core-CMS/pull/738
+* feat: wp-333 SEARCH_PATH setting by @wesleyboar in https://github.com/TACC/Core-CMS/pull/743
+* feat: tup-647 new getting_started template by @wesleyboar in https://github.com/TACC/Core-CMS/pull/746
+* feat: wi-76 make UI demo optional by @wesleyboar in https://github.com/TACC/Core-CMS/pull/747
+* feat: update core-styles from v2.11 to v2.22 by @wesleyboar in https://github.com/TACC/Core-CMS/pull/742
+
+### Fixed
+
+* hotfix: setting paths `example-cms` should be `example_cms` by @wesleyboar in https://github.com/TACC/Core-CMS/pull/749
+* hotfix(example_cms): missing urls.py by @wesleyboar in https://github.com/TACC/Core-CMS/pull/750
+* fix: node engine requriement more flexible by @wesleyboar in https://github.com/TACC/Core-CMS/pull/748
+* hotfix: tup-638 "share this" can show w/out icons by @wesleyboar in https://github.com/TACC/Core-CMS/pull/739
+* hotfix: Fix djangocms-forms bug causing django 4 incompatibility by @jarosenb in https://github.com/TACC/Core-CMS/pull/735
+* fix: tup-639 move c-button font-weight bold to cms by @wesleyboar in https://github.com/TACC/Core-CMS/pull/740
+
+### Changed
+
+* chore: isolate & improve blog css custom selectors by @wesleyboar in https://github.com/TACC/Core-CMS/pull/744
+* Update dockerfile to speed up builds by @jarosenb in https://github.com/TACC/Core-CMS/pull/741
+
+### Documented
+
+* docs(README): Getting Started & Custom Project by @wesleyboar in https://github.com/TACC/Core-CMS/pull/733
+* docs: update docs since TACC/Core-CMS#741 by @wesleyboar in https://github.com/TACC/Core-CMS/pull/755
+
+### New Contributors
+
+* @R-Tomas-Gonzalez made their first contribution in https://github.com/TACC/Core-CMS/pull/734
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.1.0...v4.2.0
 
 ## [4.1.0] - 2023-10-04: New E-Mail Share Link, Full-Size Social Icons
 
@@ -968,7 +1052,11 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.1.0...main
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.4.0...main
+[4.4.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.4.0
+[4.3.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.3.0
+[4.2.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.2.1
+[4.2.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.2.0
 [4.1.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.1.0
 [4.0.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.0.0
 [3.12.0-beta.5]: https://github.com/TACC/Core-CMS/releases/tag/v3.12.0-beta.5

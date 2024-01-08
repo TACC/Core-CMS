@@ -24,26 +24,28 @@ All CSS static files are built:
 
 This allows use of future-proof CSS via [Core Styles].
 
-1. Enter Container:
-
-    ```sh
-    docker exec -it core_cms /bin/bash
-    # This opens a command prompt within the container.
-    ```
-
-2. Install Dependencies:
+1. Install Dependencies:
 
     > **Note**
-    > Only necessary for a new container.
+    > Only necessary for a new container **or** changes to Node dependencies.
 
     ```sh
     npm ci
     ```
 
-3. Build Assets:
+2. Build Styles:
 
     ```sh
     npm run build:css --project="core-cms"
+    ```
+
+    > **Important**
+    > If you are developing a [Core CMS Resources] project, use `--project="custom_project_dir"`
+
+3. [Collect Static Files](#collect-static-files):
+
+    ```sh
+    docker exec -it core_cms sh -c "python manage.py collectstatic --no-input"
     ```
 
 ## Collect Static Files
@@ -51,16 +53,14 @@ This allows use of future-proof CSS via [Core Styles].
 Whenever files in a `static/` directory are changed, the CMS must be manually told to serve them:
 
 ```sh
-docker exec -it core_cms /bin/bash
-# That opens a command prompt within the container.
-    python manage.py collectstatic --no-input
+docker exec -it core_cms sh -c "python manage.py collectstatic --no-input"
 ```
 
 > **Note**
 > [Building static files](#build-static-files) **is** a changes to files in a `static/` directory.
 
 > **Note**
-> We may be able to [automatically perform `collectstatic`](https://stackoverflow.com/q/59339571/11817077). **Help wanted.**
+> We may be able to [automatically perform `collectstatic`](https://stackoverflow.com/q/59339571/11817077). **Help wanted!**
 
 ## Customize Admin UI Text
 
@@ -89,12 +89,15 @@ A demo of any documented CSS modules from [Core Styles] and [Core CMS].
 1. Build:
 
     ```sh
-    docker exec -it core_cms /bin/bash
-    # That opens a command prompt within the container.
-        npm run build:ui-demo
+    npm run build:ui-demo
     ```
 
-2. Give the server time to automatically restart.
+2. [Collect Static Files](#collect-static-files):
+
+    ```sh
+    docker exec -it core_cms sh -c "python manage.py collectstatic --no-input"
+    ```
+
 3. Open http://localhost:8000/static/ui/index.html.
 
 ## Develop with [Core Styles] Simultaneously
@@ -103,7 +106,9 @@ See [Locally Develop CMS and Styles](https://github.com/TACC/Core-CMS/wiki/Local
 
 <!-- Link Aliases -->
 
+[Core CMS]: https://github.com/TACC/Core-CMS
 [Core Styles]: https://github.com/TACC/Core-Styles
+[Core CMS Resources]: https://github.com/TACC/Core-CMS-Resources
 
 [restart server]: https://github.com/TACC/Core-CMS/wiki/How-to-Restart-the-CMS-Server
 

@@ -40,7 +40,7 @@ The base CMS code for TACC WMA Workspace Portals & Websites
 ## Prerequisites
 
 * [Docker]
-  * [Docker Engine] ≥ v20
+  * Docker Engine ≥ v20
   * [Docker Compose]
 
 > **Important**
@@ -70,9 +70,12 @@ Set up a new local CMS instance.
 
 3. Build & Start the Docker Containers:
 
-    ```sh
-    make start
-    ```
+    | For Testing | For Developing & Testing |
+    | - | - |
+    | `make start` | `docker-compose -f ./docker-compose.dev.yml up` |
+
+    > **Note**
+    > This will make the terminal window busy. To run commands after this, **either** open a new terminal window **or** run `docker-compose -f ./docker-compose.dev.yml up --detach` instead.
 
 4. Enter the CMS Docker Container:
 
@@ -80,9 +83,10 @@ Set up a new local CMS instance.
 
     ```sh
     docker exec -it core_cms /bin/bash
+    # This opens a command prompt within the container
     ```
 
-5. Run the Django Application:
+5. Update the Django Application:
 
     (Run these commands within the container.)
 
@@ -118,42 +122,24 @@ Read [Upgrade Project] for developer instructions.
 
 ### New Minor or Patch Version (or Branch)
 
-- If CMS `Dockerfile` changed, rebuild Docker Containers:
+#### For Testing
 
-    ```sh
-    make stop
-    make build
-    make start
-    ```
+```sh
+make stop
+make build
+make start
+```
 
-- If anything else changed, update the Django application:
+#### For Development & Testing
 
-    ```sh
-    docker exec -it core_cms /bin/bash
-    # This opens a command prompt within the container.
-    ```
-
-  Run relevant commands within the container:
-
-  - If **styles** changed:
-
-      ```sh
-      npm ci
-      npm run build:css --project="core-cms"
-      python manage.py collectstatic --no-input
-      ```
-
-  - If **assets** changed:
-
-      ```sh
-      python manage.py collectstatic --no-input
-      ```
-
-  - If **models** changed:
-
-      ```sh
-      python manage.py migrate
-      ```
+| | If this changed | Run this command |
+| - | - | - |
+| 0 | Dockerfile | `make build` then re-start the container |
+| 1 | Python models | `docker exec -it core_cms sh -c "python manage.py migrate"` |
+| 2 | Node dependencies | `npm ci` |
+| 3 | CSS stylesheets | `npm run build:css` |
+| 4 | UI Demo | `npm run build:ui-demo` |
+| 5 |  Assets e.g.<br><sub>images, stylesheets, JavaScript, UI demo</sub> | `docker exec -it core_cms sh -c "python manage.py collectstatic --no-input"` |
 
 ## Develop Project
 
@@ -183,7 +169,7 @@ To contribute, first read [How to Contirbute][Contributing].
 
 | command | reference |
 | - | - |
-| `docker exec core_cms /bin/bash` | [docker](https://docs.docker.com/engine/reference/commandline/exec/#run-docker-exec-on-a-running-container)
+| `docker exec -it core_cms /bin/bash` | [docker](https://docs.docker.com/engine/reference/commandline/exec/#run-docker-exec-on-a-running-container)
 | `python manage.py migrate` | [django cms](https://docs.django-cms.org/en/release-3.8.x/how_to/install.html#database-tables), [django](https://docs.djangoproject.com/en/3.2/topics/migrations/)
 | `python manage.py collectstatic` | [django](https://docs.djangoproject.com/en/3.2/howto/static-files/)
 | `python manage.py createsuper` | [django cms](https://docs.django-cms.org/en/release-3.8.x/how_to/install.html#admin-user), [django](https://docs.djangoproject.com/en/3.2/ref/django-admin/#createsuperuser)

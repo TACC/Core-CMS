@@ -147,6 +147,14 @@ SITE_ID = 1
 CMS_TEMPLATES = (
     ('standard.html', 'Standard'),
     ('fullwidth.html', 'Full Width'),
+
+    ('guide.html', 'Guide'),
+    ('guides/getting_started.v3.html', 'Guide: Getting Started (v3)'),
+    ('guides/getting_started.tam.html', 'Guide: Getting Started (TAM)'),
+    ('guides/getting_started.v2.html', 'Guide: Getting Started (v2)'),
+    ('guides/data_transfer.html', 'Guide: Data Transfer'),
+    ('guides/data_transfer.globus.html', 'Guide: Globus Data Transfer'),
+    ('guides/portal_technology.html', 'Guide: Portal Technology Stack'),
 )
 
 CMS_PERMISSION = True
@@ -275,13 +283,15 @@ TACC_BLOG_SHOW_TAGS = True
 TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY = 'sample_value_e_g__mutlimedia__'
 TACC_BLOG_SHOW_ABSTRACT_TAG = 'sample_value_e_g__redirect__'
 
+TACC_BLOG_CATEGORY_ORDER = ['press-release', 'feature-story', 'multimedia', 'podcast']
+
 ########################
 # TACC: SOCIAL MEDIA
 ########################
 
 # TODO: Enable ONLY after TUP-590
 TACC_SOCIAL_SHARE_PLATFORMS = []
-# TACC_SOCIAL_SHARE_PLATFORMS = ['facebook', 'linkedin', 'email']
+# TACC_SOCIAL_SHARE_PLATFORMS = ['linkedin', 'instagram', 'facebook', 'email']
 
 ########################
 # TACC: CORE STYLES
@@ -693,6 +703,7 @@ SETTINGS_EXPORT = [
     'TACC_CORE_STYLES_VERSION',
     'TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY',
     'TACC_BLOG_SHOW_ABSTRACT_TAG',
+    'TACC_BLOG_CATEGORY_ORDER',
     'TACC_SOCIAL_SHARE_PLATFORMS',
     'SEARCH_PATH',
     'SEARCH_QUERY_PARAM_NAME',

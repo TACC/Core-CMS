@@ -36,5 +36,5 @@ It allows an authorized CMS user to create a snippet of front-end web code (e.g.
 2. Support ad-hoc changes by designer who codes.[^2]
 3. Support ad-hoc testing of changes to the code.[^3]
 
-[^2] This is permitted with the expectation that the snippet code is soon appropriately integrated into the repository.
-[^3] See Core snippets for examples.
+[^2]: This is permitted with the expectation that the snippet code is soon appropriately integrated into the repository.
+[^3]: See Core snippets for examples.

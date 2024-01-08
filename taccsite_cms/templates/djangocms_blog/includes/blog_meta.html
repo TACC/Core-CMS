@@ -21,7 +21,9 @@
       {# /TACC #}
       {# TACC (add <span> and &nbsp; so whitespace can be stripped): #}
       {# TACC ("Published" vs "To be published"): #}
-      <span>{% if post.publish %}{% trans "Published" %}{% else %}{% trans "To be published" %}{% endif %}</span>&nbsp;
+      {% if not post.publish %}
+      <span>{% trans "To be published" %}</span>&nbsp;
+      {% endif %}
       {# /TACC #}
       {# /TACC #}
       {# TACC (wrap with <time> tag because it should be so): #}
@@ -59,21 +61,9 @@
 <ul class="post-detail categories">{% spaceless %}
 {# /TACC #}
 {# /TACC #}
-    {% if post.categories.exists %}
-        {% for category in post.categories.all %}
-            {% if category.slug %}
-                {# TACC (fix bug nephila/djangocms-blog#711): #}
-                {# TACC (remove hard-coded comma so CSS handles separator): #}
-                {# TACC (rename `blog-categories-…` to `blog-category-…`): #}
-                <li class="category_{{ forloop.counter }}"><a href="{% url 'djangocms_blog:posts-category' category=category.slug %}" class="blog-category-{{ category.slug }}">{{ category.name }}</a></li>
-                {# /TACC #}
-                {# /TACC #}
-                {# /TACC #}
-            {% endif %}
-        {% endfor %}
-    {% else %}
-      <li class="category_none">{% trans "Uncategorized" %}</li>
-    {% endif %}
+    {# TACC (nephila/djangocms-blog#730, no commas, rename class, order cats): #}
+    {% include './blog_cats_organized.html' %}
+    {# /TACC #}
 {# TACC (distinguish categories and tags via class): #}
 {# TACC (strip whitespace): #}
 {% endspaceless %}</ul>
