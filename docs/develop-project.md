@@ -92,7 +92,12 @@ A demo of any documented CSS modules from [Core Styles] and [Core CMS].
     npm run build:ui-demo
     ```
 
-2. Give the server time to automatically restart.
+2. [Collect Static Files](#collect-static-files):
+
+    ```sh
+    docker exec -it core_cms sh -c "python manage.py collectstatic --no-input"
+    ```
+
 3. Open http://localhost:8000/static/ui/index.html.
 
 ## Develop with [Core Styles] Simultaneously
@@ -101,6 +106,7 @@ See [Locally Develop CMS and Styles](https://github.com/TACC/Core-CMS/wiki/Local
 
 <!-- Link Aliases -->
 
+[Core CMS]: https://github.com/TACC/Core-CMS
 [Core Styles]: https://github.com/TACC/Core-Styles
 [Core CMS Resources]: https://github.com/TACC/Core-CMS-Resources
 

@@ -132,14 +132,14 @@ make start
 
 #### For Development & Testing
 
-| If this changed | Run this command |
-| - | - |
-| Dockerfile | `npm ci` |
-| Node dependencies | `npm ci` |
-| CSS stylesheets | `npm run build:css` |
-| UI Demo | `npm run build:ui-demo` |
-| Assets e.g.<br><small>images, stylesheets, JavaScript</small> | `docker exec -it core_cms sh -c "python manage.py collectstatic --no-input"` |
-| Python models | `docker exec -it core_cms sh -c "python manage.py migrate"` |
+| | If this changed | Run this command |
+| - | - | - |
+| 0 | Dockerfile | `make build` then re-start the container |
+| 1 | Python models | `docker exec -it core_cms sh -c "python manage.py migrate"` |
+| 2 | Node dependencies | `npm ci` |
+| 3 | CSS stylesheets | `npm run build:css` |
+| 4 | UI Demo | `npm run build:ui-demo` |
+| 5 |  Assets e.g.<br><sub>images, stylesheets, JavaScript, UI demo</sub> | `docker exec -it core_cms sh -c "python manage.py collectstatic --no-input"` |
 
 ## Develop Project
 
@@ -169,7 +169,7 @@ To contribute, first read [How to Contirbute][Contributing].
 
 | command | reference |
 | - | - |
-| `docker exec core_cms /bin/bash` | [docker](https://docs.docker.com/engine/reference/commandline/exec/#run-docker-exec-on-a-running-container)
+| `docker exec -it core_cms /bin/bash` | [docker](https://docs.docker.com/engine/reference/commandline/exec/#run-docker-exec-on-a-running-container)
 | `python manage.py migrate` | [django cms](https://docs.django-cms.org/en/release-3.8.x/how_to/install.html#database-tables), [django](https://docs.djangoproject.com/en/3.2/topics/migrations/)
 | `python manage.py collectstatic` | [django](https://docs.djangoproject.com/en/3.2/howto/static-files/)
 | `python manage.py createsuper` | [django cms](https://docs.django-cms.org/en/release-3.8.x/how_to/install.html#admin-user), [django](https://docs.djangoproject.com/en/3.2/ref/django-admin/#createsuperuser)
