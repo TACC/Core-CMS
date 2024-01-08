@@ -8,7 +8,7 @@
 
 ## from v3 to v4
 
-1. Use Postgres is v14.9 or greater. [You may assume all TACC sites are.](https://tacc-main.atlassian.net/wiki/spaces/UP/pages/6659089/Postgres+Upgrade+Testing)
+1. Use Postgres is v14.9 or greater. [You may assume all TACC sites do.](https://tacc-main.atlassian.net/wiki/spaces/UP/pages/6659089/Postgres+Upgrade+Testing)
 2. Update code that uses [features removed in Django 4](https://docs.djangoproject.com/en/4.2/releases/4.0/#features-removed-in-4-0) e.g.
     - `django.conf.urls.url()`
     - `django.utils.encoding.force_text()`
