@@ -251,8 +251,7 @@ LOGO = [
     "_self",
     "Portal Logo",
     "anonymous",
-    True,
-    False
+    "True"
 ]
 
 FAVICON = {
