@@ -13,7 +13,7 @@ FAQ: IF a script or style is better cached with markup, THEN:
 
 <!-- Custom Site Assets: Favicon. -->
 {% with settings.FAVICON as favicon %}
-<link rel="icon" href="{% if favicon.is_remote %}{% favicon.img_file_src %}{% else %}{% static favicon.img_file_src %}{% endif %}" type="image/x-icon" />
+<link rel="icon" href="{% if favicon.is_remote %}{{ favicon.img_file_src }}{% else %}{% static favicon.img_file_src %}{% endif %}" type="image/x-icon" />
 {% endwith %}
 
 
