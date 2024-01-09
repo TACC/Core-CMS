@@ -251,11 +251,13 @@ LOGO = [
     "_self",
     "Portal Logo",
     "anonymous",
-    "True"
+    True,
+    False
 ]
 
 FAVICON = {
-    "img_file_src": "site_cms/img/favicons/favicon.ico"
+    "img_file_src": "site_cms/img/favicons/favicon.ico",
+    "is_remote": False
 }
 
 ########################
