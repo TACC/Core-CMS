@@ -112,7 +112,7 @@ BRANDING = [ TACC_BRANDING, UTEXAS_BRANDING ]
 #BRANDING = [ NSF_BRANDING, TACC_BRANDING, UTEXAS_BRANDING, CUSTOM_BRANDING ]
 
 ########################
-# TACC: LOGO (and FAVICON)
+# TACC: LOGO & FAVICON
 ########################
 
 # Edit this config as needed for the project logo used in the navigation bar.
@@ -131,7 +131,7 @@ TACC_LOGO = {
 # Edit this config as needed for the project favicon used in the browser navbar.
 # If `INCLUDES_CORE_PORTAL = True` and you set `FAVICON`, then:
 # https://github.com/TACC/Core-CMS-Custom/blob/d4c93af/docs/port-project.md#has-a-core-portal
-FAVICON = {
+TACC_FAVICON = {
     "img_file_src": "https://cdn.jsdelivr.net/gh/TACC/Core-CMS-Custom@813aa7c/ptdatax_assets/favicon.ico",
     "is_remote": True,
 }
