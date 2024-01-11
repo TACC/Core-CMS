@@ -112,26 +112,28 @@ BRANDING = [ TACC_BRANDING, UTEXAS_BRANDING ]
 #BRANDING = [ NSF_BRANDING, TACC_BRANDING, UTEXAS_BRANDING, CUSTOM_BRANDING ]
 
 ########################
-# PORTAL LOGO / FAVICON
+# TACC: LOGO (and FAVICON)
 ########################
 
 # Edit this config as needed for the project logo used in the navigation bar.
-LOGO =  [
-    "example",
-    "example_cms/img/org_logos/portal.png",
-    "",
-    "/",
-    "_self",
-    "Placeholder Logo for CMS/Portal",
-    "anonymous",
-    "True"
-]
+# To hide logo, set `TACC_LOGO = False`.
+TACC_LOGO = {
+    "img_file_src": "https://cdn.jsdelivr.net/gh/TACC/Core-CMS-Custom@813aa7c/ptdatax_assets/logo.png",
+    "is_remote": True,
+    "img_class": "", # additional class names
+    "is_remote": True,
+    "link_href": "/",
+    "link_target": "_self",
+    "img_alt_text": "Custom CMS", # E.g. PT DataX, Frontera
+    "img_crossorigin": "anonymous",
+}
 
 # Edit this config as needed for the project favicon used in the browser navbar.
 # If `INCLUDES_CORE_PORTAL = True` and you set `FAVICON`, then:
 # https://github.com/TACC/Core-CMS-Custom/blob/d4c93af/docs/port-project.md#has-a-core-portal
 FAVICON = {
-    "img_file_src": "example_cms/img/org_logos/favicon.ico"
+    "img_file_src": "https://cdn.jsdelivr.net/gh/TACC/Core-CMS-Custom@813aa7c/ptdatax_assets/favicon.ico",
+    "is_remote": True,
 }
 
 ########################

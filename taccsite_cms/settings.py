@@ -239,8 +239,9 @@ NSF_BRANDING = [
 
 BRANDING = [TACC_BRANDING, UTEXAS_BRANDING]
 
+
 ########################
-# TACC: LOGOS
+# TACC: LOGOS (DEPRECATED)
 ########################
 
 LOGO = [
@@ -254,10 +255,26 @@ LOGO = [
     "True"
 ]
 
+
+########################
+# TACC: LOGO (and FAVICON)
+########################
+
+TACC_LOGO = {
+    "img_file_src": "site_cms/img/org_logos/portal.png",
+    "is_remote": False,
+    "img_class": "", # additional class names
+    "link_href": "/",
+    "link_target": "_self",
+    "img_alt_text": "Portal Logo",
+    "img_crossorigin": "anonymous",
+} # To hide logo, set `TACC_LOGO = False`
+
 FAVICON = {
     "img_file_src": "site_cms/img/favicons/favicon.ico",
     "is_remote": False
 }
+
 
 ########################
 # TACC: PORTAL
@@ -692,8 +709,9 @@ except ImportError:
 SETTINGS_EXPORT = [
     'DEBUG',
     'BRANDING',
-    'LOGO',
+    'LOGO',      # deprecated, see TACC_LOGO
     'FAVICON',
+    'TACC_LOGO',
     'INCLUDES_CORE_PORTAL',
     'INCLUDES_PORTAL_NAV',
     'INCLUDES_SEARCH_BAR',
