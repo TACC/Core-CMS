@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [4.5.0] - 2023-01-11: Less CSS, Doc Updates
+
+### Added
+
+* feat: reduce CSS in Core-CMS by @wesleyboar in https://github.com/TACC/Core-CMS/pull/782
+
+### Changed
+
+* chore: tup-677 css/django/vite interoperability by @wesleyboar in https://github.com/TACC/Core-CMS/pull/780
+
+### Documented
+
+* docs: clarify ui-demo dev steps by @wesleyboar in https://github.com/TACC/Core-CMS/pull/774
+* docs(upgrade-project): Postgres already upgraded by @wesleyboar in 5ef4ac0
+
 ## [4.4.0] - 2023-01-03: News Article Drop-Cap, Category Order, Fixes
 
 ### Added
@@ -1052,7 +1067,8 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.4.0...main
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.5.0...main
+[4.5.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.5.0
 [4.4.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.4.0
 [4.3.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.3.0
 [4.2.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.2.1
