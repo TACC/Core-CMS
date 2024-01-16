@@ -130,7 +130,7 @@ make build
 make start
 ```
 
-#### For Development & Testing
+#### For Developing & Testing
 
 | | If this changed | Run this command |
 | - | - | - |
