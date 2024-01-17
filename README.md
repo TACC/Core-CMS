@@ -130,7 +130,7 @@ make build
 make start
 ```
 
-#### For Development & Testing
+#### For Developing & Testing
 
 | | If this changed | Run this command |
 | - | - | - |
@@ -190,8 +190,8 @@ To contribute, first read [How to Contirbute][Contributing].
 [Docker Compose]: https://docs.docker.com/compose/install/
 
 [TACC UI Patterns]: https://tacc.utexas.edu/static/ui/
-[Build & Deploy Project]: https://confluence.tacc.utexas.edu/x/Lo99E
-[Django CMS User Guide]: https://confluence.tacc.utexas.edu/x/FgDqCw
+[Build & Deploy Project]: https://tacc-main.atlassian.net/wiki/x/2AVv
+[Django CMS User Guide]: https://tacc-main.atlassian.net/wiki/x/phdv
 
 [Develop a Custom Project]: ./docs/develop-custom-project.md
 [Develop Project]: ./docs/develop-project.md
