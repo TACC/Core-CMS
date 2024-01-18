@@ -99,7 +99,7 @@ Styleguide Components.DjangoCMS.Blog.App
   color: var(--global-color-primary--xx-light);
   background-color: var(--global-color-primary--xx-dark);
 
-  font-size: var(--global-font-size--x-small);
+  font-size: var(--global-font-size--small);
 }
 
 /* To style tags as "pills" (the UI pattern) */
