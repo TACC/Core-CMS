@@ -44,7 +44,7 @@ X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 # whether the session cookie should be secure (https:// only)
 SESSION_COOKIE_SECURE = True
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 ########################
 # DATABASE SETTINGS
