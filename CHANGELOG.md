@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
-## [4.5.0] - 2023-01-18: Python 3.11, Update pyscopg, Support Caching
+## [4.5.0] - 2023-01-18: Python v3.11 & Dep's, Support Caching, BigAutoField
 
 ### Added
 
