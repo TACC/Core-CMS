@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [4.5.0] - 2023-01-18: Python v3.11 & Dep's, Support Caching, BigAutoField
+
+### Added
+
+* deps/python-3.11: Update dependencies for Python 3.11 compatibility by @jarosenb in https://github.com/TACC/Core-CMS/pull/787
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.4.2...v4.5.0
+
 ## [4.4.2] - 2023-01-11: Fix CMS `c-button--as-link` (Remove Button Padding)
 
 ### Fixed
@@ -1072,7 +1080,8 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.4.2...main
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.5.0...main
+[4.5.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.5.0
 [4.4.2]: https://github.com/TACC/Core-CMS/releases/tag/v4.4.2
 [4.4.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.4.1
 [4.4.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.4.0
