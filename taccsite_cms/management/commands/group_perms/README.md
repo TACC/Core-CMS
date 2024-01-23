@@ -56,7 +56,8 @@ Use regex to convert the `<option>`s from HTML to Python Django CMS instructions
 ## Set Permissions
 
 1. Login to the CMS admin.
-2. Add a user group named the same as "\_\_GROUP_NAME\_\_". ⚠️
+2. Add a user group named the same as the group to add permissions for e.g. `News Writer (Advanced)`.
+    Should match `__GROUP_NAME__` in from [whichever script you will run](https://github.com/TACC/Core-CMS/tree/main/taccsite_cms/management/commands/group_perms).
 4. Open a shell into the CMS container e.g.
     `docker exec -it core_cms /bin/bash`
 4. In the shell, run the group/permission command e.g.
