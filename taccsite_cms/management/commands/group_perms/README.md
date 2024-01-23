@@ -2,7 +2,7 @@
 
 ## Get Permissions
 
-You may **either** download an appropriate `.html` from [Django CMS - Developer Guide - User Permissions / Groups / Roles](https://confluence.tacc.utexas.edu/x/jrntDg) **or**:
+You may **either** download an appropriate `.html` from [Django CMS - Developer Guide - User Permissions / Groups / Roles](https://tacc-main.atlassian.net/wiki/x/egtv) **or**:
 
 1. Using the CMS admin interface, build out the permissions for a group.
 2. Using the browser Developer Tools, copy the `<option>`s from the `<select>` that has the permissions you chose.
