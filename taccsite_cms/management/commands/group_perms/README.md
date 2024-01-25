@@ -56,17 +56,13 @@ Use regex to convert the `<option>`s from HTML to Python Django CMS instructions
 ## Set Permissions
 
 1. Login to the CMS admin.
-2. ~~Add a user group named the same as the group to add permissions for e.g. `News Writer (Advanced)`. ⚠️~~
-    ~~Should match `__GROUP_NAME__` in from [whichever script you will run](https://github.com/TACC/Core-CMS/tree/main/taccsite_cms/management/commands/group_perms).~~
-4. Open a shell into the CMS container e.g.
+2. Open a shell into the CMS container e.g.
     `docker exec -it core_cms /bin/bash`
-4. In the shell, run the group/permission command e.g.
+3. In the shell, run the group/permission command e.g.
     `python manage.py set_group_perms news_writer_advanced`
-5. Open the CMS admin interface e.g.
+4. Open the CMS admin interface e.g.
     [https://localhost:8000/admin/auth/group](https://localhost:8000/admin/auth/group)
-6. In the CMS admin, verify group permissions are as you intend.
-
-<sub>~~⚠️ This automatically creates a "User groups (page)" in a way that Django CMS will show it. If you skip this step, you will **not** be able to edit "User groups (page)" permissions (because they will exist, but not be accessible in the CMS admin).~~</sub>
+5. In the CMS admin, verify group permissions are as you intend.
 
 ## Debug Command
 
