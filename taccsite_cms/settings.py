@@ -469,6 +469,7 @@ INSTALLED_APPS = [
     'taccsite_cms.contrib.bootstrap4_djangocms_picture',
 
     # TACC CMS Plugins
+    'apps.dropCapOptions', 
     'djangocms_tacc_image_gallery',
     # TODO: Use https://github.com/wesleyboar/Core-CMS-Plugin-System-Monitor
     'taccsite_cms.contrib.taccsite_system_monitor',
