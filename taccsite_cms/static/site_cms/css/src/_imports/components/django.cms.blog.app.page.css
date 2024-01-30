@@ -199,3 +199,9 @@ Styleguide Components.DjangoCMS.Blog.App.Page
     max-width: 50%;
   }
 }
+
+/* Remove Drop Cap when tag is added */
+.has-blog-tag-no-drop-cap .s-drop-cap > p:first-of-type::first-letter {
+  padding-right: unset;
+  initial-letter: unset;
+}
