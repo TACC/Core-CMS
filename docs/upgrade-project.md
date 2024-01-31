@@ -10,7 +10,7 @@
 ## from v4.N to v4.7
 
 - [Rename Certain Settings](#rename-certain-settings)
-- [Update Custom Favicon Setting](#upgrade-custom-favicon-setting)
+- [Update Custom Favicon Setting](#update-custom-favicon-setting)
 - [Upgrade Custom Logo Setting](#upgrade-custom-logo-setting)
 
 ### Rename Certain Settings
