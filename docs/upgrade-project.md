@@ -10,7 +10,6 @@
 ## from v4.N to v4.7
 
 - [Rename Any `TACC_` Settings](#rename-any-tacc_-settings)
-- [Rename Certain Other Settings](#rename-custom-blog-settings)
 - [Upgrade Custom Logo Setting](#upgrade-custom-logo-setting)
 
 ### Rename Certain Settings
@@ -24,8 +23,6 @@
 | `TACC_BLOG_SHOW_ABSTRACT_TAG` | `PORTAL_BLOG_SHOW_ABSTRACT_TAG` |
 | `TACC_BLOG_CATEGORY_ORDER` | `PORTAL_BLOG_CATEGORY_ORDER` |
 | `TACC_SOCIAL_SHARE_PLATFORMS` | `PORTAL_SOCIAL_SHARE_PLATFORMS` |
-
-### Rename Certain Other Settings
 
 ### Upgrade Custom Logo Setting
 
