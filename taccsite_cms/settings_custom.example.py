@@ -121,7 +121,6 @@ PORTAL_LOGO = {
     "img_file_src": "https://cdn.jsdelivr.net/gh/TACC/Core-CMS-Custom@813aa7c/ptdatax_assets/logo.png",
     "is_remote": True,
     "img_class": "", # additional class names
-    "is_remote": True,
     "link_href": "/",
     "link_target": "_self",
     "img_alt_text": "Custom CMS", # E.g. PT DataX, Frontera
