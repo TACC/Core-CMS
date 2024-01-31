@@ -246,14 +246,14 @@ BRANDING = [TACC_BRANDING, UTEXAS_BRANDING]
 ########################
 
 # LOGO = [
-#     "portal",
-#     "site_cms/img/org_logos/portal.png",
-#     "",
-#     "/",
-#     "_self",
-#     "Portal Logo",
-#     "anonymous",
-#     "True"
+#     "portal",                            # (unused value)
+#     "site_cms/img/org_logos/portal.png", # "img_file_src"
+#     "",                                  # "img_class"
+#     "/",                                 # "link_href"
+#     "_self",                             # "link_target"
+#     "Portal Logo",                       # "img_alt_text"
+#     "anonymous",                         # "img_crossorigin"
+#     "True"                               # (whether to show logo)
 # ]
 
 # FAVICON = {
