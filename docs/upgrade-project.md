@@ -2,9 +2,80 @@
 
 ## Table of Contents
 
+- [from v4.N to v4.7](#from-v4n-to-v47)
 - [from v3 to v4](#from-v3-to-v4)
 - [from v3.N to v3.12](#from-v3n-to-v312)
 - [from v2 to v3](#from-v2-to-v3)
+
+## from v4.N to v4.7
+
+- [Rename Any `TACC_` Settings](#rename-any-tacc_-settings)
+- [Rename Certain Other Settings](#rename-custom-blog-settings)
+- [Upgrade Custom Logo Setting](#upgrade-custom-logo-setting)
+
+### Rename Certain Settings
+
+| from | to |
+| - | - |
+| `FAVICON` | `PORTAL_FAVICON` |
+| `TACC_BLOG_SHOW_CATEGORIES` | `PORTAL_BLOG_SHOW_CATEGORIES` |
+| `TACC_BLOG_SHOW_TAGS` | `PORTAL_BLOG_SHOW_TAGS` |
+| `TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY` | `PORTAL_BLOG_CUSTOM_MEDIA_POST_CATEGORY` |
+| `TACC_BLOG_SHOW_ABSTRACT_TAG` | `PORTAL_BLOG_SHOW_ABSTRACT_TAG` |
+| `TACC_BLOG_CATEGORY_ORDER` | `PORTAL_BLOG_CATEGORY_ORDER` |
+| `TACC_SOCIAL_SHARE_PLATFORMS` | `PORTAL_SOCIAL_SHARE_PLATFORMS` |
+
+### Rename Certain Other Settings
+
+### Upgrade Custom Logo Setting
+
+Refactor the `LOGO` array to a `PORTAL_LOGO` dict:
+
+<details><summary>Example Array (Before)</summary>
+
+```py
+LOGO = [
+    "portal",
+    "site_cms/img/org_logos/portal.png",
+    "",
+    "/",
+    "_self",
+    "Portal Logo",
+    "anonymous",
+    "True"
+]
+```
+
+</details>
+<details><summary>Example Dict (After)</summary>
+
+```py
+PORTAL_LOGO = {
+    "img_file_src": "site_cms/img/org_logos/portal.png",
+    "is_remote": False,
+    "img_class": "", # additional class names
+    "link_href": "/",
+    "link_target": "_self",
+    "img_alt_text": "Portal Logo",
+    "img_crossorigin": "anonymous",
+} # To hide logo, set `PORTAL_LOGO = False`
+```
+
+</details>
+<details><summary>Map of Array Values to Dict Properties</summary>
+
+| | from Array Value | to Dict Property |
+| - | - | - |
+| 0 | "portal"                  | (unused value) |
+| 1 | "site_cms/.../portal.png" | `"img_file_src"` |
+| 2 | ""                        | `"img_class"` |
+| 3 | "/"                       | `"link_href"` |
+| 4 | "_self"                   | `"link_target"` |
+| 5 | "Portal Logo"             | `"img_alt_text"` |
+| 6 | "anonymous"               | `"img_crossorigin"` |
+| 7 | "True"                    | (whether to show logo) |
+
+</details>
 
 ## from v3 to v4
 
