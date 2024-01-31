@@ -266,8 +266,8 @@ BRANDING = [TACC_BRANDING, UTEXAS_BRANDING]
 ########################
 
 PORTAL_LOGO = {
-    "img_file_src": "site_cms/img/org_logos/portal.png",
     "is_remote": False,
+    "img_file_src": "site_cms/img/org_logos/portal.png",
     "img_class": "", # additional class names
     "link_href": "/",
     "link_target": "_self",
@@ -276,8 +276,8 @@ PORTAL_LOGO = {
 } # To hide logo, set `PORTAL_LOGO = False`
 
 PORTAL_FAVICON = {
-    "img_file_src": "site_cms/img/favicons/favicon.ico",
     "is_remote": False,
+    "img_file_src": "site_cms/img/favicons/favicon.ico",
 }
 
 
