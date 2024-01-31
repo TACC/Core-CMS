@@ -9,7 +9,7 @@
 
 ## from v4.N to v4.7
 
-- [Rename Any `TACC_` Settings](#rename-any-tacc_-settings)
+- [Rename Certain Settings](#rename-certain-settings)
 - [Upgrade Custom Logo Setting](#upgrade-custom-logo-setting)
 
 ### Rename Certain Settings
@@ -17,12 +17,17 @@
 | from | to |
 | - | - |
 | `FAVICON` | `PORTAL_FAVICON` |
+| `INCLUDES_CORE_PORTAL` | `PORTAL_IS_CORE` |
+| `INCLUDES_PORTAL_NAV` | `PORTAL_HAS_LOGIN` |
+| `INCLUDES_SEARCH_BAR` | `PORTAL_HAS_SEARCH` |
 | `TACC_BLOG_SHOW_CATEGORIES` | `PORTAL_BLOG_SHOW_CATEGORIES` |
 | `TACC_BLOG_SHOW_TAGS` | `PORTAL_BLOG_SHOW_TAGS` |
 | `TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY` | `PORTAL_BLOG_CUSTOM_MEDIA_POST_CATEGORY` |
 | `TACC_BLOG_SHOW_ABSTRACT_TAG` | `PORTAL_BLOG_SHOW_ABSTRACT_TAG` |
 | `TACC_BLOG_CATEGORY_ORDER` | `PORTAL_BLOG_CATEGORY_ORDER` |
 | `TACC_SOCIAL_SHARE_PLATFORMS` | `PORTAL_SOCIAL_SHARE_PLATFORMS` |
+| `SEARCH_PATH` | `PORTAL_SEARCH_PATH` |
+| `SEARCH_QUERY_PARAM_NAME` | `PORTAL_SEARCH_QUERY_PARAM_NAME` |
 
 ### Upgrade Custom Logo Setting
 

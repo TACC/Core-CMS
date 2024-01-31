@@ -28,7 +28,7 @@ urlpatterns = [
     url(r'^', include('djangocms_forms.urls')),
 ]
 
-if getattr(settings, 'INCLUDES_CORE_PORTAL', True):
+if getattr(settings, 'PORTAL_IS_CORE', True):
     urlpatterns += [
         # To allow direct access to markup for Portal and User Guide to render
         url(r'^cms/nav/search/markup/$', TemplateView.as_view(template_name='nav_search.raw.html'), name='search_bar_markup'),
@@ -47,7 +47,7 @@ try:
 except ImportError:
     pass
 
-if getattr(settings, 'INCLUDES_PORTAL_NAV', True):
+if getattr(settings, 'PORTAL_HAS_LOGIN', True):
     urlpatterns += [
         # To provide markup when Portal is missing
         url(r'^core/markup/nav/$', TemplateView.as_view(template_name='nav_portal.raw.html'), name='portal_nav_markup'),

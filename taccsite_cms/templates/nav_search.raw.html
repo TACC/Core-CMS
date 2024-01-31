@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="{% static 'site_cms/css/build/element.tacc-search-bar.css' %}">
 {% endif %}
 
-<form part="form" method="get" action="{{ settings.SEARCH_PATH }}">
+<form part="form" method="get" action="{{ settings.PORTAL_SEARCH_PATH }}">
   <label for="header-search" class="u-hide--visually" part="label">
     Search
   </label>
@@ -22,7 +22,7 @@
   <input part="input"
     id="header-search"
     type="search"
-    name="{{ settings.SEARCH_QUERY_PARAM_NAME }}"
+    name="{{ settings.PORTAL_SEARCH_QUERY_PARAM_NAME }}"
     placeholder="Search"
     data-testid="input"
     autocomplete="off" minlength="3" required
