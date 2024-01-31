@@ -47,37 +47,28 @@
 
 Refactor the `LOGO` array to a `PORTAL_LOGO` dict:
 
-<details><summary>Example Array (Before)</summary>
-
-```py
-LOGO = [
-    "portal",
-    "site_cms/img/org_logos/portal.png",
-    "",
-    "/",
-    "_self",
-    "Portal Logo",
-    "anonymous",
-    "True"
-]
+```diff
+- LOGO = [
+-     "portal",
+-     "site_cms/img/org_logos/portal.png",
+-     "",
+-     "/",
+-     "_self",
+-     "Portal Logo",
+-     "anonymous",
+-     "True"
+- ]
++ PORTAL_LOGO = {
++     "is_remote": False,
++     "img_file_src": "site_cms/img/org_logos/portal.png",
++     "img_class": "", # additional class names
++     "link_href": "/",
++     "link_target": "_self",
++     "img_alt_text": "Portal Logo",
++     "img_crossorigin": "anonymous",
++ } # To hide logo, set `PORTAL_LOGO = False`
 ```
 
-</details>
-<details><summary>Example Dict (After)</summary>
-
-```py
-PORTAL_LOGO = {
-    "img_file_src": "site_cms/img/org_logos/portal.png",
-    "is_remote": False,
-    "img_class": "", # additional class names
-    "link_href": "/",
-    "link_target": "_self",
-    "img_alt_text": "Portal Logo",
-    "img_crossorigin": "anonymous",
-} # To hide logo, set `PORTAL_LOGO = False`
-```
-
-</details>
 <details><summary>Map of Array Values to Dict Properties</summary>
 
 | | from Array Value | to Dict Property |
