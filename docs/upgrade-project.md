@@ -10,13 +10,13 @@
 ## from v4.N to v4.7
 
 - [Rename Certain Settings](#rename-certain-settings)
+- [Update Custom Favicon Setting](#upgrade-custom-favicon-setting)
 - [Upgrade Custom Logo Setting](#upgrade-custom-logo-setting)
 
 ### Rename Certain Settings
 
 | from | to |
 | - | - |
-| `FAVICON` | `PORTAL_FAVICON` |
 | `INCLUDES_CORE_PORTAL` | `PORTAL_IS_CORE` |
 | `INCLUDES_PORTAL_NAV` | `PORTAL_HAS_LOGIN` |
 | `INCLUDES_SEARCH_BAR` | `PORTAL_HAS_SEARCH` |
@@ -28,6 +28,20 @@
 | `TACC_SOCIAL_SHARE_PLATFORMS` | `PORTAL_SOCIAL_SHARE_PLATFORMS` |
 | `SEARCH_PATH` | `PORTAL_SEARCH_PATH` |
 | `SEARCH_QUERY_PARAM_NAME` | `PORTAL_SEARCH_QUERY_PARAM_NAME` |
+
+### Update Custom Favicon Setting
+
+1. Rename the `FAVICON` dict to `PORTAL_FAVICON`.
+2. Add a key/value pair to the `PORTAL_FAVICON`.
+
+```diff
+- FAVICON = {
+-     "img_file_src": "site_cms/img/favicons/favicon.ico"
++ PORTAL_FAVICON = {
++     "img_file_src": "site_cms/img/favicons/favicon.ico",
++     "is_remote": False,
+}
+```
 
 ### Upgrade Custom Logo Setting
 

@@ -277,7 +277,7 @@ PORTAL_LOGO = {
 
 PORTAL_FAVICON = {
     "img_file_src": "site_cms/img/favicons/favicon.ico",
-    "is_remote": False
+    "is_remote": False,
 }
 
 
