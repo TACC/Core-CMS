@@ -266,7 +266,7 @@ BRANDING = [TACC_BRANDING, UTEXAS_BRANDING]
 # TACC: LOGO & FAVICON
 ########################
 
-TACC_LOGO = {
+PORTAL_LOGO = {
     "img_file_src": "site_cms/img/org_logos/portal.png",
     "is_remote": False,
     "img_class": "", # additional class names
@@ -274,9 +274,9 @@ TACC_LOGO = {
     "link_target": "_self",
     "img_alt_text": "Portal Logo",
     "img_crossorigin": "anonymous",
-} # To hide logo, set `TACC_LOGO = False`
+} # To hide logo, set `PORTAL_LOGO = False`
 
-TACC_FAVICON = {
+PORTAL_FAVICON = {
     "img_file_src": "site_cms/img/favicons/favicon.ico",
     "is_remote": False
 }
@@ -301,21 +301,21 @@ CEP_AUTH_VERIFICATION_ENDPOINT = 'http://django:6000'
 # TACC: NEWS/BLOG
 ########################
 
-TACC_BLOG_SHOW_CATEGORIES = True
-TACC_BLOG_SHOW_TAGS = True
+PORTAL_BLOG_SHOW_CATEGORIES = True
+PORTAL_BLOG_SHOW_TAGS = True
 # To flag posts of certain category or tag, so template can take special action
-TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY = 'sample_value_e_g__mutlimedia__'
-TACC_BLOG_SHOW_ABSTRACT_TAG = 'sample_value_e_g__redirect__'
+PORTAL_BLOG_CUSTOM_MEDIA_POST_CATEGORY = 'sample_value_e_g__mutlimedia__'
+PORTAL_BLOG_SHOW_ABSTRACT_TAG = 'sample_value_e_g__redirect__'
 
-TACC_BLOG_CATEGORY_ORDER = ['press-release', 'feature-story', 'multimedia', 'podcast']
+PORTAL_BLOG_CATEGORY_ORDER = ['press-release', 'feature-story', 'multimedia', 'podcast']
 
 ########################
 # TACC: SOCIAL MEDIA
 ########################
 
 # TODO: Enable ONLY after TUP-590
-TACC_SOCIAL_SHARE_PLATFORMS = []
-# TACC_SOCIAL_SHARE_PLATFORMS = ['linkedin', 'instagram', 'facebook', 'email']
+PORTAL_SOCIAL_SHARE_PLATFORMS = []
+# PORTAL_SOCIAL_SHARE_PLATFORMS = ['linkedin', 'instagram', 'facebook', 'email']
 
 ########################
 # TACC: CORE STYLES
@@ -686,7 +686,7 @@ DJANGOCMS_ICON_SETS = [
 ]
 
 ########################
-# IMPORT & EXPORT
+# SETTINGS IMPORT
 ########################
 
 try:
@@ -712,34 +712,58 @@ try:
 except ImportError:
     pass
 
-# Support deprecated settings
+########################
+# SETTINGS DEPRECATED
+########################
+# TODO: Make clients not use nor set these
+
+# The header_logo.html still supports this
 if 'LOGO' not in locals():
     LOGO = False
-if 'FAVICON' not in locals():
-    FAVICON = False
-else:
-    TACC_FAVICON = FAVICON
 
-# Export expected settings
-SETTINGS_EXPORT = [
+# Some clients still use these in templates
+deprecated_SETTINGS_EXPORT = [
+    # SEE: TACC/Core-CMS-Custom & TACC/tup-ui
+    'FAVICON'
+]
+
+# Some clients still set these in settings
+if 'FAVICON' in locals():
+    PORTAL_FAVICON = FAVICON
+if 'TACC_BLOG_SHOW_CATEGORIES' in locals():
+    PORTAL_BLOG_SHOW_CATEGORIES = TACC_BLOG_SHOW_CATEGORIES
+if 'TACC_BLOG_SHOW_TAGS' in locals():
+    PORTAL_BLOG_SHOW_TAGS = TACC_BLOG_SHOW_TAGS
+if 'TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY' in locals():
+    PORTAL_BLOG_CUSTOM_MEDIA_POST_CATEGORY = TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY
+if 'TACC_BLOG_SHOW_ABSTRACT_TAG' in locals():
+    PORTAL_BLOG_SHOW_ABSTRACT_TAG = TACC_BLOG_SHOW_ABSTRACT_TAG
+if 'TACC_BLOG_CATEGORY_ORDER' in locals():
+    PORTAL_BLOG_CATEGORY_ORDER = TACC_BLOG_CATEGORY_ORDER
+if 'TACC_SOCIAL_SHARE_PLATFORMS' in locals():
+    PORTAL_SOCIAL_SHARE_PLATFORMS = TACC_SOCIAL_SHARE_PLATFORMS
+
+########################
+# SETTINGS EXPORT
+########################
+
+SETTINGS_EXPORT = deprecated_SETTINGS_EXPORT + [
     'DEBUG',
     'BRANDING',
-    'LOGO',       # deprecated
-    'FAVICON',    # deprecated
-    'TACC_LOGO',
-    'TACC_FAVICON',
+    'PORTAL_LOGO',
+    'PORTAL_FAVICON',
     'INCLUDES_CORE_PORTAL',
     'INCLUDES_PORTAL_NAV',
     'INCLUDES_SEARCH_BAR',
     'GOOGLE_ANALYTICS_PROPERTY_ID',
     'GOOGLE_ANALYTICS_PRELOAD',
-    'TACC_BLOG_SHOW_CATEGORIES',
-    'TACC_BLOG_SHOW_TAGS',
     'TACC_CORE_STYLES_VERSION',
-    'TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY',
-    'TACC_BLOG_SHOW_ABSTRACT_TAG',
-    'TACC_BLOG_CATEGORY_ORDER',
-    'TACC_SOCIAL_SHARE_PLATFORMS',
+    'PORTAL_BLOG_SHOW_CATEGORIES',
+    'PORTAL_BLOG_SHOW_TAGS',
+    'PORTAL_BLOG_CUSTOM_MEDIA_POST_CATEGORY',
+    'PORTAL_BLOG_SHOW_ABSTRACT_TAG',
+    'PORTAL_BLOG_CATEGORY_ORDER',
+    'PORTAL_SOCIAL_SHARE_PLATFORMS',
     'SEARCH_PATH',
     'SEARCH_QUERY_PARAM_NAME',
 ]
