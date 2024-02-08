@@ -246,14 +246,14 @@ BRANDING = [TACC_BRANDING, UTEXAS_BRANDING]
 ########################
 
 # LOGO = [
-#     "portal",
-#     "site_cms/img/org_logos/portal.png",
-#     "",
-#     "/",
-#     "_self",
-#     "Portal Logo",
-#     "anonymous",
-#     "True"
+#     "portal",                            # (unused value)
+#     "site_cms/img/org_logos/portal.png", # "img_file_src"
+#     "",                                  # "img_class"
+#     "/",                                 # "link_href"
+#     "_self",                             # "link_target"
+#     "Portal Logo",                       # "img_alt_text"
+#     "anonymous",                         # "img_crossorigin"
+#     "True"                               # (whether to show logo)
 # ]
 
 # FAVICON = {
@@ -267,8 +267,8 @@ BRANDING = [TACC_BRANDING, UTEXAS_BRANDING]
 ########################
 
 PORTAL_LOGO = {
-    "img_file_src": "site_cms/img/org_logos/portal.png",
     "is_remote": False,
+    "img_file_src": "site_cms/img/org_logos/portal.png",
     "img_class": "", # additional class names
     "link_href": "/",
     "link_target": "_self",
@@ -277,8 +277,8 @@ PORTAL_LOGO = {
 } # To hide logo, set `PORTAL_LOGO = False`
 
 PORTAL_FAVICON = {
+    "is_remote": False,
     "img_file_src": "site_cms/img/favicons/favicon.ico",
-    "is_remote": False
 }
 
 
