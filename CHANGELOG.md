@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [4.7.0] - 2024-02-08: CDN Logo & Favicon via `PORTAL_LOGO`/`PORTAL_FAVICON`
+
+### Added
+
+* feat: TV3-181 allow remote LOGO and FAVICON by @wesleyboar in https://github.com/TACC/Core-CMS/pull/783
+* feat: TV3-181/cmd-79 change FAVICON & LOGO prefix by @wesleyboar in https://github.com/TACC/Core-CMS/pull/795
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.6.0...v4.7.0
+
 ## [4.6.0] - 2023-01-22: Turn Off Drop Cap for Single Article
 
 ### Added
@@ -1088,7 +1097,8 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.6.0...main
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.7.0...main
+[4.7.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.7.0
 [4.6.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.6.0
 [4.5.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.5.0
 [4.4.2]: https://github.com/TACC/Core-CMS/releases/tag/v4.4.2
