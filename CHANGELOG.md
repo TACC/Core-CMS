@@ -15,7 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 **Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.7.0...v4.7.1
 
-## [4.7.0] - 2024-02-08: CDN Logo & Favicon via `PORTAL_LOGO`/`PORTAL_FAVICON`
+## [4.7.0] - 2024-02-08: CDN Logo & Favicon via PORTAL_LOGO / PORTAL_FAVICON
 
 ### Added
 
