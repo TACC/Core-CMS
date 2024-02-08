@@ -14,6 +14,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * feat: TV3-181 allow remote LOGO and FAVICON by @wesleyboar in https://github.com/TACC/Core-CMS/pull/783
 * feat: TV3-181/cmd-79 change FAVICON & LOGO prefix by @wesleyboar in https://github.com/TACC/Core-CMS/pull/795
 
+## Documented
+
+* docs(commands): improve and update README by @wesleyboar in ce4be6e, 29e2050, 1c240c9, 782044e, 4b692b7
+
 **Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.6.0...v4.7.0
 
 ## [4.6.0] - 2023-01-22: Turn Off Drop Cap for Single Article
