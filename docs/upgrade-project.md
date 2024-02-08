@@ -2,16 +2,15 @@
 
 ## Table of Contents
 
-- [from v4.N to v4.7+](#from-v4n-to-v47)
+- [from v4.N to v4.8](#from-v4n-to-v48)
+- [from v4.N to v4.7](#from-v4n-to-v47)
 - [from v3 to v4](#from-v3-to-v4)
-- [from v3.N to v3.12+](#from-v3n-to-v312)
+- [from v3.N to v3.12](#from-v3n-to-v312)
 - [from v2 to v3](#from-v2-to-v3)
 
-## from v4.N to v4.7
+## from v4.N to v4.8
 
 - [Rename Certain Settings](#rename-certain-settings)
-- [Update Custom Favicon Setting](#update-custom-favicon-setting)
-- [Upgrade Custom Logo Setting](#upgrade-custom-logo-setting)
 
 ### Rename Certain Settings
 
@@ -28,6 +27,11 @@
 | `TACC_SOCIAL_SHARE_PLATFORMS` | `PORTAL_SOCIAL_SHARE_PLATFORMS` |
 | `SEARCH_PATH` | `PORTAL_SEARCH_PATH` |
 | `SEARCH_QUERY_PARAM_NAME` | `PORTAL_SEARCH_QUERY_PARAM_NAME` |
+
+## from v4.N to v4.7
+
+- [Update Custom Favicon Setting](#update-custom-favicon-setting)
+- [Upgrade Custom Logo Setting](#upgrade-custom-logo-setting)
 
 ### Update Custom Favicon Setting
 
@@ -98,7 +102,7 @@ Refactor the `LOGO` array to a `PORTAL_LOGO` dict:
     | Deployed Website | Follow [How To Build & Deploy a CMS Website](https://tacc-main.atlassian.net/wiki/x/2AVv). |
     | Local Instance | Follow [Update Project] instructions. (Assume everything changed.) |
 
-## from v3.N to v3.12+
+## from v3.N to v3.12
 
 1. [Rename Custom Project Directory](#rename-custom-project-directory)
 2. [Redirect Deprecated Templates](#redirect-deprecated-templates)

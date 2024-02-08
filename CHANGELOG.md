@@ -7,6 +7,39 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [4.7.2] - 2024-02-08: PORTAL_LOGO / PORTAL_FAVICON Doc & Fix Example Settings
+
+### Fixed
+
+* fix: example settings for favicon and logo by @wesleyboar in https://github.com/TACC/Core-CMS/pull/798
+
+### Documented
+
+* docs: new favicon & logo settings by @wesleyboar in https://github.com/TACC/Core-CMS/pull/799
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.7.1...v4.7.2
+
+## [4.7.1] - 2024-02-08: Update iPython for Python 3.11 Compatibility
+
+### Changed
+
+* deps/ipython-8.21.0: Update ipython for Python 3.11 compatibility by @jarosenb in https://github.com/TACC/Core-CMS/pull/794
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.7.0...v4.7.1
+
+## [4.7.0] - 2024-02-08: CDN Logo & Favicon via PORTAL_LOGO / PORTAL_FAVICON
+
+### Added
+
+* feat: TV3-181 allow remote LOGO and FAVICON by @wesleyboar in https://github.com/TACC/Core-CMS/pull/783
+* feat: TV3-181/cmd-79 change FAVICON & LOGO prefix by @wesleyboar in https://github.com/TACC/Core-CMS/pull/795
+
+### Documented
+
+* docs(commands): improve and update README by @wesleyboar in ce4be6e, 29e2050, 1c240c9, 782044e, 4b692b7
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.6.0...v4.7.0
+
 ## [4.6.0] - 2023-01-22: Turn Off Drop Cap for Single Article
 
 ### Added
@@ -1088,7 +1121,10 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.6.0...main
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.7.2...main
+[4.7.2]: https://github.com/TACC/Core-CMS/releases/tag/v4.7.2
+[4.7.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.7.1
+[4.7.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.7.0
 [4.6.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.6.0
 [4.5.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.5.0
 [4.4.2]: https://github.com/TACC/Core-CMS/releases/tag/v4.4.2
