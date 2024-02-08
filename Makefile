@@ -8,7 +8,7 @@ NEEDS_DEMO := $(shell cat ./needs_demo.var)
 BUILD_ID := $(shell git describe --always)
 
 # NOTE: The `DOCKER_IMAGE_BRANCH` tag is the git tag for the commit if it exists, else the branch on which the commit exists.
-# NOTE: Special characters in `DOCKER_IMAGE_BRANCH` are replaced with spaces.
+# NOTE: Special characters in `DOCKER_IMAGE_BRANCH` are replaced with dashes.
 DOCKER_IMAGE_BRANCH := $(DOCKERHUB_REPO):$(shell git describe --exact-match --tags 2> /dev/null || git symbolic-ref --short HEAD | sed 's/[^[:alnum:]\.\_\-]/-/g')
 
 .PHONY: build
