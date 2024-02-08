@@ -2,9 +2,70 @@
 
 ## Table of Contents
 
+- [from v4.N to v4.7+](#from-v4n-to-v47)
 - [from v3 to v4](#from-v3-to-v4)
-- [from v3.N to v3.12](#from-v3n-to-v312)
+- [from v3.N to v3.12+](#from-v3n-to-v312)
 - [from v2 to v3](#from-v2-to-v3)
+
+## from v4.N to v4.7
+
+- [Update Custom Favicon Setting](#update-custom-favicon-setting)
+- [Upgrade Custom Logo Setting](#upgrade-custom-logo-setting)
+
+### Update Custom Favicon Setting
+
+1. Rename the `FAVICON` dict to `PORTAL_FAVICON`.
+2. Add a key/value pair to the `PORTAL_FAVICON`.
+
+```diff
+- FAVICON = {
+-     "img_file_src": "site_cms/img/favicons/favicon.ico"
++ PORTAL_FAVICON = {
++     "img_file_src": "site_cms/img/favicons/favicon.ico",
++     "is_remote": False,
+}
+```
+
+### Upgrade Custom Logo Setting
+
+Refactor the `LOGO` array to a `PORTAL_LOGO` dict:
+
+```diff
+- LOGO = [
+-     "portal",
+-     "site_cms/img/org_logos/portal.png",
+-     "",
+-     "/",
+-     "_self",
+-     "Portal Logo",
+-     "anonymous",
+-     "True"
+- ]
++ PORTAL_LOGO = {
++     "is_remote": False,
++     "img_file_src": "site_cms/img/org_logos/portal.png",
++     "img_class": "", # additional class names
++     "link_href": "/",
++     "link_target": "_self",
++     "img_alt_text": "Portal Logo",
++     "img_crossorigin": "anonymous",
++ } # To hide logo, set `PORTAL_LOGO = False`
+```
+
+<details><summary>Map of Array Values to Dict Properties</summary>
+
+| | from Array Value | to Dict Property |
+| - | - | - |
+| 0 | "portal"                  | (unused value) |
+| 1 | "site_cms/.../portal.png" | `"img_file_src"` |
+| 2 | ""                        | `"img_class"` |
+| 3 | "/"                       | `"link_href"` |
+| 4 | "_self"                   | `"link_target"` |
+| 5 | "Portal Logo"             | `"img_alt_text"` |
+| 6 | "anonymous"               | `"img_crossorigin"` |
+| 7 | "True"                    | (whether to show logo) |
+
+</details>
 
 ## from v3 to v4
 
@@ -20,7 +81,7 @@
     | Deployed Website | Follow [How To Build & Deploy a CMS Website](https://tacc-main.atlassian.net/wiki/x/2AVv). |
     | Local Instance | Follow [Update Project] instructions. (Assume everything changed.) |
 
-## from v3.N to v3.12
+## from v3.N to v3.12+
 
 1. [Rename Custom Project Directory](#rename-custom-project-directory)
 2. [Redirect Deprecated Templates](#redirect-deprecated-templates)
