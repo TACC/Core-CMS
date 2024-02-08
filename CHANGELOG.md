@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [4.7.1] - 2024-02-08: Update iPython for Python 3.11 Compatibility
+
+## Changed
+
+* deps/ipython-8.21.0: Update ipython for Python 3.11 compatibility by @jarosenb in https://github.com/TACC/Core-CMS/pull/794
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.7.0...v4.7.1
+
 ## [4.7.0] - 2024-02-08: CDN Logo & Favicon via `PORTAL_LOGO`/`PORTAL_FAVICON`
 
 ### Added
@@ -1101,7 +1109,8 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.7.0...main
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.7.1...main
+[4.7.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.7.1
 [4.7.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.7.0
 [4.6.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.6.0
 [4.5.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.5.0
