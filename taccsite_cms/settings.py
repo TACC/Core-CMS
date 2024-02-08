@@ -266,7 +266,7 @@ BRANDING = [TACC_BRANDING, UTEXAS_BRANDING]
 # TACC: LOGO & FAVICON
 ########################
 
-TACC_LOGO = {
+PORTAL_LOGO = {
     "img_file_src": "site_cms/img/org_logos/portal.png",
     "is_remote": False,
     "img_class": "", # additional class names
@@ -274,9 +274,9 @@ TACC_LOGO = {
     "link_target": "_self",
     "img_alt_text": "Portal Logo",
     "img_crossorigin": "anonymous",
-} # To hide logo, set `TACC_LOGO = False`
+} # To hide logo, set `PORTAL_LOGO = False`
 
-TACC_FAVICON = {
+PORTAL_FAVICON = {
     "img_file_src": "site_cms/img/favicons/favicon.ico",
     "is_remote": False
 }
@@ -718,7 +718,7 @@ if 'LOGO' not in locals():
 if 'FAVICON' not in locals():
     FAVICON = False
 else:
-    TACC_FAVICON = FAVICON
+    PORTAL_FAVICON = FAVICON
 
 # Export expected settings
 SETTINGS_EXPORT = [
@@ -726,8 +726,8 @@ SETTINGS_EXPORT = [
     'BRANDING',
     'LOGO',       # deprecated
     'FAVICON',    # deprecated
-    'TACC_LOGO',
-    'TACC_FAVICON',
+    'PORTAL_LOGO',
+    'PORTAL_FAVICON',
     'INCLUDES_CORE_PORTAL',
     'INCLUDES_PORTAL_NAV',
     'INCLUDES_SEARCH_BAR',
