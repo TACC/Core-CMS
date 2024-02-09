@@ -3,6 +3,10 @@ DOCKER_TAG ?= $(shell git rev-parse --short HEAD)
 DOCKER_IMAGE := $(DOCKERHUB_REPO):$(DOCKER_TAG)
 DOCKER_IMAGE_LATEST := $(DOCKERHUB_REPO):latest
 
+# NOTE: The `DOCKER_IMAGE_BRANCH` tag is the git tag for the commit if it exists, else the branch on which the commit exists.
+# NOTE: Special characters in `DOCKER_IMAGE_BRANCH` are replaced with dashes.
+DOCKER_IMAGE_BRANCH := $(DOCKERHUB_REPO):$(shell git describe --exact-match --tags 2> /dev/null || git symbolic-ref --short HEAD | sed 's/[^[:alnum:]\.\_\-]/-/g')
+
 PROJECT_NAME := $(shell cat ./project_name.var)
 NEEDS_DEMO := $(shell cat ./needs_demo.var)
 BUILD_ID := $(shell git describe --always)
@@ -20,6 +24,8 @@ build-full:
 		--build-arg NEEDS_DEMO="$(NEEDS_DEMO)" \
 		-f ./Dockerfile .
 
+	docker tag $(DOCKER_IMAGE) $(DOCKER_IMAGE_BRANCH)
+
 .PHONY: example
 example:
 	docker-compose -f ./docker-compose.example.yml up
@@ -27,6 +33,7 @@ example:
 .PHONY: publish
 publish:
 	docker push $(DOCKER_IMAGE)
+	docker push $(DOCKER_IMAGE_BRANCH)
 
 .PHONY: publish-latest
 publish-latest:
