@@ -300,18 +300,6 @@ LOGOUT_REDIRECT_URL = '/'
 CEP_AUTH_VERIFICATION_ENDPOINT = 'http://django:6000'
 
 ########################
-# TACC: NEWS / BLOG
-########################
-
-TACC_BLOG_SHOW_CATEGORIES = True
-TACC_BLOG_SHOW_TAGS = True
-# To flag posts of certain category or tag, so template can take special action
-TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY = 'sample_value_e_g__mutlimedia__'
-TACC_BLOG_SHOW_ABSTRACT_TAG = 'sample_value_e_g__redirect__'
-
-TACC_BLOG_CATEGORY_ORDER = ['press-release', 'feature-story', 'multimedia', 'podcast']
-
-########################
 # TACC: SOCIAL MEDIA
 ########################
 
@@ -328,7 +316,22 @@ TACC_SOCIAL_SHARE_PLATFORMS = []
 TACC_CORE_STYLES_VERSION = 0
 
 ########################
-# CLIENT BUILD SETTINGS
+# DJANGOCMS_BLOG: TACC
+########################
+
+# Only effective with a DJANGOCMS_BLOG
+# SEE: https://github.com/TACC/Core-CMS/blob/ddea33f/taccsite_cms/settings_custom.example.py#L139-L185
+
+TACC_BLOG_SHOW_CATEGORIES = True
+TACC_BLOG_SHOW_TAGS = True
+# To flag posts of certain category or tag, so template can take special action
+TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY = 'sample_value_e_g__mutlimedia__'
+TACC_BLOG_SHOW_ABSTRACT_TAG = 'sample_value_e_g__redirect__'
+
+TACC_BLOG_CATEGORY_ORDER = ['press-release', 'feature-story', 'multimedia', 'podcast']
+
+########################
+# DJANGO
 ########################
 
 # Application definition

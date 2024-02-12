@@ -184,12 +184,15 @@ BLOG_AUTO_NAMESPACE = 'News'
 # Miscellaneous settings
 BLOG_ENABLE_COMMENTS = False
 
-# TACC settings
+########################
+# DJANGOCMS_BLOG: TACC
+########################
+
 TACC_BLOG_SHOW_CATEGORIES = True
 TACC_BLOG_SHOW_TAGS = True
 
 ########################
-# CLIENT BUILD SETTINGS
+# DJANGOCMS_BLOG: DJANGO
 ########################
 
 # TACC/Core-CMS-Resources#75: Load custom urls.py so we can add urlpatterns for taggit_autosuggest
