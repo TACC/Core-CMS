@@ -4,7 +4,7 @@ import ldap
 from django_auth_ldap.config import LDAPSearch
 
 ########################
-# DJANGO
+# DJANGO: AUTH
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth
 ########################
 

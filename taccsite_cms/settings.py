@@ -140,7 +140,7 @@ LOGGING = {
 }
 
 ########################
-# DJANGO CMS SETTINGS
+# DJANGO_CMS
 ########################
 
 SITE_ID = 1
@@ -150,12 +150,14 @@ CMS_TEMPLATES = (
     ('fullwidth.html', 'Full Width'),
 
     ('guide.html', 'Guide'),
+    ('guides/portal_technology.html', 'Guide: Portal Technology Stack'),
+
+    # TODO: WP-394: Retire deprecated page templates
     ('guides/getting_started.v3.html', 'Guide: Getting Started (v3)'),
     ('guides/getting_started.tam.html', 'Guide: Getting Started (TAM)'),
     ('guides/getting_started.v2.html', 'Guide: Getting Started (v2)'),
     ('guides/data_transfer.html', 'Guide: Data Transfer'),
     ('guides/data_transfer.globus.html', 'Guide: Globus Data Transfer'),
-    ('guides/portal_technology.html', 'Guide: Portal Technology Stack'),
 )
 
 CMS_PERMISSION = True
@@ -241,7 +243,7 @@ BRANDING = [TACC_BRANDING, UTEXAS_BRANDING]
 
 
 ########################
-# TACC: LOGOS (DEPRECATED)
+# TACC: LOGOS & FAVICON (DEPRECATED)
 ########################
 
 # LOGO = [
@@ -297,18 +299,6 @@ LOGOUT_REDIRECT_URL = '/'
 CEP_AUTH_VERIFICATION_ENDPOINT = 'http://django:6000'
 
 ########################
-# TACC: NEWS/BLOG
-########################
-
-PORTAL_BLOG_SHOW_CATEGORIES = True
-PORTAL_BLOG_SHOW_TAGS = True
-# To flag posts of certain category or tag, so template can take special action
-PORTAL_BLOG_CUSTOM_MEDIA_POST_CATEGORY = 'sample_value_e_g__mutlimedia__'
-PORTAL_BLOG_SHOW_ABSTRACT_TAG = 'sample_value_e_g__redirect__'
-
-PORTAL_BLOG_CATEGORY_ORDER = ['press-release', 'feature-story', 'multimedia', 'podcast']
-
-########################
 # TACC: SOCIAL MEDIA
 ########################
 
@@ -325,7 +315,22 @@ PORTAL_SOCIAL_SHARE_PLATFORMS = []
 TACC_CORE_STYLES_VERSION = 0
 
 ########################
-# CLIENT BUILD SETTINGS
+# DJANGOCMS_BLOG: TACC
+########################
+
+# Only effective with a DJANGOCMS_BLOG
+# SEE: https://github.com/TACC/Core-CMS/blob/ff6c727/taccsite_cms/settings_custom.example.py#L139-L185
+
+PORTAL_BLOG_SHOW_CATEGORIES = True
+PORTAL_BLOG_SHOW_TAGS = True
+# To flag posts of certain category or tag, so template can take special action
+PORTAL_BLOG_CUSTOM_MEDIA_POST_CATEGORY = 'sample_value_e_g__mutlimedia__'
+PORTAL_BLOG_SHOW_ABSTRACT_TAG = 'sample_value_e_g__redirect__'
+
+PORTAL_BLOG_CATEGORY_ORDER = ['press-release', 'feature-story', 'multimedia', 'podcast']
+
+########################
+# DJANGO & DJANGO_CMS & TACC
 ########################
 
 # Application definition

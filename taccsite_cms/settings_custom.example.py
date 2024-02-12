@@ -26,7 +26,7 @@ AUTH_LDAP_SERVER_URI = "ldap://cluster.ldap.tacc.utexas.edu"
 # The same goes for other more commonly customized values like below.
 
 ########################
-# DJANGO CMS SETTINGS
+# DJANGO_CMS
 ########################
 
 CMS_TEMPLATES = (
@@ -136,7 +136,7 @@ PORTAL_FAVICON = {
 }
 
 ########################
-# NEWS / BLOG
+# DJANGOCMS_BLOG
 ########################
 
 from taccsite_cms.settings import INSTALLED_APPS
@@ -183,12 +183,15 @@ BLOG_AUTO_NAMESPACE = 'News'
 # Miscellaneous settings
 BLOG_ENABLE_COMMENTS = False
 
-# TACC settings
+########################
+# DJANGOCMS_BLOG: TACC
+########################
+
 PORTAL_BLOG_SHOW_CATEGORIES = True
 PORTAL_BLOG_SHOW_TAGS = True
 
 ########################
-# CLIENT BUILD SETTINGS
+# DJANGOCMS_BLOG: DJANGO
 ########################
 
 # TACC/Core-CMS-Resources#75: Load custom urls.py so we can add urlpatterns for taggit_autosuggest
