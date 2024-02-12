@@ -240,7 +240,7 @@ NSF_BRANDING = [
     "True"
 ]
 
-BRANDING = [TACC_BRANDING, UTEXAS_BRANDING]
+BRANDING = [ TACC_BRANDING, UTEXAS_BRANDING ]
 
 
 ########################
