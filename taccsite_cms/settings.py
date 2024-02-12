@@ -331,7 +331,7 @@ TACC_BLOG_SHOW_ABSTRACT_TAG = 'sample_value_e_g__redirect__'
 TACC_BLOG_CATEGORY_ORDER = ['press-release', 'feature-story', 'multimedia', 'podcast']
 
 ########################
-# DJANGO
+# DJANGO & DJANGO_CMS & TACC
 ########################
 
 # Application definition
