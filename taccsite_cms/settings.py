@@ -244,7 +244,7 @@ BRANDING = [TACC_BRANDING, UTEXAS_BRANDING]
 
 
 ########################
-# TACC: LOGOS (DEPRECATED)
+# TACC: LOGOS & FAVICON (DEPRECATED)
 ########################
 
 # LOGO = [
@@ -300,7 +300,7 @@ LOGOUT_REDIRECT_URL = '/'
 CEP_AUTH_VERIFICATION_ENDPOINT = 'http://django:6000'
 
 ########################
-# TACC: NEWS/BLOG
+# TACC: NEWS / BLOG
 ########################
 
 TACC_BLOG_SHOW_CATEGORIES = True

@@ -26,7 +26,7 @@ AUTH_LDAP_SERVER_URI = "ldap://cluster.ldap.tacc.utexas.edu"
 # The same goes for other more commonly customized values like below.
 
 ########################
-# DJANGO CMS SETTINGS
+# DJANGO_CMS
 ########################
 
 CMS_TEMPLATES = (
@@ -137,7 +137,7 @@ PORTAL_FAVICON = {
 }
 
 ########################
-# NEWS / BLOG
+# DJANGOCMS_BLOG
 ########################
 
 from taccsite_cms.settings import INSTALLED_APPS
