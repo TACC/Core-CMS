@@ -140,7 +140,7 @@ LOGGING = {
 }
 
 ########################
-# DJANGO CMS SETTINGS
+# DJANGO_CMS
 ########################
 
 SITE_ID = 1
