@@ -320,7 +320,7 @@ TACC_CORE_STYLES_VERSION = 0
 ########################
 
 # Only effective with a DJANGOCMS_BLOG
-# SEE: https://github.com/TACC/Core-CMS/blob/ddea33f/taccsite_cms/settings_custom.example.py#L139-L185
+# SEE: https://github.com/TACC/Core-CMS/blob/ff6c727/taccsite_cms/settings_custom.example.py#L139-L185
 
 TACC_BLOG_SHOW_CATEGORIES = True
 TACC_BLOG_SHOW_TAGS = True
