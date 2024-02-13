@@ -7,21 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
-## [4.8.1] - 2024-02-12: Some Settings Section Comments Renamed & Moved
+## [4.8.1] - 2024-02-12: Settings Reorganized, Cleaned, and Made Consistent
 
 ### Documented
 
-- chore: no _ settings, mirror core-portal-deployments by @wesleyboar in 2d7c01c4
-- style: consistent settings header by @wesleyboar in 52a3fe2a
-- style(taccsite_custom): del. recurring extra space by @wesleyboar in e9e4a8c6
-- docs: more accurate settings section name by @wesleyboar in b92da066
-- docs: better commit for comment repo ref by @wesleyboar in d88efd64
-- style/docs: rename and move some settings by @wesleyboar in ff6c7277
-- style: match settings comments w/ taccsite_custom by @wesleyboar in ddea33f6
-- style/docs(taccsite_custom): clean up settings by @wesleyboar in 227eb296
-- style(settings): comment tweak by @wesleyboar in 959fc489
-- docs: _settings/ organizational comment tweaks by @wesleyboar in a38771dc
-- docs: comment, task to remove deprecated templates by @wesleyboar in b61c0265
+- clean up settings and make them consistent by @wesleyboar in 2d7c01c4, 52a3fe2a, e9e4a8c6, b92da066, d88efd64, ff6c7277, ddea33f6, 227eb296, 959fc489, a38771dc, b61c0265
 
 **Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.8.0...v4.8.1
 
