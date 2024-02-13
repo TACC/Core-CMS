@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
-## [4.8.1] - 2024-02-12: Settings Reorganized, Cleaned, and Made Consistent
+## [4.8.1] - 2024-02-13: Settings Reorganized, Cleaned, and Made Consistent
 
 ### Documented
 
