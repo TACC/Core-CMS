@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Documented
 
+- chore: no _ settings, mirror core-portal-deployments by @wesleyboar in 2d7c01c4
+- style: consistent settings header by @wesleyboar in 52a3fe2a
+- style(taccsite_custom): del. recurring extra space by @wesleyboar in e9e4a8c6
 - docs: more accurate settings section name by @wesleyboar in b92da066
 - docs: better commit for comment repo ref by @wesleyboar in d88efd64
 - style/docs: rename and move some settings by @wesleyboar in ff6c7277
