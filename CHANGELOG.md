@@ -7,6 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [4.8.1] - 2024-02-12: Some Settings Section Comments Renamed & Moved
+
+### Documented
+
+- chore: no _ settings, mirror core-portal-deployments by @wesleyboar in 2d7c01c4
+- style: consistent settings header by @wesleyboar in 52a3fe2a
+- style(taccsite_custom): del. recurring extra space by @wesleyboar in e9e4a8c6
+- docs: more accurate settings section name by @wesleyboar in b92da066
+- docs: better commit for comment repo ref by @wesleyboar in d88efd64
+- style/docs: rename and move some settings by @wesleyboar in ff6c7277
+- style: match settings comments w/ taccsite_custom by @wesleyboar in ddea33f6
+- style/docs(taccsite_custom): clean up settings by @wesleyboar in 227eb296
+- style(settings): comment tweak by @wesleyboar in 959fc489
+- docs: _settings/ organizational comment tweaks by @wesleyboar in a38771dc
+- docs: comment, task to remove deprecated templates by @wesleyboar in b61c0265
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.8.0...v4.8.1
+
 ## [4.8.0] - 2024-02-09: CMS Docker Image Tag via Git Branch, Tag, Etc.
 
 ## Added
@@ -245,7 +263,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * feat: texascale, cms v3.12.0 beta (#713)
 * feat(taccsite_custom): neuronex-cms→_3dem_cms@3.12 (479ea0c)
 
-## Documentation
+## Documented
 
 * docs: [miscellaneous] (bea4943, bd7064b, 808fb14, 502fa3a, f1af7ad, 842cb66)
 
@@ -1129,7 +1147,8 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.8.0...main
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.8.1...main
+[4.8.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.8.1
 [4.8.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.8.0
 [4.7.2]: https://github.com/TACC/Core-CMS/releases/tag/v4.7.2
 [4.7.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.7.1
