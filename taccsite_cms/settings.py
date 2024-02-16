@@ -47,7 +47,7 @@ SESSION_COOKIE_SECURE = True
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 ########################
-# DATABASE SETTINGS
+# STORAGE
 ########################
 
 DATABASES = {
