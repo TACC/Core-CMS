@@ -19,8 +19,6 @@ const SHOULD_DEBUG = window.DEBUG;
  * @param {setTargetCallback} [options.setTargetCallback] - A callback for after a target is set
  */
 
-// WE NEED TO RENAME THIS FUNCTION
-
  export default function findLinksAndSetTargets(options) {
   const defaults = {
     target: '_blank',
@@ -77,8 +75,7 @@ const SHOULD_DEBUG = window.DEBUG;
         }
         if (typeof setTargetCallback === 'function') {
           setTargetCallback( link );
-        }
-      }
+        }      }
   });
 }
 
