@@ -47,7 +47,7 @@ SESSION_COOKIE_SECURE = True
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 ########################
-# DATABASE SETTINGS
+# STORAGE
 ########################
 
 DATABASES = {
@@ -140,7 +140,7 @@ LOGGING = {
 }
 
 ########################
-# DJANGO CMS SETTINGS
+# DJANGO_CMS
 ########################
 
 SITE_ID = 1
@@ -150,12 +150,14 @@ CMS_TEMPLATES = (
     ('fullwidth.html', 'Full Width'),
 
     ('guide.html', 'Guide'),
+    ('guides/portal_technology.html', 'Guide: Portal Technology Stack'),
+
+    # TODO: WP-394: Retire deprecated page templates
     ('guides/getting_started.v3.html', 'Guide: Getting Started (v3)'),
     ('guides/getting_started.tam.html', 'Guide: Getting Started (TAM)'),
     ('guides/getting_started.v2.html', 'Guide: Getting Started (v2)'),
     ('guides/data_transfer.html', 'Guide: Data Transfer'),
     ('guides/data_transfer.globus.html', 'Guide: Globus Data Transfer'),
-    ('guides/portal_technology.html', 'Guide: Portal Technology Stack'),
 )
 
 CMS_PERMISSION = True
@@ -238,22 +240,22 @@ NSF_BRANDING = [
     "True"
 ]
 
-BRANDING = [TACC_BRANDING, UTEXAS_BRANDING]
+BRANDING = [ TACC_BRANDING, UTEXAS_BRANDING ]
 
 
 ########################
-# TACC: LOGOS (DEPRECATED)
+# TACC: LOGOS & FAVICON (DEPRECATED)
 ########################
 
 # LOGO = [
-#     "portal",
-#     "site_cms/img/org_logos/portal.png",
-#     "",
-#     "/",
-#     "_self",
-#     "Portal Logo",
-#     "anonymous",
-#     "True"
+#     "portal",                            # (unused value)
+#     "site_cms/img/org_logos/portal.png", # "img_file_src"
+#     "",                                  # "img_class"
+#     "/",                                 # "link_href"
+#     "_self",                             # "link_target"
+#     "Portal Logo",                       # "img_alt_text"
+#     "anonymous",                         # "img_crossorigin"
+#     "True"                               # (whether to show logo)
 # ]
 
 # FAVICON = {
@@ -266,19 +268,19 @@ BRANDING = [TACC_BRANDING, UTEXAS_BRANDING]
 # TACC: LOGO & FAVICON
 ########################
 
-TACC_LOGO = {
-    "img_file_src": "site_cms/img/org_logos/portal.png",
+PORTAL_LOGO = {
     "is_remote": False,
+    "img_file_src": "site_cms/img/org_logos/portal.png",
     "img_class": "", # additional class names
     "link_href": "/",
     "link_target": "_self",
     "img_alt_text": "Portal Logo",
     "img_crossorigin": "anonymous",
-} # To hide logo, set `TACC_LOGO = False`
+} # To hide logo, set `PORTAL_LOGO = False`
 
-TACC_FAVICON = {
+PORTAL_FAVICON = {
+    "is_remote": False,
     "img_file_src": "site_cms/img/favicons/favicon.ico",
-    "is_remote": False
 }
 
 
@@ -298,18 +300,6 @@ LOGOUT_REDIRECT_URL = '/'
 CEP_AUTH_VERIFICATION_ENDPOINT = 'http://django:6000'
 
 ########################
-# TACC: NEWS/BLOG
-########################
-
-TACC_BLOG_SHOW_CATEGORIES = True
-TACC_BLOG_SHOW_TAGS = True
-# To flag posts of certain category or tag, so template can take special action
-TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY = 'sample_value_e_g__mutlimedia__'
-TACC_BLOG_SHOW_ABSTRACT_TAG = 'sample_value_e_g__redirect__'
-
-TACC_BLOG_CATEGORY_ORDER = ['press-release', 'feature-story', 'multimedia', 'podcast']
-
-########################
 # TACC: SOCIAL MEDIA
 ########################
 
@@ -326,7 +316,22 @@ TACC_SOCIAL_SHARE_PLATFORMS = []
 TACC_CORE_STYLES_VERSION = 0
 
 ########################
-# CLIENT BUILD SETTINGS
+# DJANGOCMS_BLOG: TACC
+########################
+
+# Only effective with a DJANGOCMS_BLOG
+# SEE: https://github.com/TACC/Core-CMS/blob/ff6c727/taccsite_cms/settings_custom.example.py#L139-L185
+
+TACC_BLOG_SHOW_CATEGORIES = True
+TACC_BLOG_SHOW_TAGS = True
+# To flag posts of certain category or tag, so template can take special action
+TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY = 'sample_value_e_g__mutlimedia__'
+TACC_BLOG_SHOW_ABSTRACT_TAG = 'sample_value_e_g__redirect__'
+
+TACC_BLOG_CATEGORY_ORDER = ['press-release', 'feature-story', 'multimedia', 'podcast']
+
+########################
+# DJANGO & DJANGO_CMS & TACC
 ########################
 
 # Application definition
@@ -718,7 +723,7 @@ if 'LOGO' not in locals():
 if 'FAVICON' not in locals():
     FAVICON = False
 else:
-    TACC_FAVICON = FAVICON
+    PORTAL_FAVICON = FAVICON
 
 # Export expected settings
 SETTINGS_EXPORT = [
@@ -726,8 +731,8 @@ SETTINGS_EXPORT = [
     'BRANDING',
     'LOGO',       # deprecated
     'FAVICON',    # deprecated
-    'TACC_LOGO',
-    'TACC_FAVICON',
+    'PORTAL_LOGO',
+    'PORTAL_FAVICON',
     'INCLUDES_CORE_PORTAL',
     'INCLUDES_PORTAL_NAV',
     'INCLUDES_SEARCH_BAR',

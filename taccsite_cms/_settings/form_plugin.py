@@ -78,7 +78,7 @@ DJANGOCMS_FORMS_FORMAT_CHOICES = (
 )
 
 ########################
-# DJANGO
+# DJANGO: FORM
 # https://docs.djangoproject.com/en/2.2/ref/settings/#form-renderer
 ########################
 
