@@ -75,7 +75,8 @@ const SHOULD_DEBUG = window.DEBUG;
         }
         if (typeof setTargetCallback === 'function') {
           setTargetCallback( link );
-        }      }
+        }
+      }
   });
 }
 
