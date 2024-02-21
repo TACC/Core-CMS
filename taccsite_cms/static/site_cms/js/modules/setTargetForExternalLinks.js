@@ -18,8 +18,7 @@ const SHOULD_DEBUG = window.DEBUG;
  * @param {HTMLElement|Document} [options.scopeElement=document] - The element within which to search for links
  * @param {setTargetCallback} [options.setTargetCallback] - A callback for after a target is set
  */
-
- export default function findLinksAndSetTargets(options) {
+export default function findLinksAndSetTargets(options) {
   const defaults = {
     target: '_blank',
     pathsToExernalSite: [],
