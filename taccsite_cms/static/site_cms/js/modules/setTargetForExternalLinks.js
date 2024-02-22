@@ -62,16 +62,19 @@ export default function findLinksAndSetTargets(options) {
           ! isInternal && isExternal && ! isMailto
       );
 
-      if ( shouldSetTarget ) {
-          if (link.target !== '_blank') {
-              link.target = '_blank';
-              if (SHOULD_DEBUG) {
-                console.debug(`Link ${link.href} now opens in new tab`);
-              }
+      if ( shouldSetTarget ) {  
+        if (link.target !== '_blank') {
+          link.target = '_blank';
+          if (SHOULD_DEBUG) {
+            console.debug(`Link ${link.href} now opens in new tab`);
           }
-          if (typeof setTargetCallback === 'function') {
-            setTargetCallback( link );
-          }
+        }
+        if (link.target === '_blank') {
+          link.setAttribute('aria-description', 'Opens in new window.');
+        }
+        if (typeof setTargetCallback === 'function') {
+          setTargetCallback( link );
+        }
       }
   });
 }
