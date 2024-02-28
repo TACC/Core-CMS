@@ -57,6 +57,8 @@ Styleguide Components.DjangoCMS.Blog.App
 .app-blog .tags       { grid-area: tags }
 .app-blog .links      { grid-area: link }
 
+:--article-list h1 span { display: none }
+
 .app-blog ul.post-detail {
   list-style: none;
 
