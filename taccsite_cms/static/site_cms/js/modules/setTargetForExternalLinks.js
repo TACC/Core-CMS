@@ -34,7 +34,7 @@ export default function findLinksAndSetTargets(options) {
 
   const links = scopeElement.getElementsByTagName('a');
   const baseDocumentHost = document.location.host;
-  const baseDocumentHostWithWWW = `www.${baseDocumentHost}`;
+  const baseDocumentHostWithSubdomain= `www.${baseDocumentHost}`;
 
   [ ...links ].forEach( function setTarget(link) {
       if ( ! link.href) {
@@ -42,23 +42,9 @@ export default function findLinksAndSetTargets(options) {
       }
 
       const isMailto = (link.href.indexOf('mailto:') === 0);
-      const shouldForceSetTarget = pathsToForceSetTarget.some(path => {
-        let shouldForce;
-        if (path instanceof RegExp) {
-          shouldForce = path.test(link.pathname);
-        }
-        if (typeof path === 'string') {
-          shouldForce = _doPathsMatch(path, link.pathname);
-        }
-        if (SHOULD_DEBUG && shouldForce) {
-          console.debug(`Path "${link.pathname}" matches "${path}"`);
-        }
-        return shouldForce;
-      });
 
-      const isInternalLink = link.host === baseDocumentHost || link.host === baseDocumentHostWithWWW
+      const isInternalLink = link.host === baseDocumentHost || link.host === baseDocumentHostWithSubdomain
 
-      //shouldForceSetTarget could be used in this if statement if passing in options.
       if (!isInternalLink || isMailto ) {    
         if (link.target !== '_blank') {
           link.target = '_blank';
@@ -74,22 +60,4 @@ export default function findLinksAndSetTargets(options) {
         }
       }
   });
-}
-
-/**
- * Does redirect path match link path (ignoring "/" link path)
- * @param {string} redirectPath - A path known to redirect to an external site
- * @param {string} testLinkPath - A path found on the page being updated
- */
-function _doPathsMatch(redirectPath, testLinkPath) {
-  if (testLinkPath === '/') {
-    return false;
-  }
-
-  const isMatch = redirectPath === testLinkPath
-    || redirectPath === testLinkPath.slice(1)
-    || redirectPath === testLinkPath.slice(0, -1)
-    || redirectPath === testLinkPath.slice(1).slice(0, -1);
-
-  return isMatch;
 }
