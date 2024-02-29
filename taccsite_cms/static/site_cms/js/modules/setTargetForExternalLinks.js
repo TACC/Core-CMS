@@ -58,7 +58,8 @@ export default function findLinksAndSetTargets(options) {
 
       const isInternalLink = link.host === baseDocumentHost || link.host === baseDocumentHostWithWWW
 
-      if (!isInternalLink || isMailto || shouldForceSetTarget ) {  
+      //shouldForceSetTarget could be used in this if statement if passing in options.
+      if (!isInternalLink || isMailto ) {    
         if (link.target !== '_blank') {
           link.target = '_blank';
           if (SHOULD_DEBUG) {
