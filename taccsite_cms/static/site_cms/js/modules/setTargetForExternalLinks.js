@@ -33,11 +33,11 @@ export default function findLinksAndSetTargets(options) {
   }
 
   const links = scopeElement.getElementsByTagName('a');
+  const baseDocumentHost = document.location.host;
+  const baseDocumentHostWithWWW = `www.${baseDocumentHost}`;
+
   [ ...links ].forEach( function setTarget(link) {
       if ( ! link.href) {
-        return false;
-      }
-      if (link.href.indexOf('javascript') === 0) {
         return false;
       }
 
@@ -55,14 +55,10 @@ export default function findLinksAndSetTargets(options) {
         }
         return shouldForce;
       });
-      // FAQ: I am literally double-checking, because I don't trust JavaScript
-      const isExternal = (link.origin !== document.location.origin);
-      const isInternal = (link.host === document.location.host);
-      const shouldSetTarget = shouldForceSetTarget || (
-          ! isInternal && isExternal && ! isMailto
-      );
 
-      if ( shouldSetTarget ) {  
+      const isInternalLink = link.host === baseDocumentHost || link.host === baseDocumentHostWithWWW
+
+      if (!isInternalLink || isMailto || shouldForceSetTarget ) {  
         if (link.target !== '_blank') {
           link.target = '_blank';
           if (SHOULD_DEBUG) {
