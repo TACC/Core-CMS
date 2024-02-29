@@ -24,18 +24,18 @@
         {# /TACC #}
         {# TACC (reformat headings): #}
         {% if author %}
-          {% trans "Articles by" %}
-          {{ author.get_full_name }}
+          {% trans "News" %} |
+          {% trans "Articles by" %} {{ author.get_full_name }}
         {% elif archive_date %}
-          {% trans "Archive" %} |
+          {% trans "News" %} |
           <span>{% trans "Archive" %}</span>
           {% if month %}{{ archive_date|date:'F' }} {% endif %}{{ year }}
         {% elif tagged_entries %}
-          {% trans "Tag" %} |
+          {% trans "News" %} |
           <span>{% trans "Tag" %}</span>
           {{ tagged_entries|capfirst }}
         {% elif category %}
-          {% trans "Category" %} |
+          {% trans "News" %} |
           <span>{% trans "Category" %}</span>
           {{ category }}
         {# TACC (add default heading): #}
