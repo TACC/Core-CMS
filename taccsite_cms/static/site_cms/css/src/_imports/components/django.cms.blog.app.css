@@ -57,6 +57,23 @@ Styleguide Components.DjangoCMS.Blog.App
 .app-blog .tags       { grid-area: tags }
 .app-blog .links      { grid-area: link }
 
+/* To format titles */
+:--article-list h1 > strong::after {
+  content: "—";
+  margin-left: 0.25em;
+  display: inline-block;
+  font-weight: var(--medium);
+}
+:--article-list h1 > span {
+  display: none;
+}
+:--article-list h1 > em {
+  font-style: normal;
+  text-transform: none;
+  font-family: inherit;
+  font-weight: var(--medium);
+}
+
 .app-blog ul.post-detail {
   list-style: none;
 
