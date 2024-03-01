@@ -8,7 +8,7 @@ const SHOULD_DEBUG = window.DEBUG;
  * Set external links (automatically discovered) to open in new tab
  */
 export default function findLinksAndSetTargets() {
-  const links = scopeElement.getElementsByTagName('a');
+  const links = document.getElementsByTagName('a');
   const baseDocumentHost = document.location.host;
   const baseDocumentHostWithSubdomain= `www.${baseDocumentHost}`;
 
