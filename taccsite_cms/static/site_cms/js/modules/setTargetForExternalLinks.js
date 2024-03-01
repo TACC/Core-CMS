@@ -5,12 +5,6 @@
 const SHOULD_DEBUG = window.DEBUG;
 
 /**
- * Function to perform after setting link target
- * @callback setTargetCallback
- * @param {HTMLElement} link
- */
-
-/**
  * Set external links (automatically discovered) to open in new tab
  */
 export default function findLinksAndSetTargets() {
@@ -27,7 +21,7 @@ export default function findLinksAndSetTargets() {
 
       const isInternalLink = link.host === baseDocumentHost || link.host === baseDocumentHostWithSubdomain
 
-      if (!isInternalLink || isMailto ) {    
+      if (!isInternalLink || isMailto ) {
         if (link.target !== '_blank') {
           link.target = '_blank';
           if (SHOULD_DEBUG) {
