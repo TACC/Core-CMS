@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [4.8.3] - 2024-03-04: Fix External Link Script Bug & Fix Core-Styles Bugs
+
+## What's Changed
+
+* hotfix: setTargetForExternalLinks missing scopeElement by @wesleyboar in https://github.com/TACC/Core-CMS/pull/808
+* fix: @tacc/core-styles v2.25 by @wesleyboar in https://github.com/TACC/Core-CMS/pull/807
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.8.2...v4.8.3
+
 ## [4.8.2] - 2024-03-01: Fix New Window Link Mgmt. & Format News Page Titles
 
 ### Fixed
@@ -1147,7 +1156,8 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.8.2...main
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.8.3...main
+[4.8.3]: https://github.com/TACC/Core-CMS/releases/tag/v4.8.3
 [4.8.2]: https://github.com/TACC/Core-CMS/releases/tag/v4.8.2
 [4.8.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.8.1
 [4.8.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.8.0
