@@ -7,7 +7,7 @@ Read [Django CMS User Guide] for CMS user instructions.
 - [Add Styles & Scripts](#add-styles--scripts)
 - [Build Static Files](#build-static-files)
 - [Collect Static Files](#collect-static-files)
-- [Customize & Translate Text](#customize-translate-text)
+- [Customize & Translate Text](#customize--translate-text)
 - [Demo UI Patterns](#demo-ui-patterns)
 - [Develop with Core Styles Simultaneously](#develop-with-core-styles-simultaneously)
 
