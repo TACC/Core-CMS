@@ -5,7 +5,9 @@
 const SHOULD_DEBUG = window.DEBUG;
 
 /**
- * Set external links (automatically discovered) to open in new tab
+ * Make links with absolute URLs open in new tab, and:
+ * - add accessible markup
+ * - fix absolute URLs that should be relative paths
  */
 export default function findLinksAndSetTargets() {
   const links = document.getElementsByTagName('a');
@@ -18,10 +20,10 @@ export default function findLinksAndSetTargets() {
       }
 
       const isMailto = (link.href.indexOf('mailto:') === 0);
-
+      const isAbsolute = (link.href.indexOf('http') === 0);
       const isInternalLink = link.host === baseDocumentHost || link.host === baseDocumentHostWithSubdomain
 
-      if (!isInternalLink || isMailto ) {
+      if (!isInternalLink || isMailto) {
         if (link.target !== '_blank') {
           link.target = '_blank';
           if (SHOULD_DEBUG) {
@@ -31,9 +33,11 @@ export default function findLinksAndSetTargets() {
         if (link.target === '_blank') {
           link.setAttribute('aria-description', 'Opens in new window.');
         }
-        if (typeof setTargetCallback === 'function') {
-          setTargetCallback( link );
-        }
+      }
+
+      // Links w/ absolute URL to page on same domain should use relative path
+      if (isAbsolute && isInternalLink) {
+        link.href = link.pathname;
       }
   });
 }
