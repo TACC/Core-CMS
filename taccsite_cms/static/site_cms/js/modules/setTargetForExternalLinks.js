@@ -37,7 +37,7 @@ export default function findLinksAndSetTargets() {
     }
 
     // Links w/ absolute URL to page on same domain should use relative path
-    if ( isAbsolute && isInternalLink ) {
+    if ( isAbsolute && isSameHost ) {
       link.href = link.pathname;
     }
   });
