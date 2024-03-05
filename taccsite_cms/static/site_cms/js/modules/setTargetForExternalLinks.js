@@ -10,7 +10,7 @@ const SHOULD_DEBUG = window.DEBUG;
  * - fix absolute URLs that should be relative paths
  */
 export default function findLinksAndSetTargets() {
-  const links = document.getElementsByTagName('a');
+  const links = document.querySelectorAll('body > :is(header, main, footer) a');
   const baseDocHost = document.location.host;
   const baseDocHostWithSubdomain= `www.${baseDocHost}`;
 
