@@ -22,12 +22,27 @@
         {% endif %}
         {# /TACC #}
         {# /TACC #}
-        {% if author %}{% trans "Articles by" %} {{ author.get_full_name }}
-        {% elif archive_date %}{% trans "Archive" %} &ndash; {% if month %}{{ archive_date|date:'F' }} {% endif %}{{ year }}
-        {% elif tagged_entries %}{% trans "Tag" %} &ndash; {{ tagged_entries|capfirst }}
-        {% elif category %}{% trans "Category" %} &ndash; {{ category }}
+        {# TACC (reformat headings): #}
+        {% if author %}
+          <strong>{% trans "News" %}</strong>
+          <em>{% trans "Articles by" %} {{ author.get_full_name }}</em>
+        {% elif archive_date %}
+          <strong>{% trans "News" %}</strong>
+          <span>{% trans "Archive" %}</span>
+          <em>{% if month %}{{ archive_date|date:'F' }} {% endif %}{{ year }}</em>
+        {% elif tagged_entries %}
+          <strong>{% trans "News" %}</strong>
+          <span>{% trans "Tag" %}</span>
+          <em>{{ tagged_entries|capfirst }}</em>
+        {% elif category %}
+          <strong>{% trans "News" %}</strong>
+          <span>{% trans "Category" %}</span>
+          <em>{{ category }}</em>
         {# TACC (add default heading): #}
-        {% else %}{% trans "News" %}{% endif %}
+        {% else %}
+          {% trans "News" %}
+        {% endif %}
+        {# /TACC #}
         {# /TACC #}
         {# TACC (use greater heading level): #}
         {# TACC (do not use large header until core-styles.cms.css): #}

@@ -7,6 +7,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [4.8.3] - 2024-03-04: Fix External Link Script Bug & Fix Core-Styles Bugs
+
+## What's Changed
+
+* hotfix: setTargetForExternalLinks missing scopeElement by @wesleyboar in https://github.com/TACC/Core-CMS/pull/808
+* fix: @tacc/core-styles v2.25 by @wesleyboar in https://github.com/TACC/Core-CMS/pull/807
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.8.2...v4.8.3
+
+## [4.8.2] - 2024-03-01: Fix New Window Link Mgmt. & Format News Page Titles
+
+### Fixed
+
+* Task/TUP-702 Make new windows accessible by @R-Tomas-Gonzalez in https://github.com/TACC/Core-CMS/pull/803
+* feat: TUP-707 do not show "TAG - " in news filter by @wesleyboar in https://github.com/TACC/Core-CMS/pull/804
+* TUP-703 TACC Home Banner Links Open in New Window by @R-Tomas-Gonzalez in https://github.com/TACC/Core-CMS/pull/805
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.8.1...v4.8.2
+
+## [4.8.1] - 2024-02-13: Settings Reorganized, Cleaned, and Made Consistent
+
+### Documented
+
+- clean up settings and make them consistent by @wesleyboar in 2d7c01c4, 52a3fe2a, e9e4a8c6, b92da066, d88efd64, ff6c7277, ddea33f6, 227eb296, 959fc489, a38771dc, b61c0265
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.8.0...v4.8.1
+
 ## [4.8.0] - 2024-02-09: CMS Docker Image Tag via Git Branch, Tag, Etc.
 
 ## Added
@@ -245,7 +272,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * feat: texascale, cms v3.12.0 beta (#713)
 * feat(taccsite_custom): neuronex-cms→_3dem_cms@3.12 (479ea0c)
 
-## Documentation
+## Documented
 
 * docs: [miscellaneous] (bea4943, bd7064b, 808fb14, 502fa3a, f1af7ad, 842cb66)
 
@@ -1129,7 +1156,10 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.8.0...main
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.8.3...main
+[4.8.3]: https://github.com/TACC/Core-CMS/releases/tag/v4.8.3
+[4.8.2]: https://github.com/TACC/Core-CMS/releases/tag/v4.8.2
+[4.8.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.8.1
 [4.8.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.8.0
 [4.7.2]: https://github.com/TACC/Core-CMS/releases/tag/v4.7.2
 [4.7.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.7.1
