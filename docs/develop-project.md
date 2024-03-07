@@ -7,7 +7,7 @@ Read [Django CMS User Guide] for CMS user instructions.
 - [Add Styles & Scripts](#add-styles--scripts)
 - [Build Static Files](#build-static-files)
 - [Collect Static Files](#collect-static-files)
-- [Customize Admin UI Text](#customize-admin-ui-text)
+- [Customize & Translate Text](#customize--translate-text)
 - [Demo UI Patterns](#demo-ui-patterns)
 - [Develop with Core Styles Simultaneously](#develop-with-core-styles-simultaneously)
 
@@ -62,7 +62,7 @@ docker exec -it core_cms sh -c "python manage.py collectstatic --no-input"
 > **Note**
 > We may be able to [automatically perform `collectstatic`](https://stackoverflow.com/q/59339571/11817077). **Help wanted!**
 
-## Customize Admin UI Text
+## Customize & Translate Text
 
 1. Create file:\
     `/taccsite_cms/locale/en/LC_MESSAGES/django.po`

@@ -47,7 +47,7 @@ SESSION_COOKIE_SECURE = True
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 ########################
-# DATABASE SETTINGS
+# STORAGE
 ########################
 
 DATABASES = {
@@ -239,7 +239,7 @@ NSF_BRANDING = [
     "True"
 ]
 
-BRANDING = [TACC_BRANDING, UTEXAS_BRANDING]
+BRANDING = [ TACC_BRANDING, UTEXAS_BRANDING ]
 
 
 ########################
