@@ -695,6 +695,7 @@ DJANGOCMS_ICON_SETS = [
 
 try:
     from taccsite_cms.settings_custom import *
+    import taccsite_cms.settings_custom as settings_custom
 except ModuleNotFoundError:
     pass
 
@@ -705,6 +706,7 @@ except ModuleNotFoundError:
 
 try:
     from taccsite_cms.settings_local import *
+    import taccsite_cms.settings_local as settings_local
 except ModuleNotFoundError:
     pass
 
@@ -731,20 +733,20 @@ if 'LOGO' not in locals():
     deprecated_SETTINGS_EXPORT += ['LOGO']
 
 # Some clients still set these in settings
-if 'FAVICON' in locals():
+if 'FAVICON' in locals() and 'FAVICON' and not hasattr(settings_local, 'FAVICON') and not hasattr(settings_custom, 'FAVICON'):
     PORTAL_FAVICON = FAVICON
     deprecated_SETTINGS_EXPORT += ['FAVICON']
-if 'TACC_BLOG_SHOW_CATEGORIES' in locals():
+if 'TACC_BLOG_SHOW_CATEGORIES' in locals() and 'TACC_BLOG_SHOW_CATEGORIES' not hasattr(settings_local, 'TACC_BLOG_SHOW_CATEGORIES') and not hasattr(settings_custom, 'TACC_BLOG_SHOW_CATEGORIES'):
     PORTAL_BLOG_SHOW_CATEGORIES = TACC_BLOG_SHOW_CATEGORIES
-if 'TACC_BLOG_SHOW_TAGS' in locals():
+if 'TACC_BLOG_SHOW_TAGS' in locals() and 'TACC_BLOG_SHOW_TAGS' not hasattr(settings_local, 'TACC_BLOG_SHOW_TAGS') and not hasattr(settings_custom, 'TACC_BLOG_SHOW_TAGS'):
     PORTAL_BLOG_SHOW_TAGS = TACC_BLOG_SHOW_TAGS
-if 'TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY' in locals():
+if 'TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY' in locals() and 'TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY' not hasattr(settings_local, 'TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY') and not hasattr(settings_custom, 'TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY'):
     PORTAL_BLOG_CUSTOM_MEDIA_POST_CATEGORY = TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY
-if 'TACC_BLOG_SHOW_ABSTRACT_TAG' in locals():
+if 'TACC_BLOG_SHOW_ABSTRACT_TAG' in locals() and 'TACC_BLOG_SHOW_ABSTRACT_TAG' not hasattr(settings_local, 'TACC_BLOG_SHOW_ABSTRACT_TAG') and not hasattr(settings_custom, 'TACC_BLOG_SHOW_ABSTRACT_TAG'):
     PORTAL_BLOG_SHOW_ABSTRACT_TAG = TACC_BLOG_SHOW_ABSTRACT_TAG
-if 'TACC_BLOG_CATEGORY_ORDER' in locals():
+if 'TACC_BLOG_CATEGORY_ORDER' in locals() and 'TACC_BLOG_CATEGORY_ORDER' not hasattr(settings_local, 'TACC_BLOG_CATEGORY_ORDER') and not hasattr(settings_custom, 'TACC_BLOG_CATEGORY_ORDER'):
     PORTAL_BLOG_CATEGORY_ORDER = TACC_BLOG_CATEGORY_ORDER
-if 'TACC_SOCIAL_SHARE_PLATFORMS' in locals():
+if 'TACC_SOCIAL_SHARE_PLATFORMS' in locals() and 'TACC_SOCIAL_SHARE_PLATFORMS' not hasattr(settings_local, 'TACC_SOCIAL_SHARE_PLATFORMS') and not hasattr(settings_custom, 'TACC_SOCIAL_SHARE_PLATFORMS'):
     PORTAL_SOCIAL_SHARE_PLATFORMS = TACC_SOCIAL_SHARE_PLATFORMS
 
 ########################
