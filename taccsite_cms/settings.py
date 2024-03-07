@@ -727,27 +727,29 @@ except ImportError:
 # E.g. TACC/Core-CMS-Custom, TACC/tup-ui (before TACC/tup-ui#436/)
 deprecated_SETTINGS_EXPORT = []
 
-# The header_logo.html still supports this
+# The header_logo.html still supports this setting
 if 'LOGO' not in locals():
     LOGO = False
     deprecated_SETTINGS_EXPORT += ['LOGO']
 
-# Some clients still set these in settings
-if 'FAVICON' in locals() and 'FAVICON' and not hasattr(settings_local, 'FAVICON') and not hasattr(settings_custom, 'FAVICON'):
-    PORTAL_FAVICON = FAVICON
-    deprecated_SETTINGS_EXPORT += ['FAVICON']
-if 'TACC_BLOG_SHOW_CATEGORIES' in locals() and 'TACC_BLOG_SHOW_CATEGORIES' not hasattr(settings_local, 'TACC_BLOG_SHOW_CATEGORIES') and not hasattr(settings_custom, 'TACC_BLOG_SHOW_CATEGORIES'):
-    PORTAL_BLOG_SHOW_CATEGORIES = TACC_BLOG_SHOW_CATEGORIES
-if 'TACC_BLOG_SHOW_TAGS' in locals() and 'TACC_BLOG_SHOW_TAGS' not hasattr(settings_local, 'TACC_BLOG_SHOW_TAGS') and not hasattr(settings_custom, 'TACC_BLOG_SHOW_TAGS'):
-    PORTAL_BLOG_SHOW_TAGS = TACC_BLOG_SHOW_TAGS
-if 'TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY' in locals() and 'TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY' not hasattr(settings_local, 'TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY') and not hasattr(settings_custom, 'TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY'):
-    PORTAL_BLOG_CUSTOM_MEDIA_POST_CATEGORY = TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY
-if 'TACC_BLOG_SHOW_ABSTRACT_TAG' in locals() and 'TACC_BLOG_SHOW_ABSTRACT_TAG' not hasattr(settings_local, 'TACC_BLOG_SHOW_ABSTRACT_TAG') and not hasattr(settings_custom, 'TACC_BLOG_SHOW_ABSTRACT_TAG'):
-    PORTAL_BLOG_SHOW_ABSTRACT_TAG = TACC_BLOG_SHOW_ABSTRACT_TAG
-if 'TACC_BLOG_CATEGORY_ORDER' in locals() and 'TACC_BLOG_CATEGORY_ORDER' not hasattr(settings_local, 'TACC_BLOG_CATEGORY_ORDER') and not hasattr(settings_custom, 'TACC_BLOG_CATEGORY_ORDER'):
-    PORTAL_BLOG_CATEGORY_ORDER = TACC_BLOG_CATEGORY_ORDER
-if 'TACC_SOCIAL_SHARE_PLATFORMS' in locals() and 'TACC_SOCIAL_SHARE_PLATFORMS' not hasattr(settings_local, 'TACC_SOCIAL_SHARE_PLATFORMS') and not hasattr(settings_custom, 'TACC_SOCIAL_SHARE_PLATFORMS'):
-    PORTAL_SOCIAL_SHARE_PLATFORMS = TACC_SOCIAL_SHARE_PLATFORMS
+# Some clients still support these settings
+old_setting_names = [
+    'FAVICON'
+    'TACC_BLOG_SHOW_CATEGORIES',
+    'TACC_BLOG_SHOW_TAGS',
+    'TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY',
+    'TACC_BLOG_SHOW_ABSTRACT_TAG',
+    'TACC_BLOG_CATEGORY_ORDER',
+    'TACC_SOCIAL_SHARE_PLATFORMS'
+]
+for old_setting_name in old_setting_names:
+    if old_setting_name in locals() or \
+        hasattr(old_setting_name, setting_name) or \
+        hasattr(old_setting_name, setting_name):
+            stripped_setting_name = old_setting_name.replace('TACC_', '')
+            locals()['PORTAL_' + setting_name] = locals()[stripped_setting_name]
+            if old_setting_name == 'FAVICON':
+                deprecated_SETTINGS_EXPORT += ['FAVICON']
 
 ########################
 # SETTINGS EXPORT
