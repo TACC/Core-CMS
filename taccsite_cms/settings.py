@@ -721,13 +721,14 @@ except ImportError:
 ########################
 # TODO: Make clients not use nor set these
 
-# The header_logo.html still supports this
-if 'LOGO' not in locals():
-    LOGO = False
-
 # Some clients still use deprecated settings in templates
 # E.g. TACC/Core-CMS-Custom, TACC/tup-ui (before TACC/tup-ui#436/)
 deprecated_SETTINGS_EXPORT = []
+
+# The header_logo.html still supports this
+if 'LOGO' not in locals():
+    LOGO = False
+    deprecated_SETTINGS_EXPORT += ['LOGO']
 
 # Some clients still set these in settings
 if 'FAVICON' in locals():
