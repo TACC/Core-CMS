@@ -35,7 +35,7 @@
 
 ### Update Custom Favicon Setting
 
-1. Rename the `FAVICON` dict to `PORTAL_FAVICON`.
+1. Refactor `FAVICON` setting as `PORTAL_FAVICON`.
 2. Add a key/value pair to the `PORTAL_FAVICON`.
 
 ```diff
@@ -46,6 +46,8 @@
 +     "is_remote": False,
 }
 ```
+
+3. Update use of `FAVICON` to use `PORTAL_FAVICON` ([example](https://github.com/TACC/tup-ui/pull/436/files#diff-7fe664832c1616b48f1b567baa26f1641a1de7e681f93546da5224dbd755eed2L13-R14)).
 
 ### Upgrade Custom Logo Setting
 
