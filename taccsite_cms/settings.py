@@ -725,15 +725,14 @@ except ImportError:
 if 'LOGO' not in locals():
     LOGO = False
 
-# Some clients still use these in templates
-deprecated_SETTINGS_EXPORT = [
-    # SEE: TACC/Core-CMS-Custom & TACC/tup-ui
-    'FAVICON'
-]
+# Some clients still use deprecated settings in templates
+# E.g. TACC/Core-CMS-Custom, TACC/tup-ui (before TACC/tup-ui#436/)
+deprecated_SETTINGS_EXPORT = []
 
 # Some clients still set these in settings
 if 'FAVICON' in locals():
     PORTAL_FAVICON = FAVICON
+    deprecated_SETTINGS_EXPORT += ['FAVICON']
 if 'TACC_BLOG_SHOW_CATEGORIES' in locals():
     PORTAL_BLOG_SHOW_CATEGORIES = TACC_BLOG_SHOW_CATEGORIES
 if 'TACC_BLOG_SHOW_TAGS' in locals():
