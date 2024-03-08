@@ -291,6 +291,11 @@ PORTAL_IS_CORE = True
 PORTAL_HAS_LOGIN = True
 PORTAL_HAS_SEARCH = True
 
+# Only use one of these values: 'sm', 'md', 'lg', 'xl'
+# SEE: https://getbootstrap.com/docs/4.0/components/navbar/#responsive-behaviors
+# FAQ: A falsy value will trigger default logic for nav width
+PORTAL_NAV_WIDTH = False
+
 LOGOUT_REDIRECT_URL = '/'
 
 # using container name to avoid cep.dev dns issues locally
@@ -764,6 +769,7 @@ SETTINGS_EXPORT = deprecated_SETTINGS_EXPORT + [
     'PORTAL_IS_CORE',
     'PORTAL_HAS_LOGIN',
     'PORTAL_HAS_SEARCH',
+    'PORTAL_NAV_WIDTH',
     'GOOGLE_ANALYTICS_PROPERTY_ID',
     'GOOGLE_ANALYTICS_PRELOAD',
     'TACC_CORE_STYLES_VERSION',

@@ -9,9 +9,18 @@
 
 {% with settings.PORTAL_HAS_LOGIN as SHOW_PORTAL %}
 {% with settings.PORTAL_HAS_SEARCH as SHOW_SEARCH %}
+{% with settings.PORTAL_NAV_WIDTH as NAV_WIDTH %}
 
 <!-- Navigation Bar -->
-<nav id="s-header" class="s-header  navbar {% if SHOW_PORTAL or SHOW_SEARCH %}navbar-expand-xl{% else %}navbar-expand-lg{% endif %} navbar-dark">
+<nav id="s-header" class="s-header  navbar navbar-dark
+  {% if NAV_WIDTH %}
+  navbar-expand-{{NAV_WIDTH}}
+  {% elif SHOW_PORTAL or SHOW_SEARCH %}
+  navbar-expand-xl
+  {% else %}
+  navbar-expand-lg
+  {% endif %}
+">
   <!-- Portal Logo -->
   {% include "header_logo.html" %}
 
@@ -36,5 +45,6 @@
   </div>
 </nav>
 
+{% endwith %}
 {% endwith %}
 {% endwith %}
