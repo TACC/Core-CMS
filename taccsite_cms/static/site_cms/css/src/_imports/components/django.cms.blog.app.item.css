@@ -135,6 +135,7 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 
 :--article-item .attrs {
   color: var(--global-color-primary--dark);
+  justify-self: end;
 }
 :--article-item .attrs a {
   color: inherit;
