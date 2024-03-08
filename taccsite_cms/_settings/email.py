@@ -1,7 +1,7 @@
 """Configure email settings (for apps e.g. djangocms_forms)"""
 
 ########################
-# DJANGO
+# DJANGO: EMAIL
 # https://docs.djangoproject.com/en/2.2/topics/email/
 ########################
 
