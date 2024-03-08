@@ -697,7 +697,7 @@ try:
     from taccsite_cms.settings_custom import *
     import taccsite_cms.settings_custom as settings_custom
 except ModuleNotFoundError:
-    pass
+    settings_custom = []
 
 try:
     from taccsite_cms.secrets import *
@@ -708,7 +708,7 @@ try:
     from taccsite_cms.settings_local import *
     import taccsite_cms.settings_local as settings_local
 except ModuleNotFoundError:
-    pass
+    settings_local = []
 
 try:
     from taccsite_cms import custom_app_settings
