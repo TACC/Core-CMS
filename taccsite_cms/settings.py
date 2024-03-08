@@ -744,8 +744,8 @@ old_setting_names = [
 ]
 for old_setting_name in old_setting_names:
     if old_setting_name in locals() or \
-        hasattr(old_setting_name, setting_name) or \
-        hasattr(old_setting_name, setting_name):
+        hasattr(settings_custom, setting_name) or \
+        hasattr(settings_local, setting_name):
             stripped_setting_name = old_setting_name.replace('TACC_', '')
             locals()['PORTAL_' + setting_name] = locals()[stripped_setting_name]
             if old_setting_name == 'FAVICON':
