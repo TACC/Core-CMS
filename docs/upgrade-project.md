@@ -134,6 +134,9 @@ Refactor the `LOGO` array to a `PORTAL_LOGO` dict:
     +   ('custom-project-dir/templates/fullwidth.html', 'DEPRECATED Full Width'),
     ```
 
+    > **Important**
+    > The `settings_custom.py` is committed in [Core Portal Deployments], **not** [Core CMS Custom] **nor** [Core CMS Resources].
+
 ### Deploy And Test
 
 #### For a Deployed Website
@@ -156,3 +159,7 @@ Follow [Update Project] instructions. (Assume everything changed.)
 <!-- Link Aliases -->
 
 [Update Project]: ../README.md#new-minor-or-patch-version-or-branch
+
+[Core CMS Custom]: https://github.com/TACC/Core-CMS-Custom
+[Core CMS Resources]: https://github.com/TACC/Core-CMS-Resources
+[Core Portal Deployments]: https://github.com/TACC/Core-Portal-Deployments
