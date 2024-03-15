@@ -41,18 +41,14 @@ Styleguide Components.DjangoCMS.Blog.App
 
 .app-blog header {
   display: grid;
-  grid-template-areas:
-    'cats'
-    'tags'
-    'attr'
-    'head'
-    'subh';
+  column-gap: 1em;
 }
 :--article-page h1,
 :--article-item h3    { grid-area: head }
 :--article-page h2,
 :--article-item h4    { grid-area: subh }
 .app-blog .attrs      { grid-area: attr }
+.app-blog .dates      { grid-area: date }
 .app-blog .categories { grid-area: cats }
 .app-blog .tags       { grid-area: tags }
 .app-blog .links      { grid-area: link }
@@ -78,7 +74,6 @@ Styleguide Components.DjangoCMS.Blog.App
   list-style: none;
 
   padding-left: 0; /* overwrite html-elements.css */
-  margin-bottom: 0.25em; /* overwrite html-elements.css */
 
   font-size: var(--global-font-size--medium);
 }
@@ -88,18 +83,16 @@ Styleguide Components.DjangoCMS.Blog.App
 /* Metadata */
 
 /* To layout data */
-.app-blog .attrs,
 .app-blog .tags,
 .app-blog .categories {
   display: flex;
   flex-direction: row;
   gap: 1em;
 }
-.app-blog .attrs {
-  justify-content: space-between;
-}
-.app-blog .date {
-  order: -1
+
+/* To always hide byline prefix */
+.app-blog .byline > span {
+  display: none;
 }
 
 /* To conditionally hide tags & categories */
@@ -123,7 +116,7 @@ Styleguide Components.DjangoCMS.Blog.App
   color: var(--global-color-primary--xx-light);
   background-color: var(--global-color-primary--xx-dark);
 
-  font-size: var(--global-font-size--x-small);
+  font-size: var(--global-font-size--small);
 }
 
 /* To style tags as "pills" (the UI pattern) */
@@ -134,22 +127,57 @@ Styleguide Components.DjangoCMS.Blog.App
   background-color: var(--global-color-primary--light);
 }
 
+/* To style dates */
+.app-blog time {
+  color: var(--global-color-accent--secondary);
+  font-weight: var(--medium);
+  text-transform: uppercase;
+}
+
 
 
 /* Social Media */
 
+/* TACC: Logos */
+
 .app-blog .logos--social {
-  justify-content: end;
   display: flex;
-  gap: 0.25em;
+  flex-wrap: wrap;
+  justify-self: end;
 }
-.app-blog .logos--social a {
-  height: fit-content; /* remove whitespace */
+
+.app-blog .logos--social > a {
+  display: flex; /* to vertically center the svg (as needed) */
+
+  @media (pointer: coarse) {
+    padding-inline: 0.5em;
+  }
+  @media not (pointer: coarse) {
+    padding-inline: 0.25em;
+  }
 }
+
+.app-blog .logos__text-before {
+  white-space: nowrap;
+  margin-right: 0.25em;
+}
+
 .app-blog .logos--social svg {
-  display: block; /* remove whitespace */
-  height: var(--global-font-size--x-large);
+  fill: var(--global-color-primary--x-dark);
+
+  @media (pointer: coarse) {
+    height: var(--global-font-size--xx-large);
+    width: var(--global-font-size--xx-large);
+  }
+  @media (pointer: fine), (pointer: none) {
+    height: var(--global-font-size--large);
+    width: var(--global-font-size--large);
+  }
 }
+.app-blog a.logos__facebook:hover svg { fill: #0866ff; }
+.app-blog a.logos__linkedin:hover svg { fill: #0a66c2; }
+.app-blog a.logos__email:hover svg { fill: #0000ff; }
+.app-blog a.logos__instagram:hover svg { fill: #bc1888; }
 
 
 
