@@ -7,23 +7,35 @@ logger = logging.getLogger(f"portal.{__name__}")
 
 def send_confirmation_email(form_name, form_data):
 
-    email_body = """
+    from django.contrib.sites.models import Site
+
+    # Get the current site
+    current_site = Site.objects.get_current()
+
+    # Get the site name
+    site_name = current_site.name
+
+    text_body = f"""
+            Greetings,
+            
+            Your have successfully submitted a form on the {site_name} website. Thank you for your submission.
+
+            Sincerely,
+            {site_name} Communications
+    """
+    email_body = f"""
             <p>Greetings,</p>
             <p>
-                Your have successfully submitted a form on the TACC website. Thank you for your submission.
-            </p>
-            <p>
-                Business hours are Monday - Friday, 8AM to 5PM Central. We will respond to your submission
-                according to the information provided on the form webpage.
+                Your have successfully submitted a form on the {site_name} website. Thank you for your submission.
             </p>
             <p>
             Sincerely,<br>
-            TACC Communications
+            {site_name} Communications
             </p>
             """
     send_mail(
     f"TACC Form Submission Received: {form_name}",
-    email_body,
+    text_body,
     "no-reply@tacc.utexas.edu",
     [form_data['email']],
     html_message=email_body)
