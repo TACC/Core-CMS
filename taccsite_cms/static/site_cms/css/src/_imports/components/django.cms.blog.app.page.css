@@ -29,15 +29,16 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 
 
 
-/* Header (Structure) */
+/* Header */
 
 :--article-page header {
   grid-template-areas:
+    'cats date'
     'head head'
     'subh subh'
-    'cats link'
-    'tags tags'
-    'attr attr';
+    'attr link'
+    'tags tags';
+  grid-template-columns: minmax(0, max-content) 1fr;
 }
 :--article-page header h1,
 :--article-page header h2 {
