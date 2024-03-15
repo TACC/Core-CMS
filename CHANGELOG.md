@@ -7,9 +7,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [4.9.0] - 2024-03-15: Redesign News Article Metadata, Sort Share Platforms
+
+### Added
+
+* feat: tup-584 re-order share platforms by @wesleyboar in https://github.com/TACC/Core-CMS/pull/813
+* CMD-73 Remove Taccsite Blockquote Plugin from Text Editor by @R-Tomas-Gonzalez in https://github.com/TACC/Core-CMS/pull/815
+* feat: tup 584 redesign news metadata by @wesleyboar in https://github.com/TACC/Core-CMS/pull/773
+
+### Fixed
+
+* fix: tup-694 abs URLs to same domain should be rel by @wesleyboar in https://github.com/TACC/Core-CMS/pull/811
+
+### Changed
+
+* style: setTargetForExternalLinks polish by @wesleyboar in https://github.com/TACC/Core-CMS/pull/810
+* CMD-73 Remove Taccsite Blockquote Plugin from Text Editor by @R-Tomas-Gonzalez in https://github.com/TACC/Core-CMS/pull/815
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.8.3...v4.9.0
+
 ## [4.8.3] - 2024-03-04: Fix External Link Script Bug & Fix Core-Styles Bugs
 
-## What's Changed
+### Fixed
 
 * hotfix: setTargetForExternalLinks missing scopeElement by @wesleyboar in https://github.com/TACC/Core-CMS/pull/808
 * fix: @tacc/core-styles v2.25 by @wesleyboar in https://github.com/TACC/Core-CMS/pull/807
@@ -1156,7 +1175,8 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.8.3...main
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.9.0...main
+[4.9.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.9.0
 [4.8.3]: https://github.com/TACC/Core-CMS/releases/tag/v4.8.3
 [4.8.2]: https://github.com/TACC/Core-CMS/releases/tag/v4.8.2
 [4.8.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.8.1
