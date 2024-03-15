@@ -135,7 +135,7 @@ Refactor the `LOGO` array to a `PORTAL_LOGO` dict:
     ```
 
     > **Important**
-    > The `settings_custom.py` is committed in [Core Portal Deployments], **not** [Core CMS Custom] **nor** [Core CMS Resources].
+    > The `cms.settings_custom.py` is committed in [Core Portal Deployments], **not** [Core CMS Custom] **nor** [Core CMS Resources].
 
 ### Deploy And Test
 
