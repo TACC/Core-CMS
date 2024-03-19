@@ -26,7 +26,7 @@ def send_confirmation_email(form_name, form_data):
     email_body = f"""
     <p>Greetings,</p>
     <p>
-        You have successfully submitted a form on the {site_name} website. Thank you for your submission.
+    You have successfully submitted a form on the {site_name} website. Thank you for your submission.
     </p>
     <p>
     Sincerely,<br>
