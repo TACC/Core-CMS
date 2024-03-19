@@ -16,23 +16,23 @@ def send_confirmation_email(form_name, form_data):
     site_name = current_site.name
 
     text_body = f"""
-            Greetings,
-            
-            Your have successfully submitted a form on the {site_name} website. Thank you for your submission.
+    Greetings,
+    
+    Your have successfully submitted a form on the {site_name} website. Thank you for your submission.
 
-            Sincerely,
-            {site_name} Communications
+    Sincerely,
+    {site_name} Communications
     """
     email_body = f"""
-            <p>Greetings,</p>
-            <p>
-                Your have successfully submitted a form on the {site_name} website. Thank you for your submission.
-            </p>
-            <p>
-            Sincerely,<br>
-            {site_name} Communications
-            </p>
-            """
+    <p>Greetings,</p>
+    <p>
+        Your have successfully submitted a form on the {site_name} website. Thank you for your submission.
+    </p>
+    <p>
+    Sincerely,<br>
+    {site_name} Communications
+    </p>
+    """
     send_mail(
     f"TACC Form Submission Received: {form_name}",
     text_body,
