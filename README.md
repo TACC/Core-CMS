@@ -4,7 +4,6 @@ https://cep.tacc.utexas.edu/
 
 The base CMS code for TACC WMA Workspace Portals & Websites
 
-
 ## Table of Contents
 
 - [Related Repositories](#related-repositories)
