@@ -7,6 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [4.10.0] - 2024-03-21: Confirmation Email, News Page Title, Settings Refactor
+
+### Added
+
+* CMD-72: All CMS Forms Should Send Confirmation E-Mail by @R-Tomas-Gonzalez in https://github.com/TACC/Core-CMS/pull/817
+
+### Fixed
+
+* CMD-107 News Feed Main Page Should Use Page Title by @R-Tomas-Gonzalez in https://github.com/TACC/Core-CMS/pull/818
+
+### Changed
+
+* feat: core-styles v2 by default by @wesleyboar in https://github.com/TACC/Core-CMS/pull/819
+
+### Removed
+
+* chore(taccsite_custom): WI-71 remove settings_custom by @wesleyboar in https://github.com/TACC/Core-CMS/pull/816
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.9.0...v4.10.0
+
 ## [4.9.0] - 2024-03-15: Redesign News Article Metadata, Sort Share Platforms
 
 ### Added
@@ -1175,7 +1195,8 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.9.0...main
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.10.0...main
+[4.10.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.10.0
 [4.9.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.9.0
 [4.8.3]: https://github.com/TACC/Core-CMS/releases/tag/v4.8.3
 [4.8.2]: https://github.com/TACC/Core-CMS/releases/tag/v4.8.2
