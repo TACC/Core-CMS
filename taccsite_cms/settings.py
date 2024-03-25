@@ -176,9 +176,8 @@ GOOGLE_ANALYTICS_PRELOAD = True
 # TACC: SEARCH
 ########################
 
-# To customize site search
-SEARCH_PATH = '/search'
-SEARCH_QUERY_PARAM_NAME = 'query_string'
+PORTAL_SEARCH_PATH = '/search'
+PORTAL_SEARCH_QUERY_PARAM_NAME = 'query_string'
 
 ########################
 # ELASTICSEARCH
@@ -288,9 +287,14 @@ PORTAL_FAVICON = {
 # TACC: PORTAL
 ########################
 
-INCLUDES_CORE_PORTAL = True
-INCLUDES_PORTAL_NAV = True
-INCLUDES_SEARCH_BAR = True
+PORTAL_IS_CORE = True
+PORTAL_HAS_LOGIN = True
+PORTAL_HAS_SEARCH = True
+
+# Only use one of these values: 'sm', 'md', 'lg', 'xl'
+# SEE: https://getbootstrap.com/docs/4.0/components/navbar/#responsive-behaviors
+# FAQ: A falsy value will trigger default logic for nav width
+PORTAL_NAV_WIDTH = False
 
 LOGOUT_REDIRECT_URL = '/'
 
@@ -304,8 +308,8 @@ CEP_AUTH_VERIFICATION_ENDPOINT = 'http://django:6000'
 ########################
 
 # TODO: Enable ONLY after TUP-590
-TACC_SOCIAL_SHARE_PLATFORMS = []
-# TACC_SOCIAL_SHARE_PLATFORMS = ['linkedin', 'instagram', 'facebook', 'email']
+PORTAL_SOCIAL_SHARE_PLATFORMS = []
+# PORTAL_SOCIAL_SHARE_PLATFORMS = ['linkedin', 'instagram', 'facebook', 'email']
 
 ########################
 # TACC: CORE STYLES
@@ -322,13 +326,13 @@ TACC_CORE_STYLES_VERSION = 2
 # Only effective with a DJANGOCMS_BLOG
 # SEE: https://github.com/TACC/Core-CMS/blob/ff6c727/taccsite_cms/settings_custom.example.py#L139-L185
 
-TACC_BLOG_SHOW_CATEGORIES = True
-TACC_BLOG_SHOW_TAGS = True
+PORTAL_BLOG_SHOW_CATEGORIES = True
+PORTAL_BLOG_SHOW_TAGS = True
 # To flag posts of certain category or tag, so template can take special action
-TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY = 'sample_value_e_g__mutlimedia__'
-TACC_BLOG_SHOW_ABSTRACT_TAG = 'sample_value_e_g__redirect__'
+PORTAL_BLOG_CUSTOM_MEDIA_POST_CATEGORY = 'sample_value_e_g__mutlimedia__'
+PORTAL_BLOG_SHOW_ABSTRACT_TAG = 'sample_value_e_g__redirect__'
 
-TACC_BLOG_CATEGORY_ORDER = ['press-release', 'feature-story', 'multimedia', 'podcast']
+PORTAL_BLOG_CATEGORY_ORDER = ['press-release', 'feature-story', 'multimedia', 'podcast']
 
 ########################
 # DJANGO & DJANGO_CMS & TACC
@@ -692,13 +696,14 @@ DJANGOCMS_ICON_SETS = [
 ]
 
 ########################
-# IMPORT & EXPORT
+# SETTINGS IMPORT
 ########################
 
 try:
     from taccsite_cms.settings_custom import *
+    import taccsite_cms.settings_custom as settings_custom
 except ModuleNotFoundError:
-    pass
+    settings_custom = []
 
 try:
     from taccsite_cms.secrets import *
@@ -707,8 +712,9 @@ except ModuleNotFoundError:
 
 try:
     from taccsite_cms.settings_local import *
+    import taccsite_cms.settings_local as settings_local
 except ModuleNotFoundError:
-    pass
+    settings_local = []
 
 try:
     from taccsite_cms import custom_app_settings
@@ -718,34 +724,61 @@ try:
 except ImportError:
     pass
 
-# Support deprecated settings
+########################
+# SETTINGS DEPRECATED
+########################
+# TODO: Make clients not use nor set these
+
+# Some clients still use deprecated settings in templates
+# E.g. TACC/Core-CMS-Custom, TACC/tup-ui (before TACC/tup-ui#436/)
+deprecated_SETTINGS_EXPORT = []
+
+# The header_logo.html still supports this setting
 if 'LOGO' not in locals():
     LOGO = False
-if 'FAVICON' not in locals():
-    FAVICON = False
-else:
-    PORTAL_FAVICON = FAVICON
+    deprecated_SETTINGS_EXPORT += ['LOGO']
 
-# Export expected settings
-SETTINGS_EXPORT = [
-    'DEBUG',
-    'BRANDING',
-    'LOGO',       # deprecated
-    'FAVICON',    # deprecated
-    'PORTAL_LOGO',
-    'PORTAL_FAVICON',
-    'INCLUDES_CORE_PORTAL',
-    'INCLUDES_PORTAL_NAV',
-    'INCLUDES_SEARCH_BAR',
-    'GOOGLE_ANALYTICS_PROPERTY_ID',
-    'GOOGLE_ANALYTICS_PRELOAD',
+# Some clients still support these settings
+old_setting_names = [
+    'FAVICON'
     'TACC_BLOG_SHOW_CATEGORIES',
     'TACC_BLOG_SHOW_TAGS',
-    'TACC_CORE_STYLES_VERSION',
     'TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY',
     'TACC_BLOG_SHOW_ABSTRACT_TAG',
     'TACC_BLOG_CATEGORY_ORDER',
-    'TACC_SOCIAL_SHARE_PLATFORMS',
-    'SEARCH_PATH',
-    'SEARCH_QUERY_PARAM_NAME',
+    'TACC_SOCIAL_SHARE_PLATFORMS'
+]
+for old_setting_name in old_setting_names:
+    if old_setting_name in locals() or \
+        hasattr(settings_custom, old_setting_name) or \
+        hasattr(settings_local, old_setting_name):
+            stripped_setting_name = old_setting_name.replace('TACC_', '')
+            locals()['PORTAL_' + setting_name] = locals()[stripped_setting_name]
+            if old_setting_name == 'FAVICON':
+                deprecated_SETTINGS_EXPORT += ['FAVICON']
+
+########################
+# SETTINGS EXPORT
+########################
+
+SETTINGS_EXPORT = deprecated_SETTINGS_EXPORT + [
+    'DEBUG',
+    'BRANDING',
+    'PORTAL_LOGO',
+    'PORTAL_FAVICON',
+    'PORTAL_IS_CORE',
+    'PORTAL_HAS_LOGIN',
+    'PORTAL_HAS_SEARCH',
+    'PORTAL_NAV_WIDTH',
+    'GOOGLE_ANALYTICS_PROPERTY_ID',
+    'GOOGLE_ANALYTICS_PRELOAD',
+    'TACC_CORE_STYLES_VERSION',
+    'PORTAL_BLOG_SHOW_CATEGORIES',
+    'PORTAL_BLOG_SHOW_TAGS',
+    'PORTAL_BLOG_CUSTOM_MEDIA_POST_CATEGORY',
+    'PORTAL_BLOG_SHOW_ABSTRACT_TAG',
+    'PORTAL_BLOG_CATEGORY_ORDER',
+    'PORTAL_SOCIAL_SHARE_PLATFORMS',
+    'PORTAL_SEARCH_PATH',
+    'PORTAL_SEARCH_QUERY_PARAM_NAME',
 ]
