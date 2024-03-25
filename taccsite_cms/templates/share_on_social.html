@@ -9,27 +9,29 @@
   {% block text_before %}
   <span class="logos__text-before">share this:</span>
   {% endblock text_before %}
-  {% if 'facebook' in platforms %}
-  <a href="https://www.facebook.com/sharer/sharer.php?u={{ url }}" target="_blank" class="logos__facebook">
-    <svg viewbox="0 0 25 25">
-      <use href="/static/site_cms/img/org_logos/facebook.svg#facebook-icon"></use>
-    </svg>
-  </a>
-  {% endif %}
-  {% if 'linkedin' in platforms %}
-  <a href="https://www.linkedin.com/cws/share?url={{ url }}" target="_blank" class="logos__linkedin">
-    <svg viewbox="0 0 25 25">
-      <use href="/static/site_cms/img/org_logos/linkedin.svg#linkedin-icon"></use>
-    </svg>
-  </a>
-  {% endif %}
-  {% if 'email' in platforms %}
-  <a href="mailto:?body={{ url }}" target="_blank" class="logos__email">
-    <svg viewbox="0 0 25 25">
-      <use href="/static/site_cms/img/org_logos/email.svg#email-icon"></use>
-    </svg>
-  </a>
-  {% endif %}
+  {% for platform in platforms %}
+    {% if platform == 'facebook' %}
+    <a href="https://www.facebook.com/sharer/sharer.php?u={{ url }}" target="_blank" class="logos__facebook">
+      <svg viewbox="0 0 25 25">
+        <use href="/static/site_cms/img/org_logos/facebook.svg#facebook-icon"></use>
+      </svg>
+    </a>
+    {% endif %}
+    {% if platform == 'linkedin' %}
+    <a href="https://www.linkedin.com/cws/share?url={{ url }}" target="_blank" class="logos__linkedin">
+      <svg viewbox="0 0 25 25">
+        <use href="/static/site_cms/img/org_logos/linkedin.svg#linkedin-icon"></use>
+      </svg>
+    </a>
+    {% endif %}
+    {% if platform == 'email' %}
+    <a href="mailto:?body={{ url }}" target="_blank" class="logos__email">
+      <svg viewbox="0 0 25 25">
+        <use href="/static/site_cms/img/org_logos/email.svg#email-icon"></use>
+      </svg>
+    </a>
+    {% endif %}
+  {% endfor %}
   {% block text_after %}
   {% endblock text_after %}
 {% endif %}

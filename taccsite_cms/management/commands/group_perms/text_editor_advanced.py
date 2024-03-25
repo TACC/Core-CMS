@@ -12,9 +12,6 @@ def set_group_perms():
     group.permissions.add( Permission.objects.get(name='Can change page', content_type=content_type) )
     model_name = 'page'.lower().replace(' ', '')
     content_type = ContentType.objects.get(app_label='cms', model=model_name)
-    group.permissions.add( Permission.objects.get(name='Can publish page', content_type=content_type) )
-    model_name = 'page'.lower().replace(' ', '')
-    content_type = ContentType.objects.get(app_label='cms', model=model_name)
     group.permissions.add( Permission.objects.get(name='Can view page', content_type=content_type) )
 
     model_name = 'placeholder'.lower().replace(' ', '')
