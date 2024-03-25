@@ -1,0 +1,24 @@
+@import url("@tacc/core-styles/src/lib/_imports/tools/x-figure.css");
+@import url("@tacc/core-styles/src/lib/_imports/tools/x-blockquote.css");
+
+/* To style elements that are or have captions */
+figure,
+.embed-responsive {
+  @extend .x-figure;
+}
+figcaption,
+p.caption {
+  @extend .x-figure-caption;
+}
+
+blockquote {
+  @extend .x-blockquote;
+}
+blockquote footer {
+  @extend .x-blockquote-caption;
+}
+
+/* To remove extra whitespace beneath embeded content */
+.embed-responsive > * {
+  display: block;
+}

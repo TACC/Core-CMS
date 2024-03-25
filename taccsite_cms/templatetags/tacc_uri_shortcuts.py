@@ -111,7 +111,8 @@ def get_menu_uri(menu_item):
             {{ child.get_menu_title }}</a>
             # <a href="https://otherwebsite.com/some-page">some page there</a>
     """
-    if hasattr(menu_item.attr, 'redirect_url'):
+    if ('redirect_url' in menu_item.attr and
+        menu_item.attr['redirect_url'] != None):
         return menu_item.attr['redirect_url']
     else:
         return menu_item.get_absolute_url()

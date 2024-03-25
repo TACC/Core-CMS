@@ -47,6 +47,11 @@ Styleguide Trumps.Scopes.SystemMonitor
   margin-bottom: 0px;
 }
 .s-system-monitor .table-dark {
+  --global-color-background--app: transparent;
+
+  background-color: var(--global-color-primary--xx-dark);
+}
+.s-system-monitor .table-dark :is(th, td) {
   color: var(--global-color-primary--normal);
   background-color: var(--global-color-primary--xx-dark);
 }

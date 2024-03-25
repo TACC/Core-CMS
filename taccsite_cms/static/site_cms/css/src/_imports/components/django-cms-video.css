@@ -1,0 +1,10 @@
+/* Let us control size of video without dimension */
+/* FAQ: Select any content within embed wrapper that has no dimension class */
+.embed-responsive:not([class*="embed-responsive-"])
+:is(.embed-responsive-item, embed, iframe, object, video) {
+  /* To undo Bootstrap _embed.css */
+  position: unset;
+  top: unset;
+  bottom: unset;
+  left: unset;
+}

@@ -1,56 +1,44 @@
 /**
- * Set external links (automatically discovered) to open in new tab
- * @param {object} [options] - Optional parameters
- * @param {array.<string>} [options.pathsToExernalSite=[]] - A list of relative URL paths that should be treated like external URLs
- * @param {HTMLElement|Document} [options.scopeElement=document] - The element within which to search for links
+ * Whether to log debug info to console
+ * @const {string}
  */
- export default function findLinksAndSetTargets(options) {
-  const defaults = {
-    pathsToExernalSite: [],
-    scopeElement: document
-  }
- const {pathsToExernalSite, scopeElement} = {...defaults, ...options};
-
-  const links = scopeElement.getElementsByTagName('a');
-  [ ...links ].forEach( function setTarget(link) {
-      if ( ! link.href) {
-        return false;
-      }
-      if (link.href.indexOf('javascript') === 0) {
-        return false;
-      }
-
-      const hasExternalRedirect = pathsToExernalSite.some(path => {
-          return _doPathsMatch(path, link.pathname);
-      });
-      // FAQ: I am literally double-checking, because I don't trust JavaScript
-      const isExternal = (link.origin !== document.location.origin);
-      const isInternal = (link.host === document.location.host);
-      const shouldOpenInNewWindow = (
-          ! isInternal && (isExternal || hasExternalRedirect)
-      );
-
-      if ( shouldOpenInNewWindow ) {
-          if (link.target !== '_blank') {
-              link.target = '_blank';
-              console.debug(`Link ${link.href} now opens in new tab`);
-          }
-      }
-  });
-}
+const SHOULD_DEBUG = window.DEBUG;
 
 /**
-* Does redirect path match link path (ignoring "/" link path)
-* @param {string} redirectPath - A path known to redirect to an external site
-* @param {string} testLinkPath - A path found on the page being updated
-*/
-function _doPathsMatch(redirectPath, testLinkPath) {
-if (testLinkPath === '/') {
-  return false;
-}
+ * Make links with absolute URLs open in new tab, and:
+ * - add accessible markup
+ * - fix absolute URLs that should be relative paths
+ */
+export default function findLinksAndSetTargets() {
+  const links = document.querySelectorAll('body > :is(header, main, footer) a');
+  const baseDocHost = document.location.host;
+  const baseDocHostWithSubdomain= `www.${baseDocHost}`;
 
-return redirectPath === testLinkPath
-    || redirectPath === testLinkPath.slice(1)
-    || redirectPath === testLinkPath.slice(0, -1)
-    || redirectPath === testLinkPath.slice(1).slice(0, -1);
+  [ ...links ].forEach( function setTarget(link) {
+    if ( ! link.href) {
+      return false;
+    }
+
+    const isMailto = ( link.href.indexOf('mailto:') === 0 );
+    const isAbsolute = (link.href.indexOf('http') === 0);
+    const isSameHost = link.host === baseDocHost || link.host === baseDocHostWithSubdomain
+
+    // Links to pages at different host should open in new tab
+    if ( ! isSameHost || isMailto ) {
+      if ( link.target !== '_blank') {
+        link.target = '_blank';
+        if (SHOULD_DEBUG) {
+          console.debug(`Link ${link.href} now opens in new tab`);
+        }
+      }
+      if ( link.target === '_blank') {
+        link.setAttribute('aria-description', 'Opens in new window.');
+      }
+    }
+
+    // Links w/ absolute URL to page on same domain should use relative path
+    if ( isAbsolute && isSameHost ) {
+      link.href = link.pathname;
+    }
+  });
 }

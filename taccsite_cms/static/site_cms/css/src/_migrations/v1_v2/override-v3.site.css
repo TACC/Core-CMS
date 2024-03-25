@@ -1,0 +1,11 @@
+/*!
+ * TACC v3 site.css Overrides
+ */
+
+/* To restore ../bootstrap.3.3.7.css margin-top */
+/* To overwrite Core CMS v3.10 Core-Styles v0.11+ */
+/* https://github.com/TACC/Core-Styles/blob/v0.13.0/src/lib/_imports/elements/html-elements.cms.css#L92-L95 */
+h1 + h2,
+h1 + hr {
+  margin-top: 21px;
+}

@@ -1,0 +1,98 @@
+/*
+Django CMS Blog App Page (Article/Post) Components
+
+Reference:
+
+- [`post_detail.html`](https://github.com/nephila/djangocms-blog/blob/1.1.1/djangocms_blog/templates/djangocms_blog/post_detail.html)
+
+Styleguide Components.DjangoCMS.Blog.App.Page
+*/
+
+@custom-selector :--large-media-page .app-blog.has-blog-category-large-media;
+
+/* To move breadcrumbs atop article */
+:--large-media-page article.post-detail .blog-visual {
+    float: unset;
+    margin-right: unset;
+    margin-block: unset;
+}
+:--large-media-page .container {
+    display: grid;
+    grid-template-areas:
+        'breadcrumbs'
+        'article';
+}
+:--large-media-page .s-breadcrumbs {
+    grid-area: breadcrumbs;
+    z-index: 1;
+}
+:--large-media-page .post-detail {
+    grid-area: article;
+    grid-row-start: breadcrumbs-start;
+}
+
+/* To move image to top of article */
+:--large-media-page .post-detail {
+    display: grid;
+    grid-template-areas:
+        'visual'
+        'header'
+        'content';
+}
+:--large-media-page header { grid-area: header; }
+:--large-media-page .blog-visual { grid-area: visual; }
+:--large-media-page .blog-content { grid-area: content; }
+
+/* To style header atop media */
+:--large-media-page header {
+    --media-overlap: 200px;
+
+    z-index: 1;
+    background-color: var(--global-color-background--app);
+    position: realtive;
+    margin-top: var(--media-overlap);
+}
+:--large-media-page header h2 {
+    /* NOTE: Not necessary on dev.tup (thus later probably core-styles v1+) */
+    /* https://dev.tup.tacc.utexas.edu/admin/djangocms_snippet/snippet/30 */
+    margin-top: 0;
+}
+
+/* To stretch media to full width */
+:--large-media-page {
+    /* NOTE: Use CMS image thumbnail option at this height to avoid caveats */
+    /* CAVEAT: A taller image will be cropped (but match design layout) */
+    /* CAVEAT: A shorter image will not overlap header enough to match design */
+    --media-height: 680px;
+
+    position: relative; /* to constrain absolute position of media */
+}
+:--large-media-page .blog-visual {
+    text-align: center; /* to center media */
+
+    position: absolute;
+    left: 0;
+    right: 0;
+
+    height: var(--media-height);
+    overflow-y: hidden;
+}
+:--large-media-page header {
+    /* FAQ: Content must move to show image which is out of flow */
+    margin-top: calc( var(--media-height) - var(--media-overlap) );
+}
+
+/* To pad title and content without reducing width */
+:--large-media-page header,
+:--large-media-page .blog-content {
+    --pad: 15px;
+
+    margin-inline: calc( -1 * var(--pad) ); /* prevent width reduction */
+    padding-inline: var(--pad);
+}
+:--large-media-page header {
+    padding-top: var(--pad);
+}
+:--large-media-page .blog-content {
+    padding-bottom: var(--pad);
+}

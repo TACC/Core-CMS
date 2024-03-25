@@ -1,37 +1,91 @@
+{# https://github.com/nephila/djangocms-blog/blob/1.1.1/djangocms_blog/templates/djangocms_blog/includes/blog_meta.html #}
 {% load i18n easy_thumbnails_tags cms_tags %}
 
-<ul class="post-detail">
+{# TACC (isolate dates for CSS grid flexibility): #}
+{# TACC (add class so CSS can target this element): #}
+<ul class="post-detail attrs">
+{# /TACC #}
+{# /TACC #}
     {% if post.author %}
-    <li class="post-detail-author">
-        {% trans "by" %} <a href="{% url 'djangocms_blog:posts-author' post.author.get_username %}">{% if post.author.get_full_name %}{{ post.author.get_full_name }}{% else %}{{ post.author }}{% endif %}</a>
+    {# TACC (add class so CSS can target this element): #}
+    <li class="byline">
+    {# /TACC #}
+        {# TACC (add <span> so "by" can be styled): #}
+        <span>{% trans "by" %}</span>
+        {# /TACC #}
+        <a href="{% url 'djangocms_blog:posts-author' post.author.get_username %}">{% if post.author.get_full_name %}{{ post.author.get_full_name }}{% else %}{{ post.author }}{% endif %}</a>
     </li>
+{# TACC (isolate dates for CSS grid flexibility): #}
+</ul>
+<ul class="post-detail dates">
+{# /TACC #}
     {% endif %}
-    {% if post.date_published %}
-    <li class="post-detail__date--published">
+    {# TACC (add class so CSS can target this element): #}
+    <li class="date date-published">
+      {# TACC (show date if published otherwise show "Unpublished"): #}
+      {% if post.date_published %}
+      {# /TACC #}
+      {# TACC (add <span> and &nbsp; so whitespace can be stripped): #}
+      {# TACC ("Published" vs "To be published"): #}
+      {% if not post.publish %}
+      <span>{% trans "To be published" %}</span>&nbsp;
+      {% endif %}
+      {# /TACC #}
+      {# /TACC #}
+      {# TACC (wrap with <time> tag because it should be so): #}
+      <time datetime="{{ post.date_published }}"
+            title="{{ post.date_published }}">
+      {# /TACC #}
         {{ post.date_published|date:"DATE_FORMAT" }}
+      {# TACC (wrap with <time> tag because it should be so): #}
+      </time>
+      {# /TACC #}
+      {# TACC (show date if published otherwise show "Unpublished"): #}
+      {% else %}
+      <span>{% trans "Unpublished" %}</span>
+      {% endif %}
+      {# /TACC #}
     </li>
-    {% endif %}
     {% if post.date_featured %}
-    <li class="post-detail__date--featured">
+    {# TACC (add class so CSS can target this element): #}
+    <li class="date date-featured">
+    {# /TACC #}
+      {# TACC (add <span> and &nbsp; so whitespace can be stripped): #}
+      {# TACC (fix from text "Published" to text "Featured"): #}
+      <span>{% trans "Featured" %}</span>&nbsp;
+      {# /TACC #}
+      {# /TACC #}
+      <time datetime="{{ post.date_featured }}"
+            title="{{ post.date_featured }}">
         {{ post.date_featured|date:"DATE_FORMAT" }}
+      </time>
     </li>
     {% endif %}
 </ul>
-<ul class="post-detail tags">
-    {% if post.categories.exists %}
-        {% for category in post.categories.all %}
-            {% if category.slug %}
-                <li class="category_{{ forloop.counter }}">
-                  <a href="{% url 'djangocms_blog:posts-category' category=category.slug %}" class="blog-categories-{{ category.count }}">{{ category.name }}</a>
-                </li>
-            {% endif %}
-        {% endfor %}
-    {% endif %}
+{# TACC (distinguish categories and tags via class): #}
+{# TACC (strip whitespace): #}
+<ul class="post-detail categories">{% spaceless %}
+{# /TACC #}
+{# /TACC #}
+    {# TACC (nephila/djangocms-blog#730, no commas, rename class, order cats): #}
+    {% include './blog_cats_organized.html' %}
+    {# /TACC #}
+{# TACC (distinguish categories and tags via class): #}
+{# TACC (strip whitespace): #}
+{% endspaceless %}</ul>
+<ul class="post-detail tags">{% spaceless %}
+{# /TACC #}
+{# /TACC #}
     {% if post.tags.exists %}
         {% for tag in post.tags.all %}
-            <li class="tag_{{ forloop.counter }}">
-              <a href="{% url 'djangocms_blog:posts-tagged' tag=tag.slug %}" class="blog-tag blog-tag-{{ tag.count }}">{{ tag.name }}</a>
-            </li>
+            {# TACC (fix bug nephila/djangocms-blog#711): #}
+            {# TACC (remove hard-coded comma so CSS handles separator): #}
+            <li class="tag_{{ forloop.counter }}"><a href="{% url 'djangocms_blog:posts-tagged' tag=tag.slug %}" class="blog-tag blog-tag-{{ tag.slug }}">{{ tag.name }}</a></li>
+            {# /TACC #}
+            {# /TACC #}
+            {# /TACC #}
         {% endfor %}
     {% endif %}
-</ul>
+{# TACC (strip whitespace): #}
+{% endspaceless %}</ul>
+{# /TACC #}

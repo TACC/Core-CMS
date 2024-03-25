@@ -1,0 +1,10 @@
+{# SEE: ./assets_core.md #}
+{% load static %}
+
+<style>
+  {# https://confluence.tacc.utexas.edu/x/b53tDg #}
+  @layer foundation, base, project;
+
+  @import url("https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css") layer(foundation);
+  @import url("{% static 'site_cms/css/build/core-styles.base.css' %}") layer(base);
+</style>

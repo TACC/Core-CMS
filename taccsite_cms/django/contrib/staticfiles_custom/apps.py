@@ -1,3 +1,6 @@
+# FAQ: Avoid `TemplateSyntaxError` "'staticfiles' is not a registered tag library."
+# SEE: https://docs.djangoproject.com/en/2.2/ref/applications/#for-application-authors
+
 from django.contrib.staticfiles.apps import StaticFilesConfig
 
 # Make `python manage.py collectstatic` ignore `src/` files
@@ -9,5 +12,5 @@ class TaccStaticFilesConfig(StaticFilesConfig):
         'CVS', '.*', '*~',
         # Added by TACC
         # WARNING: Ignores these from non-TACC static's also
-        'src', 'README.md'
+        'README.md', "*src/*.css"
     ]

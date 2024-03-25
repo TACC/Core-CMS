@@ -1,0 +1,19 @@
+{# https://github.com/torchbox/django-recaptcha/blob/4921a6c/captcha/templates/captcha/widget_v2_checkbox.html #}
+{# https://developers.google.com/recaptcha/docs/display#config #}
+{% load static %}
+
+{% include "captcha/includes/js_v2_checkbox.html" %}
+<noscript>Never mind. We assume you are not a robot.</noscript>
+<button
+  class="g-recaptcha  c-button c-button--secondary"
+  id="tacc-spam-toggle-{{ widget_uuid }}"
+  data-sitekey="{% for name, value in widget.attrs.items %}{% if name == 'data-sitekey' %}{{ value }}{% endif %}{% endfor %}"
+  data-callback="onSubmit_{{ widget_uuid }}"
+  data-badge="bottomright"
+  hidden
+>
+  I am not a robot
+</button>
+<script>
+  document.getElementById('tacc-spam-toggle-{{ widget_uuid }}').hidden = false;
+</script>

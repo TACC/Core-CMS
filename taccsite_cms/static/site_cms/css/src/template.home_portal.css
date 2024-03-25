@@ -5,4 +5,4 @@
 
 /* TRUMPS */
 
-@import url("_imports/trumps/s-document.css");
+@import url("@tacc/core-styles/src/lib/_imports/trumps/s-document.css");

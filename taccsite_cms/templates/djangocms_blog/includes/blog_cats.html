@@ -1,0 +1,1 @@
+{# To list classes for all categories #}{# @var prefix #}{% if post.categories.exists %}{% for category in post.categories.all %}{% if category.slug %} {{ prefix }}blog-category-{{ category.slug }}{% endif %}{% endfor %}{% endif %}

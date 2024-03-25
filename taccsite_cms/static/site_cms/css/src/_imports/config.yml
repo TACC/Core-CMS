@@ -1,0 +1,4 @@
+# This file configures CMS-specific pattern demo directory
+label: Core CMS
+context:
+  shouldLoadCMS: true

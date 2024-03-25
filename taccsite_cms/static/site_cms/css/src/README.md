@@ -6,7 +6,7 @@ AUTHOR STYLESHEETS HERE!
 - Import stylesheet partials into entry point files here at `./`.
 - Built stylesheets are compiled to `../build/`.
 
-See project `README.md` at ["Static Files"](/README.md#static-files).
+See project `README.md` at ["Static Files"](/README.md#static-files) and [CMS UI Organization].
 
 _This directory exists in `static/` __only__ because it is customary, using Django, for CSS to be authored in this directory._
 
@@ -53,3 +53,4 @@ _This directory exists in `static/` __only__ because it is customary, using Djan
 <!-- Link Aliases -->
 
 [Core Styles]: https://github.com/TACC/Core-Styles
+[CMS UI Organization]: https://confluence.tacc.utexas.edu/x/54AZCg
