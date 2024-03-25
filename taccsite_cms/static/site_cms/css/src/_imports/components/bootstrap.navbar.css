@@ -1,0 +1,17 @@
+/*
+Navbar (Bootstrap)
+
+Add to Bootstrap styles. See:
+
+- [Bootstrap Grid](https://getbootstrap.com/docs/4.0/components/navbar/)
+
+Styleguide Components.Bootstrap.Navbar
+*/
+
+/* To support collapsing navbar horizontally */
+/* SEE: https://stackoverflow.com/a/50064701/11817077 */
+.collapsing.width {
+  transition-property: width, visibility;
+  width: 0;
+  height: auto;
+}
