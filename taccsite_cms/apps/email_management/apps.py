@@ -15,24 +15,19 @@ def send_confirmation_email(form_name, form_data):
     # Get the site name
     site_name = current_site.name
 
-    text_body = f"""
-    Greetings,
+    def replace_word_in_file(file_path):
+        with open(file_path, 'r') as file:
+            file_content = file.read()
 
-    You have successfully submitted a form on the {site_name} website. Thank you for your submission.
+        modified_content = file_content.replace('{site_name}', f'{site_name}')
+        return modified_content
 
-    Sincerely,
-    {site_name} Communications
-    """
-    email_body = f"""
-    <p>Greetings,</p>
-    <p>
-    You have successfully submitted a form on the {site_name} website. Thank you for your submission.
-    </p>
-    <p>
-    Sincerely,<br>
-    {site_name} Communications
-    </p>
-    """
+    text_file = "apps/email_management/assets/confirmation_email.txt"
+    html_file = "apps/email_management/assets/confirmation_email.html"
+    
+    text_body = replace_word_in_file(text_file)
+    email_body = replace_word_in_file(html_file)
+
     send_mail(
     f"TACC Form Submission Received: {form_name}",
     text_body,
