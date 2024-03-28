@@ -47,7 +47,7 @@ def send_confirmation_email(form_name, form_data):
 def callback(form, cleaned_data, **kwargs):
     logger.debug(f"received submission from {form.name}")
     logger.debug(type(cleaned_data))
-    if ('email' in cleaned_data):
+    if ('email' in cleaned_data and EMAIL_MANAGEMENT_OPT_IN):
         send_confirmation_email(form.name, cleaned_data)
 
 class EmailManagementConfig(AppConfig):
