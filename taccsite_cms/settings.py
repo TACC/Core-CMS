@@ -310,7 +310,7 @@ TACC_SOCIAL_SHARE_PLATFORMS = []
 ########################
 # TACC: EMAIL OPT-IN
 ########################
-EMAIL_MANAGEMENT_OPT_IN = False
+PORTAL_SHOULD_SEND_CONF_EMAIL = False
 
 ########################
 # TACC: CORE STYLES

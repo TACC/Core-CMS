@@ -4,7 +4,7 @@ from djangocms_forms.signals import form_submission
 from django.core.mail import send_mail
 from django.conf import settings
 
-EMAIL_MANAGEMENT_OPT_IN = settings.EMAIL_MANAGEMENT_OPT_IN
+PORTAL_SHOULD_SEND_CONF_EMAIL = settings.PORTAL_SHOULD_SEND_CONF_EMAIL
 
 logger = logging.getLogger(f"portal.{__name__}")
 
@@ -47,7 +47,7 @@ def send_confirmation_email(form_name, form_data):
 def callback(form, cleaned_data, **kwargs):
     logger.debug(f"received submission from {form.name}")
     logger.debug(type(cleaned_data))
-    if ('email' in cleaned_data and EMAIL_MANAGEMENT_OPT_IN):
+    if ('email' in cleaned_data and PORTAL_SHOULD_SEND_CONF_EMAIL):
         send_confirmation_email(form.name, cleaned_data)
 
 class EmailManagementConfig(AppConfig):
