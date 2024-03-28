@@ -2,6 +2,9 @@ from django.apps import AppConfig
 import logging
 from djangocms_forms.signals import form_submission
 from django.core.mail import send_mail
+from django.conf import settings
+
+EMAIL_MANAGEMENT_OPT_IN = settings.EMAIL_MANAGEMENT_OPT_IN
 
 logger = logging.getLogger(f"portal.{__name__}")
 
