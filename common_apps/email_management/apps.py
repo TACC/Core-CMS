@@ -49,7 +49,7 @@ def callback(form, cleaned_data, **kwargs):
 
 class EmailManagementConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'apps.email_management'
+    name = 'common_apps.email_management'
 
     def ready(self):
         form_submission.connect(callback)
