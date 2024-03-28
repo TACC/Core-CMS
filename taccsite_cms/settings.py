@@ -313,7 +313,7 @@ TACC_SOCIAL_SHARE_PLATFORMS = []
 
 # Only use integer numbers (not "v1", not "0.11.0"),
 # so templates can load based on simple comparisons
-TACC_CORE_STYLES_VERSION = 0
+TACC_CORE_STYLES_VERSION = 2
 
 ########################
 # DJANGOCMS_BLOG: TACC
