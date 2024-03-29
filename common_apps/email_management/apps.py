@@ -5,6 +5,8 @@ from django.core.mail import send_mail
 from django.conf import settings
 
 PORTAL_SHOULD_SEND_CONF_EMAIL = settings.PORTAL_SHOULD_SEND_CONF_EMAIL
+TEXT_CONFIRMATION_EMAIL = settings.TEXT_CONFIRMATION_EMAIL
+HTML_CONFIRMATION_EMAIL = settings.HTML_CONFIRMATION_EMAIL
 
 logger = logging.getLogger(f"portal.{__name__}")
 
@@ -18,18 +20,13 @@ def send_confirmation_email(form_name, form_data):
     # Get the site name
     site_name = current_site.name
 
-    def replace_word_in_file(file_path):
-        with open(file_path, 'r') as file:
-            file_content = file.read()
+    def replace_word_in_file(email_content):
 
-        modified_content = file_content.replace('{site_name}', f'{site_name}')
+        modified_content = email_content.replace('{site_name}', f'{site_name}')
         return modified_content
-
-    text_file = "common_apps/email_management/assets/confirmation_email.txt"
-    html_file = "common_apps/email_management/assets/confirmation_email.html"
     
-    text_body = replace_word_in_file(text_file)
-    email_body = replace_word_in_file(html_file)
+    text_body = replace_word_in_file(TEXT_CONFIRMATION_EMAIL)
+    email_body = replace_word_in_file(HTML_CONFIRMATION_EMAIL)
 
     send_mail(
     f"TACC Form Submission Received: {form_name}",
