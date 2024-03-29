@@ -23,3 +23,9 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # EMAIL_HOST = 'localhost'
 # EMAIL_PORT = 1025
 # DEFAULT_FROM_EMAIL = 'no-reply@localhost'
+
+########################
+# TACC: EMAIL
+########################
+
+PORTAL_SHOULD_SEND_CONF_EMAIL = False
