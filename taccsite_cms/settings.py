@@ -308,11 +308,6 @@ TACC_SOCIAL_SHARE_PLATFORMS = []
 # TACC_SOCIAL_SHARE_PLATFORMS = ['linkedin', 'instagram', 'facebook', 'email']
 
 ########################
-# TACC: EMAIL OPT-IN
-########################
-PORTAL_SHOULD_SEND_CONF_EMAIL = False
-
-########################
 # TACC: CORE STYLES
 ########################
 
