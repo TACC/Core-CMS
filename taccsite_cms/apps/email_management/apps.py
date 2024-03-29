@@ -25,9 +25,9 @@ def send_confirmation_email(form_name, form_data):
         modified_content = file_content.replace('{site_name}', f'{site_name}')
         return modified_content
 
-    text_file = "apps/email_management/assets/confirmation_email.txt"
-    html_file = "apps/email_management/assets/confirmation_email.html"
-    
+    text_file = "taccsite_cms/apps/email_management/assets/confirmation_email.txt"
+    html_file = "taccsite_cms/apps/email_management/assets/confirmation_email.html"
+
     text_body = replace_word_in_file(text_file)
     email_body = replace_word_in_file(html_file)
 
