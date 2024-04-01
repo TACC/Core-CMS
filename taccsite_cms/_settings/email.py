@@ -30,7 +30,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 PORTAL_SHOULD_SEND_CONF_EMAIL = False
 
-TEXT_CONFIRMATION_EMAIL = """
+PORTAL_CONF_EMAIL_TEXT = """
 Greetings,
 
 You have successfully submitted a form on the {site_name} website. Thank you for your submission.
@@ -39,7 +39,7 @@ Sincerely,
 {site_name} Communications
 """
 
-HTML_CONFIRMATION_EMAIL = """
+PORTAL_CONF_EMAIL_HTML = """
 <p>Greetings,</p>
 <p>
   You have successfully submitted a form on the {site_name} website. Thank you

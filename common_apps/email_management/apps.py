@@ -5,8 +5,8 @@ from django.core.mail import send_mail
 from django.conf import settings
 
 PORTAL_SHOULD_SEND_CONF_EMAIL = settings.PORTAL_SHOULD_SEND_CONF_EMAIL
-TEXT_CONFIRMATION_EMAIL = settings.TEXT_CONFIRMATION_EMAIL
-HTML_CONFIRMATION_EMAIL = settings.HTML_CONFIRMATION_EMAIL
+TEXT_CONFIRMATION_EMAIL = settings.PORTAL_CONF_EMAIL_TEXT
+HTML_CONFIRMATION_EMAIL = settings.PORTAL_CONF_EMAIL_HTML
 
 logger = logging.getLogger(f"portal.{__name__}")
 
@@ -24,7 +24,7 @@ def send_confirmation_email(form_name, form_data):
 
         modified_content = email_content.replace('{site_name}', f'{site_name}')
         return modified_content
-    
+
     text_body = replace_word_in_file(TEXT_CONFIRMATION_EMAIL)
     email_body = replace_word_in_file(HTML_CONFIRMATION_EMAIL)
 
