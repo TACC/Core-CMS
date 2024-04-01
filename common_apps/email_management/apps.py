@@ -4,9 +4,9 @@ from djangocms_forms.signals import form_submission
 from django.core.mail import send_mail
 from django.conf import settings
 
-PORTAL_SHOULD_SEND_CONF_EMAIL = settings.PORTAL_SHOULD_SEND_CONF_EMAIL
-TEXT_CONFIRMATION_EMAIL = settings.PORTAL_CONF_EMAIL_TEXT
-HTML_CONFIRMATION_EMAIL = settings.PORTAL_CONF_EMAIL_HTML
+SHOULD_SEND_CONF_EMAIL = settings.PORTAL_SHOULD_SEND_CONF_EMAIL
+CONF_EMAIL_TEXT = settings.PORTAL_CONF_EMAIL_TEXT
+CONF_EMAIL_HTML = settings.PORTAL_CONF_EMAIL_HTML
 
 logger = logging.getLogger(f"portal.{__name__}")
 
@@ -25,8 +25,8 @@ def send_confirmation_email(form_name, form_data):
         modified_content = email_content.replace('{site_name}', f'{site_name}')
         return modified_content
 
-    text_body = replace_word_in_file(TEXT_CONFIRMATION_EMAIL)
-    email_body = replace_word_in_file(HTML_CONFIRMATION_EMAIL)
+    text_body = replace_word_in_file(CONF_EMAIL_TEXT)
+    email_body = replace_word_in_file(CONF_EMAIL_HTML)
 
     send_mail(
     f"TACC Form Submission Received: {form_name}",
@@ -39,7 +39,7 @@ def send_confirmation_email(form_name, form_data):
 def callback(form, cleaned_data, **kwargs):
     logger.debug(f"received submission from {form.name}")
     logger.debug(type(cleaned_data))
-    if ('email' in cleaned_data and PORTAL_SHOULD_SEND_CONF_EMAIL):
+    if ('email' in cleaned_data and SHOULD_SEND_CONF_EMAIL):
         send_confirmation_email(form.name, cleaned_data)
 
 class EmailManagementConfig(AppConfig):
