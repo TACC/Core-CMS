@@ -15,12 +15,14 @@ export default function findLinksAndSetTargets() {
   const baseDocHostWithSubdomain= `www.${baseDocHost}`;
 
   [ ...links ].forEach( function setTarget(link) {
-    if ( ! link.href) {
+    const linkHref = link.getAttribute('href');
+
+    if ( ! linkHref ) {
       return false;
     }
 
-    const isMailto = ( link.href.indexOf('mailto:') === 0 );
-    const isAbsolute = (link.href.indexOf('http') === 0);
+    const isMailto = ( linkHref.indexOf('mailto:') === 0 );
+    const isAbsolute = ( link.href.indexOf('http') === 0 );
     const isSameHost = link.host === baseDocHost || link.host === baseDocHostWithSubdomain
 
     // Links to pages at different host should open in new tab
@@ -28,7 +30,7 @@ export default function findLinksAndSetTargets() {
       if ( link.target !== '_blank') {
         link.target = '_blank';
         if (SHOULD_DEBUG) {
-          console.debug(`Link ${link.href} now opens in new tab`);
+          console.debug(`Link ${linkHref} now opens in new tab`);
         }
       }
       if ( link.target === '_blank') {
