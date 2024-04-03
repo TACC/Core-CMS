@@ -22,8 +22,10 @@ export default function findLinksAndSetTargets() {
     }
 
     const isMailto = ( linkHref.indexOf('mailto:') === 0 );
-    const isAbsolute = ( link.href.indexOf('http') === 0 );
+    const isAbsolute = ( linkHref.indexOf('http') === 0 );
     const isSameHost = link.host === baseDocHost || link.host === baseDocHostWithSubdomain
+
+    console.log({ isMailto, isAbsolute, isSameHost, linkHref });
 
     // Links to pages at different host should open in new tab
     if ( ! isSameHost || isMailto ) {
