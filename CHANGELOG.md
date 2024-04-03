@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
-## [4.10.2] - 2024-04-03: Fix Broken "Previous" and "Next" Links
+## [4.10.2] - 2024-04-03: Fix Broken "Previous" and "Next" Links on News
 
 ### Fixed
 
