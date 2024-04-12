@@ -31,6 +31,13 @@
       </svg>
     </a>
     {% endif %}
+    {% if platform == 'bluesky' %}
+    <a href="https://bsky.app/intent/compose?text={{ url }}" target="_blank" class="logos__bluesky">
+      <svg viewbox="0 0 25 25">
+        <use href="/static/site_cms/img/org_logos/bluesky.svg#bluesky-icon"></use>
+      </svg>
+    </a>
+    {% endif %}
   {% endfor %}
   {% block text_after %}
   {% endblock text_after %}
