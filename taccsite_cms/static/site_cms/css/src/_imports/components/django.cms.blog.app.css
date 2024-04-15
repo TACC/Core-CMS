@@ -177,6 +177,7 @@ Styleguide Components.DjangoCMS.Blog.App
 .app-blog a.logos__facebook:hover svg { fill: #0866ff; }
 .app-blog a.logos__linkedin:hover svg { fill: #0a66c2; }
 .app-blog a.logos__email:hover svg { fill: #0000ff; }
+.app-blog a.logos__bluesky:hover svg { fill: #0085ff; }
 .app-blog a.logos__instagram:hover svg { fill: #bc1888; }
 
 
