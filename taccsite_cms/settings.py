@@ -305,7 +305,7 @@ CEP_AUTH_VERIFICATION_ENDPOINT = 'http://django:6000'
 
 # TODO: Enable ONLY after TUP-590
 TACC_SOCIAL_SHARE_PLATFORMS = []
-# TACC_SOCIAL_SHARE_PLATFORMS = ['linkedin', 'instagram', 'facebook', 'email']
+# TACC_SOCIAL_SHARE_PLATFORMS = ['linkedin', 'instagram', 'facebook', 'bluesky', 'email']
 
 ########################
 # TACC: CORE STYLES
