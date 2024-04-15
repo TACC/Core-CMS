@@ -328,7 +328,8 @@ TACC_BLOG_SHOW_TAGS = True
 TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY = 'sample_value_e_g__mutlimedia__'
 TACC_BLOG_SHOW_ABSTRACT_TAG = 'sample_value_e_g__redirect__'
 
-TACC_BLOG_CATEGORY_ORDER = ['press-release', 'feature-story', 'multimedia', 'podcast']
+TACC_BLOG_CATEGORY_ORDER = []
+# TACC_BLOG_CATEGORY_ORDER = ['press-release', 'feature-story', 'multimedia', 'podcast']
 
 ########################
 # DJANGO & DJANGO_CMS & TACC
