@@ -5,7 +5,7 @@ These styles are only for the blog app pages (list pages, article pages).
 
 Reference:
 
-- [Django CMS Blog App Templates](https://github.com/nephila/djangocms-blog/tree/1.1.1/djangocms_blog/templates/djangocms_blog)
+- [Django CMS Blog App Templates](https://github.com/nephila/djangocms-blog/tree/1.2.3/djangocms_blog/templates/djangocms_blog)
 
 Styleguide Components.DjangoCMS.Blog.App
 */
@@ -177,6 +177,7 @@ Styleguide Components.DjangoCMS.Blog.App
 .app-blog a.logos__facebook:hover svg { fill: #0866ff; }
 .app-blog a.logos__linkedin:hover svg { fill: #0a66c2; }
 .app-blog a.logos__email:hover svg { fill: #0000ff; }
+.app-blog a.logos__bluesky:hover svg { fill: #0085ff; }
 .app-blog a.logos__instagram:hover svg { fill: #bc1888; }
 
 

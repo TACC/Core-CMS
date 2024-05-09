@@ -2,6 +2,11 @@ from django.apps import AppConfig
 import logging
 from djangocms_forms.signals import form_submission
 from django.core.mail import send_mail
+from django.conf import settings
+
+SHOULD_SEND_CONF_EMAIL = settings.PORTAL_SHOULD_SEND_CONF_EMAIL
+CONF_EMAIL_TEXT = settings.PORTAL_CONF_EMAIL_TEXT
+CONF_EMAIL_HTML = settings.PORTAL_CONF_EMAIL_HTML
 
 logger = logging.getLogger(f"portal.{__name__}")
 
@@ -15,24 +20,14 @@ def send_confirmation_email(form_name, form_data):
     # Get the site name
     site_name = current_site.name
 
-    text_body = f"""
-    Greetings,
+    def replace_word_in_file(email_content):
 
-    You have successfully submitted a form on the {site_name} website. Thank you for your submission.
+        modified_content = email_content.replace('{site_name}', f'{site_name}')
+        return modified_content
 
-    Sincerely,
-    {site_name} Communications
-    """
-    email_body = f"""
-    <p>Greetings,</p>
-    <p>
-    You have successfully submitted a form on the {site_name} website. Thank you for your submission.
-    </p>
-    <p>
-    Sincerely,<br>
-    {site_name} Communications
-    </p>
-    """
+    text_body = replace_word_in_file(CONF_EMAIL_TEXT)
+    email_body = replace_word_in_file(CONF_EMAIL_HTML)
+
     send_mail(
     f"TACC Form Submission Received: {form_name}",
     text_body,
@@ -44,12 +39,12 @@ def send_confirmation_email(form_name, form_data):
 def callback(form, cleaned_data, **kwargs):
     logger.debug(f"received submission from {form.name}")
     logger.debug(type(cleaned_data))
-    if ('email' in cleaned_data):
+    if ('email' in cleaned_data and SHOULD_SEND_CONF_EMAIL):
         send_confirmation_email(form.name, cleaned_data)
 
 class EmailManagementConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'apps.email_management'
+    name = 'common_apps.email_management'
 
     def ready(self):
         form_submission.connect(callback)

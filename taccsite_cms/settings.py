@@ -307,9 +307,8 @@ CEP_AUTH_VERIFICATION_ENDPOINT = 'http://django:6000'
 # TACC: SOCIAL MEDIA
 ########################
 
-# TODO: Enable ONLY after TUP-590
 PORTAL_SOCIAL_SHARE_PLATFORMS = []
-# PORTAL_SOCIAL_SHARE_PLATFORMS = ['linkedin', 'instagram', 'facebook', 'email']
+# TACC_SOCIAL_SHARE_PLATFORMS = ['linkedin', 'instagram', 'facebook', 'bluesky', 'email']
 
 ########################
 # TACC: CORE STYLES
@@ -332,7 +331,8 @@ PORTAL_BLOG_SHOW_TAGS = True
 PORTAL_BLOG_CUSTOM_MEDIA_POST_CATEGORY = 'sample_value_e_g__mutlimedia__'
 PORTAL_BLOG_SHOW_ABSTRACT_TAG = 'sample_value_e_g__redirect__'
 
-PORTAL_BLOG_CATEGORY_ORDER = ['press-release', 'feature-story', 'multimedia', 'podcast']
+PORTAL_BLOG_CATEGORY_ORDER = []
+# PORTAL_BLOG_CATEGORY_ORDER = ['press-release', 'feature-story', 'multimedia', 'podcast']
 
 ########################
 # DJANGO & DJANGO_CMS & TACC
@@ -494,7 +494,7 @@ INSTALLED_APPS = [
     # core TACC CMS
     # HELP: If this were top of list, would TACC/Core-CMS/pull/169 fix break?
     'taccsite_cms',
-    'apps.email_management',
+    'common_apps.email_management',
 
     # django CMS Bootstrap
     # IDEA: Extend Bootstrap apps instead of overwrite
