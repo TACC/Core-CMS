@@ -8,6 +8,11 @@ from django_auth_ldap.config import LDAPSearch
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth
 ########################
 
+# To enable LDAP:
+#
+# 0. Install the CMS as part of a full Portal.
+#    (like https://ecepalliance.org/ as of 2024-05)
+
 # To disable LDAP:
 #
 # 0. Edit custom or local settings for CMS project.
@@ -19,6 +24,8 @@ from django_auth_ldap.config import LDAPSearch
 # RFE: Use INCLUDES_CORE_PORTAL to toggle '...CorePortalAuthBackend'.
 
 # Requires django-auth-ldap ≥ 2.0.0
+# TODO: Determine whether this is safe to delete.
+#       It seems to be cruft from when CMS was coupled to Portal.
 LDAP_ENABLED = True
 
 AUTHENTICATION_BACKENDS = [
