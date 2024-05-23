@@ -11,7 +11,7 @@ from django_auth_ldap.config import LDAPSearch
 # To enable LDAP:
 #
 # 0. Install the CMS as part of a full Portal.
-#    (like https://ecepalliance.org/ as of 2024-05)
+#    (like https://prod.ecep.tacc.utexas.edu/ as of 2024-05)
 
 # To disable LDAP:
 #
