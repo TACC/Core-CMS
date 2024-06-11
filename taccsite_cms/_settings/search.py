@@ -1,6 +1,6 @@
 """Configure search plugins"""
 
-PORTAL_ES_ENABLED = False
+PORTAL_ES_ENABLED = True
 
 ########################
 # ELASTICSEARCH
