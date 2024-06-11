@@ -1,6 +1,19 @@
 """Configure search plugins"""
 
+########################
+# TACC: SEARCH
+########################
+
 PORTAL_ES_ENABLED = True
+
+SEARCH_PATH = '/search'
+
+if PORTAL_ES_ENABLED:
+    # Elasticsearch
+    SEARCH_QUERY_PARAM_NAME = 'query_string'
+else:
+    # Google
+    SEARCH_QUERY_PARAM_NAME = 'q'
 
 ########################
 # ELASTICSEARCH
@@ -37,16 +50,3 @@ if PORTAL_ES_ENABLED:
     ]
 else:
     _INSTALLED_APPS = []
-
-########################
-# TACC: SEARCH
-########################
-
-SEARCH_PATH = '/search'
-
-if PORTAL_ES_ENABLED:
-    # Elasticsearch
-    SEARCH_QUERY_PARAM_NAME = 'query_string'
-else:
-    # Google
-    SEARCH_QUERY_PARAM_NAME = 'q'
