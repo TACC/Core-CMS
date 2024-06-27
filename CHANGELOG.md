@@ -7,6 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [4.11.1] - 2024-06-26: Can Disable ES, Fix Hidden Nav, LDAP Requires Portal
+
+### Added
+
+* feat: support disabling elasticsearch by @wesleyboar in https://github.com/TACC/Core-CMS/pull/834
+
+### Fixed
+
+* fix: expanded navbar can overflow header by @wesleyboar in https://github.com/TACC/Core-CMS/pull/836
+
+### Documented
+
+* docs(auth): LDAP not supported sans Portal by @wesleyboar in https://github.com/TACC/Core-CMS/pull/833
+
+### Updated
+
+* chore(deps): bump socket.io from 4.5.4 to 4.7.5 by @dependabot in https://github.com/TACC/Core-CMS/pull/835
+
 ## [4.11.0] - 2024-04-15: Add "BlueSky" Social Media Share Platform
 
 ### Added
@@ -1219,7 +1237,8 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.11.0...main
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.11.1...main
+[4.11.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.11.1
 [4.11.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.11.0
 [4.10.2]: https://github.com/TACC/Core-CMS/releases/tag/v4.10.2
 [4.10.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.10.1

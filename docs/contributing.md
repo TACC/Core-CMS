@@ -42,8 +42,9 @@ Only appointed team members may release versions.
 
 1. Create new branch for version bump.
 1. Update `CHANGELOG.md`.
-1. Update version via:\
-  `npm version N.N.N`
+1. Update version:
+  - `npm version N.N.N`
+  - edit `version` in `pyproject.toml`
 1. Review. Commit. Push.
 1. Create release and tag on GitHub.
 1. Annotate Github's tag:\
