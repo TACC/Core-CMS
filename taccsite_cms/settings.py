@@ -748,7 +748,7 @@ for old_setting_name in old_setting_names:
         hasattr(settings_custom, old_setting_name) or \
         hasattr(settings_local, old_setting_name):
             stripped_setting_name = old_setting_name.replace('TACC_', '')
-            locals()['PORTAL_' + setting_name] = locals()[stripped_setting_name]
+            locals()['PORTAL_' + stripped_setting_name] = locals()[old_setting_name]
             if old_setting_name == 'FAVICON':
                 deprecated_SETTINGS_EXPORT += ['FAVICON']
 
