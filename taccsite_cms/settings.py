@@ -20,6 +20,10 @@ from taccsite_cms._settings.form_plugin import *
 from taccsite_cms._settings.form_plugin import (
     _INSTALLED_APPS as form_plugin_INSTALLED_APPS
 )
+from taccsite_cms._settings.search import *
+from taccsite_cms._settings.search import (
+    _INSTALLED_APPS as search_INSTALLED_APPS
+)
 
 ########################
 # DJANGO
@@ -172,35 +176,6 @@ CMS_PERMISSION = True
 GOOGLE_ANALYTICS_PROPERTY_ID = "UA-123ABC@%$&-#"
 GOOGLE_ANALYTICS_PRELOAD = True
 
-########################
-# TACC: SEARCH
-########################
-
-PORTAL_SEARCH_PATH = '/search'
-PORTAL_SEARCH_QUERY_PARAM_NAME = 'query_string'
-
-########################
-# ELASTICSEARCH
-########################
-
-ES_AUTH = 'username:password'
-ES_HOSTS = 'http://elasticsearch:9200'
-ES_INDEX_PREFIX = 'cms-dev-{}'
-ES_DOMAIN = 'http://localhost:8000'
-
-# Elasticsearch Indexing
-HAYSTACK_ROUTERS = ['aldryn_search.router.LanguageRouter', ]
-HAYSTACK_SIGNAL_PROCESSOR = 'taccsite_cms.signal_processor.RealtimeSignalProcessor'
-ALDRYN_SEARCH_DEFAULT_LANGUAGE = 'en'
-ALDRYN_SEARCH_REGISTER_APPHOOK = True
-HAYSTACK_CONNECTIONS = {
-    'default': {
-        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
-        'URL': ES_HOSTS,
-        'INDEX_NAME': ES_INDEX_PREFIX.format('cms'),
-        'KWARGS': {'http_auth': ES_AUTH}
-    }
-}
 
 ########################
 # TACC: BRANDING
@@ -484,9 +459,9 @@ INSTALLED_APPS = [
     'djangocms_bootstrap4.contrib.bootstrap4_tabs',
     'djangocms_bootstrap4.contrib.bootstrap4_utilities',
 
+] + search_INSTALLED_APPS + [
+
     # miscellaneous
-    'haystack',                # search index
-    'aldryn_apphooks_config',  # search index & django CMS Blog
     'test_without_migrations', # run tests faster
 
 ] + form_plugin_INSTALLED_APPS + [
