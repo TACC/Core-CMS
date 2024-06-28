@@ -716,12 +716,17 @@ if 'LOGO' not in locals():
 # Some clients still support these settings
 old_setting_names = [
     'FAVICON'
+    'INCLUDES_CORE_PORTAL',
+    'INCLUDES_PORTAL_NAV',
+    'INCLUDES_SEARCH_BAR',
     'TACC_BLOG_SHOW_CATEGORIES',
     'TACC_BLOG_SHOW_TAGS',
     'TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY',
     'TACC_BLOG_SHOW_ABSTRACT_TAG',
     'TACC_BLOG_CATEGORY_ORDER',
-    'TACC_SOCIAL_SHARE_PLATFORMS'
+    'TACC_SOCIAL_SHARE_PLATFORMS',
+    'SEARCH_PATH',
+    'SEARCH_QUERY_PARAM_NAME',
 ]
 for old_setting_name in old_setting_names:
     if old_setting_name in locals() or \
@@ -730,8 +735,16 @@ for old_setting_name in old_setting_names:
             if old_setting_name.startswith('TACC_'):
                 stripped_setting_name = old_setting_name.replace('TACC_', '')
                 locals()['PORTAL_' + stripped_setting_name] = locals()[old_setting_name]
-            if old_setting_name == 'FAVICON':
+            if old_setting_name.startswith('SEARCH_'):
+                locals()['PORTAL_' + old_setting_name] = locals()[old_setting_name]
+            if 'FAVICON' == old_setting_name:
                 deprecated_SETTINGS_EXPORT += ['FAVICON']
+            if 'INCLUDES_CORE_PORTAL' == old_setting_name:
+                PORTAL_IS_TACC_CORE_PORTAL = INCLUDES_CORE_PORTAL
+            if 'INCLUDES_PORTAL_NAV' == old_setting_name:
+                PORTAL_HAS_LOGIN = INCLUDES_PORTAL_NAV
+            if 'INCLUDES_SEARCH_BAR' == old_setting_name:
+                PORTAL_HAS_SEARCH = INCLUDES_SEARCH_BAR
 
 ########################
 # SETTINGS EXPORT
