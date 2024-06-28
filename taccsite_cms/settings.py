@@ -707,10 +707,8 @@ except ImportError:
 # Some clients still use deprecated settings in templates
 # E.g. TACC/Core-CMS-Custom, TACC/tup-ui (before TACC/tup-ui#436/)
 deprecated_SETTINGS_EXPORT = ['LOGO']
-
-# The header_logo.html still supports this setting
 if 'LOGO' not in locals():
-    LOGO = False
+    LOGO = False # header_logo.html reads this setting
 
 # Some clients still support these settings
 old_setting_names = [
