@@ -6,14 +6,14 @@
 
 PORTAL_ES_ENABLED = True
 
-SEARCH_PATH = '/search'
+PORTAL_SEARCH_PATH = '/search'
 
 if PORTAL_ES_ENABLED:
     # Elasticsearch
-    SEARCH_QUERY_PARAM_NAME = 'query_string'
+    PORTAL_SEARCH_QUERY_PARAM_NAME = 'query_string'
 else:
     # Google
-    SEARCH_QUERY_PARAM_NAME = 'q'
+    PORTAL_SEARCH_QUERY_PARAM_NAME = 'q'
 
 ########################
 # ELASTICSEARCH

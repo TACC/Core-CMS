@@ -1,10 +1,10 @@
 {# @var className #}
 
 {% with request.scheme|add:"://"|add:request.get_host|add:request.path as url %}
-{% with settings.TACC_SOCIAL_SHARE_PLATFORMS as platforms %}
+{% with settings.PORTAL_SOCIAL_SHARE_PLATFORMS as platforms %}
 <nav class="logos--social {{className}}">
 {% if platforms|length == 0 %}
-  <!-- No entries found in settings.TACC_SOCIAL_SHARE_PLATFORMS -->
+  <!-- No entries found in settings.PORTAL_SOCIAL_SHARE_PLATFORMS -->
 {% else %}
   {% block text_before %}
   <span class="logos__text-before">share this:</span>
