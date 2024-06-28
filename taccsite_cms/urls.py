@@ -28,7 +28,7 @@ urlpatterns = [
     url(r'^', include('djangocms_forms.urls')),
 ]
 
-if getattr(settings, 'PORTAL_IS_CORE', True):
+if getattr(settings, 'PORTAL_MANAGES_AUTH', True):
     urlpatterns += [
         # To allow direct access to markup for Portal and User Guide to render
         url(r'^cms/nav/search/markup/$', TemplateView.as_view(template_name='nav_search.raw.html'), name='search_bar_markup'),
