@@ -363,6 +363,7 @@ TEMPLATES = [
                 # SEE: https://docs.djangoproject.com/en/3.1/howto/custom-template-tags/#code-layout
                 'custom_portal_settings': 'taccsite_cms.templatetags.custom_portal_settings',
                 'tacc_uri_shortcuts': 'taccsite_cms.templatetags.tacc_uri_shortcuts',
+                'preferred_tag_for_class': 'taccsite_cms.templatetags.preferred_tag_for_class',
             },
             'loaders': [
                 'django.template.loaders.filesystem.Loader',
@@ -609,15 +610,13 @@ DJANGOCMS_STYLE_CHOICES = [
     'c-nav', # bare-bones instance
     'c-nav c-nav--boxed',
 ]
+DJANGOCMS_STYLE_TAGS_DEFAULT = 'Automatic'
 DJANGOCMS_STYLE_TAGS = [
-    # Even though <div> is often NOT the most semantic choice;
-    # CMS editor may neglect tag, any other tag could be inaccurate,
-    # and <div> is never inaccurate; so <div> is placed first 😞
-    # RFE: Support automatically choosing tag based on class name
-    # SEE: https://github.com/TACC/Core-CMS/pull/432
-    'div',
+    # CMS editor may neglect tag so we support intelligent tag choice
+    # SEE: taccsite_cms/templatetags/preferred_tag_for_class.py
+    DJANGOCMS_STYLE_TAGS_DEFAULT,
     # Ordered by expected usage
-    'section', 'article', 'header', 'footer', 'aside', 'nav',
+    'section', 'article', 'header', 'footer', 'aside', 'nav', 'div',
     # Not expected but not unreasonable
     'h1', 'h2', 'h3', 'h4', 'h5', 'h6'
 ]
@@ -667,7 +666,7 @@ DJANGOCMS_ICON_SETS = [
 ]
 
 ########################
-# IMPORT & EXPORT
+# SETTINGS IMPORT & EXPORT
 ########################
 
 try:
@@ -714,6 +713,7 @@ SETTINGS_EXPORT = [
     'INCLUDES_SEARCH_BAR',
     'GOOGLE_ANALYTICS_PROPERTY_ID',
     'GOOGLE_ANALYTICS_PRELOAD',
+    'DJANGOCMS_STYLE_TAGS_DEFAULT'
     'TACC_BLOG_SHOW_CATEGORIES',
     'TACC_BLOG_SHOW_TAGS',
     'TACC_CORE_STYLES_VERSION',
