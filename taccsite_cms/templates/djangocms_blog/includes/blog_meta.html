@@ -13,7 +13,7 @@
         {# TACC (add <span> so "by" can be styled): #}
         <span>{% trans "by" %}</span>
         {# TACC (add &nbsp; when styles do not strip whitespace): #}
-        {% if settings.TACC_CORE_STYLES_VERSION < 2 %}&nbsp;{% endif %}
+        {% if settings.TACC_CORE_STYLES_VERSION == 0 %}&nbsp;{% endif %}
         {# /TACC #}
         {# /TACC #}
         <a href="{% url 'djangocms_blog:posts-author' post.author.get_username %}">{% if post.author.get_full_name %}{{ post.author.get_full_name }}{% else %}{{ post.author }}{% endif %}</a>
