@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [4.12.0] - 2023-06-03: Rename Settings, Disable 2nd Breadcrumb, Fix Old News
+
+> **Warning**
+> To use this release, ensure your [CMS project is upgraded](https://github.com/TACC/Core-CMS/blob/v4.12.0/docs/upgrade-project.md).
+
+### Fixed
+
+* fix: CMD-162 disable 2nd-level CMS breadcrumbs by @wesleyboar in https://github.com/TACC/Core-CMS/pull/838
+* fix: CMD-163 v3.10–v3.11 migration news layout (ECEP) by @wesleyboar in https://github.com/TACC/Core-CMS/pull/839
+
+### Changed
+
+* refactor: cmd-79 rename tacc cms settings by @wesleyboar in https://github.com/TACC/Core-CMS/pull/792
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.11.1...v4.12.0
+
 ## [4.11.1] - 2024-06-26: Can Disable ES, Fix Hidden Nav, LDAP Requires Portal
 
 ### Added
@@ -1237,7 +1253,8 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.11.1...main
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.12.0...main
+[4.12.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.12.0
 [4.11.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.11.1
 [4.11.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.11.0
 [4.10.2]: https://github.com/TACC/Core-CMS/releases/tag/v4.10.2
