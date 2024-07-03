@@ -121,7 +121,6 @@ PORTAL_LOGO = {
     "is_remote": True,
     "img_file_src": "https://cdn.jsdelivr.net/gh/TACC/Core-CMS-Custom@813aa7c/ptdatax_assets/logo.png",
     "img_class": "", # additional class names
-    "is_remote": True,
     "link_href": "/",
     "link_target": "_self",
     "img_alt_text": "Custom CMS", # E.g. PT DataX, Frontera
@@ -188,8 +187,8 @@ BLOG_ENABLE_COMMENTS = False
 # DJANGOCMS_BLOG: TACC
 ########################
 
-TACC_BLOG_SHOW_CATEGORIES = True
-TACC_BLOG_SHOW_TAGS = True
+PORTAL_BLOG_SHOW_CATEGORIES = True
+PORTAL_BLOG_SHOW_TAGS = True
 
 ########################
 # DJANGOCMS_BLOG: DJANGO

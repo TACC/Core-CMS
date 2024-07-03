@@ -2,10 +2,31 @@
 
 ## Table of Contents
 
+- [from v4.N to v4.12](#from-v4n-to-v412)
 - [from v4.N to v4.7](#from-v4n-to-v47)
 - [from v3 to v4](#from-v3-to-v4)
 - [from v3.N to v3.12](#from-v3n-to-v312)
 - [from v2 to v3](#from-v2-to-v3)
+
+## from v4.N to v4.12
+
+- [Rename Certain Settings](#rename-certain-settings)
+
+### Rename Certain Settings
+
+| from | to |
+| - | - |
+| `INCLUDES_CORE_PORTAL` | `PORTAL_IS_TACC_CORE_PORTAL` |
+| `INCLUDES_PORTAL_NAV` | `PORTAL_HAS_LOGIN` |
+| `INCLUDES_SEARCH_BAR` | `PORTAL_HAS_SEARCH` |
+| `TACC_BLOG_SHOW_CATEGORIES` | `PORTAL_BLOG_SHOW_CATEGORIES` |
+| `TACC_BLOG_SHOW_TAGS` | `PORTAL_BLOG_SHOW_TAGS` |
+| `TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY` | `PORTAL_BLOG_CUSTOM_MEDIA_POST_CATEGORY` |
+| `TACC_BLOG_SHOW_ABSTRACT_TAG` | `PORTAL_BLOG_SHOW_ABSTRACT_TAG` |
+| `TACC_BLOG_CATEGORY_ORDER` | `PORTAL_BLOG_CATEGORY_ORDER` |
+| `TACC_SOCIAL_SHARE_PLATFORMS` | `PORTAL_SOCIAL_SHARE_PLATFORMS` |
+| `SEARCH_PATH` | `PORTAL_SEARCH_PATH` |
+| `SEARCH_QUERY_PARAM_NAME` | `PORTAL_SEARCH_QUERY_PARAM_NAME` |
 
 ## from v4.N to v4.7
 
@@ -14,7 +35,7 @@
 
 ### Update Custom Favicon Setting
 
-1. Rename the `FAVICON` dict to `PORTAL_FAVICON`.
+1. Refactor `FAVICON` setting as `PORTAL_FAVICON`.
 2. Add a key/value pair to the `PORTAL_FAVICON`.
 
 ```diff
@@ -25,6 +46,8 @@
 +     "is_remote": False,
 }
 ```
+
+3. Update use of `FAVICON` to use `PORTAL_FAVICON` ([example](https://github.com/TACC/tup-ui/pull/436/files#diff-7fe664832c1616b48f1b567baa26f1641a1de7e681f93546da5224dbd755eed2L13-R14)).
 
 ### Upgrade Custom Logo Setting
 

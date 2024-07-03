@@ -10,8 +10,8 @@
 
 {# /TACC #}
 {# TACC (define whether this is a special post): #}
-{% blog_post_use_custom_media post settings.TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY as use_custom_media %}
-{% blog_post_is_show_abstract post settings.TACC_BLOG_SHOW_ABSTRACT_TAG as is_show_abstract_post %}
+{% blog_post_use_custom_media post settings.PORTAL_BLOG_CUSTOM_MEDIA_POST_CATEGORY as use_custom_media %}
+{% blog_post_is_show_abstract post settings.PORTAL_BLOG_SHOW_ABSTRACT_TAG as is_show_abstract_post %}
 {# /TACC #}
 <article id="post-{{ post.slug }}" class="post-item post-detail">
     <header>

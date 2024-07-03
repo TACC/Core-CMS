@@ -8,6 +8,6 @@ https://github.com/TACC/Core-CMS/blob/main/taccsite_cms/settings_custom.example.
 # Hide error about using Google Recaptcha test keys
 SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
 
-# Disable the Core-Portal integration.
-INCLUDES_CORE_PORTAL = False
-INCLUDES_PORTAL_NAV = False
+# Disable the Core-Portal integration
+PORTAL_IS_TACC_CORE_PORTAL = False
+PORTAL_HAS_LOGIN = False
