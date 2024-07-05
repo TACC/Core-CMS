@@ -18,15 +18,6 @@ FAQ: IF a script or style is better cached with markup, THEN:
 
 
 
-<!-- Custom Site Assets: Styles. -->
-{% with settings.PORTAL_STYLES as styles %}
-{% for style in styles %}
-<link rel="stylesheet" href="{% if style.is_remote %}{{ style.path }}{% else %}{% static style.path %}{% endif %}" />
-{% endfor %}
-{% endwith %}
-
-
-
 {# Do NOT directly load project-specific assets here; see `/taccsite_custom` #}
 
 {# Example #}
