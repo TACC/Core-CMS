@@ -36,17 +36,17 @@
       <span class="branding-seperator"></span>
     {% endif %}
     <a
-      href="{{ logo.link_href }}"
-      target="{{ logo.link_target }}"
+      href="{{ brand.link_href }}"
+      target="{{ brand.link_target }}"
     >
       <img
-        class="branding-logo {{ logo.img_class }}"
-        src="{% if logo.is_remote %}{{ logo.img_file_src }}{% else %}{% static logo.img_file_src %}{% endif %}"
-        {% if logo.img_crossorigin %}
-        crossorigin="{{ logo.img_crossorigin }}"
+        class="branding-logo {{ brand.img_class }}"
+        src="{% if brand.is_remote %}{{ brand.img_file_src }}{% else %}{% static brand.img_file_src %}{% endif %}"
+        {% if brand.img_crossorigin %}
+        crossorigin="{{ brand.img_crossorigin }}"
         {% endif %}
-        {% if logo.img_alt_text %}
-        alt="{{ logo.img_alt_text }}"
+        {% if brand.img_alt_text %}
+        alt="{{ brand.img_alt_text }}"
         {% endif %}
       />
     </a>
