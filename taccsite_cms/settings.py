@@ -789,7 +789,6 @@ for old_setting_name in old_setting_names:
 
 SETTINGS_EXPORT = deprecated_SETTINGS_EXPORT + [
     'DEBUG',
-    'BRANDING',
     'TACC_CORE_STYLES_VERSION',
     'GOOGLE_ANALYTICS_PROPERTY_ID',
     'GOOGLE_ANALYTICS_PRELOAD',
