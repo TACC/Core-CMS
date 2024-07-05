@@ -218,7 +218,7 @@ BRANDING = [ TACC_BRANDING, UTEXAS_BRANDING ]
 
 
 ########################
-# TACC: LOGOS & FAVICON (DEPRECATED)
+# TACC: LOGO & FAVICON (DEPRECATED)
 ########################
 
 # LOGO = [
@@ -709,14 +709,14 @@ except ImportError:
 # SETTINGS DEPRECATED
 ########################
 # TODO: Make clients not use nor set these
+deprecated_SETTINGS_EXPORT = []
 
-# Some clients still use deprecated settings in templates
-# E.g. TACC/Core-CMS-Custom, TACC/tup-ui (before TACC/tup-ui#436/)
-deprecated_SETTINGS_EXPORT = ['LOGO']
+# For header_logo.html
+deprecated_SETTINGS_EXPORT += ['LOGO']
 if 'LOGO' not in locals():
-    LOGO = False # header_logo.html reads this setting
+    LOGO = False
 
-# Some clients still support these settings
+# For clients
 old_setting_names = [
     'FAVICON'
     'INCLUDES_CORE_PORTAL',
