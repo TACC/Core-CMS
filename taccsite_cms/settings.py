@@ -257,6 +257,10 @@ PORTAL_FAVICON = {
     "img_file_src": "site_cms/img/favicons/favicon.ico",
 }
 
+PORTAL_STYLES = [{
+    "is_remote": False,
+    "path": "site_cms/css/build/theme.has-dark-logo.css",
+}]
 
 ########################
 # TACC: PORTAL
