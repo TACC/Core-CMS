@@ -253,7 +253,7 @@ PORTAL_BRANDING = [ PORTAL_BRANDING_TACC, PORTAL_BRANDING_UTEXAS ]
 
 
 ########################
-# TACC: LOGOS & FAVICON (DEPRECATED)
+# TACC: LOGO & FAVICON (DEPRECATED)
 ########################
 
 # LOGO = [
