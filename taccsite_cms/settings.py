@@ -283,7 +283,7 @@ CEP_AUTH_VERIFICATION_ENDPOINT = 'http://django:6000'
 ########################
 
 PORTAL_SOCIAL_SHARE_PLATFORMS = []
-# TACC_SOCIAL_SHARE_PLATFORMS = ['linkedin', 'instagram', 'facebook', 'bluesky', 'email']
+# PORTAL_SOCIAL_SHARE_PLATFORMS = ['linkedin', 'instagram', 'facebook', 'bluesky', 'email']
 
 ########################
 # TACC: CORE STYLES
