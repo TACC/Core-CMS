@@ -1,5 +1,5 @@
 # Merged on top of Core-Styles base config
-# SEE: https://github.com/TACC/Core-Styles/blob/main/.postcssrc.base.yml
+# SEE: https://github.com/TACC/Core-Styles/blob/main/src/.postcssrc.base.yml
 plugins:
   postcss-import:
     # HELP: Do not use implicit load ever, and then remove it
