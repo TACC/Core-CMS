@@ -22,7 +22,11 @@ def send_confirmation_email(form_name, form_data):
 
     def replace_word_in_file(email_content):
 
-        modified_content = email_content.replace('{site_name}', f'{site_name}')
+        modified_content = email_content.replace(
+            '{site_name}', f'{site_name}'
+        ).replace(
+            '{form_name}', f'{form_name}'
+        )
         return modified_content
 
     text_body = replace_word_in_file(CONF_EMAIL_TEXT)
