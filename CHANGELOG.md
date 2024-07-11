@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [4.10.2-extra.1] - 2024-07-10: Support `form_name` in `PORTAL_CONF_EMAIL_…`
+
+### Added
+
+* feat: CMD-112 `form_name` in custom email message — off v4.10.2 by @wesleyboar in https://github.com/TACC/Core-CMS/pull/847
+
 ## [4.10.2] - 2024-04-03: Fix Broken "Previous" and "Next" Links on News
 
 ### Fixed
@@ -1213,7 +1219,8 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.10.2...main
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.10.2-extra.1...main
+[4.10.2-extra.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.10.2-extra.1
 [4.10.2]: https://github.com/TACC/Core-CMS/releases/tag/v4.10.2
 [4.10.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.10.1
 [4.10.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.10.0
