@@ -38,7 +38,7 @@ export default function findLinksAndSetTargets() {
         }
       }
       if ( link.target === '_blank') {
-        link.setAttribute('aria-description', 'Opens in new window.');
+        link.setAttribute('aria-label', 'Opens in new window.');
       }
     }
 
