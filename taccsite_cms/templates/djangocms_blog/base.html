@@ -13,7 +13,10 @@
     {% endif %}
 {% endblock meta %}
 
-{% block content %}
+{% block more_content %}
+{# TACC (wrap list in container to mimic other page layouts): #}
+<div class="container">
+{# /TACC #}
 
 {% if settings.TACC_CORE_STYLES_VERSION == 0 %}
 <link rel="stylesheet" href="{% static 'site_cms/css/build/site.app.blog.css' %}">
@@ -33,4 +36,7 @@
     {% block content_blog %}{% endblock %}
 </div>
 
-{% endblock content %}
+{# TACC (wrap list in container to mimic other page layouts): #}
+</div>
+{# /TACC #}
+{% endblock more_content %}
