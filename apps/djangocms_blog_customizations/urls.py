@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import re_path
 from .feeds import LatestEntriesFeed
 from .views import BlogView, BlogRemoteView
 
@@ -8,6 +8,6 @@ urlpatterns = [
     # Fails with `NoReverseMatch`
     # path('feed', LatestEntriesFeed(), name="djangocms_blog_customizations_feed"),
 
-    path('local', BlogView, name='djangocms_blog_customizations_base'),
-    path('remote', BlogRemoteView, name='djangocms_blog_customizations_remote'),
+    re_path(r'^local/', BlogView, name='djangocms_blog_customizations_base'),
+    re_path(r'^remote/', BlogRemoteView, name='djangocms_blog_customizations_remote'),
 ]

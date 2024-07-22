@@ -1,6 +1,5 @@
 from django.apps import AppConfig
-
+from django.utils.translation import gettext_lazy as _
 
 class customBlogAppConfig(AppConfig):
-    verbose_name = _("django CMS Blog customizations")
-    app_name = 'apps.djangocms_blog_customizations'
+    name = 'apps.djangocms_blog_customizations'
