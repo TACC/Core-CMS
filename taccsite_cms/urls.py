@@ -14,6 +14,7 @@ from django.views.static import serve
 from django.views.generic.base import TemplateView
 from taccsite_cms import remote_cms_auth as remote_cms_auth
 
+
 from django.http import request
 from django.views.generic.base import RedirectView
 admin.autodiscover()
@@ -44,7 +45,7 @@ if getattr(settings, 'PORTAL_IS_TACC_CORE_PORTAL', True):
 try:
     from .urls_custom import custom_urls
     urlpatterns += custom_urls
-except ImportError:
+except ModuleNotFoundError:
     pass
 
 if getattr(settings, 'PORTAL_HAS_LOGIN', True):
