@@ -19,5 +19,5 @@ urlpatterns = [
     # To render a blog (or any page) from another website
     # XXX: URLs are still local
     # XXX: Is NOT blog-specific, so should be a generic feature
-    re_path(r'^remote/', BlogRemoteView, name='remote'),
+    re_path(r'^remote/', BlogRemoteView.as_view(), name='remote'),
 ]
