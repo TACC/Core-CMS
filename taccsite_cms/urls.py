@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, print_function, unicode_literals
 
+import logging
+
 from cms.sitemaps import CMSSitemap
 from django.conf import settings
 from django.conf.urls.static import static
@@ -14,9 +16,12 @@ from django.views.static import serve
 from django.views.generic.base import TemplateView
 from taccsite_cms import remote_cms_auth as remote_cms_auth
 
+
 from django.http import request
 from django.views.generic.base import RedirectView
 admin.autodiscover()
+
+logger = logging.getLogger(f"portal.{__name__}")
 
 urlpatterns = [
     url(r'^sitemap\.xml$', sitemap,
@@ -44,7 +49,8 @@ if getattr(settings, 'PORTAL_IS_TACC_CORE_PORTAL', True):
 try:
     from .urls_custom import custom_urls
     urlpatterns += custom_urls
-except ImportError:
+except ImportError as e:
+    logger.error(f'Failed to import custom files: {e}')
     pass
 
 if getattr(settings, 'PORTAL_HAS_LOGIN', True):
