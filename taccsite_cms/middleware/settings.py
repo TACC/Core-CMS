@@ -14,7 +14,11 @@ class DynamicSiteIdMiddleware:
             current_site = Site.objects.get(id=settings.DEFAULT_SITE_ID)
 
         request.current_site = current_site
+        current_domain = urlparse('//' + current_site.domain)
+
         settings.SITE_ID = current_site.id
+        settings.SESSION_COOKIE_NAME = f"sessionid_site{current_site.id}"
+        settings.SESSION_COOKIE_DOMAIN = current_domain.hostname
 
         response = self.get_response(request)
         return response
