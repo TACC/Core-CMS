@@ -1,6 +1,8 @@
 {# @var brands, className #}
 {% load static custom_portal_settings %}
 
+{% if settings.BRANDING %}
+
 {% with settings.BRANDING as brands %}
 <div id="header-branding" class="branding-header {{className}}">
   {# DEBUG: #}{# <code>{{ brands|first }}</code> #}
@@ -23,3 +25,33 @@
   {% endfor %}
 </div>
 {% endwith %}
+
+{% else %}
+
+{% with settings.PORTAL_BRANDING as brands %}
+<div id="header-branding" class="branding-header {{className}}">
+  {% for brand in brands %}
+    {% if not forloop.first %}
+      {# RFE: Use CSS to remove the need for `.branding-seperator` and `if` logic #}
+      <span class="branding-seperator"></span>
+    {% endif %}
+    <a
+      href="{{ brand.link_href }}"
+      target="{{ brand.link_target }}"
+    >
+      <img
+        class="branding-logo {{ brand.img_class }}"
+        src="{% if brand.is_remote %}{{ brand.img_file_src }}{% else %}{% static brand.img_file_src %}{% endif %}"
+        {% if brand.img_crossorigin %}
+        crossorigin="{{ brand.img_crossorigin }}"
+        {% endif %}
+        {% if brand.img_alt_text %}
+        alt="{{ brand.img_alt_text }}"
+        {% endif %}
+      />
+    </a>
+  {% endfor %}
+</div>
+{% endwith %}
+
+{% endif %}

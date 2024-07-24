@@ -178,43 +178,52 @@ GOOGLE_ANALYTICS_PRELOAD = True
 
 
 ########################
+# TACC: BRANDING (DEPRECATED)
+########################
+
+# TACC_BRANDING = [
+#     "tacc",                                  # (unused value)
+#     "site_cms/img/org_logos/tacc-white.png", # "img_file_src"
+#     "branding-tacc",                         # "img_class"
+#     "https://www.tacc.utexas.edu/",          # "link_href"
+#     "_blank",                                # "link_target"
+#     "TACC Logo",                             # "img_alt_text"
+#     "anonymous",                             # "img_crossorigin"
+#     "True"                                   # (whether to show logo)
+# ]
+# UTEXAS_BRANDING = [
+#     "utexas",                                    # (unused value)
+#     "site_cms/img/org_logos/utaustin-white.png", # "img_file_src"
+#     "branding-utaustin",                         # "img_class"
+#     "https://www.utexas.edu/",                   # "link_href"
+#     "_blank",                                    # "link_target"
+#     "University of Texas at Austin Logo",        # "img_alt_text"
+#     "anonymous",                                 # "img_crossorigin"
+#     "True"                                       # (whether to show logo)
+# ]
+# NSF_BRANDING = [
+#     "nsf",                                  # (unused value)
+#     "site_cms/img/org_logos/nsf-white.png", # "img_file_src"
+#     "branding-nsf",                         # "img_class"
+#     "https://www.nsf.gov/",                 # "link_href"
+#     "_blank",                               # "link_target"
+#     "NSF Logo",                             # "img_alt_text"
+#     "anonymous",                            # "img_crossorigin"
+#     "True"                                  # (whether to show logo)
+# ]
+
+# To hide branding, add custom style `#header-branding { display: none; }`
+# BRANDING = [ TACC_BRANDING, UTEXAS_BRANDING ]
+
+
+########################
 # TACC: BRANDING
 ########################
 
-TACC_BRANDING = [
-    "tacc",
-    "site_cms/img/org_logos/tacc-white.png",
-    "branding-tacc",
-    "https://www.tacc.utexas.edu/",
-    "_blank",
-    "TACC Logo",
-    "anonymous",
-    "True"
-]
+from taccsite_cms._settings.branding import *
 
-UTEXAS_BRANDING = [
-    "utexas",
-    "site_cms/img/org_logos/utaustin-white.png",
-    "branding-utaustin",
-    "https://www.utexas.edu/",
-    "_blank",
-    "University of Texas at Austin Logo",
-    "anonymous",
-    "True"
-]
-
-NSF_BRANDING = [
-    "nsf",
-    "site_cms/img/org_logos/nsf-white.png",
-    "branding-nsf",
-    "https://www.nsf.gov/",
-    "_blank",
-    "NSF Logo",
-    "anonymous",
-    "True"
-]
-
-BRANDING = [ TACC_BRANDING, UTEXAS_BRANDING ]
+# To hide branding, set `PORTAL_BRANDING = False`
+PORTAL_BRANDING = [ PORTAL_BRANDING_TACC, PORTAL_BRANDING_UTEXAS ]
 
 
 ########################
@@ -747,6 +756,11 @@ except ImportError:
 # TODO: Make clients not use nor set these
 deprecated_SETTINGS_EXPORT = []
 
+# For header_branding.html
+deprecated_SETTINGS_EXPORT += ['BRANDING']
+if 'BRANDING' not in locals():
+    BRANDING = False
+
 # For header_logo.html
 deprecated_SETTINGS_EXPORT += ['LOGO']
 if 'LOGO' not in locals():
@@ -791,10 +805,10 @@ for old_setting_name in old_setting_names:
 
 SETTINGS_EXPORT = deprecated_SETTINGS_EXPORT + [
     'DEBUG',
-    'BRANDING',
     'TACC_CORE_STYLES_VERSION',
     'GOOGLE_ANALYTICS_PROPERTY_ID',
     'GOOGLE_ANALYTICS_PRELOAD',
+    'PORTAL_BRANDING',
     'PORTAL_LOGO',
     'PORTAL_FAVICON',
     'PORTAL_IS_TACC_CORE_PORTAL',
