@@ -45,7 +45,9 @@ djangocms-admin-style = "~3.2.6"
 djangocms-apphook-setup = "0.4.1"
 djangocms-attributes-field = "2.1.0"
 djangocms-blog = "^1.2"
-djangocms-bootstrap4 = "^3.0.1"
+# TO get a commit in main (since v3.0.1) to fix Container error
+# https://github.com/django-cms/djangocms-bootstrap4/pull/164
+djangocms-bootstrap4 = {git = "https://github.com/django-cms/djangocms-bootstrap4.git", rev = "49983f4"}
 djangocms-column = "^2.0"
 djangocms-file = "3.0.0"
 djangocms-forms-maintained = { git = "https://github.com/TACC/djangocms-forms", rev = "63ead9288c2ea65139124698bffc0ad01d182afa" }
