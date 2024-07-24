@@ -596,6 +596,42 @@ SETTINGS_EXPORT_VARIABLE_NAME = 'settings'
 # PLUGIN SETTINGS
 ########################
 
+# SEE: https://github.com/django-cms/djangocms-bootstrap4
+DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS = [
+    (_('Container'), (
+        ('container', _('Container')), # default
+        (
+            'container  o-section o-section--style-light',
+            _('Fluid, Light section')
+        ),
+        (
+            'container  o-section o-section--style-dark',
+            _('Fluid, Dark section')
+        ),
+    )),
+    (_('Fluid container'), (
+        ('container-fluid', _('Fluid')), # default
+        (
+            'container-fluid  o-section o-section--style-light',
+            _('Fluid, Light section')
+        ),
+        (
+            'container-fluid  o-section o-section--style-dark',
+            _('Fluid, Dark section')
+        ),
+    )),
+    (_('No container'), (
+        (
+            'o-section o-section--style-light',
+            _('Fluid, Light section')
+        ),
+        (
+            'o-section o-section--style-dark',
+            _('Fluid, Dark section')
+        ),
+    )),
+]
+
 # https://github.com/django-cms/djangocms-style
 DJANGOCMS_STYLE_CHOICES = [
     'card',
