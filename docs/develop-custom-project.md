@@ -16,11 +16,11 @@ Work on the project **only** via [Core CMS Custom].
 
 ### Update Project
 
-To update `/taccsite_custom` to have _pinned_ content from [Core CMS Resources]:
+To update `/taccsite_custom` to have **pinned** content from [Core CMS Resources]:
 
 1. `git submodule update`
 
-To update `/taccsite_custom` to have _different_ content from [Core CMS Resources]:
+To update `/taccsite_custom` to have **new** content from [Core CMS Resources]:
 
 1. `cd taccsite_custom`
 2. Checkout desired [Core CMS Resources] branch.
@@ -43,9 +43,9 @@ To compile CSS static files:
 - **to** compiled files **in** `build` directories
 
 ```sh
-docker exec -it core_cms /bin/bash
-# That opens a command prompt within the container.
-    npm run build:css --project="custom_project_dir"
+npm run build:css --project="custom_project_dir"
+docker exec -it core_cms sh -c "python manage.py collectstatic --no-input"
+
 ```
 
 This process allows use of future-proof CSS via [Core Styles].

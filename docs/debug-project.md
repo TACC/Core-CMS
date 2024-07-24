@@ -11,7 +11,7 @@
 2. Verify that content is also _in the container_ at `/static/site_cms/css/build`.
 
 > **Note**
-> You will never see `/static/*/css/src`, because [this app ignores `src/`][ignore-src-dirs] when [collecting static files](#collect-static-files). This is done so templates can **not** load load source files.
+> You will never see `/static/…/css/src`, because [this app ignores `src/`][ignore-src-dirs] when [collecting static files](#collect-static-files). This is done so templates can **not** load load source files.
 
 [ignore-src-dirs]: https://github.com/TACC/Core-CMS/blob/7b62db1/taccsite_cms/django/contrib/staticfiles_custom/apps.py
 

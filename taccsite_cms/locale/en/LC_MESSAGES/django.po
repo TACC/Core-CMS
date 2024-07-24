@@ -53,12 +53,6 @@ msgstr ""
 "Users can't move a page without permissions to change the page. "
 "Ensure user has \"Can edit\" permission."
 
-
-#: djangocms-blog
-#: templates/djangocms_blog/includes/blog_meta.html:6
-msgid "by"
-msgstr "by:"
-
 #: djangocms-blog
 #: cms_appconfig.py:39
 msgid ""
@@ -111,8 +105,8 @@ msgstr "Provide a description, attribution, copyright or other information. WARN
 
 #: site-cms(djangocms-blog)
 #: templates/djangocms_blog/includes/blog_meta.html:6
-msgid "Published"
-msgstr "Published:"
+msgid "To be published"
+msgstr ""
 
 #: site-cms(djangocms-blog)
 #: templates/djangocms_blog/post_list.html:6
