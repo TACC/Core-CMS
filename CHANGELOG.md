@@ -7,6 +7,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [4.13.0] - 2023-07-24: Easier Customization, Fix Accessibility & Containers
+
+### Added
+
+* feat: CMD-112 `form_name` in custom email message by @wesleyboar in https://github.com/TACC/Core-CMS/pull/846
+* FP-1318: Create Section Pattern via Bootstrap Container Plugin by @wesleyboar in https://github.com/TACC/Core-CMS/pull/431
+* feat: CMD-164 custom styles via setting by @wesleyboar in https://github.com/TACC/Core-CMS/pull/840
+* feat: CMD-165 custom branding via setting by @wesleyboar in https://github.com/TACC/Core-CMS/pull/841
+* docs: CMD-164 CMD-165 custom assets via settings by @wesleyboar in https://github.com/TACC/Core-CMS/pull/843
+
+### Fixed
+
+* fix: TUP-725 wrong a11y attribute for links by @wesleyboar in https://github.com/TACC/Core-CMS/pull/844
+* fix: CMD-71 svgs not accessible by @wesleyboar in https://github.com/TACC/Core-CMS/pull/845
+* fix: custom app with custom url is difficult to debug by @wesleyboar in https://github.com/TACC/Core-CMS/pull/851 and https://github.com/TACC/Core-CMS/pull/852
+* fix: WP-407 unable to edit nor create container by @wesleyboar in https://github.com/TACC/Core-CMS/pull/853
+
+### Security
+
+* chore(deps): bump ws and socket.io-client by @dependabot in https://github.com/TACC/Core-CMS/pull/848
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.12.0...v4.13.0
+
 ## [4.12.0] - 2023-06-03: Rename Settings, Disable 2nd Breadcrumb, Fix Old News
 
 > **Warning**
@@ -1253,7 +1276,8 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.12.0...main
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.13.0...main
+[4.13.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.13.0
 [4.12.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.12.0
 [4.11.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.11.1
 [4.11.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.11.0
