@@ -1,4 +1,5 @@
-FROM python:3.8-buster as python-base
+# PYTHON BASE IMAGE
+FROM python:3.11-buster as python-base
 LABEL maintainer="TACC-ACI-WMA <wma_prtl@tacc.utexas.edu>"
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y \
@@ -25,26 +26,45 @@ WORKDIR /code
 # install runtime deps - uses $POETRY_VIRTUALENVS_IN_PROJECT internally
 RUN poetry install --no-dev
 
-# `development` image is used for local development
+
+
+# POETRY DEPENDENCIES
 FROM python-base as development
-# quicker install as runtime deps are already installed
 COPY . /code/
+# quicker install because poetry runtime deps are already installed
 RUN poetry install
 
+
+
+# NODE DEPENDENCIES & BUILD & OUTPUT
 FROM node:18 as node_build
+
+# Install dependencies
 COPY package.json package-lock.json /code/
 WORKDIR /code
 RUN npm ci
 
+# Build assets
 COPY . /code/
 ARG PROJECT_NAME
+ARG NEEDS_DEMO
 ARG BUILD_ID
-RUN npm run build --project=$PROJECT_NAME --build-id=$BUILD_ID
+RUN if [ "$NEEDS_DEMO" = "true" ]; then \
+        npm run build --project="$PROJECT_NAME" --build-id="$BUILD_ID"; \
+    else \
+        npm run build:css --project="$PROJECT_NAME" --build-id="$BUILD_ID"; \
+    fi
 
-# `production` image is used for deployed runtime environments
+
+
+# FINAL LAYER
 FROM python-base as production
-# Make CMS logs
+
+# Support CMS logs
 RUN mkdir -p /var/log/cms
 
-# load files
+# Populate with code from Node layer
+# - (new) /node_modules
+# - (unchanged) /package.json and /package-lock.json
+# - (populated) /css/build and /taccsite_ui/dist
 COPY --from=node_build /code/ /code

@@ -20,6 +20,10 @@ from taccsite_cms._settings.form_plugin import *
 from taccsite_cms._settings.form_plugin import (
     _INSTALLED_APPS as form_plugin_INSTALLED_APPS
 )
+from taccsite_cms._settings.search import *
+from taccsite_cms._settings.search import (
+    _INSTALLED_APPS as search_INSTALLED_APPS
+)
 
 ########################
 # DJANGO
@@ -44,9 +48,10 @@ X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 # whether the session cookie should be secure (https:// only)
 SESSION_COOKIE_SECURE = True
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 ########################
-# DATABASE SETTINGS
+# STORAGE
 ########################
 
 DATABASES = {
@@ -139,7 +144,7 @@ LOGGING = {
 }
 
 ########################
-# DJANGO CMS SETTINGS
+# DJANGO_CMS
 ########################
 
 SITE_ID = 1
@@ -147,6 +152,16 @@ SITE_ID = 1
 CMS_TEMPLATES = (
     ('standard.html', 'Standard'),
     ('fullwidth.html', 'Full Width'),
+
+    ('guide.html', 'Guide'),
+    ('guides/portal_technology.html', 'Guide: Portal Technology Stack'),
+
+    # TODO: WP-394: Retire deprecated page templates
+    ('guides/getting_started.v3.html', 'Guide: Getting Started (v3)'),
+    ('guides/getting_started.tam.html', 'Guide: Getting Started (TAM)'),
+    ('guides/getting_started.v2.html', 'Guide: Getting Started (v2)'),
+    ('guides/data_transfer.html', 'Guide: Data Transfer'),
+    ('guides/data_transfer.globus.html', 'Guide: Globus Data Transfer'),
 )
 
 CMS_PERMISSION = True
@@ -161,36 +176,6 @@ CMS_PERMISSION = True
 GOOGLE_ANALYTICS_PROPERTY_ID = "UA-123ABC@%$&-#"
 GOOGLE_ANALYTICS_PRELOAD = True
 
-########################
-# TACC: SEARCH
-########################
-
-# To customize site search
-SEARCH_PATH = '/search'
-SEARCH_QUERY_PARAM_NAME = 'query_string'
-
-########################
-# ELASTICSEARCH
-########################
-
-ES_AUTH = 'username:password'
-ES_HOSTS = 'http://elasticsearch:9200'
-ES_INDEX_PREFIX = 'cms-dev-{}'
-ES_DOMAIN = 'http://localhost:8000'
-
-# Elasticsearch Indexing
-HAYSTACK_ROUTERS = ['aldryn_search.router.LanguageRouter', ]
-HAYSTACK_SIGNAL_PROCESSOR = 'taccsite_cms.signal_processor.RealtimeSignalProcessor'
-ALDRYN_SEARCH_DEFAULT_LANGUAGE = 'en'
-ALDRYN_SEARCH_REGISTER_APPHOOK = True
-HAYSTACK_CONNECTIONS = {
-    'default': {
-        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
-        'URL': ES_HOSTS,
-        'INDEX_NAME': ES_INDEX_PREFIX.format('cms'),
-        'KWARGS': {'http_auth': ES_AUTH}
-    }
-}
 
 ########################
 # TACC: BRANDING
@@ -229,34 +214,62 @@ NSF_BRANDING = [
     "True"
 ]
 
-BRANDING = [TACC_BRANDING, UTEXAS_BRANDING]
+BRANDING = [ TACC_BRANDING, UTEXAS_BRANDING ]
+
 
 ########################
-# TACC: LOGOS
+# TACC: LOGO & FAVICON (DEPRECATED)
 ########################
 
-LOGO = [
-    "portal",
-    "site_cms/img/org_logos/portal.png",
-    "",
-    "/",
-    "_self",
-    "Portal Logo",
-    "anonymous",
-    "True"
-]
+# LOGO = [
+#     "portal",                            # (unused value)
+#     "site_cms/img/org_logos/portal.png", # "img_file_src"
+#     "",                                  # "img_class"
+#     "/",                                 # "link_href"
+#     "_self",                             # "link_target"
+#     "Portal Logo",                       # "img_alt_text"
+#     "anonymous",                         # "img_crossorigin"
+#     "True"                               # (whether to show logo)
+# ]
 
-FAVICON = {
-    "img_file_src": "site_cms/img/favicons/favicon.ico"
+# FAVICON = {
+#     "img_file_src": "site_cms/img/favicons/favicon.ico",
+#     "is_remote": False
+# }
+
+
+########################
+# TACC: LOGO & FAVICON
+########################
+
+PORTAL_LOGO = {
+    "is_remote": False,
+    "img_file_src": "site_cms/img/org_logos/portal.png",
+    "img_class": "", # additional class names
+    "link_href": "/",
+    "link_target": "_self",
+    "img_alt_text": "Portal Logo",
+    "img_crossorigin": "anonymous",
+} # To hide logo, set `PORTAL_LOGO = False`
+
+PORTAL_FAVICON = {
+    "is_remote": False,
+    "img_file_src": "site_cms/img/favicons/favicon.ico",
 }
+
 
 ########################
 # TACC: PORTAL
 ########################
 
-INCLUDES_CORE_PORTAL = True
-INCLUDES_PORTAL_NAV = True
-INCLUDES_SEARCH_BAR = True
+PORTAL_IS_TACC_CORE_PORTAL = True
+PORTAL_HAS_LOGIN = True
+PORTAL_HAS_SEARCH = True
+
+# Only use one of these values: 'sm', 'md', 'lg', 'xl'
+# SEE: https://getbootstrap.com/docs/4.0/components/navbar/#responsive-behaviors
+# FAQ: A falsy value will trigger default logic for nav width
+PORTAL_NAV_WIDTH = False
 
 LOGOUT_REDIRECT_URL = '/'
 
@@ -266,22 +279,11 @@ LOGOUT_REDIRECT_URL = '/'
 CEP_AUTH_VERIFICATION_ENDPOINT = 'http://django:6000'
 
 ########################
-# TACC: NEWS/BLOG
-########################
-
-TACC_BLOG_SHOW_CATEGORIES = True
-TACC_BLOG_SHOW_TAGS = True
-# To flag posts of certain category or tag, so template can take special action
-TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY = 'sample_value_e_g__mutlimedia__'
-TACC_BLOG_SHOW_ABSTRACT_TAG = 'sample_value_e_g__redirect__'
-
-########################
 # TACC: SOCIAL MEDIA
 ########################
 
-# TODO: Enable ONLY after TUP-590
-TACC_SOCIAL_SHARE_PLATFORMS = []
-# TACC_SOCIAL_SHARE_PLATFORMS = ['facebook', 'linkedin', 'email']
+PORTAL_SOCIAL_SHARE_PLATFORMS = []
+# PORTAL_SOCIAL_SHARE_PLATFORMS = ['linkedin', 'instagram', 'facebook', 'bluesky', 'email']
 
 ########################
 # TACC: CORE STYLES
@@ -289,10 +291,26 @@ TACC_SOCIAL_SHARE_PLATFORMS = []
 
 # Only use integer numbers (not "v1", not "0.11.0"),
 # so templates can load based on simple comparisons
-TACC_CORE_STYLES_VERSION = 0
+TACC_CORE_STYLES_VERSION = 2
 
 ########################
-# CLIENT BUILD SETTINGS
+# DJANGOCMS_BLOG: TACC
+########################
+
+# Only effective with a DJANGOCMS_BLOG
+# SEE: https://github.com/TACC/Core-CMS/blob/ff6c727/taccsite_cms/settings_custom.example.py#L139-L185
+
+PORTAL_BLOG_SHOW_CATEGORIES = True
+PORTAL_BLOG_SHOW_TAGS = True
+# To flag posts of certain category or tag, so template can take special action
+PORTAL_BLOG_CUSTOM_MEDIA_POST_CATEGORY = 'sample_value_e_g__mutlimedia__'
+PORTAL_BLOG_SHOW_ABSTRACT_TAG = 'sample_value_e_g__redirect__'
+
+PORTAL_BLOG_CATEGORY_ORDER = []
+# PORTAL_BLOG_CATEGORY_ORDER = ['press-release', 'feature-story', 'multimedia', 'podcast']
+
+########################
+# DJANGO & DJANGO_CMS & TACC
 ########################
 
 # Application definition
@@ -443,9 +461,9 @@ INSTALLED_APPS = [
     'djangocms_bootstrap4.contrib.bootstrap4_tabs',
     'djangocms_bootstrap4.contrib.bootstrap4_utilities',
 
+] + search_INSTALLED_APPS + [
+
     # miscellaneous
-    'haystack',                # search index
-    'aldryn_apphooks_config',  # search index & django CMS Blog
     'test_without_migrations', # run tests faster
 
 ] + form_plugin_INSTALLED_APPS + [
@@ -453,6 +471,7 @@ INSTALLED_APPS = [
     # core TACC CMS
     # HELP: If this were top of list, would TACC/Core-CMS/pull/169 fix break?
     'taccsite_cms',
+    'common_apps.email_management',
 
     # django CMS Bootstrap
     # IDEA: Extend Bootstrap apps instead of overwrite
@@ -573,6 +592,42 @@ SETTINGS_EXPORT_VARIABLE_NAME = 'settings'
 # PLUGIN SETTINGS
 ########################
 
+# SEE: https://github.com/django-cms/djangocms-bootstrap4
+DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS = [
+    (_('Container'), (
+        ('container', _('Container')), # default
+        (
+            'container  o-section o-section--style-light',
+            _('Fluid, Light section')
+        ),
+        (
+            'container  o-section o-section--style-dark',
+            _('Fluid, Dark section')
+        ),
+    )),
+    (_('Fluid container'), (
+        ('container-fluid', _('Fluid')), # default
+        (
+            'container-fluid  o-section o-section--style-light',
+            _('Fluid, Light section')
+        ),
+        (
+            'container-fluid  o-section o-section--style-dark',
+            _('Fluid, Dark section')
+        ),
+    )),
+    (_('No container'), (
+        (
+            'o-section o-section--style-light',
+            _('Fluid, Light section')
+        ),
+        (
+            'o-section o-section--style-dark',
+            _('Fluid, Dark section')
+        ),
+    )),
+]
+
 # https://github.com/django-cms/djangocms-style
 DJANGOCMS_STYLE_CHOICES = [
     'card',
@@ -654,13 +709,14 @@ DJANGOCMS_ICON_SETS = [
 ]
 
 ########################
-# IMPORT & EXPORT
+# SETTINGS IMPORT
 ########################
 
 try:
     from taccsite_cms.settings_custom import *
+    import taccsite_cms.settings_custom as settings_custom
 except ModuleNotFoundError:
-    pass
+    settings_custom = []
 
 try:
     from taccsite_cms.secrets import *
@@ -669,8 +725,9 @@ except ModuleNotFoundError:
 
 try:
     from taccsite_cms.settings_local import *
+    import taccsite_cms.settings_local as settings_local
 except ModuleNotFoundError:
-    pass
+    settings_local = []
 
 try:
     from taccsite_cms import custom_app_settings
@@ -680,22 +737,72 @@ try:
 except ImportError:
     pass
 
-SETTINGS_EXPORT = [
-    'DEBUG',
-    'BRANDING',
-    'LOGO',
-    'FAVICON',
+########################
+# SETTINGS DEPRECATED
+########################
+# TODO: Make clients not use nor set these
+deprecated_SETTINGS_EXPORT = []
+
+# For header_logo.html
+deprecated_SETTINGS_EXPORT += ['LOGO']
+if 'LOGO' not in locals():
+    LOGO = False
+
+# For clients
+old_setting_names = [
+    'FAVICON'
     'INCLUDES_CORE_PORTAL',
     'INCLUDES_PORTAL_NAV',
     'INCLUDES_SEARCH_BAR',
-    'GOOGLE_ANALYTICS_PROPERTY_ID',
-    'GOOGLE_ANALYTICS_PRELOAD',
     'TACC_BLOG_SHOW_CATEGORIES',
     'TACC_BLOG_SHOW_TAGS',
-    'TACC_CORE_STYLES_VERSION',
     'TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY',
     'TACC_BLOG_SHOW_ABSTRACT_TAG',
+    'TACC_BLOG_CATEGORY_ORDER',
     'TACC_SOCIAL_SHARE_PLATFORMS',
     'SEARCH_PATH',
     'SEARCH_QUERY_PARAM_NAME',
+]
+for old_setting_name in old_setting_names:
+    if old_setting_name in locals() or \
+        hasattr(settings_custom, old_setting_name) or \
+        hasattr(settings_local, old_setting_name):
+            if old_setting_name.startswith('TACC_'):
+                stripped_setting_name = old_setting_name.replace('TACC_', '')
+                locals()['PORTAL_' + stripped_setting_name] = locals()[old_setting_name]
+            if old_setting_name.startswith('SEARCH_'):
+                locals()['PORTAL_' + old_setting_name] = locals()[old_setting_name]
+            if 'FAVICON' == old_setting_name:
+                deprecated_SETTINGS_EXPORT += ['FAVICON']
+            if 'INCLUDES_CORE_PORTAL' == old_setting_name:
+                PORTAL_IS_TACC_CORE_PORTAL = INCLUDES_CORE_PORTAL
+            if 'INCLUDES_PORTAL_NAV' == old_setting_name:
+                PORTAL_HAS_LOGIN = INCLUDES_PORTAL_NAV
+            if 'INCLUDES_SEARCH_BAR' == old_setting_name:
+                PORTAL_HAS_SEARCH = INCLUDES_SEARCH_BAR
+
+########################
+# SETTINGS EXPORT
+########################
+
+SETTINGS_EXPORT = deprecated_SETTINGS_EXPORT + [
+    'DEBUG',
+    'BRANDING',
+    'TACC_CORE_STYLES_VERSION',
+    'GOOGLE_ANALYTICS_PROPERTY_ID',
+    'GOOGLE_ANALYTICS_PRELOAD',
+    'PORTAL_LOGO',
+    'PORTAL_FAVICON',
+    'PORTAL_IS_TACC_CORE_PORTAL',
+    'PORTAL_HAS_LOGIN',
+    'PORTAL_HAS_SEARCH',
+    'PORTAL_NAV_WIDTH',
+    'PORTAL_BLOG_SHOW_CATEGORIES',
+    'PORTAL_BLOG_SHOW_TAGS',
+    'PORTAL_BLOG_CUSTOM_MEDIA_POST_CATEGORY',
+    'PORTAL_BLOG_SHOW_ABSTRACT_TAG',
+    'PORTAL_BLOG_CATEGORY_ORDER',
+    'PORTAL_SOCIAL_SHARE_PLATFORMS',
+    'PORTAL_SEARCH_PATH',
+    'PORTAL_SEARCH_QUERY_PARAM_NAME',
 ]
