@@ -5,10 +5,7 @@
 
 /* TRUMPS */
 
-@import url("@tacc/core-styles/src/lib/_imports/trumps/s-document.css");
 @import url("@tacc/core-styles/src/lib/_imports/trumps/s-guide-doc.css");
-@import url("@tacc/core-styles/src/lib/_imports/trumps/s-inline-dl.css");
-@import url("@tacc/core-styles/src/lib/_imports/trumps/u-nested-text-content.css");
 
 /* NOTE: The Portal v3 / Core-Styles v2 docs are unexpected.
          The plan was for all documentation to be in docs.tacc.utexas.edu.
