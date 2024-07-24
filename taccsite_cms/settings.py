@@ -286,8 +286,14 @@ PORTAL_SOCIAL_SHARE_PLATFORMS = []
 # PORTAL_SOCIAL_SHARE_PLATFORMS = ['linkedin', 'instagram', 'facebook', 'bluesky', 'email']
 
 ########################
-# TACC: CORE STYLES
+# TACC: STYLES
 ########################
+
+PORTAL_STYLES = []
+# PORTAL_STYLES = [{
+#     "is_remote": True,
+#     "path": "https://cdn.jsdelivr.net/gh/TACC/Core-CMS-Custom@2cdc59f/example_cms/src/apps/example_app/static/example_app/css/example_app.css",
+# }]
 
 # Only use integer numbers (not "v1", not "0.11.0"),
 # so templates can load based on simple comparisons
@@ -795,6 +801,7 @@ SETTINGS_EXPORT = deprecated_SETTINGS_EXPORT + [
     'PORTAL_HAS_LOGIN',
     'PORTAL_HAS_SEARCH',
     'PORTAL_NAV_WIDTH',
+    'PORTAL_STYLES',
     'PORTAL_BLOG_SHOW_CATEGORIES',
     'PORTAL_BLOG_SHOW_TAGS',
     'PORTAL_BLOG_CUSTOM_MEDIA_POST_CATEGORY',
