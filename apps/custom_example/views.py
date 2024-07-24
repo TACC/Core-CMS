@@ -3,6 +3,6 @@ from django.conf import settings
 from django.template import loader
 
 
-def AddedView(request):
+def CustomExampleView(request):
     template = loader.get_template('custom_example/custom_example.html')
     return HttpResponse(template.render({}, request))
