@@ -35,11 +35,7 @@ CMS_TEMPLATES = (
 
     ('home_portal.html', 'Standard Portal Homepage'),
 
-    ('guide.html', 'Guide'),
-    ('guides/getting_started.v3.html', 'Guide: Getting Started'),
-    ('guides/data_transfer.html', 'Guide: Data Transfer'),
-    ('guides/data_transfer.globus.html', 'Guide: Globus Data Transfer'),
-    ('guides/portal_technology.html', 'Guide: Portal Technology Stack'),
+    ('guide.html', 'Guide Doc'),
 )
 
 ########################
