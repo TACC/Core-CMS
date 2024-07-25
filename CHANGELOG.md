@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [4.13.1] - 2023-07-25: No Error if 2nd-Level Breadcrumb Link is Absent
+
+### Fixed
+
+* fix: CMD-162 error if no second breadcrumb by @wesleyboar in https://github.com/TACC/Core-CMS/pull/855
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.13.0...v4.13.1
+
 ## [4.13.0] - 2023-07-24: Easier Customization, Fix Accessibility & Containers
 
 ### Added
@@ -1276,7 +1284,8 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.13.0...main
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.13.1...main
+[4.13.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.13.1
 [4.13.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.13.0
 [4.12.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.12.0
 [4.11.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.11.1
