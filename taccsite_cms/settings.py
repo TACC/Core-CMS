@@ -599,8 +599,6 @@ FILE_UPLOAD_MAX_MEMORY_SIZE = 20000000  # 20MB
 
 DJANGOCMS_AUDIO_ALLOWED_EXTENSIONS = ['mp3', 'ogg', 'wav']
 
-SETTINGS_EXPORT_VARIABLE_NAME = 'settings'
-
 ########################
 # PLUGIN SETTINGS
 ########################
@@ -802,6 +800,8 @@ for old_setting_name in old_setting_names:
 ########################
 # SETTINGS EXPORT
 ########################
+
+SETTINGS_EXPORT_VARIABLE_NAME = 'settings'
 
 SETTINGS_EXPORT = deprecated_SETTINGS_EXPORT + [
     'DEBUG',
