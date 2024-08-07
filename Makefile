@@ -44,12 +44,12 @@ publish-latest:
 
 .PHONY: start
 start:
-	$(DOCKER_COMPOSE_CMD) -f docker-compose.yml up
+	$(DOCKER_COMPOSE_CMD) -f docker-compose.dev.yml up
 
 .PHONY: stop
 stop:
-	$(DOCKER_COMPOSE_CMD) -f docker-compose.yml down
+	$(DOCKER_COMPOSE_CMD) -f docker-compose.dev.yml down
 
 .PHONY: stop-verbose
 stop-v:
-	$(DOCKER_COMPOSE_CMD) -f docker-compose.yml down -v
+	$(DOCKER_COMPOSE_CMD) -f docker-compose.dev.yml down -v

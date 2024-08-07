@@ -70,9 +70,9 @@ Set up a new local CMS instance.
 
 3. Build & Start the Docker Containers:
 
-    | For Testing | For Developing & Testing |
-    | - | - |
-    | `make start` | `docker compose -f ./docker-compose.dev.yml up` |
+    ```sh
+    make start
+    ```
 
     > **Note**
     > This will make the terminal window busy. To run commands after this, **either** open a new terminal window **or** run `docker compose -f ./docker-compose.dev.yml up --detach` instead.
