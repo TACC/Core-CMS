@@ -813,12 +813,12 @@ for old_setting_name in old_setting_names:
 
 # For clients using Elasticsearch
 if PORTAL_ES_ENABLED:
-    from taccsite_cms._settings.search import *
-    from taccsite_cms._settings.search import (
-        _INSTALLED_APPS as search_INSTALLED_APPS
+    from taccsite_cms._settings.es_search import *
+    from taccsite_cms._settings.es_search import (
+        _INSTALLED_APPS as es_search_INSTALLED_APPS
     )
     tacc_app_index = INSTALLED_APPS.index('taccsite_cms')
-    INSTALLED_APPS[tacc_app_index:tacc_app_index] = search_INSTALLED_APPS
+    INSTALLED_APPS[tacc_app_index:tacc_app_index] = es_search_INSTALLED_APPS
 
 ########################
 # SETTINGS EXPORT
