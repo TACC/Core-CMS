@@ -472,6 +472,7 @@ INSTALLED_APPS = [
 
     # miscellaneous
     'test_without_migrations', # run tests faster
+    'aldryn_apphooks_config',  # search index & django CMS Blog
 
 ] + form_plugin_INSTALLED_APPS + [
 

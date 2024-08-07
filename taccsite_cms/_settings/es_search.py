@@ -27,5 +27,4 @@ HAYSTACK_CONNECTIONS = {
 
 _INSTALLED_APPS = [
     'haystack',                # search index
-    'aldryn_apphooks_config',  # search index & django CMS Blog
 ]
