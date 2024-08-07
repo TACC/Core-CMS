@@ -60,11 +60,13 @@ Set up a new local CMS instance.
     cd Core-CMS
     ```
 
-2. Add Core CMS Settings:
+2. Add Core CMS Settings & Secrets:
 
-    Create a `taccsite_cms/settings_local.py` with content from `settings_local.example.py`, e.g.
+    Create a `taccsite_cms/*.py` for every `*.example.py`, e.g.
 
     ```sh
+    cp taccsite_cms/settings_custom.example.py taccsite_cms/settings_custom.py
+    cp taccsite_cms/secrets.example.py taccsite_cms/secrets.py
     cp taccsite_cms/settings_local.example.py taccsite_cms/settings_local.py
     ```
 
