@@ -196,3 +196,13 @@ PORTAL_BLOG_SHOW_TAGS = True
 
 # TACC/Core-CMS-Resources#75: Load custom urls.py so we can add urlpatterns for taggit_autosuggest
 ROOT_URLCONF = 'taccsite_custom.example_cms.urls'
+
+########################
+# SEARCH
+########################
+
+# To support Google search
+PORTAL_SEARCH_QUERY_PARAM_NAME = 'q'
+
+# To disable Elasticsearch
+PORTAL_ES_ENABLED = False

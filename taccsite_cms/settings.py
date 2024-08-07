@@ -20,10 +20,6 @@ from taccsite_cms._settings.form_plugin import *
 from taccsite_cms._settings.form_plugin import (
     _INSTALLED_APPS as form_plugin_INSTALLED_APPS
 )
-from taccsite_cms._settings.search import *
-from taccsite_cms._settings.search import (
-    _INSTALLED_APPS as search_INSTALLED_APPS
-)
 
 ########################
 # DJANGO
@@ -474,8 +470,6 @@ INSTALLED_APPS = [
     'djangocms_bootstrap4.contrib.bootstrap4_tabs',
     'djangocms_bootstrap4.contrib.bootstrap4_utilities',
 
-] + search_INSTALLED_APPS + [
-
     # miscellaneous
     'test_without_migrations', # run tests faster
 
@@ -719,6 +713,25 @@ DJANGOCMS_ICON_SETS = [
     (CORTAL_ICONS, 'icon', _('TACC "Cortal" Icons')),
 ]
 
+
+
+########################
+# SEARCH
+########################
+
+# To support any search
+PORTAL_SEARCH_PATH = '/search'
+
+# To support Google search
+# PORTAL_SEARCH_QUERY_PARAM_NAME = 'q'
+# PORTAL_ES_ENABLED = False
+
+# To support Elasticsearch
+PORTAL_SEARCH_QUERY_PARAM_NAME = 'query_string'
+PORTAL_ES_ENABLED = True
+
+
+
 ########################
 # SETTINGS IMPORT
 ########################
@@ -750,8 +763,9 @@ except ImportError:
 
 ########################
 # SETTINGS DEPRECATED
-########################
 # TODO: Make clients not use nor set these
+########################
+
 deprecated_SETTINGS_EXPORT = []
 
 # For header_branding.html
@@ -796,6 +810,15 @@ for old_setting_name in old_setting_names:
                 PORTAL_HAS_LOGIN = INCLUDES_PORTAL_NAV
             if 'INCLUDES_SEARCH_BAR' == old_setting_name:
                 PORTAL_HAS_SEARCH = INCLUDES_SEARCH_BAR
+
+# For clients using Elasticsearch
+if PORTAL_ES_ENABLED:
+    from taccsite_cms._settings.search import *
+    from taccsite_cms._settings.search import (
+        _INSTALLED_APPS as search_INSTALLED_APPS
+    )
+    tacc_app_index = INSTALLED_APPS.index('taccsite_cms')
+    INSTALLED_APPS[tacc_app_index:tacc_app_index] = search_INSTALLED_APPS
 
 ########################
 # SETTINGS EXPORT

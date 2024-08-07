@@ -2,12 +2,33 @@
 
 ## Table of Contents
 
+- [from v4.N to v4.14](#from-v4n-to-v414)
 - [from v4.N to v4.13](#from-v4n-to-v413)
 - [from v4.N to v4.12](#from-v4n-to-v412)
 - [from v4.N to v4.7](#from-v4n-to-v47)
 - [from v3 to v4](#from-v3-to-v4)
 - [from v3.N to v3.12](#from-v3n-to-v312)
 - [from v2 to v3](#from-v2-to-v3)
+
+## from v4.N to v4.14
+
+- [Do Not Assume Elasticsearch Settings](#do-not-assume-elasticsearch-settings)
+
+### Do Not Assume Elasticsearch Settings
+
+**If** client uses Elasticsearch, **then** —
+
+```py
+PORTAL_ES_ENABLED = True
+```
+
+— **otherwise** —
+
+```py
+PORTAL_ES_ENABLED = False
+```
+
+<details>Before 2024, all clients with a search feature used Elasticsearch. Newer CMS-only portals should use Google search instead.</details>
 
 ## from v4.N to v4.13
 
