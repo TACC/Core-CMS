@@ -4,9 +4,6 @@
 # SEARCH
 ########################
 
-PORTAL_SEARCH_PATH = '/search'
-PORTAL_SEARCH_QUERY_PARAM_NAME = 'query_string'
-
 ES_AUTH = 'username:password'
 ES_HOSTS = 'http://elasticsearch:9200'
 ES_INDEX_PREFIX = 'cms-dev-{}'
