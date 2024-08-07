@@ -70,9 +70,9 @@ Set up a new local CMS instance.
 
 3. Build & Start the Docker Containers:
 
-    | For Testing | For Developing & Testing |
-    | - | - |
-    | `make start` | `docker compose -f ./docker-compose.dev.yml up` |
+    ```sh
+    make start
+    ```
 
     > **Note**
     > This will make the terminal window busy. To run commands after this, **either** open a new terminal window **or** run `docker compose -f ./docker-compose.dev.yml up --detach` instead.
@@ -122,24 +122,26 @@ Read [Upgrade Project] for developer instructions.
 
 ### New Minor or Patch Version (or Branch)
 
-#### For Testing
-
 ```sh
 make stop
 make build
 make start
 ```
 
-#### For Developing & Testing
+<details><summary>Advanced</summary>
+
+To only update as necessary, or update since uncommon changes:
 
 | | If this changed | Run this command |
 | - | - | - |
-| 0 | Dockerfile | `make build` then re-start the container |
+| 0 | Dockerfile | `make stop`, `make build`, `make start` |
 | 1 | Python models | `docker exec -it core_cms sh -c "python manage.py migrate"` |
 | 2 | Node dependencies | `npm ci` |
 | 3 | CSS stylesheets | `npm run build:css` |
 | 4 | UI Demo | `npm run build:ui-demo` |
 | 5 |  Assets e.g.<br><sub>images, stylesheets, JavaScript, UI demo</sub> | `docker exec -it core_cms sh -c "python manage.py collectstatic --no-input"` |
+
+</details>
 
 ## Develop Project
 
