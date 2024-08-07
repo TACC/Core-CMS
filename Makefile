@@ -2,6 +2,8 @@ DOCKERHUB_REPO := taccwma/$(shell cat ./docker_repo.var)
 DOCKER_TAG ?= $(shell git rev-parse --short HEAD)
 DOCKER_IMAGE := $(DOCKERHUB_REPO):$(DOCKER_TAG)
 DOCKER_IMAGE_LATEST := $(DOCKERHUB_REPO):latest
+# WARNING: Using `docker-compose` is deprecated
+DOCKER_COMPOSE_CMD := $(shell if command -v docker-compose > /dev/null; then echo "docker-compose"; else echo "docker compose"; fi)
 
 # NOTE: The `DOCKER_IMAGE_BRANCH` tag is the git tag for the commit if it exists, else the branch on which the commit exists.
 # NOTE: Special characters in `DOCKER_IMAGE_BRANCH` are replaced with dashes.
@@ -13,7 +15,7 @@ BUILD_ID := $(shell git describe --always)
 
 .PHONY: build
 build:
-	docker-compose -f ./docker-compose.yml build
+	$(DOCKER_COMPOSE_CMD) -f ./docker-compose.yml build
 
 .PHONY: build-full
 build-full:
@@ -28,7 +30,7 @@ build-full:
 
 .PHONY: example
 example:
-	docker-compose -f ./docker-compose.example.yml up
+	$(DOCKER_COMPOSE_CMD) -f ./docker-compose.example.yml up
 
 .PHONY: publish
 publish:
@@ -42,12 +44,12 @@ publish-latest:
 
 .PHONY: start
 start:
-	docker-compose -f docker-compose.yml up
+	$(DOCKER_COMPOSE_CMD) -f docker-compose.yml up
 
 .PHONY: stop
 stop:
-	docker-compose -f docker-compose.yml down
+	$(DOCKER_COMPOSE_CMD) -f docker-compose.yml down
 
 .PHONY: stop-verbose
 stop-v:
-	docker-compose -f docker-compose.yml down -v
+	$(DOCKER_COMPOSE_CMD) -f docker-compose.yml down -v

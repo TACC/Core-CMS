@@ -13,6 +13,7 @@
 ## from v4.N to v4.14
 
 - [Do Not Assume Elasticsearch Settings](#do-not-assume-elasticsearch-settings)
+- [Upgrade Docker Compose](#upgrade-docker-compose)
 
 ### Do Not Assume Elasticsearch Settings
 
@@ -28,7 +29,11 @@ PORTAL_ES_ENABLED = True
 PORTAL_ES_ENABLED = False
 ```
 
-<details>Before 2024, all clients with a search feature used Elasticsearch. Newer CMS-only portals should use Google search instead.</details>
+### Upgrade Docker Compose
+
+Update to _at least_ the latest Docker Compose v2.
+
+The v1 `docker-compose` command has long been deprecated.
 
 ## from v4.N to v4.13
 
