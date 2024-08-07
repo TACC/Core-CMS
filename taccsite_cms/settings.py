@@ -25,12 +25,13 @@ from taccsite_cms._settings.search import (
     _INSTALLED_APPS as search_INSTALLED_APPS
 )
 
+def gettext(s): return s
+
 ########################
 # DJANGO
 ########################
 
 SECRET_KEY = 'CHANGE_ME'
-def gettext(s): return s
 
 
 DATA_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -39,9 +40,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 DEBUG = True       # False for Prod.
 
-# Specify allowed hosts or use an asterisk to allow any host and simplify the config.
-# ALLOWED_HOSTS = ['hostname.tacc.utexas.edu', 'host.ip.v4.address', '0.0.0.0', 'localhost', '127.0.0.1']   # In production.
-ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost', '*']   # In development.
+# Specify allowed hosts or use an asterisk to allow any host.
+# ALLOWED_HOSTS = ['hostname.tacc.utexas.edu', 'client.org'] # Dev/Prod/Etc
+ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost', '*']   # Local
+
+LOGOUT_REDIRECT_URL = '/'
 
 # https://docs.djangoproject.com/en/3.0/ref/clickjacking/#how-to-use-it
 X_FRAME_OPTIONS = 'SAMEORIGIN'
@@ -49,6 +52,8 @@ X_FRAME_OPTIONS = 'SAMEORIGIN'
 # whether the session cookie should be secure (https:// only)
 SESSION_COOKIE_SECURE = True
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
 
 ########################
 # STORAGE
@@ -280,12 +285,11 @@ PORTAL_HAS_SEARCH = True
 # FAQ: A falsy value will trigger default logic for nav width
 PORTAL_NAV_WIDTH = False
 
-LOGOUT_REDIRECT_URL = '/'
-
 # using container name to avoid cep.dev dns issues locally
-# this will need to be updated for dev/pprd/prod systems
-# for example, CEP_AUTH_VERIFICATION_ENDPOINT=https://dev.cep.tacc.utexas.edu
-CEP_AUTH_VERIFICATION_ENDPOINT = 'http://django:6000'
+# CEP_AUTH_VERIFICATION_ENDPOINT = https://hostname.tacc.utexas.edu # Dev/Prod/Etc
+CEP_AUTH_VERIFICATION_ENDPOINT = 'http://django:6000'               # Local
+
+
 
 ########################
 # TACC: SOCIAL MEDIA
