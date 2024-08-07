@@ -4,10 +4,11 @@
 # SEARCH
 ########################
 
-ES_AUTH = 'username:password'
-ES_HOSTS = 'http://elasticsearch:9200'
-ES_INDEX_PREFIX = 'cms-dev-{}'
-ES_DOMAIN = 'http://localhost:8000'
+# Set these in secrets.py
+# ES_AUTH = 'username:password'
+# ES_HOSTS = 'http://elasticsearch:9200'
+# ES_INDEX_PREFIX = 'cms-dev-{}'
+# ES_DOMAIN = 'http://localhost:8000'
 
 HAYSTACK_ROUTERS = ['aldryn_search.router.LanguageRouter', ]
 HAYSTACK_SIGNAL_PROCESSOR = 'taccsite_cms.signal_processor.RealtimeSignalProcessor'
