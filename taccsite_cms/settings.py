@@ -471,8 +471,8 @@ INSTALLED_APPS = [
     'djangocms_bootstrap4.contrib.bootstrap4_utilities',
 
     # miscellaneous
-    'test_without_migrations', # run tests faster
     'aldryn_apphooks_config',  # search index & django CMS Blog
+    'test_without_migrations', # run tests faster
 
 ] + form_plugin_INSTALLED_APPS + [
 
@@ -818,7 +818,7 @@ if PORTAL_ES_ENABLED:
     from taccsite_cms._settings.es_search import (
         _INSTALLED_APPS as es_search_INSTALLED_APPS
     )
-    index = INSTALLED_APPS.index('taccsite_cms')
+    index = INSTALLED_APPS.index('aldryn_apphooks_config')
     INSTALLED_APPS[index:index] = es_search_INSTALLED_APPS
 
 ########################
