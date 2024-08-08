@@ -74,6 +74,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [4.11.1] - 2024-06-26: Can Disable ES, Fix Hidden Nav, LDAP Requires Portal
 
+> **Warning**
+> The "Can Disable ES" feature is broken. Use v[4.14.0] for similar feature.
+
 ### Added
 
 * feat: support disabling elasticsearch by @wesleyboar in https://github.com/TACC/Core-CMS/pull/834
