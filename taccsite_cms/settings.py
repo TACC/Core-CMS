@@ -20,6 +20,10 @@ from taccsite_cms._settings.form_plugin import *
 from taccsite_cms._settings.form_plugin import (
     _INSTALLED_APPS as form_plugin_INSTALLED_APPS
 )
+from taccsite_cms._settings.search import *
+from taccsite_cms._settings.search import (
+    _INSTALLED_APPS as search_INSTALLED_APPS
+)
 
 def gettext(s): return s
 
@@ -474,6 +478,8 @@ INSTALLED_APPS = [
     'djangocms_bootstrap4.contrib.bootstrap4_tabs',
     'djangocms_bootstrap4.contrib.bootstrap4_utilities',
 
+] + search_INSTALLED_APPS + [
+
     # miscellaneous
     'aldryn_apphooks_config',  # search index & django CMS Blog
     'test_without_migrations', # run tests faster
@@ -721,28 +727,6 @@ DJANGOCMS_ICON_SETS = [
 
 
 ########################
-# SEARCH
-########################
-
-# To support any search
-PORTAL_SEARCH_PATH = '/search'
-
-# To support Google search
-# PORTAL_SEARCH_QUERY_PARAM_NAME = 'q'
-# PORTAL_ES_ENABLED = False
-
-# To support Elasticsearch
-PORTAL_SEARCH_QUERY_PARAM_NAME = 'query_string'
-PORTAL_ES_ENABLED = True
-
-ES_AUTH = 'username:password'
-ES_HOSTS = 'http://elasticsearch:9200'
-ES_INDEX_PREFIX = 'cms-dev-{}'
-ES_DOMAIN = 'http://localhost:8000'
-
-
-
-########################
 # SETTINGS IMPORT
 ########################
 
@@ -821,14 +805,12 @@ for old_setting_name in old_setting_names:
             if 'INCLUDES_SEARCH_BAR' == old_setting_name:
                 PORTAL_HAS_SEARCH = INCLUDES_SEARCH_BAR
 
-# For clients using Elasticsearch
-if PORTAL_ES_ENABLED:
-    from taccsite_cms._settings.es_search import *
-    from taccsite_cms._settings.es_search import (
-        _INSTALLED_APPS as es_search_INSTALLED_APPS
-    )
-    index = INSTALLED_APPS.index('aldryn_apphooks_config')
-    INSTALLED_APPS[index:index] = es_search_INSTALLED_APPS
+########################
+# SETTINGS CONDITIONAL
+########################
+
+if PORTAL_SEARCH_INDEX_IS_AUTOMATIC:
+    HAYSTACK_SIGNAL_PROCESSOR = 'taccsite_cms.signal_processor.RealtimeSignalProcessor'
 
 ########################
 # SETTINGS EXPORT
