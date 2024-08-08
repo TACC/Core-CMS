@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
-## [4.14.0] - 2023-08-07: PORTAL_ES_ENABLED → PORTAL_SEARCH_INDEX_IS_AUTOMATIC
+## [4.14.0] - 2023-08-07: …ES_ENABLED → …SEARCH_INDEX_IS_AUTOMATIC
 
 ### Changed
 
