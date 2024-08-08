@@ -7,6 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [4.14.0] - 2023-08-07: …ES_ENABLED → …SEARCH_INDEX_IS_AUTOMATIC
+
+### Changed
+
+* enhance: assume local development by @wesleyboar in https://github.com/TACC/Core-CMS/pull/860
+
+### Fixed
+
+* fix: WP-602 `docker compose` with and without dash by @wesleyboar in https://github.com/TACC/Core-CMS/pull/858
+* fix: CMD-176 conditional elastic search by @wesleyboar in https://github.com/TACC/Core-CMS/pull/857
+* fix: settings_custom BRANDING out of date by @wesleyboar in https://github.com/TACC/Core-CMS/pull/862
+
+### Documented
+
+* docs: deprecate docker-compose by @wesleyboar in https://github.com/TACC/Core-CMS/pull/859
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.13.1...v4.14.0
+
 ## [4.13.1] - 2023-07-25: No Error if 2nd-Level Breadcrumb Link is Absent
 
 ### Fixed
@@ -55,6 +73,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 **Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.11.1...v4.12.0
 
 ## [4.11.1] - 2024-06-26: Can Disable ES, Fix Hidden Nav, LDAP Requires Portal
+
+> **Warning**
+> The "Can Disable ES" feature is broken. Use v[4.14.0] for similar feature.
 
 ### Added
 
@@ -1284,7 +1305,8 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.13.1...main
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.14.0...main
+[4.14.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.14.0
 [4.13.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.13.1
 [4.13.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.13.0
 [4.12.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.12.0
