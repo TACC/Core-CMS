@@ -12,22 +12,14 @@
 
 ## from v4.N to v4.14
 
-- [Do Not Assume Elasticsearch Settings](#do-not-assume-elasticsearch-settings)
+- [Rename `PORTAL_ES_ENABLED` Setting](#rename-portal_es_enabled-settings)
 - [Upgrade Docker Compose](#upgrade-docker-compose)
 
-### Do Not Assume Elasticsearch Settings
+### Rename `PORTAL_ES_ENABLED` Setting
 
-**If** client uses Elasticsearch, **then** —
-
-```py
-PORTAL_ES_ENABLED = True
-```
-
-— **otherwise** —
-
-```py
-PORTAL_ES_ENABLED = False
-```
+| from | to |
+| - | - |
+| `PORTAL_ES_ENABLED` | `PORTAL_SEARCH_INDEX_IS_AUTOMATIC` |
 
 ### Upgrade Docker Compose
 
