@@ -141,7 +141,7 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 }
 
 /* Remove Drop Cap when tag is added */
-.has-blog-tag-no-drop-cap .s-drop-cap > p:first-of-type::first-letter {
+.has-blog-tag-no-drop-cap .s-drop-cap > p:not(.s-drop-cap)::first-letter {
   padding-right: unset;
   initial-letter: unset;
 }
