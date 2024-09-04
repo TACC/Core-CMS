@@ -141,12 +141,6 @@ Styleguide Components.DjangoCMS.Blog.App.Page
   margin-top: 0.5em;
 }
 
-/* Support Drop Cap for edge case */
-/* FAQ: Articles require drop-cap even if not using a caption */
-/* FAQ: Articles with image sans caption put image in a <p> */
-.s-drop-cap > p:first-of-type:has(img) + p::first-letter {
-  @mixin drop-cap;
-}
 /* Remove Drop Cap when tag is added */
 .has-blog-tag-no-drop-cap .s-drop-cap > p:not(.s-drop-cap)::first-letter {
   padding-right: unset;
