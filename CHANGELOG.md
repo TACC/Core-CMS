@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [4.14.1] - 2023-09-04: News Drop-Cap Without Caption via `.s-drop-cap`
+
+### Fixed
+
+* fix: tup 730 news drop cap should work even if no caption by @wesleyboar in https://github.com/TACC/Core-CMS/pull/864
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.14.0...v4.14.1
+
 ## [4.14.0] - 2023-08-07: …ES_ENABLED → …SEARCH_INDEX_IS_AUTOMATIC
 
 ### Changed
@@ -1305,7 +1313,8 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.14.0...main
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.14.1...main
+[4.14.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.14.1
 [4.14.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.14.0
 [4.13.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.13.1
 [4.13.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.13.0
