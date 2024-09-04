@@ -41,6 +41,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 **Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.13.0...v4.13.1
 
+## [4.10.2-extra.1] - 2024-07-10: Support `form_name` in `PORTAL_CONF_EMAIL_…`
+
+### Added
+
+* feat: CMD-112 `form_name` in custom email message — off v4.10.2 by @wesleyboar in https://github.com/TACC/Core-CMS/pull/847
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.10.2...v4.10.2-extra.1
+
 ## [4.13.0] - 2023-07-24: Easier Customization, Fix Accessibility & Containers
 
 ### Added
@@ -1321,6 +1329,7 @@ v2.0.0 Production release as of Mar 31, 2021.
 [4.12.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.12.0
 [4.11.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.11.1
 [4.11.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.11.0
+[4.10.2-extra.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.10.2-extra.1
 [4.10.2]: https://github.com/TACC/Core-CMS/releases/tag/v4.10.2
 [4.10.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.10.1
 [4.10.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.10.0
