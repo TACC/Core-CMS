@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
-## [4.15.2] - 2023-09-04: Section via Container Have Corrected Labels
+## [4.15.2] - 2023-09-05: Section via Container Have Corrected Labels
 
 ### Fixed
 
