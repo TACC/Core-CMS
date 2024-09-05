@@ -7,16 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
-## [4.15.1] - 2023-09-04: Core-Styles v2.23.1
+## [4.15.2] - 2023-09-04: Section via Container Have Corrected Labels
+
+### Fixed
+
+- fix: incorrect text for section containers by @wesleyboar in 8a8a0660
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.15.0...v4.15.1
+
+## [4.15.2] - 2023-09-05: Core-Styles v2.23.1
 
 ### Updated
 
 - fix/core-styles-v2-32-1 by @wesleyboar in 763f7e8c
 
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.15.1...v4.15.2
 
-**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.15.0...v4.15.1
-
-## [4.15.0] - 2023-09-04: Core-Styles Design Token Colors & Font-Weight Vars
+## [4.15.0] - 2023-09-05: Core-Styles Design Token Colors & Font-Weight Vars
 
 ### Added
 
@@ -1339,8 +1346,9 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.15.1...main
-[4.15.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.15.1
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.15.2...main
+[4.15.2]: https://github.com/TACC/Core-CMS/releases/tag/v4.15.2
+[4.15.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.15.1
 [4.15.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.15.0
 [4.14.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.14.1
 [4.14.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.14.0
