@@ -625,11 +625,11 @@ DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS = [
         ('container-fluid', _('Fluid')), # default
         (
             'container-fluid  o-section o-section--style-light',
-            _('Fluid Container + Light section')
+            _('Fluid container + Light section')
         ),
         (
             'container-fluid  o-section o-section--style-dark',
-            _('Fluid Container + Dark section')
+            _('Fluid container + Dark section')
         ),
     )),
     (_('No container'), (
