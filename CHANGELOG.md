@@ -82,7 +82,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * FP-1318: Create Section Pattern via Bootstrap Container Plugin by @wesleyboar in https://github.com/TACC/Core-CMS/pull/431
 * feat: CMD-164 custom styles via setting by @wesleyboar in https://github.com/TACC/Core-CMS/pull/840
 * feat: CMD-165 custom branding via setting by @wesleyboar in https://github.com/TACC/Core-CMS/pull/841
-* docs: CMD-164 CMD-165 custom assets via settings by @wesleyboar in https://github.com/TACC/Core-CMS/pull/843
 
 ### Fixed
 
@@ -90,6 +89,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * fix: CMD-71 svgs not accessible by @wesleyboar in https://github.com/TACC/Core-CMS/pull/845
 * fix: custom app with custom url is difficult to debug by @wesleyboar in https://github.com/TACC/Core-CMS/pull/851 and https://github.com/TACC/Core-CMS/pull/852
 * fix: WP-407 unable to edit nor create container by @wesleyboar in https://github.com/TACC/Core-CMS/pull/853
+
+## Documented
+
+* docs: CMD-164 CMD-165 custom assets via settings by @wesleyboar in https://github.com/TACC/Core-CMS/pull/843
 
 ### Security
 
