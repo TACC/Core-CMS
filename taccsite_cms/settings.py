@@ -614,32 +614,32 @@ DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS = [
         ('container', _('Container')), # default
         (
             'container  o-section o-section--style-light',
-            _('Fluid, Light section')
+            _('Container + Light section')
         ),
         (
             'container  o-section o-section--style-dark',
-            _('Fluid, Dark section')
+            _('Container + Dark section')
         ),
     )),
     (_('Fluid container'), (
         ('container-fluid', _('Fluid')), # default
         (
             'container-fluid  o-section o-section--style-light',
-            _('Fluid, Light section')
+            _('Fluid Container + Light section')
         ),
         (
             'container-fluid  o-section o-section--style-dark',
-            _('Fluid, Dark section')
+            _('Fluid Container + Dark section')
         ),
     )),
     (_('No container'), (
         (
             'o-section o-section--style-light',
-            _('Fluid, Light section')
+            _('Light section')
         ),
         (
             'o-section o-section--style-dark',
-            _('Fluid, Dark section')
+            _('Dark section')
         ),
     )),
 ]
