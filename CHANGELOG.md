@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - fix: incorrect text for section containers by @wesleyboar in 8a8a0660
 
-**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.15.0...v4.15.1
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.15.1...v4.15.2
 
 ## [4.15.2] - 2023-09-05: Core-Styles v2.23.1
 
