@@ -4,16 +4,6 @@
 
 SECRET_KEY = 'CHANGE_ME'
 
-# Specify allowed hosts or use an asterisk to allow any host.
-# ALLOWED_HOSTS = ['hostname.tacc.utexas.edu', 'client.org'] # Dev/Prod/Etc
-ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost', '*']   # Local
-
-########################
-# TACC: PORTAL
-########################
-
-CEP_AUTH_VERIFICATION_ENDPOINT = 'http://django:6000'
-
 ########################
 # STORAGE
 ########################
