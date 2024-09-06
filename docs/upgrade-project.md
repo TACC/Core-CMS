@@ -12,7 +12,14 @@
 
 ## from v4.N to v4.14
 
+- [Rename `PORTAL_ES_ENABLED` Setting](#rename-portal_es_enabled-settings)
 - [Upgrade Docker Compose](#upgrade-docker-compose)
+
+### Rename `PORTAL_ES_ENABLED` Setting
+
+| from | to |
+| - | - |
+| `PORTAL_ES_ENABLED` | `PORTAL_SEARCH_INDEX_IS_AUTOMATIC` |
 
 ### Upgrade Docker Compose
 

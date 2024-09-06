@@ -481,6 +481,7 @@ INSTALLED_APPS = [
 ] + search_INSTALLED_APPS + [
 
     # miscellaneous
+    'aldryn_apphooks_config',  # search index & django CMS Blog
     'test_without_migrations', # run tests faster
 
 ] + form_plugin_INSTALLED_APPS + [
@@ -613,32 +614,32 @@ DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS = [
         ('container', _('Container')), # default
         (
             'container  o-section o-section--style-light',
-            _('Fluid, Light section')
+            _('Container + Light section')
         ),
         (
             'container  o-section o-section--style-dark',
-            _('Fluid, Dark section')
+            _('Container + Dark section')
         ),
     )),
     (_('Fluid container'), (
         ('container-fluid', _('Fluid')), # default
         (
             'container-fluid  o-section o-section--style-light',
-            _('Fluid, Light section')
+            _('Fluid container + Light section')
         ),
         (
             'container-fluid  o-section o-section--style-dark',
-            _('Fluid, Dark section')
+            _('Fluid container + Dark section')
         ),
     )),
     (_('No container'), (
         (
             'o-section o-section--style-light',
-            _('Fluid, Light section')
+            _('Light section')
         ),
         (
             'o-section o-section--style-dark',
-            _('Fluid, Dark section')
+            _('Dark section')
         ),
     )),
 ]
@@ -723,6 +724,8 @@ DJANGOCMS_ICON_SETS = [
     (CORTAL_ICONS, 'icon', _('TACC "Cortal" Icons')),
 ]
 
+
+
 ########################
 # SETTINGS IMPORT
 ########################
@@ -754,8 +757,9 @@ except ImportError:
 
 ########################
 # SETTINGS DEPRECATED
-########################
 # TODO: Make clients not use nor set these
+########################
+
 deprecated_SETTINGS_EXPORT = []
 
 # For header_branding.html
@@ -800,6 +804,13 @@ for old_setting_name in old_setting_names:
                 PORTAL_HAS_LOGIN = INCLUDES_PORTAL_NAV
             if 'INCLUDES_SEARCH_BAR' == old_setting_name:
                 PORTAL_HAS_SEARCH = INCLUDES_SEARCH_BAR
+
+########################
+# SETTINGS CONDITIONAL
+########################
+
+if PORTAL_SEARCH_INDEX_IS_AUTOMATIC:
+    HAYSTACK_SIGNAL_PROCESSOR = 'taccsite_cms.signal_processor.RealtimeSignalProcessor'
 
 ########################
 # SETTINGS EXPORT

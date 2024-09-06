@@ -7,6 +7,57 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [4.15.2] - 2023-09-05: Section via Container Have Corrected Labels
+
+### Fixed
+
+- fix: incorrect text for section containers by @wesleyboar in 8a8a0660
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.15.1...v4.15.2
+
+## [4.15.2] - 2023-09-05: Core-Styles v2.23.1
+
+### Updated
+
+- fix/core-styles-v2-32-1 by @wesleyboar in 763f7e8c
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.15.1...v4.15.2
+
+## [4.15.0] - 2023-09-05: Core-Styles Design Token Colors & Font-Weight Vars
+
+### Added
+
+* enhance: CMD-182 design tokens by @wesleyboar in https://github.com/TACC/Core-CMS/pull/863
+
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.14.1...v4.15.0
+
+## [4.14.1] - 2023-09-04: News Drop-Cap Without Caption via `.s-drop-cap`
+
+### Fixed
+
+* fix: tup 730 news drop cap should work even if no caption by @wesleyboar in https://github.com/TACC/Core-CMS/pull/864
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.14.0...v4.14.1
+
+## [4.14.0] - 2023-08-07: …ES_ENABLED → …SEARCH_INDEX_IS_AUTOMATIC
+
+### Changed
+
+* enhance: assume local development by @wesleyboar in https://github.com/TACC/Core-CMS/pull/860
+
+### Fixed
+
+* fix: WP-602 `docker compose` with and without dash by @wesleyboar in https://github.com/TACC/Core-CMS/pull/858
+* fix: CMD-176 conditional elastic search by @wesleyboar in https://github.com/TACC/Core-CMS/pull/857
+* fix: settings_custom BRANDING out of date by @wesleyboar in https://github.com/TACC/Core-CMS/pull/862
+
+### Documented
+
+* docs: deprecate docker-compose by @wesleyboar in https://github.com/TACC/Core-CMS/pull/859
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.13.1...v4.14.0
+
 ## [4.13.1] - 2023-07-25: No Error if 2nd-Level Breadcrumb Link is Absent
 
 ### Fixed
@@ -14,6 +65,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * fix: CMD-162 error if no second breadcrumb by @wesleyboar in https://github.com/TACC/Core-CMS/pull/855
 
 **Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.13.0...v4.13.1
+
+## [4.10.2-extra.1] - 2024-07-10: Support `form_name` in `PORTAL_CONF_EMAIL_…`
+
+### Added
+
+* feat: CMD-112 `form_name` in custom email message — off v4.10.2 by @wesleyboar in https://github.com/TACC/Core-CMS/pull/847
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.10.2...v4.10.2-extra.1
 
 ## [4.13.0] - 2023-07-24: Easier Customization, Fix Accessibility & Containers
 
@@ -23,7 +82,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * FP-1318: Create Section Pattern via Bootstrap Container Plugin by @wesleyboar in https://github.com/TACC/Core-CMS/pull/431
 * feat: CMD-164 custom styles via setting by @wesleyboar in https://github.com/TACC/Core-CMS/pull/840
 * feat: CMD-165 custom branding via setting by @wesleyboar in https://github.com/TACC/Core-CMS/pull/841
-* docs: CMD-164 CMD-165 custom assets via settings by @wesleyboar in https://github.com/TACC/Core-CMS/pull/843
 
 ### Fixed
 
@@ -31,6 +89,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * fix: CMD-71 svgs not accessible by @wesleyboar in https://github.com/TACC/Core-CMS/pull/845
 * fix: custom app with custom url is difficult to debug by @wesleyboar in https://github.com/TACC/Core-CMS/pull/851 and https://github.com/TACC/Core-CMS/pull/852
 * fix: WP-407 unable to edit nor create container by @wesleyboar in https://github.com/TACC/Core-CMS/pull/853
+
+## Documented
+
+* docs: CMD-164 CMD-165 custom assets via settings by @wesleyboar in https://github.com/TACC/Core-CMS/pull/843
 
 ### Security
 
@@ -55,6 +117,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 **Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.11.1...v4.12.0
 
 ## [4.11.1] - 2024-06-26: Can Disable ES, Fix Hidden Nav, LDAP Requires Portal
+
+> **Warning**
+> The "Can Disable ES" feature is broken. Use v[4.14.0] for similar feature.
 
 ### Added
 
@@ -1284,12 +1349,18 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.13.1...main
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.15.2...main
+[4.15.2]: https://github.com/TACC/Core-CMS/releases/tag/v4.15.2
+[4.15.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.15.1
+[4.15.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.15.0
+[4.14.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.14.1
+[4.14.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.14.0
 [4.13.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.13.1
 [4.13.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.13.0
 [4.12.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.12.0
 [4.11.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.11.1
 [4.11.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.11.0
+[4.10.2-extra.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.10.2-extra.1
 [4.10.2]: https://github.com/TACC/Core-CMS/releases/tag/v4.10.2
 [4.10.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.10.1
 [4.10.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.10.0
