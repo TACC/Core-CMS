@@ -37,6 +37,7 @@ project_name.var
 *settings_custom*.py
 *settings_local*.py
 custom_app_settings.py
+!*.example.py
 *.custom.yml
 urls_custom.py
 
