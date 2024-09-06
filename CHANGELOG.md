@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [4.16.0] - 2023-09-06: BlueSky Social Media, Footer Enhancements, Fixes
+
+### Added
+
+* feat: secrets.example.py by @wesleyboar in https://github.com/TACC/Core-CMS/pull/861
+* feat: add BlueSky icon to logos-social-media by @wesleyboar in 9efb52f, 34ae5d1
+* deps: s-footer updates via core-styles 2.33.0 by @wesleyboar in https://github.com/TACC/Core-CMS/pull/866, https://github.com/TACC/Core-CMS/pull/865
+
+### Fixed
+
+* fix: "Fluid Container" should be "Fluid container" by wesleyboar in 06137b7
+* fix: LinkedIn icon, more role="img" to SVG by @wesleyboar in 1ba01af
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.15.2...v4.16.0
+
 ## [4.15.2] - 2023-09-05: Section via Container Have Corrected Labels
 
 ### Fixed
@@ -15,7 +30,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 **Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.15.1...v4.15.2
 
-## [4.15.2] - 2023-09-05: Core-Styles v2.23.1
+## [4.15.1] - 2023-09-05: Core-Styles v2.23.1
 
 ### Updated
 
@@ -1349,7 +1364,8 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.15.2...main
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.16.0...main
+[4.16.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.16.0
 [4.15.2]: https://github.com/TACC/Core-CMS/releases/tag/v4.15.2
 [4.15.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.15.1
 [4.15.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.15.0
