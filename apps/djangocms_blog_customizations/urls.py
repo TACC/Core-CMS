@@ -8,7 +8,9 @@ app_name = 'djangocms_blog_customizations'
 urlpatterns = [
     # To render styled Blog feed
     # XXX: Does NOT style the feed
-    # XXX: Does NOT render items within the feed
+    # XXX: Does NOT customize the feed
+    # FAQ: See errors at `/blog/feed/`, items at `/blog/feed/fb`
+    # FAQ: See Blog app feed root at `/news/feed/`, items at `/news/feed/fb`
     re_path(r'^feed/', LatestEntriesFeed(), name='feed'),
 
     # To render current blog, content only (no Core-CMS base.html)
