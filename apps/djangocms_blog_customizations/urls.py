@@ -16,10 +16,12 @@ urlpatterns = [
     # To render current blog, content only (no Core-CMS base.html)
     # XXX: Does NOT render blog content
     # XXX: Does NOT escape Core-CMS base.html
+    # FAQ: URL is `/blog/local`
     re_path(r'^local/', BlogView, name='base'),
 
     # To render a blog (or any page) from another website
     # XXX: URLs are still local
     # XXX: Is NOT blog-specific, so should be a generic feature
+    # FAQ: URL is `/blog/remote`
     re_path(r'^remote/', BlogRemoteView.as_view(), name='remote'),
 ]
