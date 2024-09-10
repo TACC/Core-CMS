@@ -6,6 +6,6 @@
 }
 @keyframes focus {
    from {
-        outline-color: var(--global-color-accent--tertiary);
+        outline-color: var(--global-color-tertiary--normal);
     }
 }

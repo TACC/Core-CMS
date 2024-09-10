@@ -25,12 +25,13 @@ from taccsite_cms._settings.search import (
     _INSTALLED_APPS as search_INSTALLED_APPS
 )
 
+def gettext(s): return s
+
 ########################
 # DJANGO
 ########################
 
 SECRET_KEY = 'CHANGE_ME'
-def gettext(s): return s
 
 
 DATA_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -39,9 +40,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 DEBUG = True       # False for Prod.
 
-# Specify allowed hosts or use an asterisk to allow any host and simplify the config.
-# ALLOWED_HOSTS = ['hostname.tacc.utexas.edu', 'host.ip.v4.address', '0.0.0.0', 'localhost', '127.0.0.1']   # In production.
-ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost', '*']   # In development.
+# Specify allowed hosts or use an asterisk to allow any host.
+# ALLOWED_HOSTS = ['hostname.tacc.utexas.edu', 'client.org'] # Dev/Prod/Etc
+ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost', '*']   # Local
+
+LOGOUT_REDIRECT_URL = '/'
 
 # https://docs.djangoproject.com/en/3.0/ref/clickjacking/#how-to-use-it
 X_FRAME_OPTIONS = 'SAMEORIGIN'
@@ -49,6 +52,8 @@ X_FRAME_OPTIONS = 'SAMEORIGIN'
 # whether the session cookie should be secure (https:// only)
 SESSION_COOKIE_SECURE = True
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
 
 ########################
 # STORAGE
@@ -178,43 +183,52 @@ GOOGLE_ANALYTICS_PRELOAD = True
 
 
 ########################
+# TACC: BRANDING (DEPRECATED)
+########################
+
+# TACC_BRANDING = [
+#     "tacc",                                  # (unused value)
+#     "site_cms/img/org_logos/tacc-white.png", # "img_file_src"
+#     "branding-tacc",                         # "img_class"
+#     "https://www.tacc.utexas.edu/",          # "link_href"
+#     "_blank",                                # "link_target"
+#     "TACC Logo",                             # "img_alt_text"
+#     "anonymous",                             # "img_crossorigin"
+#     "True"                                   # (whether to show logo)
+# ]
+# UTEXAS_BRANDING = [
+#     "utexas",                                    # (unused value)
+#     "site_cms/img/org_logos/utaustin-white.png", # "img_file_src"
+#     "branding-utaustin",                         # "img_class"
+#     "https://www.utexas.edu/",                   # "link_href"
+#     "_blank",                                    # "link_target"
+#     "University of Texas at Austin Logo",        # "img_alt_text"
+#     "anonymous",                                 # "img_crossorigin"
+#     "True"                                       # (whether to show logo)
+# ]
+# NSF_BRANDING = [
+#     "nsf",                                  # (unused value)
+#     "site_cms/img/org_logos/nsf-white.png", # "img_file_src"
+#     "branding-nsf",                         # "img_class"
+#     "https://www.nsf.gov/",                 # "link_href"
+#     "_blank",                               # "link_target"
+#     "NSF Logo",                             # "img_alt_text"
+#     "anonymous",                            # "img_crossorigin"
+#     "True"                                  # (whether to show logo)
+# ]
+
+# To hide branding, add custom style `#header-branding { display: none; }`
+# BRANDING = [ TACC_BRANDING, UTEXAS_BRANDING ]
+
+
+########################
 # TACC: BRANDING
 ########################
 
-TACC_BRANDING = [
-    "tacc",
-    "site_cms/img/org_logos/tacc-white.png",
-    "branding-tacc",
-    "https://www.tacc.utexas.edu/",
-    "_blank",
-    "TACC Logo",
-    "anonymous",
-    "True"
-]
+from taccsite_cms._settings.branding import *
 
-UTEXAS_BRANDING = [
-    "utexas",
-    "site_cms/img/org_logos/utaustin-white.png",
-    "branding-utaustin",
-    "https://www.utexas.edu/",
-    "_blank",
-    "University of Texas at Austin Logo",
-    "anonymous",
-    "True"
-]
-
-NSF_BRANDING = [
-    "nsf",
-    "site_cms/img/org_logos/nsf-white.png",
-    "branding-nsf",
-    "https://www.nsf.gov/",
-    "_blank",
-    "NSF Logo",
-    "anonymous",
-    "True"
-]
-
-BRANDING = [ TACC_BRANDING, UTEXAS_BRANDING ]
+# To hide branding, set `PORTAL_BRANDING = False`
+PORTAL_BRANDING = [ PORTAL_BRANDING_TACC, PORTAL_BRANDING_UTEXAS ]
 
 
 ########################
@@ -271,12 +285,11 @@ PORTAL_HAS_SEARCH = True
 # FAQ: A falsy value will trigger default logic for nav width
 PORTAL_NAV_WIDTH = False
 
-LOGOUT_REDIRECT_URL = '/'
-
 # using container name to avoid cep.dev dns issues locally
-# this will need to be updated for dev/pprd/prod systems
-# for example, CEP_AUTH_VERIFICATION_ENDPOINT=https://dev.cep.tacc.utexas.edu
-CEP_AUTH_VERIFICATION_ENDPOINT = 'http://django:6000'
+# CEP_AUTH_VERIFICATION_ENDPOINT = https://hostname.tacc.utexas.edu # Dev/Prod/Etc
+CEP_AUTH_VERIFICATION_ENDPOINT = 'http://django:6000'               # Local
+
+
 
 ########################
 # TACC: SOCIAL MEDIA
@@ -286,8 +299,14 @@ PORTAL_SOCIAL_SHARE_PLATFORMS = []
 # PORTAL_SOCIAL_SHARE_PLATFORMS = ['linkedin', 'instagram', 'facebook', 'bluesky', 'email']
 
 ########################
-# TACC: CORE STYLES
+# TACC: STYLES
 ########################
+
+PORTAL_STYLES = []
+# PORTAL_STYLES = [{
+#     "is_remote": True,
+#     "path": "https://cdn.jsdelivr.net/gh/TACC/Core-CMS-Custom@2cdc59f/example_cms/src/apps/example_app/static/example_app/css/example_app.css",
+# }]
 
 # Only use integer numbers (not "v1", not "0.11.0"),
 # so templates can load based on simple comparisons
@@ -462,6 +481,7 @@ INSTALLED_APPS = [
 ] + search_INSTALLED_APPS + [
 
     # miscellaneous
+    'aldryn_apphooks_config',  # search index & django CMS Blog
     'test_without_migrations', # run tests faster
 
 ] + form_plugin_INSTALLED_APPS + [
@@ -584,11 +604,45 @@ FILE_UPLOAD_MAX_MEMORY_SIZE = 20000000  # 20MB
 
 DJANGOCMS_AUDIO_ALLOWED_EXTENSIONS = ['mp3', 'ogg', 'wav']
 
-SETTINGS_EXPORT_VARIABLE_NAME = 'settings'
-
 ########################
 # PLUGIN SETTINGS
 ########################
+
+# SEE: https://github.com/django-cms/djangocms-bootstrap4
+DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS = [
+    (_('Container'), (
+        ('container', _('Container')), # default
+        (
+            'container  o-section o-section--style-light',
+            _('Container + Light section')
+        ),
+        (
+            'container  o-section o-section--style-dark',
+            _('Container + Dark section')
+        ),
+    )),
+    (_('Fluid container'), (
+        ('container-fluid', _('Fluid')), # default
+        (
+            'container-fluid  o-section o-section--style-light',
+            _('Fluid container + Light section')
+        ),
+        (
+            'container-fluid  o-section o-section--style-dark',
+            _('Fluid container + Dark section')
+        ),
+    )),
+    (_('No container'), (
+        (
+            'o-section o-section--style-light',
+            _('Light section')
+        ),
+        (
+            'o-section o-section--style-dark',
+            _('Dark section')
+        ),
+    )),
+]
 
 # https://github.com/django-cms/djangocms-style
 DJANGOCMS_STYLE_CHOICES = [
@@ -670,6 +724,8 @@ DJANGOCMS_ICON_SETS = [
     (CORTAL_ICONS, 'icon', _('TACC "Cortal" Icons')),
 ]
 
+
+
 ########################
 # SETTINGS IMPORT
 ########################
@@ -701,9 +757,15 @@ except ImportError:
 
 ########################
 # SETTINGS DEPRECATED
-########################
 # TODO: Make clients not use nor set these
+########################
+
 deprecated_SETTINGS_EXPORT = []
+
+# For header_branding.html
+deprecated_SETTINGS_EXPORT += ['BRANDING']
+if 'BRANDING' not in locals():
+    BRANDING = False
 
 # For header_logo.html
 deprecated_SETTINGS_EXPORT += ['LOGO']
@@ -744,21 +806,31 @@ for old_setting_name in old_setting_names:
                 PORTAL_HAS_SEARCH = INCLUDES_SEARCH_BAR
 
 ########################
+# SETTINGS CONDITIONAL
+########################
+
+if PORTAL_SEARCH_INDEX_IS_AUTOMATIC:
+    HAYSTACK_SIGNAL_PROCESSOR = 'taccsite_cms.signal_processor.RealtimeSignalProcessor'
+
+########################
 # SETTINGS EXPORT
 ########################
 
+SETTINGS_EXPORT_VARIABLE_NAME = 'settings'
+
 SETTINGS_EXPORT = deprecated_SETTINGS_EXPORT + [
     'DEBUG',
-    'BRANDING',
     'TACC_CORE_STYLES_VERSION',
     'GOOGLE_ANALYTICS_PROPERTY_ID',
     'GOOGLE_ANALYTICS_PRELOAD',
+    'PORTAL_BRANDING',
     'PORTAL_LOGO',
     'PORTAL_FAVICON',
     'PORTAL_IS_TACC_CORE_PORTAL',
     'PORTAL_HAS_LOGIN',
     'PORTAL_HAS_SEARCH',
     'PORTAL_NAV_WIDTH',
+    'PORTAL_STYLES',
     'PORTAL_BLOG_SHOW_CATEGORIES',
     'PORTAL_BLOG_SHOW_TAGS',
     'PORTAL_BLOG_CUSTOM_MEDIA_POST_CATEGORY',
