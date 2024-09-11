@@ -1,10 +1,15 @@
+import re
+
 from django.urls import re_path
+# from django.conf import settings
 
 from .feeds import LatestEntriesFeed
 from .views import BlogView, BlogRemoteView
 
 
 app_name = 'djangocms_blog_customizations'
+
+# blogRemoteUrlPattern = r'^' + re.escape(settings.PORTAL_BLOG_REMOTE_CLIENT_PATH)
 urlpatterns = [
     # To render styled Blog feed
     # XXX: Does NOT style the feed
@@ -22,6 +27,6 @@ urlpatterns = [
     # To render a blog (or any page) from another website
     # XXX: URLs are still local
     # XXX: Is NOT blog-specific, so should be a generic feature
-    # FAQ: URL is `/blog/remote`
+    # TODO: Use settings.PORTAL_BLOG_REMOTE_CLIENT_PATH
     re_path(r'^remote/', BlogRemoteView.as_view(), name='remote'),
 ]
