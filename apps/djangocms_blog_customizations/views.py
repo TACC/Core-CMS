@@ -13,10 +13,7 @@ class BlogRemoteView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        remote_path = self.request.path.replace(
-            settings.PORTAL_BLOG_REMOTE_CLIENT_PATH, ''
-        )
-        remote_url = settings.PORTAL_BLOG_REMOTE_SOURCE_ROOT + remote_path
+        remote_url = self.get_remote_url()
         remote_content = self.get_remote_content(remote_url)
 
         context['markup'] = remote_content
@@ -30,3 +27,15 @@ class BlogRemoteView(TemplateView):
             return response.text
         else:
             return None
+
+    def get_remote_url(self):
+        path = self.request.path.replace(
+            settings.PORTAL_BLOG_REMOTE_CLIENT_PATH,
+            ''
+        )
+        url = (
+            settings.PORTAL_BLOG_REMOTE_SOURCE_ROOT
+            + path
+        )
+
+        return url
