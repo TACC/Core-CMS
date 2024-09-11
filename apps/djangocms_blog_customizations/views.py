@@ -8,16 +8,6 @@ from django.views.generic.base import TemplateView
 def BlogView(request):
     return render(request, 'djangocms_blog/base.html')
 
-def get_remote_content(url):
-    print("BLOGREMOTEVIEW | url", url)
-
-    response = requests.get(url)
-
-    if response.status_code == 200:
-        return response.text
-    else:
-        return None
-
 class BlogRemoteView(TemplateView):
     template_name = 'djangocms_blog_customizations/remote.html'
 
@@ -27,12 +17,16 @@ class BlogRemoteView(TemplateView):
             settings.PORTAL_BLOG_REMOTE_CLIENT_PATH, ''
         )
         remote_url = settings.PORTAL_BLOG_REMOTE_SOURCE_ROOT + remote_path
-
-        print("BLOGREMOTEVIEW | remote_path", remote_path)
-        print("BLOGREMOTEVIEW | remote_url", remote_url)
-
-        remote_content = get_remote_content(remote_url)
+        remote_content = self.get_remote_content(remote_url)
 
         context['markup'] = remote_content
 
         return context
+
+    def get_remote_content(self, url):
+        response = requests.get(url)
+
+        if response.status_code == 200:
+            return response.text
+        else:
+            return None
