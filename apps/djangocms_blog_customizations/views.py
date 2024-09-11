@@ -20,14 +20,6 @@ class BlogRemoteView(TemplateView):
 
         return context
 
-    def get_remote_content(self, url):
-        response = requests.get(url)
-
-        if response.status_code == 200:
-            return response.text
-        else:
-            return None
-
     def get_remote_url(self):
         path = self.request.path.replace(
             settings.PORTAL_BLOG_REMOTE_CLIENT_PATH,
@@ -39,3 +31,11 @@ class BlogRemoteView(TemplateView):
         )
 
         return url
+
+    def get_remote_content(self, url):
+        response = requests.get(url)
+
+        if response.status_code == 200:
+            return response.text
+        else:
+            return None
