@@ -11,8 +11,6 @@ class LatestEntriesFeed(DjangoCMSBlogLatestEntriesFeed):
     feed_type = Rss201rev2Feed
     feed_items_number = get_setting("FEED_LATEST_ITEMS")
 
-    print(f"CUSTOM FEED | FEED_LATEST_ITEMS: {feed_items_number}")
-
     def __call__(self, request, *args, **kwargs):
         namespace = get_setting("AUTO_NAMESPACE")
 
@@ -20,13 +18,9 @@ class LatestEntriesFeed(DjangoCMSBlogLatestEntriesFeed):
         self.namespace = get_setting("AUTO_NAMESPACE")
         self.config = BlogConfig.objects.get(namespace=namespace)
 
-        print(f"CUSTOM FEED | NAMESPACE: {self.namespace}, CONFIG: {self.config}")
-
         return super().__call__(request, *args, **kwargs)
 
     def items(self):
         items = super().items()
-
-        print(f"CUSTOM FEED | FEED ITEMS: {items}")
 
         return items
