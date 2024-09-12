@@ -1,3 +1,3 @@
-CUSTOM_APPS = ['apps.custom_example', 'apps.djangocms_blog_customizations']
-CUSTOM_MIDDLEWARE = ['taccsite_cms.middleware.settings.DynamicSiteIdMiddleware']
+CUSTOM_APPS = ['apps.custom_example']
+CUSTOM_MIDDLEWARE = []
 STATICFILES_DIRS = ()
