@@ -69,27 +69,27 @@
 
   <main id="cms-content">
 
-  {% block breadcrumbs %}
-    <div class="container">
-      {% include "nav_cms_breadcrumbs.html" %}
-    </div>
-  {% endblock breadcrumbs %}
-
   {% block content %}
 
     {# To hide extra space that a nested/redundant Container would add #}
     <style type="text/css">
-      #cms-content-placeholder.container .container { padding-inline: 0; }
+      #cms-content-container.container .container { padding-inline: 0; }
     </style>
     {# To wrap content in Container without relying on CMS editor #}
-    <div class="container" id="cms-content-placeholder">
-      {% placeholder "content" %}
+    <div class="container" id="cms-content-container">
+      {% block breadcrumbs %}
+        {% include "nav_cms_breadcrumbs.html" %}
+      {% endblock breadcrumbs %}
+
+      {% block cms_content %}
+        {% placeholder "content" %}
+      {% endblock cms_content %}
+
+      {# To isolate content editor cannot change layout of (e.g. Blog) #}
+      {% block app_content %}{% endblock app_content %}
     </div>
 
   {% endblock content %}
-
-  {# To isolate content that has a layout an editor cannot change e.g. Blog #}
-  {% block app_content %}{% endblock app_content %}
   </main>
 
   <footer class="c-footer  s-footer">
