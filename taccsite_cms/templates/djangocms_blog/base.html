@@ -13,15 +13,12 @@
     {% endif %}
 {% endblock meta %}
 
-{# TACC (to not let editor add Content to every blog page): #}
-{% block content %}{% endblock content %}
+{# TACC (to not let editor add content to every blog page): #}
+{% block cms_content %}{% endblock cms_content %}
 {# /TACC #}
 
-{# TACC (to let blog have breadcrumbs via `{% block "breadcrumbs" %}`): #}
+{# TACC (to not let blog usurp `{% block "content" %}`): #}
 {% block app_content %}
-{# /TACC #}
-{# TACC (to mimic `{% block "content" %}` layouts): #}
-<div class="container">
 {# /TACC #}
 
 {% if settings.TACC_CORE_STYLES_VERSION == 0 %}
@@ -42,9 +39,6 @@
     {% block content_blog %}{% endblock %}
 </div>
 
-{# TACC (to mimic `{% block "content" %}` layouts): #}
-</div>
-{# /TACC #}
-{# TACC (to let blog have breadcrumbs via `{% block "breadcrumbs" %}`): #}
+{# TACC (to not let blog usurp `{% block "content" %}`): #}
 {% endblock app_content %}
 {# /TACC #}
