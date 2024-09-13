@@ -7,6 +7,7 @@ from .feeds import LatestEntriesFeed
 app_name = 'custom_djangocms_blog_feed'
 urlpatterns = [
     # To render styled Blog feed
+    # XXX: Does NOT load page
     # XXX: Does NOT style the feed
     # XXX: Does NOT customize the feed
     # FAQ: See errors at `/blog/feed/`, items at `/blog/feed/fb`
