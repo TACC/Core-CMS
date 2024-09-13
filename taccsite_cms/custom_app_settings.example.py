@@ -1,3 +1,3 @@
-CUSTOM_APPS = ['apps.custom_example', 'apps.djangocms_blog_customizations']
+CUSTOM_APPS = ['apps.custom_example', 'apps.remote_content']
 CUSTOM_MIDDLEWARE = []
 STATICFILES_DIRS = ()

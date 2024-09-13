@@ -7,11 +7,8 @@ from django.template import Template, Context
 from django.shortcuts import render
 from django.views.generic.base import TemplateView
 
-def BlogView(request):
-    return render(request, 'djangocms_blog/base.html')
-
-class BlogRemoteView(TemplateView):
-    template_name = 'djangocms_blog_customizations/remote.html'
+class RemoteMarkup(TemplateView):
+    template_name = 'remote_content/markup.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -24,8 +21,8 @@ class BlogRemoteView(TemplateView):
         return context
 
     def get_source_url(self):
-        client_path = settings.PORTAL_BLOG_REMOTE_CLIENT_PATH
-        source_root = settings.PORTAL_BLOG_REMOTE_SOURCE_ROOT
+        client_path = settings.PORTAL_REMOTE_CONTENT_CLIENT_PATH
+        source_root = settings.PORTAL_REMOTE_CONTENT_SOURCE_ROOT
         client = urlparse(self.request.build_absolute_uri())
         source = urlparse(source_root)
 
@@ -48,8 +45,8 @@ class BlogRemoteView(TemplateView):
 
     # CAVEAT: Causes a view request for every resource (img/script/stylesheet)
     def get_client_markup(self, source_markup):
-        source = urlparse(settings.PORTAL_BLOG_REMOTE_SOURCE_ROOT)
-        client_path = settings.PORTAL_BLOG_REMOTE_CLIENT_PATH
+        source = urlparse(settings.PORTAL_REMOTE_CONTENT_SOURCE_ROOT)
+        client_path = settings.PORTAL_REMOTE_CONTENT_CLIENT_PATH
 
         # FAQ: No markup for bad URL or a resource specific to source wesbite
         if source_markup:
