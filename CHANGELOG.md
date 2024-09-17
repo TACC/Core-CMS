@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [4.17.0] - 2023-09-17: ________
+
+### Added
+
+* feat: CMD-97 isolate breadcrumbs from content by @wesleyboar in https://github.com/TACC/Core-CMS/pull/870
+* feat: tup 706 be able to serve blog markup raw by @wesleyboar in https://github.com/TACC/Core-CMS/pull/871
+
+### Fixed
+
+* fix: do not show branding if setting is false-y by @wesleyboar in https://github.com/TACC/Core-CMS/pull/877
+* fix: custom_example app not working by @wesleyboar in https://github.com/TACC/Core-CMS/pull/875
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.16.0...v4.17.0
+
 ## [4.16.1] - 2023-09-09: Core-Styles v2.33.1
 
 ### Updated
@@ -1372,7 +1386,8 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.16.1...main
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.17.0...main
+[4.17.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.17.0
 [4.16.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.16.1
 [4.16.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.16.0
 [4.15.2]: https://github.com/TACC/Core-CMS/releases/tag/v4.15.2
