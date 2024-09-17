@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
-## [4.17.0] - 2023-09-17: ________
+## [4.17.0] - 2023-09-17: Serve Raw Markup, Toggle Branding, Fix Example App
 
 ### Added
 
