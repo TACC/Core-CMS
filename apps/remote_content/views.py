@@ -21,11 +21,11 @@ class RemoteMarkup(TemplateView):
         return context
 
     def get_source_url(self):
-        client_path = settings.PORTAL_REMOTE_CONTENT_CLIENT_PATH
         source_root = settings.PORTAL_REMOTE_CONTENT_SOURCE_ROOT
         client = urlparse(self.request.build_absolute_uri())
         source = urlparse(source_root)
 
+        client_path = settings.PORTAL_REMOTE_CONTENT_CLIENT_PATH
         source_path = source.path + client.path.replace(client_path, '')
 
         source_url = client._replace(
