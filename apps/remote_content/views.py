@@ -21,22 +21,19 @@ class RemoteMarkup(TemplateView):
         return context
 
     def get_source_url(self):
-        request = requests.PreparedRequest()
         client_path = settings.PORTAL_REMOTE_CONTENT_CLIENT_PATH
         source_root = settings.PORTAL_REMOTE_CONTENT_SOURCE_ROOT
         client = urlparse(self.request.build_absolute_uri())
         source = urlparse(source_root)
 
         source_path = source.path + client.path.replace(client_path, '')
-        source_query = add_query_params(source, {'raw':''})
+
         source_url = client._replace(
             scheme=source.scheme,
             netloc=source.netloc,
             path=source_path,
-            query=source_query,
         ).geturl()
-
-        print('source_url', source_url)
+        source_url = add_query_params(source_url, {'raw':''})
 
         return source_url
 
@@ -62,10 +59,9 @@ class RemoteMarkup(TemplateView):
         else:
             return None
 
-def add_query_params(parsed_url, new_params):
-    merged_params = urlencode({
-        **dict(parse_qsl(parsed_url.query)),
-        **new_params
-    })
+def add_query_params(url, params):
+    request = requests.PreparedRequest()
 
-    return merged_params
+    request.prepare_url(url, params)
+
+    return request.url
