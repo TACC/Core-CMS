@@ -53,8 +53,8 @@ class RemoteMarkup(TemplateView):
         # FAQ: No markup for bad URL or a resource specific to source wesbite
         if source_markup:
             return source_markup.replace(
-                'href="' + source.path,
-                'href="' + client_path
+                'src="',
+                'src="' + source.scheme + '://' + source.netloc
             )
         else:
             return None
