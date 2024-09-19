@@ -47,17 +47,22 @@ class RemoteMarkup(TemplateView):
 
     # CAVEAT: Causes a view request for every resource (img/script/stylesheet)
     def get_client_markup(self, source_markup):
+        client_markup = None
+
         source = urlparse(settings.PORTAL_REMOTE_CONTENT_SOURCE_ROOT)
-        client_path = settings.PORTAL_REMOTE_CONTENT_CLIENT_PATH
+        source_site = source.scheme + '://' + source.netloc
 
         # FAQ: No markup for bad URL or a resource specific to source wesbite
         if source_markup:
-            return source_markup.replace(
+            client_markup = source_markup.replace(
                 'src="',
-                'src="' + source.scheme + '://' + source.netloc
+                'crossorigin="anonymous" src="' + source_site
+            ).replace(
+                'href="' + source.path,
+                'target="_blank" href="' + source_site + source.path
             )
-        else:
-            return None
+
+        return client_markup
 
 def add_query_params(url, params):
     request = requests.PreparedRequest()
