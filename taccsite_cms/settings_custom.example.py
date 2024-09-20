@@ -40,52 +40,17 @@ CMS_TEMPLATES = (
     ('guides/data_transfer.html', 'Guide: Data Transfer'),
     ('guides/data_transfer.globus.html', 'Guide: Globus Data Transfer'),
     ('guides/portal_technology.html', 'Guide: Portal Technology Stack'),
+
+    # WARNING: Not intuitive to unset, so only enable as needed e.g.
+    #          - serve Blog such that it can be injected into another CMS
+    # ('raw.html', 'Raw'),
 )
-
-########################
-# NSF BRANDING
-########################
-
-NSF_BRANDING = [
-    "nsf",
-    "example_cms/img/org_logos/nsf-white.png",
-    "branding-nsf",
-    "https://www.nsf.gov/",
-    "_blank",
-    "NSF Logo",
-    "anonymous",
-    "True"
-]
-
-########################
-# TACC BRANDING
-########################
-
-TACC_BRANDING = [
-    "tacc",
-    "example_cms/img/org_logos/tacc-white.png",
-    "branding-tacc",
-    "https://www.tacc.utexas.edu/",
-    "_blank",
-    "TACC Logo",
-    "anonymous",
-    "True"
-]
-
-UTEXAS_BRANDING = [
-    "utexas",
-    "example_cms/img/org_logos/utaustin-white.png",
-    "branding-utaustin",
-    "https://www.utexas.edu/",
-    "_blank",
-    "University of Texas at Austin Logo",
-    "anonymous",
-    "True"
-]
 
 ########################
 # CUSTOM PORTAL BRANDING
 ########################
+
+from taccsite_cms._settings.branding import *
 
 # Edit this config as needed for the project branding used in the navigation bar header.
 CUSTOM_BRANDING = [
@@ -100,16 +65,16 @@ CUSTOM_BRANDING = [
 ]
 
 # Generic TACC Portals.
-BRANDING = [ TACC_BRANDING, UTEXAS_BRANDING ]
+PORTAL_BRANDING = [ PORTAL_BRANDING_TACC, UTEXAS_BRANDING ]
 
-# Custom Branded Portals (Non-NSF).
-#BRANDING = [ TACC_BRANDING, UTEXAS_BRANDING, CUSTOM_BRANDING ]
+# Custom-Branded Portals (Non-NSF).
+# PORTAL_BRANDING = [ PORTAL_BRANDING_TACC, PORTAL_BRANDING_UTEXAS, CUSTOM_BRANDING ]
 
-# NSF Funded Generic TACC Portals.
-#BRANDING = [ NSF_BRANDING, TACC_BRANDING, UTEXAS_BRANDING ]
+# NSF-Funded Generic TACC Portals.
+# PORTAL_BRANDING = [ PORTAL_BRANDING_NSF, PORTAL_BRANDING_TACC, PORTAL_BRANDING_UTEXAS ]
 
-# NSF Funded & Custom Branded Portals.
-#BRANDING = [ NSF_BRANDING, TACC_BRANDING, UTEXAS_BRANDING, CUSTOM_BRANDING ]
+# NSF-Funded & Custom-Branded Portals.
+# PORTAL_BRANDING = [ PORTAL_BRANDING_NSF, PORTAL_BRANDING_TACC, PORTAL_BRANDING_UTEXAS, CUSTOM_BRANDING ]
 
 ########################
 # TACC: LOGO & FAVICON
@@ -136,6 +101,16 @@ PORTAL_FAVICON = {
 }
 
 ########################
+# SEARCH
+########################
+
+# To support Google search
+PORTAL_SEARCH_QUERY_PARAM_NAME = 'q'
+
+# To disable Elasticsearch
+PORTAL_SEARCH_INDEX_IS_AUTOMATIC = False
+
+########################
 # DJANGOCMS_BLOG
 ########################
 
@@ -143,6 +118,7 @@ from taccsite_cms.settings import INSTALLED_APPS
 
 tacc_app_index = INSTALLED_APPS.index('taccsite_cms')
 INSTALLED_APPS[tacc_app_index:tacc_app_index] = [
+    # 'aldryn_apphooks_config' # already in Core
     # 'filer',              # already in Core
     # 'easy_thumbnails',    # already in Core
     'parler',

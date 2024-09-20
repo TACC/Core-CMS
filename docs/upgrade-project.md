@@ -2,12 +2,30 @@
 
 ## Table of Contents
 
+- [from v4.N to v4.14](#from-v4n-to-v414)
 - [from v4.N to v4.13](#from-v4n-to-v413)
 - [from v4.N to v4.12](#from-v4n-to-v412)
 - [from v4.N to v4.7](#from-v4n-to-v47)
 - [from v3 to v4](#from-v3-to-v4)
 - [from v3.N to v3.12](#from-v3n-to-v312)
 - [from v2 to v3](#from-v2-to-v3)
+
+## from v4.N to v4.14
+
+- [Rename `PORTAL_ES_ENABLED` Setting](#rename-portal_es_enabled-settings)
+- [Upgrade Docker Compose](#upgrade-docker-compose)
+
+### Rename `PORTAL_ES_ENABLED` Setting
+
+| from | to |
+| - | - |
+| `PORTAL_ES_ENABLED` | `PORTAL_SEARCH_INDEX_IS_AUTOMATIC` |
+
+### Upgrade Docker Compose
+
+Update to _at least_ the latest Docker Compose v2.
+
+The v1 `docker-compose` command has long been deprecated.
 
 ## from v4.N to v4.13
 
