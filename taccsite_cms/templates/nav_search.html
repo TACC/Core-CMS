@@ -14,13 +14,6 @@
 
   const template = document.getElementById('s-search-bar').firstElementChild;
 
-  {% if settings.TACC_CORE_STYLES_VERSION == 0 %}
-  /* Load necessary Bootstrap outside raw markup (reason is not documented) */
-  template.content.prepend(
-    document.getElementById('css-bootstrap').cloneNode(true)
-  );
-  {% endif %}
-
   registerCustomElement.fromTemplate(template, 'tacc-search-bar');
 </script>
 
