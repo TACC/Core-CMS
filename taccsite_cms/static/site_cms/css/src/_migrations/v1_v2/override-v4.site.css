@@ -1,0 +1,13 @@
+/*!
+ * TACC v4 site.css Overrides
+ */
+
+/*! site.header.css */
+
+/* To not rely on Bootstrap `.nav-link:hover` */
+/* FAQ: Because Bootstrap can be reverted or not loaded */
+/* FAQ: Overrides site.css `a:hover` */
+#s-header .nav-link,
+#s-header .nav-link > a {
+  text-decoration: none;
+}
