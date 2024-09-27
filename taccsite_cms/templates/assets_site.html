@@ -23,8 +23,8 @@ FAQ: IF a script or style is better cached with markup, THEN:
   @import url("{% static 'site_cms/css/build/site.css' %}") layer(project);
   @import url("{% static 'site_cms/css/build/site.header.css' %}") layer(project);
 
-  {# CAVEAT: Requires `npm run build:css` step #}
   @import url("{% static 'site_cms/css/build/site.v3-11-plus.css' %}") layer(project);
+  @import url("{% static 'site_cms/css/build/site.layer-fixes.css' %}") layer(project);
 </style>
 
 

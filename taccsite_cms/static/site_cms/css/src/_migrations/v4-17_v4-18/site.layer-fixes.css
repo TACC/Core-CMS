@@ -1,0 +1,5 @@
+/* To fix layout of elements in CSS header */
+/* FAQ: The `site.css` in `layer(project)` overwrites Bootstrap `_navbar.scss` in `layer(foundation)`. This causes `site.css` <ul> `padding-left: 0` to overwrite Bootstrap */
+.navbar-nav {
+  padding-left: 0;
+}
