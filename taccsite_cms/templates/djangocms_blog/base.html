@@ -23,7 +23,7 @@
 
 {% if settings.TACC_CORE_STYLES_VERSION == 0 %}
 <style>
-  @import url("{% static 'site_cms/css/build/site.app.blog.css' %}") layer(project);
+  @import url("{% static 'site_cms/css/build/site.app.blog.css' %}") layer(project.core);
 </style>
 {% elif settings.TACC_CORE_STYLES_VERSION >= 1 %}
 <style>
