@@ -3,3 +3,11 @@
 .navbar-nav {
   padding-left: 0;
 }
+
+/* To not rely on Bootstrap `.nav-link:hover` */
+/* FAQ: Because Bootstrap can be reverted or not loaded */
+/* FAQ: Overrides site.css `a:hover` */
+#s-header .nav-link,
+#s-header .nav-link > a {
+  text-decoration: none !important; /* to override even if within lower layer */
+}
