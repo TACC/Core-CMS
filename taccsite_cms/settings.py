@@ -305,15 +305,7 @@ PORTAL_SOCIAL_SHARE_PLATFORMS = []
 PORTAL_STYLES = []
 # PORTAL_STYLES = [{
 #     "is_remote": True,
-#     "path": "https://cdn.jsdelivr.net/gh/TACC/Core-CMS-Custom@design/example_assets/css/site.css",
-# }, {
-#     "is_remote": True,
-#     "page_id": "home",
-#     "path": "https://cdn.jsdelivr.net/gh/TACC/Core-CMS-Custom@design/example_assets/css/page.home.css",
-# }, {
-#     "is_remote": True,
-#     "template_name": "standard.html",
-#     "path": "https://cdn.jsdelivr.net/gh/TACC/Core-CMS-Custom@design/example_assets/css/template.standard.css",
+#     "path": "https://cdn.jsdelivr.net/gh/TACC/Core-CMS-Custom@2cdc59f/example_cms/src/apps/example_app/static/example_app/css/example_app.css",
 # }]
 
 # Only use integer numbers (not "v1", not "0.11.0"),
