@@ -1,8 +1,6 @@
 {% extends "base.html" %}
 {% load cms_tags static %}
 
-{% block title %}{% page_attribute "page_title" %}{% endblock title %}
-
 {% block assets_custom %}
 	{{ block.super }}
   <link rel="stylesheet" href="{% static 'site_cms/css/build/template.split.css' %}">
