@@ -2,7 +2,10 @@
   "name": "@tacc/core-cms",
   "version": "4.17.1",
   "license": "MIT",
-  "author": "TACC ACI WMA <wma-portals@gmail.com>",
+  "author": "TACC ACI WMA <wma-portals@tacc.utexas.edu>",
+  "contributors": [
+    "TACC COA CMD <coa-cmd@tacc.utexas.edu>"
+  ],
   "description": "The TACC ACI-WMA Core CMS codebase used by TACC Portals.",
   "engines": {
     "node": ">=16",
