@@ -1,60 +1,15 @@
 {% extends "base.html" %}
-{% load cms_tags %}
+{% load cms_tags static %}
 
 {% block title %}{% page_attribute "page_title" %}{% endblock title %}
 
+{% block assets_custom %}
+	{{ block.super }}
+  <link rel="stylesheet" href="{% static 'site_cms/css/build/template.split.css' %}">
+{% endblock assets_custom %}
+
 {# To remove container and breadcrumbs #}
 {% block content %}
-
-  <style>
-    /* To strech content vertically */
-    body {
-      display: flex;
-      flex-direction: column;
-    }
-    #cms-content {
-      flex-grow: 1;
-    }
-    .cms-content-panel > [class*="container"] {
-      height: 100%;
-    }
-
-    /* To split the layout */
-    #cms-content {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-    }
-    #cms-content-left {
-      grid-column-start: 1;
-      grid-row: 1;
-    }
-    #cms-content-right {
-      grid-column-start: 2;
-      grid-row: 1;
-    }
-
-    /* To fix section seemingly missing its background color */
-    /* TODO: Invetigate and fix bug */
-    :where(.o-section, [class*=section--]) {
-      box-shadow: none;
-    }
-
-    /* To allow columns to touch footer */
-    body > main {
-      margin-bottom: 0;
-    }
-
-    /* To remove borders on muted section touching container */
-    .cms-content-panel > [class*="section--style-muted"] {
-      &:first-child {
-        border-top: none;
-      }
-      &:last-child,
-      [class*="cms-structure-mode-"] &:has(+ .cms-placeholder) {
-        border-bottom: none;
-      }
-    }
-  </style>
 
   {% block cms_content %}
   <div id="cms-content-left" class="cms-content-panel">
