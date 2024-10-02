@@ -20,9 +20,33 @@ FAQ: IF a script or style is better cached with markup, THEN:
 
 <!-- Custom Site Assets: Styles. -->
 {% with settings.PORTAL_STYLES as styles %}
-{% for style in styles %}
-<link rel="stylesheet" href="{% if style.is_remote %}{{ style.path }}{% else %}{% static style.path %}{% endif %}" />
-{% endfor %}
+  {% for style in styles %}
+    {% with current_page.reverse_id as page_id %}
+    {% with CMS_TEMPLATE as page_template %}
+    {% with style.page_id as style_id %}
+    {% with style.template_name as style_template %}
+    {% if style_id == page_id and not style_template or style_template == page_template and not style_id or style_id == page_id and style_template == page_template or not style_id and not style_template %}
+    <link rel="stylesheet"
+
+          {% if style.is_remote %}
+          href="{{ style.path }}"
+          {% else %}
+          href="{% static style.path %}"
+          {% endif %}
+
+          {% if style_template and style_template == page_template %}
+          data-for-template="{{ style.template_name }}"
+          {% endif %}
+          {% if style_id and style_id == page_id %}
+          data-for-page="{{ style.page_id }}"
+          {% endif %}
+    />
+    {% endif %}
+    {% endwith %}
+    {% endwith %}
+    {% endwith %}
+    {% endwith %}
+  {% endfor %}
 {% endwith %}
 
 

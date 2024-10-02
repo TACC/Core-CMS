@@ -312,7 +312,7 @@ PORTAL_STYLES = []
 #     "path": "https://cdn.jsdelivr.net/gh/TACC/Core-CMS-Custom@design/example_assets/css/page.home.css",
 # }, {
 #     "is_remote": True,
-#     "template_path": "standard.html",
+#     "template_name": "standard.html",
 #     "path": "https://cdn.jsdelivr.net/gh/TACC/Core-CMS-Custom@design/example_assets/css/template.standard.css",
 # }]
 
