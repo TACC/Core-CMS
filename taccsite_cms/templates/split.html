@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load cms_tags static %}
+
+{% block assets_custom %}
+	{{ block.super }}
+  <link rel="stylesheet" href="{% static 'site_cms/css/build/template.split.css' %}">
+{% endblock assets_custom %}
+
+{# To remove container and breadcrumbs #}
+{% block content %}
+
+  {% block cms_content %}
+  <div id="cms-content-left" class="cms-content-panel">
+    {% placeholder "left" %}
+  </div>
+  <div id="cms-content-right" class="cms-content-panel">
+    {% placeholder "right" %}
+  </div>
+  {% endblock cms_content %}
+
+  {% block app_content %}{% endblock app_content %}
+
+{% endblock content %}
+
