@@ -1,7 +1,7 @@
 CUSTOM_APPS = [
 
     # CUSTOM APP
-    'apps.custom_example'
+    'apps.custom_example',
 
     # DJANGOCMS_BLOG
     'parler',

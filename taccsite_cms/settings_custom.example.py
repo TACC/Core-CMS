@@ -33,14 +33,6 @@ CMS_TEMPLATES = (
     ('standard.html', 'Standard'),
     ('fullwidth.html', 'Full Width'),
 
-    ('home_portal.html', 'Standard Portal Homepage'),
-
-    ('guide.html', 'Guide'),
-    ('guides/getting_started.v3.html', 'Guide: Getting Started'),
-    ('guides/data_transfer.html', 'Guide: Data Transfer'),
-    ('guides/data_transfer.globus.html', 'Guide: Globus Data Transfer'),
-    ('guides/portal_technology.html', 'Guide: Portal Technology Stack'),
-
     # WARNING: Not intuitive to unset, so only enable as needed e.g.
     #          - serve Blog such that it can be injected into another CMS
     # ('raw.html', 'Raw'),
