@@ -10,6 +10,7 @@ PORTAL_SEARCH_PATH = '/search'
 # To support Google search
 # PORTAL_SEARCH_QUERY_PARAM_NAME = 'q'
 # PORTAL_SEARCH_INDEX_IS_AUTOMATIC = False
+# GOOGLE_SEARCH_ENGINE_ID = None
 
 # (DEPRECATED) To support Elasticsearch
 PORTAL_SEARCH_QUERY_PARAM_NAME = 'query_string'
