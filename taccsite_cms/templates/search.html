@@ -4,20 +4,20 @@
 {% block cms_content %}
   {% placeholder "content" %}
 
-  <div class="container o-section">
+  <div class="container o-section" id="cms-search">
     <div class="row">
       <div class="col col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
         <h1>Search</h1>
       </div>
     </div>
 
-  {{#if settings.GOOGLE_SEARCH_ENGINE_ID }}
+  {% if settings.GOOGLE_SEARCH_ENGINE_ID %}
     <script async src="https://cse.google.com/cse.js?cx={{ settings.GOOGLE_SEARCH_ENGINE_ID }}">
     </script>
     <div class="gcse-searchresults-only"></div>
-  {{else}}
-    <p class="c-message c-message--scope-section c-message--type-warning">Please inform your website administrator to verify a <code>GOOGLE_SEARCH_ENGINE_ID</code> exists for this website.</p>
-  {{/if}}
+  {% else %}
+    <p class="c-message c-message--scope-section c-message--type-warning">Please inform your website administrator to verify a <code>GOOGLE_SEARCH_ENGINE_ID</code> is set for this website.</p>
+  {% endif %}
 
   </div>
 {% endblock cms_content %}
@@ -25,11 +25,13 @@
 {% block css %}
   {{ block.super }}
 
-  <style id="css-search">
+<style id="css-search">
+#cms-search {
+
   /* SEARCH CONTAINER */
 
   /* To remove padding from search container */
-  .gsc-control-cse {
+  & .gsc-control-cse {
     padding: unset;
   }
 
@@ -38,31 +40,31 @@
   /* TABLE OF SEARCH STATS & SORTING OPTIONS */
 
   /* To remove border from search analytics, add gray background */
-  .gsc-above-wrapper-area {
-    border-bottom: unset;
-    margin-inline: -100vw;
-    padding-inline: 100vw;
-    background: var(--global-color-primary--x-light);
+  & .gsc-above-wrapper-area {
+    --bkgd-color: var(--global-color-primary--x-light);
+
+    background-color: var(--bkgd-color);
+    box-shadow: 40vw 0 var(--bkgd-color), -40vw 0 var(--bkgd-color);
   }
 
-  .gsc-above-wrapper-area-container {
+  & .gsc-above-wrapper-area-container {
     border-bottom: unset;
   }
 
   /* To override Core-Styles tables */
-  tbody > tr:first-child > :is(td, th) {
+  & tbody > tr:first-child > :is(td, th) {
     border: unset;
     padding-inline: unset;
     background: unset;
     vertical-align: middle;
   }
 
-  .gsc-selected-option-container {
+  & .gsc-selected-option-container {
     background: var(--global-color-primary--xx-light);
     border: var(--global-border--normal);
   }
 
-  .gsc-result-info {
+  & .gsc-result-info {
     padding: unset;
     font-size: var(--global-font-size--medium);
   }
@@ -71,10 +73,10 @@
 
   /* SUGGESTION PHRASE (after "Did you mean:") */
 
-  .gs-spelling {
+  & .gs-spelling {
     padding: unset;
   }
-  .gs-spelling a {
+  & .gs-spelling a {
     color: var(--global-color-accent--normal);
   }
 
@@ -83,29 +85,29 @@
   /* SEARCH RESULTS */
 
   /* (search result body text) */
-  .gs-snippet {
+  & .gs-snippet {
     color: var(--global-color-primary--dark);
   }
 
   /* (url under search result title) */
-  .gs-webResult div.gs-visibleUrl {
+  & .gs-webResult div.gs-visibleUrl {
     color: var(--global-color-secondary--normal);
   }
 
   /* (search result titles) */
-  a.gs-title:link {
+  & a.gs-title:link {
     color: var(--global-color-accent--normal);
     text-decoration: none;
     text-decoration-thickness: var(--global-border-width--normal);
     text-underline-offset: 0.2em;
   }
-  a.gs-title:link:hover {
+  & a.gs-title:link:hover {
     text-decoration-line: underline;
     text-decoration-style: solid;
   }
 
   /* (push search-result description to right) */
-  .gs-image-box {
+  & .gs-image-box {
     margin-right: 10px;
   }
 
@@ -113,20 +115,20 @@
 
   /* GOOGLE PAGE NAVIGATION (at bottom) */
 
-  .gsc-cursor-box {
+  & .gsc-cursor-box {
     display: flex;
     justify-content: center;
     margin-block: var(--global-space--large);
   }
 
-  .gsc-cursor-current-page {
+  & .gsc-cursor-current-page {
     color: var(--global-color-accent--normal);
     text-decoration: none;
     text-decoration-thickness: var(--global-border-width--normal);
     text-underline-offset: 0.2em;
   }
 
-  .gsc-cursor-current-page:hover {
+  & .gsc-cursor-current-page:hover {
     text-decoration-line: underline;
     text-decoration-style: solid;
   }
@@ -135,21 +137,23 @@
 
   /* GOOGLE BRANDING */
 
-  .gcsc-find-more-on-google {
+  & .gcsc-find-more-on-google {
     color: var(--global-color-accent--normal);
     text-decoration: none;
     text-decoration-thickness: var(--global-border-width--normal);
     text-underline-offset: 0.2em;
   }
 
-  .gcsc-find-more-on-google:hover {
+  & .gcsc-find-more-on-google:hover {
     text-decoration-line: underline;
     text-decoration-style: solid;
   }
 
-  .gcsc-branding-img-noclear {
+  & .gcsc-branding-img-noclear {
     vertical-align: unset;
     top: 1px;
   }
-  </style>
+
+}
+</style>
 {% endblock css %}
