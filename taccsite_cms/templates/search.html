@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% load static cms_tags %}
 
+{% block css %}
+  {{ block.super }}
+  <link id="css-search" rel="stylesheet" href="{% static 'site_cms/css/google-search.css' %}">
+{% endblock css %}
+
 {% block cms_content %}
   {% placeholder "content" %}
 
@@ -21,8 +26,3 @@
 
   </div>
 {% endblock cms_content %}
-
-{% block css %}
-  {{ block.super }}
-  <link id="css-search" rel="stylesheet" href="{% static 'site_cms/css/google-search.css' %}">
-{% endblock css %}
