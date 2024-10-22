@@ -159,14 +159,6 @@ CMS_TEMPLATES = (
     ('fullwidth.html', 'Full Width'),
 
     ('guide.html', 'Guide'),
-    ('guides/portal_technology.html', 'Guide: Portal Technology Stack'),
-
-    # TODO: WP-394: Retire deprecated page templates
-    ('guides/getting_started.v3.html', 'Guide: Getting Started (v3)'),
-    ('guides/getting_started.tam.html', 'Guide: Getting Started (TAM)'),
-    ('guides/getting_started.v2.html', 'Guide: Getting Started (v2)'),
-    ('guides/data_transfer.html', 'Guide: Data Transfer'),
-    ('guides/data_transfer.globus.html', 'Guide: Globus Data Transfer'),
 )
 
 CMS_PERMISSION = True
