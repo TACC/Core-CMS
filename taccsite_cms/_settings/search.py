@@ -35,5 +35,6 @@ ALDRYN_SEARCH_DEFAULT_LANGUAGE = 'en'
 ALDRYN_SEARCH_REGISTER_APPHOOK = True
 
 _INSTALLED_APPS = [
-    'haystack',                # search index
+    'haystack',                # ElasticSearch
+#    'search_page'              # Google Search
 ]
