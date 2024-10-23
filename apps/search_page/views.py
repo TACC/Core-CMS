@@ -1,8 +1,4 @@
-from django.http import HttpResponse
-from django.conf import settings
-from django.template import loader
-
+from django.shortcuts import render
 
 def SearchPageView(request):
-    template = loader.get_template('search_page/search_page.html')
-    return HttpResponse(template.render({}, request))
+    return render(request, 'search_page/search_page.html')
