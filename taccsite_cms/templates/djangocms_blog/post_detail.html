@@ -3,12 +3,7 @@
 {% load i18n easy_thumbnails_tags cms_tags blog_post_use_custom_media blog_post_is_show_abstract %}
 
 {% block content_blog %}{% spaceless %}
-{# TACC (wrap and add breadcrumbs): #}
 
-<section class="container">
-{% include "nav_cms_breadcrumbs.html" %}
-
-{# /TACC #}
 {# TACC (define whether this is a special post): #}
 {% blog_post_use_custom_media post settings.PORTAL_BLOG_CUSTOM_MEDIA_POST_CATEGORY as use_custom_media %}
 {% blog_post_is_show_abstract post settings.PORTAL_BLOG_SHOW_ABSTRACT_TAG as is_show_abstract_post %}
@@ -88,9 +83,6 @@
     {% endif %}
 </article>
 {# TACC (end wrap and end spaceless-ness later than source): #}
-
-</section>
 {% endspaceless %}
-
 {# /TACC #}
 {% endblock content_blog %}

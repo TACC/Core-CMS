@@ -17,7 +17,7 @@
   {% include 'analytics.html' %}
 
   <!-- Metadata. -->
-  <title>{% block title %} This is my new project home page {% endblock title %}</title>
+  <title>{% block title %}{% page_attribute "page_title" %}{% endblock title %}</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -70,15 +70,22 @@
   <main id="cms-content">
   {% block content %}
 
-    {# To allow extra Container in page structure by hiding extra padding #}
+    {# To hide extra space that a nested/redundant Container would add #}
     <style type="text/css">
-      .container > .s-breadcrumbs + .container { padding-inline: 0; }
+      #cms-content-container.container .container { padding-inline: 0; }
     </style>
+    {# To wrap content in Container without relying on CMS editor #}
+    <div class="container" id="cms-content-container">
+      {% block breadcrumbs %}
+        {% include "nav_cms_breadcrumbs.html" %}
+      {% endblock breadcrumbs %}
 
-    {# To wrap breadcrumbs in Container without relying on CMS editor #}
-    <div class="container">
-      {% include "nav_cms_breadcrumbs.html" %}
-      {% placeholder "content" %}
+      {% block cms_content %}
+        {% placeholder "content" %}
+      {% endblock cms_content %}
+
+      {# To isolate content editor cannot change layout of (e.g. Blog) #}
+      {% block app_content %}{% endblock app_content %}
     </div>
 
   {% endblock content %}
