@@ -159,6 +159,7 @@ CMS_TEMPLATES = (
     ('fullwidth.html', 'Full Width'),
 
     ('guide.html', 'Guide'),
+    ('search.html', 'Search'),
 )
 
 CMS_PERMISSION = True
