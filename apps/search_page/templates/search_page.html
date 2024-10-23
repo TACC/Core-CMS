@@ -6,13 +6,11 @@
   <link id="css-search" rel="stylesheet" href="{% static 'search_page/css/google-search.css' %}">
 {% endblock css %}
 
-{% block cms_content %}
-  {% placeholder "content" %}
-
+{% block app_content %}
   <div class="container o-section" id="google-search">
     <div class="row">
       <div class="col col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-        <h1>Search</h1>
+        <h1>{% page_attribute "page_title" %}</h1>
       </div>
     </div>
 
@@ -25,4 +23,4 @@
   {% endif %}
 
   </div>
-{% endblock cms_content %}
+{% endblock app_content %}
