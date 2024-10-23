@@ -161,6 +161,7 @@ CMS_TEMPLATES = (
     ('content.html', 'Content Only'),
 
     ('guide.html', 'Guide'), # backwards compatibility, users unknown
+    ('search.html', 'Search'),
 )
 
 CMS_PERMISSION = True
