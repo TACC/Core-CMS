@@ -33,8 +33,7 @@ CMS_TEMPLATES = (
     ('standard.html', 'Standard'),
     ('fullwidth.html', 'Full Width'),
 
-    # WARNING: Not intuitive to unset, so only enable as needed e.g.
-    #          - serve Blog such that it can be injected into another CMS
+    # WARNING: Not intuitive to unset, so only enable as needed e.g. serve Blog such that it can be injected into another CMS
     # ('raw.html', 'Raw'),
 )
 
