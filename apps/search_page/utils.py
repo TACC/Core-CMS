@@ -15,7 +15,10 @@ def create_search_page():
 
     if not has_search_page:
         create_page(
-            title=TITLE,
+            title=f'{TITLE} (Auto-Generated)',
+            menu_title=TITLE,
+            page_title=TITLE,
+            reverse_id=SLUG,
             # Use a template from CMS_TEMPLATES setting
             template='standard.html',
             language='en',
@@ -24,3 +27,5 @@ def create_search_page():
             in_navigation=False,
         )
         logger.info(f'Created search page "{TITLE}" at "{SLUG}"')
+    else:
+        logger.info(f'Found existing search page at "{SLUG}"')
