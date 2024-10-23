@@ -1,7 +1,8 @@
-from django.urls import re_path
-from .views import SearchPageView
+from django.urls import path
+from . import views
 
-app_name = 'search_page'
+app_name = 'apps.search_page'
+
 urlpatterns = [
-    re_path('', SearchPageView, name='index'),
+    path('', views.SearchPageView, name='search')
 ]
