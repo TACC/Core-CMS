@@ -2,7 +2,7 @@ from cms.app_base import CMSApp
 from cms.apphook_pool import apphook_pool
 
 
-@apphook_pool.register  # register the application
+@apphook_pool.register
 class SearchPageApphook(CMSApp):
     app_name = 'apps.search_page'
     name = 'SearchPage'
