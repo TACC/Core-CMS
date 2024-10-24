@@ -15,8 +15,7 @@ DEFAULT_SLUG = settings.PORTAL_SEARCH_PATH.strip('/')
 
 def get_page():
     try:
-        page = Page.objects.filter(reverse_id='search_page').first()
-        return page
+        return Page.objects.filter(reverse_id='search_page').first()
     except Page.DoesNotExist:
         return None
 
@@ -25,7 +24,7 @@ def get_slug(page=None):
         return page.get_slug()
     else:
         page = get_page()
-        return get_slug() if page else DEFAULT_SLUG
+        return get_slug(page) if page else DEFAULT_SLUG
 
 def get_search_page_url():
     try:
