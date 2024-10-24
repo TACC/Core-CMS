@@ -16,6 +16,8 @@ GOOGLE_SEARCH_ENGINE_ID = ''
 PORTAL_SEARCH_QUERY_PARAM_NAME = 'query_string'
 PORTAL_SEARCH_INDEX_IS_AUTOMATIC = True
 
+SEARCH_PAGE_AUTO_SETUP = True
+
 ES_AUTH = 'username:password'
 ES_HOSTS = 'http://elasticsearch:9200'
 ES_INDEX_PREFIX = 'cms-dev-{}'

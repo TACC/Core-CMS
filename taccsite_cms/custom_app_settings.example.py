@@ -3,9 +3,6 @@ CUSTOM_APPS = [
     # CUSTOM APP
     'apps.custom_example',
 
-    # SEARCH_PAGE
-    'apps.search_page',
-
     # DJANGOCMS_BLOG
     'parler',
     'taggit',

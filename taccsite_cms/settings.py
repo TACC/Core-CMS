@@ -481,6 +481,7 @@ INSTALLED_APPS = [
     # core TACC CMS
     # HELP: If this were top of list, would TACC/Core-CMS/pull/169 fix break?
     'taccsite_cms',
+    'apps.search_page',
     'common_apps.email_management',
 
     # django CMS Bootstrap
