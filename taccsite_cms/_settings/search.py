@@ -5,7 +5,7 @@
 ########################
 
 # To support any search
-PORTAL_SEARCH_PATH = '/search'
+PORTAL_SEARCH_PATH = '/search/'
 
 # To support Google search
 # PORTAL_SEARCH_QUERY_PARAM_NAME = 'q'
