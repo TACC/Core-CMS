@@ -1,5 +1,4 @@
 from django.urls import re_path, include
-from django.conf import settings
 
 custom_urls = [
 
