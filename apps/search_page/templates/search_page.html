@@ -7,17 +7,18 @@
 {% endblock css %}
 
 {% block app_content %}
-  <div class="container o-section" id="google-search">
-    <div class="row">
-      <div class="col col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-        <h1>{% page_attribute "page_title" %}</h1>
-      </div>
+  <div class="row">
+    <div class="col col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+      <h1>{% page_attribute "page_title" %}</h1>
     </div>
+  </div>
 
   {% if settings.GOOGLE_SEARCH_ENGINE_ID %}
+  <div id="google-search">
     <script async src="https://cse.google.com/cse.js?cx={{ settings.GOOGLE_SEARCH_ENGINE_ID }}">
     </script>
     <div class="gcse-searchresults-only"></div>
+  </div>
   {% else %}
     <p class="c-message c-message--scope-section c-message--type-warning">Please inform your website administrator to verify a <code>GOOGLE_SEARCH_ENGINE_ID</code> is set for this website.</p>
   {% endif %}

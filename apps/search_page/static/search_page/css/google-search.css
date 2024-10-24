@@ -1,5 +1,9 @@
 #google-search {
 
+  &:is(#cms-content-container > *:last-child) {
+    margin-bottom: var(--global-space--section-gap, 60px);
+  }
+
   /* SEARCH CONTAINER */
 
   /* To remove padding from search container */
@@ -17,6 +21,7 @@
 
     background-color: var(--bkgd-color);
     box-shadow: 40vw 0 var(--bkgd-color), -40vw 0 var(--bkgd-color);
+    border-bottom: unset;
   }
 
   & .gsc-above-wrapper-area-container {
