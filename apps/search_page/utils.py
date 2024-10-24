@@ -3,7 +3,7 @@ import logging
 from django.conf import settings
 from django.urls import reverse, NoReverseMatch
 
-from cms.api import create_page
+from cms.api import create_page as create_cms_page
 from cms.models.pagemodel import Page
 
 from .cms_apps import SearchPageApphook
@@ -38,12 +38,12 @@ def get_page_url():
         except NoReverseMatch:
             return None
 
-def create_search_page():
+def create_page():
     page = get_page()
     slug = get_slug(page)
 
     if not page:
-        page = create_page(
+        page = create_cms_page(
             title=f'{TITLE} (Auto-Generated)',
             menu_title=TITLE,
             page_title=TITLE,

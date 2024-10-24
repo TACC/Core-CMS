@@ -6,5 +6,5 @@ class SearchPageConfig(AppConfig):
 
     def ready(self):
         if settings.SEARCH_PAGE_AUTO_SETUP:
-            from .utils import create_search_page
-            create_search_page()
+            from .utils import create_page
+            create_page()
