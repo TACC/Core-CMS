@@ -1,6 +1,7 @@
 import logging
 
 from django.conf import settings
+from django.urls import reverse
 
 from cms.api import create_page
 from cms.models.pagemodel import Page
@@ -25,6 +26,13 @@ def get_slug(page=None):
     else:
         page = get_page()
         return get_slug() if page else DEFAULT_SLUG
+
+def get_search_page_url():
+    try:
+        page = Page.objects.get(reverse_id='search_page')
+        return page.get_absolute_url()
+    except Page.DoesNotExist:
+        return reverse('apps.search_page:search')
 
 def create_search_page():
     page = get_page()
