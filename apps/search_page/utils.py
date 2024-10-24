@@ -8,6 +8,7 @@ from cms.models.pagemodel import Page
 
 from .cms_apps import SearchPageApphook
 
+
 logger = logging.getLogger(f'portal.{__name__}')
 
 TITLE = 'Search'
