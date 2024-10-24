@@ -1,7 +1,7 @@
 import logging
 
 from django.conf import settings
-from django.urls import reverse
+from django.urls import reverse, NoReverseMatch
 
 from cms.api import create_page
 from cms.models.pagemodel import Page
@@ -12,11 +12,12 @@ from .cms_apps import SearchPageApphook
 logger = logging.getLogger(f'portal.{__name__}')
 
 TITLE = 'Search'
+REVERSE_ID = 'search_page'
 DEFAULT_SLUG = settings.PORTAL_SEARCH_PATH.strip('/')
 
 def get_page():
     try:
-        return Page.objects.filter(reverse_id='search_page').first()
+        return Page.objects.filter(reverse_id=REVERSE_ID).first()
     except Page.DoesNotExist:
         return None
 
@@ -27,12 +28,15 @@ def get_slug(page=None):
         page = get_page()
         return get_slug(page) if page else DEFAULT_SLUG
 
-def get_search_page_url():
-    try:
-        page = Page.objects.get(reverse_id='search_page')
+def get_page_url():
+    page = get_page()
+    if page:
         return page.get_absolute_url()
-    except Page.DoesNotExist:
-        return reverse('apps.search_page:search')
+    else:
+        try:
+            return reverse('apps.search_page:search')
+        except NoReverseMatch:
+            return None
 
 def create_search_page():
     page = get_page()
@@ -43,7 +47,7 @@ def create_search_page():
             title=f'{TITLE} (Auto-Generated)',
             menu_title=TITLE,
             page_title=TITLE,
-            reverse_id='search_page',
+            reverse_id=REVERSE_ID,
             # Use a template from CMS_TEMPLATES setting
             template='standard.html',
             language='en',
