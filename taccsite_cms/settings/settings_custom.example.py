@@ -29,8 +29,6 @@ CMS_TEMPLATES = (
     ('fullwidth.html', 'Full Width'),
     ('content.html', 'Content Only'),
 
-    ('search.html', 'Search'),
-
     # WARNING: Unintuitive, so only enable as needed
     # ('plain.html', 'Plain'),          # TACC/Core-CMS#868
 )
