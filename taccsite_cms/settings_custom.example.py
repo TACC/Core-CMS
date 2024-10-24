@@ -96,7 +96,7 @@ PORTAL_FAVICON = {
 ########################
 
 # To support Google search
-PORTAL_SEARCH_PATH = '/search'
+PORTAL_SEARCH_PATH = '/search/'
 PORTAL_SEARCH_QUERY_PARAM_NAME = 'q'
 PORTAL_SEARCH_INDEX_IS_AUTOMATIC = False
 SEARCH_PAGE_AUTO_SETUP = True
