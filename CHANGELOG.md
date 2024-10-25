@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * chore: bump core-styles to v2.36.0 by @wesleyboar in https://github.com/TACC/Core-CMS/pull/888
 
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.18.0...v4.19.0
+
 ## [4.18.0] - 2023-10-24: Old Styles Use @layer, Improve Blog Settings, Fixes
 
 ## What's Changed
