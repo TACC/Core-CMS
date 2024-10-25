@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [4.18.0] - 2023-10-24: Old Styles Use @layer, Improve Blog Settings, Fixes
+
+## What's Changed
+
+* chore: do not clone bootstrap for `tacc-search-bar` by @wesleyboar in https://github.com/TACC/Core-CMS/pull/879
+* feat: WP-197 use @layer's / help migrate Frontera by @wesleyboar in https://github.com/TACC/Core-CMS/pull/856
+* refactor: define title block only in base by @wesleyboar in https://github.com/TACC/Core-CMS/pull/883
+* fix: blog install steps are outdated by @wesleyboar in https://github.com/TACC/Core-CMS/pull/884
+* chore: CMD-143 retire deprecated templates by @wesleyboar in https://github.com/TACC/Core-CMS/pull/886
+* deps: core-styles v2.35.1 by @wesleyboar in https://github.com/TACC/Core-CMS/pull/887
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.17.1...v4.18.0
+
 ## [4.17.1] - 2023-09-17: Add Muted Section to Container List
 
 ### Fixed
