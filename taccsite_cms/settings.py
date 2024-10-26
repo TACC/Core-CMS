@@ -602,6 +602,15 @@ DJANGOCMS_AUDIO_ALLOWED_EXTENSIONS = ['mp3', 'ogg', 'wav']
 ########################
 
 # SEE: https://github.com/django-cms/djangocms-bootstrap4
+DJANGOCMS_BOOTSTRAP4_GRID_COLUMN_CHOICES = [
+    ('col', _('Column')),
+    ('col col-dark', _('Dark column')),
+    ('col col-muted', _('Muted column')),
+    ('w-100', _('Break')),
+    ('', _('Empty'))
+]
+
+# SEE: https://github.com/django-cms/djangocms-bootstrap4
 DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS = [
     (_('Container'), (
         ('container', _('Container')), # default

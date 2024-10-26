@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [4.19.1] - 2024-10-25: Add Column Choices & Fix `group_perms` Command
+
+## What's Changed
+
+* feat(settings): bootstrap4 column choices by @wesleyboar in https://github.com/TACC/Core-CMS/pull/889
+* fix: group_perms error with news admin by @wesleyboar in https://github.com/TACC/Core-CMS/pull/890
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.19.0...v4.19.1
+
+## [4.19.0] - 2023-10-25: Dark & Muted Columns (from Core-Styles v2.36.0)
+
+## What's Changed
+
+* chore: bump core-styles to v2.36.0 by @wesleyboar in https://github.com/TACC/Core-CMS/pull/888
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.18.0...v4.19.0
+
 ## [4.18.0] - 2023-10-24: Old Styles Use @layer, Improve Blog Settings, Fixes
 
 ## What's Changed
@@ -1407,7 +1424,10 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.17.1...main
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.19.1...main
+[4.19.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.19.1
+[4.19.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.19.0
+[4.18.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.18.0
 [4.17.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.17.1
 [4.17.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.17.0
 [4.16.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.16.1
