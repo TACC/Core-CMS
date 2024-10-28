@@ -615,7 +615,7 @@ DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS = [
         ('container', _('Container')), # default
         (
             'container  o-section',
-            _('Container + Section (transparent & uses margin)')
+            _('Container + Section (transparent / margin)')
         ),
         (
             'container  o-section o-section--style-light',
@@ -634,7 +634,7 @@ DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS = [
         ('container-fluid', _('Fluid container')), # default
         (
             'container-fluid  o-section',
-            _('Fluid container + Section (transparent & uses margin)')
+            _('Fluid container + Section (transparent / margin)')
         ),
         (
             'container-fluid  o-section o-section--style-light',
@@ -652,7 +652,7 @@ DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS = [
     (_('No container'), (
         (
             'o-section',
-            _('Section (transparent & uses margin)')
+            _('Section (transparent / margin)')
         ),
         (
             'o-section o-section--style-light',
