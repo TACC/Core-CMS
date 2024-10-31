@@ -75,12 +75,14 @@ export function replaceFromURL(markupURL, placeholder) {
   if (markupURL) {
     return getFromURL(markupURL).then(markup => {
       const newElement = htmlToElement(markup);
+      const emptyNode = document.createTextNode('');
 
       if (newElement) {
         placeholder.replaceWith(newElement);
         return newElement;
       } else {
-        return placeholder;
+        placeholder.replaceWith(emptyNode);
+        return emptyNode;
       }
     });
   } else {
