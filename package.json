@@ -1,6 +1,6 @@
 {
   "name": "@tacc/core-cms",
-  "version": "4.19.1",
+  "version": "4.20.0",
   "license": "MIT",
   "author": "TACC ACI WMA <wma-portals@tacc.utexas.edu>",
   "contributors": [
@@ -27,6 +27,6 @@
   },
   "homepage": "https://github.com/TACC/Core-CMS",
   "devDependencies": {
-    "@tacc/core-styles": "^2.36.0"
+    "@tacc/core-styles": "^2.37.0"
   }
 }

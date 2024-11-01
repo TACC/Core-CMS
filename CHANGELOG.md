@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [4.20.0] - 2024-10-31: Support Linked Image Cards, Offer Transparent Sections
+
+### What's Changed
+
+* deps: core-styles v2.37.0 by @wesleyboar in cbfcf1c
+* enhance: transparent/margin section via Container by @wesleyboar in https://github.com/TACC/Core-CMS/pull/891
+* fix: importHTML.replaceFromURL can return null by @wesleyboar in https://github.com/TACC/Core-CMS/pull/892
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.19.1...v4.20.0
+
 ## [4.19.1] - 2024-10-25: Add Column Choices & Fix `group_perms` Command
 
 ## What's Changed
@@ -1424,7 +1434,8 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.19.1...main
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.20.0...main
+[4.20.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.20.0
 [4.19.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.19.1
 [4.19.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.19.0
 [4.18.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.18.0
