@@ -1,46 +1,25 @@
-from django.contrib.auth.models import Group, Permission
-from django.contrib.contenttypes.models import ContentType
+from django.contrib.auth.models import Group
+
+from .util import add_perm
 
 def set_group_perms():
     group, was_created = Group.objects.get_or_create(
         name='Text Editor (Basic)'
     )
 
-    model_name = 'page'.lower().replace(' ', '')
-    content_type = ContentType.objects.get(app_label='cms', model=model_name)
-    group.permissions.add( Permission.objects.get(name='Can change page', content_type=content_type) )
+    add_perm(group, 'cms', 'page', 'Can change page')
 
-    model_name = 'placeholder'.lower().replace(' ', '')
-    content_type = ContentType.objects.get(app_label='cms', model=model_name)
-    group.permissions.add( Permission.objects.get(name='Can use Structure mode', content_type=content_type) )
+    add_perm(group, 'cms', 'placeholder', 'Can use Structure mode')
 
-    model_name = 'link'.lower().replace(' ', '')
-    content_type = ContentType.objects.get(app_label='djangocms_link', model=model_name)
-    group.permissions.add( Permission.objects.get(name='Can change link', content_type=content_type) )
-    model_name = 'link'.lower().replace(' ', '')
-    content_type = ContentType.objects.get(app_label='djangocms_link', model=model_name)
-    group.permissions.add( Permission.objects.get(name='Can view link', content_type=content_type) )
+    add_perm(group, 'djangocms_link', 'link', 'Can change link')
+    add_perm(group, 'djangocms_link', 'link', 'Can view link')
 
-    model_name = 'text'.lower().replace(' ', '')
-    content_type = ContentType.objects.get(app_label='djangocms_text_ckeditor', model=model_name)
-    group.permissions.add( Permission.objects.get(name='Can change text', content_type=content_type) )
-    model_name = 'text'.lower().replace(' ', '')
-    content_type = ContentType.objects.get(app_label='djangocms_text_ckeditor', model=model_name)
-    group.permissions.add( Permission.objects.get(name='Can view text', content_type=content_type) )
+    add_perm(group, 'djangocms_text_ckeditor', 'text', 'Can change text')
+    add_perm(group, 'djangocms_text_ckeditor', 'text', 'Can view text')
 
-    model_name = 'Folder'.lower().replace(' ', '')
-    content_type = ContentType.objects.get(app_label='filer', model=model_name)
-    group.permissions.add( Permission.objects.get(name='Can use directory listing', content_type=content_type) )
-    model_name = 'Folder'.lower().replace(' ', '')
-    content_type = ContentType.objects.get(app_label='filer', model=model_name)
-    group.permissions.add( Permission.objects.get(name='Can change Folder', content_type=content_type) )
-    model_name = 'Folder'.lower().replace(' ', '')
-    content_type = ContentType.objects.get(app_label='filer', model=model_name)
-    group.permissions.add( Permission.objects.get(name='Can view Folder', content_type=content_type) )
+    add_perm(group, 'filer', 'Folder', 'Can use directory listing')
+    add_perm(group, 'filer', 'Folder', 'Can change Folder')
+    add_perm(group, 'filer', 'Folder', 'Can view Folder')
 
-    model_name = 'file'.lower().replace(' ', '')
-    content_type = ContentType.objects.get(app_label='filer', model=model_name)
-    group.permissions.add( Permission.objects.get(name='Can change file', content_type=content_type) )
-    model_name = 'file'.lower().replace(' ', '')
-    content_type = ContentType.objects.get(app_label='filer', model=model_name)
-    group.permissions.add( Permission.objects.get(name='Can view file', content_type=content_type) )
+    add_perm(group, 'filer', 'file', 'Can change file')
+    add_perm(group, 'filer', 'file', 'Can view file')

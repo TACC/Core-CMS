@@ -1,73 +1,36 @@
-from django.contrib.auth.models import Group, Permission
-from django.contrib.contenttypes.models import ContentType
+from django.contrib.auth.models import Group
+
+from .util import add_perm
 
 def set_group_perms():
     group, was_created = Group.objects.get_or_create(
         name='Media Editor (Basic)'
     )
 
-    model_name = 'page'.lower().replace(' ', '')
-    content_type = ContentType.objects.get(app_label='cms', model=model_name)
-    group.permissions.add( Permission.objects.get(name='Can change page', content_type=content_type) )
+    add_perm(group, 'cms', 'page', 'Can change page')
 
-    model_name = 'placeholder'.lower().replace(' ', '')
-    content_type = ContentType.objects.get(app_label='cms', model=model_name)
-    group.permissions.add( Permission.objects.get(name='Can use Structure mode', content_type=content_type) )
+    add_perm(group, 'cms', 'placeholder', 'Can use Structure mode')
 
-    model_name = 'bootstrap4 picture'.lower().replace(' ', '')
-    content_type = ContentType.objects.get(app_label='bootstrap4_picture', model=model_name)
-    group.permissions.add( Permission.objects.get(name='Can change bootstrap4 picture', content_type=content_type) )
-    model_name = 'bootstrap4 picture'.lower().replace(' ', '')
-    content_type = ContentType.objects.get(app_label='bootstrap4_picture', model=model_name)
-    group.permissions.add( Permission.objects.get(name='Can view bootstrap4 picture', content_type=content_type) )
+    add_perm(group, 'bootstrap4_picture', 'bootstrap4 picture', 'Can change bootstrap4 picture')
+    add_perm(group, 'bootstrap4_picture', 'bootstrap4 picture', 'Can view bootstrap4 picture')
 
-    model_name = 'picture'.lower().replace(' ', '')
-    content_type = ContentType.objects.get(app_label='djangocms_picture', model=model_name)
-    group.permissions.add( Permission.objects.get(name='Can change picture', content_type=content_type) )
-    model_name = 'picture'.lower().replace(' ', '')
-    content_type = ContentType.objects.get(app_label='djangocms_picture', model=model_name)
-    group.permissions.add( Permission.objects.get(name='Can view picture', content_type=content_type) )
+    add_perm(group, 'djangocms_picture', 'picture', 'Can change picture')
+    add_perm(group, 'djangocms_picture', 'picture', 'Can view picture')
 
-    model_name = 'video player'.lower().replace(' ', '')
-    content_type = ContentType.objects.get(app_label='djangocms_video', model=model_name)
-    group.permissions.add( Permission.objects.get(name='Can change video player', content_type=content_type) )
-    model_name = 'video player'.lower().replace(' ', '')
-    content_type = ContentType.objects.get(app_label='djangocms_video', model=model_name)
-    group.permissions.add( Permission.objects.get(name='Can view video player', content_type=content_type) )
-    model_name = 'video source'.lower().replace(' ', '')
-    content_type = ContentType.objects.get(app_label='djangocms_video', model=model_name)
-    group.permissions.add( Permission.objects.get(name='Can change video source', content_type=content_type) )
-    model_name = 'video source'.lower().replace(' ', '')
-    content_type = ContentType.objects.get(app_label='djangocms_video', model=model_name)
-    group.permissions.add( Permission.objects.get(name='Can view video source', content_type=content_type) )
-    model_name = 'video track'.lower().replace(' ', '')
-    content_type = ContentType.objects.get(app_label='djangocms_video', model=model_name)
-    group.permissions.add( Permission.objects.get(name='Can change video track', content_type=content_type) )
-    model_name = 'video track'.lower().replace(' ', '')
-    content_type = ContentType.objects.get(app_label='djangocms_video', model=model_name)
-    group.permissions.add( Permission.objects.get(name='Can view video track', content_type=content_type) )
+    add_perm(group, 'djangocms_video', 'video player', 'Can change video player')
+    add_perm(group, 'djangocms_video', 'video player', 'Can view video player')
+    add_perm(group, 'djangocms_video', 'video source', 'Can change video source')
+    add_perm(group, 'djangocms_video', 'video source', 'Can view video source')
+    add_perm(group, 'djangocms_video', 'video track', 'Can change video track')
+    add_perm(group, 'djangocms_video', 'video track', 'Can view video track')
 
-    model_name = 'file'.lower().replace(' ', '')
-    content_type = ContentType.objects.get(app_label='filer', model=model_name)
-    group.permissions.add( Permission.objects.get(name='Can change file', content_type=content_type) )
-    model_name = 'file'.lower().replace(' ', '')
-    content_type = ContentType.objects.get(app_label='filer', model=model_name)
-    group.permissions.add( Permission.objects.get(name='Can view file', content_type=content_type) )
+    add_perm(group, 'filer', 'file', 'Can change file')
+    add_perm(group, 'filer', 'file', 'Can view file')
 
-    model_name = 'Folder'.lower().replace(' ', '')
-    content_type = ContentType.objects.get(app_label='filer', model=model_name)
-    group.permissions.add( Permission.objects.get(name='Can use directory listing', content_type=content_type) )
-    model_name = 'Folder'.lower().replace(' ', '')
-    content_type = ContentType.objects.get(app_label='filer', model=model_name)
-    group.permissions.add( Permission.objects.get(name='Can view Folder', content_type=content_type) )
+    add_perm(group, 'filer', 'Folder', 'Can use directory listing')
+    add_perm(group, 'filer', 'Folder', 'Can view Folder')
 
-    model_name = 'image'.lower().replace(' ', '')
-    content_type = ContentType.objects.get(app_label='filer', model=model_name)
-    group.permissions.add( Permission.objects.get(name='Can change image', content_type=content_type) )
-    model_name = 'image'.lower().replace(' ', '')
-    content_type = ContentType.objects.get(app_label='filer', model=model_name)
-    group.permissions.add( Permission.objects.get(name='Can view image', content_type=content_type) )
+    add_perm(group, 'filer', 'image', 'Can change image')
+    add_perm(group, 'filer', 'image', 'Can view image')
 
-    model_name = 'thumbnail option'.lower().replace(' ', '')
-    content_type = ContentType.objects.get(app_label='filer', model=model_name)
-    group.permissions.add( Permission.objects.get(name='Can view thumbnail option', content_type=content_type) )
+    add_perm(group, 'filer', 'thumbnail option', 'Can view thumbnail option')

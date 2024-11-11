@@ -29,9 +29,7 @@ Use regex to convert the `<option>`s from HTML to Python Django CMS instructions
 
   ```text
 
-    model_name = '$2'.lower().replace(' ', '')
-    content_type = ContentType.objects.get(app_label='$1', model=model_name)
-    group.permissions.add( Permission.objects.get(name='$3', content_type=content_type) )
+    add_perm(group, '$1', '$2', '$3')
   ```
 
 ## Program Permissions
