@@ -1,5 +1,4 @@
 from django.contrib.auth.models import Group, Permission
-from django.core.management import BaseCommand
 
 def set_group_perms():
     group, was_created = Group.objects.get_or_create(
