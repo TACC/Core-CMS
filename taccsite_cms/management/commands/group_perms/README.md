@@ -27,12 +27,10 @@ Use regex to convert the `<option>`s from HTML to Python Django CMS instructions
 
 - Replace:
 
-  ```text
+    ```text
 
-    model_name = '$2'.lower().replace(' ', '')
-    content_type = ContentType.objects.get(app_label='$1', model=model_name)
-    group.permissions.add( Permission.objects.get(name='$3', content_type=content_type) )
-  ```
+        add_perm(group, '$1', '$2', '$3')
+    ```
 
 ## Program Permissions
 
@@ -40,13 +38,11 @@ Use regex to convert the `<option>`s from HTML to Python Django CMS instructions
 2. Add this starter code:
 
     ```py
-    from django.contrib.auth.models import Group, Permission
-    from django.contrib.contenttypes.models import ContentType
-    from django.core.management import BaseCommand
+    from django.contrib.auth.models import Group
 
     def set_group_perms():
         group, was_created = Group.objects.get_or_create(
-          name='__GROUP_NAME__'
+            name='__GROUP_NAME__'
         )
     ```
 
