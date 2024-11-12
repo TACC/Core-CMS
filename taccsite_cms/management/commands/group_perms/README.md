@@ -27,10 +27,10 @@ Use regex to convert the `<option>`s from HTML to Python Django CMS instructions
 
 - Replace:
 
-  ```text
+    ```text
 
-      add_perm(group, '$1', '$2', '$3')
-  ```
+        add_perm(group, '$1', '$2', '$3')
+    ```
 
 ## Program Permissions
 
@@ -42,7 +42,7 @@ Use regex to convert the `<option>`s from HTML to Python Django CMS instructions
 
     def set_group_perms():
         group, was_created = Group.objects.get_or_create(
-          name='__GROUP_NAME__'
+            name='__GROUP_NAME__'
         )
     ```
 
