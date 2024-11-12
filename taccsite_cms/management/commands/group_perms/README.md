@@ -29,7 +29,7 @@ Use regex to convert the `<option>`s from HTML to Python Django CMS instructions
 
   ```text
 
-    add_perm(group, '$1', '$2', '$3')
+      add_perm(group, '$1', '$2', '$3')
   ```
 
 ## Program Permissions
