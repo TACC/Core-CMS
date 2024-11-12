@@ -38,9 +38,7 @@ Use regex to convert the `<option>`s from HTML to Python Django CMS instructions
 2. Add this starter code:
 
     ```py
-    from django.contrib.auth.models import Group, Permission
-    from django.contrib.contenttypes.models import ContentType
-    from django.core.management import BaseCommand
+    from django.contrib.auth.models import Group
 
     def set_group_perms():
         group, was_created = Group.objects.get_or_create(
