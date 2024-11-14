@@ -611,8 +611,11 @@ DJANGOCMS_BOOTSTRAP4_GRID_COLUMN_CHOICES = [
 
 # SEE: https://github.com/django-cms/djangocms-bootstrap4
 DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS = [
+    ('container', _('Container')),
+    ('container-fluid', _('Fluid container')),
+    ('o-section', _('Section')),
+    ('_', _('None')),
     (_('Container'), (
-        ('container', _('Container')), # default
         (
             'container  o-section',
             _('Container + Section (transparent / margin)')
@@ -631,7 +634,6 @@ DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS = [
         ),
     )),
     (_('Fluid container'), (
-        ('container-fluid', _('Fluid container')), # default
         (
             'container-fluid  o-section',
             _('Fluid container + Section (transparent / margin)')
@@ -651,10 +653,6 @@ DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS = [
     )),
     (_('Section only'), (
         (
-            'o-section',
-            _('Section (transparent / margin)')
-        ),
-        (
             'o-section o-section--style-light',
             _('Light section')
         ),
@@ -666,12 +664,6 @@ DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS = [
             'o-section o-section--style-dark',
             _('Dark section')
         ),
-    )),
-    (_('Empty'), (
-        (
-            '_',
-            _('No container, No section')
-        )
     )),
 ]
 
