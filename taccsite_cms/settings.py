@@ -669,7 +669,7 @@ DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS = [
     )),
     (_('Empty'), (
         (
-            '',
+            '_',
             _('No container, No section')
         )
     )),
