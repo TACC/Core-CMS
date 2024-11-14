@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [4.20.2] - 2024-11-13: Complete Container Type Options
+
+## What's Changed
+
+* fix: media editor adv unable to view/use folders by @wesleyboar in https://github.com/TACC/Core-CMS/pull/893
+* fix: restore empty Container by @wesleyboar in https://github.com/TACC/Core-CMS/pull/897, b8ecc1c, 1aa1cd4
+* refactor: reorder Container type options by @wesleyboar in https://github.com/TACC/Core-CMS/pull/898
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.20.1...v4.20.2
+
 ## [4.20.1] - 2024-11-06: Fix Linked Image Cards
 
 ## What's Changed
@@ -1442,7 +1452,8 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.20.1...main
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.20.2...main
+[4.20.2]: https://github.com/TACC/Core-CMS/releases/tag/v4.20.2
 [4.20.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.20.1
 [4.20.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.20.0
 [4.19.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.19.1
