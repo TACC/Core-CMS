@@ -22,7 +22,7 @@ def set_group_perms():
     add_perm(group, 'bootstrap4_grid', 'bootstrap4 grid column', 'Can delete bootstrap4 column')
     add_perm(group, 'bootstrap4_grid', 'bootstrap4 grid column', 'Can view bootstrap4 column')
 
-    add_perm(group, 'bootstrap4_grid', 'bootstrap4 grid rw', 'Can add bootstrap4 rw')
-    add_perm(group, 'bootstrap4_grid', 'bootstrap4 grid rw', 'Can change bootstrap4 rw')
-    add_perm(group, 'bootstrap4_grid', 'bootstrap4 grid rw', 'Can delete bootstrap4 rw')
-    add_perm(group, 'bootstrap4_grid', 'bootstrap4 grid rw', 'Can view bootstrap4 rw')
+    add_perm(group, 'bootstrap4_grid', 'bootstrap4 grid row', 'Can add bootstrap4 row')
+    add_perm(group, 'bootstrap4_grid', 'bootstrap4 grid row', 'Can change bootstrap4 row')
+    add_perm(group, 'bootstrap4_grid', 'bootstrap4 grid row', 'Can delete bootstrap4 row')
+    add_perm(group, 'bootstrap4_grid', 'bootstrap4 grid row', 'Can view bootstrap4 row')
