@@ -649,7 +649,7 @@ DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS = [
             _('Fluid container + Dark section')
         ),
     )),
-    (_('No container'), (
+    (_('Section only'), (
         (
             'o-section',
             _('Section (transparent / margin)')
@@ -666,6 +666,12 @@ DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS = [
             'o-section o-section--style-dark',
             _('Dark section')
         ),
+    )),
+    (_('Empty'), (
+        (
+            '',
+            _('No container, No section')
+        )
     )),
 ]
 
