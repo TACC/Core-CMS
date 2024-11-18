@@ -8,7 +8,7 @@ from .util import (
     let_add_and_delete_text,
     let_view_and_change_media_plugins,
     let_add_and_delete_media_plugins,
-    let_view_and_change_image_files,
+    let_view_and_change_image_file,
 )
 
 def set_group_perms():
@@ -22,27 +22,27 @@ def set_group_perms():
     let_view_and_change_text(group)
     let_add_and_delete_text(group)
     # NOTE: Consider adding these to `let…text` functions
-    add_perm(group, 'bootstrap4_blockquote', 'bootstrap4 blockquote', 'Can add bootstrap4 blockquote')
-    add_perm(group, 'bootstrap4_blockquote', 'bootstrap4 blockquote', 'Can change bootstrap4 blockquote')
-    add_perm(group, 'bootstrap4_blockquote', 'bootstrap4 blockquote', 'Can delete bootstrap4 blockquote')
-    add_perm(group, 'bootstrap4_blockquote', 'bootstrap4 blockquote', 'Can view bootstrap4 blockquote')
+    add_perm(group, 'bootstrap4_content', 'bootstrap4 blockquote', 'Can add bootstrap4 blockquote')
+    add_perm(group, 'bootstrap4_content', 'bootstrap4 blockquote', 'Can change bootstrap4 blockquote')
+    add_perm(group, 'bootstrap4_content', 'bootstrap4 blockquote', 'Can delete bootstrap4 blockquote')
+    add_perm(group, 'bootstrap4_content', 'bootstrap4 blockquote', 'Can view bootstrap4 blockquote')
 
     let_view_and_change_media_plugins(group)
     let_add_and_delete_media_plugins(group)
 
-    let_view_and_change_image_files(group)
+    let_view_and_change_image_file(group)
     add_perm(group, 'filer', 'image', 'Can add image')
 
     # Add permissions to view & change & add articles
-    add_perm(group, 'djangocms_blog', 'blog article', 'Can view blog article')
-    add_perm(group, 'djangocms_blog', 'blog article', 'Can change blog article')
-    add_perm(group, 'djangocms_blog', 'blog article', 'Can add blog article')
+    add_perm(group, None, None, 'Can view blog article')
+    add_perm(group, None, None, 'Can change blog article')
+    add_perm(group, None, None, 'Can add blog article')
 
     # Add permissions to manage categories
-    add_perm(group, 'djangocms_blog', 'blog category', 'Can add blog category')
-    add_perm(group, 'djangocms_blog', 'blog category', 'Can change blog category')
-    add_perm(group, 'djangocms_blog', 'blog category', 'Can delete blog category')
-    add_perm(group, 'djangocms_blog', 'blog category', 'Can view blog category')
+    add_perm(group, None, None, 'Can add blog category')
+    add_perm(group, None, None, 'Can change blog category')
+    add_perm(group, None, None, 'Can delete blog category')
+    add_perm(group, None, None, 'Can view blog category')
 
     # Add permissions to manage tags & tagged items (e.g. articles)
     add_perm(group, 'taggit', 'tag', 'Can add tag')

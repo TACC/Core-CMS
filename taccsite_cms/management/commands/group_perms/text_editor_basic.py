@@ -3,7 +3,7 @@ from django.contrib.auth.models import Group
 from .util import (
     let_view_and_change_page_structure,
     let_view_and_change_text,
-    let_view_folder,
+    let_view_and_change_folder,
     let_view_and_change_file,
 )
 

@@ -8,7 +8,7 @@ from .util import (
     let_add_and_delete_text,
     let_view_and_change_media_plugins,
     let_add_and_delete_media_plugins,
-    let_view_and_change_image_files,
+    let_view_and_change_image_file,
 )
 
 def set_group_perms():
@@ -25,10 +25,10 @@ def set_group_perms():
     let_view_and_change_media_plugins(group)
     let_add_and_delete_media_plugins(group)
 
-    let_view_and_change_image_files(group)
+    let_view_and_change_image_file(group)
     add_perm(group, 'filer', 'image', 'Can add image')
 
     # Add permissions to view & change & add articles
-    add_perm(group, 'djangocms_blog', 'blog article', 'Can view blog article')
-    add_perm(group, 'djangocms_blog', 'blog article', 'Can change blog article')
-    add_perm(group, 'djangocms_blog', 'blog article', 'Can add blog article')
+    add_perm(group, None, None, 'Can view blog article')
+    add_perm(group, None, None, 'Can change blog article')
+    add_perm(group, None, None, 'Can add blog article')

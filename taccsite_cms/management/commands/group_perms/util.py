@@ -1,5 +1,10 @@
+import logging
+
+from django.core.management import BaseCommand
 from django.contrib.auth.models import Permission
 from django.contrib.contenttypes.models import ContentType
+
+logger = logging.getLogger(__name__)
 
 def add_perm(group, app_label, model_name, perm_name):
     """
@@ -9,18 +14,22 @@ def add_perm(group, app_label, model_name, perm_name):
     `group.permissions.add( Permission.objects.get( name='…' ) )`
     — but providing app and model ensure no conflict.
     """
-    model = model_name.lower().replace(' ', '')
-    content_type = ContentType.objects.get(
-        app_label=app_label,
-        model=model
-    )
+    logger.debug(f'Adding permission ({app_label}.{model_name}) "{perm_name}"')
 
-    group.permissions.add(
-        Permission.objects.get(
-            name=perm_name,
-            content_type=content_type
+    if app_label and model_name:
+        model = model_name.lower().replace(' ', '')
+        content_type = ContentType.objects.get(
+            app_label=app_label,
+            model=model
         )
-    )
+        group.permissions.add(
+            Permission.objects.get(
+                name=perm_name,
+                content_type=content_type
+            )
+        )
+    else:
+        group.permissions.add( Permission.objects.get( name=perm_name ))
 
 
 
