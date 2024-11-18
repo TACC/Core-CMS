@@ -33,6 +33,9 @@ def let_view_and_change_page_structure(group):
     add_perm(group, 'cms', 'page', 'Can change page')
 
     add_perm(group, 'cms', 'placeholder', 'Can use Structure mode')
+    # HELP: Not necessary on TACC (as of Core-CMS v4.17.1)
+    #       Is necessary on WTCS (as of Core-CMS v4.20.2)
+    add_perm(group, 'cms', 'static placeholder', 'Can change static placeholder')
 
 
 
