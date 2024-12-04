@@ -11,11 +11,11 @@ export const DEFAULT_LINKS = document.querySelectorAll('body > :is(header, main,
  * @param {NodeList} links - Custom links to open in new tab
  * @param {object} options
  * @param {boolean} [options.shouldDebug=false] - Whether to log debug statements
- * @param {boolean} [options.shouldFilterLinks=true] - Whether to filter which links to adjust
+ * @param {boolean} [options.shouldFilter=true] - Whether to filter which links to adjust
  */
 export default function findLinksAndSetTargets( links = DEFAULT_LINKS, {
   shouldDebug = false,
-  shouldFilterLinks = true
+  shouldFilter = true
 }) {
   const baseDocHost = document.location.host;
   const baseDocHostWithSubdomain= `www.${baseDocHost}`;
@@ -32,15 +32,14 @@ export default function findLinksAndSetTargets( links = DEFAULT_LINKS, {
     const isMailto = ( linkHref.indexOf('mailto:') === 0 );
     const isAbsolute = ( linkHref.indexOf('http') === 0 );
     const isSameHost = ( link.host === baseDocHost || link.host === baseDocHostWithSubdomain );
-    const isDefaultLink = Array.from( DEFAULT_LINKS ).includes( link );
     const shouldOpenInNewTab = ( ! isSameHost || isMailto );
 
     if (shouldDebug) {
-      console.debug({ isMailto, isAbsolute, isSameHost, linkHref, isDefaultLink });
+      console.debug({ isMailto, isAbsolute, isSameHost, linkHref });
     }
 
     // So either all or some links open in new tab
-    if ( ! shouldFilterLinks || ( shouldFilterLinks && shouldOpenInNewTab )) {
+    if ( ! shouldFilter || ( shouldFilter && shouldOpenInNewTab )) {
       if ( link.target !== '_blank') {
         link.target = '_blank';
         if (shouldDebug) {
