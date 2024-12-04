@@ -13,9 +13,9 @@ export const DEFAULT_LINKS = document.querySelectorAll('body > :is(header, main,
  * @param {boolean} [options.shouldDebug=false] - Whether to log debug statements
  * @param {boolean} [options.shouldFilter=true] - Whether to filter which links to adjust
  */
-export default function findLinksAndSetTargets( links = DEFAULT_LINKS, {
-  shouldDebug = false,
-  shouldFilter = true,
+export default function findLinksAndSetTargets( links = DEFAULT_LINKS, options = {
+  shouldDebug: false,
+  shouldFilter: true,
 }) {
   const baseDocHost = document.location.host;
   const baseDocHostWithSubdomain= `www.${baseDocHost}`;
