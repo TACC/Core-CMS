@@ -20,6 +20,8 @@ export default function findLinksAndSetTargets( links = DEFAULT_LINKS ) {
   const baseDocHost = document.location.host;
   const baseDocHostWithSubdomain= `www.${baseDocHost}`;
 
+  console.log({ SHOULD_DEBUG, links });
+
   links.forEach( function setTarget( link ) {
     const linkHref = link.getAttribute('href');
 
