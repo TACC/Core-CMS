@@ -9,18 +9,18 @@ export const DEFAULT_LINKS = document.querySelectorAll('body > :is(header, main,
  * - add accessible markup
  * - fix absolute URLs that should be relative paths
  * @param {NodeList} links - Custom links to open in new tab
- * @param {object} options
- * @param {boolean} [options.shouldDebug=false] - Whether to log debug statements
- * @param {boolean} [options.shouldFilter=true] - Whether to filter which links to adjust
+ * @param {object} opts
+ * @param {boolean} [opts.shouldDebug=false] - Whether to log debug statements
+ * @param {boolean} [opts.shouldFilter=true] - Whether to filter which links to adjust
  */
-export default function findLinksAndSetTargets( links = DEFAULT_LINKS, options = {
+export default function findLinksAndSetTargets( links = DEFAULT_LINKS, opts = {
   shouldDebug: false,
   shouldFilter: true,
 }) {
   const baseDocHost = document.location.host;
   const baseDocHostWithSubdomain= `www.${baseDocHost}`;
 
-  console.log({ links, options });
+  console.log({ links, opts });
 
   links.forEach( function setTarget( link ) {
     const linkHref = link.getAttribute('href');
@@ -34,15 +34,15 @@ export default function findLinksAndSetTargets( links = DEFAULT_LINKS, options =
     const isSameHost = ( link.host === baseDocHost || link.host === baseDocHostWithSubdomain );
     const shouldOpenInNewTab = ( ! isSameHost || isMailto );
 
-    if (shouldDebug) {
+    if (opts.shouldDebug) {
       console.debug({ isMailto, isAbsolute, isSameHost, linkHref });
     }
 
     // So either all or some links open in new tab
-    if ( ! shouldFilter || ( shouldFilter && shouldOpenInNewTab )) {
+    if ( ! opts.shouldFilter || ( opts.shouldFilter && shouldOpenInNewTab )) {
       if ( link.target !== '_blank') {
         link.target = '_blank';
-        if (shouldDebug) {
+        if (opts.shouldDebug) {
           console.debug(`Link ${linkHref} now opens in new tab`);
         }
       }
