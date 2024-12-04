@@ -8,13 +8,15 @@ const SHOULD_DEBUG = window.DEBUG;
  * Make links with absolute URLs open in new tab, and:
  * - add accessible markup
  * - fix absolute URLs that should be relative paths
+ * @param {NodeList} moreLinks - additional links to open in new tab
  */
-export default function findLinksAndSetTargets() {
+export default function findLinksAndSetTargets( moreLinks ) {
   const links = document.querySelectorAll('body > :is(header, main, footer) a');
+  const allLinks = [ ...links, ...moreLinks ];
   const baseDocHost = document.location.host;
   const baseDocHostWithSubdomain= `www.${baseDocHost}`;
 
-  [ ...links ].forEach( function setTarget(link) {
+  allLinks.forEach( function setTarget( link ) {
     const linkHref = link.getAttribute('href');
 
     if ( ! linkHref ) {
