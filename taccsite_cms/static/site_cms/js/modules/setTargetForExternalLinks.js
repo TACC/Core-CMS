@@ -10,10 +10,12 @@ export const DEFAULT_LINKS = document.querySelectorAll('body > :is(header, main,
  * - fix absolute URLs that should be relative paths
  * @param {NodeList} links - Custom links to open in new tab
  * @param {object} options
- * @param {boolean} options.shouldDebug - Whether to log debug statements
+ * @param {boolean} [options.shouldDebug=false] - Whether to log debug statements
+ * @param {boolean} [options.shouldFilterLinks=true] - Whether to filter which links to adjust
  */
 export default function findLinksAndSetTargets( links = DEFAULT_LINKS, {
-  shouldDebug = false
+  shouldDebug = false,
+  shouldFilterLinks = true
 }) {
   const baseDocHost = document.location.host;
   const baseDocHostWithSubdomain= `www.${baseDocHost}`;
@@ -37,8 +39,8 @@ export default function findLinksAndSetTargets( links = DEFAULT_LINKS, {
       console.debug({ isMailto, isAbsolute, isSameHost, linkHref, isDefaultLink });
     }
 
-    // So custom links or links to pages at different host open in new tab
-    if ( ! isDefaultLink || shouldOpenInNewTab ) {
+    // So either all or some links open in new tab
+    if ( ! shouldFilterLinks || ( shouldFilterLinks && shouldOpenInNewTab )) {
       if ( link.target !== '_blank') {
         link.target = '_blank';
         if (shouldDebug) {
