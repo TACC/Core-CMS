@@ -7,6 +7,86 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [4.20.2] - 2024-11-13: Complete Container Type Options
+
+## What's Changed
+
+* fix: media editor adv unable to view/use folders by @wesleyboar in https://github.com/TACC/Core-CMS/pull/893
+* fix: restore empty Container by @wesleyboar in https://github.com/TACC/Core-CMS/pull/897, b8ecc1c, 1aa1cd4
+* refactor: reorder Container type options by @wesleyboar in https://github.com/TACC/Core-CMS/pull/898
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.20.1...v4.20.2
+
+## [4.20.1] - 2024-11-06: Fix Linked Image Cards
+
+## What's Changed
+
+* chore: core-styles v2.37.2 by @wesleyboar in 1dba400
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.20.0...v4.20.1
+
+## [4.20.0] - 2024-10-31: Support Linked Image Cards, Offer Transparent Sections
+
+### What's Changed
+
+* deps: core-styles v2.37.0 by @wesleyboar in cbfcf1c
+* enhance: transparent/margin section via Container by @wesleyboar in https://github.com/TACC/Core-CMS/pull/891
+* fix: importHTML.replaceFromURL can return null by @wesleyboar in https://github.com/TACC/Core-CMS/pull/892
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.19.1...v4.20.0
+
+## [4.19.1] - 2024-10-25: Add Column Choices & Fix `group_perms` Command
+
+## What's Changed
+
+* feat(settings): bootstrap4 column choices by @wesleyboar in https://github.com/TACC/Core-CMS/pull/889
+* fix: group_perms error with news admin by @wesleyboar in https://github.com/TACC/Core-CMS/pull/890
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.19.0...v4.19.1
+
+## [4.19.0] - 2023-10-25: Dark & Muted Columns (from Core-Styles v2.36.0)
+
+## What's Changed
+
+* chore: bump core-styles to v2.36.0 by @wesleyboar in https://github.com/TACC/Core-CMS/pull/888
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.18.0...v4.19.0
+
+## [4.18.0] - 2023-10-24: Old Styles Use @layer, Improve Blog Settings, Fixes
+
+## What's Changed
+
+* chore: do not clone bootstrap for `tacc-search-bar` by @wesleyboar in https://github.com/TACC/Core-CMS/pull/879
+* feat: WP-197 use @layer's / help migrate Frontera by @wesleyboar in https://github.com/TACC/Core-CMS/pull/856
+* refactor: define title block only in base by @wesleyboar in https://github.com/TACC/Core-CMS/pull/883
+* fix: blog install steps are outdated by @wesleyboar in https://github.com/TACC/Core-CMS/pull/884
+* chore: CMD-143 retire deprecated templates by @wesleyboar in https://github.com/TACC/Core-CMS/pull/886
+* deps: core-styles v2.35.1 by @wesleyboar in https://github.com/TACC/Core-CMS/pull/887
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.17.1...v4.18.0
+
+## [4.17.1] - 2023-09-17: Add Muted Section to Container List
+
+### Fixed
+
+* fix: add muted section to container dropdown by @wesleyboar in https://github.com/TACC/Core-CMS/pull/878
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.17.0...v4.17.1
+
+## [4.17.0] - 2023-09-17: Serve Raw Markup, Toggle Branding, Fix Example App
+
+### Added
+
+* feat: CMD-97 isolate breadcrumbs from content by @wesleyboar in https://github.com/TACC/Core-CMS/pull/870
+* feat: tup 706 be able to serve blog markup raw by @wesleyboar in https://github.com/TACC/Core-CMS/pull/871
+
+### Fixed
+
+* fix: do not show branding if setting is false-y by @wesleyboar in https://github.com/TACC/Core-CMS/pull/877
+* fix: custom_example app not working by @wesleyboar in https://github.com/TACC/Core-CMS/pull/875
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.16.0...v4.17.0
+
 ## [4.16.1] - 2023-09-09: Core-Styles v2.33.1
 
 ### Updated
@@ -1372,7 +1452,15 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.16.1...main
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.20.2...main
+[4.20.2]: https://github.com/TACC/Core-CMS/releases/tag/v4.20.2
+[4.20.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.20.1
+[4.20.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.20.0
+[4.19.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.19.1
+[4.19.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.19.0
+[4.18.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.18.0
+[4.17.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.17.1
+[4.17.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.17.0
 [4.16.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.16.1
 [4.16.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.16.0
 [4.15.2]: https://github.com/TACC/Core-CMS/releases/tag/v4.15.2

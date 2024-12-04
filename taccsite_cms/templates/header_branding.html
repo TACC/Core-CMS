@@ -26,7 +26,7 @@
 </div>
 {% endwith %}
 
-{% else %}
+{% elif settings.PORTAL_BRANDING %}
 
 {% with settings.PORTAL_BRANDING as brands %}
 <div id="header-branding" class="branding-header {{className}}">
