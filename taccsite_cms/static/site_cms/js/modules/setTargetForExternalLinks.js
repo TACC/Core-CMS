@@ -1,10 +1,4 @@
 /**
- * Whether to log debug info to console
- * @const {string}
- */
-const SHOULD_DEBUG = window.DEBUG;
-
-/**
  * The standard lnsk to open in new windows
  * @const {string}
  */
@@ -14,13 +8,17 @@ export const DEFAULT_LINKS = document.querySelectorAll('body > :is(header, main,
  * Make links with absolute URLs open in new tab, and:
  * - add accessible markup
  * - fix absolute URLs that should be relative paths
- * @param {NodeList} links - additional links to open in new tab
+ * @param {NodeList} links - Custom links to open in new tab
+ * @param {object} options
+ * @param {boolean} options.shouldDebug - Whether to log debug statements
  */
-export default function findLinksAndSetTargets( links = DEFAULT_LINKS ) {
+export default function findLinksAndSetTargets( links = DEFAULT_LINKS, {
+  shouldDebug = false
+}) {
   const baseDocHost = document.location.host;
   const baseDocHostWithSubdomain= `www.${baseDocHost}`;
 
-  console.log({ SHOULD_DEBUG, links });
+  console.log({ shouldDebug, links });
 
   links.forEach( function setTarget( link ) {
     const linkHref = link.getAttribute('href');
@@ -35,7 +33,7 @@ export default function findLinksAndSetTargets( links = DEFAULT_LINKS ) {
     const isDefaultLink = Array.from( DEFAULT_LINKS ).includes( link );
     const shouldOpenInNewTab = ( ! isSameHost || isMailto );
 
-    if (SHOULD_DEBUG) {
+    if (shouldDebug) {
       console.debug({ isMailto, isAbsolute, isSameHost, linkHref, isDefaultLink });
     }
 
@@ -43,7 +41,7 @@ export default function findLinksAndSetTargets( links = DEFAULT_LINKS ) {
     if ( ! isDefaultLink || shouldOpenInNewTab ) {
       if ( link.target !== '_blank') {
         link.target = '_blank';
-        if (SHOULD_DEBUG) {
+        if (shouldDebug) {
           console.debug(`Link ${linkHref} now opens in new tab`);
         }
       }
