@@ -15,12 +15,12 @@ export const DEFAULT_LINKS = document.querySelectorAll('body > :is(header, main,
  */
 export default function findLinksAndSetTargets( links = DEFAULT_LINKS, {
   shouldDebug = false,
-  shouldFilter = true
+  shouldFilter = true,
 }) {
   const baseDocHost = document.location.host;
   const baseDocHostWithSubdomain= `www.${baseDocHost}`;
 
-  console.log({ shouldDebug, links });
+  console.log({ shouldDebug, links, options });
 
   links.forEach( function setTarget( link ) {
     const linkHref = link.getAttribute('href');
