@@ -344,6 +344,8 @@ ui_demo_dir = os.path.join(BASE_DIR, 'taccsite_ui', 'dist')
 if os.path.exists(ui_demo_dir):
     STATICFILES_DIRS += (('ui', ui_demo_dir),)
 
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+
 # User Uploaded Files Location.
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(DATA_DIR, 'media')
