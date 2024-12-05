@@ -18,7 +18,7 @@ export default function findLinksAndSetTargets( links = DEFAULT_LINKS, opts = {
   shouldFilter: true,
 }) {
   const baseDocHost = document.location.host;
-  const baseDocHostWithSubdomain= `www.${baseDocHost}`;
+  const baseDocHostWithSubdomain= `www.${ baseDocHost }`;
 
   if ( opts.shouldDebug ) {
     console.log({ links, opts });
@@ -45,7 +45,7 @@ export default function findLinksAndSetTargets( links = DEFAULT_LINKS, opts = {
       if ( link.target !== '_blank') {
         link.target = '_blank';
         if (opts.shouldDebug) {
-          console.debug(`Link ${linkHref} now opens in new tab`);
+          console.debug(`Link "${ linkHref }" now opens in new tab`);
         }
       }
       if ( link.target === '_blank') {
