@@ -44,7 +44,7 @@ export default function findLinksAndSetTargets( links = DEFAULT_LINKS, opts = {
     if ( ! opts.shouldFilter || ( opts.shouldFilter && shouldOpenInNewTab )) {
       if ( link.target !== '_blank') {
         link.target = '_blank';
-        if (opts.shouldDebug) {
+        if ( opts.shouldDebug ) {
           console.debug(`Link "${ linkHref }" now opens in new tab`);
         }
       }
