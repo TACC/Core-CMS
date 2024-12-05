@@ -1,5 +1,5 @@
 /**
- * The standard lnsk to open in new windows
+ * The standard links that should open in a new tab
  * @const {string}
  */
 export const DEFAULT_LINKS = document.querySelectorAll('body > :is(header, main, footer) a');
@@ -20,7 +20,9 @@ export default function findLinksAndSetTargets( links = DEFAULT_LINKS, opts = {
   const baseDocHost = document.location.host;
   const baseDocHostWithSubdomain= `www.${baseDocHost}`;
 
-  console.log({ links, opts });
+  if (opts.shouldDebug) {
+    console.log({ links, opts });
+  }
 
   links.forEach( function setTarget( link ) {
     const linkHref = link.getAttribute('href');
@@ -35,7 +37,7 @@ export default function findLinksAndSetTargets( links = DEFAULT_LINKS, opts = {
     const shouldOpenInNewTab = ( ! isSameHost || isMailto );
 
     if (opts.shouldDebug) {
-      console.debug({ isMailto, isAbsolute, isSameHost, linkHref });
+      console.debug({ isMailto, isAbsolute, isSameHost, linkHref, shouldOpenInNewTab });
     }
 
     // So either all or some links open in new tab
