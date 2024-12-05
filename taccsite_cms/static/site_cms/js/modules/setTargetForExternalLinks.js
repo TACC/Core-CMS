@@ -20,7 +20,7 @@ export default function findLinksAndSetTargets( links = DEFAULT_LINKS, opts = {
   const baseDocHost = document.location.host;
   const baseDocHostWithSubdomain= `www.${baseDocHost}`;
 
-  if (opts.shouldDebug) {
+  if ( opts.shouldDebug ) {
     console.log({ links, opts });
   }
 
