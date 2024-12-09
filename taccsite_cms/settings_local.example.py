@@ -20,5 +20,6 @@ DEBUG = True
 SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
 
 # To disable the Core-Portal integration
-PORTAL_IS_TACC_CORE_PORTAL = False
-PORTAL_HAS_LOGIN = False
+# IMPORTANT: Do not disable by default, because [Core-Portal clones this file](https://github.com/TACC/Core-Portal/pull/1034)
+# PORTAL_IS_TACC_CORE_PORTAL = False
+# PORTAL_HAS_LOGIN = False
