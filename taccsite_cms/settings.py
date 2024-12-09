@@ -754,6 +754,11 @@ DJANGOCMS_ICON_SETS = [
 ########################
 
 try:
+    from taccsite_cms.settings_default import *
+except ModuleNotFoundError:
+    pass
+
+try:
     from taccsite_cms.settings_custom import *
     import taccsite_cms.settings_custom as settings_custom
 except ModuleNotFoundError:
