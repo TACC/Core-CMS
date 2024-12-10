@@ -17,9 +17,11 @@ from ..util import (
     let_view_and_change_image_file,
 )
 
+GROUP_NAME = 'News Writer (Advanced)'
+
 def set_group_perms():
     group, was_created = Group.objects.get_or_create(
-        name='News Writer (Advanced)'
+        name=GROUP_NAME
     )
 
     let_view_and_change_page_structure(group)
