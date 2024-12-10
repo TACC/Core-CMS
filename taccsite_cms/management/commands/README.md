@@ -1,8 +1,8 @@
-# Programmatically Add Groups & Permissions
+# TACC CMS - Add Groups & Permissions
 
 - [Groups & Permissions](#groups--permissions)
 - [Usage](#usage)
-- [Develepment](#develepment)
+- [Development](#development)
 - [Reference](#reference)
 
 ## Groups & Permissions
@@ -57,12 +57,13 @@ Add the User to one or more groups.[^1]
 > **Warning:**
 > If [`CMS_PERMISSION = True`](https://docs.django-cms.org/en/3.11.8/topics/permissions.html#permission-modes) ([default for Core-CMS](https://github.com/TACC/Core-CMS/blob/v4.21.0/taccsite_cms/settings.py#L164)), then assigning one of these groups to a user is **not enough** to allow them to edit a page. You must also give that user [Global or per-page permissions](https://docs.django-cms.org/en/3.11.8/topics/permissions.html#global-and-per-page-permissions); do so [via a group](https://docs.django-cms.org/en/3.11.8/topics/permissions.html#use-permissions-on-groups-not-on-users).
 
-## Develepment
+## Development
 
 - [Create a New Group](#create-a-new-group)
 - [Create a New Permission Set](#create-a-new-permission-set)
     - [via Existing Set in this Code](#via-existing-set-in-this-code)
     - [via Existing Group in CMS Admin](#via-existing-group-in-cms-admin)
+- [Update all CMS Instances](#update-all-cms-instances)
 
 ### Create a New Group
 
@@ -111,6 +112,105 @@ Use regex to convert the `<option>`s from HTML to Python Django CMS instructions
 
         add_perm(group, '$1', '$2', '$3')
     ```
+
+### Update all CMS Instances
+
+Add new (reversible) migration file to `taccsite_cms/migrations`.
+
+#### Examples
+
+<details><summary>Add New Permission to Existing Group</summary>
+
+`add_new_perm_to_existing_group.py`
+```py
+from django.db import migrations
+
+def add_new_perm_in_existing_group(apps, schema_editor):
+    group = Group.objects.get(name='Your Group Name')
+    add_perm(group, 'the app label', 'the model name', 'The permission name')
+
+def del_new_perm_in_existing_group(apps, schema_editor):
+    group = Group.objects.get(name='Your Group Name')
+    del_perm(group, 'the app label', 'the model name', 'The permission name')
+
+class Migration(migrations.Migration):
+
+    dependencies = [
+        ('taccsite_cms', '0001_add_groups.py'), # most recent migration
+    ]
+
+    operations = [
+        migrations.RunPython(
+            add_new_perm_to_existing_group,
+            reverse_code=del_new_perm_in_existing_group
+        ),
+    ]
+```
+
+</details>
+
+<details><summary>Add New Groups</summary>
+
+`add_new_groups.py`:
+```py
+from django.db import migrations
+
+def add_new_groups(apps, schema_editor):
+    from taccsite_cms.management.commands.group_perms.new_group_basic import set_group_perms as add_new_group_basic
+    from taccsite_cms.management.commands.group_perms.new_group_advanced import set_group_perms as add_new_group_advanced
+
+    add_new_group_basic()
+    add_new_group_advanced()
+
+def del_new_groups(apps, schema_editor):
+    from taccsite_cms.management.commands.group_perms.new_group_basic import GROUP_NAME as new_group_basic_group_name
+    from taccsite_cms.management.commands.group_perms.new_group_advanced import GROUP_NAME as new_group_advanced_group_name
+
+    Group = apps.get_model('auth', 'Group')
+    Group.objects.filter(name=new_group_basic_group_name).delete()
+    Group.objects.filter(name=new_group_advanced_group_name).delete()
+
+class Migration(migrations.Migration):
+
+    dependencies = [
+        ('taccsite_cms', '0002_add_new_perm_to_existing_group.py'), # most recent migration
+    ]
+
+    operations = [
+        migrations.RunPython(add_new_groups, reverse_code=del_new_groups),
+    ]
+```
+</details>
+
+<details><summary>Delete a Group</summary>
+
+`del_group.py`:
+```py
+from django.db import migrations
+
+def del_group(apps, schema_editor):
+    from taccsite_cms.management.commands.group_perms.media_editor_advanced import GROUP_NAME as media_editor_advanced_group_name
+
+    Group = apps.get_model('auth', 'Group')
+    Group.objects.filter(name=media_editor_advanced_group_name).delete()
+
+def add_group(apps, schema_editor):
+    from taccsite_cms.management.commands.group_perms.media_editor_advanced import set_group_perms as add_media_editor_advanced
+
+    add_media_editor_advanced()
+
+class Migration(migrations.Migration):
+
+    dependencies = [
+        ('taccsite_cms', '0003_add_new_groups.py'), # most recent migration
+    ]
+
+    operations = [
+        migrations.RunPython(del_group, reverse_code=add_group),
+    ]
+```
+
+</details>
 
 ## Reference
 
