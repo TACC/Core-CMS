@@ -7,9 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [4.21.0] - 2024-12-04: Custom Links for `findLinksAndSetTargets`
+
+### What's Changed
+
+* feat: CMD-193 custom links for findLinksAndSetTargets by @wesleyboar in https://github.com/TACC/Core-CMS/pull/902
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.20.2...v4.21.0
+
 ## [4.20.2] - 2024-11-13: Complete Container Type Options
 
-## What's Changed
+### What's Changed
 
 * fix: media editor adv unable to view/use folders by @wesleyboar in https://github.com/TACC/Core-CMS/pull/893
 * fix: restore empty Container by @wesleyboar in https://github.com/TACC/Core-CMS/pull/897, b8ecc1c, 1aa1cd4
@@ -19,7 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [4.20.1] - 2024-11-06: Fix Linked Image Cards
 
-## What's Changed
+### What's Changed
 
 * chore: core-styles v2.37.2 by @wesleyboar in 1dba400
 
@@ -37,7 +45,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [4.19.1] - 2024-10-25: Add Column Choices & Fix `group_perms` Command
 
-## What's Changed
+### What's Changed
 
 * feat(settings): bootstrap4 column choices by @wesleyboar in https://github.com/TACC/Core-CMS/pull/889
 * fix: group_perms error with news admin by @wesleyboar in https://github.com/TACC/Core-CMS/pull/890
@@ -46,7 +54,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [4.19.0] - 2023-10-25: Dark & Muted Columns (from Core-Styles v2.36.0)
 
-## What's Changed
+### What's Changed
 
 * chore: bump core-styles to v2.36.0 by @wesleyboar in https://github.com/TACC/Core-CMS/pull/888
 
@@ -54,7 +62,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [4.18.0] - 2023-10-24: Old Styles Use @layer, Improve Blog Settings, Fixes
 
-## What's Changed
+### What's Changed
 
 * chore: do not clone bootstrap for `tacc-search-bar` by @wesleyboar in https://github.com/TACC/Core-CMS/pull/879
 * feat: WP-197 use @layer's / help migrate Frontera by @wesleyboar in https://github.com/TACC/Core-CMS/pull/856
@@ -1452,7 +1460,8 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.20.2...main
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.21.0...main
+[4.21.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.21.0
 [4.20.2]: https://github.com/TACC/Core-CMS/releases/tag/v4.20.2
 [4.20.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.20.1
 [4.20.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.20.0
