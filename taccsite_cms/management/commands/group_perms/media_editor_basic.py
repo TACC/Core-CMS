@@ -1,5 +1,5 @@
 """
-To edit images, videos, thumbnail sizes, and folders
+To edit and move images, videos, thumbnail sizes, and folders
 """
 
 from django.contrib.auth.models import Group

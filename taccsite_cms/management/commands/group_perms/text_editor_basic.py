@@ -1,5 +1,5 @@
 """
-To edit textual elements blocks, folders, and files
+To edit and move textual elements blocks, folders, and files
 """
 
 from django.contrib.auth.models import Group

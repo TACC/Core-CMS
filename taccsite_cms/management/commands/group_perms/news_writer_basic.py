@@ -1,5 +1,5 @@
 """
-To edit/add Blog articles
+To edit and add Blog articles
 """
 
 from django.contrib.auth.models import Group

@@ -1,7 +1,7 @@
 """
-To edit/add Blog articles
-To edit/add/delete Blockquotes
-To add/delete news Categories and Tags
+To edit and add Blog articles
+To edit, add, and delete Blockquotes
+To edit, assign, add, and delete news Categories and Tags
 """
 
 from django.contrib.auth.models import Group

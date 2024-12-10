@@ -1,5 +1,5 @@
 """
-To edit layout (Containers, Rows, Columns)
+To edit and move layout elements (Containers, Rows, Columns)
 """
 
 from django.contrib.auth.models import Group
