@@ -1,3 +1,8 @@
+"""
+To do as much as `media_editor_basic`
+To add/delete images, videos, thumbnail sizes, and folders
+"""
+
 from django.contrib.auth.models import Group
 
 from .util import (

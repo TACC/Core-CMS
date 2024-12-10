@@ -1,3 +1,7 @@
+"""
+To edit layout (Containers, Rows, Columns)
+"""
+
 from django.contrib.auth.models import Group
 
 from .util import (

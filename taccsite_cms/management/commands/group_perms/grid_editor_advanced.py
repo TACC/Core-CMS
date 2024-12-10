@@ -1,3 +1,8 @@
+"""
+To do as much as `grid_editor_basic`
+To add/delete layout (Containers, Rows, Columns)
+"""
+
 from django.contrib.auth.models import Group
 
 from .util import (

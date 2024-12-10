@@ -1,3 +1,9 @@
+"""
+To do as much as `news_writer_basic`
+To edit/add/delete Blockquotes
+To add/delete news Categories and Tags
+"""
+
 from django.contrib.auth.models import Group
 
 from .util import (

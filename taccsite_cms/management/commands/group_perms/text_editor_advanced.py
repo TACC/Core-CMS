@@ -1,3 +1,8 @@
+"""
+To do as much as `text_editor_basic`
+To add/delete textual elements, folders and files
+"""
+
 from django.contrib.auth.models import Group
 
 from .util import (

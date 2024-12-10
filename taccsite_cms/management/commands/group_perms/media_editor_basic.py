@@ -1,3 +1,7 @@
+"""
+To edit images, videos, thumbnail sizes, and folders
+"""
+
 from django.contrib.auth.models import Group
 
 from .util import (

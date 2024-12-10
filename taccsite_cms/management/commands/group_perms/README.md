@@ -2,21 +2,7 @@
 
 ## Groups & Permissions
 
-**News Writer (Basic)**: To edit/add Blog articles.
-
-**News Writer (Advanced)**: As much as "News Writer (Basic)" **plus** edit/add/delete Blockquotes **plus** add/delete news Categories and Tags.
-
-**Text Editor (Basic)**: To edit textual elements blocks, folders, and files.
-
-**Text Editor (Advanced)**: As much as "Text Editor (Basic)" **plus** add/delete textual elements, folders and files.
-
-**Media Editor (Basic)**: To edit images, videos, thumbnail sizes, and folders.
-
-**Media Editor (Advanced)**: As much as "Media Editor (Basic)" **plus** add/delete images, videos, thumbnail sizes, and folders.
-
-**Grid Editor (Basic)**: To edit layout (Containers, Rows, Columns).
-
-**Grid Editor (Advanced)**: As much as "Grid Editor (Basic)" **plus** add/delete layout (Containers, Rows, Columns).
+See the description at the top of each file in this folder.
 
 ## Usage
 
@@ -50,8 +36,8 @@ django.setup()
 ### Create a New Group
 
 1. Duplicate an existing group.
-2. Rename the file and group name.
-3. Adjust permissions usign existing sets.
+2. Rename the file and gorup name. Rewrite file description.
+3. Adjust permissions using existing sets.
 
 ### Create a New Permission Set
 

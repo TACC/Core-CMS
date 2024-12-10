@@ -1,3 +1,7 @@
+"""
+To edit/add Blog articles
+"""
+
 from django.contrib.auth.models import Group
 
 from .util import (
