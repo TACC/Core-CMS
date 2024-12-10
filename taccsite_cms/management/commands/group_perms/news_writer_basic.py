@@ -4,7 +4,7 @@ To edit/add Blog articles
 
 from django.contrib.auth.models import Group
 
-from .util import (
+from ..util import (
     add_perm,
     let_view_and_change_page_structure,
     let_view_and_change_plugin,

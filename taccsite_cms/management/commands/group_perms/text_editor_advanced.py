@@ -5,7 +5,7 @@ To add/delete textual elements, folders and files
 
 from django.contrib.auth.models import Group
 
-from .util import (
+from ..util import (
     let_view_and_change_page_structure,
     let_view_and_change_text,
     let_add_and_delete_text,

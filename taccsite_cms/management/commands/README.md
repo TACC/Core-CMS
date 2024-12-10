@@ -2,7 +2,7 @@
 
 ## Groups & Permissions
 
-See the description at the top of each file in this folder.
+See the description at the top of each file in [`group_perms/`](./group_perms).
 
 ## Usage
 
