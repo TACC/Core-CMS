@@ -1,5 +1,5 @@
 """
-To do as much as `media_editor_basic`
+To edit images, videos, thumbnail sizes, and folders
 To add/delete images, videos, thumbnail sizes, and folders
 """
 

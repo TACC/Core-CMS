@@ -1,5 +1,5 @@
 """
-To do as much as `grid_editor_basic`
+To edit layout (Containers, Rows, Columns)
 To add/delete layout (Containers, Rows, Columns)
 """
 

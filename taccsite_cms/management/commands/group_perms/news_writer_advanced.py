@@ -1,5 +1,5 @@
 """
-To do as much as `news_writer_basic`
+To edit/add Blog articles
 To edit/add/delete Blockquotes
 To add/delete news Categories and Tags
 """
