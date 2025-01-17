@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [4.22.0] - 2025-01-18: Portal Compatibility, Nav Link Alignment, Update Deps
+
+### What's Changed
+
+* feat: cmd-194 enable portal nav by default by @wesleyboar in https://github.com/TACC/Core-CMS/pull/903
+* feat: default custom settings `settings_default` by @wesleyboar in https://github.com/TACC/Core-CMS/pull/904
+* task/WI-212: Updating to address UT security scan. by @fnets in https://github.com/TACC/Core-CMS/pull/901
+* fix(core-styles): header nav-link alignment by @wesleyboar in https://github.com/TACC/Core-CMS/pull/905
+
+### New Contributors
+
+* @fnets made their first contribution in https://github.com/TACC/Core-CMS/pull/901
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.21.0...v4.22.0
+
 ## [4.21.0] - 2024-12-04: Custom Links for `findLinksAndSetTargets`
 
 ### What's Changed
@@ -1460,7 +1475,8 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.21.0...main
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.22.0...main
+[4.22.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.22.0
 [4.21.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.21.0
 [4.20.2]: https://github.com/TACC/Core-CMS/releases/tag/v4.20.2
 [4.20.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.20.1
