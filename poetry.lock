@@ -906,7 +906,7 @@ django-cms = ">=3.7.4"
 
 [package.source]
 type = "git"
-url = "https://github.com/wesleyboar/Core-CMS-Plugin-System-Monitor.git"
+url = "https://github.com/TACC/Core-CMS-Plugin-System-Monitor.git"
 reference = "v0.1.5"
 resolved_reference = "e0c0c8df2035794b931961220ef994d17dfca8f9"
 
@@ -2304,4 +2304,4 @@ testing = ["func-timeout", "jaraco.itertools"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.11,<4.0"
-content-hash = "7dac0c33162353feb26adc88d503fd0c1a70856d55b9f2ca2872cebb58c5925f"
+content-hash = "a2d022b91fdc9129a06bfe374212c0d0fd5a139982d077c231d603b183b45ea3"
