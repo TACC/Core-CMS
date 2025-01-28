@@ -7,7 +7,7 @@ class Migration(migrations.Migration):
     """
     Removes built-in system monitor plugin in favor of external package.
 
-    The new plugin (`djangocms_tacc_system_monitor`) reuses:
+    The new plugin (`djangocms_tacc_system_monitor`) uses:
     - The same CMS plugin type name (`TaccsiteSystemMonitorPlugin`)
     - The same plugin instance data in `cms_cmsplugin`
 
@@ -23,15 +23,13 @@ class Migration(migrations.Migration):
     operations = [
         migrations.RunSQL(
             # To drop the old table
-            # FAQ: Safe, cuz:
-            # - New plugin's migration already created its table
-            # - Plugin instances in cms_cmsplugin are preserved
+            # CAVEAT:
+            # - Plugin instances are lost
             sql="""
             DROP TABLE IF EXISTS taccsite_system_monitor_taccsitesystemmonitor;
             """,
 
             # To recreate the old table
-            # FAQ: Use Case is reverting to built-in plugin
             # CAVEAT:
             # - Only recreates the empty table structure
             # - Cannot recover any lost data
