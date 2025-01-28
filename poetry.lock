@@ -907,8 +907,8 @@ django-cms = ">=3.7.4"
 [package.source]
 type = "git"
 url = "https://github.com/TACC/Core-CMS-Plugin-System-Monitor.git"
-reference = "v0.1.5"
-resolved_reference = "e0c0c8df2035794b931961220ef994d17dfca8f9"
+reference = "feat/CMD-196-add-vista"
+resolved_reference = "d7166a86abe050f910f8b244b46b3cd85d801b08"
 
 [[package]]
 name = "djangocms-text-ckeditor"
@@ -2304,4 +2304,4 @@ testing = ["func-timeout", "jaraco.itertools"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.11,<4.0"
-content-hash = "a2d022b91fdc9129a06bfe374212c0d0fd5a139982d077c231d603b183b45ea3"
+content-hash = "47c6fc9775a1a627876a3d766ef0ca95493d5ac296da1728cc7c3555b41c2980"
