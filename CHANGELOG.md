@@ -7,6 +7,225 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [4.22.0] - 2025-01-18: Portal Compatibility, Nav Link Alignment, Update Deps
+
+### What's Changed
+
+* feat: cmd-194 enable portal nav by default by @wesleyboar in https://github.com/TACC/Core-CMS/pull/903
+* feat: default custom settings `settings_default` by @wesleyboar in https://github.com/TACC/Core-CMS/pull/904
+* task/WI-212: Updating to address UT security scan. by @fnets in https://github.com/TACC/Core-CMS/pull/901
+* fix(core-styles): header nav-link alignment by @wesleyboar in https://github.com/TACC/Core-CMS/pull/905
+
+### New Contributors
+
+* @fnets made their first contribution in https://github.com/TACC/Core-CMS/pull/901
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.21.0...v4.22.0
+
+## [4.21.0] - 2024-12-04: Custom Links for `findLinksAndSetTargets`
+
+### What's Changed
+
+* feat: CMD-193 custom links for findLinksAndSetTargets by @wesleyboar in https://github.com/TACC/Core-CMS/pull/902
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.20.2...v4.21.0
+
+## [4.20.2] - 2024-11-13: Complete Container Type Options
+
+### What's Changed
+
+* fix: media editor adv unable to view/use folders by @wesleyboar in https://github.com/TACC/Core-CMS/pull/893
+* fix: restore empty Container by @wesleyboar in https://github.com/TACC/Core-CMS/pull/897, b8ecc1c, 1aa1cd4
+* refactor: reorder Container type options by @wesleyboar in https://github.com/TACC/Core-CMS/pull/898
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.20.1...v4.20.2
+
+## [4.20.1] - 2024-11-06: Fix Linked Image Cards
+
+### What's Changed
+
+* chore: core-styles v2.37.2 by @wesleyboar in 1dba400
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.20.0...v4.20.1
+
+## [4.20.0] - 2024-10-31: Support Linked Image Cards, Offer Transparent Sections
+
+### What's Changed
+
+* deps: core-styles v2.37.0 by @wesleyboar in cbfcf1c
+* enhance: transparent/margin section via Container by @wesleyboar in https://github.com/TACC/Core-CMS/pull/891
+* fix: importHTML.replaceFromURL can return null by @wesleyboar in https://github.com/TACC/Core-CMS/pull/892
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.19.1...v4.20.0
+
+## [4.19.1] - 2024-10-25: Add Column Choices & Fix `group_perms` Command
+
+### What's Changed
+
+* feat(settings): bootstrap4 column choices by @wesleyboar in https://github.com/TACC/Core-CMS/pull/889
+* fix: group_perms error with news admin by @wesleyboar in https://github.com/TACC/Core-CMS/pull/890
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.19.0...v4.19.1
+
+## [4.19.0] - 2023-10-25: Dark & Muted Columns (from Core-Styles v2.36.0)
+
+### What's Changed
+
+* chore: bump core-styles to v2.36.0 by @wesleyboar in https://github.com/TACC/Core-CMS/pull/888
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.18.0...v4.19.0
+
+## [4.18.0] - 2023-10-24: Old Styles Use @layer, Improve Blog Settings, Fixes
+
+### What's Changed
+
+* chore: do not clone bootstrap for `tacc-search-bar` by @wesleyboar in https://github.com/TACC/Core-CMS/pull/879
+* feat: WP-197 use @layer's / help migrate Frontera by @wesleyboar in https://github.com/TACC/Core-CMS/pull/856
+* refactor: define title block only in base by @wesleyboar in https://github.com/TACC/Core-CMS/pull/883
+* fix: blog install steps are outdated by @wesleyboar in https://github.com/TACC/Core-CMS/pull/884
+* chore: CMD-143 retire deprecated templates by @wesleyboar in https://github.com/TACC/Core-CMS/pull/886
+* deps: core-styles v2.35.1 by @wesleyboar in https://github.com/TACC/Core-CMS/pull/887
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.17.1...v4.18.0
+
+## [4.17.1] - 2023-09-17: Add Muted Section to Container List
+
+### Fixed
+
+* fix: add muted section to container dropdown by @wesleyboar in https://github.com/TACC/Core-CMS/pull/878
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.17.0...v4.17.1
+
+## [4.17.0] - 2023-09-17: Serve Raw Markup, Toggle Branding, Fix Example App
+
+### Added
+
+* feat: CMD-97 isolate breadcrumbs from content by @wesleyboar in https://github.com/TACC/Core-CMS/pull/870
+* feat: tup 706 be able to serve blog markup raw by @wesleyboar in https://github.com/TACC/Core-CMS/pull/871
+
+### Fixed
+
+* fix: do not show branding if setting is false-y by @wesleyboar in https://github.com/TACC/Core-CMS/pull/877
+* fix: custom_example app not working by @wesleyboar in https://github.com/TACC/Core-CMS/pull/875
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.16.0...v4.17.0
+
+## [4.16.1] - 2023-09-09: Core-Styles v2.33.1
+
+### Updated
+
+* deps: core-styles v2.33.1 by @wesleyboar in https://github.com/TACC/Core-CMS/pull/867
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.16.0...v4.16.1
+
+## [4.16.0] - 2023-09-06: BlueSky Social Media, Footer Enhancements, Fixes
+
+### Added
+
+* feat: secrets.example.py by @wesleyboar in https://github.com/TACC/Core-CMS/pull/861
+* feat: add BlueSky icon to logos-social-media by @wesleyboar in 9efb52f, 34ae5d1
+* deps: s-footer updates via core-styles 2.33.0 by @wesleyboar in https://github.com/TACC/Core-CMS/pull/866, https://github.com/TACC/Core-CMS/pull/865
+
+### Fixed
+
+* fix: "Fluid Container" should be "Fluid container" by wesleyboar in 06137b7
+* fix: LinkedIn icon, more role="img" to SVG by @wesleyboar in 1ba01af
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.15.2...v4.16.0
+
+## [4.15.2] - 2023-09-05: Section via Container Have Corrected Labels
+
+### Fixed
+
+- fix: incorrect text for section containers by @wesleyboar in 8a8a0660
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.15.1...v4.15.2
+
+## [4.15.1] - 2023-09-05: Core-Styles v2.23.1
+
+### Updated
+
+- fix/core-styles-v2-32-1 by @wesleyboar in 763f7e8c
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.15.1...v4.15.2
+
+## [4.15.0] - 2023-09-05: Core-Styles Design Token Colors & Font-Weight Vars
+
+### Added
+
+* enhance: CMD-182 design tokens by @wesleyboar in https://github.com/TACC/Core-CMS/pull/863
+
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.14.1...v4.15.0
+
+## [4.14.1] - 2023-09-04: News Drop-Cap Without Caption via `.s-drop-cap`
+
+### Fixed
+
+* fix: tup 730 news drop cap should work even if no caption by @wesleyboar in https://github.com/TACC/Core-CMS/pull/864
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.14.0...v4.14.1
+
+## [4.14.0] - 2023-08-07: …ES_ENABLED → …SEARCH_INDEX_IS_AUTOMATIC
+
+### Changed
+
+* enhance: assume local development by @wesleyboar in https://github.com/TACC/Core-CMS/pull/860
+
+### Fixed
+
+* fix: WP-602 `docker compose` with and without dash by @wesleyboar in https://github.com/TACC/Core-CMS/pull/858
+* fix: CMD-176 conditional elastic search by @wesleyboar in https://github.com/TACC/Core-CMS/pull/857
+* fix: settings_custom BRANDING out of date by @wesleyboar in https://github.com/TACC/Core-CMS/pull/862
+
+### Documented
+
+* docs: deprecate docker-compose by @wesleyboar in https://github.com/TACC/Core-CMS/pull/859
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.13.1...v4.14.0
+
+## [4.13.1] - 2023-07-25: No Error if 2nd-Level Breadcrumb Link is Absent
+
+### Fixed
+
+* fix: CMD-162 error if no second breadcrumb by @wesleyboar in https://github.com/TACC/Core-CMS/pull/855
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.13.0...v4.13.1
+
+## [4.10.2-extra.1] - 2024-07-10: Support `form_name` in `PORTAL_CONF_EMAIL_…`
+
+### Added
+
+* feat: CMD-112 `form_name` in custom email message — off v4.10.2 by @wesleyboar in https://github.com/TACC/Core-CMS/pull/847
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.10.2...v4.10.2-extra.1
+
+## [4.13.0] - 2023-07-24: Easier Customization, Fix Accessibility & Containers
+
+### Added
+
+* feat: CMD-112 `form_name` in custom email message by @wesleyboar in https://github.com/TACC/Core-CMS/pull/846
+* FP-1318: Create Section Pattern via Bootstrap Container Plugin by @wesleyboar in https://github.com/TACC/Core-CMS/pull/431
+* feat: CMD-164 custom styles via setting by @wesleyboar in https://github.com/TACC/Core-CMS/pull/840
+* feat: CMD-165 custom branding via setting by @wesleyboar in https://github.com/TACC/Core-CMS/pull/841
+
+### Fixed
+
+* fix: TUP-725 wrong a11y attribute for links by @wesleyboar in https://github.com/TACC/Core-CMS/pull/844
+* fix: CMD-71 svgs not accessible by @wesleyboar in https://github.com/TACC/Core-CMS/pull/845
+* fix: custom app with custom url is difficult to debug by @wesleyboar in https://github.com/TACC/Core-CMS/pull/851 and https://github.com/TACC/Core-CMS/pull/852
+* fix: WP-407 unable to edit nor create container by @wesleyboar in https://github.com/TACC/Core-CMS/pull/853
+
+## Documented
+
+* docs: CMD-164 CMD-165 custom assets via settings by @wesleyboar in https://github.com/TACC/Core-CMS/pull/843
+
+### Security
+
+* chore(deps): bump ws and socket.io-client by @dependabot in https://github.com/TACC/Core-CMS/pull/848
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.12.0...v4.13.0
+
 ## [4.12.0] - 2023-06-03: Rename Settings, Disable 2nd Breadcrumb, Fix Old News
 
 > **Warning**
@@ -24,6 +243,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 **Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.11.1...v4.12.0
 
 ## [4.11.1] - 2024-06-26: Can Disable ES, Fix Hidden Nav, LDAP Requires Portal
+
+> **Warning**
+> The "Can Disable ES" feature is broken. Use v[4.14.0] for similar feature.
 
 ### Added
 
@@ -1253,10 +1475,30 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.12.0...main
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.22.0...main
+[4.22.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.22.0
+[4.21.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.21.0
+[4.20.2]: https://github.com/TACC/Core-CMS/releases/tag/v4.20.2
+[4.20.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.20.1
+[4.20.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.20.0
+[4.19.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.19.1
+[4.19.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.19.0
+[4.18.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.18.0
+[4.17.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.17.1
+[4.17.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.17.0
+[4.16.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.16.1
+[4.16.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.16.0
+[4.15.2]: https://github.com/TACC/Core-CMS/releases/tag/v4.15.2
+[4.15.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.15.1
+[4.15.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.15.0
+[4.14.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.14.1
+[4.14.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.14.0
+[4.13.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.13.1
+[4.13.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.13.0
 [4.12.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.12.0
 [4.11.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.11.1
 [4.11.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.11.0
+[4.10.2-extra.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.10.2-extra.1
 [4.10.2]: https://github.com/TACC/Core-CMS/releases/tag/v4.10.2
 [4.10.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.10.1
 [4.10.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.10.0

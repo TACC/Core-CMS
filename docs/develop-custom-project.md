@@ -1,9 +1,11 @@
 # Develop a Custom Project
 
-| You can customize these features | via this repository | (status) |
+| You can do these actions | via this resource | (status) |
 | - | - | - |
-| templates, static assets, settings, custom apps, URLs, middleware | [Core-CMS-Custom](#via-core-cms-custom) | active |
-| templates, static assets, settings | [Core-CMS-Resources](#via-core-cms-resources) | deprecated |
+| **customize** templates, static assets, settings, custom apps, URLs, middleware | [Core-CMS-Custom](#via-core-cms-custom) | active |
+| **customize** templates, static assets, settings | [Core-CMS-Resources](#via-core-cms-resources) | deprecated |
+| **create** custom apps | [Django-App](https://github.com/TACC/Django-App) | active |
+| **create** forked apps e.g. [TACC/djangocms-forms](https://github.com/TACC/djangocms-forms) | ["Fork a repo"](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) | evergreen |
 
 ## via [Core CMS Custom]
 
