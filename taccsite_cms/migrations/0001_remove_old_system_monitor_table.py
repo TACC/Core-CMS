@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
     NOTE: Due to Django CMS's draft/published page system:
     - Each plugin instance has two copies in the database.
     - One is for draft page. One is for published page. Even if both match.
-    - This is normal behavior. This migration handles both copies properly.
+    - This is normal behavior.
     """
 
     dependencies = [
