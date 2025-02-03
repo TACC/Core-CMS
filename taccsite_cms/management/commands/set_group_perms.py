@@ -2,7 +2,6 @@ import os
 import logging
 import importlib
 
-from django.contrib.auth.models import Group, Permission
 from django.core.management import BaseCommand
 
 logger = logging.getLogger(__name__)
