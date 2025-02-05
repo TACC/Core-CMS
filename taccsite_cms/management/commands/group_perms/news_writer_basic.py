@@ -1,35 +1,40 @@
-from django.contrib.auth.models import Group, Permission
-from django.core.management import BaseCommand
+"""
+To edit and add Blog articles
+"""
+
+from django.contrib.auth.models import Group
+
+from ..util import (
+    add_perm,
+    let_view_and_change_page_structure,
+    let_view_and_change_plugin,
+    let_view_and_change_text,
+    let_add_and_delete_text,
+    let_view_and_change_media_plugins,
+    let_add_and_delete_media_plugins,
+    let_view_and_change_image_file,
+)
+
+GROUP_NAME = 'News Writer (Basic)'
 
 def set_group_perms():
     group, was_created = Group.objects.get_or_create(
-        name='News Writer (Basic)'
+        name=GROUP_NAME
     )
 
-    group.permissions.add( Permission.objects.get(name='Can add bootstrap4 picture') )
-    group.permissions.add( Permission.objects.get(name='Can change bootstrap4 picture') )
-    group.permissions.add( Permission.objects.get(name='Can delete bootstrap4 picture') )
-    group.permissions.add( Permission.objects.get(name='Can view bootstrap4 picture') )
-    group.permissions.add( Permission.objects.get(name='Can change cms plugin') )
-    group.permissions.add( Permission.objects.get(name='Can view cms plugin') )
-    group.permissions.add( Permission.objects.get(name='Can change page') )
-    group.permissions.add( Permission.objects.get(name='Can view page') )
-    group.permissions.add( Permission.objects.get(name='Can use Structure mode') )
-    group.permissions.add( Permission.objects.get(name='Can add blog article') )
-    group.permissions.add( Permission.objects.get(name='Can change blog article') )
-    group.permissions.add( Permission.objects.get(name='Can view blog article') )
-    group.permissions.add( Permission.objects.get(name='Can add link') )
-    group.permissions.add( Permission.objects.get(name='Can change link') )
-    group.permissions.add( Permission.objects.get(name='Can delete link') )
-    group.permissions.add( Permission.objects.get(name='Can view link') )
-    group.permissions.add( Permission.objects.get(name='Can add text') )
-    group.permissions.add( Permission.objects.get(name='Can change text') )
-    group.permissions.add( Permission.objects.get(name='Can delete text') )
-    group.permissions.add( Permission.objects.get(name='Can view text') )
-    group.permissions.add( Permission.objects.get(name='Can add video player') )
-    group.permissions.add( Permission.objects.get(name='Can change video player') )
-    group.permissions.add( Permission.objects.get(name='Can delete video player') )
-    group.permissions.add( Permission.objects.get(name='Can view video player') )
-    group.permissions.add( Permission.objects.get(name='Can add image') )
-    group.permissions.add( Permission.objects.get(name='Can change image') )
-    group.permissions.add( Permission.objects.get(name='Can view image') )
+    let_view_and_change_page_structure(group)
+    let_view_and_change_plugin(group)
+
+    let_view_and_change_text(group)
+    let_add_and_delete_text(group)
+
+    let_view_and_change_media_plugins(group)
+    let_add_and_delete_media_plugins(group)
+
+    let_view_and_change_image_file(group)
+    add_perm(group, 'filer', 'image', 'Can add image')
+
+    # Add permissions to view & change & add articles
+    add_perm(group, None, None, 'Can view blog article')
+    add_perm(group, None, None, 'Can change blog article')
+    add_perm(group, None, None, 'Can add blog article')
