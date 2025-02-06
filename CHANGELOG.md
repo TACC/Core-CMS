@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [4.23.0] - 2025-02-06: Fix CMS Nav Link (v0 Styles), Manage Group Permissions
+
+## What's Changed
+
+* chore: delete unused [templates] by @wesleyboar in https://github.com/TACC/Core-CMS/pull/906, https://github.com/TACC/Core-CMS/pull/907
+* fix: CMS nav link alignment (retrofit to Core-Styles v0) by @wesleyboar in https://github.com/TACC/Core-CMS/pull/909
+* fix: typo in our djangocms-picture css selector by @wesleyboar in https://github.com/TACC/Core-CMS/pull/910
+* feat: better group perms mgmt by @wesleyboar in https://github.com/TACC/Core-CMS/pull/895
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.22.0...v4.23.0
+
 ## [4.22.0] - 2025-01-18: Portal Compatibility, Nav Link Alignment, Update Deps
 
 ### What's Changed
@@ -1475,7 +1486,8 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.22.0...main
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.23.0...main
+[4.23.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.23.0
 [4.22.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.22.0
 [4.21.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.21.0
 [4.20.2]: https://github.com/TACC/Core-CMS/releases/tag/v4.20.2
