@@ -11,5 +11,5 @@ CUSTOM_APPS = [
     'djangocms_blog',
 
 ]
-CUSTOM_MIDDLEWARE = ['taccsite_cms.middleware.cms_template.CMSTemplateMiddleware']
+CUSTOM_MIDDLEWARE = ['taccsite_cms.middleware.cms_template.CMSTemplateOverrideMiddleware']
 STATICFILES_DIRS = ()

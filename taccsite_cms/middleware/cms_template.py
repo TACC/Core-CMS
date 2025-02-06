@@ -7,7 +7,7 @@ from cms.models.pagemodel import Page as CMS_Page
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 
-class CMSTemplateMiddleware(ToolbarMiddleware):
+class CMSTemplateOverrideMiddleware(ToolbarMiddleware):
     """
     Use a different CMS template than is set for the current page
 
