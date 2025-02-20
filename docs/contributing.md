@@ -40,7 +40,6 @@ Our [production site] is built from a specific commit.
 
 Only appointed team members may release versions.
 
-1. Create new branch for version bump.
 1. Update `CHANGELOG.md`.
 1. Update version:
   - `npm version N.N.N`

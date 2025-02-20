@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [4.24.1] - 2025-02-20: Update djangocms-forms Dependency
+
+### What's Changed
+
+* [TUP] Update djangocms-forms dependency by @jarosenb in https://github.com/TACC/Core-CMS/pull/911
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.24.0...v4.24.1
+
 ## [4.24.0] - 2025-02-14: Core-Styles from 2.37.3 to v2.39.0
 
 ### What's Changed
@@ -1494,7 +1502,8 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.24.0...main
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.24.1...main
+[4.24.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.24.1
 [4.24.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.24.0
 [4.23.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.23.0
 [4.22.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.22.0
