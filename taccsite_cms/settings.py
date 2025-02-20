@@ -490,8 +490,7 @@ INSTALLED_APPS = [
 
     # TACC CMS Plugins
     'djangocms_tacc_image_gallery',
-    # TODO: Use https://github.com/wesleyboar/Core-CMS-Plugin-System-Monitor
-    'taccsite_cms.contrib.taccsite_system_monitor',
+    'djangocms_tacc_system_monitor',
 
     # TACC CMS Plugins - DECPRECATED
     'taccsite_cms.contrib.taccsite_blockquote',
