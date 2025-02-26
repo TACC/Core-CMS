@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [4.24.2] - 2025-02-26: Fix Form Submission (Use jQuery Full Not Slim)
+
+### What's Changed
+
+* Quick: Use non-slim jQuery dep to fix djangocms-forms incompatibility by @jarosenb in https://github.com/TACC/Core-CMS/pull/912
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.24.1...v4.24.2
+
 ## [4.24.1] - 2025-02-20: Update djangocms-forms Dependency
 
 ### What's Changed
