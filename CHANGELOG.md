@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [4.24.3] - 2025-02-28: Portal Nav with Bootstrap 5 Would Break on CMS
+
+### What's Changed
+
+* fix: WP-895 portal nav with bootstrap5 does not open by @wesleyboar in https://github.com/TACC/Core-CMS/pull/913
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.24.2...v4.24.3
+
 ## [4.24.2] - 2025-02-26: Fix Form Submission (Use jQuery Full Not Slim)
 
 ### What's Changed
