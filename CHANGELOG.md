@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [4.25.0] - 2025-03-03: Unpublished Page Viewer Group, Core-Styles v2.39.x
+
+## What's Changed
+
+* refactor: rename a group perm utility function by @wesleyboar in https://github.com/TACC/Core-CMS/pull/914
+* feat: unpublished page viewer group by @wesleyboar in https://github.com/TACC/Core-CMS/pull/915
+* deps: core-styles v2.39.x by @wesleyboar in https://github.com/TACC/Core-CMS/pull/916
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.24.3...v4.24.4
+
 ## [4.24.3] - 2025-02-28: Portal Nav with Bootstrap 5 Would Break on CMS
 
 ### What's Changed
@@ -1518,7 +1528,10 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.24.1...main
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.25.0...main
+[4.25.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.25.0
+[4.24.3]: https://github.com/TACC/Core-CMS/releases/tag/v4.24.3
+[4.24.2]: https://github.com/TACC/Core-CMS/releases/tag/v4.24.2
 [4.24.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.24.1
 [4.24.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.24.0
 [4.23.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.23.0
