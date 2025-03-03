@@ -39,6 +39,8 @@ def let_view_page_and_structure(group):
     Add permissions to view a page and its structure
     (Any user that should edit content must also have this permission)
     """
+    # The functional permission of these 'Can … page' is only 'Can change page',
+    # but 'Can view page' makes sense (even though testing suggests it is moot)
     add_perm(group, 'cms', 'page', 'Can view page')
     add_perm(group, 'cms', 'page', 'Can change page')
 
