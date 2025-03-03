@@ -5,7 +5,7 @@ To edit, move, add, and delete textual elements, folders, and files
 from django.contrib.auth.models import Group
 
 from ..util import (
-    let_view_and_change_page_structure,
+    let_view_page_and_structure,
     let_view_and_change_text,
     let_add_and_delete_text,
     let_view_and_change_folder,
@@ -21,7 +21,7 @@ def set_group_perms():
         name=GROUP_NAME
     )
 
-    let_view_and_change_page_structure(group)
+    let_view_page_and_structure(group)
     let_view_and_change_text(group)
     let_add_and_delete_text(group)
     let_view_and_change_folder(group)
