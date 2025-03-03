@@ -5,7 +5,7 @@ To edit and move layout elements (Containers, Rows, Columns)
 from django.contrib.auth.models import Group
 
 from ..util import (
-    let_view_and_change_page_structure,
+    let_view_page_and_structure,
     let_view_and_change_grid
 )
 
@@ -16,5 +16,5 @@ def set_group_perms():
         name=GROUP_NAME
     )
 
-    let_view_and_change_page_structure(group)
+    let_view_page_and_structure(group)
     let_view_and_change_grid(group)

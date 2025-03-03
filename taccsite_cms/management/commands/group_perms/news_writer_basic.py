@@ -6,7 +6,7 @@ from django.contrib.auth.models import Group
 
 from ..util import (
     add_perm,
-    let_view_and_change_page_structure,
+    let_view_page_and_structure,
     let_view_and_change_plugin,
     let_view_and_change_text,
     let_add_and_delete_text,
@@ -22,7 +22,7 @@ def set_group_perms():
         name=GROUP_NAME
     )
 
-    let_view_and_change_page_structure(group)
+    let_view_page_and_structure(group)
     let_view_and_change_plugin(group)
 
     let_view_and_change_text(group)
