@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [4.25.2] - 2025-03-04: Portal Nav Bootstrap 5 Dropdown Menu Alignment
+
+### What's Changed
+
+* fix: wp-894 portal nav dropdown menu alignment by @wesleyboar in https://github.com/TACC/Core-CMS/pull/918
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.25.1...v4.25.2
+
 ## [4.25.1] - 2025-03-03: Use Same Font for Header as Other Core-Styles Clients
 
 ## What's Changed
@@ -1536,7 +1544,8 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.25.1...main
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.25.2...main
+[4.25.2]: https://github.com/TACC/Core-CMS/releases/tag/v4.25.2
 [4.25.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.25.1
 [4.25.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.25.0
 [4.24.3]: https://github.com/TACC/Core-CMS/releases/tag/v4.24.3
