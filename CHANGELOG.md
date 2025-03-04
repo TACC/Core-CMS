@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased][unreleased]
 
+## [4.25.3] - 2025-03-04: Core-Styles v2.40 / Pagination Styles
+
+### What's Changed
+
+* deps: core-styles v2.40 by @wesleyboar in https://github.com/TACC/Core-CMS/pull/919
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.25.2...v4.25.3
+
 ## [4.25.2] - 2025-03-04: Portal Nav Bootstrap 5 Dropdown Menu Alignment
 
 ### What's Changed
@@ -1544,7 +1552,8 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.25.2...main
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.25.3...main
+[4.25.3]: https://github.com/TACC/Core-CMS/releases/tag/v4.25.3
 [4.25.2]: https://github.com/TACC/Core-CMS/releases/tag/v4.25.2
 [4.25.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.25.1
 [4.25.0]: https://github.com/TACC/Core-CMS/releases/tag/v4.25.0
