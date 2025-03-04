@@ -30,5 +30,15 @@
         'To not need this, update CMS Bootstrap from 4 to 5.'
       )
     }
+
+    const portalBootstrap5Menu = container.querySelector('.dropdown-menu-end');
+    if ( portalBootstrap5Menu ) {
+      portalBootstrap5Menu.classList.remove('dropdown-menu-end');
+      portalBootstrap5Menu.classList.add('dropdown-menu-right');
+      console.log(
+        'Replaced `dropdown-menu-end` with `dropdown-menu-right` in `#s-portal-nav`.',
+        'To not need this, update CMS Bootstrap from 4 to 5.'
+      )
+    }
   });
 </script>
