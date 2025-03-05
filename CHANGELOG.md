@@ -5,7 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased][unreleased]
+## [Releases Since 4.25.4](https://github.com/TACC/Core-CMS/releases)
+
+### What's Changed
+
+- docs: `CHANGELOG.md` should be automated by @wesleyboar in https://github.com/TACC/Core-CMS/issues/921
+
+**Full Changelog**: https://github.com/TACC/Core-Styles/compare/v4.25.4...HEAD
+
+## [4.25.4] - 2025-03-04: Fix Pagination, Retire Changelog For Now
+
+### What's Changed
+
+* docs: retire changelog for now by @wesleyboar in https://github.com/TACC/Core-CMS/pull/922
+* fix: django-cms-blog pagination font too small by @wesleyboar in https://github.com/TACC/Core-CMS/pull/920
+
+**Full Changelog**: https://github.com/TACC/Core-CMS/compare/v4.25.2...v4.25.3
 
 ## [4.25.3] - 2025-03-04: Core-Styles v2.40 / Pagination Styles
 
@@ -1552,7 +1567,7 @@ formerly known as v2.5.2 published on Thu Jul 1 16:10:38 2021 -0500
 
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v4.25.3...main
+[4.25.4]: https://github.com/TACC/Core-CMS/releases/tag/v4.25.4
 [4.25.3]: https://github.com/TACC/Core-CMS/releases/tag/v4.25.3
 [4.25.2]: https://github.com/TACC/Core-CMS/releases/tag/v4.25.2
 [4.25.1]: https://github.com/TACC/Core-CMS/releases/tag/v4.25.1
