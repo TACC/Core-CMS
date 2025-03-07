@@ -22,7 +22,8 @@ build
 
 ## environment variables
 docker_repo.var
-repo_name.var
+needs_demo.var
+project_name.var
 
 # Static and Media folders
 /static
@@ -33,10 +34,12 @@ repo_name.var
 
 # Secrets and Customizations
 *secrets*.py
-*.custom.yml
+*settings_default*.py
 *settings_custom*.py
 *settings_local*.py
 custom_app_settings.py
+!*.example.py
+*.custom.yml
 urls_custom.py
 
 # Makefile var

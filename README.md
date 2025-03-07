@@ -40,7 +40,7 @@ The base CMS code for TACC WMA Workspace Portals & Websites
 ## Prerequisites
 
 * [Docker]
-  * [Docker Engine] ≥ v20
+  * Docker Engine ≥ v20
   * [Docker Compose]
 
 > **Important**
@@ -60,11 +60,13 @@ Set up a new local CMS instance.
     cd Core-CMS
     ```
 
-2. Add Core CMS Settings:
+2. Add Core CMS Settings & Secrets:
 
-    Create a `taccsite_cms/settings_local.py` with content from `settings_local.example.py`, e.g.
+    Create a `taccsite_cms/*.py` for every `*.example.py`, e.g.
 
     ```sh
+    cp taccsite_cms/settings_custom.example.py taccsite_cms/settings_custom.py
+    cp taccsite_cms/secrets.example.py taccsite_cms/secrets.py
     cp taccsite_cms/settings_local.example.py taccsite_cms/settings_local.py
     ```
 
@@ -74,15 +76,19 @@ Set up a new local CMS instance.
     make start
     ```
 
+    > **Note**
+    > This will make the terminal window busy. To run commands after this, **either** open a new terminal window **or** run `docker compose -f ./docker-compose.dev.yml up --detach` instead.
+
 4. Enter the CMS Docker Container:
 
     (This opens a command prompt within the container.)
 
     ```sh
     docker exec -it core_cms /bin/bash
+    # This opens a command prompt within the container
     ```
 
-5. Run the Django Application:
+5. Update the Django Application:
 
     (Run these commands within the container.)
 
@@ -103,7 +109,7 @@ Set up a new local CMS instance.
         - This page will automatically be your local homepage.
 
 > **Important**
-> A local machine CMS will be empty. It will **not** have content from staging **nor** production. If you need that, follow and adapt instructions to [copy a database](https://confluence.tacc.utexas.edu/x/W4DZDg).
+> A local machine CMS will be empty. It will **not** have content from staging **nor** production. If you need that, follow and adapt instructions to [replicate a CMS database](https://tacc-main.atlassian.net/wiki/x/GwBJAg). This requires high-level server access or somone to give you a copy of the content.
 
 > **Note**
 > A local machine CMS does **not** include **nor** integrate with an instance of [Core Portal]. To attempt to do that, follow [How to Use a Custom Docker Compose File](https://github.com/TACC/Core-CMS/wiki/How-to-Use-a-Custom-Docker-Compose-File) and [Locally Develop CMS Portal Docs](https://github.com/TACC/Core-CMS/wiki/Locally-Develop-CMS---Portal---Docs). **Help welcome.**
@@ -118,42 +124,26 @@ Read [Upgrade Project] for developer instructions.
 
 ### New Minor or Patch Version (or Branch)
 
-- If CMS `Dockerfile` changed, rebuild Docker Containers:
+```sh
+make stop
+make build
+make start
+```
 
-    ```sh
-    make stop
-    make build
-    make start
-    ```
+<details><summary>Advanced</summary>
 
-- If anything else changed, update the Django application:
+To only update as necessary, or update since uncommon changes:
 
-    ```sh
-    docker exec -it core_cms /bin/bash
-    # This opens a command prompt within the container.
-    ```
+| | If this changed | Run this command |
+| - | - | - |
+| 0 | Dockerfile | `make stop`, `make build`, `make start` |
+| 1 | Python models | `docker exec -it core_cms sh -c "python manage.py migrate"` |
+| 2 | Node dependencies | `npm ci` |
+| 3 | CSS stylesheets | `npm run build:css` |
+| 4 | UI Demo | `npm run build:ui-demo` |
+| 5 |  Assets e.g.<br><sub>images, stylesheets, JavaScript, UI demo</sub> | `docker exec -it core_cms sh -c "python manage.py collectstatic --no-input"` |
 
-  Run relevant commands within the container:
-
-  - If **styles** changed:
-
-      ```sh
-      npm ci
-      npm run build:css --project="core-cms"
-      python manage.py collectstatic --no-input
-      ```
-
-  - If **assets** changed:
-
-      ```sh
-      python manage.py collectstatic --no-input
-      ```
-
-  - If **models** changed:
-
-      ```sh
-      python manage.py migrate
-      ```
+</details>
 
 ## Develop Project
 
@@ -183,10 +173,10 @@ To contribute, first read [How to Contirbute][Contributing].
 
 | command | reference |
 | - | - |
-| `docker exec core_cms /bin/bash` | [docker](https://docs.docker.com/engine/reference/commandline/exec/#run-docker-exec-on-a-running-container)
+| `docker exec -it core_cms /bin/bash` | [docker](https://docs.docker.com/engine/reference/commandline/exec/#run-docker-exec-on-a-running-container)
 | `python manage.py migrate` | [django cms](https://docs.django-cms.org/en/release-3.8.x/how_to/install.html#database-tables), [django](https://docs.djangoproject.com/en/3.2/topics/migrations/)
 | `python manage.py collectstatic` | [django](https://docs.djangoproject.com/en/3.2/howto/static-files/)
-| `python manage.py createsuper` | [django cms](https://docs.django-cms.org/en/release-3.8.x/how_to/install.html#admin-user), [django](https://docs.djangoproject.com/en/3.2/ref/django-admin/#createsuperuser)
+| `python manage.py createsuperuser` | [django cms](https://docs.django-cms.org/en/release-3.8.x/how_to/install.html#admin-user), [django](https://docs.djangoproject.com/en/3.2/ref/django-admin/#createsuperuser)
 
 <!-- Link Aliases -->
 
@@ -204,8 +194,8 @@ To contribute, first read [How to Contirbute][Contributing].
 [Docker Compose]: https://docs.docker.com/compose/install/
 
 [TACC UI Patterns]: https://tacc.utexas.edu/static/ui/
-[Build & Deploy Project]: https://confluence.tacc.utexas.edu/x/Lo99E
-[Django CMS User Guide]: https://confluence.tacc.utexas.edu/x/FgDqCw
+[Build & Deploy Project]: https://tacc-main.atlassian.net/wiki/x/2AVv
+[Django CMS User Guide]: https://tacc-main.atlassian.net/wiki/x/phdv
 
 [Develop a Custom Project]: ./docs/develop-custom-project.md
 [Develop Project]: ./docs/develop-project.md

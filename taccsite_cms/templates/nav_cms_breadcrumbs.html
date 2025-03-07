@@ -1,7 +1,16 @@
 {# @var className #}
 {% load menu_tags %}
 
-<nav class="s-breadcrumbs  {{className}}">
+{# To adjust style of "disabled" link #}
+{# NOTE: Not using `block`, so markup is together for devs in live markup #}
+<style>
+  .s-breadcrumbs a:not([href]) {
+    opacity: 1;
+    color: unset;
+  }
+</style>
+
+<nav class="s-breadcrumbs  {{className}}" id="cms-breadcrumbs">
 
   {# To support structured data, item* attributes are used #}
   {# SEE: https://confluence.tacc.utexas.edu/x/5yMFDg #}
@@ -14,3 +23,14 @@
   </ol>
 
 </nav>
+
+{# To disable 2nd-level breadcrumb #}
+{# NOTE: Not using `block`, so markup is loaded first #}
+{# NOTE: Not using `block` nor `type="module"`, so effect is quicker #}
+<script>
+  {# FAQ: Attempts to do this server-side failed cuz useful props are blank #}
+  {# https://docs.django-cms.org/en/release-3.11.x/reference/navigation.html#properties-of-navigation-nodes-in-templates #}
+  const crumbs = document.getElementById('cms-breadcrumbs');
+  const secondLink = crumbs && crumbs.querySelector('li:nth-of-type(2) > a');
+  if (secondLink) secondLink.removeAttribute('href');
+</script>

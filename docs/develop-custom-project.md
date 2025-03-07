@@ -1,9 +1,11 @@
 # Develop a Custom Project
 
-| You can customize these features | via this repository | (status) |
+| You can do these actions | via this resource | (status) |
 | - | - | - |
-| templates, static assets, settings, custom apps, URLs, middleware | [Core-CMS-Custom](#via-core-cms-custom) | active |
-| templates, static assets, settings | [Core-CMS-Resources](#via-core-cms-resources) | deprecated |
+| **customize** templates, static assets, settings, custom apps, URLs, middleware | [Core-CMS-Custom](#via-core-cms-custom) | active |
+| **customize** templates, static assets, settings | [Core-CMS-Resources](#via-core-cms-resources) | deprecated |
+| **create** custom apps | [Django-App](https://github.com/TACC/Django-App) | active |
+| **create** forked apps e.g. [TACC/djangocms-forms](https://github.com/TACC/djangocms-forms) | ["Fork a repo"](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) | evergreen |
 
 ## via [Core CMS Custom]
 
@@ -16,11 +18,11 @@ Work on the project **only** via [Core CMS Custom].
 
 ### Update Project
 
-To update `/taccsite_custom` to have _pinned_ content from [Core CMS Resources]:
+To update `/taccsite_custom` to have **pinned** content from [Core CMS Resources]:
 
 1. `git submodule update`
 
-To update `/taccsite_custom` to have _different_ content from [Core CMS Resources]:
+To update `/taccsite_custom` to have **new** content from [Core CMS Resources]:
 
 1. `cd taccsite_custom`
 2. Checkout desired [Core CMS Resources] branch.
@@ -43,9 +45,9 @@ To compile CSS static files:
 - **to** compiled files **in** `build` directories
 
 ```sh
-docker exec -it core_cms /bin/bash
-# That opens a command prompt within the container.
-    npm run build:css --project="custom_project_dir"
+npm run build:css --project="custom_project_dir"
+docker exec -it core_cms sh -c "python manage.py collectstatic --no-input"
+
 ```
 
 This process allows use of future-proof CSS via [Core Styles].

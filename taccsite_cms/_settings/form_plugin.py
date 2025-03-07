@@ -12,7 +12,7 @@ from django.utils.translation import gettext_lazy as _
 
 ########################
 # DJANGOCMS_FORMS
-# https://github.com/avryhof/djangocms-forms/
+# https://github.com/TACC/djangocms-forms/
 ########################
 
 DJANGOCMS_FORMS_USE_HTML5_REQUIRED = True
@@ -78,7 +78,7 @@ DJANGOCMS_FORMS_FORMAT_CHOICES = (
 )
 
 ########################
-# DJANGO
+# DJANGO: FORM
 # https://docs.djangoproject.com/en/2.2/ref/settings/#form-renderer
 ########################
 

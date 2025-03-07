@@ -1,17 +1,19 @@
 {
   "name": "@tacc/core-cms",
-  "version": "4.1.0",
+  "version": "4.25.4",
   "license": "MIT",
-  "author": "TACC ACI WMA <wma-portals@gmail.com>",
+  "author": "TACC ACI WMA <wma-portals@tacc.utexas.edu>",
+  "contributors": [
+    "TACC COA CMD <coa-cmd@tacc.utexas.edu>"
+  ],
   "description": "The TACC ACI-WMA Core CMS codebase used by TACC Portals.",
   "engines": {
-    "node": "^16.14.0",
-    "npm": "^8.3.0"
+    "node": ">=16",
+    "npm": ">=8"
   },
   "dependencies": {
     "@frctl/fractal": "^1.5.14",
     "@frctl/mandelbrot": "^1.10.1",
-    "@tacc/core-styles": "^2.11.0",
     "minimist": "^1.2.6"
   },
   "repository": "git@github.com:TACC/Core-CMS.git",
@@ -23,5 +25,8 @@
     "prebuild:ui-demo": "cp -r node_modules/@tacc/core-styles/src/lib/_imports/_preview.hbs taccsite_cms/static/site_cms/css/src/_imports/",
     "postbuild:ui-demo": "rm taccsite_cms/static/site_cms/css/src/_imports/_preview.hbs"
   },
-  "homepage": "https://github.com/TACC/Core-CMS"
+  "homepage": "https://github.com/TACC/Core-CMS",
+  "devDependencies": {
+    "@tacc/core-styles": "^2.40.1"
+  }
 }

@@ -17,7 +17,6 @@ We use a modifed version of [GitFlow](https://datasift.github.io/gitflow/Introdu
   - `feat/` for features and updates
   - `fix/` for bugfixes and hotfixes
   - `refactor/` for large internal changes
-  - `style/` for code style changes (white-space, formatting, etc.)
   - `chore/` for no-op changes
   - `docs/` for documentation
   - `perf/` for performance improvements
@@ -40,11 +39,11 @@ Our [production site] is built from a specific commit.
 
 Only appointed team members may release versions.
 
-1. Create new branch for version bump.
 1. Update `CHANGELOG.md`.
-1. Update version via:\
-  `npm version N.N.N`
-1. Commit, push, PR, review, merge.
+1. Update version:
+  - `npm version N.N.N`
+  - edit `version` in `pyproject.toml`
+1. Review. Commit. Push.
 1. Create release and tag on GitHub.
 1. Annotate Github's tag:\
   `bin/annotate-tag.sh vN.N.N`\
