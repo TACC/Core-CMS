@@ -159,14 +159,6 @@ CMS_TEMPLATES = (
     ('fullwidth.html', 'Full Width'),
 
     ('guide.html', 'Guide'),
-    ('guides/portal_technology.html', 'Guide: Portal Technology Stack'),
-
-    # TODO: WP-394: Retire deprecated page templates
-    ('guides/getting_started.v3.html', 'Guide: Getting Started (v3)'),
-    ('guides/getting_started.tam.html', 'Guide: Getting Started (TAM)'),
-    ('guides/getting_started.v2.html', 'Guide: Getting Started (v2)'),
-    ('guides/data_transfer.html', 'Guide: Data Transfer'),
-    ('guides/data_transfer.globus.html', 'Guide: Globus Data Transfer'),
 )
 
 CMS_PERMISSION = True
@@ -617,9 +609,25 @@ DJANGOCMS_AUDIO_ALLOWED_EXTENSIONS = ['mp3', 'ogg', 'wav']
 ########################
 
 # SEE: https://github.com/django-cms/djangocms-bootstrap4
+DJANGOCMS_BOOTSTRAP4_GRID_COLUMN_CHOICES = [
+    ('col', _('Column')),
+    ('col col-dark', _('Dark column')),
+    ('col col-muted', _('Muted column')),
+    ('w-100', _('Break')),
+    ('', _('Empty'))
+]
+
+# SEE: https://github.com/django-cms/djangocms-bootstrap4
 DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS = [
+    ('container', _('Container')),
+    ('container-fluid', _('Fluid container')),
+    ('o-section', _('Section')),
+    ('_', _('None')),
     (_('Container'), (
-        ('container', _('Container')), # default
+        (
+            'container  o-section',
+            _('Container + Section (transparent / margin)')
+        ),
         (
             'container  o-section o-section--style-light',
             _('Container + Light section')
@@ -634,7 +642,10 @@ DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS = [
         ),
     )),
     (_('Fluid container'), (
-        ('container-fluid', _('Fluid container')), # default
+        (
+            'container-fluid  o-section',
+            _('Fluid container + Section (transparent / margin)')
+        ),
         (
             'container-fluid  o-section o-section--style-light',
             _('Fluid container + Light section')
@@ -648,7 +659,7 @@ DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS = [
             _('Fluid container + Dark section')
         ),
     )),
-    (_('No container'), (
+    (_('Section only'), (
         (
             'o-section o-section--style-light',
             _('Light section')
@@ -745,10 +756,25 @@ DJANGOCMS_ICON_SETS = [
 ]
 
 
+########################
+# REDMINE TRACKER AUTH
+########################
+
+RT_HOST = ''
+RT_UN = ''
+RT_PW = ''
+RT_QUEUE = ''
+RT_TAG = ''
+
 
 ########################
 # SETTINGS IMPORT
 ########################
+
+try:
+    from taccsite_cms.settings_default import *
+except ModuleNotFoundError:
+    pass
 
 try:
     from taccsite_cms.settings_custom import *
