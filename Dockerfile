@@ -49,6 +49,7 @@ COPY . /code/
 ARG PROJECT_NAME
 ARG NEEDS_DEMO
 ARG BUILD_ID
+SHELL ["/bin/sh", "-c"]
 RUN if [ "$NEEDS_DEMO" = "true" ]; then \
         npm run build --project="$PROJECT_NAME" --build-id="$BUILD_ID"; \
     else \
