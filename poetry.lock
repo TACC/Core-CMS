@@ -756,8 +756,8 @@ unidecode = "*"
 [package.source]
 type = "git"
 url = "https://github.com/TACC/djangocms-forms"
-reference = "63ead9288c2ea65139124698bffc0ad01d182afa"
-resolved_reference = "63ead9288c2ea65139124698bffc0ad01d182afa"
+reference = "6b59ff366495915f06f4d6fac01a2f0aa9efecaf"
+resolved_reference = "6b59ff366495915f06f4d6fac01a2f0aa9efecaf"
 
 [[package]]
 name = "djangocms-googlemap"

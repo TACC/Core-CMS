@@ -1,4 +1,10 @@
 {# SEE: ./assets_site.md #}
+{# For assets that should be loaded after all page content. #}
+{% comment %}
+Consider asset load via `assets_custom`, not `assets_custom_delayed`:
+  - Styles should not need a delayed load time.
+  - Scripts can use `defer` or `async` attr's to manage load time.
+{% endcomment %}
 {% load static %}
 
 {# FAQ: Bootstrap can use jQuery, Popper, then its own script #}

@@ -17,7 +17,6 @@ We use a modifed version of [GitFlow](https://datasift.github.io/gitflow/Introdu
   - `feat/` for features and updates
   - `fix/` for bugfixes and hotfixes
   - `refactor/` for large internal changes
-  - `style/` for code style changes (white-space, formatting, etc.)
   - `chore/` for no-op changes
   - `docs/` for documentation
   - `perf/` for performance improvements
@@ -40,7 +39,6 @@ Our [production site] is built from a specific commit.
 
 Only appointed team members may release versions.
 
-1. Create new branch for version bump.
 1. Update `CHANGELOG.md`.
 1. Update version:
   - `npm version N.N.N`
