@@ -61,14 +61,16 @@ hr {
 
 /* … */
 
-button,
 input,
 optgroup,
 select,
 textarea {
- font:inherit
+ color:inherit;
+ font:inherit;
+ margin:0
 }
 button {
+ font:inherit;
  overflow:visible
 }
 button,
