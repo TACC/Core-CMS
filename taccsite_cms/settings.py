@@ -585,6 +585,9 @@ DJANGOCMS_PICTURE_ALIGN = [
     ('right', _('Align right')),
     ('center', _('Align center')),
 ]
+DJANGOCMS_PICTURE_TEMPLATES = [
+    ('no_link_to_ext_image', _('Do not link to external image')),
+]
 
 # FILE UPLOAD VALUES MUST BE SET!
 # Set in correlation with the `client_max_body_size    20m;` value in /etc/nginx/proxy.conf.
