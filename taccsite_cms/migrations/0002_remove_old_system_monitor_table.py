@@ -18,6 +18,7 @@ class Migration(migrations.Migration):
     """
 
     dependencies = [
+        ('taccsite_cms', '0001_add_groups'),
     ]
 
     operations = [
