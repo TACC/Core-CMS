@@ -1,7 +1,5 @@
 # Upgrade Project
 
-## Table of Contents
-
 Optional:
 - [expected cleanup](#expected-cleanup)
 
