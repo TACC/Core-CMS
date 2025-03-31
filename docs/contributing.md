@@ -39,7 +39,6 @@ Our [production site] is built from a specific commit.
 
 Only appointed team members may release versions.
 
-1. Update `CHANGELOG.md`.
 1. Update version:
   - `npm version N.N.N`
   - edit `version` in `pyproject.toml`
