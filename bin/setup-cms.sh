@@ -23,7 +23,6 @@ if ! command -v docker &> /dev/null; then
     echo "Please install Docker and try again."
     exit 1
 fi
-
 if ! docker info &> /dev/null; then
     echo -e "${NEG}Error: Docker is not running.${RST}"
     echo "Please start Docker and try again."
@@ -53,14 +52,12 @@ if [ ! -f "needs_demo.var" ]; then
 else
     echo -e "  ${INF}needs_demo.var already exists${RST}"
 fi
-
 if [ ! -f "project_name.var" ]; then
     echo "core-cms" > project_name.var
     echo -e "  ${POS}Created project_name.var${RST}"
 else
     echo -e "  ${INF}project_name.var already exists${RST}"
 fi
-
 if [ ! -f "docker_repo.var" ]; then
     echo "core-cms" > docker_repo.var
     echo -e "  ${POS}Created docker_repo.var${RST}"
@@ -134,7 +131,7 @@ echo -e "${INF}Checking for existing superuser...${RST}"
 HAS_SUPERUSER_CMD="python manage.py shell -c \"from django.contrib.auth import get_user_model; User = get_user_model(); print(User.objects.filter(is_superuser=True).exists())\""
 HAS_SUPERUSER=$(docker exec core_cms sh -c "$HAS_SUPERUSER_CMD")
 
-# Run the check for superuser
+# Check for / Create a superuser
 if [ "$HAS_SUPERUSER" != "True" ]; then
     echo -e "${INF}No superuser found. Letting you create one...${RST}"
     docker exec -it core_cms sh -c "python manage.py createsuperuser"
@@ -146,6 +143,7 @@ fi
 echo -e "${INF}Preparing static files...${RST}"
 docker exec -it core_cms sh -c "python manage.py collectstatic --no-input"
 
+# Announce success
 echo -e "${POS}
 ${IMP}Setup complete! You can now:${RST}${POS}
 1. Open http://localhost:8000/ in your browser.
