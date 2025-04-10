@@ -60,5 +60,4 @@ clean:
 
 .PHONY: setup
 setup:
-	chmod +x bin/setup-cms.sh
 	./bin/setup-cms.sh
