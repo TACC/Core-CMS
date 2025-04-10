@@ -50,6 +50,6 @@ start:
 stop:
 	$(DOCKER_COMPOSE_CMD) -f docker-compose.dev.yml down
 
-.PHONY: stop-verbose
+.PHONY: stop-full
 stop-v:
 	$(DOCKER_COMPOSE_CMD) -f docker-compose.dev.yml down -v
