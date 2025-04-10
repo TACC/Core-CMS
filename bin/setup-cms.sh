@@ -15,6 +15,7 @@ IMP='\033[1m'    # important
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
 
+# Announce start
 echo -e "${POS}Setting up TACC Core CMS...${RST}"
 
 # Check if Docker is installed and running
@@ -143,7 +144,7 @@ fi
 echo -e "${INF}Preparing static files...${RST}"
 docker exec -it core_cms sh -c "python manage.py collectstatic --no-input"
 
-# Announce success
+# Announce end
 echo -e "${POS}
 ${IMP}Setup complete! You can now:${RST}${POS}
 1. Open http://localhost:8000/ in your browser.
