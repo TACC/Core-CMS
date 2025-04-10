@@ -77,7 +77,7 @@ Set up a new local CMS instance.
     ```
 
     > **Note**
-    > This will make the terminal window busy. To run commands after this, **either** open a new terminal window **or** run `docker compose -f ./docker-compose.dev.yml up --detach` instead.
+    > This will make the terminal window busy. To run commands after this, **either** open a new terminal window **or** run `make start ARGS="--detach"` instead.
 
 4. Enter the CMS Docker Container:
 
