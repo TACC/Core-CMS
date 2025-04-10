@@ -52,7 +52,7 @@ stop:
 
 .PHONY: stop-v
 stop-v:
-	$(MAKE) stop ARGS=--volumes
+	$(MAKE) stop ARGS="--volumes"
 
 .PHONY: clean
 clean:
