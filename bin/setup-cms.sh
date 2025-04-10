@@ -141,7 +141,7 @@ Setup complete! You can now:
 3. Create your first CMS page (this will be your homepage).
 
 To stop the CMS, run:
-  ${INF}make stop${RST}
+  ${INF}make stop${POS}
 
 To start it again, run:
   ${INF}make start${RST}
