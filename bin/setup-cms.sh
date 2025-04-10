@@ -3,12 +3,13 @@
 # Exit on error
 set -e
 
-# Colors for output
+# Formatting
 POS='\033[0;32m' # positive
 NEG='\033[0;31m' # negative
 WRN='\033[1;33m' # warning
 INF='\033[0;36m' # info
 RST='\033[0m'    # reset
+IMP='\033[1m'    # important
 
 # Define root path
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -135,7 +136,7 @@ echo -e "${INF}Preparing static files...${RST}"
 docker exec -it core_cms sh -c "python manage.py collectstatic --no-input"
 
 echo -e "${POS}
-Setup complete! You can now:
+${IMP}Setup complete! You can now:${RST}
 1. Open http://localhost:8000/ in your browser.
 2. Log in with the credentials you just created.
 3. Create your first CMS page (this will be your homepage).
