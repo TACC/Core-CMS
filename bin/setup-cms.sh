@@ -126,27 +126,9 @@ done
 echo -e "${INF}Setting up Django...${RST}"
 docker exec -it core_cms sh -c "python manage.py migrate"
 
-# Try interactive superuser creation first
-echo -e "${INF}Creating superuser account...${RST}"
-if ! docker exec -it core_cms sh -c "python manage.py createsuperuser"; then
-    echo -e "${WRN}Interactive superuser creation failed, falling back to non-interactive method...${RST}"
-    echo "Please enter the following information for your superuser account:"
-    read -p "Username (default: admin): " username
-    username=${username:-admin}
-    read -p "Email (optional): " email
-    read -s -p "Password: " password
-    echo
-    read -s -p "Password (again): " password2
-    echo
-
-    if [ "$password" != "$password2" ]; then
-        echo -e "${NEG}Error: Passwords do not match.${RST}"
-        exit 1
-    fi
-
-    # Create superuser non-interactively
-    docker exec -it core_cms sh -c "python manage.py shell -c \"from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser('$username', '$email', '$password')\""
-fi
+# Create superuser
+echo -e "${INF}Letting you create superuser account...${RST}"
+docker exec -it core_cms sh -c "python manage.py createsuperuser"
 
 # Collect static files
 echo -e "${INF}Preparing static files...${RST}"
