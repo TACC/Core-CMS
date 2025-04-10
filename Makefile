@@ -44,12 +44,21 @@ publish-latest:
 
 .PHONY: start
 start:
-	$(DOCKER_COMPOSE_CMD) -f docker-compose.dev.yml up
+	$(DOCKER_COMPOSE_CMD) -f docker-compose.dev.yml up $(ARGS)
 
 .PHONY: stop
 stop:
 	$(DOCKER_COMPOSE_CMD) -f docker-compose.dev.yml down
 
-.PHONY: stop-verbose
+.PHONY: stop-full
 stop-v:
 	$(DOCKER_COMPOSE_CMD) -f docker-compose.dev.yml down -v
+
+.PHONY: clean
+clean:
+	$(DOCKER_COMPOSE_CMD) -f docker-compose.dev.yml down -v --rmi all
+
+.PHONY: setup
+setup:
+	chmod +x bin/setup-cms.sh
+	./bin/setup-cms.sh
