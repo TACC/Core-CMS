@@ -8,12 +8,6 @@ def add_groups(apps, schema_editor):
     from taccsite_cms.management.commands.group_perms.grid_editor_basic import set_group_perms as add_grid_editor_basic
     from taccsite_cms.management.commands.group_perms.grid_editor_advanced import set_group_perms as add_grid_editor_advanced
 
-    # Ensure permissions are created
-    from django.contrib.auth.management import create_permissions
-    from django.apps import apps as django_apps
-    for app_config in django_apps.get_app_configs():
-        create_permissions(app_config, verbosity=0)
-
     add_text_editor_basic()
     add_text_editor_advanced()
     add_media_editor_basic()
@@ -44,9 +38,19 @@ def remove_groups(apps, schema_editor):
 
 class Migration(migrations.Migration):
     dependencies = [
-        ('auth', '0001_initial'),
-        ('contenttypes', '0001_initial'),
-        ('cms', '0001_initial'),
+        ('auth', '0012_alter_user_first_name_max_length'),
+        ('contenttypes', '0002_remove_content_type_name'),
+        ('cms', '0022_auto_20180620_1551'),
+        ('djangocms_link', '0016_alter_link_cmsplugin_ptr'),
+        ('djangocms_text_ckeditor', '0005_alter_text_cmsplugin_ptr'),
+        ('bootstrap4_grid', '0004_remove_bootstrap4gridcolumn_column_size'),
+        ('bootstrap4_picture', '0004_auto_20190703_0831'),
+        ('djangocms_picture', '0011_auto_20190314_1536'),
+        ('djangocms_video', '0010_videoplayer_parameters'),
+        ('filer', '0015_alter_file_owner_alter_file_polymorphic_ctype_and_more'),
+        ('djangocms_file', '0011_auto_20181211_0357'),
+        ('bootstrap4_content', '0002_added_figure'),
+        ('taggit', '0001_initial'),
     ]
 
     operations = [
