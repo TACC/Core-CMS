@@ -147,7 +147,7 @@ echo -e "${INF}Preparing static files...${RST}"
 docker exec -it core_cms sh -c "python manage.py collectstatic --no-input"
 
 echo -e "${POS}
-${IMP}Setup complete! You can now:${RST}
+${IMP}Setup complete! You can now:${RST}${POS}
 1. Open http://localhost:8000/ in your browser.
 2. Log in with the credentials you just created.
 3. Create your first CMS page (this will be your homepage).
