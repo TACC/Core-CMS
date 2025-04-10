@@ -127,9 +127,20 @@ done
 echo -e "${INF}Setting up Django...${RST}"
 docker exec -it core_cms sh -c "python manage.py migrate"
 
-# Create superuser
-echo -e "${INF}Letting you create superuser account...${RST}"
-docker exec -it core_cms sh -c "python manage.py createsuperuser"
+# Check whether to let user create superuser
+echo -e "${INF}Checking for existing superuser...${RST}"
+
+# Define how to check for superuser
+HAS_SUPERUSER_CMD="python manage.py shell -c \"from django.contrib.auth import get_user_model; User = get_user_model(); print(User.objects.filter(is_superuser=True).exists())\""
+HAS_SUPERUSER=$(docker exec core_cms sh -c "$HAS_SUPERUSER_CMD")
+
+# Run the check for superuser
+if [ "$HAS_SUPERUSER" != "True" ]; then
+    echo -e "${INF}No superuser found. Letting you create one...${RST}"
+    docker exec -it core_cms sh -c "python manage.py createsuperuser"
+else
+    echo -e "${INF}Superuser already exists. Skipping creation.${RST}"
+fi
 
 # Collect static files
 echo -e "${INF}Preparing static files...${RST}"
