@@ -39,15 +39,12 @@ Our [production site] is built from a specific commit.
 
 Only appointed team members may release versions.
 
-1. Update version:
-  - `npm version N.N.N`
-  - edit `version` in `pyproject.toml`
 1. Review. Commit. Push.
-1. Create release and tag on GitHub.
-1. Annotate Github's tag:\
+2. Create release and tag on GitHub.
+3. Annotate Github's tag:\
   `bin/annotate-tag.sh vN.N.N`\
-  (where `N.N.N` is the version tag)
-1. Overwrite remote tag with annotated one:\
+  (where `vN.N.N` is the version tag)
+4. Overwrite remote tag with annotated one:\
   `git push --tags --force`
 
 <!-- Link Aliases -->

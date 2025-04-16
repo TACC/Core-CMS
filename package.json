@@ -1,6 +1,5 @@
 {
   "name": "@tacc/core-cms",
-  "version": "4.28.0-alpha.5",
   "license": "MIT",
   "author": "TACC ACI WMA <wma-portals@tacc.utexas.edu>",
   "contributors": [

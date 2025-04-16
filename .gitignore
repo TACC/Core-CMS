@@ -65,9 +65,6 @@ atlassian-ide-plugin.xml
 *.sqlite
 *.sql
 
-# Version file for source distribution
-RELEASE-VERSION
-
 # Dependencies
 node_modules
 
