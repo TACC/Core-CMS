@@ -39,12 +39,11 @@ Our [production site] is built from a specific commit.
 
 Only appointed team members may release versions.
 
-1. Review. Commit. Push.
-2. Create release and tag on GitHub.
-3. Annotate Github's tag:\
+1. Create release and tag on GitHub.
+2. Annotate Github's tag:\
   `bin/annotate-tag.sh vN.N.N`\
   (where `vN.N.N` is the version tag)
-4. Overwrite remote tag with annotated one:\
+3. Overwrite remote tag with annotated one:\
   `git push --tags --force`
 
 <!-- Link Aliases -->
