@@ -61,6 +61,23 @@ def let_view_and_change_plugin(group):
 
 
 
+# Style
+def let_view_and_change_style_plugin(group):
+    """
+    Add permissions to view & change Style plugins
+    """
+    add_perm(group, 'djangocms_style', 'style', 'Can view style')
+    add_perm(group, 'djangocms_style', 'style', 'Can change style')
+
+def let_add_and_delete_style_plugin(group):
+    """
+    Add permissions to add & delete Style plugins
+    """
+    add_perm(group, 'djangocms_style', 'style', 'Can add style')
+    add_perm(group, 'djangocms_style', 'style', 'Can delete style')
+
+
+
 # Grid
 def let_view_and_change_grid(group):
     """
