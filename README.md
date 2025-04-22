@@ -35,7 +35,6 @@ The base CMS code for TACC WMA Workspace Portals & Websites
 | `bin` | scripts e.g. build CSS |
 | `taccsite_cms` | settings for [Core CMS] |
 | `taccsite_custom` | [Git submodule][Git Submodules] of [Core CMS Resources] |
-| `taccsite_ui` | files to build [TACC UI Patterns] |
 
 ## Prerequisites
 
@@ -140,8 +139,7 @@ To only update as necessary, or update since uncommon changes:
 | 1 | Python models | `docker exec -it core_cms sh -c "python manage.py migrate"` |
 | 2 | Node dependencies | `npm ci` |
 | 3 | CSS stylesheets | `npm run build:css` |
-| 4 | UI Demo | `npm run build:ui-demo` |
-| 5 |  Assets e.g.<br><sub>images, stylesheets, JavaScript, UI demo</sub> | `docker exec -it core_cms sh -c "python manage.py collectstatic --no-input"` |
+| 4 | Assets e.g.<br><sub>images, stylesheets, JavaScript</sub> | `docker exec -it core_cms sh -c "python manage.py collectstatic --no-input"` |
 
 </details>
 
@@ -193,7 +191,6 @@ To contribute, first read [How to Contirbute][Contributing].
 [Docker]: https://docs.docker.com/get-docker/
 [Docker Compose]: https://docs.docker.com/compose/install/
 
-[TACC UI Patterns]: https://tacc.utexas.edu/static/ui/
 [Build & Deploy Project]: https://tacc-main.atlassian.net/wiki/x/2AVv
 [Django CMS User Guide]: https://tacc-main.atlassian.net/wiki/x/phdv
 

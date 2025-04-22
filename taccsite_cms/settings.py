@@ -339,11 +339,6 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'taccsite_custom', '*', 'static')
 ))
 
-# Serve UI Demo (if it exists) at .../ui
-ui_demo_dir = os.path.join(BASE_DIR, 'taccsite_ui', 'dist')
-if os.path.exists(ui_demo_dir):
-    STATICFILES_DIRS += (('ui', ui_demo_dir),)
-
 # User Uploaded Files Location.
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(DATA_DIR, 'media')
