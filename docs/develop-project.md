@@ -8,6 +8,7 @@ Read [Django CMS User Guide] for CMS user instructions.
 - [Build Static Files](#build-static-files)
 - [Collect Static Files](#collect-static-files)
 - [Customize & Translate Text](#customize--translate-text)
+- [Review Patterns from Core Styles](#review-patterns-in-core-styles)
 - [Develop with Core Styles Simultaneously](#develop-with-core-styles-simultaneously)
 
 ## Add Styles & Scripts
@@ -81,9 +82,27 @@ docker exec -it core_cms sh -c "python manage.py collectstatic --no-input"
 
 4. [Restart the CMS server.][restart server]
 
+## Review Patterns in Core Styles
+
+### For Latest Patterns & Styles
+
+See https://tacc.github.io/Core-Styles.
+
+### For Patterns & Styles as of Your CMS Version:
+
+0. See current version of Core Styles installed:
+    ```shell
+    npm list @tacc/core-styles
+    ```
+1. Checkout [Core Styles] at that version, e.g.:
+    ```shell
+    git checkout v2.43.1
+    ```
+2. Follow [Core Styles "Quick Start"](https://github.com/TACC/Core-Styles/blob/v2.43.2/README.md#quick-start) up to `npm start`.
+
 ## Develop with [Core Styles] Simultaneously
 
-See [Locally Develop CMS and Styles](https://github.com/TACC/Core-CMS/wiki/Locally-Develop-CMS-and-Styles).
+See [Locally Develop CMS and Styles](https://github.com/TACC/Core-Styles/wiki/Develop-with-Client-Code-Simultaneously).
 
 <!-- Link Aliases -->
 
