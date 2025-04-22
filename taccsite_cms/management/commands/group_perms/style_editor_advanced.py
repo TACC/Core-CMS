@@ -1,5 +1,5 @@
 """
-To edit and move Style plugins
+To edit, move, add and delete Style plugins
 (not CSS, but "Style" block that lets editors add custom markup e.g. for Cards)
 """
 
