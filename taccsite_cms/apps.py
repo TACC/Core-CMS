@@ -26,6 +26,12 @@ class TaccsiteCmsConfig(AppConfig):
             set_group_perms as add_grid_editor_basic
         from .management.commands.group_perms.grid_editor_advanced import \
             set_group_perms as add_grid_editor_advanced
+        from .management.commands.group_perms.style_editor_basic import \
+            set_group_perms as add_style_editor_basic
+        from .management.commands.group_perms.style_editor_advanced import \
+            set_group_perms as add_style_editor_advanced
+        from .management.commands.group_perms.snippet_user import \
+            set_group_perms as add_snippet_user
 
         groups_exist = Group.objects.filter(name=GROUP_NAME).exists()
         action = 'Updating' if groups_exist else 'Creating'
@@ -38,6 +44,9 @@ class TaccsiteCmsConfig(AppConfig):
             add_media_editor_advanced()
             add_grid_editor_basic()
             add_grid_editor_advanced()
+            add_style_editor_basic()
+            add_style_editor_advanced()
+            add_snippet_user()
             logger.info(f'Finished {action.lower()} CMS groups')
         except Exception as e:
             logger.error(f'Error creating CMS groups: {e}', exc_info=True)

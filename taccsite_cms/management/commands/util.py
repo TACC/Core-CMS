@@ -1,6 +1,5 @@
 import logging
 
-from django.core.management import BaseCommand
 from django.contrib.auth.models import Permission
 from django.contrib.contenttypes.models import ContentType
 
@@ -59,6 +58,40 @@ def let_view_and_change_plugin(group):
     """
     add_perm(group, 'cms', 'cms plugin', 'Can view cms plugin')
     add_perm(group, 'cms', 'cms plugin', 'Can change cms plugin')
+
+
+
+# Style
+def let_view_and_change_style_plugin(group):
+    """
+    Add permissions to view & change Style plugins
+    """
+    add_perm(group, 'djangocms_style', 'style', 'Can view style')
+    add_perm(group, 'djangocms_style', 'style', 'Can change style')
+
+def let_add_and_delete_style_plugin(group):
+    """
+    Add permissions to add & delete Style plugins
+    """
+    add_perm(group, 'djangocms_style', 'style', 'Can add style')
+    add_perm(group, 'djangocms_style', 'style', 'Can delete style')
+
+
+
+# Snippet
+def let_view_and_change_snippet_plugin(group):
+    """
+    Add permissions to view & change Snippet plugins (a.k.a "pointers" / "Ptr")
+    """
+    add_perm(group, 'djangocms_snippet', 'Snippet Ptr', 'Can view Snippet Ptr')
+    add_perm(group, 'djangocms_snippet', 'Snippet Ptr', 'Can change Snippet Ptr')
+
+def let_add_and_delete_snippet_plugin(group):
+    """
+    Add permissions to add & delete Snippet plugins (a.k.a "pointers" / "Ptr")
+    """
+    add_perm(group, 'djangocms_snippet', 'Snippet Ptr', 'Can add Snippet Ptr')
+    add_perm(group, 'djangocms_snippet', 'Snippet Ptr', 'Can delete Snippet Ptr')
 
 
 
