@@ -78,6 +78,23 @@ def let_add_and_delete_style_plugin(group):
 
 
 
+# Snippet
+def let_view_and_change_snippet_plugin(group):
+    """
+    Add permissions to view & change Snippet plugins (a.k.a "pointers" / "Ptr")
+    """
+    add_perm(group, 'djangocms_snippet', 'Snippet Ptr', 'Can view Snippet Ptr')
+    add_perm(group, 'djangocms_snippet', 'Snippet Ptr', 'Can change Snippet Ptr')
+
+def let_add_and_delete_snippet_plugin(group):
+    """
+    Add permissions to add & delete Snippet plugins (a.k.a "pointers" / "Ptr")
+    """
+    add_perm(group, 'djangocms_snippet', 'Snippet Ptr', 'Can add Snippet Ptr')
+    add_perm(group, 'djangocms_snippet', 'Snippet Ptr', 'Can delete Snippet Ptr')
+
+
+
 # Grid
 def let_view_and_change_grid(group):
     """
