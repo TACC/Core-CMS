@@ -8,7 +8,6 @@ Read [Django CMS User Guide] for CMS user instructions.
 - [Build Static Files](#build-static-files)
 - [Collect Static Files](#collect-static-files)
 - [Customize & Translate Text](#customize--translate-text)
-- [Demo UI Patterns](#demo-ui-patterns)
 - [Develop with Core Styles Simultaneously](#develop-with-core-styles-simultaneously)
 
 ## Add Styles & Scripts
@@ -81,24 +80,6 @@ docker exec -it core_cms sh -c "python manage.py collectstatic --no-input"
     ```
 
 4. [Restart the CMS server.][restart server]
-
-## Demo UI Patterns
-
-A demo of any documented CSS modules from [Core Styles] and [Core CMS].
-
-1. Build:
-
-    ```sh
-    npm run build:ui-demo
-    ```
-
-2. [Collect Static Files](#collect-static-files):
-
-    ```sh
-    docker exec -it core_cms sh -c "python manage.py collectstatic --no-input"
-    ```
-
-3. Open http://localhost:8000/static/ui/index.html.
 
 ## Develop with [Core Styles] Simultaneously
 
