@@ -39,17 +39,18 @@ Our [production site] is built from a specific commit.
 
 Only appointed team members may release versions.
 
-1. Update `CHANGELOG.md`.
 1. Update version:
-  - `npm version N.N.N`
-  - edit `version` in `pyproject.toml`
-1. Review. Commit. Push.
-1. Create release and tag on GitHub.
-1. Annotate Github's tag:\
+  - `poetry version N.N.N`
+2. Review. Commit. Push.
+3. Create release and tag on GitHub.
+4. Annotate Github's tag:\
   `bin/annotate-tag.sh vN.N.N`\
   (where `N.N.N` is the version tag)
-1. Overwrite remote tag with annotated one:\
+5. Overwrite remote tag with annotated one:\
   `git push --tags --force`
+6. [Build & Deploy](../README.md#build--deploy-project) `main` branch.[^1]
+
+[^1]: So that new CMS image is tagged `latest` and `vN.N.N`.
 
 <!-- Link Aliases -->
 
