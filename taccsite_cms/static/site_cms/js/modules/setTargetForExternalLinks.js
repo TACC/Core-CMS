@@ -18,7 +18,10 @@ export default function findLinksAndSetTargets( links = DEFAULT_LINKS, opts = {
   shouldFilter: true,
 }) {
   const baseDocHost = document.location.host;
-  const baseDocHostWithSubdomain= `www.${ baseDocHost }`;
+  const standardSubdomains = ['www', 'pprd', 'prod', 'dev'];
+  const similarHosts = standardSubdomains.map(
+    subdomain => `${subdomain}.${baseDocHost}`
+  );
 
   if ( opts.shouldDebug ) {
     console.log({ links, opts });
@@ -33,7 +36,10 @@ export default function findLinksAndSetTargets( links = DEFAULT_LINKS, opts = {
 
     const isMailto = ( linkHref.indexOf('mailto:') === 0 );
     const isAbsolute = ( linkHref.indexOf('http') === 0 );
-    const isSameHost = ( link.host === baseDocHost || link.host === baseDocHostWithSubdomain );
+    const isSameHost = (
+      link.host === baseDocHost ||
+      similarHosts.includes( link.host )
+    );
     const shouldOpenInNewTab = ( ! isSameHost || isMailto );
 
     if (opts.shouldDebug) {
