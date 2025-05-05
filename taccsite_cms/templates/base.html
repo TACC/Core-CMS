@@ -3,9 +3,10 @@
 <!doctype html>
 <html
   id="{% block html_page_id %}{% if request.current_page.reverse_id %}page-{{ request.current_page.reverse_id }}{% endif %}{% endblock html_page_id %}"
-  lang="{{ lang_code }}"
   data-page-template="{{ request.current_page.template|cut:".html" }}"
-  class="{% block html_page_class %}{% endblock html_page_class %}">
+  class="{% block html_page_class %}{% endblock html_page_class %}"
+  lang="{{ lang_code }}"
+>
 
 {# SEE: https://github.com/nephila/django-meta/blob/1.7.0/docs/rendering.rst #}
 <head {% meta_namespaces %}>
