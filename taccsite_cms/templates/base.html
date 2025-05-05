@@ -3,7 +3,7 @@
 <!doctype html>
 <html
   id="{% block html_page_id %}{% if request.current_page.reverse_id %}page-{{ request.current_page.reverse_id }}{% endif %}{% endblock html_page_id %}"
-  data-page-template="{{ request.current_page.template|cut:".html" }}"
+  data-page-template="{{ request.current_page.get_template|cut:'.html' }}"
   class="{% block html_page_class %}{% endblock html_page_class %}"
   lang="{{ lang_code }}"
 >
