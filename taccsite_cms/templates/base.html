@@ -6,9 +6,6 @@
   id="page-{{ request.current_page.reverse_id }}"
   {% endblock html_page_id %}
   lang="{{ lang_code }}"
-  data-page-template="{{ request.current_page.template }}"
-  {# FAQ: Only available if set in page's "Advanced" settings #}
-  data-page-id="{{ request.current_page.reverse_id }}"
   class="{% block html_page_class %}{% endblock html_page_class %}">
 
 {# SEE: https://github.com/nephila/django-meta/blob/1.7.0/docs/rendering.rst #}
