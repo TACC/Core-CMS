@@ -34,6 +34,7 @@ project_name.var
 
 # Secrets and Customizations
 *secrets*.py
+*settings_default*.py
 *settings_custom*.py
 *settings_local*.py
 custom_app_settings.py
@@ -63,9 +64,6 @@ atlassian-ide-plugin.xml
 # Databases
 *.sqlite
 *.sql
-
-# Version file for source distribution
-RELEASE-VERSION
 
 # Dependencies
 node_modules

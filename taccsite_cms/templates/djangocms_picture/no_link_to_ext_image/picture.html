@@ -1,0 +1,28 @@
+{% extends "djangocms_picture/default/picture.html" %}
+{# Do not let instance.external_picture trigger picture_link templating #}
+{% comment %}
+App djangocms_picture assumes external image must be linked to,
+but we want to allow external image to be displayed without link.
+{% endcomment %}
+{# FAQ: picture_link is instance link_url or link_page_id or external_picture #}
+{# https://github.com/django-cms/djangocms-picture/blob/3.0.0/djangocms_picture/models.py#L269-L276 #}
+
+{# So picture with external image is not wrapped in a link #}
+{% block picture_link_start %}
+    {% if instance.link_url or instance.link_page_id %}
+        {% block picture_link %}
+            {{ block.super }}
+        {% endblock %}
+    {% endif %}
+{% endblock %}
+
+{# So picture attributes can be added to picture with external image #}
+{% block picture_attributes %}
+    {% if not instance.caption_text and not instance.link_url and not instance.link_page_id and not instance.child_plugin_instances %}
+        {{ instance.attributes_str }}
+    {% endif %}
+{% endblock %}
+
+{# So picture with external image is not wrapped in a link #}
+{% block picture_link_end %}
+{% endblock %}

@@ -159,14 +159,6 @@ CMS_TEMPLATES = (
     ('fullwidth.html', 'Full Width'),
 
     ('guide.html', 'Guide'),
-    ('guides/portal_technology.html', 'Guide: Portal Technology Stack'),
-
-    # TODO: WP-394: Retire deprecated page templates
-    ('guides/getting_started.v3.html', 'Guide: Getting Started (v3)'),
-    ('guides/getting_started.tam.html', 'Guide: Getting Started (TAM)'),
-    ('guides/getting_started.v2.html', 'Guide: Getting Started (v2)'),
-    ('guides/data_transfer.html', 'Guide: Data Transfer'),
-    ('guides/data_transfer.globus.html', 'Guide: Globus Data Transfer'),
 )
 
 CMS_PERMISSION = True
@@ -347,11 +339,6 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'taccsite_custom', '*', 'static')
 ))
 
-# Serve UI Demo (if it exists) at .../ui
-ui_demo_dir = os.path.join(BASE_DIR, 'taccsite_ui', 'dist')
-if os.path.exists(ui_demo_dir):
-    STATICFILES_DIRS += (('ui', ui_demo_dir),)
-
 # User Uploaded Files Location.
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(DATA_DIR, 'media')
@@ -498,8 +485,7 @@ INSTALLED_APPS = [
 
     # TACC CMS Plugins
     'djangocms_tacc_image_gallery',
-    # TODO: Use https://github.com/wesleyboar/Core-CMS-Plugin-System-Monitor
-    'taccsite_cms.contrib.taccsite_system_monitor',
+    'djangocms_tacc_system_monitor',
 
     # TACC CMS Plugins - DECPRECATED
     'taccsite_cms.contrib.taccsite_blockquote',
@@ -593,6 +579,9 @@ DJANGOCMS_PICTURE_ALIGN = [
     ('right', _('Align right')),
     ('center', _('Align center')),
 ]
+DJANGOCMS_PICTURE_TEMPLATES = [
+    ('no_link_to_ext_image', _('Do not link to external image')),
+]
 
 # FILE UPLOAD VALUES MUST BE SET!
 # Set in correlation with the `client_max_body_size    20m;` value in /etc/nginx/proxy.conf.
@@ -609,12 +598,32 @@ DJANGOCMS_AUDIO_ALLOWED_EXTENSIONS = ['mp3', 'ogg', 'wav']
 ########################
 
 # SEE: https://github.com/django-cms/djangocms-bootstrap4
+DJANGOCMS_BOOTSTRAP4_GRID_COLUMN_CHOICES = [
+    ('col', _('Column')),
+    ('col col-dark', _('Dark column')),
+    ('col col-muted', _('Muted column')),
+    ('w-100', _('Break')),
+    ('', _('Empty'))
+]
+
+# SEE: https://github.com/django-cms/djangocms-bootstrap4
 DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS = [
+    ('container', _('Container')),
+    ('container-fluid', _('Fluid container')),
+    ('o-section', _('Section')),
+    ('_', _('None')),
     (_('Container'), (
-        ('container', _('Container')), # default
+        (
+            'container  o-section',
+            _('Container + Section (transparent / margin)')
+        ),
         (
             'container  o-section o-section--style-light',
             _('Container + Light section')
+        ),
+        (
+            'container  o-section o-section--style-muted',
+            _('Container + Muted section')
         ),
         (
             'container  o-section o-section--style-dark',
@@ -622,20 +631,31 @@ DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS = [
         ),
     )),
     (_('Fluid container'), (
-        ('container-fluid', _('Fluid')), # default
+        (
+            'container-fluid  o-section',
+            _('Fluid container + Section (transparent / margin)')
+        ),
         (
             'container-fluid  o-section o-section--style-light',
             _('Fluid container + Light section')
+        ),
+        (
+            'container-fluid  o-section o-section--style-muted',
+            _('Fluid container + Muted section')
         ),
         (
             'container-fluid  o-section o-section--style-dark',
             _('Fluid container + Dark section')
         ),
     )),
-    (_('No container'), (
+    (_('Section only'), (
         (
             'o-section o-section--style-light',
             _('Light section')
+        ),
+        (
+            'o-section o-section--style-muted',
+            _('Muted section')
         ),
         (
             'o-section o-section--style-dark',
@@ -725,10 +745,25 @@ DJANGOCMS_ICON_SETS = [
 ]
 
 
+########################
+# REDMINE TRACKER AUTH
+########################
+
+RT_HOST = ''
+RT_UN = ''
+RT_PW = ''
+RT_QUEUE = ''
+RT_TAG = ''
+
 
 ########################
 # SETTINGS IMPORT
 ########################
+
+try:
+    from taccsite_cms.settings_default import *
+except ModuleNotFoundError:
+    pass
 
 try:
     from taccsite_cms.settings_custom import *

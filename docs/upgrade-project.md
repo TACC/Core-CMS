@@ -1,7 +1,5 @@
 # Upgrade Project
 
-## Table of Contents
-
 - [from v4.N to v4.14](#from-v4n-to-v414)
 - [from v4.N to v4.13](#from-v4n-to-v413)
 - [from v4.N to v4.12](#from-v4n-to-v412)
@@ -9,6 +7,41 @@
 - [from v3 to v4](#from-v3-to-v4)
 - [from v3.N to v3.12](#from-v3n-to-v312)
 - [from v2 to v3](#from-v2-to-v3)
+
+Optional:
+- [expected cleanup](#expected-cleanup)
+
+## Expected Cleanup
+
+- [Remove Unnecessary Settings](#remove-unnecessary-settings)
+- [Simplify Image Paths](#simplify-image-paths)
+
+### Remove Unnecessary Settings
+
+1. In `taccsite_cms/custom_app_settings.py`, remove apps from `STATICFILES_DIRS`, i.e.
+
+    | | change |
+    | - | - |
+    | from | `STATICFILES_DIRS = ('apps/custom_example', ...)` |
+    | to | `STATICFILES_DIRS = (...)` |
+
+    > **Note**
+    > Django automatically identifies the `static` directory for each app.
+
+### Simplify Image Paths
+
+1. Remove any subdirectories of your project's static `img` directory, i.e.
+
+    | | root |
+    | - | - |
+    | from | `taccsite_custom/static/custom_project_dir/img/*/...` |
+    | to | `taccsite_custom/static/custom_project_dir/img/...` |
+
+2. Rename **all** references to the previous image paths e.g.
+    - `/custom_project_dir/taccsite_cms/settings_custom.py` [^1]
+    - [Core Portal Deployments]:`/project_dir/camino/cms.settings_custom.py` [^1]
+
+[^1]: The `cms.settings_custom.py` is committed in [Core Portal Deployments]. A `settings_custom.py` in [Core CMS Custom] is `.gitignore`'d.
 
 ## from v4.N to v4.14
 

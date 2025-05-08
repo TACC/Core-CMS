@@ -2,11 +2,11 @@
 {% get_current_language as lang_code %}
 <!doctype html>
 <html
-  id="page-{% block html_page_id %}{{ request.current_page.reverse_id }}{% endblock html_page_id %}"
+  id="{% block html_page_id %}{% if request.current_page.reverse_id %}page-{{ request.current_page.reverse_id }}{% endif %}{% endblock html_page_id %}"
+  data-page-template="{{ request.current_page.get_template|cut:'.html' }}"
+  class="{% block html_page_class %}{% endblock html_page_class %}"
   lang="{{ lang_code }}"
-  {# FAQ: Only available if set in page's "Advanced" settings #}
-  data-page-id="{{ request.current_page.reverse_id }}"
-  class="{% block html_page_class %}{% endblock html_page_class %}">
+>
 
 {# SEE: https://github.com/nephila/django-meta/blob/1.7.0/docs/rendering.rst #}
 <head {% meta_namespaces %}>
@@ -17,7 +17,7 @@
   {% include 'analytics.html' %}
 
   <!-- Metadata. -->
-  <title>{% block title %} This is my new project home page {% endblock title %}</title>
+  <title>{% block title %}{% page_attribute "page_title" %}{% endblock title %}</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
