@@ -79,15 +79,15 @@ If you do **not** test Blog/News, [create two **pages**](http://localhost:8000/a
 2. Test article or page as remote content:
 
   - (article) Visit Site 2 and try to view Site 1's article:\
-      http://127.0.0.1:8000/remote/markup?page=/news/2025/05/09/site-1-article-1/
+      http://127.0.0.1:8000/remote/markup/news/2025/05/09/site-1-article-1/
 
   - (page) Visit Site 2 and try to view Site 1's page:\
-      http://127.0.0.1:8000/remote/markup?page=/site-1-page/
+      http://127.0.0.1:8000/remote/markup/site-1-page/
 
 3. Test article or page markup as remote content:
 
   - (article) Visit Site 2 and try to view Site 1's article:\
-      http://127.0.0.1:8000/remote/markup?page=/news/2025/05/09/site-1-article-1/%3Ftemplate=raw.html
+      http://127.0.0.1:8000/remote/markup/news/2025/05/09/site-1-article-1/?template=raw.html
 
   - (page) Visit Site 2 and try to view Site 1's page:\
-      http://127.0.0.1:8000/remote/markup?page=/site-1-page/%3Ftemplate=raw.html
+      http://127.0.0.1:8000/remote/markup/site-1-page/?template=raw.html

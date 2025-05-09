@@ -26,19 +26,22 @@ class RemoteMarkup(TemplateView):
 
     def build_source_url(self):
         source_root = settings.PORTAL_REMOTE_CONTENT_SOURCE_ROOT
-        source_page = self.request.GET.get('page', '')
+        source_page = self.kwargs.get('page', '')
 
-        decoded_page = urllib.parse.unquote(source_page)
-        page_parts = urllib.parse.urlsplit(decoded_page)
         root_parts = urllib.parse.urlsplit(source_root)
+        page_parts = urllib.parse.urlsplit(source_page)
+
+        # Get query string from request (as-is, all params should be passed through)
+        query = self.request.GET.urlencode() if self.request.GET else None
+        logger.debug(f"Query string: {query}")
 
         url_parts = urllib.parse.ParseResult(
             scheme=root_parts.scheme,
             netloc=root_parts.netloc,
-            path=root_parts.path + page_parts.path.lstrip('/'),
+            path=root_parts.path + page_parts.path,
             params=None,
-            query=page_parts.query,
-            fragment=None
+            query=query,
+            fragment=page_parts.fragment
         )
 
         source_url = urllib.parse.urlunparse(url_parts)
@@ -62,12 +65,26 @@ class RemoteMarkup(TemplateView):
 
         # FAQ: No markup for bad URL or a resource specific to source wesbite
         if source_markup:
+            source_page = self.kwargs.get('page', '')
+            page_parts = urllib.parse.urlsplit(source_page)
+            client_path = '/' + settings.PORTAL_REMOTE_CONTENT_CLIENT_PATH.strip('/') + '/'
+
+            # Handle resource URLs
             client_markup = source_markup.replace(
-                'src="',
-                'crossorigin="anonymous" src="' + source_site
-            ).replace(
-                'href="' + source.path,
-                'target="_blank" href="' + source_site + source.path
+                'src="/',
+                'crossorigin="anonymous" src="' + source_site + '/'
+            )
+
+            # Handle absolute URLs at source website
+            client_markup = client_markup.replace(
+                'href="/',
+                f'href="{client_path}'
+            )
+
+            # Preserve relative query param links (e.g. href="?param=value")
+            client_markup = client_markup.replace(
+                'href="?',
+                f'href="{client_path}{page_parts.path}?'
             )
 
         return client_markup
