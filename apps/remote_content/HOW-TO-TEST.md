@@ -10,15 +10,19 @@ Configure two sites:
 
 ## 2. Configure Local Settings
 
-````python
-# filepath: settings_local.py
+1. Verify you have a working Blog/News e.g.\
+    `cp taccsite_cms/settings_custom.example.py taccsite_cms/settings_custom.py`
 
-# Enable multisite for blog
-BLOG_MULTISITE = True
+2. Add these settings to `local_settings.py`:
 
-# Configure remote content settings
-PORTAL_REMOTE_CONTENT_SOURCE_ROOT = 'http://localhost:8000/news/'
-PORTAL_REMOTE_CONTENT_CLIENT_PATH = '/remote/markup/'
+    ```python
+    # Enable multisite for blog
+    BLOG_MULTISITE = True
+
+    # Configure remote content settings
+    PORTAL_REMOTE_CONTENT_SOURCE_ROOT = 'http://localhost:8000/news/'
+    PORTAL_REMOTE_CONTENT_CLIENT_PATH = '/remote/markup/'
+    ```
 
 ## 3. Create Test Articles
 
