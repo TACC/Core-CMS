@@ -30,9 +30,7 @@ class RemoteMarkup(TemplateView):
         root_parts = urllib.parse.urlsplit(source_root)
         page_parts = urllib.parse.urlsplit(source_page)
 
-        # Get query string from request (as-is, all params should be passed through)
         query = self.request.GET.urlencode() if self.request.GET else None
-        logger.debug(f"Query string: {query}")
 
         url_parts = urllib.parse.ParseResult(
             scheme=root_parts.scheme,
@@ -64,7 +62,6 @@ class RemoteMarkup(TemplateView):
         source_site = source.scheme + '://' + source.netloc
         client_path = '/' + settings.PORTAL_REMOTE_CONTENT_CLIENT_PATH.strip('/') + '/'
 
-        # Parse HTML with BeautifulSoup
         soup = BeautifulSoup(source_markup, 'html.parser')
 
         # Handle resource URLs (src attributes)
