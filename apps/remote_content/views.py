@@ -58,33 +58,55 @@ class RemoteMarkup(TemplateView):
 
     # CAVEAT: Causes a view request for every resource (img/script/stylesheet)
     def get_client_markup(self, source_markup):
+        if not source_markup:
+            logger.error(f"Failed to fetch source markup from {source_site}")
+            return None
+
         client_markup = None
 
         source = urlparse(settings.PORTAL_REMOTE_CONTENT_SOURCE_ROOT)
         source_site = source.scheme + '://' + source.netloc
+        client_path = '/' + settings.PORTAL_REMOTE_CONTENT_CLIENT_PATH.strip('/') + '/'
 
-        # FAQ: No markup for bad URL or a resource specific to source wesbite
-        if source_markup:
-            source_page = self.kwargs.get('page', '')
-            page_parts = urllib.parse.urlsplit(source_page)
-            client_path = '/' + settings.PORTAL_REMOTE_CONTENT_CLIENT_PATH.strip('/') + '/'
+        # Resource URLs
+        client_markup = source_markup.replace(
+            'src="/',
+            'crossorigin="anonymous" src="' + source_site + '/'
+        )
 
-            # Handle resource URLs
-            client_markup = source_markup.replace(
-                'src="/',
-                'crossorigin="anonymous" src="' + source_site + '/'
-            )
+        # Absolute URLs
+        client_markup = client_markup.replace(
+            'href="/',
+            f'href="{client_path}'
+        )
 
-            # Handle absolute URLs at source website
-            client_markup = client_markup.replace(
-                'href="/',
-                f'href="{client_path}'
-            )
+        # Parameters specific to Django-CMS
+        cms_params = {
+            k: v for k, v in self.request.GET.items()
+            if k in ['template', 'language', 'edit', 'edit_off', 'structure', 'toolbar_off']
+        }
 
-            # Preserve relative query param links (e.g. href="?param=value")
-            client_markup = client_markup.replace(
-                'href="?',
-                f'href="{client_path}{page_parts.path}?'
-            )
+        # Preserve parameters
+        if cms_params:
+            def replace_url(match):
+                # Extract URL between quotes, including the quotes
+                full_attr = match.group(0)  # e.g. href="?page=3"
+                quote_char = full_attr[5]  # Get the type of quote used (" or ')
+                url = full_attr[6:-1]  # Get URL without quotes and href=
+
+                if url.startswith('?'):
+                    # Parse the query parameters
+                    query_params = dict(parse_qsl(url[1:]))  # Skip the ? at start
+                    # Add CMS params
+                    query_params.update(cms_params)
+                    # Rebuild the URL with updated parameters
+                    new_url = f'href={quote_char}?{urlencode(query_params)}{quote_char}'
+                    return new_url
+                return full_attr
+
+            # Replace relative URLs that start with ?, matching the quotes correctly
+            import re
+            pattern = r'href=[\'"]\?[^\'\"]*[\'"]'  # Handles both single and double quotes
+            client_markup = re.sub(pattern, replace_url, client_markup)
 
         return client_markup
