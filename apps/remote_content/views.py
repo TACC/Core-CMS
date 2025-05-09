@@ -62,31 +62,44 @@ class RemoteMarkup(TemplateView):
         source_site = source.scheme + '://' + source.netloc
         client_path = '/' + settings.PORTAL_REMOTE_CONTENT_CLIENT_PATH.strip('/') + '/'
 
-        soup = BeautifulSoup(source_markup, 'html.parser')
-
-        # Handle resource URLs (src attributes)
-        for tag in soup.find_all(src=True):
-            if tag['src'].startswith('/'):
-                tag['crossorigin'] = 'anonymous'
-                tag['src'] = source_site + tag['src']
-
-        # Handle absolute URLs (href attributes)
-        for tag in soup.find_all(href=True):
-            if tag['href'].startswith('/'):
-                tag['href'] = client_path + tag['href'].lstrip('/')
-
-        # Parameters specific to Django-CMS
+        # To find parameters specific to Django-CMS which should be preserved
         cms_params = {
             k: v for k, v in self.request.GET.items()
             if k in ['template', 'language', 'edit', 'edit_off', 'structure', 'toolbar_off']
         }
 
-        # Preserve parameters for relative URLs that start with ?
-        if cms_params:
-            for tag in soup.find_all(href=True):
-                if tag['href'].startswith('?'):
-                    query_params = dict(parse_qsl(tag['href'][1:]))
-                    query_params.update(cms_params)
-                    tag['href'] = '?' + urlencode(query_params)
+        soup = BeautifulSoup(source_markup, 'html.parser')
+
+        # To change resource URLs
+        for tag in soup.find_all(src=True):
+            if tag['src'].startswith('/'):
+                tag['crossorigin'] = 'anonymous'
+                tag['src'] = source_site + tag['src']
+
+        # To change navigation URLs
+        for tag in soup.find_all(href=True):
+            href = tag['href']
+
+            # To skip http://, https://, #section, mailto:, tel:, etc
+            if ':' in href or href.startswith('#'):
+                continue
+
+            def merge_cms_params(url):
+                if not cms_params:
+                    return url
+                parts = urllib.parse.urlsplit(url)
+                query_params = dict(parse_qsl(parts.query)) if parts.query else {}
+                query_params.update(cms_params)
+                return urllib.parse.urlunsplit((
+                    parts.scheme, parts.netloc, parts.path,
+                    urlencode(query_params), parts.fragment
+                ))
+
+            if href.startswith('/'):
+                new_href = client_path + href.lstrip('/')
+            else:
+                new_href = href
+
+            tag['href'] = merge_cms_params(new_href)
 
         return str(soup)
