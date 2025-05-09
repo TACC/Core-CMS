@@ -29,7 +29,7 @@ Configure two sites:
     BLOG_MULTISITE = True
 
     # Configure remote content settings
-    PORTAL_REMOTE_CONTENT_SOURCE_ROOT = 'http://localhost:8000/news/'
+    PORTAL_REMOTE_CONTENT_SOURCE_ROOT = 'http://localhost:8000/'
     PORTAL_REMOTE_CONTENT_CLIENT_PATH = '/remote/markup/'
     ```
 
@@ -40,9 +40,7 @@ Configure two sites:
 
 ## 3. Create Test Articles
 
-Visit: http://localhost:8000/admin/djangocms_blog/post/
-
-If you test Blog/News, create two **articles**:
+If you test Blog/News, [create two **articles**](http://localhost:8000/admin/djangocms_blog/post/):
 
 1. Via Blog/News (either site):
 
@@ -54,7 +52,7 @@ If you test Blog/News, create two **articles**:
   - Title: **Site 2 Article 1**
   - Sites: _select only_ **`127.0.0.1:8000`**
 
-If you do **not** test Blog/News, create two **pages**:
+If you do **not** test Blog/News, [create two **pages**](http://localhost:8000/admin/cms/page/):
 
 1. Via localhost:8000:
 
@@ -68,14 +66,20 @@ If you do **not** test Blog/News, create two **pages**:
 
 ## 4. Test Setup
 
-1. View articles on their respective sites:
+1. View articles or pages on their respective sites:
 
+  - articles:
     1. http://localhost:8000/news/2025/05/09/site-1-article-1/
     2. http://127.0.0.1:8000/news/2025/05/09/site-2-article-1/
 
-2. Test remote content:
+  - pages:
+    1. http://localhost:8000/site-1-page/
+    2. http://127.0.0.1:8000/site-2-page/
 
-    1. Visit Site 2 and try to view Site 1's article:\
-      http://127.0.0.1:8000/remote/markup/2025/05/09/site-1-article-1/
-    2. Visit Site 1 and try to view Site 2's article:\
-      http://localhost:8000/remote/markup/2025/05/09/site-2-article-1/
+2. Test article or pages as remote content:
+
+  - (article) Visit Site 2 and try to view Site 1's article:\
+      http://127.0.0.1:8000/remote/markup?path=/news/2025/05/09/site-1-article-1/
+
+  - (page) Visit Site 2 and try to view Site 1's page:\
+      http://127.0.0.1:8000/remote/markup?path=/site-1-page/

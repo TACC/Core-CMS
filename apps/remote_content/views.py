@@ -22,18 +22,17 @@ class RemoteMarkup(TemplateView):
 
     def get_source_url(self):
         source_root = settings.PORTAL_REMOTE_CONTENT_SOURCE_ROOT
-        client = urlparse(self.request.build_absolute_uri())
+        source_path = self.request.GET.get('path', '')
+
+        # Combine source root with requested path
         source = urlparse(source_root)
-
-        client_path = settings.PORTAL_REMOTE_CONTENT_CLIENT_PATH
-        source_path = source.path + client.path.replace(client_path, '')
-
-        source_url = client._replace(
-            scheme=source.scheme,
-            netloc=source.netloc,
-            path=source_path,
+        source_url = source._replace(
+            path=source.path + source_path.lstrip('/')
         ).geturl()
-        source_url = add_query_params(source_url, {'raw':''})
+
+        # Use raw markup template
+        # TODO: Make this optional and configurable
+        source_url = add_query_params(source_url, {'template':'raw.html'})
 
         return source_url
 
