@@ -1,18 +1,22 @@
+import logging
 import requests
 
 from urllib.parse import urlparse, urlencode, parse_qsl
+import urllib.parse
 
 from django.conf import settings
 from django.template import Template, Context
 from django.shortcuts import render
 from django.views.generic.base import TemplateView
 
+logger = logging.getLogger(f"portal.{__name__}")
+
 class RemoteMarkup(TemplateView):
     template_name = 'remote_content/markup.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        source_url = self.get_source_url()
+        source_url = self.build_source_url()
         source_markup = self.get_source_markup(source_url)
         client_markup = self.get_client_markup(source_markup)
 
@@ -20,20 +24,25 @@ class RemoteMarkup(TemplateView):
 
         return context
 
-    def get_source_url(self):
+    def build_source_url(self):
         source_root = settings.PORTAL_REMOTE_CONTENT_SOURCE_ROOT
-        source_path = self.request.GET.get('path', '')
-        source_template = getattr(settings, 'PORTAL_REMOTE_CONTENT_TEMPLATE', None)
+        source_page = self.request.GET.get('page', '')
 
-        # Combine source root with requested path
-        source = urlparse(source_root)
-        source_url = source._replace(
-            path=source.path + source_path.lstrip('/')
-        ).geturl()
+        decoded_page = urllib.parse.unquote(source_page)
+        page_parts = urllib.parse.urlsplit(decoded_page)
+        root_parts = urllib.parse.urlsplit(source_root)
 
-        if source_template:
-            source_url = add_query_params(source_url, {'template': source_template})
+        url_parts = urllib.parse.ParseResult(
+            scheme=root_parts.scheme,
+            netloc=root_parts.netloc,
+            path=root_parts.path + page_parts.path.lstrip('/'),
+            params=None,
+            query=page_parts.query,
+            fragment=None
+        )
 
+        source_url = urllib.parse.urlunparse(url_parts)
+        logger.debug(f"Attempting to fetch: {source_url}")
         return source_url
 
     def get_source_markup(self, url):
@@ -62,10 +71,3 @@ class RemoteMarkup(TemplateView):
             )
 
         return client_markup
-
-def add_query_params(url, params):
-    request = requests.PreparedRequest()
-
-    request.prepare_url(url, params)
-
-    return request.url

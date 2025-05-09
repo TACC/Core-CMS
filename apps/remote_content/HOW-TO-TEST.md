@@ -31,7 +31,6 @@ Configure two sites:
     # Configure remote content settings
     PORTAL_REMOTE_CONTENT_SOURCE_ROOT = 'http://localhost:8000/'
     PORTAL_REMOTE_CONTENT_CLIENT_PATH = '/remote/markup/'
-    PORTAL_REMOTE_CONTENT_TEMPLATE = 'raw.html'
     ```
 
     > [!NOTE]
@@ -77,10 +76,18 @@ If you do **not** test Blog/News, [create two **pages**](http://localhost:8000/a
     1. http://localhost:8000/site-1-page/
     2. http://127.0.0.1:8000/site-2-page/
 
-2. Test article or pages as remote content:
+2. Test article or page as remote content:
 
   - (article) Visit Site 2 and try to view Site 1's article:\
-      http://127.0.0.1:8000/remote/markup?path=/news/2025/05/09/site-1-article-1/
+      http://127.0.0.1:8000/remote/markup?page=/news/2025/05/09/site-1-article-1/
 
   - (page) Visit Site 2 and try to view Site 1's page:\
-      http://127.0.0.1:8000/remote/markup?path=/site-1-page/
+      http://127.0.0.1:8000/remote/markup?page=/site-1-page/
+
+3. Test article or page markup as remote content:
+
+  - (article) Visit Site 2 and try to view Site 1's article:\
+      http://127.0.0.1:8000/remote/markup?page=/news/2025/05/09/site-1-article-1/%3Ftemplate=raw.html
+
+  - (page) Visit Site 2 and try to view Site 1's page:\
+      http://127.0.0.1:8000/remote/markup?page=/site-1-page/%3Ftemplate=raw.html
