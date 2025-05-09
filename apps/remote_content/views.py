@@ -17,7 +17,7 @@ class RemoteMarkup(TemplateView):
         context = super().get_context_data(**kwargs)
         source_url = self.build_source_url()
         source_markup = self.get_source_markup(source_url)
-        client_markup = self.get_client_markup(source_markup)
+        client_markup = self.build_client_markup(source_markup)
 
         context['markup'] = client_markup
 
@@ -55,7 +55,7 @@ class RemoteMarkup(TemplateView):
         else:
             return None
 
-    def get_client_markup(self, source_markup):
+    def build_client_markup(self, source_markup):
         if not source_markup:
             logger.error(f"Failed to fetch source markup")
             return None
