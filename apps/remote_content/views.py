@@ -71,13 +71,18 @@ class RemoteMarkup(TemplateView):
         soup = BeautifulSoup(source_markup, 'html.parser')
 
         # To change resource URLs
-        for tag in soup.find_all(src=True):
-            if tag['src'].startswith('/'):
+        for tag in soup.find_all(['img', 'script', 'link']):
+            # For images, scripts
+            if tag.has_attr('src') and tag['src'].startswith('/'):
                 tag['crossorigin'] = 'anonymous'
                 tag['src'] = source_site + tag['src']
+            # For stylesheets
+            if tag.name == 'link' and tag.get('rel') == ['stylesheet'] and tag.has_attr('href') and tag['href'].startswith('/'):
+                tag['crossorigin'] = 'anonymous'
+                tag['href'] = source_site + tag['href']
 
         # To change navigation URLs
-        for tag in soup.find_all(href=True):
+        for tag in soup.find_all('a', href=True):
             href = tag['href']
 
             # To skip http://, https://, #section, mailto:, tel:, etc
