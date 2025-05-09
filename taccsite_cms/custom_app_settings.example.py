@@ -2,6 +2,7 @@ CUSTOM_APPS = [
 
     # CUSTOM APP
     'apps.custom_example',
+    'apps.remote_content',
 
     # DJANGOCMS_BLOG
     'parler',
@@ -11,5 +12,7 @@ CUSTOM_APPS = [
     'djangocms_blog',
 
 ]
-CUSTOM_MIDDLEWARE = []
+CUSTOM_MIDDLEWARE = [
+    'taccsite_cms.middleware.DynamicSiteMiddleware'
+]
 STATICFILES_DIRS = ()
