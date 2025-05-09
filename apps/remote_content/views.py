@@ -1,13 +1,12 @@
 import logging
 import requests
-
 from urllib.parse import urlparse, urlencode, parse_qsl
 import urllib.parse
 
 from django.conf import settings
-from django.template import Template, Context
-from django.shortcuts import render
 from django.views.generic.base import TemplateView
+
+from bs4 import BeautifulSoup
 
 logger = logging.getLogger(f"portal.{__name__}")
 
@@ -56,29 +55,28 @@ class RemoteMarkup(TemplateView):
         else:
             return None
 
-    # CAVEAT: Causes a view request for every resource (img/script/stylesheet)
     def get_client_markup(self, source_markup):
         if not source_markup:
-            logger.error(f"Failed to fetch source markup from {source_site}")
+            logger.error(f"Failed to fetch source markup")
             return None
-
-        client_markup = None
 
         source = urlparse(settings.PORTAL_REMOTE_CONTENT_SOURCE_ROOT)
         source_site = source.scheme + '://' + source.netloc
         client_path = '/' + settings.PORTAL_REMOTE_CONTENT_CLIENT_PATH.strip('/') + '/'
 
-        # Resource URLs
-        client_markup = source_markup.replace(
-            'src="/',
-            'crossorigin="anonymous" src="' + source_site + '/'
-        )
+        # Parse HTML with BeautifulSoup
+        soup = BeautifulSoup(source_markup, 'html.parser')
 
-        # Absolute URLs
-        client_markup = client_markup.replace(
-            'href="/',
-            f'href="{client_path}'
-        )
+        # Handle resource URLs (src attributes)
+        for tag in soup.find_all(src=True):
+            if tag['src'].startswith('/'):
+                tag['crossorigin'] = 'anonymous'
+                tag['src'] = source_site + tag['src']
+
+        # Handle absolute URLs (href attributes)
+        for tag in soup.find_all(href=True):
+            if tag['href'].startswith('/'):
+                tag['href'] = client_path + tag['href'].lstrip('/')
 
         # Parameters specific to Django-CMS
         cms_params = {
@@ -86,27 +84,12 @@ class RemoteMarkup(TemplateView):
             if k in ['template', 'language', 'edit', 'edit_off', 'structure', 'toolbar_off']
         }
 
-        # Preserve parameters
+        # Preserve parameters for relative URLs that start with ?
         if cms_params:
-            def replace_url(match):
-                # Extract URL between quotes, including the quotes
-                full_attr = match.group(0)  # e.g. href="?page=3"
-                quote_char = full_attr[5]  # Get the type of quote used (" or ')
-                url = full_attr[6:-1]  # Get URL without quotes and href=
-
-                if url.startswith('?'):
-                    # Parse the query parameters
-                    query_params = dict(parse_qsl(url[1:]))  # Skip the ? at start
-                    # Add CMS params
+            for tag in soup.find_all(href=True):
+                if tag['href'].startswith('?'):
+                    query_params = dict(parse_qsl(tag['href'][1:]))
                     query_params.update(cms_params)
-                    # Rebuild the URL with updated parameters
-                    new_url = f'href={quote_char}?{urlencode(query_params)}{quote_char}'
-                    return new_url
-                return full_attr
+                    tag['href'] = '?' + urlencode(query_params)
 
-            # Replace relative URLs that start with ?, matching the quotes correctly
-            import re
-            pattern = r'href=[\'"]\?[^\'\"]*[\'"]'  # Handles both single and double quotes
-            client_markup = re.sub(pattern, replace_url, client_markup)
-
-        return client_markup
+        return str(soup)
