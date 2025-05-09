@@ -53,6 +53,7 @@ class RemoteMarkup(TemplateView):
         else:
             return None
 
+    # CAVEAT: Breaks resource "import" (e.g. CSS `@import`, JS `import`)
     def build_client_markup(self, source_markup):
         if not source_markup:
             logger.error(f"Failed to fetch source markup")
@@ -80,7 +81,7 @@ class RemoteMarkup(TemplateView):
         for tag in soup.find_all(href=True):
             href = tag['href']
 
-            # Skip http://, https://, #section, mailto:, tel:, etc
+            # To skip http://, https://, #section, mailto:, tel:, etc
             if ':' in href or href.startswith('#'):
                 continue
 
