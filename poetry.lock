@@ -974,6 +974,28 @@ reference = "v0.1.4"
 resolved_reference = "5d93622cae3ecbffc9599c2aed140c2a06983768"
 
 [[package]]
+name = "djangocms-tacc-remote-content"
+version = "0.1.0"
+description = "A DjangoCMS plugin (for TACC Core CMS) to fetch and display content from remote TACC URLs."
+optional = false
+python-versions = "*"
+groups = ["main"]
+files = []
+develop = false
+
+[package.dependencies]
+beautifulsoup4 = ">=4.9.3"
+Django = ">=3.2"
+django-cms = ">=3.7.4,<4"
+requests = ">=2.25.1"
+
+[package.source]
+type = "git"
+url = "https://github.com/wesleyboar/Core-CMS-Plugin-Remote-Content"
+reference = "0f85a74"
+resolved_reference = "0f85a740d17a6e9cc7e026c5cd713cde83cd8f1e"
+
+[[package]]
 name = "djangocms-tacc-system-monitor"
 version = "0.3.0"
 description = "A DjangoCMS plugin (for TACC Core CMS) to render a system monitor."
@@ -2480,4 +2502,4 @@ testing = ["func-timeout", "jaraco.itertools"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<4.0"
-content-hash = "8865f1880dbe2907dab657e8921a1173e87fa386e6aa581ace002d685d530a2e"
+content-hash = "0859112fb056e42105b18e584472e7ed8c636602c2401c1cd2daf1fecd7ad5aa"
