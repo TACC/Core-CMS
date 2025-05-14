@@ -13,6 +13,7 @@ The base CMS code for TACC WMA Workspace Portals & Websites
 - [Update Project](#update-project)
 - [Develop Project](#develop-project)
   - [Develop a Custom Project](#develop-a-custom-project)
+  - [Develop a Custom App/Plugin](#develop-a-custom-appplugin)
 - [Debug Project](#debug-project)
 - [Build & Deploy Project](#build--deploy-project)
 - [Contributing](#contributing)
@@ -153,6 +154,10 @@ Read [Develop Project] for developer instructions.
 
 To develop a new or existing custom CMS website for a client, read [Develop a Custom Project].
 
+### Develop a Custom App/Plugin
+
+To develop a new or existing Django CMS app or plugin for a client, read [Develop a Custom App/Plugin].
+
 ## Debug Project
 
 Read [Debug Project] for miscellaneous tips.
@@ -195,6 +200,7 @@ To contribute, first read [How to Contirbute][Contributing].
 [Django CMS User Guide]: https://tacc-main.atlassian.net/wiki/x/phdv
 
 [Develop a Custom Project]: ./docs/develop-custom-project.md
+[Develop a Custom App/Plugin]: ./docs/develop-custom-app.md
 [Develop Project]: ./docs/develop-project.md
 [Upgrade Project]: ./docs/upgrade-project.md
 [Debug Project]: ./docs/debug-project.md

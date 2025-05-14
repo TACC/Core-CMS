@@ -4,8 +4,7 @@
 | - | - | - |
 | **customize** templates, static assets, settings, custom apps, URLs, middleware | [Core-CMS-Custom](#via-core-cms-custom) | active |
 | **customize** templates, static assets, settings | [Core-CMS-Resources](#via-core-cms-resources) | deprecated |
-| **create** custom apps | [Django-App](https://github.com/TACC/Django-App) | active |
-| **create** forked apps e.g. [TACC/djangocms-forms](https://github.com/TACC/djangocms-forms) | ["Fork a repo"](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) | evergreen |
+| **create** or **customize** an app | [Develop a Custom App/Plugin](./develop-custom-app.md) | active |
 
 ## via [Core CMS Custom]
 
@@ -15,6 +14,9 @@ Work on the project **only** via [Core CMS Custom].
 > You should **not** need to clone **nor** edit this [Core CMS] repository.
 
 ## via [Core CMS Resources]
+
+> [!DANGER]
+> Deprecated solution. Use [Core CMS Custom] instead.
 
 ### Update Project
 
