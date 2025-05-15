@@ -118,12 +118,3 @@ BLOG_ENABLE_COMMENTS = False
 
 PORTAL_BLOG_SHOW_CATEGORIES = True
 PORTAL_BLOG_SHOW_TAGS = True
-
-########################
-# REMOTE CONTENT SETTINGS
-########################
-
-PORTAL_REMOTE_CONTENT_SOURCE_ROOT = 'http://localhost:8000/'
-PORTAL_REMOTE_CONTENT_CLIENT_PATH = '/remote/markup/'
-# Optional: Set template for raw markup (set to None to disable)
-PORTAL_REMOTE_CONTENT_RAW_TEMPLATE = 'raw.html'

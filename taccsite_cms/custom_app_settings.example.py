@@ -2,7 +2,6 @@ CUSTOM_APPS = [
 
     # CUSTOM APP
     'apps.custom_example',
-    'apps.remote_content',
 
     # DJANGOCMS_BLOG
     'parler',
