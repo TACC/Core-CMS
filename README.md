@@ -13,6 +13,7 @@ The base CMS code for TACC WMA Workspace Portals & Websites
 - [Update Project](#update-project)
 - [Develop Project](#develop-project)
   - [Develop a Custom Project](#develop-a-custom-project)
+  - [Develop a Custom App/Plugin](#develop-a-custom-appplugin)
 - [Debug Project](#debug-project)
 - [Build & Deploy Project](#build--deploy-project)
 - [Contributing](#contributing)
@@ -35,7 +36,6 @@ The base CMS code for TACC WMA Workspace Portals & Websites
 | `bin` | scripts e.g. build CSS |
 | `taccsite_cms` | settings for [Core CMS] |
 | `taccsite_custom` | [Git submodule][Git Submodules] of [Core CMS Resources] |
-| `taccsite_ui` | files to build [TACC UI Patterns] |
 
 ## Prerequisites
 
@@ -77,7 +77,7 @@ Set up a new local CMS instance.
     ```
 
     > **Note**
-    > This will make the terminal window busy. To run commands after this, **either** open a new terminal window **or** run `docker compose -f ./docker-compose.dev.yml up --detach` instead.
+    > This will make the terminal window busy. To run commands after this, **either** open a new terminal window **or** run `make start ARGS="--detach"` instead.
 
 4. Enter the CMS Docker Container:
 
@@ -109,7 +109,7 @@ Set up a new local CMS instance.
         - This page will automatically be your local homepage.
 
 > **Important**
-> A local machine CMS will be empty. It will **not** have content from staging **nor** production. If you need that, follow and adapt instructions to [copy a database](https://confluence.tacc.utexas.edu/x/W4DZDg).
+> A local machine CMS will be empty. It will **not** have content from staging **nor** production. If you need that, follow and adapt instructions to [replicate a CMS database](https://tacc-main.atlassian.net/wiki/x/GwBJAg). This requires high-level server access or somone to give you a copy of the content.
 
 > **Note**
 > A local machine CMS does **not** include **nor** integrate with an instance of [Core Portal]. To attempt to do that, follow [How to Use a Custom Docker Compose File](https://github.com/TACC/Core-CMS/wiki/How-to-Use-a-Custom-Docker-Compose-File) and [Locally Develop CMS Portal Docs](https://github.com/TACC/Core-CMS/wiki/Locally-Develop-CMS---Portal---Docs). **Help welcome.**
@@ -140,8 +140,7 @@ To only update as necessary, or update since uncommon changes:
 | 1 | Python models | `docker exec -it core_cms sh -c "python manage.py migrate"` |
 | 2 | Node dependencies | `npm ci` |
 | 3 | CSS stylesheets | `npm run build:css` |
-| 4 | UI Demo | `npm run build:ui-demo` |
-| 5 |  Assets e.g.<br><sub>images, stylesheets, JavaScript, UI demo</sub> | `docker exec -it core_cms sh -c "python manage.py collectstatic --no-input"` |
+| 4 | Assets e.g.<br><sub>images, stylesheets, JavaScript</sub> | `docker exec -it core_cms sh -c "python manage.py collectstatic --no-input"` |
 
 </details>
 
@@ -154,6 +153,10 @@ Read [Develop Project] for developer instructions.
 ### Develop a Custom Project
 
 To develop a new or existing custom CMS website for a client, read [Develop a Custom Project].
+
+### Develop a Custom App/Plugin
+
+To develop a new or existing Django CMS app or plugin for a client, read [Develop a Custom App/Plugin].
 
 ## Debug Project
 
@@ -193,11 +196,11 @@ To contribute, first read [How to Contirbute][Contributing].
 [Docker]: https://docs.docker.com/get-docker/
 [Docker Compose]: https://docs.docker.com/compose/install/
 
-[TACC UI Patterns]: https://tacc.utexas.edu/static/ui/
 [Build & Deploy Project]: https://tacc-main.atlassian.net/wiki/x/2AVv
 [Django CMS User Guide]: https://tacc-main.atlassian.net/wiki/x/phdv
 
 [Develop a Custom Project]: ./docs/develop-custom-project.md
+[Develop a Custom App/Plugin]: ./docs/develop-custom-app.md
 [Develop Project]: ./docs/develop-project.md
 [Upgrade Project]: ./docs/upgrade-project.md
 [Debug Project]: ./docs/debug-project.md

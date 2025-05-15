@@ -19,9 +19,17 @@ DEBUG = True
 # To hide error about using Google Recaptcha test keys
 SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
 
+# To define Google Recaptcha keys
+# RECAPTCHA_PUBLIC_KEY = ''
+# RECAPTCHA_PRIVATE_KEY = ''
+
 # To disable the Core-Portal integration
-PORTAL_IS_TACC_CORE_PORTAL = False
-PORTAL_HAS_LOGIN = False
+# IMPORTANT: Do not disable by default, because [Core-Portal clones this file](https://github.com/TACC/Core-Portal/pull/1034)
+# PORTAL_IS_TACC_CORE_PORTAL = False
+# PORTAL_HAS_LOGIN = False
+
+# To let user assign News article to specific Site
+# BLOG_MULTISITE = True
 
 # To allow login in unique situations
 # FAQ: If `BLOG_MULTISITE = True`, set `SESSION_COOKIE_SECURE=False` to be able to log in to CMS Admin at different domain (e.g. 0.0.0.0)

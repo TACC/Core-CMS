@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "tacc-core-cms-backend"
-version = "4.16.1"
+version = "4.29.1"
 description = "DjangoCMS backend for the TACC ACI-WMA Core-CMS Codebase."
 authors = ["TACC-WMA <wma-portals@tacc.utexas.edu>"]
 
@@ -50,7 +50,7 @@ djangocms-blog = "^1.2"
 djangocms-bootstrap4 = {git = "https://github.com/django-cms/djangocms-bootstrap4.git", rev = "49983f4"}
 djangocms-column = "^2.0"
 djangocms-file = "3.0.0"
-djangocms-forms-maintained = { git = "https://github.com/TACC/djangocms-forms", rev = "63ead9288c2ea65139124698bffc0ad01d182afa" }
+djangocms-forms-maintained = { git = "https://github.com/TACC/djangocms-forms", rev = "6b59ff366495915f06f4d6fac01a2f0aa9efecaf" }
 djangocms-googlemap = "2.0.0"
 djangocms-icon = "2.0.0"
 djangocms-link = "^3.1"
@@ -58,7 +58,8 @@ djangocms-page-meta = "1.3.0"
 djangocms-picture = "3.0.0"
 djangocms-snippet = "3.0.0"
 djangocms-style = "3.0.0"
-djangocms-tacc-image-gallery = { git = "https://github.com/TACC/Core-CMS-Plugin-Image-Gallery.git", rev = "v0.1.4" }
+djangocms-tacc-image-gallery = {git = "https://github.com/TACC/Core-CMS-Plugin-Image-Gallery.git", rev = "v0.1.4"}
+djangocms-tacc-system-monitor = {git = "https://github.com/TACC/Core-CMS-Plugin-System-Monitor.git", rev = "v0.3.0"}
 djangocms-text-ckeditor = "^5.1"
 djangocms-transfer = "1.0.1"
 djangocms-video = "3.0.0"

@@ -1,13 +1,20 @@
 /**
  * Create element from HTML string
  * @param {String} - HTML representing a single element
- * @return {Element}
+ * @return {Element|null} - Created element or null if HTML is empty
  * @see https://stackoverflow.com/a/35385518
  */
 export function htmlToElement(html) {
+  const trimmedHtml = html ? html.trim() : '';
+
+  // To never return a text node of whitespace
+  if (!trimmedHtml) {
+    return null;
+  }
+
   var template = document.createElement('template');
-  html = html.trim(); // Never return a text node of whitespace as the result
-  template.innerHTML = html;
+  template.innerHTML = trimmedHtml;
+
   return template.content.firstChild;
 }
 
@@ -68,8 +75,15 @@ export function replaceFromURL(markupURL, placeholder) {
   if (markupURL) {
     return getFromURL(markupURL).then(markup => {
       const newElement = htmlToElement(markup);
-      placeholder.replaceWith(newElement);
-      return placeholder;
+      const emptyNode = document.createTextNode('');
+
+      if (newElement) {
+        placeholder.replaceWith(newElement);
+        return newElement;
+      } else {
+        placeholder.replaceWith(emptyNode);
+        return emptyNode;
+      }
     });
   } else {
     return Promise.reject(new Error('No `markupURL` provided'));
