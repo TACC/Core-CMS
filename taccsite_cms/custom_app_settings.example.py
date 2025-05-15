@@ -12,6 +12,6 @@ CUSTOM_APPS = [
 
 ]
 CUSTOM_MIDDLEWARE = [
-  'taccsite_cms.middleware.settings.SiteIdMiddleware'
+  'taccsite_cms.middleware.settings.DynamicSiteIdMiddleware'
 ]
 STATICFILES_DIRS = ()

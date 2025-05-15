@@ -1,20 +1,18 @@
 """Change site based on domain name (fallback to default site)"""
 from django.conf import settings
-from urllib.parse import urlparse
 from django.contrib.sites.models import Site
 
-class SiteIdMiddleware:
+class DynamicSiteIdMiddleware:
     def __init__(self, get_response):
         self.get_response = get_response
 
     def __call__(self, request):
         try:
-            current_site = Site.objects.get(domain=request.get_host())
+            host = request.get_host()
+            site = Site.objects.get(domain=host)
+            settings.SITE_ID = site.id
         except Site.DoesNotExist:
-            current_site = Site.objects.get(id=settings.DEFAULT_SITE_ID)
-
-        request.current_site = current_site
-        settings.SITE_ID = current_site.id
+            settings.SITE_ID = getattr(settings, 'DEFAULT_SITE_ID', 1)
 
         response = self.get_response(request)
         return response
