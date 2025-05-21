@@ -13,6 +13,7 @@ The base CMS code for TACC WMA Workspace Portals & Websites
 - [Update Project](#update-project)
 - [Develop Project](#develop-project)
   - [Develop a Custom Project](#develop-a-custom-project)
+  - [Develop a Custom App/Plugin](#develop-a-custom-appplugin)
 - [Debug Project](#debug-project)
 - [Build & Deploy Project](#build--deploy-project)
 - [Contributing](#contributing)
@@ -23,6 +24,7 @@ The base CMS code for TACC WMA Workspace Portals & Websites
 - [Camino], a Docker container-based deployment scheme
 - [Core Portal], the base Portal code for TACC WMA CMS Websites
 - [Core Styles], the shared UI pattern code for TACC WMA CMS Websites
+- [Core CMS Template], a template for creating new TACC WMA CMS projects
 - [Core CMS Resources], the old solution for extensions of the [Core CMS] project
 - [Core CMS Custom], the new solution for extensions of the [Core CMS] project
 - [Core Portal Deployments], private repository that facilitates deployments of [Core Portal] images via [Camino] and Jenkins
@@ -153,6 +155,10 @@ Read [Develop Project] for developer instructions.
 
 To develop a new or existing custom CMS website for a client, read [Develop a Custom Project].
 
+### Develop a Custom App/Plugin
+
+To develop a new or existing Django CMS app or plugin for a client, read [Develop a Custom App/Plugin].
+
 ## Debug Project
 
 Read [Debug Project] for miscellaneous tips.
@@ -182,6 +188,7 @@ To contribute, first read [How to Contirbute][Contributing].
 [Core CMS]: https://github.com/TACC/Core-CMS
 [Core Styles]: https://github.com/TACC/Core-Styles
 [Core CMS Resources]: https://github.com/TACC/Core-CMS-Resources
+[Core CMS Template]: https://github.com/TACC/Core-CMS-Template
 [Core CMS Custom]: https://github.com/TACC/Core-CMS-Custom
 [Core Portal]: https://github.com/TACC/Core-Portal
 [Core Portal Deployments]: https://github.com/TACC/Core-Portal-Deployments
@@ -195,6 +202,7 @@ To contribute, first read [How to Contirbute][Contributing].
 [Django CMS User Guide]: https://tacc-main.atlassian.net/wiki/x/phdv
 
 [Develop a Custom Project]: ./docs/develop-custom-project.md
+[Develop a Custom App/Plugin]: ./docs/develop-custom-app.md
 [Develop Project]: ./docs/develop-project.md
 [Upgrade Project]: ./docs/upgrade-project.md
 [Debug Project]: ./docs/debug-project.md
