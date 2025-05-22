@@ -49,6 +49,21 @@ The base CMS code for TACC WMA Workspace Portals & Websites
 
 ## Getting Started
 
+### Quick Setup
+
+1. Clone and open the project.
+2. To remove previous setup **entirely**:
+    ```sh
+    make clean
+    ```
+3. Run the setup script:
+    ```sh
+    make setup
+    ```
+    You will be prompted for information.
+
+### Manual Setup
+
 > **Important**
 > To develop a new or existing custom CMS website for a TACC client, do **not** clone this repository. Instead, read [Develop a Custom Project]. To develop on the Core CMS (upon which our other CMS are built) continute reading.
 
