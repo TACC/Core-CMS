@@ -49,10 +49,25 @@ The base CMS code for TACC WMA Workspace Portals & Websites
 
 ## Getting Started
 
-> **Important**
-> To develop a new or existing custom CMS website for a TACC client, do **not** clone this repository. Instead, read [Develop a Custom Project]. To develop on the Core CMS (upon which our other CMS are built) continute reading.
+How to set up a new local CMS instance.
 
-Set up a new local CMS instance.
+> **Important**
+> To develop a new or existing **custom** CMS website for a TACC client, do **not** clone this repository. Instead, read [Develop a Custom Project]. To develop on the Core CMS (upon which our other CMS are built) continute reading.
+
+### Quick Setup
+
+1. Clone and open the project.
+2. To remove previous setup **entirely**:
+    ```sh
+    make clean
+    ```
+3. Run the setup script:
+    ```sh
+    make setup
+    ```
+    You will be prompted for information.
+
+### Manual Setup
 
 0. [Clone this Repository.](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
 1. Enter the Repository Clone:
