@@ -53,3 +53,11 @@ stop:
 .PHONY: stop-v
 stop-v:
 	$(MAKE) stop ARGS="--volumes"
+
+.PHONY: clean
+clean:
+	$(DOCKER_COMPOSE_CMD) -f docker-compose.dev.yml down -v --rmi all
+
+.PHONY: setup
+setup:
+	./bin/setup-cms.sh
