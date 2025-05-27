@@ -991,7 +991,7 @@ requests = ">=2.25.1"
 
 [package.source]
 type = "git"
-url = "https://github.com/wesleyboar/Core-CMS-Plugin-Remote-Content.git"
+url = "https://github.com/TACC/Core-CMS-Plugin-Remote-Content.git"
 reference = "v0.3.0"
 resolved_reference = "167b55f3a0796982a8d2a92a7f6e4f51ef5db905"
 
@@ -2502,4 +2502,4 @@ testing = ["func-timeout", "jaraco.itertools"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<4.0"
-content-hash = "cf8da806b4ad15404a4c7bf566b36d1f68d8fd0a004c584100e897c3d272f013"
+content-hash = "ddb4918381669ca2ae797cfc32600476d42faaaa2190ea1ecb611cb54289bd01"
