@@ -992,8 +992,8 @@ requests = ">=2.25.1"
 [package.source]
 type = "git"
 url = "https://github.com/TACC/Core-CMS-Plugin-Remote-Content.git"
-reference = "v0.3.1"
-resolved_reference = "c84de70a15b362517b3b524a06ec7950c514f446"
+reference = "v0.3.2"
+resolved_reference = "adbb4fe0fa8977f3f4b7cc81143b5141948d6952"
 
 [[package]]
 name = "djangocms-tacc-system-monitor"
@@ -2502,4 +2502,4 @@ testing = ["func-timeout", "jaraco.itertools"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<4.0"
-content-hash = "f5afb50703d9c4c05515d011e98e6002d2ea9a40fb03b4fc0203d039d9d01511"
+content-hash = "d4ba9f750ecad1893af2e791dec8bacab152365e08d5a7ea580985e3c8e79517"
