@@ -34,7 +34,7 @@ CMS_TEMPLATES = (
     ('fullwidth.html', 'Full Width'),
 
     # WARNING: Unintuitive, so only enable as needed e.g. TACC/Core-CMS#868
-    # ('bare.html', 'Bare'),
+    # ('plain.html', 'Plain'),
 )
 
 ########################
