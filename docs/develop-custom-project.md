@@ -2,21 +2,18 @@
 
 | You can do these actions | via this resource | (status) |
 | - | - | - |
-| **customize** templates, static assets, settings, custom apps, URLs, middleware | [Core-CMS-Custom](#via-core-cms-custom) | active |
-| **customize** templates, static assets, settings | [Core-CMS-Resources](#via-core-cms-resources) | deprecated |
+| **customize** static assets | [Core CMS Custom] | active |
+| **customize** templates, static assets, settings | [Core CMS Resources](#via-core-cms-resources) | deprecated |
+| **customize** templates, static assets, custom apps, URLs, middleware | [Core CMS Template] | active |
 | **create** or **customize** an app | [Develop a Custom App/Plugin](./develop-custom-app.md) | active |
-
-## via [Core CMS Custom]
-
-Work on the project **only** via [Core CMS Custom].
-
-> **Note**
-> You should **not** need to clone **nor** edit this [Core CMS] repository.
 
 ## via [Core CMS Resources]
 
 > [!DANGER]
-> Deprecated solution. Use [Core CMS Custom] instead.
+> Deprecated solution.
+
+> [!TIP]
+> Use [Core CMS Custom] or [Core CMS Template] instead.
 
 ### Update Project
 
@@ -72,8 +69,8 @@ To commit changes to a custom project:
 
 [Core CMS]: https://github.com/TACC/Core-CMS
 [Core Styles]: https://github.com/TACC/Core-Styles
-[Core CMS Resources]: https://github.com/TACC/Core-CMS-Resources
 [Core CMS Custom]: https://github.com/TACC/Core-CMS-Custom
+[Core CMS Template]: https://github.com/TACC/Core-CMS-Template
 
 [restart server]: https://github.com/TACC/Core-CMS/wiki/How-to-Restart-the-CMS-Server
 [collect static files]: ./develop-project.md#collect-static-files
