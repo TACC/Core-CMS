@@ -59,7 +59,7 @@ djangocms-picture = "3.0.0"
 djangocms-snippet = "3.0.0"
 djangocms-style = "3.0.0"
 djangocms-tacc-image-gallery = {git = "https://github.com/TACC/Core-CMS-Plugin-Image-Gallery.git", rev = "v0.1.4"}
-djangocms-tacc-remote-content = {git = "https://github.com/TACC/Core-CMS-Plugin-Remote-Content.git", rev = "v0.3.2"}
+djangocms-tacc-remote-content = {git = "https://github.com/TACC/Core-CMS-Plugin-Remote-Content.git", rev = "v0.3.3"}
 djangocms-tacc-system-monitor = {git = "https://github.com/TACC/Core-CMS-Plugin-System-Monitor.git", rev = "v0.3.0"}
 djangocms-text-ckeditor = "^5.1"
 djangocms-transfer = "1.0.1"
