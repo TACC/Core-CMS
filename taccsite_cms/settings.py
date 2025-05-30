@@ -25,12 +25,13 @@ from taccsite_cms._settings.search import (
     _INSTALLED_APPS as search_INSTALLED_APPS
 )
 
+def gettext(s): return s
+
 ########################
 # DJANGO
 ########################
 
 SECRET_KEY = 'CHANGE_ME'
-def gettext(s): return s
 
 
 DATA_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -39,9 +40,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 DEBUG = True       # False for Prod.
 
-# Specify allowed hosts or use an asterisk to allow any host and simplify the config.
-# ALLOWED_HOSTS = ['hostname.tacc.utexas.edu', 'host.ip.v4.address', '0.0.0.0', 'localhost', '127.0.0.1']   # In production.
-ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost', '*']   # In development.
+# Specify allowed hosts or use an asterisk to allow any host.
+# ALLOWED_HOSTS = ['hostname.tacc.utexas.edu', 'client.org'] # Dev/Prod/Etc
+ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost', '*']   # Local
+
+LOGOUT_REDIRECT_URL = '/'
 
 # https://docs.djangoproject.com/en/3.0/ref/clickjacking/#how-to-use-it
 X_FRAME_OPTIONS = 'SAMEORIGIN'
@@ -49,6 +52,8 @@ X_FRAME_OPTIONS = 'SAMEORIGIN'
 # whether the session cookie should be secure (https:// only)
 SESSION_COOKIE_SECURE = True
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
 
 ########################
 # STORAGE
@@ -154,14 +159,6 @@ CMS_TEMPLATES = (
     ('fullwidth.html', 'Full Width'),
 
     ('guide.html', 'Guide'),
-    ('guides/portal_technology.html', 'Guide: Portal Technology Stack'),
-
-    # TODO: WP-394: Retire deprecated page templates
-    ('guides/getting_started.v3.html', 'Guide: Getting Started (v3)'),
-    ('guides/getting_started.tam.html', 'Guide: Getting Started (TAM)'),
-    ('guides/getting_started.v2.html', 'Guide: Getting Started (v2)'),
-    ('guides/data_transfer.html', 'Guide: Data Transfer'),
-    ('guides/data_transfer.globus.html', 'Guide: Globus Data Transfer'),
 )
 
 CMS_PERMISSION = True
@@ -178,43 +175,52 @@ GOOGLE_ANALYTICS_PRELOAD = True
 
 
 ########################
+# TACC: BRANDING (DEPRECATED)
+########################
+
+# TACC_BRANDING = [
+#     "tacc",                                  # (unused value)
+#     "site_cms/img/org_logos/tacc-white.png", # "img_file_src"
+#     "branding-tacc",                         # "img_class"
+#     "https://www.tacc.utexas.edu/",          # "link_href"
+#     "_blank",                                # "link_target"
+#     "TACC Logo",                             # "img_alt_text"
+#     "anonymous",                             # "img_crossorigin"
+#     "True"                                   # (whether to show logo)
+# ]
+# UTEXAS_BRANDING = [
+#     "utexas",                                    # (unused value)
+#     "site_cms/img/org_logos/utaustin-white.png", # "img_file_src"
+#     "branding-utaustin",                         # "img_class"
+#     "https://www.utexas.edu/",                   # "link_href"
+#     "_blank",                                    # "link_target"
+#     "University of Texas at Austin Logo",        # "img_alt_text"
+#     "anonymous",                                 # "img_crossorigin"
+#     "True"                                       # (whether to show logo)
+# ]
+# NSF_BRANDING = [
+#     "nsf",                                  # (unused value)
+#     "site_cms/img/org_logos/nsf-white.png", # "img_file_src"
+#     "branding-nsf",                         # "img_class"
+#     "https://www.nsf.gov/",                 # "link_href"
+#     "_blank",                               # "link_target"
+#     "NSF Logo",                             # "img_alt_text"
+#     "anonymous",                            # "img_crossorigin"
+#     "True"                                  # (whether to show logo)
+# ]
+
+# To hide branding, add custom style `#header-branding { display: none; }`
+# BRANDING = [ TACC_BRANDING, UTEXAS_BRANDING ]
+
+
+########################
 # TACC: BRANDING
 ########################
 
-TACC_BRANDING = [
-    "tacc",
-    "site_cms/img/org_logos/tacc-white.png",
-    "branding-tacc",
-    "https://www.tacc.utexas.edu/",
-    "_blank",
-    "TACC Logo",
-    "anonymous",
-    "True"
-]
+from taccsite_cms._settings.branding import *
 
-UTEXAS_BRANDING = [
-    "utexas",
-    "site_cms/img/org_logos/utaustin-white.png",
-    "branding-utaustin",
-    "https://www.utexas.edu/",
-    "_blank",
-    "University of Texas at Austin Logo",
-    "anonymous",
-    "True"
-]
-
-NSF_BRANDING = [
-    "nsf",
-    "site_cms/img/org_logos/nsf-white.png",
-    "branding-nsf",
-    "https://www.nsf.gov/",
-    "_blank",
-    "NSF Logo",
-    "anonymous",
-    "True"
-]
-
-BRANDING = [ TACC_BRANDING, UTEXAS_BRANDING ]
+# To hide branding, set `PORTAL_BRANDING = False`
+PORTAL_BRANDING = [ PORTAL_BRANDING_TACC, PORTAL_BRANDING_UTEXAS ]
 
 
 ########################
@@ -271,12 +277,11 @@ PORTAL_HAS_SEARCH = True
 # FAQ: A falsy value will trigger default logic for nav width
 PORTAL_NAV_WIDTH = False
 
-LOGOUT_REDIRECT_URL = '/'
-
 # using container name to avoid cep.dev dns issues locally
-# this will need to be updated for dev/pprd/prod systems
-# for example, CEP_AUTH_VERIFICATION_ENDPOINT=https://dev.cep.tacc.utexas.edu
-CEP_AUTH_VERIFICATION_ENDPOINT = 'http://django:6000'
+# CEP_AUTH_VERIFICATION_ENDPOINT = https://hostname.tacc.utexas.edu # Dev/Prod/Etc
+CEP_AUTH_VERIFICATION_ENDPOINT = 'http://django:6000'               # Local
+
+
 
 ########################
 # TACC: SOCIAL MEDIA
@@ -286,8 +291,14 @@ PORTAL_SOCIAL_SHARE_PLATFORMS = []
 # PORTAL_SOCIAL_SHARE_PLATFORMS = ['linkedin', 'instagram', 'facebook', 'bluesky', 'email']
 
 ########################
-# TACC: CORE STYLES
+# TACC: STYLES
 ########################
+
+PORTAL_STYLES = []
+# PORTAL_STYLES = [{
+#     "is_remote": True,
+#     "path": "https://cdn.jsdelivr.net/gh/TACC/Core-CMS-Custom@2cdc59f/example_cms/src/apps/example_app/static/example_app/css/example_app.css",
+# }]
 
 # Only use integer numbers (not "v1", not "0.11.0"),
 # so templates can load based on simple comparisons
@@ -327,11 +338,6 @@ STATICFILES_DIRS = (
 ) + tuple(glob(
     os.path.join(BASE_DIR, 'taccsite_custom', '*', 'static')
 ))
-
-# Serve UI Demo (if it exists) at .../ui
-ui_demo_dir = os.path.join(BASE_DIR, 'taccsite_ui', 'dist')
-if os.path.exists(ui_demo_dir):
-    STATICFILES_DIRS += (('ui', ui_demo_dir),)
 
 # User Uploaded Files Location.
 MEDIA_URL = '/media/'
@@ -462,6 +468,7 @@ INSTALLED_APPS = [
 ] + search_INSTALLED_APPS + [
 
     # miscellaneous
+    'aldryn_apphooks_config',  # search index & django CMS Blog
     'test_without_migrations', # run tests faster
 
 ] + form_plugin_INSTALLED_APPS + [
@@ -478,8 +485,7 @@ INSTALLED_APPS = [
 
     # TACC CMS Plugins
     'djangocms_tacc_image_gallery',
-    # TODO: Use https://github.com/wesleyboar/Core-CMS-Plugin-System-Monitor
-    'taccsite_cms.contrib.taccsite_system_monitor',
+    'djangocms_tacc_system_monitor',
 
     # TACC CMS Plugins - DECPRECATED
     'taccsite_cms.contrib.taccsite_blockquote',
@@ -573,6 +579,9 @@ DJANGOCMS_PICTURE_ALIGN = [
     ('right', _('Align right')),
     ('center', _('Align center')),
 ]
+DJANGOCMS_PICTURE_TEMPLATES = [
+    ('no_link_to_ext_image', _('Do not link to external image')),
+]
 
 # FILE UPLOAD VALUES MUST BE SET!
 # Set in correlation with the `client_max_body_size    20m;` value in /etc/nginx/proxy.conf.
@@ -584,11 +593,76 @@ FILE_UPLOAD_MAX_MEMORY_SIZE = 20000000  # 20MB
 
 DJANGOCMS_AUDIO_ALLOWED_EXTENSIONS = ['mp3', 'ogg', 'wav']
 
-SETTINGS_EXPORT_VARIABLE_NAME = 'settings'
-
 ########################
 # PLUGIN SETTINGS
 ########################
+
+# SEE: https://github.com/django-cms/djangocms-bootstrap4
+DJANGOCMS_BOOTSTRAP4_GRID_COLUMN_CHOICES = [
+    ('col', _('Column')),
+    ('col col-dark', _('Dark column')),
+    ('col col-muted', _('Muted column')),
+    ('w-100', _('Break')),
+    ('', _('Empty'))
+]
+
+# SEE: https://github.com/django-cms/djangocms-bootstrap4
+DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS = [
+    ('container', _('Container')),
+    ('container-fluid', _('Fluid container')),
+    ('o-section', _('Section')),
+    ('_', _('None')),
+    (_('Container'), (
+        (
+            'container  o-section',
+            _('Container + Section (transparent / margin)')
+        ),
+        (
+            'container  o-section o-section--style-light',
+            _('Container + Light section')
+        ),
+        (
+            'container  o-section o-section--style-muted',
+            _('Container + Muted section')
+        ),
+        (
+            'container  o-section o-section--style-dark',
+            _('Container + Dark section')
+        ),
+    )),
+    (_('Fluid container'), (
+        (
+            'container-fluid  o-section',
+            _('Fluid container + Section (transparent / margin)')
+        ),
+        (
+            'container-fluid  o-section o-section--style-light',
+            _('Fluid container + Light section')
+        ),
+        (
+            'container-fluid  o-section o-section--style-muted',
+            _('Fluid container + Muted section')
+        ),
+        (
+            'container-fluid  o-section o-section--style-dark',
+            _('Fluid container + Dark section')
+        ),
+    )),
+    (_('Section only'), (
+        (
+            'o-section o-section--style-light',
+            _('Light section')
+        ),
+        (
+            'o-section o-section--style-muted',
+            _('Muted section')
+        ),
+        (
+            'o-section o-section--style-dark',
+            _('Dark section')
+        ),
+    )),
+]
 
 # https://github.com/django-cms/djangocms-style
 DJANGOCMS_STYLE_CHOICES = [
@@ -670,9 +744,26 @@ DJANGOCMS_ICON_SETS = [
     (CORTAL_ICONS, 'icon', _('TACC "Cortal" Icons')),
 ]
 
+
+########################
+# REDMINE TRACKER AUTH
+########################
+
+RT_HOST = ''
+RT_UN = ''
+RT_PW = ''
+RT_QUEUE = ''
+RT_TAG = ''
+
+
 ########################
 # SETTINGS IMPORT
 ########################
+
+try:
+    from taccsite_cms.settings_default import *
+except ModuleNotFoundError:
+    pass
 
 try:
     from taccsite_cms.settings_custom import *
@@ -701,9 +792,15 @@ except ImportError:
 
 ########################
 # SETTINGS DEPRECATED
-########################
 # TODO: Make clients not use nor set these
+########################
+
 deprecated_SETTINGS_EXPORT = []
+
+# For header_branding.html
+deprecated_SETTINGS_EXPORT += ['BRANDING']
+if 'BRANDING' not in locals():
+    BRANDING = False
 
 # For header_logo.html
 deprecated_SETTINGS_EXPORT += ['LOGO']
@@ -744,21 +841,31 @@ for old_setting_name in old_setting_names:
                 PORTAL_HAS_SEARCH = INCLUDES_SEARCH_BAR
 
 ########################
+# SETTINGS CONDITIONAL
+########################
+
+if PORTAL_SEARCH_INDEX_IS_AUTOMATIC:
+    HAYSTACK_SIGNAL_PROCESSOR = 'taccsite_cms.signal_processor.RealtimeSignalProcessor'
+
+########################
 # SETTINGS EXPORT
 ########################
 
+SETTINGS_EXPORT_VARIABLE_NAME = 'settings'
+
 SETTINGS_EXPORT = deprecated_SETTINGS_EXPORT + [
     'DEBUG',
-    'BRANDING',
     'TACC_CORE_STYLES_VERSION',
     'GOOGLE_ANALYTICS_PROPERTY_ID',
     'GOOGLE_ANALYTICS_PRELOAD',
+    'PORTAL_BRANDING',
     'PORTAL_LOGO',
     'PORTAL_FAVICON',
     'PORTAL_IS_TACC_CORE_PORTAL',
     'PORTAL_HAS_LOGIN',
     'PORTAL_HAS_SEARCH',
     'PORTAL_NAV_WIDTH',
+    'PORTAL_STYLES',
     'PORTAL_BLOG_SHOW_CATEGORIES',
     'PORTAL_BLOG_SHOW_TAGS',
     'PORTAL_BLOG_CUSTOM_MEDIA_POST_CATEGORY',

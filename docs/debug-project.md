@@ -1,5 +1,19 @@
 # Debug Project
 
+## Start with a Brand New CMS
+
+The `make stop` retains volumes (e.g. database) and images (layers of previous builds).
+
+To start with no volumes, run:
+```bash
+make stop ARGS="--volumes"
+```
+
+To start with no volumes and no images, run:
+```bash
+make clean
+```
+
 ## Verify Images Are Collected
 
 1. Review content of `/taccsite_cms/static/site_cms/img`.
