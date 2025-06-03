@@ -62,7 +62,7 @@ To commit changes to a custom project:
 5. Add `/taccsite_custom` change.
 6. Commit changes to a [Core CMS] branch.
 
-> **Note**
+> [!NOTE]
 > For a more thorough walkthrough, read [How to Change Submodule Branch Commit](https://github.com/TACC/Core-CMS/wiki/How-to-Change-Submodule-Branch-Commit).
 
 <!-- Link Aliases -->
@@ -70,6 +70,7 @@ To commit changes to a custom project:
 [Core CMS]: https://github.com/TACC/Core-CMS
 [Core Styles]: https://github.com/TACC/Core-Styles
 [Core CMS Custom]: https://github.com/TACC/Core-CMS-Custom
+[Core CMS Resources]: https://github.com/TACC/Core-CMS-Resources
 [Core CMS Template]: https://github.com/TACC/Core-CMS-Template
 
 [restart server]: https://github.com/TACC/Core-CMS/wiki/How-to-Restart-the-CMS-Server
