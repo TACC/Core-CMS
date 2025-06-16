@@ -33,8 +33,8 @@ CMS_TEMPLATES = (
     ('standard.html', 'Standard'),
     ('fullwidth.html', 'Full Width'),
 
-    # WARNING: Not intuitive to unset, so only enable as needed e.g. serve Blog such that it can be injected into another CMS
-    # ('raw.html', 'Raw'),
+    # WARNING: Unintuitive, so only enable as needed e.g. TACC/Core-CMS#868
+    # ('plain.html', 'Plain'),
 )
 
 ########################
@@ -56,7 +56,7 @@ CUSTOM_BRANDING = [
 ]
 
 # Generic TACC Portals.
-PORTAL_BRANDING = [ PORTAL_BRANDING_TACC, UTEXAS_BRANDING ]
+PORTAL_BRANDING = [ PORTAL_BRANDING_TACC, PORTAL_UTEXAS_BRANDING ]
 
 # Custom-Branded Portals (Non-NSF).
 # PORTAL_BRANDING = [ PORTAL_BRANDING_TACC, PORTAL_BRANDING_UTEXAS, CUSTOM_BRANDING ]

@@ -339,11 +339,6 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'taccsite_custom', '*', 'static')
 ))
 
-# Serve UI Demo (if it exists) at .../ui
-ui_demo_dir = os.path.join(BASE_DIR, 'taccsite_ui', 'dist')
-if os.path.exists(ui_demo_dir):
-    STATICFILES_DIRS += (('ui', ui_demo_dir),)
-
 # User Uploaded Files Location.
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(DATA_DIR, 'media')
@@ -584,6 +579,9 @@ DJANGOCMS_PICTURE_ALIGN = [
     ('left', _('Align left')),
     ('right', _('Align right')),
     ('center', _('Align center')),
+]
+DJANGOCMS_PICTURE_TEMPLATES = [
+    ('no_link_to_ext_image', _('Do not link to external image')),
 ]
 
 # FILE UPLOAD VALUES MUST BE SET!
