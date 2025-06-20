@@ -91,15 +91,7 @@
   {% endblock content %}
   </main>
 
-  <footer class="c-footer  s-footer">
-  {% block footer %}
-
-    {% static_placeholder "footer-content" or %}
-    <p>©{% now "Y" %} Texas Advanced Computing Center, The University of Texas at Austin, Office of the Vice President for Research.</p>
-    {% endstatic_placeholder %}
-
-  {% endblock footer %}
-  </footer>
+  {% include "footer.html" %}
 
 {% if settings.TACC_CORE_STYLES_VERSION == 0 %}
 
