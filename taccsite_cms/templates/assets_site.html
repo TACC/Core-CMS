@@ -17,8 +17,8 @@ FAQ: IF a script or style is better cached with markup, THEN:
   {# https://tacc-main.atlassian.net/wiki/x/hRlv #}
   @layer foundation, /* @base, */ project;
 
-  /* TODO: Use same version of Bootstrap as TACC/Core-Portal (v4.3.1) */
-  @import url("https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css") layer(foundation);
+  /* TODO: Use same version of Bootstrap as TACC/Core-Portal (v5) */
+  @import url("https://maxcdn.bootstrapcdn.com/bootstrap/4.6.2/css/bootstrap.min.css") layer(foundation);
 
   @import url("{% static 'site_cms/css/build/site.css' %}") layer(project.core);
   @import url("{% static 'site_cms/css/build/site.header.css' %}") layer(project.core);
