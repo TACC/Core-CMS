@@ -18,7 +18,7 @@ FAQ: IF a script or style is better cached with markup, THEN:
   @layer foundation, /* @base, */ project;
 
   /* TODO: Use same version of Bootstrap as TACC/Core-Portal (v5) */
-  @import url("https://maxcdn.bootstrapcdn.com/bootstrap/4.6.2/css/bootstrap.min.css") layer(foundation);
+  @import url("https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css") layer(foundation);
 
   @import url("{% static 'site_cms/css/build/site.css' %}") layer(project.core);
   @import url("{% static 'site_cms/css/build/site.header.css' %}") layer(project.core);
