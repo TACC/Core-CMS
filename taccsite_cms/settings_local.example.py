@@ -27,3 +27,10 @@ SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
 # IMPORTANT: Do not disable by default, because [Core-Portal clones this file](https://github.com/TACC/Core-Portal/pull/1034)
 # PORTAL_IS_TACC_CORE_PORTAL = False
 # PORTAL_HAS_LOGIN = False
+
+# To let user assign News article to specific Site
+# BLOG_MULTISITE = True
+
+# To allow login in unique situations
+# FAQ: If `BLOG_MULTISITE = True`, set `SESSION_COOKIE_SECURE=False` to be able to log in to CMS Admin at different domain (e.g. 0.0.0.0)
+SESSION_COOKIE_SECURE = False
