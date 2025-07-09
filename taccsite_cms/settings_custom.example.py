@@ -88,7 +88,7 @@ PORTAL_LOGO = {
 # https://github.com/TACC/Core-CMS-Custom/blob/d4c93af/docs/port-project.md#has-a-core-portal
 PORTAL_FAVICON = {
     "is_remote": True,
-    "img_file_src": "https://cdn.jsdelivr.net/gh/TACC/Core-CMS-Custom@813aa7c/ptdatax_assets/favicon.ico",
+    "img_file_src": "https://cdn.jsdelivr.net/gh/TACC/Core-CMS@v4.33.0/taccsite_cms/static/site_cms/img/favicons/favicon.ico",
 }
 
 ########################
