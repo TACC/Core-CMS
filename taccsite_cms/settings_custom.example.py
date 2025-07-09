@@ -75,7 +75,7 @@ PORTAL_BRANDING = [ PORTAL_BRANDING_TACC, PORTAL_BRANDING_UTEXAS ]
 # To hide logo, set `TACC_LOGO = False`.
 PORTAL_LOGO = {
     "is_remote": True,
-    "img_file_src": "https://cdn.jsdelivr.net/gh/TACC/Core-CMS-Custom@813aa7c/ptdatax_assets/logo.png",
+    "img_file_src": "https://cdn.jsdelivr.net/gh/TACC/Core-CMS@v4.33.0/taccsite_cms/static/site_cms/img/org_logos/portal.png",
     "img_class": "", # additional class names
     "link_href": "/",
     "link_target": "_self",
