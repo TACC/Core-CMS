@@ -73,13 +73,10 @@ How to set up a new local CMS instance.
 
 ### Manual Setup
 
-1. Enter the Repository Clone:
+> [!NOTE]
+> If [Quick Start](#quick-start) process fails, report the error to your team, and follow these steps for now.
 
-    ```sh
-    cd Core-CMS
-    ```
-
-2. Add Core CMS Settings & Secrets:
+1. Configure [Django] Application:
 
     Create a `taccsite_cms/*.py` for every `*.example.py`, e.g.
 
@@ -89,7 +86,7 @@ How to set up a new local CMS instance.
     cp taccsite_cms/settings_local.example.py taccsite_cms/settings_local.py
     ```
 
-3. Build & Start the Docker Containers:
+2. Start [Docker] Containers:
 
     ```sh
     make start
@@ -98,16 +95,12 @@ How to set up a new local CMS instance.
     > **Note**
     > This will make the terminal window busy. To run commands after this, **either** open a new terminal window **or** run `make start ARGS="--detach"` instead.
 
-4. Enter the CMS Docker Container:
-
-    (This opens a command prompt within the container.)
+3. Prepare [Django] Application:
 
     ```sh
     docker exec -it core_cms /bin/bash
     # This opens a command prompt within the container
     ```
-
-5. Update the Django Application:
 
     (Run these commands within the container.)
 
@@ -120,7 +113,7 @@ How to set up a new local CMS instance.
 
     ```
 
-6. [Add Content](#add-content).
+4. [Add Content](#add-content).
 
 #### Add Content
 
@@ -219,8 +212,11 @@ To contribute, first read [How to Contirbute][Contributing].
 [Docker]: https://docs.docker.com/get-docker/
 [Docker Compose]: https://docs.docker.com/compose/install/
 
-[Build & Deploy Project]: https://tacc-main.atlassian.net/wiki/x/2AVv
+[Django]: https://www.djangoproject.com/
+[Django CMS]: https://www.django-cms.org/
 [Django CMS User Guide]: https://tacc-main.atlassian.net/wiki/x/phdv
+
+[Build & Deploy Project]: https://tacc-main.atlassian.net/wiki/x/2AVv
 
 [Develop a Custom Project]: ./docs/develop-custom-project.md
 [Develop a Custom App/Plugin]: ./docs/develop-custom-app.md
