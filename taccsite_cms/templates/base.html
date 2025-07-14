@@ -30,12 +30,6 @@
 
 {% if settings.TACC_CORE_STYLES_VERSION == 0 %}
 
-  <!-- Site Font and/or Custom Font. -->
-  {# The core site font (can be replaced or accompanied by custom font/s) #}
-  {% block assets_font %}
-  {% include 'assets_font.html' %}
-  {% endblock assets_font %}
-
   <!-- Site Assets. -->
   {# The core site assets (can NOT be replaced by custom assets) #}
   {% include 'assets_site.html' %}
