@@ -1,95 +1,61 @@
 /**
- * Whether to log debug info to console
+ * The standard links that should open in a new tab
  * @const {string}
  */
-const SHOULD_DEBUG = window.DEBUG;
+export const DEFAULT_LINKS = document.querySelectorAll('body > :is(header, main, footer) a');
 
 /**
- * Function to perform after setting link target
- * @callback setTargetCallback
- * @param {HTMLElement} link
+ * Make links with absolute URLs open in new tab, and:
+ * - add accessible markup
+ * - fix absolute URLs that should be relative paths
+ * @param {NodeList} links - Custom links to open in new tab
+ * @param {object} opts
+ * @param {boolean} [opts.shouldDebug=false] - Whether to log debug statements
+ * @param {boolean} [opts.shouldFilter=true] - Whether to filter which links to adjust
  */
+export default function findLinksAndSetTargets( links = DEFAULT_LINKS, opts = {
+  shouldDebug: false,
+  shouldFilter: true,
+}) {
+  const baseDocHost = document.location.host;
+  const baseDocHostWithSubdomain= `www.${ baseDocHost }`;
 
-/**
- * Set external links (automatically discovered) to open in new tab
- * @param {object} [options] - Optional parameters
- * @param {array.<string>} [options.pathsToExernalSite=[]] - (DEPRECATED) A list of relative URL paths that should be treated like external URLs
- * @param {array.<string|RegExp>} [options.pathsToForceSetTarget=[]] - A list of relative URL paths (or patterns) that should trigger setting a target
- * @param {HTMLElement|Document} [options.scopeElement=document] - The element within which to search for links
- * @param {setTargetCallback} [options.setTargetCallback] - A callback for after a target is set
- */
- export default function findLinksAndSetTargets(options) {
-  const defaults = {
-    target: '_blank',
-    pathsToExernalSite: [],
-    pathsToForceSetTarget: [],
-    scopeElement: document
-  }
-  const {target, pathsToExernalSite, scopeElement, setTargetCallback} = {...defaults, ...options};
-  let {pathsToForceSetTarget} = {...defaults, ...options};
-
-  if ( pathsToExernalSite.length && ! pathsToForceSetTarget.length ) {
-    pathsToForceSetTarget = pathsToExernalSite;
+  if ( opts.shouldDebug ) {
+    console.log({ links, opts });
   }
 
-  const links = scopeElement.getElementsByTagName('a');
-  [ ...links ].forEach( function setTarget(link) {
-      if ( ! link.href) {
-        return false;
-      }
-      if (link.href.indexOf('javascript') === 0) {
-        return false;
-      }
+  links.forEach( function setTarget( link ) {
+    const linkHref = link.getAttribute('href');
 
-      const isMailto = (link.href.indexOf('mailto:') === 0);
-      const shouldForceSetTarget = pathsToForceSetTarget.some(path => {
-        let shouldForce;
-        if (path instanceof RegExp) {
-          shouldForce = path.test(link.pathname);
-        }
-        if (typeof path === 'string') {
-          shouldForce = _doPathsMatch(path, link.pathname);
-        }
-        if (SHOULD_DEBUG && shouldForce) {
-          console.debug(`Path "${link.pathname}" matches "${path}"`);
-        }
-        return shouldForce;
-      });
-      // FAQ: I am literally double-checking, because I don't trust JavaScript
-      const isExternal = (link.origin !== document.location.origin);
-      const isInternal = (link.host === document.location.host);
-      const shouldSetTarget = shouldForceSetTarget || (
-          ! isInternal && isExternal && ! isMailto
-      );
+    if ( ! linkHref ) {
+      return false;
+    }
 
-      if ( shouldSetTarget ) {
-          if (link.target !== '_blank') {
-              link.target = '_blank';
-              if (SHOULD_DEBUG) {
-                console.debug(`Link ${link.href} now opens in new tab`);
-              }
-          }
-          if (typeof setTargetCallback === 'function') {
-            setTargetCallback( link );
-          }
+    const isMailto = ( linkHref.indexOf('mailto:') === 0 );
+    const isAbsolute = ( linkHref.indexOf('http') === 0 );
+    const isSameHost = ( link.host === baseDocHost || link.host === baseDocHostWithSubdomain );
+    const shouldOpenInNewTab = ( ! isSameHost || isMailto );
+
+    if (opts.shouldDebug) {
+      console.debug({ isMailto, isAbsolute, isSameHost, linkHref, shouldOpenInNewTab });
+    }
+
+    // So either all or some links open in new tab
+    if ( ! opts.shouldFilter || ( opts.shouldFilter && shouldOpenInNewTab )) {
+      if ( link.target !== '_blank') {
+        link.target = '_blank';
+        if ( opts.shouldDebug ) {
+          console.debug(`Link "${ linkHref }" now opens in new tab`);
+        }
       }
+      if ( link.target === '_blank') {
+        link.setAttribute('aria-label', 'Opens in new window.');
+      }
+    }
+
+    // So links w/ absolute URL to page on same domain use relative path
+    if ( isAbsolute && isSameHost ) {
+      link.href = link.pathname;
+    }
   });
-}
-
-/**
- * Does redirect path match link path (ignoring "/" link path)
- * @param {string} redirectPath - A path known to redirect to an external site
- * @param {string} testLinkPath - A path found on the page being updated
- */
-function _doPathsMatch(redirectPath, testLinkPath) {
-  if (testLinkPath === '/') {
-    return false;
-  }
-
-  const isMatch = redirectPath === testLinkPath
-    || redirectPath === testLinkPath.slice(1)
-    || redirectPath === testLinkPath.slice(0, -1)
-    || redirectPath === testLinkPath.slice(1).slice(0, -1);
-
-  return isMatch;
 }

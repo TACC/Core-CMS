@@ -3,11 +3,12 @@ Django CMS Blog App Page (Article/Post) Components
 
 Reference:
 
-- [`post_detail.html`](https://github.com/nephila/djangocms-blog/blob/1.1.1/djangocms_blog/templates/djangocms_blog/post_detail.html)
+- [`post_detail.html`](https://github.com/nephila/djangocms-blog/blob/1.2.3/djangocms_blog/templates/djangocms_blog/post_detail.html)
 
 Styleguide Components.DjangoCMS.Blog.App.Page
 */
 @import url("@tacc/core-styles/src/lib/_imports/objects/o-offset-content.css");
+@import url("@tacc/core-styles/src/lib/_imports/tools/x-drop-cap.css");
 
 @import url("./django.cms.blog.app.page.multimedia.css");
 @import url("./django.cms.blog.selectors.css");
@@ -29,15 +30,16 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 
 
 
-/* Header (Structure) */
+/* Header */
 
 :--article-page header {
   grid-template-areas:
+    'cats date'
     'head head'
     'subh subh'
-    'cats link'
-    'tags tags'
-    'attr attr';
+    'attr link'
+    'tags tags';
+  grid-template-columns: minmax(0, max-content) 1fr;
 }
 :--article-page header h1,
 :--article-page header h2 {
@@ -109,6 +111,19 @@ Styleguide Components.DjangoCMS.Blog.App.Page
   clear: both;
 }
 
+/* To support gallery feature */
+/* SEE: ./lightgallery.css */
+.app-blog .lightgallery {
+  --min-width: 230px;
+}
+/* TODO: Review this code when client wants thumbnail captions */
+/* WARNING: This seems to not do what it is expected to do */
+@supports selector(:has(*)) {
+  .app-blog .lightgallery a:has(figcaption) {
+    align-items: start;
+  }
+}
+
 
 
 /* Media & Content - Content */
@@ -118,11 +133,18 @@ Styleguide Components.DjangoCMS.Blog.App.Page
   font-size: var(--global-font-size--medium);
   line-height: 2;
 }
+
 /* Add space between all list items */
 /* FAQ: Use case is list items with as much text as a paragraph */
 :--article-page .blog-lead li + li,
 :--article-page .blog-content li + li {
   margin-top: 0.5em;
+}
+
+/* Remove Drop Cap when tag is added */
+.has-blog-tag-no-drop-cap .s-drop-cap > p:not(.s-drop-cap)::first-letter {
+  padding-right: unset;
+  initial-letter: unset;
 }
 
 
@@ -164,12 +186,11 @@ Styleguide Components.DjangoCMS.Blog.App.Page
   :--article-page .blog-content .align-center,
   :--article-page .blog-content .align-right,
   :--article-page .blog-content .align-left {
-    max-width: unset;
+    max-width: 100%;
   }
   :--article-page .blog-content .align-right,
   :--article-page .blog-content .align-left {
     float: unset;
-    margin-bottom: unset;
   }
   :--article-page .blog-content .align-right {
     margin-left: unset;

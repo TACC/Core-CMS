@@ -26,71 +26,27 @@ AUTH_LDAP_SERVER_URI = "ldap://cluster.ldap.tacc.utexas.edu"
 # The same goes for other more commonly customized values like below.
 
 ########################
-# DJANGO CMS SETTINGS
+# DJANGO_CMS
 ########################
 
 CMS_TEMPLATES = (
     ('standard.html', 'Standard'),
     ('fullwidth.html', 'Full Width'),
 
-    ('home_portal.html', 'Standard Portal Homepage'),
-
-    ('guide.html', 'Guide'),
-    ('guides/getting_started.html', 'Guide: Getting Started'),
-    ('guides/data_transfer.html', 'Guide: Data Transfer'),
-    ('guides/data_transfer.globus.html', 'Guide: Globus Data Transfer'),
-    ('guides/portal_technology.html', 'Guide: Portal Technology Stack'),
+    # WARNING: Unintuitive, so only enable as needed e.g. TACC/Core-CMS#868
+    # ('plain.html', 'Plain'),
 )
-
-########################
-# NSF BRANDING
-########################
-
-NSF_BRANDING = [
-    "nsf",
-    "example-cms/img/org_logos/nsf-white.png",
-    "branding-nsf",
-    "https://www.nsf.gov/",
-    "_blank",
-    "NSF Logo",
-    "anonymous",
-    "True"
-]
-
-########################
-# TACC BRANDING
-########################
-
-TACC_BRANDING = [
-    "tacc",
-    "example-cms/img/org_logos/tacc-white.png",
-    "branding-tacc",
-    "https://www.tacc.utexas.edu/",
-    "_blank",
-    "TACC Logo",
-    "anonymous",
-    "True"
-]
-
-UTEXAS_BRANDING = [
-    "utexas",
-    "example-cms/img/org_logos/utaustin-white.png",
-    "branding-utaustin",
-    "https://www.utexas.edu/",
-    "_blank",
-    "University of Texas at Austin Logo",
-    "anonymous",
-    "True"
-]
 
 ########################
 # CUSTOM PORTAL BRANDING
 ########################
 
+from taccsite_cms._settings.branding import *
+
 # Edit this config as needed for the project branding used in the navigation bar header.
 CUSTOM_BRANDING = [
     "portal",
-    "example-cms/img/org_logos/portal.png",
+    "example_cms/img/org_logos/portal.png",
     "branding-logo--short",
     "https://cep.tacc.utexas.edu",
     "_blank",
@@ -100,85 +56,65 @@ CUSTOM_BRANDING = [
 ]
 
 # Generic TACC Portals.
-BRANDING = [ TACC_BRANDING, UTEXAS_BRANDING ]
+PORTAL_BRANDING = [ PORTAL_BRANDING_TACC, PORTAL_BRANDING_UTEXAS ]
 
-# Custom Branded Portals (Non-NSF).
-#BRANDING = [ TACC_BRANDING, UTEXAS_BRANDING, CUSTOM_BRANDING ]
+# Custom-Branded Portals (Non-NSF).
+# PORTAL_BRANDING = [ PORTAL_BRANDING_TACC, PORTAL_BRANDING_UTEXAS, CUSTOM_BRANDING ]
 
-# NSF Funded Generic TACC Portals.
-#BRANDING = [ NSF_BRANDING, TACC_BRANDING, UTEXAS_BRANDING ]
+# NSF-Funded Generic TACC Portals.
+# PORTAL_BRANDING = [ PORTAL_BRANDING_NSF, PORTAL_BRANDING_TACC, PORTAL_BRANDING_UTEXAS ]
 
-# NSF Funded & Custom Branded Portals.
-#BRANDING = [ NSF_BRANDING, TACC_BRANDING, UTEXAS_BRANDING, CUSTOM_BRANDING ]
+# NSF-Funded & Custom-Branded Portals.
+# PORTAL_BRANDING = [ PORTAL_BRANDING_NSF, PORTAL_BRANDING_TACC, PORTAL_BRANDING_UTEXAS, CUSTOM_BRANDING ]
 
 ########################
-# PORTAL LOGO / FAVICON
+# TACC: LOGO & FAVICON
 ########################
 
 # Edit this config as needed for the project logo used in the navigation bar.
-LOGO =  [
-    "example",
-    "example-cms/img/org_logos/portal.png",
-    "",
-    "/",
-    "_self",
-    "Placeholder Logo for CMS/Portal",
-    "anonymous",
-    "True"
-]
+# To hide logo, set `TACC_LOGO = False`.
+PORTAL_LOGO = {
+    "is_remote": True,
+    "img_file_src": "https://cdn.jsdelivr.net/gh/TACC/Core-CMS@v4.33.0/taccsite_cms/static/site_cms/img/org_logos/portal.png",
+    "img_class": "", # additional class names
+    "link_href": "/",
+    "link_target": "_self",
+    "img_alt_text": "Custom CMS", # E.g. PT DataX, Frontera
+    "img_crossorigin": "anonymous",
+}
 
 # Edit this config as needed for the project favicon used in the browser navbar.
 # If `INCLUDES_CORE_PORTAL = True` and you set `FAVICON`, then:
 # https://github.com/TACC/Core-CMS-Custom/blob/d4c93af/docs/port-project.md#has-a-core-portal
-FAVICON = {
-    "img_file_src": "example-cms/img/org_logos/favicon.ico"
+PORTAL_FAVICON = {
+    "is_remote": True,
+    "img_file_src": "https://cdn.jsdelivr.net/gh/TACC/Core-CMS@v4.33.0/taccsite_cms/static/site_cms/img/favicons/favicon.ico",
 }
 
 ########################
-# NEWS / BLOG
+# SEARCH
 ########################
 
-from taccsite_cms.settings import INSTALLED_APPS
+# To support Google search
+PORTAL_SEARCH_QUERY_PARAM_NAME = 'q'
 
-tacc_app_index = INSTALLED_APPS.index('taccsite_cms')
-INSTALLED_APPS[tacc_app_index:tacc_app_index] = [
-    # 'filer',              # already in Core
-    # 'easy_thumbnails',    # already in Core
-    'parler',
-    'taggit',
-    'taggit_autosuggest',
-    # 'meta',               # already in Core
-    'sortedm2m',
-    'djangocms_blog',
-]
-# REQ: 'taggit_autosuggest' requires the following is added to `urls.py`
-"""
-urlpatterns += [
-    # Support `taggit_autosuggest` (from `djangocms-blog`)
-    url(r'^taggit_autosuggest/', include('taggit_autosuggest.urls')),
-]
-"""
+# To disable Elasticsearch
+PORTAL_SEARCH_INDEX_IS_AUTOMATIC = False
 
-# Paths for alternate templates that user can choose for blog-specific plugin
-# - Devs can customize core templates at `templates/djangocms_blog/`.
-# - Users can choose alt. templates from `templates/djangocms_blog/plugins/*`.
-# - Devs can customize alt. templates at `templates/djangocms_blog/plugins/*`.
-BLOG_PLUGIN_TEMPLATE_FOLDERS = (
-    ('plugins', 'Default'),
-    # ('plugins/alternate', 'Alternate'),
-)
+########################
+# DJANGOCMS_BLOG
+########################
 
-# Change default values for the auto-setup of one `BlogConfig`
-# SEE: https://github.com/nephila/djangocms-blog/issues/629
 BLOG_AUTO_SETUP = True # Set to False after setup (minimize overhead)
 BLOG_AUTO_HOME_TITLE ='Home'
 BLOG_AUTO_BLOG_TITLE = 'News'
 BLOG_AUTO_APP_TITLE = 'News'
 BLOG_AUTO_NAMESPACE = 'News'
-
-# Miscellaneous settings
 BLOG_ENABLE_COMMENTS = False
 
-# TACC settings
-TACC_BLOG_SHOW_CATEGORIES = True
-TACC_BLOG_SHOW_TAGS = True
+########################
+# DJANGOCMS_BLOG: TACC
+########################
+
+PORTAL_BLOG_SHOW_CATEGORIES = True
+PORTAL_BLOG_SHOW_TAGS = True

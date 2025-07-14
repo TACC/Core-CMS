@@ -1,4 +1,0 @@
-label: Django CMS Forms
-context:
-  shouldLoadCMS: true
-  shouldLoadBootstrap: true

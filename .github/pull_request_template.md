@@ -5,9 +5,9 @@
 ## Related
 
 <!--
-- [FP-123](https://jira.tacc.utexas.edu/browse/FP-123)
-- requires https://github.com/TACC/Core-Styles/pull/5
-- required by https://github.com/TACC/Core-CMS-Resources/pull/117
+- [CMD-XYZ](https://tacc-main.atlassian.net/browse/CMD-XYZ)
+- requires https://github.com/TACC/Core-Styles/pull/123
+- required by https://github.com/TACC/Core-CMS-Custom/pull/123
 -->…
 
 ## Changes
