@@ -56,20 +56,23 @@ How to set up a new local CMS instance.
 
 ### Quick Setup
 
-1. Clone and open the project.
-2. To remove previous setup **entirely**:
+0. Enter CMS project:
+    ```sh
+    cd cms
+    ```
+1. (optional) To remove previous setup **entirely**:
     ```sh
     make clean
     ```
-3. Run the setup script:
+2. Run the setup script:
     ```sh
     make setup
     ```
     You will be prompted for information.
+3. [Add Content](#add-content).
 
 ### Manual Setup
 
-0. [Clone this Repository.](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
 1. Enter the Repository Clone:
 
     ```sh
@@ -117,12 +120,15 @@ How to set up a new local CMS instance.
 
     ```
 
-6. Open Django CMS:
-    1. Open http://localhost:8000/.
-    2. Login with the credentials you defined in step 2.
-    3. Create one CMS page.\
-        (With "New page" highlighted, click "Next" button.)
-        - This page will automatically be your local homepage.
+6. [Add Content](#add-content).
+
+#### Add Content
+
+1. Open http://localhost:8000/.
+2. Login with the credentials you defined in step 2.
+3. Create one CMS page.\
+    (With "New page" highlighted, click "Next" button.)
+    - This page will automatically be your local homepage.
 
 > **Important**
 > A local machine CMS will be empty. It will **not** have content from staging **nor** production. If you need that, follow and adapt instructions to [replicate a CMS database](https://tacc-main.atlassian.net/wiki/x/GwBJAg). This requires high-level server access or somone to give you a copy of the content.
