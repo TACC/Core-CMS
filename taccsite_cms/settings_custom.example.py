@@ -18,12 +18,7 @@ Unless modifying default behavior for the CMS Core (and thus all custom Projects
 # WALKTHROUGH
 ########################
 
-# To change LDAP auth settings for a custom CMS Project (e.g. `frontera-cms`):
-# 1. Copy the setting from `settings.py`
-# 2. Assign the new value in `Core-CMS/taccsite_custom/frontera-cms/settings_custom.py`.
 AUTH_LDAP_SERVER_URI = "ldap://cluster.ldap.tacc.utexas.edu"
-
-# The same goes for other more commonly customized values like below.
 
 ########################
 # DJANGO_CMS
