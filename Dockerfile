@@ -1,5 +1,5 @@
 # PYTHON BASE IMAGE
-FROM python:3.11-bookworm as python-base
+FROM python:3.11-bullseye as python-base
 LABEL maintainer="TACC-ACI-WMA <wma_prtl@tacc.utexas.edu>"
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y \
