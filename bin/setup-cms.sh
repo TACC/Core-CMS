@@ -103,25 +103,6 @@ for file in settings_custom settings_local secrets; do
     fi
 done
 
-# Create expected .var files if they don't exist (if enabled)
-if [ "$CREATE_VAR_FILES" = true ]; then
-    echo -e "${INF}Setting up .var files...${RST}"
-    if [ ! -f "needs_demo.var" ]; then
-        echo "false" > needs_demo.var
-        echo -e "  ${POS}Created needs_demo.var${RST}"
-    else
-        echo -e "  ${INF}needs_demo.var already exists${RST}"
-    fi
-    if [ ! -f "docker_repo.var" ]; then
-        echo "core-cms" > docker_repo.var
-        echo -e "  ${POS}Created docker_repo.var${RST}"
-    else
-        echo -e "  ${INF}docker_repo.var already exists${RST}"
-    fi
-else
-    echo -e "${INF}Skipping .var file creation (disabled)${RST}"
-fi
-
 # Build and start Docker containers (from project root)
 echo -e "${INF}Building and starting Docker containers...${RST}"
 cd "$PROJECT_ROOT"
