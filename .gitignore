@@ -20,10 +20,6 @@ build
 ## TODO: get Cortal from Core-Styles (then remove this exception)
 !**/fonts/Cortal-Icons-*
 
-## environment variables
-docker_repo.var
-needs_demo.var
-
 # Static and Media folders
 /static
 /media

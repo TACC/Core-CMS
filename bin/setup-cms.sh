@@ -112,12 +112,6 @@ if [ "$CREATE_VAR_FILES" = true ]; then
     else
         echo -e "  ${INF}needs_demo.var already exists${RST}"
     fi
-    if [ ! -f "docker_repo.var" ]; then
-        echo "core-cms" > docker_repo.var
-        echo -e "  ${POS}Created docker_repo.var${RST}"
-    else
-        echo -e "  ${INF}docker_repo.var already exists${RST}"
-    fi
 else
     echo -e "${INF}Skipping .var file creation (disabled)${RST}"
 fi
