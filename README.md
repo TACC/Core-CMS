@@ -25,7 +25,6 @@ The base CMS code for TACC WMA Workspace Portals & Websites
 - [Core Portal], the base Portal code for TACC WMA CMS Websites
 - [Core Styles], the shared UI pattern code for TACC WMA CMS Websites
 - [Core CMS Template], a template for creating new TACC WMA CMS projects
-- [Core CMS Resources], the old solution for extensions of the [Core CMS] project
 - [Core CMS Custom], the new solution for extensions of the [Core CMS] project
 - [Core Portal Deployments], private repository that facilitates deployments of [Core Portal] images via [Camino] and Jenkins
 
@@ -36,7 +35,6 @@ The base CMS code for TACC WMA Workspace Portals & Websites
 | `apps` | additional Django applications |
 | `bin` | scripts e.g. build CSS |
 | `taccsite_cms` | settings for [Core CMS] |
-| `taccsite_custom` | [Git submodule][Git Submodules] of [Core CMS Resources] |
 
 ## Prerequisites
 
@@ -201,7 +199,6 @@ To contribute, first read [How to Contirbute][Contributing].
 [Camino]: https://github.com/TACC/Camino
 [Core CMS]: https://github.com/TACC/Core-CMS
 [Core Styles]: https://github.com/TACC/Core-Styles
-[Core CMS Resources]: https://github.com/TACC/Core-CMS-Resources
 [Core CMS Template]: https://github.com/TACC/Core-CMS-Template
 [Core CMS Custom]: https://github.com/TACC/Core-CMS-Custom
 [Core Portal]: https://github.com/TACC/Core-Portal
