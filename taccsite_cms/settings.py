@@ -580,7 +580,8 @@ DJANGOCMS_PICTURE_ALIGN = [
     ('center', _('Align center')),
 ]
 DJANGOCMS_PICTURE_TEMPLATES = [
-    ('no_link_to_ext_image', _('Do not link to external image')),
+    ('no_link_to_image', _('Do not link to image to itself')),
+    ('no_link_to_ext_image', _('Do not link to image to itself (DEPRECATED)')),
 ]
 
 # FILE UPLOAD VALUES MUST BE SET!
