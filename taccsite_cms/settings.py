@@ -583,6 +583,7 @@ DJANGOCMS_PICTURE_TEMPLATES = [
     ('no_link_to_image', _('Do not link to image to itself')),
     ('no_link_to_ext_image', _('Do not link to image to itself (DEPRECATED)')),
     ('zoom_effect', _('Zoom image on hover')),
+    ('zoom_effect', _('Zoom image on hover & Do not link image to itself')),
 ]
 
 # FILE UPLOAD VALUES MUST BE SET!
