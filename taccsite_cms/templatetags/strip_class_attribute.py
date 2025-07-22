@@ -13,7 +13,7 @@ def strip_class_attribute(attributes_str):
         return ""
 
     # To remove `class="…"` or anything equivalent
-    pattern = r'\s*class\s*=\s*["\'][^"\']*["\']\s*'
+    pattern = r' class\s*=\s*["\'][^"\']*["\']\s*'
     result = re.sub(pattern, ' ', attributes_str, flags=re.IGNORECASE)
 
     # To compress excess space
