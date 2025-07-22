@@ -40,6 +40,10 @@
 {# end render figure/figcaption #}
 
 
+{# TACC (allow image wrapper): #}
+{% block picture_wrap_start %}
+{% endblock picture_wrap_start %}
+{# /TACC #}
 {# TACC (mimic v3.0.0 to v4.0.0 changes): #}
 {% localize off %}
 {# /TACC #}
@@ -73,6 +77,10 @@
 >
 {# TACC (mimic v3.0.0 to v4.0.0 changes): #}
 {% endlocalize %}
+{# /TACC #}
+{# TACC (allow_image_wrapper): #}
+{% block picture_wrap_end %}
+{% endblock picture_wrap_end %}
 {# /TACC #}
 
 {# start render figure/figcaption #}
