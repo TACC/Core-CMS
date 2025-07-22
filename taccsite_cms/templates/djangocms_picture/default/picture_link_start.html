@@ -1,0 +1,14 @@
+{# https://github.com/django-cms/djangocms-picture/blob/3.0.0/djangocms_picture/templates/djangocms_picture/default/picture.html#L4-L6 #}
+<a
+    href="{{ picture_link }}"
+    {% if instance.link_target %}
+    target="{{ instance.link_target }}"
+    {% endif %}
+    class="
+        {{ instance.attributes.class|default:'' }}
+        {{ instance.link_attributes.class|default:'' }}
+        {% block picture_link_class %}{% endblock %}
+    "
+    {{ instance.attributes_str|strip_class_attribute|safe }}
+    {{ instance.link_attributes_str|strip_class_attribute|safe }}
+>
