@@ -1,6 +1,9 @@
 import logging
+
 from django.apps import AppConfig
 from django.db.models.signals import post_migrate
+
+from .djangocms_picture.extend import extendPicturePlugin
 
 logger = logging.getLogger(f"portal.{__name__}")
 
@@ -10,6 +13,7 @@ class TaccsiteCmsConfig(AppConfig):
 
     def ready(self):
         post_migrate.connect(self.create_groups, sender=self)
+        extendPicturePlugin()
 
     def create_groups(self, sender, **kwargs):
         from django.contrib.auth.models import Group
