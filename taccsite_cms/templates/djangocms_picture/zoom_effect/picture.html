@@ -1,9 +1,44 @@
 {% extends "djangocms_picture/default/picture.html" %}
 
-{% block picture_wrap_start %}
-{% include "djangocms_picture/fragments/zoom_wrapper_start.html" %}
-{% endblock %}
+{# To move u-image-zoom class to link if present without figure #}
+{% if picture_link and not instance.caption_text and not instance.child_plugin_instances %}
 
-{% block picture_wrap_end %}
-{% include "djangocms_picture/fragments/zoom_wrapper_end.html" %}
-{% endblock %}
+    {% block picture_link_start %}
+        {% include "djangocms_picture/zoom_effect/zoom_asset.html" %}
+        {% include "djangocms_picture/zoom_effect/picture_link_start.html" %}
+    {% endblock %}
+
+    {% block picture_wrap_start %}
+    {% endblock %}
+
+    {% block picture_wrap_end %}
+    {% endblock %}
+
+{% else %}
+
+{# To move u-image-zoom class to figure if present #}
+{% if instance.caption_text or instance.child_plugin_instances %}
+
+    {% block picture_figure_start %}
+        {% include "djangocms_picture/zoom_effect/zoom_asset.html" %}
+        {% include "djangocms_picture/zoom_effect/picture_figure_start.html" %}
+    {% endblock %}
+
+    {% block picture_wrap_start %}
+    {% endblock %}
+
+    {% block picture_wrap_end %}
+    {% endblock %}
+
+{% else %}
+
+  {% block picture_wrap_start %}
+  {% include "djangocms_picture/zoom_effect/zoom_asset.html" %}
+  {% include "djangocms_picture/zoom_effect/zoom_wrapper_start.html" %}
+  {% endblock %}
+
+  {% block picture_wrap_end %}
+  {% include "djangocms_picture/zoom_effect/zoom_wrapper_end.html" %}
+  {% endblock %}
+
+{% endif %}
