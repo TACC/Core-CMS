@@ -5,9 +5,7 @@
 {# So picture is not wrapped in a link #}
 {% block picture_link_start %}
     {% if instance.link_url or instance.link_page_id %}
-        {% block picture_link %}
-            {{ block.super }}
-        {% endblock %}
+      {% include "djangocms_picture/default/picture_link_start.html" %}
     {% endif %}
 {% endblock %}
 
@@ -20,4 +18,7 @@
 
 {# So picture is not wrapped in a link #}
 {% block picture_link_end %}
+    {% if instance.link_url or instance.link_page_id %}
+      </a>
+    {% endif %}
 {% endblock %}

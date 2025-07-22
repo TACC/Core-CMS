@@ -10,14 +10,8 @@
 {% block picture_link_start %}
 {# /TACC #}
 {% if picture_link %}
-    {# TACC (allow link to be conditional): #}
-    {% block picture_link %}
-    {# /TACC #}
     {# TACC (assign attributes to parent): #}
     {% include "djangocms_picture/default/picture_link_start.html" %}
-    {# /TACC #}
-    {# TACC (allow link to be conditional): #}
-    {% endblock %}
     {# /TACC #}
 {% endif %}
 {# TACC (allow link to be conditional): #}
