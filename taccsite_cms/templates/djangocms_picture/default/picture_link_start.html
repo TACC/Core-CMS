@@ -1,4 +1,6 @@
 {# https://github.com/django-cms/djangocms-picture/blob/3.0.0/djangocms_picture/templates/djangocms_picture/default/picture.html#L4-L6 #}
+
+{# @var className #}
 {% load strip_class_attribute %}
 
 <a
@@ -9,7 +11,7 @@
     class="
         {{ instance.attributes.class|default:'' }}
         {{ instance.link_attributes.class|default:'' }}
-        {% block picture_link_class %}{% endblock %}
+        {{ className }}
     "
     {{ instance.attributes_str|strip_class_attribute|safe }}
     {{ instance.link_attributes_str|strip_class_attribute|safe }}
