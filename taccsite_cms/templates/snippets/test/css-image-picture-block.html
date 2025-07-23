@@ -32,7 +32,9 @@ main:has(#css-image-picture-block) {
     }
 
     /* To disable unsupported combos */
-    span:not(a > *).u-image-zoom--on-hover {
+    :is(
+      span, figure
+    ):not(a > *).u-image-zoom--on-hover {
       opacity: 0.5;
     }
   }
