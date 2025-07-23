@@ -2,36 +2,67 @@
 main:has(#css-image-picture-block) {
   .col {
     /* To support notes */
-    a[class],
-    :is(figure, span)[class]:not(a > *) {
+
+    :is(a, figure, span) {
         position: relative;
     }
-    :is( [class], [data-class] )::before {
+    :is(a, figure, span)::before {
         position: absolute;
+        inset: 0 auto auto 0;
         font-size: smaller;
         background: rgb(from black r g b / 50%);
         z-index: 1;
         padding-inline: 0.5em;
     }
 
+
     /* To make notes unique */
-    a[class]::before {
+
+    a::before {
+        top: 0;
         color: aqua;
-        inset: 0 auto auto 0;
+        content: '<a>';
+    }
+    a[class]::before {
+        content: '<a class="'attr(class)'">';
+    }
+    a[data-class]::before {
         content: '<a class="'attr(class)'" data-class="'attr(data-class)'">';
     }
-    figure[class]::before {
+
+    figure::before {
+        top: 3lh;
         color: fuchsia;
-        inset: 3lh 0 auto auto;
+        content: '<figure class="'attr(class)'">';
+    }
+    figure[class]::before {
+        content: '<figure class="'attr(class)'">';
+    }
+    figure[data-class]::before {
         content: '<figure class="'attr(class)'" data-class="'attr(data-class)'">';
     }
-    span[class]::before {
+
+    span::before {
+        top: 6lh;
         color: yellow;
-        inset: auto auto 0 0;
         content: '<span class="'attr(class)'">';
     }
 
+
+    /* To align notes to mimic tag hierarchy */
+
+    a > span::before,
+    a > figure::before,
+    figure > span::before {
+        margin-left: 1em;
+    }
+    a > figure > span::before {
+        margin-left: 2em;
+    }
+
+
     /* To disable unsupported combos */
+
     .u-image-zoom--on-hover:is(
       span:not(a > *, a > figure > *),
       figure:not(a > *)
