@@ -1,4 +1,3 @@
-<style id="css-image-picture-block">
 main:has(#css-image-picture-block) {
   .col {
     /* To support notes */
@@ -71,4 +70,3 @@ main:has(#css-image-picture-block) {
     }
   }
 }
-</style>
