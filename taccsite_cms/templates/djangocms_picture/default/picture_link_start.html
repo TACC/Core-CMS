@@ -5,13 +5,12 @@
 
 <a
     href="{{ picture_link }}"
-    {% if instance.link_target %}
-    target="{{ instance.link_target }}"
-    {% endif %}
+    {% if instance.link_target %} target="{{ instance.link_target }}"{% endif %}
     class="
         {{ instance.attributes.class|default:'' }}
         {{ instance.link_attributes.class|default:'' }}
         {{ className }}
+        {% if should_add_zoom_class_to_link %}u-image-zoom--on-hover{% endif %}
     "
     {{ instance.attributes_str|strip_class_attribute|safe }}
     {{ instance.link_attributes_str|strip_class_attribute|safe }}

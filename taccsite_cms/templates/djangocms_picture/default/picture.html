@@ -9,7 +9,12 @@
 {# TACC (allow link to be conditional): #}
 {% block picture_link_start %}
 {# /TACC #}
-{% if picture_link %}
+{% if should_render_link %}
+    {# TACC (support image zoom): #}
+    {% if should_add_zoom_class_to_link %}
+        {% include "djangocms_picture/zoom_effect/zoom_asset.html" %}
+    {% endif %}
+    {# /TACC #}
     {# TACC (assign attributes to parent): #}
     {% include "djangocms_picture/default/picture_link_start.html" %}
     {# /TACC #}
@@ -23,7 +28,7 @@
 {# /TACC #}
 {# TACC (support children as caption content): #}
 {# {% if instance.caption_text %} #}
-{% if instance.caption_text or instance.child_plugin_instances %}
+{% if has_figure_content %}
     {# TACC (assign attributes to parent): #}
     <figure {{ instance.attributes_str }}>
     {# /TACC #}
@@ -36,6 +41,12 @@
 
 {# TACC (allow image wrapper): #}
 {% block picture_wrap_start %}
+{# TACC (support image zoom): #}
+{% if should_wrap_image_for_zoom %}
+    {% include "djangocms_picture/default/zoom_asset.html" %}
+    <span class="u-image-zoom--on-hover">
+{% endif %}
+{# /TACC #}
 {% endblock picture_wrap_start %}
 {# /TACC #}
 {# TACC (mimic v3.0.0 to v4.0.0 changes): #}
@@ -62,7 +73,7 @@
     {# TACC (allow link to be conditional): #}
     {% block picture_attributes %}
     {# TACC (assign attributes to parent): #}
-    {% if not instance.caption_text and not picture_link and not instance.child_plugin_instances %}
+    {% if should_add_attributes_to_image %}
     {{ instance.attributes_str }}
     {% endif %}
     {# /TACC #}
@@ -74,6 +85,9 @@
 {# /TACC #}
 {# TACC (allow_image_wrapper): #}
 {% block picture_wrap_end %}
+{% if should_wrap_image_for_zoom %}
+    </span>
+{% endif %}
 {% endblock picture_wrap_end %}
 {# /TACC #}
 
@@ -81,7 +95,7 @@
 {% block picture_figure_end %}
 {# /TACC #}
 {# {% if instance.caption_text %} #}
-{% if instance.caption_text or instance.child_plugin_instances %}
+{% if has_figure_content %}
         {# TACC (support children as caption content): #}
         {# <figcaption>{{ instance.caption_text }}</figcaption> #}
         <figcaption>
@@ -100,7 +114,7 @@
 {# TACC (allow link to be conditional): #}
 {% block picture_link_end %}
 {# /TACC #}
-{% if picture_link %}
+{% if should_render_link %}
     </a>
 {% endif %}
 {# TACC (allow link to be conditional): #}
