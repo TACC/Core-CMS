@@ -1,0 +1,24 @@
+{% extends "djangocms_picture/default/picture.html" %}
+
+{# Add u-image-zoom class on link if link is present without figure #}
+{% block picture_link_start %}
+    {% if picture_link and not instance.caption_text and not instance.child_plugin_instances %}
+        {% include "djangocms_picture/zoom_effect/zoom_asset.html" %}
+        {% include "djangocms_picture/default/picture_link_start.html" with className="u-image-zoom--on-hover" %}
+    {% else %}
+        {{ block.super }}
+    {% endif %}
+{% endblock %}
+
+{# Add u-image-zoom class on image wrapper if no link #}
+{% block picture_wrap_start %}
+    {% if instance.caption_text or instance.child_plugin_instances or not picture_link %}
+        {% include "djangocms_picture/zoom_effect/zoom_asset.html" %}
+        {% include "djangocms_picture/zoom_effect/zoom_wrapper_start.html" %}
+    {% endif %}
+{% endblock %}
+{% block picture_wrap_end %}
+    {% if instance.caption_text or instance.child_plugin_instances or not picture_link %}
+        {% include "djangocms_picture/zoom_effect/zoom_wrapper_end.html" %}
+    {% endif %}
+{% endblock %}
