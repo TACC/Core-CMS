@@ -1,4 +1,4 @@
-main:has(#css-image-picture-block) {
+main {
   .col {
     /* To support notes */
 
