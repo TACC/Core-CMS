@@ -47,77 +47,6 @@ def extendPicturePlugin():
         if errors:
             raise ValidationError(errors)
 
-    def get_more_context_variables(instance):
-        """
-        Calculate boolean context variables to simplify template logic.
-        Returns a dictionary of context variables.
-        """
-        # Link (set 1)
-        has_explicit_link = bool(instance.link_url or instance.link_page_id)
-        parent_plugin = instance.parent.get_plugin_instance()[0] if instance.parent else None
-        is_in_link_plugin = isinstance(parent_plugin, LinkPlugin) if parent_plugin else False
-        has_any_link = has_explicit_link or is_in_link_plugin
-
-        # Figure/Caption
-        has_caption_text = bool(instance.caption_text)
-        has_child_plugins = bool(instance.child_plugin_instances)
-        has_figure_content = has_caption_text or has_child_plugins
-
-        # Template
-        template_name = getattr(instance, 'template', '')
-        is_zoom_template = ZOOM_TEMPLATE_NAME_PREFIX in template_name
-        is_no_link_template = 'no_link_to_image' in template_name
-
-        # Link (set 2)
-        should_render_link = has_explicit_link
-        # To link to image to itself by default
-        # FAQ: This default behavior is retained from djangocms_picture
-        if not is_no_link_template and not has_explicit_link:
-            should_render_link = True
-
-        # Zoom Effect
-        should_add_zoom_effect = is_zoom_template and has_any_link
-        should_wrap_image_for_zoom = (
-            should_add_zoom_effect and
-            (has_figure_content or not should_render_link)
-        )
-        should_add_zoom_class_to_link = (
-            should_add_zoom_effect and
-            should_render_link and
-            not has_figure_content
-        )
-
-        # Attributes
-        should_add_attributes_to_image = (
-            not has_figure_content and
-            not should_render_link
-        )
-
-        return {
-            # Link
-            'has_explicit_link': has_explicit_link,
-            'is_in_link_plugin': is_in_link_plugin,
-            'has_any_link': has_any_link,
-            'should_render_link': should_render_link,
-
-            # Figure/Caption
-            'has_caption_text': has_caption_text,
-            'has_child_plugins': has_child_plugins,
-            'has_figure_content': has_figure_content,
-
-            # Template
-            'is_zoom_template': is_zoom_template,
-            'is_no_link_template': is_no_link_template,
-
-            # Zoom Effect
-            'should_add_zoom_effect': should_add_zoom_effect,
-            'should_wrap_image_for_zoom': should_wrap_image_for_zoom,
-            'should_add_zoom_class_to_link': should_add_zoom_class_to_link,
-
-            # Attributes
-            'should_add_attributes_to_image': should_add_attributes_to_image,
-        }
-
 
     # djangocms_picture
     from djangocms_picture.cms_plugins import PicturePlugin as OriginalPicturePlugin
@@ -140,14 +69,6 @@ def extendPicturePlugin():
         model = PicturePluginModel
         form = PicturePluginForm
         name = 'Image'
-
-        def render(self, context, instance, placeholder):
-            context = super().render(context, instance, placeholder)
-
-            more_context = get_more_context_variables(instance)
-            context.update(more_context)
-
-            return context
 
     # To support generic Image plugin without uninstalling Bootstrap's
     # FAQ: Had been done cuz Image plugin had percieved use cases,
@@ -179,14 +100,6 @@ def extendPicturePlugin():
         model = Bootstrap4PictureModel
         form = Bootstrap4PictureForm
         name = 'Picture / Image (Responsive)'
-
-        def render(self, context, instance, placeholder):
-            context = super().render(context, instance, placeholder)
-
-            more_context = get_more_context_variables(instance)
-            context.update(more_context)
-
-            return context
 
     plugin_pool.unregister_plugin(OriginalBootstrap4PicturePlugin)
     plugin_pool.register_plugin(Bootstrap4PicturePlugin)
