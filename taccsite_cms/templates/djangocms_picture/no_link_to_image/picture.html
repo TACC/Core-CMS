@@ -1,24 +1,2 @@
-{% extends "djangocms_picture/default/picture.html" %}
-{# To allow image to be rendered without a link #}
-{# FAQ: App djangocms_picture assumes that an image, if not explicitely linked, must link to itself. But sometimes, we want an image to just be an image, unlinked. #}
-
-{# So picture is not wrapped in a link #}
-{% block picture_link_start %}
-    {% if instance.link_url or instance.link_page_id %}
-      {% include "djangocms_picture/default/picture_link_start.html" %}
-    {% endif %}
-{% endblock %}
-
-{# So picture attributes are added to unlinked picture #}
-{% block picture_attributes %}
-    {% if not instance.caption_text and not instance.link_url and not instance.link_page_id and not instance.child_plugin_instances %}
-        {{ instance.attributes_str }}
-    {% endif %}
-{% endblock %}
-
-{# So picture is not wrapped in a link #}
-{% block picture_link_end %}
-    {% if instance.link_url or instance.link_page_id %}
-      </a>
-    {% endif %}
-{% endblock %}
+{# backwards-compatibility for temporary name #}
+{% extends "djangocms_picture/no_link_to_ext_image/picture.html" %}
