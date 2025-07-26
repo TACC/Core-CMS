@@ -38,7 +38,6 @@ def extendPicturePlugin():
         errors = {}
 
         would_render_link = whether_to_render_link(instance)
-
         should_add_zoom_effect = ZOOM_TEMPLATE_NAME in instance.template
         parent_plugin = instance.parent.get_plugin_instance()[0] if instance.parent else None
         is_in_link = isinstance(parent_plugin, LinkPlugin) if parent_plugin else False
