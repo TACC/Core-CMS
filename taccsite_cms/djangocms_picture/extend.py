@@ -23,25 +23,38 @@ def extendPicturePlugin():
         if 'template' in form_instance.fields:
             form_instance.fields['template'].help_text += _(' %(ZOOM_TEMPLATE_NOTE)s') % {"ZOOM_TEMPLATE_NOTE": ZOOM_TEMPLATE_NOTE}
 
+    def whether_to_render_link(instance):
+        has_explicit_link = bool(instance.link_url or instance.link_page_id)
+        has_implicit_link = bool(instance.get_link()) and not has_explicit_link
+
+        allow_implicit_link = not 'no_link_to_image' in instance.template
+
+        # To link to image to itself by default
+        # FAQ: This default behavior is retained from djangocms_picture
+        if has_explicit_link or (has_implicit_link and allow_implicit_link):
+            return True
+
+        return False
 
     def validate_zoom_template(instance):
         """Validates: 'Template' field choice 'Zoom image …'"""
 
         errors = {}
 
-        has_picture_link = bool(instance.link_url or instance.link_page_id)
-        use_zoom_template = ZOOM_TEMPLATE_NAME_PREFIX in instance.template
+        would_render_link = whether_to_render_link(instance)
+
+        should_add_zoom_effect = ZOOM_TEMPLATE_NAME_PREFIX in instance.template
         parent_plugin = instance.parent.get_plugin_instance()[0] if instance.parent else None
         is_in_link = isinstance(parent_plugin, LinkPlugin) if parent_plugin else False
 
         logger.info(f'validate_zoom_template: %s', {
-            'link': instance.link_url or instance.link_page_id,
-            'has_picture_link' : has_picture_link,
-            'use_zoom_template' : use_zoom_template,
+            'link': instance.get_link(),
+            'would_render_link' : would_render_link,
+            'should_add_zoom_effect' : should_add_zoom_effect,
             'is_in_link': is_in_link,
         })
 
-        if (use_zoom_template and not has_picture_link and not is_in_link ):
+        if (should_add_zoom_effect and not would_render_link and not is_in_link):
             errors['template'] = ZOOM_TEMPLATE_ERROR
 
         if errors:
@@ -53,7 +66,7 @@ def extendPicturePlugin():
         Returns a dictionary of context variables.
         """
         # Link (set 1)
-        has_explicit_link = bool(instance.link_url or instance.link_page_id)
+        has_explicit_link = bool(instance.get_link())
         parent_plugin = instance.parent.get_plugin_instance()[0] if instance.parent else None
         is_in_link_plugin = isinstance(parent_plugin, LinkPlugin) if parent_plugin else False
         has_any_link = has_explicit_link or is_in_link_plugin
@@ -66,17 +79,12 @@ def extendPicturePlugin():
         # Template
         template_name = getattr(instance, 'template', '')
         is_zoom_template = ZOOM_TEMPLATE_NAME_PREFIX in template_name
-        is_no_link_template = 'no_link_to_image' in template_name
 
         # Link (set 2)
-        should_render_link = has_explicit_link
-        # To link to image to itself by default
-        # FAQ: This default behavior is retained from djangocms_picture
-        if not is_no_link_template and not has_explicit_link:
-            should_render_link = True
+        should_render_link = whether_to_render_link(instance)
 
         # Zoom Effect
-        should_add_zoom_effect = is_zoom_template and has_any_link
+        should_add_zoom_effect = is_zoom_template
         should_wrap_image_for_zoom = (
             should_add_zoom_effect and
             (has_figure_content or not should_render_link)
@@ -94,27 +102,10 @@ def extendPicturePlugin():
         )
 
         return {
-            # Link
-            'has_explicit_link': has_explicit_link,
-            'is_in_link_plugin': is_in_link_plugin,
-            'has_any_link': has_any_link,
             'should_render_link': should_render_link,
-
-            # Figure/Caption
-            'has_caption_text': has_caption_text,
-            'has_child_plugins': has_child_plugins,
             'has_figure_content': has_figure_content,
-
-            # Template
-            'is_zoom_template': is_zoom_template,
-            'is_no_link_template': is_no_link_template,
-
-            # Zoom Effect
-            'should_add_zoom_effect': should_add_zoom_effect,
             'should_wrap_image_for_zoom': should_wrap_image_for_zoom,
             'should_add_zoom_class_to_link': should_add_zoom_class_to_link,
-
-            # Attributes
             'should_add_attributes_to_image': should_add_attributes_to_image,
         }
 
