@@ -1,7 +1,3 @@
-import logging
-
-logger = logging.getLogger(f"django.{__name__}")
-
 def extendPicturePlugin():
     from django.core.exceptions import ValidationError
     from django.utils.translation import gettext_lazy as _
@@ -10,12 +6,12 @@ def extendPicturePlugin():
 
     from djangocms_link.cms_plugins import LinkPlugin
 
-    ZOOM_TEMPLATE_NAME_PREFIX = 'zoom'
+    ZOOM_TEMPLATE_NAME = 'zoom_effect'
     ZOOM_TEMPLATE_LABEL = 'Zoom image on hover'
     ZOOM_TEMPLATE_NOTE = _('The "%(zoom_template_label)s" templates only have effect if Image either has a Link or is within a Link.') % {"zoom_template_label": ZOOM_TEMPLATE_LABEL}
     ZOOM_TEMPLATE_ERROR = _(' "%(zoom_template_label)s" templates require Image to either have a Link or be within a Link.') % {"zoom_template_label": ZOOM_TEMPLATE_LABEL}
 
-    logger.info("Extending PicturePlugin (and Bootstrap4PicturePlugin)...")
+    LINK_TEMPLATE_NAME = 'no_link_to_ext_image'
 
     def add_help_text(form_instance):
         """Adds help text for: 'Template' field"""
@@ -25,12 +21,12 @@ def extendPicturePlugin():
 
     def whether_to_render_link(instance):
         has_explicit_link = bool(instance.link_url or instance.link_page_id)
+        # FAQ: The djangocms_picture has "feature" such that an image with
+        #      "External image" URL will automatically link to that resource
         has_implicit_link = bool(instance.get_link()) and not has_explicit_link
 
-        allow_implicit_link = not 'no_link_to_image' in instance.template
+        allow_implicit_link = not LINK_TEMPLATE_NAME in instance.template
 
-        # To link to image to itself by default
-        # FAQ: This default behavior is retained from djangocms_picture
         if has_explicit_link or (has_implicit_link and allow_implicit_link):
             return True
 
@@ -43,16 +39,9 @@ def extendPicturePlugin():
 
         would_render_link = whether_to_render_link(instance)
 
-        should_add_zoom_effect = ZOOM_TEMPLATE_NAME_PREFIX in instance.template
+        should_add_zoom_effect = ZOOM_TEMPLATE_NAME in instance.template
         parent_plugin = instance.parent.get_plugin_instance()[0] if instance.parent else None
         is_in_link = isinstance(parent_plugin, LinkPlugin) if parent_plugin else False
-
-        logger.info(f'validate_zoom_template: %s', {
-            'link': instance.get_link(),
-            'would_render_link' : would_render_link,
-            'should_add_zoom_effect' : should_add_zoom_effect,
-            'is_in_link': is_in_link,
-        })
 
         if (should_add_zoom_effect and not would_render_link and not is_in_link):
             errors['template'] = ZOOM_TEMPLATE_ERROR
@@ -77,8 +66,7 @@ def extendPicturePlugin():
         has_figure_content = has_caption_text or has_child_plugins
 
         # Template
-        template_name = getattr(instance, 'template', '')
-        is_zoom_template = ZOOM_TEMPLATE_NAME_PREFIX in template_name
+        is_zoom_template = ZOOM_TEMPLATE_NAME in instance.template
 
         # Link (set 2)
         should_render_link = whether_to_render_link(instance)
@@ -181,5 +169,3 @@ def extendPicturePlugin():
 
     plugin_pool.unregister_plugin(OriginalBootstrap4PicturePlugin)
     plugin_pool.register_plugin(Bootstrap4PicturePlugin)
-
-    logger.info("Extended PicturePlugin (and Bootstrap4PicturePlugin).")
