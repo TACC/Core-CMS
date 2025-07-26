@@ -1,53 +1,53 @@
 {# https://github.com/django-cms/djangocms-picture/blob/3.0.0/djangocms_picture/templates/djangocms_picture/default/picture.html #}
-{# TACC (mimic v3.0.0 to v4.0.0 changes): #}
 {# TACC (support children as caption content): #}
+{# TACC (mimic v3.0.0 to v4.0.0 changes): #}
+{# TACC (support image zoom): #}
 {# {% load thumbnail %} #}
-{% load thumbnail l10n cms_tags %}
+{% load thumbnail l10n cms_tags strip_class_attribute %}
+{# /TACC #}
 {# /TACC #}
 {# /TACC #}
 
-{# TACC (allow link to be conditional): #}
-{% block picture_link_start %}
-{# /TACC #}
+{# TACC (support custom condition): #}
 {% if should_render_link %}
+{# /TACC #}
     {# TACC (support image zoom): #}
     {% if should_add_zoom_class_to_link %}
         {% include "djangocms_picture/default/zoom_asset.html" %}
     {% endif %}
     {# /TACC #}
-    {# TACC (assign attributes to parent): #}
-    {% include "djangocms_picture/default/picture_link_start.html" %}
-    {# /TACC #}
+    <a href="{{ picture_link }}"
+    {% if instance.link_target %} target="{{ instance.link_target }}"{% endif %}
+        {# TACC (support image zoom): #}
+        class="
+            {{ instance.attributes.class|default:'' }}
+            {{ instance.link_attributes.class|default:'' }}
+            {{ className }}
+            {% if should_add_zoom_class_to_link %}u-image-zoom--on-hover{% endif %}
+        "
+        {# TACC (assign attributes to parent): #}
+        {{ instance.attributes_str|strip_class_attribute|safe }}
+        {{ instance.link_attributes_str|strip_class_attribute|safe }}
+        {# /TACC #}
+        {# /TACC #}
+    >
 {% endif %}
-{# TACC (allow link to be conditional): #}
-{% endblock %}
-{# /TACC #}
 
-{# TACC (allow figure to be overridden): #}
-{% block picture_figure_start %}
-{# /TACC #}
+
 {# TACC (support children as caption content): #}
-{# {% if instance.caption_text %} #}
 {% if has_figure_content %}
+{# /TACC #}
     {# TACC (assign attributes to parent): #}
     <figure {{ instance.attributes_str }}>
     {# /TACC #}
 {% endif %}
-{# /TACC #}
-{# TACC (allow figure to be overridden): #}
-{% endblock %}
-{# /TACC #}
 
 
-{# TACC (allow image wrapper): #}
-{% block picture_wrap_start %}
 {# TACC (support image zoom): #}
 {% if should_wrap_image_for_zoom %}
     {% include "djangocms_picture/default/zoom_asset.html" %}
     <span class="u-image-zoom--on-hover">
 {% endif %}
-{# /TACC #}
-{% endblock picture_wrap_start %}
 {# /TACC #}
 {# TACC (mimic v3.0.0 to v4.0.0 changes): #}
 {% localize off %}
@@ -83,19 +83,15 @@
 {# TACC (mimic v3.0.0 to v4.0.0 changes): #}
 {% endlocalize %}
 {# /TACC #}
-{# TACC (allow_image_wrapper): #}
-{% block picture_wrap_end %}
-{% if should_wrap_image_for_zoom %}
+{# TACC (support image zoom): #}
+    {% if should_wrap_image_for_zoom %}
     </span>
-{% endif %}
-{% endblock picture_wrap_end %}
+    {% endif %}
 {# /TACC #}
 
-{# TACC (allow figure to be overridden): #}
-{% block picture_figure_end %}
-{# /TACC #}
-{# {% if instance.caption_text %} #}
+{# TACC (support custom condition): #}
 {% if has_figure_content %}
+{# /TACC #}
         {# TACC (support children as caption content): #}
         {# <figcaption>{{ instance.caption_text }}</figcaption> #}
         <figcaption>
@@ -107,19 +103,12 @@
         {# /TACC #}
     </figure>
 {% endif %}
-{# TACC (allow figure to be overridden): #}
-{% endblock %}
-{# /TACC #}
 
-{# TACC (allow link to be conditional): #}
-{% block picture_link_end %}
-{# /TACC #}
+{# TACC (support custom condition): #}
 {% if should_render_link %}
+{# /TACC #}
     </a>
 {% endif %}
-{# TACC (allow link to be conditional): #}
-{% endblock %}
-{# /TACC #}
 
 {% comment %}
     # https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img
