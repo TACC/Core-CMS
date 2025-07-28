@@ -21,6 +21,6 @@
   },
   "homepage": "https://github.com/TACC/Core-CMS",
   "devDependencies": {
-    "@tacc/core-styles": "github:TACC/Core-Styles#fix/u-image-zoom-compatibility-issues"
+    "@tacc/core-styles": "^2.46.2"
   }
 }
