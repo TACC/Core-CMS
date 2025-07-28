@@ -11,11 +11,6 @@
 {# TACC (support custom condition): #}
 {% if should_render_link %}
 {# /TACC #}
-    {# TACC (support image zoom): #}
-    {% if should_add_zoom_class_to_link %}
-        {% include "djangocms_picture/default/zoom_asset.html" %}
-    {% endif %}
-    {# /TACC #}
     <a href="{{ picture_link }}"
     {% if instance.link_target %} target="{{ instance.link_target }}"{% endif %}
         {# TACC (support image zoom): #}
@@ -45,7 +40,6 @@
 
 {# TACC (support image zoom): #}
 {% if should_wrap_image_for_zoom %}
-    {% include "djangocms_picture/default/zoom_asset.html" %}
     <span class="u-image-zoom--on-hover">
 {% endif %}
 {# /TACC #}
