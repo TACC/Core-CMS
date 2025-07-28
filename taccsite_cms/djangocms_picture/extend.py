@@ -40,7 +40,7 @@ def extendPicturePlugin():
         would_render_link = whether_to_render_link(instance)
         should_add_zoom_effect = ZOOM_TEMPLATE_NAME in instance.template
         parent_plugin = instance.parent.get_plugin_instance()[0] if instance.parent else None
-        is_in_link = isinstance(parent_plugin, LinkPlugin) if parent_plugin else False
+        is_in_link = instance.parent.plugin_type == 'LinkPlugin' if instance.parent else False
 
         if (should_add_zoom_effect and not would_render_link and not is_in_link):
             errors['template'] = ZOOM_TEMPLATE_ERROR
@@ -53,12 +53,6 @@ def extendPicturePlugin():
         Calculate boolean context variables to simplify template logic.
         Returns a dictionary of context variables.
         """
-        # Link (set 1)
-        has_explicit_link = bool(instance.get_link())
-        parent_plugin = instance.parent.get_plugin_instance()[0] if instance.parent else None
-        is_in_link_plugin = isinstance(parent_plugin, LinkPlugin) if parent_plugin else False
-        has_any_link = has_explicit_link or is_in_link_plugin
-
         # Figure/Caption
         has_caption_text = bool(instance.caption_text)
         has_child_plugins = bool(instance.child_plugin_instances)
@@ -67,7 +61,7 @@ def extendPicturePlugin():
         # Template
         is_zoom_template = ZOOM_TEMPLATE_NAME in instance.template
 
-        # Link (set 2)
+        # Link
         should_render_link = whether_to_render_link(instance)
 
         # Zoom Effect
