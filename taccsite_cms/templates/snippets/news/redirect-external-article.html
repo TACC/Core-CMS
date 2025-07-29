@@ -1,0 +1,30 @@
+{# To redirect page to given URL or external URL from known content #}
+{% load static %}
+
+<script id="redirect-external-article" type="module">
+import getArticleExternalURL from '{% static "site_cms/js/modules/getArticleExternalURL.js" %}';
+
+let URL = '{{html}}';
+
+const params = new URLSearchParams( window.location.search );
+const isEditing = params.has('edit');
+const isNewsArticle = ( window.location.pathname.indexOf('/news') == 0 );
+
+if ( isNewsArticle && ! URL ) {
+  const extTagName = 'external';
+  const article = document.querySelector(`
+    .app-blog.has-blog-tag-${extTagName} article
+  `);
+
+  URL = getArticleExternalURL( article );
+}
+
+if ( ! URL ) {
+  console.debug('Cannot redirect to URL', URL );
+} else if ( isEditing ) {
+  console.info(`Skipping redirect to "${URL}", because user is editing`);
+} else {
+  console.debug(`Redirecting to "${URL}"`);
+  window.location.href = URL;
+}
+</script>
