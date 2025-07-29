@@ -2,7 +2,7 @@
 {% load static %}
 
 <script id="redirect-external-article" type="module">
-import getArticleExternalURL from '{% static "site_cms/js/modules/getArticleExternalURL.js" %}';
+import { getArticleExternalURL } from '{% static "site_cms/js/modules/manageExternalArticles.js" %}';
 
 let URL = '{{html}}';
 
