@@ -346,13 +346,7 @@ MEDIA_ROOT = os.path.join(DATA_DIR, 'media')
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        # FAQ: List custom directory first, so custom templates take precedence
-        # SEE: https://docs.djangoproject.com/en/2.2/topics/templates/#configuration
-        'DIRS': glob(
-            os.path.join(BASE_DIR, 'taccsite_custom')
-        ) + [
-            os.path.join(BASE_DIR, 'taccsite_cms', 'templates')
-        ],
+        'DIRS': [os.path.join(BASE_DIR, 'taccsite_cms', 'templates')],
         'OPTIONS': {
             'context_processors': [
                 'django.contrib.auth.context_processors.auth',
@@ -375,8 +369,8 @@ TEMPLATES = [
                 'tacc_uri_shortcuts': 'taccsite_cms.templatetags.tacc_uri_shortcuts',
             },
             'loaders': [
+                'django.template.loaders.app_directories.Loader',
                 'django.template.loaders.filesystem.Loader',
-                'django.template.loaders.app_directories.Loader'
             ],
         },
     },
@@ -401,6 +395,11 @@ MIDDLEWARE = [
     'cms.middleware.language.LanguageCookieMiddleware'
 ]
 
+try:
+    from taccsite_cms.settings_custom import CUSTOM_ASSET_DIR
+except:
+    CUSTOM_ASSET_DIR = 'core-cms'
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -418,6 +417,8 @@ INSTALLED_APPS = [
     # 'django.contrib.staticfiles',
     'taccsite_cms.django.contrib.staticfiles_custom.apps.TaccStaticFilesConfig',
     'django.contrib.messages',
+    'taccsite_custom.' + CUSTOM_ASSET_DIR,
+    'taccsite_cms',
 
     # key django CMS modules
     'cms',
