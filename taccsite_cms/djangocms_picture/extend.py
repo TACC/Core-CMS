@@ -1,10 +1,7 @@
 def extendPicturePlugin():
-    from django.core.exceptions import ValidationError
     from django.utils.translation import gettext_lazy as _
 
     from cms.plugin_pool import plugin_pool
-
-    from djangocms_link.cms_plugins import LinkPlugin
 
     ZOOM_TEMPLATE_NAME = 'zoom_effect'
     ZOOM_TEMPLATE_LABEL = 'Zoom image on hover'
@@ -34,6 +31,8 @@ def extendPicturePlugin():
 
     def validate_zoom_template(instance):
         """Validates: 'Template' field choice 'Zoom image …'"""
+        from django.core.exceptions import ValidationError
+        from djangocms_link.cms_plugins import LinkPlugin
 
         errors = {}
 
