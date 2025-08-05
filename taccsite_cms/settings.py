@@ -349,8 +349,10 @@ TEMPLATES = [
         # FAQ: List custom directory first, so custom templates take precedence
         # SEE: https://docs.djangoproject.com/en/2.2/topics/templates/#configuration
         'DIRS': glob(
+            # XXX: Strange and from my ignorant implementation
             os.path.join(BASE_DIR, 'taccsite_custom')
         ) + [
+            os.path.join(BASE_DIR, 'taccsite_custom', 'templates'),
             os.path.join(BASE_DIR, 'taccsite_cms', 'templates')
         ],
         'OPTIONS': {
