@@ -1,3 +1,7 @@
+import logging
+
+logger = logging.getLogger(f"portal.{__name__}")
+
 def extendPicturePlugin():
     from django.utils.translation import gettext_lazy as _
 
@@ -125,7 +129,10 @@ def extendPicturePlugin():
     #      but is since not regularly used, but is used, thus maintained
     # FAQ: No need to unregister cuz Bootstrap4PicturePlugin does that
     # https://github.com/django-cms/djangocms-bootstrap4/blob/3.0.0/djangocms_bootstrap4/contrib/bootstrap4_picture/cms_plugins.py#L54
-    # plugin_pool.unregister_plugin(OriginalPicturePlugin)
+    # try:
+    #     plugin_pool.unregister_plugin(OriginalPicturePlugin)
+    # except Exception as e:
+    #     logger.warning(f"Could not unregister original plugin: {e}")
     plugin_pool.register_plugin(PicturePlugin)
 
 
@@ -158,6 +165,8 @@ def extendPicturePlugin():
             context.update(more_context)
 
             return context
-
-    plugin_pool.unregister_plugin(OriginalBootstrap4PicturePlugin)
+    try:
+        plugin_pool.unregister_plugin(OriginalBootstrap4PicturePlugin)
+    except Exception as e:
+        logger.warning(f"Could not unregister original plugin: {e}")
     plugin_pool.register_plugin(Bootstrap4PicturePlugin)
