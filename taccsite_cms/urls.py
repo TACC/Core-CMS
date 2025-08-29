@@ -36,6 +36,7 @@ if getattr(settings, 'PORTAL_IS_TACC_CORE_PORTAL', True):
         url(r'^cms/nav/pages/markup/$', TemplateView.as_view(template_name='nav_cms.raw.html'), name='menu_pages_markup'),
         url(r'^cms/header/branding/markup/$', TemplateView.as_view(template_name='header_branding.html'), name='header_branding_markup'),
         url(r'^cms/header/logo/markup/$', TemplateView.as_view(template_name='header_logo.html'), name='header_logo_markup'),
+        url(r'^cms/markup/footer$', TemplateView.as_view(template_name='footer.html'), name='footer_markup'),
 
         # To support remote authentication
         url(r'^remote/login/$', remote_cms_auth.verify_and_auth, name='verify_and_auth'),

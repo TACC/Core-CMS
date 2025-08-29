@@ -18,12 +18,7 @@ Unless modifying default behavior for the CMS Core (and thus all custom Projects
 # WALKTHROUGH
 ########################
 
-# To change LDAP auth settings for a custom CMS Project (e.g. `frontera-cms`):
-# 1. Copy the setting from `settings.py`
-# 2. Assign the new value in `Core-CMS/taccsite_custom/frontera-cms/settings_custom.py`.
 AUTH_LDAP_SERVER_URI = "ldap://cluster.ldap.tacc.utexas.edu"
-
-# The same goes for other more commonly customized values like below.
 
 ########################
 # DJANGO_CMS
@@ -56,7 +51,7 @@ CUSTOM_BRANDING = [
 ]
 
 # Generic TACC Portals.
-PORTAL_BRANDING = [ PORTAL_BRANDING_TACC, PORTAL_UTEXAS_BRANDING ]
+PORTAL_BRANDING = [ PORTAL_BRANDING_TACC, PORTAL_BRANDING_UTEXAS ]
 
 # Custom-Branded Portals (Non-NSF).
 # PORTAL_BRANDING = [ PORTAL_BRANDING_TACC, PORTAL_BRANDING_UTEXAS, CUSTOM_BRANDING ]
@@ -75,7 +70,7 @@ PORTAL_BRANDING = [ PORTAL_BRANDING_TACC, PORTAL_UTEXAS_BRANDING ]
 # To hide logo, set `TACC_LOGO = False`.
 PORTAL_LOGO = {
     "is_remote": True,
-    "img_file_src": "https://cdn.jsdelivr.net/gh/TACC/Core-CMS-Custom@813aa7c/ptdatax_assets/logo.png",
+    "img_file_src": "https://cdn.jsdelivr.net/gh/TACC/Core-CMS@v4.33.0/taccsite_cms/static/site_cms/img/org_logos/portal.png",
     "img_class": "", # additional class names
     "link_href": "/",
     "link_target": "_self",
@@ -88,7 +83,7 @@ PORTAL_LOGO = {
 # https://github.com/TACC/Core-CMS-Custom/blob/d4c93af/docs/port-project.md#has-a-core-portal
 PORTAL_FAVICON = {
     "is_remote": True,
-    "img_file_src": "https://cdn.jsdelivr.net/gh/TACC/Core-CMS-Custom@813aa7c/ptdatax_assets/favicon.ico",
+    "img_file_src": "https://cdn.jsdelivr.net/gh/TACC/Core-CMS@v4.33.0/taccsite_cms/static/site_cms/img/favicons/favicon.ico",
 }
 
 ########################

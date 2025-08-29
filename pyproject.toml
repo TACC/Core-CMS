@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "tacc-core-cms-backend"
-version = "4.30.0"
+version = "4.36.3"
 description = "DjangoCMS backend for the TACC ACI-WMA Core-CMS Codebase."
 authors = ["TACC-WMA <wma-portals@tacc.utexas.edu>"]
 
@@ -45,9 +45,7 @@ djangocms-admin-style = "~3.2.6"
 djangocms-apphook-setup = "0.4.1"
 djangocms-attributes-field = "2.1.0"
 djangocms-blog = "^1.2"
-# TO get a commit in main (since v3.0.1) to fix Container error
-# https://github.com/django-cms/djangocms-bootstrap4/pull/164
-djangocms-bootstrap4 = {git = "https://github.com/django-cms/djangocms-bootstrap4.git", rev = "49983f4"}
+djangocms-bootstrap4 = "^3.0"
 djangocms-column = "^2.0"
 djangocms-file = "3.0.0"
 djangocms-forms-maintained = { git = "https://github.com/TACC/djangocms-forms", rev = "6b59ff366495915f06f4d6fac01a2f0aa9efecaf" }

@@ -28,27 +28,15 @@
     {% with path="djangocms_page_meta.html" %}{% include path %}{% endwith %}
   {% endblock meta %}
 
+  <!-- Assets. -->
+  {% block assets %}
 {% if settings.TACC_CORE_STYLES_VERSION == 0 %}
-
-  <!-- Site Font and/or Custom Font. -->
-  {# The core site font (can be replaced or accompanied by custom font/s) #}
-  {% block assets_font %}
-  {% include 'assets_font.html' %}
-  {% endblock assets_font %}
-
-  <!-- Site Assets. -->
-  {# The core site assets (can NOT be replaced by custom assets) #}
   {% include 'assets_site.html' %}
-
 {% elif settings.TACC_CORE_STYLES_VERSION >= 1 %}
-
-  <!-- Core Assets. -->
   {% include 'assets_core.html' %}
-  {% block assets_core_project %}
   {% include 'assets_core_cms.html' %}
-  {% endblock assets_core_project %}
-
 {% endif %}
+  {% endblock assets %}
 
   <!-- Custom Assets. -->
   {% block assets_custom %}
@@ -91,26 +79,13 @@
   {% endblock content %}
   </main>
 
-  <footer class="c-footer  s-footer">
-  {% block footer %}
+  {% include "footer.html" %}
 
-    {% static_placeholder "footer-content" or %}
-    <p>©{% now "Y" %} Texas Advanced Computing Center, The University of Texas at Austin, Office of the Vice President for Research.</p>
-    {% endstatic_placeholder %}
-
-  {% endblock footer %}
-  </footer>
-
+  <!-- Assets (Delayed). -->
 {% if settings.TACC_CORE_STYLES_VERSION == 0 %}
-
-  <!-- Site Assets (Delayed). -->
   {% include 'assets_site_delayed.html' %}
-
 {% elif settings.TACC_CORE_STYLES_VERSION >= 1 %}
-
-  <!-- Core Assets (Delayed). -->
   {% include 'assets_core_delayed.html' %}
-
 {% endif %}
 
   <!-- Custom Assets (Delayed). -->

@@ -349,8 +349,10 @@ TEMPLATES = [
         # FAQ: List custom directory first, so custom templates take precedence
         # SEE: https://docs.djangoproject.com/en/2.2/topics/templates/#configuration
         'DIRS': glob(
+            # XXX: Strange and from my ignorant implementation
             os.path.join(BASE_DIR, 'taccsite_custom')
         ) + [
+            os.path.join(BASE_DIR, 'taccsite_custom', 'templates'),
             os.path.join(BASE_DIR, 'taccsite_cms', 'templates')
         ],
         'OPTIONS': {
@@ -482,7 +484,6 @@ INSTALLED_APPS = [
     # django CMS Bootstrap
     # IDEA: Extend Bootstrap apps instead of overwrite
     'taccsite_cms.contrib.bootstrap4_djangocms_link',
-    'taccsite_cms.contrib.bootstrap4_djangocms_picture',
 
     # TACC CMS Plugins
     'djangocms_tacc_image_gallery',
@@ -581,7 +582,9 @@ DJANGOCMS_PICTURE_ALIGN = [
     ('center', _('Align center')),
 ]
 DJANGOCMS_PICTURE_TEMPLATES = [
-    ('no_link_to_ext_image', _('Do not link to external image')),
+    ('no_link_to_ext_image', _('Do not link to "External image"')),
+    ('zoom_effect', _('Zoom image on hover')),
+    ('zoom_effect_no_link_to_ext_image', _('Zoom image on hover & Do not link to "External image"')),
 ]
 
 # FILE UPLOAD VALUES MUST BE SET!
