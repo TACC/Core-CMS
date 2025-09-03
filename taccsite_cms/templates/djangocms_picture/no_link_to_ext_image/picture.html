@@ -1,0 +1,6 @@
+{% extends "djangocms_picture/default/picture.html" %}
+
+{# To allow "External image" to be rendered without a link #}
+{# FAQ: Template exists to avoid adding a new model field #}
+{# FAQ: Default template uses custom boolean context variables for logic #}
+{# FAQ: App djangocms_picture assumes that an image, if not explicitely linked, must link to itself. But sometimes, we want an image to just be an image, unlinked. #}

@@ -2,11 +2,11 @@
 {% get_current_language as lang_code %}
 <!doctype html>
 <html
-  id="page-{% block html_page_id %}{{ request.current_page.reverse_id }}{% endblock html_page_id %}"
+  id="{% block html_page_id %}{% if request.current_page.reverse_id %}page-{{ request.current_page.reverse_id }}{% endif %}{% endblock html_page_id %}"
+  data-page-template="{{ request.current_page.get_template|cut:'.html' }}"
+  class="{% block html_page_class %}{% endblock html_page_class %}"
   lang="{{ lang_code }}"
-  {# FAQ: Only available if set in page's "Advanced" settings #}
-  data-page-id="{{ request.current_page.reverse_id }}"
-  class="{% block html_page_class %}{% endblock html_page_class %}">
+>
 
 {# SEE: https://github.com/nephila/django-meta/blob/1.7.0/docs/rendering.rst #}
 <head {% meta_namespaces %}>
@@ -17,7 +17,7 @@
   {% include 'analytics.html' %}
 
   <!-- Metadata. -->
-  <title>{% block title %} This is my new project home page {% endblock title %}</title>
+  <title>{% block title %}{% page_attribute "page_title" %}{% endblock title %}</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -28,27 +28,15 @@
     {% with path="djangocms_page_meta.html" %}{% include path %}{% endwith %}
   {% endblock meta %}
 
+  <!-- Assets. -->
+  {% block assets %}
 {% if settings.TACC_CORE_STYLES_VERSION == 0 %}
-
-  <!-- Site Font and/or Custom Font. -->
-  {# The core site font (can be replaced or accompanied by custom font/s) #}
-  {% block assets_font %}
-  {% include 'assets_font.html' %}
-  {% endblock assets_font %}
-
-  <!-- Site Assets. -->
-  {# The core site assets (can NOT be replaced by custom assets) #}
   {% include 'assets_site.html' %}
-
 {% elif settings.TACC_CORE_STYLES_VERSION >= 1 %}
-
-  <!-- Core Assets. -->
   {% include 'assets_core.html' %}
-  {% block assets_core_project %}
   {% include 'assets_core_cms.html' %}
-  {% endblock assets_core_project %}
-
 {% endif %}
+  {% endblock assets %}
 
   <!-- Custom Assets. -->
   {% block assets_custom %}
@@ -70,40 +58,34 @@
   <main id="cms-content">
   {% block content %}
 
-    {# To allow extra Container in page structure by hiding extra padding #}
+    {# To hide extra space that a nested/redundant Container would add #}
     <style type="text/css">
-      .container > .s-breadcrumbs + .container { padding-inline: 0; }
+      #cms-content-container.container .container { padding-inline: 0; }
     </style>
+    {# To wrap content in Container without relying on CMS editor #}
+    <div class="container" id="cms-content-container">
+      {% block breadcrumbs %}
+        {% include "nav_cms_breadcrumbs.html" %}
+      {% endblock breadcrumbs %}
 
-    {# To wrap breadcrumbs in Container without relying on CMS editor #}
-    <div class="container">
-      {% include "nav_cms_breadcrumbs.html" %}
-      {% placeholder "content" %}
+      {% block cms_content %}
+        {% placeholder "content" %}
+      {% endblock cms_content %}
+
+      {# To isolate content editor cannot change layout of (e.g. Blog) #}
+      {% block app_content %}{% endblock app_content %}
     </div>
 
   {% endblock content %}
   </main>
 
-  <footer class="c-footer  s-footer">
-  {% block footer %}
+  {% include "footer.html" %}
 
-    {% static_placeholder "footer-content" or %}
-    <p>©{% now "Y" %} Texas Advanced Computing Center, The University of Texas at Austin, Office of the Vice President for Research.</p>
-    {% endstatic_placeholder %}
-
-  {% endblock footer %}
-  </footer>
-
+  <!-- Assets (Delayed). -->
 {% if settings.TACC_CORE_STYLES_VERSION == 0 %}
-
-  <!-- Site Assets (Delayed). -->
   {% include 'assets_site_delayed.html' %}
-
 {% elif settings.TACC_CORE_STYLES_VERSION >= 1 %}
-
-  <!-- Core Assets (Delayed). -->
   {% include 'assets_core_delayed.html' %}
-
 {% endif %}
 
   <!-- Custom Assets (Delayed). -->

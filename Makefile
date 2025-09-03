@@ -1,32 +1,37 @@
-DOCKERHUB_REPO := taccwma/$(shell cat ./docker_repo.var)
+DOCKERHUB_REPO := taccwma/core-cms
 DOCKER_TAG ?= $(shell git rev-parse --short HEAD)
 DOCKER_IMAGE := $(DOCKERHUB_REPO):$(DOCKER_TAG)
 DOCKER_IMAGE_LATEST := $(DOCKERHUB_REPO):latest
+# WARNING: Using `docker-compose` is deprecated
+DOCKER_COMPOSE_CMD := $(shell if command -v docker-compose > /dev/null; then echo "docker-compose"; else echo "docker compose"; fi)
 
-PROJECT_NAME := $(shell cat ./project_name.var)
-NEEDS_DEMO := $(shell cat ./needs_demo.var)
+# NOTE: The `DOCKER_IMAGE_BRANCH` tag is the git tag for the commit if it exists, else the branch on which the commit exists.
+# NOTE: Special characters in `DOCKER_IMAGE_BRANCH` are replaced with dashes.
+DOCKER_IMAGE_BRANCH := $(DOCKERHUB_REPO):$(shell git describe --exact-match --tags 2> /dev/null || git symbolic-ref --short HEAD | sed 's/[^[:alnum:]\.\_\-]/-/g')
+
 BUILD_ID := $(shell git describe --always)
 
 .PHONY: build
 build:
-	docker-compose -f ./docker-compose.yml build
+	$(DOCKER_COMPOSE_CMD) -f ./docker-compose.yml build
 
 .PHONY: build-full
 build-full:
 	docker build -t $(DOCKER_IMAGE) \
 		--target production \
-		--build-arg PROJECT_NAME="$(PROJECT_NAME)" \
 		--build-arg BUILD_ID="$(BUILD_ID)" \
-		--build-arg NEEDS_DEMO="$(NEEDS_DEMO)" \
 		-f ./Dockerfile .
+
+	docker tag $(DOCKER_IMAGE) $(DOCKER_IMAGE_BRANCH)
 
 .PHONY: example
 example:
-	docker-compose -f ./docker-compose.example.yml up
+	$(DOCKER_COMPOSE_CMD) -f ./docker-compose.example.yml up
 
 .PHONY: publish
 publish:
 	docker push $(DOCKER_IMAGE)
+	docker push $(DOCKER_IMAGE_BRANCH)
 
 .PHONY: publish-latest
 publish-latest:
@@ -35,12 +40,20 @@ publish-latest:
 
 .PHONY: start
 start:
-	docker-compose -f docker-compose.yml up
+	$(DOCKER_COMPOSE_CMD) -f docker-compose.dev.yml up $(ARGS)
 
 .PHONY: stop
 stop:
-	docker-compose -f docker-compose.yml down
+	$(DOCKER_COMPOSE_CMD) -f docker-compose.dev.yml down $(ARGS)
 
-.PHONY: stop-verbose
+.PHONY: stop-v
 stop-v:
-	docker-compose -f docker-compose.yml down -v
+	$(MAKE) stop ARGS="--volumes"
+
+.PHONY: clean
+clean:
+	$(DOCKER_COMPOSE_CMD) -f docker-compose.dev.yml down -v --rmi all
+
+.PHONY: setup
+setup:
+	./bin/setup-cms.sh

@@ -7,8 +7,20 @@
 <!-- Sponsor Logos -->
 {% include "header_branding.html" %}
 
+{% with settings.PORTAL_HAS_LOGIN as SHOW_LOGIN_NAV %}
+{% with settings.PORTAL_HAS_SEARCH as SHOW_SEARCH_BAR %}
+{% with settings.PORTAL_NAV_WIDTH as NAV_WIDTH %}
+
 <!-- Navigation Bar -->
-<nav id="s-header" class="s-header  navbar {% if settings.INCLUDES_CORE_PORTAL %}navbar-expand-xl{% else %}navbar-expand-lg{% endif %} navbar-dark">
+<nav id="s-header" class="s-header  navbar navbar-dark
+  {% if NAV_WIDTH %}
+  navbar-expand-{{NAV_WIDTH}}
+  {% elif SHOW_LOGIN_NAV or SHOW_SEARCH_BAR %}
+  navbar-expand-xl
+  {% else %}
+  navbar-expand-lg
+  {% endif %}
+">
   <!-- Portal Logo -->
   {% include "header_logo.html" %}
 
@@ -20,16 +32,19 @@
   <!-- Navbar Links -->
   <div class="collapse navbar-collapse" id="navbarsExpandTarget">
     {# GL-6: Remove need for different `className` values #}
-    {% if settings.INCLUDES_PORTAL_NAV or settings.INCLUDES_SEARCH_BAR %}
+    {% if SHOW_LOGIN_NAV or SHOW_SEARCH_BAR %}
       {# FAQ: If template were included with `only`, then it would NOT render `show_menu` #}
       {% include "nav_cms.html" with className="navbar-nav  mr-auto" %}
 
-      {# NOTE: As of 2022-10, search is only available with a Portal #}
-      {% if settings.INCLUDES_SEARCH_BAR %}{% include "nav_search.html" with className="form-inline" settings=settings only %}{% endif %}
-      {% if settings.INCLUDES_PORTAL_NAV %}{% include "nav_portal.html" with className="navbar-nav" settings=settings only %}{% endif %}
+      {% if SHOW_SEARCH_BAR %}{% include "nav_search.html" with className="form-inline" settings=settings only %}{% endif %}
+      {% if SHOW_LOGIN_NAV %}{% include "nav_portal.html" with className="navbar-nav" settings=settings only %}{% endif %}
     {% else %}
       {# FAQ: If template were included with `only`, then it would NOT render `show_menu` #}
       {% include "nav_cms.html" with className="navbar-nav  ml-auto" %}
     {% endif %}
   </div>
 </nav>
+
+{% endwith %}
+{% endwith %}
+{% endwith %}

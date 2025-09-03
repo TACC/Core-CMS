@@ -20,24 +20,18 @@ build
 ## TODO: get Cortal from Core-Styles (then remove this exception)
 !**/fonts/Cortal-Icons-*
 
-## environment variables
-docker_repo.var
-needs_demo.var
-project_name.var
-
 # Static and Media folders
 /static
 /media
 
-# UI Pattern Demo
-/taccsite_ui/dist
-
 # Secrets and Customizations
 *secrets*.py
-*.custom.yml
+*settings_default*.py
 *settings_custom*.py
 *settings_local*.py
 custom_app_settings.py
+!*.example.py
+*.custom.yml
 urls_custom.py
 
 # Makefile var
@@ -62,9 +56,6 @@ atlassian-ide-plugin.xml
 # Databases
 *.sqlite
 *.sql
-
-# Version file for source distribution
-RELEASE-VERSION
 
 # Dependencies
 node_modules

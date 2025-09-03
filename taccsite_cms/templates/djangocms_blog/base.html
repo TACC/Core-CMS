@@ -1,4 +1,4 @@
-{# https://github.com/nephila/djangocms-blog/blob/1.1.1/djangocms_blog/templates/djangocms_blog/base.html #}
+{# https://github.com/nephila/djangocms-blog/blob/1.2.3/djangocms_blog/templates/djangocms_blog/base.html #}
 {% extends CMS_TEMPLATE %}
 {% load static %}
 
@@ -13,19 +13,29 @@
     {% endif %}
 {% endblock meta %}
 
-{% block content %}
+{# TACC (to not let editor add content to every blog page): #}
+{% block cms_content %}{% endblock cms_content %}
+{# /TACC #}
 
+{# TACC (to not let blog usurp `{% block "content" %}`): #}
+{% block app_content %}
+{# /TACC #}
+
+{% block assets_app %}
 {% if settings.TACC_CORE_STYLES_VERSION == 0 %}
-<link rel="stylesheet" href="{% static 'site_cms/css/build/site.app.blog.css' %}">
+<style>
+  @import url("{% static 'site_cms/css/build/site.app.blog.css' %}") layer(project.core);
+</style>
 {% elif settings.TACC_CORE_STYLES_VERSION >= 1 %}
 <style>
   @import url("{% static 'site_cms/css/build/app.blog.css' %}") layer(project);
 </style>
 {% endif %}
+{% endblock assets_app %}
 
 <div class="app app-blog
-  {% if not settings.TACC_BLOG_SHOW_CATEGORIES %}no-categories{% endif %}
-  {% if not settings.TACC_BLOG_SHOW_TAGS %}no-tags{% endif %}
+  {% if not settings.PORTAL_BLOG_SHOW_CATEGORIES %}no-categories{% endif %}
+  {% if not settings.PORTAL_BLOG_SHOW_TAGS %}no-tags{% endif %}
   {% if post %} {% include './includes/blog_cats.html' with prefix='has-' %} {% include './includes/blog_tags.html' with prefix='has-' %}
   {% endif %}
 ">
@@ -33,4 +43,6 @@
     {% block content_blog %}{% endblock %}
 </div>
 
-{% endblock content %}
+{# TACC (to not let blog usurp `{% block "content" %}`): #}
+{% endblock app_content %}
+{# /TACC #}
