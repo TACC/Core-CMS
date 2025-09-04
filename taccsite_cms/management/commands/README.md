@@ -26,18 +26,18 @@ Usage:
 python manage.py list_page_templates
 ```
 
-## Find Pages Using Plugins
+## List Pages Using Plugins
 
-This command finds the CMS page that uses a specific plugin instance (given a plugin instance ID), along with the page's path.
+This command lists all pages that use a specific plugin instance (given a plugin instance ID), along with the page's path.
 
 Usage:
 ```sh
-python manage.py find_pages_with_plugins <plugin_instance_id> [<plugin_instance_id> ...]
+python manage.py list_plugin_pages <plugin_instance_id> [<plugin_instance_id> ...]
 ```
 
 Example:
 ```sh
-python manage.py find_pages_with_plugins 42 99
+python manage.py list_plugin_pages 42 99
 ```
 
 
