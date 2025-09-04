@@ -2,6 +2,7 @@
 
 - [How to Use](#how-to-use)
 - [List Pages Using Each Template](#list-pages-using-each-template)
+- [List Pages Using Plugins](#list-pages-using-plugins)
 - [Create Test Pages](#create-test-pages)
   - [for Sections](#for-sections)
   - [for Cards](#for-cards)
@@ -29,6 +30,20 @@ This command lists all pages using each template in the CMS, along with their fu
 Usage:
 ```sh
 python manage.py list_page_templates
+```
+
+## List Pages Using Plugins
+
+This command lists all pages that use a specific plugin instance (given a plugin instance ID), along with the page's path.
+
+Usage:
+```sh
+python manage.py list_plugin_pages <plugin_instance_id> [<plugin_instance_id> ...]
+```
+
+Example:
+```sh
+python manage.py list_plugin_pages 42 99
 ```
 
 ## Create Test Pages
