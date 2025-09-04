@@ -2,6 +2,7 @@
 
 - [How to Use](#how-to-use)
 - [List Pages Using Each Template](#list-pages-using-each-template)
+- [List Pages Using Plugins](#list-pages-using-plugins)
 - [Set Groups & Permissions](#set-groups--permissions)
 - [Reference](#reference)
 
@@ -24,6 +25,21 @@ Usage:
 ```sh
 python manage.py list_page_templates
 ```
+
+## Find Pages Using Plugins
+
+This command finds the CMS page that uses a specific plugin instance (given a plugin instance ID), along with the page's path.
+
+Usage:
+```sh
+python manage.py find_pages_with_plugins <plugin_instance_id> [<plugin_instance_id> ...]
+```
+
+Example:
+```sh
+python manage.py find_pages_with_plugins 42 99
+```
+
 
 ## Set Groups & Permissions
 
