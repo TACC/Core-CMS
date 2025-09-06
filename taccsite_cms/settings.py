@@ -524,9 +524,9 @@ def get_subdirs_as_module_names(path):
 # Append CMS project paths as module names to INSTALLED_APPS
 # FAQ: This automatically looks into `/taccsite_custom` and creates an "App" for each directory within
 CUSTOM_CMS_DIR = os.path.join(BASE_DIR, 'taccsite_custom')
-
 INSTALLED_APPS_APPEND = get_subdirs_as_module_names(CUSTOM_CMS_DIR)
-INSTALLED_APPS = INSTALLED_APPS + INSTALLED_APPS_APPEND
+CORE_CMS_INDEX = INSTALLED_APPS.index('taccsite_cms')
+INSTALLED_APPS[CORE_CMS_INDEX:CORE_CMS_INDEX] = INSTALLED_APPS_APPEND
 
 MIGRATION_MODULES = {}
 LANGUAGE_CODE = 'en'
