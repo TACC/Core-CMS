@@ -100,16 +100,16 @@ PORTAL_SEARCH_INDEX_IS_AUTOMATIC = False
 # DJANGOCMS_BLOG
 ########################
 
-BLOG_AUTO_SETUP = True # Set to False after setup (minimize overhead)
-BLOG_AUTO_HOME_TITLE ='Home'
-BLOG_AUTO_BLOG_TITLE = 'News'
-BLOG_AUTO_APP_TITLE = 'News'
-BLOG_AUTO_NAMESPACE = 'News'
-BLOG_ENABLE_COMMENTS = False
+# BLOG_AUTO_SETUP = True # Set to False after setup (minimize overhead)
+# BLOG_AUTO_HOME_TITLE ='Home'
+# BLOG_AUTO_BLOG_TITLE = 'News'
+# BLOG_AUTO_APP_TITLE = 'News'
+# BLOG_AUTO_NAMESPACE = 'News'
+# BLOG_ENABLE_COMMENTS = False
 
 ########################
 # DJANGOCMS_BLOG: TACC
 ########################
 
-PORTAL_BLOG_SHOW_CATEGORIES = True
-PORTAL_BLOG_SHOW_TAGS = True
+# PORTAL_BLOG_SHOW_CATEGORIES = True
+# PORTAL_BLOG_SHOW_TAGS = True
