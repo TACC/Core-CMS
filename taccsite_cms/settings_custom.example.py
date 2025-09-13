@@ -79,7 +79,7 @@ PORTAL_LOGO = {
 }
 
 # Edit this config as needed for the project favicon used in the browser navbar.
-# If `INCLUDES_CORE_PORTAL = True` and you set `FAVICON`, then:
+# If `INCLUDES_CORE_PORTAL = True` and you set `PORTAL_FAVICON`, then:
 # https://github.com/TACC/Core-CMS-Custom/blob/d4c93af/docs/port-project.md#has-a-core-portal
 PORTAL_FAVICON = {
     "is_remote": True,
