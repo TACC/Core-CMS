@@ -85,6 +85,17 @@ PORTAL_FAVICON = {
     "is_remote": True,
     "img_file_src": "https://cdn.jsdelivr.net/gh/TACC/Core-CMS@v4.33.0/taccsite_cms/static/site_cms/img/favicons/favicon.ico",
 }
+# The PORTAL_FAVICON_HTML takes precedence over PORTAL_FAVICON,
+# This HTML is like output from https://realfavicongenerator.net/ circa 2025-09
+# favicon_path = "https://cdn.jsdelivr.net/gh/TACC/Core-CMS-Custom@________/________/favicon/"
+# PORTAL_FAVICON_HTML = f'''
+#     <link rel="icon" type="image/png" href="{favicon_path}favicon-96x96.png" sizes="96x96" />
+#     <link rel="icon" type="image/svg+xml" href="{favicon_path}favicon.svg" />
+#     <link rel="shortcut icon" href="{favicon_path}favicon.ico" />
+#     <link rel="apple-touch-icon" sizes="180x180" href="{favicon_path}apple-touch-icon.png" />
+#     <meta name="apple-mobile-web-app-title" content="________" />
+#     <link rel="manifest" href="{favicon_path}site.webmanifest" />
+# '''
 
 ########################
 # SEARCH
