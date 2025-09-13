@@ -262,15 +262,6 @@ PORTAL_FAVICON = {
     "is_remote": False,
     "img_file_src": "site_cms/img/favicons/favicon.ico",
 }
-favicon_path = f"/static/site_cms/favicon/"
-PORTAL_FAVICON_HTML = f'''
-    <link rel="icon" type="image/png" href="{favicon_path}favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="{favicon_path}favicon.svg" />
-    <link rel="shortcut icon" href="{favicon_path}favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="{favicon_path}apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="TACC" />
-    <link rel="manifest" href="{favicon_path}site.webmanifest" />
-'''
 
 
 ########################
@@ -870,7 +861,6 @@ SETTINGS_EXPORT = deprecated_SETTINGS_EXPORT + [
     'PORTAL_BRANDING',
     'PORTAL_LOGO',
     'PORTAL_FAVICON',
-    'PORTAL_FAVICON_HTML',
     'PORTAL_IS_TACC_CORE_PORTAL',
     'PORTAL_HAS_LOGIN',
     'PORTAL_HAS_SEARCH',
