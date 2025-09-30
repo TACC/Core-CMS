@@ -280,6 +280,7 @@ PORTAL_FAVICON_HTML = f'''
 PORTAL_IS_TACC_CORE_PORTAL = True
 PORTAL_HAS_LOGIN = True
 PORTAL_HAS_SEARCH = True
+PORTAL_LOGIN_PATH = '/login'
 
 # Only use one of these values: 'sm', 'md', 'lg', 'xl'
 # SEE: https://getbootstrap.com/docs/4.0/components/navbar/#responsive-behaviors
@@ -876,6 +877,7 @@ SETTINGS_EXPORT = deprecated_SETTINGS_EXPORT + [
     'PORTAL_FAVICON_HTML',
     'PORTAL_IS_TACC_CORE_PORTAL',
     'PORTAL_HAS_LOGIN',
+    'PORTAL_LOGIN_PATH',
     'PORTAL_HAS_SEARCH',
     'PORTAL_NAV_WIDTH',
     'PORTAL_STYLES',
