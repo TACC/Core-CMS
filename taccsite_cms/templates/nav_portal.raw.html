@@ -1,3 +1,10 @@
-{# intentionally empty #}
-<!-- FAQ: This template loads independently at a unique url (see `urls.py`)
-          so CMS can render markup from this URL even if Portal is absent. -->
+{# @var settings #}
+
+<!-- FAQ: This template mimics Portal's `nav_portal.raw.html`
+          so CMS can render similar "Login" button for different portal -->
+
+<li class="nav-item">
+  <a class="nav-link" href="{{ settings.PORTAL_LOGIN_URL }}">
+    <i class="icon icon-user"></i> Log in
+  </a>
+</li>

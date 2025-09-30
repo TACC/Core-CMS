@@ -271,6 +271,7 @@ PORTAL_FAVICON = {
 PORTAL_IS_TACC_CORE_PORTAL = True
 PORTAL_HAS_LOGIN = True
 PORTAL_HAS_SEARCH = True
+PORTAL_LOGIN_URL = '/login'
 
 # Only use one of these values: 'sm', 'md', 'lg', 'xl'
 # SEE: https://getbootstrap.com/docs/4.0/components/navbar/#responsive-behaviors
