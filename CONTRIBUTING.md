@@ -1,4 +1,4 @@
-# Contributing
+# How to Contribute
 
 ## Linting and Formatting
 
