@@ -181,7 +181,7 @@ Follow "Core-CMS" section of [How To Build & Deploy][Build & Deploy Project].
 
 ## Contributing
 
-To contribute, first read [How to Contirbute][Contributing].
+To contribute, first read [How to Contribute][Contributing].
 
 ## Resources
 
@@ -220,4 +220,4 @@ To contribute, first read [How to Contirbute][Contributing].
 [Develop Project]: ./docs/develop-project.md
 [Upgrade Project]: ./docs/upgrade-project.md
 [Debug Project]: ./docs/debug-project.md
-[Contributing]: ./docs/contributing.md
+[Contributing]: ./CONTRIBUTING.md
