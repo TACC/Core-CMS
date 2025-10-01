@@ -5,9 +5,7 @@
 <ul class="s-portal-nav  {{ className }}" id="portal-nav">
 
   {# This content can be replaced by JavaScript below #}
-  {% if settings.PORTAL_HAS_LOGIN and not settings.PORTAL_IS_TACC_CORE_PORTAL %}
   {% include "./nav_portal.raw.html" %}
-  {% endif %}
 
 </ul>
 
