@@ -3,8 +3,12 @@
 <!-- FAQ: This template mimics Portal's `nav_portal.raw.html`
           so CMS can render similar "Login" button for different portal -->
 
+{% if settings.PORTAL_IS_TACC_CORE_PORTAL %}
+<!-- TACC/Core-Portal should overwrite this content -->
+{% else %}
 <li class="nav-item">
   <a class="nav-link" href="{{ settings.PORTAL_LOGIN_PATH }}">
     <i class="icon icon-user"></i> Log in
   </a>
 </li>
+{% endif %}
