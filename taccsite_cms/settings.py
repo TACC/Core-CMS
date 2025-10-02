@@ -752,6 +752,7 @@ with open(CORTAL_ICONFILE, 'r') as f:
 DJANGOCMS_ICON_SETS = [
     # IMPORTANT: Each set must have same props, even if value is empty
     # WARNING: Values in icon sets are not cleared when user changes set
+    # IMPORTANT: Load 'icon' set last, or selected SVG may be unselected on edit
     # https://github.com/django-cms/djangocms-icon/issues/9
     (LOGO_ICONS, '', _('Logo SVGs')),
     (CORTAL_ICONS, 'icon', _('TACC "Cortal" Icons')),
