@@ -1,4 +1,6 @@
 {
+    "svg": false,
+    "spritePath": "",
     "iconClass": "icon",
     "// icons": "https://github.com/TACC/Core-Styles/blob/main/src/lib/_imports/components/cortal.icon.font.css",
     "icons": [
