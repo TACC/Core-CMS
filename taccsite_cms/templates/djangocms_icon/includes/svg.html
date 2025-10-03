@@ -5,7 +5,7 @@
 {# FAQ: The <span> allows Django CMS editor to edit via double-click #}
 <span
   class="has-svg {{ instance.icon }}{% if instance.attributes.class %} {{ instance.attributes.class }}{% endif %}"
-  {% if not instance.attributes.role or instance.attributes.role and instance.attributes.role != 'none' and instance.attributes.role != 'presentation' %}
+  {% if not instance.attributes.role %}
   aria-hidden="true"
   {% endif %}
   {% for key, value in instance.attributes.items %}
