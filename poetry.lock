@@ -747,13 +747,15 @@ taggit-helpers = ["django-taggit-helpers"]
 
 [[package]]
 name = "djangocms-bootstrap4"
-version = "3.0.1"
+version = "3.0.2"
 description = "Adds Bootstrap 4 components as plugins."
 optional = false
 python-versions = "*"
 groups = ["main"]
-files = []
-develop = false
+files = [
+    {file = "djangocms_bootstrap4-3.0.2-py3-none-any.whl", hash = "sha256:3b7e7eb1b7551cf433bf2bb0f3601d47645203c3bb4ad75ec097eb4bd81a34cf"},
+    {file = "djangocms_bootstrap4-3.0.2.tar.gz", hash = "sha256:e931aefadbd22ab00e6cea8b7224da767afea125df15bf0c8a8d5f7872153e64"},
+]
 
 [package.dependencies]
 django-cms = ">=3.7,<4"
@@ -766,12 +768,6 @@ djangocms-text-ckeditor = ">=3.1.0"
 
 [package.extras]
 static-ace = ["djangocms-static-ace"]
-
-[package.source]
-type = "git"
-url = "https://github.com/django-cms/djangocms-bootstrap4.git"
-reference = "49983f4"
-resolved_reference = "49983f4175ec4a4e2b5076993a893cbdd79c4ab2"
 
 [[package]]
 name = "djangocms-column"
@@ -2502,4 +2498,4 @@ testing = ["func-timeout", "jaraco.itertools"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<4.0"
-content-hash = "0e49bdbb7a51070f47f88658d8fb9cdcdc2c20fd3140267b933c7d0fd3f9743e"
+content-hash = "2ac17635289fc7cf2692591557221b048c40769a3ea1a108915ed19fc43cd098"
