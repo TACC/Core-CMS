@@ -229,7 +229,7 @@ PORTAL_BRANDING = [ PORTAL_BRANDING_TACC, PORTAL_BRANDING_UTEXAS ]
 
 # LOGO = [
 #     "portal",                            # (unused value)
-#     "site_cms/img/org_logos/portal.png", # "img_file_src"
+#     "site_cms/img/logo.svg",             # "img_file_src"
 #     "",                                  # "img_class"
 #     "/",                                 # "link_href"
 #     "_self",                             # "link_target"
@@ -250,7 +250,7 @@ PORTAL_BRANDING = [ PORTAL_BRANDING_TACC, PORTAL_BRANDING_UTEXAS ]
 
 PORTAL_LOGO = {
     "is_remote": False,
-    "img_file_src": "site_cms/img/org_logos/portal.png",
+    "img_file_src": "site_cms/img/logo.svg",
     "img_class": "", # additional class names
     "link_href": "/",
     "link_target": "_self",
