@@ -93,9 +93,9 @@ See https://tacc.github.io/Core-Styles.
     ```
 1. Checkout [Core Styles] at that version, e.g.:
     ```shell
-    git checkout v2.43.1
+    git checkout v2.47.2
     ```
-2. Follow [Core Styles "Quick Start"](https://github.com/TACC/Core-Styles/blob/v2.43.2/README.md#quick-start) up to `npm start`.
+2. Follow [Core Styles "Quick Start"](https://github.com/TACC/Core-Styles/blob/v2.47.2/README.md#quick-start) up to `npm start`.
 
 ## Develop with [Core Styles] Simultaneously
 
