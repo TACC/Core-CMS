@@ -46,8 +46,6 @@ Only appointed team members may release versions.
 4. Annotate Github's tag:\
   `bin/annotate-tag.sh vN.N.N`\
   (where `N.N.N` is the version tag)
-5. Overwrite remote tag with annotated one:\
-  `git push --tags --force`
 6. [Build & Deploy](../README.md#build--deploy-project) `main` branch.[^1]
 
 [^1]: So that new CMS image is tagged `latest` and `vN.N.N`.
