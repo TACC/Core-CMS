@@ -9,7 +9,7 @@ DOCKER_COMPOSE_CMD := $(shell if command -v docker-compose > /dev/null; then ech
 # NOTE: Special characters in `DOCKER_IMAGE_BRANCH` are replaced with dashes.
 DOCKER_IMAGE_BRANCH := $(DOCKERHUB_REPO):$(shell git describe --exact-match --tags 2> /dev/null || git symbolic-ref --short HEAD | sed 's/[^[:alnum:]\.\_\-]/-/g')
 
-BUILD_ID := $(shell git describe --always)
+BUILD_ID := $(shell git describe --tags)
 
 .PHONY: build
 build:
