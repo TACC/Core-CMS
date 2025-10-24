@@ -27,10 +27,10 @@ AUTH_LDAP_SERVER_URI = "ldap://cluster.ldap.tacc.utexas.edu"
 CMS_TEMPLATES = (
     ('standard.html', 'Standard'),
     ('fullwidth.html', 'Full Width'),
+    ('content.html', 'Content Only'),
 
     # WARNING: Unintuitive, so only enable as needed
     # ('plain.html', 'Plain'),          # TACC/Core-CMS#868
-    # ('content.html', 'Content Only'), # TACC/Core-CMS#___
 )
 
 ########################
