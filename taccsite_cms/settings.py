@@ -157,8 +157,9 @@ SITE_ID = 1
 CMS_TEMPLATES = (
     ('standard.html', 'Standard'),
     ('fullwidth.html', 'Full Width'),
+    ('content.html', 'Content Only'),
 
-    ('guide.html', 'Guide'),
+    ('guide.html', 'Guide'), # backwards compatibility, users unknown
 )
 
 CMS_PERMISSION = True
