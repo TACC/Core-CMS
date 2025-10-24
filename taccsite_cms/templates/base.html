@@ -51,9 +51,11 @@
 <body class="{% block page_type_class %}{% endblock page_type_class %}">
   {% cms_toolbar %}
 
+  {% block header %}
   <header>
     {% include "header.html" %}
   </header>
+  {% endblock header %}
 
   <main id="cms-content">
   {% block content %}
@@ -79,7 +81,9 @@
   {% endblock content %}
   </main>
 
+  {% block footer %}
   {% include "footer.html" %}
+  {% endblock footer %}
 
   <!-- Assets (Delayed). -->
 {% if settings.TACC_CORE_STYLES_VERSION == 0 %}

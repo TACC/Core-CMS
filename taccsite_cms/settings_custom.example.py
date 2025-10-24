@@ -28,8 +28,9 @@ CMS_TEMPLATES = (
     ('standard.html', 'Standard'),
     ('fullwidth.html', 'Full Width'),
 
-    # WARNING: Unintuitive, so only enable as needed e.g. TACC/Core-CMS#868
-    # ('plain.html', 'Plain'),
+    # WARNING: Unintuitive, so only enable as needed
+    # ('plain.html', 'Plain'),          # TACC/Core-CMS#868
+    # ('content.html', 'Content Only'), # TACC/Core-CMS#___
 )
 
 ########################
