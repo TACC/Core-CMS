@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 {% load cms_tags %}
 
-{# To remove container and breadcrumbs #}
+{# To remove container and not render breadcrumbs #}
 {% block content %}
+  {% block breadcrumbs %}{% endblock breadcrumbs %}
   {% block cms_content %}
     {% placeholder "content" %}
   {% endblock cms_content %}
