@@ -18,6 +18,7 @@ def extendBootstrap4LinkPlugin():
     )
 
     OriginalBootstrap4Link._meta.get_field('link_size').choices = LINK_SIZE_CHOICES
+    OriginalBootstrap4Link._meta.get_field('link_context').verbose_name = _('Type')
 
     class Bootstrap4LinkPlugin(OriginalBootstrap4LinkPlugin):
         model = Bootstrap4LinkModel
