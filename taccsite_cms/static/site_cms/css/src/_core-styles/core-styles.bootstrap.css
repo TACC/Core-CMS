@@ -1,18 +1,2 @@
 /* TODO: Host Core-Styles static files on a CDN */
 @import url("@tacc/core-styles/dist/core-styles.bootstrap4.css");
-
-/* TODO: Move to Core-Styles (core-styles.bootstrap4.css) */
-.btn > .icon {
-  display: block;
-}
-.btn > .icon:first-child { margin-right: 0.5em; }
-.btn > .icon:last-child { margin-left: 0.5em; }
-/*
-@import url("../tools/x-button.css");
-
-.btn > .icon:first-child { @mixin button__icon--before; }
-.btn > .icon:last-child { @mixin button__icon--after; }
-*/
-[class*="text-"] .icon {
-  vertical-align: middle;
-}
