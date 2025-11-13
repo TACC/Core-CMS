@@ -12,28 +12,28 @@
   {% for platform in platforms %}
     {% if platform == 'facebook' %}
     <a href="https://www.facebook.com/sharer/sharer.php?u={{ url }}" target="_blank" class="logos__facebook">
-      <svg viewbox="0 0 25 25">
+      <svg width="1em" height="1em">
         <use href="/static/site_cms/img/org_logos/facebook.svg#facebook-icon"></use>
       </svg>
     </a>
     {% endif %}
     {% if platform == 'linkedin' %}
     <a href="https://www.linkedin.com/cws/share?url={{ url }}" target="_blank" class="logos__linkedin">
-      <svg viewbox="0 0 25 25">
+      <svg width="1em" height="1em">
         <use href="/static/site_cms/img/org_logos/linkedin.svg#linkedin-icon"></use>
       </svg>
     </a>
     {% endif %}
     {% if platform == 'bluesky' %}
     <a href="https://bsky.app/intent/compose?text={{ url }}" target="_blank" class="logos__bluesky">
-      <svg viewbox="0 0 25 25">
+      <svg width="1em" height="1em">
         <use href="/static/site_cms/img/org_logos/bluesky.svg#bluesky-icon"></use>
       </svg>
     </a>
     {% endif %}
     {% if platform == 'email' %}
     <a href="mailto:?body={{ url }}" target="_blank" class="logos__email">
-      <svg viewbox="0 0 25 25">
+      <svg width="1em" height="1em">
         <use href="/static/site_cms/img/org_logos/email.svg#email-icon"></use>
       </svg>
     </a>
