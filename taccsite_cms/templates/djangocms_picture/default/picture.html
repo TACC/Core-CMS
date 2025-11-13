@@ -15,6 +15,7 @@
     {% if instance.link_target %} target="{{ instance.link_target }}"{% endif %}
         {# TACC (support image zoom): #}
         class="
+            editor-img-wrap
             {{ instance.attributes.class|default:'' }}
             {{ instance.link_attributes.class|default:'' }}
             {{ className }}
@@ -33,7 +34,13 @@
 {% if has_figure_content %}
 {# /TACC #}
     {# TACC (assign attributes to parent): #}
-    <figure {{ instance.attributes_str }}>
+    <figure
+        class="
+            editor-img-wrap
+            {{ instance.attributes.class|default:'' }}
+        "
+        {{ instance.attributes_str|strip_class_attribute|safe }}
+    >
     {# /TACC #}
 {% endif %}
 
