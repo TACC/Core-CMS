@@ -1,3 +1,41 @@
-.logos--social a {
+/* Structure */
+
+[class*="logos--"] a {
   display: inline-block;
+}
+[class*="logos--"] a svg {
+  display: block;
+}
+
+
+/* Skin */
+
+[class*="logos--"] a {
+  color: var(--global-color-primary--x-dark);
+}
+[class*="logos--"] a:hover {
+  color: var(--global-color-accent--normal);
+}
+a.logos__facebook:hover svg   { color: #0866ff; }
+a.logos__linkedin:hover svg   { color: #0a66c2; }
+a.logos__bluesky:hover svg    { color: #0085ff; }
+a.logos__youtube:hover svg    { color: #FF0033; }
+
+a.logos__instagram:hover {
+  background:
+    radial-gradient(circle at 30% 107%,
+      rgba(140, 58, 170, 0) 0%,
+      rgba(140, 58, 170, 0) 64%,
+      rgba(140, 58, 170, 1) 100%
+    ),
+    radial-gradient(circle at 10% 105%,
+      #fa8f21 0%,
+      #fa8f21 9%,
+      #d82d7e 78%
+    );
+  mask: url('../../img/org_logos/instagram.svg') no-repeat center / contain;
+  color: #bc1888; /* fallback */
+}
+a.logos__instagram:hover svg {
+  visibility: hidden;
 }
