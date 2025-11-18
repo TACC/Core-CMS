@@ -1,6 +1,8 @@
 {# https://github.com/nephila/djangocms-blog/blob/1.2.3/djangocms_blog/templates/djangocms_blog/base.html #}
 {% extends CMS_TEMPLATE %}
-{% load static %}
+{# TACC (to add blog styles): #}
+{% load static sekizai_tags %}
+{# /TACC #}
 
 {# FAQ: To ensure Blog page shows metadata (instruction from maintainer) #}
 {# SEE: https://github.com/nephila/djangocms-blog/issues/613#issuecomment-681147460 #}
@@ -21,7 +23,9 @@
 {% block app_content %}
 {# /TACC #}
 
+{# TACC (to add blog styles): #}
 {% block assets_app %}
+{% addtoblock "css" %}
 {% if settings.TACC_CORE_STYLES_VERSION == 0 %}
 <style>
   @import url("{% static 'site_cms/css/build/site.app.blog.css' %}") layer(project.core);
@@ -31,7 +35,9 @@
   @import url("{% static 'site_cms/css/build/app.blog.css' %}") layer(project);
 </style>
 {% endif %}
+{% endaddtoblock %}
 {% endblock assets_app %}
+{# /TACC #}
 
 <div class="app app-blog
   {% if not settings.PORTAL_BLOG_SHOW_CATEGORIES %}no-categories{% endif %}
