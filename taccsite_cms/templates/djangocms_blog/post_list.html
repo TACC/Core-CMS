@@ -80,7 +80,12 @@
     {% endif %}
 </section>
 
+{% endblock %}
+{% endspaceless %}
+
 {# TACC (change how to open external articles): #}
+{% block assets_blog %}
+{{ block.super }}
 {% addtoblock "js" %}
 <script type="module" id="change-how-to-open-external-articles">
 import { changeHowExternalArticleOpens } from '{% static "site_cms/js/modules/manageExternalArticles.js" %}';
@@ -88,7 +93,5 @@ import { changeHowExternalArticleOpens } from '{% static "site_cms/js/modules/ma
 changeHowExternalArticleOpens('{{ settings.PORTAL_BLOG_SHOW_ABSTRACT_TAG }}');
 </script>
 {% endaddtoblock %}
+{% endblock assets_blog %}
 {# /TACC #}
-
-{% endblock %}
-{% endspaceless %}
