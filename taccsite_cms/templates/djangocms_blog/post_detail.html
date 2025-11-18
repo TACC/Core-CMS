@@ -93,7 +93,7 @@
 {% endblock content_blog %}
 
 {# TACC (redirect external articles): #}
-{% block assets_app %}
+{% block assets_blog %}
 {{ block.super }}
 {% addtoblock "js" %}
 <script id="redirect-external-article" type="module">
@@ -102,5 +102,5 @@ import { redirectExternalArticle } from '{% static "site_cms/js/modules/manageEx
 redirectExternalArticle('{{ settings.PORTAL_BLOG_SHOW_ABSTRACT_TAG }}');
 </script>
 {% endaddtoblock %}
-{% endblock assets_app %}
+{% endblock assets_blog %}
 {# /TACC #}

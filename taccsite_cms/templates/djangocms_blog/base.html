@@ -24,7 +24,7 @@
 {# /TACC #}
 
 {# TACC (to add blog styles): #}
-{% block assets_app %}
+{% block assets_blog %}
 {% addtoblock "css" %}
 {% if settings.TACC_CORE_STYLES_VERSION == 0 %}
 <style>
@@ -36,7 +36,7 @@
 </style>
 {% endif %}
 {% endaddtoblock %}
-{% endblock assets_app %}
+{% endblock assets_blog %}
 {# /TACC #}
 
 <div class="app app-blog
