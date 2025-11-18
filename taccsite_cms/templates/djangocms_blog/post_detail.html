@@ -89,7 +89,7 @@
 
 {# TACC (redirect external articles): #}
 {% addtoblock "js" %}
-<script type="module" id="redirect-external-article">
+<script id="redirect-external-article" type="module">
 import { redirectExternalArticle } from '{% static "site_cms/js/modules/manageExternalArticles.js" %}';
 
 redirectExternalArticle();
