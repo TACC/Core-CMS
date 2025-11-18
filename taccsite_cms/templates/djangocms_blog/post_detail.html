@@ -86,10 +86,6 @@
         </section>
     {% endif %}
 </article>
-{# TACC (end wrap and end spaceless-ness later than source): #}
-{% endspaceless %}
-{# /TACC #}
-{% endblock content_blog %}
 
 {# TACC (redirect external articles): #}
 {% addtoblock "js" %}
@@ -100,3 +96,8 @@ redirectExternalArticle();
 </script>
 {% endaddtoblock %}
 {# /TACC #}
+
+{# TACC (end wrap and end spaceless-ness later than source): #}
+{% endspaceless %}
+{# /TACC #}
+{% endblock content_blog %}
