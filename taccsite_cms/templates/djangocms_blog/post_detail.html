@@ -92,7 +92,7 @@
 <script id="redirect-external-article" type="module">
 import { redirectExternalArticle } from '{% static "site_cms/js/modules/manageExternalArticles.js" %}';
 
-redirectExternalArticle();
+redirectExternalArticle('{{ settings.PORTAL_BLOG_SHOW_ABSTRACT_TAG }}');
 </script>
 {% endaddtoblock %}
 {# /TACC #}

@@ -85,7 +85,7 @@
 <script type="module" id="change-how-to-open-external-articles">
 import { changeHowExternalArticleOpens } from '{% static "site_cms/js/modules/manageExternalArticles.js" %}';
 
-changeHowExternalArticleOpens();
+changeHowExternalArticleOpens('{{ settings.PORTAL_BLOG_SHOW_ABSTRACT_TAG }}');
 </script>
 {% endaddtoblock %}
 {# /TACC #}
