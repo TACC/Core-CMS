@@ -1,6 +1,10 @@
 {# https://github.com/nephila/djangocms-blog/blob/1.2.3/djangocms_blog/templates/djangocms_blog/post_detail.html #}
 {% extends "djangocms_blog/post_detail.html" %}
-{% load i18n easy_thumbnails_tags cms_tags blog_post_use_custom_media blog_post_is_show_abstract %}
+{# TACC (define whether this is a special post): #}
+{# TACC (redirect external articles): #}
+{% load i18n easy_thumbnails_tags cms_tags static blog_post_use_custom_media blog_post_is_show_abstract %}
+{# /TACC #}
+{# /TACC #}
 
 {% block content_blog %}{% spaceless %}
 
@@ -86,3 +90,13 @@
 {% endspaceless %}
 {# /TACC #}
 {% endblock content_blog %}
+
+{# TACC (redirect external articles): #}
+{% addtoblock "js" %}
+<script type="module" id="redirect-external-article">
+import { redirectExternalArticle } from '{% static "site_cms/js/modules/manageExternalArticles.js" %}';
+
+redirectExternalArticle();
+</script>
+{% endaddtoblock %}
+{# /TACC #}
