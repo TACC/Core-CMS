@@ -317,8 +317,8 @@ TACC_CORE_STYLES_VERSION = 2
 PORTAL_BLOG_SHOW_CATEGORIES = True
 PORTAL_BLOG_SHOW_TAGS = True
 # To flag posts of certain category or tag, so template can take special action
-PORTAL_BLOG_CUSTOM_MEDIA_POST_CATEGORY = 'sample_value_e_g__mutlimedia__'
-PORTAL_BLOG_SHOW_ABSTRACT_TAG = 'sample_value_e_g__redirect__'
+PORTAL_BLOG_CUSTOM_MEDIA_POST_CATEGORY = 'mutlimedia'
+PORTAL_BLOG_SHOW_ABSTRACT_TAG = 'external'
 
 PORTAL_BLOG_CATEGORY_ORDER = []
 # PORTAL_BLOG_CATEGORY_ORDER = ['press-release', 'feature-story', 'multimedia', 'podcast']

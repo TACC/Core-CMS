@@ -1,6 +1,8 @@
 {# https://github.com/nephila/djangocms-blog/blob/1.2.3/djangocms_blog/templates/djangocms_blog/post_list.html #}
 {% extends "djangocms_blog/base.html" %}
-{% load i18n easy_thumbnails_tags cms_tags %}{% spaceless %}
+{# TACC (change how to open external articles): #}
+{% load i18n easy_thumbnails_tags cms_tags static sekizai_tags %}{% spaceless %}
+{# /TACC #}
 
 {% block canonical_url %}<link rel="canonical" href="{{ view.get_view_url }}"/>{% endblock canonical_url %}
 
@@ -77,6 +79,16 @@
     </nav>
     {% endif %}
 </section>
+
+{# TACC (change how to open external articles): #}
+{% addtoblock "js" %}
+<script type="module" id="change-how-to-open-external-articles">
+import { changeHowExternalArticleOpens } from '{% static "site_cms/js/modules/manageExternalArticles.js" %}';
+
+changeHowExternalArticleOpens('{{ settings.PORTAL_BLOG_SHOW_ABSTRACT_TAG }}');
+</script>
+{% endaddtoblock %}
+{# /TACC #}
 
 {% endblock %}
 {% endspaceless %}
