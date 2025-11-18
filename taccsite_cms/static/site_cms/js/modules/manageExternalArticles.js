@@ -19,11 +19,11 @@ export function getArticleExternalURL(article) {
 
 /**
  * Modify article links to point to external URLs based on tag name
- * @param {string} [extTagName='external'] - A tag that has been set on articles to select
+ * @param {string} [extTagName='external'] - A tag that has been set on articles served externally
  */
 export function changeHowExternalArticleOpens(extTagName = 'external') {
   const articles = document.querySelectorAll(
-    `.blog-list article.has-blog-tag-${extTagName}`
+    `.has-blog-tag-${extTagName}`
   );
 
   console.debug(`Found ${articles.length} article(s) with tag "${extTagName}"`, articles );
