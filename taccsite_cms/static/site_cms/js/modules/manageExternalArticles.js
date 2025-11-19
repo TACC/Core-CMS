@@ -19,11 +19,11 @@ export function getArticleExternalURL(article) {
 
 /**
  * Modify article links to point to external URLs based on tag name
- * @param {string} [extTagName='external'] - A tag that has been set on articles to select
+ * @param {string} [extTagName='external'] - A tag that has been set on articles served externally
  */
 export function changeHowExternalArticleOpens(extTagName = 'external') {
   const articles = document.querySelectorAll(
-    `.blog-list article.has-blog-tag-${extTagName}`
+    `.has-blog-tag-${extTagName}`
   );
 
   console.debug(`Found ${articles.length} article(s) with tag "${extTagName}"`, articles );
@@ -43,4 +43,26 @@ export function changeHowExternalArticleOpens(extTagName = 'external') {
       });
     }
   });
+}
+
+/**
+ * Redirect article to external URL if it has certain tag name
+ * @param {string} [extTagName='external'] - A tag that has been set on articles served externally
+ */
+export function redirectExternalArticle(extTagName = 'external') {
+  const params = new URLSearchParams( window.location.search );
+  const isEditing = params.has('edit');
+  const article = document.querySelector(`
+    .has-blog-tag-${extTagName}
+  `);
+  const URL = getArticleExternalURL( article );
+
+  if ( ! URL ) {
+    console.debug('Cannot redirect to URL', URL );
+  } else if ( isEditing ) {
+    console.info(`Skipping redirect to "${URL}", because user is editing`);
+  } else {
+    console.debug(`Redirecting to "${URL}"`);
+    window.location.href = URL;
+  }
 }
