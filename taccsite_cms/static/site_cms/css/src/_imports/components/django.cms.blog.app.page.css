@@ -20,8 +20,6 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 /* Root */
 
 :--article-page {
-  --header-buffer: calc( var(--global-space--grid-gap) / 2 );
-
   max-width: 775px;
   margin-inline: auto;
 }
@@ -43,7 +41,7 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 }
 :--article-page header h1,
 :--article-page header h2 {
-  margin-bottom: var(--header-buffer);
+  margin-bottom: calc( var(--global-space--grid-gap) / 2 );
 }
 :--article-page header h1 {
   font-size: var(--global-font-size--xxx-large);

@@ -47,8 +47,8 @@ Styleguide Components.DjangoCMS.Blog.App.Item
   column-gap: 50px; /* for horz. space between image and content */
 
   border-bottom: var(--global-border-width--normal) solid var(--global-color-primary--dark);
-  margin-bottom: var(--article-buffer);
-  padding-bottom: var(--article-buffer);
+  margin-bottom: 20px;
+  padding-bottom: 20px;
 }
 :--article-item header        { grid-area: head }
 :--article-item .blog-visual  { grid-area: media }

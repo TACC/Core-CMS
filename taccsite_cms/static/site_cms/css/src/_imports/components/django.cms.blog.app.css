@@ -18,16 +18,6 @@ Styleguide Components.DjangoCMS.Blog.App
 
 
 
-
-
-/* Variables */
-
-.app-blog {
-  --article-buffer: 20px;
-}
-
-
-
 /* Generic */
 
 .app-blog {
@@ -173,5 +163,5 @@ Styleguide Components.DjangoCMS.Blog.App
 /* Pagination */
 
 .pagination {
-  margin-block: calc( var(--article-buffer) * 2 );
+  margin-block: 40px;
 }
