@@ -117,12 +117,13 @@ Styleguide Components.DjangoCMS.Blog.App.Page
   }
 }
 @define-mixin news-article-page-media--slim-context {
-  display: grid;
-  justify-content: center;
+  margin-inline: auto;
+  width: fit-content;
 }
 @define-mixin news-article-page-media--wide-context {
-  float: left;
-  margin-right: var(--blog-item-media-buffer);
+  float: right;
+  max-width: 50%;
+  margin-left: var(--blog-item-media-buffer);
 }
 
 /* To prevent missing media from disrupting page layout */
@@ -133,8 +134,8 @@ Styleguide Components.DjangoCMS.Blog.App.Page
     display: none;
 }
 
-/* To prevent footer on right side of page */
-/* FAQ: Because of `:--article-page .blog-visual`'s `float: left` */
+/* To prevent footer on left side of page */
+/* FAQ: Because of `:--article-page .blog-visual`'s `float: right` */
 :--article-page .blog-visual + .blog-content::after {
   /* from Bootstrap `clearfix` */
   display: block;
