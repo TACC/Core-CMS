@@ -2,14 +2,13 @@
 {% extends "djangocms_blog/post_detail.html" %}
 {# TACC (define whether this is a special post): #}
 {# TACC (redirect external articles): #}
-{% load i18n easy_thumbnails_tags cms_tags static sekizai_tags blog_post_use_custom_media blog_post_is_show_abstract %}
+{% load i18n easy_thumbnails_tags cms_tags static sekizai_tags blog_post_is_show_abstract %}
 {# /TACC #}
 {# /TACC #}
 
 {% block content_blog %}{% spaceless %}
 
 {# TACC (define whether this is a special post): #}
-{% blog_post_use_custom_media post settings.PORTAL_BLOG_CUSTOM_MEDIA_POST_CATEGORY as use_custom_media %}
 {% blog_post_is_show_abstract post settings.PORTAL_BLOG_SHOW_ABSTRACT_TAG as is_show_abstract_post %}
 {# /TACC #}
 <article id="post-{{ post.slug }}" class="post-item post-detail">
@@ -43,10 +42,7 @@
         {% endblock %}
         {# /TACC #}
     </header>
-    {# TACC (support custom media even with thumbnail): #}
-    {# {% if not post.main_image_id %} #}
-    {% if use_custom_media or not post.main_image_id %}
-    {# /TACC #}
+    {% if not post.main_image_id %}
         <div class="blog-visual">{% render_placeholder post.media %}</div>
     {% else %}
     <div class="blog-visual">
