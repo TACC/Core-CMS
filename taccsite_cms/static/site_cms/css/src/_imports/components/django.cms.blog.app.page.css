@@ -87,9 +87,8 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 /* To undo inline content styles */
 /* FAQ: In case author pasted such markup from another source */
 :--article-page .blog-content [style]:not(
-    [data-style="admin"], /* HACK: So CMS admin can override this */
-    /* TODO: When using Core-Styles .c-news keep `flickrembed_` only in TACC */
-    [id^="flickrembed_"] * /* HACK: So Flickr slideshow works */
+    [data-style="admin"], /* HACK: so CMS admin can override this */
+    [id^="flickrembed_"] * /* HACK: so Flickr slideshow works */
 ) {
     all: revert !important; /* force undo all inline styles */
 }
