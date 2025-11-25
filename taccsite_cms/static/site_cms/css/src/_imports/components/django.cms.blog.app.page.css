@@ -10,7 +10,6 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 @import url("@tacc/core-styles/src/lib/_imports/objects/o-offset-content.css");
 @import url("@tacc/core-styles/src/lib/_imports/tools/x-drop-cap.css");
 
-@import url("./django.cms.blog.app.page.multimedia.css");
 @import url("./django.cms.blog.selectors.css");
 
 
