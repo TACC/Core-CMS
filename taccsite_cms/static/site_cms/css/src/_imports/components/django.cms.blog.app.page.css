@@ -142,6 +142,8 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 }
 
 /* Remove Drop Cap when tag is added */
+/* https://github.com/TACC/Core-Styles/blob/v2.50.2/src/lib/_imports/trumps/s-drop-cap.css#L3-L6 */
+.has-blog-tag-no-drop-cap .s-drop-cap::first-letter,
 .has-blog-tag-no-drop-cap .s-drop-cap > p:not(.s-drop-cap)::first-letter {
   padding-right: unset;
   initial-letter: unset;
