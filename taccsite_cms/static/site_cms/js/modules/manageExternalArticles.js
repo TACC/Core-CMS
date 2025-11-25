@@ -59,6 +59,9 @@ export function redirectExternalArticle(extTagName = 'external') {
   const article = document.querySelector(`
     .has-blog-tag-${extTagName}
   `);
+
+  if ( ! article ) return;
+
   const URL = getArticleExternalURL( article );
 
   if ( ! URL ) {
