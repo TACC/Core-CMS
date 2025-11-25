@@ -33,9 +33,9 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 /* Header */
 
 :--article-page header {
-  @mixin news-article-page-header;
+  @mixin news-article-page__header;
 }
-@define-mixin news-article-page-header {
+@define-mixin news-article-page__header {
   grid-template-areas:
     'cats date'
     'head head'
@@ -46,9 +46,9 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 }
 
 :--article-page header h1 {
-  @mixin news-article-page-title;
+  @mixin news-article-page__title;
 }
-@define-mixin news-article-page-title {
+@define-mixin news-article-page__title {
   font-size: var(--global-font-size--xxx-large);
 
   border-bottom: var(--global-border-width--normal) solid var(--global-color-primary--dark);
@@ -57,9 +57,9 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 }
 
 :--article-page header h2 {
-  @mixin news-article-page-subtitle;
+  @mixin news-article-page__subtitle;
 }
-@define-mixin news-article-page-subtitle {
+@define-mixin news-article-page__subtitle {
   font-weight: normal;
   font-size: var(--global-font-size--large);
 
@@ -75,9 +75,9 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 :--article-page .blog-lead,
 :--article-page .blog-visual,
 :--article-page .blog-content {
-  @mixin news-article-page-body;
+  @mixin news-article-page__body;
 }
-@define-mixin news-article-page-body {
+@define-mixin news-article-page__body {
   font-size: var(--global-font-size--medium);
   line-height: 2;
 
@@ -106,21 +106,21 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 
 /* To support vertical layouts at narrow viewports */
 :--article-page .blog-visual {
-  @mixin news-article-page-media;
+  @mixin news-article-page__media;
 }
-@define-mixin news-article-page-media {
+@define-mixin news-article-page__media {
   @media (--narrow-and-below) {
-    @mixin news-article-page-media--slim-context;
+    @mixin news-article-page__media--slim-context;
   }
   @media (--narrow-and-above) {
-    @mixin news-article-page-media--wide-context;
+    @mixin news-article-page__media--wide-context;
   }
 }
-@define-mixin news-article-page-media--slim-context {
+@define-mixin news-article-page__media--slim-context {
   margin-inline: auto;
   width: fit-content;
 }
-@define-mixin news-article-page-media--wide-context {
+@define-mixin news-article-page__media--wide-context {
   float: right;
   max-width: 50%;
   margin-left: var(--blog-item-media-buffer);
