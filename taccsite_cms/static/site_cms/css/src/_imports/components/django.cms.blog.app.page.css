@@ -19,6 +19,9 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 /* Root */
 
 :--article-page {
+  @mixin news-article-page;
+}
+@define-mixin news-article-page {
   max-width: 775px;
   margin-inline: auto;
 }
@@ -30,6 +33,9 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 /* Header */
 
 :--article-page header {
+  @mixin news-article-page-header;
+}
+@define-mixin news-article-page-header {
   grid-template-areas:
     'cats date'
     'head head'
@@ -38,18 +44,26 @@ Styleguide Components.DjangoCMS.Blog.App.Page
     'tags tags';
   grid-template-columns: minmax(0, max-content) 1fr;
 }
-:--article-page header h1,
-:--article-page header h2 {
-  margin-bottom: calc( var(--global-space--grid-gap) / 2 );
-}
+
 :--article-page header h1 {
+  @mixin news-article-page-title;
+}
+@define-mixin news-article-page-title {
   font-size: var(--global-font-size--xxx-large);
 
   border-bottom: var(--global-border-width--normal) solid var(--global-color-primary--dark);
+
+  margin-bottom: 15px;
 }
+
 :--article-page header h2 {
+  @mixin news-article-page-subtitle;
+}
+@define-mixin news-article-page-subtitle {
   font-weight: normal;
   font-size: var(--global-font-size--large);
+
+  margin-bottom: 15px;
 }
 
 
@@ -61,6 +75,9 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 :--article-page .blog-lead,
 :--article-page .blog-visual,
 :--article-page .blog-content {
+  @mixin news-article-page-body;
+}
+@define-mixin news-article-page-body {
   font-size: var(--global-font-size--medium);
   line-height: 2;
 
@@ -86,20 +103,29 @@ Styleguide Components.DjangoCMS.Blog.App.Page
   max-width: 100%;
   height: auto;
 }
+
 /* To support vertical layouts at narrow viewports */
-@media (--narrow-and-below) {
-  :--article-page .blog-visual {
-    display: grid;
-    justify-content: center;
+:--article-page .blog-visual {
+  @mixin news-article-page-media;
+}
+@define-mixin news-article-page-media {
+  @media (--narrow-and-below) {
+    @mixin news-article-page-media--slim-context;
+  }
+  @media (--narrow-and-above) {
+    @mixin news-article-page-media--wide-context;
   }
 }
-/* To support horizontal layouts at wide viewports */
-@media (--narrow-and-above) {
-  :--article-page .blog-visual {
-    float: left;
-    margin-right: var(--blog-item-media-buffer);
-  }
+@define-mixin news-article-page-media--slim-context {
+  display: grid;
+  justify-content: center;
 }
+@define-mixin news-article-page-media--wide-context {
+  float: left;
+  margin-right: var(--blog-item-media-buffer);
+}
+
+/* To prevent missing media from disrupting page layout */
 :--article-page .blog-visual:where(:not(:has(*))) {
     margin: unset;
 }
