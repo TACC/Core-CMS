@@ -21,6 +21,9 @@ Styleguide Components.DjangoCMS.Blog.App
 /* Generic */
 
 .app-blog {
+  @mixin news;
+}
+@define-mixin news {
   /* To control absolute position of descendants e.g. `.blog-visual` */
   position: relative;
 }
@@ -30,6 +33,9 @@ Styleguide Components.DjangoCMS.Blog.App
 /* Header */
 
 .app-blog header {
+  @mixin news-article__header;
+}
+@define-mixin news-article__header {
   display: grid;
   column-gap: 1em;
 }
@@ -45,15 +51,24 @@ Styleguide Components.DjangoCMS.Blog.App
 
 /* To format titles */
 :--article-list h1 > strong::after {
+  @mixin news-title__name;
+}
+@define-mixin news-title__name {
   content: "—";
   margin-left: 0.25em;
   display: inline-block;
   font-weight: var(--medium);
 }
 :--article-list h1 > span {
+  @mixin news-title__type-key;
+}
+@define-mixin news-title__type-key {
   display: none;
 }
 :--article-list h1 > em {
+  @mixin news-title__type-value;
+}
+@define-mixin news-title__type-value {
   font-style: normal;
   text-transform: none;
   font-family: inherit;
@@ -61,6 +76,9 @@ Styleguide Components.DjangoCMS.Blog.App
 }
 
 .app-blog ul.post-detail {
+  @mixin news-details;
+}
+@define-mixin news-details {
   list-style: none;
 
   padding-left: 0; /* overwrite html-elements.css */
@@ -72,16 +90,25 @@ Styleguide Components.DjangoCMS.Blog.App
 
 /* Metadata */
 
-/* To layout data */
 .app-blog .tags,
 .app-blog .categories {
+  @mixin news-metadata;
+}
+@define-mixin news-metadata {
   display: flex;
   flex-direction: row;
   gap: 1em;
+
+  &:empty {
+    display: none;
+  }
 }
 
-/* To always hide byline prefix */
 .app-blog .byline > span {
+  @mixin news-byline__prefix;
+}
+/* To always hide byline prefix */
+@define-mixin news-byline__prefix {
   display: none;
 }
 
@@ -91,14 +118,11 @@ Styleguide Components.DjangoCMS.Blog.App
   display: none;
 }
 
-/* To hide empty tags & categories */
-:--article .tags:empty,
-:--article .categories:empty {
-  display: none;
+.app-blog .categories {
+  @mixin news-metadata;
+  a { @mixin news-category; }
 }
-
-/* To style categories as "tags" (the UI pattern) */
-.app-blog .categories a {
+@define-mixin news-category {
   @extend :--c-tag;
 
   display: inline-block;
@@ -109,16 +133,18 @@ Styleguide Components.DjangoCMS.Blog.App
   font-size: var(--global-font-size--small);
 }
 
-/* To style tags as "pills" (the UI pattern) */
-.app-blog .tags a {
-  /* TODO: When available in Core-Styles, uncomment this */
-  /* @extend :--c-pill; */
-
+.app-blog .tags {
+  @mixin news-metadata;
+  a { @mixin news-tag; }
+}
+@define-mixin news-tag {
   background-color: var(--global-color-primary--light);
 }
 
-/* To style dates */
 .app-blog time {
+  @mixin news-date;
+}
+@define-mixin news-date {
   color: var(--global-color-accent--secondary);
   font-weight: var(--medium);
   text-transform: uppercase;
@@ -131,6 +157,9 @@ Styleguide Components.DjangoCMS.Blog.App
 /* TACC: Logos */
 
 .app-blog .logos--social {
+  @mixin news-socials;
+}
+@define-mixin news-socials {
   display: flex;
   flex-wrap: wrap;
   justify-self: end;
@@ -144,10 +173,16 @@ Styleguide Components.DjangoCMS.Blog.App
 }
 
 .app-blog .logos__text-before {
+  @mixin news-socials__prefix;
+}
+@define-mixin news-socials__prefix {
   white-space: nowrap;
 }
 
 .app-blog .logos--social svg {
+  @mixin news-socials__icon;
+}
+@define-mixin news-socials__icon {
   @media (pointer: coarse) {
     height: var(--global-font-size--xx-large);
     width: var(--global-font-size--xx-large);
@@ -163,5 +198,8 @@ Styleguide Components.DjangoCMS.Blog.App
 /* Pagination */
 
 .pagination {
+  @mixin news-pagination;
+}
+@define-mixin news-pagination {
   margin-block: 40px;
 }
