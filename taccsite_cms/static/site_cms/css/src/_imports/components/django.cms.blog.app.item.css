@@ -11,6 +11,8 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 @import url("@tacc/core-styles/src/lib/_imports/tools/x-truncate.css");
 @import url("@tacc/core-styles/src/lib/_imports/tools/media-queries.css");
 
+@import url("../tools/x-news.css");
+
 @import url("./django.cms.blog.selectors.css");
 
 
@@ -23,17 +25,8 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 :--article-list--as-grid {
   @mixin news-feed--as-grid;
 }
-@define-mixin news-feed--as-grid {
-  display: grid;
-  grid-template-columns: repeat( auto-fit, minmax(350px, 1fr) );
-  column-gap: var(--global-space--pattern-pad);
-}
-/* So page title spans all columns */
 :--article-list--as-grid > header {
   @mixin news-feed--as-grid__header;
-}
-@define-mixin news-feed--as-grid__header {
-  grid-column: 1 / -1;
 }
 
 
@@ -50,36 +43,8 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 :--article-item {
   @mixin news-feed__article;
 }
-@define-mixin news-feed__article {
-  display: grid;
-
-  column-gap: 50px; /* for horz. space between image and content */
-
-  border-bottom: var(--global-border-width--normal) solid var(--global-color-primary--dark);
-  margin-bottom: 20px;
-  padding-bottom: 20px;
-}
 
 /* For layout variants */
-@define-mixin news-feed--grid-layout__article {
-    grid-template-areas:
-      'media'
-      'head'
-      'lead';
-    /* To prevent content from overflowing cell */
-    grid-template-columns: minmax(0, 1fr);
-    /* To prevent vertical stretch of rows */
-    grid-auto-rows: min-content;
-}
-@define-mixin news-feed--list-layout__article {
-    grid-template-areas:
-      'media head'
-      'media lead';
-    /* To shrinkwrap media and flexible text content */
-    grid-template-columns: minmax(0, max-content) 1fr;
-    /* To let 'lead' take remaining space (removes gap between head and desc) */
-    grid-template-rows: min-content 1fr;
-}
 @media (--narrow-and-below) {
   :--article-item {
     @mixin news-feed--list-layout__article;
@@ -107,34 +72,18 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 
 :--article-item header {
   @mixin news-feed-article__header;
-}
-@define-mixin news-feed-article__header {
+
   grid-area: head;
-
-  grid-template-areas:
-    'cats tags'
-    'date attr'
-    'head head'
-    'subh subh';
-  justify-content: space-between;
-
-  margin-bottom: 5px;
 }
 
 
 
-/* Header - Title */
+/* Header - Titles */
 
 :--article-item h3 {
-  @mixin news-feed-article__title;
-}
-@define-mixin news-feed-article__title {
   margin-bottom: unset; /* overrides Core-Styles headings--cms.css */
 }
 :--article-item h4 {
-  @mixin news-feed-article__subtitle;
-}
-@define-mixin news-feed-article__subtitle {
   display: none;
 }
 
@@ -147,22 +96,12 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 :--article-item li {
   @mixin news-feed-article__details__item;
 }
-@define-mixin news-feed-article__details__item {
-  line-height: unset; /* overwrite html-elements.css */
-}
 
 :--article-item .attrs {
   @mixin news-feed-article__details--attributes;
 }
-@define-mixin news-feed-article__details--attributes {
-  color: var(--global-color-primary--dark);
-  justify-self: end;
-}
 :--article-item .attrs a {
   @mixin news-feed-article__details--attributes__link;
-}
-@define-mixin news-feed-article__details--attributes__link {
-  color: inherit;
 }
 
 
@@ -172,26 +111,9 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 /* Visual */
 
 :--article-item .blog-visual {
-  @mixin news-feed-article__media;
-
-  &:empty {
-    display: none;
-  }
-}
-@define-mixin news-feed-article__media {
   grid-area: media;
-}
 
-/* To adjust layout of media when it is above the text */
-@define-mixin news-feed-article__media--above-text {
-  margin-bottom: 15px; /* to add space between image and content */
-
-  & img {
-    /* to prevent overflow if column is narrower than image */
-    max-width: 100%;
-    /* to preserve ratio if width is reduced (by max-width: 100%) */
-    height: auto;
-  }
+  @mixin news-feed-article__media;
 }
 @media (--narrow-and-below) {
   :--article-item .blog-visual {
@@ -213,19 +135,8 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 
 :--article-item .blog-lead {
   @mixin news-feed-article__lead;
-}
-@define-mixin news-feed-article__lead {
+
   grid-area: lead;
-
-  @extend %x-truncate--many-lines;
-  --lines: 4;
-
-  line-height: 1.5;
-  color: var(--global-color-primary--dark);
-
-  & p:last-child {
-    margin-bottom: unset; /* overrides core-styles.cms */
-  }
 }
 
 /* To undo inline content styles */
@@ -242,17 +153,6 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 
 /* Footer */
 
-/* To make image clickable via "read more" link */
 .read-more {
   @mixin news-feed-article__link-overlay;
-}
-@define-mixin news-feed-article__link-overlay {
-  /* To cover the image exactly */
-  display: grid;
-  grid-row-start: 1;
-  grid-column-start: 1;
-  grid-row-end: span 2;
-
-  /* To hide link text */
-  font-size: 0;
 }

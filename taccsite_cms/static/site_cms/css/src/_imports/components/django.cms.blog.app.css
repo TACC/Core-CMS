@@ -12,32 +12,23 @@ Styleguide Components.DjangoCMS.Blog.App
 @import url("@tacc/core-styles/dist/djangocms-blog/cms-pagination.css");
 @import url("@tacc/core-styles/src/lib/_imports/components/c-tag.css");
 
+@import url("../tools/x-news.css");
+
 @import url("./django.cms.blog.app.page.css");
 @import url("./django.cms.blog.app.item.css");
 @import url("./django.cms.blog.selectors.css");
 
 
 
-/* Generic */
-
+/* Root */
 .app-blog {
   @mixin news;
 }
-@define-mixin news {
-  /* To control absolute position of descendants e.g. `.blog-visual` */
-  position: relative;
-}
-
 
 
 /* Header */
-
 .app-blog header {
   @mixin news-article__header;
-}
-@define-mixin news-article__header {
-  display: grid;
-  column-gap: 1em;
 }
 :--article-page h1,
 :--article-item h3    { grid-area: head }
@@ -49,66 +40,33 @@ Styleguide Components.DjangoCMS.Blog.App
 .app-blog .tags       { grid-area: tags }
 .app-blog .links      { grid-area: link }
 
-/* To format titles */
+
+/* Titles */
 :--article-list h1 > strong::after {
   @mixin news-title__name;
-}
-@define-mixin news-title__name {
-  content: "—";
-  margin-left: 0.25em;
-  display: inline-block;
-  font-weight: var(--medium);
 }
 :--article-list h1 > span {
   @mixin news-title__type-key;
 }
-@define-mixin news-title__type-key {
-  display: none;
-}
 :--article-list h1 > em {
   @mixin news-title__type-value;
 }
-@define-mixin news-title__type-value {
-  font-style: normal;
-  text-transform: none;
-  font-family: inherit;
-  font-weight: var(--medium);
-}
 
-.app-blog ul.post-detail {
+
+/* Details */
+.app-blog .post-detail {
   @mixin news-details;
 }
-@define-mixin news-details {
-  list-style: none;
 
-  padding-left: 0; /* overwrite html-elements.css */
-
-  font-size: var(--global-font-size--medium);
-}
-
-
-
-/* Metadata */
+/* Details - Metadata */
 
 .app-blog .tags,
 .app-blog .categories {
   @mixin news-metadata;
 }
-@define-mixin news-metadata {
-  display: flex;
-  flex-direction: row;
-  gap: 1em;
 
-  &:empty {
-    display: none;
-  }
-}
-
+/* To always hide "by" */
 .app-blog .byline > span {
-  @mixin news-byline__prefix;
-}
-/* To always hide byline prefix */
-@define-mixin news-byline__prefix {
   display: none;
 }
 
@@ -117,80 +75,31 @@ Styleguide Components.DjangoCMS.Blog.App
 .app-blog.no-categories :--article .categories {
   display: none;
 }
-
 .app-blog .categories {
   @mixin news-metadata;
   a { @mixin news-category; }
 }
-@define-mixin news-category {
-  @extend :--c-tag;
-
-  display: inline-block;
-
-  color: var(--global-color-primary--xx-light);
-  background-color: var(--global-color-primary--xx-dark);
-
-  font-size: var(--global-font-size--small);
-}
-
 .app-blog .tags {
   @mixin news-metadata;
   a { @mixin news-tag; }
 }
-@define-mixin news-tag {
-  background-color: var(--global-color-primary--light);
-}
 
 .app-blog time {
   @mixin news-date;
-}
-@define-mixin news-date {
-  color: var(--global-color-accent--secondary);
-  font-weight: var(--medium);
-  text-transform: uppercase;
 }
 
 
 
 /* Social Media */
 
-/* TACC: Logos */
-
 .app-blog .logos--social {
   @mixin news-socials;
 }
-@define-mixin news-socials {
-  display: flex;
-  flex-wrap: wrap;
-  justify-self: end;
-
-  @media (pointer: coarse) {
-    gap: 1.0em;
-  }
-  @media not (pointer: coarse) {
-    gap: 0.5em;
-  }
-}
-
 .app-blog .logos__text-before {
   @mixin news-socials__prefix;
 }
-@define-mixin news-socials__prefix {
-  white-space: nowrap;
-}
-
 .app-blog .logos--social svg {
   @mixin news-socials__icon;
-}
-@define-mixin news-socials__icon {
-  @media (pointer: coarse) {
-    height: var(--global-font-size--xx-large);
-    width: var(--global-font-size--xx-large);
-  }
-  @media (pointer: fine), (pointer: none) {
-    height: var(--global-font-size--large);
-    width: var(--global-font-size--large);
-  }
 }
 
 
@@ -199,7 +108,4 @@ Styleguide Components.DjangoCMS.Blog.App
 
 .pagination {
   @mixin news-pagination;
-}
-@define-mixin news-pagination {
-  margin-block: 40px;
 }
