@@ -142,26 +142,26 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 
 
 
-/* Metadata */
+/* Details */
 
 :--article-item li {
-  @mixin news-feed-article__metadata__item;
+  @mixin news-feed-article__details__item;
 }
-@define-mixin news-feed-article__metadata__item {
+@define-mixin news-feed-article__details__item {
   line-height: unset; /* overwrite html-elements.css */
 }
 
 :--article-item .attrs {
-  @mixin news-feed-article__metadata;
+  @mixin news-feed-article__details--attributes;
 }
-@define-mixin news-feed-article__metadata {
+@define-mixin news-feed-article__details--attributes {
   color: var(--global-color-primary--dark);
   justify-self: end;
 }
 :--article-item .attrs a {
-  @mixin news-feed-article__metadata__link;
+  @mixin news-feed-article__details--attributes__link;
 }
-@define-mixin news-feed-article__metadata__link {
+@define-mixin news-feed-article__details--attributes__link {
   color: inherit;
 }
 
