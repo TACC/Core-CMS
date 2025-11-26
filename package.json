@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/TACC/Core-CMS",
   "devDependencies": {
-    "@tacc/core-styles": "^2.50.2"
+    "@tacc/core-styles": "github:TACC/Core-Styles#42cb137"
   },
   "// devDependencies": {
     "@tacc/core-styles": "after v2.50.0, use NPM (because NPM and GitHub v2.50.0 differ)"
