@@ -21,12 +21,18 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 
 /* To support rendering list as a grid */
 :--article-list--as-grid {
+  @mixin news-feed--as-grid;
+}
+@define-mixin news-feed--as-grid {
   display: grid;
   grid-template-columns: repeat( auto-fit, minmax(350px, 1fr) );
   column-gap: var(--global-space--pattern-pad);
 }
 /* So page title spans all columns */
 :--article-list--as-grid > header {
+  @mixin news-feed--as-grid__header;
+}
+@define-mixin news-feed--as-grid__header {
   grid-column: 1 / -1;
 }
 
@@ -40,8 +46,11 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 
 /* Item (Structure) */
 
-/* For basic layout */
+/* For all layouts */
 :--article-item {
+  @mixin news-feed__article;
+}
+@define-mixin news-feed__article {
   display: grid;
 
   column-gap: 50px; /* for horz. space between image and content */
@@ -50,41 +59,38 @@ Styleguide Components.DjangoCMS.Blog.App.Item
   margin-bottom: 20px;
   padding-bottom: 20px;
 }
-:--article-item header        { grid-area: head }
-:--article-item .blog-visual  { grid-area: media }
-:--article-item .blog-lead    { grid-area: desc }
 
-/* For layout options */
-.x-blog-grid-item {
+/* For layout variants */
+@define-mixin news-feed--grid-layout__article {
     grid-template-areas:
       'media'
       'head'
-      'desc';
+      'lead';
     /* To prevent content from overflowing cell */
     grid-template-columns: minmax(0, 1fr);
     /* To prevent vertical stretch of rows */
     grid-auto-rows: min-content;
 }
-.x-blog-list-item {
+@define-mixin news-feed--list-layout__article {
     grid-template-areas:
       'media head'
-      'media desc';
+      'media lead';
     /* To shrinkwrap media and flexible text content */
     grid-template-columns: minmax(0, max-content) 1fr;
-    /* To let 'desc' take remaining space (removes gap between head and desc) */
+    /* To let 'lead' take remaining space (removes gap between head and desc) */
     grid-template-rows: min-content 1fr;
 }
 @media (--narrow-and-below) {
   :--article-item {
-    @extend .x-blog-grid-item;
+    @mixin news-feed--list-layout__article;
   }
 }
 @media (--narrow-and-above) {
   :--article-item--in-list {
-    @extend .x-blog-list-item;
+    @mixin news-feed--list-layout__article;
   }
   :--article-item--in-grid {
-    @extend .x-blog-grid-item;
+    @mixin news-feed--grid-layout__article;
   }
 }
 
@@ -100,15 +106,18 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 /* Header (Structure) */
 
 :--article-item header {
+  @mixin news-feed-article__header;
+}
+@define-mixin news-feed-article__header {
+  grid-area: head;
+
   grid-template-areas:
     'cats tags'
     'date attr'
     'head head'
     'subh subh';
   justify-content: space-between;
-}
 
-:--article-item header {
   margin-bottom: 5px;
 }
 
@@ -117,9 +126,15 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 /* Header - Title */
 
 :--article-item h3 {
-  margin-bottom: unset; /* overwrite Core-Styles headings--cms.css */
+  @mixin news-feed-article__title;
+}
+@define-mixin news-feed-article__title {
+  margin-bottom: unset; /* overrides Core-Styles headings--cms.css */
 }
 :--article-item h4 {
+  @mixin news-feed-article__subtitle;
+}
+@define-mixin news-feed-article__subtitle {
   display: none;
 }
 
@@ -130,14 +145,23 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 /* Metadata */
 
 :--article-item li {
+  @mixin news-feed-article__metadata__item;
+}
+@define-mixin news-feed-article__metadata__item {
   line-height: unset; /* overwrite html-elements.css */
 }
 
 :--article-item .attrs {
+  @mixin news-feed-article__metadata;
+}
+@define-mixin news-feed-article__metadata {
   color: var(--global-color-primary--dark);
   justify-self: end;
 }
 :--article-item .attrs a {
+  @mixin news-feed-article__metadata__link;
+}
+@define-mixin news-feed-article__metadata__link {
   color: inherit;
 }
 
@@ -147,30 +171,36 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 
 /* Visual */
 
-:--article-item .blog-visual:empty {
-  display: none;
+:--article-item .blog-visual {
+  @mixin news-feed-article__media;
+
+  &:empty {
+    display: none;
+  }
+}
+@define-mixin news-feed-article__media {
+  grid-area: media;
 }
 
-/* To support vertical article layouts */
-/* FAQ: In simple layouts, the media element is the grid cell */
-/* FAQ: In complex layouts, the media element is within the grid cell */
-.x-blog-grid-item-media-cell {
+/* To adjust layout of media when it is above the text */
+@define-mixin news-feed-article__media--above-text {
   margin-bottom: 15px; /* to add space between image and content */
-}
-.x-blog-grid-item-media-element-in-cell {
-  max-width: 100%; /* to prevent overflow if column is narrower than image */
-  height: auto; /* to preserve ratio if width is reduced (by max-width: 100%) */
+
+  & img {
+    /* to prevent overflow if column is narrower than image */
+    max-width: 100%;
+    /* to preserve ratio if width is reduced (by max-width: 100%) */
+    height: auto;
+  }
 }
 @media (--narrow-and-below) {
   :--article-item .blog-visual {
-    @extend .x-blog-grid-item-media-cell;
-    & img { @extend .x-blog-grid-item-media-element-in-cell; }
+    @mixin news-feed-article__media--above-text;
   }
 }
 @media (--narrow-and-above) {
   :--article-item--in-grid .blog-visual {
-    @extend .x-blog-grid-item-media-cell;
-    & img { @extend .x-blog-grid-item-media-element-in-cell; }
+    @mixin news-feed-article__media--above-text;
   }
 }
 
@@ -178,22 +208,31 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 
 
 
-/* Content */
+/* Lead */
+
 
 :--article-item .blog-lead {
+  @mixin news-feed-article__lead;
+}
+@define-mixin news-feed-article__lead {
+  grid-area: lead;
+
   @extend %x-truncate--many-lines;
   --lines: 4;
 
   line-height: 1.5;
   color: var(--global-color-primary--dark);
-}
-:--article-item .blog-lead p:last-child {
-  margin-bottom: 0 /* overwrite core-styles.cms */
+
+  & p:last-child {
+    margin-bottom: unset; /* overrides core-styles.cms */
+  }
 }
 
 /* To undo inline content styles */
 /* FAQ: In case author pasted such markup from another source */
-:--article-item .blog-lead [style] {
+:--article-item .blog-lead [style]:not(
+    [data-style="admin"] /* HACK: so CMS admin can override this */
+) {
     all: revert !important; /* force undo all inline styles */
 }
 
@@ -204,9 +243,10 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 /* Footer */
 
 /* To make image clickable via "read more" link */
-/* FAQ: This is not available via c-news, because c-news assumes
-        if image should be clickable, client would wrap it in a link */
 .read-more {
+  @mixin news-feed-article__link-overlay;
+}
+@define-mixin news-feed-article__link-overlay {
   /* To cover the image exactly */
   display: grid;
   grid-row-start: 1;
