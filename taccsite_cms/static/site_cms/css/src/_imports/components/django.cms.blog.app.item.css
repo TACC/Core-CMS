@@ -128,10 +128,10 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 }
 
 :--article-item .attrs {
-  @mixin news-feed-article__details--attributes;
+  @mixin news-feed-article__details--attr;
 }
 :--article-item .attrs a {
-  @mixin news-feed-article__details--attributes__link;
+  @mixin news-feed-article__details--attr__link;
 }
 
 
