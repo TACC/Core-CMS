@@ -25,13 +25,13 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 :--article-list--as-grid {
   @mixin news-feed--as-grid;
 }
+
+/* List - Header */
 :--article-list--as-grid > header {
   @mixin news-feed--as-grid__header;
 }
 
-
 /* List - Title */
-
 :--article-list h1 > strong::after {
   @mixin news-feed-title__separator;
 }

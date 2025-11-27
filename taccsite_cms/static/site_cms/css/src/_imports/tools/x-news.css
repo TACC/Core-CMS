@@ -8,22 +8,6 @@
   /* … */
 }
 
-@define-mixin news-feed-title__separator {
-  content: "—";
-  margin-left: 0.25em;
-  display: inline-block;
-  font-weight: var(--medium);
-}
-@define-mixin news-feed-title__type-key {
-  display: none;
-}
-@define-mixin news-feed-title__type-value {
-  font-style: normal;
-  text-transform: none;
-  font-family: inherit;
-  font-weight: var(--medium);
-}
-
 @define-mixin news-details {
   margin-bottom: 1rem; /* to not rely on <ul> + core-styles.base.css for this */
 
@@ -113,6 +97,25 @@
 }
 @define-mixin news-feed--as-grid__header {
   grid-column: 1 / -1; /* so page title spans all columns */
+}
+
+
+/* Title */
+
+@define-mixin news-feed-title__separator {
+  content: "—";
+  margin-left: 0.25em;
+  display: inline-block;
+  font-weight: var(--medium);
+}
+@define-mixin news-feed-title__type-key {
+  display: none;
+}
+@define-mixin news-feed-title__type-value {
+  font-style: normal;
+  text-transform: none;
+  font-family: inherit;
+  font-weight: var(--medium);
 }
 
 
