@@ -147,6 +147,13 @@
   /* To let 'lead' take remaining space (removes gap between head and desc) */
   grid-template-rows: min-content 1fr;
 }
+@define-mixin news-feed__article--no-media {
+  grid-template-areas:
+    'head'
+    'lead';
+  grid-template-columns: 1fr;
+  column-gap: unset;
+}
 
 /* Article: Header */
 
