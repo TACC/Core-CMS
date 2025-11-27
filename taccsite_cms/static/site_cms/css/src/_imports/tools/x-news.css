@@ -2,11 +2,15 @@
 @import url("@tacc/core-styles/src/lib/_imports/tools/x-tag.css");
 @import url("@tacc/core-styles/src/lib/_imports/tools/x-truncate.css");
 
-/* GENERIC */
+/* BASE */
+
+/* Root */
 
 @define-mixin news {
   /* … */
 }
+
+/* Details */
 
 @define-mixin news-details {
   margin-bottom: 1rem; /* to not rely on <ul> + core-styles.base.css for this */
@@ -79,10 +83,6 @@
   }
 }
 
-@define-mixin news-pagination {
-  margin-block: 40px;
-}
-
 
 
 
@@ -98,7 +98,6 @@
 @define-mixin news-feed--as-grid__header {
   grid-column: 1 / -1; /* so page title spans all columns */
 }
-
 
 /* Title */
 
@@ -117,7 +116,6 @@
   font-family: inherit;
   font-weight: var(--medium);
 }
-
 
 /* Article */
 
@@ -151,7 +149,6 @@
     grid-template-rows: min-content 1fr;
 }
 
-
 /* Article: Header */
 
 @define-mixin news-feed-article__header {
@@ -167,7 +164,6 @@
   margin-bottom: 5px;
 }
 
-
 /* Article: Details */
 
 @define-mixin news-feed-article__details--attributes {
@@ -181,7 +177,6 @@
 @define-mixin news-feed-article__details__item {
   line-height: unset;
 }
-
 
 /* Article: Media */
 
@@ -207,7 +202,6 @@
   }
 }
 
-
 /* Article: Text */
 
 @define-mixin news-feed-article__lead {
@@ -222,7 +216,6 @@
   }
 }
 
-
 /* Article: Utility */
 
 /* To make media clickable via a "read more" link */
@@ -235,6 +228,13 @@
 
   /* To hide link text */
   font-size: 0;
+}
+
+
+/* Pagination */
+
+@define-mixin news-pagination {
+  margin-block: 40px;
 }
 
 
