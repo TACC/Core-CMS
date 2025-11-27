@@ -10,7 +10,6 @@ Reference:
 Styleguide Components.DjangoCMS.Blog.App
 */
 @import url("@tacc/core-styles/dist/djangocms-blog/cms-pagination.css");
-@import url("@tacc/core-styles/src/lib/_imports/components/c-tag.css");
 
 @import url("../tools/x-news.css");
 
@@ -46,8 +45,8 @@ Styleguide Components.DjangoCMS.Blog.App
 }
 
 /* To conditionally hide tags & categories */
-.app-blog.no-tags :--article .tags,
-.app-blog.no-categories :--article .categories {
+.app-blog.no-tags .tags,
+.app-blog.no-categories .categories {
   display: none;
 }
 .app-blog .categories {

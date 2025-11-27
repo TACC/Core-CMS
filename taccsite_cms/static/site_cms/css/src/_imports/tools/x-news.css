@@ -163,6 +163,26 @@
 
   margin-bottom: 5px;
 }
+@define-mixin news-feed-article__header--show-cats-hide-tags {
+  grid-template-areas:
+    'cats     cats    '
+    'dates    attrs   '
+    'title    title   '
+    'subtitle subtitle';
+}
+@define-mixin news-feed-article__header--hide-cats-show-tags {
+  grid-template-areas:
+    'tags     tags    '
+    'dates    attrs   '
+    'title    title   '
+    'subtitle subtitle';
+}
+@define-mixin news-feed-article__header--hide-cats-hide-tags {
+  grid-template-areas:
+    'dates    attrs   '
+    'title    title   '
+    'subtitle subtitle';
+}
 
 /* Article: Details */
 
@@ -261,6 +281,28 @@
     'attrs    socials '
     'tags     tags    ';
   grid-template-columns: minmax(0, max-content) 1fr;
+}
+@define-mixin news-article-page__header--show-cats-hide-tags {
+  grid-template-areas:
+    'cats     dates   '
+    'title    title   '
+    'subtitle subtitle'
+    'attrs    socials ';
+}
+@define-mixin news-article-page__header--hide-cats-show-tags {
+  grid-template-areas:
+    'dates    dates   '
+    'title    title   '
+    'subtitle subtitle'
+    'attrs    socials '
+    'tags     tags    ';
+}
+@define-mixin news-article-page__header--hide-cats-hide-tags {
+  grid-template-areas:
+    'dates    dates   '
+    'title    title   '
+    'subtitle subtitle'
+    'attrs    socials ';
 }
 
 /* Titles */
