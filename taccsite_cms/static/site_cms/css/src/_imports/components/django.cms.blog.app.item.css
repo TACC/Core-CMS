@@ -30,6 +30,19 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 }
 
 
+/* List - Title */
+
+:--article-list h1 > strong::after {
+  @mixin news-feed-title__separator;
+}
+:--article-list h1 > span {
+  @mixin news-feed-title__type-key;
+}
+:--article-list h1 > em {
+  @mixin news-feed-title__type-value;
+}
+
+
 
 
 
@@ -75,6 +88,12 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 
   grid-area: head;
 }
+:--article-item header h3   { grid-area: title }
+:--article-item header h4   { grid-area: subtitle }
+:--article-item .attrs      { grid-area: attrs }
+:--article-item .dates      { grid-area: dates }
+:--article-item .categories { grid-area: cats }
+:--article-item .tags       { grid-area: tags }
 
 
 

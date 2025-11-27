@@ -8,21 +8,16 @@
   /* … */
 }
 
-@define-mixin news-article__header {
-  display: grid;
-  column-gap: 1em;
-}
-
-@define-mixin news-title__name {
+@define-mixin news-feed-title__separator {
   content: "—";
   margin-left: 0.25em;
   display: inline-block;
   font-weight: var(--medium);
 }
-@define-mixin news-title__type-key {
+@define-mixin news-feed-title__type-key {
   display: none;
 }
-@define-mixin news-title__type-value {
+@define-mixin news-feed-title__type-value {
   font-style: normal;
   text-transform: none;
   font-family: inherit;
@@ -157,11 +152,13 @@
 /* Article: Header */
 
 @define-mixin news-feed-article__header {
+  display: grid;
+  column-gap: 1em;
   grid-template-areas:
-    'cats tags'
-    'date attr'
-    'head head'
-    'subh subh';
+    'cats     tags    '
+    'dates    attrs   '
+    'title    title   '
+    'subtitle subtitle';
   justify-content: space-between;
 
   margin-bottom: 5px;
@@ -252,12 +249,14 @@
 /* Header */
 
 @define-mixin news-article-page__header {
+  display: grid;
+  column-gap: 1em;
   grid-template-areas:
-    'cats date'
-    'head head'
-    'subh subh'
-    'attr link'
-    'tags tags';
+    'cats     dates   '
+    'title    title   '
+    'subtitle subtitle'
+    'attrs    socials '
+    'tags     tags    ';
   grid-template-columns: minmax(0, max-content) 1fr;
 }
 

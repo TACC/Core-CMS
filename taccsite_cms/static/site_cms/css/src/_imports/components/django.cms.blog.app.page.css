@@ -35,11 +35,19 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 }
 :--article-page header h1 {
   @mixin news-article-page__title;
+
+  grid-area: title;
 }
 :--article-page header h2 {
   @mixin news-article-page__subtitle;
-}
 
+  grid-area: subtitle;
+}
+:--article-page .attrs      { grid-area: attrs }
+:--article-page .dates      { grid-area: dates }
+:--article-page .categories { grid-area: cats }
+:--article-page .tags       { grid-area: tags }
+:--article-page .socials    { grid-area: socials }
 
 
 

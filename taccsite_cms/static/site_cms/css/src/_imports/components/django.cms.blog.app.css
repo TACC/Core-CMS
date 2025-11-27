@@ -21,39 +21,14 @@ Styleguide Components.DjangoCMS.Blog.App
 
 
 /* Root */
+
 .app-blog {
   @mixin news;
 }
 
 
-/* Header */
-.app-blog header {
-  @mixin news-article__header;
-}
-:--article-page h1,
-:--article-item h3    { grid-area: head }
-:--article-page h2,
-:--article-item h4    { grid-area: subh }
-.app-blog .attrs      { grid-area: attr }
-.app-blog .dates      { grid-area: date }
-.app-blog .categories { grid-area: cats }
-.app-blog .tags       { grid-area: tags }
-.app-blog .links      { grid-area: link }
-
-
-/* Titles */
-:--article-list h1 > strong::after {
-  @mixin news-title__name;
-}
-:--article-list h1 > span {
-  @mixin news-title__type-key;
-}
-:--article-list h1 > em {
-  @mixin news-title__type-value;
-}
-
-
 /* Details */
+
 .app-blog .post-detail {
   @mixin news-details;
 }
@@ -92,7 +67,7 @@ Styleguide Components.DjangoCMS.Blog.App
 
 /* Social Media */
 
-.app-blog .logos--social {
+.app-blog .logos--social /* a.k.a. blog .socials */ {
   @mixin news-socials;
 }
 .app-blog .logos__text-before {
