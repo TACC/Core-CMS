@@ -32,16 +32,24 @@ Styleguide Components.DjangoCMS.Blog.App
   @mixin news-details;
 }
 
+/* Details - Attribution */
+
+/* To always hide "by" */
+.app-blog .byline > span {
+  display: none;
+}
+
+/* Details - Dates */
+
+.app-blog time {
+  @mixin news-date;
+}
+
 /* Details - Metadata */
 
 .app-blog .tags,
 .app-blog .categories {
   @mixin news-metadata;
-}
-
-/* To always hide "by" */
-.app-blog .byline > span {
-  display: none;
 }
 
 /* To conditionally hide tags & categories */
@@ -58,10 +66,6 @@ Styleguide Components.DjangoCMS.Blog.App
   a { @mixin news-tag; }
 }
 
-.app-blog time {
-  @mixin news-date;
-}
-
 
 
 /* Social Media */
@@ -75,7 +79,6 @@ Styleguide Components.DjangoCMS.Blog.App
 .app-blog .logos--social svg {
   @mixin news-socials__icon;
 }
-
 
 
 /* Pagination */

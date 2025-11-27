@@ -53,7 +53,7 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 
   grid-area: subtitle;
 }
-:--article-page .attrs      { grid-area: attrs }
+:--article-page .attrs      { grid-area: attr /* attribution */ }
 :--article-page .dates      { grid-area: dates }
 :--article-page .categories { grid-area: cats }
 :--article-page .tags       { grid-area: tags }

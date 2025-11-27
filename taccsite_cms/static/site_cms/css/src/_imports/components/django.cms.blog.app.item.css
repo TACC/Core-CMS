@@ -98,7 +98,7 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 }
 :--article-item header h3   { grid-area: title }
 :--article-item header h4   { grid-area: subtitle }
-:--article-item .attrs      { grid-area: attrs }
+:--article-item .attrs      { grid-area: attr /* attribution */}
 :--article-item .dates      { grid-area: dates }
 :--article-item .categories { grid-area: cats }
 :--article-item .tags       { grid-area: tags }
