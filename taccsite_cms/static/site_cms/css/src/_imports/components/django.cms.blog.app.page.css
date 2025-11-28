@@ -33,6 +33,14 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 :--article-page header {
   @mixin news-article-page__header;
 
+  & h1          { grid-area: title; }
+  & h2          { grid-area: subtitle; }
+  & .attrs      { grid-area: attr /* attribution */ }
+  & .dates      { grid-area: dates }
+  & .categories { grid-area: cats }
+  & .tags       { grid-area: tags }
+  & .socials    { grid-area: socials }
+
   .app-blog.no-categories.no-tags & {
     @mixin news-article-page__header--hide-cats-hide-tags;
   }
@@ -45,19 +53,10 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 }
 :--article-page header h1 {
   @mixin news-article-page__title;
-
-  grid-area: title;
 }
 :--article-page header h2 {
   @mixin news-article-page__subtitle;
-
-  grid-area: subtitle;
 }
-:--article-page .attrs      { grid-area: attr /* attribution */ }
-:--article-page .dates      { grid-area: dates }
-:--article-page .categories { grid-area: cats }
-:--article-page .tags       { grid-area: tags }
-:--article-page .socials    { grid-area: socials }
 
 
 
@@ -178,7 +177,7 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 
 /* To remove margin on narrow screens */
 /* To overwrite @tacc/core-styles/…/components/align.css */
-@media (--narrow-and-below) {
+@media (--medium-and-below) {
   :--article-page .blog-content .align-center,
   :--article-page .blog-content .align-right,
   :--article-page .blog-content .align-left {
@@ -197,7 +196,7 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 }
 
 /* To reduce image width on medium screens */
-@media (--narrow-and-above) and (--medium-and-below) {
+@media (--medium-and-above) and (--medium-and-below) {
   :--article-page .blog-content .align-center,
   :--article-page .blog-content .align-right,
   :--article-page .blog-content .align-left {

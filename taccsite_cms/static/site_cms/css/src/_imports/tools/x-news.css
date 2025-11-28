@@ -90,13 +90,24 @@
 
 /* Root */
 
+@define-mixin news-feed {
+  margin-bottom: 20px;
+}
+@define-mixin news-feed--as-list {
+  /* … */
+}
 @define-mixin news-feed--as-grid {
   display: grid;
   grid-template-columns: repeat( auto-fit, minmax(350px, 1fr) );
-  column-gap: var(--global-space--pattern-pad);
+
+  gap: var(--global-space--pattern-pad);
 }
 @define-mixin news-feed--as-grid__header {
-  grid-column: 1 / -1; /* so page title spans all columns */
+  /* So feed title spans all columns */
+  grid-column: 1 / -1;
+
+  /* To remove gap between feed title and feed articles */
+  margin-bottom: calc(-1 * var(--global-space--bootstrap-gap));
 }
 
 /* Title */
@@ -121,15 +132,6 @@
 
 @define-mixin news-feed__article {
   display: grid;
-
-  column-gap: 50px; /* for horz. space between image and content */
-
-  /* To add <hr> (and space) between articles */
-  & + & {
-    border-top: var(--global-border-width--normal) solid var(--global-color-primary--light);
-    margin-top: 20px;
-    padding-top: 20px;
-  }
 }
 @define-mixin news-feed--grid-layout__article {
   grid-template-areas:
@@ -147,8 +149,17 @@
     'media lead';
   /* To shrinkwrap media and flexible text content */
   grid-template-columns: minmax(0, max-content) 1fr;
-  /* To let 'lead' take remaining space (removes gap between head and desc) */
+  /* To let 'lead' take remaining space (removes gap between head and lead) */
   grid-template-rows: min-content 1fr;
+
+  column-gap: 50px; /* for horz. space between image and content */
+
+  /* To add <hr> (and space) between articles */
+  & + & {
+    margin-top: 20px;
+    border-top: var(--global-border-width--normal) solid var(--global-color-primary--dark);
+    padding-top: 20px;
+  }
 }
 @define-mixin news-feed__article--no-media {
   grid-template-areas:
@@ -263,7 +274,10 @@
 /* Pagination */
 
 @define-mixin news-pagination {
-  margin-block: 40px;
+  margin-top: 20px;
+  border-top: var(--global-border-width--normal) solid var(--global-color-primary--dark);
+  padding-block: var(--global-space--x-large);
+  border-radius: unset; /* undo Bootstrap */
 }
 
 
@@ -342,10 +356,10 @@
 /* Media */
 
 @define-mixin news-article-page__media {
-  @media (--narrow-and-below) {
+  @media (--medium-and-below) {
     @mixin news-article-page__media--slim-context;
   }
-  @media (--narrow-and-above) {
+  @media (--medium-and-above) {
     @mixin news-article-page__media--wide-context;
   }
 }
@@ -356,5 +370,5 @@
 @define-mixin news-article-page__media--wide-context {
   float: right;
   max-width: 50%;
-  margin-left: var(--blog-item-media-buffer);
+  margin-left: 45px;
 }

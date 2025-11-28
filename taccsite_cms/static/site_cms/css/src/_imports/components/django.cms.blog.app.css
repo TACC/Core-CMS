@@ -18,11 +18,34 @@ Styleguide Components.DjangoCMS.Blog.App
 @import url("./django.cms.blog.selectors.css");
 
 
-
 /* Root */
 
 .app-blog {
   @mixin news;
+}
+
+
+/* Header */
+
+.post-item:not(.post-detail) header {
+  @mixin news-feed-article__header;
+
+  & h3          { grid-area: title }
+  & h4          { grid-area: subtitle }
+  & .attrs      { grid-area: attr /* attribution */}
+  & .dates      { grid-area: dates }
+  & .categories { grid-area: cats }
+  & .tags       { grid-area: tags }
+
+  .app-blog.no-categories.no-tags & {
+    @mixin news-feed-article__header--hide-cats-hide-tags;
+  }
+  .app-blog:not(.no-categories).no-tags & {
+    @mixin news-feed-article__header--show-cats-hide-tags;
+  }
+  .app-blog.no-categories:not(.no-tags) & {
+    @mixin news-feed-article__header--hide-cats-show-tags;
+  }
 }
 
 
@@ -66,6 +89,16 @@ Styleguide Components.DjangoCMS.Blog.App
   a { @mixin news-tag; }
 }
 
+
+/* Lead */
+
+/* To undo inline content styles */
+/* FAQ: In case author pasted such markup from another source */
+.blog-lead [style]:not(
+    [data-style="admin"] /* HACK: so CMS admin can override this */
+) {
+    all: revert !important; /* force undo all inline styles */
+}
 
 
 /* Social Media */
