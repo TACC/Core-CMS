@@ -31,15 +31,10 @@ Styleguide Components.DjangoCMS.Blog.Plugins
 
     margin-bottom: var(--global-space--bootstrap-gap);
 
-    @container (min-width: 576px) {
-        @mixin news-feed--as-grid;
+    @mixin news-feed--as-grid;
 
-        grid-template-columns: repeat( auto-fit, minmax(210px, 1fr) );
-        gap: var(--global-space--bootstrap-gap);
-    }
-    @container (max-width: 575px) {
-        @mixin news-feed--as-list;
-    }
+    grid-template-columns: repeat( auto-fit, minmax(210px, 1fr) );
+    gap: var(--global-space--bootstrap-gap);
 }
 
 /* to hide article details (attribution and metadata) */
@@ -57,21 +52,8 @@ Styleguide Components.DjangoCMS.Blog.Plugins
 }
 
 /* for layout variants */
-@container (min-width: 576px) {
-    .blog-latest-entries article {
-        @mixin news-feed--grid-layout__article;
-
-        & + & {
-            border-top-color: var(--global-color-primary--light);
-        }
-    }
-}
-@container (max-width: 575px) {
-    .blog-latest-entries article {
-        @mixin news-feed--list-layout__article;
-
-      column-gap: var(--global-space--bootstrap-gap);
-    }
+.blog-latest-entries article {
+    @mixin news-feed--grid-layout__article;
 }
 .blog-latest-entries article:not(:has(.blog-visual > *)) {
     @mixin news-feed__article--no-media;
@@ -105,10 +87,7 @@ Styleguide Components.DjangoCMS.Blog.Plugins
 
 .blog-latest-entries article .blog-visual {
   @mixin news-feed-article__media;
-
-  @container (min-width: 576px) {
-    @mixin news-feed-article__media--above-text;
-  }
+  @mixin news-feed-article__media--above-text;
 }
 
 
