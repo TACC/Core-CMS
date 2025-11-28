@@ -124,9 +124,12 @@
 
   column-gap: 50px; /* for horz. space between image and content */
 
-  border-bottom: var(--global-border-width--normal) solid var(--global-color-primary--dark);
-  margin-bottom: 20px;
-  padding-bottom: 20px;
+  /* To add <hr> (and space) between articles */
+  & + & {
+    border-top: var(--global-border-width--normal) solid var(--global-color-primary--light);
+    margin-top: 20px;
+    padding-top: 20px;
+  }
 }
 @define-mixin news-feed--grid-layout__article {
   grid-template-areas:

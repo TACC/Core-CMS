@@ -10,6 +10,78 @@ Reference:
 Styleguide Components.DjangoCMS.Blog.Plugins
 */
 
-/* No styles yet. Not loaded yet. */
-/* HELP: How to load for entire site, but only if blog is installed? */
-/* IDEA: Use Python setting conditional in assets_site.html to load CSS file */
+/* LATEST BLOG ARTICLES */
+
+/* settings from core-cms */
+/* https://github.com/TACC/Core-CMS/blob/v4.29.0/taccsite_cms/static/site_cms/css/src/_imports/components/django.cms.blog.app.css#L23-L27 */
+.blog-latest-entries {
+    --article-buffer: 20px;
+}
+
+/* to enable container queries */
+.blog-latest-entries {
+  container-type: inline-size;
+}
+
+/* to style h3 like an h4 */
+.blog-latest-entries article header h3 {
+    margin-bottom: 0.5rem; /* Bootstrap _type.css */
+
+    font-size: var(--global-font-size--medium);
+    font-weight: var(--bold);
+}
+
+/* lay out image left of the header over the abstract */
+.blog-latest-entries article {
+    display: grid;
+}
+@container (min-width: 768px) {
+    .blog-latest-entries article {
+        column-gap: var(--global-space--bootstrap-gap);
+        grid-template-columns: minmax(0, max-content) 1fr;
+        grid-template-rows: min-content 1fr;
+        grid-template-areas:
+            "media head"
+            "media desc";
+    }
+}
+@container (max-width: 767px) {
+    .blog-latest-entries article {
+        grid-auto-rows: min-content;
+        grid-template-areas:
+            "media"
+            "head"
+            "desc";
+    }
+
+    .blog-latest-entries article .blog-visual {
+        margin-bottom: 15px;
+    }
+    .blog-latest-entries article .blog-visual img {
+        height:auto;
+        max-width: 100%
+    }
+}
+.blog-latest-entries article header { grid-area: head; }
+.blog-latest-entries article .blog-visual { grid-area: media; }
+.blog-latest-entries article .blog-lead { grid-area: desc; }
+
+/* to add line and space between articles */
+.blog-latest-entries article + article {
+    border-top: var(--global-border-width--normal) solid var(--global-color-primary--light);
+    margin-top: var(--article-buffer);
+    padding-top: var(--article-buffer);
+}
+
+/* to remove extra space at bottom of article */
+.blog-latest-entries article .blog-lead p:last-child {
+    margin-bottom: 0;
+}
+
+/* to hide stuff that is not in a simple feed */
+.blog-latest-entries article *:where(
+    header > *:not(h3) /* everything in header that is not the title */,
+    .read-more /* the footer link to article (header link is adequate) */
+) {
+    display: none;
+}

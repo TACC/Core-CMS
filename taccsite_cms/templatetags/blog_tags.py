@@ -1,6 +1,11 @@
 from django import template
+from django.apps import apps
 
 register = template.Library()
+
+@register.simple_tag
+def blog_is_installed():
+    return apps.is_installed('djangocms_blog')
 
 @register.simple_tag
 def blog_post_has_category(post=None, category_slug=''):
