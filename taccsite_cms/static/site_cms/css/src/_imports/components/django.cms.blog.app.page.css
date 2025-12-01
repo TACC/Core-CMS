@@ -17,13 +17,11 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 
 
 
-
 /* Root */
 
 :--article-page {
   @mixin news-article-page;
 }
-
 
 
 
@@ -61,7 +59,7 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 
 
 
-/* Media & Content */
+/* Body */
 
 :--article-page .blog-lead,
 :--article-page .blog-visual,
@@ -69,18 +67,10 @@ Styleguide Components.DjangoCMS.Blog.App.Page
   @mixin news-article-page__body;
 }
 
-/* To undo inline content styles */
-/* FAQ: In case author pasted such markup from another source */
-:--article-page .blog-content [style]:not(
-    [data-style="admin"], /* HACK: so CMS admin can override this */
-    [id^="flickrembed_"] * /* HACK: so Flickr slideshow works */
-) {
-    all: revert !important; /* force undo all inline styles */
-}
 
 
 
-/* Media & Content - Media */
+/* Media */
 
 /* To mimic Bootstrap `.img-fluid` */
 :--article-page .blog-visual img {
@@ -125,7 +115,17 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 
 
 
-/* Media & Content - Content */
+
+/* Content */
+
+/* To undo inline content styles */
+/* FAQ: In case author pasted such markup from another source */
+:--article-page .blog-content [style]:not(
+    [data-style="admin"], /* HACK: so CMS admin can override this */
+    [id^="flickrembed_"] * /* HACK: so Flickr slideshow works */
+) {
+    all: revert !important; /* force undo all inline styles */
+}
 
 /* Add space between all list items */
 /* FAQ: Use case is list items with as much text as a paragraph */
@@ -144,7 +144,8 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 
 
 
-/* Media & Content - Alignment */
+
+/* Alignment */
 /* FAQ: The .align-... classes come from Bootstrap Picture */
 /* FAQ: The .blockquote.text-... classes come from Bootstrap Blockquote */
 

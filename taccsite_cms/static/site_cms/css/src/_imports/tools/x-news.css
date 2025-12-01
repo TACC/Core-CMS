@@ -2,13 +2,18 @@
 @import url("@tacc/core-styles/src/lib/_imports/tools/x-tag.css");
 @import url("@tacc/core-styles/src/lib/_imports/tools/x-truncate.css");
 
+
+
+
 /* BASE */
+
 
 /* Root */
 
 @define-mixin news {
   /* … */
 }
+
 
 /* Details */
 
@@ -88,6 +93,7 @@
 
 /* FEED */
 
+
 /* Root */
 
 @define-mixin news-feed {
@@ -110,6 +116,7 @@
   margin-bottom: calc(-1 * var(--global-space--bootstrap-gap));
 }
 
+
 /* Title */
 
 @define-mixin news-feed-title__separator {
@@ -127,6 +134,7 @@
   font-family: inherit;
   font-weight: var(--medium);
 }
+
 
 /* Article */
 
@@ -172,7 +180,7 @@
   }
 }
 
-/* Article: Header */
+/* Article - Header */
 
 @define-mixin news-feed-article__header {
   display: grid;
@@ -207,7 +215,7 @@
     'subtitle subtitle';
 }
 
-/* Article: Details */
+/* Article - Details */
 
 @define-mixin news-feed-article__details--attr {
   color: var(--global-color-primary--dark);
@@ -221,7 +229,7 @@
   line-height: unset;
 }
 
-/* Article: Media */
+/* Article - Media */
 
 @define-mixin news-feed-article__media {
   /* To clearly render which thumbnails are made from too small an image */
@@ -247,7 +255,7 @@
   }
 }
 
-/* Article: Text */
+/* Article - Lead */
 
 @define-mixin news-feed-article__lead {
   @mixin truncate--many-lines;
@@ -261,7 +269,7 @@
   }
 }
 
-/* Article: Utility */
+/* Article - Footer */
 
 /* To make media clickable via a "read more" link */
 @define-mixin news-feed-article__link-overlay {

@@ -14,10 +14,7 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 @import url("./django.cms.blog.selectors.css");
 
 
-
-
-
-/* List */
+/* Root */
 
 :--article-list {
   @mixin news-feed;
@@ -44,12 +41,16 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 
 }
 
-/* List - Header */
+
+/* Header */
+
 :--article-list--as-grid > header {
   @mixin news-feed--as-grid__header;
 }
 
-/* List - Title */
+
+/* Title */
+
 :--article-list h1 > strong::after {
   @mixin news-feed-title__separator;
 }
@@ -61,10 +62,7 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 }
 
 
-
-
-
-/* Item */
+/* Article */
 
 /* For all layouts */
 :--article-item {
@@ -102,10 +100,7 @@ Styleguide Components.DjangoCMS.Blog.App.Item
   @mixin news-feed__article--no-media;
 }
 
-
-
-
-/* Titles */
+/* Article - Titles */
 
 :--article-item h3 {
   margin-bottom: unset; /* overrides Core-Styles headings--cms.css */
@@ -114,11 +109,7 @@ Styleguide Components.DjangoCMS.Blog.App.Item
   display: none;
 }
 
-
-
-
-
-/* Details */
+/* Article - Details */
 
 :--article-item li {
   @mixin news-feed-article__details__item;
@@ -131,11 +122,7 @@ Styleguide Components.DjangoCMS.Blog.App.Item
   @mixin news-feed-article__details--attr__link;
 }
 
-
-
-
-
-/* Visual */
+/* Article - Visual */
 
 :--article-item .blog-visual {
   @mixin news-feed-article__media;
@@ -152,22 +139,13 @@ Styleguide Components.DjangoCMS.Blog.App.Item
   }
 }
 
-
-
-
-
-/* Lead */
-
+/* Article - Lead */
 
 :--article-item .blog-lead {
   @mixin news-feed-article__lead;
 }
 
-
-
-
-
-/* Footer */
+/* Article - Footer */
 
 :--article-item .read-more {
   @mixin news-feed-article__link-overlay;

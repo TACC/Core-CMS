@@ -16,6 +16,8 @@ Styleguide Components.DjangoCMS.Blog.Plugins
 @import url("./django.cms.blog.selectors.css");
 
 
+
+
 /* ROOT */
 
 /* to enable container queries */
@@ -24,7 +26,12 @@ Styleguide Components.DjangoCMS.Blog.Plugins
 }
 
 
-/* LATEST BLOG ARTICLES */
+
+
+/* FEED: LATEST BLOG ARTICLES */
+
+
+/* Root */
 
 .blog-latest-entries {
     @mixin news-feed;
@@ -41,6 +48,9 @@ Styleguide Components.DjangoCMS.Blog.Plugins
       grid-template-columns: repeat( 3, 1fr );
     }
 }
+
+
+/* Article */
 
 /* to hide article details (attribution and metadata) */
 .blog-latest-entries article .post-detail {
@@ -61,8 +71,7 @@ Styleguide Components.DjangoCMS.Blog.Plugins
     @mixin news-feed__article--no-media;
 }
 
-
-/* Titles */
+/* Article - Titles */
 
 /* to style h3 like an h4 */
 .blog-latest-entries article h3 {
@@ -75,8 +84,7 @@ Styleguide Components.DjangoCMS.Blog.Plugins
   display: none;
 }
 
-
-/* Details */
+/* Article - Details */
 
 /* to hide stuff that is not in a simple feed */
 .blog-latest-entries article h4,
@@ -84,8 +92,7 @@ Styleguide Components.DjangoCMS.Blog.Plugins
     display: none;
 }
 
-
-/* Visual */
+/* Article - Visual */
 
 .blog-latest-entries article .blog-visual {
   @mixin news-feed-article__media;
@@ -93,15 +100,14 @@ Styleguide Components.DjangoCMS.Blog.Plugins
   @mixin news-feed-article__media--constrain-content;
 }
 
-
-/* Lead */
+/* Article - Lead */
 
 .blog-latest-entries article .blog-lead {
     @mixin news-feed-article__lead;
 }
 
 
-/* Footer */
+/* Article - Footer */
 
 .blog-latest-entries article .read-more {
   @mixin news-feed-article__link-overlay;
