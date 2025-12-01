@@ -87,10 +87,14 @@ Styleguide Components.DjangoCMS.Blog.App
 .app-blog .categories {
   @mixin news-metadata;
   a { @mixin news-category; }
+
+  justify-self: start;
 }
 .app-blog .tags {
   @mixin news-metadata;
   a { @mixin news-tag; }
+
+  justify-self: end;
 }
 
 
