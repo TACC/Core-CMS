@@ -43,9 +43,7 @@ Styleguide Components.DjangoCMS.Blog.Plugins
     @mixin news-feed--as-grid;
 
     gap: var(--global-space--bootstrap-gap);
-    @container (min-width: 510px) /* .container width at viewport 767px */ {
-      grid-template-columns: repeat( 2, 1fr );
-    }
+
     @container (min-width: 690px) /* .container width at viewport 768px */ {
       grid-template-columns: repeat( 3, 1fr );
     }
