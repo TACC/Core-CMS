@@ -22,6 +22,8 @@ Styleguide Components.DjangoCMS.Blog.Plugins
 
 /* to enable container queries */
 .plugin-blog {
+    @mixin news;
+
     container-type: inline-size;
 }
 
