@@ -83,14 +83,6 @@ Styleguide Components.DjangoCMS.Blog.App.Page
   @mixin news-article-page__media;
 }
 
-/* To prevent missing media from disrupting page layout */
-:--article-page .blog-visual:where(:not(:has(*))) {
-    margin: unset;
-}
-:--article-page .blog-visual:empty {
-    display: none;
-}
-
 /* To prevent footer on left side of page */
 /* FAQ: Because of `:--article-page .blog-visual`'s `float: right` */
 :--article-page .blog-visual ~ .blog-content::after {
