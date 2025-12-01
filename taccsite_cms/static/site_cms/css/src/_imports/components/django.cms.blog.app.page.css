@@ -10,9 +10,9 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 @import url("@tacc/core-styles/src/lib/_imports/objects/o-offset-content.css");
 @import url("@tacc/core-styles/src/lib/_imports/tools/x-drop-cap.css");
 
-@import url("./django.cms.blog.app.page.multimedia.css");
-@import url("./django.cms.blog.selectors.css");
+@import url("../tools/x-news.css");
 
+@import url("./django.cms.blog.selectors.css");
 
 
 
@@ -20,12 +20,8 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 /* Root */
 
 :--article-page {
-  --header-buffer: calc( var(--global-space--grid-gap) / 2 );
-
-  max-width: 775px;
-  margin-inline: auto;
+  @mixin news-article-page;
 }
-
 
 
 
@@ -33,78 +29,71 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 /* Header */
 
 :--article-page header {
-  grid-template-areas:
-    'cats date'
-    'head head'
-    'subh subh'
-    'attr link'
-    'tags tags';
-  grid-template-columns: minmax(0, max-content) 1fr;
-}
-:--article-page header h1,
-:--article-page header h2 {
-  margin-bottom: var(--header-buffer);
+  @mixin news-article-page__header;
+
+  & h1          { grid-area: title; }
+  & h2          { grid-area: subtitle; }
+  & .attrs      { grid-area: attr /* attribution */ }
+  & .dates      { grid-area: dates }
+  & .categories { grid-area: cats }
+  & .tags       { grid-area: tags }
+  & .socials    { grid-area: socials }
+
+  .app-blog.no-categories.no-tags & {
+    @mixin news-article-page__header--hide-cats-hide-tags;
+  }
+  .app-blog:not(.no-categories).no-tags & {
+    @mixin news-article-page__header--show-cats-hide-tags;
+  }
+  .app-blog.no-categories:not(.no-tags) & {
+    @mixin news-article-page__header--hide-cats-show-tags;
+  }
 }
 :--article-page header h1 {
-  font-size: var(--global-font-size--xxx-large);
-
-  border-bottom: var(--global-border-width--normal) solid var(--global-color-primary--dark);
+  @mixin news-article-page__title;
 }
 :--article-page header h2 {
-  font-weight: normal;
-  font-size: var(--global-font-size--large);
+  @mixin news-article-page__subtitle;
 }
 
 
 
 
+/* Body */
 
-/* Media & Content */
-
-:--article-page :is(.blog-visual, .blog-content) {
-  --blog-item-media-buffer: 45px;
-
-  margin-block: var(--blog-item-media-buffer) 60px;
-}
-
-/* To undo inline content styles */
-/* FAQ: In case author pasted such markup from another source */
-:--article-page .blog-content [style]:not(
-    [data-style="admin"], /* HACK: So CMS admin can override this */
-    /* TODO: When using Core-Styles .c-news keep `flickrembed_` only in TACC */
-    [id^="flickrembed_"] * /* HACK: So Flickr slideshow works */
-) {
-    all: revert !important; /* force undo all inline styles */
+:--article-page .blog-lead,
+:--article-page .blog-visual,
+:--article-page .blog-content {
+  @mixin news-article-page__body;
 }
 
 
 
-/* Media & Content - Media */
+
+/* Media */
 
 /* To mimic Bootstrap `.img-fluid` */
 :--article-page .blog-visual img {
   max-width: 100%;
   height: auto;
 }
+
 /* To support vertical layouts at narrow viewports */
-@media (--x-narrow-and-below) {
-  :--article-page .blog-visual {
-    display: grid;
-    justify-content: center;
-    margin-bottom: var(--blog-item-media-buffer);
-  }
-}
-/* To support horizontal layouts at wide viewports */
-@media (--x-narrow-and-above) {
-  :--article-page .blog-visual {
-    float: left;
-    margin-right: var(--blog-item-media-buffer);
-  }
+:--article-page .blog-visual {
+  @mixin news-article-page__media;
 }
 
-/* To prevent footer on right side of page */
-/* FAQ: Because of `:--article-page .blog-visual`'s `float: left` */
-:--article-page .blog-visual + .blog-content::after {
+/* To prevent missing media from disrupting page layout */
+:--article-page .blog-visual:where(:not(:has(*))) {
+    margin: unset;
+}
+:--article-page .blog-visual:empty {
+    display: none;
+}
+
+/* To prevent footer on left side of page */
+/* FAQ: Because of `:--article-page .blog-visual`'s `float: right` */
+:--article-page .blog-visual ~ .blog-content::after {
   /* from Bootstrap `clearfix` */
   display: block;
   content: "";
@@ -126,12 +115,16 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 
 
 
-/* Media & Content - Content */
 
-:--article-page .blog-lead,
-:--article-page .blog-content {
-  font-size: var(--global-font-size--medium);
-  line-height: 2;
+/* Content */
+
+/* To undo inline content styles */
+/* FAQ: In case author pasted such markup from another source */
+:--article-page .blog-content [style]:not(
+    [data-style="admin"], /* HACK: so CMS admin can override this */
+    [id^="flickrembed_"] * /* HACK: so Flickr slideshow works */
+) {
+    all: revert !important; /* force undo all inline styles */
 }
 
 /* Add space between all list items */
@@ -151,7 +144,8 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 
 
 
-/* Media & Content - Alignment */
+
+/* Alignment */
 /* FAQ: The .align-... classes come from Bootstrap Picture */
 /* FAQ: The .blockquote.text-... classes come from Bootstrap Blockquote */
 
@@ -184,7 +178,7 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 
 /* To remove margin on narrow screens */
 /* To overwrite @tacc/core-styles/…/components/align.css */
-@media (--narrow-and-below) {
+@media (--medium-and-below) {
   :--article-page .blog-content .align-center,
   :--article-page .blog-content .align-right,
   :--article-page .blog-content .align-left {
@@ -203,7 +197,7 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 }
 
 /* To reduce image width on medium screens */
-@media (--narrow-and-above) and (--medium-and-below) {
+@media (--medium-and-above) and (--medium-and-below) {
   :--article-page .blog-content .align-center,
   :--article-page .blog-content .align-right,
   :--article-page .blog-content .align-left {

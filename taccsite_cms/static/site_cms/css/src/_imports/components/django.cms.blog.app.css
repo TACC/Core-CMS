@@ -1,7 +1,7 @@
 /*
 Django CMS Blog App Components
 
-These styles are only for the blog app pages (list pages, article pages).
+Shared among blog pages and plugins.
 
 Reference:
 
@@ -10,168 +10,112 @@ Reference:
 Styleguide Components.DjangoCMS.Blog.App
 */
 @import url("@tacc/core-styles/dist/djangocms-blog/cms-pagination.css");
-@import url("@tacc/core-styles/src/lib/_imports/components/c-tag.css");
+
+@import url("../tools/x-news.css");
 
 @import url("./django.cms.blog.app.page.css");
 @import url("./django.cms.blog.app.item.css");
 @import url("./django.cms.blog.selectors.css");
 
 
-
-
-
-/* Variables */
+/* Root */
 
 .app-blog {
-  --article-buffer: 20px;
+  @mixin news;
 }
-
-
-
-/* Generic */
-
-.app-blog {
-  /* To control absolute position of descendants e.g. `.blog-visual` */
-  position: relative;
-}
-
 
 
 /* Header */
 
-.app-blog header {
-  display: grid;
-  column-gap: 1em;
-}
-:--article-page h1,
-:--article-item h3    { grid-area: head }
-:--article-page h2,
-:--article-item h4    { grid-area: subh }
-.app-blog .attrs      { grid-area: attr }
-.app-blog .dates      { grid-area: date }
-.app-blog .categories { grid-area: cats }
-.app-blog .tags       { grid-area: tags }
-.app-blog .links      { grid-area: link }
+.post-item:not(.post-detail) header {
+  @mixin news-feed-article__header;
 
-/* To format titles */
-:--article-list h1 > strong::after {
-  content: "—";
-  margin-left: 0.25em;
-  display: inline-block;
-  font-weight: var(--medium);
-}
-:--article-list h1 > span {
-  display: none;
-}
-:--article-list h1 > em {
-  font-style: normal;
-  text-transform: none;
-  font-family: inherit;
-  font-weight: var(--medium);
-}
+  & h3          { grid-area: title }
+  & h4          { grid-area: subtitle }
+  & .attrs      { grid-area: attr /* attribution */}
+  & .dates      { grid-area: dates }
+  & .categories { grid-area: cats }
+  & .tags       { grid-area: tags }
 
-.app-blog ul.post-detail {
-  list-style: none;
-
-  padding-left: 0; /* overwrite html-elements.css */
-
-  font-size: var(--global-font-size--medium);
+  .app-blog.no-categories.no-tags & {
+    @mixin news-feed-article__header--hide-cats-hide-tags;
+  }
+  .app-blog:not(.no-categories).no-tags & {
+    @mixin news-feed-article__header--show-cats-hide-tags;
+  }
+  .app-blog.no-categories:not(.no-tags) & {
+    @mixin news-feed-article__header--hide-cats-show-tags;
+  }
 }
 
 
+/* Details */
 
-/* Metadata */
-
-/* To layout data */
-.app-blog .tags,
-.app-blog .categories {
-  display: flex;
-  flex-direction: row;
-  gap: 1em;
+.app-blog .post-detail {
+  @mixin news-details;
 }
 
-/* To always hide byline prefix */
+/* Details - Attribution */
+
+/* To always hide "by" */
 .app-blog .byline > span {
   display: none;
 }
 
-/* To conditionally hide tags & categories */
-.app-blog.no-tags :--article .tags,
-.app-blog.no-categories :--article .categories {
-  display: none;
-}
+/* Details - Dates */
 
-/* To hide empty tags & categories */
-:--article .tags:empty,
-:--article .categories:empty {
-  display: none;
-}
-
-/* To style categories as "tags" (the UI pattern) */
-.app-blog .categories a {
-  @extend :--c-tag;
-
-  display: inline-block;
-
-  color: var(--global-color-primary--xx-light);
-  background-color: var(--global-color-primary--xx-dark);
-
-  font-size: var(--global-font-size--small);
-}
-
-/* To style tags as "pills" (the UI pattern) */
-.app-blog .tags a {
-  /* TODO: When available in Core-Styles, uncomment this */
-  /* @extend :--c-pill; */
-
-  background-color: var(--global-color-primary--light);
-}
-
-/* To style dates */
 .app-blog time {
-  color: var(--global-color-accent--secondary);
-  font-weight: var(--medium);
-  text-transform: uppercase;
+  @mixin news-date;
 }
 
+/* Details - Metadata */
+
+.app-blog .tags,
+.app-blog .categories {
+  @mixin news-metadata;
+}
+
+/* To conditionally hide tags & categories */
+.app-blog.no-tags .tags,
+.app-blog.no-categories .categories {
+  display: none;
+}
+.app-blog .categories {
+  @mixin news-metadata;
+  a { @mixin news-category; }
+}
+.app-blog .tags {
+  @mixin news-metadata;
+  a { @mixin news-tag; }
+}
+
+
+/* Lead */
+
+/* To undo inline content styles */
+/* FAQ: In case author pasted such markup from another source */
+.blog-lead [style]:not(
+    [data-style="admin"] /* HACK: so CMS admin can override this */
+) {
+    all: revert !important; /* force undo all inline styles */
+}
 
 
 /* Social Media */
 
-/* TACC: Logos */
-
-.app-blog .logos--social {
-  display: flex;
-  flex-wrap: wrap;
-  justify-self: end;
-
-  @media (pointer: coarse) {
-    gap: 1.0em;
-  }
-  @media not (pointer: coarse) {
-    gap: 0.5em;
-  }
+.app-blog .logos--social /* a.k.a. blog .socials */ {
+  @mixin news-socials;
 }
-
 .app-blog .logos__text-before {
-  white-space: nowrap;
+  @mixin news-socials__prefix;
 }
-
 .app-blog .logos--social svg {
-  @media (pointer: coarse) {
-    height: var(--global-font-size--xx-large);
-    width: var(--global-font-size--xx-large);
-  }
-  @media (pointer: fine), (pointer: none) {
-    height: var(--global-font-size--large);
-    width: var(--global-font-size--large);
-  }
+  @mixin news-socials__icon;
 }
-
 
 
 /* Pagination */
 
 .pagination {
-  margin-block: calc( var(--article-buffer) * 2 );
+  @mixin news-pagination;
 }

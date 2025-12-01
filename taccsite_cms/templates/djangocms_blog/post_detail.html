@@ -1,16 +1,15 @@
 {# https://github.com/nephila/djangocms-blog/blob/1.2.3/djangocms_blog/templates/djangocms_blog/post_detail.html #}
 {% extends "djangocms_blog/post_detail.html" %}
-{# TACC (define whether this is a special post): #}
+{# TACC (print abstract for some posts e.g. an external article): #}
 {# TACC (redirect external articles): #}
-{% load i18n easy_thumbnails_tags cms_tags static sekizai_tags blog_post_use_custom_media blog_post_is_show_abstract %}
+{% load i18n easy_thumbnails_tags cms_tags static sekizai_tags blog_tags %}
 {# /TACC #}
 {# /TACC #}
 
 {% block content_blog %}{% spaceless %}
 
-{# TACC (define whether this is a special post): #}
-{% blog_post_use_custom_media post settings.PORTAL_BLOG_CUSTOM_MEDIA_POST_CATEGORY as use_custom_media %}
-{% blog_post_is_show_abstract post settings.PORTAL_BLOG_SHOW_ABSTRACT_TAG as is_show_abstract_post %}
+{# TACC (print abstract for some posts e.g. an external article): #}
+{% blog_post_has_tag post settings.PORTAL_BLOG_SHOW_ABSTRACT_TAG as show_abstract %}
 {# /TACC #}
 <article id="post-{{ post.slug }}" class="post-item post-detail">
     <header>
@@ -39,14 +38,11 @@
         {% endblock %}
         {# TACC (add social media sharing links): #}
         {% block blog_share %}
-          {% include "share_on_social.html" with className="links" %}
+          {% include "share_on_social.html" with className="socials" %}
         {% endblock %}
         {# /TACC #}
     </header>
-    {# TACC (support custom media even with thumbnail): #}
-    {# {% if not post.main_image_id %} #}
-    {% if use_custom_media or not post.main_image_id %}
-    {# /TACC #}
+    {% if not post.main_image_id %}
         <div class="blog-visual">{% render_placeholder post.media %}</div>
     {% else %}
     <div class="blog-visual">
@@ -58,7 +54,7 @@
     {# {% endspaceless %} #}
     {# /TACC #}
     {# TACC (print abstract for some posts e.g. an external article): #}
-    {% if is_show_abstract_post %}
+    {% if show_abstract %}
         {# TACC (copied from source app's includes/blog_item.html): #}
         <div class="blog-lead">
             {% if not TRUNCWORDS_COUNT %}

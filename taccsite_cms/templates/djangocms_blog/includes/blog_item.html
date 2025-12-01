@@ -13,6 +13,8 @@
             {% include "djangocms_blog/includes/blog_meta.html" %}
         {% endblock %}
     </header>
+    {# TACC (remove whitespace to support css `:empty`): #}
+    {% spaceless %}
     {% if image and post.main_image %}
     <div class="blog-visual">
         {% thumbnail post.main_image post.thumbnail_options.size crop=post.thumbnail_options.crop upscale=post.thumbnail_options.upscale subject_location=post.main_image.subject_location as thumb %}
@@ -24,6 +26,8 @@
           {% for preview in previews %}<img src="{{ preview }}" />{% endfor %}
         </div>
     {% endif %}
+    {% endspaceless %}
+    {# /TACC #}
     <div class="blog-lead">
         {% if not TRUNCWORDS_COUNT %}
             {% render_model post "abstract" "" "" "safe" %}

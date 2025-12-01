@@ -1,0 +1,387 @@
+@import url("@tacc/core-styles/src/lib/_imports/tools/x-pill.css");
+@import url("@tacc/core-styles/src/lib/_imports/tools/x-tag.css");
+@import url("@tacc/core-styles/src/lib/_imports/tools/x-truncate.css");
+
+
+
+
+/* BASE */
+
+
+/* Root */
+
+@define-mixin news {
+  /* … */
+}
+
+
+/* Details */
+
+@define-mixin news-details {
+  margin-bottom: 1rem; /* to not rely on <ul> + core-styles.base.css for this */
+
+  &:is(ul) {
+    list-style: none;
+
+    padding-left: 0; /* overwrite html-elements.css */
+
+    font-size: var(--global-font-size--medium);
+  }
+}
+
+@define-mixin news-metadata {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+
+  &:empty {
+    display: none;
+  }
+}
+
+@define-mixin news-category {
+  @mixin tag;
+
+  display: inline-block;
+
+  color: var(--global-color-primary--xx-light);
+  background-color: var(--global-color-primary--xx-dark);
+
+  font-size: var(--global-font-size--small);
+}
+
+@define-mixin news-tag {
+  @mixin pill;
+
+  background-color: var(--global-color-primary--light);
+}
+
+@define-mixin news-date {
+  color: var(--global-color-accent--secondary);
+  font-weight: var(--medium);
+  text-transform: uppercase;
+}
+
+@define-mixin news-socials {
+  display: flex;
+  flex-wrap: wrap;
+  justify-self: end;
+
+  @media (pointer: coarse) {
+    gap: 1.0em;
+  }
+  @media not (pointer: coarse) {
+    gap: 0.5em;
+  }
+}
+@define-mixin news-socials__prefix {
+  white-space: nowrap;
+}
+@define-mixin news-socials__icon {
+  @media (pointer: coarse) {
+    height: var(--global-font-size--xx-large);
+    width: var(--global-font-size--xx-large);
+  }
+  @media (pointer: fine), (pointer: none) {
+    height: var(--global-font-size--large);
+    width: var(--global-font-size--large);
+  }
+}
+
+
+
+
+/* FEED */
+
+
+/* Root */
+
+@define-mixin news-feed {
+  margin-bottom: 20px;
+}
+@define-mixin news-feed--as-list {
+  /* … */
+}
+@define-mixin news-feed--as-grid {
+  display: grid;
+  grid-template-columns: repeat( auto-fit, minmax(300px, 1fr) );
+
+  gap: var(--global-space--pattern-pad);
+}
+@define-mixin news-feed--as-grid__header {
+  /* So feed title spans all columns */
+  grid-column: 1 / -1;
+
+  /* To remove gap between feed title and feed articles */
+  margin-bottom: calc(-1 * var(--global-space--bootstrap-gap));
+}
+
+
+/* Title */
+
+@define-mixin news-feed-title__separator {
+  content: "—";
+  margin-left: 0.25em;
+  display: inline-block;
+  font-weight: var(--medium);
+}
+@define-mixin news-feed-title__type-key {
+  display: none;
+}
+@define-mixin news-feed-title__type-value {
+  font-style: normal;
+  text-transform: none;
+  font-family: inherit;
+  font-weight: var(--medium);
+}
+
+
+/* Article */
+
+@define-mixin news-feed__article {
+  display: grid;
+}
+@define-mixin news-feed--grid-layout__article {
+  grid-template-areas:
+    'media'
+    'head'
+    'lead';
+  /* To prevent content from overflowing cell */
+  grid-template-columns: minmax(0, 1fr);
+  /* To prevent vertical stretch of rows */
+  grid-auto-rows: min-content;
+
+  margin-bottom: 20px;
+}
+@define-mixin news-feed--list-layout__article {
+  grid-template-areas:
+    'media head'
+    'media lead';
+  /* To limit media width */
+  grid-template-columns: minmax(0, 300px) 1fr;
+  /* To give 'lead' remaining vert. space (removes gap between head and lead) */
+  grid-template-rows: min-content 1fr;
+
+  column-gap: 50px; /* for horz. space between image and content */
+}
+@define-mixin news-feed__article--no-media {
+  grid-template-areas:
+    'head'
+    'lead';
+  grid-template-columns: 1fr;
+  column-gap: unset;
+}
+@define-mixin news-feed__article--has-border {
+  /* To add <hr> (and space) between articles */
+  & + & {
+    margin-top: 20px;
+    border-top: var(--global-border-width--normal) solid var(--global-color-primary--dark);
+    padding-top: 20px;
+  }
+}
+
+/* Article - Header */
+
+@define-mixin news-feed-article__header {
+  display: grid;
+  column-gap: 1em;
+  grid-template-areas:
+    'cats     tags    '
+    'dates    attr   '
+    'title    title   '
+    'subtitle subtitle';
+  justify-content: space-between;
+
+  margin-bottom: 5px;
+}
+@define-mixin news-feed-article__header--show-cats-hide-tags {
+  grid-template-areas:
+    'cats     cats    '
+    'dates    attr    '
+    'title    title   '
+    'subtitle subtitle';
+}
+@define-mixin news-feed-article__header--hide-cats-show-tags {
+  grid-template-areas:
+    'tags     tags    '
+    'dates    attr    '
+    'title    title   '
+    'subtitle subtitle';
+}
+@define-mixin news-feed-article__header--hide-cats-hide-tags {
+  grid-template-areas:
+    'dates    attr    '
+    'title    title   '
+    'subtitle subtitle';
+}
+
+/* Article - Details */
+
+@define-mixin news-feed-article__details--attr {
+  color: var(--global-color-primary--dark);
+  justify-self: end;
+}
+@define-mixin news-feed-article__details--attr__link {
+  color: inherit;
+}
+
+@define-mixin news-feed-article__details__item {
+  line-height: unset;
+}
+
+/* Article - Media */
+
+@define-mixin news-feed-article__media {
+  /* To clearly render which thumbnails are made from too small an image */
+  overflow: hidden;
+
+  /* To not show empty block (which might have margin) */
+  &:empty {
+    display: none;
+  }
+}
+
+/* To add space between image and content */
+@define-mixin news-feed-article__media--above-text {
+  margin-bottom: 15px;
+}
+/* To limit media width to size of media grid area */
+@define-mixin news-feed-article__media--constrain-content {
+  & img {
+    /* to prevent overflow if column is narrower than image */
+    max-width: 100%;
+    /* to preserve ratio if width is reduced (by max-width: 100%) */
+    height: auto;
+  }
+}
+
+/* Article - Lead */
+
+@define-mixin news-feed-article__lead {
+  @mixin truncate--many-lines;
+  --lines: 4;
+
+  line-height: 1.5;
+  color: var(--global-color-primary--dark);
+
+  & p:last-child {
+    margin-bottom: unset; /* overrides core-styles.cms */
+  }
+}
+
+/* Article - Footer */
+
+/* To make media clickable via a "read more" link */
+@define-mixin news-feed-article__link-overlay {
+  /* To cover the image exactly */
+  display: grid;
+  grid-row-start: 1;
+  grid-column-start: 1;
+  grid-row-end: span 2;
+
+  /* To hide link text */
+  font-size: 0;
+}
+
+
+/* Pagination */
+
+@define-mixin news-pagination {
+  margin-top: 20px;
+  border-top: var(--global-border-width--normal) solid var(--global-color-primary--dark);
+  padding-block: var(--global-space--x-large);
+  border-radius: unset; /* undo Bootstrap */
+}
+
+
+
+
+/* PAGE */
+
+/* Root */
+
+@define-mixin news-article-page {
+  max-width: 775px;
+  margin-inline: auto;
+}
+
+/* Header */
+
+@define-mixin news-article-page__header {
+  display: grid;
+  column-gap: 1em;
+  grid-template-areas:
+    'cats     dates   '
+    'title    title   '
+    'subtitle subtitle'
+    'attr    socials '
+    'tags     tags    ';
+  grid-template-columns: minmax(0, max-content) 1fr;
+}
+@define-mixin news-article-page__header--show-cats-hide-tags {
+  grid-template-areas:
+    'cats     dates   '
+    'title    title   '
+    'subtitle subtitle'
+    'attr    socials ';
+}
+@define-mixin news-article-page__header--hide-cats-show-tags {
+  grid-template-areas:
+    'dates    dates   '
+    'title    title   '
+    'subtitle subtitle'
+    'attr    socials '
+    'tags     tags    ';
+}
+@define-mixin news-article-page__header--hide-cats-hide-tags {
+  grid-template-areas:
+    'dates    dates   '
+    'title    title   '
+    'subtitle subtitle'
+    'attr    socials ';
+}
+
+/* Titles */
+
+@define-mixin news-article-page__title {
+  font-size: var(--global-font-size--xxx-large);
+
+  border-bottom: var(--global-border-width--normal) solid var(--global-color-primary--dark);
+
+  margin-bottom: 15px;
+}
+@define-mixin news-article-page__subtitle {
+  font-weight: normal;
+  font-size: var(--global-font-size--large);
+
+  margin-bottom: 15px;
+}
+
+/* Body */
+
+@define-mixin news-article-page__body {
+  font-size: var(--global-font-size--medium);
+  line-height: 2;
+
+  margin-block: 45px;
+}
+
+/* Media */
+
+@define-mixin news-article-page__media {
+  @media (--medium-and-below) {
+    @mixin news-article-page__media--slim-context;
+  }
+  @media (--medium-and-above) {
+    @mixin news-article-page__media--wide-context;
+  }
+}
+@define-mixin news-article-page__media--slim-context {
+  margin-inline: auto;
+  width: fit-content;
+}
+@define-mixin news-article-page__media--wide-context {
+  float: right;
+  max-width: 50%;
+  margin-left: 45px;
+}

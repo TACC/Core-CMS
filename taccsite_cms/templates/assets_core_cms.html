@@ -1,5 +1,5 @@
 {# SEE: ./assets_core.md #}
-{% load static %}
+{% load static blog_tags %}
 
 <style>
   @import url("{% static 'site_cms/css/build/core-styles.theme.default.css' %}") layer(base);
@@ -8,4 +8,9 @@
   @import url("{% static 'site_cms/css/build/core-styles.header.css' %}") layer(base);
 
   @import url("{% static 'site_cms/css/build/core-cms.css' %}") layer(project);
+
+  {% blog_is_installed as has_blog %}
+  {% if has_blog %}
+  @import url("{% static 'site_cms/css/build/app.blog.plugins.css' %}") layer(project);
+  {% endif %}
 </style>
