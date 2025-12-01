@@ -274,10 +274,7 @@
 /* To make media clickable via a "read more" link */
 @define-mixin news-feed-article__link-overlay {
   /* To cover the image exactly */
-  display: grid;
-  grid-row-start: 1;
-  grid-column-start: 1;
-  grid-row-end: span 2;
+  grid-area: media;
 
   /* To hide link text */
   font-size: 0;
