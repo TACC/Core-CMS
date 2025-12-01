@@ -98,7 +98,7 @@
 }
 @define-mixin news-feed--as-grid {
   display: grid;
-  grid-template-columns: repeat( auto-fit, minmax(350px, 1fr) );
+  grid-template-columns: repeat( auto-fit, minmax(300px, 1fr) );
 
   gap: var(--global-space--pattern-pad);
 }
@@ -142,24 +142,19 @@
   grid-template-columns: minmax(0, 1fr);
   /* To prevent vertical stretch of rows */
   grid-auto-rows: min-content;
+
+  margin-bottom: 20px;
 }
 @define-mixin news-feed--list-layout__article {
   grid-template-areas:
     'media head'
     'media lead';
-  /* To shrinkwrap media and flexible text content */
-  grid-template-columns: minmax(0, max-content) 1fr;
-  /* To let 'lead' take remaining space (removes gap between head and lead) */
+  /* To limit media width */
+  grid-template-columns: minmax(0, 300px) 1fr;
+  /* To give 'lead' remaining vert. space (removes gap between head and lead) */
   grid-template-rows: min-content 1fr;
 
   column-gap: 50px; /* for horz. space between image and content */
-
-  /* To add <hr> (and space) between articles */
-  & + & {
-    margin-top: 20px;
-    border-top: var(--global-border-width--normal) solid var(--global-color-primary--dark);
-    padding-top: 20px;
-  }
 }
 @define-mixin news-feed__article--no-media {
   grid-template-areas:
@@ -167,6 +162,14 @@
     'lead';
   grid-template-columns: 1fr;
   column-gap: unset;
+}
+@define-mixin news-feed__article--has-border {
+  /* To add <hr> (and space) between articles */
+  & + & {
+    margin-top: 20px;
+    border-top: var(--global-border-width--normal) solid var(--global-color-primary--dark);
+    padding-top: 20px;
+  }
 }
 
 /* Article: Header */
@@ -230,10 +233,12 @@
   }
 }
 
-/* To adjust layout of media when it is above any text */
+/* To add space between image and content */
 @define-mixin news-feed-article__media--above-text {
-  margin-bottom: 15px; /* to add space between image and content */
-
+  margin-bottom: 15px;
+}
+/* To limit media width to size of media grid area */
+@define-mixin news-feed-article__media--constrain-content {
   & img {
     /* to prevent overflow if column is narrower than image */
     max-width: 100%;

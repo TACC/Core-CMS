@@ -22,18 +22,26 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 :--article-list {
   @mixin news-feed;
 }
-@media (--medium-and-above) {
-  :--article-list--as-grid {
-    @mixin news-feed--as-grid;
+:--article-list--as-grid {
+  @mixin news-feed--as-grid;
+
+  @media (--narrow-and-below) {
+    grid-template-columns: repeat( 1, 1fr );
   }
-  :--article-list--as-list {
-    @mixin news-feed--as-list;
+  @media (--narrow-to-medium) {
+    grid-template-columns: repeat( 2, 1fr );
+  }
+  @media (--medium-to-wide), (--wide-to-x-wide)  {
+    grid-template-columns: repeat( 3, 1fr );
+  }
+  @media (--x-wide-and-above) {
+    grid-template-columns: repeat( 4, 1fr );
   }
 }
-@media (--medium-and-below) {
-  :--article-list {
-    @mixin news-feed--as-list;
-  }
+:--article-list--as-list {
+  @mixin news-feed--as-list;
+
+
 }
 
 /* List - Header */
@@ -67,20 +75,29 @@ Styleguide Components.DjangoCMS.Blog.App.Item
   & .blog-visual { grid-area: media; }
 }
 
-/* For layout variants */
-@media (--medium-and-below) {
+/* For layout variants — grid vs list */
+@media (--narrow-and-below) {
   :--article-item {
-    @mixin news-feed--list-layout__article;
+    @mixin news-feed--grid-layout__article;
+    @mixin news-feed__article--has-border;
   }
 }
-@media (--medium-and-above) {
+@media (--narrow-and-above) {
   :--article-item--in-list {
     @mixin news-feed--list-layout__article;
+    @mixin news-feed__article--has-border;
   }
   :--article-item--in-grid {
     @mixin news-feed--grid-layout__article;
   }
 }
+/* For layout variants — see grid-template-columns */
+:--article-item--in-grid {
+  @media (--x-narrow-and-below) {
+    @mixin news-feed__article--has-border;
+  }
+}
+/* For layout variants — no media */
 :--article-item:not(:has(.blog-visual > *)) {
   @mixin news-feed__article--no-media;
 }
@@ -122,6 +139,7 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 
 :--article-item .blog-visual {
   @mixin news-feed-article__media;
+  @mixin news-feed-article__media--constrain-content;
 }
 @media (--medium-and-below) {
   :--article-item .blog-visual {
