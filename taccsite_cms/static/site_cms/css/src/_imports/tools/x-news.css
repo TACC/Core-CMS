@@ -375,6 +375,11 @@
   @media (--medium-and-above) {
     @mixin news-article-page__media--wide-context;
   }
+
+  /* To not show empty block (which might have margin) */
+  &:empty {
+    display: none;
+  }
 }
 @define-mixin news-article-page__media--slim-context {
   margin-inline: auto;
