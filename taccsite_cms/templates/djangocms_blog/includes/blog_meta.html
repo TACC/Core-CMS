@@ -1,6 +1,8 @@
 {# https://github.com/nephila/djangocms-blog/blob/1.2.3/djangocms_blog/templates/djangocms_blog/includes/blog_meta.html #}
 {% load i18n easy_thumbnails_tags cms_tags %}
 
+{# TACC (strip whitespace): #}
+{% spaceless %}
 {# TACC (isolate dates for CSS grid flexibility): #}
 {# TACC (add class so CSS can target this element): #}
 <ul class="post-detail attrs">
@@ -68,18 +70,14 @@
     {% endif %}
 </ul>
 {# TACC (distinguish categories and tags via class): #}
-{# TACC (strip whitespace): #}
-<ul class="post-detail categories">{% spaceless %}
-{# /TACC #}
+<ul class="post-detail categories">
 {# /TACC #}
     {# TACC (nephila/djangocms-blog#730, no commas, rename class, sort): #}
     {% include './blog_cats_sorted.html' %}
     {# /TACC #}
 {# TACC (distinguish categories and tags via class): #}
-{# TACC (strip whitespace): #}
-{% endspaceless %}</ul>
-<ul class="post-detail tags">{% spaceless %}
-{# /TACC #}
+</ul>
+<ul class="post-detail tags">
 {# /TACC #}
     {% if post.tags.exists %}
         {% for tag in post.tags.all %}
@@ -91,6 +89,7 @@
             {# /TACC #}
         {% endfor %}
     {% endif %}
+</ul>
 {# TACC (strip whitespace): #}
-{% endspaceless %}</ul>
+{% endspaceless %}
 {# /TACC #}
