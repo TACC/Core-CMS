@@ -57,6 +57,10 @@ Styleguide Components.DjangoCMS.Blog.App
 
 /* Details - Attribution */
 
+/* To prevent missing attribution from disrupting page layout */
+.app-blog .attrs:empty {
+  display: none;
+}
 /* To always hide "by" */
 .app-blog .byline > span {
   display: none;
