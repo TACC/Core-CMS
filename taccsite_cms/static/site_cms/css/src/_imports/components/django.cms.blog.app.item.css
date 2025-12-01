@@ -20,11 +20,13 @@ Styleguide Components.DjangoCMS.Blog.App.Item
   @mixin news-feed;
 }
 :--article-list--as-grid {
-  @mixin news-feed--as-grid;
-
   @media (--narrow-and-below) {
-    grid-template-columns: repeat( 1, 1fr );
+    @mixin news-feed--as-list;
   }
+  @media (--narrow-and-above) {
+    @mixin news-feed--as-grid;
+  }
+
   @media (--narrow-to-medium) {
     grid-template-columns: repeat( 2, 1fr );
   }
@@ -37,15 +39,15 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 }
 :--article-list--as-list {
   @mixin news-feed--as-list;
-
-
 }
 
 
 /* Header */
 
 :--article-list--as-grid > header {
-  @mixin news-feed--as-grid__header;
+  @media (--narrow-and-above) {
+    @mixin news-feed--as-grid__header;
+  }
 }
 
 
@@ -91,7 +93,7 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 }
 /* For layout variants — see grid-template-columns */
 :--article-item--in-grid {
-  @media (--x-narrow-and-below) {
+  @media (--narrow-and-below) {
     @mixin news-feed__article--has-border;
   }
 }
