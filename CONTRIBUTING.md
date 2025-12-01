@@ -43,7 +43,7 @@ Only appointed team members may release versions.
   - `poetry version N.N.N`
 2. Review. Commit. Push.
 3. [Create release and tag on GitHub.](https://github.com/TACC/Core-CMS/releases/new)
-4. [Build & Deploy](../README.md#build--deploy-project) `main` branch.[^1]
+4. [Build & Deploy](README.md#build--deploy-project) `main` branch.[^1]
 
 [^1]: So that new CMS image is tagged `latest` and `vN.N.N`.
 
