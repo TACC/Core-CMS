@@ -714,20 +714,20 @@ django-treebeard = ">=4.3,<4.5"
 
 [[package]]
 name = "djangocms-blog"
-version = "1.2.3"
+version = "2.0.3"
 description = "The blog application for django CMS"
 optional = false
-python-versions = ">=3.6"
+python-versions = ">=3.7"
 groups = ["main"]
 files = [
-    {file = "djangocms-blog-1.2.3.tar.gz", hash = "sha256:6a50fb84d3350f13ca1795bfdd44940d8abadcc9d1a767347aa92fddbb38386f"},
-    {file = "djangocms_blog-1.2.3-py2.py3-none-any.whl", hash = "sha256:682f1b549bf54427d4a1a9e4011d974934d1c5b37003ced311ceccbb44f5f504"},
+    {file = "djangocms-blog-2.0.3.tar.gz", hash = "sha256:8472f24104edd5d0d7f40d6d77b5f6b9dd9b67cecf02609bb11092c343e01501"},
+    {file = "djangocms_blog-2.0.3-py2.py3-none-any.whl", hash = "sha256:1e17621c67c1e6d1d42c53c4fdf6d508d45f8ccce6166cc681d77f000fe30c49"},
 ]
 
 [package.dependencies]
 aldryn-apphooks-config = ">=0.5"
-django-cms = ">=3.7"
-django-filer = ">=1.4"
+django-cms = ">=3.9"
+django-filer = ">=2.0"
 django-meta = ">=2.0"
 django-parler = ">=2.0"
 django-sortedm2m = "*"
@@ -741,8 +741,7 @@ lxml = "*"
 pytz = "*"
 
 [package.extras]
-docs = ["django (<3.1)"]
-search = ["aldryn-search"]
+docs = ["django (<5.0)", "sphinx (>2,<5)"]
 taggit-helpers = ["django-taggit-helpers"]
 
 [[package]]
@@ -2502,4 +2501,4 @@ testing = ["func-timeout", "jaraco.itertools"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<4.0"
-content-hash = "0e49bdbb7a51070f47f88658d8fb9cdcdc2c20fd3140267b933c7d0fd3f9743e"
+content-hash = "4d9188505543d706fdf8389a66877d27eb97a7b455cfcab06edf970b7a046db3"
