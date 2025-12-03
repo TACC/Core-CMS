@@ -16,10 +16,10 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 
 /* Root */
 
-:--article-list {
+:--news-feed-page {
   @mixin news-feed;
 }
-:--article-list--as-grid {
+:--news-feed-page--as-grid {
   @media (--narrow-and-below) {
     @mixin news-feed--as-list;
   }
@@ -37,14 +37,14 @@ Styleguide Components.DjangoCMS.Blog.App.Item
     grid-template-columns: repeat( 4, 1fr );
   }
 }
-:--article-list--as-list {
+:--news-feed-page--as-list {
   @mixin news-feed--as-list;
 }
 
 
 /* Header */
 
-:--article-list--as-grid > header {
+:--news-feed-page--as-grid > header {
   @media (--narrow-and-above) {
     @mixin news-feed--as-grid__header;
   }
@@ -53,13 +53,13 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 
 /* Title */
 
-:--article-list h1 > strong::after {
+:--news-feed-page h1 > strong::after {
   @mixin news-feed-title__separator;
 }
-:--article-list h1 > span {
+:--news-feed-page h1 > span {
   @mixin news-feed-title__type-key;
 }
-:--article-list h1 > em {
+:--news-feed-page h1 > em {
   @mixin news-feed-title__type-value;
 }
 
@@ -67,7 +67,7 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 /* Article */
 
 /* For all layouts */
-:--article-item {
+:--news-article-item {
   @mixin news-feed__article;
 
   & header       { grid-area: head; }
@@ -77,78 +77,78 @@ Styleguide Components.DjangoCMS.Blog.App.Item
 
 /* For layout variants — grid vs list */
 @media (--narrow-and-below) {
-  :--article-item {
+  :--news-article-item {
     @mixin news-feed--grid-layout__article;
     @mixin news-feed__article--has-border;
   }
 }
 @media (--narrow-and-above) {
-  :--article-item--in-list {
+  :--news-article-item--in-list {
     @mixin news-feed--list-layout__article;
     @mixin news-feed__article--has-border;
   }
-  :--article-item--in-grid {
+  :--news-article-item--in-grid {
     @mixin news-feed--grid-layout__article;
   }
 }
 /* For layout variants — see grid-template-columns */
-:--article-item--in-grid {
+:--news-article-item--in-grid {
   @media (--narrow-and-below) {
     @mixin news-feed__article--has-border;
   }
 }
 /* For layout variants — no media */
-:--article-item:not(:has(.blog-visual > *)) {
+:--news-article-item:not(:has(.blog-visual > *)) {
   @mixin news-feed__article--no-media;
 }
 
 /* Article - Titles */
 
-:--article-item h3 {
+:--news-article-item h3 {
   margin-bottom: unset; /* overrides Core-Styles headings--cms.css */
 }
-:--article-item h4 {
+:--news-article-item h4 {
   display: none;
 }
 
 /* Article - Details */
 
-:--article-item li {
+:--news-article-item li {
   @mixin news-feed-article__details__item;
 }
 
-:--article-item .attrs {
+:--news-article-item .attrs {
   @mixin news-feed-article__details--attr;
 }
-:--article-item .attrs a {
+:--news-article-item .attrs a {
   @mixin news-feed-article__details--attr__link;
 }
 
 /* Article - Visual */
 
-:--article-item .blog-visual {
+:--news-article-item .blog-visual {
   @mixin news-feed-article__media;
   @mixin news-feed-article__media--constrain-content;
 }
 @media (--medium-and-below) {
-  :--article-item .blog-visual {
+  :--news-article-item .blog-visual {
     @mixin news-feed-article__media--above-text;
   }
 }
 @media (--medium-and-above) {
-  :--article-item--in-grid .blog-visual {
+  :--news-article-item--in-grid .blog-visual {
     @mixin news-feed-article__media--above-text;
   }
 }
 
 /* Article - Lead */
 
-:--article-item .blog-lead {
+:--news-article-item .blog-lead {
   @mixin news-feed-article__lead;
 }
 
 /* Article - Footer */
 
-:--article-item .read-more {
+:--news-article-item .read-more {
   @mixin news-feed-article__link-overlay;
 }
