@@ -9,3 +9,7 @@
 @custom-selector :--article-item :--article-list article;
 @custom-selector :--article-item--in-list :--article-list--as-list article;
 @custom-selector :--article-item--in-grid :--article-list--as-grid article;
+
+@custom-selector :--news-feed-embed
+  .blog-latest-entries,
+  .blog-featured-posts;
