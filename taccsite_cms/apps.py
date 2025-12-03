@@ -3,6 +3,7 @@ from django.apps import AppConfig
 from django.db.models.signals import post_migrate
 
 from .djangocms_bootstrap4.contrib.bootstrap4_link.extend import extendBootstrap4LinkPlugin
+from .djangocms_blog.patch import patchDjangoCMSBlog
 
 logger = logging.getLogger(f"portal.{__name__}")
 
@@ -13,6 +14,7 @@ class TaccsiteCmsConfig(AppConfig):
     def ready(self):
         post_migrate.connect(self.create_groups, sender=self)
         extendBootstrap4LinkPlugin()
+        patchDjangoCMSBlog()
 
     def create_groups(self, sender, **kwargs):
         from django.contrib.auth.models import Group
