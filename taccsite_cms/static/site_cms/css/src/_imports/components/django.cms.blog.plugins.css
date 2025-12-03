@@ -35,7 +35,7 @@ Styleguide Components.DjangoCMS.Blog.Plugins
 
 /* Root */
 
-.blog-latest-entries {
+:--news-feed-embed {
     @mixin news-feed;
 
     margin-bottom: var(--global-space--bootstrap-gap);
@@ -53,12 +53,12 @@ Styleguide Components.DjangoCMS.Blog.Plugins
 /* Article */
 
 /* to hide article details (attribution and metadata) */
-.blog-latest-entries article .post-detail {
+:--news-feed-embed article .post-detail {
     display: none;
 }
 
 /* for article layout */
-.blog-latest-entries article {
+:--news-feed-embed article {
     @mixin news-feed__article;
 
     & header       { grid-area: head; }
@@ -67,34 +67,34 @@ Styleguide Components.DjangoCMS.Blog.Plugins
 
     @mixin news-feed--grid-layout__article;
 }
-.blog-latest-entries article:not(:has(.blog-visual > *)) {
+:--news-feed-embed article:not(:has(.blog-visual > *)) {
     @mixin news-feed__article--no-media;
 }
 
 /* Article - Titles */
 
 /* to style h3 like an h4 */
-.blog-latest-entries article h3 {
+:--news-feed-embed article h3 {
     margin-bottom: 0.5rem; /* Bootstrap _type.css */
 
     font-size: var(--global-font-size--medium);
     font-weight: var(--bold);
 }
-.blog-latest-entries article h4 {
+:--news-feed-embed article h4 {
   display: none;
 }
 
 /* Article - Details */
 
 /* to hide stuff that is not in a simple feed */
-.blog-latest-entries article h4,
-.blog-latest-entries article .post-detail {
+:--news-feed-embed article h4,
+:--news-feed-embed article .post-detail {
     display: none;
 }
 
 /* Article - Visual */
 
-.blog-latest-entries article .blog-visual {
+:--news-feed-embed article .blog-visual {
   @mixin news-feed-article__media;
   @mixin news-feed-article__media--above-text;
   @mixin news-feed-article__media--constrain-content;
@@ -102,13 +102,13 @@ Styleguide Components.DjangoCMS.Blog.Plugins
 
 /* Article - Lead */
 
-.blog-latest-entries article .blog-lead {
+:--news-feed-embed article .blog-lead {
     @mixin news-feed-article__lead;
 }
 
 
 /* Article - Footer */
 
-.blog-latest-entries article .read-more {
+:--news-feed-embed article .read-more {
   @mixin news-feed-article__link-overlay;
 }
