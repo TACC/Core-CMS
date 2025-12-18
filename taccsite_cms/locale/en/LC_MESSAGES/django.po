@@ -84,9 +84,9 @@ msgid ""
 "If left empty the image size will have to be set for every newly created "
 "post."
 msgstr ""
-"If left empty the main image size on Article Page must be set for every newly created "
+"If left empty, the image size must be set for every newly created "
 "post. "
-"And any post that unsets its image size will use this setting value."
+"And any post that unsets its size will use this size."
 #: cms_appconfig.py:65
 msgid "Default size of thumbnail images"
 msgstr "Default size of article image on News Feed"
@@ -95,9 +95,9 @@ msgid ""
 "If left empty the thumbnail image size will have to be set for every newly "
 "created post."
 msgstr ""
-"If left empty the article image on News Feed size must be set for every newly "
+"If left empty, the image size must be set for every newly "
 "created post. "
-"And any post that unsets its thumbnail image size will use this setting value."
+"And any post that unsets its size will use this size."
 
 #: djangocms-blog
 #: https://github.com/nephila/djangocms-blog/blob/2.0.3/djangocms_blog/locale/en/LC_MESSAGES/django.po#L688-L690
