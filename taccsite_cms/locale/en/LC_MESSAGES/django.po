@@ -57,22 +57,45 @@ msgstr ""
 
 
 #: djangocms-blog
-#: https://github.com/nephila/djangocms-blog/blob/2.0.3/djangocms_blog/locale/en/LC_MESSAGES/django.po#L118-L122
+#: https://github.com/nephila/djangocms-blog/blob/2.0.3/djangocms_blog/locale/en/LC_MESSAGES/django.po#L442-L452
+#: models.py:214
+msgid "main image"
+msgstr ""
+#: models.py:222
+msgid "main image thumbnail"
+msgstr "main image size on News Feed"
+#: models.py:230
+msgid "main image full"
+msgstr "main image size on Article Page"
+
+#: djangocms-blog
+#: https://github.com/nephila/djangocms-blog/blob/2.0.3/djangocms_blog/locale/en/LC_MESSAGES/django.po#L30C1-L32C10
+#: admin.py:138
+msgid "Images"
+msgstr "Image"
+
+#: djangocms-blog
+#: https://github.com/nephila/djangocms-blog/blob/2.0.3/djangocms_blog/locale/en/LC_MESSAGES/django.po#L114-L132
+#: cms_appconfig.py:58
+msgid "Default size of full images"
+msgstr "Default size of main image on Article Page"
+#: cms_appconfig.py:61
 msgid ""
 "If left empty the image size will have to be set for every newly created "
 "post."
 msgstr ""
-"If left empty the image size must be set for every newly created "
+"If left empty the main image size on Article Page must be set for every newly created "
 "post. "
 "And any post that unsets its image size will use this setting value."
-
-#: djangocms-blog
-#: https://github.com/nephila/djangocms-blog/blob/2.0.3/djangocms_blog/locale/en/LC_MESSAGES/django.po#L128-L132
+#: cms_appconfig.py:65
+msgid "Default size of thumbnail images"
+msgstr "Default size of article image on News Feed"
+#: cms_appconfig.py:68
 msgid ""
 "If left empty the thumbnail image size will have to be set for every newly "
 "created post."
 msgstr ""
-"If left empty the thumbnail image size must be set for every newly "
+"If left empty the article image on News Feed size must be set for every newly "
 "created post. "
 "And any post that unsets its thumbnail image size will use this setting value."
 
