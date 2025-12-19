@@ -366,23 +366,16 @@
 /* Media */
 
 @define-mixin news-article-page__media {
-  @media (--medium-and-below) {
-    @mixin news-article-page__media--slim-context;
-  }
-  @media (--medium-and-above) {
-    @mixin news-article-page__media--wide-context;
-  }
-
   /* To not show empty block (which might have margin) */
   &:empty {
     display: none;
   }
 }
-@define-mixin news-article-page__media--slim-context {
+@define-mixin news-article-page__media--layout-center {
   margin-inline: auto;
   width: fit-content;
 }
-@define-mixin news-article-page__media--wide-context {
+@define-mixin news-article-page__media--layout-float {
   float: right;
   max-width: 50%;
   margin-left: 45px;
