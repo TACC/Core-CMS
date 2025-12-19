@@ -158,7 +158,7 @@
     'media head'
     'media lead';
   /* To limit media width */
-  grid-template-columns: minmax(0, 300px) 1fr;
+  grid-template-columns: max-content 1fr;
   /* To give 'lead' remaining vert. space (removes gap between head and lead) */
   grid-template-rows: min-content 1fr;
 
