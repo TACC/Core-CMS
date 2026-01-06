@@ -5,6 +5,11 @@ logger = logging.getLogger(f"portal.{__name__}")
 # To monkey-patch nephila/djangocms-blog until v2.0.6+
 # TODO: After upgrading to v2.0.6+, delete this file and its imports
 def patchDjangoCMSBlog():
+        from django.apps import apps
+        if not apps.is_installed('djangocms_blog'):
+            logger.debug('djangocms_blog not installed, skipping patches')
+            return
+
         from djangocms_blog.models import BasePostPlugin, FeaturedPostsPlugin
 
         # To monkey-patch nephila/djangocms-blog#782 into v2.0.3
