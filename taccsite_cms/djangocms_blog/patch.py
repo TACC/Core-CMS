@@ -7,7 +7,7 @@ logger = logging.getLogger(f"portal.{__name__}")
 def patchDjangoCMSBlog():
         from django.apps import apps
         if not apps.is_installed('djangocms_blog'):
-            logger.debug('djangocms_blog not installed, skipping patches')
+            logger.debug('Skipping patch of djangocms_blog because it is not installed')
             return
 
         from djangocms_blog.models import BasePostPlugin, FeaturedPostsPlugin
