@@ -34,7 +34,7 @@ The base CMS code for TACC WMA Workspace Portals & Websites
 | - | - |
 | `apps` | additional Django applications |
 | `bin` | scripts e.g. build CSS |
-| `taccsite_cms` | settings for [Core CMS] |
+| `taccsite_cms` | customize & configure [Django CMS] |
 
 ## Prerequisites
 
