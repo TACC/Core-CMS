@@ -146,8 +146,6 @@
     'media'
     'head'
     'lead';
-  /* To prevent content from overflowing cell */
-  grid-template-columns: minmax(0, 1fr);
   /* To prevent vertical stretch of rows */
   grid-auto-rows: min-content;
 
