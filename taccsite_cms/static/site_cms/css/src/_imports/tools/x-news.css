@@ -104,7 +104,10 @@
 }
 @define-mixin news-feed--as-grid {
   display: grid;
-  grid-template-columns: repeat( auto-fit, minmax(300px, 1fr) );
+  /* IMPORTANT: Define column widths per instance/usage e.g.
+  grid-template-columns: repeat( N, 1fr );
+  grid-auto-columns: fit-content( NN% );
+  */
 
   gap: var(--global-space--pattern-pad);
 }
