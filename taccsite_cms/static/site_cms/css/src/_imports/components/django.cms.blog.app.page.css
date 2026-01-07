@@ -190,8 +190,12 @@ Styleguide Components.DjangoCMS.Blog.App.Page
   :--news-article-page .blog-content .align-left {
     max-width: 100%;
 
-    /* So linked image or figure will center if not aligned */
-    &:not(img) {
+    /* So figure or linked image will center if not aligned */
+    &:is(a, figure) {
+      margin-inline: auto;
+    }
+    &:is(a) {
+      display: block;
       width: fit-content;
     }
   }
