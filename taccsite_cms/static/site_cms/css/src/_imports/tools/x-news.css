@@ -246,7 +246,9 @@
 /* To limit media width to size of media grid area */
 @define-mixin news-feed-article__media--constrain-content {
   & img {
-    /* to prevent overflow if column is narrower than image */
+    /* to prevent narrow image if column is wider than image */
+    width: 100%;
+    /* to prevent image overflow if column is narrower than image */
     max-width: 100%;
     /* to preserve ratio if width is reduced (by max-width: 100%) */
     height: auto;
