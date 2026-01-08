@@ -1,0 +1,37 @@
+/* To add numbered ordering to the sortable list */
+.sortedm2m-container ul.sortedm2m {
+    --checkbox-offset: 20px /* from djangocms-admin.css */;
+    --marker-offset: 5px;
+
+    counter-reset: item-counter;
+}
+.sortedm2m-container .sortedm2m li {
+    counter-increment: item-counter;
+    padding-left:
+      var(--marker-offset) !important /* overwrites djangocms-admin.css */;
+}
+.sortedm2m-container ul.sortedm2m label::before {
+    content: counter(item-counter) ".";
+    position: relative;
+    left: calc( -1 * (
+      var(--checkbox-offset)
+      + var(--marker-offset)
+    ) );
+}
+.sortedm2m-container ul.sortedm2m:has(li.ui-sortable-helper) label::before {
+    visibility: hidden;
+}
+
+/* To distinguish published vs unpublished */
+.sortedm2m-container {
+  & [data-published="true"] {
+      display: none;
+  }
+  & label:has([data-published="false"]) {
+      opacity: 0.5;
+  }
+  & [data-published="false"] {
+    &::before { content: '('; }
+    &::after { content: ')'; }
+  }
+}
