@@ -81,6 +81,20 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 /* To support vertical layouts at narrow viewports */
 :--news-article-page .blog-visual {
   @mixin news-article-page__media;
+
+  @media (--medium-and-below) {
+    & {
+      @mixin news-article-page__media--layout-center;
+    }
+  }
+  @media (--medium-and-above) {
+    &:has([data-width="0"]) {
+      @mixin news-article-page__media--layout-center;
+    }
+    &:not(:has([data-width="0"])) {
+      @mixin news-article-page__media--layout-float;
+    }
+  }
 }
 
 /* To prevent footer on left side of page */
@@ -175,6 +189,15 @@ Styleguide Components.DjangoCMS.Blog.App.Page
   :--news-article-page .blog-content .align-right,
   :--news-article-page .blog-content .align-left {
     max-width: 100%;
+
+    /* So figure or linked image will center if not aligned */
+    &:is(a, figure) {
+      margin-inline: auto;
+    }
+    &:is(a) {
+      display: block;
+      width: fit-content;
+    }
   }
   :--news-article-page .blog-content .align-right,
   :--news-article-page .blog-content .align-left {

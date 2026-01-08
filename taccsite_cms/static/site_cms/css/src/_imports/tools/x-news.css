@@ -104,7 +104,10 @@
 }
 @define-mixin news-feed--as-grid {
   display: grid;
-  grid-template-columns: repeat( auto-fit, minmax(300px, 1fr) );
+  /* IMPORTANT: Define column widths per instance/usage e.g.
+  grid-template-columns: repeat( N, 1fr );
+  grid-auto-columns: fit-content( NN% );
+  */
 
   gap: var(--global-space--pattern-pad);
 }
@@ -146,8 +149,6 @@
     'media'
     'head'
     'lead';
-  /* To prevent content from overflowing cell */
-  grid-template-columns: minmax(0, 1fr);
   /* To prevent vertical stretch of rows */
   grid-auto-rows: min-content;
 
@@ -158,7 +159,7 @@
     'media head'
     'media lead';
   /* To limit media width */
-  grid-template-columns: minmax(0, 300px) 1fr;
+  grid-template-columns: fit-content(50%) 1fr;
   /* To give 'lead' remaining vert. space (removes gap between head and lead) */
   grid-template-rows: min-content 1fr;
 
@@ -248,7 +249,9 @@
 /* To limit media width to size of media grid area */
 @define-mixin news-feed-article__media--constrain-content {
   & img {
-    /* to prevent overflow if column is narrower than image */
+    /* to prevent narrow image if column is wider than image */
+    width: 100%;
+    /* to prevent image overflow if column is narrower than image */
     max-width: 100%;
     /* to preserve ratio if width is reduced (by max-width: 100%) */
     height: auto;
@@ -366,24 +369,23 @@
 /* Media */
 
 @define-mixin news-article-page__media {
-  @media (--medium-and-below) {
-    @mixin news-article-page__media--slim-context;
-  }
-  @media (--medium-and-above) {
-    @mixin news-article-page__media--wide-context;
-  }
-
   /* To not show empty block (which might have margin) */
   &:empty {
     display: none;
   }
 }
-@define-mixin news-article-page__media--slim-context {
+@define-mixin news-article-page__media--layout-center {
   margin-inline: auto;
   width: fit-content;
 }
-@define-mixin news-article-page__media--wide-context {
+@define-mixin news-article-page__media--layout-float {
   float: right;
   max-width: 50%;
   margin-left: 45px;
+
+  /* TODO: Ask designer whether to offset a floated main image */
+  /* WARNING: Requires Core-Styles @define-mixin offset-content(--…) */
+  /*
+  @extend .o-offset-content--right;
+  */
 }
