@@ -1,25 +1,30 @@
 /* To add numbered ordering to the sortable list */
-.sortedm2m-container ul.sortedm2m {
-    --checkbox-offset: 20px /* from djangocms-admin.css */;
-    --marker-offset: 5px;
+.sortedm2m-container {
+  & ul.sortedm2m {
+      --checkbox-offset: 20px /* from djangocms-admin.css */;
+      --marker-offset: 5px;
 
-    counter-reset: item-counter;
-}
-.sortedm2m-container .sortedm2m li {
-    counter-increment: item-counter;
-    padding-left:
-      var(--marker-offset) !important /* overwrites djangocms-admin.css */;
-}
-.sortedm2m-container ul.sortedm2m label::before {
-    content: counter(item-counter) ".";
-    position: relative;
-    left: calc( -1 * (
-      var(--checkbox-offset)
-      + var(--marker-offset)
-    ) );
-}
-.sortedm2m-container ul.sortedm2m:has(li.ui-sortable-helper) label::before {
-    visibility: hidden;
+      counter-reset: item-counter;
+  }
+  & ul.sortedm2m li {
+      counter-increment: item-counter;
+      padding-left:
+        var(--marker-offset) !important /* overwrites djangocms-admin.css */;
+  }
+  & ul.sortedm2m label::before {
+      content: counter(item-counter) ".";
+      position: relative;
+      left: calc( -1 * (
+        var(--checkbox-offset)
+        + var(--marker-offset)
+      ) );
+  }
+  & ul.sortedm2m:has(
+    li.ui-sortable-helper,     /* during sorting */
+    li[style="display: none;"] /* during filtering */
+  ) label::before {
+      visibility: hidden;
+  }
 }
 
 /* To distinguish published vs unpublished */
