@@ -100,6 +100,11 @@ msgstr ""
 "And any post that unsets its size will use this size."
 
 #: djangocms-blog
+#: https://github.com/nephila/djangocms-blog/blob/2.0.3/djangocms_blog/locale/en/LC_MESSAGES/django.po#L426-L428
+msgid "featured date"
+msgstr "featured date (unused)"
+
+#: djangocms-blog
 #: https://github.com/nephila/djangocms-blog/blob/2.0.3/djangocms_blog/locale/en/LC_MESSAGES/django.po#L688-L690
 # this link text only appears for a CMS editor
 msgid "read more"
