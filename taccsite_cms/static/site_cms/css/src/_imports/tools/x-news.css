@@ -382,4 +382,10 @@
   float: right;
   max-width: 50%;
   margin-left: 45px;
+
+  /* TODO: Ask designer whether to offset a floated main image */
+  /* WARNING: Requires Core-Styles @define-mixin offset-content(--…) */
+  /*
+  @extend .o-offset-content--right;
+  */
 }
