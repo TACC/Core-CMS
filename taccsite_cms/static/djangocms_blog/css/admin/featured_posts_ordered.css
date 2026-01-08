@@ -23,14 +23,15 @@
 }
 
 /* To distinguish published vs unpublished */
-.sortedm2m-container ul.sortedm2m li span:is([data-is-published])::before {
-    content: "✓ ";
-    color: #28a745;
-}
-.sortedm2m-container ul.sortedm2m li span:not([data-is-published])::before {
-    content: "○ ";
-    color: #ffc107;
-}
-.sortedm2m-items.sortedm2m li span:not([data-is-published]) {
-    opacity: 0.7;
+.sortedm2m-container {
+  & [data-published="true"] {
+      display: none;
+  }
+  & label:has([data-published="false"]) {
+      opacity: 0.5;
+  }
+  & [data-published="false"] {
+    &::before { content: '('; }
+    &::after { content: ')'; }
+  }
 }

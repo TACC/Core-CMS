@@ -1,7 +1,10 @@
 def extendBlogFeaturedPostsPlugin():
     from django import forms
     from django.utils.html import format_html
+    from django.utils.translation import gettext_lazy as _
+
     from cms.plugin_pool import plugin_pool
+
     from djangocms_blog.cms_plugins import BlogFeaturedPostsPlugin as OriginalBlogFeaturedPostsPlugin
     from djangocms_blog.models import FeaturedPostsPlugin
 
@@ -16,13 +19,17 @@ def extendBlogFeaturedPostsPlugin():
             if 'posts' in self.fields:
                 def label_with_data_attr(obj):
                     if obj.publish:
-                        return format_html(
-                            '<span data-is-published>{}</span>', obj.title
-                        )
+                        status_value = 'true'
+                        status_text = _('Published')
                     else:
-                        return format_html(
-                            '<span>{}</span>', obj.title
-                        )
+                        status_value = 'false'
+                        status_text = _('Unpublished')
+                    return format_html(
+                        '<span data-published="{}">{}</span> {}',
+                        status_value,
+                        status_text,
+                        obj.title
+                    )
                 self.fields['posts'].label_from_instance = label_with_data_attr
 
         class Meta:
