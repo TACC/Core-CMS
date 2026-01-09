@@ -36,11 +36,8 @@ This allows use of future-proof CSS via [Core Styles].
 2. Build Styles:
 
     ```sh
-    npm run build:css --project="core-cms"
+    npm run build:css
     ```
-
-    > **Important**
-    > If you are developing a [Core CMS Resources] project, use `--project="custom_project_dir"`
 
 3. [Collect Static Files](#collect-static-files):
 
@@ -96,9 +93,9 @@ See https://tacc.github.io/Core-Styles.
     ```
 1. Checkout [Core Styles] at that version, e.g.:
     ```shell
-    git checkout v2.43.1
+    git checkout v2.47.2
     ```
-2. Follow [Core Styles "Quick Start"](https://github.com/TACC/Core-Styles/blob/v2.43.2/README.md#quick-start) up to `npm start`.
+2. Follow [Core Styles "Quick Start"](https://github.com/TACC/Core-Styles/blob/v2.47.2/README.md#quick-start) up to `npm start`.
 
 ## Develop with [Core Styles] Simultaneously
 
@@ -108,7 +105,6 @@ See [Locally Develop CMS and Styles](https://github.com/TACC/Core-Styles/wiki/De
 
 [Core CMS]: https://github.com/TACC/Core-CMS
 [Core Styles]: https://github.com/TACC/Core-Styles
-[Core CMS Resources]: https://github.com/TACC/Core-CMS-Resources
 
 [restart server]: https://github.com/TACC/Core-CMS/wiki/How-to-Restart-the-CMS-Server
 

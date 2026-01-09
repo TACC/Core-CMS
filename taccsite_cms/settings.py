@@ -16,6 +16,7 @@ from django.utils.translation import gettext_lazy as _
 
 from taccsite_cms._settings.auth import *
 from taccsite_cms._settings.email import *
+from taccsite_cms._settings.djangocms_plugins import *
 from taccsite_cms._settings.form_plugin import *
 from taccsite_cms._settings.form_plugin import (
     _INSTALLED_APPS as form_plugin_INSTALLED_APPS
@@ -157,8 +158,9 @@ SITE_ID = 1
 CMS_TEMPLATES = (
     ('standard.html', 'Standard'),
     ('fullwidth.html', 'Full Width'),
+    ('content.html', 'Content Only'),
 
-    ('guide.html', 'Guide'),
+    ('guide.html', 'Guide'), # backwards compatibility, users unknown
 )
 
 CMS_PERMISSION = True
@@ -229,7 +231,7 @@ PORTAL_BRANDING = [ PORTAL_BRANDING_TACC, PORTAL_BRANDING_UTEXAS ]
 
 # LOGO = [
 #     "portal",                            # (unused value)
-#     "site_cms/img/org_logos/portal.png", # "img_file_src"
+#     "site_cms/img/logo.svg",             # "img_file_src"
 #     "",                                  # "img_class"
 #     "/",                                 # "link_href"
 #     "_self",                             # "link_target"
@@ -250,7 +252,7 @@ PORTAL_BRANDING = [ PORTAL_BRANDING_TACC, PORTAL_BRANDING_UTEXAS ]
 
 PORTAL_LOGO = {
     "is_remote": False,
-    "img_file_src": "site_cms/img/org_logos/portal.png",
+    "img_file_src": "site_cms/img/logo.svg",
     "img_class": "", # additional class names
     "link_href": "/",
     "link_target": "_self",
@@ -262,6 +264,15 @@ PORTAL_FAVICON = {
     "is_remote": False,
     "img_file_src": "site_cms/img/favicons/favicon.ico",
 }
+favicon_path = f"/static/site_cms/favicon/"
+PORTAL_FAVICON_HTML = f'''
+    <link rel="icon" type="image/png" href="{favicon_path}favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="{favicon_path}favicon.svg" />
+    <link rel="shortcut icon" href="{favicon_path}favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{favicon_path}apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="TACC" />
+    <link rel="manifest" href="{favicon_path}site.webmanifest" />
+'''
 
 
 ########################
@@ -271,6 +282,7 @@ PORTAL_FAVICON = {
 PORTAL_IS_TACC_CORE_PORTAL = True
 PORTAL_HAS_LOGIN = True
 PORTAL_HAS_SEARCH = True
+PORTAL_LOGIN_PATH = '/login'
 
 # Only use one of these values: 'sm', 'md', 'lg', 'xl'
 # SEE: https://getbootstrap.com/docs/4.0/components/navbar/#responsive-behaviors
@@ -314,8 +326,8 @@ TACC_CORE_STYLES_VERSION = 2
 PORTAL_BLOG_SHOW_CATEGORIES = True
 PORTAL_BLOG_SHOW_TAGS = True
 # To flag posts of certain category or tag, so template can take special action
-PORTAL_BLOG_CUSTOM_MEDIA_POST_CATEGORY = 'sample_value_e_g__mutlimedia__'
-PORTAL_BLOG_SHOW_ABSTRACT_TAG = 'sample_value_e_g__redirect__'
+PORTAL_BLOG_CUSTOM_MEDIA_POST_CATEGORY = 'mutlimedia'
+PORTAL_BLOG_SHOW_ABSTRACT_TAG = 'external'
 
 PORTAL_BLOG_CATEGORY_ORDER = []
 # PORTAL_BLOG_CATEGORY_ORDER = ['press-release', 'feature-story', 'multimedia', 'podcast']
@@ -349,8 +361,10 @@ TEMPLATES = [
         # FAQ: List custom directory first, so custom templates take precedence
         # SEE: https://docs.djangoproject.com/en/2.2/topics/templates/#configuration
         'DIRS': glob(
+            # XXX: Strange and from my ignorant implementation
             os.path.join(BASE_DIR, 'taccsite_custom')
         ) + [
+            os.path.join(BASE_DIR, 'taccsite_custom', 'templates'),
             os.path.join(BASE_DIR, 'taccsite_cms', 'templates')
         ],
         'OPTIONS': {
@@ -481,7 +495,6 @@ INSTALLED_APPS = [
     # django CMS Bootstrap
     # IDEA: Extend Bootstrap apps instead of overwrite
     'taccsite_cms.contrib.bootstrap4_djangocms_link',
-    'taccsite_cms.contrib.bootstrap4_djangocms_picture',
 
     # TACC CMS Plugins
     'djangocms_tacc_image_gallery',
@@ -568,21 +581,6 @@ THUMBNAIL_PROCESSORS = (
     'easy_thumbnails.processors.filters'
 )
 
-DJANGOCMS_PICTURE_NESTING = True
-DJANGOCMS_PICTURE_RESPONSIVE_IMAGES = True
-DJANGOCMS_PICTURE_RESPONSIVE_IMAGES_VIEWPORT_BREAKPOINTS = [
-    576, 768, 992, 1200, 1400, 1680, 1920
-]
-DJANGOCMS_PICTURE_RATIO = 1.618
-DJANGOCMS_PICTURE_ALIGN = [
-    ('left', _('Align left')),
-    ('right', _('Align right')),
-    ('center', _('Align center')),
-]
-DJANGOCMS_PICTURE_TEMPLATES = [
-    ('no_link_to_ext_image', _('Do not link to external image')),
-]
-
 # FILE UPLOAD VALUES MUST BE SET!
 # Set in correlation with the `client_max_body_size    20m;` value in /etc/nginx/proxy.conf.
 # A problem comes from Django's usage of tempfile, which enforces new files to have permission
@@ -591,158 +589,16 @@ DJANGOCMS_PICTURE_TEMPLATES = [
 FILE_UPLOAD_PERMISSIONS = 0o644
 FILE_UPLOAD_MAX_MEMORY_SIZE = 20000000  # 20MB
 
-DJANGOCMS_AUDIO_ALLOWED_EXTENSIONS = ['mp3', 'ogg', 'wav']
-
 ########################
-# PLUGIN SETTINGS
-########################
-
-# SEE: https://github.com/django-cms/djangocms-bootstrap4
-DJANGOCMS_BOOTSTRAP4_GRID_COLUMN_CHOICES = [
-    ('col', _('Column')),
-    ('col col-dark', _('Dark column')),
-    ('col col-muted', _('Muted column')),
-    ('w-100', _('Break')),
-    ('', _('Empty'))
-]
-
-# SEE: https://github.com/django-cms/djangocms-bootstrap4
-DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS = [
-    ('container', _('Container')),
-    ('container-fluid', _('Fluid container')),
-    ('o-section', _('Section')),
-    ('_', _('None')),
-    (_('Container'), (
-        (
-            'container  o-section',
-            _('Container + Section (transparent / margin)')
-        ),
-        (
-            'container  o-section o-section--style-light',
-            _('Container + Light section')
-        ),
-        (
-            'container  o-section o-section--style-muted',
-            _('Container + Muted section')
-        ),
-        (
-            'container  o-section o-section--style-dark',
-            _('Container + Dark section')
-        ),
-    )),
-    (_('Fluid container'), (
-        (
-            'container-fluid  o-section',
-            _('Fluid container + Section (transparent / margin)')
-        ),
-        (
-            'container-fluid  o-section o-section--style-light',
-            _('Fluid container + Light section')
-        ),
-        (
-            'container-fluid  o-section o-section--style-muted',
-            _('Fluid container + Muted section')
-        ),
-        (
-            'container-fluid  o-section o-section--style-dark',
-            _('Fluid container + Dark section')
-        ),
-    )),
-    (_('Section only'), (
-        (
-            'o-section o-section--style-light',
-            _('Light section')
-        ),
-        (
-            'o-section o-section--style-muted',
-            _('Muted section')
-        ),
-        (
-            'o-section o-section--style-dark',
-            _('Dark section')
-        ),
-    )),
-]
-
-# https://github.com/django-cms/djangocms-style
-DJANGOCMS_STYLE_CHOICES = [
-    'card',
-    'card--plain',
-    'card--standard',
-    'card--image-top',
-    'card--image-bottom',
-    'card--image-right',
-    'card--image-left',
-    'section',
-    'section--light',
-    'section--muted',
-    'section--dark',
-    'o-section',
-    'o-section o-section--style-light',
-    'o-section o-section--style-muted',
-    'o-section o-section--style-dark',
-    'c-callout',
-    'c-recognition c-recognition--style-light',
-    'c-recognition c-recognition--style-dark',
-    'c-nav', # bare-bones instance
-    'c-nav c-nav--boxed',
-]
-DJANGOCMS_STYLE_TAGS = [
-    # Even though <div> is often NOT the most semantic choice;
-    # CMS editor may neglect tag, any other tag could be inaccurate,
-    # and <div> is never inaccurate; so <div> is placed first 😞
-    # RFE: Support automatically choosing tag based on class name
-    # SEE: https://github.com/TACC/Core-CMS/pull/432
-    'div',
-    # Ordered by expected usage
-    'section', 'article', 'header', 'footer', 'aside', 'nav',
-    # Not expected but not unreasonable
-    'h1', 'h2', 'h3', 'h4', 'h5', 'h6'
-]
-
+# META
 # https://github.com/nephila/django-meta
+########################
+
 META_SITE_PROTOCOL = 'http'
 META_USE_SITES = True
 META_USE_OG_PROPERTIES = True
 META_USE_TWITTER_PROPERTIES = True
 META_USE_SCHEMAORG_PROPERTIES = True
-
-# https://github.com/django-cms/djangocms-text-ckeditor
-CKEDITOR_SETTINGS = {
-    'autoParagraph': False,
-    'stylesSet': 'default:/static/js/addons/ckeditor.wysiwyg.js',
-    'contentsCss': ['/static/djangocms_text_ckeditor/ckeditor/contents.css'],
-}
-
-# https://github.com/django-cms/djangocms-video
-DJANGOCMS_VIDEO_TEMPLATES = [
-    ('responsive-auto', _('Responsive - Automatic')),
-    ('responsive-16by9', _('Responsive - 16 by 9')),
-    ('responsive-4by3', _('Responsive - 4 by 3')),
-    ('responsive-1by1', _('Responsive - 1 by 1')),
-    ('responsive-21by9', _('Responsive - 21 by 9')),
-]
-
-# DJANGOCMS_ICON SETTINGS
-# https://github.com/django-cms/djangocms-icon
-
-ICON_PATH = os.path.join('taccsite_cms', 'static', 'site_cms', 'img', 'icons')
-
-LOGO_ICONFILE = os.path.join(BASE_DIR, ICON_PATH, 'logos.json')
-with open(LOGO_ICONFILE, 'r') as f:
-    LOGO_ICONS = f.read()
-
-CORTAL_ICONFILE = os.path.join(BASE_DIR, ICON_PATH, 'cortal.json')
-with open(CORTAL_ICONFILE, 'r') as f:
-    CORTAL_ICONS = f.read()
-
-DJANGOCMS_ICON_SETS = [
-    # The SVG icon set must be first or icon selection is not remembered on edit
-    # HELP: Icon previews are blank if editor switches from SVG set to icon set
-    # https://github.com/django-cms/djangocms-icon/issues/9
-    (LOGO_ICONS, '', _('Logo SVGs')),
-    (CORTAL_ICONS, 'icon', _('TACC "Cortal" Icons')),
-]
 
 
 ########################
@@ -861,8 +717,10 @@ SETTINGS_EXPORT = deprecated_SETTINGS_EXPORT + [
     'PORTAL_BRANDING',
     'PORTAL_LOGO',
     'PORTAL_FAVICON',
+    'PORTAL_FAVICON_HTML',
     'PORTAL_IS_TACC_CORE_PORTAL',
     'PORTAL_HAS_LOGIN',
+    'PORTAL_LOGIN_PATH',
     'PORTAL_HAS_SEARCH',
     'PORTAL_NAV_WIDTH',
     'PORTAL_STYLES',

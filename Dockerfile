@@ -1,5 +1,5 @@
 # PYTHON BASE IMAGE
-FROM python:3.11-buster as python-base
+FROM python:3.11-bullseye as python-base
 LABEL maintainer="TACC-ACI-WMA <wma_prtl@tacc.utexas.edu>"
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y \
@@ -46,14 +46,8 @@ RUN npm ci
 
 # Build assets
 COPY . /code/
-ARG PROJECT_NAME
-ARG NEEDS_DEMO
 ARG BUILD_ID
-RUN if [ "$NEEDS_DEMO" = "true" ]; then \
-        npm run build --project="$PROJECT_NAME" --build-id="$BUILD_ID"; \
-    else \
-        npm run build:css --project="$PROJECT_NAME" --build-id="$BUILD_ID"; \
-    fi
+RUN npm run build --build-id="$BUILD_ID"
 
 
 

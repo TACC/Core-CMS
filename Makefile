@@ -1,4 +1,4 @@
-DOCKERHUB_REPO := taccwma/$(shell cat ./docker_repo.var)
+DOCKERHUB_REPO := taccwma/core-cms
 DOCKER_TAG ?= $(shell git rev-parse --short HEAD)
 DOCKER_IMAGE := $(DOCKERHUB_REPO):$(DOCKER_TAG)
 DOCKER_IMAGE_LATEST := $(DOCKERHUB_REPO):latest
@@ -9,9 +9,7 @@ DOCKER_COMPOSE_CMD := $(shell if command -v docker-compose > /dev/null; then ech
 # NOTE: Special characters in `DOCKER_IMAGE_BRANCH` are replaced with dashes.
 DOCKER_IMAGE_BRANCH := $(DOCKERHUB_REPO):$(shell git describe --exact-match --tags 2> /dev/null || git symbolic-ref --short HEAD | sed 's/[^[:alnum:]\.\_\-]/-/g')
 
-PROJECT_NAME := $(shell cat ./project_name.var)
-NEEDS_DEMO := $(shell cat ./needs_demo.var)
-BUILD_ID := $(shell git describe --always)
+BUILD_ID := $(shell git describe --tags)
 
 .PHONY: build
 build:
@@ -21,9 +19,7 @@ build:
 build-full:
 	docker build -t $(DOCKER_IMAGE) \
 		--target production \
-		--build-arg PROJECT_NAME="$(PROJECT_NAME)" \
 		--build-arg BUILD_ID="$(BUILD_ID)" \
-		--build-arg NEEDS_DEMO="$(NEEDS_DEMO)" \
 		-f ./Dockerfile .
 
 	docker tag $(DOCKER_IMAGE) $(DOCKER_IMAGE_BRANCH)
