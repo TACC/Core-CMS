@@ -10,14 +10,7 @@
 /* BASE */
 
 
-/* Root */
-
-@define-mixin news {
-  /* … */
-}
-
-
-/* Details */
+/* Roots */
 
 @define-mixin news-details {
   margin-bottom: 1rem; /* to not rely on <ul> + core-styles.base.css for this */

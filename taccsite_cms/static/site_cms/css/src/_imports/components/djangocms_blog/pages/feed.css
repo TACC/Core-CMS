@@ -1,17 +1,10 @@
-/*
-Django CMS Blog App Item (Post/Article in a List) Components
+/* https://github.com/nephila/djangocms-blog/blob/2.0.3/djangocms_blog/templates/djangocms_blog/includes/blog_item.html */
 
-Reference:
-
-- [`includes/blog_item.html`](https://github.com/nephila/djangocms-blog/blob/1.2.3/djangocms_blog/templates/djangocms_blog/includes/blog_item.html)
-
-Styleguide Components.DjangoCMS.Blog.App.Item
-*/
 @import url("@tacc/core-styles/src/lib/_imports/tools/media-queries.css");
 
 @import url("../tools/x-news.css");
 
-@import url("./django.cms.blog.selectors.css");
+@import url("../selectors.css");
 
 
 /* Root */
