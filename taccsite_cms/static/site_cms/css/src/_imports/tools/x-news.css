@@ -1,6 +1,8 @@
+@import url("@tacc/core-styles/src/lib/_imports/tools/media-queries.css");
 @import url("@tacc/core-styles/src/lib/_imports/tools/x-pill.css");
 @import url("@tacc/core-styles/src/lib/_imports/tools/x-tag.css");
 @import url("@tacc/core-styles/src/lib/_imports/tools/x-truncate.css");
+@import url("@tacc/core-styles/src/lib/_imports/tools/x-offset-content.css");
 
 
 
@@ -374,18 +376,39 @@
     display: none;
   }
 }
+@define-mixin news-article-page__media--offset__figcaption {
+  /* ???: Is this really desired for Core… */
+  /* https://github.com/TACC/Core-Styles/blob/v2.53.0/src/lib/_imports/objects/o-offset-content.css#L34-L36 */
+  &.figure .figure-caption {
+    padding-right: 125px;
+  }
+}
+@define-mixin news-article-page__media--offset-right {
+  @mixin offset-content;
+  @mixin offset-content--float-right;
+  @mixin offset-content--terminate-offset-right;
+
+  @media --medium-and-above {
+    @mixin offset-content--offset-right;
+  }
+
+  @mixin news-article-page__media--offset__figcaption;
+}
+@define-mixin news-article-page__media--offset-left {
+  @mixin offset-content;
+  @mixin offset-content--float-left;
+  @mixin offset-content--terminate-offset-left;
+
+  @media --medium-and-above {
+    @mixin offset-content--offset-left;
+  }
+
+  @mixin news-article-page__media--offset__figcaption;
+}
 @define-mixin news-article-page__media--layout-center {
   margin-inline: auto;
   width: fit-content;
 }
 @define-mixin news-article-page__media--layout-float {
-  float: right;
-  max-width: 50%;
-  margin-left: 45px;
-
-  /* TODO: Ask designer whether to offset a floated main image */
-  /* WARNING: Requires Core-Styles @define-mixin offset-content(--…) */
-  /*
-  @extend .o-offset-content--right;
-  */
+  @mixin news-article-page__media--offset-right;
 }

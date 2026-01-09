@@ -159,11 +159,11 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 /* FAQ: .blockquote... is only for CMS, cuz `.align-…` is from Core-Styles */
 :--news-article-page .blog-content .align-left,
 :--news-article-page .blog-content .blockquote.text-left {
-  @extend .o-offset-content--left;
+  @mixin news-article-page__media--offset-left;
 }
 :--news-article-page .blog-content .align-right,
 :--news-article-page .blog-content .blockquote.text-right {
-  @extend .o-offset-content--right;
+  @mixin news-article-page__media--offset-right;
 }
 :--news-article-page .blog-content .align-center {
   max-width: 100%;
