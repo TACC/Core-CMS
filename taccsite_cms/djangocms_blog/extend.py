@@ -1,4 +1,14 @@
+import logging
+
+logger = logging.getLogger(f"portal.{__name__}")
+
+from .utils import is_app_installed
+
 def extendBlogFeaturedPostsPlugin():
+    if not is_app_installed():
+        logger.debug('Not extending djangocms_blog, because it is not installed')
+        return
+
     from django import forms
     from django.utils.html import format_html
     from django.utils.translation import gettext_lazy as _
@@ -43,6 +53,10 @@ def extendBlogFeaturedPostsPlugin():
     plugin_pool.register_plugin(BlogFeaturedPostsPlugin)
 
 def extendBlogFeaturedPostsPluginCached():
+    if not is_app_installed():
+        logger.debug('Not extending djangocms_blog, because it is not installed')
+        return
+
     from django import forms
     from cms.plugin_pool import plugin_pool
     from djangocms_blog.cms_plugins import BlogFeaturedPostsPluginCached as OriginalBlogFeaturedPostsPluginCached
