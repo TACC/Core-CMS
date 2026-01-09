@@ -61,7 +61,6 @@ hr {
 
 /* … */
 
-button,
 input,
 optgroup,
 select,
@@ -71,6 +70,7 @@ textarea {
  margin:0
 }
 button {
+ font:inherit;
  overflow:visible
 }
 button,

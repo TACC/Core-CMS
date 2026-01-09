@@ -3,8 +3,18 @@
 {% load cms_tags static %}
 
 {# FAQ: The <span> allows Django CMS editor to edit via double-click #}
-<span class="has-svg {{ instance.icon }}{% if instance.attributes.class %} {{ instance.attributes.class }}{% endif %}" aria-hidden="true"{% for key, value in instance.attributes.items %}{% if key != 'class' %}{{ key }}="{{ value }}" {% endif %}{% endfor %}>
-  <svg role="presentation">
+<span
+  class="has-svg {{ instance.icon }}{% if instance.attributes.class %} {{ instance.attributes.class }}{% endif %}"
+  {% if not instance.attributes.role %}
+  aria-hidden="true"
+  {% endif %}
+  {% for key, value in instance.attributes.items %}
+    {% if key != 'class' %}
+    {{ key }}="{{ value }}"
+    {% endif %}
+  {% endfor %}
+  >
+  <svg width="1em" height="1em">
     <use href="{% static path %}#{{ instance.icon }}"></use>
   </svg>
 </span>

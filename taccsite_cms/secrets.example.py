@@ -33,6 +33,6 @@ HAYSTACK_CONNECTIONS = {
         'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
         'URL': ES_HOSTS,
         'INDEX_NAME': ES_INDEX_PREFIX.format('cms'),
-        'KWARGS': {'http_auth': ES_AUTH }
+        'KWARGS': {'http_auth': ES_AUTH}
     }
 }

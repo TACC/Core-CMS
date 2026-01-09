@@ -1,7 +1,5 @@
 # Upgrade Project
 
-## Table of Contents
-
 - [from v4.N to v4.14](#from-v4n-to-v414)
 - [from v4.N to v4.13](#from-v4n-to-v413)
 - [from v4.N to v4.12](#from-v4n-to-v412)
@@ -9,6 +7,41 @@
 - [from v3 to v4](#from-v3-to-v4)
 - [from v3.N to v3.12](#from-v3n-to-v312)
 - [from v2 to v3](#from-v2-to-v3)
+
+Optional:
+- [expected cleanup](#expected-cleanup)
+
+## Expected Cleanup
+
+- [Remove Unnecessary Settings](#remove-unnecessary-settings)
+- [Simplify Image Paths](#simplify-image-paths)
+
+### Remove Unnecessary Settings
+
+1. In `taccsite_cms/custom_app_settings.py`, remove apps from `STATICFILES_DIRS`, i.e.
+
+    | | change |
+    | - | - |
+    | from | `STATICFILES_DIRS = ('apps/custom_example', ...)` |
+    | to | `STATICFILES_DIRS = (...)` |
+
+    > **Note**
+    > Django automatically identifies the `static` directory for each app.
+
+### Simplify Image Paths
+
+1. Remove any subdirectories of your project's static `img` directory, i.e.
+
+    | | root |
+    | - | - |
+    | from | `taccsite_custom/static/custom_project_dir/img/*/...` |
+    | to | `taccsite_custom/static/custom_project_dir/img/...` |
+
+2. Rename **all** references to the previous image paths e.g.
+    - `/custom_project_dir/taccsite_cms/settings_custom.py` [^1]
+    - [Core Portal Deployments]:`/project_dir/camino/cms.settings_custom.py` [^1]
+
+[^1]: The `cms.settings_custom.py` is committed in [Core Portal Deployments]. A `settings_custom.py` in [Core CMS Custom] is `.gitignore`'d.
 
 ## from v4.N to v4.14
 
@@ -50,7 +83,7 @@ Refactor the `BRANDING` array to a `PORTAL_BRANDING` dict:
 -
 - CUSTOM_BRANDING = [
 -     "portal",
--     "custom-project_cms/img/org_logos/custom-project-logo.png",
+-     "…/other-funder-logo.png",
 -     "",
 -     "/",
 -     "_self",
@@ -64,7 +97,7 @@ Refactor the `BRANDING` array to a `PORTAL_BRANDING` dict:
 +
 + CUSTOM_BRANDING = {
 +     "is_remote": True,
-+     "img_file_src": "https://cdn.jsdelivr.net/gh/TACC/Core-CMS-Custom@______/custom-project_assets/custom-project-logo.png",
++     "img_file_src": "…/other-funder-logo.png",
 +     "img_class": "", # additional class names
 +     "link_href": "/",
 +     "link_target": "_self",
@@ -80,7 +113,7 @@ Refactor the `BRANDING` array to a `PORTAL_BRANDING` dict:
 | | from Array Value | to Dict Property |
 | - | - | - |
 | 0 | "portal"                  | (unused value) |
-| 1 | "site_cms/.../portal.png" | `"img_file_src"` |
+| 1 | "…/other-funder-logo.svg" | `"img_file_src"` |
 | 2 | ""                        | `"img_class"` |
 | 3 | "/"                       | `"link_href"` |
 | 4 | "_self"                   | `"link_target"` |
@@ -138,7 +171,7 @@ Refactor the `LOGO` array to a `PORTAL_LOGO` dict:
 ```diff
 - LOGO = [
 -     "portal",
--     "site_cms/img/org_logos/portal.png",
+-     "…/logo.svg",
 -     "",
 -     "/",
 -     "_self",
@@ -148,7 +181,7 @@ Refactor the `LOGO` array to a `PORTAL_LOGO` dict:
 - ]
 + PORTAL_LOGO = {
 +     "is_remote": False,
-+     "img_file_src": "site_cms/img/org_logos/portal.png",
++     "img_file_src": "…/logo.svg",
 +     "img_class": "", # additional class names
 +     "link_href": "/",
 +     "link_target": "_self",
@@ -162,7 +195,7 @@ Refactor the `LOGO` array to a `PORTAL_LOGO` dict:
 | | from Array Value | to Dict Property |
 | - | - | - |
 | 0 | "portal"                  | (unused value) |
-| 1 | "site_cms/.../portal.png" | `"img_file_src"` |
+| 1 | "…/logo.svg"              | `"img_file_src"` |
 | 2 | ""                        | `"img_class"` |
 | 3 | "/"                       | `"link_href"` |
 | 4 | "_self"                   | `"link_target"` |

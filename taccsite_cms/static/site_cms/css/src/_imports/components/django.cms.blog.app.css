@@ -9,7 +9,7 @@ Reference:
 
 Styleguide Components.DjangoCMS.Blog.App
 */
-@import url("@tacc/core-styles/src/lib/_imports/components/bootstrap.pagination.css");
+@import url("@tacc/core-styles/dist/djangocms-blog/cms-pagination.css");
 @import url("@tacc/core-styles/src/lib/_imports/components/c-tag.css");
 
 @import url("./django.cms.blog.app.page.css");
@@ -144,27 +144,20 @@ Styleguide Components.DjangoCMS.Blog.App
   display: flex;
   flex-wrap: wrap;
   justify-self: end;
-}
-
-.app-blog .logos--social > a {
-  display: flex; /* to vertically center the svg (as needed) */
 
   @media (pointer: coarse) {
-    padding-inline: 0.5em;
+    gap: 1.0em;
   }
   @media not (pointer: coarse) {
-    padding-inline: 0.25em;
+    gap: 0.5em;
   }
 }
 
 .app-blog .logos__text-before {
   white-space: nowrap;
-  margin-right: 0.25em;
 }
 
 .app-blog .logos--social svg {
-  fill: var(--global-color-primary--x-dark);
-
   @media (pointer: coarse) {
     height: var(--global-font-size--xx-large);
     width: var(--global-font-size--xx-large);
@@ -174,11 +167,6 @@ Styleguide Components.DjangoCMS.Blog.App
     width: var(--global-font-size--large);
   }
 }
-.app-blog a.logos__facebook:hover svg { fill: #0866ff; }
-.app-blog a.logos__linkedin:hover svg { fill: #0a66c2; }
-.app-blog a.logos__email:hover svg { fill: #0000ff; }
-.app-blog a.logos__bluesky:hover svg { fill: #0085ff; }
-.app-blog a.logos__instagram:hover svg { fill: #bc1888; }
 
 
 

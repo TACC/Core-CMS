@@ -5,6 +5,8 @@
   {# https://tacc-main.atlassian.net/wiki/x/hRlv #}
   @layer foundation, base, project;
 
-  @import url("https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css") layer(foundation);
+  /* TODO: Use same version of Bootstrap as TACC/Core-Portal (v5) */
+  @import url("https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css") layer(foundation);
+  @import url("{% static 'site_cms/css/build/core-styles.bootstrap.css' %}") layer(foundation);
   @import url("{% static 'site_cms/css/build/core-styles.base.css' %}") layer(base);
 </style>
