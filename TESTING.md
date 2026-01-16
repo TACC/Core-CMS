@@ -8,12 +8,12 @@
 
 ## Local Poetry Dependencies in Docker
 
-When developing a Poetry-managed Python dependency that exists in another repository, you can test changes locally in the Docker environment without needing to commit and push to the remote repository first. The Docker build uses the git dependency from `pyproject.toml`, but at runtime the local path dependency is installed in editable mode, allowing immediate testing of changes. **Note**: `docker-compose.dev.yml` is not normally configured for this workflow—you must temporarily modify it to enable local dependency testing, then revert the changes when done.
+When developing a Poetry-managed Python dependency that exists in another repository, you can test changes locally in the CMS Docker environment without needing to commit and push to the remote repository first.
 
 ### Prerequisites
 
-- The dependency repository must be cloned locally, typically as a sibling directory to this repository
-- The dependency must be specified in `pyproject.toml` as a git dependency (for build compatibility)
+- The dependency repository must be cloned locally, typically as a sibling directory to this repository.
+- The dependency must be specified in `pyproject.toml` as a git dependency (for build compatibility).
 
 ### Steps
 
@@ -62,8 +62,18 @@ When developing a Poetry-managed Python dependency that exists in another reposi
 
 ### Troubleshooting
 
-- **Container fails to start with "Path does not exist"**: Ensure the dependency repository is cloned at the expected relative path.
+- [Container Fails to Start: "Path does not exist"](#container-fails-to-start-path-does-not-exist)
+- [Changes to the Dependency aren't Reflected](#changes-to-the-dependency-arent-reflected)
+- [Build Fails with Path Dependency Error](#build-fails-with-path-dependency-error)
 
-- **Changes to the dependency aren't reflected**: Check that the volume mount path is correct and that the dependency was installed with `--editable` flag. You may need to restart the container.
+### Container Fails to Start: "Path does not exist"
 
-- **Build fails with path dependency error**: Ensure `pyproject.toml` uses a git dependency, not a path dependency. Path dependencies are only used at runtime via `poetry add`.
+Ensure the dependency repository is cloned at the expected relative path.
+
+### Changes to the Dependency aren't Reflected
+
+Check that the volume mount path is correct and that the dependency was installed with `--editable` flag. You may need to restart the container.
+
+### Build Fails with Path Dependency Error
+
+Ensure `pyproject.toml` uses a git dependency, not a path dependency. Path dependencies are only used at runtime via `poetry add`.
