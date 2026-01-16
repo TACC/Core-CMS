@@ -969,8 +969,8 @@ djangocms-picture = ">=3.0,<5.0"
 [package.source]
 type = "git"
 url = "https://github.com/TACC/Core-CMS-Plugin-Image-Gallery.git"
-reference = "fix/GH-2-update-djangocms-picture"
-resolved_reference = "8b64b3327995ceebe1cf39868292640ecdab5676"
+reference = "v0.1.5"
+resolved_reference = "7a8366ce9b1de7baf0a07cff7731343069e14520"
 
 [[package]]
 name = "djangocms-tacc-remote-content"
@@ -2501,4 +2501,4 @@ testing = ["func-timeout", "jaraco.itertools"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<4.0"
-content-hash = "b4cf34a33cfa6f9e409d997fc0759e38dac9f374eb35b7acc8799cb3bf8b2a67"
+content-hash = "4a0fb3c77fcb186decbd5a3f77263ac8b92bde977bfd38182c83aa2fecafcecf"
