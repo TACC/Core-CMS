@@ -17,12 +17,20 @@ build:
 
 .PHONY: build-full
 build-full:
-	docker build -t $(DOCKER_IMAGE) \
+	docker buildx create --use --name multiplatform-builder || true
+	docker buildx build -t $(DOCKER_IMAGE) \
 		--target production \
 		--build-arg BUILD_ID="$(BUILD_ID)" \
+		--platform linux/amd64,linux/arm64 \
+		--push \
 		-f ./Dockerfile .
 
-	docker tag $(DOCKER_IMAGE) $(DOCKER_IMAGE_BRANCH)
+	docker buildx build -t $(DOCKER_IMAGE_BRANCH) \
+		--target production \
+		--build-arg BUILD_ID="$(BUILD_ID)" \
+		--platform linux/amd64,linux/arm64 \
+		--push \
+		-f ./Dockerfile .
 
 .PHONY: example
 example:
