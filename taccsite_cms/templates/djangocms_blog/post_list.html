@@ -33,7 +33,9 @@
         {% elif tagged_entries %}
           <strong>{% page_attribute "page_title" %}</strong>
           <span>{% trans "Tag" %}</span>
-          <em>{{ tagged_entries|capfirst }}</em>
+          {# TACC (use tag as is): #}
+          <em>{{ tagged_entries }}</em>
+          {# /TACC #}
         {% elif category %}
           <strong>{% page_attribute "page_title" %}</strong>
           <span>{% trans "Category" %}</span>
