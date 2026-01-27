@@ -490,6 +490,7 @@ INSTALLED_APPS = [
     # core TACC CMS
     # HELP: If this were top of list, would TACC/Core-CMS/pull/169 fix break?
     'taccsite_cms',
+    'apps.search_page',
     'common_apps.email_management',
 
     # django CMS Bootstrap
@@ -732,4 +733,5 @@ SETTINGS_EXPORT = deprecated_SETTINGS_EXPORT + [
     'PORTAL_SOCIAL_SHARE_PLATFORMS',
     'PORTAL_SEARCH_PATH',
     'PORTAL_SEARCH_QUERY_PARAM_NAME',
+    'GOOGLE_SEARCH_ENGINE_ID',
 ]
