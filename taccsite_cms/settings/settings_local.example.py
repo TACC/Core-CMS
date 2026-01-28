@@ -2,7 +2,7 @@
 A `settings_local.py` file can override default values in `settings.py` and `settings_custom.py`.
 
 For a detailed walkthrough on overriding settings, see `settings_custom.example.py`:
-https://github.com/TACC/Core-CMS/blob/main/taccsite_cms/settings_custom.example.py
+https://github.com/TACC/Core-CMS/blob/main/taccsite_cms/settings/settings_custom.example.py
 '''
 
 # https://docs.djangoproject.com/en/4.2/ref/settings/#allowed-hosts
