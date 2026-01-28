@@ -640,7 +640,7 @@ except ModuleNotFoundError:
 try:
     from taccsite_cms.settings.settings_local import *
     import taccsite_cms.settings.settings_local as settings_local
-except (ModuleNotFoundError, ImportError):
+except ModuleNotFoundError:
     # pass
     # SETTINGS IMPORT DEPRECATED
     try:
