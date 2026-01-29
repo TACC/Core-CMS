@@ -28,6 +28,8 @@ from taccsite_cms._settings.search import (
 
 def gettext(s): return s
 
+logger = logging.getLogger(f"portal.{__name__}")
+
 ########################
 # DJANGO
 ########################
@@ -604,48 +606,82 @@ RT_TAG = ''
 ########################
 
 try:
+    logger.warning('IMPORT: … importing DEFAULT from NEW loc')
     from taccsite_cms.settings.settings_default import *
+    logger.warning('IMPORT: ✓ imported DEFAULT from NEW loc')
 except ModuleNotFoundError:
+    logger.warning('IMPORT: Ⓧ no DEFAULT from NEW loc')
     # pass
     # SETTINGS IMPORT DEPRECATED
     try:
+        logger.warning('IMPORT: … importing DEFAULT from OLD loc')
         from taccsite_cms.settings_default import *
+        logger.warning('IMPORT: ✓ imported DEFAULT from OLD loc')
     except ModuleNotFoundError:
+        logger.warning('IMPORT: Ⓧ no DEFAULT from OLD loc')
         pass
 
 try:
+    logger.warning('IMPORT: … importing CUSTOM from NEW loc')
     from taccsite_cms.settings.settings_custom import *
+    logger.warning('IMPORT: ✓ imported CUSTOM from NEW loc')
+    logger.warning('IMPORT: … saving CUSTOM from NEW loc')
     import taccsite_cms.settings.settings_custom as settings_custom
+    logger.warning('IMPORT: ✓ saved CUSTOM from NEW loc')
 except ModuleNotFoundError:
+    logger.warning('IMPORT: Ⓧ no CUSTOM from NEW loc')
     # pass
     # SETTINGS IMPORT DEPRECATED
     try:
+        logger.warning('IMPORT: … importing CUSTOM from OLD loc')
         from taccsite_cms.settings_custom import *
+        logger.warning('IMPORT: ✓ imported CUSTOM from OLD loc')
+        logger.warning('IMPORT: … saving CUSTOM from OLD loc')
         import taccsite_cms.settings_custom as settings_custom
+        logger.warning('IMPORT: ✓ saved CUSTOM from OLD loc')
     except ModuleNotFoundError:
         settings_custom = []
+        logger.warning('IMPORT: Ⓧ no CUSTOM from OLD loc')
 
 try:
+    logger.warning('IMPORT: … importing SECRETS from NEW loc')
     from taccsite_cms.settings.secrets import *
+    logger.warning('IMPORT: ✓ imported SECRETS from NEW loc')
 except ModuleNotFoundError:
+    logger.warning('IMPORT: Ⓧ no SECRETS from NEW loc')
     # pass
     # SETTINGS IMPORT DEPRECATED
     try:
+        logger.warning('IMPORT: … importing SECRETS from OLD loc')
         from taccsite_cms.secrets import *
+        logger.warning('IMPORT: ✓ imported SECRETS from OLD loc')
     except ModuleNotFoundError:
+        logger.warning('IMPORT: Ⓧ no SECRETS from OLD loc')
         pass
 
 try:
+    logger.warning('IMPORT: … importing LOCAL from NEW loc')
     from taccsite_cms.settings.settings_local import *
+    logger.warning('IMPORT: ✓ imported LOCAL from NEW loc')
+    logger.warning('IMPORT: … saving LOCAL from NEW loc')
     import taccsite_cms.settings.settings_local as settings_local
+    logger.warning('IMPORT: ✓ saved LOCAL from NEW loc')
 except ModuleNotFoundError:
+    logger.warning('IMPORT: Ⓧ no LOCAL from NEW loc')
     # pass
     # SETTINGS IMPORT DEPRECATED
     try:
+        logger.warning('IMPORT: … importing LOCAL from OLD loc')
         from taccsite_cms.settings_local import *
+        logger.warning('IMPORT: ✓ imported  LOCAL from OLD loc')
+        logger.warning('IMPORT: … saving LOCAL from OLD loc')
         import taccsite_cms.settings_local as settings_local
+        logger.warning('IMPORT: ✓ saved LOCAL from OLD loc')
     except ModuleNotFoundError:
         settings_local = []
+        logger.warning('IMPORT: Ⓧ no LOCAL from OLD loc')
+
+logger.warning(f'PORTAL_STYLES: {PORTAL_STYLES}')
 
 try:
     from taccsite_cms import custom_app_settings
