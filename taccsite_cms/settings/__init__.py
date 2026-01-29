@@ -1,11 +1,7 @@
 """
-Per-project and environment-specific settings modules.
-
-- settings_default.py
-- settings_custom.py
-- settings_local.py
-- secrets.py
-
-These are imported by taccsite_cms.settings
+Settings package:
+- override files (settings_custom.py, settings_local.py, etc.)
+- re-export main settings module (for backwards compatibility)
 """
 
+from taccsite_cms.settings.settings import *

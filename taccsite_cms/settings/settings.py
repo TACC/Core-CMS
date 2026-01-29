@@ -35,7 +35,7 @@ def gettext(s): return s
 SECRET_KEY = 'CHANGE_ME'
 
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 DEBUG = True       # False for Prod.
 
