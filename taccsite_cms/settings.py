@@ -35,8 +35,6 @@ def gettext(s): return s
 SECRET_KEY = 'CHANGE_ME'
 
 
-DATA_DIR = os.path.dirname(os.path.dirname(__file__))
-
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 DEBUG = True       # False for Prod.
@@ -332,7 +330,7 @@ ROOT_URLCONF = 'taccsite_cms.urls'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(DATA_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'taccsite_cms', 'static'),
@@ -343,7 +341,7 @@ STATICFILES_DIRS = (
 
 # User Uploaded Files Location.
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(DATA_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 TEMPLATES = [
     {
