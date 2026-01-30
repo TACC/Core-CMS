@@ -10,7 +10,7 @@
   attributes = ATTRIBUTE_NAMES
 ) {
   const attrs = Object.assign(attributes, ATTRIBUTE_NAMES);
-  const selector = 'a[href*="' + fakeText + '"]';
+  const selector = 'a[href*="' + fakeText + '"]:not([href*="subject"])';
 
   scopeElement.querySelectorAll(selector).forEach(linkEl => {
     _addData(linkEl, fakeText, attrs);

@@ -1,0 +1,19 @@
+{% load i18n %}
+{% load blog_filters %}
+
+{% if post.categories.exists %}
+    {% with post.categories.all|sort_blog_categories as sorted_categories %}
+        {% for category in sorted_categories %}
+        <li class="category_{{ forloop.counter }}">
+            <a
+                href="{% url 'djangocms_blog:posts-category' category=category.slug %}"
+                class="blog-category-{{ category.slug }}"
+            >
+                {{ category.name }}
+            </a>
+        </li>
+        {% endfor %}
+    {% endwith %}
+{% else %}
+    <li class="category_none">{% trans "Uncategorized" %}</li>
+{% endif %}
