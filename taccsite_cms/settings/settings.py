@@ -35,7 +35,7 @@ def gettext(s): return s
 SECRET_KEY = 'CHANGE_ME'
 
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 DEBUG = True       # False for Prod.
 
@@ -604,26 +604,48 @@ RT_TAG = ''
 ########################
 
 try:
-    from taccsite_cms.settings_default import *
+    from taccsite_cms.settings.settings_default import *
 except ModuleNotFoundError:
-    pass
+    # pass
+    # SETTINGS IMPORT DEPRECATED
+    try:
+        from taccsite_cms.settings_default import *
+    except ModuleNotFoundError:
+        pass
 
 try:
-    from taccsite_cms.settings_custom import *
-    import taccsite_cms.settings_custom as settings_custom
+    from taccsite_cms.settings.settings_custom import *
+    import taccsite_cms.settings.settings_custom as settings_custom
 except ModuleNotFoundError:
-    settings_custom = []
+    # pass
+    # SETTINGS IMPORT DEPRECATED
+    try:
+        from taccsite_cms.settings_custom import *
+        import taccsite_cms.settings_custom as settings_custom
+    except ModuleNotFoundError:
+        settings_custom = []
 
 try:
-    from taccsite_cms.secrets import *
+    from taccsite_cms.settings.secrets import *
 except ModuleNotFoundError:
-    pass
+    # pass
+    # SETTINGS IMPORT DEPRECATED
+    try:
+        from taccsite_cms.secrets import *
+    except ModuleNotFoundError:
+        pass
 
 try:
-    from taccsite_cms.settings_local import *
-    import taccsite_cms.settings_local as settings_local
+    from taccsite_cms.settings.settings_local import *
+    import taccsite_cms.settings.settings_local as settings_local
 except ModuleNotFoundError:
-    settings_local = []
+    # pass
+    # SETTINGS IMPORT DEPRECATED
+    try:
+        from taccsite_cms.settings_local import *
+        import taccsite_cms.settings_local as settings_local
+    except ModuleNotFoundError:
+        settings_local = []
 
 try:
     from taccsite_cms import custom_app_settings

@@ -77,12 +77,12 @@ How to set up a new local CMS instance.
 
 1. Configure [Django] Application:
 
-    Create a `taccsite_cms/*.py` for every `*.example.py`, e.g.
+    Create a `taccsite_cms/settings/*.py` for every `taccsite_cms/settings/*.example.py`, e.g.
 
     ```sh
-    cp taccsite_cms/settings_custom.example.py taccsite_cms/settings_custom.py
-    cp taccsite_cms/secrets.example.py taccsite_cms/secrets.py
-    cp taccsite_cms/settings_local.example.py taccsite_cms/settings_local.py
+    cp taccsite_cms/settings/settings_custom.example.py taccsite_cms/settings/settings_custom.py
+    cp taccsite_cms/settings/secrets.example.py taccsite_cms/settings/secrets.py
+    cp taccsite_cms/settings/settings_local.example.py taccsite_cms/settings/settings_local.py
     ```
 
 2. Start [Docker] Containers:
