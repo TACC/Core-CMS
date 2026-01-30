@@ -381,7 +381,7 @@
   @mixin offset-content--float-right;
   @mixin offset-content--terminate-offset-right;
 
-  @media --medium-and-above {
+  @media (--medium-and-above) {
     @mixin offset-content--offset-right;
   }
 
@@ -392,7 +392,7 @@
   @mixin offset-content--float-left;
   @mixin offset-content--terminate-offset-left;
 
-  @media --medium-and-above {
+  @media (--medium-and-above) {
     @mixin offset-content--offset-left;
   }
 

@@ -17,7 +17,7 @@ PROJECT_ROOT="${SCRIPT_DIR}/../"
 SRC_ROOT="${SCRIPT_DIR}/../"
 
 # Configure fallback for settings
-VERSION="main"
+VERSION="stable"
 BASE_URL="https://cdn.jsdelivr.net/gh/TACC/Core-CMS@${VERSION}"
 CREATE_VAR_FILES=false
 
@@ -83,9 +83,9 @@ fi
 echo -e "${INF}Checking for required settings files...${RST}"
 
 for file in settings_custom settings_local secrets; do
-    settings_file="taccsite_cms/${file}.py"
-    example_file="taccsite_cms/${file}.example.py"
-    url="${BASE_URL}/taccsite_cms/${file}.example.py"
+    settings_file="taccsite_cms/settings/${file}.py"
+    example_file="taccsite_cms/settings/${file}.example.py"
+    url="${BASE_URL}/taccsite_cms/settings/${file}.example.py"
 
     if [ ! -f "$settings_file" ]; then
         if [ -f "$example_file" ]; then

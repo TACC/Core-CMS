@@ -1,9 +1,7 @@
-{# https://github.com/django-cms/djangocms-picture/blob/3.0.0/djangocms_picture/templates/djangocms_picture/default/picture.html #}
-{# TACC (mimic v3.0.0 to v4.0.0 changes): #}
+{# https://github.com/django-cms/djangocms-picture/blob/4.1.1/djangocms_picture/templates/djangocms_picture/default/picture.html #}
 {# TACC (support children as caption content): #}
 {# {% load thumbnail %} #}
 {% load thumbnail l10n cms_tags %}
-{# /TACC #}
 {# /TACC #}
 
 {# TACC (allow link to be conditional): #}
@@ -40,9 +38,7 @@
 {# end render figure/figcaption #}
 
 
-{# TACC (mimic v3.0.0 to v4.0.0 changes): #}
 {% localize off %}
-{# /TACC #}
 <img src="{{ instance.img_src }}"
     alt="{% if instance.attributes.alt %}{{ instance.attributes.alt }}{% elif instance.picture.default_alt_text %}{{ instance.picture.default_alt_text }}{% endif %}"
     {% if instance.width %} width="{{ instance.width }}"{% endif %}
@@ -71,9 +67,7 @@
     {% endblock %}
     {# /TACC #}
 >
-{# TACC (mimic v3.0.0 to v4.0.0 changes): #}
 {% endlocalize %}
-{# /TACC #}
 
 {# start render figure/figcaption #}
 {# {% if instance.caption_text %} #}
