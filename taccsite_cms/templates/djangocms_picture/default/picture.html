@@ -4,7 +4,6 @@
 {# {% load thumbnail l10n cms_tags %} #}
 {% load thumbnail l10n cms_tags strip_class_attribute %}
 {# /TACC #}
-{# /TACC #}
 
 {# TACC (support custom condition): #}
 {% if should_render_link %}
@@ -81,11 +80,14 @@
     {# /TACC #}
 >
 {% endlocalize %}
+
+
 {# TACC (support image zoom): #}
     {% if should_wrap_image_for_zoom %}
     </span>
     {% endif %}
 {# /TACC #}
+
 
 {# TACC (support custom condition): #}
 {% if has_figure_content %}
