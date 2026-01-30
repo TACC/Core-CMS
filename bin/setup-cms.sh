@@ -17,7 +17,7 @@ PROJECT_ROOT="${SCRIPT_DIR}/../"
 SRC_ROOT="${SCRIPT_DIR}/../"
 
 # Configure fallback for settings
-VERSION="fix/core-cms-template-gh-18"
+VERSION="stable"
 BASE_URL="https://cdn.jsdelivr.net/gh/TACC/Core-CMS@${VERSION}"
 CREATE_VAR_FILES=false
 
