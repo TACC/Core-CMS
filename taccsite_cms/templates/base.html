@@ -1,15 +1,24 @@
-{% load cms_tags static sekizai_tags cache i18n meta %}
+{% load cms_tags static sekizai_tags cache i18n meta page_meta_tags %}
 {% get_current_language as lang_code %}
+{# for djangocms-page-meta #}
+{# https://github.com/nephila/djangocms-page-meta/blob/1.3.0/docs/usage.rst #}
+{% page_meta request.current_page as page_meta %}
+{# endfor #}
 <!doctype html>
 <html
   id="{% block html_page_id %}{% if request.current_page.reverse_id %}page-{{ request.current_page.reverse_id }}{% endif %}{% endblock html_page_id %}"
   data-page-template="{{ request.current_page.get_template|cut:'.html' }}"
   class="{% block html_page_class %}{% endblock html_page_class %}"
   lang="{{ lang_code }}"
+  {# for djangocms-page-meta #}
+  {% schemaorg_html_scope page_meta.schemaorg_type %}
+  {# endfor #}
 >
 
-{# SEE: https://github.com/nephila/django-meta/blob/1.7.0/docs/rendering.rst #}
+{# for django-meta #}
+{# https://github.com/nephila/django-meta/blob/2.3.0/docs/rendering.rst #}
 <head {% meta_namespaces %}>
+{# endfor #}
   <!-- Early Site Scripts. -->
   {# Debugging Support. #}
   {% include "debug_js.html" with settings=settings %}
@@ -22,11 +31,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- Metadata: Social Media. -->
-  {% block meta %}
-    {# FAQ: Conditional includes are intentionally verbose #}
-    {# SEE: https://confluence.tacc.utexas.edu/x/QwI9Cw #}
-    {% with path="djangocms_page_meta.html" %}{% include path %}{% endwith %}
-  {% endblock meta %}
+  {# for djangocms-page-meta #}
+  {% include 'djangocms_page_meta/meta.html' with meta=page_meta %}
+  {# endfor #}
 
   <!-- Assets. -->
   {% block assets %}

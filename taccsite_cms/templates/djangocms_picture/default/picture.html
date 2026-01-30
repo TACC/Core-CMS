@@ -1,10 +1,8 @@
-{# https://github.com/django-cms/djangocms-picture/blob/3.0.0/djangocms_picture/templates/djangocms_picture/default/picture.html #}
+{# https://github.com/django-cms/djangocms-picture/blob/4.1.1/djangocms_picture/templates/djangocms_picture/default/picture.html #}
 {# TACC (support children as caption content): #}
-{# TACC (mimic v3.0.0 to v4.0.0 changes): #}
 {# TACC (support image zoom): #}
-{# {% load thumbnail %} #}
+{# {% load thumbnail l10n cms_tags %} #}
 {% load thumbnail l10n cms_tags strip_class_attribute %}
-{# /TACC #}
 {# /TACC #}
 {# /TACC #}
 
@@ -50,9 +48,10 @@
     <span class="u-image-zoom--on-hover">
 {% endif %}
 {# /TACC #}
-{# TACC (mimic v3.0.0 to v4.0.0 changes): #}
+{# end render figure/figcaption #}
+
+
 {% localize off %}
-{# /TACC #}
 <img src="{{ instance.img_src }}"
     alt="{% if instance.attributes.alt %}{{ instance.attributes.alt }}{% elif instance.picture.default_alt_text %}{{ instance.picture.default_alt_text }}{% endif %}"
     {% if instance.width %} width="{{ instance.width }}"{% endif %}
@@ -81,9 +80,7 @@
     {% endblock %}
     {# /TACC #}
 >
-{# TACC (mimic v3.0.0 to v4.0.0 changes): #}
 {% endlocalize %}
-{# /TACC #}
 {# TACC (support image zoom): #}
     {% if should_wrap_image_for_zoom %}
     </span>

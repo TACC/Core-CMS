@@ -61,7 +61,7 @@ docker exec -it core_cms sh -c "python manage.py collectstatic --no-input"
 
 ## Customize & Translate Text
 
-1. Create file:\
+1. Edit file:\
     `/taccsite_cms/locale/en/LC_MESSAGES/django.po`
 2. Add to the file only:
     - the strings to translate
