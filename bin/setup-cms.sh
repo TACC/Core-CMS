@@ -14,7 +14,7 @@ IMP='\033[1m'    # important
 # Define paths
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="${SCRIPT_DIR}/../"
-SRC_ROOT="${SCRIPT_DIR}/../"
+SRC_ROOT="${SCRIPT_DIR}/.."
 
 # Configure fallback for settings
 VERSION="main"
