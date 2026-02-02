@@ -17,28 +17,21 @@ PROJECT_ROOT="${SCRIPT_DIR}/../"
 SRC_ROOT="${SCRIPT_DIR}/../"
 
 # Configure fallback for settings
-VERSION="stable"
+VERSION="main"
 BASE_URL="https://cdn.jsdelivr.net/gh/TACC/Core-CMS@${VERSION}"
-CREATE_VAR_FILES=false
 
 # Functions
-check_for_curl() {
-    if ! command -v curl &> /dev/null; then
-        echo -e "${NEG}Error: curl is not installed but is required for downloading remote files.${RST}"
-        echo "Please install curl and try again."
-        exit 1
-    fi
-}
 download_file() {
     local url="$1"
     local output_file="$2"
     local description="$3"
 
-    check_for_curl
+    DOWNLOAD_CMD="curl -fL \"$url\" -o \"$output_file\""
 
     echo -e "  ${INF}Downloading ${description}...${RST}"
+    echo -e "  ${DOWNLOAD_CMD}"
 
-    if curl -sL "$url" -o "$output_file"; then
+    if eval $DOWNLOAD_CMD; then
         if [ -s "$output_file" ]; then
             echo -e "  ${POS}Successfully downloaded ${description}${RST}"
             return 0
@@ -48,7 +41,6 @@ download_file() {
             return 1
         fi
     else
-        echo -e "  ${NEG}Error: Failed to download ${description} from ${url}${RST}"
         return 1
     fi
 }
@@ -81,7 +73,7 @@ fi
 
 # Check for required settings files (local first, then remote)
 echo -e "${INF}Checking for required settings files...${RST}"
-
+FAILED_DOWNLOADS=()
 for file in settings_custom settings_local secrets; do
     settings_file="taccsite_cms/settings/${file}.py"
     example_file="taccsite_cms/settings/${file}.example.py"
@@ -93,15 +85,32 @@ for file in settings_custom settings_local secrets; do
             cp "$example_file" "$settings_file"
         else
             echo -e "  ${WRN}Local ${example_file} not found, downloading directly to ${settings_file}...${RST}"
-            if ! download_file "$url" "$settings_file" "${file}.py"; then
-                echo -e "${NEG}Error: Failed to download ${settings_file}${RST}"
-                exit 1
+            if ! download_file "$url" "${SRC_ROOT}/$settings_file" "${file}.py"; then
+                FAILED_DOWNLOADS+=("${file}|${url}|${settings_file}")
             fi
         fi
     else
         echo -e "  ${INF}${settings_file} already exists${RST}"
     fi
 done
+if [ ${#FAILED_DOWNLOADS[@]} -gt 0 ]; then
+    echo -e ""
+    echo -e "${NEG}Failed to download ${#FAILED_DOWNLOADS[@]} file(s):${RST}"
+    echo -e ""
+    for failure in "${FAILED_DOWNLOADS[@]}"; do
+        IFS='|' read -r file url settings_file <<< "$failure"
+        echo -e "  ${NEG}✗ ${file}.py${RST}"
+        echo -e "    ${INF}URL: ${url}${RST}"
+        echo -e "    ${INF}Save to: ${SRC_ROOT}/${settings_file}${RST}"
+    done
+    echo -e ""
+    echo -e "${WRN}Resolution:${RST}"
+    echo -e "${WRN}1. Download each file listed above.${RST}"
+    echo -e "${WRN}2. Save each file to the corresponding path shown.${RST}"
+    echo -e "${WRN}3. Re-run this setup script.${RST}"
+    echo -e ""
+    exit 1
+fi
 
 # Build and start Docker containers (from project root)
 echo -e "${INF}Building and starting Docker containers...${RST}"
