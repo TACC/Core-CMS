@@ -1,4 +1,5 @@
 {# @var settings #}
+{% load cms_tags %}
 
 {# WARNING: Some markup is duplicated in other repositories #}
 {# SEE: https://confluence.tacc.utexas.edu/x/LoCnCQ #}
@@ -22,7 +23,9 @@
   {% endif %}
 ">
   <!-- Portal Logo -->
+  {% static_placeholder "header-logo" or %}
   {% include "header_logo.html" %}
+  {% endstatic_placeholder %}
 
   <!-- Navbar Accordian Toggle on Small Screens  -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExpandTarget" aria-controls="navbarsExpandTarget" aria-expanded="false" aria-label="Toggle navigation">
