@@ -1,3 +1,16 @@
+# GitHub's 2026 labels, but with accessible colors, and
+# − "duplicate"
+# − "good first issue"
+# − "help wanted"
+# − "question"
+# − "wontfix"
+# + "alternative"
+# + "blocked"
+# + "epic"
+# + "investigate"
+# + "paused"
+# + "proposal"
+
 - name: blocked
   color: 'FA8122'
   description: Unable to begin or continue work
@@ -5,10 +18,6 @@
 - name: bug
   color: 'D13205'
   description: Something isn't working
-
-- name: dependencies
-  color: '30113B'
-  description: Pull requests that update a dependency file
 
 - name: documentation
   color: '4967E3'
@@ -34,6 +43,10 @@
   color: 'FA8122'
   description: This doesn't seem right
 
+- name: investigate
+  color: '30113B'
+  description: Investigation is required
+
 - name: paused
   color: 'ECD13A'
   description: Started but not actively in progress
@@ -41,7 +54,3 @@
 - name: proposal
   color: '30113B'
   description: Proposal or request for new task
-
-- name: research
-  color: '30113B'
-  description: Investigation is required
