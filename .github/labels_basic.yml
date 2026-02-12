@@ -7,6 +7,7 @@
 # + "alternative"
 # + "blocked"
 # + "epic"
+# + "feature" (distinct from enhancement)
 # + "investigate"
 # + "paused"
 # + "proposal"
@@ -33,7 +34,7 @@
 
 - name: feature
   color: 'A3FF3D'
-  description: A new feature or replacement of present feature
+  description: A new feature or replacement of existing feature
 
 - name: alternative
   color: '2EBAEC'
