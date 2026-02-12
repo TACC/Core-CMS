@@ -1,0 +1,47 @@
+- name: blocked
+  color: 'FA8122'
+  description: Unable to begin or continue work
+
+- name: bug
+  color: 'D13205'
+  description: Something isn't working
+
+- name: dependencies
+  color: '30113B'
+  description: Pull requests that update a dependency file
+
+- name: documentation
+  color: '4967E3'
+  description: Improvements or additions to documentation
+
+- name: enhancement
+  color: '33F299'
+  description: Improvements or additions to existing features
+
+- name: epic
+  color: '7A0403'
+  description: An epic that should become multiple tasks
+
+- name: feature
+  color: 'A3FF3D'
+  description: A new feature or replacement of present feature
+
+- name: alternative
+  color: '2EBAEC'
+  description: Alternative solution(s) exist(s)
+
+- name: invalid
+  color: 'FA8122'
+  description: This doesn't seem right
+
+- name: paused
+  color: 'ECD13A'
+  description: Started but not actively in progress
+
+- name: proposal
+  color: '30113B'
+  description: Proposal or request for new task
+
+- name: research
+  color: '30113B'
+  description: Investigation is required
