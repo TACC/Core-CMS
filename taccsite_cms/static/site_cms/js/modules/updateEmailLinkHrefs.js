@@ -10,7 +10,8 @@
   attributes = ATTRIBUTE_NAMES
 ) {
   const attrs = Object.assign(attributes, ATTRIBUTE_NAMES);
-  const selector = 'a[href*="' + fakeText + '"]:not([href*="subject"])';
+  const attrSelectors = Object.values(attrs).map((name) => 'a[' + name + ']');
+  const selector = attrSelectors.join(', ');
 
   scopeElement.querySelectorAll(selector).forEach(linkEl => {
     _addData(linkEl, fakeText, attrs);
@@ -120,6 +121,9 @@ function _editHref(element, fakeText, attributes) {
 
   const email = _getEmail({href: element.href, fakeText});
   const query = _createQuery({body, subject});
+  const href = 'mailto:' + email + query;
+
+  if (SHOULD_DEBUG) console.info({href});
 
   // So link opens mail program with correct address
   element.href = 'mailto:' + email + query;
