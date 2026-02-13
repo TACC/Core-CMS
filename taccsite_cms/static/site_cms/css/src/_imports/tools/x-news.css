@@ -285,6 +285,7 @@
   font-size: 0;
 
   /* To hide underline (still shows up even if `font-size: 0`) */
+  /* NOTE: Core-CMS does not underline (circa 2026), so this is a safety net */
   & a,
   &:is(a) {
     text-decoration: none;
