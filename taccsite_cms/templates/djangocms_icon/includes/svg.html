@@ -5,6 +5,7 @@
 {# FAQ: The <span> allows Django CMS editor to edit via double-click #}
 <span
   class="has-svg {{ instance.icon }}{% if instance.attributes.class %} {{ instance.attributes.class }}{% endif %}"
+  {# FAQ: No a11y exposure; unless editor adds `role`, then they manage a11y #}
   {% if not instance.attributes.role %}
   aria-hidden="true"
   {% endif %}
