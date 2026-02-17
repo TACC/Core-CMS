@@ -15,9 +15,11 @@
     {# show iframe if embed_link is provided #}
     <iframe src="{{ instance.embed_link_with_parameters }}" {{ instance.attributes_str }} frameborder="0" allowfullscreen="true"
       {# TACC: default title if none provided #}
+      {% block video_iframe_title %}
       {% if "title" not in instance.attributes_str %}
-      title="{% block video_iframe_title %}media related to this content{% endblock video_iframe_title %}"
+      title="media related to this content"
       {% endif %}
+      {% endblock video_iframe_title %}
       {# /TACC #}
     ></iframe>
     {% with disabled=instance.embed_link %}
