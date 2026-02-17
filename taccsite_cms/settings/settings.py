@@ -48,8 +48,9 @@ LOGOUT_REDIRECT_URL = '/'
 # https://docs.djangoproject.com/en/3.0/ref/clickjacking/#how-to-use-it
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
-# whether the session cookie should be secure (https:// only)
+# whether the session and csrf cookies should be secure (https:// only)
 SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
