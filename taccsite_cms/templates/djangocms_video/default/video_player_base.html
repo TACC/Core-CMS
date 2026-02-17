@@ -1,12 +1,15 @@
 {# https://github.com/django-cms/djangocms-video/blob/3.0.0/djangocms_video/templates/djangocms_video/default/video_player.html #}
 {% load i18n cms_tags %}
 
-{# TACC: optional responsive wrapper when template is not default/default-tacc; ratio from folder name #}
+{# TACC: responsive wrapper #}
+{% block video_wrap_start %}
 {% if instance.template != 'default' %}
 {% with embed_ratio=instance.template|slice:'10:' %}
 <div class="embed-responsive{% if embed_ratio != 'auto' %} embed-responsive-{{ embed_ratio }}{% endif %}">
 {% endwith %}
 {% endif %}
+{# /TACC #}
+{% endblock video_wrap_start %}
 
 {% if instance.embed_link %}
     {# show iframe if embed_link is provided #}
@@ -33,9 +36,13 @@
     </video>
 {% endif %}
 
-{% if instance.template != 'default' and instance.template != 'default-tacc' %}
+{# TACC: responsive wrapper #}
+{% block video_wrap_end %}
+{% if instance.template != 'default' %}
 </div>
 {% endif %}
+{% endblock video_wrap_end %}
+{# /TACC #}
 
 {% comment %}
     # Available variables:
