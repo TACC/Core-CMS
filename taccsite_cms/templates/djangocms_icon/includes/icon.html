@@ -1,3 +1,15 @@
 {# https://github.com/django-cms/djangocms-icon/blob/2.1.0/djangocms_icon/templates/djangocms_icon/includes/icon.html #}
 
-{% load cms_tags %}<i class="{# TACC: https://github.com/django-cms/djangocms-bootstrap4/issues/124 #}{% if icon_class %}{{ icon_class }}{% else %}{{ instance.icon }}{% if instance.attributes.class %} {{ instance.attributes.class }}{% endif %} {% endif %}{# /TACC #}" aria-hidden="true"{% for key, value in instance.attributes.items %}{% if key != 'class' %}{{ key }}="{{ value }}" {% endif %}{% endfor %}></i>
+{% load cms_tags %}<i class="
+  {# TACC: https://github.com/django-cms/djangocms-bootstrap4/issues/124 #}
+  {% if icon_class %}{{ icon_class }}{% else %}{{ instance.icon }}{% if instance.attributes.class %} {{ instance.attributes.class }}{% endif %} {% endif %}
+  {# /TACC #}
+"
+  {# TACC: Mirror https://github.com/TACC/Core-CMS/pull/998 #}
+  {# FAQ: No a11y exposure; unless editor adds `role`, then they manage a11y #}
+  {% if not instance.attributes.role %}
+  aria-hidden="true"
+  {% endif %}
+  {# /TACC #}
+
+  {% for key, value in instance.attributes.items %}{% if key != 'class' %}{{ key }}="{{ value }}" {% endif %}{% endfor %}></i>
