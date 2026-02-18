@@ -9,12 +9,14 @@
   fakeText = FAKE_TEXT,
   attributes = ATTRIBUTE_NAMES
 ) {
-  const attrs = Object.assign(attributes, ATTRIBUTE_NAMES);
+  const attrs = Object.assign(ATTRIBUTE_NAMES, attributes);
   const attrSelectors = Object.values(attrs).map((name) => 'a[' + name + ']');
   const selector = attrSelectors.join(', ');
 
   scopeElement.querySelectorAll(selector).forEach(linkEl => {
-    _addData(linkEl, fakeText, attrs);
+    if (fakeText) {
+      _addData(linkEl, fakeText, attrs);
+    }
 
     const editHref = _editHref.bind(this, linkEl, fakeText, attrs);
     linkEl.addEventListener('click', editHref, {once: true});
@@ -60,10 +62,11 @@ const SHOULD_DEBUG = window.DEBUG;
  * @param {string} [options.fakeText] - False text manually added into address
  */
 function _getEmail({href, fakeText} = {}) {
-  const emailOld = href.replace('mailto:', '');
-  const email = emailOld.replace(fakeText, '');
+  let email = href.replace('mailto:', '');
 
-  if (SHOULD_DEBUG) console.debug({emailOld, email});
+  if (fakeText) {
+    email = email.replace(fakeText, '');
+  }
 
   return email;
 }
@@ -77,7 +80,7 @@ function _getEmailParts(email) {
   const user = parts[0];
   const domain = parts[1];
 
-  if (SHOULD_DEBUG) console.debug({email, parts, user, domain});
+  if (SHOULD_DEBUG) console.debug({email, user, domain});
 
   return {user, domain};
 }
@@ -121,9 +124,8 @@ function _editHref(element, fakeText, attributes) {
 
   const email = _getEmail({href: element.href, fakeText});
   const query = _createQuery({body, subject});
-  const href = 'mailto:' + email + query;
 
-  if (SHOULD_DEBUG) console.info({href});
+  if (SHOULD_DEBUG) console.info({subject, body, email, query});
 
   // So link opens mail program with correct address
   element.href = 'mailto:' + email + query;
