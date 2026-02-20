@@ -97,6 +97,8 @@ def let_view_and_change_text(group):
     """
     add_perm(group, 'djangocms_link', 'link', 'Can change link')
     add_perm(group, 'djangocms_link', 'link', 'Can view link')
+    add_perm(group, 'bootstrap4_link', 'link', 'Can change link')
+    add_perm(group, 'bootstrap4_link', 'link', 'Can view link')
 
     add_perm(group, 'djangocms_text_ckeditor', 'text', 'Can change text')
     add_perm(group, 'djangocms_text_ckeditor', 'text', 'Can view text')
@@ -107,6 +109,8 @@ def let_add_and_delete_text(group):
     """
     add_perm(group, 'djangocms_link', 'link', 'Can add link')
     add_perm(group, 'djangocms_link', 'link', 'Can delete link')
+    add_perm(group, 'bootstrap4_link', 'link', 'Can add link')
+    add_perm(group, 'bootstrap4_link', 'link', 'Can delete link')
 
     add_perm(group, 'djangocms_text_ckeditor', 'text', 'Can add text')
     add_perm(group, 'djangocms_text_ckeditor', 'text', 'Can delete text')
