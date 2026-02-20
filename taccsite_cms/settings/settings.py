@@ -559,7 +559,14 @@ CMS_LANGUAGES = {
 }
 
 CMS_PERMISSION = True
-CMS_PLACEHOLDER_CONF = {}
+CMS_PLACEHOLDER_CONF = {
+    'header-logo': {
+        'plugins': ['PicturePlugin'],
+        'limits': {
+            'global': 1
+        },
+    },
+}
 
 THUMBNAIL_HIGH_RESOLUTION = True
 THUMBNAIL_PROCESSORS = (

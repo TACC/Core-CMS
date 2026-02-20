@@ -30,6 +30,25 @@ def add_perm(group, app_label, model_name, perm_name):
     else:
         group.permissions.add( Permission.objects.get( name=perm_name ))
 
+def del_perm(group, app_label, model_name, perm_name):
+    """
+    Delete specific permission from a given group
+    """
+    logger.debug(f'Removing permission ({app_label}.{model_name}) "{perm_name}"')
+    if app_label and model_name:
+        model = model_name.lower().replace(' ', '')
+        content_type = ContentType.objects.get(
+            app_label=app_label,
+            model=model
+        )
+        group.permissions.remove(
+            Permission.objects.get(
+                name=perm_name,
+                content_type=content_type
+            )
+        )
+    else:
+        group.permissions.remove(Permission.objects.get(name=perm_name))
 
 
 # Page
@@ -44,9 +63,15 @@ def let_view_page_and_structure(group):
     add_perm(group, 'cms', 'page', 'Can change page')
 
     add_perm(group, 'cms', 'placeholder', 'Can use Structure mode')
-    # HELP: Not necessary on TACC (as of Core-CMS v4.17.1)
-    #       Is necessary on WTCS (as of Core-CMS v4.20.2)
-    add_perm(group, 'cms', 'static placeholder', 'Can change static placeholder')
+    # To delete undesired permission from sites that still have it:
+    # ```py
+    # add_perm(group, 'cms', 'static placeholder', 'Can change static placeholder')
+    # ```
+    # HELP: Should "Sitewide Content Manager" keep this perm?
+    # SEE: https://weteachcs.org/admin/auth/group/9/change/
+    # FAQ: Only superuser may edit static placeholders (footer, header-logo)
+    # TODO: After this is deployed on all sites once, delete this code
+    del_perm(group, 'cms', 'static placeholder', 'Can change static placeholder')
 
 
 
