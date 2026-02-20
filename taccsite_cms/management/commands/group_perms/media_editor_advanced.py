@@ -12,6 +12,7 @@ from ..util import (
     let_add_and_delete_adv_media_plugins,
     let_view_thumbnail_option,
     let_view_and_change_folder,
+    let_add_and_delete_folder,
     let_view_and_change_image_file,
 )
 
@@ -29,4 +30,5 @@ def set_group_perms():
     let_add_and_delete_adv_media_plugins(group)
     let_view_thumbnail_option(group)
     let_view_and_change_folder(group)
+    let_add_and_delete_folder(group),
     let_view_and_change_image_file(group)
