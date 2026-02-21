@@ -37,13 +37,8 @@ Our [production site] is built from a specific commit.
 
 ## Release Workflow
 
-Only appointed team members may release versions.
-
-1. Update version:
-  - `poetry version N.N.N`
-2. Review. Commit. Push.
-3. [Create release and tag on GitHub.](https://github.com/TACC/Core-CMS/releases/new)
-4. [Build & Deploy](README.md#build--deploy-project) off of `vN.N.N`.
+1. [Create release and tag on GitHub.](https://github.com/TACC/Core-CMS/releases/new)
+2. [Build & Deploy](README.md#build--deploy-project) off of `vN.N.N`.
 
 <!-- Link Aliases -->
 
