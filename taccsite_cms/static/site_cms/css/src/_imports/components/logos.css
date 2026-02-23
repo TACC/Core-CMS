@@ -14,7 +14,7 @@
   color: var(--global-color-primary--x-dark);
 }
 [class*="logos--"] a:hover {
-  color: var(--global-color-accent--normal);
+  color: var(--global-color-accent--light);
 }
 a.logos__facebook:hover svg   { color: #0866ff; }
 a.logos__linkedin:hover svg   { color: #0a66c2; }
