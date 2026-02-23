@@ -1,6 +1,6 @@
 #google-search {
 
-  &:is(#cms-content-container > *:last-child) { 
+  &:is(#cms-content-container > *:last-child) {
     margin-bottom: var(--global-space--section-gap, 60px);
   }
 
@@ -54,7 +54,7 @@
     padding: unset;
   }
   & .gs-spelling a {
-    color: var(--global-color-accent--normal);
+    color: var(--global-color-accent--light);
 
     /* to undo core-styles.base */
     /* https://github.com/TACC/Core-Styles/blob/8ab89d3/src/lib/_imports/elements/links.css */
@@ -80,7 +80,7 @@
 
   /* (search result titles) */
   & a.gs-title:link {
-    color: var(--global-color-accent--normal);
+    color: var(--global-color-accent--light);
     text-decoration: none;
     text-decoration-thickness: var(--global-border-width--normal);
     text-underline-offset: 0.2em;
@@ -114,7 +114,7 @@
   }
 
   & .gsc-cursor-current-page {
-    color: var(--global-color-accent--normal);
+    color: var(--global-color-accent--light);
     text-decoration: none;
     text-decoration-thickness: var(--global-border-width--normal);
     text-underline-offset: 0.2em;
@@ -130,7 +130,7 @@
   /* GOOGLE BRANDING */
 
   & .gcsc-find-more-on-google {
-    color: var(--global-color-accent--normal);
+    color: var(--global-color-accent--light);
     text-decoration: none;
     text-decoration-thickness: var(--global-border-width--normal);
     text-underline-offset: 0.2em;
