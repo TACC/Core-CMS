@@ -55,6 +55,13 @@
   }
   & .gs-spelling a {
     color: var(--global-color-accent--normal);
+
+    /* to undo core-styles.base */
+    /* https://github.com/TACC/Core-Styles/blob/8ab89d3/src/lib/_imports/elements/links.css */
+    &:not([href]) {
+      opacity: 1;
+      pointer-events: auto;
+    }
   }
 
 
@@ -81,6 +88,11 @@
   & a.gs-title:link:hover {
     text-decoration-line: underline;
     text-decoration-style: solid;
+  }
+  & .gs-result .gs-title:not(a):hover {
+    /* to remove duplicate underline */
+    /* (fix Google's default_v6+en.css bug `.gs-result .gs-title:hover`) */
+    text-decoration: auto;
   }
 
   /* (push search-result description to right) */
@@ -119,6 +131,9 @@
     text-decoration: none;
     text-decoration-thickness: var(--global-border-width--normal);
     text-underline-offset: 0.2em;
+  }
+  svg.gcsc-find-more-on-google-magnifier {
+    fill: currentColor;
   }
 
   & .gcsc-find-more-on-google:hover {
