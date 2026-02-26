@@ -68,6 +68,12 @@ How to set up a new local CMS instance.
     make setup
     ```
     You will be prompted for information.
+
+    > To set the superuser password non-interactively:
+    > ```sh
+    > DJANGO_SUPERUSER_PASSWORD=yourpass make setup
+    > ```
+
 3. [Add Content](#add-content).
 
 ### Manual Setup
@@ -94,7 +100,16 @@ How to set up a new local CMS instance.
     > **Note**
     > This will make the terminal window busy. To run commands after this, **either** open a new terminal window **or** run `make start ARGS="--detach"` instead.
 
-3. Prepare [Django] Application:
+3. Build CSS:
+
+    ```sh
+    docker run --rm -v "$(pwd):/code" -w /code node:18 sh -c "npm ci && npm run build"
+    ```
+
+    > **Note**
+    > If you will develop thus rebuild stylesheets often, use a local Node installation and run `npm ci` once, then `npm run build` as needed.
+
+4. Prepare [Django] Application:
 
     ```sh
     docker exec -it core_cms /bin/bash
@@ -112,7 +127,7 @@ How to set up a new local CMS instance.
 
     ```
 
-4. [Add Content](#add-content).
+5. [Add Content](#add-content).
 
 #### Add Content
 
@@ -152,9 +167,11 @@ To only update as necessary, or update since uncommon changes:
 | - | - | - |
 | 0 | Dockerfile | `make stop`, `make build`, `make start` |
 | 1 | Python models | `docker exec -it core_cms sh -c "python manage.py migrate"` |
-| 2 | Node dependencies | `npm ci` |
-| 3 | CSS stylesheets | `npm run build:css` |
+| 2 | Node dependencies* | `npm ci` |
+| 3 | CSS stylesheets* | `npm run build:css` |
 | 4 | Assets e.g.<br><sub>images, stylesheets, JavaScript</sub> | `docker exec -it core_cms sh -c "python manage.py collectstatic --no-input"` |
+
+\* If you do not want to use Node locally, then run `docker run --rm -v "$(pwd):/code" -w /code node:18 sh -c "npm ci && npm run build"`
 
 </details>
 

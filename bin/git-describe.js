@@ -7,7 +7,9 @@ function gitDescribe() {
   let gitDescribe = undefined;
 
   try {
-    gitDescribe = execSync('git describe --tags', { encoding: 'utf8' }).trim();
+    gitDescribe = execSync(`
+      git describe --tags 2>/dev/null || git rev-parse --short HEAD
+    `, { encoding: 'utf8' }).trim();
     console.log('Output from `git describe`:', gitDescribe);
   } catch (error) {
     console.error('Error running `git describe`:', error.message);
