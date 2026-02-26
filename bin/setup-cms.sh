@@ -196,7 +196,7 @@ fi
 # FAQ: To rebuild CSS via ad-hoc Node container, because
 #      `docker-compose.dev.yml` mounts `.:/code` which erases pre-built CSS   
 echo -e "${INF}Building CSS...${RST}"
-docker run --rm -v "$SRC_ROOT:/code" -w /code "$NODE_IMAGE" sh -c "npm ci && npm run build"
+docker run --rm -v "$PROJECT_ROOT:/code" -w /code "$NODE_IMAGE" sh -c "npm ci && npm run build"
 
 # Collect static files
 echo -e "${INF}Preparing static files...${RST}"
