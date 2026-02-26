@@ -40,8 +40,16 @@
       {# /TACC #}
       {# /TACC #}
       {# TACC (wrap with <time> tag because it should be so): #}
-      <time datetime="{{ post.date_published }}"
-            title="{{ post.date_published }}">
+      <time
+        datetime="{{ post.date_published }}"
+        aria-label="
+          {% if not post.publish %}
+            {% trans "To be published" %}
+          {% else %}
+            {% trans "Published" %}
+            {{ post.date_published|date:'DATE_FORMAT' }}
+          {% endif %}"
+      >
       {# /TACC #}
         {{ post.date_published|date:"DATE_FORMAT" }}
       {# TACC (wrap with <time> tag because it should be so): #}
@@ -62,8 +70,11 @@
       <span>{% trans "Featured" %}</span>&nbsp;
       {# /TACC #}
       {# /TACC #}
-      <time datetime="{{ post.date_featured }}"
-            title="{{ post.date_featured }}">
+      <time
+        aria-label="Featured {{ post.date_featured|date:'DATE_FORMAT' }}"
+        datetime="{{ post.date_featured }}"
+        title="{{ post.date_featured }}"
+      >
         {{ post.date_featured|date:"DATE_FORMAT" }}
       </time>
     </li>
