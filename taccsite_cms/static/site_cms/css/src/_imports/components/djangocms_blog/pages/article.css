@@ -1,18 +1,11 @@
-/*
-Django CMS Blog App Page (Article/Post) Components
+/* https://github.com/nephila/djangocms-blog/blob/2.0.3/djangocms_blog/templates/djangocms_blog/post_detail.html */
 
-Reference:
-
-- [`post_detail.html`](https://github.com/nephila/djangocms-blog/blob/1.2.3/djangocms_blog/templates/djangocms_blog/post_detail.html)
-
-Styleguide Components.DjangoCMS.Blog.App.Page
-*/
 @import url("@tacc/core-styles/src/lib/_imports/objects/o-offset-content.css");
 @import url("@tacc/core-styles/src/lib/_imports/tools/x-drop-cap.css");
 
 @import url("../tools/x-news.css");
 
-@import url("./django.cms.blog.selectors.css");
+@import url("../selectors.css");
 
 
 
