@@ -559,11 +559,10 @@ CMS_LANGUAGES = {
 
 CMS_PERMISSION = True
 CMS_PLACEHOLDER_CONF = {
-    'header-logo': {
+    'header-content': {
         'plugins': ['PicturePlugin'],
-        'limits': {
-            'global': 1
-        },
+        # One plugin with template "Header logo" = logo; any other content = bottom of header
+        'limits': {'global': 10},
     },
 }
 

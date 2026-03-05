@@ -69,7 +69,7 @@ def let_view_page_and_structure(group):
     # ```
     # HELP: Should "Sitewide Content Manager" keep this perm?
     # SEE: https://weteachcs.org/admin/auth/group/9/change/
-    # FAQ: Only superuser may edit static placeholders (footer, header-logo)
+    # FAQ: Only superuser may edit static placeholders (footer, header-content)
     # TODO: After this is deployed on all sites once, delete this code
     del_perm(group, 'cms', 'static placeholder', 'Can change static placeholder')
 
