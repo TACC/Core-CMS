@@ -1011,8 +1011,8 @@ django-cms = ">=3.7.4"
 [package.source]
 type = "git"
 url = "https://github.com/TACC/Core-CMS-Plugin-System-Monitor.git"
-reference = "v0.3.0"
-resolved_reference = "7dad855903cdebfd4292530a3465ac3a0eed1fef"
+reference = "refactor/4-use-python-not-javascript"
+resolved_reference = "abb813124a86e21fd31762364eb8637df6a2800c"
 
 [[package]]
 name = "djangocms-text-ckeditor"
@@ -2501,4 +2501,4 @@ testing = ["func-timeout", "jaraco.itertools"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<4.0"
-content-hash = "e04540887939847ea908781d2cab2fda6dcafa13cd09e4fff6d52cc36fe9214e"
+content-hash = "4b6770c0c8551a832d661a00f28d8d370139e159a7e472a29467e90bea315570"
