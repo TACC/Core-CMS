@@ -23,7 +23,7 @@ services:
       - core_cms_postgres_data:/var/lib/postgresql/data
       - ./conf/postgres/pg_db.secret:/var/lib/postgresql/pg_db.secret
       - ./conf/postgres/pg_user.secret:/var/lib/postgresql/pg_user.secret
-- ./conf/postgres/:/var/lib/postgresql/
+      - ./conf/postgres/pg_password.secret:/var/lib/postgresql/pg_password.secret
     hostname: core_cms_postgres
     container_name: core_cms_postgres
     networks:
