@@ -37,6 +37,9 @@ DJANGO_SUPERUSER_PASSWORD=yourpass make setup
 - **Settings files** are gitignored. Created from `*.example.py` by `bin/setup-cms.sh` or manually.
 - The `secrets.py` Elasticsearch host should be `core_cms_elasticsearch` (the Docker hostname), not `elasticsearch`.
 - Docker commands may need `sudo` depending on the environment.
+- **Elasticsearch cgroups v2:** ES 7.17.0 crashes on kernels with cgroups v2 (`CgroupV2Subsystem` NPE). Use ES 7.17.9+ in `docker-compose.dev.yml`.
+- **uwsgi PEP 517 build failure:** Poetry 1.4.0 fails to build uwsgi in the Docker image. The Dockerfile needs `ENV PIP_NO_BUILD_ISOLATION=1` before `poetry install --no-dev`.
+- **Postgres secret files:** `docker-compose.dev.yml` mounts `./conf/postgres/pg_db.secret`, `pg_user.secret`, `pg_password.secret`. These files don't exist in the repo; create the `conf/postgres/` directory and populate them with the same values as the Postgres environment variables (`taccsite`, `postgresadmin`, `taccforever`).
 
 ### Lint, test, build
 

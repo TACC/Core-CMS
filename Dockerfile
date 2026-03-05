@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y \
     build-essential python3-dev \
     libldap2-dev libsasl2-dev ldap-utils tox \
     lcov valgrind vim \
-    && pip3 install uwsgi
+    && pip3 install uwsgi==2.0.23
 
 ENV PYTHONUNBUFFERED 1
 ENV PATH="/root/.local/bin:$PATH"
@@ -24,6 +24,7 @@ RUN mkdir /code
 COPY pyproject.toml poetry.lock /code/
 WORKDIR /code
 # install runtime deps - uses $POETRY_VIRTUALENVS_IN_PROJECT internally
+ENV PIP_NO_BUILD_ISOLATION=1
 RUN poetry install --no-dev
 
 
