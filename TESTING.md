@@ -8,7 +8,7 @@
 
 ## Local Poetry Dependencies in Docker
 
-When developing a Poetry-managed Python dependency that exists in another repository, you can test changes locally in the CMS Docker environment without needing to commit and push to the remote repository first.
+When developing a Poetry-managed Python dependency that exists in another local repository, you can test changes locally in the CMS Docker environment without needing to commit and push to the remote repository first.
 
 ### Prerequisites
 

@@ -12,7 +12,7 @@ ENV PYTHONUNBUFFERED 1
 ENV PATH="/root/.local/bin:$PATH"
 
 # https://python-poetry.org/docs/configuration/#using-environment-variables
-ENV POETRY_VERSION=1.4.0 \
+ENV POETRY_VERSION=2.3.2 \
     POETRY_VIRTUALENVS_CREATE=false \
     POETRY_NO_INTERACTION=1
 
@@ -24,7 +24,7 @@ RUN mkdir /code
 COPY pyproject.toml poetry.lock /code/
 WORKDIR /code
 # install runtime deps - uses $POETRY_VIRTUALENVS_IN_PROJECT internally
-RUN poetry install --no-dev
+RUN poetry install --only main --no-root
 
 
 
@@ -32,7 +32,7 @@ RUN poetry install --no-dev
 FROM python-base as development
 COPY . /code/
 # quicker install because poetry runtime deps are already installed
-RUN poetry install
+RUN poetry install --no-root
 
 
 
