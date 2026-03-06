@@ -3,7 +3,6 @@ name = "tacc-core-cms-backend"
 version = "0.0.0"
 description = "DjangoCMS backend for the TACC ACI-WMA Core-CMS Codebase."
 authors = ["TACC-WMA <wma-portals@tacc.utexas.edu>"]
-package-mode = false
 
 [tool.poetry.dependencies]
 python = ">=3.11,<4.0"

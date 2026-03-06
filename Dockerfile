@@ -24,7 +24,7 @@ RUN mkdir /code
 COPY pyproject.toml poetry.lock /code/
 WORKDIR /code
 # install runtime deps - uses $POETRY_VIRTUALENVS_IN_PROJECT internally
-RUN poetry install --only main
+RUN poetry install --only main --no-root
 
 
 
@@ -32,7 +32,7 @@ RUN poetry install --only main
 FROM python-base as development
 COPY . /code/
 # quicker install because poetry runtime deps are already installed
-RUN poetry install
+RUN poetry install --no-root
 
 
 
