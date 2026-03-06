@@ -13,12 +13,15 @@ IMP='\033[1m'    # important
 
 # Define paths
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PROJECT_ROOT="${SCRIPT_DIR}/../"
-SRC_ROOT="${SCRIPT_DIR}/.."
+PROJECT_ROOT="${SCRIPT_DIR}/.."
+SRC_ROOT="${SCRIPT_DIR}/.." # different so TACC/Core-CMS-Custom can adjust
 
 # Configure fallback for settings
 VERSION="main"
 BASE_URL="https://cdn.jsdelivr.net/gh/TACC/Core-CMS@${VERSION}"
+
+# Pin Node image version (must match Dockerfile's FROM node:XX)
+NODE_IMAGE="node:18"
 
 # Functions
 download_file() {
@@ -159,7 +162,7 @@ done
 
 # Run Django setup commands
 echo -e "${INF}Setting up Django...${RST}"
-docker exec -it core_cms sh -c "python manage.py migrate"
+docker exec core_cms sh -c "python manage.py migrate"
 
 # Check whether to let user create superuser
 echo -e "${INF}Checking for existing superuser...${RST}"
@@ -169,22 +172,41 @@ HAS_SUPERUSER_CMD="python manage.py shell -c \"from django.contrib.auth import g
 HAS_SUPERUSER=$(docker exec core_cms sh -c "$HAS_SUPERUSER_CMD")
 
 # Check for / Create a superuser
+SUPERUSER_CREDS_NOTE="the credentials you created"
 if [ "$HAS_SUPERUSER" != "True" ]; then
-    echo -e "${INF}No superuser found. Letting you create one...${RST}"
-    docker exec -it core_cms sh -c "python manage.py createsuperuser"
+    if [ -n "$DJANGO_SUPERUSER_PASSWORD" ]; then
+        echo -e "${INF}No superuser found. Creating superuser...${RST}"
+        docker exec -e DJANGO_SUPERUSER_PASSWORD="$DJANGO_SUPERUSER_PASSWORD" core_cms python manage.py createsuperuser --no-input --username admin --email admin@localhost
+        SUPERUSER_CREDS_NOTE="username ${IMP}admin${RST}${POS} and the password you provided"
+    elif [ -t 0 ]; then
+        echo -e "${INF}No superuser found. Letting you create one...${RST}"
+        docker exec -it core_cms sh -c "python manage.py createsuperuser"
+    else
+        echo -e "${NEG}Error: No TTY and DJANGO_SUPERUSER_PASSWORD is not set.${RST}"
+        echo "Set it before running setup, e.g.:"
+        echo "  DJANGO_SUPERUSER_PASSWORD=yourpass make setup"
+        exit 1
+    fi
 else
     echo -e "${INF}Superuser already exists. Skipping creation.${RST}"
+    SUPERUSER_CREDS_NOTE="your existing superuser credentials"
 fi
+
+# Build CSS via Docker
+# FAQ: To rebuild CSS via ad-hoc Node container, because
+#      `docker-compose.dev.yml` mounts `.:/code` which erases pre-built CSS   
+echo -e "${INF}Building CSS...${RST}"
+docker run --rm -v "$PROJECT_ROOT:/code" -w /code "$NODE_IMAGE" sh -c "npm ci && npm run build"
 
 # Collect static files
 echo -e "${INF}Preparing static files...${RST}"
-docker exec -it core_cms sh -c "python manage.py collectstatic --no-input"
+docker exec core_cms sh -c "python manage.py collectstatic --no-input"
 
 # Announce end
 echo -e "${POS}
 ${IMP}Setup complete! You can now:${RST}${POS}
 1. Open http://localhost:8000/ in your browser.
-2. Log in with the credentials you just created.
+2. Log in with ${SUPERUSER_CREDS_NOTE}.
 3. Create your first CMS page (this will be your homepage).
 
 To stop the CMS, run:

@@ -11,6 +11,7 @@ The base CMS code for TACC WMA Workspace Portals & Websites
 - [Prerequisites](#prerequisites)
 - [Getting Started](#getting-started)
 - [Update Project](#update-project)
+- [Manage Dependencies](#manage-dependencies)
 - [Develop Project](#develop-project)
   - [Develop a Custom Project](#develop-a-custom-project)
   - [Develop a Custom App/Plugin](#develop-a-custom-appplugin)
@@ -68,6 +69,12 @@ How to set up a new local CMS instance.
     make setup
     ```
     You will be prompted for information.
+
+    > To set the superuser password non-interactively:
+    > ```sh
+    > DJANGO_SUPERUSER_PASSWORD=yourpass make setup
+    > ```
+
 3. [Add Content](#add-content).
 
 ### Manual Setup
@@ -94,7 +101,16 @@ How to set up a new local CMS instance.
     > **Note**
     > This will make the terminal window busy. To run commands after this, **either** open a new terminal window **or** run `make start ARGS="--detach"` instead.
 
-3. Prepare [Django] Application:
+3. Build CSS:
+
+    ```sh
+    docker run --rm -v "$(pwd):/code" -w /code node:18 sh -c "npm ci && npm run build"
+    ```
+
+    > **Note**
+    > If you will develop thus rebuild stylesheets often, use a local Node installation and run `npm ci` once, then `npm run build` as needed.
+
+4. Prepare [Django] Application:
 
     ```sh
     docker exec -it core_cms /bin/bash
@@ -112,7 +128,7 @@ How to set up a new local CMS instance.
 
     ```
 
-4. [Add Content](#add-content).
+5. [Add Content](#add-content).
 
 #### Add Content
 
@@ -144,19 +160,11 @@ make build
 make start
 ```
 
-<details><summary>Advanced</summary>
+To only update as necessary, or update since uncommon changes, read [Command Sequences](docs/command-sequences.md).
 
-To only update as necessary, or update since uncommon changes:
+## Manage Dependencies
 
-| | If this changed | Run this command |
-| - | - | - |
-| 0 | Dockerfile | `make stop`, `make build`, `make start` |
-| 1 | Python models | `docker exec -it core_cms sh -c "python manage.py migrate"` |
-| 2 | Node dependencies | `npm ci` |
-| 3 | CSS stylesheets | `npm run build:css` |
-| 4 | Assets e.g.<br><sub>images, stylesheets, JavaScript</sub> | `docker exec -it core_cms sh -c "python manage.py collectstatic --no-input"` |
-
-</details>
+Read [Manage Dependencies](docs/manage-dependencies.md).
 
 ## Develop Project
 
@@ -223,6 +231,7 @@ To contribute, first read [How to Contribute][Contributing].
 [Develop a Custom Project]: ./docs/develop-custom-project.md
 [Develop a Custom App/Plugin]: ./docs/develop-custom-app.md
 [Develop Project]: ./docs/develop-project.md
+[Manage Dependencies]: ./docs/manage-dependencies.md
 [Upgrade Project]: ./docs/upgrade-project.md
 [Debug Project]: ./docs/debug-project.md
 [Testing]: ./TESTING.md
