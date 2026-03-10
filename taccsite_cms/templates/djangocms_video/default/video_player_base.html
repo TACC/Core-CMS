@@ -3,9 +3,14 @@
 
 {# TACC: responsive wrapper #}
 {% block video_wrap_start %}
-{% if instance.template != 'default' %}
-{% with embed_ratio=instance.template|slice:'10:' %}
-<div class="embed-responsive{% if embed_ratio != 'auto' %} embed-responsive-{{ embed_ratio }}{% endif %}">
+{% if instance.template|slice:":10" == 'responsive' %}
+{% with embed_ratio=instance.template|slice:'11:' %}
+<div class="
+  embed-responsive
+  {% if embed_ratio != 'auto' %}{# embed-responsive-auto is not of Bootstrap #}
+  embed-responsive-{{ embed_ratio }}
+  {% endif %}
+">
 {% endwith %}
 {% endif %}
 {# /TACC #}
