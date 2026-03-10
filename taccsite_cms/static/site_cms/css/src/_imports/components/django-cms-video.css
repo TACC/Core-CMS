@@ -4,7 +4,4 @@
 :is(.embed-responsive-item, embed, iframe, object, video) {
   /* To undo Bootstrap _embed.css */
   position: unset;
-  top: unset;
-  bottom: unset;
-  left: unset;
 }
