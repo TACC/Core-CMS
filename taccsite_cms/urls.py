@@ -29,7 +29,10 @@ urlpatterns = [
     url(r'^', include('djangocms_forms.urls')),
 ]
 
-if getattr(settings, 'PORTAL_IS_TACC_CORE_PORTAL', True):
+if (
+    getattr(settings, 'PORTAL_IS_TACC_CORE_PORTAL', True) or
+    getattr(settings, 'PORTAL_LOADS_NAV', False)
+):
     urlpatterns += [
         # To allow direct access to markup for Portal to render
         url(r'^cms/nav/search/markup/$', TemplateView.as_view(template_name='nav_search.raw.html'), name='search_bar_markup'),
@@ -49,7 +52,10 @@ try:
 except ModuleNotFoundError:
     pass
 
-if getattr(settings, 'PORTAL_IS_TACC_CORE_PORTAL', True):
+if (
+    getattr(settings, 'PORTAL_IS_TACC_CORE_PORTAL', True) or
+    getattr(settings, 'PORTAL_HOSTS_NAV', False)
+):
     urlpatterns += [
         # To provide markup if TACC/Core-Portal is missing
         url(r'^core/markup/nav/$', TemplateView.as_view(template_name='nav_portal.raw.html'), name='portal_nav_markup'),

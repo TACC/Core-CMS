@@ -9,14 +9,17 @@
 
 </ul>
 
-{% if settings.PORTAL_IS_TACC_CORE_PORTAL %}
-<script type="module">
+{% if settings.PORTAL_IS_TACC_CORE_PORTAL or settings.PORTAL_HOSTS_NAV %}
+<script type="module" id="portal-nav-loader">
   import * as importHTML from '/static/site_cms/js/modules/importHTML.js';
 
   const container = document.getElementById('portal-nav');
 
   await importHTML.insertFromURL('/core/markup/nav', container);
-
+</script>
+{% endif %}
+{% if settings.PORTAL_IS_TACC_CORE_PORTAL %}
+<script type="module" id="bootstrap-toggle-compatibility">
   /* Make (Portal) Bootstrap 5 toggle compatible with (CMS) Bootstrap 4 */
   [ ...container.querySelectorAll('[data-bs-toggle]')].forEach(toggle => {
     const portalUsesBootstrap5Toggle = (
