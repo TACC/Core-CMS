@@ -9,6 +9,11 @@ https://github.com/TACC/Core-CMS/blob/main/taccsite_cms/settings/settings_custom
 ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost', '*']   # Local
 # ALLOWED_HOSTS = ['hostname.tacc.utexas.edu', 'client.org'] # Dev/Prod/Etc
 
+# To allow CMS login over http:// in strict browsers (e.g. Safari)
+# FAQ: Firefox is not strict; Chrome is strict, but permits localhost
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
+
 # To manage remote CMS authentication
 CEP_AUTH_VERIFICATION_ENDPOINT = 'http://django:6000'
 LOGIN_REDIRECT_URL = '/'
