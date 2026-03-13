@@ -37,7 +37,7 @@
       {% include "nav_cms.html" with className="navbar-nav  mr-auto" %}
 
       {% if SHOW_SEARCH_BAR %}{% include "nav_search.html" with className="form-inline" settings=settings only %}{% endif %}
-      {% if SHOW_LOGIN_NAV %}{% include "nav_portal.html" with className="navbar-nav" settings=settings only %}{% endif %}
+      {% if SHOW_LOGIN_NAV %}{% include "nav_portal.html" with className="navbar-nav" settings=settings user=user only %}{% endif %}
     {% else %}
       {# FAQ: If template were included with `only`, then it would NOT render `show_menu` #}
       {% include "nav_cms.html" with className="navbar-nav  ml-auto" %}
