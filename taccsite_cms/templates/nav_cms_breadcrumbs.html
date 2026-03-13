@@ -31,13 +31,14 @@
   {# FAQ: Attempts to do this server-side failed cuz useful props are blank #}
   {# https://docs.django-cms.org/en/release-3.11.x/reference/navigation.html#properties-of-navigation-nodes-in-templates #}
   const crumbs = document.getElementById('cms-breadcrumbs');
+  const cmsNav = document.querySelector('.s-cms-nav');
   const secondLink = crumbs && crumbs.querySelector('li:nth-of-type(2) > a');
   if (secondLink) {
     const href = secondLink.getAttribute('href');
-    {# FAQ: A nav item with `href` (and no `dropdown-toggle`) is a navigable page #}
-    {# FAQ: A nav item without `href` (i.e. `href=""`) is a dropdown-only parent page #}
-    const isDirectNavLink = href && document.querySelector(
-      '.s-cms-nav a.nav-link:not(.dropdown-toggle)[href="' + href + '"]'
+    {# FAQ: Nav item with `href` (no `dropdown-toggle`) is to navigable page #}
+    {# FAQ: Nav item sans `href` (e.g. `button`, `href=""`) is dropdown-only #}
+    const isDirectNavLink = href && cmsNav.querySelector(
+      'a.nav-link:not(.dropdown-toggle)[href="' + href + '"]'
     );
     if (!isDirectNavLink) secondLink.removeAttribute('href');
   }
