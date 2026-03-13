@@ -24,7 +24,7 @@
 
 </nav>
 
-{# To disable 2nd-level breadcrumb #}
+{# To disable 2nd-level breadcrumb, unless its page is a direct link in the CMS nav #}
 {# NOTE: Not using `block`, so markup is loaded first #}
 {# NOTE: Not using `block` nor `type="module"`, so effect is quicker #}
 <script>
@@ -32,5 +32,13 @@
   {# https://docs.django-cms.org/en/release-3.11.x/reference/navigation.html#properties-of-navigation-nodes-in-templates #}
   const crumbs = document.getElementById('cms-breadcrumbs');
   const secondLink = crumbs && crumbs.querySelector('li:nth-of-type(2) > a');
-  if (secondLink) secondLink.removeAttribute('href');
+  if (secondLink) {
+    const href = secondLink.getAttribute('href');
+    {# FAQ: A nav item with `href` (and no `dropdown-toggle`) is a navigable page #}
+    {# FAQ: A nav item without `href` (i.e. `href=""`) is a dropdown-only parent page #}
+    const isDirectNavLink = href && document.querySelector(
+      '.s-cms-nav a.nav-link:not(.dropdown-toggle)[href="' + href + '"]'
+    );
+    if (!isDirectNavLink) secondLink.removeAttribute('href');
+  }
 </script>
