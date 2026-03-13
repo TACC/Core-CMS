@@ -39,7 +39,6 @@
       <a
         class="dropdown-item{% if grandchild.selected %} active{% endif %}"
         href="{{ grandchild|get_menu_uri }}"
-        role="menuitem"
         {% target_blank grandchild|get_menu_uri %}
       >
         {{ grandchild.get_menu_title|safe }}
