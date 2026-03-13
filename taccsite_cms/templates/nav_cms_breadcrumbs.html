@@ -37,7 +37,7 @@
     const href = secondLink.getAttribute('href');
     {# FAQ: Nav item with `href` (no `dropdown-toggle`) is to navigable page #}
     {# FAQ: Nav item sans `href` (e.g. `button`, `href=""`) is dropdown-only #}
-    const isDirectNavLink = href && cmsNav.querySelector(
+    const isDirectNavLink = href && cmsNav && cmsNav.querySelector(
       'a.nav-link:not(.dropdown-toggle)[href="' + href + '"]'
     );
     if (!isDirectNavLink) secondLink.removeAttribute('href');
