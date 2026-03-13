@@ -8,7 +8,15 @@
 {% limit_visibility_in_menu child as can_view %}
 {% if can_view %}
 
-<li class="nav-item{% if child.selected or child.ancestor %} active{% endif %}{% if child.children %} dropdown{% endif %}">
+<li class="
+  nav-item
+  {% if child.selected or child.ancestor %}
+  active
+  {% endif %}
+  {% if child.children %}
+  dropdown
+  {% endif %}"
+>
   {% if child.children %}
     <button
       class="nav-link dropdown-toggle"
@@ -28,7 +36,12 @@
       {% limit_visibility_in_menu grandchild as can_view %}
       {% if can_view %}
 
-      <a class="dropdown-item{% if grandchild.selected %} active{% endif %}" href="{{ grandchild|get_menu_uri }}" role="menuitem" {% target_blank grandchild|get_menu_uri %}>
+      <a
+        class="dropdown-item{% if grandchild.selected %} active{% endif %}"
+        href="{{ grandchild|get_menu_uri }}"
+        role="menuitem"
+        {% target_blank grandchild|get_menu_uri %}
+      >
         {{ grandchild.get_menu_title|safe }}
         {% if grandchild.selected %}<span class="sr-only">(current)</span>{% endif %}
       </a>
@@ -37,7 +50,11 @@
       {% endfor %}
     </nav>
   {% else %}
-  <a class="nav-link" href="{{ child|get_menu_uri }}" {% target_blank child|get_menu_uri %}>
+  <a
+    class="nav-link"
+    href="{{ child|get_menu_uri }}"
+    {% target_blank child|get_menu_uri %}
+  >
     {{ child.get_menu_title|safe }}
     {% if child.selected %}<span class="sr-only">(current)</span>{% endif %}
   </a>
