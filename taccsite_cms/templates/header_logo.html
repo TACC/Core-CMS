@@ -21,6 +21,9 @@
     class="navbar-brand {{className}}"
     href="{{ logo.link_href }}"
     target="{{ logo.link_target }}"
+    {% if logo.link_name %}
+    aria-label="{{ logo.link_name }}"
+    {% endif %}
   >
     <img
       class="portal-logo {{ logo.img_class }}"

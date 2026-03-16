@@ -255,6 +255,7 @@ PORTAL_LOGO = {
     "img_file_src": "site_cms/img/logo.svg",
     "img_class": "", # additional class names
     "link_href": "/",
+    "link_name": "Portal Homepage",
     "link_target": "_self",
     "img_alt_text": "Portal Logo",
     "img_crossorigin": "anonymous",
