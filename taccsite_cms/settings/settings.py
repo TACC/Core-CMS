@@ -51,7 +51,7 @@ X_FRAME_OPTIONS = 'SAMEORIGIN'
 # whether the session and csrf cookies should be secure (https:// only)
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
-CSRF_COOKIE_NAME = 'cmscsrftoken'
+CSRF_COOKIE_NAME = 'cmscsrfcookie'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
