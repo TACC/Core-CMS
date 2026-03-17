@@ -560,7 +560,13 @@ CMS_LANGUAGES = {
 }
 
 CMS_PERMISSION = True
-CMS_PLACEHOLDER_CONF = {}
+CMS_PLACEHOLDER_CONF = {
+    'header-content': {
+        'plugins': ['PicturePlugin'],
+        # One plugin with template "Header logo" = logo; any other content = bottom of header
+        'limits': {'global': 10},
+    },
+}
 
 THUMBNAIL_HIGH_RESOLUTION = True
 THUMBNAIL_PROCESSORS = (
