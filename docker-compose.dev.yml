@@ -1,8 +1,7 @@
-version: "3" # https://github.com/compose-spec/compose-spec/blob/3814397/spec.md#version-top-level-element
 services:
   cms:
     build: .
-    image: taccwma/core-portal-cms:latest
+    image: taccwma/core-cms:latest
     volumes:
       - .:/code
     ports:
@@ -31,7 +30,7 @@ services:
       - core_cms_net
 
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.9
     ulimits:
       memlock: -1
     environment:
