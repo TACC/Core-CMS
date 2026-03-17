@@ -5,6 +5,7 @@
 }
 [class*="logos--"] a svg {
   display: block;
+  max-block-size: 500px; /* to avoid unexpectedly giant logos*/
 }
 
 
