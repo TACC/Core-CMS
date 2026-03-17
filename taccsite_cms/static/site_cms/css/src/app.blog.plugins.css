@@ -1,4 +1,3 @@
 /* DO NOT ADD STYLES HERE; ONLY IMPORT OTHER STYLESHEETS */
 
-/* Styles for blog app plugins (not the blog pages which are at only 1 route) */
-@import url("./_imports/components/django.cms.blog.plugins.css");
+@import url("./_imports/components/djangocms_blog/plugins/feed.css");

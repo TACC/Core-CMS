@@ -1,28 +1,8 @@
-/*
-Django CMS Blog App Components
-
-Shared among blog pages and plugins.
-
-Reference:
-
-- [Django CMS Blog App Templates](https://github.com/nephila/djangocms-blog/tree/1.2.3/djangocms_blog/templates/djangocms_blog)
-
-Styleguide Components.DjangoCMS.Blog.App
-*/
 @import url("@tacc/core-styles/dist/djangocms-blog/cms-pagination.css");
 
 @import url("../tools/x-news.css");
 
-@import url("./django.cms.blog.app.page.css");
-@import url("./django.cms.blog.app.item.css");
-@import url("./django.cms.blog.selectors.css");
-
-
-/* Root */
-
-.app-blog {
-  @mixin news;
-}
+@import url("../selectors.css");
 
 
 /* Header */
