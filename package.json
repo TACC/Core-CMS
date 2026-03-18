@@ -21,6 +21,6 @@
   },
   "homepage": "https://github.com/TACC/Core-CMS",
   "devDependencies": {
-    "@tacc/core-styles": "github:TACC/Core-Styles#v2.54.0-rc1"
+    "@tacc/core-styles": "^2.54.0"
   }
 }
