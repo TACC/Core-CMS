@@ -9,7 +9,106 @@ Reference:
 
 Styleguide Components.DjangoCMS.Blog.Plugins
 */
+@import url("@tacc/core-styles/src/lib/_imports/tools/media-queries.css");
 
-/* No styles yet. Not loaded yet. */
-/* HELP: How to load for entire site, but only if blog is installed? */
-/* IDEA: Use Python setting conditional in assets_site.html to load CSS file */
+@import url("../tools/x-news.css");
+
+@import url("./django.cms.blog.selectors.css");
+
+
+
+
+/* ROOT */
+
+/* to enable container queries */
+.plugin-blog {
+    @mixin news;
+
+    container-type: inline-size;
+}
+
+
+
+
+/* FEED: LATEST BLOG ARTICLES */
+
+
+/* Root */
+
+:--news-feed-embed {
+    @mixin news-feed;
+
+    margin-bottom: var(--global-space--bootstrap-gap);
+
+    @mixin news-feed--as-grid;
+
+    gap: var(--global-space--bootstrap-gap);
+
+    @container (min-width: 690px) /* .container width at viewport 768px */ {
+      grid-template-columns: repeat( 3, 1fr );
+    }
+}
+
+
+/* Article */
+
+/* to hide article details (attribution and metadata) */
+:--news-feed-embed article .post-detail {
+    display: none;
+}
+
+/* for article layout */
+:--news-feed-embed article {
+    @mixin news-feed__article;
+
+    & header       { grid-area: head; }
+    & .blog-visual { grid-area: media; }
+    & .blog-lead   { grid-area: lead; }
+
+    @mixin news-feed--grid-layout__article;
+}
+:--news-feed-embed article:not(:has(.blog-visual > *)) {
+    @mixin news-feed__article--no-media;
+}
+
+/* Article - Titles */
+
+/* to style h3 like an h4 */
+:--news-feed-embed article h3 {
+    margin-bottom: 0.5rem; /* Bootstrap _type.css */
+
+    font-size: var(--global-font-size--medium);
+    font-weight: var(--bold);
+}
+:--news-feed-embed article h4 {
+  display: none;
+}
+
+/* Article - Details */
+
+/* to hide stuff that is not in a simple feed */
+:--news-feed-embed article h4,
+:--news-feed-embed article .post-detail {
+    display: none;
+}
+
+/* Article - Visual */
+
+:--news-feed-embed article .blog-visual {
+  @mixin news-feed-article__media;
+  @mixin news-feed-article__media--above-text;
+  @mixin news-feed-article__media--constrain-content;
+}
+
+/* Article - Lead */
+
+:--news-feed-embed article .blog-lead {
+    @mixin news-feed-article__lead;
+}
+
+
+/* Article - Footer */
+
+:--news-feed-embed article .read-more {
+  @mixin news-feed-article__link-overlay;
+}

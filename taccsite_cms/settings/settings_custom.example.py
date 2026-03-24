@@ -27,9 +27,10 @@ AUTH_LDAP_SERVER_URI = "ldap://cluster.ldap.tacc.utexas.edu"
 CMS_TEMPLATES = (
     ('standard.html', 'Standard'),
     ('fullwidth.html', 'Full Width'),
+    ('content.html', 'Content Only'),
 
-    # WARNING: Unintuitive, so only enable as needed e.g. TACC/Core-CMS#868
-    # ('plain.html', 'Plain'),
+    # WARNING: Unintuitive, so only enable as needed
+    # ('plain.html', 'Plain'),          # TACC/Core-CMS#868
 )
 
 ########################
@@ -41,7 +42,7 @@ from taccsite_cms._settings.branding import *
 # Edit this config as needed for the project branding used in the navigation bar header.
 CUSTOM_BRANDING = [
     "portal",
-    "example_cms/img/org_logos/portal.png",
+    "taccsite_custom/static/img/other-funder-logo.svg",
     "branding-logo--short",
     "https://cep.tacc.utexas.edu",
     "_blank",
@@ -70,7 +71,7 @@ PORTAL_BRANDING = [ PORTAL_BRANDING_TACC, PORTAL_BRANDING_UTEXAS ]
 # To hide logo, set `TACC_LOGO = False`.
 PORTAL_LOGO = {
     "is_remote": True,
-    "img_file_src": "https://cdn.jsdelivr.net/gh/TACC/Core-CMS@v4.33.0/taccsite_cms/static/site_cms/img/org_logos/portal.png",
+    "img_file_src": "https://cdn.jsdelivr.net/gh/TACC/Core-CMS-Custom@main/core-portal/img/logo.svg",
     "img_class": "", # additional class names
     "link_href": "/",
     "link_target": "_self",
@@ -79,12 +80,23 @@ PORTAL_LOGO = {
 }
 
 # Edit this config as needed for the project favicon used in the browser navbar.
-# If `INCLUDES_CORE_PORTAL = True` and you set `FAVICON`, then:
+# If `INCLUDES_CORE_PORTAL = True` and you set `PORTAL_FAVICON`, then:
 # https://github.com/TACC/Core-CMS-Custom/blob/d4c93af/docs/port-project.md#has-a-core-portal
 PORTAL_FAVICON = {
     "is_remote": True,
     "img_file_src": "https://cdn.jsdelivr.net/gh/TACC/Core-CMS@v4.33.0/taccsite_cms/static/site_cms/img/favicons/favicon.ico",
 }
+# The PORTAL_FAVICON_HTML takes precedence over PORTAL_FAVICON,
+# This HTML is like output from https://realfavicongenerator.net/ circa 2025-09
+# favicon_path = "https://cdn.jsdelivr.net/gh/TACC/Core-CMS-Custom@________/________/favicon/"
+# PORTAL_FAVICON_HTML = f'''
+#     <link rel="icon" type="image/png" href="{favicon_path}favicon-96x96.png" sizes="96x96" />
+#     <link rel="icon" type="image/svg+xml" href="{favicon_path}favicon.svg" />
+#     <link rel="shortcut icon" href="{favicon_path}favicon.ico" />
+#     <link rel="apple-touch-icon" sizes="180x180" href="{favicon_path}apple-touch-icon.png" />
+#     <meta name="apple-mobile-web-app-title" content="________" />
+#     <link rel="manifest" href="{favicon_path}site.webmanifest" />
+# '''
 
 ########################
 # SEARCH
@@ -101,16 +113,16 @@ GOOGLE_SEARCH_ENGINE_ID = ''
 # DJANGOCMS_BLOG
 ########################
 
-BLOG_AUTO_SETUP = True # Set to False after setup (minimize overhead)
-BLOG_AUTO_HOME_TITLE ='Home'
-BLOG_AUTO_BLOG_TITLE = 'News'
-BLOG_AUTO_APP_TITLE = 'News'
-BLOG_AUTO_NAMESPACE = 'News'
-BLOG_ENABLE_COMMENTS = False
+# BLOG_AUTO_SETUP = True # Set to False after setup (minimize overhead)
+# BLOG_AUTO_HOME_TITLE ='Home'
+# BLOG_AUTO_BLOG_TITLE = 'News'
+# BLOG_AUTO_APP_TITLE = 'News'
+# BLOG_AUTO_NAMESPACE = 'News'
+# BLOG_ENABLE_COMMENTS = False
 
 ########################
 # DJANGOCMS_BLOG: TACC
 ########################
 
-PORTAL_BLOG_SHOW_CATEGORIES = True
-PORTAL_BLOG_SHOW_TAGS = True
+PORTAL_BLOG_SHOW_CATEGORIES = False
+PORTAL_BLOG_SHOW_TAGS = False

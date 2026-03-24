@@ -2,11 +2,16 @@
 
 /* To make these selectors easier to remember (rather than add classnames) */
 /* FAQ: Avoiding changing blog templates to limit app upgrade maintenance */
-@custom-selector :--article article;
-@custom-selector :--article-page article.post-detail;
-@custom-selector :--article-list .blog-list;
-@custom-selector :--article-list--as-list :--article-list:not(.as-grid);
-@custom-selector :--article-list--as-grid :--article-list.as-grid;
-@custom-selector :--article-item :--article-list article;
-@custom-selector :--article-item--in-list :--article-list--as-list article;
-@custom-selector :--article-item--in-grid :--article-list--as-grid article;
+@custom-selector :--news-article-page article.post-detail;
+
+@custom-selector :--news-feed-page .blog-list;
+@custom-selector :--news-feed-page--as-list :--news-feed-page:not(.as-grid);
+@custom-selector :--news-feed-page--as-grid :--news-feed-page.as-grid;
+
+@custom-selector :--news-article-item :--news-feed-page article;
+@custom-selector :--news-article-item--in-list :--news-feed-page--as-list article;
+@custom-selector :--news-article-item--in-grid :--news-feed-page--as-grid article;
+
+@custom-selector :--news-feed-embed
+  .blog-latest-entries,
+  .blog-featured-posts;

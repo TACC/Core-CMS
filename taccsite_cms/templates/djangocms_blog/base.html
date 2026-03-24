@@ -1,17 +1,8 @@
 {# https://github.com/nephila/djangocms-blog/blob/1.2.3/djangocms_blog/templates/djangocms_blog/base.html #}
 {% extends CMS_TEMPLATE %}
-{% load static %}
-
-{# FAQ: To ensure Blog page shows metadata (instruction from maintainer) #}
-{# SEE: https://github.com/nephila/djangocms-blog/issues/613#issuecomment-681147460 #}
-{# TODO: Update blog to ≥1.2.0, remove this block, test meta still works #}
-{% block meta %}
-    {% if meta %}
-        {% include "meta/meta.html" %}
-    {% else %}
-        {{ block.super }}
-    {% endif %}
-{% endblock meta %}
+{# TACC (to add blog styles): #}
+{% load static sekizai_tags %}
+{# /TACC #}
 
 {# TACC (to not let editor add content to every blog page): #}
 {% block cms_content %}{% endblock cms_content %}
@@ -21,7 +12,9 @@
 {% block app_content %}
 {# /TACC #}
 
-{% block assets_app %}
+{# TACC (to add blog styles): #}
+{% block assets_blog %}
+{% addtoblock "css" %}
 {% if settings.TACC_CORE_STYLES_VERSION == 0 %}
 <style>
   @import url("{% static 'site_cms/css/build/site.app.blog.css' %}") layer(project.core);
@@ -31,7 +24,9 @@
   @import url("{% static 'site_cms/css/build/app.blog.css' %}") layer(project);
 </style>
 {% endif %}
-{% endblock assets_app %}
+{% endaddtoblock %}
+{% endblock assets_blog %}
+{# /TACC #}
 
 <div class="app app-blog
   {% if not settings.PORTAL_BLOG_SHOW_CATEGORIES %}no-categories{% endif %}

@@ -11,9 +11,11 @@ The base CMS code for TACC WMA Workspace Portals & Websites
 - [Prerequisites](#prerequisites)
 - [Getting Started](#getting-started)
 - [Update Project](#update-project)
+- [Manage Dependencies](#manage-dependencies)
 - [Develop Project](#develop-project)
   - [Develop a Custom Project](#develop-a-custom-project)
   - [Develop a Custom App/Plugin](#develop-a-custom-appplugin)
+- [Test Project](#test-project)
 - [Debug Project](#debug-project)
 - [Build & Deploy Project](#build--deploy-project)
 - [Contributing](#contributing)
@@ -34,7 +36,7 @@ The base CMS code for TACC WMA Workspace Portals & Websites
 | - | - |
 | `apps` | additional Django applications |
 | `bin` | scripts e.g. build CSS |
-| `taccsite_cms` | settings for [Core CMS] |
+| `taccsite_cms` | customize & configure [Django CMS] |
 
 ## Prerequisites
 
@@ -67,6 +69,12 @@ How to set up a new local CMS instance.
     make setup
     ```
     You will be prompted for information.
+
+    > To set the superuser password non-interactively:
+    > ```sh
+    > DJANGO_SUPERUSER_PASSWORD=yourpass make setup
+    > ```
+
 3. [Add Content](#add-content).
 
 ### Manual Setup
@@ -76,12 +84,12 @@ How to set up a new local CMS instance.
 
 1. Configure [Django] Application:
 
-    Create a `taccsite_cms/*.py` for every `*.example.py`, e.g.
+    Create a `taccsite_cms/settings/*.py` for every `taccsite_cms/settings/*.example.py`, e.g.
 
     ```sh
-    cp taccsite_cms/settings_custom.example.py taccsite_cms/settings_custom.py
-    cp taccsite_cms/secrets.example.py taccsite_cms/secrets.py
-    cp taccsite_cms/settings_local.example.py taccsite_cms/settings_local.py
+    cp taccsite_cms/settings/settings_custom.example.py taccsite_cms/settings/settings_custom.py
+    cp taccsite_cms/settings/secrets.example.py taccsite_cms/settings/secrets.py
+    cp taccsite_cms/settings/settings_local.example.py taccsite_cms/settings/settings_local.py
     ```
 
 2. Start [Docker] Containers:
@@ -93,7 +101,16 @@ How to set up a new local CMS instance.
     > **Note**
     > This will make the terminal window busy. To run commands after this, **either** open a new terminal window **or** run `make start ARGS="--detach"` instead.
 
-3. Prepare [Django] Application:
+3. Build CSS:
+
+    ```sh
+    docker run --rm -v "$(pwd):/code" -w /code node:18 sh -c "npm ci && npm run build"
+    ```
+
+    > **Note**
+    > If you will develop thus rebuild stylesheets often, use a local Node installation and run `npm ci` once, then `npm run build` as needed.
+
+4. Prepare [Django] Application:
 
     ```sh
     docker exec -it core_cms /bin/bash
@@ -111,7 +128,7 @@ How to set up a new local CMS instance.
 
     ```
 
-4. [Add Content](#add-content).
+5. [Add Content](#add-content).
 
 #### Add Content
 
@@ -143,19 +160,11 @@ make build
 make start
 ```
 
-<details><summary>Advanced</summary>
+To only update as necessary, or update since uncommon changes, read [Command Sequences](docs/command-sequences.md).
 
-To only update as necessary, or update since uncommon changes:
+## Manage Dependencies
 
-| | If this changed | Run this command |
-| - | - | - |
-| 0 | Dockerfile | `make stop`, `make build`, `make start` |
-| 1 | Python models | `docker exec -it core_cms sh -c "python manage.py migrate"` |
-| 2 | Node dependencies | `npm ci` |
-| 3 | CSS stylesheets | `npm run build:css` |
-| 4 | Assets e.g.<br><sub>images, stylesheets, JavaScript</sub> | `docker exec -it core_cms sh -c "python manage.py collectstatic --no-input"` |
-
-</details>
+Read [Manage Dependencies](docs/manage-dependencies.md).
 
 ## Develop Project
 
@@ -171,6 +180,10 @@ To develop a new or existing custom CMS website for a client, read [Develop a Cu
 
 To develop a new or existing Django CMS app or plugin for a client, read [Develop a Custom App/Plugin].
 
+## Test Project
+
+Read [Testing] for miscellaneous workflows.
+
 ## Debug Project
 
 Read [Debug Project] for miscellaneous tips.
@@ -181,7 +194,7 @@ Follow "Core-CMS" section of [How To Build & Deploy][Build & Deploy Project].
 
 ## Contributing
 
-To contribute, first read [How to Contirbute][Contributing].
+To contribute, first read [How to Contribute][Contributing].
 
 ## Resources
 
@@ -219,6 +232,8 @@ To contribute, first read [How to Contirbute][Contributing].
 [Develop a Custom Project]: ./docs/develop-custom-project.md
 [Develop a Custom App/Plugin]: ./docs/develop-custom-app.md
 [Develop Project]: ./docs/develop-project.md
+[Manage Dependencies]: ./docs/manage-dependencies.md
 [Upgrade Project]: ./docs/upgrade-project.md
 [Debug Project]: ./docs/debug-project.md
-[Contributing]: ./docs/contributing.md
+[Testing]: ./TESTING.md
+[Contributing]: ./CONTRIBUTING.md

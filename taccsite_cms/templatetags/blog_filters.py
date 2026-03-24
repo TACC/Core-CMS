@@ -5,7 +5,7 @@ PORTAL_BLOG_CATEGORY_ORDER = settings.PORTAL_BLOG_CATEGORY_ORDER
 register = template.Library()
 
 @register.filter
-def filter_categories(categories):
+def sort_blog_categories(categories):
 
     # Create a dictionary to store the indices of elements in the ordered list
     order_indices = {element: index for index, element in enumerate(PORTAL_BLOG_CATEGORY_ORDER)}

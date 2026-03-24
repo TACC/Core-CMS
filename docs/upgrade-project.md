@@ -1,5 +1,6 @@
 # Upgrade Project
 
+- [from v4.28 to v4.29](#from-v428-to-v429)
 - [from v4.N to v4.14](#from-v4n-to-v414)
 - [from v4.N to v4.13](#from-v4n-to-v413)
 - [from v4.N to v4.12](#from-v4n-to-v412)
@@ -43,6 +44,16 @@ Optional:
 
 [^1]: The `cms.settings_custom.py` is committed in [Core Portal Deployments]. A `settings_custom.py` in [Core CMS Custom] is `.gitignore`'d.
 
+## from v4.28 to v4.29
+
+- [Rename `assets_core_project` Template Block](#rename-assets_core_project-template-block)
+
+### Rename `assets_core_project` Template Block
+
+| from | to |
+| - | - |
+| `assets_core_project` | `assets_project` |
+
 ## from v4.N to v4.14
 
 - [Rename `PORTAL_ES_ENABLED` Setting](#rename-portal_es_enabled-settings)
@@ -83,7 +94,7 @@ Refactor the `BRANDING` array to a `PORTAL_BRANDING` dict:
 -
 - CUSTOM_BRANDING = [
 -     "portal",
--     "custom-project_cms/img/org_logos/custom-project-logo.png",
+-     "…/other-funder-logo.png",
 -     "",
 -     "/",
 -     "_self",
@@ -97,7 +108,7 @@ Refactor the `BRANDING` array to a `PORTAL_BRANDING` dict:
 +
 + CUSTOM_BRANDING = {
 +     "is_remote": True,
-+     "img_file_src": "https://cdn.jsdelivr.net/gh/TACC/Core-CMS-Custom@______/custom-project_assets/custom-project-logo.png",
++     "img_file_src": "…/other-funder-logo.png",
 +     "img_class": "", # additional class names
 +     "link_href": "/",
 +     "link_target": "_self",
@@ -113,7 +124,7 @@ Refactor the `BRANDING` array to a `PORTAL_BRANDING` dict:
 | | from Array Value | to Dict Property |
 | - | - | - |
 | 0 | "portal"                  | (unused value) |
-| 1 | "site_cms/.../portal.png" | `"img_file_src"` |
+| 1 | "…/other-funder-logo.svg" | `"img_file_src"` |
 | 2 | ""                        | `"img_class"` |
 | 3 | "/"                       | `"link_href"` |
 | 4 | "_self"                   | `"link_target"` |
@@ -171,7 +182,7 @@ Refactor the `LOGO` array to a `PORTAL_LOGO` dict:
 ```diff
 - LOGO = [
 -     "portal",
--     "site_cms/img/org_logos/portal.png",
+-     "…/logo.svg",
 -     "",
 -     "/",
 -     "_self",
@@ -181,7 +192,7 @@ Refactor the `LOGO` array to a `PORTAL_LOGO` dict:
 - ]
 + PORTAL_LOGO = {
 +     "is_remote": False,
-+     "img_file_src": "site_cms/img/org_logos/portal.png",
++     "img_file_src": "…/logo.svg",
 +     "img_class": "", # additional class names
 +     "link_href": "/",
 +     "link_target": "_self",
@@ -195,7 +206,7 @@ Refactor the `LOGO` array to a `PORTAL_LOGO` dict:
 | | from Array Value | to Dict Property |
 | - | - | - |
 | 0 | "portal"                  | (unused value) |
-| 1 | "site_cms/.../portal.png" | `"img_file_src"` |
+| 1 | "…/logo.svg"              | `"img_file_src"` |
 | 2 | ""                        | `"img_class"` |
 | 3 | "/"                       | `"link_href"` |
 | 4 | "_self"                   | `"link_target"` |

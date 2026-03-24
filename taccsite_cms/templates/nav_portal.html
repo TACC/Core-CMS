@@ -1,13 +1,15 @@
-{# @var className #}
+{# @var className, settings #}
 
 {# WARNING: Some markup is duplicated in other repositories #}
 {# SEE: https://confluence.tacc.utexas.edu/x/LoCnCQ #}
 <ul class="s-portal-nav  {{ className }}" id="portal-nav">
 
-  <!-- All Portal-controlled nav elements handled here. -->
-  {# FAQ: Content populated via JavaScript, below #}
+  {# This content can be replaced by JavaScript below #}
+  {% include "./nav_portal.raw.html" %}
 
 </ul>
+
+{% if settings.PORTAL_IS_TACC_CORE_PORTAL %}
 <script type="module">
   import * as importHTML from '/static/site_cms/js/modules/importHTML.js';
 
@@ -42,3 +44,4 @@
     )
   });
 </script>
+{% endif %}

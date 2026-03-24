@@ -29,15 +29,6 @@ try:
         }
     )
 
-    # To signal to users that plugin is not desirable
-    Bootstrap4LinkPlugin.name = _('⚠️ Link / Button')
-    Bootstrap4LinkPlugin.fieldsets.insert(0, (
-        None, {
-            'description': _('⚠️ This plugin is <strong>deprecated</strong>. Please use "Generic" > "Link" plugin instead.<br /><small>If the "Generic" > "Link" plugin is inadequate, please inform the CMS development team.</small>'),
-            'fields': ()
-        }
-    ))
-
     # To re-register generic Link plugin
     # SEE: https://github.com/django-cms/djangocms-bootstrap4/blob/master/djangocms_bootstrap4/contrib/bootstrap4_link/cms_plugins.py#L81
     plugin_pool.register_plugin(LinkPlugin)

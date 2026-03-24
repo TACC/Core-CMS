@@ -13,32 +13,28 @@ IMP='\033[1m'    # important
 
 # Define paths
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PROJECT_ROOT="${SCRIPT_DIR}/../"
-SRC_ROOT="${SCRIPT_DIR}/../"
+PROJECT_ROOT="${SCRIPT_DIR}/.."
+SRC_ROOT="${SCRIPT_DIR}/.." # different so TACC/Core-CMS-Custom can adjust
 
 # Configure fallback for settings
 VERSION="main"
 BASE_URL="https://cdn.jsdelivr.net/gh/TACC/Core-CMS@${VERSION}"
-CREATE_VAR_FILES=false
+
+# Pin Node image version (must match Dockerfile's FROM node:XX)
+NODE_IMAGE="node:18"
 
 # Functions
-check_for_curl() {
-    if ! command -v curl &> /dev/null; then
-        echo -e "${NEG}Error: curl is not installed but is required for downloading remote files.${RST}"
-        echo "Please install curl and try again."
-        exit 1
-    fi
-}
 download_file() {
     local url="$1"
     local output_file="$2"
     local description="$3"
 
-    check_for_curl
+    DOWNLOAD_CMD="curl -fL \"$url\" -o \"$output_file\""
 
     echo -e "  ${INF}Downloading ${description}...${RST}"
+    echo -e "  ${DOWNLOAD_CMD}"
 
-    if curl -sL "$url" -o "$output_file"; then
+    if eval $DOWNLOAD_CMD; then
         if [ -s "$output_file" ]; then
             echo -e "  ${POS}Successfully downloaded ${description}${RST}"
             return 0
@@ -48,7 +44,6 @@ download_file() {
             return 1
         fi
     else
-        echo -e "  ${NEG}Error: Failed to download ${description} from ${url}${RST}"
         return 1
     fi
 }
@@ -81,11 +76,11 @@ fi
 
 # Check for required settings files (local first, then remote)
 echo -e "${INF}Checking for required settings files...${RST}"
-
+FAILED_DOWNLOADS=()
 for file in settings_custom settings_local secrets; do
-    settings_file="taccsite_cms/${file}.py"
-    example_file="taccsite_cms/${file}.example.py"
-    url="${BASE_URL}/taccsite_cms/${file}.example.py"
+    settings_file="taccsite_cms/settings/${file}.py"
+    example_file="taccsite_cms/settings/${file}.example.py"
+    url="${BASE_URL}/taccsite_cms/settings/${file}.example.py"
 
     if [ ! -f "$settings_file" ]; then
         if [ -f "$example_file" ]; then
@@ -93,15 +88,32 @@ for file in settings_custom settings_local secrets; do
             cp "$example_file" "$settings_file"
         else
             echo -e "  ${WRN}Local ${example_file} not found, downloading directly to ${settings_file}...${RST}"
-            if ! download_file "$url" "$settings_file" "${file}.py"; then
-                echo -e "${NEG}Error: Failed to download ${settings_file}${RST}"
-                exit 1
+            if ! download_file "$url" "${SRC_ROOT}/$settings_file" "${file}.py"; then
+                FAILED_DOWNLOADS+=("${file}|${url}|${settings_file}")
             fi
         fi
     else
         echo -e "  ${INF}${settings_file} already exists${RST}"
     fi
 done
+if [ ${#FAILED_DOWNLOADS[@]} -gt 0 ]; then
+    echo -e ""
+    echo -e "${NEG}Failed to download ${#FAILED_DOWNLOADS[@]} file(s):${RST}"
+    echo -e ""
+    for failure in "${FAILED_DOWNLOADS[@]}"; do
+        IFS='|' read -r file url settings_file <<< "$failure"
+        echo -e "  ${NEG}✗ ${file}.py${RST}"
+        echo -e "    ${INF}URL: ${url}${RST}"
+        echo -e "    ${INF}Save to: ${SRC_ROOT}/${settings_file}${RST}"
+    done
+    echo -e ""
+    echo -e "${WRN}Resolution:${RST}"
+    echo -e "${WRN}1. Download each file listed above.${RST}"
+    echo -e "${WRN}2. Save each file to the corresponding path shown.${RST}"
+    echo -e "${WRN}3. Re-run this setup script.${RST}"
+    echo -e ""
+    exit 1
+fi
 
 # Build and start Docker containers (from project root)
 echo -e "${INF}Building and starting Docker containers...${RST}"
@@ -150,7 +162,7 @@ done
 
 # Run Django setup commands
 echo -e "${INF}Setting up Django...${RST}"
-docker exec -it core_cms sh -c "python manage.py migrate"
+docker exec core_cms sh -c "python manage.py migrate"
 
 # Check whether to let user create superuser
 echo -e "${INF}Checking for existing superuser...${RST}"
@@ -160,22 +172,41 @@ HAS_SUPERUSER_CMD="python manage.py shell -c \"from django.contrib.auth import g
 HAS_SUPERUSER=$(docker exec core_cms sh -c "$HAS_SUPERUSER_CMD")
 
 # Check for / Create a superuser
+SUPERUSER_CREDS_NOTE="the credentials you created"
 if [ "$HAS_SUPERUSER" != "True" ]; then
-    echo -e "${INF}No superuser found. Letting you create one...${RST}"
-    docker exec -it core_cms sh -c "python manage.py createsuperuser"
+    if [ -n "$DJANGO_SUPERUSER_PASSWORD" ]; then
+        echo -e "${INF}No superuser found. Creating superuser...${RST}"
+        docker exec -e DJANGO_SUPERUSER_PASSWORD="$DJANGO_SUPERUSER_PASSWORD" core_cms python manage.py createsuperuser --no-input --username admin --email admin@localhost
+        SUPERUSER_CREDS_NOTE="username ${IMP}admin${RST}${POS} and the password you provided"
+    elif [ -t 0 ]; then
+        echo -e "${INF}No superuser found. Letting you create one...${RST}"
+        docker exec -it core_cms sh -c "python manage.py createsuperuser"
+    else
+        echo -e "${NEG}Error: No TTY and DJANGO_SUPERUSER_PASSWORD is not set.${RST}"
+        echo "Set it before running setup, e.g.:"
+        echo "  DJANGO_SUPERUSER_PASSWORD=yourpass make setup"
+        exit 1
+    fi
 else
     echo -e "${INF}Superuser already exists. Skipping creation.${RST}"
+    SUPERUSER_CREDS_NOTE="your existing superuser credentials"
 fi
+
+# Build CSS via Docker
+# FAQ: To rebuild CSS via ad-hoc Node container, because
+#      `docker-compose.dev.yml` mounts `.:/code` which erases pre-built CSS   
+echo -e "${INF}Building CSS...${RST}"
+docker run --rm -v "$PROJECT_ROOT:/code" -w /code "$NODE_IMAGE" sh -c "npm ci && npm run build"
 
 # Collect static files
 echo -e "${INF}Preparing static files...${RST}"
-docker exec -it core_cms sh -c "python manage.py collectstatic --no-input"
+docker exec core_cms sh -c "python manage.py collectstatic --no-input"
 
 # Announce end
 echo -e "${POS}
 ${IMP}Setup complete! You can now:${RST}${POS}
 1. Open http://localhost:8000/ in your browser.
-2. Log in with the credentials you just created.
+2. Log in with ${SUPERUSER_CREDS_NOTE}.
 3. Create your first CMS page (this will be your homepage).
 
 To stop the CMS, run:

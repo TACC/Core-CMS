@@ -4,12 +4,17 @@ Read [Django CMS User Guide] for CMS user instructions.
 
 ## Table of Contents
 
+- [Manage Dependencies](#manage-dependencies)
 - [Add Styles & Scripts](#add-styles--scripts)
 - [Build Static Files](#build-static-files)
 - [Collect Static Files](#collect-static-files)
 - [Customize & Translate Text](#customize--translate-text)
 - [Review Patterns from Core Styles](#review-patterns-in-core-styles)
 - [Develop with Core Styles Simultaneously](#develop-with-core-styles-simultaneously)
+
+## Manage Dependencies
+
+Read [Manage Dependencies](docs/manage-dependencies.md).
 
 ## Add Styles & Scripts
 
@@ -61,7 +66,7 @@ docker exec -it core_cms sh -c "python manage.py collectstatic --no-input"
 
 ## Customize & Translate Text
 
-1. Create file:\
+1. Edit file:\
     `/taccsite_cms/locale/en/LC_MESSAGES/django.po`
 2. Add to the file only:
     - the strings to translate
@@ -93,9 +98,9 @@ See https://tacc.github.io/Core-Styles.
     ```
 1. Checkout [Core Styles] at that version, e.g.:
     ```shell
-    git checkout v2.43.1
+    git checkout v2.47.2
     ```
-2. Follow [Core Styles "Quick Start"](https://github.com/TACC/Core-Styles/blob/v2.43.2/README.md#quick-start) up to `npm start`.
+2. Follow [Core Styles "Quick Start"](https://github.com/TACC/Core-Styles/blob/v2.47.2/README.md#quick-start) up to `npm start`.
 
 ## Develop with [Core Styles] Simultaneously
 

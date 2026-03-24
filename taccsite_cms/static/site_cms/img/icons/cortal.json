@@ -1,6 +1,7 @@
 {
+    "svg": false,
+    "spritePath": "",
     "iconClass": "icon",
-    "// icons": "https://github.com/TACC/Core-Styles/blob/main/src/lib/_imports/components/cortal.icon.font.css",
     "icons": [
         "icon-add-file",
         "icon-alert",
@@ -97,7 +98,7 @@
         "icon-add-folder",
         "icon-add-project",
         "icon-extract",
-        "icon-compress",
-        "icon-pytorch"
-    ]
+        "icon-compress"
+    ],
+    "// icons": "https://github.com/TACC/Core-Styles/blob/v2.47.2/src/lib/_imports/components/cortal-icon-font.css#L77-L463"
 }
