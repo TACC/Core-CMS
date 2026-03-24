@@ -37,7 +37,7 @@ DJANGO_SUPERUSER_PASSWORD=yourpass make setup
 - **Settings files** are gitignored. Created from `*.example.py` by `bin/setup-cms.sh` or manually.
 - The `secrets.py` Elasticsearch host should be `core_cms_elasticsearch` (the Docker hostname), not `elasticsearch`.
 - Docker commands may need `sudo` depending on the environment.
-- **Elasticsearch cgroups v2:** ES 7.17.0 crashes on kernels with cgroups v2 (`CgroupV2Subsystem` NPE). Use ES 7.17.9+ in `docker-compose.dev.yml`.
+- **Elasticsearch cgroups v2:** ES 7.17.0 crashes on kernels with cgroups v2 (`CgroupV2Subsystem` NPE). Use ES 7.17.9+ in `docker-compose.agent.yml`.
 - **Postgres secret files:** `docker-compose.dev.yml` mounts `./conf/postgres/*.secret` files. These are not required for development and can be ignored.
 
 ### Lint, test, build
