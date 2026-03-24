@@ -34,6 +34,9 @@ custom_app_settings.py
 *.custom.yml
 urls_custom.py
 
+# Postgres secret files (not required for dev)
+conf/postgres/*.secret
+
 # Agents
 docker-compose.agent.yml
 
