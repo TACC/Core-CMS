@@ -131,7 +131,7 @@ class Command(BaseCommand):
 
         page = create_page(
             title=PAGE_TITLE,
-            template='INHERIT',
+            template='standard.html',
             language=LANG,
             slug=PAGE_SLUG,
             published=False,
@@ -192,10 +192,17 @@ class Command(BaseCommand):
                 f'Wrapper: <code>{wrapper_display}</code></p>'
             ),
         )
+        # Use default template for linked cases: its picture_link_end block
+        # correctly closes </a> when picture_link is truthy.
+        # Use no_link_to_ext_image only when there is no link, to suppress
+        # the external_picture URL from auto-becoming the href.
+        # (Combining link_url + no_link_to_ext_image leaves <a> unclosed
+        # because that template's picture_link_end is unconditionally empty.)
+        template = 'default' if has_link else 'no_link_to_ext_image'
         add_plugin(
             placeholder, 'PicturePlugin', LANG,
             external_picture=EXT_IMAGE,
-            template='no_link_to_ext_image',
+            template=template,
             attributes=attrs,
             link_url=LINK_URL if has_link else '',
             link_target='_blank' if has_link else '',
