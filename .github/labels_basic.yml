@@ -12,6 +12,10 @@
 # + "paused"
 # + "proposal"
 
+- name: accessibility
+  color: 'FA8122'
+  description: Accessibility degraded or unavailable
+
 - name: blocked
   color: 'FA8122'
   description: Unable to begin or continue work
