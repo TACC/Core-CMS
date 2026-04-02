@@ -13,7 +13,7 @@
 <nav class="s-breadcrumbs  {{className}}" id="cms-breadcrumbs">
 
   {# To support structured data, item* attributes are used #}
-  {# SEE: https://confluence.tacc.utexas.edu/x/5yMFDg #}
+  {# SEE: https://tacc-main.atlassian.net/wiki/x/_QVv #}
   <ol itemscope itemtype="https://schema.org/BreadcrumbList">
 
     {# To include pages marked to not show in menu, attributes are added #}
@@ -24,13 +24,22 @@
 
 </nav>
 
-{# To disable 2nd-level breadcrumb #}
+{# To disable 2nd-level breadcrumb, unless its page is a direct link in the CMS nav #}
 {# NOTE: Not using `block`, so markup is loaded first #}
 {# NOTE: Not using `block` nor `type="module"`, so effect is quicker #}
 <script>
   {# FAQ: Attempts to do this server-side failed cuz useful props are blank #}
   {# https://docs.django-cms.org/en/release-3.11.x/reference/navigation.html#properties-of-navigation-nodes-in-templates #}
   const crumbs = document.getElementById('cms-breadcrumbs');
+  const cmsNav = document.querySelector('.s-cms-nav');
   const secondLink = crumbs && crumbs.querySelector('li:nth-of-type(2) > a');
-  if (secondLink) secondLink.removeAttribute('href');
+  if (secondLink) {
+    const href = secondLink.getAttribute('href');
+    {# FAQ: Nav item with `href` (no `dropdown-toggle`) is to navigable page #}
+    {# FAQ: Nav item sans `href` (e.g. `button`, `href=""`) is dropdown-only #}
+    const isDirectNavLink = href && cmsNav && cmsNav.querySelector(
+      'a.nav-link:not(.dropdown-toggle)[href="' + href + '"]'
+    );
+    if (!isDirectNavLink) secondLink.removeAttribute('href');
+  }
 </script>

@@ -51,6 +51,7 @@ X_FRAME_OPTIONS = 'SAMEORIGIN'
 # whether the session and csrf cookies should be secure (https:// only)
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_NAME = 'cmscsrfcookie'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
@@ -254,6 +255,7 @@ PORTAL_LOGO = {
     "img_file_src": "site_cms/img/logo.svg",
     "img_class": "", # additional class names
     "link_href": "/",
+    "link_name": "Portal Homepage",
     "link_target": "_self",
     "img_alt_text": "Portal Logo",
     "img_crossorigin": "anonymous",

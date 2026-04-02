@@ -1,5 +1,6 @@
 # Upgrade Project
 
+- [from v4.28 to v4.29](#from-v428-to-v429)
 - [from v4.N to v4.14](#from-v4n-to-v414)
 - [from v4.N to v4.13](#from-v4n-to-v413)
 - [from v4.N to v4.12](#from-v4n-to-v412)
@@ -42,6 +43,16 @@ Optional:
     - [Core Portal Deployments]:`/project_dir/camino/cms.settings_custom.py` [^1]
 
 [^1]: The `cms.settings_custom.py` is committed in [Core Portal Deployments]. A `settings_custom.py` in [Core CMS Custom] is `.gitignore`'d.
+
+## from v4.28 to v4.29
+
+- [Rename `assets_core_project` Template Block](#rename-assets_core_project-template-block)
+
+### Rename `assets_core_project` Template Block
+
+| from | to |
+| - | - |
+| `assets_core_project` | `assets_project` |
 
 ## from v4.N to v4.14
 
@@ -87,7 +98,7 @@ Refactor the `BRANDING` array to a `PORTAL_BRANDING` dict:
 -     "",
 -     "/",
 -     "_self",
--     "Custom Project Logo",
+-     "Other Funder Logo",
 -     "anonymous",
 -     "True"
 - ]
@@ -101,7 +112,8 @@ Refactor the `BRANDING` array to a `PORTAL_BRANDING` dict:
 +     "img_class": "", # additional class names
 +     "link_href": "/",
 +     "link_target": "_self",
-+     "img_alt_text": "Portal Logo",
++     "link_name": "Other Funder Homepage",
++     "img_alt_text": "Other Funder Logo",
 +     "img_crossorigin": "anonymous",
 + } # To hide logo, set `PORTAL_LOGO = False`
 +
@@ -185,6 +197,7 @@ Refactor the `LOGO` array to a `PORTAL_LOGO` dict:
 +     "img_class": "", # additional class names
 +     "link_href": "/",
 +     "link_target": "_self",
++     "link_name": "Portal Homepage",
 +     "img_alt_text": "Portal Logo",
 +     "img_crossorigin": "anonymous",
 + } # To hide logo, set `PORTAL_LOGO = False`

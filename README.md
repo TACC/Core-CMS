@@ -11,6 +11,7 @@ The base CMS code for TACC WMA Workspace Portals & Websites
 - [Prerequisites](#prerequisites)
 - [Getting Started](#getting-started)
 - [Update Project](#update-project)
+- [Manage Dependencies](#manage-dependencies)
 - [Develop Project](#develop-project)
   - [Develop a Custom Project](#develop-a-custom-project)
   - [Develop a Custom App/Plugin](#develop-a-custom-appplugin)
@@ -159,21 +160,11 @@ make build
 make start
 ```
 
-<details><summary>Advanced</summary>
+To only update as necessary, or update since uncommon changes, read [Command Sequences](docs/command-sequences.md).
 
-To only update as necessary, or update since uncommon changes:
+## Manage Dependencies
 
-| | If this changed | Run this command |
-| - | - | - |
-| 0 | Dockerfile | `make stop`, `make build`, `make start` |
-| 1 | Python models | `docker exec -it core_cms sh -c "python manage.py migrate"` |
-| 2 | Node dependencies* | `npm ci` |
-| 3 | CSS stylesheets* | `npm run build:css` |
-| 4 | Assets e.g.<br><sub>images, stylesheets, JavaScript</sub> | `docker exec -it core_cms sh -c "python manage.py collectstatic --no-input"` |
-
-\* If you do not want to use Node locally, then run `docker run --rm -v "$(pwd):/code" -w /code node:18 sh -c "npm ci && npm run build"`
-
-</details>
+Read [Manage Dependencies](docs/manage-dependencies.md).
 
 ## Develop Project
 
@@ -240,6 +231,7 @@ To contribute, first read [How to Contribute][Contributing].
 [Develop a Custom Project]: ./docs/develop-custom-project.md
 [Develop a Custom App/Plugin]: ./docs/develop-custom-app.md
 [Develop Project]: ./docs/develop-project.md
+[Manage Dependencies]: ./docs/manage-dependencies.md
 [Upgrade Project]: ./docs/upgrade-project.md
 [Debug Project]: ./docs/debug-project.md
 [Testing]: ./TESTING.md

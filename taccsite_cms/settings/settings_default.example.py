@@ -3,8 +3,3 @@ A `settings_default.py` file can override default values in `settings.py` before
 
 This allows Core-CMS client software to standardize their custom settings while still supporting `settings_custom.py` e.g. https://github.com/TACC/Core-Portal/pull/1034.
 '''
-
-# To allow CMS login over http:// in strict browsers (e.g. Safari)
-# FAQ: Firefox is not strict; Chrome is strict, but permits localhost
-SESSION_COOKIE_SECURE = False
-CSRF_COOKIE_SECURE = False
