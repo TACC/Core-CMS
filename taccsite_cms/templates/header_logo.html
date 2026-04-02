@@ -1,8 +1,32 @@
-{# @var logo, className #}
+{# @var plugin_logo (optional), className #}
 {% load static custom_portal_settings %}
 
-{% if settings.LOGO %}
+{% if plugin_logo %}
 
+{# via Picture plugin (e.g. CMS editor uploads logo image) #}
+{% with plugin_logo as logo %}
+  <a
+    id="header-logo"
+    class="navbar-brand {{className}}"
+    href="{{ logo.link_href }}"
+    target="{{ logo.link_target }}"
+  >
+    <img
+      class="portal-logo {{ logo.img_class }}"
+      src="{% if logo.is_remote %}{{ logo.img_file_src }}{% else %}{% static logo.img_file_src %}{% endif %}"
+      {% if logo.img_crossorigin %}
+      crossorigin="{{ logo.img_crossorigin }}"
+      {% endif %}
+      {% if logo.img_alt_text %}
+      alt="{{ logo.img_alt_text }}"
+      {% endif %}
+    />
+  </a>
+{% endwith %}
+
+{% elif settings.LOGO %}
+
+{# via deprecated CMS setting (e.g. CMS developer sets logo image) #}
 {% with settings.LOGO as logo %}
   {% with filename=logo|index:1 selectors=logo|index:2 targeturl=logo|index:3 targettype=logo|index:4 accessibility=logo|index:5 corstype=logo|index:6 visibility=logo|index:7 %}
     {% if visibility == "True" %}
@@ -15,6 +39,7 @@
 
 {% else %}
 
+{# via CMS setting (e.g. CMS developer sets logo image) #}
 {% with settings.PORTAL_LOGO as logo %}
   <a
     id="header-logo"
