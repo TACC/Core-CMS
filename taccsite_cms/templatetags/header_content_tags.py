@@ -20,10 +20,9 @@ def _get_header_content_parsed(request, placeholder_name):
     logo_link = None
     remaining_plugins = []
 
-    site = getattr(request, 'site', None)
     placeholder = StaticPlaceholder.objects.filter(
         code=placeholder_name,
-        site=site
+        site_id__isnull=True
     ).first()
 
     # Return NO content (if placeholder does not exist)
