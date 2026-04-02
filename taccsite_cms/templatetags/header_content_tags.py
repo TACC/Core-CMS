@@ -8,48 +8,62 @@ register = template.Library()
 
 def _get_header_content_parsed(request, placeholder_name):
     """
+    Parse content of static placeholder `placeholder_name`:
+
+    * (if present) single "Header logo" Picture as logo
+    * (if present) link for logo
+    * (if present) remaining plugins
+
     Return (logo_plugin, logo_link, remaining_plugins).
-    If placeholder has just 1 Picture w/ template "header_logo", treat as logo.
-    Otherwise, remaining_plugins are shown at bottom of header.
     """
+    logo_plugin = None
+    logo_link = None
+    remaining_plugins = []
+
     site = getattr(request, 'site', None)
     placeholder = StaticPlaceholder.objects.filter(
         code=placeholder_name,
         site=site
     ).first()
-    no_content = (None, None, [])
 
+    # Return NO content (if placeholder does not exist)
     if not placeholder:
-        return no_content
+        return (logo_plugin, logo_link, remaining_plugins)
 
     placeholder_instance = placeholder.public
-
+    # Return NO content (if placeholder is not public)
     if not placeholder_instance:
-        return no_content
+        return (logo_plugin, logo_link, remaining_plugins)
 
     plugin_list = placeholder_instance.get_plugins_list(language=request.LANGUAGE_CODE)
-    no_logo_content = (None, None, list(plugin_list))
+    remaining_plugins = list(plugin_list)
 
     if len(plugin_list) == 1:
         first_plugin = plugin_list[0]
         instance, plugin_type = first_plugin.get_plugin_instance()
-        is_picture_pluign = getattr(plugin_type, '__name__', '') == 'PicturePlugin'
+        is_picture_plugin = getattr(plugin_type, '__name__', '') == 'PicturePlugin'
         uses_logo_template = getattr(instance, 'template', None) == 'header_logo'
 
-        if instance and is_picture_pluign:
+        if instance and is_picture_plugin:
             if uses_logo_template:
                 link = getattr(instance, 'get_link', lambda: None)()
-                logo_content = (instance, link or '#', [])
+                logo_plugin = instance
+                logo_link = link or '#'
+                remaining_plugins = []
 
-                return logo_content
-
-    return no_logo_content
+    # Return ALL content (that is available from placeholder)
+    return (logo_plugin, logo_link, remaining_plugins)
 
 
 @register.simple_tag(takes_context=True)
 def get_header_content_parsed(context, placeholder_name):
     """
-    Parse static placeholder for header: single "Header logo" Picture = logo; else all plugins = remaining.
+    Parse content of static placeholder `placeholder_name`:
+
+    * (if present) single "Header logo" Picture as logo
+    * (if present) link for logo
+    * (if present) remaining plugins
+
     Returns object with .logo_plugin, .logo_link, .remaining_plugins.
     """
     request = context.get('request')
@@ -83,7 +97,7 @@ def header_logo_from_picture(instance, picture_link):
     Use: Build plugin_logo from djangocms_picture instance for header_logo.
 
     Load custom tag into template:
-        {% load header_logo_from_picture %}
+        {% load header_content_tags %}
 
     Template inline usage:
         {% header_logo_from_picture instance picture_link as plugin_logo %}
