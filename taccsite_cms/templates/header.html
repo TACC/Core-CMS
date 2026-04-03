@@ -1,5 +1,5 @@
 {# @var settings #}
-{% load cms_tags header_content_tags %}
+{% load cms_tags %}
 
 {# WARNING: Some markup is duplicated in other repositories #}
 {# SEE: https://confluence.tacc.utexas.edu/x/LoCnCQ #}
@@ -23,13 +23,9 @@
   {% endif %}
 ">
   <!-- Portal Logo -->
-  {% get_header_content_parsed "header-content" as header_content %}
-  {% if header_content.logo_plugin %}
-    {% header_logo_from_picture header_content.logo_plugin header_content.logo_link as plugin_logo %}
-    {% include "header_logo.html" with plugin_logo=plugin_logo %}
-  {% else %}
+  {% static_placeholder "header-content" or %}
     {% include "header_logo.html" %}
-  {% endif %}
+  {% endstatic_placeholder %}
 
   <!-- Navbar Accordian Toggle on Small Screens  -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExpandTarget" aria-controls="navbarsExpandTarget" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,14 +47,6 @@
     {% endif %}
   </div>
 </nav>
-{% if header_content.remaining_plugins %}
-<div class="header-content-extra">
-  {% for plugin in header_content.remaining_plugins %}
-  {% render_plugin plugin %}
-  {% endfor %}
-</div>
-{% endif %}
-
 {% endwith %}
 {% endwith %}
 {% endwith %}
