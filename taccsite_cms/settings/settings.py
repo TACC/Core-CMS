@@ -563,8 +563,8 @@ CMS_LANGUAGES = {
 CMS_PERMISSION = True
 CMS_PLACEHOLDER_CONF = {
     'header-content': {
-        'plugins': ['PicturePlugin'],
-        # One plugin with template "Header logo" = logo; any other content = bottom of header
+        # One PicturePlugin with template "Header logo" = custom logo
+        # Any other plugins render inline within the header nav
         'limits': {'global': 10},
     },
 }
