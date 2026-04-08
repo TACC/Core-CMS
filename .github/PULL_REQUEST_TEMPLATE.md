@@ -37,9 +37,9 @@ Use short bullets. Add bold verb as prefix to help scanning; example:
 <!--
 Numbered steps another dev can repeat. Include local URLs for UI changes. Example:
 
-1. `npm run build:css`
-2. `npm start`
-3. Open http://localhost:3000/components/preview/foo--bar
+1. `make start`
+2. Create a page with plugin X that has setting Y with value Z.
+3. Verify UI shows …
 -->
 
 1. 
