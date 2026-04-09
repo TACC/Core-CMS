@@ -93,6 +93,10 @@ DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS = [
             _('Container + Muted section')
         ),
         (
+            'container  o-section o-section--style-accent',
+            _('Container + Accent section')
+        ),
+        (
             'container  o-section o-section--style-dark',
             _('Container + Dark section')
         ),
@@ -111,6 +115,10 @@ DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS = [
             _('Fluid container + Muted section')
         ),
         (
+            'container-fluid  o-section o-section--style-accent',
+            _('Fluid container + Accent section')
+        ),
+        (
             'container-fluid  o-section o-section--style-dark',
             _('Fluid container + Dark section')
         ),
@@ -123,6 +131,10 @@ DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS = [
         (
             'o-section o-section--style-muted',
             _('Muted section')
+        ),
+        (
+            'o-section o-section--style-accent',
+            _('Accent section')
         ),
         (
             'o-section o-section--style-dark',
