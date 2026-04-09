@@ -25,6 +25,20 @@ Usage:
 python manage.py list_page_templates
 ```
 
+## Section / Container style QA page
+
+Creates a **published** page with stacked **Style** plugins (`section--light`, `section--accent`, `o-section o-section--style-accent`) and a **Bootstrap 4 Container** grid using the accent container class from `DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS`. Use it to visually verify Core-Styles section changes without hand-building Structure in the CMS.
+
+Default URL path: `/section-style-qa/`. The page is not added to the navigation menu.
+
+Usage (from the CMS container):
+
+```sh
+python manage.py create_section_style_qa_page --replace
+```
+
+Options: `--title`, `--slug`, `--reverse-id`, `--language`, `--template`, `--no-publish`. Use `--replace` to delete any existing page with the default reverse id (`core_cms_section_style_qa`) before creating a new one.
+
 ## Set Groups & Permissions
 
 Every file in [`group_perms/`](./group_perms) represents a group. Each group's intended usage is described at the top of its file. Permissions are set via function calls in each file.[^1]
