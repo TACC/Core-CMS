@@ -23,9 +23,9 @@ from djangocms_style.cms_plugins import StylePlugin
 from djangocms_text_ckeditor.cms_plugins import TextPlugin
 
 
-DEFAULT_REVERSE_ID = 'core_cms_section_style_qa'
-DEFAULT_TITLE = 'Section / Container style QA'
-DEFAULT_SLUG = 'section-style-qa'
+DEFAULT_REVERSE_ID = 'core_cms_test_page_section_style'
+DEFAULT_TITLE = 'Test Section Style'
+DEFAULT_SLUG = 'test-section-style'
 DEFAULT_TEMPLATE = 'standard.html'
 
 
