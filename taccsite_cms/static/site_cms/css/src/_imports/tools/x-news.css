@@ -267,7 +267,6 @@
   --lines: 4;
 
   line-height: 1.5;
-  color: var(--global-color-primary--dark);
 
   & p:last-child {
     margin-bottom: unset; /* overrides core-styles.cms */
@@ -279,6 +278,7 @@
 /* To make media clickable via a "read more" link */
 @define-mixin news-feed-article__link-overlay {
   /* To cover the image exactly */
+  display: grid;
   grid-area: media;
 
   /* To hide link text */

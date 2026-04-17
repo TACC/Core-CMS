@@ -7,7 +7,7 @@
   ],
   "description": "The TACC ACI-WMA Core CMS codebase used by TACC Portals.",
   "engines": {
-    "node": ">=16",
+    "node": ">=20",
     "npm": ">=8"
   },
   "dependencies": {
@@ -21,6 +21,6 @@
   },
   "homepage": "https://github.com/TACC/Core-CMS",
   "devDependencies": {
-    "@tacc/core-styles": "^2.54.0"
+    "@tacc/core-styles": "^2.56.1"
   }
 }
