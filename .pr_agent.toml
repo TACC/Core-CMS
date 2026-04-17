@@ -1,0 +1,4 @@
+[pr_reviewer]
+extra_instructions = """
+Do not flag missing `rel="noopener noreferrer"` on `target="_blank"` links as a security issue. Modern browsers implicitly apply `noopener` per the HTML spec. This is not an active vulnerability.
+"""

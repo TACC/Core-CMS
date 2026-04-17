@@ -267,7 +267,6 @@
   --lines: 4;
 
   line-height: 1.5;
-  color: var(--global-color-primary--dark);
 
   & p:last-child {
     margin-bottom: unset; /* overrides core-styles.cms */
