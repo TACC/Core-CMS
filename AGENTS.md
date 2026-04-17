@@ -1,6 +1,9 @@
 # AGENTS.md
 
-## Cursor Cloud specific instructions
+- [Architecture](#architecture)
+- [Pull Requests](#pull-requests)
+
+## Architecture
 
 This is a **Docker-based Django CMS** project. All application code runs inside Docker containers.
 
@@ -12,7 +15,7 @@ This is a **Docker-based Django CMS** project. All application code runs inside 
 | PostgreSQL 14.9 | `core_cms_postgres` | `5432` (internal) |
 | Elasticsearch 7.17 | `core_cms_elasticsearch` | `localhost:9201` |
 
-### Makefile commands
+### Make
 
 Use the `Makefile` instead of raw `docker compose` commands:
 
@@ -24,7 +27,7 @@ Use the `Makefile` instead of raw `docker compose` commands:
 | `make stop` | Stop containers |
 | `make clean` | Stop containers, remove volumes and images |
 
-### First-time setup
+### Setup
 
 ```sh
 DJANGO_SUPERUSER_PASSWORD=yourpass make setup
@@ -32,7 +35,7 @@ DJANGO_SUPERUSER_PASSWORD=yourpass make setup
 
 `make setup` (i.e. `bin/setup-cms.sh`) handles: settings file creation, Docker build, container startup, readiness polling, migrations, superuser creation, CSS build, and `collectstatic`. Non-interactive shells must set `DJANGO_SUPERUSER_PASSWORD`; a TTY prompts interactively.
 
-### Key gotchas
+### Gotchas
 
 - **Settings files** are gitignored. Created from `*.example.py` by `bin/setup-cms.sh` or manually.
 - The `secrets.py` Elasticsearch host should be `core_cms_elasticsearch` (the Docker hostname), not `elasticsearch`.
@@ -40,7 +43,7 @@ DJANGO_SUPERUSER_PASSWORD=yourpass make setup
 - **Elasticsearch cgroups v2:** ES 7.17.0 crashes on kernels with cgroups v2 (`CgroupV2Subsystem` NPE). Use ES 7.17.9+ in `docker-compose.dev.yml`.
 - **Postgres secret files:** `docker-compose.dev.yml` mounts `./conf/postgres/*.secret` files. These are not required for development and can be ignored.
 
-### Lint, test, build
+### Lint, Test, Build
 
 - **Lint:** `docker exec core_cms flake8 taccsite_cms/ --max-line-length=120` (pre-existing warnings expected)
 - **Tests:** `docker exec core_cms python manage.py test taccsite_cms.contrib.taccsite_sample --no-input`
@@ -48,3 +51,7 @@ DJANGO_SUPERUSER_PASSWORD=yourpass make setup
 - **Collect static:** `docker exec core_cms python manage.py collectstatic --no-input`
 
 See `README.md` for full setup instructions.
+
+## Pull Requests
+
+Write skimmable, template-aligned PRs; reviewers can see the code diff for details.
