@@ -11,4 +11,4 @@ To only update environment as necessary, or update since uncommon changes:
 | 4 | Assets e.g.<br><sub>images, stylesheets, JavaScript</sub> | `docker exec -it core_cms sh -c "python manage.py collectstatic --no-input"` |
 
 > [!tip]
-> \* If you do not want to use Node locally, then run `docker run --rm -v "$(pwd):/code" -w /code node:18 sh -c "npm ci && npm run build"`
+> \* If you do not want to use Node locally, then run `docker run --rm -v "$(pwd):/code" -w /code node:20 sh -c "npm ci && npm run build"`
