@@ -7,14 +7,6 @@
 
 This is a **Docker-based Django CMS** project. All application code runs inside Docker containers.
 
-### Local-agent guardrails
-
-- Treat these instructions as valid for both Local and Cloud agents.
-- For non-interactive setup, always run `make setup` with `DJANGO_SUPERUSER_PASSWORD=...`.
-- Before setup/start, check for stale `core_cms*` containers or old Compose projects that can cause name conflicts; remove them if needed.
-- For branch-based npm dependencies, update via npm command (not manual lockfile edits), then verify `package.json` and `package-lock.json` match.
-- Before screenshot requests, confirm target URL is reachable; do not ask for `ready` until page is actually loaded.
-
 ### Services
 
 | Service | Container | Port |
