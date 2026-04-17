@@ -21,6 +21,6 @@
   },
   "homepage": "https://github.com/TACC/Core-CMS",
   "devDependencies": {
-    "@tacc/core-styles": "github:TACC/Core-Styles#fix/footer-text-color-one-step-darker"
+    "@tacc/core-styles": "github:TACC/Core-Styles#main"
   }
 }
