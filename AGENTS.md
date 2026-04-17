@@ -33,15 +33,27 @@ Use the `Makefile` instead of raw `docker compose` commands:
 DJANGO_SUPERUSER_PASSWORD=yourpass make setup
 ```
 
-`make setup` (i.e. `bin/setup-cms.sh`) handles: settings file creation, Docker build, container startup, readiness polling, migrations, superuser creation, CSS build, and `collectstatic`. Non-interactive shells must set `DJANGO_SUPERUSER_PASSWORD`; a TTY prompts interactively.
+`make setup` (i.e. `bin/setup-cms.sh`) handles: settings file creation, Docker build, container startup, readiness polling, migrations, superuser creation, CSS build, and `collectstatic`. Non-interactive shells (e.g. agent runs) must set `DJANGO_SUPERUSER_PASSWORD`; a TTY prompts interactively.
+
+_Note: Stale containers errors (e.g. `core_cms_elasticsearch already in use`) come from old Compose state. Ask human whether to remove stale `core_cms*` containers/projects; once resolved, rerun `make setup`._
+
+### Dependencies
+
+- When updating dependencies, use `npm` commands (e.g. `uninstall`/`install`); do not hand-edit lockfile entries.
+- When installing `@tacc/core-styles`, use a published version from the registry, or a `git+https://github.com/...` spec so install does not require SSH.
 
 ### Gotchas
 
+#### Settings & Secrets
+
 - **Settings files** are gitignored. Created from `*.example.py` by `bin/setup-cms.sh` or manually.
-- The `secrets.py` Elasticsearch host should be `core_cms_elasticsearch` (the Docker hostname), not `elasticsearch`.
+- **Postgres secret files:** `docker-compose.dev.yml` mounts `./conf/postgres/*.secret` files. These are not required for development and can be ignored.
+
+#### Elasticsearch
+
+- **`secrets.py` Elasticsearch host:** Should be `core_cms_elasticsearch` (the Docker hostname), not `elasticsearch`.
 - Docker commands may need `sudo` depending on the environment.
 - **Elasticsearch cgroups v2:** ES 7.17.0 crashes on kernels with cgroups v2 (`CgroupV2Subsystem` NPE). Use ES 7.17.9+ in `docker-compose.dev.yml`.
-- **Postgres secret files:** `docker-compose.dev.yml` mounts `./conf/postgres/*.secret` files. These are not required for development and can be ignored.
 
 ### Lint, Test, Build
 
