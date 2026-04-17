@@ -1,6 +1,9 @@
 # AGENTS.md
 
-## Cursor Cloud specific instructions
+- [Architecture](#architecture)
+- [Pull Requests](#pull-requests)
+
+## Architecture
 
 This is a **Docker-based Django CMS** project. All application code runs inside Docker containers.
 
@@ -48,3 +51,7 @@ DJANGO_SUPERUSER_PASSWORD=yourpass make setup
 - **Collect static:** `docker exec core_cms python manage.py collectstatic --no-input`
 
 See `README.md` for full setup instructions.
+
+## Pull Requests
+
+Write skimmable, template-aligned PRs; reviewers can see the code diff for details.
