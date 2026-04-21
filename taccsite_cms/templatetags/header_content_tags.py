@@ -20,10 +20,9 @@ def _get_header_content_parsed(request, placeholder_name):
     logo_link = None
     remaining_plugins = []
 
-    site = getattr(request, 'site', None)
     placeholder = StaticPlaceholder.objects.filter(
         code=placeholder_name,
-        site=site
+        site_id__isnull=True
     ).first()
 
     # Return NO content (if placeholder does not exist)
@@ -41,7 +40,7 @@ def _get_header_content_parsed(request, placeholder_name):
     if len(plugin_list) == 1:
         first_plugin = plugin_list[0]
         instance, plugin_type = first_plugin.get_plugin_instance()
-        is_picture_plugin = getattr(plugin_type, '__name__', '') == 'PicturePlugin'
+        is_picture_plugin = type(plugin_type).__name__ == 'PicturePlugin'
         uses_logo_template = getattr(instance, 'template', None) == 'header_logo'
 
         if instance and is_picture_plugin:
@@ -111,9 +110,10 @@ def header_logo_from_picture(instance, picture_link):
     alt = attrs.get('alt') or default_alt_text or ''
     img_src = getattr(instance, 'img_src', None) or ''
     link_target = getattr(instance, 'link_target', None)
+    is_remote = img_src.startswith('http://') or img_src.startswith('https://')
 
     return {
-        'is_remote': False,
+        'is_remote': is_remote,
         'img_file_src': img_src,
         'img_class': '',
         'link_href': picture_link or '/',
