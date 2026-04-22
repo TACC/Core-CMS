@@ -31,8 +31,12 @@ class PageMenuTarget(PageExtension):
         max_length=255,
     )
 
+    def __str__(self):
+        return self.extended_object.get_title()
+
     class Meta:
         app_label = 'taccsite_cms'
+        verbose_name = 'menu link target'
 
 
 extension_pool.register(PageMenuTarget)
