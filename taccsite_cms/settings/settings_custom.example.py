@@ -24,6 +24,10 @@ AUTH_LDAP_SERVER_URI = "ldap://cluster.ldap.tacc.utexas.edu"
 # DJANGO_CMS
 ########################
 
+# Pages (by `reverse_id`) whose nav menu link opens in a new tab.
+# Set `reverse_id` in CMS admin: Page > Settings > Advanced > "Id".
+# PORTAL_CMS_MENU_NEW_TAB_PAGE_IDS = ['workbench', 'some-other-page']
+
 CMS_TEMPLATES = (
     ('standard.html', 'Standard'),
     ('fullwidth.html', 'Full Width'),
