@@ -42,11 +42,12 @@ def site_uri(context):
     }
 
 @register.simple_tag(takes_context=True)
-def target_blank(context, link_uri):
+def target_blank(context, link_uri, menu_node=None):
     """
     Custom Template Tag `target_blank`
 
-    Use: Render `target="_blank"` if URI appears to be external.
+    Use: Render `target="..."` if URI appears to be external, or if the CMS
+    page has an explicit menu link target set (e.g. via PageMenuTarget ext).
 
     Load custom tag into template:
         {% load tacc_uri_shortcuts %}
@@ -54,6 +55,7 @@ def target_blank(context, link_uri):
     Template inline usage:
         {# (renders `target="_blank"`) #}
         {% target_blank absolute_uri_to_external_domain %}
+        {% target_blank any_uri menu_node_with_target_blank %}
 
         {# (renders nothing) #}
         {% target_blank relative_uri %}
@@ -70,6 +72,10 @@ def target_blank(context, link_uri):
            {% target_blank relative_uri %}>same site</a>
             # <a href="/some-page">same site</a>
     """
+    has_target = ( menu_node is not None and menu_node.attr.get('target') )
+    if has_target:
+        return format_html('target="{}"', menu_node.attr['target'])
+
     request = context['request']
     req_uri = request.build_absolute_uri('/')
 
@@ -85,7 +91,6 @@ def target_blank(context, link_uri):
     should_open_in_new_window = ( is_external and not is_internal )
 
     if should_open_in_new_window:
-        # FAQ: Use `format_html` to not render `target="&quot;_blank&quot;"`
         return format_html('target="_blank"')
     else:
         return ''
