@@ -281,6 +281,10 @@ PORTAL_LOGIN_PATH = '/login'
 # FAQ: A falsy value will trigger default logic for nav width
 PORTAL_NAV_WIDTH = False
 
+# CMS pages (by `reverse_id`) whose menu link should open in a new tab
+# https://docs.django-cms.org/en/release-3.10.x/reference/templatetags.html#page-lookup:~:text=reverse_id
+PORTAL_CMS_MENU_NEW_TAB_PAGE_IDS = []
+
 # using container name to avoid cep.dev dns issues locally
 # CEP_AUTH_VERIFICATION_ENDPOINT = https://hostname.tacc.utexas.edu # Dev/Prod/Etc
 CEP_AUTH_VERIFICATION_ENDPOINT = 'http://django:6000'               # Local

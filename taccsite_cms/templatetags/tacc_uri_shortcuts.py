@@ -42,7 +42,7 @@ def site_uri(context):
     }
 
 @register.simple_tag(takes_context=True)
-def target_blank(context, link_uri):
+def target_blank(context, link_uri, menu_node=None):
     """
     Custom Template Tag `target_blank`
 
@@ -82,9 +82,10 @@ def target_blank(context, link_uri):
     # FAQ: I am literally double-checking, because I am unskilled in Django
     is_external = ( link_origin != req_origin and link_origin != '://' )
     is_internal = ( link.hostname == req.hostname or link.hostname == None )
-    should_open_in_new_window = ( is_external and not is_internal )
+    is_forced_new_tab = ( menu_node is not None and menu_node.attr.get('new_tab') )
+    should_open_in_new_tab = ( is_external and not is_internal ) or is_forced_new_tab
 
-    if should_open_in_new_window:
+    if should_open_in_new_tab:
         # FAQ: Use `format_html` to not render `target="&quot;_blank&quot;"`
         return format_html('target="_blank"')
     else:
