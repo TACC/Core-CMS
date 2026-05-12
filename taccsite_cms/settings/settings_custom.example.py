@@ -75,7 +75,8 @@ PORTAL_LOGO = {
     "img_class": "", # additional class names
     "link_href": "/",
     "link_target": "_self",
-    "img_alt_text": "Custom CMS", # E.g. PT DataX, Frontera
+    "link_name": "Custom CMS Homepage",
+    "img_alt_text": "Custom CMS Logo", # E.g. PT DataX, Frontera
     "img_crossorigin": "anonymous",
 }
 

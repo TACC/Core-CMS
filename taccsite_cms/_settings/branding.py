@@ -6,7 +6,8 @@ PORTAL_BRANDING_TACC = {
     "img_class": "branding-tacc",
     "link_href": "https://www.tacc.utexas.edu/",
     "link_target": "_blank",
-    "img_alt_text": "TACC Logo",
+    "link_name": "Texas Advanced Computing Center",
+    "img_alt_text": "TACC (Texas Advanced Computing Center) Logo",
     "img_crossorigin": "anonymous",
 }
 PORTAL_BRANDING_UTEXAS = {
@@ -15,7 +16,8 @@ PORTAL_BRANDING_UTEXAS = {
     "img_class": "branding-utaustin",
     "link_href": "https://www.utexas.edu/",
     "link_target": "_blank",
-    "img_alt_text": "University of Texas at Austin Logo",
+    "link_name": "University of Texas at Austin",
+    "img_alt_text": "UTexas (University of Texas at Austin) Logo",
     "img_crossorigin": "anonymous",
 }
 PORTAL_BRANDING_NSF = {
@@ -24,6 +26,7 @@ PORTAL_BRANDING_NSF = {
     "img_class": "branding-nsf",
     "link_href": "https://www.nsf.gov/",
     "link_target": "_blank",
-    "img_alt_text": "NSF Logo",
+    "link_name": "National Science Foundation",
+    "img_alt_text": "NSF (National Science Foundation) Logo",
     "img_crossorigin": "anonymous",
 }

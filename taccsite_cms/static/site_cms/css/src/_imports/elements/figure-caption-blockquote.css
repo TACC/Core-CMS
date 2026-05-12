@@ -4,18 +4,18 @@
 /* To style elements that are or have captions */
 figure,
 .embed-responsive {
-  @extend .x-figure;
+  @mixin figure;
 }
 figcaption,
 p.caption {
-  @extend .x-figure-caption;
+  @mixin figure-caption;
 }
 
 blockquote {
-  @extend .x-blockquote;
+  @mixin blockquote;
 }
 blockquote footer {
-  @extend .x-blockquote-caption;
+  @mixin blockquote-caption;
 }
 
 /* To remove extra whitespace beneath embeded content */

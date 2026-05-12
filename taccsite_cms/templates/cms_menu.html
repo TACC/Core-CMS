@@ -28,7 +28,7 @@
       >
       {{ child.get_menu_title|safe }}
       {% if child.selected %}<span class="sr-only">(current)</span>{% endif %}
-      <span class="sr-only">Toggle Dropdown</span>
+      <span class="sr-only">(Toggle Dropdown)</span>
     </button>
     <nav class="dropdown-menu" id="nav-menu-{{child.id}}" aria-labelledby="nav-link-{{child.id}}">
       {# Bootstrap4 does not support submenus, so nor do we (and other users). See https://github.com/twbs/bootstrap/pull/6342. #}
