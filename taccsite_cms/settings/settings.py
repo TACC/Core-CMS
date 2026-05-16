@@ -265,6 +265,15 @@ PORTAL_FAVICON = {
     "is_remote": False,
     "img_file_src": "site_cms/img/favicons/favicon.ico",
 }
+favicon_path = f"/static/site_cms/favicon/"
+PORTAL_FAVICON_HTML = f'''
+    <link rel="icon" type="image/png" href="{favicon_path}favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="{favicon_path}favicon.svg" />
+    <link rel="shortcut icon" href="{favicon_path}favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{favicon_path}apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="TACC" />
+    <link rel="manifest" href="{favicon_path}site.webmanifest" />
+'''
 
 
 ########################
@@ -352,8 +361,10 @@ TEMPLATES = [
         # FAQ: List custom directory first, so custom templates take precedence
         # SEE: https://docs.djangoproject.com/en/2.2/topics/templates/#configuration
         'DIRS': glob(
+            # XXX: Strange and from my ignorant implementation
             os.path.join(BASE_DIR, 'taccsite_custom')
         ) + [
+            os.path.join(BASE_DIR, 'taccsite_custom', 'templates'),
             os.path.join(BASE_DIR, 'taccsite_cms', 'templates')
         ],
         'OPTIONS': {
@@ -479,12 +490,12 @@ INSTALLED_APPS = [
     # core TACC CMS
     # HELP: If this were top of list, would TACC/Core-CMS/pull/169 fix break?
     'taccsite_cms',
+    'apps.search_page',
     'common_apps.email_management',
 
     # django CMS Bootstrap
     # IDEA: Extend Bootstrap apps instead of overwrite
     'taccsite_cms.contrib.bootstrap4_djangocms_link',
-    'taccsite_cms.contrib.bootstrap4_djangocms_picture',
 
     # TACC CMS Plugins
     'djangocms_tacc_image_gallery',
@@ -727,6 +738,7 @@ SETTINGS_EXPORT = deprecated_SETTINGS_EXPORT + [
     'PORTAL_BRANDING',
     'PORTAL_LOGO',
     'PORTAL_FAVICON',
+    'PORTAL_FAVICON_HTML',
     'PORTAL_IS_TACC_CORE_PORTAL',
     'PORTAL_HAS_LOGIN',
     'PORTAL_LOGIN_PATH',
@@ -740,4 +752,5 @@ SETTINGS_EXPORT = deprecated_SETTINGS_EXPORT + [
     'PORTAL_SOCIAL_SHARE_PLATFORMS',
     'PORTAL_SEARCH_PATH',
     'PORTAL_SEARCH_QUERY_PARAM_NAME',
+    'GOOGLE_SEARCH_ENGINE_ID',
 ]

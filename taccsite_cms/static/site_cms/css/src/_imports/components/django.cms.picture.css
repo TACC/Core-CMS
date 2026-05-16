@@ -2,10 +2,9 @@
 /* SEE: https://github.com/django-cms/djangocms-picture/blob/2.3.0/djangocms_picture/models.py#L24-L34 */
 @import url("@tacc/core-styles/src/lib/_imports/components/align.css");
 
-/* Allow anchor tag to wrap like a block but still behave inline */
-/* FAQ: TACC/Core-CMS causes this tag-class combination, so it must manage it */
-/* FAQ: TACC/Core-CMS moves (side effect) Picture classes to <figure> or <a> */
-a.img-fluid {
+/* Give linked image same box-model behavior as image */
+/* FAQ: Not doing this for `figure` cuz it is already a block */
+a.editor-img-wrap {
   display: inline-block;
 }
 
@@ -26,11 +25,11 @@ img.align-center {
 /* To apply djangocms-bootstrap4/…_picture class styles from parent to image */
 /* FAQ: TACC/Core-CMS moves (side effect) Picture classes to <figure> or <a> */
 /* SEE: taccsite_cms/templates/djangocms_picture/default/picture.html */
-:is(figure, a).img-fluid img {
+.editor-img-wrap:is(figure, a).img-fluid img {
   max-width: 100%;
   height: auto;
 }
-:is(figure, a).img-thumbnail img {
+.editor-img-wrap:is(figure, a).img-thumbnail img {
   padding: 0.25rem;
   background-color: #fff;
   border: 1px solid #dee2e6;
@@ -38,19 +37,18 @@ img.align-center {
   max-width: 100%;
   height: auto;
 }
-:is(figure, a).rounded img {
+.editor-img-wrap:is(figure, a).rounded img {
   /* NOTE: Bootstrap used 0.25rem */
   border-radius: 1rem !important; /* overwrite Bootstrap (uses !important) */
 }
 /* To undo some djangocms-bootstrap4/…_picture class styles on parent */
 /* FAQ: The duplicate styles on parent tags look odd or are unnecessary */
-:is(figure, a).img-thumbnail {
+.editor-img-wrap:is(figure, a).img-thumbnail {
   padding: unset;
   background-color: unset;
   border: unset;
   border-radius: unset;
 }
-:is(figure, a).rounded {
+.editor-img-wrap:is(figure, a).rounded {
   border-radius: unset !important; /* overwrite Bootstrap (uses !important) */
 }
-

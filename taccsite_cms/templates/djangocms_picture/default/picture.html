@@ -1,38 +1,50 @@
 {# https://github.com/django-cms/djangocms-picture/blob/4.1.1/djangocms_picture/templates/djangocms_picture/default/picture.html #}
 {# TACC (support children as caption content): #}
-{# {% load thumbnail %} #}
-{% load thumbnail l10n cms_tags %}
+{# TACC (support image zoom): #}
+{# {% load thumbnail l10n cms_tags %} #}
+{% load thumbnail l10n cms_tags strip_class_attribute %}
 {# /TACC #}
 
-{# TACC (allow link to be conditional): #}
-{% block picture_link_start %}
+{# TACC (support custom condition): #}
+{% if should_render_link %}
 {# /TACC #}
-{% if picture_link %}
-    {# TACC (allow link to be conditional): #}
-    {% block picture_link %}
-    {# /TACC #}
     <a href="{{ picture_link }}"
     {% if instance.link_target %} target="{{ instance.link_target }}"{% endif %}
-    {# TACC (assign attributes to parent): #}
-    {{ instance.attributes_str }}
-    {# /TACC #}
-    {{ instance.link_attributes_str }}>
-{# TACC (allow link to be conditional): #}
-{% endblock %}
-{# /TACC #}
+        {# TACC (support image zoom): #}
+        class="
+            editor-img-wrap
+            {{ instance.attributes.class|default:'' }}
+            {{ instance.link_attributes.class|default:'' }}
+            {{ className }}
+            {% if should_add_zoom_class_to_link %}u-image-zoom--on-hover{% endif %}
+        "
+        {# TACC (assign attributes to parent): #}
+        {{ instance.attributes_str|strip_class_attribute|safe }}
+        {{ instance.link_attributes_str|strip_class_attribute|safe }}
+        {# /TACC #}
+        {# /TACC #}
+    >
 {% endif %}
-{# TACC (allow link to be conditional): #}
-{% endblock %}
-{# /TACC #}
 
-{# start render figure/figcaption #}
+
 {# TACC (support children as caption content): #}
-{# {% if instance.caption_text %} #}
-{% if instance.caption_text or instance.child_plugin_instances %}
+{% if has_figure_content %}
+{# /TACC #}
     {# TACC (assign attributes to parent): #}
-    {# <figure> #}
-    <figure {{ instance.attributes_str }}>
+    <figure
+        class="
+            editor-img-wrap
+            {{ instance.attributes.class|default:'' }}
+        "
+        {{ instance.attributes_str|strip_class_attribute|safe }}
+    >
     {# /TACC #}
+{% endif %}
+
+
+{# TACC (support image zoom): #}
+{% if should_wrap_image_for_zoom %}
+    <span class="u-image-zoom--on-hover">
 {% endif %}
 {# /TACC #}
 {# end render figure/figcaption #}
@@ -60,7 +72,7 @@
     {# TACC (allow link to be conditional): #}
     {% block picture_attributes %}
     {# TACC (assign attributes to parent): #}
-    {% if not instance.caption_text and not picture_link and not instance.child_plugin_instances %}
+    {% if should_add_attributes_to_image %}
     {{ instance.attributes_str }}
     {% endif %}
     {# /TACC #}
@@ -69,9 +81,17 @@
 >
 {% endlocalize %}
 
-{# start render figure/figcaption #}
-{# {% if instance.caption_text %} #}
-{% if instance.caption_text or instance.child_plugin_instances %}
+
+{# TACC (support image zoom): #}
+    {% if should_wrap_image_for_zoom %}
+    </span>
+    {% endif %}
+{# /TACC #}
+
+
+{# TACC (support custom condition): #}
+{% if has_figure_content %}
+{# /TACC #}
         {# TACC (support children as caption content): #}
         {# <figcaption>{{ instance.caption_text }}</figcaption> #}
         <figcaption>
@@ -83,17 +103,12 @@
         {# /TACC #}
     </figure>
 {% endif %}
-{# end render figure/figcaption #}
 
-{# TACC (allow link to be conditional): #}
-{% block picture_link_end %}
+{# TACC (support custom condition): #}
+{% if should_render_link %}
 {# /TACC #}
-{% if picture_link %}
     </a>
 {% endif %}
-{# TACC (allow link to be conditional): #}
-{% endblock %}
-{# /TACC #}
 
 {% comment %}
     # https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img

@@ -1,7 +1,9 @@
 import logging
+
 from django.apps import AppConfig
 from django.db.models.signals import post_migrate
 
+from .djangocms_picture.extend import extendPicturePlugin
 from .djangocms_bootstrap4.contrib.bootstrap4_link.extend import extendBootstrap4LinkPlugin
 from .djangocms_blog.extend import extendBlogFeaturedPostsPlugin, extendBlogFeaturedPostsPluginCached
 from .djangocms_blog.patch import patchBlog
@@ -14,6 +16,7 @@ class TaccsiteCmsConfig(AppConfig):
 
     def ready(self):
         post_migrate.connect(self.create_groups, sender=self)
+        extendPicturePlugin()
         extendBootstrap4LinkPlugin()
         extendBlogFeaturedPostsPlugin()
         extendBlogFeaturedPostsPluginCached()

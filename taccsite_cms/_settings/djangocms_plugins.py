@@ -38,7 +38,9 @@ DJANGOCMS_PICTURE_ALIGN = [
     ('center', _('Align center')),
 ]
 DJANGOCMS_PICTURE_TEMPLATES = [
-    ('no_link_to_ext_image', _('Do not link to external image')),
+    ('no_link_to_ext_image', _('Do not link to "External image"')),
+    ('zoom_effect', _('Zoom image on hover')),
+    ('zoom_effect_no_link_to_ext_image', _('Zoom image on hover & Do not link to "External image"')),
 ]
 
 ########################
