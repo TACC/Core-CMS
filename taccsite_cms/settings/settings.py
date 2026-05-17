@@ -561,7 +561,13 @@ CMS_LANGUAGES = {
 }
 
 CMS_PERMISSION = True
-CMS_PLACEHOLDER_CONF = {}
+CMS_PLACEHOLDER_CONF = {
+    'header-content': {
+        # One PicturePlugin with template "Header logo" = custom logo
+        # Any other plugins render inline within the header nav
+        'limits': {'global': 10},
+    },
+}
 
 THUMBNAIL_HIGH_RESOLUTION = True
 THUMBNAIL_PROCESSORS = (
