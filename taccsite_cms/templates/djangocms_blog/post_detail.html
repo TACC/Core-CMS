@@ -42,7 +42,9 @@
         {% endblock %}
         {# /TACC #}
     </header>
-    {% if not post.main_image_id %}
+    {% if not settings.PORTAL_BLOG_SHOW_MAIN_IMAGE %}
+        <!-- PORTAL_BLOG_SHOW_MAIN_IMAGE is not True -->
+    {% elif not post.main_image_id %}
         <div class="blog-visual">{% render_placeholder post.media %}</div>
     {% else %}
     <div class="blog-visual">

@@ -79,10 +79,9 @@ Styleguide Components.DjangoCMS.Blog.App
   @mixin news-metadata;
 }
 
-/* To conditionally hide certain content */
+/* To conditionally hide tags & categories */
 .app-blog.no-tags .tags,
-.app-blog.no-categories .categories,
-.app-blog.no-visual .blog-visual {
+.app-blog.no-categories .categories {
   display: none;
 }
 .app-blog .categories {
