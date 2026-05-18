@@ -11,7 +11,7 @@
   {% endblock text_before %}
   {% for platform in platforms %}
     {% if platform == 'facebook' %}
-    <a href="https://www.facebook.com/sharer/sharer.php?u={{ url }}"
+    <a href="https://www.facebook.com/sharer/sharer.php?u={{ url|urlencode }}"
       target="_blank"
       class="logos__facebook"
       aria-label="share this URL on Facebook">
@@ -22,7 +22,7 @@
     </a>
     {% endif %}
     {% if platform == 'linkedin' %}
-    <a href="https://www.linkedin.com/cws/share?url={{ url }}"
+    <a href="https://www.linkedin.com/cws/share?url={{ url|urlencode }}"
       target="_blank"
       class="logos__linkedin"
       aria-label="share this URL on LinkedIn">
@@ -33,7 +33,7 @@
     </a>
     {% endif %}
     {% if platform == 'bluesky' %}
-    <a href="https://bsky.app/intent/compose?text={{ url }}"
+    <a href="https://bsky.app/intent/compose?text={{ url|urlencode }}"
       target="_blank"
       class="logos__bluesky"
       aria-label="share this URL on Bluesky">
@@ -44,7 +44,7 @@
     </a>
     {% endif %}
     {% if platform == 'email' %}
-    <a href="mailto:?body={{ url }}"
+    <a href="mailto:?body={{ url|urlencode }}"
       target="_blank"
       class="logos__email"
       aria-label="share this URL by email">

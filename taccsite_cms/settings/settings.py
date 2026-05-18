@@ -291,8 +291,7 @@ CEP_AUTH_VERIFICATION_ENDPOINT = 'http://django:6000'               # Local
 # TACC: SOCIAL MEDIA
 ########################
 
-PORTAL_SOCIAL_SHARE_PLATFORMS = []
-# PORTAL_SOCIAL_SHARE_PLATFORMS = ['linkedin', 'instagram', 'facebook', 'bluesky', 'email']
+PORTAL_SOCIAL_SHARE_PLATFORMS = ['linkedin', 'facebook', 'bluesky', 'email']
 
 ########################
 # TACC: STYLES
@@ -317,6 +316,7 @@ TACC_CORE_STYLES_VERSION = 2
 
 PORTAL_BLOG_SHOW_CATEGORIES = True
 PORTAL_BLOG_SHOW_TAGS = True
+PORTAL_BLOG_SHOW_BYLINE = True
 
 PORTAL_BLOG_CATEGORY_ORDER = []
 # PORTAL_BLOG_CATEGORY_ORDER = ['press-release', 'feature-story', 'multimedia', 'podcast']
@@ -735,6 +735,7 @@ SETTINGS_EXPORT = deprecated_SETTINGS_EXPORT + [
     'PORTAL_STYLES',
     'PORTAL_BLOG_SHOW_CATEGORIES',
     'PORTAL_BLOG_SHOW_TAGS',
+    'PORTAL_BLOG_SHOW_BYLINE',
     'PORTAL_BLOG_TAG_FOR_EXTERNAL_ARTICLES',
     'PORTAL_BLOG_CATEGORY_ORDER',
     'PORTAL_SOCIAL_SHARE_PLATFORMS',
