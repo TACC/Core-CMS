@@ -319,7 +319,7 @@ PORTAL_BLOG_SHOW_TAGS = True
 PORTAL_BLOG_SHOW_BYLINE = True
 # Whether to automatically show article image on the article page
 # FAQ: Designer consistently prefers main image be explicitely added
-PORTAL_BLOG_SHOW_MAIN_IMAGE = False
+PORTAL_BLOG_SHOW_POST_MAIN_IMAGE = False
 
 PORTAL_BLOG_CATEGORY_ORDER = []
 # PORTAL_BLOG_CATEGORY_ORDER = ['press-release', 'feature-story', 'multimedia', 'podcast']
@@ -739,7 +739,7 @@ SETTINGS_EXPORT = deprecated_SETTINGS_EXPORT + [
     'PORTAL_BLOG_SHOW_CATEGORIES',
     'PORTAL_BLOG_SHOW_TAGS',
     'PORTAL_BLOG_SHOW_BYLINE',
-    'PORTAL_BLOG_SHOW_MAIN_IMAGE',
+    'PORTAL_BLOG_SHOW_POST_MAIN_IMAGE',
     'PORTAL_BLOG_CATEGORY_ORDER',
     'PORTAL_BLOG_TAG_FOR_EXTERNAL_ARTICLES',
     'PORTAL_SOCIAL_SHARE_PLATFORMS',
