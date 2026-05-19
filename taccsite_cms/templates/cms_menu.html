@@ -39,7 +39,7 @@
       <a
         class="dropdown-item{% if grandchild.selected %} active{% endif %}"
         href="{{ grandchild|get_menu_uri }}"
-        {% target_blank grandchild|get_menu_uri %}
+        {% target_blank grandchild|get_menu_uri grandchild %}
       >
         {{ grandchild.get_menu_title|safe }}
         {% if grandchild.selected %}<span class="sr-only">(current)</span>{% endif %}
@@ -52,7 +52,7 @@
   <a
     class="nav-link"
     href="{{ child|get_menu_uri }}"
-    {% target_blank child|get_menu_uri %}
+    {% target_blank child|get_menu_uri child %}
   >
     {{ child.get_menu_title|safe }}
     {% if child.selected %}<span class="sr-only">(current)</span>{% endif %}
