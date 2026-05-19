@@ -2,3 +2,6 @@
 extra_instructions = """
 Do not flag missing `rel="noopener noreferrer"` on `target="_blank"` links as a security issue. Modern browsers implicitly apply `noopener` per the HTML spec. This is not an active vulnerability.
 """
+
+[pr_code_suggestions]
+enable_chat_in_code_suggestions = true
