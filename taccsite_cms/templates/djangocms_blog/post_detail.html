@@ -9,7 +9,7 @@
 {% block content_blog %}{% spaceless %}
 
 {# TACC (print abstract for some posts e.g. an external article): #}
-{% blog_post_has_tag post settings.PORTAL_BLOG_SHOW_ABSTRACT_TAG as show_abstract %}
+{% blog_post_has_tag post settings.PORTAL_BLOG_TAG_FOR_EXTERNAL_ARTICLES as show_abstract %}
 {# /TACC #}
 <article id="post-{{ post.slug }}" class="post-item post-detail">
     <header>
@@ -95,7 +95,7 @@
 <script id="redirect-external-article" type="module">
 import { redirectExternalArticle } from '{% static "site_cms/js/modules/manageExternalArticles.js" %}';
 
-redirectExternalArticle('{{ settings.PORTAL_BLOG_SHOW_ABSTRACT_TAG }}');
+redirectExternalArticle('{{ settings.PORTAL_BLOG_TAG_FOR_EXTERNAL_ARTICLES }}');
 </script>
 {% endaddtoblock %}
 {% endblock assets_blog %}
