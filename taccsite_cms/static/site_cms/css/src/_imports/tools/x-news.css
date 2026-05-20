@@ -383,13 +383,6 @@
     display: none;
   }
 }
-@define-mixin news-article-page__media--offset__figcaption {
-  /* ???: Is this really desired for Core… */
-  /* https://github.com/TACC/Core-Styles/blob/v2.53.0/src/lib/_imports/objects/o-offset-content.css#L34-L36 */
-  &.figure .figure-caption {
-    padding-right: 125px;
-  }
-}
 @define-mixin news-article-page__media--offset-right {
   @mixin offset-content;
   @mixin offset-content--float-right;
@@ -398,8 +391,6 @@
   @media (--medium-and-above) {
     @mixin offset-content--offset-right;
   }
-
-  @mixin news-article-page__media--offset__figcaption;
 }
 @define-mixin news-article-page__media--offset-left {
   @mixin offset-content;
@@ -409,8 +400,6 @@
   @media (--medium-and-above) {
     @mixin offset-content--offset-left;
   }
-
-  @mixin news-article-page__media--offset__figcaption;
 }
 @define-mixin news-article-page__media--layout-center {
   margin-inline: auto;
@@ -422,6 +411,5 @@
     @mixin offset-content--float-right;
     @mixin offset-content--terminate-offset-right;
     @mixin offset-content--offset-right;
-    @mixin news-article-page__media--offset__figcaption;
   }
 }
