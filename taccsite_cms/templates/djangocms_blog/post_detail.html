@@ -44,11 +44,24 @@
     </header>
     {% if not post.main_image_id %}
         <div class="blog-visual">{% render_placeholder post.media %}</div>
-    {% else %}
-    <div class="blog-visual">
+    {# TACC (setting PORTAL_BLOG_SHOW_AUTO_MAIN_IMAGE): #}
+    {% elif settings.PORTAL_BLOG_SHOW_AUTO_MAIN_IMAGE %}
+    {# /TACC #}
+    {# TACC (use figure wrapper): #}
+    <figure class="blog-visual">
         {% thumbnail post.main_image post.full_image_options.size crop=post.full_image_options.crop upscale=post.full_image_options.upscale subject_location=post.main_image.subject_location  as thumb %}
-        <img src="{{ thumb.url }}" alt="{{ post.main_image.default_alt_text }}" width="{{ thumb.width }}" height="{{ thumb.height }}" data-width="{{ post.full_image_options.width }}" data-height="{{ post.full_image_options.height }}" />
-    </div>
+        {# TACC (make alt text conditional to avoid `alt="None"`): #}
+        <img src="{{ thumb.url }}" alt="{% if post.main_image.default_alt_text %}{{ post.main_image.default_alt_text }}{% endif %}" width="{{ thumb.width }}" height="{{ thumb.height }}" data-width="{{ post.full_image_options.width }}" data-height="{{ post.full_image_options.height }}" />
+        {# /TACC #}
+        {# TACC (add caption): #}
+        {% if post.main_image.default_caption %}
+        <figcaption>{{ post.main_image.default_caption }}</figcaption>
+        {% endif %}
+        {# /TACC #}
+    </figure>
+    {# /TACC #}
+    {% else %}
+        <!-- PORTAL_BLOG_SHOW_AUTO_MAIN_IMAGE is not True -->
     {% endif %}
     {# TACC (do not let source end spaceless-ness prematurely): #}
     {# {% endspaceless %} #}
