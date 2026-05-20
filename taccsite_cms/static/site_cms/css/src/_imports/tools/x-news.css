@@ -417,5 +417,11 @@
   width: fit-content;
 }
 @define-mixin news-article-page__media--layout-float {
-  @mixin news-article-page__media--offset-right;
+  @media (--medium-and-above) {
+    @mixin offset-content;
+    @mixin offset-content--float-right;
+    @mixin offset-content--terminate-offset-right;
+    @mixin offset-content--offset-right;
+    @mixin news-article-page__media--offset__figcaption;
+  }
 }
