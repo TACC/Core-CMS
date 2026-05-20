@@ -140,6 +140,10 @@ Styleguide Components.DjangoCMS.Blog.App.Item
     @mixin news-feed-article__media--above-text;
   }
 }
+/* To undo browser default margin on figure element */
+:--news-article-item figure.blog-visual {
+  margin-block: unset;
+}
 
 /* Article - Lead */
 
