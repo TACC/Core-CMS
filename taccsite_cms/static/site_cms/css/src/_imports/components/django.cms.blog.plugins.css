@@ -99,6 +99,9 @@ Styleguide Components.DjangoCMS.Blog.Plugins
   @mixin news-feed-article__media--above-text;
   @mixin news-feed-article__media--constrain-content;
 }
+:--news-feed-embed article .blog-visual figcaption {
+  display: none;
+}
 
 /* Article - Lead */
 
