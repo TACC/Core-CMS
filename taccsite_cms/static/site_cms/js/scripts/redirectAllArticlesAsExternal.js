@@ -1,4 +1,4 @@
-import { redirectExternalArticle } from './manageExternalArticles.js';
+import { redirectExternalArticle } from '../modules/manageExternalArticles.js';
 
 const TAG = 'force-external';
 

@@ -1,4 +1,4 @@
-import { changeHowExternalArticleOpens } from './manageExternalArticles.js';
+import { changeHowExternalArticleOpens } from '../modules/manageExternalArticles.js';
 
 const TAG = 'force-external';
 
