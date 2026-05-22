@@ -19,6 +19,7 @@ CKEDITOR_SETTINGS = {
     'autoParagraph': False,
     'stylesSet': 'default:/static/js/addons/ckeditor.wysiwyg.js',
     'contentsCss': ['/static/djangocms_text_ckeditor/ckeditor/contents.css'],
+    'extraPlugins': 'pastefromgdocs',
 }
 
 ########################
