@@ -1,6 +1,12 @@
 /* Alter ckeditor/styles.js to match our own wants */
 /* https://github.com/django-cms/djangocms-text-ckeditor/blob/3.10.0/djangocms_text_ckeditor/static/djangocms_text_ckeditor/ckeditor/styles.js */
 
+CKEDITOR.plugins.addExternal(
+  'pastefromgdocs',
+  'https://cdn.jsdelivr.net/gh/ckeditor/ckeditor4@4.21.0/plugins/pastefromgdocs/',
+  'plugin.js'
+);
+
 CKEDITOR.stylesSet.add( 'default', [
 
 	/* Block styles */

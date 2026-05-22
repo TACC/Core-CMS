@@ -21,10 +21,6 @@ CKEDITOR_SETTINGS = {
     'contentsCss': ['/static/djangocms_text_ckeditor/ckeditor/contents.css'],
     'extraPlugins': 'pastefromgdocs',
 }
-CKEDITOR_EXTERNAL_PLUGIN_RESOURCES = [
-    ('pastefromgdocs',
-     'https://cdn.jsdelivr.net/gh/ckeditor/ckeditor4@4.21.0/plugins/pastefromgdocs/plugin.js'),
-]
 
 ########################
 # DJANGOCMS_PICTURE
