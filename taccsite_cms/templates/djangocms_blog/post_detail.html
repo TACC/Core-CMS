@@ -67,7 +67,7 @@
     {# {% endspaceless %} #}
     {# /TACC #}
     {# TACC (print abstract for some posts e.g. an external article): #}
-    {# TACC (always render, so JS can read external URL even when abstract is hidden): #}
+    {# And always render so JS can read ext. URL from hidden abstract #}
     <div class="blog-lead"{% if not show_abstract %} hidden{% endif %}>
         {# TACC (copied from source app's includes/blog_item.html): #}
         {% if not TRUNCWORDS_COUNT %}
