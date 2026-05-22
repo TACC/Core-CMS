@@ -68,8 +68,8 @@
     {# /TACC #}
     {# TACC (print abstract for some posts e.g. an external article): #}
     {# And always render so JS can read ext. URL from hidden abstract #}
+        {# TACC (mostly from source app's includes/blog_item.html): #}
         <div class="blog-lead"{% if not show_abstract %} hidden{% endif %}>
-            {# TACC (copied from source app's includes/blog_item.html): #}
             {% if not TRUNCWORDS_COUNT %}
                 {% render_model post "abstract" "" "" "safe" %}
             {% else %}
