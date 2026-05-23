@@ -33,7 +33,9 @@ CKEDITOR.on('instanceReady', function(ev) {
     });
 
     e.data.dataValue = doc.body.innerHTML;
-  }, null, null, 1);
+  /* Priority 4 runs after `pastetools` (priority 3); we must run after it
+     because it re-reads original clipboard data and overwrites dataValue. */
+  }, null, null, 4);
 });
 
 CKEDITOR.stylesSet.add( 'default', [
