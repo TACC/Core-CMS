@@ -22,8 +22,8 @@ function ensureOpenNewWindowSpan() {
   }
   const span = document.createElement( 'span' );
   span.id = ID_OPEN_NEW_WINDOW;
-  span.className = CLASS_VISUALLY_HIDDEN;
   span.textContent = TEXT_OPEN_NEW_WINDOW;
+  span.hidden = true;
   document.body.appendChild( span );
 }
 
