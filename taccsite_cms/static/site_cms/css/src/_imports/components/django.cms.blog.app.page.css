@@ -82,18 +82,18 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 :--news-article-page .blog-visual {
   @mixin news-article-page__media;
 
-  @media (--medium-and-below) {
-    & {
+  & {
+    @media (--medium-and-below) {
       @mixin news-article-page__media--layout-center;
     }
   }
-  @media (--medium-and-above) {
-    &:has([data-width="0"]) {
+  &:has([data-width="0"]) {
+    @media (--medium-and-above) {
       @mixin news-article-page__media--layout-center;
     }
-    &:not(:has([data-width="0"])) {
-      @mixin news-article-page__media--layout-float;
-    }
+  }
+  &:not(:has([data-width="0"])) {
+    @mixin news-article-page__media--layout-float;
   }
 }
 

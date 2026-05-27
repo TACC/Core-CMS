@@ -291,8 +291,7 @@ CEP_AUTH_VERIFICATION_ENDPOINT = 'http://django:6000'               # Local
 # TACC: SOCIAL MEDIA
 ########################
 
-PORTAL_SOCIAL_SHARE_PLATFORMS = []
-# PORTAL_SOCIAL_SHARE_PLATFORMS = ['linkedin', 'instagram', 'facebook', 'bluesky', 'email']
+PORTAL_SOCIAL_SHARE_PLATFORMS = ['linkedin', 'facebook', 'bluesky', 'email']
 
 ########################
 # TACC: STYLES
@@ -317,11 +316,15 @@ TACC_CORE_STYLES_VERSION = 2
 
 PORTAL_BLOG_SHOW_CATEGORIES = True
 PORTAL_BLOG_SHOW_TAGS = True
-# To flag posts of certain category or tag, so template can take special action
-PORTAL_BLOG_SHOW_ABSTRACT_TAG = 'external'
+PORTAL_BLOG_SHOW_BYLINE = True
+# Whether to automatically show article image on the article page
+# FAQ: Designer consistently prefers main image be explicitely added
+PORTAL_BLOG_SHOW_AUTO_MAIN_IMAGE = False
 
 PORTAL_BLOG_CATEGORY_ORDER = []
 # PORTAL_BLOG_CATEGORY_ORDER = ['press-release', 'feature-story', 'multimedia', 'podcast']
+
+PORTAL_BLOG_TAG_FOR_EXTERNAL_ARTICLES = 'external'
 
 ########################
 # DJANGO & DJANGO_CMS & TACC
@@ -683,7 +686,6 @@ old_setting_names = [
     'INCLUDES_SEARCH_BAR',
     'TACC_BLOG_SHOW_CATEGORIES',
     'TACC_BLOG_SHOW_TAGS',
-    'TACC_BLOG_SHOW_ABSTRACT_TAG',
     'TACC_BLOG_CATEGORY_ORDER',
     'TACC_SOCIAL_SHARE_PLATFORMS',
     'SEARCH_PATH',
@@ -736,8 +738,10 @@ SETTINGS_EXPORT = deprecated_SETTINGS_EXPORT + [
     'PORTAL_STYLES',
     'PORTAL_BLOG_SHOW_CATEGORIES',
     'PORTAL_BLOG_SHOW_TAGS',
-    'PORTAL_BLOG_SHOW_ABSTRACT_TAG',
+    'PORTAL_BLOG_SHOW_BYLINE',
+    'PORTAL_BLOG_SHOW_AUTO_MAIN_IMAGE',
     'PORTAL_BLOG_CATEGORY_ORDER',
+    'PORTAL_BLOG_TAG_FOR_EXTERNAL_ARTICLES',
     'PORTAL_SOCIAL_SHARE_PLATFORMS',
     'PORTAL_SEARCH_PATH',
     'PORTAL_SEARCH_QUERY_PARAM_NAME',
