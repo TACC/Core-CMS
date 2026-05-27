@@ -17,11 +17,11 @@ class NewTabModifier(Modifier):
 
     def modify(self, request, nodes, namespace, root_id, post_cut, breadcrumb):
         if post_cut:
-            from .models import PageMenuTarget
+            from .models import PageNavOptions
             node_ids = [n.id for n in nodes if n.id]
             if node_ids:
                 targets = dict(
-                    PageMenuTarget.objects
+                    PageNavOptions.objects
                     .filter(extended_object_id__in=node_ids)
                     .exclude(target='')
                     .values_list('extended_object_id', 'target')

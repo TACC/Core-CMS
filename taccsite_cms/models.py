@@ -3,32 +3,26 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 
-class DummyModel(models.Model):
-    """
-    Exists solely to trigger Django to send post_migrate signal (see apps.py)
-    """
-    class Meta:
-        app_label = 'taccsite_cms'
-
-
-TARGET_CHOICES = (
+NAV_TARGET_CHOICES = (
+    ('',       _('Default')),
     ('_blank', _('Open in new window')),
     ('_self',  _('Open in same window')),
 )
 
 
-class PageMenuTarget(PageExtension):
+class PageNavOptions(PageExtension):
     """
-    Per-page menu link target, editable in the CMS toolbar or Django admin.
-    An empty value defers to the default target_blank tag logic (external URLs
-    open in a new tab, internal URLs do not).
+    Per-page nav options, editable via the CMS toolbar (Page > Page Options >
+    Nav Options) or Django admin.
     """
     target = models.CharField(
         verbose_name=_('Target'),
-        choices=TARGET_CHOICES,
+        choices=NAV_TARGET_CHOICES,
         blank=True,
         default='',
         max_length=255,
+        help_text=_('Override the default link target for this page\'s nav menu entry. '
+                    'Leave empty to use automatic detection (external URLs open in a new tab).'),
     )
 
     def __str__(self):
@@ -36,7 +30,8 @@ class PageMenuTarget(PageExtension):
 
     class Meta:
         app_label = 'taccsite_cms'
-        verbose_name = 'menu link target'
+        verbose_name = 'page nav options'
+        verbose_name_plural = 'page nav options'
 
 
-extension_pool.register(PageMenuTarget)
+extension_pool.register(PageNavOptions)
