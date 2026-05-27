@@ -39,6 +39,7 @@ class PageNavOptions(PageExtension):
     class Meta:
         app_label = 'taccsite_cms'
         verbose_name = 'page nav options'
+        verbose_name_plural = 'page nav options'
 
 
 extension_pool.register(PageNavOptions)
