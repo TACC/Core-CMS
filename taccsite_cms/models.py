@@ -12,6 +12,7 @@ class DummyModel(models.Model):
 
 
 NAV_TARGET_CHOICES = (
+    ('',       _('Default (same window, or new for external links)')),
     ('_blank', _('Open in new window')),
     ('_self',  _('Open in same window')),
 )
