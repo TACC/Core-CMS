@@ -3,15 +3,6 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 
-class DummyModel(models.Model):
-    """
-    Exists solely to trigger Django to send post_migrate signal (see apps.py)
-    """
-    class Meta:
-        app_label = 'taccsite_cms'
-        verbose_name_plural = 'dummy models'
-
-
 NAV_TARGET_CHOICES = (
     ('',       _('Default')),
     ('_blank', _('Open in new window')),

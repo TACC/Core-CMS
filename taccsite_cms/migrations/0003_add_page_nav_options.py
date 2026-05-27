@@ -15,21 +15,16 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='DummyModel',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-            ],
-        ),
-        migrations.CreateModel(
             name='PageNavOptions',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('target', models.CharField(blank=True, choices=[('_blank', 'Open in new window'), ('_self', 'Open in same window')], default='', help_text="Override the default link target for this page's nav menu entry. Leave empty to use automatic detection (external URLs open in a new tab).", max_length=255, verbose_name='Target')),
+                ('target', models.CharField(blank=True, choices=[('', 'Default'), ('_blank', 'Open in new window'), ('_self', 'Open in same window')], default='', help_text="Override the default link target for this page's nav menu entry. Leave empty to use automatic detection (external URLs open in a new tab).", max_length=255, verbose_name='Target')),
                 ('extended_object', models.OneToOneField(editable=False, on_delete=django.db.models.deletion.CASCADE, to='cms.page')),
                 ('public_extension', models.OneToOneField(editable=False, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='draft_extension', to='taccsite_cms.pagenavoptions')),
             ],
             options={
                 'verbose_name': 'page nav options',
+                'verbose_name_plural': 'page nav options',
             },
         ),
     ]
