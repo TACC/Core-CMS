@@ -89,6 +89,13 @@ PORTAL_FAVICON = {
 }
 
 ########################
+# TACC: SOCIAL MEDIA
+########################
+
+# To disable "share this:" links (e.g. on News)
+# PORTAL_SOCIAL_SHARE_PLATFORMS = []
+
+########################
 # SEARCH
 ########################
 
@@ -115,3 +122,4 @@ BLOG_ENABLE_COMMENTS = False
 
 PORTAL_BLOG_SHOW_CATEGORIES = False
 PORTAL_BLOG_SHOW_TAGS = False
+PORTAL_BLOG_SHOW_AUTO_MAIN_IMAGE = False
