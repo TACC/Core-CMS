@@ -9,6 +9,7 @@ class DummyModel(models.Model):
     """
     class Meta:
         app_label = 'taccsite_cms'
+        verbose_name_plural = 'dummy models'
 
 
 NAV_TARGET_CHOICES = (
