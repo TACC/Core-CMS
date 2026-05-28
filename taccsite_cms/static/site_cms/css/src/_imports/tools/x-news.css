@@ -378,8 +378,11 @@
 /* Media */
 
 @define-mixin news-article-page__media {
-  /* To not show empty block (which might have margin) */
-  &:empty {
+  /* To not show invisible content that might have margin: */
+  /* - empty element */
+  &:empty,
+  /* - element with empty placeholder */
+  &:has(.cms-placeholder:first-child:empty) {
     display: none;
   }
 }
