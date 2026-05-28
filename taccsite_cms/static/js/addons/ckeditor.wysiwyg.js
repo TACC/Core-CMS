@@ -1,12 +1,6 @@
 /* Alter ckeditor/styles.js to match our own wants */
 /* https://github.com/django-cms/djangocms-text-ckeditor/blob/3.10.0/djangocms_text_ckeditor/static/djangocms_text_ckeditor/ckeditor/styles.js */
 
-CKEDITOR.plugins.addExternal(
-  'pastefromgdocs',
-  'https://cdn.jsdelivr.net/gh/ckeditor/ckeditor4@4.21.0/plugins/pastefromgdocs/',
-  'plugin.js'
-);
-
 /* Convert inline bold/italic styles to semantic tags on paste,
    because the site strips inline styles from saved content,
    yet `pastefromgdocs` bold/italic are as inline styles. */
