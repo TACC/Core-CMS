@@ -10,6 +10,7 @@
 {# TACC/Core-CMS #}
 <script type="module">
   import updateEmailLinkHrefs from '{% static "site_cms/js/modules/updateEmailLinkHrefs.js" %}';
+  import sortableTable from '{% static "site_cms/js/modules/sortableTable.js" %}';
 
   const scopeElement = document.getElementById('cms-content');
   const fakeText = '__REMOVE_THIS__';
@@ -20,4 +21,6 @@
     subject: 'data-subject',
     body: 'data-body'
   });
+
+  sortableTable({ scopeElement });
 </script>
