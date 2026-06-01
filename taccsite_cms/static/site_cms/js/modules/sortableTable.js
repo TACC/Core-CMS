@@ -14,13 +14,49 @@ const DEFAULT_TABLE_SELECTOR = 'table.o-sortable-table';
 const NOT_SORTABLE_SELECTOR = 'th.is-not-sortable';
 
 /**
- * @param {HTMLTableCellElement} cell
+ * @param {HTMLTableCellElement | undefined} cell
+ * @param {{ table: HTMLTableElement, warnedMissingCell?: boolean }} [logContext]
  * @returns {string}
  */
-function getSortValue(cell) {
+function getSortValue(cell, logContext) {
+  if (!cell) {
+    if (logContext && !logContext.warnedMissingCell) {
+      logContext.warnedMissingCell = true;
+      console.warn(
+        '[sortableTable] A row is missing a cell for the sorted column. Use the same number of columns on every row in the CMS table (watch colspan/rowspan).',
+        logContext.table
+      );
+    }
+    return '';
+  }
+
   const link = cell.querySelector('a');
   const text = link ? link.textContent : cell.textContent;
   return (text ?? '').trim();
+}
+
+/**
+ * @param {HTMLTableElement} table
+ * @param {HTMLTableRowElement} headerRow
+ */
+function warnIfIrregularRows(table, headerRow) {
+  const tbody = table.tBodies[0];
+  if (!tbody) {
+    return;
+  }
+
+  const expected = headerRow.cells.length;
+
+  for (let i = 0; i < tbody.rows.length; i++) {
+    const row = tbody.rows[i];
+    if (row.cells.length < expected) {
+      console.warn(
+        `[sortableTable] Row ${i + 1} has ${row.cells.length} cells but the header has ${expected}. Fix table markup in the CMS before publishing.`,
+        table
+      );
+      return;
+    }
+  }
 }
 
 /**
@@ -36,10 +72,11 @@ function sortTable(table, columnIndex, direction) {
 
   const rows = [ ...tbody.rows ];
   const multiplier = direction === 'ascending' ? 1 : -1;
+  const logContext = { table, warnedMissingCell: false };
 
   rows.sort((rowA, rowB) => {
-    const a = getSortValue(rowA.cells[columnIndex]);
-    const b = getSortValue(rowB.cells[columnIndex]);
+    const a = getSortValue(rowA.cells[columnIndex], logContext);
+    const b = getSortValue(rowB.cells[columnIndex], logContext);
     return multiplier * a.localeCompare(b, undefined, { sensitivity: 'base' });
   });
 
@@ -72,6 +109,8 @@ function initSortableTable(table, notSortableSelector) {
   if (!headerRow) {
     return;
   }
+
+  warnIfIrregularRows(table, headerRow);
 
   /** @type {HTMLTableCellElement[]} */
   const sortableHeaders = [];
