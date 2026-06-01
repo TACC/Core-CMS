@@ -1,0 +1,32 @@
+/**
+ * Coupled with sortableTable.js (table.is-sortable).
+ * Table look and feel come from Core-Styles base (elements/table).
+ * TODO: Consider a shared sortable-table component in TACC/Core-Components.
+ */
+
+table.is-sortable thead th:not(.is-not-sortable) {
+  padding: 0;
+}
+
+table.is-sortable .is-sortable__sort {
+  width: 100%;
+}
+
+table.is-sortable .is-sortable__sort:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: -2px;
+}
+
+table.is-sortable th[aria-sort='ascending'] .is-sortable__sort::after,
+table.is-sortable th[aria-sort='descending'] .is-sortable__sort::after {
+  margin-inline-start: 0.35em;
+  font-size: 0.85em;
+}
+
+table.is-sortable th[aria-sort='ascending'] .is-sortable__sort::after {
+  content: '▲';
+}
+
+table.is-sortable th[aria-sort='descending'] .is-sortable__sort::after {
+  content: '▼';
+}

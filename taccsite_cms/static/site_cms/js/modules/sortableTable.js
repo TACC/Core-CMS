@@ -1,16 +1,18 @@
 /**
- * Client-side sort for CMS tables marked with `table.o-sortable-table`.
+ * Client-side sort for CMS tables with class `is-sortable` on the table.
  *
- * Not using tristen/tablesort: it sorts focusable <th> (Enter/aria-sort) without a
- * button in the header (W3C APG); no `th.is-not-sortable` or link-text sort keys.
- * Matching our editor/CSS contract would duplicate this module.
+ * Load with `sortableTable.css` (same folder under `site_cms/css/modules/`).
+ * TODO: Consider TACC/Core-Components as a shared sortable-table component.
+ *
+ * Not using tristen/tablesort: focusable `<th>` only; no button-in-header (APG);
+ * no `th.is-not-sortable` or link-text sort keys without duplicating this module.
  *
  * Editor markup:
- * - Table: `o-fixed-header-table o-sortable-table`
+ * - Table: `o-fixed-header-table is-sortable`
  * - Non-sortable column: `th.is-not-sortable` (e.g. Description)
  */
 
-const DEFAULT_TABLE_SELECTOR = 'table.o-sortable-table';
+const DEFAULT_TABLE_SELECTOR = 'table.is-sortable';
 const NOT_SORTABLE_SELECTOR = 'th.is-not-sortable';
 
 /**
@@ -130,7 +132,7 @@ function initSortableTable(table, notSortableSelector) {
 
     const button = document.createElement('button');
     button.type = 'button';
-    button.className = 'o-sortable-table__sort';
+    button.className = 'c-button c-button--as-link is-sortable__sort';
     button.textContent = label;
     cell.append(button);
 
@@ -163,7 +165,7 @@ function initSortableTable(table, notSortableSelector) {
 /**
  * @param {object} [options]
  * @param {ParentNode} [options.scopeElement=document]
- * @param {string} [options.tableSelector=table.o-sortable-table]
+ * @param {string} [options.tableSelector=table.is-sortable]
  * @param {string} [options.notSortableSelector=th.is-not-sortable]
  */
 export default function sortableTable({
