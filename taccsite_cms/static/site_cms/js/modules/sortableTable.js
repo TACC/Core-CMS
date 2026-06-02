@@ -1,5 +1,6 @@
 /**
  * Client-side sort for CMS tables with class `is-sortable`
+ * IMPORTANT: Coupled with `sortableTable.css`
  *
  * TODO: Consider adding to TACC/Core-Components
  * NOTE: Not using tristen/tablesort cuz it forgoes button in header cell (a11y)
