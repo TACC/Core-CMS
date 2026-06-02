@@ -4,28 +4,30 @@
  * TODO: Consider a shared sortable-table component in TACC/Core-Components.
  */
 
-/* So cell height matches that of a normal table */
-table.is-sortable .c-button--as-link {
-    line-height: inherit;
-    height: 1lh;
-}
+.table.is-sortable {
+  /* So cell height matches that of a normal table */
+  & .c-button--as-link {
+      line-height: inherit;
+      height: 1lh;
+  }
 
-table.is-sortable .is-sortable__sort:focus-visible {
-  outline-offset: 0.25em;
-}
+  & .is-sortable__sort:focus-visible {
+    outline-offset: 0.25em;
+  }
 
-table.is-sortable th[aria-sort='ascending'] .is-sortable__sort::after,
-table.is-sortable th[aria-sort='descending'] .is-sortable__sort::after {
-  font-size: smaller;
-}
-table.is-sortable th[aria-sort='ascending'] .is-sortable__sort:not(.c-button--as-link)::after,
-table.is-sortable th[aria-sort='descending'] .is-sortable__sort:not(.c-button--as-link)::after {
-  margin-inline-start: 0.35em;
-}
+  & th[aria-sort='ascending'] .is-sortable__sort::after,
+  & th[aria-sort='descending'] .is-sortable__sort::after {
+    font-size: smaller;
+  }
+  & th[aria-sort='ascending'] .is-sortable__sort:not(.c-button--as-link)::after,
+  & th[aria-sort='descending'] .is-sortable__sort:not(.c-button--as-link)::after {
+    margin-inline-start: 0.35em;
+  }
 
-table.is-sortable th[aria-sort='ascending'] .is-sortable__sort::after {
-  content: '▲';
-}
-table.is-sortable th[aria-sort='descending'] .is-sortable__sort::after {
-  content: '▼';
+  & th[aria-sort='ascending'] .is-sortable__sort::after {
+    content: '▲';
+  }
+  & th[aria-sort='descending'] .is-sortable__sort::after {
+    content: '▼';
+  }
 }
