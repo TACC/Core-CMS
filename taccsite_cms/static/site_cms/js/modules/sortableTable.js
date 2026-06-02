@@ -1,11 +1,10 @@
 /**
- * Client-side sort for CMS tables with class `is-sortable` on the table.
+ * Client-side sort for CMS tables with class `is-sortable`
  *
- * Load with `sortableTable.css` (same folder under `site_cms/css/modules/`).
- * TODO: Consider TACC/Core-Components as a shared sortable-table component.
- *
- * Not using tristen/tablesort: focusable `<th>` only; no button-in-header (APG);
- * no `th.is-not-sortable` or link-text sort keys without duplicating this module.
+ * TODO: Consider adding to TACC/Core-Components
+ * NOTE: Not using tristen/tablesort cuz it forgoes button in header cell (a11y)
+ * SEE: https://github.com/tristen/tablesort
+ * SEE: https://www.w3.org/WAI/ARIA/apg/patterns/table/examples/sortable-table/
  *
  * Editor markup:
  * - Table: `o-fixed-header-table is-sortable`
