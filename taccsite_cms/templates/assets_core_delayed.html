@@ -8,8 +8,10 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 
 {# TACC/Core-CMS #}
+<link rel="stylesheet" href="{% static 'site_cms/css/modules/sortableTable.css' %}" />
 <script type="module">
   import updateEmailLinkHrefs from '{% static "site_cms/js/modules/updateEmailLinkHrefs.js" %}';
+  import sortableTable from '{% static "site_cms/js/modules/sortableTable.js" %}';
 
   const scopeElement = document.getElementById('cms-content');
   const fakeText = '__REMOVE_THIS__';
@@ -20,4 +22,6 @@
     subject: 'data-subject',
     body: 'data-body'
   });
+
+  sortableTable({ scopeElement });
 </script>
