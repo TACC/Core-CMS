@@ -4,26 +4,28 @@
  * TODO: Consider a shared sortable-table component in TACC/Core-Components.
  */
 
+/* So cell height matches that of a normal table */
 table.is-sortable .c-button--as-link {
     line-height: inherit;
     height: 1lh;
 }
 
 table.is-sortable .is-sortable__sort:focus-visible {
-  outline: 2px solid currentColor;
-  outline-offset: -2px;
+  outline-offset: 0.25em;
 }
 
 table.is-sortable th[aria-sort='ascending'] .is-sortable__sort::after,
 table.is-sortable th[aria-sort='descending'] .is-sortable__sort::after {
+  font-size: smaller;
+}
+table.is-sortable th[aria-sort='ascending'] .is-sortable__sort:not(.c-button--as-link)::after,
+table.is-sortable th[aria-sort='descending'] .is-sortable__sort:not(.c-button--as-link)::after {
   margin-inline-start: 0.35em;
-  font-size: 0.85em;
 }
 
 table.is-sortable th[aria-sort='ascending'] .is-sortable__sort::after {
   content: '▲';
 }
-
 table.is-sortable th[aria-sort='descending'] .is-sortable__sort::after {
   content: '▼';
 }
