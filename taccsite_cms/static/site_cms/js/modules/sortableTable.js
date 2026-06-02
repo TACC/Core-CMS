@@ -12,8 +12,12 @@
  * - Non-sortable column: `th.is-not-sortable` (e.g. Description)
  */
 
-const DEFAULT_TABLE_SELECTOR = 'table.is-sortable';
-const NOT_SORTABLE_SELECTOR = 'th.is-not-sortable';
+const SORT_TABLE_CLASS = 'is-sortable';
+const NOT_SORTABLE_CLASS = 'is-not-sortable';
+const SORT_BUTTON_CLASS = 'is-sortable__sort';
+
+const DEFAULT_TABLE_SELECTOR = 'table.' + SORT_TABLE_CLASS;
+const NOT_SORTABLE_SELECTOR = 'th.' + NOT_SORTABLE_CLASS;
 
 /**
  * @param {HTMLTableCellElement | undefined} cell
@@ -105,8 +109,9 @@ function setHeaderSortState(headerCell, ariaSort) {
 /**
  * @param {HTMLTableElement} table
  * @param {string} notSortableSelector
+ * @param {string} buttonClass
  */
-function initSortableTable(table, notSortableSelector) {
+function initSortableTable(table, notSortableSelector, buttonClass) {
   const headerRow = table.tHead?.rows[0];
   if (!headerRow) {
     return;
@@ -122,7 +127,7 @@ function initSortableTable(table, notSortableSelector) {
       return;
     }
     if (cell.matches(notSortableSelector)) {
-      cell.classList.add('is-not-sortable');
+      cell.classList.add(NOT_SORTABLE_CLASS);
       return;
     }
 
@@ -132,7 +137,7 @@ function initSortableTable(table, notSortableSelector) {
 
     const button = document.createElement('button');
     button.type = 'button';
-    button.className = 'c-button c-button--as-link is-sortable__sort';
+    button.className = buttonClass + ' ' + SORT_BUTTON_CLASS;
     button.textContent = label;
     cell.append(button);
 
@@ -167,15 +172,17 @@ function initSortableTable(table, notSortableSelector) {
  * @param {ParentNode} [options.scopeElement=document]
  * @param {string} [options.tableSelector=table.is-sortable]
  * @param {string} [options.notSortableSelector=th.is-not-sortable]
+ * @param {string} [options.buttonClass=''] // e.g. 'c-button c-button--as-link'
  */
 export default function sortableTable({
   scopeElement = document,
   tableSelector = DEFAULT_TABLE_SELECTOR,
   notSortableSelector = NOT_SORTABLE_SELECTOR,
+  buttonClass = '',
 } = {}) {
   scopeElement.querySelectorAll(tableSelector).forEach((table) => {
     if (table instanceof HTMLTableElement) {
-      initSortableTable(table, notSortableSelector);
+      initSortableTable(table, notSortableSelector, buttonClass);
     }
   });
 }
