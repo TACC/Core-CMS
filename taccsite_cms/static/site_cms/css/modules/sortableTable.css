@@ -4,12 +4,9 @@
  * TODO: Consider a shared sortable-table component in TACC/Core-Components.
  */
 
-table.is-sortable thead th:not(.is-not-sortable) {
-  padding: 0;
-}
-
-table.is-sortable .is-sortable__sort {
-  width: 100%;
+table.is-sortable .c-button--as-link {
+    line-height: inherit;
+    height: 1lh;
 }
 
 table.is-sortable .is-sortable__sort:focus-visible {
