@@ -20,6 +20,7 @@ table.is-sortable {
         line-height: inherit;
         height: 1lh;
         justify-content: start;
+        vertical-align: baseline;
     }
     &.c-button--as-link {
         height: 1lh;
