@@ -5,20 +5,28 @@
  */
 
 table.is-sortable {
-  /* So known button styles have no ill effect */
-  & .c-button--as-link {
-      /* So cell layout is not influenced by button */
-      line-height: inherit;
-      height: 1lh;
-      justify-content: start;
+  /* Buttons */
+  & .is-sortable__sort {
+    width: 100%; /* so entire cell is clickable */
 
-      /* So entire cell is clickable */
-      width: 100%;
-  }
+    /* To improve legibility during visible focus */
+    &:focus-visible {
+      outline-offset: 0.25em;
+    }
 
-  /* To improve legibility during visible focus */
-  & .is-sortable__sort:focus-visible {
-    outline-offset: 0.25em;
+    /* So known button styles have no ill effect */
+    &.btn-link,
+    &.c-button--as-link {
+        line-height: inherit;
+        height: 1lh;
+        justify-content: start;
+    }
+    &.c-button--as-link {
+        height: 1lh;
+    }
+    &.btn-link {
+        padding: 0;
+    }
   }
 
   /* Sort indicators */
