@@ -16,10 +16,14 @@
     {# TACC (remove whitespace to support css `:empty`): #}
     {% spaceless %}
     {% if image and post.main_image %}
-    <div class="blog-visual">
+    {# TACC (use figure wrapper): #}
+    <figure class="blog-visual">
         {% thumbnail post.main_image post.thumbnail_options.size crop=post.thumbnail_options.crop upscale=post.thumbnail_options.upscale subject_location=post.main_image.subject_location as thumb %}
-        <img src="{{ thumb.url }}" alt="{{ post.main_image.default_alt_text }}" width="{{ thumb.width }}" height="{{ thumb.height }}" />
-    </div>
+        {# TACC (make alt text conditional to avoid `alt="None"`): #}
+        <img src="{{ thumb.url }}" alt="{% if post.main_image.default_alt_text %}{{ post.main_image.default_alt_text }}{% endif %}" width="{{ thumb.width }}" height="{{ thumb.height }}" />
+        {# /TACC #}
+    </figure>
+    {# /TACC #}
     {% else %}
         {% media_images post as previews %}
         <div class="blog-visual">

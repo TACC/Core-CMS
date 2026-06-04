@@ -17,8 +17,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 
 CKEDITOR_SETTINGS = {
     'autoParagraph': False,
+    'customConfig': '/static/js/addons/ckeditor.config.js',
     'stylesSet': 'default:/static/js/addons/ckeditor.wysiwyg.js',
     'contentsCss': ['/static/djangocms_text_ckeditor/ckeditor/contents.css'],
+    'extraPlugins': 'pastefromgdocs',
 }
 
 ########################
@@ -94,6 +96,10 @@ DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS = [
             _('Container + Muted section')
         ),
         (
+            'container  o-section o-section--style-accent',
+            _('Container + Accent section')
+        ),
+        (
             'container  o-section o-section--style-dark',
             _('Container + Dark section')
         ),
@@ -112,6 +118,10 @@ DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS = [
             _('Fluid container + Muted section')
         ),
         (
+            'container-fluid  o-section o-section--style-accent',
+            _('Fluid container + Accent section')
+        ),
+        (
             'container-fluid  o-section o-section--style-dark',
             _('Fluid container + Dark section')
         ),
@@ -124,6 +134,10 @@ DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS = [
         (
             'o-section o-section--style-muted',
             _('Muted section')
+        ),
+        (
+            'o-section o-section--style-accent',
+            _('Accent section')
         ),
         (
             'o-section o-section--style-dark',
@@ -161,10 +175,12 @@ DJANGOCMS_STYLE_CHOICES = [
     'section',
     'section--light',
     'section--muted',
+    'section--accent',
     'section--dark',
     'o-section',
     'o-section o-section--style-light',
     'o-section o-section--style-muted',
+    'o-section o-section--style-accent',
     'o-section o-section--style-dark',
     'c-callout',
     'c-recognition c-recognition--style-light',

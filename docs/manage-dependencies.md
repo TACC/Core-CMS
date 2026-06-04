@@ -13,7 +13,7 @@ This project uses [**Poetry** (Python)](https://python-poetry.org/docs/managing-
     **Node (NPM)**
 
     ```sh
-    docker run --rm -v "$(pwd):/code" -w /code node:18 npm ...
+    docker run --rm -v "$(pwd):/code" -w /code node:20 npm ...
     ```
 
 2. Update environment using appropriate [command sequence](./command-sequences.md).

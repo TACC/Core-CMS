@@ -104,7 +104,7 @@ How to set up a new local CMS instance.
 3. Build CSS:
 
     ```sh
-    docker run --rm -v "$(pwd):/code" -w /code node:18 sh -c "npm ci && npm run build"
+    docker run --rm -v "$(pwd):/code" -w /code node:20 sh -c "npm ci && npm run build"
     ```
 
     > **Note**

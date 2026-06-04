@@ -61,7 +61,7 @@ Styleguide Components.DjangoCMS.Blog.App
 .app-blog .attrs:empty {
   display: none;
 }
-/* To always hide "by" */
+/* To always hide the "by" in the byline */
 .app-blog .byline > span {
   display: none;
 }
