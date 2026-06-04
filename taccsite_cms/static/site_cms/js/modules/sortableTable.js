@@ -1,23 +1,66 @@
 /**
- * Client-side sort for CMS tables with class `is-sortable`
- * IMPORTANT: Coupled with `sortableTable.css`
+ * Client-side sort for CMS tables with class `js-sortable` (List.js 2.3.1).
+ * IMPORTANT: Coupled with `sortableTable.css`. Requires global `List` from CDN.
  *
- * TODO: Consider adding to TACC/Core-Components
  * NOTE: Not using tristen/tablesort cuz it forgoes button in header cell (a11y)
- * SEE: https://github.com/tristen/tablesort
+ * SEE: https://github.com/javve/list.js
  * SEE: https://www.w3.org/WAI/ARIA/apg/patterns/table/examples/sortable-table/
  *
  * Editor markup:
- * - Table: `o-fixed-header-table is-sortable`
- * - Non-sortable column: `th.is-not-sortable` (e.g. Description)
+ * - Table: `o-fixed-header-table js-sortable`
+ * - Non-sortable column: `th.not-sortable` (e.g. Description)
+ *
+ * Runtime-only (do not document for editors): tbody.list, button.sort, data-sort, row data-*.
  */
 
-const SORT_TABLE_CLASS = 'is-sortable';
-const NOT_SORTABLE_CLASS = 'is-not-sortable';
-const SORT_BUTTON_CLASS = 'is-sortable__sort';
+const SORT_TABLE_CLASS = 'js-sortable';
+const LIST_CLASS = 'list';
+const SORT_BUTTON_CLASS = 'sort';
+const EMPTY_SLUG_SENTINEL = 'col';
 
 const DEFAULT_TABLE_SELECTOR = 'table.' + SORT_TABLE_CLASS;
-const NOT_SORTABLE_SELECTOR = 'th.' + NOT_SORTABLE_CLASS;
+const NOT_SORTABLE_SELECTOR = 'th.not-sortable';
+
+let listJsMissingLogged = false;
+
+/**
+ * @param {string} label
+ * @returns {string}
+ */
+function slugify(label) {
+  return label
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, '-')
+    .replace(/[^a-z0-9-]/g, '')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '');
+}
+
+/**
+ * @param {string} rawSlug
+ * @param {Set<string>} usedSlugs
+ * @returns {string}
+ */
+function assignSlug(rawSlug, usedSlugs) {
+  let base = rawSlug || EMPTY_SLUG_SENTINEL;
+  if (!usedSlugs.has(base)) {
+    usedSlugs.add(base);
+    return base;
+  }
+
+  let n = 2;
+  let candidate = `${base}-${n}`;
+  while (usedSlugs.has(candidate)) {
+    n += 1;
+    candidate = `${base}-${n}`;
+  }
+  usedSlugs.add(candidate);
+  console.warn(
+    `[sortableTable] Duplicate column slug "${base}"; using "${candidate}". Fix duplicate header labels in the CMS.`,
+  );
+  return candidate;
+}
 
 /**
  * @param {HTMLTableCellElement | undefined} cell
@@ -42,67 +85,58 @@ function getSortValue(cell, logContext) {
 }
 
 /**
- * @param {HTMLTableElement} table
- * @param {HTMLTableRowElement} headerRow
- */
-function warnIfIrregularRows(table, headerRow) {
-  const tbody = table.tBodies[0];
-  if (!tbody) {
-    return;
-  }
-
-  const expected = headerRow.cells.length;
-
-  for (let i = 0; i < tbody.rows.length; i++) {
-    const row = tbody.rows[i];
-    if (row.cells.length < expected) {
-      console.warn(
-        `[sortableTable] Row ${i + 1} has ${row.cells.length} cells but the header has ${expected}. Fix table markup in the CMS before publishing.`,
-        table
-      );
-      return;
-    }
-  }
-}
-
-/**
- * @param {HTMLTableElement} table
- * @param {number} columnIndex
- * @param {'ascending' | 'descending'} direction
- */
-function sortTable(table, columnIndex, direction) {
-  const tbody = table.tBodies[0];
-  if (!tbody) {
-    return;
-  }
-
-  const rows = [ ...tbody.rows ];
-  const multiplier = direction === 'ascending' ? 1 : -1;
-  const logContext = { table, warnedMissingCell: false };
-
-  rows.sort((rowA, rowB) => {
-    const a = getSortValue(rowA.cells[columnIndex], logContext);
-    const b = getSortValue(rowB.cells[columnIndex], logContext);
-    return multiplier * a.localeCompare(b, undefined, { sensitivity: 'base' });
-  });
-
-  rows.forEach((row) => tbody.appendChild(row));
-}
-
-/**
- * @param {HTMLTableCellElement} headerCell
+ * @param {HTMLTableCellElement} th
  * @param {'ascending' | 'descending' | 'none'} ariaSort
  */
-function setHeaderSortState(headerCell, ariaSort) {
-  headerCell.setAttribute('aria-sort', ariaSort);
-  const button = headerCell.querySelector('button');
-  if (button) {
-    button.setAttribute(
-      'aria-label',
-      ariaSort === 'none'
-        ? headerCell.dataset.sortLabel
-        : `${headerCell.dataset.sortLabel}, sorted ${ariaSort}`
-    );
+function setHeaderSortState(th, ariaSort) {
+  th.setAttribute('aria-sort', ariaSort);
+  const button = th.querySelector('button');
+  if (!button) {
+    return;
+  }
+  const label = th.dataset.sortLabel ?? '';
+  button.setAttribute(
+    'aria-label',
+    ariaSort === 'none' ? label : `${label}, sorted ${ariaSort}`
+  );
+}
+
+/**
+ * @typedef {{ th: HTMLTableCellElement, button: HTMLButtonElement, slug: string, columnIndex: number }} SortableColumn
+ */
+
+/**
+ * @param {SortableColumn[]} columns
+ */
+function syncAriaFromListButtons(columns) {
+  for (const { th, button } of columns) {
+    let ariaSort = 'none';
+    if (button.classList.contains('asc')) {
+      ariaSort = 'ascending';
+    } else if (button.classList.contains('desc')) {
+      ariaSort = 'descending';
+    }
+    setHeaderSortState(th, ariaSort);
+  }
+}
+
+/**
+ * @param {HTMLTableElement} table
+ * @param {SortableColumn[]} columns
+ */
+function applyRowDataAttributes(table, columns) {
+  const tbody = table.tBodies[0];
+  if (!tbody) {
+    return;
+  }
+
+  const logContext = { table, warnedMissingCell: false };
+
+  for (const row of tbody.rows) {
+    for (const { slug, columnIndex } of columns) {
+      const value = getSortValue(row.cells[columnIndex], logContext);
+      row.setAttribute(`data-${slug}`, value);
+    }
   }
 }
 
@@ -110,68 +144,87 @@ function setHeaderSortState(headerCell, ariaSort) {
  * @param {HTMLTableElement} table
  * @param {string} notSortableSelector
  * @param {string} buttonClass
+ * @returns {SortableColumn[] | null}
  */
-function initSortableTable(table, notSortableSelector, buttonClass) {
+function prepSortableTable(table, notSortableSelector, buttonClass) {
   const headerRow = table.tHead?.rows[0];
   if (!headerRow) {
-    return;
+    console.warn(
+      '[sortableTable] Table has no thead; skipping sortable enhancement.',
+      table
+    );
+    return null;
   }
 
-  warnIfIrregularRows(table, headerRow);
+  const tbody = table.tBodies[0];
+  if (!tbody) {
+    console.warn('[sortableTable] Table has no tbody; skipping.', table);
+    return null;
+  }
 
-  /** @type {HTMLTableCellElement[]} */
-  const sortableHeaders = [];
+  tbody.classList.add(LIST_CLASS);
 
-  [ ...headerRow.cells ].forEach((cell, index) => {
+  /** @type {SortableColumn[]} */
+  const columns = [];
+  /** @type {Array<{ data: string[] }>} */
+  const valueNames = [];
+  const usedSlugs = new Set();
+
+  [ ...headerRow.cells ].forEach((cell, columnIndex) => {
     if (!(cell instanceof HTMLTableCellElement)) {
       return;
     }
     if (cell.matches(notSortableSelector)) {
-      cell.classList.add(NOT_SORTABLE_CLASS);
       return;
     }
 
-    const label = cell.textContent?.trim() ?? `Column ${index + 1}`;
+    const label = (cell.textContent ?? '').trim();
+    if (!label) {
+      return;
+    }
+
+    const slug = assignSlug(slugify(label), usedSlugs);
     cell.dataset.sortLabel = label;
     cell.innerHTML = '';
 
     const button = document.createElement('button');
     button.type = 'button';
-    button.className = buttonClass + ' ' + SORT_BUTTON_CLASS;
+    button.className = [ buttonClass, SORT_BUTTON_CLASS ].filter(Boolean).join(' ');
     button.textContent = label;
+    button.setAttribute('data-sort', slug);
     cell.append(button);
 
-    button.addEventListener('click', () => {
-      const current = cell.getAttribute('aria-sort');
-      const next =
-        current === 'ascending' ? 'descending' : 'ascending';
-
-      sortableHeaders.forEach((other) => {
-        if (other !== cell) {
-          setHeaderSortState(other, 'none');
-        }
-      });
-
-      setHeaderSortState(cell, next);
-      sortTable(table, index, next);
-    });
-
-    sortableHeaders.push(cell);
+    valueNames.push({ data: [ slug ] });
+    columns.push({ th: cell, button, slug, columnIndex });
   });
 
-  if (sortableHeaders.length) {
-    const first = sortableHeaders[0];
-    const firstIndex = [ ...headerRow.cells ].indexOf(first);
-    setHeaderSortState(first, 'ascending');
-    sortTable(table, firstIndex, 'ascending');
+  if (!columns.length) {
+    console.warn(
+      '[sortableTable] No sortable columns after prep; skipping.',
+      table
+    );
+    return null;
   }
+
+  applyRowDataAttributes(table, columns);
+
+  const List = window.List;
+  const list = new List(table, {
+    valueNames,
+    listClass: LIST_CLASS,
+  });
+
+  list.on('sortComplete', () => syncAriaFromListButtons(columns));
+  syncAriaFromListButtons(columns);
+
+  return columns;
 }
 
 /**
  * @param {object} [options]
  * @param {ParentNode} [options.scopeElement=document]
- * @param {string} [options.tableSelector=table.is-sortable]
- * @param {string} [options.notSortableSelector=th.is-not-sortable]
+ * @param {string} [options.tableSelector=table.js-sortable]
+ * @param {string} [options.notSortableSelector=th.not-sortable]
  * @param {string} [options.buttonClass=''] // e.g. 'c-button c-button--as-link'
  */
 export default function sortableTable({
@@ -180,9 +233,19 @@ export default function sortableTable({
   notSortableSelector = NOT_SORTABLE_SELECTOR,
   buttonClass = '',
 } = {}) {
+  if (typeof window.List !== 'function') {
+    if (!listJsMissingLogged) {
+      listJsMissingLogged = true;
+      console.error(
+        '[sortableTable] List.js is not loaded; sortable tables will not be enhanced.'
+      );
+    }
+    return;
+  }
+
   scopeElement.querySelectorAll(tableSelector).forEach((table) => {
     if (table instanceof HTMLTableElement) {
-      initSortableTable(table, notSortableSelector, buttonClass);
+      prepSortableTable(table, notSortableSelector, buttonClass);
     }
   });
 }

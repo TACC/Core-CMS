@@ -1,11 +1,11 @@
 /**
- * Styles for CMS tables with class `is-sortable`
+ * Styles for CMS tables with class `js-sortable`
  * IMPORTANT: Coupled with sortableTable.js
  */
 
-table.is-sortable {
+table.js-sortable {
   /* Buttons */
-  & .is-sortable__sort {
+  & .sort {
     width: 100%; /* so entire cell is clickable */
 
     /* To improve legibility during visible focus */
@@ -29,11 +29,11 @@ table.is-sortable {
     }
   }
 
-  /* Sort indicators */
-  & th[aria-sort="ascending"] .is-sortable__sort::after { content: '▲'; }
-  & th[aria-sort="descending"] .is-sortable__sort::after { content: '▼'; }
-  & th[aria-sort="ascending"] .is-sortable__sort,
-  & th[aria-sort="descending"] .is-sortable__sort {
+  /* Sort indicators (primary: aria-sort; fallback: List.js asc/desc on button) */
+  & th[aria-sort="ascending"] .sort::after { content: '▲'; }
+  & th[aria-sort="descending"] .sort::after { content: '▼'; }
+  & th[aria-sort="ascending"] .sort,
+  & th[aria-sort="descending"] .sort {
     &::after {
       font-size: smaller;
     }
@@ -41,4 +41,15 @@ table.is-sortable {
       margin-inline-start: 0.35em;
     }
   }
+
+  & .sort.asc::after,
+  & .sort.desc::after {
+    font-size: smaller;
+  }
+  & .sort.asc:not(.c-button--as-link)::after,
+  & .sort.desc:not(.c-button--as-link)::after {
+    margin-inline-start: 0.35em;
+  }
+  & .sort.asc::after { content: '▲'; }
+  & .sort.desc::after { content: '▼'; }
 }
