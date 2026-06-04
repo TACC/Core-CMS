@@ -115,6 +115,7 @@ function prepSortableTable(table, notSortableSelector, buttonClass) {
   const columns = [];
   /** @type {Array<{ data: string[] }>} */
   const valueNames = [];
+  const logContext = { table, warnedMissingCell: false };
 
   [ ...headerRow.cells ].forEach((cell, columnIndex) => {
     if (!(cell instanceof HTMLTableCellElement)) {
@@ -142,6 +143,10 @@ function prepSortableTable(table, notSortableSelector, buttonClass) {
 
     valueNames.push({ data: [ key ] });
     columns.push({ th: cell, button, key, columnIndex });
+
+    for (const row of tbody.rows) {
+      row.setAttribute(`data-${key}`, getSortValue(row.cells[columnIndex], logContext));
+    }
   });
 
   if (!columns.length) {
@@ -150,13 +155,6 @@ function prepSortableTable(table, notSortableSelector, buttonClass) {
       table
     );
     return;
-  }
-
-  const logContext = { table, warnedMissingCell: false };
-  for (const row of tbody.rows) {
-    for (const { key, columnIndex } of columns) {
-      row.setAttribute(`data-${key}`, getSortValue(row.cells[columnIndex], logContext));
-    }
   }
 
   const list = new window.List(table, {
