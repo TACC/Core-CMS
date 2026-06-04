@@ -16,7 +16,6 @@
 const SORT_TABLE_CLASS = 'js-sortable';
 const LIST_CLASS = 'list';
 const SORT_BUTTON_CLASS = 'sort';
-const EMPTY_SLUG_SENTINEL = 'col';
 
 const DEFAULT_TABLE_SELECTOR = 'table.' + SORT_TABLE_CLASS;
 const NOT_SORTABLE_SELECTOR = 'th.not-sortable';
@@ -24,42 +23,11 @@ const NOT_SORTABLE_SELECTOR = 'th.not-sortable';
 let listJsMissingLogged = false;
 
 /**
- * @param {string} label
+ * @param {number} columnIndex
  * @returns {string}
  */
-function slugify(label) {
-  return label
-    .toLowerCase()
-    .trim()
-    .replace(/\s+/g, '-')
-    .replace(/[^a-z0-9-]/g, '')
-    .replace(/-+/g, '-')
-    .replace(/^-|-$/g, '');
-}
-
-/**
- * @param {string} rawSlug
- * @param {Set<string>} usedSlugs
- * @returns {string}
- */
-function assignSlug(rawSlug, usedSlugs) {
-  let base = rawSlug || EMPTY_SLUG_SENTINEL;
-  if (!usedSlugs.has(base)) {
-    usedSlugs.add(base);
-    return base;
-  }
-
-  let n = 2;
-  let candidate = `${base}-${n}`;
-  while (usedSlugs.has(candidate)) {
-    n += 1;
-    candidate = `${base}-${n}`;
-  }
-  usedSlugs.add(candidate);
-  console.warn(
-    `[sortableTable] Duplicate column slug "${base}"; using "${candidate}". Fix duplicate header labels in the CMS.`,
-  );
-  return candidate;
+function columnKey(columnIndex) {
+  return `col-${columnIndex}`;
 }
 
 /**
@@ -102,7 +70,7 @@ function setHeaderSortState(th, ariaSort) {
 }
 
 /**
- * @typedef {{ th: HTMLTableCellElement, button: HTMLButtonElement, slug: string, columnIndex: number }} SortableColumn
+ * @typedef {{ th: HTMLTableCellElement, button: HTMLButtonElement, key: string, columnIndex: number }} SortableColumn
  */
 
 /**
@@ -122,29 +90,8 @@ function syncAriaFromListButtons(columns) {
 
 /**
  * @param {HTMLTableElement} table
- * @param {SortableColumn[]} columns
- */
-function applyRowDataAttributes(table, columns) {
-  const tbody = table.tBodies[0];
-  if (!tbody) {
-    return;
-  }
-
-  const logContext = { table, warnedMissingCell: false };
-
-  for (const row of tbody.rows) {
-    for (const { slug, columnIndex } of columns) {
-      const value = getSortValue(row.cells[columnIndex], logContext);
-      row.setAttribute(`data-${slug}`, value);
-    }
-  }
-}
-
-/**
- * @param {HTMLTableElement} table
  * @param {string} notSortableSelector
  * @param {string} buttonClass
- * @returns {SortableColumn[] | null}
  */
 function prepSortableTable(table, notSortableSelector, buttonClass) {
   const headerRow = table.tHead?.rows[0];
@@ -153,13 +100,13 @@ function prepSortableTable(table, notSortableSelector, buttonClass) {
       '[sortableTable] Table has no thead; skipping sortable enhancement.',
       table
     );
-    return null;
+    return;
   }
 
   const tbody = table.tBodies[0];
   if (!tbody) {
     console.warn('[sortableTable] Table has no tbody; skipping.', table);
-    return null;
+    return;
   }
 
   tbody.classList.add(LIST_CLASS);
@@ -168,7 +115,6 @@ function prepSortableTable(table, notSortableSelector, buttonClass) {
   const columns = [];
   /** @type {Array<{ data: string[] }>} */
   const valueNames = [];
-  const usedSlugs = new Set();
 
   [ ...headerRow.cells ].forEach((cell, columnIndex) => {
     if (!(cell instanceof HTMLTableCellElement)) {
@@ -183,7 +129,7 @@ function prepSortableTable(table, notSortableSelector, buttonClass) {
       return;
     }
 
-    const slug = assignSlug(slugify(label), usedSlugs);
+    const key = columnKey(columnIndex);
     cell.dataset.sortLabel = label;
     cell.innerHTML = '';
 
@@ -191,11 +137,11 @@ function prepSortableTable(table, notSortableSelector, buttonClass) {
     button.type = 'button';
     button.className = [ buttonClass, SORT_BUTTON_CLASS ].filter(Boolean).join(' ');
     button.textContent = label;
-    button.setAttribute('data-sort', slug);
+    button.setAttribute('data-sort', key);
     cell.append(button);
 
-    valueNames.push({ data: [ slug ] });
-    columns.push({ th: cell, button, slug, columnIndex });
+    valueNames.push({ data: [ key ] });
+    columns.push({ th: cell, button, key, columnIndex });
   });
 
   if (!columns.length) {
@@ -203,21 +149,23 @@ function prepSortableTable(table, notSortableSelector, buttonClass) {
       '[sortableTable] No sortable columns after prep; skipping.',
       table
     );
-    return null;
+    return;
   }
 
-  applyRowDataAttributes(table, columns);
+  const logContext = { table, warnedMissingCell: false };
+  for (const row of tbody.rows) {
+    for (const { key, columnIndex } of columns) {
+      row.setAttribute(`data-${key}`, getSortValue(row.cells[columnIndex], logContext));
+    }
+  }
 
-  const List = window.List;
-  const list = new List(table, {
+  const list = new window.List(table, {
     valueNames,
     listClass: LIST_CLASS,
   });
 
   list.on('sortComplete', () => syncAriaFromListButtons(columns));
   syncAriaFromListButtons(columns);
-
-  return columns;
 }
 
 /**

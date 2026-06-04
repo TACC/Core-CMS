@@ -4,16 +4,13 @@
  */
 
 table.js-sortable {
-  /* Buttons */
-  & .sort {
+  & th:not(.not-sortable) > button {
     width: 100%; /* so entire cell is clickable */
 
-    /* To improve legibility during visible focus */
     &:focus-visible {
       outline-offset: 0.25em;
     }
 
-    /* So known button styles have no ill effect */
     &.btn-link,
     &.c-button--as-link {
         line-height: inherit;
@@ -29,11 +26,7 @@ table.js-sortable {
     }
   }
 
-  /* Sort indicators (primary: aria-sort; fallback: List.js asc/desc on button) */
-  & th[aria-sort="ascending"] .sort::after { content: '▲'; }
-  & th[aria-sort="descending"] .sort::after { content: '▼'; }
-  & th[aria-sort="ascending"] .sort,
-  & th[aria-sort="descending"] .sort {
+  & th:is([aria-sort="ascending"], [aria-sort="descending"]) > button {
     &::after {
       font-size: smaller;
     }
@@ -41,15 +34,6 @@ table.js-sortable {
       margin-inline-start: 0.35em;
     }
   }
-
-  & .sort.asc::after,
-  & .sort.desc::after {
-    font-size: smaller;
-  }
-  & .sort.asc:not(.c-button--as-link)::after,
-  & .sort.desc:not(.c-button--as-link)::after {
-    margin-inline-start: 0.35em;
-  }
-  & .sort.asc::after { content: '▲'; }
-  & .sort.desc::after { content: '▼'; }
+  & th[aria-sort="ascending"] > button::after { content: '▲'; }
+  & th[aria-sort="descending"] > button::after { content: '▼'; }
 }
