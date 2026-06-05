@@ -499,7 +499,8 @@ INSTALLED_APPS = [
     'taccsite_cms.contrib.taccsite_sample',
     'taccsite_cms.contrib.taccsite_offset',
     'taccsite_cms.contrib.taccsite_system_specs',
-    'taccsite_cms.contrib.taccsite_data_list'
+    'taccsite_cms.contrib.taccsite_data_list',
+    'taccsite_cms.contrib.taccsite_header_logo',
 ]
 
 # Convert list of paths to list of dotted module names
@@ -566,9 +567,12 @@ CMS_LANGUAGES = {
 CMS_PERMISSION = True
 CMS_PLACEHOLDER_CONF = {
     'header-content': {
-        # One PicturePlugin with template "Header logo" = custom logo
-        # Any other plugins render inline within the header nav
-        'limits': {'global': 10},
+        # HeaderLogoPlugin (PR 1.75); room for TaccHeaderBrandingPlugin (PR 3)
+        'plugins': ['HeaderLogoPlugin'],
+        'limits': {
+            'global': 2,
+            'HeaderLogoPlugin': 1,
+        },
     },
 }
 
