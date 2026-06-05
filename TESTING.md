@@ -1,10 +1,10 @@
 # How to Test
 
+- [Releases](#releases)
 - [CMS Changes](https://github.com/TACC/Core-CMS/wiki/Test-CMS-Changes)
 - [Major Changes to CSS](https://github.com/TACC/Core-CMS/wiki/How-to-Test-Major-Changes-to-CSS)
 - [CSS Build Output](https://github.com/TACC/Core-CMS/wiki/Test-CSS-Build-Output)
 - [Core Styles Version Change](https://github.com/TACC/Core-CMS/wiki/How-to-Test-Core-Styles-Version-Change)
-- [Releases](#releases)
 - [Local Poetry Dependencies in Docker](#local-poetry-dependencies-in-docker)
 
 ## Releases
