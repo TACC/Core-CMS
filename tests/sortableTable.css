@@ -63,7 +63,7 @@
   }
   .sortable-filter__icon {
     box-sizing: content-box;
-    padding-inline: var(--icon-pad-horz);
+    margin-inline: var(--icon-pad-horz);
   }
 }
 
