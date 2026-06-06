@@ -41,6 +41,16 @@
     /* import sortableTable from 'https://cdn.jsdelivr.net/gh/TACC/Core-CMS@c7145ec2/taccsite_cms/static/site_cms/js/modules/sortableTable.js'; */
     import sortableTable from './sortableTable.js';
 
+    /* HACK: Replace [data-aria-*] with [aria-*] (WYSIWYG editor strips [aria-]) */
+    [...document.querySelector('.js-sortable-filter-list').querySelectorAll('*')].forEach(el => {
+      [...el.attributes]
+        .filter(attr => attr.name.startsWith('data-aria-'))
+        .forEach(attr => el.setAttribute(
+          'aria-' + attr.name.slice('data-aria-'.length),
+          attr.value
+        ));
+    });
+
     sortableTable({
       scopeElement: document.getElementById('cms-content'),
       buttonClass: 'btn btn-link',
@@ -53,8 +63,8 @@
   <main id="cms-content">
 
     <fieldset
-      class="sortable-filter-list"
-      aria-describedby="projects-desc"
+      class="js-sortable-filter-list sortable-filter-list"
+      data-aria-describedby="projects-desc"
     >
       <legend id="projects-desc" class="sr-only">Project results in table update as you type or select filters</legend>
       <label
@@ -63,19 +73,19 @@
       >
         <i
           class="icon icon-search icon-md sortable-filter__icon"
-          aria-label="Search"
+          data-aria-label="Search"
         >Search</i>
         <input
           id="projects-filter"
           class="js-sortable-filter sortable-filter__input"
-          aria-controls="projects-table"
+          data-aria-controls="projects-table"
           type="search"
           placeholder="Search..."
         />
         <output
           class="js-sortable-total text-truncate"
           for="projects-filter projects-umbrella projects-category"
-          aria-atomic="true"
+          data-aria-atomic="true"
         ></output>
       </label>
       <label
@@ -86,7 +96,7 @@
         <select
           id="projects-umbrella"
           class="js-sortable-filter sortable-filter__input"
-          aria-controls="projects-table"
+          data-aria-controls="projects-table"
         >
           <option value="">any</option>
           <option>CyVerse</option>
@@ -104,7 +114,7 @@
         <select
           id="projects-category"
           class="js-sortable-filter sortable-filter__input"
-          aria-controls="projects-table"
+          data-aria-controls="projects-table"
         >
           <option value="">any</option>
           <option>Bioinformatics</option>
