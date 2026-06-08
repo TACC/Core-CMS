@@ -1,19 +1,87 @@
 /**
- * Styles for CMS tables with class `is-sortable`
- * IMPORTANT: Coupled with sortableTable.js
+ * Sortable Tables
+ * API:
+ *     - ../css/modules/sortableTable.css
+ *     - ../js/modules/sortableTable.js
+ *     - ../js/modules/sortableTable.html
  */
 
-table.is-sortable {
-  /* Buttons */
-  & .is-sortable__sort {
+.sortable-filter-list {
+  --icon-width: 2.4rem;
+  --icon-pad-horz: 10px;
+
+  display: flex;
+  gap: 2rem;
+
+  /* to align items (only effectual when items have unequal height) */
+  align-items: start;
+
+  &:is(fieldset) {
+    margin-block-end: 0;
+  }
+}
+
+.sortable-filter {
+  display: flex;
+  align-items: center;
+
+  &:is(label) {
+    margin-block-end: 0;
+  }
+}
+
+.sortable-filter__label + .sortable-filter__input {
+  margin-inline-start: 1em;
+}
+
+.sortable-filter output {
+  min-width: 4ch;
+  font-weight: normal;
+  font-size: var(--global-font-size--small);
+}
+.sortable-filter__input + output {
+  margin-left: 1em;
+}
+
+/* to align icon atop search field */
+.sortable-filter:has([type="search"]) {
+  display: grid;
+  grid-auto-flow: column;
+
+  & .sortable-filter__input {
+    grid-row: 1 / 1;
+    grid-column: 1 / 2;
+  }
+  & .sortable-filter__icon {
+    grid-row: 1 / 1;
+    grid-column: 1 / 1;
+    z-index: 1;
+    align-self: center;
+  }
+
+  /* to place icon inside search field */
+  .sortable-filter__input {
+    width: 30ch;
+    text-indent: calc(var(--icon-width) + var(--icon-pad-horz));
+  }
+  .sortable-filter__icon {
+    box-sizing: content-box;
+    margin-inline: var(--icon-pad-horz);
+  }
+}
+
+table.js-sortable {
+  & tbody:empty::before {
+    content: 'No results found';
+  }
+
+  & th:not(.not-sortable) > button {
     width: 100%; /* so entire cell is clickable */
 
-    /* To improve legibility during visible focus */
     &:focus-visible {
       outline-offset: 0.25em;
     }
 
-    /* So known button styles have no ill effect */
     &.btn-link,
     &.c-button--as-link {
         line-height: inherit;
@@ -29,11 +97,7 @@ table.is-sortable {
     }
   }
 
-  /* Sort indicators */
-  & th[aria-sort="ascending"] .is-sortable__sort::after { content: '▲'; }
-  & th[aria-sort="descending"] .is-sortable__sort::after { content: '▼'; }
-  & th[aria-sort="ascending"] .is-sortable__sort,
-  & th[aria-sort="descending"] .is-sortable__sort {
+  & th:is([aria-sort="ascending"], [aria-sort="descending"]) > button {
     &::after {
       font-size: smaller;
     }
@@ -41,4 +105,6 @@ table.is-sortable {
       margin-inline-start: 0.35em;
     }
   }
+  & th[aria-sort="ascending"] > button::after { content: '▲'; }
+  & th[aria-sort="descending"] > button::after { content: '▼'; }
 }
