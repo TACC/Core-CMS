@@ -242,13 +242,14 @@ function prepSortableTable(table, scopeElement, notSortableSelector, buttonClass
 
     const key = columnKey(columnIndex);
     cell.dataset.sortLabel = label;
-    cell.innerHTML = '';
 
     const button = document.createElement('button');
     button.type = 'button';
     button.className = [ buttonClass, SORT_BUTTON_CLASS ].filter(Boolean).join(' ');
-    button.textContent = label;
     button.setAttribute('data-sort', key);
+    while (cell.firstChild) {
+      button.append(cell.firstChild);
+    }
     cell.append(button);
 
     valueNames.push({ data: [ key ] });
