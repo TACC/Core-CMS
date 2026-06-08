@@ -1,22 +1,12 @@
 /**
- * Client-side sort for CMS tables with class `js-sortable` (List.js 2.3.1).
- * IMPORTANT: Coupled with `sortableTable.css`. Requires global `List` from CDN.
- *
- * NOTE: Not using tristen/tablesort cuz it forgoes button in header cell (a11y)
+ * Convert Simple, Plain Tables into Sortable Tables
+ * IMPORTANT: Requires global `List` from CDN.
+ * API:
+ *     - ../css/modules/sortableTable.css
+ *     - ../js/modules/sortableTable.js
+ *     - ../js/modules/sortableTable.html
  * SEE: https://github.com/javve/list.js
  * SEE: https://www.w3.org/WAI/ARIA/apg/patterns/table/examples/sortable-table/
- *
- * Editor markup:
- * - Table: `o-fixed-header-table js-sortable`
- * - Non-sortable column: `th.not-sortable` (e.g. Description)
- *
- * Runtime-only (do not document for editors): tbody.list, button.sort, data-sort, row data-*.
- *
- * Optional filters (page markup, not editor table cells):
- * - Control: class `js-sortable-filter`, `aria-controls="<table id>"`
- * - Table: stable `id` (filter values must match sortable column text in rows)
- * - Result count: `output.js-sortable-total` in same `.js-sortable-filter-list`
- *   as filters, with `for` listing filter control ids and `aria-atomic="true"`
  */
 
 const SORT_TABLE_CLASS = 'js-sortable';

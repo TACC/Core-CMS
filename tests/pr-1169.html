@@ -38,21 +38,15 @@
     type="module"
     id="research-projects-assets-table-js"
   >
+    import promoteDataAriaAttributes from 'https://cdn.jsdelivr.net/gh/TACC/Core-Styles@feat/promote-data-aria-attributes/src/lib/_utils/js/promote-data-aria-attributes.js';
     /* import sortableTable from 'https://cdn.jsdelivr.net/gh/TACC/Core-CMS@c7145ec2/taccsite_cms/static/site_cms/js/modules/sortableTable.js'; */
     import sortableTable from './sortableTable.js';
 
-    /* HACK: Replace [data-aria-*] with [aria-*] (WYSIWYG editor strips [aria-]) */
-    [...document.querySelector('.js-sortable-filter-list').querySelectorAll('*')].forEach(el => {
-      [...el.attributes]
-        .filter(attr => attr.name.startsWith('data-aria-'))
-        .forEach(attr => el.setAttribute(
-          'aria-' + attr.name.slice('data-aria-'.length),
-          attr.value
-        ));
-    });
+    const scopeElement = document.getElementById('cms-content');
 
+    promoteDataAriaAttributes(scopeElement);
     sortableTable({
-      scopeElement: document.getElementById('cms-content'),
+      scopeElement,
       buttonClass: 'btn btn-link',
     });
   </script>

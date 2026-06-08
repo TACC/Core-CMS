@@ -1,6 +1,9 @@
 /**
- * Styles for CMS tables with class `js-sortable`
- * IMPORTANT: Coupled with sortableTable.js
+ * Sortable Tables
+ * API:
+ *     - ../css/modules/sortableTable.css
+ *     - ../js/modules/sortableTable.js
+ *     - ../js/modules/sortableTable.html
  */
 
 .sortable-filter-list {
