@@ -12,8 +12,8 @@
 #   style: delete excess whitespace
 #
 # Body (optional):
-#   What changed and why
-#   Important design decisions or context
+#   what changed (1 sentence)
+#   (if relevant) important decisions/context (succinct bullets)
 #
 # Footer (optional):
 #   BREAKING CHANGE: describe breaking change
