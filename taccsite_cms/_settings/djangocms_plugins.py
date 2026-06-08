@@ -17,8 +17,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 
 CKEDITOR_SETTINGS = {
     'autoParagraph': False,
+    'customConfig': '/static/js/addons/ckeditor.config.js',
     'stylesSet': 'default:/static/js/addons/ckeditor.wysiwyg.js',
     'contentsCss': ['/static/djangocms_text_ckeditor/ckeditor/contents.css'],
+    'extraPlugins': 'pastefromgdocs',
 }
 
 ########################
