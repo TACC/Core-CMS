@@ -22,7 +22,7 @@ const FILTERS_DATA_ATTR = 'data-sortable-filters';
 
 /**
  * Filter chrome: clone <template> nodes from includes/sortable_table_filter_templates.html.
- * Captions, <option> text, and JSON placeholders use textContent / properties only.
+ * Select filter captions clone header cell markup; <option> text and JSON placeholders use textContent / properties.
  */
 const FILTER_TEMPLATE_ID = 'sortable-table-filters';
 const FILTER_SEARCH_LABEL_SELECTOR = 'label:has(input[type="search"])';
@@ -81,19 +81,22 @@ function parseFilterSpecs(table) {
 }
 
 /**
- * Trimmed text from the header cell at `columnIndex`, or a generic column name.
- *
+ * @param {HTMLElement} caption
  * @param {HTMLTableElement} table
- * @param {number} columnIndex
- * @returns {string}
+ * @param {FilterSpecForSelect} spec
  */
-function getHeaderCellTextForColumn(table, columnIndex) {
-  const textFallback = `Column ${columnIndex + 1}`;
+function setSelectFilterCaption(caption, table, spec) {
+  const columnIndex = spec.column;
+  const textFallback = spec.label ?? `Column ${columnIndex + 1}`;
   const cell = table.tHead?.rows[0]?.cells[columnIndex];
-  const textTrimmed = cell?.textContent?.trim() ?? '';
-  const text = textTrimmed || textFallback;
 
-  return text;
+  if (cell instanceof HTMLTableCellElement && cell.textContent?.trim()) {
+    caption.replaceChildren(
+      ...Array.from(cell.childNodes, (node) => node.cloneNode(true))
+    );
+    return;
+  }
+  caption.textContent = textFallback;
 }
 
 /**
@@ -202,8 +205,7 @@ function wireSelectFilterLabel(label, table, spec) {
   const controlId = getFilterControlId(table.id, `col-${spec.column}`);
 
   label.htmlFor = controlId;
-  caption.textContent =
-    spec.label ?? getHeaderCellTextForColumn(table, spec.column);
+  setSelectFilterCaption(caption, table, spec);
   select.id = controlId;
   registerFilterControl(select, table.id);
 
