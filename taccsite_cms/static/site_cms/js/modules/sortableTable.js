@@ -20,10 +20,6 @@ const DEFAULT_TABLE_SELECTOR = 'table.' + SORT_TABLE_CLASS;
 const NOT_SORTABLE_SELECTOR = 'th.not-sortable';
 const FILTERS_DATA_ATTR = 'data-sortable-filters';
 
-/**
- * Filter chrome: clone <template> nodes from includes/sortable_table_filter_templates.html.
- * Select filter captions clone header cell markup; <option> text and JSON placeholders use textContent / properties.
- */
 const FILTER_TEMPLATE_ID = 'sortable-table-filters';
 const FILTER_SEARCH_LABEL_SELECTOR = 'label:has(input[type="search"])';
 const FILTER_SELECT_LABEL_SELECTOR = 'label:has(select)';
