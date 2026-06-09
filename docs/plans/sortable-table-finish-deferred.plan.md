@@ -1,12 +1,10 @@
 ---
 name: Sortable table finish (deferred)
-overview: "After Phase 0 merge: steps 5–7 — JS-built filters, cleanup, CKEditor allowlist PR to main."
-status: deferred
+overview: "Steps 5–6 done on branch; step 7 — CKEditor allowlist PR to main."
+status: in-progress
 ---
 
 # Sortable table: Phase 0, then steps 5–7
-
-**Deferred until Phase 0 PRs are merged.** Pick up from here for dynamic filters + hack retirement.
 
 ## Phase 0: Ship current code
 
@@ -14,11 +12,11 @@ Merge as-is: Core-CMS sortableTable, Core-Styles promote util, tup-ui snippet pi
 
 ## Step 5: Dynamic filter markup in JS
 
-Table-only in CMS; JS builds fieldset/controls/output; ARIA set in code.
+**Done (branch):** Table-only in CMS; `data-sortable-filters` JSON on the table; JS builds fieldset/controls/output with ARIA in code. Legacy CMS-authored filter groups still work.
 
 ## Step 6: Clean up
 
-Remove snippet promote; dedupe JS; bump SHAs.
+**Done (branch):** Snippet promote removed; CDN pins use `Core-Styles@v2.57.0` and `Core-CMS@v4.40.0-rc6`.
 
 ## Step 7: CKEditor ARIA — separate branch → `main`
 

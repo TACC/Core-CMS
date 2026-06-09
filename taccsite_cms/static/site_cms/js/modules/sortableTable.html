@@ -1,6 +1,8 @@
 <!-- STYLE -->
 <link href="…/site_cms/css/modules/sortableTable.css" rel="stylesheet" />
 
+<!-- FILTER: one <template id="sortable-table-filters"> per page — includes/sortable_table_filter_templates.html -->
+
 <!-- SCRIPT -->
 <script src="https://cdn.jsdelivr.net/npm/list.js@2.3.1/dist/list.min.js" crossorigin="anonymous"></script>
 <script type="module">
@@ -12,43 +14,14 @@
   });
 </script>
 
-<!-- FILTER -->
-<fieldset class="js-sortable-filter-list sortable-filter-list">
-  <legend class="sr-only">Results in the table update as you type or select filters</legend>
-
-  <label for="example-filter" class="sortable-filter">
-    <input
-      id="example-filter"
-      class="js-sortable-filter sortable-filter__input"
-      aria-controls="example-table"
-      type="search"
-      placeholder="Search…"
-    />
-    <output
-      class="js-sortable-total sortable-filter__total"
-      for="example-filter example-umbrella"
-      aria-atomic="true"
-    ></output>
-  </label>
-
-  <label for="example-umbrella" class="sortable-filter">
-    <span class="sortable-filter__label"><abbr title="Funder or Project">Umbrella</abbr></span>
-    <select
-      id="example-umbrella"
-      class="js-sortable-filter sortable-filter__input"
-      aria-controls="example-table"
-    >
-      <option value="">any</option>
-      <option>Example Org</option>
-      <!-- … -->
-    </select>
-  </label>
-</fieldset>
-
-<!-- TABLE -->
-<table id="example-table" class="js-sortable">
+<!-- TABLE (filters built in JS when data-sortable-filters is set) -->
+<table
+  id="example-table"
+  class="js-sortable"
+  data-sortable-filters='[{"type":"search"},{"type":"select","column":2,"label":"Umbrella"}]'
+>
 <!--
-<table id="example-table" class="js-sortable o-fixed-header-table">
+<table id="example-table" class="js-sortable o-fixed-header-table" data-sortable-filters="…">
 -->
   <caption class="sr-only">…</caption>
   <thead>

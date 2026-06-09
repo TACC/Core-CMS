@@ -21,12 +21,12 @@
   <link
     rel="stylesheet"
     id="research-projects-assets-alert-css"
-    href="https://cdn.jsdelivr.net/gh/TACC/Core-Styles@v2.57.0-rc3/dist/bootstrap4/components/alert.css"
+    href="https://cdn.jsdelivr.net/gh/TACC/Core-Styles@v2.57.0/dist/bootstrap4/components/alert.css"
   />
   <link
     rel="stylesheet"
     id="research-projects-assets-table-css"
-    cdn-href="https://cdn.jsdelivr.net/gh/TACC/Core-CMS@c7145ec2/taccsite_cms/static/site_cms/css/modules/sortableTable.css"
+    cdn-href="https://cdn.jsdelivr.net/gh/TACC/Core-CMS@v4.40.0-rc6/taccsite_cms/static/site_cms/css/modules/sortableTable.css"
     href="./sortableTable.css"
   />
   <script
@@ -38,15 +38,11 @@
     type="module"
     id="research-projects-assets-table-js"
   >
-    import promoteDataAriaAttributes from 'https://cdn.jsdelivr.net/gh/TACC/Core-Styles@feat/promote-data-aria-attributes/src/lib/_utils/js/promote-data-aria-attributes.js';
-    /* import sortableTable from 'https://cdn.jsdelivr.net/gh/TACC/Core-CMS@c7145ec2/taccsite_cms/static/site_cms/js/modules/sortableTable.js'; */
+    /* import sortableTable from 'https://cdn.jsdelivr.net/gh/TACC/Core-CMS@v4.40.0-rc6/taccsite_cms/static/site_cms/js/modules/sortableTable.js'; */
     import sortableTable from './sortableTable.js';
 
-    const scopeElement = document.getElementById('cms-content');
-
-    promoteDataAriaAttributes(scopeElement);
     sortableTable({
-      scopeElement,
+      scopeElement: document.getElementById('cms-content'),
       buttonClass: 'btn btn-link',
     });
   </script>
@@ -54,87 +50,36 @@
 </head>
 <body>
 
-  <main id="cms-content">
-
-    <fieldset
-      class="js-sortable-filter-list sortable-filter-list"
-      data-aria-describedby="projects-desc"
-    >
-      <legend id="projects-desc" class="sr-only">Project results in table update as you type or select filters</legend>
-      <label
-        for="projects-filter"
-        class="sortable-filter mr-auto"
-      >
-        <i
-          class="icon icon-search icon-md sortable-filter__icon"
-          data-aria-label="Search"
-        >Search</i>
+  <template id="sortable-table-filters">
+    <fieldset class="js-sortable-filter-list sortable-filter-list">
+      <legend class="sr-only">Results in the table update as you type or select filters</legend>
+      <label class="sortable-filter mr-auto">
         <input
-          id="projects-filter"
-          class="js-sortable-filter sortable-filter__input"
-          data-aria-controls="projects-table"
           type="search"
-          placeholder="Search..."
+          class="sortable-filter__input"
+          placeholder="Search…"
         />
-        <output
-          class="js-sortable-total text-truncate"
-          for="projects-filter projects-umbrella projects-category"
-          data-aria-atomic="true"
-        ></output>
+        <output class="js-sortable-total text-truncate" aria-atomic="true"></output>
       </label>
-      <label
-        for="projects-umbrella"
-        class="sortable-filter"
-      >
-        <span class="sortable-filter__label">Umbrella</span>
-        <select
-          id="projects-umbrella"
-          class="js-sortable-filter sortable-filter__input"
-          data-aria-controls="projects-table"
-        >
+      <label class="sortable-filter">
+        <span class="sortable-filter__label"></span>
+        <select class="sortable-filter__input">
           <option value="">any</option>
-          <option>CyVerse</option>
-          <option>DesignSafe</option>
-          <option>NSF</option>
-          <option>TACC</option>
-          <option>UT System</option>
-        </select>
-      </label>
-      <label
-        for="projects-category"
-        class="sortable-filter"
-      >
-        <span class="sortable-filter__label">Category</span>
-        <select
-          id="projects-category"
-          class="js-sortable-filter sortable-filter__input"
-          data-aria-controls="projects-table"
-        >
-          <option value="">any</option>
-          <option>Bioinformatics</option>
-          <option>Cloud / Interactive HPC</option>
-          <option>Cloud Testbed</option>
-          <option>Computational Drug Discovery</option>
-          <option>Cyberinfrastructure</option>
-          <option>Data Management</option>
-          <option>Digital Collections</option>
-          <option>Geoscience / Porous Materials</option>
-          <option>HPC Systems</option>
-          <option>Health Informatics</option>
-          <option>Life Sciences Data</option>
-          <option>Natural Hazards Engineering</option>
-          <option>Natural History / Biodiversity</option>
-          <option>Neuroscience</option>
-          <option>Next-Gen / Composable Computing</option>
-          <option>Portals &amp; Interfaces</option>
-          <option>Research Computing</option>
-          <option>User Services</option>
         </select>
       </label>
     </fieldset>
+  </template>
+
+  <main id="cms-content">
+
     <table
       id="projects-table"
       class="js-sortable o-fixed-header-table w-100"
+      data-sortable-filters='[
+        {"type":"search", "placeholder":"Search..."},
+        {"type":"select", "column":2,"label":"Umbrella"},
+        {"type":"select", "column":3,"label":"Category"}
+      ]'
     >
       <caption class="sr-only">Project Introductions</caption>
       <thead>
