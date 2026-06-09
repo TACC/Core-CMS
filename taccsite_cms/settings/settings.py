@@ -631,6 +631,14 @@ except ModuleNotFoundError:
     except ModuleNotFoundError:
         settings_custom = []
 
+# NOTE: Outside try/catch so as to support TACC/Camino settings file placement
+if hasattr(settings_custom, 'EXTRA_INSTALLED_APPS'):
+    INSTALLED_APPS += settings_custom.EXTRA_INSTALLED_APPS
+if hasattr(settings_custom, 'EXTRA_STATICFILES_DIRS'):
+    STATICFILES_DIRS += settings_custom.EXTRA_STATICFILES_DIRS
+if hasattr(settings_custom, 'EXTRA_MIDDLEWARE'):
+    MIDDLEWARE += settings_custom.EXTRA_MIDDLEWARE
+
 try:
     from taccsite_cms.settings.secrets import *
 except ModuleNotFoundError:
@@ -652,14 +660,6 @@ except ModuleNotFoundError:
         import taccsite_cms.settings_local as settings_local
     except ModuleNotFoundError:
         settings_local = []
-
-try:
-    from taccsite_cms import custom_app_settings
-    INSTALLED_APPS += getattr(custom_app_settings, 'CUSTOM_APPS', [])
-    STATICFILES_DIRS += getattr(custom_app_settings , 'STATICFILES_DIRS', ())
-    MIDDLEWARE += getattr(custom_app_settings , 'CUSTOM_MIDDLEWARE', ())
-except ImportError:
-    pass
 
 ########################
 # SETTINGS DEPRECATED
