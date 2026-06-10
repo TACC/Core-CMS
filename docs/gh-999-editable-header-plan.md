@@ -37,10 +37,11 @@ Portal/Guide repos duplicate header markup ([Confluence](https://confluence.tacc
 
 | File | Role |
 | --- | --- |
-| [`header.html`](../taccsite_cms/templates/header.html) | Branding + nav; logo slot = `static_placeholder` + settings `or`. |
+| [`header.html`](../taccsite_cms/templates/header.html) | Branding + nav; full `{% static_placeholder "header-content" or %}` + settings fallback. |
+| [`header_logo.html`](../taccsite_cms/templates/header_logo.html) | Core-Portal `/cms/header/logo/markup/` — logo-only via [`render_header_logo_plugin`](taccsite_cms/templatetags/header_content_tags.py) or settings. |
 | [`header_logo_settings.html`](../taccsite_cms/templates/header_logo_settings.html) | Settings-only logo (`or` fallback). |
-| [`header_logo_markup.html`](../taccsite_cms/templates/header_logo_markup.html) | Shared `#header-logo` markup for plugin + previews. |
-| [`header_logo.html`](../taccsite_cms/templates/header_logo.html) | Preview route / optional `plugin_logo` wrapper. |
+| [`header_logo_markup.html`](../taccsite_cms/templates/header_logo_markup.html) | `#header-logo` markup for `HeaderLogoPlugin` render. |
+| [`header_content_tags.py`](../taccsite_cms/templatetags/header_content_tags.py) | `render_header_logo_plugin_html` — published logo plugin only (reuse in PR 2). |
 | `header_nav.html` | **PR 2** — extract `<nav>…</nav>`. |
 
 ## Testing
@@ -52,7 +53,8 @@ Portal/Guide repos duplicate header markup ([Confluence](https://confluence.tacc
 3. **Superuser — footer:** `footer-content` unchanged.
 4. **Non-superuser:** Cannot edit static placeholders.
 5. **Limits:** One `HeaderLogoPlugin` in `header-content` (`global` 2 reserved for PR 3).
-6. **Permissions after deploy:** Group perms; re-check step 4.
+6. **Core-Portal markup URL:** `/cms/header/logo/markup/` uses published `header-content` logo plugin or settings (not draft/edit toolbar).
+7. **Permissions after deploy:** Group perms; re-check step 4.
 
 ### PR 2 (orchestrator)
 

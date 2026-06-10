@@ -1,8 +1,8 @@
-{# @var plugin_logo (optional), className #}
-{# Settings-driven logo and/or CMS plugin_logo (e.g. header logo markup preview). #}
-
-{% if plugin_logo %}
-{% include "header_logo_markup.html" with plugin_logo=plugin_logo %}
+{# Core-Portal /cms/header/logo/markup/ — logo-only (HeaderLogoPlugin or settings). #}
+{% load header_content_tags %}
+{% render_header_logo_plugin as header_logo_html %}
+{% if header_logo_html %}
+{{ header_logo_html }}
 {% else %}
 {% include "header_logo_settings.html" %}
 {% endif %}
