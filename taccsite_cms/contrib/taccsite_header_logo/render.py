@@ -1,15 +1,10 @@
-"""Header logo markup"""
 from cms.models import StaticPlaceholder
 from cms.plugin_rendering import ContentRenderer
-from django import template
-from django.utils.safestring import mark_safe
 
 from taccsite_cms.contrib.taccsite_header_logo.cms_plugins import HeaderLogoPlugin
 
-register = template.Library()
 
-
-def render_header_logo_plugin_html(request, context):
+def render(request, context):
     """
     Render published HeaderLogoPlugin from header-content (logo-only fragment).
     """
@@ -32,9 +27,3 @@ def render_header_logo_plugin_html(request, context):
                 editable=False,
             )
     return ''
-
-
-@register.simple_tag(takes_context=True)
-def render_header_logo_plugin(context):
-    html = render_header_logo_plugin_html(context['request'], context)
-    return mark_safe(html) if html else ''

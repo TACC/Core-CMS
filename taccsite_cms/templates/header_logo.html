@@ -1,8 +1,7 @@
-{# Core-Portal /cms/header/logo/markup/ — logo-only (HeaderLogoPlugin or settings). #}
-{% load header_content_tags %}
-{% render_header_logo_plugin as header_logo_html %}
-{% if header_logo_html %}
-{{ header_logo_html }}
+{% load header_tags %}
+{% render_header_logo as header_logo %}
+{% if header_logo %}
+  {{ header_logo }}
 {% else %}
-{% include "header_logo_settings.html" %}
+  {% include "header_logo_via_settings.html" %}
 {% endif %}

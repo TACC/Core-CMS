@@ -19,7 +19,7 @@ Plan for [#999 Let CMS Admin Edit Header](https://github.com/TACC/Core-CMS/issue
 
 - **One plugin:** [`HeaderLogoPlugin`](taccsite_cms/contrib/taccsite_header_logo/cms_plugins.py) extends Picture (same model, no migration). Toolbar: **TACC Header → Header logo** — full Picture fields/templates; default `id="header-logo"` when Attributes omit `id`.
 - **Render:** Standard Picture template at `{% static_placeholder "header-content" %}`.
-- **Empty placeholder:** `or` fallback [`header_logo_settings.html`](taccsite_cms/templates/header_logo_settings.html) (`LOGO` / `PORTAL_LOGO`).
+- **Empty placeholder:** `or` fallback [`header_logo_via_settings.html`](taccsite_cms/templates/header_logo_via_settings.html) (`LOGO` / `PORTAL_LOGO`).
 - **Branding images (PR 3):** nested Pictures under TACC Header Branding — not top-level.
 
 ## PR stack
@@ -38,9 +38,9 @@ Portal/Guide repos duplicate header markup ([Confluence](https://confluence.tacc
 | File | Role |
 | --- | --- |
 | [`header.html`](../taccsite_cms/templates/header.html) | Branding + nav; full `{% static_placeholder "header-content" or %}` + settings fallback. |
-| [`header_logo.html`](../taccsite_cms/templates/header_logo.html) | Core-Portal `/cms/header/logo/markup/` — logo-only via [`render_header_logo_plugin`](taccsite_cms/templatetags/header_content_tags.py) or settings. |
-| [`header_logo_settings.html`](../taccsite_cms/templates/header_logo_settings.html) | Settings-only logo (`or` fallback). |
-| [`header_content_tags.py`](../taccsite_cms/templatetags/header_content_tags.py) | `render_header_logo_plugin_html` — published logo plugin only (reuse in PR 2). |
+| [`header_logo.html`](../taccsite_cms/templates/header_logo.html) | Core-Portal `/cms/header/logo/markup/` — logo-only via [`render_header_logo`](../taccsite_cms/templatetags/header_tags.py) or settings. |
+| [`header_logo_via_settings.html`](../taccsite_cms/templates/header_logo_via_settings.html) | Settings-only logo (`or` fallback). |
+| [`render.py`](../taccsite_cms/contrib/taccsite_header_logo/render.py) | `render` — published logo plugin only (reuse in PR 2). |
 | `header_nav.html` | **PR 2** — extract `<nav>…</nav>`. |
 
 ## Testing
