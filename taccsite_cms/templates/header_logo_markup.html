@@ -1,22 +1,18 @@
 {# @var plugin_logo, className #}
-{% load static %}
-
-{% with plugin_logo as logo %}
-  <a
-    id="header-logo"
-    class="navbar-brand {{ className }}"
-    href="{{ logo.link_href }}"
-    target="{{ logo.link_target }}"
-  >
-    <img
-      class="portal-logo {{ logo.img_class }}"
-      src="{% if logo.is_remote %}{{ logo.img_file_src }}{% else %}{% static logo.img_file_src %}{% endif %}"
-      {% if logo.img_crossorigin %}
-      crossorigin="{{ logo.img_crossorigin }}"
-      {% endif %}
-      {% if logo.img_alt_text %}
-      alt="{{ logo.img_alt_text }}"
-      {% endif %}
-    />
-  </a>
-{% endwith %}
+<a
+  id="header-logo"
+  class="navbar-brand {{ className }}"
+  href="{{ plugin_logo.link_href }}"
+  {% if plugin_logo.link_target %}
+  target="{{ plugin_logo.link_target }}"
+  {% endif %}
+>
+  <img
+    class="portal-logo"
+    src="{{ plugin_logo.img_file_src }}"
+    crossorigin="anonymous"
+    {% if plugin_logo.img_alt_text %}
+    alt="{{ plugin_logo.img_alt_text }}"
+    {% endif %}
+  />
+</a>

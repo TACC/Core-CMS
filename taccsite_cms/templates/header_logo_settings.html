@@ -22,7 +22,9 @@
     id="header-logo"
     class="navbar-brand {{className}}"
     href="{{ logo.link_href }}"
+    {% if logo.link_target %}
     target="{{ logo.link_target }}"
+    {% endif %}
     {% if logo.link_name %}
     aria-label="{{ logo.link_name }}"
     {% endif %}
