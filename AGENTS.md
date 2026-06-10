@@ -57,8 +57,10 @@ _Note: Stale containers errors (e.g. `core_cms_elasticsearch already in use`) co
 
 ### Lint, Test, Build
 
+As necessary for given task:
+
 - **Lint:** `docker exec core_cms flake8 taccsite_cms/ --max-line-length=120` (pre-existing warnings expected)
-- **Tests:** `docker exec core_cms python manage.py test taccsite_cms.contrib.taccsite_sample --no-input`
+- **Tests:** `docker exec core_cms python manage.py test __ANYTHING_YOU_CHANGE_THAT_HAS_TESTS__ --no-input`
 - **CSS build:** `docker run --rm -v "$(pwd):/code" -w /code node:20 sh -c "npm ci && npm run build"`
 - **Collect static:** `docker exec core_cms python manage.py collectstatic --no-input`
 
