@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test PR #1169</title>
+
+  <style>
+    @layer foundation, base, project;
+    @import url("https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css") layer(foundation);
+    @import url("https://cdn.jsdelivr.net/gh/TACC/Core-Styles@v2/dist/core-styles.bootstrap4.css") layer(foundation);
+    @import url("https://cdn.jsdelivr.net/gh/TACC/Core-Styles@v2/dist/core-styles.base.css") layer(base);
+  </style>
+  <style>
+    @import url("https://cdn.jsdelivr.net/gh/TACC/Core-Styles@v2/dist/core-styles.theme.default.css") layer(base);
+    @import url("https://cdn.jsdelivr.net/gh/TACC/Core-Styles@v2/dist/core-styles.cms.css") layer(base);
+    @import url("https://cdn.jsdelivr.net/gh/TACC/Core-Styles@v2/dist/core-styles.header.css") layer(base);
+    @import url("https://cdn.jsdelivr.net/gh/TACC/Core-Styles@v2/dist/core-cms.css") layer(project);
+  </style>
+
+  <link
+    rel="stylesheet"
+    id="research-projects-assets-alert-css"
+    href="https://cdn.jsdelivr.net/gh/TACC/Core-Styles@v2.57.0-rc3/dist/bootstrap4/components/alert.css"
+  />
+  <link
+    rel="stylesheet"
+    id="research-projects-assets-table-css"
+    cdn-href="https://cdn.jsdelivr.net/gh/TACC/Core-CMS@c7145ec2/taccsite_cms/static/site_cms/css/modules/sortableTable.css"
+    href="./sortableTable.css"
+  />
+  <script
+    src="https://cdn.jsdelivr.net/npm/list.js@2.3.1/dist/list.min.js"
+    integrity="sha384-FhEOA/pIE4BfDuwGksHaZD8ms5j+dfB9QIWo7naDMzAVoCE1My4G2iu8/n/R3AAH"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    type="module"
+    id="research-projects-assets-table-js"
+  >
+    import promoteDataAriaAttributes from 'https://cdn.jsdelivr.net/gh/TACC/Core-Styles@feat/promote-data-aria-attributes/src/lib/_utils/js/promote-data-aria-attributes.js';
+    /* import sortableTable from 'https://cdn.jsdelivr.net/gh/TACC/Core-CMS@c7145ec2/taccsite_cms/static/site_cms/js/modules/sortableTable.js'; */
+    import sortableTable from './sortableTable.js';
+
+    const scopeElement = document.getElementById('cms-content');
+
+    promoteDataAriaAttributes(scopeElement);
+    sortableTable({
+      scopeElement,
+      buttonClass: 'btn btn-link',
+    });
+  </script>
+
+</head>
+<body>
+
+  <main id="cms-content">
+
+    <fieldset
+      class="js-sortable-filter-list sortable-filter-list"
+      data-aria-describedby="projects-desc"
+    >
+      <legend id="projects-desc" class="sr-only">Project results in table update as you type or select filters</legend>
+      <label
+        for="projects-filter"
+        class="sortable-filter mr-auto"
+      >
+        <i
+          class="icon icon-search icon-md sortable-filter__icon"
+          data-aria-label="Search"
+        >Search</i>
+        <input
+          id="projects-filter"
+          class="js-sortable-filter sortable-filter__input"
+          data-aria-controls="projects-table"
+          type="search"
+          placeholder="Search..."
+        />
+        <output
+          class="js-sortable-total text-truncate"
+          for="projects-filter projects-umbrella projects-category"
+          data-aria-atomic="true"
+        ></output>
+      </label>
+      <label
+        for="projects-umbrella"
+        class="sortable-filter"
+      >
+        <span class="sortable-filter__label">Umbrella</span>
+        <select
+          id="projects-umbrella"
+          class="js-sortable-filter sortable-filter__input"
+          data-aria-controls="projects-table"
+        >
+          <option value="">any</option>
+          <option>CyVerse</option>
+          <option>DesignSafe</option>
+          <option>NSF</option>
+          <option>TACC</option>
+          <option>UT System</option>
+        </select>
+      </label>
+      <label
+        for="projects-category"
+        class="sortable-filter"
+      >
+        <span class="sortable-filter__label">Category</span>
+        <select
+          id="projects-category"
+          class="js-sortable-filter sortable-filter__input"
+          data-aria-controls="projects-table"
+        >
+          <option value="">any</option>
+          <option>Bioinformatics</option>
+          <option>Cloud / Interactive HPC</option>
+          <option>Cloud Testbed</option>
+          <option>Computational Drug Discovery</option>
+          <option>Cyberinfrastructure</option>
+          <option>Data Management</option>
+          <option>Digital Collections</option>
+          <option>Geoscience / Porous Materials</option>
+          <option>HPC Systems</option>
+          <option>Health Informatics</option>
+          <option>Life Sciences Data</option>
+          <option>Natural Hazards Engineering</option>
+          <option>Natural History / Biodiversity</option>
+          <option>Neuroscience</option>
+          <option>Next-Gen / Composable Computing</option>
+          <option>Portals &amp; Interfaces</option>
+          <option>Research Computing</option>
+          <option>User Services</option>
+        </select>
+      </label>
+    </fieldset>
+    <table
+      id="projects-table"
+      class="js-sortable o-fixed-header-table w-100"
+    >
+      <caption class="sr-only">Project Introductions</caption>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th><abbr title="Description">Desc</abbr></th>
+          <th>Umbrella</th>
+          <th>Category</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="https://tacc.utexas.edu/research/tacc-research/cyverse" rel="noopener" target="_blank">CyVerse / iPlant</a></td>
+          <td>Develops and operates computational resources for grand challenges in the life sciences, including a petabyte-scale data store, Data Commons, and tools for sharing and preserving research data across the bioscience community.</td>
+          <td>CyVerse / NSF</td>
+          <td>Bioinformatics, Life Sciences Data</td>
+        </tr>
+        <tr>
+          <td><a href="https://tacc.utexas.edu/research/tacc-research/neuronex" rel="noopener" target="_blank">Neuronex</a></td>
+          <td>A NeuroNex Technology Hub enabling enhanced-resolution 3D electron microscopy (3DEM) to discover new details about brain synapse function across different regions and species.</td>
+          <td>NSF</td>
+          <td>Bioinformatics, Neuroscience</td>
+        </tr>
+        <tr>
+          <td><a href="https://utrc.tacc.utexas.edu/" rel="noopener" target="_blank">UT System Research Cyberinfrastructure (UTRC)</a></td>
+          <td>Provides comprehensive scientific computing capabilities across UT System institutions to attract faculty, students, and funding while enabling breakthrough research results.</td>
+          <td>UT System</td>
+          <td>Cyberinfrastructure, Research Computing</td>
+        </tr>
+        <tr>
+          <td><a href="https://tacc.utexas.edu/research/tacc-research/user-portal" rel="noopener" target="_blank">TACC User Portal</a></td>
+          <td>A web interface for users to manage their TACC account, projects, and HPC allocations.</td>
+          <td>TACC (Base Funded)</td>
+          <td>Portals &amp; Interfaces, User Services</td>
+        </tr>
+        <tr>
+          <td><a href="https://tacc.utexas.edu/research/tacc-research/designsafe" rel="noopener" target="_blank">DesignSafe</a></td>
+          <td>A resource-sharing web platform for natural hazards research enabling simulations validated against real-world data, with curation/publication pipelines and a preservation back-end for engineering data.</td>
+          <td>DesignSafe / NSF</td>
+          <td>Natural Hazards Engineering, Data Management</td>
+        </tr>
+        <tr>
+          <td><a href="https://tacc.utexas.edu/research/tacc-research/digitalrocks/" rel="noopener" target="_blank">Digital Rocks Portal</a></td>
+          <td>A web-based portal for storage, management, and retrieval of images and experimental measurements of diverse porous materials, with customized metadata, analysis backend, and long-term preservation strategy.</td>
+          <td>TACC</td>
+          <td>Data Management, Geoscience / Porous Materials</td>
+        </tr>
+        <tr>
+          <td><a href="https://tacc.utexas.edu/research/tacc-research/natural-history-collections" rel="noopener" target="_blank">Natural History Collections at TACC</a></td>
+          <td>Maintains ongoing collaborations with the Texas Natural Sciences Center to digitize, host, and preserve natural history specimen collections.</td>
+          <td>NSF / TACC</td>
+          <td>Digital Collections, Natural History / Biodiversity</td>
+        </tr>
+        <tr>
+          <td><a href="https://tacc.utexas.edu/research/tacc-research/drugdiscovery" rel="noopener" target="_blank">DrugDiscovery@TACC</a></td>
+          <td>Enables high-throughput drug screening using Autodock Vina on TACC supercomputers, allowing researchers to search more than 700,000 drug-like compounds in only a few hours.</td>
+          <td>TACC</td>
+          <td>Health Informatics, Computational Drug Discovery</td>
+        </tr>
+        <tr>
+          <td><a href="https://tacc.utexas.edu/research/tacc-research/chameleon" rel="noopener" target="_blank">Chameleon</a></td>
+          <td>A large-scale, reconfigurable experimental cloud testbed deployed at UC and TACC with 650 multi-core cloud nodes, 5 PB of disk space, and 100 Gbps inter-site connectivity for cloud systems research.</td>
+          <td>NSF</td>
+          <td>Research Computing Infrastructure, Cloud Testbed</td>
+        </tr>
+        <tr>
+          <td><a href="https://tacc.utexas.edu/research/tacc-research/frontera" rel="noopener" target="_blank">Frontera</a></td>
+          <td>TACC&#39;s flagship leadership-class supercomputer, providing computational capability for the largest and most complex science and engineering challenges across a wide spectrum of domains.</td>
+          <td>NSF</td>
+          <td>Research Computing Infrastructure, HPC Systems</td>
+        </tr>
+        <tr>
+          <td><a href="https://tacc.utexas.edu/research/tacc-research/jetstream" rel="noopener" target="_blank">Jetstream</a></td>
+          <td>An interactive, on-demand cloud-based computational resource for the national research community, enabling scientists and engineers to conduct data analysis and computation anywhere, anytime.</td>
+          <td>NSF</td>
+          <td>Research Computing Infrastructure, Cloud / Interactive HPC</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2112356" rel="noopener" target="_blank">Accelerating Computing for Emerging Sciences (ACES)</a></td>
+          <td>A composable computing platform removing bottlenecks in advanced computing by enabling flexible, as-needed aggregation of processors, accelerators, and memory components.</td>
+          <td>NSF</td>
+          <td>Research Computing Infrastructure, Next-Gen / Composable Computing</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </main>
+
+</body>
+</html>
