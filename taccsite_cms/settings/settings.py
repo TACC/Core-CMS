@@ -567,7 +567,6 @@ CMS_LANGUAGES = {
 CMS_PERMISSION = True
 CMS_PLACEHOLDER_CONF = {
     'header-content': {
-        # HeaderLogoPlugin (PR 1.75); room for TaccHeaderBrandingPlugin (PR 3)
         'plugins': ['HeaderLogoPlugin'],
         'limits': {
             'global': 2,
@@ -683,7 +682,7 @@ deprecated_SETTINGS_EXPORT += ['BRANDING']
 if 'BRANDING' not in locals():
     BRANDING = False
 
-# For header_logo_via_settings.html (logo slot fallback)
+# For header_logo_via_settings.html
 deprecated_SETTINGS_EXPORT += ['LOGO']
 if 'LOGO' not in locals():
     LOGO = False
