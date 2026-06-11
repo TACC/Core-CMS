@@ -564,7 +564,14 @@ CMS_LANGUAGES = {
 }
 
 CMS_PERMISSION = True
-CMS_PLACEHOLDER_CONF = {}
+CMS_PLACEHOLDER_CONF = {
+    None: {
+        'plugin_labels': {
+            # Side effect of djangocms-transfer Import/Export
+            'PluginImporter': 'PluginImporter (Unable to Hide This Utility)',
+        },
+    },
+}
 
 THUMBNAIL_HIGH_RESOLUTION = True
 THUMBNAIL_PROCESSORS = (

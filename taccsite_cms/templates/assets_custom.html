@@ -1,4 +1,4 @@
-{% load static %}
+{% load static sekizai_tags %}
 
 {# Load assets as external files, to cache independently of markup. #}
 {% comment %}
@@ -18,3 +18,10 @@ FAQ: IF a script or style is better cached with markup, THEN:
 <link rel="stylesheet" href="{% if style.is_remote %}{{ style.path }}{% else %}{% static style.path %}{% endif %}" />
 {% endfor %}
 {% endwith %}
+
+<!-- Custom Assets: Other. -->
+{% addtoblock "js" %}
+<!-- To disable certain plugins from "Add plugin" list -->
+<link rel="stylesheet" href="{% static 'djangocms_transfer/css/disable_plugin.css' %}">
+<script type="module" src="{% static 'djangocms_transfer/js/disable_plugin.js' %}"></script>
+{% endaddtoblock %}
