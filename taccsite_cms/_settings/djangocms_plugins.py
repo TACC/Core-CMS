@@ -41,7 +41,6 @@ DJANGOCMS_PICTURE_ALIGN = [
 ]
 DJANGOCMS_PICTURE_TEMPLATES = [
     ('no_link_to_ext_image', _('Do not link to external image')),
-    ('header_logo', _('Header logo')),
 ]
 
 ########################
