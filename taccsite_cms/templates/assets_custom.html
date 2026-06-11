@@ -19,9 +19,11 @@ FAQ: IF a script or style is better cached with markup, THEN:
 {% endfor %}
 {% endwith %}
 
-<!-- Custom Assets: Other. -->
+<!-- Custom Assets: Scripts -->
 {% addtoblock "js" %}
 <!-- To disable certain plugins from "Add plugin" list -->
-<link rel="stylesheet" href="{% static 'djangocms_transfer/css/disable_plugin.css' %}">
-<script type="module" src="{% static 'djangocms_transfer/js/disable_plugin.js' %}"></script>
+{% if request.user.is_staff and cms_excluded_plugins %}
+{{ cms_excluded_plugins|json_script:"portal-cms_excluded_plugins-list" }}
+<script defer src="{% static 'site_cms/js/hideCmsExcludedPlugins.js' %}"></script>
+{% endif %}
 {% endaddtoblock %}

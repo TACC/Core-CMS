@@ -372,6 +372,7 @@ TEMPLATES = [
                 'sekizai.context_processors.sekizai',
                 'django.template.context_processors.static',
                 'cms.context_processors.cms_settings',
+                'taccsite_cms.context_processors.cms_excluded_plugins',
                 'django_settings_export.settings_export'
             ],
             'libraries': {
@@ -566,10 +567,12 @@ CMS_LANGUAGES = {
 CMS_PERMISSION = True
 CMS_PLACEHOLDER_CONF = {
     None: {
-        'plugin_labels': {
-            # Side effect of djangocms-transfer Import/Export
-            'PluginImporter': 'PluginImporter (Unable to Hide This Utility)',
-        },
+        # To disable certain plugins from "Add plugin" list
+        # SEE: hideCmsExcludedPlugins.js,context_processors.cms_excluded_plugins
+        'excluded_plugins': [
+            # djangocms-transfer PluginImporter is not itself content for pages
+            'PluginImporter'
+        ],
     },
 }
 
