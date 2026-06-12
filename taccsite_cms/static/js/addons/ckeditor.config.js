@@ -7,10 +7,18 @@ CKEDITOR.plugins.addExternal(
   'plugin.js'
 );
 
-/* Convert inline bold/italic styles to semantic tags on paste,
-   because the site strips inline styles from saved content,
-   yet `pastefromgdocs` bold/italic are as inline styles. */
 CKEDITOR.on('instanceReady', function(ev) {
+  var dtd = CKEDITOR.dtd;
+
+  // To support what html5lib does not
+  dtd.details = CKEDITOR.tools.extend({}, dtd.div, { summary: 1 });
+  dtd.summary = CKEDITOR.tools.extend({}, dtd.div, { summary: 0 });
+  dtd.$block['summary'] = 1;
+  dtd.$intermediate['summary'] = 1;
+
+  // To convert inline bold/italic styles to semantic tags on paste
+  // FAQ: `pastefromgdocs` bold/italic are as inline styles,
+  //      but the WYSIWYG strips inline styles from saved content
   ev.editor.on('paste', function(e) {
     var parser = new DOMParser();
     var doc = parser.parseFromString(e.data.dataValue, 'text/html');
