@@ -1,6 +1,7 @@
 # AGENTS.md
 
 - [Architecture](#architecture)
+- [Commits](#commits)
 - [Pull Requests](#pull-requests)
 
 ## Architecture
@@ -66,6 +67,13 @@ As necessary for given task:
 
 See `README.md` for full setup instructions.
 
+## Commits
+
+- **Format:** `.gitmessage` (fallback: `~/.gitmessage`)
+
 ## Pull Requests
 
-Write skimmable, template-aligned PRs; reviewers can see the code diff for details.
+- **Title:** `.gitmessage` (fallback: `~/.gitmessage`)
+- **Description:** `.github/PULL_REQUEST_TEMPLATE.md`
+  - Be concise: plain language, simple sentences; reviewers find detail in the diff. Say what changed, then why (if it matters) — never how.
+  - When updating, first re-read the current description, because it may have been edited.
