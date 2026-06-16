@@ -6,15 +6,13 @@ from djangocms_picture.models import Picture
 
 from .forms import HeaderLogoForm
 
-HEADER_LOGO_ELEMENT_ID = 'header-logo'
+HEADER_LOGO_LINK_CLASS = 'navbar-brand'
 
 
 @plugin_pool.register_plugin
 class HeaderLogoPlugin(PicturePlugin):
     """
-    Header > "Header logo" plugin
-
-    Full Picture plugin; default id="header-logo" when not set in Attributes.
+    Header > "Header logo" (Picture) plugin
     """
     model = Picture
     form = HeaderLogoForm
@@ -24,6 +22,9 @@ class HeaderLogoPlugin(PicturePlugin):
     def render(self, context, instance, placeholder):
         if not instance.attributes:
             instance.attributes = {}
-        if 'id' not in instance.attributes:
-            instance.attributes['id'] = HEADER_LOGO_ELEMENT_ID
+
+        # To add required attributes
+        existing_class = instance.attributes.get('class', '')
+        instance.attributes['class'] = f'{HEADER_LOGO_LINK_CLASS} {existing_class}'.strip()
+
         return super().render(context, instance, placeholder)

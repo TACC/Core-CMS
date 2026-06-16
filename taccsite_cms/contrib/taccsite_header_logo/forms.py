@@ -11,9 +11,6 @@ def default_home_page():
 class HeaderLogoForm(PictureForm):
     """
     Defaults for new Header logo plugins only (admin add form).
-
-    With a link, TACC default picture.html puts Attributes (e.g. class mr-5) on
-    the <a>, not the <img>.
     """
 
     def __init__(self, *args, **kwargs):
@@ -25,10 +22,6 @@ class HeaderLogoForm(PictureForm):
         if home is not None:
             self.initial.setdefault('link_page', home.pk)
 
-        self.initial.setdefault('height', 50)
         self.initial.setdefault('use_no_cropping', True)
         self.initial.setdefault('use_automatic_scaling', False)
 
-        attributes = dict(self.initial.get('attributes') or {})
-        attributes.setdefault('class', 'mr-5')
-        self.initial['attributes'] = attributes
