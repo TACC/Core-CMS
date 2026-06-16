@@ -21,6 +21,7 @@ Plan for [#999 Let CMS Admin Edit Header](https://github.com/TACC/Core-CMS/issue
 - **Render:** Standard Picture template at `{% static_placeholder "header-content" %}`.
 - **Empty placeholder:** `or` fallback [`header_logo_via_settings.html`](taccsite_cms/templates/header_logo_via_settings.html) (`LOGO` / `PORTAL_LOGO`).
 - **Branding images (PR 3):** nested Pictures under TACC Header Branding — not top-level.
+- **Follow-up:** Match `PORTAL_LOGO` / `header_logo_via_settings.html` defaults to Header logo form defaults (margin, height, link) and Core-Styles — deferred until willing to test Core-Styles.
 
 ## PR stack
 

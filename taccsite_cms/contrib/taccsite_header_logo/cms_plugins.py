@@ -4,6 +4,8 @@ from django.utils.translation import gettext_lazy as _
 from djangocms_picture.cms_plugins import PicturePlugin
 from djangocms_picture.models import Picture
 
+from .forms import HeaderLogoForm
+
 HEADER_LOGO_ELEMENT_ID = 'header-logo'
 
 
@@ -15,6 +17,7 @@ class HeaderLogoPlugin(PicturePlugin):
     Full Picture plugin; default id="header-logo" when not set in Attributes.
     """
     model = Picture
+    form = HeaderLogoForm
     module = _('TACC Header')
     name = _('Header logo')
 
