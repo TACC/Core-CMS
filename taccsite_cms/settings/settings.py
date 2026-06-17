@@ -572,12 +572,16 @@ CMS_PLACEHOLDER_CONF = {
         'excluded_plugins': ['HeaderLogoPlugin'],
     },
     HEADER_LOGO_PLACEHOLDER_NAME: {
+        'name': _('Header logo'),
         'plugins': ['HeaderLogoPlugin'],
         'excluded_plugins': [],
         'limits': {
             'global': 2,
             'HeaderLogoPlugin': 1,
         },
+    },
+    'footer-content': {
+        'name': _('Footer content'),
     },
 }
 
