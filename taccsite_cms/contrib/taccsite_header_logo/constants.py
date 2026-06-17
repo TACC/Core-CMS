@@ -1,1 +1,1 @@
-HEADER_CONTENT_PLACEHOLDER_SLOT = 'header-content'
+HEADER_LOGO_PLACEHOLDER_NAME = 'header-logo'

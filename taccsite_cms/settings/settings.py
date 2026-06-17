@@ -564,14 +564,14 @@ CMS_LANGUAGES = {
     },
 }
 
-from taccsite_cms.contrib.taccsite_header_logo.constants import HEADER_CONTENT_PLACEHOLDER_SLOT
+from taccsite_cms.contrib.taccsite_header_logo.constants import HEADER_LOGO_PLACEHOLDER_NAME
 
 CMS_PERMISSION = True
 CMS_PLACEHOLDER_CONF = {
     None: {
         'excluded_plugins': ['HeaderLogoPlugin'],
     },
-    HEADER_CONTENT_PLACEHOLDER_SLOT: {
+    HEADER_LOGO_PLACEHOLDER_NAME: {
         'plugins': ['HeaderLogoPlugin'],
         'excluded_plugins': [],
         'limits': {
@@ -739,14 +739,14 @@ SETTINGS_EXPORT_VARIABLE_NAME = 'settings'
 
 SETTINGS_EXPORT = deprecated_SETTINGS_EXPORT + [
     'DEBUG',
-    'TACC_CORE_STYLES_VERSION',
     'GOOGLE_ANALYTICS_PROPERTY_ID',
     'GOOGLE_ANALYTICS_PRELOAD',
+    'HEADER_LOGO_PLACEHOLDER_NAME',
+    'TACC_CORE_STYLES_VERSION',
     'PORTAL_BRANDING',
     'PORTAL_LOGO',
     'PORTAL_FAVICON',
     'PORTAL_IS_TACC_CORE_PORTAL',
-    'HEADER_CONTENT_PLACEHOLDER_SLOT',
     'PORTAL_HAS_LOGIN',
     'PORTAL_LOGIN_PATH',
     'PORTAL_HAS_SEARCH',
