@@ -564,12 +564,14 @@ CMS_LANGUAGES = {
     },
 }
 
+from taccsite_cms.contrib.taccsite_header_logo.constants import HEADER_CONTENT_PLACEHOLDER_SLOT
+
 CMS_PERMISSION = True
 CMS_PLACEHOLDER_CONF = {
     None: {
         'excluded_plugins': ['HeaderLogoPlugin'],
     },
-    'header-content': {
+    HEADER_CONTENT_PLACEHOLDER_SLOT: {
         'plugins': ['HeaderLogoPlugin'],
         'excluded_plugins': [],
         'limits': {
@@ -744,6 +746,7 @@ SETTINGS_EXPORT = deprecated_SETTINGS_EXPORT + [
     'PORTAL_LOGO',
     'PORTAL_FAVICON',
     'PORTAL_IS_TACC_CORE_PORTAL',
+    'HEADER_CONTENT_PLACEHOLDER_SLOT',
     'PORTAL_HAS_LOGIN',
     'PORTAL_LOGIN_PATH',
     'PORTAL_HAS_SEARCH',

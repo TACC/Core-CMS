@@ -23,7 +23,7 @@
   {% endif %}
 ">
   <!-- Portal Logo -->
-  {% static_placeholder "header-content" or %}
+  {% static_placeholder settings.HEADER_CONTENT_PLACEHOLDER_SLOT or %}
     {% include "header_logo_via_settings.html" %}
   {% endstatic_placeholder %}
 

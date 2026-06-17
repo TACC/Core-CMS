@@ -1,6 +1,7 @@
 from cms.models import StaticPlaceholder
 from cms.plugin_rendering import ContentRenderer
 
+from taccsite_cms.contrib.taccsite_header_logo.constants import HEADER_CONTENT_PLACEHOLDER_SLOT
 from taccsite_cms.contrib.taccsite_header_logo.cms_plugins import HeaderLogoPlugin
 
 
@@ -8,7 +9,7 @@ def render(request, context):
     """
     Render published HeaderLogoPlugin from header-content (logo-only fragment).
     """
-    static_ph = StaticPlaceholder.objects.filter(code='header-content').first()
+    static_ph = StaticPlaceholder.objects.filter(code=HEADER_CONTENT_PLACEHOLDER_SLOT).first()
     if not static_ph:
         return ''
 
