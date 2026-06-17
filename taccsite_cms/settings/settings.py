@@ -564,21 +564,20 @@ CMS_LANGUAGES = {
     },
 }
 
-from taccsite_cms.contrib.taccsite_header.constants import (
-    HEADER_CONTENT_PLACEHOLDER_SLOT,
-    HEADER_CONTENT_PLUGIN_LIMITS,
-    HEADER_CONTENT_ROOT_PLUGINS,
-)
+from taccsite_cms.contrib.taccsite_header_logo.constants import HEADER_CONTENT_PLACEHOLDER_SLOT
 
 CMS_PERMISSION = True
 CMS_PLACEHOLDER_CONF = {
     None: {
-        'excluded_plugins': list(HEADER_CONTENT_ROOT_PLUGINS),
+        'excluded_plugins': ['HeaderLogoPlugin'],
     },
     HEADER_CONTENT_PLACEHOLDER_SLOT: {
-        'plugins': list(HEADER_CONTENT_ROOT_PLUGINS),
+        'plugins': ['HeaderLogoPlugin'],
         'excluded_plugins': [],
-        'limits': HEADER_CONTENT_PLUGIN_LIMITS,
+        'limits': {
+            'global': 2,
+            'HeaderLogoPlugin': 1,
+        },
     },
 }
 
