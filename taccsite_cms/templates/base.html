@@ -57,7 +57,7 @@
   {% render_block "css" %}
 </head>
 
-<body class="{% block page_type_class %}{% endblock page_type_class %}">
+<body class="{% block page_type_class %}{% endblock page_type_class %}{% if settings.PORTAL_IS_TACC_CORE_PORTAL %}has-portal{% endif %}">
   {% cms_toolbar %}
 
   {% block header %}
