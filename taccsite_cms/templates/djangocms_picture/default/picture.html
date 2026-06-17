@@ -28,7 +28,10 @@
 {# start render figure/figcaption #}
 {# TACC (support children as caption content): #}
 {# {% if instance.caption_text %} #}
-{% if instance.caption_text or instance.child_plugin_instances %}
+{# TACC (fall back to image default caption): #}
+{# {% if instance.caption_text or instance.child_plugin_instances %} #}
+{% if instance.caption_text or instance.child_plugin_instances or instance.picture.default_caption %}
+{# /TACC #}
     {# TACC (assign attributes to parent): #}
     {# <figure> #}
     <figure {{ instance.attributes_str }}>
@@ -60,7 +63,10 @@
     {# TACC (allow link to be conditional): #}
     {% block picture_attributes %}
     {# TACC (assign attributes to parent): #}
-    {% if not instance.caption_text and not picture_link and not instance.child_plugin_instances %}
+    {# TACC (fall back to image default caption): #}
+    {# {% if not instance.caption_text and not picture_link and not instance.child_plugin_instances %} #}
+    {% if not instance.caption_text and not instance.picture.default_caption and not picture_link and not instance.child_plugin_instances %}
+    {# /TACC #}
     {{ instance.attributes_str }}
     {% endif %}
     {# /TACC #}
@@ -74,11 +80,17 @@
 
 {# start render figure/figcaption #}
 {# {% if instance.caption_text %} #}
-{% if instance.caption_text or instance.child_plugin_instances %}
+{# TACC (fall back to image default caption): #}
+{# {% if instance.caption_text or instance.child_plugin_instances %} #}
+{% if instance.caption_text or instance.child_plugin_instances or instance.picture.default_caption %}
+{# /TACC #}
         {# TACC (support children as caption content): #}
         {# <figcaption>{{ instance.caption_text }}</figcaption> #}
         <figcaption>
-        {{ instance.caption_text }}
+        {# TACC (fall back to image default caption): #}
+        {# {{ instance.caption_text }} #}
+        {% if instance.caption_text %}{{ instance.caption_text }}{% elif instance.picture.default_caption and not instance.child_plugin_instances %}{{ instance.picture.default_caption }}{% endif %}
+        {# /TACC #}
         {% for plugin in instance.child_plugin_instances %}
             {% render_plugin plugin %}
         {% endfor %}
