@@ -1,4 +1,5 @@
 from cms.models import Page
+from django.conf import settings
 from django.contrib.sites.models import Site
 from djangocms_picture.forms import PictureForm
 
@@ -14,8 +15,7 @@ class HeaderLogoForm(PictureForm):
     """
     Defaults for new Header logo plugins only (admin add form).
 
-    Uses Portal logo picture template (portal-logo on img). Attributes class
-    applies to the link when a link is set (see default picture.html).
+    On a TACC/Core-Portal instance, defaults to Portal logo picture template.
     """
 
     def __init__(self, *args, **kwargs):
@@ -23,7 +23,8 @@ class HeaderLogoForm(PictureForm):
         if self.instance.pk:
             return
 
-        self.initial.setdefault('template', HEADER_LOGO_PICTURE_TEMPLATE)
+        if settings.PORTAL_IS_TACC_CORE_PORTAL:
+            self.initial.setdefault('template', HEADER_LOGO_PICTURE_TEMPLATE)
 
         home = default_home_page()
         if home is not None:
@@ -31,7 +32,3 @@ class HeaderLogoForm(PictureForm):
 
         self.initial.setdefault('use_no_cropping', True)
         self.initial.setdefault('use_automatic_scaling', False)
-
-        attributes = dict(self.initial.get('attributes') or {})
-        attributes.setdefault('class', 'mr-5')
-        self.initial['attributes'] = attributes
