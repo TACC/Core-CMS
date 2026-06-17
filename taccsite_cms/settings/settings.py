@@ -492,6 +492,7 @@ INSTALLED_APPS = [
     # TACC CMS Plugins
     'djangocms_tacc_image_gallery',
     'djangocms_tacc_system_monitor',
+    'taccsite_cms.contrib.taccsite_header_logo',
 
     # TACC CMS Plugins - DECPRECATED
     'taccsite_cms.contrib.taccsite_blockquote',
@@ -500,7 +501,6 @@ INSTALLED_APPS = [
     'taccsite_cms.contrib.taccsite_offset',
     'taccsite_cms.contrib.taccsite_system_specs',
     'taccsite_cms.contrib.taccsite_data_list',
-    'taccsite_cms.contrib.taccsite_header_logo',
 ]
 
 # Convert list of paths to list of dotted module names
@@ -564,20 +564,21 @@ CMS_LANGUAGES = {
     },
 }
 
-from taccsite_cms.contrib.taccsite_header_logo.constants import HEADER_CONTENT_PLACEHOLDER_SLOT
+from taccsite_cms.contrib.taccsite_header.constants import (
+    HEADER_CONTENT_PLACEHOLDER_SLOT,
+    HEADER_CONTENT_PLUGIN_LIMITS,
+    HEADER_CONTENT_ROOT_PLUGINS,
+)
 
 CMS_PERMISSION = True
 CMS_PLACEHOLDER_CONF = {
     None: {
-        'excluded_plugins': ['HeaderLogoPlugin'],
+        'excluded_plugins': list(HEADER_CONTENT_ROOT_PLUGINS),
     },
     HEADER_CONTENT_PLACEHOLDER_SLOT: {
-        'plugins': ['HeaderLogoPlugin'],
+        'plugins': list(HEADER_CONTENT_ROOT_PLUGINS),
         'excluded_plugins': [],
-        'limits': {
-            'global': 2,
-            'HeaderLogoPlugin': 1,
-        },
+        'limits': HEADER_CONTENT_PLUGIN_LIMITS,
     },
 }
 
