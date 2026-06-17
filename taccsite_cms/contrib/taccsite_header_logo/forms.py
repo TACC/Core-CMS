@@ -32,3 +32,7 @@ class HeaderLogoForm(PictureForm):
 
         self.initial.setdefault('use_no_cropping', True)
         self.initial.setdefault('use_automatic_scaling', False)
+
+        attributes = dict(self.initial.get('attributes') or {})
+        attributes.setdefault('alt', 'Project logo')
+        self.initial['attributes'] = attributes
