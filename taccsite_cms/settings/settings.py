@@ -566,8 +566,12 @@ CMS_LANGUAGES = {
 
 CMS_PERMISSION = True
 CMS_PLACEHOLDER_CONF = {
+    None: {
+        'excluded_plugins': ['HeaderLogoPlugin'],
+    },
     'header-content': {
         'plugins': ['HeaderLogoPlugin'],
+        'excluded_plugins': [],
         'limits': {
             'global': 2,
             'HeaderLogoPlugin': 1,
