@@ -7,13 +7,11 @@ Related:
 
 ## Status as of 2026-06
 
-
 | State               | Description                       |
 | ------------------- | --------------------------------- |
 | one placeholder     | `header-logo` static placeholder  |
 | if plugin is added  | `HeaderLogoPlugin` is only option |
 | if plugin not added | renders settings-based logo       |
-
 
 The branding and navs and search are still settings-based.
 
@@ -26,23 +24,19 @@ Requirements:
 
 ### A. Wrapper Plugin
 
-
 | Pros                           | Cons                                           |
 | ------------------------------ | ---------------------------------------------- |
 | One placeholder                | Extra container plugin                         |
 | Layout management consolidated | Build/Maintain wrapper                         |
 |                                | Must deprecate or migrate legacy `header-logo` |
 
-
 ### B. Multiple Placeholders
-
 
 | Pros                               | Cons                               |
 | ---------------------------------- | ---------------------------------- |
 | Typical CMS usage                  | Several placeholders to configure  |
 |                                    | Layout management not consolidated |
 | Can keep using `header-logo` as is |                                    |
-
 
 ## CMS Editor UX
 
@@ -54,7 +48,6 @@ Requirements:
 - Structure mode button toggles render of Structure sidebar.
 
 ## Failed Ideas
-
 
 | Idea                                         | Problem                                             |
 | -------------------------------------------- | --------------------------------------------------- |
