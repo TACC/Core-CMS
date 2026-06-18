@@ -11,8 +11,8 @@ Related:
 | ------------------- | --------------------------------- |
 | one placeholder     | `header-logo` static placeholder  |
 | if plugin is added  | `TaccsiteHeaderLogoPlugin` is only option |
-| if plugin not added | renders settings-based logo       |
-| nav and markup URL  | both use `header_logo.html`       |
+| if plugin not added | `header_logo.html` settings fallback in nav |
+| markup URL          | `/cms/header/logo/markup/` loads `header_logo.html` only |
 
 The branding and navs and search are still settings-based.
 

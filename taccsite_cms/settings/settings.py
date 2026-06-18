@@ -690,7 +690,7 @@ deprecated_SETTINGS_EXPORT += ['BRANDING']
 if 'BRANDING' not in locals():
     BRANDING = False
 
-# For header_logo_via_settings.html
+# For header_logo.html
 deprecated_SETTINGS_EXPORT += ['LOGO']
 if 'LOGO' not in locals():
     LOGO = False
