@@ -73,7 +73,7 @@
     {% endblock %}
     {# /TACC #}
     {# TACC (allow attributes to be force-added to <img>): #}
-    {% block picture_attributes_img %}{% endblock %}
+    {% block picture_attributes_img %}{% if picture_img_class %}class="{{ picture_img_class }}"{% endif %}{% endblock %}
     {# /TACC #}
 >
 {% endlocalize %}
