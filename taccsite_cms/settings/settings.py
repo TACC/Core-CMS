@@ -576,7 +576,7 @@ CMS_PLACEHOLDER_CONF = {
         'plugins': ['HeaderLogoPlugin'],
         'excluded_plugins': [],
         'limits': {
-            'global': 2,
+            'global': 1,
             'HeaderLogoPlugin': 1,
         },
     },
