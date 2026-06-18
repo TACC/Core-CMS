@@ -42,13 +42,13 @@ class _FakePicture:
     """Stand-in for a djangocms_picture Picture plugin instance."""
 
     def __init__(self, caption_text='', children=None, default_caption='',
-                 default_alt_text='', attributes=None, attributes_str=None):
+                 default_alt_text='', attributes=None):
         self.caption_text = caption_text
         self.child_plugin_instances = children if children is not None else []
         self.picture = _FakeImage(default_alt_text=default_alt_text,
                                   default_caption=default_caption)
         self.attributes = attributes or {}
-        self.attributes_str = attributes_str if attributes_str is not None else ''
+        self.attributes_str = ''
         self.link_attributes_str = ''
         self.link_target = ''
         self.img_src = '/media/test.jpg'
