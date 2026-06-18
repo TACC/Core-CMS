@@ -564,7 +564,11 @@ CMS_LANGUAGES = {
 }
 
 CMS_PERMISSION = True
-CMS_PLACEHOLDER_CONF = {}
+CMS_PLACEHOLDER_CONF = {
+    'footer-content': {
+        'name': _('Footer content'),
+    },
+}
 
 THUMBNAIL_HIGH_RESOLUTION = True
 THUMBNAIL_PROCESSORS = (
