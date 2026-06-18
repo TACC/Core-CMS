@@ -578,6 +578,9 @@ CMS_PLACEHOLDER_CONF = {
             'TaccsiteHeaderLogoPlugin': 1,
         },
     },
+    'footer-content': {
+        'name': _('Footer content'),
+    },
 }
 
 THUMBNAIL_HIGH_RESOLUTION = True
