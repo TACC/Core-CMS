@@ -1,8 +1,5 @@
-{% load header_tags %}
+{% load cms_tags %}
 
-{% render_header_logo as header_logo %}
-{% if header_logo %}
-  {{ header_logo }}
-{% else %}
+{% static_placeholder "header-logo" or %}
   {% include "header_logo_via_settings.html" %}
-{% endif %}
+{% endstatic_placeholder %}

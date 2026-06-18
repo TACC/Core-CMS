@@ -1,1 +1,0 @@
-HEADER_LOGO_PLACEHOLDER_NAME = 'header-logo'

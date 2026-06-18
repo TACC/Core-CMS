@@ -564,14 +564,12 @@ CMS_LANGUAGES = {
     },
 }
 
-from djangocms_tacc_header_logo.constants import HEADER_LOGO_PLACEHOLDER_NAME
-
 CMS_PERMISSION = True
 CMS_PLACEHOLDER_CONF = {
     None: {
         'excluded_plugins': ['TaccsiteHeaderLogoPlugin'],
     },
-    HEADER_LOGO_PLACEHOLDER_NAME: {
+    'header-logo': {
         'name': _('Header logo'),
         'plugins': ['TaccsiteHeaderLogoPlugin'],
         'excluded_plugins': [],
@@ -579,9 +577,6 @@ CMS_PLACEHOLDER_CONF = {
             'global': 1,
             'TaccsiteHeaderLogoPlugin': 1,
         },
-    },
-    'footer-content': {
-        'name': _('Footer content'),
     },
 }
 
@@ -745,7 +740,6 @@ SETTINGS_EXPORT = deprecated_SETTINGS_EXPORT + [
     'DEBUG',
     'GOOGLE_ANALYTICS_PROPERTY_ID',
     'GOOGLE_ANALYTICS_PRELOAD',
-    'HEADER_LOGO_PLACEHOLDER_NAME',
     'TACC_CORE_STYLES_VERSION',
     'PORTAL_BRANDING',
     'PORTAL_LOGO',
