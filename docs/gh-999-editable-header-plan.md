@@ -15,11 +15,11 @@ Related:
 
 The branding and navs and search are still settings-based.
 
-## Known limitations
+## Known Limitations
 
-| Limitation | Tracking |
-| --- | --- |
-| Header logo without link: CMS may omit `portal-logo` on `<img>` because of Picture attribute hoisting (Core-Styles supports img-only; CMS markup is wrong). Default form links logo to home, so typical sites are unaffected. | [#1185](https://github.com/TACC/Core-CMS/issues/1185) |
+| Issue | Summary | Why Allow This? |
+| --- | --- | --- |
+| [#1185](https://github.com/TACC/Core-CMS/issues/1185) | Header logo without a link is **missing** `class="portal-logo"` on `<img>`. | Default form links logo to home, so typical sites are unaffected. |
 
 ## How to Add Other Header Plugins
 
