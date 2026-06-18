@@ -10,7 +10,7 @@ Related:
 | State               | Description                       |
 | ------------------- | --------------------------------- |
 | one placeholder     | `header-logo` static placeholder  |
-| if plugin is added  | `HeaderLogoPlugin` is only option |
+| if plugin is added  | `TaccsiteHeaderLogoPlugin` is only option |
 | if plugin not added | renders settings-based logo       |
 
 The branding and navs and search are still settings-based.

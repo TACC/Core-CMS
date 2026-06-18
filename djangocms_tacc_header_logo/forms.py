@@ -11,7 +11,7 @@ def default_home_page():
     return Page.objects.filter(is_home=True, node__site=site).first()
 
 
-class HeaderLogoForm(PictureForm):
+class TaccsiteHeaderLogoForm(PictureForm):
     """
     Defaults for new Header logo plugins only (admin add form).
 

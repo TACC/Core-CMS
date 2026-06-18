@@ -1,13 +1,13 @@
 from cms.models import StaticPlaceholder
 from cms.plugin_rendering import ContentRenderer
 
-from taccsite_cms.contrib.taccsite_header_logo.constants import HEADER_LOGO_PLACEHOLDER_NAME
-from taccsite_cms.contrib.taccsite_header_logo.cms_plugins import HeaderLogoPlugin
+from djangocms_tacc_header_logo.cms_plugins import TaccsiteHeaderLogoPlugin
+from djangocms_tacc_header_logo.constants import HEADER_LOGO_PLACEHOLDER_NAME
 
 
 def render(request, context):
     """
-    Render published HeaderLogoPlugin from header-logo (logo-only fragment).
+    Render published TaccsiteHeaderLogoPlugin from header-logo (logo-only fragment).
     """
     static_ph = StaticPlaceholder.objects.filter(code=HEADER_LOGO_PLACEHOLDER_NAME).first()
     if not static_ph:
@@ -20,7 +20,7 @@ def render(request, context):
     language = renderer.request_language
 
     for plugin in renderer.get_plugins_to_render(placeholder, language, template=None):
-        if plugin.plugin_type == HeaderLogoPlugin.__name__:
+        if plugin.plugin_type == TaccsiteHeaderLogoPlugin.__name__:
             return renderer.render_plugin(
                 plugin,
                 context,
