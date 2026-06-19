@@ -575,7 +575,6 @@ CMS_PLACEHOLDER_CONF = {
         'excluded_plugins': [],
         'limits': {
             'global': 1,
-            'TaccsiteHeaderLogoPlugin': 1,
         },
     },
     'footer-content': {
