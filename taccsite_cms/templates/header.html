@@ -23,8 +23,8 @@
   {% endif %}
 ">
   <!-- Portal Logo -->
-  {% static_placeholder settings.HEADER_LOGO_PLACEHOLDER_NAME or %}
-    {% include "header_logo_via_settings.html" %}
+  {% static_placeholder "header-logo" or %}
+    {% include "header_logo.html" %}
   {% endstatic_placeholder %}
 
   <!-- Navbar Accordian Toggle on Small Screens  -->
@@ -47,6 +47,7 @@
     {% endif %}
   </div>
 </nav>
+
 {% endwith %}
 {% endwith %}
 {% endwith %}

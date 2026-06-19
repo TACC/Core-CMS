@@ -4,6 +4,7 @@ Related:
 
 - [#999](https://github.com/TACC/Core-CMS/issues/999)
 - [#1083](https://github.com/TACC/Core-CMS/pull/1083)
+- [#1189](https://github.com/TACC/Core-CMS/pull/1189)
 
 ## Status as of 2026-06
 
