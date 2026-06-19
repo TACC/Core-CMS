@@ -1,4 +1,4 @@
-# GH-999: Editable header
+# GH-999: Editable Header
 
 Related:
 
@@ -56,13 +56,13 @@ Requirements:
 
 ## Failed Ideas
 
-| Idea                                         | Problem                                             |
-| -------------------------------------------- | --------------------------------------------------- |
-| One slot + custom `render_`* in many regions | Preview/Structure break; Picture edits need refresh |
-| Nest plugins under logo but render elsewhere | Preview/Structure break; Picture edits need refresh |
-| `static_placeholder` away from visible logo  | Bad WYSIWYG; toolbar/Structure bugs                 |
-| Per-region render registry without A or B    | Publish-only; bad edit UX                           |
-| Prematurely code Option A                    | Two plugins for one logo                            |
-| `cache = False` only                         | Doesn’t fix render vs placeholder split             |
-| Draft in `render_`*, placeholder elsewhere   | Image swap lag; duplicate surfaces                  |
-| Edit-only placeholder at top of header       | Structure JS errors; no real preview                |
+| Idea | Problem |
+| --- | --- |
+| `ContentRenderer` / template tag for the logo instead of `{% static_placeholder %}` at the logo | Structure and preview break; Picture edits need refresh (removed in [#1189](https://github.com/TACC/Core-CMS/pull/1189)) |
+| Published markup from code, placeholder somewhere else | Duplicate logo surfaces; draft image lags behind preview |
+| Child plugins under the logo, HTML rendered elsewhere | Structure/preview break |
+| `{% static_placeholder %}` not where the logo shows | Bad WYSIWYG; toolbar/Structure bugs |
+| Per-region render registry (not Option A or B) | Live site publish-only; bad edit UX |
+| Option A wrapper before more header plugins exist | Two plugins for one logo |
+| Plugin `cache = False` only | Does not fix placeholder vs programmatic render |
+| Edit-only placeholder at top of header | Structure JS errors; no real preview |
