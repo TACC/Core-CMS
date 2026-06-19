@@ -3,7 +3,7 @@ from django.conf import settings
 from django.contrib.sites.models import Site
 from djangocms_picture.forms import PictureForm
 
-HEADER_LOGO_PICTURE_TEMPLATE = 'portal_logo'
+HEADER_LOGO_TEMPLATE_WITH_PORTAL = 'portal_logo'
 
 
 def default_home_page():
@@ -24,7 +24,7 @@ class TaccsiteHeaderLogoForm(PictureForm):
             return
 
         if settings.PORTAL_IS_TACC_CORE_PORTAL:
-            self.initial.setdefault('template', HEADER_LOGO_PICTURE_TEMPLATE)
+            self.initial.setdefault('template', HEADER_LOGO_TEMPLATE_WITH_PORTAL)
 
         home = default_home_page()
         if home is not None:
