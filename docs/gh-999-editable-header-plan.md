@@ -4,6 +4,7 @@ Related:
 
 - [#999](https://github.com/TACC/Core-CMS/issues/999)
 - [#1083](https://github.com/TACC/Core-CMS/pull/1083)
+- [#1189](https://github.com/TACC/Core-CMS/pull/1189)
 
 ## Status as of 2026-06
 
@@ -11,8 +12,7 @@ Related:
 | ------------------- | --------------------------------- |
 | one placeholder     | `header-logo` static placeholder  |
 | if plugin is added  | `TaccsiteHeaderLogoPlugin` is only option |
-| if plugin not added | `header_logo.html` settings fallback in nav |
-| markup URL          | `/cms/header/logo/markup/` loads `header_logo.html` only |
+| if plugin not added | renders settings-based logo       |
 
 The branding and navs and search are still settings-based.
 
