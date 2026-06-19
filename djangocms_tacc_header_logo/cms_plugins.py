@@ -6,6 +6,7 @@ from djangocms_picture.models import Picture
 
 from .forms import TaccsiteHeaderLogoForm
 
+HEADER_LOGO_ID = 'header-logo'
 HEADER_LOGO_CLASS = 'navbar-brand'
 
 
@@ -25,5 +26,6 @@ class TaccsiteHeaderLogoPlugin(PicturePlugin):
 
         existing_class = instance.attributes.get('class', '')
         instance.attributes['class'] = f'{HEADER_LOGO_CLASS} {existing_class}'.strip()
+        instance.attributes['id'] = HEADER_LOGO_ID
 
         return super().render(context, instance, placeholder)
