@@ -1,7 +1,7 @@
 ---
 name: Sortable table finish (deferred)
-overview: "Steps 5–6 done on branch; step 7 — CKEditor allowlist PR to main."
-status: in-progress
+overview: "Steps 5–7 complete (5–6 on feat branch / #1178; step 7 merged #1180)."
+status: complete
 ---
 
 # Sortable table: Phase 0, then steps 5–7
@@ -20,7 +20,7 @@ Merge as-is: Core-CMS sortableTable, Core-Styles promote util, tup-ui snippet pi
 
 ## Step 7: CKEditor ARIA — separate branch → `main`
 
-`extraAllowedContent` for published `aria-*`; not a blocker for step 5.
+**Done:** https://github.com/TACC/Core-CMS/pull/1180 — `aria-*` on Text plugin HTML via `ALLOW_TOKEN_PARSERS` (`AriaAttributeParser`); `<summary>` via `TEXT_ADDITIONAL_TAGS` and CKEditor DTD (not `extraAllowedContent`).
 
 ## Order
 
