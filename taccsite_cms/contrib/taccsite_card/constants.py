@@ -5,10 +5,10 @@ from django.utils.translation import gettext_lazy as _
 from taccsite_cms.contrib.helpers import concat_classnames
 
 # Skin axis — stored in Style.class_name (c-card block + modifiers)
-CARD_SKIN_CLASS_NAMES = (
-    'c-card',
-    'c-card--plain',
-    'c-card--standard',
+CARD_SKIN_CLASS_NAME_CHOICES = (
+    ('c-card', _('Base (block only)')),
+    ('c-card--plain', _('Plain')),
+    ('c-card--standard', _('Standard')),
 )
 
 CARD_SKIN_DEFAULT = 'c-card--plain'
@@ -21,11 +21,6 @@ CARD_LAYOUT_TEMPLATES = (
     ('image_left', _('Image Left')),
     ('image_right', _('Image Right')),
 )
-
-
-def get_card_skin_class_name_choices():
-    """Card plugin skin field choices."""
-    return [(entry, entry) for entry in CARD_SKIN_CLASS_NAMES]
 
 
 def class_name_to_skin_modifier(class_name):

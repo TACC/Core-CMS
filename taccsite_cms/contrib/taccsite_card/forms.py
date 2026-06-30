@@ -6,8 +6,8 @@ from djangocms_style.models import Style
 
 from .constants import (
     CARD_LAYOUT_TEMPLATES,
+    CARD_SKIN_CLASS_NAME_CHOICES,
     CARD_SKIN_DEFAULT,
-    get_card_skin_class_name_choices,
 )
 
 CARD_TAG_TYPE_CHOICES = (
@@ -79,7 +79,7 @@ class TaccsiteCardPluginForm(forms.ModelForm):
         )
         if should_default_card_style_to_plain:
             self.instance.class_name = CARD_SKIN_DEFAULT
-        self.fields['class_name'].choices = get_card_skin_class_name_choices()
+        self.fields['class_name'].choices = CARD_SKIN_CLASS_NAME_CHOICES
         self.fields['class_name'].label = _('Card style')
         self.fields['class_name'].initial = CARD_SKIN_DEFAULT
         self.fields['class_name'].help_text = CARD_STYLE_HELP_TEXT
