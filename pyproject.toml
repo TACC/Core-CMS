@@ -120,6 +120,10 @@ rt = "^2.2"
 django-recaptcha = "3.0.0"
 psycopg = "^3.1.17"
 pymemcache = "^4.0.0"
+# TODO(NAIRR): beautifulsoup4 is only for `scrape_nairr_pages` / NAIRR migration.
+# It should not remain a default Core-CMS dependency — use a Poetry extra
+# (e.g. `nairr`) or NAIRR-specific image/layer once migration is routine.
+beautifulsoup4 = "^4.12.0"
 
 [build-system]
 requires = ["poetry-core>=2.0.0"]

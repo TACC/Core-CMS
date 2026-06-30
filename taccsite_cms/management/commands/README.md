@@ -3,6 +3,7 @@
 - [How to Use](#how-to-use)
 - [List Pages Using Each Template](#list-pages-using-each-template)
 - [Create Test Page for Section Style](#create-test-page-section-style)
+- [NAIRR Pilot: Scrape and Import Pages](#nairr-pilot-scrape-and-import-pages)
 - [Set Groups & Permissions](#set-groups--permissions)
 - [Reference](#reference)
 
@@ -39,6 +40,30 @@ python manage.py create_test_page_section_style --replace
 ```
 
 Options: `--title`, `--slug`, `--reverse-id`, `--language`, `--template`, `--no-publish`. Use `--replace` to delete any existing page with the default reverse id (`core_cms_section_style_qa`) before creating a new one.
+
+## NAIRR Pilot: Scrape and Import Pages
+
+Migrate content from [nairrpilot.org](https://nairrpilot.org) into this CMS instance. Run both commands **inside the CMS container** (after `make setup` locally).
+
+**Dependencies:** `scrape_nairr_pages` needs **beautifulsoup4** (and **requests**, already in Core-CMS). That package is listed in `pyproject.toml` only as an interim step. **Later:** install it only for NAIRR (Poetry extra, custom image, or Core-CMS-Custom layer) — not every Core-CMS site. After `make build`, it should be in the image; if you are on a stale image, `pip install beautifulsoup4` works for the **current container only** (lost on recreate — see Dockerfile / `make stop`).
+
+Scraped HTML is stored under `NAIRR_SCRAPE_ROOT` (default: `/code/scraped/nairr` — on Camino, mounted from `${CAMINO_HOME}/data/nairr-scrape`).
+
+```sh
+# One page, then import that page
+python manage.py scrape_nairr_pages about/overview --force
+python manage.py create_nairr_pages --page about/overview --replace
+
+# Home
+python manage.py scrape_nairr_pages --home --force
+python manage.py create_nairr_pages --page home --replace
+
+# Everything (long; respects crawl delay)
+python manage.py scrape_nairr_pages --all --force
+python manage.py create_nairr_pages --replace
+```
+
+Blog list pages (`news/news`, `news/newsletters`) get a page shell only — attach **djangocms_blog** apphooks in the CMS admin after import.
 
 ## Set Groups & Permissions
 

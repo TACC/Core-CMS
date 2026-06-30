@@ -123,3 +123,15 @@ BLOG_ENABLE_COMMENTS = False
 PORTAL_BLOG_SHOW_CATEGORIES = False
 PORTAL_BLOG_SHOW_TAGS = False
 PORTAL_BLOG_SHOW_AUTO_MAIN_IMAGE = False
+
+########################
+# NAIRR: scrape / import (NAIRR Pilot sites)
+########################
+
+import os
+
+from taccsite_cms.settings.settings import BASE_DIR
+
+NAIRR_SCRAPE_ROOT = os.path.join(BASE_DIR, 'scraped', 'nairr')
+NAIRR_SCRAPE_BASE_URL = 'https://nairrpilot.org'
+NAIRR_SCRAPE_CRAWL_DELAY = 1.0

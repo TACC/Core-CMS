@@ -23,6 +23,7 @@ build
 # Static and Media folders
 /static
 /media
+/scraped
 
 # Secrets and Customizations
 *secrets*.py
