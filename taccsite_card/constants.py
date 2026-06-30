@@ -4,16 +4,13 @@ from django.utils.translation import gettext_lazy as _
 
 from taccsite_cms.contrib.helpers import concat_classnames
 
-# Skin axis — stored in Style.class_name (c-card block + modifiers)
 CARD_SKIN_CLASS_NAME_CHOICES = (
-    ('c-card', _('Base (block only)')),
+    ('c-card', _('Base (no background)')),
     ('c-card--plain', _('Plain')),
     ('c-card--standard', _('Standard')),
 )
+CARD_SKIN_CLASS_NAME_DEFAULT = 'c-card--plain'
 
-CARD_SKIN_DEFAULT = 'c-card--plain'
-
-# Layout axis — stored in Style.template; each value selects a layout template (Way 1)
 CARD_LAYOUT_TEMPLATES = (
     ('default', _('Default (no image layout)')),
     ('image_top', _('Image Top')),
