@@ -1,4 +1,5 @@
 /* To fix multi-line fields not lining up */
+/* https://github.com/django-cms/djangocms-admin-style/blob/3.2.7/djangocms_admin_style/sass/components/_forms.scss#L102-L142 */
 form .flex-container.form-multiline {
     /* To use flex styles for `.flex-container` */
     --gap: 10px;
