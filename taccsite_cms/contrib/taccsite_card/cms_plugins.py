@@ -32,14 +32,13 @@ class TaccsiteCardPlugin(StylePlugin):
             'fields': (
                 'label',
                 ('class_name', 'template'),
-                'tag_type',
+                ('tag_type', 'id_name'),
             )
         }),
         (_('Advanced settings'), {
             'classes': ('collapse',),
             'fields': (
                 'additional_classes',
-                'id_name',
                 'attributes',
             ),
         }),

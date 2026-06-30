@@ -1,50 +1,44 @@
 """Card plugin: skin (class_name) and layout (template) axes for Core-Styles c-card."""
 
-from django.conf import settings
 from django.utils.translation import gettext_lazy as _
 
 from taccsite_cms.contrib.helpers import concat_classnames
 
-# Skin axis — stored in Style.class_name (legacy card--* tokens, mapped to c-card--* on output)
+# Skin axis — stored in Style.class_name (c-card block + modifiers)
 CARD_SKIN_CLASS_NAMES = (
-    'card',
-    'card--plain',
-    'card--standard',
+    'c-card',
+    'c-card--plain',
+    'c-card--standard',
 )
+
+CARD_SKIN_DEFAULT = 'c-card--plain'
 
 # Layout axis — stored in Style.template; each value selects a layout template (Way 1)
 CARD_LAYOUT_TEMPLATES = (
     ('default', _('Default (no image layout)')),
-    ('image_top', _('Image top')),
-    ('image_bottom', _('Image bottom')),
-    ('image_left', _('Image left')),
-    ('image_right', _('Image right')),
+    ('image_top', _('Image Top')),
+    ('image_bottom', _('Image Bottom')),
+    ('image_left', _('Image Left')),
+    ('image_right', _('Image Right')),
 )
 
 
 def get_card_skin_class_name_choices():
-    """Subset of DJANGOCMS_STYLE_CHOICES for the Card plugin skin field."""
-    all_choices = getattr(
-        settings,
-        'DJANGOCMS_STYLE_CHOICES',
-        list(CARD_SKIN_CLASS_NAMES),
-    )
-    return [
-        (entry, entry)
-        for entry in all_choices
-        if entry in CARD_SKIN_CLASS_NAMES
-    ]
+    """Card plugin skin field choices."""
+    return [(entry, entry) for entry in CARD_SKIN_CLASS_NAMES]
 
 
 def class_name_to_skin_modifier(class_name):
     """
-    Map Style.class_name skin token to a c-card--* modifier (not including block c-card).
+    Map Style.class_name to a skin modifier (not including block c-card in base.html).
 
-    card → (none)
-    card--plain → c-card--plain
+    c-card → (none)
+    c-card--plain → c-card--plain
     """
-    if not class_name or class_name == 'card':
+    if not class_name or class_name == 'c-card':
         return ''
+    if class_name.startswith('c-card--'):
+        return class_name
     if class_name.startswith('card--'):
         return 'c-card' + class_name[4:]
     return ''
@@ -52,9 +46,9 @@ def class_name_to_skin_modifier(class_name):
 
 def normalize_card_class_tokens(class_string):
     """
-    Map legacy card--* and c-card--* tokens in additional_classes / attributes.class.
+    Normalize card class tokens in additional_classes / attributes.class.
 
-    Leaves unrelated tokens unchanged.
+    Drops redundant c-card / card block tokens; maps legacy card--* to c-card--*.
     """
     if not class_string:
         return ''
@@ -63,7 +57,7 @@ def normalize_card_class_tokens(class_string):
         token = raw.strip()
         if not token:
             continue
-        if token == 'card':
+        if token in ('card', 'c-card'):
             continue
         if token.startswith('card--'):
             parts.append('c-card' + token[4:])

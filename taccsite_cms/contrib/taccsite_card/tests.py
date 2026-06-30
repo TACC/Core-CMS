@@ -14,11 +14,16 @@ from taccsite_cms.contrib.taccsite_card.constants import (
 
 class TaccsiteCardConstantsTests(SimpleTestCase):
     def test_skin_modifier_mapping(self):
-        self.assertEqual(class_name_to_skin_modifier('card'), '')
+        self.assertEqual(class_name_to_skin_modifier('c-card'), '')
+        self.assertEqual(class_name_to_skin_modifier('c-card--plain'), 'c-card--plain')
+        self.assertEqual(class_name_to_skin_modifier('c-card--standard'), 'c-card--standard')
         self.assertEqual(class_name_to_skin_modifier('card--plain'), 'c-card--plain')
-        self.assertEqual(class_name_to_skin_modifier('card--standard'), 'c-card--standard')
 
     def test_normalize_additional_classes(self):
+        self.assertEqual(
+            normalize_card_class_tokens('c-card--plain, foo'),
+            'c-card--plain foo',
+        )
         self.assertEqual(
             normalize_card_class_tokens('card--plain, foo'),
             'c-card--plain foo',
@@ -33,7 +38,7 @@ class TaccsiteCardPluginTests(TestCase):
 
     def _add_card(self, **kwargs):
         defaults = {
-            'class_name': 'card--standard',
+            'class_name': 'c-card--standard',
             'template': 'default',
         }
         defaults.update(kwargs)
@@ -45,13 +50,13 @@ class TaccsiteCardPluginTests(TestCase):
         )
 
     def test_render_skin_classes(self):
-        plugin = self._add_card(class_name='card--plain', template='default')
+        plugin = self._add_card(class_name='c-card--plain', template='default')
         plugin_class = plugin.get_plugin_class_instance()
         context = plugin_class.render(self.context, plugin, self.placeholder)
         self.assertEqual(context['skin_classes'], 'c-card--plain')
 
     def test_html_stacks_skin_and_layout(self):
-        plugin = self._add_card(class_name='card--standard', template='image_top')
+        plugin = self._add_card(class_name='c-card--standard', template='image_top')
         html = ContentRenderer(request=self.factory).render_plugin(
             plugin,
             self.context,
