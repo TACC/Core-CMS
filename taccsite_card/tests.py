@@ -5,8 +5,8 @@ from cms.api import add_plugin
 from cms.models import Placeholder
 from cms.plugin_rendering import ContentRenderer
 
-from taccsite_cms.contrib.taccsite_card.cms_plugins import TaccsiteCardPlugin
-from taccsite_cms.contrib.taccsite_card.constants import (
+from taccsite_card.cms_plugins import TaccsiteCardPlugin
+from taccsite_card.constants import (
     class_name_to_skin_modifier,
     normalize_card_class_tokens,
 )

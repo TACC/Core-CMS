@@ -23,7 +23,7 @@ from djangocms_bootstrap4.contrib.bootstrap4_picture.cms_plugins import (
     Bootstrap4PicturePlugin,
 )
 
-from taccsite_cms.contrib.taccsite_card.cms_plugins import TaccsiteCardPlugin
+from taccsite_card.cms_plugins import TaccsiteCardPlugin
 from taccsite_cms.management.test_page_util import (
     delete_draft_pages_by_reverse_id,
     ensure_test_parent_page,
