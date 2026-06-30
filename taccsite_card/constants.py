@@ -10,7 +10,7 @@ CARD_SKIN_CLASS_NAME_CHOICES = (
 CARD_SKIN_CLASS_NAME_DEFAULT = 'c-card--plain'
 
 CARD_LAYOUT_TEMPLATES = (
-    ('default', _('Default (no image layout)')),
+    ('default', _('No image')),
     ('image_top', _('Image Top')),
     ('image_bottom', _('Image Bottom')),
     ('image_left', _('Image Left')),
