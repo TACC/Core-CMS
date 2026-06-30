@@ -1,6 +1,6 @@
 """
-Create a published CMS page that exercises Style and Bootstrap 4 Container
-plugins (including section--accent / o-section--style-accent).
+Create a published CMS page that exercises Style, TACC Site Card, and Bootstrap 4
+Container plugins (including section--accent / o-section--style-accent).
 
 For manual UI checks after Core-Styles or plugin setting changes.
 """
@@ -22,6 +22,8 @@ from djangocms_bootstrap4.contrib.bootstrap4_grid.cms_plugins import (
 from djangocms_style.cms_plugins import StylePlugin
 from djangocms_text_ckeditor.cms_plugins import TextPlugin
 
+from taccsite_cms.contrib.taccsite_card.cms_plugins import TaccsiteCardPlugin
+
 
 DEFAULT_REVERSE_ID = 'core_cms_test_page_section_style'
 DEFAULT_TITLE = 'Test Section Style'
@@ -31,7 +33,7 @@ DEFAULT_TEMPLATE = 'standard.html'
 
 class Command(BaseCommand):
     help = (
-        'Create a published page with Style and Grid Container plugins '
+        'Create a published page with Style, Card, and Grid Container plugins '
         '(section variants including accent) for visual QA.'
     )
 
@@ -140,6 +142,21 @@ class Command(BaseCommand):
             )
             return style
 
+        def add_card(class_name, template, heading, blurb, tag_type='div'):
+            card = add_plugin(
+                placeholder,
+                TaccsiteCardPlugin,
+                language,
+                class_name=class_name,
+                template=template,
+                tag_type=tag_type,
+            )
+            add_text(
+                card,
+                f'<h2>{heading}</h2><p>{blurb}</p>',
+            )
+            return card
+
         # Stacked Style plugins (legacy section + o-section accent)
         add_style_section(
             'section--light',
@@ -155,6 +172,32 @@ class Command(BaseCommand):
             'o-section o-section--style-accent',
             'Style: o-section--style-accent',
             'Object-section accent variant.',
+        )
+
+        # TACC Site Card plugin (c-card; skin via class_name, layout via template)
+        add_card(
+            'card--standard',
+            'default',
+            'Card: standard',
+            'TACC Site Card plugin; expect <code>c-card c-card--standard</code>.',
+        )
+        add_card(
+            'card--plain',
+            'default',
+            'Card: plain',
+            'Skin only; expect <code>c-card c-card--plain</code>.',
+        )
+        add_card(
+            'card--standard',
+            'image_top',
+            'Card: standard + image top',
+            'Stacked modifiers; expect <code>c-card c-card--standard c-card--image-top</code>.',
+        )
+        add_card(
+            'card--plain',
+            'image_left',
+            'Card: plain + image left',
+            'Layout <code>image_left</code> template; expect <code>c-card--image-left</code>.',
         )
 
         # Bootstrap 4 Container + accent section (GRID_CONTAINERS)
