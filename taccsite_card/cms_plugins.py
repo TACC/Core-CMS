@@ -30,14 +30,15 @@ class TaccsiteCardPlugin(StylePlugin):
     fieldsets = (
         (None, {
             'fields': (
-                'label',
+                ('label'),
                 ('class_name', 'template'),
-                ('tag_type', 'id_name'),
+                'tag_type',
             )
         }),
         (_('Advanced settings'), {
             'classes': ('collapse',),
             'fields': (
+                'id_name',
                 'additional_classes',
                 'attributes',
             ),
