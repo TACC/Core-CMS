@@ -17,7 +17,7 @@ class TaccsiteCardConstantsTests(SimpleTestCase):
         self.assertEqual(class_name_to_skin_modifier('c-card'), '')
         self.assertEqual(class_name_to_skin_modifier('c-card--plain'), 'c-card--plain')
         self.assertEqual(class_name_to_skin_modifier('c-card--standard'), 'c-card--standard')
-        self.assertEqual(class_name_to_skin_modifier('card--plain'), 'c-card--plain')
+        self.assertEqual(class_name_to_skin_modifier('card--plain'), '')
 
     def test_normalize_additional_classes(self):
         self.assertEqual(
@@ -25,8 +25,8 @@ class TaccsiteCardConstantsTests(SimpleTestCase):
             'c-card--plain foo',
         )
         self.assertEqual(
-            normalize_card_class_tokens('card--plain, foo'),
-            'c-card--plain foo',
+            normalize_card_class_tokens('c-card, foo'),
+            'foo',
         )
 
 

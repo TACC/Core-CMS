@@ -34,30 +34,19 @@ def class_name_to_skin_modifier(class_name):
         return ''
     if class_name.startswith('c-card--'):
         return class_name
-    if class_name.startswith('card--'):
-        return 'c-card' + class_name[4:]
     return ''
 
 
 def normalize_card_class_tokens(class_string):
-    """
-    Normalize card class tokens in additional_classes / attributes.class.
-
-    Drops redundant c-card / card block tokens; maps legacy card--* to c-card--*.
-    """
+    """Drop redundant c-card block tokens from additional_classes / attributes.class."""
     if not class_string:
         return ''
     parts = []
     for raw in class_string.replace(',', ' ').split():
         token = raw.strip()
-        if not token:
+        if not token or token == 'c-card':
             continue
-        if token in ('card', 'c-card'):
-            continue
-        if token.startswith('card--'):
-            parts.append('c-card' + token[4:])
-        else:
-            parts.append(token)
+        parts.append(token)
     return concat_classnames(parts)
 
 

@@ -73,9 +73,10 @@ class TaccsiteCardPluginForm(forms.ModelForm):
         )
         if should_default_tag_type_to_article:
             self.instance.tag_type = 'article'
+        valid_card_skins = {value for value, _label in CARD_SKIN_CLASS_NAME_CHOICES}
         should_default_card_style_to_plain = (
             not self.instance.pk
-            and self.instance.class_name in ('', 'card')
+            and self.instance.class_name not in valid_card_skins
         )
         if should_default_card_style_to_plain:
             self.instance.class_name = CARD_SKIN_DEFAULT
