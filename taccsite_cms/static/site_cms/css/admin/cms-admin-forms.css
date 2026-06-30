@@ -1,3 +1,19 @@
+/* To fix multi-line fields not lining up */
 form .flex-container.form-multiline {
-    display: flex;
+    /* To use flex styles for `.flex-container` */
+    --gap: 10px;
+    gap: var(--gap);
+}
+form .form-row .flex-container.form-multiline > div:not(.related-widget-wrapper,.cke,.widget) {
+    &:nth-of-type(1):nth-last-of-type(2),
+    &:nth-of-type(2):nth-last-of-type(1) {
+        /* To undo non-flex styles */
+        padding-inline: unset;
+        width: unset;
+
+        /* I.e. width: 50% that respects flex and gap */
+        flex-basis: calc(
+        50% - ( var(--gap) / 2 )
+        );
+    }
 }
