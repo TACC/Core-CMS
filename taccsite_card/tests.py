@@ -6,13 +6,13 @@ from cms.models import Placeholder
 from cms.plugin_rendering import ContentRenderer
 
 from taccsite_card.cms_plugins import TaccsiteCardPlugin
-from taccsite_card.constants import (
+from taccsite_card.utils import (
     class_name_to_skin_modifier,
     normalize_card_class_tokens,
 )
 
 
-class TaccsiteCardConstantsTests(SimpleTestCase):
+class TaccsiteCardUtilsTests(SimpleTestCase):
     def test_skin_modifier_mapping(self):
         self.assertEqual(class_name_to_skin_modifier('c-card'), '')
         self.assertEqual(class_name_to_skin_modifier('c-card--plain'), 'c-card--plain')

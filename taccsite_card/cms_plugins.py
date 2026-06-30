@@ -6,7 +6,7 @@ from djangocms_style.models import Style
 
 from taccsite_cms.contrib.helpers import concat_classnames
 
-from .constants import (
+from .utils import (
     attributes_str_without_class,
     class_name_to_skin_modifier,
     normalize_card_class_tokens,

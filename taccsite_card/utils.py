@@ -1,0 +1,40 @@
+from taccsite_cms.contrib.helpers import concat_classnames
+
+
+def class_name_to_skin_modifier(class_name):
+    """
+    Map Style.class_name to a skin modifier (not including block c-card in base.html).
+
+    c-card → (none)
+    c-card--plain → c-card--plain
+    """
+    if not class_name or class_name == 'c-card':
+        return ''
+    if class_name.startswith('c-card--'):
+        return class_name
+    return ''
+
+
+def normalize_card_class_tokens(class_string):
+    """Drop redundant c-card block tokens from additional_classes / attributes.class."""
+    if not class_string:
+        return ''
+    parts = []
+    for raw in class_string.replace(',', ' ').split():
+        token = raw.strip()
+        if not token or token == 'c-card':
+            continue
+        parts.append(token)
+    return concat_classnames(parts)
+
+
+def attributes_str_without_class(instance):
+    """Render attributes except class (class is composed on the wrapper element)."""
+    attributes = dict(instance.attributes or {})
+    attributes.pop('class', None)
+    if not attributes:
+        return ''
+    return ' '.join(
+        f'{key}="{value}"'
+        for key, value in attributes.items()
+    )
