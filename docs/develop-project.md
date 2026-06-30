@@ -14,7 +14,7 @@ Read [Django CMS User Guide] for CMS user instructions.
 
 ## Manage Dependencies
 
-Read [Manage Dependencies](docs/manage-dependencies.md).
+Read [Manage Dependencies].
 
 ## Add Styles & Scripts
 
@@ -116,3 +116,4 @@ See [Locally Develop CMS and Styles](https://github.com/TACC/Core-Styles/wiki/De
 [Django CMS User Guide]: https://confluence.tacc.utexas.edu/x/FgDqCw
 
 [Styles and Scripts]: ./styles-and-scripts.md
+[Manage Dependencies]: ./manage-dependencies.md
