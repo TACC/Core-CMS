@@ -1,20 +1,19 @@
 /* To fix multi-line fields not lining up */
 /* https://github.com/django-cms/djangocms-admin-style/blob/3.2.7/djangocms_admin_style/sass/components/_forms.scss#L102-L142 */
-form .flex-container.form-multiline {
+form .form-row .flex-container.form-multiline {
     /* To use flex styles for `.flex-container` */
     --gap: 10px;
     gap: var(--gap);
-}
-form .form-row .flex-container.form-multiline > div:not(.related-widget-wrapper,.cke,.widget) {
-    &:nth-of-type(1):nth-last-of-type(2),
-    &:nth-of-type(2):nth-last-of-type(1) {
-        /* To undo non-flex styles */
-        padding-inline: unset;
-        width: unset;
 
-        /* I.e. width: 50% that respects flex and gap */
-        flex-basis: calc(
-        50% - ( var(--gap) / 2 )
-        );
+    & > div:not(.related-widget-wrapper, .cke, .widget) {
+        &:nth-of-type(1):nth-last-of-type(2),
+        &:nth-of-type(2):nth-last-of-type(1) {
+            /* To undo non-flex styles that limit flexibility */
+            width: unset;
+            max-width: unset;
+
+            /* To have a width: 50% that respects flex and gap */
+            flex-basis: calc( 50% - ( var(--gap) / 2 ) );
+        }
     }
 }
