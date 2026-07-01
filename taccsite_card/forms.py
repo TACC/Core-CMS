@@ -21,8 +21,8 @@ MDN_ASIDE_URL = 'https://developer.mozilla.org/en-US/docs/Web/HTML/Element/aside
 MDN_DIV_URL = 'https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div'
 
 TAG_TYPE_HELP_TEXT = format_html(
-    'Use <a href="{}">article</a> for self-contained composition, '
-    '<a href="{}">aside</a> for tangentially related content, or '
+    'Use <a href="{}">article</a> for self-contained content, '
+    '<a href="{}">aside</a> for tangential content, or '
     '<a href="{}">div</a> if previous options are inaccurate.',
     MDN_ARTICLE_URL,
     MDN_ASIDE_URL,
@@ -34,15 +34,9 @@ def _code(class_name):
     return format_html('<code>{}</code>', class_name)
 
 
-CARD_STYLE_HELP_TEXT = format_html(
-    'Skin modifier for the card. Published markup always includes the block class {}.',
-    _code('c-card'),
-)
+CARD_STYLE_HELP_TEXT = _('How a card looks.')
 
-CARD_LAYOUT_HELP_TEXT = format_html(
-    'Image placement layout modifier ({}). Composes with card style.',
-    _code('c-card--image-*'),
-)
+CARD_LAYOUT_HELP_TEXT = _('What content a card supports.')
 
 class TaccsiteCardPluginForm(forms.ModelForm):
     class Meta:
@@ -67,19 +61,25 @@ class TaccsiteCardPluginForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+
+        is_new_plugin = not self.instance.pk
+
         should_default_tag_type_to_article = (
-            not self.instance.pk # is new plugin
+            is_new_plugin
             and self.instance.tag_type == 'div' # has Style default tag
         )
         if should_default_tag_type_to_article:
             self.instance.tag_type = 'article'
+
         valid_card_skins = {value for value, _label in CARD_SKIN_CLASS_NAME_CHOICES}
+
         should_default_card_style_to_plain = (
-            not self.instance.pk
+            is_new_plugin
             and self.instance.class_name not in valid_card_skins
         )
         if should_default_card_style_to_plain:
             self.instance.class_name = CARD_SKIN_CLASS_NAME_DEFAULT
+
         self.fields['class_name'].choices = CARD_SKIN_CLASS_NAME_CHOICES
         self.fields['class_name'].label = _('Card style')
         self.fields['class_name'].initial = CARD_SKIN_CLASS_NAME_DEFAULT

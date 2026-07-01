@@ -1,9 +1,7 @@
-"""Card plugin: skin (class_name) and layout (template) axes for Core-Styles c-card."""
-
 from django.utils.translation import gettext_lazy as _
 
 CARD_SKIN_CLASS_NAME_CHOICES = (
-    ('c-card', _('Base (no background)')),
+    ('c-card', _('No background')),
     ('c-card--plain', _('Plain')),
     ('c-card--standard', _('Standard')),
 )

@@ -17,9 +17,9 @@ from .forms import TaccsiteCardPluginForm
 @plugin_pool.register_plugin
 class TaccsiteCardPlugin(StylePlugin):
     """
-    TACC Site wrapper around Style for Core-Styles c-card (block + stacked BEM modifiers).
-
-    Skin: class_name. Layout: template (separate Django templates, Way 1).
+    TACC Site wrapper around Style plugin for Core-Styles `c-card`.
+    - Skin: class_name.
+    - Layout: template.
     """
 
     module = 'TACC Site'
@@ -67,6 +67,7 @@ class TaccsiteCardPlugin(StylePlugin):
         additional_class_str = normalize_card_class_tokens(
             instance.get_additional_classes()
         )
+
         attr_class = (instance.attributes or {}).get('class')
         if attr_class:
             additional_class_str = concat_classnames([
