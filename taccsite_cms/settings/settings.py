@@ -493,6 +493,7 @@ INSTALLED_APPS = [
     'taccsite_card',
     'djangocms_tacc_image_gallery',
     'djangocms_tacc_system_monitor',
+    'djangocms_tacc_header_logo',
 
     # TACC CMS Plugins - DECPRECATED
     'taccsite_cms.contrib.taccsite_blockquote',
@@ -566,6 +567,17 @@ CMS_LANGUAGES = {
 
 CMS_PERMISSION = True
 CMS_PLACEHOLDER_CONF = {
+    None: {
+        'excluded_plugins': ['TaccsiteHeaderLogoPlugin'],
+    },
+    'header-logo': {
+        'name': _('Header logo'),
+        'plugins': ['TaccsiteHeaderLogoPlugin'],
+        'excluded_plugins': [],
+        'limits': {
+            'global': 1,
+        },
+    },
     'footer-content': {
         'name': _('Footer content'),
     },
