@@ -8,12 +8,9 @@ from .constants import (
     CARD_LAYOUT_TEMPLATES,
     CARD_SKIN_CLASS_NAME_CHOICES,
     CARD_SKIN_CLASS_NAME_DEFAULT,
-)
-
-CARD_TAG_TYPE_CHOICES = (
-    ('article', _('article')),
-    ('aside', _('aside')),
-    ('div', _('div')),
+    CARD_STYLE_INHERITED_TAG,
+    CARD_TAG_TYPE_CHOICES,
+    CARD_TAG_TYPE_DEFAULT,
 )
 
 MDN_ARTICLE_URL = 'https://developer.mozilla.org/en-US/docs/Web/HTML/Element/article'
@@ -64,21 +61,24 @@ class TaccsiteCardPluginForm(forms.ModelForm):
 
         is_new_plugin = not self.instance.pk
 
-        should_default_tag_type_to_article = (
+        # Set defaults before form renders
+        # FAQ: A new Card instance inherits default values for a Style instance
+        valid_tag_types = {value for value, _label in CARD_TAG_TYPE_CHOICES}
+        should_default_tag_type = (
             is_new_plugin
-            and self.instance.tag_type == 'div' # has Style default tag
+            and (
+                self.instance.tag_type not in valid_tag_types
+                or self.instance.tag_type == CARD_STYLE_INHERITED_TAG
+            )
         )
-        if should_default_tag_type_to_article:
-            self.instance.tag_type = 'article'
-
-        # Set default before form renders
-        # FAQ: A new Card instance inherits default value for a Style isntance
+        if should_default_tag_type:
+            self.instance.tag_type = CARD_TAG_TYPE_DEFAULT
         valid_card_skins = {value for value, _label in CARD_SKIN_CLASS_NAME_CHOICES}
-        should_default_card_style_to_plain = (
+        should_default_card_style = (
             is_new_plugin
             and self.instance.class_name not in valid_card_skins
         )
-        if should_default_card_style_to_plain:
+        if should_default_card_style:
             self.instance.class_name = CARD_SKIN_CLASS_NAME_DEFAULT
 
         self.fields['class_name'].choices = CARD_SKIN_CLASS_NAME_CHOICES
@@ -89,5 +89,5 @@ class TaccsiteCardPluginForm(forms.ModelForm):
         self.fields['template'].label = _('Card layout')
         self.fields['template'].help_text = CARD_LAYOUT_HELP_TEXT
         self.fields['tag_type'].choices = CARD_TAG_TYPE_CHOICES
-        self.fields['tag_type'].initial = 'article'
+        self.fields['tag_type'].initial = CARD_TAG_TYPE_DEFAULT
         self.fields['tag_type'].help_text = TAG_TYPE_HELP_TEXT
