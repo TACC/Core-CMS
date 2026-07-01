@@ -618,7 +618,7 @@ try:
     from taccsite_cms.settings.settings_default import *
 except ModuleNotFoundError:
     # pass
-    # SETTINGS IMPORT DEPRECATED
+    # DEPRECATED SETTINGS LOCATION
     try:
         from taccsite_cms.settings_default import *
     except ModuleNotFoundError:
@@ -629,15 +629,15 @@ try:
     import taccsite_cms.settings.settings_custom as settings_custom
 except ModuleNotFoundError:
     # pass
-    # DEPRECATED SETTINGS IMPORT
+    # DEPRECATED SETTINGS LOCATION
     try:
         from taccsite_cms.settings_custom import *
         import taccsite_cms.settings_custom as settings_custom
     except ModuleNotFoundError:
         settings_custom = []
 
-# NOTE: This is outside try/catch so it supports DEPRECATED SETTINGS IMPORT
-#       (e.g. in TACC/Camino, which places settings files directly under taccsite_cms)
+# NOTE: This is outside try/catch so it supports DEPRECATED SETTINGS LOCATION
+#       (e.g. in TACC/Camino, settings files are directly under taccsite_cms)
 if hasattr(settings_custom, 'EXTRA_INSTALLED_APPS'):
     INSTALLED_APPS += settings_custom.EXTRA_INSTALLED_APPS
 if hasattr(settings_custom, 'EXTRA_STATICFILES_DIRS'):
@@ -649,7 +649,7 @@ try:
     from taccsite_cms.settings.secrets import *
 except ModuleNotFoundError:
     # pass
-    # DEPRECATED SETTINGS IMPORT
+    # DEPRECATED SETTINGS LOCATION
     try:
         from taccsite_cms.secrets import *
     except ModuleNotFoundError:
@@ -660,7 +660,7 @@ try:
     import taccsite_cms.settings.settings_local as settings_local
 except ModuleNotFoundError:
     # pass
-    # DEPRECATED SETTINGS IMPORT
+    # DEPRECATED SETTINGS LOCATION
     try:
         from taccsite_cms.settings_local import *
         import taccsite_cms.settings_local as settings_local
