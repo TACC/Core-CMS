@@ -109,6 +109,17 @@ PORTAL_SEARCH_INDEX_IS_AUTOMATIC = False
 # DJANGOCMS_BLOG
 ########################
 
+EXTRA_INSTALLED_APPS = [
+
+    # DJANGOCMS_BLOG
+    'parler',
+    'taggit',
+    'taggit_autosuggest',
+    'sortedm2m',
+    'djangocms_blog',
+
+]
+
 BLOG_AUTO_SETUP = True # Set to False after setup (minimize overhead)
 BLOG_AUTO_HOME_TITLE ='Home'
 BLOG_AUTO_BLOG_TITLE = 'News'

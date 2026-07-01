@@ -618,7 +618,7 @@ try:
     from taccsite_cms.settings.settings_default import *
 except ModuleNotFoundError:
     # pass
-    # SETTINGS IMPORT DEPRECATED
+    # DEPRECATED SETTINGS LOCATION
     try:
         from taccsite_cms.settings_default import *
     except ModuleNotFoundError:
@@ -629,18 +629,27 @@ try:
     import taccsite_cms.settings.settings_custom as settings_custom
 except ModuleNotFoundError:
     # pass
-    # SETTINGS IMPORT DEPRECATED
+    # DEPRECATED SETTINGS LOCATION
     try:
         from taccsite_cms.settings_custom import *
         import taccsite_cms.settings_custom as settings_custom
     except ModuleNotFoundError:
         settings_custom = []
 
+# NOTE: This is outside try/catch so it supports DEPRECATED SETTINGS LOCATION
+#       (e.g. in TACC/Camino, settings files are directly under taccsite_cms)
+if hasattr(settings_custom, 'EXTRA_INSTALLED_APPS'):
+    INSTALLED_APPS += settings_custom.EXTRA_INSTALLED_APPS
+if hasattr(settings_custom, 'EXTRA_STATICFILES_DIRS'):
+    STATICFILES_DIRS += settings_custom.EXTRA_STATICFILES_DIRS
+if hasattr(settings_custom, 'EXTRA_MIDDLEWARE'):
+    MIDDLEWARE += settings_custom.EXTRA_MIDDLEWARE
+
 try:
     from taccsite_cms.settings.secrets import *
 except ModuleNotFoundError:
     # pass
-    # SETTINGS IMPORT DEPRECATED
+    # DEPRECATED SETTINGS LOCATION
     try:
         from taccsite_cms.secrets import *
     except ModuleNotFoundError:
@@ -651,20 +660,12 @@ try:
     import taccsite_cms.settings.settings_local as settings_local
 except ModuleNotFoundError:
     # pass
-    # SETTINGS IMPORT DEPRECATED
+    # DEPRECATED SETTINGS LOCATION
     try:
         from taccsite_cms.settings_local import *
         import taccsite_cms.settings_local as settings_local
     except ModuleNotFoundError:
         settings_local = []
-
-try:
-    from taccsite_cms import custom_app_settings
-    INSTALLED_APPS += getattr(custom_app_settings, 'CUSTOM_APPS', [])
-    STATICFILES_DIRS += getattr(custom_app_settings , 'STATICFILES_DIRS', ())
-    MIDDLEWARE += getattr(custom_app_settings , 'CUSTOM_MIDDLEWARE', ())
-except ImportError:
-    pass
 
 ########################
 # SETTINGS DEPRECATED

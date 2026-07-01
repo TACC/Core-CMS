@@ -19,12 +19,12 @@ Optional:
 
 ### Remove Unnecessary Settings
 
-1. In `taccsite_cms/custom_app_settings.py`, remove apps from `STATICFILES_DIRS`, i.e.
+1. In `settings_custom.py`, remove apps from `EXTRA_STATICFILES_DIRS`, i.e.
 
     | | change |
     | - | - |
-    | from | `STATICFILES_DIRS = ('apps/custom_example', ...)` |
-    | to | `STATICFILES_DIRS = (...)` |
+    | from | `EXTRA_STATICFILES_DIRS = ('apps/custom_example', ...)` |
+    | to | `EXTRA_STATICFILES_DIRS = (...)` |
 
     > **Note**
     > Django automatically identifies the `static` directory for each app.
