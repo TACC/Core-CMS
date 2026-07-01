@@ -12,7 +12,6 @@ from django.contrib.auth import get_user_model
 from django.core.management.base import BaseCommand, CommandError
 
 from cms.api import add_plugin, create_page, publish_page
-from cms.models import Page
 
 from djangocms_bootstrap4.contrib.bootstrap4_grid.cms_plugins import (
     Bootstrap4GridColumnPlugin,
@@ -21,6 +20,11 @@ from djangocms_bootstrap4.contrib.bootstrap4_grid.cms_plugins import (
 )
 from djangocms_style.cms_plugins import StylePlugin
 from djangocms_text_ckeditor.cms_plugins import TextPlugin
+
+from taccsite_cms.management.test_page_util import (
+    delete_draft_pages_by_reverse_id,
+    ensure_test_parent_page,
+)
 
 
 DEFAULT_REVERSE_ID = 'core_cms_test_page_section_style'
@@ -88,21 +92,19 @@ class Command(BaseCommand):
             )
 
         if options['replace']:
-            # Only delete the draft: deleting every matching Page row can hit a
-            # published sibling whose TreeNode is already gone (django CMS 3).
-            removed = 0
-            while True:
-                draft = Page.objects.drafts().filter(reverse_id=reverse_id).first()
-                if not draft:
-                    break
-                draft.delete()
-                removed += 1
-            if removed:
-                self.stdout.write(
-                    self.style.WARNING(
-                        f'Removed {removed} draft page tree(s) with reverse_id={reverse_id!r}'
-                    )
-                )
+            delete_draft_pages_by_reverse_id(
+                reverse_id,
+                stdout=self.stdout,
+                style=self.style,
+            )
+
+        parent = ensure_test_parent_page(
+            language,
+            publisher,
+            publish=True,
+            stdout=self.stdout,
+            style=self.style,
+        )
 
         page = create_page(
             title=title,
@@ -111,6 +113,7 @@ class Command(BaseCommand):
             slug=slug,
             reverse_id=reverse_id,
             created_by=publisher,
+            parent=parent,
             in_navigation=False,
             published=False,
         )

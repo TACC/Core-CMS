@@ -1,0 +1,11 @@
+{% load cms_tags %}
+<{{ instance.tag_type }}
+  {% if instance.id_name %}id="{{ instance.id_name }}"{% endif %}
+  class="c-card{% if skin_classes %} {{ skin_classes }}{% endif %}{% block layout_classes %}{% endblock %}{% if additional_class_str %} {{ additional_class_str }}{% endif %}"
+  {% if inline_styles %}style="{{ inline_styles }}"{% endif %}
+  {% if attributes_str %}{{ attributes_str }}{% endif %}
+>
+  {% for plugin in instance.child_plugin_instances %}
+    {% render_plugin plugin %}
+  {% endfor %}
+</{{ instance.tag_type }}>
