@@ -2,7 +2,9 @@
 
 - [How to Use](#how-to-use)
 - [List Pages Using Each Template](#list-pages-using-each-template)
-- [Create Test Page for Section Style](#create-test-page-section-style)
+- [Create Test Pages](#create-test-pages)
+  - [for Sections](#for-sections)
+  - [for Cards](#for-cards)
 - [Set Groups & Permissions](#set-groups--permissions)
 - [Reference](#reference)
 
@@ -26,19 +28,43 @@ Usage:
 python manage.py list_page_templates
 ```
 
-## Create Test Page for Section Style
+## Create Test Pages
 
-Creates a **published** page with stacked **Style** plugins (`section--light`, `section--accent`, `o-section o-section--style-accent`) and a **Bootstrap 4 Container** grid using the accent container class from `DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS`. Use it to visually verify Core-Styles section changes without hand-building Structure in the CMS.
+Create example content under `/test/` (not in menu).
 
-Default URL path: `/test-section-style/`. The page is not added to the navigation menu.
+All commands accept:
 
-Usage (from the CMS container):
+- `--replace`
+- `--title`
+- `--slug`
+- `--reverse-id`
+- `--language`
+- `--template`
+- `--no-publish`
+
+### for Sections
+
+Test `.section` / `.o-section` via Style plugin.
+
+Usage:
 
 ```sh
 python manage.py create_test_page_section_style --replace
 ```
 
-Options: `--title`, `--slug`, `--reverse-id`, `--language`, `--template`, `--no-publish`. Use `--replace` to delete any existing page with the default reverse id (`core_cms_section_style_qa`) before creating a new one.
+Path: `/test/test-section-style/`
+
+### for Cards
+
+Test `.c-card` via Card plugin.
+
+Usage:
+
+```sh
+python manage.py create_test_page_card_style --replace
+```
+
+Path: `/test/test-card-style/`
 
 ## Set Groups & Permissions
 
