@@ -71,8 +71,9 @@ class TaccsiteCardPluginForm(forms.ModelForm):
         if should_default_tag_type_to_article:
             self.instance.tag_type = 'article'
 
+        # Set default before form renders
+        # FAQ: A new Card instance inherits default value for a Style isntance
         valid_card_skins = {value for value, _label in CARD_SKIN_CLASS_NAME_CHOICES}
-
         should_default_card_style_to_plain = (
             is_new_plugin
             and self.instance.class_name not in valid_card_skins
