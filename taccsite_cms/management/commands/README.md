@@ -2,8 +2,9 @@
 
 - [How to Use](#how-to-use)
 - [List Pages Using Each Template](#list-pages-using-each-template)
-- [Create Test Page for Section Style](#create-test-page-section-style)
-- [Create Test Page for Card Style](#create-test-page-for-card-style)
+- [Create Test Pages](#create-test-pages)
+  - [for Sections](#for-sections)
+  - [for Cards](#for-cards)
 - [Set Groups & Permissions](#set-groups--permissions)
 - [Reference](#reference)
 
@@ -27,31 +28,43 @@ Usage:
 python manage.py list_page_templates
 ```
 
-## Create Test Page for Section Style
+## Create Test Pages
 
-Creates a **published** child page under **Test** (`/test/`, created if missing) with stacked **Style** plugins (`section--light`, `section--accent`, `o-section o-section--style-accent`) and a **Bootstrap 4 Container** grid using the accent container class from `DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS`. Use it to visually verify Core-Styles section changes without hand-building Structure in the CMS.
+Create example content under `/test/` (not in menu).
 
-Default URL path: `/test/test-section-style/`. Neither page is added to the navigation menu.
+All commands accept:
 
-Usage (from the CMS container):
+- `--replace`
+- `--title`
+- `--slug`
+- `--reverse-id`
+- `--language`
+- `--template`
+- `--no-publish`
+
+### for Sections
+
+Test `.section` / `.o-section` via Style plugin.
+
+Usage:
 
 ```sh
 python manage.py create_test_page_section_style --replace
 ```
 
-Options: `--title`, `--slug`, `--reverse-id`, `--language`, `--template`, `--no-publish`. Use `--replace` to delete any existing draft with the default reverse id (`core_cms_test_page_section_style`) before creating a new one.
+Path: `/test/test-section-style/`
 
-## Create Test Page for Card Style
+### for Cards
 
-Creates a **published** child page under **Test** (`/test/`) with **TACC Site Card** plugin examples (skin, layout, stacked modifiers).
+Test `.c-card` via Card plugin.
 
-Default URL path: `/test/test-card-style/`.
+Usage:
 
 ```sh
 python manage.py create_test_page_card_style --replace
 ```
 
-Same options as the section-style command (defaults: reverse id `core_cms_test_page_card_style`, slug `test-card-style`).
+Path: `/test/test-card-style/`
 
 ## Set Groups & Permissions
 
