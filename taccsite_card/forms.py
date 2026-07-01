@@ -18,9 +18,9 @@ MDN_ASIDE_URL = 'https://developer.mozilla.org/en-US/docs/Web/HTML/Element/aside
 MDN_DIV_URL = 'https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div'
 
 TAG_TYPE_HELP_TEXT = format_html(
-    'Use <a href="{}">article</a> for self-contained content, '
-    '<a href="{}">aside</a> for tangential content, or '
-    '<a href="{}">div</a> if previous options are inaccurate.',
+    'Use <a href="{}" target="_blank">article</a> for self-contained content, '
+    '<a href="{}" target="_blank">aside</a> for tangential content, or '
+    '<a href="{}" target="_blank">div</a> if previous options are inaccurate.',
     MDN_ARTICLE_URL,
     MDN_ASIDE_URL,
     MDN_DIV_URL,
