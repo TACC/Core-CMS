@@ -490,6 +490,7 @@ INSTALLED_APPS = [
     'taccsite_cms.contrib.bootstrap4_djangocms_picture',
 
     # TACC CMS Plugins
+    'taccsite_card',
     'djangocms_tacc_image_gallery',
     'djangocms_tacc_system_monitor',
 
@@ -564,7 +565,11 @@ CMS_LANGUAGES = {
 }
 
 CMS_PERMISSION = True
-CMS_PLACEHOLDER_CONF = {}
+CMS_PLACEHOLDER_CONF = {
+    'footer-content': {
+        'name': _('Footer content'),
+    },
+}
 
 THUMBNAIL_HIGH_RESOLUTION = True
 THUMBNAIL_PROCESSORS = (
@@ -724,9 +729,9 @@ SETTINGS_EXPORT_VARIABLE_NAME = 'settings'
 
 SETTINGS_EXPORT = deprecated_SETTINGS_EXPORT + [
     'DEBUG',
-    'TACC_CORE_STYLES_VERSION',
     'GOOGLE_ANALYTICS_PROPERTY_ID',
     'GOOGLE_ANALYTICS_PRELOAD',
+    'TACC_CORE_STYLES_VERSION',
     'PORTAL_BRANDING',
     'PORTAL_LOGO',
     'PORTAL_FAVICON',

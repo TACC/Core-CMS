@@ -23,6 +23,12 @@ CKEDITOR_SETTINGS = {
     'extraPlugins': 'pastefromgdocs',
 }
 
+# To support what html5lib does not
+TEXT_ADDITIONAL_TAGS = ('summary',)
+ALLOW_TOKEN_PARSERS = (
+    'taccsite_cms.djangocms_text_ckeditor_attribute_parsers.AriaAttributeParser',
+)
+
 ########################
 # DJANGOCMS_PICTURE
 # https://github.com/django-cms/djangocms-picture
@@ -171,6 +177,9 @@ DJANGOCMS_STYLE_CHOICES = [
     'card--image-bottom',
     'card--image-right',
     'card--image-left',
+    'c-card',
+    'c-card--plain',
+    'c-card--standard',
     'section',
     'section--light',
     'section--muted',
