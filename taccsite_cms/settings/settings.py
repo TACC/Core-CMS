@@ -641,7 +641,7 @@ except ModuleNotFoundError:
 if hasattr(settings_custom, 'EXTRA_INSTALLED_APPS'):
     INSTALLED_APPS += settings_custom.EXTRA_INSTALLED_APPS
 if hasattr(settings_custom, 'EXTRA_STATICFILES_DIRS'):
-    STATICFILES_DIRS += settings_custom.EXTRA_STATICFILES_DIRS
+    STATICFILES_DIRS = STATICFILES_DIRS + tuple(settings_custom.EXTRA_STATICFILES_DIRS)
 if hasattr(settings_custom, 'EXTRA_MIDDLEWARE'):
     MIDDLEWARE += settings_custom.EXTRA_MIDDLEWARE
 
