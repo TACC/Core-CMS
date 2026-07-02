@@ -45,6 +45,8 @@ _Note: Stale containers errors (e.g. `core_cms_elasticsearch already in use`) co
 
 ### Gotchas
 
+If you must edit docker-compose to fix a problem specific to your environment, then create a `docker-compose.agent.yml`.
+
 #### Settings & Secrets
 
 - **Settings files** are gitignored. Created from `*.example.py` by `bin/setup-cms.sh` or manually.
