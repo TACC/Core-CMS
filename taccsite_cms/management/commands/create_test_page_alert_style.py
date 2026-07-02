@@ -132,7 +132,7 @@ class Command(BaseCommand):
                 placeholder,
                 Bootstrap4AlertsPlugin,
                 language,
-                context=context,
+                alert_context=context,
             )
             add_plugin(
                 placeholder,
