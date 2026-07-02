@@ -140,7 +140,8 @@ class Command(BaseCommand):
                 language,
                 target=alert,
                 body=f'<strong>{context.capitalize()} alert.</strong> '
-                     f'This is a <code>alert-{context}</code> Bootstrap 4 alert.',
+                     f'This is a <code>alert-{context}</code> Bootstrap 4 alert. '
+                     f'<a href="#" class="alert-link">Example link</a>.',
             )
 
         if not options['no_publish']:
