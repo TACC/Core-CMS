@@ -44,7 +44,7 @@ def ensure_test_parent_page(language, publisher, publish=True, stdout=None, styl
             slug=TEST_PAGE_PARENT_SLUG,
             reverse_id=TEST_PAGE_PARENT_REVERSE_ID,
             created_by=publisher,
-            in_navigation=False,
+            in_navigation=True,
             published=False,
         )
         if stdout and style:
