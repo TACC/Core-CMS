@@ -155,12 +155,10 @@ DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS = [
 DJANGOCMS_BOOTSTRAP4_COLOR_STYLE_CHOICES = (
     ('primary', _('Primary')),
     ('secondary', _('Secondary')),
-    # Disable for bootstrap4_link
-    # WARNING: Might still want for bootstrap4_alerts
-    # ('success', _('Success')),
-    # ('danger', _('Danger')),
-    # ('warning', _('Warning')),
-    # ('info', _('Info')),
+    ('success', _('Success')),
+    ('danger', _('Danger')),
+    ('warning', _('Warning')),
+    ('info', _('Info')),
     ('light', _('Light')),
     ('dark', _('Dark')),
 )

@@ -1,5 +1,5 @@
 # PYTHON BASE IMAGE
-FROM python:3.11-bullseye as python-base
+FROM python:3.11-bullseye AS python-base
 LABEL maintainer="TACC-ACI-WMA <wma_prtl@tacc.utexas.edu>"
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y \
@@ -29,7 +29,7 @@ RUN poetry install --only main --no-root
 
 
 # POETRY DEPENDENCIES
-FROM python-base as development
+FROM python-base AS development
 COPY . /code/
 # quicker install because poetry runtime deps are already installed
 RUN poetry install --no-root
@@ -37,7 +37,7 @@ RUN poetry install --no-root
 
 
 # NODE DEPENDENCIES & BUILD & OUTPUT
-FROM node:20 as node_build
+FROM node:20 AS node_build
 
 # Install dependencies
 COPY package.json package-lock.json /code/
@@ -52,7 +52,7 @@ RUN npm run build --build-id="$BUILD_ID"
 
 
 # FINAL LAYER
-FROM python-base as production
+FROM python-base AS production
 
 # Support CMS logs
 RUN mkdir -p /var/log/cms

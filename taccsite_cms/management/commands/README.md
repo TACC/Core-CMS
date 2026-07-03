@@ -5,6 +5,8 @@
 - [Create Test Pages](#create-test-pages)
   - [for Sections](#for-sections)
   - [for Cards](#for-cards)
+  - [for Alerts](#for-alerts)
+  - [for Buttons](#for-buttons)
 - [Set Groups & Permissions](#set-groups--permissions)
 - [Reference](#reference)
 
@@ -65,6 +67,30 @@ python manage.py create_test_page_card_style --replace
 ```
 
 Path: `/test/test-card-style/`
+
+### for Alerts
+
+Test Bootstrap 4 Alert plugin (all context variants).
+
+Usage:
+
+```sh
+python manage.py create_test_page_alert_style --replace
+```
+
+Path: `/test/test-alert-style/`
+
+### for Buttons
+
+Test Bootstrap 4 Link/Button plugin (all context variants).
+
+Usage:
+
+```sh
+python manage.py create_test_page_button_style --replace
+```
+
+Path: `/test/test-button-style/`
 
 ## Set Groups & Permissions
 
