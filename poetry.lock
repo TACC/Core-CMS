@@ -668,14 +668,14 @@ Django = ">=2.2"
 
 [[package]]
 name = "djangocms-admin-style"
-version = "3.2.7"
+version = "3.3.1"
 description = "Adds pretty CSS styles for the django CMS admin interface."
 optional = false
 python-versions = ">=3.7"
 groups = ["main"]
 files = [
-    {file = "djangocms-admin-style-3.2.7.tar.gz", hash = "sha256:a870a42a34f96588dd8dee4d7cb0c3a428cf2ef0fba085ae0ad26928ea9e83b2"},
-    {file = "djangocms_admin_style-3.2.7-py3-none-any.whl", hash = "sha256:6870de9e9877c52998923c4c989bb14e4c6b3fb2587d7850548e5e8e8399cbdd"},
+    {file = "djangocms-admin-style-3.3.1.tar.gz", hash = "sha256:da20de3831f1a1a74de33fe12bbd3865a0027a982878c02aa1d102b1c799d767"},
+    {file = "djangocms_admin_style-3.3.1-py3-none-any.whl", hash = "sha256:9b76aafda245205e0a88d57efd5097a96c1a7fcb78d7f3efa50955eb980079de"},
 ]
 
 [package.dependencies]
@@ -2501,4 +2501,4 @@ testing = ["func-timeout", "jaraco.itertools"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<4.0"
-content-hash = "dd5a49ee6ede6af40578aac34151e0c0a645448ccd4eec9b0ee04c042c4f0bbf"
+content-hash = "4f01a0523dd661e193582201dda96075e824b9e8a62c9d610c5950a01b7f14ff"

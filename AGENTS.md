@@ -45,6 +45,8 @@ _Note: Stale containers errors (e.g. `core_cms_elasticsearch already in use`) co
 
 ### Gotchas
 
+If you must edit docker-compose to fix a problem specific to your environment, then create a `docker-compose.agent.yml`.
+
 #### Settings & Secrets
 
 - **Settings files** are gitignored. Created from `*.example.py` by `bin/setup-cms.sh` or manually.
@@ -54,7 +56,6 @@ _Note: Stale containers errors (e.g. `core_cms_elasticsearch already in use`) co
 
 - **`secrets.py` Elasticsearch host:** Should be `core_cms_elasticsearch` (the Docker hostname), not `elasticsearch`.
 - Docker commands may need `sudo` depending on the environment.
-- **Elasticsearch cgroups v2:** ES 7.17.0 crashes on kernels with cgroups v2 (`CgroupV2Subsystem` NPE). If your env is afflicted, you may create a `docker-compose.agent.yml` as a workaround (e.g. use ES 7.17.9+ image).
 
 ### Lint, Test, Build
 
