@@ -114,7 +114,7 @@ class Command(BaseCommand):
             reverse_id=reverse_id,
             created_by=publisher,
             parent=parent,
-            in_navigation=False,
+            in_navigation=True,
             published=False,
         )
 
