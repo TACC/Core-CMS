@@ -1,5 +1,6 @@
 # Upgrade Project
 
+- [from v4.39 to v4.40](#from-v439-to-v440)
 - [from v4.28 to v4.29](#from-v428-to-v429)
 - [from v4.N to v4.14](#from-v4n-to-v414)
 - [from v4.N to v4.13](#from-v4n-to-v413)
@@ -43,6 +44,18 @@ Optional:
     - [Core Portal Deployments]:`/project_dir/camino/cms.settings_custom.py` [^1]
 
 [^1]: The `cms.settings_custom.py` is committed in [Core Portal Deployments]. A `settings_custom.py` in [Core CMS Custom] is `.gitignore`'d.
+
+## from v4.39 to v4.40
+
+- [Fold `custom_app_settings` into `settings_custom`](#fold-custom_app_settings-into-settings_custom)
+
+### Fold `custom_app_settings` into `settings_custom`
+
+| from | to |
+| - | - |
+| `custom_app_settings.py`: `INSTALLED_APPS`   | `settings_custom.py`: `EXTRA_INSTALLED_APPS`   |
+| `custom_app_settings.py`: `STATICFILES_DIRS` | `settings_custom.py`: `EXTRA_STATICFILES_DIRS` |
+| `custom_app_settings.py`: `MIDDLEWARE`       | `settings_custom.py`: `EXTRA_MIDDLEWARE`       |
 
 ## from v4.28 to v4.29
 
