@@ -65,12 +65,8 @@ If your Core-CMS customization is an independent repo (e.g. created via [Core-CM
     ########################
     # TACC: CUSTOM APPS
     ########################
-    
-    from taccsite_cms.settings_apps import (
-        EXTRA_INSTALLED_APPS,
-        EXTRA_MIDDLEWARE,
-        EXTRA_STATICFILES_DIRS
-    )
+
+    from taccsite_cms.settings_apps import *
     ```
 
 ## from v4.28 to v4.29
