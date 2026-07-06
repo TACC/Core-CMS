@@ -47,15 +47,31 @@ Optional:
 
 ## from v4.39 to v4.40
 
-- [Fold `custom_app_settings` into `settings_custom`](#fold-custom_app_settings-into-settings_custom)
+- [Fold `custom_app_settings` into `settings_*`](#fold-custom_app_settings-into-settings_)
 
-### Fold `custom_app_settings` into `settings_custom`
+### Fold `custom_app_settings` into `settings_*`
 
 | from | to |
 | - | - |
-| `custom_app_settings.py`: `INSTALLED_APPS`   | `settings_custom.py`: `EXTRA_INSTALLED_APPS`   |
-| `custom_app_settings.py`: `STATICFILES_DIRS` | `settings_custom.py`: `EXTRA_STATICFILES_DIRS` |
-| `custom_app_settings.py`: `MIDDLEWARE`       | `settings_custom.py`: `EXTRA_MIDDLEWARE`       |
+| `custom_app_settings.py`: `INSTALLED_APPS`   | `settings_*.py`: `EXTRA_INSTALLED_APPS`   |
+| `custom_app_settings.py`: `STATICFILES_DIRS` | `settings_*.py`: `EXTRA_STATICFILES_DIRS` |
+| `custom_app_settings.py`: `MIDDLEWARE`       | `settings_*.py`: `EXTRA_MIDDLEWARE`       |
+
+If your Core-CMS customization is an independent repo (e.g. created via [Core-CMS-Template](https://github.com/TACC/Core-CMS-Template)):
+1. Rename `custom_app_settings.py` to `settings_apps.py`.
+2. Rename setting variables (as above).
+3. In `settings_custom.py`, add:
+    ```py
+    ########################
+    # TACC: CUSTOM APPS
+    ########################
+    
+    from taccsite_cms.settings_apps import (
+        EXTRA_INSTALLED_APPS,
+        EXTRA_MIDDLEWARE,
+        EXTRA_STATICFILES_DIRS
+    )
+    ```
 
 ## from v4.28 to v4.29
 
