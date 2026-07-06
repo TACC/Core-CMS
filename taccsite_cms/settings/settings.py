@@ -672,6 +672,15 @@ except ModuleNotFoundError:
 # TODO: Make clients not use nor set these
 ########################
 
+# For older (pre-v4.40.0-rc10) custom app settings
+try:
+    from taccsite_cms import custom_app_settings
+    INSTALLED_APPS += getattr(custom_app_settings, 'CUSTOM_APPS', [])
+    STATICFILES_DIRS += getattr(custom_app_settings, 'STATICFILES_DIRS', ())
+    MIDDLEWARE += getattr(custom_app_settings, 'CUSTOM_MIDDLEWARE', ())
+except ImportError:
+    pass
+
 deprecated_SETTINGS_EXPORT = []
 
 # For header_branding.html
