@@ -13,4 +13,4 @@
 3. Can your team fix all the pre-release bugs before production release?
     - If **yes**, then — when they are fixed — **release `vX.Y.Z`**.
     - If **not**, then remove the buggy code.
-4. If you have not released `vX.Y.Z`, then repeat step 2.
+4. If `vX.Y.Z` has still nto been released, then repeat step 2.
