@@ -7,10 +7,10 @@
 ## Versioning
 
 1. Always pre-release `vX.Y.Z-rc1` before a production release `vX.Y.Z`.
-2. Does your team need to verify pre-release changes in pre-production?
+2. Does your team need to verify changes in pre-production?
     - If **yes**, then create the next pre-release e.g. `vX.Y.Z-rc2`, `-rc3`.
-    - If **not**, then let them be part of production **release `vX.Y.Z`**.
+    - If **not**, then let the changes be part of production **release `vX.Y.Z`**.
 3. Can your team fix all the pre-release bugs before production release?
     - If **yes**, then — when they are fixed — **release `vX.Y.Z`**.
     - If **not**, then remove the buggy code.
-4. If `vX.Y.Z` has still nto been released, then repeat step 2.
+4. If `vX.Y.Z` has _still **not**_ been released, then repeat step 2.
