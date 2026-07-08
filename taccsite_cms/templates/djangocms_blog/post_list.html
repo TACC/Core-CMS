@@ -63,10 +63,8 @@
     <p class="blog-empty">{% trans "No article found." %}</p>
     {% endfor %}
     {# TACC (hide back link): #}
-    {% if settings.PORTAL_BLOG_SHOW_BACK_LINK %}
     {% if author or archive_date or tagged_entries %}
-    <p class="blog-back"><a href="{% url 'djangocms_blog:posts-latest' %}">{% trans "Back" %}</a></p>
-    {% endif %}
+    <p class="blog-back"{% if not settings.PORTAL_BLOG_SHOW_BACK_LINK %} style="visibility: hidden"{% endif %}><a href="{% url 'djangocms_blog:posts-latest' %}">{% trans "Back" %}</a></p>
     {% endif %}
     {# /TACC #}
     {% if is_paginated %}
