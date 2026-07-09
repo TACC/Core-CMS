@@ -7,9 +7,9 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 
-{# TACC/Core-CMS #}
-{% include "includes/sortable_table_filter_templates.html" %}
-<link rel="stylesheet" href="{% static 'site_cms/css/modules/sortableTable.css' %}" />
+{# TACC/Core-CMS + @tacc/sortable-table #}
+{# SEE: https://github.com/wesleyboar/sortable-table #}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wesleyboar/sortable-table@fb956d9f/src/sortableTable.css" />
 <script
   src="https://cdn.jsdelivr.net/npm/list.js@2.3.1/dist/list.min.js"
   integrity="sha384-FhEOA/pIE4BfDuwGksHaZD8ms5j+dfB9QIWo7naDMzAVoCE1My4G2iu8/n/R3AAH"
@@ -17,7 +17,7 @@
 ></script>
 <script type="module">
   import updateEmailLinkHrefs from '{% static "site_cms/js/modules/updateEmailLinkHrefs.js" %}';
-  import sortableTable from '{% static "site_cms/js/modules/sortableTable.js" %}';
+  import sortableTable from 'https://cdn.jsdelivr.net/gh/wesleyboar/sortable-table@fb956d9f/src/sortableTable.js';
 
   const scopeElement = document.getElementById('cms-content');
   const fakeText = '__REMOVE_THIS__';
@@ -29,5 +29,9 @@
     body: 'data-body'
   });
 
-  sortableTable({ scopeElement });
+  sortableTable({
+    scopeElement,
+    searchIconClass: 'icon icon-search icon-md',
+    countClass: 'text-truncate',
+  });
 </script>
