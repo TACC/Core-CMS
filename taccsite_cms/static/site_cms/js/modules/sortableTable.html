@@ -14,14 +14,12 @@
   });
 </script>
 
-<!-- TABLE (filters built in JS when data-sortable-filters is set) -->
+<!-- TABLE (filters built in JS from data-sortable-* attrs) -->
 <table
   id="example-table"
   class="js-sortable"
-  data-sortable-filters='[
-    {"type":"search", "placeholder":"Search..."},
-    {"type":"select", "column":3, "label":"Umbrella"}
-  ]'
+  data-sortable-search
+  data-sortable-select-cols="3"
 >
 <!--
 <table id="example-table" class="js-sortable o-fixed-header-table" data-sortable-filters="…">
