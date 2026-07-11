@@ -26,8 +26,7 @@
   <link
     rel="stylesheet"
     id="research-projects-assets-table-css"
-    cdn-href="https://cdn.jsdelivr.net/gh/wesleyboar/sort-table@e63f5427/src/sortableTable.css"
-    href="./sortableTable.css"
+    href="https://cdn.jsdelivr.net/npm/@tacc/html-filter-sort@0/src/filtersort.css"
   />
   <script
     src="https://cdn.jsdelivr.net/npm/list.js@2.3.1/dist/list.min.js"
@@ -38,10 +37,9 @@
     type="module"
     id="research-projects-assets-table-js"
   >
-    /* import sortableTable from 'https://cdn.jsdelivr.net/gh/TACC/Core-CMS@v4.40.0-rc6/taccsite_cms/static/site_cms/js/modules/sortableTable.js'; */
-    import sortableTable from './sortableTable.js';
+    import filtersort from 'https://cdn.jsdelivr.net/npm/@tacc/html-filter-sort@0/src/filtersort.js';
 
-    sortableTable({
+    filtersort({
       scopeElement: document.getElementById('cms-content'),
       buttonClass: 'btn btn-link',
     });
@@ -54,9 +52,9 @@
 
     <table
       id="projects-table"
-      class="js-sortable o-fixed-header-table w-100"
-      data-sortable-search
-      data-sortable-select-cols="3,4"
+      class="js-filtersort o-fixed-header-table w-100"
+      data-filtersort-search
+      data-filtersort-select-cols="3,4"
     >
       <caption class="sr-only">Project Introductions</caption>
       <thead>
