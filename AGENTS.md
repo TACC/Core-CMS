@@ -76,5 +76,7 @@ See `README.md` for full setup instructions.
 
 - **Title:** `.gitmessage` (fallback: `~/.gitmessage`)
 - **Description:** `.github/PULL_REQUEST_TEMPLATE.md`
-  - Be concise: plain language, simple sentences; reviewers find detail in the diff. Say what changed, then why (if it matters) — never how.
+  - Be concise: plain language, simple sentences, present lists as bullets not prose.
+  - When summarizing changeset, say what changed and (only if it matters) why, never how.
+  - If listing a file change, then only describe change at a high level.
   - When updating, first re-read the current description, because it may have been edited.
