@@ -1,8 +1,7 @@
 """
-Create a published CMS page that exercises Style and Bootstrap 4 Container
-plugins (including section--accent / o-section--style-accent).
+Create a published CMS page that exercises Bootstrap 4 Alert plugin contexts.
 
-For manual UI checks after Core-Styles or plugin setting changes.
+For manual UI checks after Core-Styles or alert plugin setting changes.
 """
 
 import warnings
@@ -13,12 +12,9 @@ from django.core.management.base import BaseCommand, CommandError
 
 from cms.api import add_plugin, create_page, publish_page
 
-from djangocms_bootstrap4.contrib.bootstrap4_grid.cms_plugins import (
-    Bootstrap4GridColumnPlugin,
-    Bootstrap4GridContainerPlugin,
-    Bootstrap4GridRowPlugin,
+from djangocms_bootstrap4.contrib.bootstrap4_alerts.cms_plugins import (
+    Bootstrap4AlertsPlugin,
 )
-from djangocms_style.cms_plugins import StylePlugin
 from djangocms_text_ckeditor.cms_plugins import TextPlugin
 
 from taccsite_cms.management.test_page_util import (
@@ -27,16 +23,27 @@ from taccsite_cms.management.test_page_util import (
 )
 
 
-DEFAULT_REVERSE_ID = 'core_cms_test_page_section_style'
-DEFAULT_TITLE = 'Test Section Style'
-DEFAULT_SLUG = 'test-section-style'
+DEFAULT_REVERSE_ID = 'core_cms_test_page_alert_style'
+DEFAULT_TITLE = 'Test Alert Style'
+DEFAULT_SLUG = 'test-alert-style'
 DEFAULT_TEMPLATE = 'standard.html'
+
+CONTEXTS = [
+    'primary',
+    'secondary',
+    'success',
+    'danger',
+    'warning',
+    'info',
+    'light',
+    'dark',
+]
 
 
 class Command(BaseCommand):
     help = (
-        'Create a published page with Style and Grid Container plugins '
-        '(section variants including accent) for visual QA.'
+        'Create a published page with Bootstrap 4 Alert plugins '
+        '(all context variants) for visual QA.'
     )
 
     def add_arguments(self, parser):
@@ -120,77 +127,22 @@ class Command(BaseCommand):
 
         placeholder = page.placeholders.get(slot='content')
 
-        def add_text(parent, html):
-            return add_plugin(
+        for context in CONTEXTS:
+            alert = add_plugin(
+                placeholder,
+                Bootstrap4AlertsPlugin,
+                language,
+                alert_context=context,
+            )
+            add_plugin(
                 placeholder,
                 TextPlugin,
                 language,
-                target=parent,
-                body=html,
+                target=alert,
+                body=f'<strong>{context.capitalize()} alert.</strong> '
+                     f'This is a <code>alert-{context}</code> Bootstrap 4 alert. '
+                     f'<a href="#" class="alert-link">Example link</a>.',
             )
-
-        def add_style_section(class_name, heading, blurb, tag_type='section'):
-            style = add_plugin(
-                placeholder,
-                StylePlugin,
-                language,
-                class_name=class_name,
-                tag_type=tag_type,
-            )
-            add_text(
-                style,
-                f'<h2>{heading}</h2><p>{blurb}</p>',
-            )
-            return style
-
-        # Stacked Style plugins (legacy section + o-section accent)
-        add_style_section(
-            'section--light',
-            'Style: section--light',
-            'First block; compare spacing and color with Core-Styles section docs.',
-        )
-        add_style_section(
-            'section--accent',
-            'Style: section--accent',
-            'Accent surface via Style plugin (new in Core-Styles 2.55).',
-        )
-        add_style_section(
-            'o-section o-section--style-accent',
-            'Style: o-section--style-accent',
-            'Object-section accent variant.',
-        )
-
-        # Bootstrap 4 Container + accent section (GRID_CONTAINERS)
-        container = add_plugin(
-            placeholder,
-            Bootstrap4GridContainerPlugin,
-            language,
-            container_type='container  o-section o-section--style-accent',
-        )
-        row = add_plugin(
-            placeholder,
-            Bootstrap4GridRowPlugin,
-            language,
-            target=container,
-            vertical_alignment='',
-            horizontal_alignment='',
-        )
-        column = add_plugin(
-            placeholder,
-            Bootstrap4GridColumnPlugin,
-            language,
-            target=row,
-            column_type='col',
-            column_alignment='',
-            xs_col=12,
-        )
-        add_text(
-            column,
-            '<h2>Grid: Container + accent section</h2>'
-            '<p>Bootstrap Container plugin: '
-            'fixed-width container plus <code>o-section--style-accent</code> '
-            '(see <code>DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS</code>).</p>',
-        )
 
         if not options['no_publish']:
             with warnings.catch_warnings():
