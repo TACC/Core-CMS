@@ -34,7 +34,7 @@
     if (!isDirectNavLink) {
       secondLink.removeAttribute('href');
 
-      {# To undo Core-Styles' disabled-link look; link is "current page" #}
+      {# To undo Core-Styles' disabled look for parent root pages #}
       {# https://github.com/TACC/Core-Styles/blob/v2.57.3/src/lib/_imports/elements/links.css#L14-L16 #}
       secondLink.style.opacity = 1;
       secondLink.style.color = 'unset';
