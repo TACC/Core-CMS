@@ -33,7 +33,9 @@
     );
     if (!isDirectNavLink) {
       secondLink.removeAttribute('href');
-      {# To undo the browser's disabled-link look, since this link is "current page", not truly disabled #}
+
+      {# To undo Core-Styles' disabled-link look; link is "current page" #}
+      {# https://github.com/TACC/Core-Styles/blob/v2.57.3/src/lib/_imports/elements/links.css#L14-L16 #}
       secondLink.style.opacity = 1;
       secondLink.style.color = 'unset';
     }
