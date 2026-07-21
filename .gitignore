@@ -29,13 +29,15 @@ build
 *settings_default*.py
 *settings_custom*.py
 *settings_local*.py
-custom_app_settings.py
 !*.example.py
 *.custom.yml
 urls_custom.py
 
 # Postgres secret files (not required for dev)
 conf/postgres/*.secret
+
+# Agents
+docker-compose.agent.yml
 
 # Makefile var
 cms_name.var

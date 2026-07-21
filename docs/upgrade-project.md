@@ -1,5 +1,6 @@
 # Upgrade Project
 
+- [from v4.39 to v4.40](#from-v439-to-v440)
 - [from v4.28 to v4.29](#from-v428-to-v429)
 - [from v4.N to v4.14](#from-v4n-to-v414)
 - [from v4.N to v4.13](#from-v4n-to-v413)
@@ -19,12 +20,12 @@ Optional:
 
 ### Remove Unnecessary Settings
 
-1. In `taccsite_cms/custom_app_settings.py`, remove apps from `STATICFILES_DIRS`, i.e.
+1. In `settings_custom.py`, remove apps from `EXTRA_STATICFILES_DIRS`, i.e.
 
     | | change |
     | - | - |
-    | from | `STATICFILES_DIRS = ('apps/custom_example', ...)` |
-    | to | `STATICFILES_DIRS = (...)` |
+    | from | `EXTRA_STATICFILES_DIRS = ('apps/custom_example', ...)` |
+    | to | `EXTRA_STATICFILES_DIRS = (...)` |
 
     > **Note**
     > Django automatically identifies the `static` directory for each app.
@@ -43,6 +44,30 @@ Optional:
     - [Core Portal Deployments]:`/project_dir/camino/cms.settings_custom.py` [^1]
 
 [^1]: The `cms.settings_custom.py` is committed in [Core Portal Deployments]. A `settings_custom.py` in [Core CMS Custom] is `.gitignore`'d.
+
+## from v4.39 to v4.40
+
+- [Fold `custom_app_settings` into `settings_*`](#fold-custom_app_settings-into-settings_)
+
+### Fold `custom_app_settings` into `settings_*`
+
+| from | to |
+| - | - |
+| `custom_app_settings.py`: `INSTALLED_APPS`   | `settings_*.py`: `EXTRA_INSTALLED_APPS`   |
+| `custom_app_settings.py`: `STATICFILES_DIRS` | `settings_*.py`: `EXTRA_STATICFILES_DIRS` |
+| `custom_app_settings.py`: `MIDDLEWARE`       | `settings_*.py`: `EXTRA_MIDDLEWARE`       |
+
+If your Core-CMS customization is an independent repo (e.g. created via [Core-CMS-Template](https://github.com/TACC/Core-CMS-Template)):
+1. Rename `custom_app_settings.py` to `settings_apps.py`.
+2. Rename setting variables (as above).
+3. In `settings_custom.py`, add:
+    ```py
+    ########################
+    # TACC: CUSTOM APPS
+    ########################
+
+    from taccsite_cms.settings_apps import *
+    ```
 
 ## from v4.28 to v4.29
 
@@ -149,7 +174,7 @@ Refactor the `BRANDING` array to a `PORTAL_BRANDING` dict:
 | `TACC_BLOG_SHOW_CATEGORIES` | `PORTAL_BLOG_SHOW_CATEGORIES` |
 | `TACC_BLOG_SHOW_TAGS` | `PORTAL_BLOG_SHOW_TAGS` |
 | `TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY` | `PORTAL_BLOG_CUSTOM_MEDIA_POST_CATEGORY` |
-| `TACC_BLOG_SHOW_ABSTRACT_TAG` | `PORTAL_BLOG_SHOW_ABSTRACT_TAG` |
+| `TACC_BLOG_SHOW_ABSTRACT_TAG` | `PORTAL_BLOG_TAG_FOR_EXTERNAL_ARTICLES` |
 | `TACC_BLOG_CATEGORY_ORDER` | `PORTAL_BLOG_CATEGORY_ORDER` |
 | `TACC_SOCIAL_SHARE_PLATFORMS` | `PORTAL_SOCIAL_SHARE_PLATFORMS` |
 | `SEARCH_PATH` | `PORTAL_SEARCH_PATH` |

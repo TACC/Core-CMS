@@ -9,7 +9,7 @@
 {% block content_blog %}{% spaceless %}
 
 {# TACC (print abstract for some posts e.g. an external article): #}
-{% blog_post_has_tag post settings.PORTAL_BLOG_SHOW_ABSTRACT_TAG as show_abstract %}
+{% blog_post_has_tag post settings.PORTAL_BLOG_TAG_FOR_EXTERNAL_ARTICLES as show_abstract %}
 {# /TACC #}
 <article id="post-{{ post.slug }}" class="post-item post-detail">
     <header>
@@ -44,19 +44,32 @@
     </header>
     {% if not post.main_image_id %}
         <div class="blog-visual">{% render_placeholder post.media %}</div>
-    {% else %}
-    <div class="blog-visual">
+    {# TACC (setting PORTAL_BLOG_SHOW_AUTO_MAIN_IMAGE): #}
+    {% elif settings.PORTAL_BLOG_SHOW_AUTO_MAIN_IMAGE %}
+    {# /TACC #}
+    {# TACC (use figure wrapper): #}
+    <figure class="blog-visual">
         {% thumbnail post.main_image post.full_image_options.size crop=post.full_image_options.crop upscale=post.full_image_options.upscale subject_location=post.main_image.subject_location  as thumb %}
-        <img src="{{ thumb.url }}" alt="{{ post.main_image.default_alt_text }}" width="{{ thumb.width }}" height="{{ thumb.height }}" data-width="{{ post.full_image_options.width }}" data-height="{{ post.full_image_options.height }}" />
-    </div>
+        {# TACC (make alt text conditional to avoid `alt="None"`): #}
+        <img src="{{ thumb.url }}" alt="{% if post.main_image.default_alt_text %}{{ post.main_image.default_alt_text }}{% endif %}" width="{{ thumb.width }}" height="{{ thumb.height }}" data-width="{{ post.full_image_options.width }}" data-height="{{ post.full_image_options.height }}" />
+        {# /TACC #}
+        {# TACC (add caption): #}
+        {% if post.main_image.default_caption %}
+        <figcaption>{{ post.main_image.default_caption }}</figcaption>
+        {% endif %}
+        {# /TACC #}
+    </figure>
+    {# /TACC #}
+    {% else %}
+        <!-- PORTAL_BLOG_SHOW_AUTO_MAIN_IMAGE is not True -->
     {% endif %}
     {# TACC (do not let source end spaceless-ness prematurely): #}
     {# {% endspaceless %} #}
     {# /TACC #}
     {# TACC (print abstract for some posts e.g. an external article): #}
-    {% if show_abstract %}
-        {# TACC (copied from source app's includes/blog_item.html): #}
-        <div class="blog-lead">
+    {# And always render so JS can read ext. URL from hidden abstract #}
+        {# TACC (mostly from source app's includes/blog_item.html): #}
+        <div class="blog-lead"{% if not show_abstract %} hidden{% endif %}>
             {% if not TRUNCWORDS_COUNT %}
                 {% render_model post "abstract" "" "" "safe" %}
             {% else %}
@@ -64,7 +77,6 @@
             {% endif %}
         </div>
         {# /TACC #}
-    {% endif %}
     {# /TACC #}
     {% if post.app_config.use_placeholder %}
         <div class="blog-content s-drop-cap">{% render_placeholder post.content %}</div>
@@ -95,7 +107,7 @@
 <script id="redirect-external-article" type="module">
 import { redirectExternalArticle } from '{% static "site_cms/js/modules/manageExternalArticles.js" %}';
 
-redirectExternalArticle('{{ settings.PORTAL_BLOG_SHOW_ABSTRACT_TAG }}');
+redirectExternalArticle('{{ settings.PORTAL_BLOG_TAG_FOR_EXTERNAL_ARTICLES }}');
 </script>
 {% endaddtoblock %}
 {% endblock assets_blog %}

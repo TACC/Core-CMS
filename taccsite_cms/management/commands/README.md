@@ -2,6 +2,11 @@
 
 - [How to Use](#how-to-use)
 - [List Pages Using Each Template](#list-pages-using-each-template)
+- [Create Test Pages](#create-test-pages)
+  - [for Sections](#for-sections)
+  - [for Cards](#for-cards)
+  - [for Alerts](#for-alerts)
+  - [for Buttons](#for-buttons)
 - [Set Groups & Permissions](#set-groups--permissions)
 - [Reference](#reference)
 
@@ -24,6 +29,68 @@ Usage:
 ```sh
 python manage.py list_page_templates
 ```
+
+## Create Test Pages
+
+Create example content under `/test/` (not in menu).
+
+All commands accept:
+
+- `--replace`
+- `--title`
+- `--slug`
+- `--reverse-id`
+- `--language`
+- `--template`
+- `--no-publish`
+
+### for Sections
+
+Test `.section` / `.o-section` via Style plugin.
+
+Usage:
+
+```sh
+python manage.py create_test_page_section_style --replace
+```
+
+Path: `/test/test-section-style/`
+
+### for Cards
+
+Test `.c-card` via Card plugin.
+
+Usage:
+
+```sh
+python manage.py create_test_page_card_style --replace
+```
+
+Path: `/test/test-card-style/`
+
+### for Alerts
+
+Test Bootstrap 4 Alert plugin (all context variants).
+
+Usage:
+
+```sh
+python manage.py create_test_page_alert_style --replace
+```
+
+Path: `/test/test-alert-style/`
+
+### for Buttons
+
+Test Bootstrap 4 Link/Button plugin (all context variants).
+
+Usage:
+
+```sh
+python manage.py create_test_page_button_style --replace
+```
+
+Path: `/test/test-button-style/`
 
 ## Set Groups & Permissions
 

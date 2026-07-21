@@ -25,7 +25,10 @@
 {# start render figure/figcaption #}
 {# TACC (support children as caption content): #}
 {# {% if instance.caption_text %} #}
-{% if instance.caption_text or instance.child_plugin_instances %}
+{# TACC (fall back to image default caption): #}
+{# {% if instance.caption_text or instance.child_plugin_instances %} #}
+{% if instance.caption_text or instance.child_plugin_instances or instance.picture.default_caption %}
+{# /TACC #}
     <figure>
 {% endif %}
 {# /TACC #}
@@ -61,11 +64,17 @@
 
 {# start render figure/figcaption #}
 {# {% if instance.caption_text %} #}
-{% if instance.caption_text or instance.child_plugin_instances %}
+{# TACC (fall back to image default caption): #}
+{# {% if instance.caption_text or instance.child_plugin_instances %} #}
+{% if instance.caption_text or instance.child_plugin_instances or instance.picture.default_caption %}
+{# /TACC #}
         {# TACC (support children as caption content): #}
         {# <figcaption>{{ instance.caption_text }}</figcaption> #}
         <figcaption>
-        {{ instance.caption_text }}
+        {# TACC (fall back to image default caption): #}
+        {# {{ instance.caption_text }} #}
+        {% if instance.caption_text %}{{ instance.caption_text }}{% elif instance.picture.default_caption and not instance.child_plugin_instances %}{{ instance.picture.default_caption }}{% endif %}
+        {# /TACC #}
         {% for plugin in instance.child_plugin_instances %}
             {% render_plugin plugin %}
         {% endfor %}

@@ -17,9 +17,17 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 
 CKEDITOR_SETTINGS = {
     'autoParagraph': False,
+    'customConfig': '/static/js/addons/ckeditor.config.js',
     'stylesSet': 'default:/static/js/addons/ckeditor.wysiwyg.js',
     'contentsCss': ['/static/djangocms_text_ckeditor/ckeditor/contents.css'],
+    'extraPlugins': 'pastefromgdocs',
 }
+
+# To support what html5lib does not
+TEXT_ADDITIONAL_TAGS = ('summary',)
+ALLOW_TOKEN_PARSERS = (
+    'taccsite_cms.djangocms_text_ckeditor_attribute_parsers.AriaAttributeParser',
+)
 
 ########################
 # DJANGOCMS_PICTURE
@@ -93,6 +101,10 @@ DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS = [
             _('Container + Muted section')
         ),
         (
+            'container  o-section o-section--style-accent',
+            _('Container + Accent section')
+        ),
+        (
             'container  o-section o-section--style-dark',
             _('Container + Dark section')
         ),
@@ -111,6 +123,10 @@ DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS = [
             _('Fluid container + Muted section')
         ),
         (
+            'container-fluid  o-section o-section--style-accent',
+            _('Fluid container + Accent section')
+        ),
+        (
             'container-fluid  o-section o-section--style-dark',
             _('Fluid container + Dark section')
         ),
@@ -125,6 +141,10 @@ DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS = [
             _('Muted section')
         ),
         (
+            'o-section o-section--style-accent',
+            _('Accent section')
+        ),
+        (
             'o-section o-section--style-dark',
             _('Dark section')
         ),
@@ -134,12 +154,10 @@ DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS = [
 DJANGOCMS_BOOTSTRAP4_COLOR_STYLE_CHOICES = (
     ('primary', _('Primary')),
     ('secondary', _('Secondary')),
-    # Disable for bootstrap4_link
-    # WARNING: Might still want for bootstrap4_alerts
-    # ('success', _('Success')),
-    # ('danger', _('Danger')),
-    # ('warning', _('Warning')),
-    # ('info', _('Info')),
+    ('success', _('Success')),
+    ('danger', _('Danger')),
+    ('warning', _('Warning')),
+    ('info', _('Info')),
     ('light', _('Light')),
     ('dark', _('Dark')),
 )
@@ -157,13 +175,18 @@ DJANGOCMS_STYLE_CHOICES = [
     'card--image-bottom',
     'card--image-right',
     'card--image-left',
+    'c-card',
+    'c-card--plain',
+    'c-card--standard',
     'section',
     'section--light',
     'section--muted',
+    'section--accent',
     'section--dark',
     'o-section',
     'o-section o-section--style-light',
     'o-section o-section--style-muted',
+    'o-section o-section--style-accent',
     'o-section o-section--style-dark',
     'c-callout',
     'c-recognition c-recognition--style-light',
