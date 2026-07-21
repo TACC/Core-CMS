@@ -1,6 +1,7 @@
 /* Alter ckeditor/styles.js to match our own wants */
 /* https://github.com/django-cms/djangocms-text-ckeditor/blob/3.10.0/djangocms_text_ckeditor/static/djangocms_text_ckeditor/ckeditor/styles.js */
 
+
 CKEDITOR.stylesSet.add( 'default', [
 
 	/* Block styles */

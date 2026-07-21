@@ -1,9 +1,7 @@
-{# https://github.com/django-cms/djangocms-picture/blob/3.0.0/djangocms_picture/templates/djangocms_picture/default/picture.html #}
-{# TACC (mimic v3.0.0 to v4.0.0 changes): #}
+{# https://github.com/django-cms/djangocms-picture/blob/4.1.1/djangocms_picture/templates/djangocms_picture/default/picture.html #}
 {# TACC (support children as caption content): #}
 {# {% load thumbnail %} #}
 {% load thumbnail l10n cms_tags %}
-{# /TACC #}
 {# /TACC #}
 
 {# TACC (allow link to be conditional): #}
@@ -30,7 +28,10 @@
 {# start render figure/figcaption #}
 {# TACC (support children as caption content): #}
 {# {% if instance.caption_text %} #}
-{% if instance.caption_text or instance.child_plugin_instances %}
+{# TACC (fall back to image default caption): #}
+{# {% if instance.caption_text or instance.child_plugin_instances %} #}
+{% if instance.caption_text or instance.child_plugin_instances or instance.picture.default_caption %}
+{# /TACC #}
     {# TACC (assign attributes to parent): #}
     {# <figure> #}
     <figure {{ instance.attributes_str }}>
@@ -40,9 +41,7 @@
 {# end render figure/figcaption #}
 
 
-{# TACC (mimic v3.0.0 to v4.0.0 changes): #}
 {% localize off %}
-{# /TACC #}
 <img src="{{ instance.img_src }}"
     alt="{% if instance.attributes.alt %}{{ instance.attributes.alt }}{% elif instance.picture.default_alt_text %}{{ instance.picture.default_alt_text }}{% endif %}"
     {% if instance.width %} width="{{ instance.width }}"{% endif %}
@@ -64,24 +63,31 @@
     {# TACC (allow link to be conditional): #}
     {% block picture_attributes %}
     {# TACC (assign attributes to parent): #}
-    {% if not instance.caption_text and not picture_link and not instance.child_plugin_instances %}
+    {# TACC (fall back to image default caption): #}
+    {# {% if not instance.caption_text and not picture_link and not instance.child_plugin_instances %} #}
+    {% if not instance.caption_text and not instance.picture.default_caption and not picture_link and not instance.child_plugin_instances %}
+    {# /TACC #}
     {{ instance.attributes_str }}
     {% endif %}
     {# /TACC #}
     {% endblock %}
     {# /TACC #}
 >
-{# TACC (mimic v3.0.0 to v4.0.0 changes): #}
 {% endlocalize %}
-{# /TACC #}
 
 {# start render figure/figcaption #}
 {# {% if instance.caption_text %} #}
-{% if instance.caption_text or instance.child_plugin_instances %}
+{# TACC (fall back to image default caption): #}
+{# {% if instance.caption_text or instance.child_plugin_instances %} #}
+{% if instance.caption_text or instance.child_plugin_instances or instance.picture.default_caption %}
+{# /TACC #}
         {# TACC (support children as caption content): #}
         {# <figcaption>{{ instance.caption_text }}</figcaption> #}
         <figcaption>
-        {{ instance.caption_text }}
+        {# TACC (fall back to image default caption): #}
+        {# {{ instance.caption_text }} #}
+        {% if instance.caption_text %}{{ instance.caption_text }}{% elif instance.picture.default_caption and not instance.child_plugin_instances %}{{ instance.picture.default_caption }}{% endif %}
+        {# /TACC #}
         {% for plugin in instance.child_plugin_instances %}
             {% render_plugin plugin %}
         {% endfor %}
