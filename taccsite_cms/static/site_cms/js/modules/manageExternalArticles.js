@@ -5,14 +5,18 @@
  */
 export function getArticleExternalURL(article) {
   if (!article) {
-    console.warn('No article found', article);
+    console.warn('No article given');
     return;
   }
 
   // The admin of news promises leads/abstracts will only have 1 external link
-  const contentLink = article.querySelector('.blog-lead a[href^="http"]');
-  const isExternalLink = contentLink.hostname !== window.location.hostname;
-  const URL = isExternalLink ? contentLink.href : null;
+  const externalLink = article.querySelector('.blog-lead a[href^="http"]');
+  if (!externalLink) {
+    console.warn('No external link found for article', article);
+    return;
+  }
+  const isExternalLink = externalLink.hostname !== window.location.hostname;
+  const URL = isExternalLink ? externalLink.href : null;
 
   return URL;
 }
@@ -55,6 +59,9 @@ export function redirectExternalArticle(extTagName = 'external') {
   const article = document.querySelector(`
     .has-blog-tag-${extTagName}
   `);
+
+  if ( ! article ) return;
+
   const URL = getArticleExternalURL( article );
 
   if ( ! URL ) {

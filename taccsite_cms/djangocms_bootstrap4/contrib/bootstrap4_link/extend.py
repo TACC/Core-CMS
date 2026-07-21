@@ -8,9 +8,8 @@ def extendBootstrap4LinkPlugin():
     from djangocms_bootstrap4.contrib.bootstrap4_link.cms_plugins import Bootstrap4LinkPlugin as OriginalBootstrap4LinkPlugin
     from djangocms_bootstrap4.contrib.bootstrap4_link.models import Bootstrap4Link as OriginalBootstrap4Link
 
-    class Bootstrap4LinkModel(OriginalBootstrap4Link):
-        class Meta:
-            proxy = True
+    # IMPORTANT: Do not use a proxy model, or else GH-1099
+    # https://github.com/TACC/Core-CMS/issues/1099
 
     LINK_SIZE_CHOICES = (
         ('btn-sm', _('Small')),
@@ -21,7 +20,7 @@ def extendBootstrap4LinkPlugin():
     OriginalBootstrap4Link._meta.get_field('link_context').verbose_name = _('Type')
 
     class Bootstrap4LinkPlugin(OriginalBootstrap4LinkPlugin):
-        model = Bootstrap4LinkModel
+        model = OriginalBootstrap4Link
 
         original_fields = OriginalBootstrap4LinkPlugin.fieldsets[0][1]['fields']
         filtered_fields = tuple(f for f in original_fields if f != ('link_outline', 'link_block'))

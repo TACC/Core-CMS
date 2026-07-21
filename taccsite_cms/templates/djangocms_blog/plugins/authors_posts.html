@@ -1,0 +1,22 @@
+{# https://github.com/nephila/djangocms-blog/blob/1.2.3/djangocms_blog/templates/djangocms_blog/plugins/authors_posts.html #}
+{% load i18n %}{% spaceless %}
+<div class="plugin plugin-blog">
+    <h3>{% trans "Authors" %}</h3>
+    <ul class="blog-authors">
+        {% for author in authors_list %}
+        <li>
+            {# TACC (author username if no full name): #}
+            <h3>{% trans "Articles by" %} {% if author.get_full_name %}{{ author.get_full_name }}{% else %}{{ author.get_username }}{% endif %}</h3>
+            {# /TACC #}
+            <div class="blog-latest-entries">
+                {% for post in author.posts %}
+                    {% include "djangocms_blog/includes/blog_item.html" with post=post image="true" TRUNCWORDS_COUNT=TRUNCWORDS_COUNT %}
+                {% empty %}
+                    <p class="blog-empty">{% trans "No article found." %}</p>
+                {% endfor %}
+            </div>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endspaceless %}
