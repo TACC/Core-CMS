@@ -7,212 +7,148 @@ Reference:
 
 Styleguide Components.DjangoCMS.Blog.App.Item
 */
-@import url("@tacc/core-styles/src/lib/_imports/tools/x-article-link.css");
-@import url("@tacc/core-styles/src/lib/_imports/tools/x-truncate.css");
 @import url("@tacc/core-styles/src/lib/_imports/tools/media-queries.css");
+
+@import url("../tools/x-news.css");
 
 @import url("./django.cms.blog.selectors.css");
 
 
+/* Root */
 
-
-
-/* List */
-
-/* To support rendering list as a grid */
-:--article-list--as-grid {
-  display: grid;
-  grid-template-columns: repeat( auto-fit, minmax(350px, 1fr) );
-  column-gap: var(--global-space--pattern-pad);
+:--news-feed-page {
+  @mixin news-feed;
 }
-/* So page title spans all columns */
-:--article-list--as-grid > header {
-  grid-column: 1 / -1;
-}
+:--news-feed-page--as-grid {
+  @media (--narrow-and-below) {
+    @mixin news-feed--as-list;
+  }
+  @media (--narrow-and-above) {
+    @mixin news-feed--as-grid;
+  }
 
-
-
-
-
-/* Item */
-
-
-
-/* Item (Structure) */
-
-/* For basic layout */
-:--article-item {
-  display: grid;
-
-  column-gap: 50px; /* for horz. space between image and content */
-
-  border-bottom: var(--global-border-width--normal) solid var(--global-color-primary--dark);
-  margin-bottom: var(--article-buffer);
-  padding-bottom: var(--article-buffer);
-}
-:--article-item header        { grid-area: head }
-:--article-item .blog-visual  { grid-area: media }
-:--article-item .blog-lead    { grid-area: desc }
-
-/* For layout options */
-.x-blog-grid-item {
-    grid-template-areas:
-      'media'
-      'head'
-      'desc';
-    /* To prevent content from overflowing cell */
-    grid-template-columns: minmax(0, 1fr);
-    /* To prevent vertical stretch of rows */
-    grid-auto-rows: min-content;
-}
-.x-blog-list-item {
-    grid-template-areas:
-      'media head'
-      'media desc';
-    /* To shrinkwrap media and flexible text content */
-    grid-template-columns: minmax(0, max-content) 1fr;
-    /* To let 'desc' take remaining space (removes gap between head and desc) */
-    grid-template-rows: min-content 1fr;
-}
-@media (--narrow-and-below) {
-  :--article-item {
-    @extend .x-blog-grid-item;
+  @media (--narrow-to-medium) {
+    grid-template-columns: repeat( 2, 1fr );
+  }
+  @media (--medium-to-wide), (--wide-to-x-wide)  {
+    grid-template-columns: repeat( 3, 1fr );
+  }
+  @media (--x-wide-and-above) {
+    grid-template-columns: repeat( 4, 1fr );
   }
 }
-@media (--narrow-and-above) {
-  :--article-item--in-list {
-    @extend .x-blog-list-item;
-  }
-  :--article-item--in-grid {
-    @extend .x-blog-grid-item;
-  }
+:--news-feed-page--as-list {
+  @mixin news-feed--as-list;
 }
-
-
-
-
 
 
 /* Header */
 
-
-
-/* Header (Structure) */
-
-:--article-item header {
-  grid-template-areas:
-    'cats tags'
-    'date attr'
-    'head head'
-    'subh subh';
-  justify-content: space-between;
-}
-
-:--article-item header {
-  margin-bottom: 5px;
+:--news-feed-page--as-grid > header {
+  @media (--narrow-and-above) {
+    @mixin news-feed--as-grid__header;
+  }
 }
 
 
+/* Title */
 
-/* Header - Title */
-
-:--article-item h3 {
-  margin-bottom: unset; /* overwrite Core-Styles headings--cms.css */
+:--news-feed-page h1 > strong::after {
+  @mixin news-feed-title__separator;
 }
-:--article-item h4 {
-  display: none;
+:--news-feed-page h1 > span {
+  @mixin news-feed-title__type-key;
 }
-
-
-
-
-
-/* Metadata */
-
-:--article-item li {
-  line-height: unset; /* overwrite html-elements.css */
-}
-
-:--article-item .attrs {
-  color: var(--global-color-primary--dark);
-  justify-self: end;
-}
-:--article-item .attrs a {
-  color: inherit;
+:--news-feed-page h1 > em {
+  @mixin news-feed-title__type-value;
 }
 
 
+/* Article */
 
+/* For all layouts */
+:--news-article-item {
+  @mixin news-feed__article;
 
-
-/* Visual */
-
-:--article-item .blog-visual:empty {
-  display: none;
+  & header       { grid-area: head; }
+  & .blog-lead   { grid-area: lead; }
+  & .blog-visual { grid-area: media; }
 }
 
-/* To support vertical article layouts */
-/* FAQ: In simple layouts, the media element is the grid cell */
-/* FAQ: In complex layouts, the media element is within the grid cell */
-.x-blog-grid-item-media-cell {
-  margin-bottom: 15px; /* to add space between image and content */
-}
-.x-blog-grid-item-media-element-in-cell {
-  max-width: 100%; /* to prevent overflow if column is narrower than image */
-  height: auto; /* to preserve ratio if width is reduced (by max-width: 100%) */
-}
+/* For layout variants — grid vs list */
 @media (--narrow-and-below) {
-  :--article-item .blog-visual {
-    @extend .x-blog-grid-item-media-cell;
-    & img { @extend .x-blog-grid-item-media-element-in-cell; }
+  :--news-article-item {
+    @mixin news-feed--grid-layout__article;
+    @mixin news-feed__article--has-border;
   }
 }
 @media (--narrow-and-above) {
-  :--article-item--in-grid .blog-visual {
-    @extend .x-blog-grid-item-media-cell;
-    & img { @extend .x-blog-grid-item-media-element-in-cell; }
+  :--news-article-item--in-list {
+    @mixin news-feed--list-layout__article;
+    @mixin news-feed__article--has-border;
+  }
+  :--news-article-item--in-grid {
+    @mixin news-feed--grid-layout__article;
+  }
+}
+/* For layout variants — see grid-template-columns */
+:--news-article-item--in-grid {
+  @media (--narrow-and-below) {
+    @mixin news-feed__article--has-border;
+  }
+}
+/* For layout variants — no media */
+:--news-article-item:not(:has(.blog-visual > *)) {
+  @mixin news-feed__article--no-media;
+}
+
+/* Article - Titles */
+
+:--news-article-item h3 {
+  margin-bottom: unset; /* overrides Core-Styles headings--cms.css */
+}
+:--news-article-item h4 {
+  display: none;
+}
+
+/* Article - Details */
+
+:--news-article-item li {
+  @mixin news-feed-article__details__item;
+}
+
+:--news-article-item .attrs {
+  @mixin news-feed-article__details--attr;
+}
+:--news-article-item .attrs a {
+  @mixin news-feed-article__details--attr__link;
+}
+
+/* Article - Visual */
+
+:--news-article-item .blog-visual {
+  @mixin news-feed-article__media;
+  @mixin news-feed-article__media--constrain-content;
+}
+@media (--medium-and-below) {
+  :--news-article-item .blog-visual {
+    @mixin news-feed-article__media--above-text;
+  }
+}
+@media (--medium-and-above) {
+  :--news-article-item--in-grid .blog-visual {
+    @mixin news-feed-article__media--above-text;
   }
 }
 
+/* Article - Lead */
 
-
-
-
-/* Content */
-
-:--article-item .blog-lead {
-  @extend %x-truncate--many-lines;
-  --lines: 4;
-
-  line-height: 1.5;
-  color: var(--global-color-primary--dark);
-}
-:--article-item .blog-lead p:last-child {
-  margin-bottom: 0 /* overwrite core-styles.cms */
+:--news-article-item .blog-lead {
+  @mixin news-feed-article__lead;
 }
 
-/* To undo inline content styles */
-/* FAQ: In case author pasted such markup from another source */
-:--article-item .blog-lead [style] {
-    all: revert !important; /* force undo all inline styles */
-}
+/* Article - Footer */
 
-
-
-
-
-/* Footer */
-
-/* To make image clickable via "read more" link */
-/* FAQ: This is not available via c-news, because c-news assumes
-        if image should be clickable, client would wrap it in a link */
-.read-more {
-  /* To cover the image exactly */
-  display: grid;
-  grid-row-start: 1;
-  grid-column-start: 1;
-  grid-row-end: span 2;
-
-  /* To hide link text */
-  font-size: 0;
+:--news-article-item .read-more {
+  @mixin news-feed-article__link-overlay;
 }

@@ -35,9 +35,7 @@ def gettext(s): return s
 SECRET_KEY = 'CHANGE_ME'
 
 
-DATA_DIR = os.path.dirname(os.path.dirname(__file__))
-
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 DEBUG = True       # False for Prod.
 
@@ -50,8 +48,10 @@ LOGOUT_REDIRECT_URL = '/'
 # https://docs.djangoproject.com/en/3.0/ref/clickjacking/#how-to-use-it
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
-# whether the session cookie should be secure (https:// only)
+# whether the session and csrf cookies should be secure (https:// only)
 SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_NAME = 'cmscsrftoken'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
@@ -326,7 +326,6 @@ TACC_CORE_STYLES_VERSION = 2
 PORTAL_BLOG_SHOW_CATEGORIES = True
 PORTAL_BLOG_SHOW_TAGS = True
 # To flag posts of certain category or tag, so template can take special action
-PORTAL_BLOG_CUSTOM_MEDIA_POST_CATEGORY = 'mutlimedia'
 PORTAL_BLOG_SHOW_ABSTRACT_TAG = 'external'
 
 PORTAL_BLOG_CATEGORY_ORDER = []
@@ -342,7 +341,7 @@ ROOT_URLCONF = 'taccsite_cms.urls'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(DATA_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'taccsite_cms', 'static'),
@@ -353,7 +352,7 @@ STATICFILES_DIRS = (
 
 # User Uploaded Files Location.
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(DATA_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 TEMPLATES = [
     {
@@ -617,26 +616,48 @@ RT_TAG = ''
 ########################
 
 try:
-    from taccsite_cms.settings_default import *
+    from taccsite_cms.settings.settings_default import *
 except ModuleNotFoundError:
-    pass
+    # pass
+    # SETTINGS IMPORT DEPRECATED
+    try:
+        from taccsite_cms.settings_default import *
+    except ModuleNotFoundError:
+        pass
 
 try:
-    from taccsite_cms.settings_custom import *
-    import taccsite_cms.settings_custom as settings_custom
+    from taccsite_cms.settings.settings_custom import *
+    import taccsite_cms.settings.settings_custom as settings_custom
 except ModuleNotFoundError:
-    settings_custom = []
+    # pass
+    # SETTINGS IMPORT DEPRECATED
+    try:
+        from taccsite_cms.settings_custom import *
+        import taccsite_cms.settings_custom as settings_custom
+    except ModuleNotFoundError:
+        settings_custom = []
 
 try:
-    from taccsite_cms.secrets import *
+    from taccsite_cms.settings.secrets import *
 except ModuleNotFoundError:
-    pass
+    # pass
+    # SETTINGS IMPORT DEPRECATED
+    try:
+        from taccsite_cms.secrets import *
+    except ModuleNotFoundError:
+        pass
 
 try:
-    from taccsite_cms.settings_local import *
-    import taccsite_cms.settings_local as settings_local
+    from taccsite_cms.settings.settings_local import *
+    import taccsite_cms.settings.settings_local as settings_local
 except ModuleNotFoundError:
-    settings_local = []
+    # pass
+    # SETTINGS IMPORT DEPRECATED
+    try:
+        from taccsite_cms.settings_local import *
+        import taccsite_cms.settings_local as settings_local
+    except ModuleNotFoundError:
+        settings_local = []
 
 try:
     from taccsite_cms import custom_app_settings
@@ -671,7 +692,6 @@ old_setting_names = [
     'INCLUDES_SEARCH_BAR',
     'TACC_BLOG_SHOW_CATEGORIES',
     'TACC_BLOG_SHOW_TAGS',
-    'TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY',
     'TACC_BLOG_SHOW_ABSTRACT_TAG',
     'TACC_BLOG_CATEGORY_ORDER',
     'TACC_SOCIAL_SHARE_PLATFORMS',
@@ -726,7 +746,6 @@ SETTINGS_EXPORT = deprecated_SETTINGS_EXPORT + [
     'PORTAL_STYLES',
     'PORTAL_BLOG_SHOW_CATEGORIES',
     'PORTAL_BLOG_SHOW_TAGS',
-    'PORTAL_BLOG_CUSTOM_MEDIA_POST_CATEGORY',
     'PORTAL_BLOG_SHOW_ABSTRACT_TAG',
     'PORTAL_BLOG_CATEGORY_ORDER',
     'PORTAL_SOCIAL_SHARE_PLATFORMS',

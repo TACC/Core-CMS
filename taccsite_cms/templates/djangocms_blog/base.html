@@ -4,17 +4,6 @@
 {% load static sekizai_tags %}
 {# /TACC #}
 
-{# FAQ: To ensure Blog page shows metadata (instruction from maintainer) #}
-{# SEE: https://github.com/nephila/djangocms-blog/issues/613#issuecomment-681147460 #}
-{# TODO: Update blog to ≥1.2.0, remove this block, test meta still works #}
-{% block meta %}
-    {% if meta %}
-        {% include "meta/meta.html" %}
-    {% else %}
-        {{ block.super }}
-    {% endif %}
-{% endblock meta %}
-
 {# TACC (to not let editor add content to every blog page): #}
 {% block cms_content %}{% endblock cms_content %}
 {# /TACC #}

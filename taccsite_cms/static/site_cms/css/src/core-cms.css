@@ -13,6 +13,7 @@
 @import url("./_imports/components/django-cms-forms.css");
 @import url("./_imports/components/django-cms-icon.css");
 @import url("./_imports/components/django.cms.picture.css");
-@import url("./_imports/components/django-cms-video.css");
 @import url("./_imports/components/lightgallery.css");
 @import url("./_imports/components/logos.css");
+
+@import url("./_imports/bootstrap4/utilities/embed-responsive.css");
