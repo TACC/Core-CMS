@@ -55,7 +55,6 @@ class TaccsiteCmsConfig(AppConfig):
             add_style_editor_basic()
             add_style_editor_advanced()
             add_snippet_user()
-
             logger.info(f'Finished {action.lower()} CMS groups')
         except Exception as e:
             logger.error(f'Error creating CMS groups: {e}', exc_info=True)

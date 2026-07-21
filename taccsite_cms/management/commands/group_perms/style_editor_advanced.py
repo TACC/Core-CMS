@@ -1,5 +1,5 @@
 """
-To edit, move, add and delete Style plugins
+To edit, move, add, and delete Style plugins
 (not CSS, but "Style" block that lets editors add custom markup e.g. for Cards)
 """
 
@@ -11,7 +11,7 @@ from ..util import (
     let_add_and_delete_style_plugin
 )
 
-GROUP_NAME = 'Style Editor (Basic)'
+GROUP_NAME = 'Style Editor (Advanced)'
 
 def set_group_perms():
     group, was_created = Group.objects.get_or_create(
