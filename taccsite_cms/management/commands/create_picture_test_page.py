@@ -13,6 +13,8 @@ from django.core.management.base import BaseCommand, CommandError
 
 from cms.api import add_plugin, create_page, publish_page
 
+from djangocms_snippet.cms_plugins import SnippetPlugin
+from djangocms_snippet.models import Snippet
 from djangocms_style.cms_plugins import StylePlugin
 
 from taccsite_cms.management.test_page_util import (
@@ -212,6 +214,24 @@ class Command(BaseCommand):
                 '</ul>'
             ),
         )
+
+        # o-section doesn't establish a block formatting context on its own,
+        # so a floated align-left/align-right image collapses its section's
+        # height and overlaps the next one. Contain it here rather than in
+        # shared CSS, since this float-in-a-bare-section case is specific to
+        # this test page.
+        clearfix_snippet, _ = Snippet.objects.get_or_create(
+            slug='picture-test-align-clearfix',
+            defaults={
+                'name': 'Picture Test: Align Clearfix',
+                'html': (
+                    '<style>\n'
+                    '  .o-section:has(.align-left, .align-right) { display: flow-root; }\n'
+                    '</style>'
+                ),
+            },
+        )
+        add_plugin(placeholder, SnippetPlugin, language, snippet=clearfix_snippet)
 
         for i, (label, attrs, has_link, has_caption) in enumerate(CASES):
             self._add_case(placeholder, language, i, label, attrs, has_link, has_caption)
