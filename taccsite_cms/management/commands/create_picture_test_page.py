@@ -13,6 +13,8 @@ from django.core.management.base import BaseCommand, CommandError
 
 from cms.api import add_plugin, create_page, publish_page
 
+from djangocms_style.cms_plugins import StylePlugin
+
 from taccsite_cms.management.test_page_util import (
     delete_draft_pages_by_reverse_id,
     ensure_test_parent_page,
@@ -211,8 +213,8 @@ class Command(BaseCommand):
             ),
         )
 
-        for label, attrs, has_link, has_caption in CASES:
-            self._add_case(placeholder, language, label, attrs, has_link, has_caption)
+        for i, (label, attrs, has_link, has_caption) in enumerate(CASES):
+            self._add_case(placeholder, language, i, label, attrs, has_link, has_caption)
 
         if not options['no_publish']:
             with warnings.catch_warnings():
@@ -236,7 +238,7 @@ class Command(BaseCommand):
             '\n(Ships with v4.36 / PR #968; not present before that.)\n'
         )
 
-    def _add_case(self, placeholder, language, label, attrs, has_link, has_caption):
+    def _add_case(self, placeholder, language, index, label, attrs, has_link, has_caption):
         attrs_display = ', '.join(f'{k}="{v}"' for k, v in attrs.items()) or '(none)'
         wrapper = []
         if has_link:
@@ -245,8 +247,16 @@ class Command(BaseCommand):
             wrapper.append('figure/caption')
         wrapper_display = ' + '.join(wrapper) if wrapper else 'no wrapper'
 
+        section_class = 'o-section o-section--light' if index % 2 == 0 else 'o-section o-section--muted'
+        section = add_plugin(
+            placeholder, StylePlugin, language,
+            class_name=section_class,
+            tag_type='section',
+        )
+
         add_plugin(
             placeholder, 'TextPlugin', language,
+            target=section,
             body=(
                 f'<h2>{label}</h2>'
                 f'<p>Attributes: <code>{attrs_display}</code> &nbsp;|&nbsp; '
@@ -262,6 +272,7 @@ class Command(BaseCommand):
         picture_template = 'default' if has_link else 'no_link_to_ext_image'
         add_plugin(
             placeholder, 'PicturePlugin', language,
+            target=section,
             external_picture=EXT_IMAGE,
             template=picture_template,
             attributes=attrs,
