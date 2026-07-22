@@ -48,6 +48,9 @@ cms_name.var
 .buildpath
 .project
 .settings
+
+# Claude Code (force-add specific files if they should be shared/committed)
+.claude/
 atlassian-ide-plugin.xml
 
 # Virtualenv
