@@ -1,43 +1,28 @@
 """
-Management command to build a test page covering all djangocms_picture
-wrapper/attribute combinations relevant to PR #1127 (fix: alt on parent
-elements).
+Create a published CMS page that exercises djangocms_picture attribute and
+wrapper (link/figure/alignment) combinations.
 
-Usage:
-    docker exec core_cms python manage.py create_picture_test_page
-    docker exec core_cms python manage.py create_picture_test_page --delete
-
-Options:
-    --delete    Remove the test page instead of creating it.
-
-What to check after running:
-    1.  Open http://localhost:8000/picture-test/ and inspect the DOM.
-    2.  For every picture, verify:
-        - <img> has the expected class and alt (if set).
-        - <a> does NOT have class nor alt from the image's attributes.
-        - <figure> does NOT have class nor alt from the image's attributes.
-    3.  Visually verify that Bootstrap classes (img-fluid, img-thumbnail,
-        rounded) look correct on the image itself in each wrapper context.
-    4.  For align-left/align-right/align-center cases, verify the whole
-        wrapper (figure or link), not just the image, floats/centers.
-    5.  Verify the wrapper isn't double-floated with its inner image.
-
-Debug overlay:
-    To see which element is which, add a snippet (via CMS "Snippet" plugin or
-    browser console) containing:
-        <link rel="stylesheet"
-              href="https://cdn.jsdelivr.net/gh/TACC/Core-CMS@5a42643b/taccsite_cms/static/site_cms/css/test/djangocms-picture.css">
-    (This file ships with v4.36 / PR #968 and is not present before that.)
+For manual UI checks after Core-Styles or Picture plugin/template changes.
 """
 
-from django.core.management.base import BaseCommand
-from cms.api import create_page, add_plugin, publish_page
-from cms.models import Page
+import warnings
+
+from django.conf import settings
+from django.contrib.auth import get_user_model
+from django.core.management.base import BaseCommand, CommandError
+
+from cms.api import add_plugin, create_page, publish_page
+
+from taccsite_cms.management.test_page_util import (
+    delete_draft_pages_by_reverse_id,
+    ensure_test_parent_page,
+)
 
 
-LANG = 'en'
-PAGE_TITLE = 'Picture Test: PR-1126 Alt Fix'
-PAGE_SLUG = 'picture-test'
+DEFAULT_REVERSE_ID = 'core_cms_test_page_picture_style'
+DEFAULT_TITLE = 'Test Picture Style'
+DEFAULT_SLUG = 'test-picture-style'
+DEFAULT_TEMPLATE = 'standard.html'
 
 # A reliable externally-hosted placeholder; no local file upload needed.
 EXT_IMAGE = 'https://placehold.co/800x400/336699/white.png?text=Test+Image'
@@ -123,46 +108,94 @@ CASES = [
 
 
 class Command(BaseCommand):
-    help = 'Create (or delete) a test page for djangocms_picture attribute handling.'
+    help = (
+        'Create a published page with djangocms_picture attribute/wrapper '
+        'combinations (link, figure, alignment) for visual QA.'
+    )
 
     def add_arguments(self, parser):
         parser.add_argument(
-            '--delete',
+            '--title',
+            default=DEFAULT_TITLE,
+            help=f'Default: {DEFAULT_TITLE!r}',
+        )
+        parser.add_argument(
+            '--slug',
+            default=DEFAULT_SLUG,
+            help=f'Default: {DEFAULT_SLUG!r}',
+        )
+        parser.add_argument(
+            '--reverse-id',
+            dest='reverse_id',
+            default=DEFAULT_REVERSE_ID,
+            help=f'Default: {DEFAULT_REVERSE_ID!r} (used with --replace)',
+        )
+        parser.add_argument(
+            '--language',
+            default=settings.LANGUAGE_CODE,
+            help='Page language (default: LANGUAGE_CODE)',
+        )
+        parser.add_argument(
+            '--template',
+            default=DEFAULT_TEMPLATE,
+            help=f'CMS template key (default: {DEFAULT_TEMPLATE!r})',
+        )
+        parser.add_argument(
+            '--replace',
             action='store_true',
-            help='Delete the test page instead of creating it.',
+            help='Delete any existing page with the same reverse_id first',
+        )
+        parser.add_argument(
+            '--no-publish',
+            action='store_true',
+            help='Leave the page as draft (plugins are still created)',
         )
 
     def handle(self, *args, **options):
-        if options['delete']:
-            self._delete_page()
-        else:
-            self._create_page()
+        language = options['language']
+        reverse_id = options['reverse_id']
+        title = options['title']
+        slug = options['slug']
+        template = options['template']
 
-    # ── helpers ──────────────────────────────────────────────────────────
+        User = get_user_model()
+        publisher = User.objects.filter(is_superuser=True).first()
+        if not publisher:
+            raise CommandError(
+                'No superuser found; create one or publish the draft manually.'
+            )
 
-    def _delete_page(self):
-        deleted = Page.objects.filter(title_set__slug=PAGE_SLUG).delete()
-        self.stdout.write(self.style.SUCCESS(f'Deleted: {deleted}'))
+        if options['replace']:
+            delete_draft_pages_by_reverse_id(
+                reverse_id,
+                stdout=self.stdout,
+                style=self.style,
+            )
 
-    def _create_page(self):
-        # Reuse if the page already exists so the command is idempotent.
-        existing = Page.objects.filter(title_set__slug=PAGE_SLUG).first()
-        if existing:
-            existing.delete()
-            self.stdout.write('Deleted previous test page.')
+        parent = ensure_test_parent_page(
+            language,
+            publisher,
+            publish=True,
+            stdout=self.stdout,
+            style=self.style,
+        )
 
         page = create_page(
-            title=PAGE_TITLE,
-            template='standard.html',
-            language=LANG,
-            slug=PAGE_SLUG,
+            title=title,
+            template=template,
+            language=language,
+            slug=slug,
+            reverse_id=reverse_id,
+            created_by=publisher,
+            parent=parent,
+            in_navigation=True,
             published=False,
         )
+
         placeholder = page.placeholders.get(slot='content')
 
-        # Intro heading + instructions
         add_plugin(
-            placeholder, 'TextPlugin', LANG,
+            placeholder, 'TextPlugin', language,
             body=(
                 '<h1>Picture Plugin Test: Alt &amp; Class on Parent Elements</h1>'
                 '<p>Each section below tests one combination of Bootstrap class, '
@@ -173,31 +206,37 @@ class Command(BaseCommand):
                 '<li><code>&lt;a&gt;</code> does <strong>not</strong> have <code>class</code> nor <code>alt</code> from the image.</li>'
                 '<li><code>&lt;figure&gt;</code> does <strong>not</strong> have <code>class</code> nor <code>alt</code> from the image.</li>'
                 '<li>Bootstrap styles (border, border-radius, max-width) render correctly on the image itself.</li>'
+                '<li>For align-left/align-right/align-center cases, the whole wrapper (not just the image) floats or centers, without double-floating.</li>'
                 '</ul>'
             ),
         )
 
         for label, attrs, has_link, has_caption in CASES:
-            self._add_case(placeholder, label, attrs, has_link, has_caption)
+            self._add_case(placeholder, language, label, attrs, has_link, has_caption)
 
-        publish_page(page, self._get_superuser(), LANG)
+        if not options['no_publish']:
+            with warnings.catch_warnings():
+                warnings.simplefilter('ignore', UserWarning)
+                page = publish_page(page, publisher, language)
+            self.stdout.write(self.style.SUCCESS('Published.'))
+        else:
+            self.stdout.write(self.style.WARNING('Left as draft (--no-publish).'))
 
-        url = f'http://localhost:8000/{PAGE_SLUG}/'
-        self.stdout.write(self.style.SUCCESS(
-            f'\nTest page created and published: {url}\n'
-        ))
+        url = page.get_absolute_url()
+        self.stdout.write(f'Page title: {title}')
+        self.stdout.write(f'URL: {url}')
         self.stdout.write(
-            'To enable the debug overlay that labels each element, open the\n'
-            'page in a browser and run this in the console:\n\n'
+            '\nDebug overlay (labels each element): open the page and run in '
+            'the browser console —\n\n'
             "  let l = document.createElement('link');\n"
             "  l.rel = 'stylesheet';\n"
             "  l.href = 'https://cdn.jsdelivr.net/gh/TACC/Core-CMS@5a42643b"
             "/taccsite_cms/static/site_cms/css/test/djangocms-picture.css';\n"
             "  document.head.appendChild(l);\n"
-            '\n(This file ships with v4.36 / PR #968 and is not present before that.)\n'
+            '\n(Ships with v4.36 / PR #968; not present before that.)\n'
         )
 
-    def _add_case(self, placeholder, label, attrs, has_link, has_caption):
+    def _add_case(self, placeholder, language, label, attrs, has_link, has_caption):
         attrs_display = ', '.join(f'{k}="{v}"' for k, v in attrs.items()) or '(none)'
         wrapper = []
         if has_link:
@@ -207,7 +246,7 @@ class Command(BaseCommand):
         wrapper_display = ' + '.join(wrapper) if wrapper else 'no wrapper'
 
         add_plugin(
-            placeholder, 'TextPlugin', LANG,
+            placeholder, 'TextPlugin', language,
             body=(
                 f'<h2>{label}</h2>'
                 f'<p>Attributes: <code>{attrs_display}</code> &nbsp;|&nbsp; '
@@ -220,18 +259,13 @@ class Command(BaseCommand):
         # the external_picture URL from auto-becoming the href.
         # (Combining link_url + no_link_to_ext_image leaves <a> unclosed
         # because that template's picture_link_end is unconditionally empty.)
-        template = 'default' if has_link else 'no_link_to_ext_image'
+        picture_template = 'default' if has_link else 'no_link_to_ext_image'
         add_plugin(
-            placeholder, 'PicturePlugin', LANG,
+            placeholder, 'PicturePlugin', language,
             external_picture=EXT_IMAGE,
-            template=template,
+            template=picture_template,
             attributes=attrs,
             link_url=LINK_URL if has_link else '',
             link_target='_blank' if has_link else '',
             caption_text=CAPTION if has_caption else '',
         )
-
-    def _get_superuser(self):
-        from django.contrib.auth import get_user_model
-        User = get_user_model()
-        return User.objects.filter(is_superuser=True).first()
