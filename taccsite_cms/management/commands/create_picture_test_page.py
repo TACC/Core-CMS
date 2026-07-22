@@ -18,6 +18,9 @@ What to check after running:
         - <figure> does NOT have class nor alt from the image's attributes.
     3.  Visually verify that Bootstrap classes (img-fluid, img-thumbnail,
         rounded) look correct on the image itself in each wrapper context.
+    4.  For align-left/align-right/align-center cases, verify the whole
+        wrapper (figure or link), not just the image, floats/centers —
+        and that the wrapper isn't double-floated with its inner image.
 
 Debug overlay:
     To see which element is which, add a snippet (via CMS "Snippet" plugin or
@@ -87,12 +90,31 @@ CASES = [
     ('rounded | link + figure',               {'class': 'rounded',
                                                'alt':   'rounded alt'},          True,  True),
 
+    # ── align-left / align-right (tests the :has() wrapper-float CSS) ──────
+    ('align-left | no link | no figure',      {'class': 'align-left'},           False, False),
+    ('align-left | link',                     {'class': 'align-left'},           True,  False),
+    ('align-left | figure',                   {'class': 'align-left'},           False, True),
+
+    ('align-right | no link | no figure',     {'class': 'align-right'},          False, False),
+    ('align-right | link',                    {'class': 'align-right'},          True,  False),
+    ('align-right | figure',                  {'class': 'align-right'},          False, True),
+
     # ── align-center (tests interaction with display:block on <img>) ───────
     ('align-center | no link | no figure',    {'class': 'align-center'},         False, False),
     ('align-center | link',                   {'class': 'align-center'},         True,  False),
     ('align-center | figure',                 {'class': 'align-center'},         False, True),
 
-    # ── combined: img-fluid + align-center ────────────────────────────────
+    # ── combined: img-fluid + align-* ───────────────────────────────────────
+    ('img-fluid align-left | link',           {'class': 'img-fluid align-left',
+                                               'alt':   'fluid left alt'},        True,  False),
+    ('img-fluid align-left | figure',         {'class': 'img-fluid align-left',
+                                               'alt':   'fluid left alt'},        False, True),
+
+    ('img-fluid align-right | link',          {'class': 'img-fluid align-right',
+                                               'alt':   'fluid right alt'},       True,  False),
+    ('img-fluid align-right | figure',        {'class': 'img-fluid align-right',
+                                               'alt':   'fluid right alt'},       False, True),
+
     ('img-fluid align-center | link',         {'class': 'img-fluid align-center',
                                                'alt':   'fluid centered alt'},   True,  False),
     ('img-fluid align-center | figure',       {'class': 'img-fluid align-center',
