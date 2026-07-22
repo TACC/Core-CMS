@@ -232,14 +232,12 @@ class Command(BaseCommand):
             'the browser console —\n\n'
             "  let l = document.createElement('link');\n"
             "  l.rel = 'stylesheet';\n"
-            "  l.href = 'https://cdn.jsdelivr.net/gh/TACC/Core-CMS@5a42643b"
-            "/taccsite_cms/static/site_cms/css/test/djangocms-picture.css';\n"
+            "  l.href = 'https://cdn.jsdelivr.net/gh/TACC/Core-CMS@5a42643b/taccsite_cms/static/site_cms/css/test/djangocms-picture.css';\n"
             "  document.head.appendChild(l);\n"
-            '\n(Ships with v4.36 / PR #968; not present before that.)\n'
         )
 
     def _add_case(self, placeholder, language, index, label, attrs, has_link, has_caption):
-        attrs_display = ', '.join(f'{k}="{v}"' for k, v in attrs.items()) or '(none)'
+        attrs_display = ' '.join(f'{k}="{v}"' for k, v in attrs.items()) or '(none)'
         wrapper = []
         if has_link:
             wrapper.append('link')
