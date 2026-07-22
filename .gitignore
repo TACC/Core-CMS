@@ -36,8 +36,9 @@ urls_custom.py
 # Postgres secret files (not required for dev)
 conf/postgres/*.secret
 
-# Agents
+# AI
 docker-compose.agent.yml
+.claude/
 
 # Makefile var
 cms_name.var
@@ -48,9 +49,6 @@ cms_name.var
 .buildpath
 .project
 .settings
-
-# Claude Code (force-add specific files if they should be shared/committed)
-.claude/
 atlassian-ide-plugin.xml
 
 # Virtualenv
