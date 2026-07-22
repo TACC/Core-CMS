@@ -19,8 +19,8 @@ What to check after running:
     3.  Visually verify that Bootstrap classes (img-fluid, img-thumbnail,
         rounded) look correct on the image itself in each wrapper context.
     4.  For align-left/align-right/align-center cases, verify the whole
-        wrapper (figure or link), not just the image, floats/centers —
-        and that the wrapper isn't double-floated with its inner image.
+        wrapper (figure or link), not just the image, floats/centers.
+    5.  Verify the wrapper isn't double-floated with its inner image.
 
 Debug overlay:
     To see which element is which, add a snippet (via CMS "Snippet" plugin or
