@@ -10,6 +10,7 @@ import warnings
 from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.core.management.base import BaseCommand, CommandError
+from django.templatetags.static import static
 
 from cms.api import add_plugin, create_page, publish_page
 
@@ -217,18 +218,13 @@ class Command(BaseCommand):
 
         # o-section doesn't establish a block formatting context on its own,
         # so a floated align-left/align-right image collapses its section's
-        # height and overlaps the next one. Contain it here rather than in
-        # shared CSS, since this float-in-a-bare-section case is specific to
-        # this test page.
-        clearfix_snippet, _ = Snippet.objects.get_or_create(
+        # height and overlaps the next one. See o-section-align-clearfix.css.
+        clearfix_url = static('site_cms/css/test/o-section-align-clearfix.css')
+        clearfix_snippet, _ = Snippet.objects.update_or_create(
             slug='picture-test-align-clearfix',
             defaults={
                 'name': 'Picture Test: Align Clearfix',
-                'html': (
-                    '<style>\n'
-                    '  .o-section:has(.align-left, .align-right) { display: flow-root; }\n'
-                    '</style>'
-                ),
+                'html': f'<link rel="stylesheet" href="{clearfix_url}">',
             },
         )
         add_plugin(placeholder, SnippetPlugin, language, snippet=clearfix_snippet)
