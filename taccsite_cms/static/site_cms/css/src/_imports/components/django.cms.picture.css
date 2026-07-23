@@ -19,6 +19,14 @@ img.align-center {
   display: block;
 }
 
+/* `margin-inline: auto` (above) only centers a block box that's narrower than
+   its container; it's a no-op on `inline-block` (e.g. from the img-fluid rule
+   above) or on the default full-width `block` of an unstyled figure/anchor. */
+:is(figure, a):has(.align-center) {
+  display: block;
+  width: fit-content;
+}
+
 /* Try to auto-clear image floats */
 /* WARNING: The commented solution clears float BUT also negates float */
 /*
