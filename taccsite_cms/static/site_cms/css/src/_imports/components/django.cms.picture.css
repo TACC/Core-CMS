@@ -3,9 +3,9 @@
 @import url("@tacc/core-styles/src/lib/_imports/components/align.css");
 
 /* Allow anchor tag and figure to be aligned like an image */
-:is(figure, a):has(.align-right) { @mixin align-right; }
-:is(figure, a):has(.align-left) { @mixin align-left; }
-:is(figure, a):has(.align-center) { @mixin align-center; }
+:is(figure, a):has(.align-right) { @mixin align--right; }
+:is(figure, a):has(.align-left) { @mixin align--left; }
+:is(figure, a):has(.align-center) { @mixin align--center; }
 
 /* Allow anchor tag to wrap like a block but still behave inline */
 a:has(.img-fluid) {
