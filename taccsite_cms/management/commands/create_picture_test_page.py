@@ -31,6 +31,8 @@ DEFAULT_TEMPLATE = 'standard.html'
 
 # A reliable externally-hosted placeholder; no local file upload needed.
 EXT_IMAGE = 'https://placehold.co/800x400/336699/white.png?text=Test+Image'
+EXT_IMAGE_WIDTH = 800
+EXT_IMAGE_HEIGHT = 400
 LINK_URL = 'https://example.com'
 CAPTION = 'Test caption text'
 
@@ -288,6 +290,8 @@ class Command(BaseCommand):
             placeholder, 'PicturePlugin', language,
             target=section,
             external_picture=EXT_IMAGE,
+            width=EXT_IMAGE_WIDTH,
+            height=EXT_IMAGE_HEIGHT,
             template=picture_template,
             attributes=attrs,
             link_url=LINK_URL if has_link else '',
