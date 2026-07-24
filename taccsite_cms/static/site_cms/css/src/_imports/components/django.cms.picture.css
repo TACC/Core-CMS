@@ -14,14 +14,14 @@ a:has(.img-fluid) {
 
 /* Support centering originating from Core-Styles */
 /* FAQ: We set display in client, so Core-Styles does not assume display */
+/* FAQ: `margin-inline: auto` ineffectual if:
+        1. either image wrapper is an inline-block
+           (e.g. from the img-fluid rule above)
+        2. or image wrapper is full-width block */
 /* SEE: https://github.com/TACC/Core-Styles/blob/dd2bbb0/src/lib/_imports/components/align.css#L16-L19 */
 img.align-center {
   display: block;
 }
-
-/* `margin-inline: auto` (above) only centers a block box that's narrower than
-   its container; it's a no-op on `inline-block` (e.g. from the img-fluid rule
-   above) or on the default full-width `block` of an unstyled figure/anchor. */
 :is(figure, a):has(.align-center) {
   display: block;
   width: fit-content;
