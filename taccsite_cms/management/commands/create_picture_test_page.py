@@ -113,6 +113,18 @@ CASES = [
                                                'alt':   'fluid centered alt'},   False, True),
 ]
 
+# Same img-fluid align-center cases, but with width/height set on the
+# Picture plugin (see DIMENSIONED_CASES usage in handle()). CASES above
+# default to no dimensions: the common real-world case for editor-entered
+# external images, where the browser has no intrinsic-size hint until the
+# image loads.
+DIMENSIONED_CASES = [
+    ('img-fluid align-center | link | with dimensions',    {'class': 'img-fluid align-center',
+                                               'alt':   'fluid centered alt'},   True,  False),
+    ('img-fluid align-center | figure | with dimensions',  {'class': 'img-fluid align-center',
+                                               'alt':   'fluid centered alt'},   False, True),
+]
+
 
 class Command(BaseCommand):
     help = (
@@ -234,6 +246,14 @@ class Command(BaseCommand):
         for i, (label, attrs, has_link, has_caption) in enumerate(CASES):
             self._add_case(placeholder, language, i, label, attrs, has_link, has_caption)
 
+        i = len(CASES)
+        for label, attrs, has_link, has_caption in DIMENSIONED_CASES:
+            self._add_case(
+                placeholder, language, i, label, attrs, has_link, has_caption,
+                set_dims=True,
+            )
+            i += 1
+
         if not options['no_publish']:
             with warnings.catch_warnings():
                 warnings.simplefilter('ignore', UserWarning)
@@ -254,7 +274,7 @@ class Command(BaseCommand):
             "  document.head.appendChild(l);\n"
         )
 
-    def _add_case(self, placeholder, language, index, label, attrs, has_link, has_caption):
+    def _add_case(self, placeholder, language, index, label, attrs, has_link, has_caption, set_dims=False):
         attrs_display = ' '.join(f'{k}="{v}"' for k, v in attrs.items()) or '(none)'
         wrapper = []
         if has_link:
@@ -290,8 +310,8 @@ class Command(BaseCommand):
             placeholder, 'PicturePlugin', language,
             target=section,
             external_picture=EXT_IMAGE,
-            width=EXT_IMAGE_WIDTH,
-            height=EXT_IMAGE_HEIGHT,
+            width=EXT_IMAGE_WIDTH if set_dims else None,
+            height=EXT_IMAGE_HEIGHT if set_dims else None,
             template=picture_template,
             attributes=attrs,
             link_url=LINK_URL if has_link else '',
