@@ -83,18 +83,23 @@ CASES = [
                                                'alt':   'rounded alt'},          True,  True),
 
     # ── align-left / align-right (tests the :has() wrapper-float CSS) ──────
+    # 'link + figure' cases test the <a><figure><img></figure></a> nesting,
+    # where the align-* class is a grandchild (not direct child) of <a>.
     ('align-left | no link | no figure',      {'class': 'align-left'},           False, False),
     ('align-left | link',                     {'class': 'align-left'},           True,  False),
     ('align-left | figure',                   {'class': 'align-left'},           False, True),
+    ('align-left | link + figure',            {'class': 'align-left'},           True,  True),
 
     ('align-right | no link | no figure',     {'class': 'align-right'},          False, False),
     ('align-right | link',                    {'class': 'align-right'},          True,  False),
     ('align-right | figure',                  {'class': 'align-right'},          False, True),
+    ('align-right | link + figure',           {'class': 'align-right'},          True,  True),
 
     # ── align-center (tests interaction with display:block on <img>) ───────
     ('align-center | no link | no figure',    {'class': 'align-center'},         False, False),
     ('align-center | link',                   {'class': 'align-center'},         True,  False),
     ('align-center | figure',                 {'class': 'align-center'},         False, True),
+    ('align-center | link + figure',          {'class': 'align-center'},         True,  True),
 
     # ── combined: img-fluid + align-* ───────────────────────────────────────
     ('img-fluid align-left | link',           {'class': 'img-fluid align-left',
@@ -119,10 +124,14 @@ CASES = [
 # external images, where the browser has no intrinsic-size hint until the
 # image loads.
 DIMENSIONED_CASES = [
-    ('img-fluid align-center | link | with dimensions',    {'class': 'img-fluid align-center',
-                                               'alt':   'fluid centered alt'},   True,  False),
-    ('img-fluid align-center | figure | with dimensions',  {'class': 'img-fluid align-center',
-                                               'alt':   'fluid centered alt'},   False, True),
+    ('img-fluid align-center | link | with dimensions', {
+        'class': 'img-fluid align-center',
+        'alt': 'fluid centered alt',
+    }, True, False),
+    ('img-fluid align-center | figure | with dimensions', {
+        'class': 'img-fluid align-center',
+        'alt': 'fluid centered alt',
+    }, False, True),
 ]
 
 
@@ -222,10 +231,13 @@ class Command(BaseCommand):
                 'Inspect the DOM and verify:</p>'
                 '<ul>'
                 '<li><code>&lt;img&gt;</code> has the expected <code>class</code> and <code>alt</code>.</li>'
-                '<li><code>&lt;a&gt;</code> does <strong>not</strong> have <code>class</code> nor <code>alt</code> from the image.</li>'
-                '<li><code>&lt;figure&gt;</code> does <strong>not</strong> have <code>class</code> nor <code>alt</code> from the image.</li>'
+                '<li><code>&lt;a&gt;</code> does <strong>not</strong> have '
+                '<code>class</code> nor <code>alt</code> from the image.</li>'
+                '<li><code>&lt;figure&gt;</code> does <strong>not</strong> have '
+                '<code>class</code> nor <code>alt</code> from the image.</li>'
                 '<li>Bootstrap styles (border, border-radius, max-width) render correctly on the image itself.</li>'
-                '<li>For align-left/align-right/align-center cases, the whole wrapper (not just the image) floats or centers, without double-floating.</li>'
+                '<li>For align-left/align-right/align-center cases, the whole wrapper '
+                '(not just the image) floats or centers, without double-floating.</li>'
                 '</ul>'
             ),
         )
