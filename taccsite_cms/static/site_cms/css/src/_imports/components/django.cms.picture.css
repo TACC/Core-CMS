@@ -3,12 +3,21 @@
 @import url("@tacc/core-styles/src/lib/_imports/components/align.css");
 
 /* Allow anchor tag and figure to be aligned like an image */
-:is(figure, a):has(.align-right) { @mixin align--right; }
-:is(figure, a):has(.align-left) { @mixin align--left; }
-:is(figure, a):has(.align-center) { @mixin align--center; }
+:is(figure, a):has(> .align-right) {
+  @mixin align--right;
+  & img { margin-left: unset; }
+}
+:is(figure, a):has(> .align-left) {
+  @mixin align--left;
+  & img { margin-right: unset; }
+}
+:is(figure, a):has(> .align-center) {
+  @mixin align--center;
+  & img { margin-inline: unset; }
+}
 
 /* Allow anchor tag to wrap like a block but still behave inline */
-a:has(.img-fluid) {
+a:has(> .img-fluid) {
   display: inline-block;
 }
 
@@ -22,14 +31,7 @@ a:has(.img-fluid) {
 img.align-center {
   display: block;
 }
-a:has(.align-center) {
+a:has(> .align-center) {
   display: block;
   width: fit-content;
 }
-
-/* Try to auto-clear image floats */
-/* WARNING: The commented solution clears float BUT also negates float */
-/*
-.align-right + *:not(img) { clear: right }
-.align-left + *:not(img) { clear: left }
-*/
