@@ -265,14 +265,6 @@ class Command(BaseCommand):
         url = page.get_absolute_url()
         self.stdout.write(f'Page title: {title}')
         self.stdout.write(f'URL: {url}')
-        self.stdout.write(
-            '\nDebug overlay (labels each element): open the page and run in '
-            'the browser console —\n\n'
-            "  let l = document.createElement('link');\n"
-            "  l.rel = 'stylesheet';\n"
-            "  l.href = 'https://cdn.jsdelivr.net/gh/TACC/Core-CMS@5a42643b/taccsite_cms/static/site_cms/css/test/djangocms-picture.css';\n"
-            "  document.head.appendChild(l);\n"
-        )
 
     def _add_case(self, placeholder, language, index, label, attrs, has_link, has_caption, set_dims=False):
         attrs_display = ' '.join(f'{k}="{v}"' for k, v in attrs.items()) or '(none)'
