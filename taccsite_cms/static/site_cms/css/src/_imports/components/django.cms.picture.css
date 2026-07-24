@@ -18,9 +18,6 @@ a:has(.img-fluid) {
         1. either image wrapper is an inline-block
            (e.g. from the img-fluid rule above)
         2. or image wrapper is full-width block */
-/* FAQ: figure is unaffected (Core-Styles already gives it `display: table`,
-        which is shrink-to-fit); only anchor lacks such a default, and
-        img-fluid above makes it worse (`display: inline-block`) */
 /* SEE: https://github.com/TACC/Core-Styles/blob/dd2bbb0/src/lib/_imports/components/align.css#L16-L19 */
 img.align-center {
   display: block;
