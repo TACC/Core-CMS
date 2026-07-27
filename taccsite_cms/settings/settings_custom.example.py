@@ -75,7 +75,8 @@ PORTAL_LOGO = {
     "img_class": "", # additional class names
     "link_href": "/",
     "link_target": "_self",
-    "img_alt_text": "Custom CMS", # E.g. PT DataX, Frontera
+    "link_name": "Custom CMS Homepage",
+    "img_alt_text": "Custom CMS Logo", # E.g. PT DataX, Frontera
     "img_crossorigin": "anonymous",
 }
 
@@ -86,6 +87,13 @@ PORTAL_FAVICON = {
     "is_remote": True,
     "img_file_src": "https://cdn.jsdelivr.net/gh/TACC/Core-CMS@v4.33.0/taccsite_cms/static/site_cms/img/favicons/favicon.ico",
 }
+
+########################
+# TACC: SOCIAL MEDIA
+########################
+
+# To disable "share this:" links (e.g. on News)
+# PORTAL_SOCIAL_SHARE_PLATFORMS = []
 
 ########################
 # SEARCH
@@ -101,6 +109,15 @@ PORTAL_SEARCH_INDEX_IS_AUTOMATIC = False
 # DJANGOCMS_BLOG
 ########################
 
+EXTRA_INSTALLED_APPS = [
+    # DJANGOCMS_BLOG
+    'parler',
+    'taggit',
+    'taggit_autosuggest',
+    'sortedm2m',
+    'djangocms_blog',
+]
+
 BLOG_AUTO_SETUP = True # Set to False after setup (minimize overhead)
 BLOG_AUTO_HOME_TITLE ='Home'
 BLOG_AUTO_BLOG_TITLE = 'News'
@@ -114,3 +131,5 @@ BLOG_ENABLE_COMMENTS = False
 
 PORTAL_BLOG_SHOW_CATEGORIES = False
 PORTAL_BLOG_SHOW_TAGS = False
+PORTAL_BLOG_SHOW_AUTO_MAIN_IMAGE = False
+PORTAL_BLOG_SHOW_BACK_LINK = False

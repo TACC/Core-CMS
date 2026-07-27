@@ -4,12 +4,17 @@ Read [Django CMS User Guide] for CMS user instructions.
 
 ## Table of Contents
 
+- [Manage Dependencies](#manage-dependencies)
 - [Add Styles & Scripts](#add-styles--scripts)
 - [Build Static Files](#build-static-files)
 - [Collect Static Files](#collect-static-files)
 - [Customize & Translate Text](#customize--translate-text)
 - [Review Patterns from Core Styles](#review-patterns-in-core-styles)
 - [Develop with Core Styles Simultaneously](#develop-with-core-styles-simultaneously)
+
+## Manage Dependencies
+
+Read [Manage Dependencies].
 
 ## Add Styles & Scripts
 
@@ -111,3 +116,4 @@ See [Locally Develop CMS and Styles](https://github.com/TACC/Core-Styles/wiki/De
 [Django CMS User Guide]: https://confluence.tacc.utexas.edu/x/FgDqCw
 
 [Styles and Scripts]: ./styles-and-scripts.md
+[Manage Dependencies]: ./manage-dependencies.md

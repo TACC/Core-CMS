@@ -41,7 +41,9 @@
   {% include 'assets_site.html' %}
 {% elif settings.TACC_CORE_STYLES_VERSION >= 1 %}
   {% include 'assets_core.html' %}
+  {% block assets_project %}
   {% include 'assets_core_cms.html' %}
+  {% endblock assets_project %}
 {% endif %}
   {% endblock assets %}
 

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "tacc-core-cms-backend"
-version = "v4.37.0"
+version = "0.0.0"
 description = "DjangoCMS backend for the TACC ACI-WMA Core-CMS Codebase."
 authors = ["TACC-WMA <wma-portals@tacc.utexas.edu>"]
 
@@ -41,7 +41,7 @@ django-taggit-autosuggest = "0.4.1"
 django-taggit-templatetags = "0.2.5"
 django-templatetag-sugar = "1.0"
 django-treebeard = "^4.4"
-djangocms-admin-style = "~3.2.6"
+djangocms-admin-style = "^3.3.1"
 djangocms-apphook-setup = "0.4.1"
 djangocms-attributes-field = "2.1.0"
 djangocms-blog = "2.0.3"
@@ -60,7 +60,7 @@ djangocms-snippet = "3.0.0"
 djangocms-style = "3.0.0"
 djangocms-tacc-image-gallery = {git = "https://github.com/TACC/Core-CMS-Plugin-Image-Gallery.git", rev = "v0.1.5"}
 djangocms-tacc-remote-content = {git = "https://github.com/TACC/Core-CMS-Plugin-Remote-Content.git", rev = "v0.5.0"}
-djangocms-tacc-system-monitor = {git = "https://github.com/TACC/Core-CMS-Plugin-System-Monitor.git", rev = "v0.3.0"}
+djangocms-tacc-system-monitor = {git = "https://github.com/TACC/Core-CMS-Plugin-System-Monitor.git", rev = "v0.4.0"}
 djangocms-text-ckeditor = "^5.1"
 djangocms-transfer = "1.0.1"
 djangocms-video = "3.0.0"
@@ -122,5 +122,5 @@ psycopg = "^3.1.17"
 pymemcache = "^4.0.0"
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
+requires = ["poetry-core>=2.0.0"]
 build-backend = "poetry.core.masonry.api"

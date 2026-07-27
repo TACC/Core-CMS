@@ -8,7 +8,8 @@
 <ul class="post-detail attrs">
 {# /TACC #}
 {# /TACC #}
-    {% if post.author %}
+    {# TACC (settings PORTAL_BLOG_SHOW_BYLINE): #}
+    {% if post.author and settings.PORTAL_BLOG_SHOW_BYLINE %}
     {# TACC (add class so CSS can target this element): #}
     <li class="byline">
     {# /TACC #}
@@ -20,6 +21,7 @@
         {# /TACC #}
         <a href="{% url 'djangocms_blog:posts-author' post.author.get_username %}">{% if post.author.get_full_name %}{{ post.author.get_full_name }}{% else %}{{ post.author }}{% endif %}</a>
     </li>
+    {# /TACC #}
 {# TACC (isolate dates for CSS grid flexibility): #}
     {% endif %}
     {% if settings.TACC_CORE_STYLES_VERSION >= 2 %}
@@ -40,8 +42,16 @@
       {# /TACC #}
       {# /TACC #}
       {# TACC (wrap with <time> tag because it should be so): #}
-      <time datetime="{{ post.date_published }}"
-            title="{{ post.date_published }}">
+      <time
+        datetime="{{ post.date_published }}"
+        aria-label="
+          {% if not post.publish %}
+            {% trans "To be published" %}
+          {% else %}
+            {% trans "Published" %}
+            {{ post.date_published|date:'DATE_FORMAT' }}
+          {% endif %}"
+      >
       {# /TACC #}
         {{ post.date_published|date:"DATE_FORMAT" }}
       {# TACC (wrap with <time> tag because it should be so): #}
@@ -62,8 +72,11 @@
       <span>{% trans "Featured" %}</span>&nbsp;
       {# /TACC #}
       {# /TACC #}
-      <time datetime="{{ post.date_featured }}"
-            title="{{ post.date_featured }}">
+      <time
+        aria-label="Featured {{ post.date_featured|date:'DATE_FORMAT' }}"
+        datetime="{{ post.date_featured }}"
+        title="{{ post.date_featured }}"
+      >
         {{ post.date_featured|date:"DATE_FORMAT" }}
       </time>
     </li>

@@ -1,14 +1,19 @@
 # How to Test
 
+- [Releases](#releases)
 - [CMS Changes](https://github.com/TACC/Core-CMS/wiki/Test-CMS-Changes)
 - [Major Changes to CSS](https://github.com/TACC/Core-CMS/wiki/How-to-Test-Major-Changes-to-CSS)
 - [CSS Build Output](https://github.com/TACC/Core-CMS/wiki/Test-CSS-Build-Output)
 - [Core Styles Version Change](https://github.com/TACC/Core-CMS/wiki/How-to-Test-Core-Styles-Version-Change)
 - [Local Poetry Dependencies in Docker](#local-poetry-dependencies-in-docker)
 
+## Releases
+
+Follow specific release's smoke test doc in [`docs/test-releases/`](docs/test-releases/).
+
 ## Local Poetry Dependencies in Docker
 
-When developing a Poetry-managed Python dependency that exists in another repository, you can test changes locally in the CMS Docker environment without needing to commit and push to the remote repository first.
+When developing a Poetry-managed Python dependency that exists in another local repository, you can test changes locally in the CMS Docker environment without needing to commit and push to the remote repository first.
 
 ### Prerequisites
 
