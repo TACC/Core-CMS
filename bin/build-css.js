@@ -4,10 +4,11 @@
 
 const buildStylesheets = require('@tacc/core-styles').buildStylesheets;
 const mininmist = require('minimist');
+const gitDescribe = require('./git-describe');
 
 const ROOT = __dirname + '/..';
 const ARGS = mininmist( process.argv.slice( 2 ) );
-const BUILD_ID = ARGS['build-id'] || '';
+const BUILD_ID = ARGS['build-id'] || gitDescribe();
 
 /** Build stylesheets */
 (() => {

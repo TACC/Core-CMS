@@ -38,6 +38,9 @@
     <a
       href="{{ brand.link_href }}"
       target="{{ brand.link_target }}"
+      {% if brand.link_name %}
+      aria-label="{{ brand.link_name }}"
+      {% endif %}
     >
       <img
         class="branding-logo {{ brand.img_class }}"

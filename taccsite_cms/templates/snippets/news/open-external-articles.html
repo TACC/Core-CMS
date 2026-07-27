@@ -4,13 +4,5 @@
 <script id="open-external-articles" type="module">
 import { changeHowExternalArticleOpens } from '{% static "site_cms/js/modules/manageExternalArticles.js" %}';
 
-// The `{{html}}` is whatever user entered into snippet "HTML:" field
-const parameter = '{{html}}';
-
-// Only certain articles should support this feature, cuz
-// articles might include external links on internal article
-const extTagName = parameter ? parameter : `external`;
-
-// Only care about articles with the given tag
-changeHowExternalArticleOpens(extTagName);
+changeHowExternalArticleOpens();
 </script>
