@@ -16,13 +16,6 @@ but we want to allow external image to be displayed without link.
     {% endif %}
 {% endblock %}
 
-{# So picture attributes can be added to picture with external image #}
-{% block picture_attributes %}
-    {% if not instance.caption_text and not instance.link_url and not instance.link_page_id and not instance.child_plugin_instances %}
-        {{ instance.attributes_str }}
-    {% endif %}
-{% endblock %}
-
 {# So picture with external image is not wrapped in a link #}
 {% block picture_link_end %}
 {% endblock %}

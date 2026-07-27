@@ -13,9 +13,6 @@
     {# /TACC #}
     <a href="{{ picture_link }}"
     {% if instance.link_target %} target="{{ instance.link_target }}"{% endif %}
-    {# TACC (assign attributes to parent): #}
-    {{ instance.attributes_str }}
-    {# /TACC #}
     {{ instance.link_attributes_str }}>
 {# TACC (allow link to be conditional): #}
 {% endblock %}
@@ -32,10 +29,7 @@
 {# {% if instance.caption_text or instance.child_plugin_instances %} #}
 {% if instance.caption_text or instance.child_plugin_instances or instance.picture.default_caption %}
 {# /TACC #}
-    {# TACC (assign attributes to parent): #}
-    {# <figure> #}
-    <figure {{ instance.attributes_str }}>
-    {# /TACC #}
+    <figure>
 {% endif %}
 {# /TACC #}
 {# end render figure/figcaption #}
@@ -62,14 +56,7 @@
     {% endif %}
     {# TACC (allow link to be conditional): #}
     {% block picture_attributes %}
-    {# TACC (assign attributes to parent): #}
-    {# TACC (fall back to image default caption): #}
-    {# {% if not instance.caption_text and not picture_link and not instance.child_plugin_instances %} #}
-    {% if not instance.caption_text and not instance.picture.default_caption and not picture_link and not instance.child_plugin_instances %}
-    {# /TACC #}
     {{ instance.attributes_str }}
-    {% endif %}
-    {# /TACC #}
     {% endblock %}
     {# /TACC #}
     {# TACC (allow attributes to be force-added to <img>): #}
