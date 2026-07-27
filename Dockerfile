@@ -1,5 +1,5 @@
 # PYTHON BASE IMAGE
-FROM python:3.11-buster as python-base
+FROM python:3.11-bullseye AS python-base
 LABEL maintainer="TACC-ACI-WMA <wma_prtl@tacc.utexas.edu>"
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y \
@@ -12,7 +12,7 @@ ENV PYTHONUNBUFFERED 1
 ENV PATH="/root/.local/bin:$PATH"
 
 # https://python-poetry.org/docs/configuration/#using-environment-variables
-ENV POETRY_VERSION=1.4.0 \
+ENV POETRY_VERSION=2.3.2 \
     POETRY_VIRTUALENVS_CREATE=false \
     POETRY_NO_INTERACTION=1
 
@@ -24,20 +24,20 @@ RUN mkdir /code
 COPY pyproject.toml poetry.lock /code/
 WORKDIR /code
 # install runtime deps - uses $POETRY_VIRTUALENVS_IN_PROJECT internally
-RUN poetry install --no-dev
+RUN poetry install --only main --no-root
 
 
 
 # POETRY DEPENDENCIES
-FROM python-base as development
+FROM python-base AS development
 COPY . /code/
 # quicker install because poetry runtime deps are already installed
-RUN poetry install
+RUN poetry install --no-root
 
 
 
 # NODE DEPENDENCIES & BUILD & OUTPUT
-FROM node:18 as node_build
+FROM node:20 AS node_build
 
 # Install dependencies
 COPY package.json package-lock.json /code/
@@ -46,19 +46,13 @@ RUN npm ci
 
 # Build assets
 COPY . /code/
-ARG PROJECT_NAME
-ARG NEEDS_DEMO
 ARG BUILD_ID
-RUN if [ "$NEEDS_DEMO" = "true" ]; then \
-        npm run build --project="$PROJECT_NAME" --build-id="$BUILD_ID"; \
-    else \
-        npm run build:css --project="$PROJECT_NAME" --build-id="$BUILD_ID"; \
-    fi
+RUN npm run build --build-id="$BUILD_ID"
 
 
 
 # FINAL LAYER
-FROM python-base as production
+FROM python-base AS production
 
 # Support CMS logs
 RUN mkdir -p /var/log/cms

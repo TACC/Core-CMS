@@ -1,4 +1,4 @@
-"""Configure deprecated search solution"""
+"""Configure search solution"""
 
 ########################
 # SEARCH
@@ -11,7 +11,7 @@ PORTAL_SEARCH_PATH = '/search'
 # PORTAL_SEARCH_QUERY_PARAM_NAME = 'q'
 # PORTAL_SEARCH_INDEX_IS_AUTOMATIC = False
 
-# To support Elasticsearch
+# (DEPRECATED) To support Elasticsearch
 PORTAL_SEARCH_QUERY_PARAM_NAME = 'query_string'
 PORTAL_SEARCH_INDEX_IS_AUTOMATIC = True
 
