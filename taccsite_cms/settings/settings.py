@@ -490,6 +490,7 @@ INSTALLED_APPS = [
     # django CMS Bootstrap
     # IDEA: Extend Bootstrap apps instead of overwrite
     'taccsite_cms.contrib.bootstrap4_djangocms_link',
+    'taccsite_cms.contrib.bootstrap4_djangocms_picture',
 
     # TACC CMS Plugins
     'taccsite_card',
