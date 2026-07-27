@@ -6,12 +6,8 @@ _This directory can alleviate danger #1 of [Why a Snippet Is Dangerous](#why-a-s
 
 ## Important
 
-1. The Core CMS __must not__ use any snippets __for production__. _They __should only__ be for testing._
-2. A CMS project __should not__ use any snippets. _They __may only__ be temporarily._
-3. A CMS project snippet __must__ be saved into its respective snippets directory, `/code/taccsite_custom/name-of-project/templates/snippets`.
-4. Any snippet file __must__ be kept up to date with its snippet.[^1]
-
-[^1]: For now, maintain snippet source code via internal team process.
+1. A Core CMS project __must minimize__ use of snippets.
+2. Any snippet __must__ be version-controlled in a `snippets/` directory.
 
 ## What a Snippet Is
 

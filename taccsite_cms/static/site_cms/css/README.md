@@ -10,11 +10,11 @@ See [repo `README.md` at "Static Files"](/README.md#static-files).
 
 - (Standard) Style TACC UI patterns in [Core Styles].
 - (Exception) Style CMS-specific UI in [Core CMS].
-- (Exception) Style project-specific UI in [Core CMS Resources].
+- (Exception) Style project-specific UI in [Core CMS Custom] or its own repo.
 
 
 <!-- Link Aliases -->
 
 [Core CMS]: https://github.com/TACC/Core-CMS
-[Core CMS Resources]: https://github.com/TACC/Core-CMS-Resources
+[Core CMS Custom]: https://github.com/TACC/Core-CMS-Custom
 [Core Styles]: https://github.com/TACC/Core-Styles

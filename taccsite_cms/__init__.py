@@ -1,6 +1,3 @@
-# from django.conf import settings
-#
-# if settings.CONSOLE_LOG_ENABLED:
-#     print("--> Parsing  FILE: cms-template-setup01/taccsite_cms/__init__.py")
+from .apps import TaccsiteCmsConfig
 
-# print("--> Parsing  FILE: cms-template-setup01/taccsite_cms/__init__.py")
+default_app_config = f'{TaccsiteCmsConfig.name}.apps.TaccsiteCmsConfig'

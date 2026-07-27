@@ -23,3 +23,30 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # EMAIL_HOST = 'localhost'
 # EMAIL_PORT = 1025
 # DEFAULT_FROM_EMAIL = 'no-reply@localhost'
+
+########################
+# TACC: EMAIL
+########################
+
+PORTAL_SHOULD_SEND_CONF_EMAIL = False
+
+PORTAL_CONF_EMAIL_TEXT = """
+Greetings,
+
+You have successfully submitted a form on the {site_name} website. Thank you for your submission.
+
+Sincerely,
+{site_name} Communications
+"""
+
+PORTAL_CONF_EMAIL_HTML = """
+<p>Greetings,</p>
+<p>
+  You have successfully submitted a form on the {site_name} website. Thank you
+  for your submission.
+</p>
+<p>
+  Sincerely,<br />
+  {site_name} Communications
+</p>
+"""
