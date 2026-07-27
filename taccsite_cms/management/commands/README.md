@@ -7,6 +7,7 @@
   - [for Cards](#for-cards)
   - [for Alerts](#for-alerts)
   - [for Buttons](#for-buttons)
+  - [for Pictures](#for-pictures)
 - [Set Groups & Permissions](#set-groups--permissions)
 - [Reference](#reference)
 
@@ -91,6 +92,20 @@ python manage.py create_test_page_button_style --replace
 ```
 
 Path: `/test/test-button-style/`
+
+### for Pictures
+
+Test djangocms_picture attribute/wrapper combinations (link, figure, alignment).
+
+Usage:
+
+```sh
+python manage.py create_picture_test_page --replace
+```
+
+Path: `/test/test-picture-style/`
+
+Debug overlay (labels each element on the page): printed to stdout after running the command.
 
 ## Set Groups & Permissions
 
