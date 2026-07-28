@@ -25,6 +25,11 @@ SRC: https://bitbucket.org/taccaci/frontera/src/master/client/css/bootstrap.min.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  *//*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
+/* Wrapped by TACC (start) */
+/* FAQ: To NOT apply to header nor footer */
+/* FAQ: To NOT increase spcificity */
+:where(main) {
+
 /* … */
 
 b,
@@ -56,7 +61,6 @@ hr {
 
 /* … */
 
-button,
 input,
 optgroup,
 select,
@@ -66,6 +70,7 @@ textarea {
  margin:0
 }
 button {
+ font:inherit;
  overflow:visible
 }
 button,
@@ -83,11 +88,15 @@ button[disabled],
 html input[disabled] {
  cursor:default
 }
+/* Disabled by TACC */
+/* FAQ: The `-moz-focus-inner` breaks CSS nesting */
+/*
 button::-moz-focus-inner,
 input::-moz-focus-inner {
  border:0;
  padding:0
 }
+*/
 input {
  line-height:normal
 }
@@ -136,6 +145,9 @@ th {
  padding:0
 }
 
+/* Wrapped by TACC (end) */
+}
+
 /* … */
 
 html {
@@ -150,6 +162,11 @@ body {
  line-height:1.4;
  color:#222222;
 }
+
+/* Wrapped by TACC (start) */
+/* FAQ: To NOT apply to header nor footer */
+/* FAQ: To NOT increase spcificity */
+:where(main) {
 
 /* … */
 
@@ -449,3 +466,6 @@ table {
 }
 
 /* … */
+
+/* Wrapped by TACC (end) */
+}

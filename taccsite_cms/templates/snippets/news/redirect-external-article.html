@@ -1,0 +1,8 @@
+{# To redirect page to given URL or external URL from known content #}
+{% load static %}
+
+<script id="redirect-external-article" type="module">
+import { redirectExternalArticle } from '{% static "site_cms/js/modules/manageExternalArticles.js" %}';
+
+redirectExternalArticle();
+</script>

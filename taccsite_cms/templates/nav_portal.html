@@ -1,17 +1,47 @@
-{# @var className #}
+{# @var className, settings #}
 
 {# WARNING: Some markup is duplicated in other repositories #}
 {# SEE: https://confluence.tacc.utexas.edu/x/LoCnCQ #}
 <ul class="s-portal-nav  {{ className }}" id="portal-nav">
 
-  <!-- All Portal-controlled nav elements handled here. -->
-  {# FAQ: Content populated via JavaScript, below #}
+  {# This content can be replaced by JavaScript below #}
+  {% include "./nav_portal.raw.html" %}
 
 </ul>
+
+{% if settings.PORTAL_IS_TACC_CORE_PORTAL %}
 <script type="module">
   import * as importHTML from '/static/site_cms/js/modules/importHTML.js';
 
   const container = document.getElementById('portal-nav');
 
-  importHTML.insertFromURL('/core/markup/nav', container);
+  await importHTML.insertFromURL('/core/markup/nav', container);
+
+  /* Make (Portal) Bootstrap 5 toggle compatible with (CMS) Bootstrap 4 */
+  [ ...container.querySelectorAll('[data-bs-toggle]')].forEach(toggle => {
+    const portalUsesBootstrap5Toggle = (
+      toggle.dataset.bsToggle !== undefined &&
+      toggle.dataset.toggle === undefined
+    )
+
+    if ( portalUsesBootstrap5Toggle ) {
+      toggle.dataset.toggle = toggle.dataset.bsToggle;
+      delete toggle.dataset.bsToggle;
+      console.log(
+        'Replaced `data-bs-toggle` with `data-toggle` in `#s-portal-nav`.',
+        'To not need this, update CMS Bootstrap from 4 to 5.'
+      )
+    }
+  });
+
+  /* Make (Portal) Bootstrap 5 menu compatible with (CMS) Bootstrap 4 */
+  [ ...container.querySelectorAll('.dropdown-menu-end') ].forEach(menu => {
+    menu.classList.remove('dropdown-menu-end');
+    menu.classList.add('dropdown-menu-right');
+    console.log(
+      'Replaced `dropdown-menu-end` with `dropdown-menu-right` in `#s-portal-nav`.',
+      'To not need this, update CMS Bootstrap from 4 to 5.'
+    )
+  });
 </script>
+{% endif %}

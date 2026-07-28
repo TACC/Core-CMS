@@ -1,11 +1,184 @@
 # Upgrade Project
 
-## Table of Contents
-
-- [from v4.N to v4.7+](#from-v4n-to-v47)
+- [from v4.39 to v4.40](#from-v439-to-v440)
+- [from v4.28 to v4.29](#from-v428-to-v429)
+- [from v4.N to v4.14](#from-v4n-to-v414)
+- [from v4.N to v4.13](#from-v4n-to-v413)
+- [from v4.N to v4.12](#from-v4n-to-v412)
+- [from v4.N to v4.7](#from-v4n-to-v47)
 - [from v3 to v4](#from-v3-to-v4)
-- [from v3.N to v3.12+](#from-v3n-to-v312)
+- [from v3.N to v3.12](#from-v3n-to-v312)
 - [from v2 to v3](#from-v2-to-v3)
+
+Optional:
+- [expected cleanup](#expected-cleanup)
+
+## Expected Cleanup
+
+- [Remove Unnecessary Settings](#remove-unnecessary-settings)
+- [Simplify Image Paths](#simplify-image-paths)
+
+### Remove Unnecessary Settings
+
+1. In `settings_custom.py`, remove apps from `EXTRA_STATICFILES_DIRS`, i.e.
+
+    | | change |
+    | - | - |
+    | from | `EXTRA_STATICFILES_DIRS = ('apps/custom_example', ...)` |
+    | to | `EXTRA_STATICFILES_DIRS = (...)` |
+
+    > **Note**
+    > Django automatically identifies the `static` directory for each app.
+
+### Simplify Image Paths
+
+1. Remove any subdirectories of your project's static `img` directory, i.e.
+
+    | | root |
+    | - | - |
+    | from | `taccsite_custom/static/custom_project_dir/img/*/...` |
+    | to | `taccsite_custom/static/custom_project_dir/img/...` |
+
+2. Rename **all** references to the previous image paths e.g.
+    - `/custom_project_dir/taccsite_cms/settings_custom.py` [^1]
+    - [Core Portal Deployments]:`/project_dir/camino/cms.settings_custom.py` [^1]
+
+[^1]: The `cms.settings_custom.py` is committed in [Core Portal Deployments]. A `settings_custom.py` in [Core CMS Custom] is `.gitignore`'d.
+
+## from v4.39 to v4.40
+
+- [Fold `custom_app_settings` into `settings_*`](#fold-custom_app_settings-into-settings_)
+
+### Fold `custom_app_settings` into `settings_*`
+
+| from | to |
+| - | - |
+| `custom_app_settings.py`: `INSTALLED_APPS`   | `settings_*.py`: `EXTRA_INSTALLED_APPS`   |
+| `custom_app_settings.py`: `STATICFILES_DIRS` | `settings_*.py`: `EXTRA_STATICFILES_DIRS` |
+| `custom_app_settings.py`: `MIDDLEWARE`       | `settings_*.py`: `EXTRA_MIDDLEWARE`       |
+
+If your Core-CMS customization is an independent repo (e.g. created via [Core-CMS-Template](https://github.com/TACC/Core-CMS-Template)):
+1. Rename `custom_app_settings.py` to `settings_apps.py`.
+2. Rename setting variables (as above).
+3. In `settings_custom.py`, add:
+    ```py
+    ########################
+    # TACC: CUSTOM APPS
+    ########################
+
+    from taccsite_cms.settings_apps import *
+    ```
+
+## from v4.28 to v4.29
+
+- [Rename `assets_core_project` Template Block](#rename-assets_core_project-template-block)
+
+### Rename `assets_core_project` Template Block
+
+| from | to |
+| - | - |
+| `assets_core_project` | `assets_project` |
+
+## from v4.N to v4.14
+
+- [Rename `PORTAL_ES_ENABLED` Setting](#rename-portal_es_enabled-settings)
+- [Upgrade Docker Compose](#upgrade-docker-compose)
+
+### Rename `PORTAL_ES_ENABLED` Setting
+
+| from | to |
+| - | - |
+| `PORTAL_ES_ENABLED` | `PORTAL_SEARCH_INDEX_IS_AUTOMATIC` |
+
+### Upgrade Docker Compose
+
+Update to _at least_ the latest Docker Compose v2.
+
+The v1 `docker-compose` command has long been deprecated.
+
+## from v4.N to v4.13
+
+- [Upgrade Custom Branding Setting](#upgrade-custom-logo-setting)
+
+### Upgrade Custom Branding Setting
+
+Refactor the `BRANDING` array to a `PORTAL_BRANDING` dict:
+
+```diff
+- NSF_BRANDING = [
+-     ...
+- ]
+-
+- TACC_BRANDING = [
+-     ...
+- ]
+-
+- UTEXAS_BRANDING = [
+-     ...
+- ]
+-
+- CUSTOM_BRANDING = [
+-     "portal",
+-     "…/other-funder-logo.png",
+-     "",
+-     "/",
+-     "_self",
+-     "Other Funder Logo",
+-     "anonymous",
+-     "True"
+- ]
+-
+- BRANDING = [ NSF_BRANDING, TACC_BRANDING, UTEXAS_BRANDING, CUSTOM_BRANDING ]
++ from taccsite_cms._settings.branding import *
++
++ CUSTOM_BRANDING = {
++     "is_remote": True,
++     "img_file_src": "…/other-funder-logo.png",
++     "img_class": "", # additional class names
++     "link_href": "/",
++     "link_target": "_self",
++     "link_name": "Other Funder Homepage",
++     "img_alt_text": "Other Funder Logo",
++     "img_crossorigin": "anonymous",
++ } # To hide logo, set `PORTAL_LOGO = False`
++
++ PORTAL_BRANDING = [ PORTAL_BRANDING_TACC, PORTAL_BRANDING_UTEXAS ]
+```
+
+<details><summary>Map of Array Values to Dict Properties</summary>
+
+| | from Array Value | to Dict Property |
+| - | - | - |
+| 0 | "portal"                  | (unused value) |
+| 1 | "…/other-funder-logo.svg" | `"img_file_src"` |
+| 2 | ""                        | `"img_class"` |
+| 3 | "/"                       | `"link_href"` |
+| 4 | "_self"                   | `"link_target"` |
+| 5 | "Portal Logo"             | `"img_alt_text"` |
+| 6 | "anonymous"               | `"img_crossorigin"` |
+| 7 | "True"                    | (whether to show logo) |
+
+</details>
+
+## from v4.N to v4.12
+
+- [Rename Certain Settings](#rename-certain-settings)
+
+### Rename Certain Settings
+
+| from | to |
+| - | - |
+| `INCLUDES_CORE_PORTAL` | `PORTAL_IS_TACC_CORE_PORTAL` |
+| `INCLUDES_PORTAL_NAV` | `PORTAL_HAS_LOGIN` |
+| `INCLUDES_SEARCH_BAR` | `PORTAL_HAS_SEARCH` |
+| `TACC_BLOG_SHOW_CATEGORIES` | `PORTAL_BLOG_SHOW_CATEGORIES` |
+| `TACC_BLOG_SHOW_TAGS` | `PORTAL_BLOG_SHOW_TAGS` |
+| `TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY` | `PORTAL_BLOG_CUSTOM_MEDIA_POST_CATEGORY` |
+| `TACC_BLOG_SHOW_ABSTRACT_TAG` | `PORTAL_BLOG_TAG_FOR_EXTERNAL_ARTICLES` |
+| `TACC_BLOG_CATEGORY_ORDER` | `PORTAL_BLOG_CATEGORY_ORDER` |
+| `TACC_SOCIAL_SHARE_PLATFORMS` | `PORTAL_SOCIAL_SHARE_PLATFORMS` |
+| `SEARCH_PATH` | `PORTAL_SEARCH_PATH` |
+| `SEARCH_QUERY_PARAM_NAME` | `PORTAL_SEARCH_QUERY_PARAM_NAME` |
 
 ## from v4.N to v4.7
 
@@ -14,7 +187,7 @@
 
 ### Update Custom Favicon Setting
 
-1. Rename the `FAVICON` dict to `PORTAL_FAVICON`.
+1. Refactor `FAVICON` setting as `PORTAL_FAVICON`.
 2. Add a key/value pair to the `PORTAL_FAVICON`.
 
 ```diff
@@ -26,6 +199,8 @@
 }
 ```
 
+3. Update use of `FAVICON` to use `PORTAL_FAVICON` ([example](https://github.com/TACC/tup-ui/pull/436/files#diff-7fe664832c1616b48f1b567baa26f1641a1de7e681f93546da5224dbd755eed2L13-R14)).
+
 ### Upgrade Custom Logo Setting
 
 Refactor the `LOGO` array to a `PORTAL_LOGO` dict:
@@ -33,7 +208,7 @@ Refactor the `LOGO` array to a `PORTAL_LOGO` dict:
 ```diff
 - LOGO = [
 -     "portal",
--     "site_cms/img/org_logos/portal.png",
+-     "…/logo.svg",
 -     "",
 -     "/",
 -     "_self",
@@ -43,10 +218,11 @@ Refactor the `LOGO` array to a `PORTAL_LOGO` dict:
 - ]
 + PORTAL_LOGO = {
 +     "is_remote": False,
-+     "img_file_src": "site_cms/img/org_logos/portal.png",
++     "img_file_src": "…/logo.svg",
 +     "img_class": "", # additional class names
 +     "link_href": "/",
 +     "link_target": "_self",
++     "link_name": "Portal Homepage",
 +     "img_alt_text": "Portal Logo",
 +     "img_crossorigin": "anonymous",
 + } # To hide logo, set `PORTAL_LOGO = False`
@@ -57,7 +233,7 @@ Refactor the `LOGO` array to a `PORTAL_LOGO` dict:
 | | from Array Value | to Dict Property |
 | - | - | - |
 | 0 | "portal"                  | (unused value) |
-| 1 | "site_cms/.../portal.png" | `"img_file_src"` |
+| 1 | "…/logo.svg"              | `"img_file_src"` |
 | 2 | ""                        | `"img_class"` |
 | 3 | "/"                       | `"link_href"` |
 | 4 | "_self"                   | `"link_target"` |
@@ -81,7 +257,7 @@ Refactor the `LOGO` array to a `PORTAL_LOGO` dict:
     | Deployed Website | Follow [How To Build & Deploy a CMS Website](https://tacc-main.atlassian.net/wiki/x/2AVv). |
     | Local Instance | Follow [Update Project] instructions. (Assume everything changed.) |
 
-## from v3.N to v3.12+
+## from v3.N to v3.12
 
 1. [Rename Custom Project Directory](#rename-custom-project-directory)
 2. [Redirect Deprecated Templates](#redirect-deprecated-templates)

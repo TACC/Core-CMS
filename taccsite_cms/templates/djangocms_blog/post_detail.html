@@ -1,17 +1,15 @@
-{# https://github.com/nephila/djangocms-blog/blob/1.1.1/djangocms_blog/templates/djangocms_blog/post_detail.html #}
+{# https://github.com/nephila/djangocms-blog/blob/1.2.3/djangocms_blog/templates/djangocms_blog/post_detail.html #}
 {% extends "djangocms_blog/post_detail.html" %}
-{% load i18n easy_thumbnails_tags cms_tags blog_post_use_custom_media blog_post_is_show_abstract %}
+{# TACC (print abstract for some posts e.g. an external article): #}
+{# TACC (redirect external articles): #}
+{% load i18n easy_thumbnails_tags cms_tags static sekizai_tags blog_tags %}
+{# /TACC #}
+{# /TACC #}
 
 {% block content_blog %}{% spaceless %}
-{# TACC (wrap and add breadcrumbs): #}
 
-<section class="container">
-{% include "nav_cms_breadcrumbs.html" %}
-
-{# /TACC #}
-{# TACC (define whether this is a special post): #}
-{% blog_post_use_custom_media post settings.TACC_BLOG_CUSTOM_MEDIA_POST_CATEGORY as use_custom_media %}
-{% blog_post_is_show_abstract post settings.TACC_BLOG_SHOW_ABSTRACT_TAG as is_show_abstract_post %}
+{# TACC (print abstract for some posts e.g. an external article): #}
+{% blog_post_has_tag post settings.PORTAL_BLOG_TAG_FOR_EXTERNAL_ARTICLES as show_abstract %}
 {# /TACC #}
 <article id="post-{{ post.slug }}" class="post-item post-detail">
     <header>
@@ -40,28 +38,38 @@
         {% endblock %}
         {# TACC (add social media sharing links): #}
         {% block blog_share %}
-          {% include "share_on_social.html" with className="links" %}
+          {% include "share_on_social.html" with className="socials" %}
         {% endblock %}
         {# /TACC #}
     </header>
-    {# TACC (support custom media even with thumbnail): #}
-    {# {% if not post.main_image_id %} #}
-    {% if use_custom_media or not post.main_image_id %}
-    {# /TACC #}
+    {% if not post.main_image_id %}
         <div class="blog-visual">{% render_placeholder post.media %}</div>
-    {% else %}
-    <div class="blog-visual">
+    {# TACC (setting PORTAL_BLOG_SHOW_AUTO_MAIN_IMAGE): #}
+    {% elif settings.PORTAL_BLOG_SHOW_AUTO_MAIN_IMAGE %}
+    {# /TACC #}
+    {# TACC (use figure wrapper): #}
+    <figure class="blog-visual">
         {% thumbnail post.main_image post.full_image_options.size crop=post.full_image_options.crop upscale=post.full_image_options.upscale subject_location=post.main_image.subject_location  as thumb %}
-        <img src="{{ thumb.url }}" alt="{{ post.main_image.default_alt_text }}" width="{{ thumb.width }}" height="{{ thumb.height }}" />
-    </div>
+        {# TACC (make alt text conditional to avoid `alt="None"`): #}
+        <img src="{{ thumb.url }}" alt="{% if post.main_image.default_alt_text %}{{ post.main_image.default_alt_text }}{% endif %}" width="{{ thumb.width }}" height="{{ thumb.height }}" data-width="{{ post.full_image_options.width }}" data-height="{{ post.full_image_options.height }}" />
+        {# /TACC #}
+        {# TACC (add caption): #}
+        {% if post.main_image.default_caption %}
+        <figcaption>{{ post.main_image.default_caption }}</figcaption>
+        {% endif %}
+        {# /TACC #}
+    </figure>
+    {# /TACC #}
+    {% else %}
+        <!-- PORTAL_BLOG_SHOW_AUTO_MAIN_IMAGE is not True -->
     {% endif %}
     {# TACC (do not let source end spaceless-ness prematurely): #}
     {# {% endspaceless %} #}
     {# /TACC #}
     {# TACC (print abstract for some posts e.g. an external article): #}
-    {% if is_show_abstract_post %}
-        {# TACC (copied from source app's includes/blog_item.html): #}
-        <div class="blog-lead">
+    {# And always render so JS can read ext. URL from hidden abstract #}
+        {# TACC (mostly from source app's includes/blog_item.html): #}
+        <div class="blog-lead"{% if not show_abstract %} hidden{% endif %}>
             {% if not TRUNCWORDS_COUNT %}
                 {% render_model post "abstract" "" "" "safe" %}
             {% else %}
@@ -69,7 +77,6 @@
             {% endif %}
         </div>
         {# /TACC #}
-    {% endif %}
     {# /TACC #}
     {% if post.app_config.use_placeholder %}
         <div class="blog-content s-drop-cap">{% render_placeholder post.content %}</div>
@@ -87,10 +94,21 @@
         </section>
     {% endif %}
 </article>
+
 {# TACC (end wrap and end spaceless-ness later than source): #}
-
-</section>
 {% endspaceless %}
-
 {# /TACC #}
 {% endblock content_blog %}
+
+{# TACC (redirect external articles): #}
+{% block assets_blog %}
+{{ block.super }}
+{% addtoblock "js" %}
+<script id="redirect-external-article" type="module">
+import { redirectExternalArticle } from '{% static "site_cms/js/modules/manageExternalArticles.js" %}';
+
+redirectExternalArticle('{{ settings.PORTAL_BLOG_TAG_FOR_EXTERNAL_ARTICLES }}');
+</script>
+{% endaddtoblock %}
+{% endblock assets_blog %}
+{# /TACC #}
