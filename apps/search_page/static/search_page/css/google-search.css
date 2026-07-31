@@ -13,15 +13,29 @@
 
 
 
+  /* SEARCH WRAPPERS */
+
+  /* To not shrink content width */
+  /* To avoid gaps in fake background on wide screen */
+  .gsc-wrapper,
+  .gsc-above-wrapper-area {
+    max-width: unset;
+  }
+
+
+
   /* TABLE OF SEARCH STATS & SORTING OPTIONS */
 
-  /* To remove border from search analytics, add gray background */
+  /* To replace border with fake background */
   & .gsc-above-wrapper-area {
     --bkgd-color: var(--global-color-primary--x-light);
 
     background-color: var(--bkgd-color);
-    box-shadow: 40vw 0 var(--bkgd-color), -40vw 0 var(--bkgd-color);
+    box-shadow:
+      100vw 0 0 100vh var(--bkgd-color),
+      -100vw 0 0 100vh var(--bkgd-color);
     border-bottom: unset;
+    clip-path: inset(0 -100vw);
   }
 
   & .gsc-above-wrapper-area-container {
