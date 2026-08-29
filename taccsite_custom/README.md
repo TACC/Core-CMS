@@ -9,4 +9,4 @@ A functional placeholder directory into which the original remaining custom inst
 — add unique files and functionality. This directory has special logic and support in `settings.py`.
 
 > [!NOTE]
-> This directory is a vestige of archived [Core CMS Resources](https://github.com/TACC/Core-CMS-Resources/tree/151ef91f) and we may re-evaluate whether to continue to use it.
+> This directory is a vestige of archived [Core CMS Resources](https://github.com/TACC/Core-CMS-Resources/tree/151ef91f).
