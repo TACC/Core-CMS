@@ -1,0 +1,3 @@
+/* SEE: /taccsite_cms/static/site_cms/css/src/app.blog.pages.css */
+/* FAQ: We use processed CSS built within taccsite_cms app */
+@import url("../site_cms/css/build/app.blog.pages.css");
