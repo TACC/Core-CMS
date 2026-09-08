@@ -87,11 +87,11 @@ Styleguide Trumps.Scopes.ArticlePreview
 .s-article-list--allocations .s-article-preview h3 {
   font-size: 1.6rem;
   font-weight: var(--bold);
+  color: inherit;
 }
 /* (List) Events */
 .s-article-list--events .s-article-preview h3 {
   font-size: 1.4rem;
-  color: var(--global-color-primary--xx-dark);
 }
 
 

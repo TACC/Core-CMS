@@ -20,18 +20,12 @@ Styleguide Trumps.Scopes.Document
 /* ELEMENTS: Content Sectioning */
 
 .s-document h2 {
-  margin: var(--global-space--large) 0 var(--global-space--normal);
+  margin-bottom: var(--global-space--normal);
 }
 
 .s-document h3 {
   margin-bottom: var(--global-space--normal);
 }
-
-/* Extra space above lesser headings */
-.s-document h3 { margin-top: 1em; }
-.s-document h4,
-.s-document h5,
-.s-document h6 { margin-top: 1.25em; }
 
 /* ELEMENTS: Text Content */
 

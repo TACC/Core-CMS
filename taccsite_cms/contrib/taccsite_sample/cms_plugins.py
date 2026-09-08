@@ -1,12 +1,12 @@
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
-from cms.models.pluginmodel import CMSPlugin
-from django.utils.translation import gettext as _
+
+from django.utils.translation import gettext_lazy as _
 from django.utils.encoding import force_text
 
 from .models import TaccsiteSample
 
-from .constants import DEFAULT_USER_NAME as default_name
+from .defaults import user_name as default_name
 from .utils import has_proper_name
 
 # SEE: http://docs.django-cms.org/en/release-3.7.x/reference/plugins.html
@@ -23,11 +23,14 @@ class TaccsiteSamplePlugin(CMSPluginBase):
 
     cache = False
     text_enabled = True
+    allow_children = False
     # NOTE: Use case is unclear
     # admin_preview = True
     # NOTE: To change for all TACC plugins add taccsite_cms/templates/admin/...
     # change_form_template = 'templates/plugin_change_form.html'
     # NOTE: To change field widget and other attribute beyond `models.…Field`
+    #       (Optionally, consider `formfield_overrides`:
+    #        https://django.readthedocs.io/en/latest/ref/contrib/admin/index.html#django.contrib.admin.ModelAdmin.formfield_overrides)
     # form = TaccsiteSamplePluginForm # TODO: Provide example
 
     # FAQ: Sets tooltip of preview of this plugin within a Text plugin
@@ -38,6 +41,8 @@ class TaccsiteSamplePlugin(CMSPluginBase):
     # TODO: Confirm whether these are ever necessary
     # def icon_src(self, instance)
     # def text_editor_button_icon(...)
+
+    # Render
 
     def render(self, context, instance, placeholder):
         context = super().render(context, instance, placeholder)

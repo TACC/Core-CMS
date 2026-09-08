@@ -3,6 +3,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.backends import ModelBackend
 from django.contrib.auth import get_user_model
 from django.contrib import auth as auth
+from django.utils.module_loading import import_string
+from django.contrib.auth.backends import RemoteUserBackend
 import requests
 import logging
 from django.conf import settings
@@ -11,6 +13,8 @@ UserModel = get_user_model()
 
 logger = logging.getLogger(__name__)
 
+def load_backend(path):
+    return import_string(path)()
 
 def verify_and_auth(request):
     user = auth.authenticate(request)

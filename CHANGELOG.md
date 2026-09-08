@@ -7,6 +7,88 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Bugfix/FP-1277: Extra Margin from Container by User on Standard Template (#370)
+
+## [3.0.7] - 2021-10-26: Hotfixes (mostly for Frontera); Rename Unused Component
+
+### Changed
+
+- task/FP-1260 Rename Component ReadMore to ShowMore (#376)
+
+### Fixed
+
+- FP-1270: Provide Header CSS that Only Docs Needs (#381)
+- (UTRC) FP-1234: Add Missing Top Margin for Headings (#359)
+- Quick: Complete Core fix for section header colors (#385)
+- Hotfix: Local Images for Getting Started Guide (#369)
+- `taccsite_custom`
+  - Hotfix: Frontera: White Text for Home Banner H3's (#100)
+  - Hotfix: Frontera: (UTRC-356) Homepage Banner Bkgd (x-overlay Mixin Syntax) (#386)
+
+## [3.0.0] - 2021-10-18: Refactor Settings; New Sites & Plugins; v1 CSS; Themes
+
+### Added
+
+- Quick: A2CPS [Site] (#271, #272, #380)
+- GH-245/FP-1097: v1–v2 Migration Stylesheet (#274)
+- GH-73: Blockquote, Offset [...] Plugins (#275)
+- Quick: Support Non-Bootstrap Link & Picture Plugins (#278)
+- FP-1097: A2CPS: Add Snippets (#288)
+- GH-89: (Minimal) System Monitor Plugin (a.k.a. SysMon) (#297)
+- GH-298: Add "See All" Link Component (#300)
+- Quick: Support Snippets & Add 1 Useful Snippet (#301)
+- GH-75: Data List - Styles / Component / Plugin (#305, #308, #326, #336)
+- GH-310: Breadcrumbs [...] (#311)
+- GH-310: [...] Standard Template (#311)
+- GH-98: Typography (#312, #314, #316, #318)
+- GH-83: Callout Plugin (#324)
+- GH-88: System Specs Plugin (#323, #330)
+- UTRC-356: New UTRC [...] (#367, #368, TACC/Core-CMS-Resources#80)
+- Quick: (UTRC-356) Add CSS Mixins for "Overlay" (#362, #368)
+- GH-191: Theme (for ProTX Light Header & TACC Blue Header) (#192)
+- `taccsite_custom`
+  - FP-1238/TACC/Core-CMS-Resources#68: Frontera: [...] Add Standard Template (TACC/Core-CMS-Resources#69)
+  - Quick: Frontera: Save Newsletter Snippets (TACC/Core-CMS-Resources#63)
+  - TACC/Core-CMS-Resources#70: ProTX & A2CPS: [...] Add Standard Template (TACC/Core-CMS-Resources#73)
+  - FP-1217: New UTRC Logo (TACC/Core-CMS-Resources#83)
+  - TACC/Core-CMS-Resources#191: ProTX: Support 'has-dark-logo' theme (TACC/Core-CMS-Resources#87)
+  - [Texascale: Load Blog a.k.a.] Hotfix: Texascale: Post-FP-1194 Fix (Restore Blog) (#95)
+
+### Changed
+
+- GH-73: [Update Sample Plugin to be Consistent with other Plugins] (#275)
+- Quick: Support Variable in x-truncate CSS (#304)
+- Quick: GH-253: Tweak Style Guide CSS (#325, #326)
+- GH-331: Cleanup Fullwidth Template (#332)
+- [Major: Split Settings and Secrets] (#341, #345, #347, #348, TACC/Core-CMS-Resources#77)
+- [Quick: Add UTRC Site] (#345, #357)
+- [FP-1194: Synchronize User Login between Core Portal and CMS] (#341, #346, #356)
+- Quick: (UTRC-356) Migrate Banner Overlay Styles from Core (to Frontera) (#361, #368)
+- `taccsite_custom`
+  - FP-1238/TACC/Core-CMS-Resources#68: Frontera: Cleanup Templates [...] (TACC/Core-CMS-Resources#69)
+  - Quick: Support & Move Snippets (TACC/Core-CMS-Resources#66)
+  - TACC/Core-CMS-Resources#70: ProTX & A2CPS: Cleanup Templates [...] (TACC/Core-CMS-Resources#73)
+
+### Fixed
+
+- GH-283/GH-284: Fix Facebook Share Bug (Smaller TACC Logo) (#283)
+- Hotfix/FP-1194: Use gettext_lazy Not gettext (fixed tup-cms deploy) (#344)
+- FP-1234: Add Missing Top Margin for Headings (#359)
+- Hotfix: (UTRC-356) Let Banner Section Padding Match Other Sections (#363, #368)
+- Hotfix: (UTRC-356) Avoid Grid Blowout (#365, #368)
+- Hotfix: (UTRC-356) Darker Core Body Text (#366, #368)
+- Hotfix: Static Images for Getting Started Guide (#369)
+- FP-1232: Fix Inconsistent Search Bar Icon Size (#371)
+- `taccsite_custom`
+  - TACC/Core-CMS-Resources#81: Fix Favicons Not Loading (TACC/Core-CMS-Resources#82)
+
+### Removed
+
+- `taccsite_custom`
+  - GH-89: Remove SysMon Snippet (TACC/Core-CMS-Resources#67)
+
 ## [2.5.2] - 2021-07-16: Fix Publish Bug; Texascale 2020; Polish
 
 ### Added
@@ -80,7 +162,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.0.0] - 2021-03-31
 v2.0.0 Production release as of Mar 31, 2021.
 
-[unreleased]: https://github.com/TACC/Core-CMS/compare/v2.5.2...HEAD
+[unreleased]: https://github.com/TACC/Core-CMS/compare/v3.0.7...HEAD
+[3.0.7]: https://github.com/TACC/Core-CMS/releases/tag/v3.0.7
+[3.0.0]: https://github.com/TACC/Core-CMS/releases/tag/v3.0.0
 [2.5.2]: https://github.com/TACC/Core-CMS/releases/tag/v2.5.2
 [2.1.1]: https://github.com/TACC/Core-CMS/releases/tag/v2.1.1
 [2.1.0]: https://github.com/TACC/Core-CMS/releases/tag/v2.1.0
