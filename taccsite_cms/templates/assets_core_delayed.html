@@ -9,15 +9,18 @@
 
 {# TACC/Core-CMS + @tacc/html-filter-sort #}
 {# SEE: https://github.com/wesleyboar/Core-HTML-Filter-Sort #}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tacc/html-filter-sort@0/src/filtersort.css" />
+<link
+  rel="stylesheet"
+  id="user-projects-assets-table-css"
+  href="https://cdn.jsdelivr.net/npm/@tacc/html-filter-sort@1/src/filtersort.css"
+/>
 <script
-  src="https://cdn.jsdelivr.net/npm/list.js@2.3.1/dist/list.min.js"
-  integrity="sha384-FhEOA/pIE4BfDuwGksHaZD8ms5j+dfB9QIWo7naDMzAVoCE1My4G2iu8/n/R3AAH"
+  src="https://cdn.jsdelivr.net/npm/list.js-fixed@2/dist/list.min.js"
   crossorigin="anonymous"
 ></script>
 <script type="module">
   import updateEmailLinkHrefs from '{% static "site_cms/js/modules/updateEmailLinkHrefs.js" %}';
-  import filtersort from 'https://cdn.jsdelivr.net/npm/@tacc/html-filter-sort@0/src/filtersort.js';
+  import filtersort from 'https://cdn.jsdelivr.net/npm/@tacc/html-filter-sort@1/src/filtersort.js';
 
   const scopeElement = document.getElementById('cms-content');
   const fakeText = '__REMOVE_THIS__';
