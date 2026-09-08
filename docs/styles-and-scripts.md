@@ -60,6 +60,18 @@
 
       </details>
 
+      <details><summary>for one <strong>app</strong></summary>
+
+      ```django
+        <link rel="stylesheet" href="{% static '__PROJECT__/css/build/app.___.css' %}">
+        <script src="{% static '__PROJECT__/js/app.___.js' %}"></script>
+      ```
+
+      > **Warning**
+      > Undesired for scripts. Create a module script any page could use.
+
+      </details>
+
       <details><summary>for one <strong>page</strong></summary>
 
       > **Warning**
@@ -91,6 +103,18 @@
         <link rel="stylesheet" href="{% static '__PROJECT__/css/build/template.___.css' %}">
         <script src="{% static '__PROJECT__/js/template.___.js' %}"></script>
       ```
+
+      </details>
+
+      <details><summary>for one <strong>app</strong></summary>
+
+      ```django
+        <link rel="stylesheet" href="{% static '__PROJECT__/css/build/app.___.css' %}">
+        <script src="{% static '__PROJECT__/js/app.___.js' %}"></script>
+      ```
+
+      > **Warning**
+      > Undesired for scripts. Create a module script any page could use.
 
       </details>
 
@@ -162,4 +186,4 @@
 
 [Core Styles]: https://github.com/TACC/Core-Styles
 
-[CMS UI Organization]: https://confluence.tacc.utexas.edu/x/54AZCg "CMS UI - Organization"
+[CMS UI Organization]: https://tacc-main.atlassian.net/wiki/x/vxVv "CMS UI - Organization"

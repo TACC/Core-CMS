@@ -12,6 +12,6 @@
 @custom-selector :--news-article-item--in-list :--news-feed-page--as-list article;
 @custom-selector :--news-article-item--in-grid :--news-feed-page--as-grid article;
 
-@custom-selector :--news-feed-embed
+@custom-selector :--news-feed-list
   .blog-latest-entries,
   .blog-featured-posts;

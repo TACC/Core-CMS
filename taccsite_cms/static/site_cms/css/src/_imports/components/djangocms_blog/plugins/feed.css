@@ -1,19 +1,10 @@
-/*
-Django CMS Blog Plugin Components
-
-These plugins can be loaded anywhere on the site, not just on blog pages.
-
-Reference:
-
-- [Django CMS Blog Plugin Templates](https://github.com/nephila/djangocms-blog/tree/1.2.3/djangocms_blog/templates/djangocms_blog/plugins)
-
-Styleguide Components.DjangoCMS.Blog.Plugins
-*/
-@import url("@tacc/core-styles/src/lib/_imports/tools/media-queries.css");
+/* https://github.com/nephila/djangocms-blog/blob/2.0.3/djangocms_blog/templates/djangocms_blog/plugins/latest_entries.html */
+/* https://github.com/nephila/djangocms-blog/blob/2.0.3/djangocms_blog/templates/djangocms_blog/plugins/featured_posts.html */
+/* https://github.com/nephila/djangocms-blog/blob/2.0.3/djangocms_blog/templates/djangocms_blog/plugins/authors_posts.html */
 
 @import url("../tools/x-news.css");
 
-@import url("./django.cms.blog.selectors.css");
+@import url("../selectors.css");
 
 
 
@@ -21,21 +12,19 @@ Styleguide Components.DjangoCMS.Blog.Plugins
 /* ROOT */
 
 /* to enable container queries */
-.plugin-blog {
-    @mixin news;
-
+.plugin-blog:has(:--news-feed-list) {
     container-type: inline-size;
 }
 
 
 
 
-/* FEED: LATEST BLOG ARTICLES */
+/* FEED */
 
 
 /* Root */
 
-:--news-feed-embed {
+:--news-feed-list {
     @mixin news-feed;
 
     margin-bottom: var(--global-space--bootstrap-gap);
@@ -53,12 +42,12 @@ Styleguide Components.DjangoCMS.Blog.Plugins
 /* Article */
 
 /* to hide article details (attribution and metadata) */
-:--news-feed-embed article .post-detail {
+:--news-feed-list article .post-detail {
     display: none;
 }
 
 /* for article layout */
-:--news-feed-embed article {
+:--news-feed-list article {
     @mixin news-feed__article;
 
     & header       { grid-area: head; }
@@ -67,34 +56,34 @@ Styleguide Components.DjangoCMS.Blog.Plugins
 
     @mixin news-feed--grid-layout__article;
 }
-:--news-feed-embed article:not(:has(.blog-visual > *)) {
+:--news-feed-list article:not(:has(.blog-visual > *)) {
     @mixin news-feed__article--no-media;
 }
 
 /* Article - Titles */
 
 /* to style h3 like an h4 */
-:--news-feed-embed article h3 {
+:--news-feed-list article h3 {
     margin-bottom: 0.5rem; /* Bootstrap _type.css */
 
     font-size: var(--global-font-size--medium);
     font-weight: var(--bold);
 }
-:--news-feed-embed article h4 {
+:--news-feed-list article h4 {
   display: none;
 }
 
 /* Article - Details */
 
 /* to hide stuff that is not in a simple feed */
-:--news-feed-embed article h4,
-:--news-feed-embed article .post-detail {
+:--news-feed-list article h4,
+:--news-feed-list article .post-detail {
     display: none;
 }
 
 /* Article - Visual */
 
-:--news-feed-embed article .blog-visual {
+:--news-feed-list article .blog-visual {
   @mixin news-feed-article__media;
   @mixin news-feed-article__media--above-text;
   @mixin news-feed-article__media--constrain-content;
@@ -102,13 +91,13 @@ Styleguide Components.DjangoCMS.Blog.Plugins
 
 /* Article - Lead */
 
-:--news-feed-embed article .blog-lead {
+:--news-feed-list article .blog-lead {
     @mixin news-feed-article__lead;
 }
 
 
 /* Article - Footer */
 
-:--news-feed-embed article .read-more {
+:--news-feed-list article .read-more {
   @mixin news-feed-article__link-overlay;
 }

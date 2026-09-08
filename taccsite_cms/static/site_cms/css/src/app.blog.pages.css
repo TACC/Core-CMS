@@ -1,0 +1,5 @@
+/* DO NOT ADD STYLES HERE; ONLY IMPORT OTHER STYLESHEETS */
+
+@import url("./_imports/components/djangocms_blog/pages/article.css");
+@import url("./_imports/components/djangocms_blog/pages/feed.css");
+@import url("./_imports/components/djangocms_blog/pages/shared.css");
