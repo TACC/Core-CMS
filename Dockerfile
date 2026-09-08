@@ -9,16 +9,24 @@ RUN apt-get update && apt-get install -y \
     && pip3 install uwsgi
 
 ENV PYTHONUNBUFFERED 1
-ENV PATH="/root/.local/bin:$PATH"
 
 # https://python-poetry.org/docs/configuration/#using-environment-variables
 ENV POETRY_VERSION=2.3.2 \
+    POETRY_HOME="/opt/poetry" \
     POETRY_VIRTUALENVS_CREATE=false \
     POETRY_NO_INTERACTION=1
 
+ENV PATH="$PATH:$POETRY_HOME/bin"
+
 RUN pip3 install --upgrade pip setuptools wheel
-# Install Poetry - respects $POETRY_VERSION & $POETRY_HOME
-RUN curl -sSL https://install.python-poetry.org | python3 -
+# Install into its own venv, not via the official installer or into the project's
+# environment: the installer creates its venv with symlinks=False, which on bookworm
+# resolves to Debian's libpython3.11 (pulled in by python3-dev/tox/valgrind above)
+# instead of this image's own build, breaking the ssl module. Installing into the same
+# environment as the project (POETRY_VIRTUALENVS_CREATE=false) also risks project deps
+# downgrading a shared library Poetry itself needs.
+RUN python3 -m venv "$POETRY_HOME" \
+    && "$POETRY_HOME/bin/pip" install poetry=="$POETRY_VERSION"
 RUN mkdir /code
 # copy project requirement files here to ensure they will be cached.
 COPY pyproject.toml poetry.lock /code/
