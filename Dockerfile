@@ -16,11 +16,12 @@ ENV POETRY_VERSION=2.3.2 \
     POETRY_VIRTUALENVS_CREATE=false \
     POETRY_NO_INTERACTION=1
 
+# append poetry to path
 ENV PATH="$PATH:$POETRY_HOME/bin"
 
-RUN pip3 install --upgrade pip setuptools wheel
 # Install poetry version $POETRY_VERSION to $POETRY_HOME
-RUN python3 -m venv "$POETRY_HOME" \
+RUN pip3 install --upgrade pip setuptools wheel \
+    && python3 -m venv "$POETRY_HOME" \
     && "$POETRY_HOME/bin/pip" install poetry=="$POETRY_VERSION"
 RUN mkdir /code
 # copy project requirement files here to ensure they will be cached.
