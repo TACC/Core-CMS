@@ -10,8 +10,6 @@ This markup has:
 - multiple internal scope (`s-`) classes
   (only via `./s-portal-nav.html`)
   (only via `./s-cms-nav.html`)
-- FontAwesome class names
-  (only via `./s-portal-nav.html`)
 - illegally-nested markup (`ul > div > li`)
   (only via `./s-portal-nav.html`)
 -->
@@ -26,7 +24,7 @@ This markup has:
   </a>
 
   <button
-    class="navbar-toggler"
+    class="navbar-toggler  gh-101"
     type="button"
     data-toggle="collapse"
     data-target="#navbarsExpandTarget"
@@ -34,7 +32,8 @@ This markup has:
     aria-expanded="false"
     aria-label="Toggle navigation"
   >
-    <span class="navbar-toggler-icon"></span>
+    <i class="navbar-toggler-icon">±</i>
+    <span class="navbar-toggler-text">Menu</span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarsExpandTarget">

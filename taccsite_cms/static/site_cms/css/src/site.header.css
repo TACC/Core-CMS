@@ -17,6 +17,7 @@
 
 /* COMPONENTS */
 
+@import url("_imports/components/bootstrap.navbar.css");
 @import url("_imports/components/c-branding.css");
 @import url("_imports/components/c-logo.css");
 
