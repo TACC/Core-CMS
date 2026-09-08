@@ -19,12 +19,7 @@ ENV POETRY_VERSION=2.3.2 \
 ENV PATH="$PATH:$POETRY_HOME/bin"
 
 RUN pip3 install --upgrade pip setuptools wheel
-# Install into its own venv, not via the official installer or into the project's
-# environment: the installer creates its venv with symlinks=False, which on bookworm
-# resolves to Debian's libpython3.11 (pulled in by python3-dev/tox/valgrind above)
-# instead of this image's own build, breaking the ssl module. Installing into the same
-# environment as the project (POETRY_VIRTUALENVS_CREATE=false) also risks project deps
-# downgrading a shared library Poetry itself needs.
+# Install poetry version $POETRY_VERSION to $POETRY_HOME
 RUN python3 -m venv "$POETRY_HOME" \
     && "$POETRY_HOME/bin/pip" install poetry=="$POETRY_VERSION"
 RUN mkdir /code
