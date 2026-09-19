@@ -603,17 +603,6 @@ META_USE_SCHEMAORG_PROPERTIES = True
 
 
 ########################
-# REDMINE TRACKER AUTH
-########################
-
-RT_HOST = ''
-RT_UN = ''
-RT_PW = ''
-RT_QUEUE = ''
-RT_TAG = ''
-
-
-########################
 # SETTINGS IMPORT
 ########################
 
