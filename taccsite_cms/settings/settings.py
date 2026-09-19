@@ -617,10 +617,12 @@ RT_TAG = ''
 # SETTINGS IMPORT
 ########################
 
+# Prefer `settings/overwrites/`, so Docker clients can mount that dir w/out
+# overwriting this file. Fallbacks remain for older root-level mounts.
+
 try:
-    from taccsite_cms.settings.settings_default import *
+    from taccsite_cms.settings.overwrites.settings_default import *
 except ModuleNotFoundError:
-    # pass
     # DEPRECATED SETTINGS LOCATION
     try:
         from taccsite_cms.settings_default import *
@@ -628,10 +630,9 @@ except ModuleNotFoundError:
         pass
 
 try:
-    from taccsite_cms.settings.settings_custom import *
-    import taccsite_cms.settings.settings_custom as settings_custom
+    from taccsite_cms.settings.overwrites.settings_custom import *
+    import taccsite_cms.settings.overwrites.settings_custom as settings_custom
 except ModuleNotFoundError:
-    # pass
     # DEPRECATED SETTINGS LOCATION
     try:
         from taccsite_cms.settings_custom import *
@@ -639,8 +640,8 @@ except ModuleNotFoundError:
     except ModuleNotFoundError:
         settings_custom = []
 
-# NOTE: This is outside try/catch so it supports DEPRECATED SETTINGS LOCATION
-#       (e.g. in TACC/Camino, settings files are directly under taccsite_cms)
+# NOTE: Outside try/catch so it supports DEPRECATED SETTINGS LOCATION
+#       (e.g. TACC/Camino settings files are directly under taccsite_cms/)
 if hasattr(settings_custom, 'EXTRA_INSTALLED_APPS'):
     INSTALLED_APPS += settings_custom.EXTRA_INSTALLED_APPS
 if hasattr(settings_custom, 'EXTRA_STATICFILES_DIRS'):
@@ -649,9 +650,8 @@ if hasattr(settings_custom, 'EXTRA_MIDDLEWARE'):
     MIDDLEWARE += settings_custom.EXTRA_MIDDLEWARE
 
 try:
-    from taccsite_cms.settings.secrets import *
+    from taccsite_cms.settings.overwrites.secrets import *
 except ModuleNotFoundError:
-    # pass
     # DEPRECATED SETTINGS LOCATION
     try:
         from taccsite_cms.secrets import *
@@ -659,10 +659,9 @@ except ModuleNotFoundError:
         pass
 
 try:
-    from taccsite_cms.settings.settings_local import *
-    import taccsite_cms.settings.settings_local as settings_local
+    from taccsite_cms.settings.overwrites.settings_local import *
+    import taccsite_cms.settings.overwrites.settings_local as settings_local
 except ModuleNotFoundError:
-    # pass
     # DEPRECATED SETTINGS LOCATION
     try:
         from taccsite_cms.settings_local import *

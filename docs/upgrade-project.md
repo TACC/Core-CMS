@@ -1,5 +1,6 @@
 # Upgrade Project
 
+- [from v4.40 to v4.41](#from-v440-to-v441)
 - [from v4.39 to v4.40](#from-v439-to-v440)
 - [from v4.28 to v4.29](#from-v428-to-v429)
 - [from v4.N to v4.14](#from-v4n-to-v414)
@@ -44,6 +45,21 @@ Optional:
     - [Core Portal Deployments]:`/project_dir/camino/cms.settings_custom.py` [^1]
 
 [^1]: The `cms.settings_custom.py` is committed in [Core Portal Deployments]. A `settings_custom.py` in [Core CMS Custom] is `.gitignore`'d.
+
+## from v4.40 to v4.41
+
+- [Move Client Settings into `settings/overwrites`](#move-client-settings-into-settingsoverwrites)
+
+### Move Client Settings into `settings/overwrites`
+
+Docker clients that mount a host settings directory must use `…/settings/overwrites/`, not `…/settings/`. (Mounting `…/settings/` overwrites the container's `settings.py` and breaks the CMS.)
+
+Files under `…/settings/*.py` (other than this package) are now **not imported**. Move them into `overwrites/` before upgrading.
+
+| | from | to |
+| - | - | - |
+| files | `taccsite_cms/settings/{settings_…,secrets}.py` | `taccsite_cms/settings/overwrites/…` |
+| volume | `taccsite_cms/settings:…/taccsite_cms/settings` | `taccsite_cms/settings/overwrites:…/taccsite_cms/settings/overwrites` |
 
 ## from v4.39 to v4.40
 

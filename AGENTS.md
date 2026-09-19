@@ -50,7 +50,7 @@ If you must edit docker-compose to fix a problem specific to your environment, t
 
 #### Settings & Secrets
 
-- **Settings files** are gitignored. Created from `*.example.py` by `bin/setup-cms.sh` or manually.
+- **Client overwrites** live in `taccsite_cms/settings/overwrites/`. Tracked `*.example.py` files are templates; create local `*.py` copies via `bin/setup-cms.sh` or manually (those copies are gitignored). Docker clients should mount that directory, not all of `settings/` (mounting `settings/` overwrites container `settings.py`).
 - **Postgres secret files:** `docker-compose.dev.yml` mounts `./conf/postgres/*.secret` files. These are not required for development and can be ignored.
 
 #### Elasticsearch
