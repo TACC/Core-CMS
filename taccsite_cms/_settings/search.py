@@ -5,15 +5,18 @@
 ########################
 
 # To support any search
-PORTAL_SEARCH_PATH = '/search'
+PORTAL_SEARCH_PATH = '/search/'
 
 # To support Google search
 # PORTAL_SEARCH_QUERY_PARAM_NAME = 'q'
 # PORTAL_SEARCH_INDEX_IS_AUTOMATIC = False
+GOOGLE_SEARCH_ENGINE_ID = ''
 
 # (DEPRECATED) To support Elasticsearch
 PORTAL_SEARCH_QUERY_PARAM_NAME = 'query_string'
 PORTAL_SEARCH_INDEX_IS_AUTOMATIC = True
+
+SEARCH_PAGE_AUTO_SETUP = True
 
 ES_AUTH = 'username:password'
 ES_HOSTS = 'http://elasticsearch:9200'
@@ -34,5 +37,6 @@ ALDRYN_SEARCH_DEFAULT_LANGUAGE = 'en'
 ALDRYN_SEARCH_REGISTER_APPHOOK = True
 
 _INSTALLED_APPS = [
-    'haystack',                # search index
+    'haystack',                # ElasticSearch
+#    'search_page'              # Google Search
 ]
