@@ -95,6 +95,9 @@ PORTAL_FAVICON = {
 # To disable "share this:" links (e.g. on News)
 # PORTAL_SOCIAL_SHARE_PLATFORMS = []
 
+# To disable social media profile links (e.g. in Footer)
+# PORTAL_SOCIAL_MEDIA_PLATFORMS = []
+
 ########################
 # SEARCH
 ########################

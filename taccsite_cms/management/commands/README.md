@@ -9,6 +9,7 @@
   - [for Alerts](#for-alerts)
   - [for Buttons](#for-buttons)
   - [for Pictures](#for-pictures)
+  - [for Social Logos (Snippet)](#for-social-logos-snippet)
 - [Set Groups & Permissions](#set-groups--permissions)
 - [Reference](#reference)
 
@@ -121,6 +122,18 @@ python manage.py create_picture_test_page --replace
 Path: `/test/test-picture-style/`
 
 Debug overlay (labels each element on the page): printed to stdout after running the command.
+
+### for Social Logos (Snippet)
+
+Test `snippets/logos-social-media.html` via Snippet plugin and `PORTAL_SOCIAL_MEDIA_PLATFORMS`.
+
+Usage:
+
+```sh
+python manage.py create_social_logos_snippet_test_page --replace
+```
+
+Path: `/test/social-logos-snippet-test/`
 
 ## Set Groups & Permissions
 

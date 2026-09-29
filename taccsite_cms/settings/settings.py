@@ -293,6 +293,8 @@ CEP_AUTH_VERIFICATION_ENDPOINT = 'http://django:6000'               # Local
 
 PORTAL_SOCIAL_SHARE_PLATFORMS = ['linkedin', 'facebook', 'bluesky', 'email']
 
+PORTAL_SOCIAL_MEDIA_PLATFORMS = ['linkedin', 'instagram', 'facebook', 'bluesky', 'youtube']
+
 ########################
 # TACC: STYLES
 ########################
@@ -601,17 +603,6 @@ META_USE_SCHEMAORG_PROPERTIES = True
 
 
 ########################
-# REDMINE TRACKER AUTH
-########################
-
-RT_HOST = ''
-RT_UN = ''
-RT_PW = ''
-RT_QUEUE = ''
-RT_TAG = ''
-
-
-########################
 # SETTINGS IMPORT
 ########################
 
@@ -760,6 +751,7 @@ SETTINGS_EXPORT = deprecated_SETTINGS_EXPORT + [
     'PORTAL_BLOG_CATEGORY_ORDER',
     'PORTAL_BLOG_TAG_FOR_EXTERNAL_ARTICLES',
     'PORTAL_SOCIAL_SHARE_PLATFORMS',
+    'PORTAL_SOCIAL_MEDIA_PLATFORMS',
     'PORTAL_SEARCH_PATH',
     'PORTAL_SEARCH_QUERY_PARAM_NAME',
 ]
