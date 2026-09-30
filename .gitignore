@@ -32,12 +32,15 @@ build
 !*.example.py
 *.custom.yml
 urls_custom.py
+docker-compose.local.yml
+docker-compose.local-*.yml
 
 # Postgres secret files (not required for dev)
 conf/postgres/*.secret
 
 # AI
-docker-compose.local-*.yml
+docker-compose.agent-*.yml
+docker-compose.agent.yml
 .claude/
 
 # Makefile var
