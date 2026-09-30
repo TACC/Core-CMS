@@ -17,7 +17,7 @@ The base CMS code for TACC WMA Workspace Portals & Websites
   - [Develop a Custom App/Plugin](#develop-a-custom-appplugin)
 - [Test Project](#test-project)
 - [Debug Project](#debug-project)
-- [Run Another Local CMS](#run-another-local-cms)
+- [Run Another Local CMS Instance](#run-another-local-cms-instance)
 - [Build & Deploy Project](#build--deploy-project)
 - [Contributing](#contributing)
 - [Resources](#resources)
@@ -189,9 +189,9 @@ Read [Testing] for miscellaneous workflows.
 
 Read [Debug Project] for miscellaneous tips.
 
-## Run Another Local CMS
+## Run Another Local CMS Instance
 
-Read [Run Another Local CMS] when you need a second local dev server (shared or isolated database).
+Read [Run Another Local CMS Instance] when you need a second local dev server (shared or isolated database).
 
 ## Build & Deploy Project
 
@@ -239,6 +239,6 @@ To contribute, first read [How to Contribute][Contributing].
 [Manage Dependencies]: ./docs/manage-dependencies.md
 [Upgrade Project]: ./docs/upgrade-project.md
 [Debug Project]: ./docs/debug-project.md
-[Run Another Local CMS]: ./docs/run-another-cms.md
+[Run Another Local CMS Instance]: ./docs/run-another-local-instance.md
 [Testing]: ./TESTING.md
 [Contributing]: ./CONTRIBUTING.md
