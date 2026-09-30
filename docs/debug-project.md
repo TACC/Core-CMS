@@ -35,24 +35,54 @@ See [How to Restart the CMS Server](https://github.com/TACC/Core-CMS/wiki/How-to
 
 ## Run Another Local CMS
 
-`docker-compose.dev.yml` fixes container names (`core_cms`, `core_cms_postgres`, …) and port **8000**. A second stack needs a **gitignored** `docker-compose.agent.yml` merged with `-f docker-compose.dev.yml -f docker-compose.agent.yml`.
+`docker-compose.dev.yml` fixes container names (`core_cms`, `core_cms_postgres`, …) and port **8000**. To add a second CMS, create a **gitignored** `docker-compose.local-1.yml` and merge it:
 
-### Same Database (Preview Another Checkout)
+```bash
+docker compose -f docker-compose.dev.yml -f docker-compose.local-1.yml …
+```
 
-Use when you only need a **second dev server** (e.g. **8001**) against the **existing** Postgres/Elasticsearch. **Warning:** both apps share one DB. `migrate`, test pages, and content edits affect both. Not safe for parallel migration experiments.
+### Same Database
 
-1. Leave the primary stack running (`make start`).
-2. In `docker-compose.agent.yml`, add a **second app service** (new `container_name`, host port **8001**, volume mount to the other checkout, same `core_cms_net` network). Do not start a second Postgres service.
-3. `docker compose -f docker-compose.dev.yml -f docker-compose.agent.yml up -d <that-service>`
-4. Use `docker exec <that-container> …` and open **http://127.0.0.1:8001/**.
+**Use case:** Run a second dev server (for example on port **8001**) against the **same** Postgres and Elasticsearch as your usual `make start` stack.
 
-If the app cannot reach Postgres, both stacks may be on different Compose networks (common when Postgres was started from another checkout). Prefer one `make start` from this repo, or attach containers to the same network manually.
+> [!WARNING]
+> Both CMS processes share one database. Migrations, test-page commands, and content edits from either server affect the same data. Do not use this for two migration experiments at once.
 
-### Isolated Database (Separate Migration Sandboxes)
+1. Start the primary stack from this repo (`make start`).
+2. In `docker-compose.local-1.yml`:
+   - Add a second app service (do not add Postgres or Elasticsearch).
+   - Give it a new `container_name` (not `core_cms`).
+   - Map host port **8001** to container port **8000**.
+   - Mount the other checkout at `/code`.
+   - Attach the service to the `core_cms_net` network.
+3. Start only that service:
 
-Use when you need a **fresh Postgres volume** (e.g. two migration branches at once). Override **Postgres, Elasticsearch, and CMS** in `docker-compose.agent.yml`: new `container_name` for each, new named volumes, and non-conflicting host ports (e.g. app **8001**, ES **9202**). Run `make setup` (or migrate + superuser) against that stack only.
+   ```bash
+   docker compose -f docker-compose.dev.yml -f docker-compose.local-1.yml up -d <that-service>
+   ```
 
-Point `taccsite_cms/settings/secrets.py` at the sandbox DB/ES hostnames (matching your override `container_name` values). The primary stack on **8000** can stay up only if every overridden name and port differs.
+4. Run management commands against the new container, for example `docker exec <that-container> python manage.py migrate`.
+5. Open **http://127.0.0.1:8001/**.
+
+### Isolated Database
+
+**Use case:** A separate Postgres volume so you can run migrations or experiments without touching the database behind **http://127.0.0.1:8000/**.
+
+1. In `docker-compose.local-1.yml`, override **CMS**, **Postgres**, and **Elasticsearch** from `docker-compose.dev.yml`:
+   - Give each service a **new** `container_name` (none may match `core_cms`, `core_cms_postgres`, or `core_cms_elasticsearch`).
+   - Give Postgres a **new** named volume (do not reuse `core_cms_postgres_data`).
+   - Use host ports that do not conflict with the primary stack (for example app **8001**, Elasticsearch **9202**).
+2. In `taccsite_cms/settings/secrets.py` for the checkout you mount into this stack:
+   - Set `DATABASES['default']['HOST']` to the sandbox Postgres `container_name`.
+   - Set `ES_HOSTS` to the sandbox Elasticsearch hostname (for example `http://<sandbox-es-container_name>:9200`).
+3. Start the sandbox stack:
+
+   ```bash
+   docker compose -f docker-compose.dev.yml -f docker-compose.local-1.yml up -d
+   ```
+
+4. Initialize the sandbox database (migrate, superuser, `collectstatic`, CSS build as needed—the same steps as [Getting Started](../README.md#getting-started), but use `docker exec` on the **sandbox** CMS container name).
+5. Open the sandbox app URL (for example **http://127.0.0.1:8001/**).
 
 ## Build Search Index
 
