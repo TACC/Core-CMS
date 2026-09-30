@@ -39,8 +39,8 @@ docker-compose.local-*.yml
 conf/postgres/*.secret
 
 # AI
-docker-compose.agent-*.yml
 docker-compose.agent.yml
+docker-compose.agent-*.yml
 .claude/
 
 # Makefile var
