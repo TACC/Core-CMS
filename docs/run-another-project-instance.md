@@ -1,6 +1,6 @@
-# Run Another Local CMS Instance
+# Run Another Project Instance
 
-The default stack in `docker-compose.dev.yml` uses fixed container names (`core_cms`, `core_cms_postgres`, …) and serves the app on port **8000**. To run a second CMS locally, add a **gitignored** `docker-compose.local-1.yml` and merge it:
+The default stack in `docker-compose.dev.yml` uses fixed container names (`core_cms`, `core_cms_postgres`, …) and serves the app on port **8000**. To run another project instance, add a **gitignored** `docker-compose.local-1.yml` and merge it:
 
 ```bash
 docker compose -f docker-compose.dev.yml -f docker-compose.local-1.yml …

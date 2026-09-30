@@ -40,9 +40,6 @@ conf/postgres/*.secret
 docker-compose.local-*.yml
 .claude/
 
-# Docs (negate host gitignore **/*-local*)
-!docs/run-another-local-instance.md
-
 # Makefile var
 cms_name.var
 
