@@ -46,7 +46,7 @@ _Note: Stale containers errors (e.g. `core_cms_elasticsearch already in use`) co
 
 ### Gotchas
 
-If you must edit docker-compose to fix a problem specific to your environment, create a gitignored `docker-compose.local-1.yml` (see [Run Another Project Instance](./docs/run-another-project-instance.md)).
+If you must edit docker-compose to fix a problem specific to your environment, create a gitignored **`docker-compose.agent-1.yml`** (same merge pattern as [Run Another Project Instance](./docs/run-another-project-instance.md), but use the `agent-*` filename—not `docker-compose.local-1.yml`, which is for human-local overrides in that doc).
 
 #### Settings & Secrets
 
