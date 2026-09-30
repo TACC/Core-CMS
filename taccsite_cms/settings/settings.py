@@ -494,6 +494,7 @@ INSTALLED_APPS = [
 
     # TACC CMS Plugins
     'taccsite_card',
+    'taccsite_section',
     'djangocms_tacc_image_gallery',
     'djangocms_tacc_system_monitor',
 
@@ -600,17 +601,6 @@ META_USE_SITES = True
 META_USE_OG_PROPERTIES = True
 META_USE_TWITTER_PROPERTIES = True
 META_USE_SCHEMAORG_PROPERTIES = True
-
-
-########################
-# REDMINE TRACKER AUTH
-########################
-
-RT_HOST = ''
-RT_UN = ''
-RT_PW = ''
-RT_QUEUE = ''
-RT_TAG = ''
 
 
 ########################
