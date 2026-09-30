@@ -14,6 +14,7 @@ This is a **Docker-based Django CMS** project. All application code runs inside 
 | Service | Container | Port |
 | --- | --- | --- |
 | Django CMS (app) | `core_cms` | `localhost:8000` |
+| Agent CMS (worktree preview, optional) | `core_cms_agent` | `localhost:8001` |
 | PostgreSQL 14.9 | `core_cms_postgres` | `5432` (internal) |
 | Elasticsearch 7.17 | `core_cms_elasticsearch` | `localhost:9201` |
 
@@ -46,7 +47,28 @@ _Note: Stale containers errors (e.g. `core_cms_elasticsearch already in use`) co
 
 ### Gotchas
 
-If you must edit docker-compose to fix a problem specific to your environment, then create a `docker-compose.agent.yml`.
+If you must edit docker-compose to fix a problem specific to your environment, then create a `docker-compose.agent.yml` (copy from `docker-compose.agent.example.yml`).
+
+#### Agent CMS (worktree preview)
+
+Use a **second** CMS container on **http://127.0.0.1:8001** (`core_cms_agent`) to run code from another checkout/worktree without stopping primary `core_cms` on port 8000.
+
+1. Complete `make setup` (or `make start`) **in this repo** so `core_cms_postgres` and `core_cms_elasticsearch` are running.
+2. Copy `docker-compose.agent.example.yml` → `docker-compose.agent.yml` if you do not already have one (the copy is gitignored).
+3. Start the agent CMS (set `AGENT_WORKTREE` to the branch checkout you want mounted at `/code`):
+
+```sh
+AGENT_WORKTREE=/path/to/worktree \
+  docker compose -f docker-compose.dev.yml -f docker-compose.agent.yml up -d cms_agent
+```
+
+4. Run Django commands against the agent container, e.g. `docker exec core_cms_agent python manage.py migrate`.
+
+**Networks:** Compose creates `{project}_core_cms_net`, not a global `core_cms_net`. Reuse works when Postgres, Elasticsearch, and `cms_agent` are started with the **same** `docker compose -f docker-compose.dev.yml` project (same directory as `make setup`). If Postgres was started from another checkout (e.g. a Port wrapper), the agent container will not reach the database until both attach to the same Docker network—prefer bringing up data services from this repo instead of mixing projects.
+
+**Settings:** The mounted worktree must have its own `taccsite_cms/settings/secrets.py` (and related files). Use `core_cms_postgres` and `core_cms_elasticsearch` as hosts (see Elasticsearch gotcha below).
+
+Stop only the agent: `docker compose -f docker-compose.dev.yml -f docker-compose.agent.yml stop cms_agent`.
 
 #### Settings & Secrets
 

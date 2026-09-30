@@ -202,6 +202,12 @@ docker run --rm -v "$PROJECT_ROOT:/code" -w /code "$NODE_IMAGE" sh -c "npm ci &&
 echo -e "${INF}Preparing static files...${RST}"
 docker exec core_cms sh -c "python manage.py collectstatic --no-input"
 
+if [ ! -f "${PROJECT_ROOT}/docker-compose.agent.yml" ] \
+    && [ -f "${PROJECT_ROOT}/docker-compose.agent.example.yml" ]; then
+    cp "${PROJECT_ROOT}/docker-compose.agent.example.yml" \
+        "${PROJECT_ROOT}/docker-compose.agent.yml"
+fi
+
 # Announce end
 echo -e "${POS}
 ${IMP}Setup complete! You can now:${RST}${POS}
@@ -213,5 +219,7 @@ To stop the CMS, run:
   ${INF}make stop${POS}
 
 To start it again, run:
-  ${INF}make start${RST}
+  ${INF}make start${POS}
+
+Optional — preview another checkout on port 8001 without stopping this CMS: see ${INF}AGENTS.md${POS} (Agent CMS).
 ${RST}"
