@@ -494,6 +494,7 @@ INSTALLED_APPS = [
 
     # TACC CMS Plugins
     'taccsite_card',
+    'taccsite_section',
     'djangocms_tacc_image_gallery',
     'djangocms_tacc_system_monitor',
 
