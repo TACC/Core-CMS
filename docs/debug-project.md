@@ -33,13 +33,13 @@ make clean
 
 See [How to Restart the CMS Server](https://github.com/TACC/Core-CMS/wiki/How-to-Restart-the-CMS-Server).
 
-## Run another local CMS
+## Run Another Local CMS
 
 `docker-compose.dev.yml` fixes container names (`core_cms`, `core_cms_postgres`, …) and port **8000**. A second stack needs a **gitignored** `docker-compose.agent.yml` merged with `-f docker-compose.dev.yml -f docker-compose.agent.yml`.
 
-### Same database (preview another checkout)
+### Same Database (Preview Another Checkout)
 
-Use when you only need a **second dev server** (e.g. **8001**) against the **existing** Postgres/Elasticsearch. **Warning:** both apps share one DB—`migrate`, test pages, and content edits affect both; not safe for parallel migration experiments.
+Use when you only need a **second dev server** (e.g. **8001**) against the **existing** Postgres/Elasticsearch. **Warning:** both apps share one DB. `migrate`, test pages, and content edits affect both. Not safe for parallel migration experiments.
 
 1. Leave the primary stack running (`make start`).
 2. In `docker-compose.agent.yml`, add a **second app service** (new `container_name`, host port **8001**, volume mount to the other checkout, same `core_cms_net` network). Do not start a second Postgres service.
@@ -48,7 +48,7 @@ Use when you only need a **second dev server** (e.g. **8001**) against the **exi
 
 If the app cannot reach Postgres, both stacks may be on different Compose networks (common when Postgres was started from another checkout). Prefer one `make start` from this repo, or attach containers to the same network manually.
 
-### Isolated database (separate migration sandboxes)
+### Isolated Database (Separate Migration Sandboxes)
 
 Use when you need a **fresh Postgres volume** (e.g. two migration branches at once). Override **Postgres, Elasticsearch, and CMS** in `docker-compose.agent.yml`: new `container_name` for each, new named volumes, and non-conflicting host ports (e.g. app **8001**, ES **9202**). Run `make setup` (or migrate + superuser) against that stack only.
 
