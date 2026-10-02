@@ -49,6 +49,6 @@ docker compose -f docker-compose.dev.yml -f docker-compose.local-1.yml …
 4. Initialize the sandbox database (migrate, superuser, `collectstatic`, CSS build as needed—the same steps as [Getting Started](../README.md#getting-started), but use `docker exec` on the **sandbox** CMS container name).
 5. Open the sandbox app URL (for example **http://127.0.0.1:8001/**).
 
-## Agent worktrees
+## Agent Worktrees
 
 For a dedicated CMS + Postgres stack per git worktree (no Elasticsearch), see [AGENTS.md — Git worktrees and Docker](../AGENTS.md#git-worktrees-and-docker) and [`docker-compose.agent.example.yml`](../docker-compose.agent.example.yml).
