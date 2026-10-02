@@ -87,6 +87,7 @@ See `README.md` for full setup instructions.
     - Explanatory rationale specific to this PR's decisions belong in [review comments](#review-comments), not description.
     - Code comments are only for durable, non-obvious facts for future readers regardless of PR history.
     - Say each fact once (e.g. a dependency named in "Related" should not be repeated in "Notes").
+    - Always include a "Notes" section last (uncomment it, even if empty), so any trailing attribution or signature is separate from "UI" content.
   - In "Overview" section, match the template's example length (1 sentence) and density — not just its stated max (1–3), and not a single sentence stitched together from several clauses.
     - Say what changed and (only if omitting it would leave a reviewer confused or suspicious) why, never how.
   - In "Related" section, links to PRs should instead just be raw URLs (because GitHub will auto-create rich links).
