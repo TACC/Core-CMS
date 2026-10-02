@@ -49,16 +49,6 @@ docker compose -f docker-compose.dev.yml -f docker-compose.local-1.yml …
 4. Initialize the sandbox database (migrate, superuser, `collectstatic`, CSS build as needed—the same steps as [Getting Started](../README.md#getting-started), but use `docker exec` on the **sandbox** CMS container name).
 5. Open the sandbox app URL (for example **http://127.0.0.1:8001/**).
 
-## Agent worktrees (isolated, no Elasticsearch)
+## Agent worktrees
 
-Same rules as [Core-CMS-Port — Git Worktrees and Docker](https://github.com/TACC/Core-CMS-Port/blob/main/AGENTS.md#git-worktrees-and-docker). Core-CMS differences: repo root is the CMS checkout (not `cms/`); gitignored compose files are `docker-compose.agent-<port>.yml` in the **main checkout**; template [`docker-compose.agent.example.yml`](../docker-compose.agent.example.yml).
-
-A container runs whichever checkout its Compose file points at, not the worktree you are editing. Keep all edits in the **active workspace** only—do **not** copy them into another checkout.
-
-- Set `build.context` **and** the CMS bind mount to the active worktree, as **absolute paths**. If an existing `docker-compose.agent-<port>.yml` still points at another path (including a removed worktree), update those paths and recreate the CMS container—do not ask the user to repoint unless blocked. (`build: .` builds from the main checkout.)
-- Use only that worktree bind mount for `/code`. Do **not** add anonymous volumes on `/code/static` or `/code/taccsite_cms/static` (they hide built CSS from the worktree).
-- Recreate the container after editing: `docker compose -f docker-compose.agent-<port>.yml -p cms<port> up -d --build`.
-- Keep the same compose file name and `-p cms<port>` when repointing paths, so the Postgres named volume stays attached.
-- In that worktree, `taccsite_cms/settings/settings_custom.py` (from `settings_custom.example.py`) with `PORTAL_SEARCH_INDEX_IS_AUTOMATIC = False` so saving a page does not require Elasticsearch.
-- Omit the `elasticsearch` service. Postgres hostname in `secrets.py` can stay `core_cms_postgres` when the compose file adds that **network alias** on the agent Postgres service.
-- Before deleting a worktree, repoint that instance’s paths to another checkout (or `docker compose … down` if retiring the instance).
+For a dedicated CMS + Postgres stack per git worktree (no Elasticsearch), see [AGENTS.md — Git worktrees and Docker](../AGENTS.md#git-worktrees-and-docker) and [`docker-compose.agent.example.yml`](../docker-compose.agent.example.yml).
