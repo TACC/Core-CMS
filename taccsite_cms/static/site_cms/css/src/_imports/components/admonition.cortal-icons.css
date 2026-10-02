@@ -1,0 +1,36 @@
+/*
+ * Alert plugins render Core-Styles `.admonition` markup; swap default
+ * Unicode ::before glyphs for Cortal (mkdocs-tacc pymdownx.css → Cortal).
+ */
+
+.admonition {
+  --icon: cortal;
+
+  margin-block: 1em;
+}
+
+.admonition::before {
+  font-family: cortal;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.admonition:is(.caution)::before { content: "\ea03"; } /* icon-alert */
+.admonition:is(.important, .attention)::before { content: "\ea03"; } /* icon-alert */
+.admonition:is(.warning)::before { content: "\ea12"; } /* icon-close */
+.admonition:is(.tip)::before { content: "\ea0e"; } /* icon-bulb */
+.admonition:is(.note)::before { content: "\ea21"; } /* icon-edit-document */
+.admonition:is(.hint)::before { content: "\ea0a"; } /* icon-approved */
+.admonition:is(.error, .danger)::before { content: "\ea1d"; } /* icon-denied */
+
+.admonition:is(.warning)::before {
+  color: transparent;
+  -webkit-text-stroke: var(--global-color-primary--xx-light) 2px;
+}
+
+.admonition-title::before {
+  display: none;
+}
