@@ -20,10 +20,10 @@ from djangocms_bootstrap4.contrib.bootstrap4_grid.cms_plugins import (
 )
 from djangocms_text_ckeditor.cms_plugins import TextPlugin
 
-from taccsite_cms.djangocms_bootstrap4.contrib.bootstrap4_alerts.presentation import (
-    ALERT_PRESENTATION_ADMONITION,
-    ALERT_PRESENTATION_BOOTSTRAP,
-    presentation_attributes,
+from taccsite_cms.djangocms_bootstrap4.contrib.bootstrap4_alerts.appearance import (
+    ALERT_APPEARANCE_ADMONITION,
+    ALERT_APPEARANCE_BOOTSTRAP,
+    appearance_attributes,
 )
 from taccsite_cms.management.test_page_util import (
     delete_draft_pages_by_reverse_id,
@@ -47,17 +47,17 @@ CONTEXTS = [
     'dark',
 ]
 
-# presentation key, title-case heading, supporting line (rendered as small paragraph)
-PRESENTATION_SECTIONS = (
+# appearance key, title-case heading, supporting line (rendered as small paragraph)
+APPEARANCE_SECTIONS = (
     (
-        ALERT_PRESENTATION_BOOTSTRAP,
+        ALERT_APPEARANCE_BOOTSTRAP,
         'Bootstrap Alert',
-        'Default presentation.',
+        'Default appearance.',
     ),
     (
-        ALERT_PRESENTATION_ADMONITION,
+        ALERT_APPEARANCE_ADMONITION,
         'Admonition',
-        'Core Styles presentation.',
+        'Core Styles appearance.',
     ),
 )
 
@@ -96,11 +96,11 @@ class Command(BaseCommand):
             help=f'CMS template key (default: {DEFAULT_TEMPLATE!r})',
         )
         parser.add_argument(
-            '--presentation',
+            '--appearance',
             choices=('bootstrap', 'admonition', 'both'),
             default='both',
             help=(
-                'Which alert presentation to show (default: both). '
+                'Which alert appearance to show (default: both). '
                 'With both, Bootstrap and admonition render in two columns '
                 '(one column below the md breakpoint).'
             ),
@@ -122,7 +122,7 @@ class Command(BaseCommand):
         title = options['title']
         slug = options['slug']
         template = options['template']
-        presentation = options['presentation']
+        appearance = options['appearance']
 
         User = get_user_model()
         publisher = User.objects.filter(is_superuser=True).first()
@@ -161,13 +161,13 @@ class Command(BaseCommand):
         placeholder = page.placeholders.get(slot='content')
         alert_plugin = plugin_pool.get_plugin('Bootstrap4AlertsPlugin')
 
-        sections = list(PRESENTATION_SECTIONS)
-        if presentation == 'bootstrap':
+        sections = list(APPEARANCE_SECTIONS)
+        if appearance == 'bootstrap':
             sections = [sections[0]]
-        elif presentation == 'admonition':
+        elif appearance == 'admonition':
             sections = [sections[1]]
 
-        def add_presentation_block(parent, presentation_key, heading, description):
+        def add_appearance_block(parent, appearance_key, heading, description):
             add_plugin(
                 placeholder,
                 TextPlugin,
@@ -185,12 +185,12 @@ class Command(BaseCommand):
                     language,
                     target=parent,
                     alert_context=context,
-                    attributes=presentation_attributes(presentation_key),
+                    attributes=appearance_attributes(appearance_key),
                 )
-                if presentation_key == ALERT_PRESENTATION_ADMONITION:
+                if appearance_key == ALERT_APPEARANCE_ADMONITION:
                     body = (
                         f'<strong>{context.capitalize()} admonition.</strong> '
-                        f'Presentation: admonition; context <code>{context}</code>.'
+                        f'Appearance: admonition; context <code>{context}</code>.'
                     )
                 else:
                     body = (
@@ -221,7 +221,7 @@ class Command(BaseCommand):
                 vertical_alignment='',
                 horizontal_alignment='',
             )
-            for presentation_key, heading, description in sections:
+            for appearance_key, heading, description in sections:
                 column = add_plugin(
                     placeholder,
                     Bootstrap4GridColumnPlugin,
@@ -235,13 +235,13 @@ class Command(BaseCommand):
                     lg_col=6,
                     xl_col=6,
                 )
-                add_presentation_block(
-                    column, presentation_key, heading, description,
+                add_appearance_block(
+                    column, appearance_key, heading, description,
                 )
         else:
-            presentation_key, heading, description = sections[0]
-            add_presentation_block(
-                placeholder, presentation_key, heading, description,
+            appearance_key, heading, description = sections[0]
+            add_appearance_block(
+                placeholder, appearance_key, heading, description,
             )
 
         if not options['no_publish']:

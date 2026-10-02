@@ -1,7 +1,7 @@
 /* Toggle Alert plugin dismissable field when Appearance is Admonition (TACC). */
 (function () {
   function getAppearanceSelect() {
-    return document.getElementById('id_alert_presentation');
+    return document.getElementById('id_alert_appearance');
   }
 
   function getDismissableInput() {

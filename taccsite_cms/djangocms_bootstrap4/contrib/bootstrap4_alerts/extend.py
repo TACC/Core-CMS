@@ -2,10 +2,10 @@ from django.utils.translation import gettext_lazy as _
 
 from djangocms_bootstrap4.helpers import concat_classes
 
-from .presentation import (
-    ALERT_PRESENTATION_ADMONITION,
-    ALERT_PRESENTATION_BOOTSTRAP,
-    get_alert_presentation,
+from .appearance import (
+    ALERT_APPEARANCE_ADMONITION,
+    ALERT_APPEARANCE_BOOTSTRAP,
+    get_alert_appearance,
 )
 
 ADMONITION_TEMPLATE = 'djangocms_bootstrap4/alert.html'
@@ -50,7 +50,7 @@ def extendBootstrap4AlertsPlugin():
             return [
                 (None, {
                     'fields': (
-                        'alert_presentation',
+                        'alert_appearance',
                         'alert_context',
                         'alert_dismissable',
                     ),
@@ -66,15 +66,15 @@ def extendBootstrap4AlertsPlugin():
             return super().get_form(request, obj, change=change, **kwargs)
 
         def get_render_template(self, context, instance, placeholder):
-            if get_alert_presentation(instance) == ALERT_PRESENTATION_ADMONITION:
+            if get_alert_appearance(instance) == ALERT_APPEARANCE_ADMONITION:
                 return ADMONITION_TEMPLATE
             return BOOTSTRAP_TEMPLATE
 
         def render(self, context, instance, placeholder):
-            presentation = get_alert_presentation(instance)
+            appearance = get_alert_appearance(instance)
             extra_class = (instance.attributes or {}).get('class')
 
-            if presentation == ALERT_PRESENTATION_ADMONITION:
+            if appearance == ALERT_APPEARANCE_ADMONITION:
                 admonition_type = ALERT_CONTEXT_TO_ADMONITION_TYPE.get(
                     instance.alert_context,
                     'note',
