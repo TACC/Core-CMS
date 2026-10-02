@@ -13,6 +13,11 @@ from django.core.management.base import BaseCommand, CommandError
 from cms.api import add_plugin, create_page, publish_page
 from cms.plugin_pool import plugin_pool
 
+from djangocms_bootstrap4.contrib.bootstrap4_grid.cms_plugins import (
+    Bootstrap4GridColumnPlugin,
+    Bootstrap4GridContainerPlugin,
+    Bootstrap4GridRowPlugin,
+)
 from djangocms_text_ckeditor.cms_plugins import TextPlugin
 
 from taccsite_cms.djangocms_bootstrap4.contrib.bootstrap4_alerts.presentation import (
@@ -42,9 +47,18 @@ CONTEXTS = [
     'dark',
 ]
 
+# presentation key, title-case heading, supporting line (rendered as small paragraph)
 PRESENTATION_SECTIONS = (
-    (ALERT_PRESENTATION_BOOTSTRAP, 'Bootstrap alert (default presentation)'),
-    (ALERT_PRESENTATION_ADMONITION, 'Admonition (Core Styles presentation)'),
+    (
+        ALERT_PRESENTATION_BOOTSTRAP,
+        'Bootstrap Alert',
+        'Default presentation.',
+    ),
+    (
+        ALERT_PRESENTATION_ADMONITION,
+        'Admonition',
+        'Core Styles presentation.',
+    ),
 )
 
 
@@ -87,7 +101,8 @@ class Command(BaseCommand):
             default='both',
             help=(
                 'Which alert presentation to show (default: both). '
-                'Use both to compare Bootstrap vs admonition on one page.'
+                'With both, Bootstrap and admonition render in two columns '
+                '(one column below the md breakpoint).'
             ),
         )
         parser.add_argument(
@@ -146,24 +161,29 @@ class Command(BaseCommand):
         placeholder = page.placeholders.get(slot='content')
         alert_plugin = plugin_pool.get_plugin('Bootstrap4AlertsPlugin')
 
-        sections = PRESENTATION_SECTIONS
+        sections = list(PRESENTATION_SECTIONS)
         if presentation == 'bootstrap':
-            sections = (PRESENTATION_SECTIONS[0],)
+            sections = [sections[0]]
         elif presentation == 'admonition':
-            sections = (PRESENTATION_SECTIONS[1],)
+            sections = [sections[1]]
 
-        for presentation_key, section_title in sections:
+        def add_presentation_block(parent, presentation_key, heading, description):
             add_plugin(
                 placeholder,
                 TextPlugin,
                 language,
-                body=f'<h2>{section_title}</h2>',
+                target=parent,
+                body=(
+                    f'<h2>{heading}</h2>'
+                    f'<p class="small text-muted">{description}</p>'
+                ),
             )
             for context in CONTEXTS:
                 alert = add_plugin(
                     placeholder,
                     alert_plugin,
                     language,
+                    target=parent,
                     alert_context=context,
                     attributes=presentation_attributes(presentation_key),
                 )
@@ -185,6 +205,44 @@ class Command(BaseCommand):
                     target=alert,
                     body=body,
                 )
+
+        if len(sections) == 2:
+            container = add_plugin(
+                placeholder,
+                Bootstrap4GridContainerPlugin,
+                language,
+                container_type='container',
+            )
+            row = add_plugin(
+                placeholder,
+                Bootstrap4GridRowPlugin,
+                language,
+                target=container,
+                vertical_alignment='',
+                horizontal_alignment='',
+            )
+            for presentation_key, heading, description in sections:
+                column = add_plugin(
+                    placeholder,
+                    Bootstrap4GridColumnPlugin,
+                    language,
+                    target=row,
+                    column_type='col',
+                    column_alignment='',
+                    xs_col=12,
+                    sm_col=12,
+                    md_col=6,
+                    lg_col=6,
+                    xl_col=6,
+                )
+                add_presentation_block(
+                    column, presentation_key, heading, description,
+                )
+        else:
+            presentation_key, heading, description = sections[0]
+            add_presentation_block(
+                placeholder, presentation_key, heading, description,
+            )
 
         if not options['no_publish']:
             with warnings.catch_warnings():
