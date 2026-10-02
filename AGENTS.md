@@ -46,7 +46,20 @@ _Note: Stale containers errors (e.g. `core_cms_elasticsearch already in use`) co
 
 ### Gotchas
 
-If you must edit docker-compose to fix a problem specific to your environment, create a gitignored `docker-compose.agent-<label>.yml` from [`docker-compose.agent.example.yml`](./docker-compose.agent.example.yml) (see [Agent worktrees (isolated, no Elasticsearch)](./docs/run-another-project-instance.md#agent-worktrees-isolated-no-elasticsearch)). For a second server on the **same** DB/ES as `make start`, use `docker-compose.local-*.yml` instead ([Run Another Project Instance](./docs/run-another-project-instance.md)).
+If you must edit docker-compose to fix a problem specific to your environment, create a gitignored `docker-compose.agent-<port>.yml` from [`docker-compose.agent.example.yml`](./docker-compose.agent.example.yml) (see [Agent worktrees](./docs/run-another-project-instance.md#agent-worktrees-isolated-no-elasticsearch)). For a second server on the **same** DB/ES as `make start`, use `docker-compose.local-*.yml` instead ([Run Another Project Instance](./docs/run-another-project-instance.md)).
+
+#### Git worktrees and Docker
+
+A container runs whichever checkout its Compose file points at, not the worktree you are editing. Keep all edits in the **active workspace** only—do **not** copy them into another checkout.
+
+Per-instance files `docker-compose.agent-<port>.yml` (gitignored) live in the **main checkout**, so you can see which worktree each instance uses and delete worktrees without losing them.
+
+- Set `build.context` **and** the CMS bind mount to the active worktree, as **absolute paths**. (`build: .` builds from the main checkout.)
+- Recreate the container after editing: `docker compose -f docker-compose.agent-<port>.yml -p cms<port> up -d --build`.
+- Keep the same file name and `-p cms<port>` project name when repointing, so the named volumes stay attached.
+- In that worktree, `settings_custom.py` with `PORTAL_SEARCH_INDEX_IS_AUTOMATIC = False` so saving a page does not index.
+- Omit the `elasticsearch` service.
+- Before deleting a worktree, repoint its instance to another one.
 
 #### Settings & Secrets
 

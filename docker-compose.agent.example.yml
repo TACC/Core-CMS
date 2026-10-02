@@ -1,37 +1,24 @@
-# Agent / worktree instance (no Elasticsearch).
-#
-# 1. Copy to docker-compose.agent-<label>.yml (gitignored).
-# 2. Set AGENT_WORKTREE to the checkout you are editing (absolute path).
-# 3. Pick a free host port and matching instance id (used in container names).
-#
-#   export AGENT_WORKTREE=/path/to/Core-CMS-worktree
-#   export AGENT_PORT=8005
-#   export AGENT_INSTANCE=8005
-#   docker compose -f docker-compose.agent-<label>.yml -p cms_${AGENT_INSTANCE} up -d --build
-#
-# In that worktree, ensure taccsite_cms/settings/secrets.py exists (from secrets.example.py).
-# Use settings_custom.py with PORTAL_SEARCH_INDEX_IS_AUTOMATIC = False (see settings_custom.example.py).
-# Postgres is reachable at hostname core_cms_postgres via the network alias below.
+# Copy to docker-compose.agent-8005.yml (gitignored; keep in main checkout).
+# Replace /absolute/path/to/Core-CMS-worktree and port/instance ids as needed.
+# docker compose -f docker-compose.agent-8005.yml -p cms8005 up -d --build
 
 services:
   cms:
     build:
-      context: ${AGENT_WORKTREE}
+      context: /absolute/path/to/Core-CMS-worktree
       dockerfile: Dockerfile
-    image: taccwma/core-cms:agent-${AGENT_INSTANCE}
+    image: taccwma/core-cms:agent-8005
     ports:
-      - 127.0.0.1:${AGENT_PORT}:8000
+      - 127.0.0.1:8005:8000
     command: ["python3", "manage.py", "runserver", "0.0.0.0:8000"]
-    container_name: core_cms_${AGENT_INSTANCE}
-    hostname: core_cms_${AGENT_INSTANCE}
+    container_name: core_cms_8005
+    hostname: core_cms_8005
     volumes:
-      - ${AGENT_WORKTREE}:/code
-      - /code/static
-      - /code/taccsite_cms/static
+      - /absolute/path/to/Core-CMS-worktree:/code
     depends_on:
       - postgres
     networks:
-      - core_cms_${AGENT_INSTANCE}_net
+      - core_cms_8005_net
 
   postgres:
     image: postgres:14.9
@@ -41,16 +28,16 @@ services:
       - POSTGRES_DB=taccsite
       - PGDATA=/var/lib/postgresql/data/taccsite
     volumes:
-      - core_cms_${AGENT_INSTANCE}_postgres_data:/var/lib/postgresql/data
-    hostname: core_cms_postgres_${AGENT_INSTANCE}
-    container_name: core_cms_postgres_${AGENT_INSTANCE}
+      - core_cms_8005_postgres_data:/var/lib/postgresql/data
+    hostname: core_cms_postgres_8005
+    container_name: core_cms_postgres_8005
     networks:
-      core_cms_${AGENT_INSTANCE}_net:
+      core_cms_8005_net:
         aliases:
           - core_cms_postgres
 
 volumes:
-  core_cms_${AGENT_INSTANCE}_postgres_data:
+  core_cms_8005_postgres_data:
 
 networks:
-  core_cms_${AGENT_INSTANCE}_net:
+  core_cms_8005_net:
