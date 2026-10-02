@@ -256,6 +256,6 @@ class Command(BaseCommand):
         self.stdout.write(f'Page title: {title}')
         self.stdout.write(f'URL: {url}')
         self.stdout.write(
-            'CMS: edit any Alert plugin — first field is Presentation '
-            '(Bootstrap alert vs Admonition).'
+            'CMS: edit any Alert plugin — Appearance is the first field '
+            '(Bootstrap (TACC) vs Admonition (TACC)).'
         )
