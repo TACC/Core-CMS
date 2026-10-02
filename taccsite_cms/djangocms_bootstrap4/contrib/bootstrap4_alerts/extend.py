@@ -4,14 +4,14 @@ import copy
 # Map Bootstrap alert contexts to Core-Styles admonition type classes
 # (colors + default ::before icon treatment in admonition.css).
 ALERT_CONTEXT_TO_ADMONITION_TYPE = {
-    'primary': 'note',
+    'primary': 'tip',
     'secondary': 'note',
     'success': 'hint',
     'danger': 'danger',
     'warning': 'warning',
     'info': 'note',
     'light': 'note',
-    'dark': 'important',
+    'dark': 'note',
 }
 
 

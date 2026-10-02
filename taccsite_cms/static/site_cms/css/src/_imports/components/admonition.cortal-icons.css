@@ -1,6 +1,5 @@
 /*
- * Alert plugins render Core-Styles `.admonition` markup; swap default
- * Unicode ::before glyphs for Cortal (mkdocs-tacc pymdownx.css → Cortal).
+ * Bootstrap 4 Alert → Core-Styles `.admonition` icons (Cortal + ⓘ).
  */
 
 .admonition {
@@ -18,17 +17,21 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.admonition:is(.caution)::before { content: "\ea03"; } /* icon-alert */
-.admonition:is(.important, .attention)::before { content: "\ea03"; } /* icon-alert */
-.admonition:is(.warning)::before { content: "\ea12"; } /* icon-close */
-.admonition:is(.tip)::before { content: "\ea0e"; } /* icon-bulb */
-.admonition:is(.note)::before { content: "\ea21"; } /* icon-edit-document */
-.admonition:is(.hint)::before { content: "\ea0a"; } /* icon-approved */
-.admonition:is(.error, .danger)::before { content: "\ea1d"; } /* icon-denied */
+.admonition:is(.tip, .note)::before {
+  content: "ⓘ";
+  font-family: inherit;
+}
+
+.admonition:is(.hint)::before {
+  content: "\ea09"; /* icon-approved-reverse */
+}
+
+.admonition:is(.error, .danger)::before {
+  content: "\ea1c"; /* icon-denied-reverse */
+}
 
 .admonition:is(.warning)::before {
-  color: transparent;
-  -webkit-text-stroke: var(--global-color-primary--xx-light) 2px;
+  content: "\ea03"; /* icon-alert */
 }
 
 .admonition-title::before {
