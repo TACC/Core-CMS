@@ -36,9 +36,6 @@ class Bootstrap4AlertForm(forms.ModelForm):
         )
 
     class Media:
-        css = {
-            'all': ('site_cms/css/admin/bootstrap4-alert-appearance.css',),
-        }
         js = ('site_cms/js/admin/bootstrap4-alert-appearance.js',)
 
     def __init__(self, *args, **kwargs):
