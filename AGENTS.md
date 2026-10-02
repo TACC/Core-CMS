@@ -80,7 +80,7 @@ See `README.md` for full setup instructions.
 ## Pull Requests
 
 - **Title:** `.gitmessage` (fallback: `~/.gitmessage`)
-- **Description:** `.github/PULL_REQUEST_TEMPLATE.md` (fallback: `~/.github/PULL_REQUEST_TEMPLATE.md`)
+- **Description:** `.github/PULL_REQUEST_TEMPLATE.md` (fallback: `~/.github/PULL_REQUEST_TEMPLATE.md`). Fill out [.github/PULL_REQUEST_TEMPLATE.md](.github/PULL_REQUEST_TEMPLATE.md).
   - In general:
     - When updating, first re-read the current description, because it may have been edited.
     - Be concise: plain language, simple sentences, present lists as bullets not prose.
@@ -99,6 +99,12 @@ See `README.md` for full setup instructions.
   - In "Testing" section:
     - One action per numbered step.
     - Prefer a step that compares directly against a running reference (e.g. production).
+
+**Changes** (port convention):
+
+- Use **many** bullets when the PR touches several areas; keep **each bullet short**—one high-level line per change, not fewer bullets with paragraphs.
+- Prefix each bullet with a bold verb (**added**, **updated**, **fixed**, **deleted**, …) as in the template.
+- **Overview** stays 1–3 sentences; **UI** uses a table and meaningful `alt` text on uploaded screenshots.
 
 ### Review Comments
 
