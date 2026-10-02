@@ -91,7 +91,8 @@ See `README.md` for full setup instructions.
     - Say what changed and (only if omitting it would leave a reviewer confused or suspicious) why, never how.
   - In "Related" section, links to PRs should instead just be raw URLs (because GitHub will auto-create rich links).
   - In "Changes" section:
-    - Group changes into as few bullets as the logical changes require (never one per file).
+    - Group changes into one bullet per file.
+    - Prefix each bullet with a bold verb as shown in the template.
     - Default to zero explanation per bullet (e.g. `**added** logos`). Leave the detail for the code diff itself — a bullet is not the place to restate what the diff already shows.
     - Name files/identifiers by their bare name (`x-button.css`), not full path, unless the bare name is ambiguous.
     - Describe even the "what" at the highest level that's still meaningful — prefer a general noun ("shared rules") to an enumeration of the specifics behind it ("the such-and-such code block").
@@ -99,12 +100,6 @@ See `README.md` for full setup instructions.
   - In "Testing" section:
     - One action per numbered step.
     - Prefer a step that compares directly against a running reference (e.g. production).
-
-**Changes** (port convention):
-
-- Use **many** bullets when the PR touches several areas; keep **each bullet short**—one high-level line per change, not fewer bullets with paragraphs.
-- Prefix each bullet with a bold verb (**added**, **updated**, **fixed**, **deleted**, …) as in the template.
-- **Overview** stays 1–3 sentences; **UI** uses a table and meaningful `alt` text on uploaded screenshots.
 
 ### Review Comments
 
