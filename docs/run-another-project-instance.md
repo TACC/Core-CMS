@@ -49,9 +49,9 @@ docker compose -f docker-compose.dev.yml -f docker-compose.local-1.yml …
 4. Initialize the sandbox database (migrate, superuser, `collectstatic`, CSS build as needed—the same steps as [Getting Started](../README.md#getting-started), but use `docker exec` on the **sandbox** CMS container name).
 5. Open the sandbox app URL (for example **http://127.0.0.1:8001/**).
 
-## Agent worktrees (isolated, no Elasticsearch)
+## Agent Worktrees
 
-**Use case:** An agent (or human) edits one **git worktree** and runs a **dedicated** CMS + Postgres stack—without Elasticsearch and without colliding with `make start` on port 8000. Matches the pattern documented for [Core-CMS-Port](https://github.com/TACC/Core-CMS-Port/blob/main/AGENTS.md#git-worktrees-and-docker).
+**Use case:** A developer edits one **git worktree** and runs a **dedicated** CMS + Postgres stack—without Elasticsearch and without `make start` collision on port 8000.
 
 > [!IMPORTANT]
 > A container serves the checkout its Compose file mounts, not “whatever directory you have open in the editor.” Point **every** bind mount and `build.context` at the **active worktree** using **absolute paths**.
