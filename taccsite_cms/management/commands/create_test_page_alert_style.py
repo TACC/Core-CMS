@@ -11,12 +11,20 @@ from django.contrib.auth import get_user_model
 from django.core.management.base import BaseCommand, CommandError
 
 from cms.api import add_plugin, create_page, publish_page
+from cms.plugin_pool import plugin_pool
 
-from djangocms_bootstrap4.contrib.bootstrap4_alerts.cms_plugins import (
-    Bootstrap4AlertsPlugin,
+from djangocms_bootstrap4.contrib.bootstrap4_grid.cms_plugins import (
+    Bootstrap4GridColumnPlugin,
+    Bootstrap4GridContainerPlugin,
+    Bootstrap4GridRowPlugin,
 )
 from djangocms_text_ckeditor.cms_plugins import TextPlugin
 
+from taccsite_cms.djangocms_bootstrap4.contrib.bootstrap4_alerts.appearance import (
+    ALERT_APPEARANCE_ADMONITION,
+    ALERT_APPEARANCE_BOOTSTRAP,
+    appearance_attributes,
+)
 from taccsite_cms.management.test_page_util import (
     delete_draft_pages_by_reverse_id,
     ensure_test_parent_page,
@@ -38,6 +46,20 @@ CONTEXTS = [
     'light',
     'dark',
 ]
+
+# appearance key, title-case heading, supporting line (rendered as small paragraph)
+APPEARANCE_SECTIONS = (
+    (
+        ALERT_APPEARANCE_BOOTSTRAP,
+        'Bootstrap Alert',
+        'Default appearance.',
+    ),
+    (
+        ALERT_APPEARANCE_ADMONITION,
+        'Admonition',
+        'Core Styles appearance.',
+    ),
+)
 
 
 class Command(BaseCommand):
@@ -74,6 +96,16 @@ class Command(BaseCommand):
             help=f'CMS template key (default: {DEFAULT_TEMPLATE!r})',
         )
         parser.add_argument(
+            '--appearance',
+            choices=('bootstrap', 'admonition', 'both'),
+            default='both',
+            help=(
+                'Which alert appearance to show (default: both). '
+                'With both, Bootstrap and admonition render in two columns '
+                '(one column below the md breakpoint).'
+            ),
+        )
+        parser.add_argument(
             '--replace',
             action='store_true',
             help='Delete any existing page with the same reverse_id first',
@@ -90,6 +122,7 @@ class Command(BaseCommand):
         title = options['title']
         slug = options['slug']
         template = options['template']
+        appearance = options['appearance']
 
         User = get_user_model()
         publisher = User.objects.filter(is_superuser=True).first()
@@ -126,22 +159,89 @@ class Command(BaseCommand):
         )
 
         placeholder = page.placeholders.get(slot='content')
+        alert_plugin = plugin_pool.get_plugin('Bootstrap4AlertsPlugin')
 
-        for context in CONTEXTS:
-            alert = add_plugin(
-                placeholder,
-                Bootstrap4AlertsPlugin,
-                language,
-                alert_context=context,
-            )
+        sections = list(APPEARANCE_SECTIONS)
+        if appearance == 'bootstrap':
+            sections = [sections[0]]
+        elif appearance == 'admonition':
+            sections = [sections[1]]
+
+        def add_appearance_block(parent, appearance_key, heading, description):
             add_plugin(
                 placeholder,
                 TextPlugin,
                 language,
-                target=alert,
-                body=f'<strong>{context.capitalize()} alert.</strong> '
-                     f'This is a <code>alert-{context}</code> Bootstrap 4 alert. '
-                     f'<a href="#" class="alert-link">Example link</a>.',
+                target=parent,
+                body=(
+                    f'<h2>{heading}</h2>'
+                    f'<p class="small text-muted">{description}</p>'
+                ),
+            )
+            for context in CONTEXTS:
+                alert = add_plugin(
+                    placeholder,
+                    alert_plugin,
+                    language,
+                    target=parent,
+                    alert_context=context,
+                    attributes=appearance_attributes(appearance_key),
+                )
+                if appearance_key == ALERT_APPEARANCE_ADMONITION:
+                    body = (
+                        f'<strong>{context.capitalize()} admonition.</strong> '
+                        f'Appearance: admonition; context <code>{context}</code>.'
+                    )
+                else:
+                    body = (
+                        f'<strong>{context.capitalize()} alert.</strong> '
+                        f'This is a <code>alert-{context}</code> Bootstrap 4 alert. '
+                        f'<a href="#" class="alert-link">Example link</a>.'
+                    )
+                add_plugin(
+                    placeholder,
+                    TextPlugin,
+                    language,
+                    target=alert,
+                    body=body,
+                )
+
+        if len(sections) == 2:
+            container = add_plugin(
+                placeholder,
+                Bootstrap4GridContainerPlugin,
+                language,
+                container_type='container',
+            )
+            row = add_plugin(
+                placeholder,
+                Bootstrap4GridRowPlugin,
+                language,
+                target=container,
+                vertical_alignment='',
+                horizontal_alignment='',
+            )
+            for appearance_key, heading, description in sections:
+                column = add_plugin(
+                    placeholder,
+                    Bootstrap4GridColumnPlugin,
+                    language,
+                    target=row,
+                    column_type='col',
+                    column_alignment='',
+                    xs_col=12,
+                    sm_col=12,
+                    md_col=6,
+                    lg_col=6,
+                    xl_col=6,
+                )
+                add_appearance_block(
+                    column, appearance_key, heading, description,
+                )
+        else:
+            appearance_key, heading, description = sections[0]
+            add_appearance_block(
+                placeholder, appearance_key, heading, description,
             )
 
         if not options['no_publish']:
@@ -155,3 +255,7 @@ class Command(BaseCommand):
         url = page.get_absolute_url()
         self.stdout.write(f'Page title: {title}')
         self.stdout.write(f'URL: {url}')
+        self.stdout.write(
+            'CMS: edit any Alert plugin — Appearance is the first field '
+            '(Bootstrap (TACC) vs Admonition (TACC)).'
+        )
