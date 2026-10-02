@@ -1,8 +1,15 @@
 import copy
 
+from djangocms_bootstrap4.helpers import concat_classes
 
-# Map Bootstrap alert contexts to Core-Styles admonition type classes
-# (colors + default ::before icon treatment in admonition.css).
+ALERT_PRESENTATION_ATTR = 'data-cms-alert-style'
+ALERT_PRESENTATION_BOOTSTRAP = 'bootstrap'
+ALERT_PRESENTATION_ADMONITION = 'admonition'
+
+ADMONITION_TEMPLATE = 'djangocms_bootstrap4/alert.html'
+BOOTSTRAP_TEMPLATE = 'djangocms_bootstrap4/alerts.html'
+
+# Map Bootstrap alert contexts to Core-Styles admonition type classes.
 ALERT_CONTEXT_TO_ADMONITION_TYPE = {
     'primary': 'tip',
     'secondary': 'note',
@@ -13,6 +20,11 @@ ALERT_CONTEXT_TO_ADMONITION_TYPE = {
     'light': 'note',
     'dark': 'note',
 }
+
+
+def get_alert_presentation(instance):
+    attrs = instance.attributes or {}
+    return attrs.get(ALERT_PRESENTATION_ATTR, ALERT_PRESENTATION_BOOTSTRAP)
 
 
 def extendBootstrap4AlertsPlugin():
@@ -27,31 +39,55 @@ def extendBootstrap4AlertsPlugin():
     from djangocms_bootstrap4.contrib.bootstrap4_alerts.models import (
         Bootstrap4Alerts as OriginalBootstrap4Alerts,
     )
-    from djangocms_bootstrap4.helpers import concat_classes
+
+    from .forms import Bootstrap4AlertForm
 
     class Bootstrap4AlertsPlugin(OriginalBootstrap4AlertsPlugin):
         model = OriginalBootstrap4Alerts
-        render_template = 'djangocms_bootstrap4/alert.html'
+        form = Bootstrap4AlertForm
 
         fieldsets = list(copy.deepcopy(OriginalBootstrap4AlertsPlugin.fieldsets))
+        fieldsets[0][1]['fields'] = (
+            'alert_presentation',
+            'alert_context',
+            'alert_dismissable',
+        )
+
+        def get_render_template(self, context, instance, placeholder):
+            if get_alert_presentation(instance) == ALERT_PRESENTATION_ADMONITION:
+                return ADMONITION_TEMPLATE
+            return BOOTSTRAP_TEMPLATE
 
         def render(self, context, instance, placeholder):
-            admonition_type = ALERT_CONTEXT_TO_ADMONITION_TYPE.get(
-                instance.alert_context,
-                'note',
-            )
-            link_classes = [
-                'admonition',
-                admonition_type,
-            ]
-            classes = concat_classes(link_classes + [
-                instance.attributes.get('class'),
-            ])
-            instance.attributes['class'] = classes
-            instance.tag_type = 'div'
+            presentation = get_alert_presentation(instance)
+            extra_class = (instance.attributes or {}).get('class')
 
-            return super(OriginalBootstrap4AlertsPlugin, self).render(
-                context, instance, placeholder
+            if presentation == ALERT_PRESENTATION_ADMONITION:
+                admonition_type = ALERT_CONTEXT_TO_ADMONITION_TYPE.get(
+                    instance.alert_context,
+                    'note',
+                )
+                classes = concat_classes([
+                    'admonition',
+                    admonition_type,
+                    extra_class,
+                ])
+                instance.tag_type = 'div'
+            else:
+                classes = concat_classes([
+                    'alert',
+                    f'alert-{instance.alert_context}',
+                    extra_class,
+                ])
+
+            if instance.attributes is None:
+                instance.attributes = {}
+            instance.attributes['class'] = classes
+
+            from cms.plugin_base import CMSPluginBase
+
+            return CMSPluginBase.render(
+                self, context, instance, placeholder,
             )
 
     plugin_pool.unregister_plugin(OriginalBootstrap4AlertsPlugin)

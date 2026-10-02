@@ -17,6 +17,10 @@ from djangocms_bootstrap4.contrib.bootstrap4_alerts.cms_plugins import (
 )
 from djangocms_text_ckeditor.cms_plugins import TextPlugin
 
+from taccsite_cms.djangocms_bootstrap4.contrib.bootstrap4_alerts.extend import (
+    ALERT_PRESENTATION_ADMONITION,
+    ALERT_PRESENTATION_ATTR,
+)
 from taccsite_cms.management.test_page_util import (
     delete_draft_pages_by_reverse_id,
     ensure_test_parent_page,
@@ -133,6 +137,9 @@ class Command(BaseCommand):
                 Bootstrap4AlertsPlugin,
                 language,
                 alert_context=context,
+                attributes={
+                    ALERT_PRESENTATION_ATTR: ALERT_PRESENTATION_ADMONITION,
+                },
             )
             add_plugin(
                 placeholder,

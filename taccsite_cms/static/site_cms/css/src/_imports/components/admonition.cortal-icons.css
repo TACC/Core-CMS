@@ -23,11 +23,11 @@
 }
 
 .admonition:is(.hint)::before {
-  content: "\ea09"; /* icon-approved-reverse */
+  content: "\ea0a"; /* icon-approved */
 }
 
 .admonition:is(.error, .danger)::before {
-  content: "\ea1c"; /* icon-denied-reverse */
+  content: "\ea1d"; /* icon-denied */
 }
 
 .admonition:is(.warning)::before {
