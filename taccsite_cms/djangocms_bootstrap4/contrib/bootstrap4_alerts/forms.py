@@ -3,7 +3,7 @@ from django.utils.translation import gettext_lazy as _
 
 from djangocms_bootstrap4.contrib.bootstrap4_alerts.models import Bootstrap4Alerts
 
-from .extend import (
+from .presentation import (
     ALERT_PRESENTATION_ADMONITION,
     ALERT_PRESENTATION_ATTR,
     ALERT_PRESENTATION_BOOTSTRAP,
@@ -27,14 +27,17 @@ class Bootstrap4AlertForm(forms.ModelForm):
 
     class Meta:
         model = Bootstrap4Alerts
-        fields = '__all__'
+        fields = (
+            'alert_context',
+            'alert_dismissable',
+            'tag_type',
+        )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        if self.instance.pk:
-            self.fields['alert_presentation'].initial = get_alert_presentation(
-                self.instance,
-            )
+        self.fields['alert_presentation'].initial = get_alert_presentation(
+            self.instance,
+        )
 
     def save(self, commit=True):
         instance = super().save(commit=False)

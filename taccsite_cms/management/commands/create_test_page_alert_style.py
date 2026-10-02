@@ -11,15 +11,14 @@ from django.contrib.auth import get_user_model
 from django.core.management.base import BaseCommand, CommandError
 
 from cms.api import add_plugin, create_page, publish_page
+from cms.plugin_pool import plugin_pool
 
-from djangocms_bootstrap4.contrib.bootstrap4_alerts.cms_plugins import (
-    Bootstrap4AlertsPlugin,
-)
 from djangocms_text_ckeditor.cms_plugins import TextPlugin
 
-from taccsite_cms.djangocms_bootstrap4.contrib.bootstrap4_alerts.extend import (
+from taccsite_cms.djangocms_bootstrap4.contrib.bootstrap4_alerts.presentation import (
     ALERT_PRESENTATION_ADMONITION,
-    ALERT_PRESENTATION_ATTR,
+    ALERT_PRESENTATION_BOOTSTRAP,
+    presentation_attributes,
 )
 from taccsite_cms.management.test_page_util import (
     delete_draft_pages_by_reverse_id,
@@ -42,6 +41,11 @@ CONTEXTS = [
     'light',
     'dark',
 ]
+
+PRESENTATION_SECTIONS = (
+    (ALERT_PRESENTATION_BOOTSTRAP, 'Bootstrap alert (default presentation)'),
+    (ALERT_PRESENTATION_ADMONITION, 'Admonition (Core Styles presentation)'),
+)
 
 
 class Command(BaseCommand):
@@ -78,6 +82,15 @@ class Command(BaseCommand):
             help=f'CMS template key (default: {DEFAULT_TEMPLATE!r})',
         )
         parser.add_argument(
+            '--presentation',
+            choices=('bootstrap', 'admonition', 'both'),
+            default='both',
+            help=(
+                'Which alert presentation to show (default: both). '
+                'Use both to compare Bootstrap vs admonition on one page.'
+            ),
+        )
+        parser.add_argument(
             '--replace',
             action='store_true',
             help='Delete any existing page with the same reverse_id first',
@@ -94,6 +107,7 @@ class Command(BaseCommand):
         title = options['title']
         slug = options['slug']
         template = options['template']
+        presentation = options['presentation']
 
         User = get_user_model()
         publisher = User.objects.filter(is_superuser=True).first()
@@ -130,26 +144,47 @@ class Command(BaseCommand):
         )
 
         placeholder = page.placeholders.get(slot='content')
+        alert_plugin = plugin_pool.get_plugin('Bootstrap4AlertsPlugin')
 
-        for context in CONTEXTS:
-            alert = add_plugin(
-                placeholder,
-                Bootstrap4AlertsPlugin,
-                language,
-                alert_context=context,
-                attributes={
-                    ALERT_PRESENTATION_ATTR: ALERT_PRESENTATION_ADMONITION,
-                },
-            )
+        sections = PRESENTATION_SECTIONS
+        if presentation == 'bootstrap':
+            sections = (PRESENTATION_SECTIONS[0],)
+        elif presentation == 'admonition':
+            sections = (PRESENTATION_SECTIONS[1],)
+
+        for presentation_key, section_title in sections:
             add_plugin(
                 placeholder,
                 TextPlugin,
                 language,
-                target=alert,
-                body=f'<strong>{context.capitalize()} alert.</strong> '
-                     f'This is a <code>alert-{context}</code> Bootstrap 4 alert. '
-                     f'<a href="#" class="alert-link">Example link</a>.',
+                body=f'<h2>{section_title}</h2>',
             )
+            for context in CONTEXTS:
+                alert = add_plugin(
+                    placeholder,
+                    alert_plugin,
+                    language,
+                    alert_context=context,
+                    attributes=presentation_attributes(presentation_key),
+                )
+                if presentation_key == ALERT_PRESENTATION_ADMONITION:
+                    body = (
+                        f'<strong>{context.capitalize()} admonition.</strong> '
+                        f'Presentation: admonition; context <code>{context}</code>.'
+                    )
+                else:
+                    body = (
+                        f'<strong>{context.capitalize()} alert.</strong> '
+                        f'This is a <code>alert-{context}</code> Bootstrap 4 alert. '
+                        f'<a href="#" class="alert-link">Example link</a>.'
+                    )
+                add_plugin(
+                    placeholder,
+                    TextPlugin,
+                    language,
+                    target=alert,
+                    body=body,
+                )
 
         if not options['no_publish']:
             with warnings.catch_warnings():
@@ -162,3 +197,7 @@ class Command(BaseCommand):
         url = page.get_absolute_url()
         self.stdout.write(f'Page title: {title}')
         self.stdout.write(f'URL: {url}')
+        self.stdout.write(
+            'CMS: edit any Alert plugin — first field is Presentation '
+            '(Bootstrap alert vs Admonition).'
+        )

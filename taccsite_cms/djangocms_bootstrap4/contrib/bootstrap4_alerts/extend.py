@@ -1,10 +1,12 @@
-import copy
+from django.utils.translation import gettext_lazy as _
 
 from djangocms_bootstrap4.helpers import concat_classes
 
-ALERT_PRESENTATION_ATTR = 'data-cms-alert-style'
-ALERT_PRESENTATION_BOOTSTRAP = 'bootstrap'
-ALERT_PRESENTATION_ADMONITION = 'admonition'
+from .presentation import (
+    ALERT_PRESENTATION_ADMONITION,
+    ALERT_PRESENTATION_BOOTSTRAP,
+    get_alert_presentation,
+)
 
 ADMONITION_TEMPLATE = 'djangocms_bootstrap4/alert.html'
 BOOTSTRAP_TEMPLATE = 'djangocms_bootstrap4/alerts.html'
@@ -20,11 +22,6 @@ ALERT_CONTEXT_TO_ADMONITION_TYPE = {
     'light': 'note',
     'dark': 'note',
 }
-
-
-def get_alert_presentation(instance):
-    attrs = instance.attributes or {}
-    return attrs.get(ALERT_PRESENTATION_ATTR, ALERT_PRESENTATION_BOOTSTRAP)
 
 
 def extendBootstrap4AlertsPlugin():
@@ -45,13 +42,28 @@ def extendBootstrap4AlertsPlugin():
     class Bootstrap4AlertsPlugin(OriginalBootstrap4AlertsPlugin):
         model = OriginalBootstrap4Alerts
         form = Bootstrap4AlertForm
-
-        fieldsets = list(copy.deepcopy(OriginalBootstrap4AlertsPlugin.fieldsets))
-        fieldsets[0][1]['fields'] = (
-            'alert_presentation',
-            'alert_context',
-            'alert_dismissable',
+        change_form_template = (
+            'djangocms_bootstrap4/admin/alerts.html'
         )
+
+        def get_fieldsets(self, request, obj=None):
+            return [
+                (None, {
+                    'fields': (
+                        'alert_presentation',
+                        'alert_context',
+                        'alert_dismissable',
+                    ),
+                }),
+                (_('Advanced settings'), {
+                    'classes': ('collapse',),
+                    'fields': ('tag_type',),
+                }),
+            ]
+
+        def get_form(self, request, obj=None, change=False, **kwargs):
+            kwargs.setdefault('form', Bootstrap4AlertForm)
+            return super().get_form(request, obj, change=change, **kwargs)
 
         def get_render_template(self, context, instance, placeholder):
             if get_alert_presentation(instance) == ALERT_PRESENTATION_ADMONITION:
