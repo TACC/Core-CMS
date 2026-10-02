@@ -80,7 +80,7 @@ See `README.md` for full setup instructions.
 ## Pull Requests
 
 - **Title:** `.gitmessage` (fallback: `~/.gitmessage`)
-- **Description:** `.github/PULL_REQUEST_TEMPLATE.md` (fallback: `~/.github/PULL_REQUEST_TEMPLATE.md`). Fill out [.github/PULL_REQUEST_TEMPLATE.md](.github/PULL_REQUEST_TEMPLATE.md).
+- **Description:** `.github/PULL_REQUEST_TEMPLATE.md` (fallback: `~/.github/PULL_REQUEST_TEMPLATE.md`).
   - In general:
     - When updating, first re-read the current description, because it may have been edited.
     - Be concise: plain language, simple sentences, present lists as bullets not prose.
