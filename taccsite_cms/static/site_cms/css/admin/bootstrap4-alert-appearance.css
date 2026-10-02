@@ -1,0 +1,3 @@
+.field-alert_dismissable.disabled input[type="checkbox"] + label {
+  cursor: not-allowed;
+}
