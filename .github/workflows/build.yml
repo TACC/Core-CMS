@@ -1,0 +1,42 @@
+name: Build
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+jobs:
+  build_commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set shortsha and branch environment variables
+        id: vars
+        run: |
+          echo "BRANCH_NAME=$(echo ${GITHUB_REF_NAME} | sed 's/[^[:alnum:]\.\_\-]/-/g')" >> "$GITHUB_OUTPUT"
+          echo "SHORT_SHA=${GITHUB_SHA::7}" >> "$GITHUB_OUTPUT"
+          echo "BUILD_ID=$(git describe --tags 2>/dev/null || git rev-parse --short HEAD)" >> "$GITHUB_OUTPUT"
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build & push commit tagged Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          target: production
+          build-args: |
+            BUILD_ID=${{ steps.vars.outputs.BUILD_ID }}
+          push: true
+          tags: |
+            taccwma/core-cms:${{ steps.vars.outputs.SHORT_SHA }}
+            taccwma/core-cms:${{ steps.vars.outputs.BRANCH_NAME }}
+            taccwma/core-cms:latest
