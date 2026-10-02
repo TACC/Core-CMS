@@ -1,6 +1,8 @@
-# Copy to docker-compose.agent-8005.yml (gitignored; keep in main checkout).
-# Replace /absolute/path/to/Core-CMS-worktree and port/instance ids as needed.
+# Copy to docker-compose.agent-<port>.yml (gitignored; keep in main checkout).
+# Set build.context AND the CMS volumes path to the absolute path of the worktree you edit.
+# When you switch worktrees, update those two paths (filename/port stay the same unless you want a new instance).
 # docker compose -f docker-compose.agent-8005.yml -p cms8005 up -d --build
+# Do not add anonymous volumes on /code/static or /code/taccsite_cms/static.
 
 services:
   cms:

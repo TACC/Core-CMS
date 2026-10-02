@@ -54,12 +54,15 @@ A container runs whichever checkout its Compose file points at, not the worktree
 
 Per-instance files `docker-compose.agent-<port>.yml` (gitignored) live in the **main checkout**, so you can see which worktree each instance uses and delete worktrees without losing them.
 
+**Agents:** Point `build.context` and the CMS bind mount at the **active worktree** (absolute paths). If a compose file still references another checkout, update it and run `docker compose -f docker-compose.agent-<port>.yml -p cms<port> up -d --build`—do not ask the user to repoint or flag stale paths unless blocked.
+
 - Set `build.context` **and** the CMS bind mount to the active worktree, as **absolute paths**. (`build: .` builds from the main checkout.)
-- Recreate the container after editing: `docker compose -f docker-compose.agent-<port>.yml -p cms<port> up -d --build`.
-- Keep the same file name and `-p cms<port>` project name when repointing, so the named volumes stay attached.
+- Do **not** add anonymous volumes on `/code/static` or `/code/taccsite_cms/static`.
+- Recreate the container after path edits: `docker compose -f docker-compose.agent-<port>.yml -p cms<port> up -d --build`.
+- Keep the same file name and `-p cms<port>` when repointing paths, so the named volumes stay attached.
 - In that worktree, `settings_custom.py` with `PORTAL_SEARCH_INDEX_IS_AUTOMATIC = False` so saving a page does not index.
 - Omit the `elasticsearch` service.
-- Before deleting a worktree, repoint its instance to another one.
+- Before deleting a worktree, repoint that instance’s paths to another checkout.
 
 #### Settings & Secrets
 
