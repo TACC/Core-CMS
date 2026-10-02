@@ -48,3 +48,51 @@ docker compose -f docker-compose.dev.yml -f docker-compose.local-1.yml …
 
 4. Initialize the sandbox database (migrate, superuser, `collectstatic`, CSS build as needed—the same steps as [Getting Started](../README.md#getting-started), but use `docker exec` on the **sandbox** CMS container name).
 5. Open the sandbox app URL (for example **http://127.0.0.1:8001/**).
+
+## Agent worktrees (isolated, no Elasticsearch)
+
+**Use case:** An agent (or human) edits one **git worktree** and runs a **dedicated** CMS + Postgres stack—without Elasticsearch and without colliding with `make start` on port 8000. Matches the pattern documented for [Core-CMS-Port](https://github.com/TACC/Core-CMS-Port/blob/main/AGENTS.md#git-worktrees-and-docker).
+
+> [!IMPORTANT]
+> A container serves the checkout its Compose file mounts, not “whatever directory you have open in the editor.” Point **every** bind mount and `build.context` at the **active worktree** using **absolute paths**.
+
+1. Copy the template:
+
+   ```bash
+   cp docker-compose.agent.example.yml docker-compose.agent-<label>.yml
+   ```
+
+   (`docker-compose.agent-*.yml` is gitignored; keep the file in a checkout you will not delete casually, or copy the label and paths when you switch worktrees.)
+
+2. Edit `docker-compose.agent-<label>.yml` (or export env vars if you use the template as-is):
+
+   - `build.context` and the CMS volume: absolute path to the worktree under test.
+   - Unique `AGENT_PORT` / `AGENT_INSTANCE` (container names `core_cms_<instance>`, host port e.g. **8005**).
+   - **Do not** add an `elasticsearch` service.
+
+3. In that worktree’s `taccsite_cms/settings/`:
+
+   - Create `secrets.py` from `secrets.example.py` if missing (`HOST` can stay `core_cms_postgres` when the compose file adds that **network alias** on Postgres).
+   - Create `settings_custom.py` from `settings_custom.example.py` so `PORTAL_SEARCH_INDEX_IS_AUTOMATIC = False` (page saves do not require Elasticsearch). Site search will not work until you run a stack with ES.
+
+4. Start the stack (example):
+
+   ```bash
+   docker compose -f docker-compose.agent-<label>.yml -p cms_<instance> up -d --build
+   ```
+
+5. Initialize (use the **sandbox** CMS container name):
+
+   ```bash
+   docker exec core_cms_<instance> python manage.py migrate --no-input
+   DJANGO_SUPERUSER_PASSWORD=yourpass docker exec -e DJANGO_SUPERUSER_PASSWORD \
+     core_cms_<instance> python manage.py createsuperuser --no-input --username admin --email admin@localhost
+   docker run --rm -v "<worktree>:/code" -w /code node:20 sh -c "npm ci && npm run build"
+   docker exec core_cms_<instance> python manage.py collectstatic --no-input
+   ```
+
+6. Open **http://127.0.0.1:<port>/** (for example **http://127.0.0.1:8005/**).
+
+**Repointing:** When you move the instance to another worktree, update paths in the same compose file and run `up -d --build` with the same `-p` project name so the Postgres volume stays attached.
+
+**Before deleting a worktree:** Repoint its compose file to another checkout or `docker compose … down` and archive anything you need from the volume.
