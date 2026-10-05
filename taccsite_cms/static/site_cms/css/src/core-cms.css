@@ -1,4 +1,4 @@
-/* DO NOT ADD STYLES HERE; ONLY IMPORT OTHER STYLESHEETS */
+2/* DO NOT ADD STYLES HERE; ONLY IMPORT OTHER STYLESHEETS */
 
 /* Organize via ITCSS */
 /* https://confluence.tacc.utexas.edu/x/IAA9Cw */
@@ -6,7 +6,7 @@
 @import url("./_imports/settings/font.css");
 
 @import url("./_imports/generics/pseudo-elements.css");
-
+revert 1
 @import url("./_imports/elements/figure-caption-blockquote.css");
 
 @import url("./_imports/components/django.cms.css");
@@ -16,9 +16,7 @@
 @import url("./_imports/components/lightgallery.css");
 @import url("./_imports/components/logos.css");
 
-/* Admonition lives in core-styles.docs.css, not core-styles.cms.css (see assets_core_cms.html). */
 @import url("@tacc/core-styles/src/lib/_imports/components/admonition.css");
-/* Cortal font/icons already come from core-styles.cms.css → cortal.icon.css */
 @import url("./_imports/components/admonition.cortal-icons.css");
 
 @import url("./_imports/bootstrap4/utilities/embed-responsive.css");
