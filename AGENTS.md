@@ -54,7 +54,12 @@ _Note: Stale containers errors (e.g. `core_cms_elasticsearch already in use`) co
 
 ### Workflows
 
+- [Docker Compose Overrides](#docker-compose-overrides)
 - [Git Worktrees and Docker](#git-worktrees-and-docker)
+
+#### Docker Compose Overrides
+
+If you must edit docker-compose to fix a problem specific to your environment, use [Git Worktrees and Docker](#git-worktrees-and-docker) for a dedicated CMS + Postgres stack per worktree, or [Run Another Project Instance](./docs/run-another-project-instance.md) for a second server on the **same** DB/ES as `make start` (`docker-compose.local-*.yml`).
 
 #### Git Worktrees and Docker
 
@@ -74,8 +79,6 @@ Per-instance files `docker-compose.agent-<port>.yml` (gitignored) live in the **
 
 - [Settings & Secrets](#settings--secrets)
 - [Elasticsearch](#elasticsearch)
-
-If you must edit docker-compose to fix a problem specific to your environment, use [Git Worktrees and Docker](#git-worktrees-and-docker) for a dedicated CMS + Postgres stack per worktree, or [Run Another Project Instance](./docs/run-another-project-instance.md) for a second server on the **same** DB/ES as `make start` (`docker-compose.local-*.yml`).
 
 #### Settings & Secrets
 
