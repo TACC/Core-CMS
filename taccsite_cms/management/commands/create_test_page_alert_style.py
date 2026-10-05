@@ -52,12 +52,12 @@ APPEARANCE_SECTIONS = (
     (
         ALERT_APPEARANCE_BOOTSTRAP,
         'Bootstrap Alert',
-        'Default appearance.',
+        'This is TACC\'s skin of Bootstrap alerts.',
     ),
     (
         ALERT_APPEARANCE_ADMONITION,
         'Admonition',
-        'Core Styles appearance.',
+        'This is TACC\'s skin of Admonitions (common UI pattern originating from reStructuredText).',
     ),
 )
 

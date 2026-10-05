@@ -30,7 +30,7 @@
   content: "\ea1d"; /* icon-denied */
 }
 
-.admonition:is(.warning)::before {
+.admonition:is(.caution)::before {
   content: "\ea03"; /* icon-alert */
 }
 
