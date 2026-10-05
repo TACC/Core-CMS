@@ -9,6 +9,14 @@
 
 This is a **Docker-based Django CMS** project. All application code runs inside Docker containers.
 
+- [Services](#services)
+- [Make](#make)
+- [Setup](#setup)
+- [Dependencies](#dependencies)
+- [Workflows](#workflows)
+- [Gotchas](#gotchas)
+- [Lint, Test, Build](#lint-test-build)
+
 ### Services
 
 | Service | Container | Port |
@@ -44,11 +52,16 @@ _Note: Stale containers errors (e.g. `core_cms_elasticsearch already in use`) co
 - When updating dependencies, use `npm` commands (e.g. `uninstall`/`install`); do not hand-edit lockfile entries.
 - When installing `@tacc/core-styles`, use a published version from the registry, or a `git+https://github.com/...` spec so install does not require SSH.
 
-### Gotchas
+### Workflows
 
-If you must edit docker-compose to fix a problem specific to your environment, use [Git worktrees and Docker](#git-worktrees-and-docker) for a dedicated CMS + Postgres stack per worktree, or [Run Another Project Instance](./docs/run-another-project-instance.md) for a second server on the **same** DB/ES as `make start` (`docker-compose.local-*.yml`).
+- [Docker Compose Overrides](#docker-compose-overrides)
+- [Git Worktrees and Docker](#git-worktrees-and-docker)
 
-#### Git worktrees and Docker
+#### Docker Compose Overrides
+
+If you must edit docker-compose to fix a problem specific to your environment, use [Git Worktrees and Docker](#git-worktrees-and-docker) for a dedicated CMS + Postgres stack per worktree, or [Run Another Project Instance](./docs/run-another-project-instance.md) for a second server on the **same** DB/ES as `make start` (`docker-compose.local-*.yml`).
+
+#### Git Worktrees and Docker
 
 A container runs whichever checkout its Compose file points at, not the worktree you are editing. Keep all edits in the **active workspace** only—do **not** copy them into another checkout.
 
@@ -61,6 +74,11 @@ Per-instance files `docker-compose.agent-<port>.yml` (gitignored) live in the **
 - In that worktree, `taccsite_cms/settings/settings_custom.py` (from `settings_custom.example.py`) with `PORTAL_SEARCH_INDEX_IS_AUTOMATIC = False` so saving a page does not index.
 - Omit the `elasticsearch` service. Postgres hostname in `secrets.py` can stay `core_cms_postgres` when the compose file adds that **network alias** on the agent Postgres service.
 - Before deleting a worktree, repoint that instance’s paths to another checkout (or `docker compose … down` if retiring the instance).
+
+### Gotchas
+
+- [Settings & Secrets](#settings--secrets)
+- [Elasticsearch](#elasticsearch)
 
 #### Settings & Secrets
 

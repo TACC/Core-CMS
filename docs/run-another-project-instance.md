@@ -51,4 +51,4 @@ docker compose -f docker-compose.dev.yml -f docker-compose.local-1.yml …
 
 ## Agent Worktrees
 
-For a dedicated CMS + Postgres stack per git worktree (no Elasticsearch), see [AGENTS.md — Git worktrees and Docker](../AGENTS.md#git-worktrees-and-docker) and [`docker-compose.agent.example.yml`](../docker-compose.agent.example.yml).
+For a dedicated CMS + Postgres stack per git worktree (no Elasticsearch), see [AGENTS.md — Git Worktrees and Docker](../AGENTS.md#git-worktrees-and-docker) and [`docker-compose.agent.example.yml`](../docker-compose.agent.example.yml).
