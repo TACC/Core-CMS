@@ -9,6 +9,14 @@
 
 This is a **Docker-based Django CMS** project. All application code runs inside Docker containers.
 
+- [Services](#services)
+- [Make](#make)
+- [Setup](#setup)
+- [Dependencies](#dependencies)
+- [Workflows](#workflows)
+- [Gotchas](#gotchas)
+- [Lint, Test, Build](#lint-test-build)
+
 ### Services
 
 | Service | Container | Port |
@@ -44,9 +52,33 @@ _Note: Stale containers errors (e.g. `core_cms_elasticsearch already in use`) co
 - When updating dependencies, use `npm` commands (e.g. `uninstall`/`install`); do not hand-edit lockfile entries.
 - When installing `@tacc/core-styles`, use a published version from the registry, or a `git+https://github.com/...` spec so install does not require SSH.
 
+### Workflows
+
+- [Docker Compose Overrides](#docker-compose-overrides)
+- [Git Worktrees and Docker](#git-worktrees-and-docker)
+
+#### Docker Compose Overrides
+
+If you must edit docker-compose to fix a problem specific to your environment, use [Git Worktrees and Docker](#git-worktrees-and-docker) for a dedicated CMS + Postgres stack per worktree, or [Run Another Project Instance](./docs/run-another-project-instance.md) for a second server on the **same** DB/ES as `make start` (`docker-compose.local-*.yml`).
+
+#### Git Worktrees and Docker
+
+A container runs whichever checkout its Compose file points at, not the worktree you are editing. Keep all edits in the **active workspace** only—do **not** copy them into another checkout.
+
+Per-instance files `docker-compose.agent-<port>.yml` (gitignored) live in the **main checkout**, so you can see which worktree each instance uses and delete worktrees without losing them. Copy [`docker-compose.agent.example.yml`](./docker-compose.agent.example.yml) to start one.
+
+- Set `build.context` **and** the CMS bind mount to the active worktree, as **absolute paths**. If a gitignored compose file still points at another checkout (including a removed worktree), repoint those paths and recreate the container—do not ask the user unless blocked. (`build: .` builds from the main checkout.)
+- Use only that worktree bind mount for `/code`. Do **not** add anonymous volumes on `/code/static` or `/code/taccsite_cms/static` (they hide built CSS from the worktree).
+- Recreate the container after editing: `docker compose -f docker-compose.agent-<port>.yml -p cms<port> up -d --build`.
+- Keep the same file name and `-p cms<port>` when repointing paths, so the named volumes stay attached.
+- In that worktree, `taccsite_cms/settings/settings_custom.py` (from `settings_custom.example.py`) with `PORTAL_SEARCH_INDEX_IS_AUTOMATIC = False` so saving a page does not index.
+- Omit the `elasticsearch` service. Postgres hostname in `secrets.py` can stay `core_cms_postgres` when the compose file adds that **network alias** on the agent Postgres service.
+- Before deleting a worktree, repoint that instance’s paths to another checkout (or `docker compose … down` if retiring the instance).
+
 ### Gotchas
 
-If you must edit docker-compose to fix a problem specific to your environment, create a gitignored `docker-compose.agent-1.yml` (see [Run Another Project Instance](./docs/run-another-project-instance.md); use `agent-1` wherever that doc says `local-1`).
+- [Settings & Secrets](#settings--secrets)
+- [Elasticsearch](#elasticsearch)
 
 #### Settings & Secrets
 
