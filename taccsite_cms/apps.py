@@ -2,6 +2,7 @@ import logging
 from django.apps import AppConfig
 from django.db.models.signals import post_migrate
 
+from .djangocms_bootstrap4.contrib.bootstrap4_alerts.extend import extendBootstrap4AlertsPlugin
 from .djangocms_bootstrap4.contrib.bootstrap4_link.extend import extendBootstrap4LinkPlugin
 from .djangocms_blog.extend import extendBlogFeaturedPostsPlugin, extendBlogFeaturedPostsPluginCached
 from .djangocms_blog.patch import patchBlog
@@ -14,6 +15,7 @@ class TaccsiteCmsConfig(AppConfig):
 
     def ready(self):
         post_migrate.connect(self.create_groups, sender=self)
+        extendBootstrap4AlertsPlugin()
         extendBootstrap4LinkPlugin()
         extendBlogFeaturedPostsPlugin()
         extendBlogFeaturedPostsPluginCached()

@@ -10,6 +10,7 @@ See [repo `README.md` at "Static Files"](/README.md#static-files).
 
 - (Standard) Style TACC UI patterns in [Core Styles].
 - (Exception) Style CMS-specific UI in [Core CMS].
+- (Exception) Style Django CMS admin in `djangocms-admin-overrides.css`.
 - (Exception) Style project-specific UI in [Core CMS Custom] or its own repo.
 
 

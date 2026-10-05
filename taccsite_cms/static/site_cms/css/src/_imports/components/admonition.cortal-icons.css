@@ -1,0 +1,39 @@
+/*
+ * Bootstrap 4 Alert → Core-Styles `.admonition` icons (Cortal + ⓘ).
+ */
+
+.admonition {
+  --icon: cortal;
+
+  margin-block: 1em;
+}
+
+.admonition::before {
+  font-family: cortal;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.admonition:is(.tip, .note)::before {
+  content: "ⓘ";
+  font-family: inherit;
+}
+
+.admonition:is(.hint)::before {
+  content: "\ea0a"; /* icon-approved */
+}
+
+.admonition:is(.error, .danger)::before {
+  content: "\ea1d"; /* icon-denied */
+}
+
+.admonition:is(.caution)::before {
+  content: "\ea03"; /* icon-alert */
+}
+
+.admonition-title::before {
+  display: none;
+}
