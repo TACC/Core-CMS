@@ -17,7 +17,7 @@ ALERT_CONTEXT_TO_ADMONITION_TYPE = {
     'secondary': 'note',
     'success': 'hint',
     'danger': 'danger',
-    'warning': 'caution',
+    'warning': 'warning',
     'info': 'note',
     'light': 'note',
     'dark': 'note',
