@@ -952,7 +952,7 @@ djangocms-attributes-field = ">=1"
 
 [[package]]
 name = "djangocms-tacc-export-page"
-version = "0.2.1"
+version = "0.2.0"
 description = "A DjangoCMS app (for TACC Core CMS) to export rendered page content to DOCX."
 optional = false
 python-versions = "*"
@@ -969,9 +969,9 @@ python-docx = ">=1.1.0"
 
 [package.source]
 type = "git"
-url = "https://github.com/wesleyboar/Core-CMS-Plugin-Export-Page.git"
-reference = "v0.2.1"
-resolved_reference = "c7e3f29062aa02915a690bda5f12ab3aadcab374"
+url = "https://github.com/TACC/Core-CMS-Plugin-Export-Page.git"
+reference = "v0.2.0"
+resolved_reference = "1000e4d51f3ef938baad20ac27350b47c0b34228"
 
 [[package]]
 name = "djangocms-tacc-image-gallery"
@@ -2540,4 +2540,4 @@ testing = ["func-timeout", "jaraco.itertools"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<4.0"
-content-hash = "29aa47c12f2f323673d8de9bd8e8766290ca0564cae09fd45687bbcff2d1ea48"
+content-hash = "b24d0f776253f7d6c1fca48b1bbdb189ce23dd4466a4287b82d90bcfeafb08a0"

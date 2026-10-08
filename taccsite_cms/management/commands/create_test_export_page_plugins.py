@@ -1,7 +1,7 @@
 """
 Create a published CMS page with one instance of each plugin type used for DOCX export QA.
 
-For testing https://github.com/wesleyboar/Core-CMS-Plugin-Export-Page
+For testing https://github.com/TACC/Core-CMS-Plugin-Export-Page
 """
 
 import warnings
