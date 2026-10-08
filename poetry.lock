@@ -973,6 +973,27 @@ reference = "v0.1.5"
 resolved_reference = "7a8366ce9b1de7baf0a07cff7731343069e14520"
 
 [[package]]
+name = "djangocms-tacc-page-export"
+version = "0.1.0"
+description = "A DjangoCMS app (for TACC Core CMS) to export rendered page content to DOCX."
+optional = false
+python-versions = "*"
+groups = ["main"]
+files = []
+develop = true
+
+[package.dependencies]
+beautifulsoup4 = ">=4.9.0"
+Django = ">=3.2"
+django-cms = ">=3.7.4,<4"
+lxml = ">=4.6.0"
+python-docx = ">=1.1.0"
+
+[package.source]
+type = "directory"
+url = "../Core-CMS-Plugin-Page-Export"
+
+[[package]]
 name = "djangocms-tacc-remote-content"
 version = "0.4.0"
 description = "A DjangoCMS plugin (for TACC Core CMS) to fetch and display content from remote TACC URLs."
@@ -1918,6 +1939,22 @@ files = [
 six = ">=1.5"
 
 [[package]]
+name = "python-docx"
+version = "1.2.0"
+description = "Create, read, and update Microsoft Word .docx files."
+optional = false
+python-versions = ">=3.9"
+groups = ["main"]
+files = [
+    {file = "python_docx-1.2.0-py3-none-any.whl", hash = "sha256:3fd478f3250fbbbfd3b94fe1e985955737c145627498896a8a6bf81f4baf66c7"},
+    {file = "python_docx-1.2.0.tar.gz", hash = "sha256:7bc9d7b7d8a69c9c02ca09216118c86552704edc23bac179283f2e38f86220ce"},
+]
+
+[package.dependencies]
+lxml = ">=3.1.0"
+typing_extensions = ">=4.9.0"
+
+[[package]]
 name = "python-jsonrpc-server"
 version = "0.4.0"
 description = "JSON RPC 2.0 server library"
@@ -2501,4 +2538,4 @@ testing = ["func-timeout", "jaraco.itertools"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<4.0"
-content-hash = "4f01a0523dd661e193582201dda96075e824b9e8a62c9d610c5950a01b7f14ff"
+content-hash = "1aeb90f34b6f18378f6714fbf42b2b2d2b62473c71638af726306aa27babde18"
