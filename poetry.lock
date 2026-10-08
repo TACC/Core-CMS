@@ -980,7 +980,7 @@ optional = false
 python-versions = "*"
 groups = ["main"]
 files = []
-develop = true
+develop = false
 
 [package.dependencies]
 beautifulsoup4 = ">=4.9.0"
@@ -990,8 +990,10 @@ lxml = ">=4.6.0"
 python-docx = ">=1.1.0"
 
 [package.source]
-type = "directory"
-url = "../Core-CMS-Plugin-Page-Export"
+type = "git"
+url = "https://github.com/wesleyboar/Core-CMS-Plugin-Page-Export.git"
+reference = "bf0e3652515c73428d80c03bfbedc1a6cc2689f6"
+resolved_reference = "bf0e3652515c73428d80c03bfbedc1a6cc2689f6"
 
 [[package]]
 name = "djangocms-tacc-remote-content"
@@ -2538,4 +2540,4 @@ testing = ["func-timeout", "jaraco.itertools"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<4.0"
-content-hash = "1aeb90f34b6f18378f6714fbf42b2b2d2b62473c71638af726306aa27babde18"
+content-hash = "c1d925f3991caa3826f72cea159b0f207ff02754c81d84b8ca6491809af759d4"

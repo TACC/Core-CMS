@@ -6,7 +6,7 @@
 
 The plugin is a Poetry dependency (`djangocms-tacc-page-export`) and is listed in `INSTALLED_APPS` as `djangocms_tacc_page_export`. Rebuild the CMS image after changing the plugin (`make build`).
 
-Local monorepo layout: `pyproject.toml` points at `../Core-CMS-Plugin-Page-Export`.
+The plugin is installed from Git (`pyproject.toml` / `poetry.lock`). For editable work on a sibling checkout, use `poetry add --editable ../Core-CMS-Plugin-Page-Export` locally (do not commit that lock change unless releasing a new pin).
 
 ## Settings
 
