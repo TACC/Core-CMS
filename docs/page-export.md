@@ -1,12 +1,12 @@
 # Page export (DOCX)
 
-[Core-CMS-Plugin-Page-Export](https://github.com/TACC/Core-CMS-Plugin-Page-Export) adds **Download as DOCX…** to the CMS page tree. Export uses the draft **content** placeholder plugin tree (not scraped HTML).
+[Core-CMS-Plugin-Page-Export](https://github.com/TACC/Core-CMS-Plugin-Page-Export) adds **Download…** to the CMS page tree. Export uses the draft **content** placeholder plugin tree (not scraped HTML).
 
 ## Install
 
 The plugin is a Poetry dependency (`djangocms-tacc-page-export`) and is listed in `INSTALLED_APPS` as `djangocms_tacc_page_export`. Rebuild the CMS image after changing the plugin (`make build`).
 
-The plugin is installed from Git (`pyproject.toml` / `poetry.lock`). For editable work on a sibling checkout, use `poetry add --editable ../Core-CMS-Plugin-Page-Export` locally (do not commit that lock change unless releasing a new pin).
+The plugin is installed from Git at tag **`v0.1.0`** (`pyproject.toml` / `poetry.lock`), same pattern as other `djangocms-tacc-*` packages. Rebuild the image after bumping the tag.
 
 ## Settings
 
@@ -16,7 +16,7 @@ The plugin is installed from Git (`pyproject.toml` / `poetry.lock`). For editabl
 
 ## Permissions
 
-Only **superusers** and **staff users who can edit a page** can export that page’s draft content (toolbar **Download**, page-tree **Download as DOCX…**, and the export admin URL). Staff without edit access on a page do not get the actions and are denied on direct URL access.
+Only **superusers** and **staff users who can edit a page** can export that page’s draft content (toolbar **Download**, page-tree **Download…**, and the export admin URL). Staff without edit access on a page do not get the actions and are denied on direct URL access.
 
 ## Manual test
 

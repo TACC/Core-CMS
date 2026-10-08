@@ -992,8 +992,8 @@ python-docx = ">=1.1.0"
 [package.source]
 type = "git"
 url = "https://github.com/wesleyboar/Core-CMS-Plugin-Page-Export.git"
-reference = "bf0e3652515c73428d80c03bfbedc1a6cc2689f6"
-resolved_reference = "bf0e3652515c73428d80c03bfbedc1a6cc2689f6"
+reference = "v0.1.0"
+resolved_reference = "61aaa4438302eca0f9d32a3e9a6bc14a8f6f62b9"
 
 [[package]]
 name = "djangocms-tacc-remote-content"
@@ -2540,4 +2540,4 @@ testing = ["func-timeout", "jaraco.itertools"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<4.0"
-content-hash = "e6dc624c4895a0dfed0ee14956c45501cff7ee2354d2d0ed31a864270a4e6cab"
+content-hash = "0e7f0209a9e18c130e52856c65fb62a424e0791f2a6aeabfd1031b6251e156be"
