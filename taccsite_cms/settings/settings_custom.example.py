@@ -109,13 +109,6 @@ PORTAL_SEARCH_QUERY_PARAM_NAME = 'q'
 PORTAL_SEARCH_INDEX_IS_AUTOMATIC = False
 
 ########################
-# PAGE EXPORT (DOCX)
-########################
-
-# Omit TACC Site plugin readers (Text/grid/link readers still run):
-# CMS_PAGE_EXPORT_SHOULD_READ_TACCSITE_PLUGINS = False
-
-########################
 # DJANGOCMS_BLOG
 ########################
 
