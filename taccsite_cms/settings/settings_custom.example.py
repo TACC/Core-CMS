@@ -112,10 +112,6 @@ PORTAL_SEARCH_INDEX_IS_AUTOMATIC = False
 # PAGE EXPORT (DOCX)
 ########################
 
-# Optional: dotted path or callable — show "Download as DOCX" only when this returns true.
-# Default: all pages (when the user may change the page).
-# CMS_PAGE_EXPORT_PAGE_QUALIFIER = None
-
 # Omit TACC Site plugin readers (Text/grid/link readers still run):
 # CMS_PAGE_EXPORT_SHOULD_READ_TACCSITE_PLUGINS = False
 

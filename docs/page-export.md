@@ -12,13 +12,23 @@ The plugin is installed from Git (`pyproject.toml` / `poetry.lock`). For editabl
 
 | Setting | Default | Purpose |
 | --- | --- | --- |
-| `CMS_PAGE_EXPORT_PAGE_QUALIFIER` | `None` (all pages) | Callable or dotted path; menu shown only when it returns true |
 | `CMS_PAGE_EXPORT_SHOULD_READ_TACCSITE_PLUGINS` | `True` | Register TACC Site Section/Card readers when those apps are installed |
+
+## Permissions
+
+Only **superusers** and **staff users who can edit a page** can export that page’s draft content (toolbar **Download**, page-tree **Download as DOCX…**, and the export admin URL). Staff without edit access on a page do not get the actions and are denied on direct URL access.
 
 ## Manual test
 
 1. `make start` (or your agent compose stack).
-2. Page tree → any page → **Download as DOCX…**
-3. Confirm; open the `.docx` or `.zip`.
+2. Optional fixture page (all supported plugin types):
+
+   ```sh
+   docker exec core_cms python manage.py create_test_page_export_plugins --replace
+   ```
+
+   Opens at `/test/test-page-export/`.
+3. Page tree or toolbar **Download** on that page (or any editable page).
+4. Open the `.docx` (or choose scope and download when the page has children).
 
 Plugin support matrix: export repo `docs/plugin-support.md`.
