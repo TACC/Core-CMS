@@ -991,7 +991,7 @@ python-docx = ">=1.1.0"
 
 [package.source]
 type = "git"
-url = "https://github.com/wesleyboar/Core-CMS-Plugin-Page-Export.git"
+url = "https://github.com/wesleyboar/Core-CMS-Plugin-Export-Page.git"
 reference = "v0.2.0"
 resolved_reference = "420d298892f88c591d34a02f6f8ab5e0e3f6e1a2"
 
