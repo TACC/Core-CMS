@@ -10,6 +10,7 @@
   - [for Buttons](#for-buttons)
   - [for Pictures](#for-pictures)
   - [for Social Logos (Snippet)](#for-social-logos-snippet)
+  - [for Page Export (DOCX)](#for-page-export-docx)
 - [Set Groups & Permissions](#set-groups--permissions)
 - [Reference](#reference)
 
@@ -134,6 +135,18 @@ python manage.py create_social_logos_snippet_test_page --replace
 ```
 
 Path: `/test/social-logos-snippet-test/`
+
+### for Page Export (DOCX)
+
+One of each plugin type covered by page export (creates snippet `page-export-test` if missing).
+
+Usage:
+
+```sh
+python manage.py create_test_page_export_plugins --replace
+```
+
+Path: `/test/test-page-export/`
 
 ## Set Groups & Permissions
 
