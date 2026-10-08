@@ -6,13 +6,7 @@
 
 The app is a Poetry dependency (`djangocms-tacc-export-page`) and is listed in `INSTALLED_APPS` as `djangocms_tacc_export_page`. Rebuild the CMS image after changing the package (`make build`).
 
-The package is installed from Git at tag **`v0.2.0`** (`pyproject.toml` / `poetry.lock`), same pattern as other `djangocms-tacc-*` packages. Rebuild the image after bumping the tag.
-
-## Settings
-
-| Setting | Default | Purpose |
-| --- | --- | --- |
-| `CMS_EXPORT_PAGE_SHOULD_READ_TACCSITE_PLUGINS` | `True` | Register TACC Site Section/Card readers when those apps are installed |
+The package is installed from Git at tag **`v0.2.1`** (`pyproject.toml` / `poetry.lock`), same pattern as other `djangocms-tacc-*` packages. Rebuild the image after bumping the tag.
 
 ## Permissions
 

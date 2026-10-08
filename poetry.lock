@@ -974,7 +974,7 @@ resolved_reference = "7a8366ce9b1de7baf0a07cff7731343069e14520"
 
 [[package]]
 name = "djangocms-tacc-export-page"
-version = "0.2.0"
+version = "0.2.1"
 description = "A DjangoCMS app (for TACC Core CMS) to export rendered page content to DOCX."
 optional = false
 python-versions = "*"
@@ -992,8 +992,8 @@ python-docx = ">=1.1.0"
 [package.source]
 type = "git"
 url = "https://github.com/wesleyboar/Core-CMS-Plugin-Export-Page.git"
-reference = "v0.2.0"
-resolved_reference = "420d298892f88c591d34a02f6f8ab5e0e3f6e1a2"
+reference = "v0.2.1"
+resolved_reference = "c7e3f29062aa02915a690bda5f12ab3aadcab374"
 
 [[package]]
 name = "djangocms-tacc-remote-content"

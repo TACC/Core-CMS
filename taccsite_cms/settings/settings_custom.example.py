@@ -113,8 +113,6 @@ PORTAL_SEARCH_INDEX_IS_AUTOMATIC = False
 ########################
 
 # Omit TACC Site plugin readers (Text/grid/link readers still run):
-# CMS_EXPORT_PAGE_SHOULD_READ_TACCSITE_PLUGINS = False
-
 ########################
 # DJANGOCMS_BLOG
 ########################
