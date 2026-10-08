@@ -1,7 +1,7 @@
 """
 Create a published CMS page with one instance of each plugin type used for DOCX export QA.
 
-For testing https://github.com/wesleyboar/Core-CMS-Plugin-Page-Export
+See docs/export-page.md and Core-CMS-Plugin-Export-Page docs/plugin-support.md.
 """
 
 import warnings
@@ -37,13 +37,13 @@ from taccsite_section.cms_plugins import TaccsiteSectionPlugin
 Bootstrap4LinkPlugin = plugin_pool.plugins['Bootstrap4LinkPlugin']
 Bootstrap4AlertsPlugin = plugin_pool.get_plugin('Bootstrap4AlertsPlugin')
 
-DEFAULT_REVERSE_ID = 'core_cms_test_page_export_plugins'
-DEFAULT_TITLE = 'Test Page Export Plugins'
-DEFAULT_SLUG = 'test-page-export'
+DEFAULT_REVERSE_ID = 'core_cms_test_export_page_plugins'
+DEFAULT_TITLE = 'Test Export Page Plugins'
+DEFAULT_SLUG = 'test-export-page'
 DEFAULT_TEMPLATE = 'standard.html'
 
-EXPORT_SNIPPET_SLUG = 'page-export-test'
-EXPORT_SNIPPET_NAME = 'Page export test snippet'
+EXPORT_SNIPPET_SLUG = 'export-page-test'
+EXPORT_SNIPPET_NAME = 'Export page test snippet'
 EXPORT_SNIPPET_HTML = (
     '<h2>Snippet heading</h2>'
     '<p>Snippet body with <strong>bold</strong> and '
@@ -54,7 +54,7 @@ EXPORT_SNIPPET_HTML = (
 class Command(BaseCommand):
     help = (
         'Create a page under /test/ with one of each plugin type relevant to '
-        'page export (Text, Snippet, Link, Style, Grid, Alert, Section, Card).'
+        'export page (Text, Snippet, Link, Style, Grid, Alert, Section, Card).'
     )
 
     def add_arguments(self, parser):
