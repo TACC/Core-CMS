@@ -1,7 +1,7 @@
 """
 Create a published CMS page with one instance of each plugin type used for DOCX export QA.
 
-See docs/page-export.md and Core-CMS-Plugin-Page-Export docs/plugin-support.md.
+For testing https://github.com/wesleyboar/Core-CMS-Plugin-Page-Export
 """
 
 import warnings
