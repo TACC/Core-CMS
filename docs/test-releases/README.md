@@ -7,7 +7,11 @@ Manual test steps per release, for the testing team to verify before/after deplo
 
 ## Sections
 
-- **Standard Features** — run on every portal deploy unless the RC doc has none.
-- **Pre-Tested Features** — already verified in the linked PR(s) (UI evidence, client/site testing, or explicit PR notes). Repeat only if you want a spot-check.
-- **Optional Features** — run only when the portal uses the feature (see that section’s NOTE).
-- **Deployment** — developer/deployment checks, not portal UI smoke tests.
+- **Standard Features**\
+    Run on every portal deploy unless the RC doc has none.
+- **Pre-Tested Features**\
+    Already tested on clients (link to evidence, like a PR).
+- **Optional Features**\
+    Run only when the portal uses the feature (see notes for feature).
+- **Deployment**\
+    Developer/deployment checks, not portal UI smoke tests.
