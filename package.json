@@ -15,8 +15,8 @@
   },
   "repository": "git@github.com:TACC/Core-CMS.git",
   "scripts": {
-    "build": "npm run build:css",
-    "build:css": "bin/build-css.js --build-id=$npm_config_build_id",
+    "build": "pnpm run build:css",
+    "build:css": "bin/build-css.js --build-id=\"$BUILD_ID\"",
     "postbuild:css": "cp -r node_modules/@tacc/core-styles/src/lib/fonts/* taccsite_cms/static/site_cms/fonts"
   },
   "homepage": "https://github.com/TACC/Core-CMS",

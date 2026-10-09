@@ -21,20 +21,18 @@ COPY . /code/
 WORKDIR /code
 
 
-
-# NODE DEPENDENCIES & BUILD & OUTPUT
-FROM node:24 AS node_build
-
-# Install dependencies
-COPY package.json package-lock.json /code/
+FROM ghcr.io/pnpm/pnpm:12 AS node_build
+RUN pnpm runtime set node 24 -g
+COPY package.json pnpm-lock.yaml /code/
 WORKDIR /code
-RUN npm ci
+RUN --mount=type=cache,id=pnpm-core-cms,target=/pnpm/store \
+    pnpm install --frozen-lockfile
 
 # Build assets
 COPY . /code/
 ARG BUILD_ID
-RUN npm run build --build-id="$BUILD_ID"
-
+RUN echo ${BUILD_ID}
+RUN pnpm run build
 
 
 # FINAL LAYER
