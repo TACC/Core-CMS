@@ -5,6 +5,7 @@
   "contributors": [
     "TACC COA CMD <coa-cmd@tacc.utexas.edu>"
   ],
+  "packageManager": "pnpm@12.6.0",
   "description": "The TACC ACI-WMA Core CMS codebase used by TACC Portals.",
   "engines": {
     "node": ">=20",
@@ -21,6 +22,14 @@
   },
   "homepage": "https://github.com/TACC/Core-CMS",
   "devDependencies": {
-    "@tacc/core-styles": "^2.59.0"
+    "@tacc/core-styles": "^2.59.0",
+    "postcss-cli": "^12.0.0"
+  },
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": "24.21.0",
+      "onFail": "download"
+    }
   }
 }

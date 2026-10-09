@@ -14,11 +14,10 @@ COPY pyproject.toml uv.lock ./
 RUN --mount=type=cache,id=uv-cms-prod,target=/uv/sync-prod uv sync --locked --no-dev
 
 
-
-# POETRY DEPENDENCIES
 FROM python-base AS development
 COPY . /code/
 WORKDIR /code
+RUN --mount=type=cache,id=uv-core-cms-dev,target=/uv/sync-dev uv sync --locked --dev
 
 
 FROM ghcr.io/pnpm/pnpm:12 AS node_build
