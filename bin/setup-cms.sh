@@ -22,6 +22,7 @@ BASE_URL="https://cdn.jsdelivr.net/gh/TACC/Core-CMS@${VERSION}"
 
 # Pin Node image version (must match Dockerfile's FROM node:XX)
 NODE_IMAGE="node:20"
+PNPM_IMAGE="ghcr.io/pnpm/pnpm:12"
 
 # Functions
 download_file() {
@@ -196,7 +197,7 @@ fi
 # FAQ: To rebuild CSS via ad-hoc Node container, because
 #      `docker-compose.dev.yml` mounts `.:/code` which erases pre-built CSS
 echo -e "${INF}Building CSS...${RST}"
-docker run --rm -v "$PROJECT_ROOT:/code" -w /code "$NODE_IMAGE" sh -c "npm ci && npm run build"
+docker run --rm -v "$PROJECT_ROOT:/code" -w /code "$PNPM_IMAGE" sh -c "pnpm ci && pnpm run build"
 
 # Collect static files
 echo -e "${INF}Preparing static files...${RST}"

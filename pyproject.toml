@@ -23,15 +23,14 @@ dependencies = [
     "django-haystack==3.4.0",
     "django-ipware==3.0.1",
     "django-js-asset==1.2.2",
-    "django-meta>=2.3.0,<2.4.0",
+    "django-meta==2.5.1",
     "django-mptt==0.14.0",
     "django-parler==2.3",
     "django-sekizai==2.0.0",
     "django-settings-export==1.2.1",
-    "django-sortedm2m==3.0.2",
     "django-spurl==0.6.7",
     "django-standard-form==1.1.1",
-    "django-taggit==4.0.0",
+    "django-taggit==6.1.0",
     "django-taggit-autosuggest==0.4.1",
     "django-taggit-templatetags==0.2.5",
     "django-templatetag-sugar==1.0",
@@ -39,7 +38,7 @@ dependencies = [
     "djangocms-admin-style>=3.3.1,<4.0.0",
     "djangocms-apphook-setup==0.4.1",
     "djangocms-attributes-field==2.1.0",
-    "djangocms-blog==2.0.3",
+    "djangocms-blog==2.0.10",
     "djangocms-bootstrap4",
     "djangocms-column>=2.0,<3.0",
     "djangocms-file==3.0.0",
@@ -47,7 +46,7 @@ dependencies = [
     "djangocms-googlemap==2.0.0",
     "djangocms-icon>=2.1.0,<3.0.0",
     "djangocms-link>=3.1,<4.0",
-    "djangocms-page-meta==1.3.0",
+    "djangocms-page-meta==1.4.5",
     "djangocms-picture>=4.1.1,<5.0.0",
     "djangocms-snippet==3.0.0",
     "djangocms-style==3.0.0",
@@ -84,6 +83,7 @@ dependencies = [
 # Commit fixing the Container error:
 # https://github.com/django-cms/djangocms-bootstrap4/pull/164
 djangocms-bootstrap4 = { git = "https://github.com/django-cms/djangocms-bootstrap4.git", rev = "49983f4" }
+# djangocms-blog = { git = "https://github.com/nephila/djangocms-blog", rev="d6048435eb1f156bff6a323bb107039b94f4a437" }
 djangocms-forms-maintained = { git = "https://github.com/TACC/djangocms-forms", rev = "fce019099b7542bfe2b449cff8ca4e5d0a03e92e" }
 djangocms-tacc-image-gallery = { git = "https://github.com/TACC/Core-CMS-Plugin-Image-Gallery.git", tag = "v0.1.5" }
 djangocms-tacc-export-page = { git = "https://github.com/TACC/Core-CMS-Plugin-Export-Page.git", tag = "v0.2.0" }
