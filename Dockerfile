@@ -30,7 +30,6 @@ RUN --mount=type=cache,id=pnpm-core-cms,target=/pnpm/store \
 # Build assets
 COPY . /code/
 ARG BUILD_ID
-RUN echo ${BUILD_ID}
 RUN pnpm run build
 
 
