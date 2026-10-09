@@ -1,58 +1,36 @@
-# PYTHON BASE IMAGE
-FROM python:3.11-bookworm AS python-base
+FROM python:3.12-slim AS python-base
 LABEL maintainer="TACC-ACI-WMA <wma_prtl@tacc.utexas.edu>"
 ARG DEBIAN_FRONTEND=noninteractive
-RUN apt-get update && apt-get install -y \
-    build-essential python3-dev \
-    libldap2-dev libsasl2-dev ldap-utils tox \
-    lcov valgrind vim \
-    && pip3 install uwsgi
+RUN apt-get update && apt-get install -y git gcc build-essential libmagic-dev ldap-utils libldap2-dev libsasl2-dev
+EXPOSE 8000
 
-ENV PYTHONUNBUFFERED 1
+COPY --from=ghcr.io/astral-sh/uv:0.12.15 /uv /uvx /bin/
+ENV PYSETUP_PATH="/opt/pysetup"
+ENV PATH="$PYSETUP_PATH/.venv/bin:$PATH"
 
-# https://python-poetry.org/docs/configuration/#using-environment-variables
-ENV POETRY_VERSION=2.3.2 \
-    POETRY_HOME="/opt/poetry" \
-    POETRY_VIRTUALENVS_CREATE=false \
-    POETRY_NO_INTERACTION=1
-
-# append poetry to path
-ENV PATH="$PATH:$POETRY_HOME/bin"
-
-# Install poetry version $POETRY_VERSION to $POETRY_HOME
-RUN pip3 install --upgrade pip setuptools wheel \
-    && python3 -m venv "$POETRY_HOME" \
-    && "$POETRY_HOME/bin/pip" install poetry=="$POETRY_VERSION"
-RUN mkdir /code
-# copy project requirement files here to ensure they will be cached.
-COPY pyproject.toml poetry.lock /code/
-WORKDIR /code
-# install runtime deps - uses $POETRY_VIRTUALENVS_IN_PROJECT internally
-RUN poetry install --only main --no-root
+WORKDIR $PYSETUP_PATH
+COPY pyproject.toml uv.lock ./
+# install runtime deps
+RUN --mount=type=cache,id=uv-cms-prod,target=/uv/sync-prod uv sync --locked --no-dev
 
 
-
-# POETRY DEPENDENCIES
 FROM python-base AS development
 COPY . /code/
-# quicker install because poetry runtime deps are already installed
-RUN poetry install --no-root
-
-
-
-# NODE DEPENDENCIES & BUILD & OUTPUT
-FROM node:20 AS node_build
-
-# Install dependencies
-COPY package.json package-lock.json /code/
 WORKDIR /code
-RUN npm ci
+RUN --mount=type=cache,id=uv-core-cms-dev,target=/uv/sync-dev uv sync --locked --dev
+
+
+FROM ghcr.io/pnpm/pnpm:12 AS node_build
+RUN pnpm runtime set node 24 -g
+COPY package.json pnpm-lock.yaml /code/
+WORKDIR /code
+RUN --mount=type=cache,id=pnpm-core-cms,target=/pnpm/store \
+    pnpm install --frozen-lockfile
 
 # Build assets
 COPY . /code/
 ARG BUILD_ID
-RUN npm run build --build-id="$BUILD_ID"
-
+RUN pnpm run build
 
 
 # FINAL LAYER
@@ -66,3 +44,4 @@ RUN mkdir -p /var/log/cms
 # - (unchanged) /package.json and /package-lock.json
 # - (populated) /css/build and /taccsite_ui/dist
 COPY --from=node_build /code/ /code
+WORKDIR /code
