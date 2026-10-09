@@ -12,13 +12,13 @@ dependencies = [
     "aldryn-common==1.0.5",
     "aldryn-search==1.1.0",
     "asgiref>=3.6.0,<4.0.0",
-    "Django>=4.2,<5.0",
+    "Django>=5.2,<6.0",
     "django-appconf==1.0.4",
     "django-appdata==0.4.0",
     "django-auth-ldap==2.2.0",
     "django-classy-tags==2.0.0",
-    "django-cms>=3.8.0,<4.0.0",
-    "django-filer>=2.2,<3.0",
+    "django-cms (>=3.11.3, <4.0.0)",
+    "django-filer (>=3.0, <4.0.0)",
     "django-formtools==2.2",
     "django-haystack==3.4.0",
     "django-ipware==3.0.1",
@@ -84,7 +84,7 @@ dependencies = [
 # Commit fixing the Container error:
 # https://github.com/django-cms/djangocms-bootstrap4/pull/164
 djangocms-bootstrap4 = { git = "https://github.com/django-cms/djangocms-bootstrap4.git", rev = "49983f4" }
-djangocms-forms-maintained = { git = "https://github.com/TACC/djangocms-forms", rev = "6b59ff366495915f06f4d6fac01a2f0aa9efecaf" }
+djangocms-forms-maintained = { git = "https://github.com/TACC/djangocms-forms", rev = "fce019099b7542bfe2b449cff8ca4e5d0a03e92e" }
 djangocms-tacc-image-gallery = { git = "https://github.com/TACC/Core-CMS-Plugin-Image-Gallery.git", tag = "v0.1.5" }
 djangocms-tacc-export-page = { git = "https://github.com/TACC/Core-CMS-Plugin-Export-Page.git", tag = "v0.2.0" }
 djangocms-tacc-remote-content = { git = "https://github.com/TACC/Core-CMS-Plugin-Remote-Content.git", tag = "v0.5.0" }
