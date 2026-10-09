@@ -4,8 +4,6 @@
 
 .admonition {
   --icon: cortal;
-
-  margin-block: var(--global-space--grid-gap);
 }
 
 .admonition::before {

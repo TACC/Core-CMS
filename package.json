@@ -21,6 +21,6 @@
   },
   "homepage": "https://github.com/TACC/Core-CMS",
   "devDependencies": {
-    "@tacc/core-styles": "^2.59.0"
+    "@tacc/core-styles": "github:TACC/Core-Styles#feat/admonition-margin-block"
   }
 }
