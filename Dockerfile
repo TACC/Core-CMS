@@ -1,4 +1,4 @@
-FROM python:3.11-slim AS python-base
+FROM python:3.12-slim AS python-base
 LABEL maintainer="TACC-ACI-WMA <wma_prtl@tacc.utexas.edu>"
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y git gcc build-essential libmagic-dev ldap-utils libldap2-dev libsasl2-dev
