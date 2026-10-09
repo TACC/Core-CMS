@@ -8,9 +8,9 @@ Manual test steps per release, for the testing team to verify before/after deplo
 ## Sections
 
 - **Standard Features**\
-    Run on every portal deploy unless the RC doc has none.
+    Run on every portal deploy unless the RC doc has none. New features and PRs without a named client/production test site go here.
 - **Pre-Tested Features**\
-    Already tested on clients (link to evidence, like a PR).
+    Tweaks or fixes already verified on a **named client or production site** in the PR (link evidence; not local `/test/` or dev-only). Repeat only if you want a spot-check.
 - **Optional Features**\
     Run only when the portal uses the feature (see notes for feature).
 - **Deployment**\
