@@ -14,4 +14,4 @@ Manual test steps per release, for the testing team to verify before/after deplo
 - **Optional Features**\
     Run only when the portal uses the feature (see notes for feature).
 - **Deployment**\
-    Developer/deployment checks, not portal UI smoke tests.
+    Deployment checks, not portal UI smoke tests.
