@@ -7,11 +7,11 @@ Manual test steps per release, for the testing team to verify before/after deplo
 
 ## Sections
 
-- **Standard Features**\
+- **Important**\
     For major changes or new features whose PR does **not** say it was tested on a client site.
-- **Pre-Tested Features**\
+- **Pre-Tested**\
     For minor changes and for major changes whose PR **does** say it was tested on a client site.
-- **Optional Features**\
+- **Optional**\
     For features only for specific portals. For minor changes whose PR does **not** say it was tested on a client site.
 - **Deployment**\
     Successful deployment alone is the test, nothing to smoke test.
