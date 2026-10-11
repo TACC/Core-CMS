@@ -1,6 +1,6 @@
 {# @var settings #}
 
-{% load static %}
+{% load static search_tags %}
 <!-- FAQ: This template loads independently at a unique url (see `urls.py`)
           so Portal and User Guide can render this markup into their markup. -->
 
@@ -10,7 +10,7 @@
 </style>
 <link rel="stylesheet" href="{% static 'site_cms/css/build/element.tacc-search-bar.css' %}">
 
-<form part="form" method="get" action="{{ settings.PORTAL_SEARCH_PATH }}">
+<form part="form" method="get" action="{% search_page_url %}">
   <label for="header-search" class="u-hide--visually" part="label">
     Search
   </label>
