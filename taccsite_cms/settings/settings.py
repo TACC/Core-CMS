@@ -495,10 +495,10 @@ INSTALLED_APPS = [
     # TACC CMS Plugins
     'taccsite_card',
     'taccsite_section',
+    'taccsite_header_logo',
     'djangocms_tacc_image_gallery',
     'djangocms_tacc_export_page',
     'djangocms_tacc_system_monitor',
-    'taccsite_header_logo',
 
     # TACC CMS Plugins - DECPRECATED
     'taccsite_cms.contrib.taccsite_blockquote',
