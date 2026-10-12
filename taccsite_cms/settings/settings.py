@@ -493,7 +493,7 @@ INSTALLED_APPS = [
     'taccsite_card',
     'djangocms_tacc_image_gallery',
     'djangocms_tacc_system_monitor',
-    'djangocms_tacc_header_logo',
+    'taccsite_header_logo',
 
     # TACC CMS Plugins - DECPRECATED
     'taccsite_cms.contrib.taccsite_blockquote',
