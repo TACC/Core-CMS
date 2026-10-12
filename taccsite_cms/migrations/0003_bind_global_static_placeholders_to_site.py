@@ -1,8 +1,4 @@
-"""
-Global static placeholders (site_id NULL) bypass unique_together on (code, site) in
-PostgreSQL, so concurrent template get_or_create can insert duplicates. Bind existing
-rows to SITE_ID and drop extras.
-"""
+"""Attach header-logo and footer-content static placeholders to SITE_ID; remove duplicate rows."""
 
 from django.conf import settings
 from django.db import migrations
