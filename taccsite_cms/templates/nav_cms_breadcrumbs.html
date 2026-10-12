@@ -1,15 +1,6 @@
 {# @var className #}
 {% load menu_tags %}
 
-{# To adjust style of "disabled" link #}
-{# NOTE: Not using `block`, so markup is together for devs in live markup #}
-<style>
-  .s-breadcrumbs a:not([href]) {
-    opacity: 1;
-    color: unset;
-  }
-</style>
-
 <nav class="s-breadcrumbs  {{className}}" id="cms-breadcrumbs">
 
   {# To support structured data, item* attributes are used #}
@@ -40,6 +31,13 @@
     const isDirectNavLink = href && cmsNav && cmsNav.querySelector(
       'a.nav-link:not(.dropdown-toggle)[href="' + href + '"]'
     );
-    if (!isDirectNavLink) secondLink.removeAttribute('href');
+    if (!isDirectNavLink) {
+      secondLink.removeAttribute('href');
+
+      {# To undo Core-Styles' disabled look for parent root pages #}
+      {# https://github.com/TACC/Core-Styles/blob/v2.57.3/src/lib/_imports/elements/links.css#L14-L16 #}
+      secondLink.style.opacity = 1;
+      secondLink.style.color = 'unset';
+    }
   }
 </script>

@@ -293,6 +293,8 @@ CEP_AUTH_VERIFICATION_ENDPOINT = 'http://django:6000'               # Local
 
 PORTAL_SOCIAL_SHARE_PLATFORMS = ['linkedin', 'facebook', 'bluesky', 'email']
 
+PORTAL_SOCIAL_MEDIA_PLATFORMS = ['linkedin', 'instagram', 'facebook', 'bluesky', 'youtube']
+
 ########################
 # TACC: STYLES
 ########################
@@ -317,6 +319,7 @@ TACC_CORE_STYLES_VERSION = 2
 PORTAL_BLOG_SHOW_CATEGORIES = True
 PORTAL_BLOG_SHOW_TAGS = True
 PORTAL_BLOG_SHOW_BYLINE = True
+PORTAL_BLOG_SHOW_BACK_LINK = False
 # Whether to automatically show article image on the article page
 # FAQ: Designer consistently prefers main image be explicitely added
 PORTAL_BLOG_SHOW_AUTO_MAIN_IMAGE = False
@@ -491,7 +494,9 @@ INSTALLED_APPS = [
 
     # TACC CMS Plugins
     'taccsite_card',
+    'taccsite_section',
     'djangocms_tacc_image_gallery',
+    'djangocms_tacc_export_page',
     'djangocms_tacc_system_monitor',
     'taccsite_header_logo',
 
@@ -612,17 +617,6 @@ META_USE_SCHEMAORG_PROPERTIES = True
 
 
 ########################
-# REDMINE TRACKER AUTH
-########################
-
-RT_HOST = ''
-RT_UN = ''
-RT_PW = ''
-RT_QUEUE = ''
-RT_TAG = ''
-
-
-########################
 # SETTINGS IMPORT
 ########################
 
@@ -630,7 +624,7 @@ try:
     from taccsite_cms.settings.settings_default import *
 except ModuleNotFoundError:
     # pass
-    # SETTINGS IMPORT DEPRECATED
+    # DEPRECATED SETTINGS LOCATION
     try:
         from taccsite_cms.settings_default import *
     except ModuleNotFoundError:
@@ -641,18 +635,27 @@ try:
     import taccsite_cms.settings.settings_custom as settings_custom
 except ModuleNotFoundError:
     # pass
-    # SETTINGS IMPORT DEPRECATED
+    # DEPRECATED SETTINGS LOCATION
     try:
         from taccsite_cms.settings_custom import *
         import taccsite_cms.settings_custom as settings_custom
     except ModuleNotFoundError:
         settings_custom = []
 
+# NOTE: This is outside try/catch so it supports DEPRECATED SETTINGS LOCATION
+#       (e.g. in TACC/Camino, settings files are directly under taccsite_cms)
+if hasattr(settings_custom, 'EXTRA_INSTALLED_APPS'):
+    INSTALLED_APPS += settings_custom.EXTRA_INSTALLED_APPS
+if hasattr(settings_custom, 'EXTRA_STATICFILES_DIRS'):
+    STATICFILES_DIRS = STATICFILES_DIRS + tuple(settings_custom.EXTRA_STATICFILES_DIRS)
+if hasattr(settings_custom, 'EXTRA_MIDDLEWARE'):
+    MIDDLEWARE += settings_custom.EXTRA_MIDDLEWARE
+
 try:
     from taccsite_cms.settings.secrets import *
 except ModuleNotFoundError:
     # pass
-    # SETTINGS IMPORT DEPRECATED
+    # DEPRECATED SETTINGS LOCATION
     try:
         from taccsite_cms.secrets import *
     except ModuleNotFoundError:
@@ -663,25 +666,26 @@ try:
     import taccsite_cms.settings.settings_local as settings_local
 except ModuleNotFoundError:
     # pass
-    # SETTINGS IMPORT DEPRECATED
+    # DEPRECATED SETTINGS LOCATION
     try:
         from taccsite_cms.settings_local import *
         import taccsite_cms.settings_local as settings_local
     except ModuleNotFoundError:
         settings_local = []
 
-try:
-    from taccsite_cms import custom_app_settings
-    INSTALLED_APPS += getattr(custom_app_settings, 'CUSTOM_APPS', [])
-    STATICFILES_DIRS += getattr(custom_app_settings , 'STATICFILES_DIRS', ())
-    MIDDLEWARE += getattr(custom_app_settings , 'CUSTOM_MIDDLEWARE', ())
-except ImportError:
-    pass
-
 ########################
 # SETTINGS DEPRECATED
 # TODO: Make clients not use nor set these
 ########################
+
+# For older (pre-v4.40.0-rc10) custom app settings
+try:
+    from taccsite_cms import custom_app_settings
+    INSTALLED_APPS += getattr(custom_app_settings, 'CUSTOM_APPS', [])
+    STATICFILES_DIRS += getattr(custom_app_settings, 'STATICFILES_DIRS', ())
+    MIDDLEWARE += getattr(custom_app_settings, 'CUSTOM_MIDDLEWARE', ())
+except ImportError:
+    pass
 
 deprecated_SETTINGS_EXPORT = []
 
@@ -757,9 +761,11 @@ SETTINGS_EXPORT = deprecated_SETTINGS_EXPORT + [
     'PORTAL_BLOG_SHOW_TAGS',
     'PORTAL_BLOG_SHOW_BYLINE',
     'PORTAL_BLOG_SHOW_AUTO_MAIN_IMAGE',
+    'PORTAL_BLOG_SHOW_BACK_LINK',
     'PORTAL_BLOG_CATEGORY_ORDER',
     'PORTAL_BLOG_TAG_FOR_EXTERNAL_ARTICLES',
     'PORTAL_SOCIAL_SHARE_PLATFORMS',
+    'PORTAL_SOCIAL_MEDIA_PLATFORMS',
     'PORTAL_SEARCH_PATH',
     'PORTAL_SEARCH_QUERY_PARAM_NAME',
 ]

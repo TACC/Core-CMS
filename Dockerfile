@@ -1,5 +1,5 @@
 # PYTHON BASE IMAGE
-FROM python:3.11-bullseye AS python-base
+FROM python:3.11-bookworm AS python-base
 LABEL maintainer="TACC-ACI-WMA <wma_prtl@tacc.utexas.edu>"
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y \
@@ -9,16 +9,20 @@ RUN apt-get update && apt-get install -y \
     && pip3 install uwsgi
 
 ENV PYTHONUNBUFFERED 1
-ENV PATH="/root/.local/bin:$PATH"
 
 # https://python-poetry.org/docs/configuration/#using-environment-variables
 ENV POETRY_VERSION=2.3.2 \
+    POETRY_HOME="/opt/poetry" \
     POETRY_VIRTUALENVS_CREATE=false \
     POETRY_NO_INTERACTION=1
 
-RUN pip3 install --upgrade pip setuptools wheel
-# Install Poetry - respects $POETRY_VERSION & $POETRY_HOME
-RUN curl -sSL https://install.python-poetry.org | python3 -
+# append poetry to path
+ENV PATH="$PATH:$POETRY_HOME/bin"
+
+# Install poetry version $POETRY_VERSION to $POETRY_HOME
+RUN pip3 install --upgrade pip setuptools wheel \
+    && python3 -m venv "$POETRY_HOME" \
+    && "$POETRY_HOME/bin/pip" install poetry=="$POETRY_VERSION"
 RUN mkdir /code
 # copy project requirement files here to ensure they will be cached.
 COPY pyproject.toml poetry.lock /code/

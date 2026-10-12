@@ -1,0 +1,10 @@
+/* Used by create_picture_test_page.py. */
+
+/*
+o-section doesn't establish a block formatting context, so a floated
+align-left/align-right image (or its figure/link wrapper) collapses its
+section's height and overlaps the next one.
+*/
+.o-section:has(.align-left, .align-right) {
+  display: flow-root;
+}

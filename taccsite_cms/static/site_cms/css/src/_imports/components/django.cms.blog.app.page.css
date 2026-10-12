@@ -157,18 +157,30 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 
 /* TODO: When extending Core-Styles c-news, .blockquote... is only for CMS */
 /* FAQ: .blockquote... is only for CMS, cuz `.align-…` is from Core-Styles */
-:--news-article-page .blog-content .align-left,
+:--news-article-page .blog-content :is(figure, a):has(> .align-left),
+:--news-article-page .blog-content img.align-left:not(:is(figure, a) > *),
 :--news-article-page .blog-content .blockquote.text-left {
   @mixin news-article-page__media--offset-left;
 }
-:--news-article-page .blog-content .align-right,
+:--news-article-page .blog-content :is(figure, a):has(> .align-right),
+:--news-article-page .blog-content img.align-right:not(:is(figure, a) > *),
 :--news-article-page .blog-content .blockquote.text-right {
   @mixin news-article-page__media--offset-right;
 }
-:--news-article-page .blog-content .align-center {
+:--news-article-page .blog-content :is(figure, a):has(> .align-center),
+:--news-article-page .blog-content img.align-center:not(:is(figure, a) > *) {
   max-width: 100%;
 }
 :--news-article-page .blog-content .blockquote.text-center {
+  margin-inline: auto;
+}
+
+/* To overwrite @tacc/core-styles/…/components/align.css float/margin still on wrapped `img` */
+/* FAQ: Without this, the wrapped `img` double-floats inside its already-floated wrapper, */
+/* which keeps the wrapper from shrinking to the image's width (e.g. breaks caption width) */
+:--news-article-page .blog-content :is(figure, a) > .align-right,
+:--news-article-page .blog-content :is(figure, a) > .align-left {
+  float: unset;
   margin-inline: auto;
 }
 
@@ -185,9 +197,12 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 /* To remove margin on narrow screens */
 /* To overwrite @tacc/core-styles/…/components/align.css */
 @media (--medium-and-below) {
-  :--news-article-page .blog-content .align-center,
-  :--news-article-page .blog-content .align-right,
-  :--news-article-page .blog-content .align-left {
+  :--news-article-page .blog-content :is(figure, a):has(> .align-center),
+  :--news-article-page .blog-content img.align-center:not(:is(figure, a) > *),
+  :--news-article-page .blog-content :is(figure, a):has(> .align-right),
+  :--news-article-page .blog-content img.align-right:not(:is(figure, a) > *),
+  :--news-article-page .blog-content :is(figure, a):has(> .align-left),
+  :--news-article-page .blog-content img.align-left:not(:is(figure, a) > *) {
     max-width: 100%;
 
     /* So figure or linked image will center if not aligned */
@@ -199,23 +214,30 @@ Styleguide Components.DjangoCMS.Blog.App.Page
       width: fit-content;
     }
   }
-  :--news-article-page .blog-content .align-right,
-  :--news-article-page .blog-content .align-left {
+  :--news-article-page .blog-content :is(figure, a):has(> .align-right),
+  :--news-article-page .blog-content img.align-right:not(:is(figure, a) > *),
+  :--news-article-page .blog-content :is(figure, a):has(> .align-left),
+  :--news-article-page .blog-content img.align-left:not(:is(figure, a) > *) {
     float: unset;
   }
-  :--news-article-page .blog-content .align-right {
+  :--news-article-page .blog-content :is(figure, a):has(> .align-right),
+  :--news-article-page .blog-content img.align-right:not(:is(figure, a) > *) {
     margin-left: unset;
   }
-  :--news-article-page .blog-content .align-left {
+  :--news-article-page .blog-content :is(figure, a):has(> .align-left),
+  :--news-article-page .blog-content img.align-left:not(:is(figure, a) > *) {
     margin-right: unset;
   }
 }
 
 /* To reduce image width on medium screens */
 @media (--medium-and-above) and (--medium-and-below) {
-  :--news-article-page .blog-content .align-center,
-  :--news-article-page .blog-content .align-right,
-  :--news-article-page .blog-content .align-left {
+  :--news-article-page .blog-content :is(figure, a):has(> .align-center),
+  :--news-article-page .blog-content img.align-center:not(:is(figure, a) > *),
+  :--news-article-page .blog-content :is(figure, a):has(> .align-right),
+  :--news-article-page .blog-content img.align-right:not(:is(figure, a) > *),
+  :--news-article-page .blog-content :is(figure, a):has(> .align-left),
+  :--news-article-page .blog-content img.align-left:not(:is(figure, a) > *) {
     max-width: 50%;
   }
 }

@@ -1,12 +1,21 @@
 # AGENTS.md
 
 - [Architecture](#architecture)
+- [Vocab](#vocab)
 - [Commits](#commits)
 - [Pull Requests](#pull-requests)
 
 ## Architecture
 
 This is a **Docker-based Django CMS** project. All application code runs inside Docker containers.
+
+- [Services](#services)
+- [Make](#make)
+- [Setup](#setup)
+- [Dependencies](#dependencies)
+- [Workflows](#workflows)
+- [Gotchas](#gotchas)
+- [Lint, Test, Build](#lint-test-build)
 
 ### Services
 
@@ -43,9 +52,33 @@ _Note: Stale containers errors (e.g. `core_cms_elasticsearch already in use`) co
 - When updating dependencies, use `npm` commands (e.g. `uninstall`/`install`); do not hand-edit lockfile entries.
 - When installing `@tacc/core-styles`, use a published version from the registry, or a `git+https://github.com/...` spec so install does not require SSH.
 
+### Workflows
+
+- [Docker Compose Overrides](#docker-compose-overrides)
+- [Git Worktrees and Docker](#git-worktrees-and-docker)
+
+#### Docker Compose Overrides
+
+If you must edit docker-compose to fix a problem specific to your environment, use [Git Worktrees and Docker](#git-worktrees-and-docker) for a dedicated CMS + Postgres stack per worktree, or [Run Another Project Instance](./docs/run-another-project-instance.md) for a second server on the **same** DB/ES as `make start` (`docker-compose.local-*.yml`).
+
+#### Git Worktrees and Docker
+
+A container runs whichever checkout its Compose file points at, not the worktree you are editing. Keep all edits in the **active workspace** only—do **not** copy them into another checkout.
+
+Per-instance files `docker-compose.agent-<port>.yml` (gitignored) live in the **main checkout**, so you can see which worktree each instance uses and delete worktrees without losing them. Copy [`docker-compose.agent.example.yml`](./docker-compose.agent.example.yml) to start one.
+
+- Set `build.context` **and** the CMS bind mount to the active worktree, as **absolute paths**. If a gitignored compose file still points at another checkout (including a removed worktree), repoint those paths and recreate the container—do not ask the user unless blocked. (`build: .` builds from the main checkout.)
+- Use only that worktree bind mount for `/code`. Do **not** add anonymous volumes on `/code/static` or `/code/taccsite_cms/static` (they hide built CSS from the worktree).
+- Recreate the container after editing: `docker compose -f docker-compose.agent-<port>.yml -p cms<port> up -d --build`.
+- Keep the same file name and `-p cms<port>` when repointing paths, so the named volumes stay attached.
+- In that worktree, `taccsite_cms/settings/settings_custom.py` (from `settings_custom.example.py`) with `PORTAL_SEARCH_INDEX_IS_AUTOMATIC = False` so saving a page does not index.
+- Omit the `elasticsearch` service. Postgres hostname in `secrets.py` can stay `core_cms_postgres` when the compose file adds that **network alias** on the agent Postgres service.
+- Before deleting a worktree, repoint that instance’s paths to another checkout (or `docker compose … down` if retiring the instance).
+
 ### Gotchas
 
-If you must edit docker-compose to fix a problem specific to your environment, then create a `docker-compose.agent.yml`.
+- [Settings & Secrets](#settings--secrets)
+- [Elasticsearch](#elasticsearch)
 
 #### Settings & Secrets
 
@@ -68,6 +101,10 @@ As necessary for given task:
 
 See `README.md` for full setup instructions.
 
+## Vocab
+
+- Use the word "deleted", not "removed".
+
 ## Commits
 
 - **Format:** `.gitmessage` (fallback: `~/.gitmessage`)
@@ -75,6 +112,32 @@ See `README.md` for full setup instructions.
 ## Pull Requests
 
 - **Title:** `.gitmessage` (fallback: `~/.gitmessage`)
-- **Description:** `.github/PULL_REQUEST_TEMPLATE.md`
-  - Be concise: plain language, simple sentences; reviewers find detail in the diff. Say what changed, then why (if it matters) — never how.
-  - When updating, first re-read the current description, because it may have been edited.
+- **Description:** `.github/PULL_REQUEST_TEMPLATE.md` (fallback: `~/.github/PULL_REQUEST_TEMPLATE.md`)
+  - In general:
+    - When updating, first re-read the current description, because it may have been edited.
+    - Be concise: plain language, simple sentences, present lists as bullets not prose.
+    - Explanatory rationale specific to this PR's decisions belong in [review comments](#review-comments), not description.
+    - Code comments are only for durable, non-obvious facts for future readers regardless of PR history.
+    - Say each fact once (e.g. a dependency named in "Related" should not be repeated in "Notes").
+    - Always include a "Notes" section last (uncomment it, even if empty), so any trailing attribution or signature is separate from "UI" content.
+  - In "Overview" section, match the template's example length (1 sentence) and density — not just its stated max (1–3), and not a single sentence stitched together from several clauses.
+    - Say what changed and (only if omitting it would leave a reviewer confused or suspicious) why, never how.
+  - In "Related" section, links to PRs should instead just be raw URLs (because GitHub will auto-create rich links).
+  - In "Changes" section:
+    - Group changes into one bullet per file.
+    - Prefix each bullet with a bold verb as shown in the template.
+    - Default to zero explanation per bullet (e.g. `**added** logos`). Leave the detail for the code diff itself — a bullet is not the place to restate what the diff already shows.
+    - Name files/identifiers by their bare name (`x-button.css`), not full path, unless the bare name is ambiguous.
+    - Describe even the "what" at the highest level that's still meaningful — prefer a general noun ("shared rules") to an enumeration of the specifics behind it ("the such-and-such code block").
+    - When several similarly-patterned names are affected the same way (e.g. a rename applied to 3 things), give one example plus `…` instead of listing all of them.
+  - In "Testing" section:
+    - One action per numbered step.
+    - Prefer a step that compares directly against a running reference (e.g. production).
+
+### Review Comments
+
+- Group it into one self-review with inline comments.
+- Prefix each such comment with:
+    - either **Explanation:**, **Question:**, **Suggestion:**
+    - or appropriate callout syntax (e.g. [GitHub Alerts](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts))
+- If commenting on a PR as the user instead of a distinct bot identity, then quote and sign your entire message.

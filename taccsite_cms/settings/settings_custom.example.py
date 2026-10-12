@@ -95,6 +95,9 @@ PORTAL_FAVICON = {
 # To disable "share this:" links (e.g. on News)
 # PORTAL_SOCIAL_SHARE_PLATFORMS = []
 
+# To disable social media profile links (e.g. in Footer)
+# PORTAL_SOCIAL_MEDIA_PLATFORMS = []
+
 ########################
 # SEARCH
 ########################
@@ -108,6 +111,15 @@ PORTAL_SEARCH_INDEX_IS_AUTOMATIC = False
 ########################
 # DJANGOCMS_BLOG
 ########################
+
+EXTRA_INSTALLED_APPS = [
+    # DJANGOCMS_BLOG
+    'parler',
+    'taggit',
+    'taggit_autosuggest',
+    'sortedm2m',
+    'djangocms_blog',
+]
 
 BLOG_AUTO_SETUP = True # Set to False after setup (minimize overhead)
 BLOG_AUTO_HOME_TITLE ='Home'
@@ -123,3 +135,4 @@ BLOG_ENABLE_COMMENTS = False
 PORTAL_BLOG_SHOW_CATEGORIES = False
 PORTAL_BLOG_SHOW_TAGS = False
 PORTAL_BLOG_SHOW_AUTO_MAIN_IMAGE = False
+PORTAL_BLOG_SHOW_BACK_LINK = False

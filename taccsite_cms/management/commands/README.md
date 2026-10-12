@@ -2,11 +2,15 @@
 
 - [How to Use](#how-to-use)
 - [List Pages Using Each Template](#list-pages-using-each-template)
+- [List Pages Using Plugins](#list-pages-using-plugins)
 - [Create Test Pages](#create-test-pages)
   - [for Sections](#for-sections)
   - [for Cards](#for-cards)
   - [for Alerts](#for-alerts)
   - [for Buttons](#for-buttons)
+  - [for Pictures](#for-pictures)
+  - [for Social Logos (Snippet)](#for-social-logos-snippet)
+  - [for "Export Page" (Feature)](#for-export-page-feature)
 - [Set Groups & Permissions](#set-groups--permissions)
 - [Reference](#reference)
 
@@ -28,6 +32,20 @@ This command lists all pages using each template in the CMS, along with their fu
 Usage:
 ```sh
 python manage.py list_page_templates
+```
+
+## List Pages Using Plugins
+
+This command lists all pages that use a specific plugin instance (given a plugin instance ID), along with the page's path.
+
+Usage:
+```sh
+python manage.py list_plugin_pages <plugin_instance_id> [<plugin_instance_id> ...]
+```
+
+Example:
+```sh
+python manage.py list_plugin_pages 42 99
 ```
 
 ## Create Test Pages
@@ -91,6 +109,44 @@ python manage.py create_test_page_button_style --replace
 ```
 
 Path: `/test/test-button-style/`
+
+### for Pictures
+
+Test djangocms_picture attribute/wrapper combinations (link, figure, alignment).
+
+Usage:
+
+```sh
+python manage.py create_picture_test_page --replace
+```
+
+Path: `/test/test-picture-style/`
+
+Debug overlay (labels each element on the page): printed to stdout after running the command.
+
+### for Social Logos (Snippet)
+
+Test `snippets/logos-social-media.html` via Snippet plugin and `PORTAL_SOCIAL_MEDIA_PLATFORMS`.
+
+Usage:
+
+```sh
+python manage.py create_social_logos_snippet_test_page --replace
+```
+
+Path: `/test/social-logos-snippet-test/`
+
+### for "Export Page" (Feature)
+
+One of each plugin type covered by export page (creates snippet `export-page-test` if missing).
+
+Usage:
+
+```sh
+python manage.py create_test_export_page_plugins --replace
+```
+
+Path: `/test/test-export-page/`
 
 ## Set Groups & Permissions
 
