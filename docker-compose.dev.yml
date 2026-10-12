@@ -1,7 +1,7 @@
 services:
   cms:
     build: .
-    image: taccwma/core-cms:latest
+    image: taccwma/core-cms:local
     volumes:
       - .:/code
     ports:

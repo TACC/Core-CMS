@@ -1,0 +1,8 @@
+/*
+ * Core-CMS additions atop djangocms_admin_style/css/djangocms-admin.css
+ * (loaded from taccsite_cms/templates/admin/inc/extrahead.html).
+ */
+
+input[type="checkbox"]:disabled + label {
+  cursor: not-allowed;
+}
