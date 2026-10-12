@@ -9,7 +9,7 @@ Related:
 
 | State               | Description                       |
 | ------------------- | --------------------------------- |
-| one placeholder     | `header-logo` static placeholder  |
+| one placeholder     | `header-logo` static placeholder (site-bound; see `taccsite_cms` migration `0003`) |
 | if plugin is added  | `TaccsiteHeaderLogoPlugin` is only option |
 | if plugin not added | renders settings-based logo       |
 
