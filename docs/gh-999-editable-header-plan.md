@@ -9,9 +9,11 @@ Related:
 
 | State               | Description                       |
 | ------------------- | --------------------------------- |
-| one placeholder     | `header-logo` static placeholder (site-bound; see `taccsite_cms` migration `0003`) |
+| one placeholder     | `header-logo` static placeholder[^1] |
 | if plugin is added  | `TaccsiteHeaderLogoPlugin` is only option |
 | if plugin not added | renders settings-based logo       |
+
+[^1]: [Placeholder must be bound to a specific site to prevent unexpected duplicate.](https://github.com/TACC/Core-CMS/pull/1254)
 
 The branding and navs and search are still settings-based.
 
