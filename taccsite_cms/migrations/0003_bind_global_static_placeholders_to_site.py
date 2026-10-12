@@ -1,10 +1,10 @@
-"""Attach header-logo and footer-content static placeholders to SITE_ID; remove duplicate rows."""
+"""Attach header-logo static placeholder to SITE_ID; remove duplicate rows."""
 
 from django.conf import settings
 from django.db import migrations
 
 
-STATIC_PLACEHOLDER_CODES = ('header-logo', 'footer-content')
+STATIC_PLACEHOLDER_CODES = ('header-logo',)
 
 
 def _plugin_count(CMSPlugin, static_placeholder):
