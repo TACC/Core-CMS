@@ -6,3 +6,40 @@
 input[type="checkbox"]:disabled + label {
   cursor: not-allowed;
 }
+
+/*
+ * Django 5 admin uses <details>/<summary> for collapsible fieldsets.
+ * djangocms-admin-style 3.3.x targets the older collapse markup; without
+ * these rules, summary bars pick up Django's header colors (heavy teal bars).
+ */
+form fieldset.module.collapse details > summary {
+  background: transparent;
+  border: none;
+  color: inherit;
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0 0 15px;
+  padding: 0;
+}
+
+form fieldset.module.collapse details > summary .fieldset-heading,
+form fieldset.module.collapse details > summary .inline-heading {
+  color: var(--dca-gray-darkest, #333);
+  font-size: 16px;
+  font-weight: 400;
+}
+
+form fieldset.module.collapse details > summary:hover .fieldset-heading,
+form fieldset.module.collapse details > summary:hover .inline-heading {
+  color: var(--dca-primary, #46b8da);
+}
+
+/* CMS plugin modals: restore spacing when help text follows checkboxes */
+.cms-dialog form .form-row .help {
+  margin-top: 4px;
+  margin-bottom: 12px;
+}
+
+.cms-dialog form .checkbox-row {
+  margin-bottom: 8px;
+}
