@@ -1,8 +1,7 @@
 """
-Create a published CMS page that exercises Style and Bootstrap 4 Container
-plugins (including section--accent / o-section--style-accent).
+Create a published CMS page that exercises the TACC Site Section plugin.
 
-For manual UI checks after Core-Styles or plugin setting changes.
+For manual UI checks after Core-Styles or Section plugin changes.
 """
 
 import warnings
@@ -13,14 +12,9 @@ from django.core.management.base import BaseCommand, CommandError
 
 from cms.api import add_plugin, create_page, publish_page
 
-from djangocms_bootstrap4.contrib.bootstrap4_grid.cms_plugins import (
-    Bootstrap4GridColumnPlugin,
-    Bootstrap4GridContainerPlugin,
-    Bootstrap4GridRowPlugin,
-)
-from djangocms_style.cms_plugins import StylePlugin
 from djangocms_text_ckeditor.cms_plugins import TextPlugin
 
+from taccsite_section.cms_plugins import TaccsiteSectionPlugin
 from taccsite_cms.management.test_page_util import (
     delete_draft_pages_by_reverse_id,
     ensure_test_parent_page,
@@ -35,8 +29,8 @@ DEFAULT_TEMPLATE = 'standard.html'
 
 class Command(BaseCommand):
     help = (
-        'Create a published page with Style and Grid Container plugins '
-        '(section variants including accent) for visual QA.'
+        'Create a published page with TACC Site Section plugins '
+        '(light, muted, accent, and dark section types) for visual QA.'
     )
 
     def add_arguments(self, parser):
@@ -129,68 +123,66 @@ class Command(BaseCommand):
                 body=html,
             )
 
-        def add_style_section(class_name, heading, blurb, tag_type='section'):
-            style = add_plugin(
+        def add_section(name, section_type, heading, blurb):
+            section = add_plugin(
                 placeholder,
-                StylePlugin,
+                TaccsiteSectionPlugin,
                 language,
-                class_name=class_name,
-                tag_type=tag_type,
+                label=name,
+                class_name=section_type,
+                tag_type='section',
             )
             add_text(
-                style,
+                section,
                 f'<h2>{heading}</h2><p>{blurb}</p>',
             )
-            return style
+            return section
 
-        # Stacked Style plugins (legacy section + o-section accent)
-        add_style_section(
-            'section--light',
-            'Style: section--light',
-            'First block; compare spacing and color with Core-Styles section docs.',
-        )
-        add_style_section(
-            'section--accent',
-            'Style: section--accent',
-            'Accent surface via Style plugin (new in Core-Styles 2.55).',
-        )
-        add_style_section(
-            'o-section o-section--style-accent',
-            'Style: o-section--style-accent',
-            'Object-section accent variant.',
+        add_plugin(
+            placeholder,
+            TextPlugin,
+            language,
+            body=(
+                '<h1>TACC "Section" Plugin</h1>'
+                '<p class="h2">Four Section plugins below—one per '
+                '<strong>Section type</strong> (Light, Muted, Accent, Dark). '
+                'Each uses the default <code>&lt;section&gt;</code> tag.</p>'
+            ),
         )
 
-        # Bootstrap 4 Container + accent section (GRID_CONTAINERS)
-        container = add_plugin(
-            placeholder,
-            Bootstrap4GridContainerPlugin,
-            language,
-            container_type='container  o-section o-section--style-accent',
+        section_examples = (
+            (
+                'Light section',
+                'o-section o-section--style-light',
+                'Light section',
+                'Compare padding and background with other types. Classes: '
+                '<code>o-section o-section--style-light</code>.',
+            ),
+            (
+                'Muted section',
+                'o-section o-section--style-muted',
+                'Muted section',
+                'Default section type in the editor. Classes: '
+                '<code>o-section o-section--style-muted</code>.',
+            ),
+            (
+                'Accent section',
+                'o-section o-section--style-accent',
+                'Accent section',
+                'Brand accent background. Classes: '
+                '<code>o-section o-section--style-accent</code>.',
+            ),
+            (
+                'Dark section',
+                'o-section o-section--style-dark',
+                'Dark section',
+                'Dark background and light text. Classes: '
+                '<code>o-section o-section--style-dark</code>.',
+            ),
         )
-        row = add_plugin(
-            placeholder,
-            Bootstrap4GridRowPlugin,
-            language,
-            target=container,
-            vertical_alignment='',
-            horizontal_alignment='',
-        )
-        column = add_plugin(
-            placeholder,
-            Bootstrap4GridColumnPlugin,
-            language,
-            target=row,
-            column_type='col',
-            column_alignment='',
-            xs_col=12,
-        )
-        add_text(
-            column,
-            '<h2>Grid: Container + accent section</h2>'
-            '<p>Bootstrap Container plugin: '
-            'fixed-width container plus <code>o-section--style-accent</code> '
-            '(see <code>DJANGOCMS_BOOTSTRAP4_GRID_CONTAINERS</code>).</p>',
-        )
+
+        for name, section_type, heading, blurb in section_examples:
+            add_section(name, section_type, heading, blurb)
 
         if not options['no_publish']:
             with warnings.catch_warnings():
