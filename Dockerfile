@@ -41,7 +41,7 @@ RUN mkdir -p /var/log/cms
 
 # Populate with code from Node layer
 # - (new) /node_modules
-# - (unchanged) /package.json and /package-lock.json
+# - (unchanged) /package.json and /pnpm-lock.yaml
 # - (populated) /css/build and /taccsite_ui/dist
 COPY --from=node_build /code/ /code
 WORKDIR /code
