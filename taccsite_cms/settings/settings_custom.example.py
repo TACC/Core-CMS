@@ -136,3 +136,9 @@ PORTAL_BLOG_SHOW_CATEGORIES = False
 PORTAL_BLOG_SHOW_TAGS = False
 PORTAL_BLOG_SHOW_AUTO_MAIN_IMAGE = False
 PORTAL_BLOG_SHOW_BACK_LINK = False
+# PORTAL_BLOG_LIST_LAYOUT = 'grid'
+# PORTAL_BLOG_LIST_LAYOUT = {
+#     'News': 'list',
+#     'Project Highlights': 'grid',
+#     'default': 'list',
+# }
