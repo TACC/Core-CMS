@@ -114,6 +114,7 @@ See `README.md` for full setup instructions.
 - **Title:** `.gitmessage` (fallback: `~/.gitmessage`)
 - **Description:** `.github/PULL_REQUEST_TEMPLATE.md` (fallback: `~/.github/PULL_REQUEST_TEMPLATE.md`)
   - In general:
+    - Create PR as Draft unless otherwise requested.
     - When updating, first re-read the current description, because it may have been edited.
     - Be concise: plain language, simple sentences, present lists as bullets not prose.
     - Explanatory rationale specific to this PR's decisions belong in [review comments](#review-comments), not description.
