@@ -143,11 +143,12 @@ Styleguide Components.DjangoCMS.Blog.App.Page
   margin-top: 0.5em;
 }
 
-/* Space under lone images in article body (match :--main-content p margin in core-styles) */
-:--news-article-page .blog-content img:not(:is(figure *, a *)) {
-  margin-bottom: 2rem;
-}
-:--news-article-page .blog-content a:has(> img):not(:has(> figure)) {
+/* Space under Picture output in article body (match :--main-content p margin in core-styles) */
+:--news-article-page .blog-content :is(
+  figure,
+  img:not(:is(figure *, a *)),
+  a:has(> img):not(:has(> figure))
+) {
   margin-bottom: 2rem;
 }
 
