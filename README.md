@@ -44,6 +44,8 @@ The base CMS code for TACC WMA Workspace Portals & Websites
 * [Docker]
   * Docker Engine ≥ v20
   * [Docker Compose]
+* [uv]
+* [pnpm]
 
 > **Important**
 > We recommend you install the Docker Desktop application. Alternatively, you may install both Docker Engine and Docker Compose.
@@ -105,11 +107,11 @@ How to set up a new local CMS instance.
 3. Build CSS:
 
     ```sh
-    docker run --rm -v "$(pwd):/code" -w /code node:20 sh -c "npm ci && npm run build"
+    docker run --rm -v "$(pwd):/code" -w /code ghcr.io/pnpm/pnpm:12 sh -c "pnpm ci && pnpm run build"
     ```
 
     > **Note**
-    > If you will develop thus rebuild stylesheets often, use a local Node installation and run `npm ci` once, then `npm run build` as needed.
+    > If you will develop thus rebuild stylesheets often, use a local Node installation and run `pnpm ci` once, then `pnpm run build` as needed.
 
 4. Prepare [Django] Application:
 
@@ -226,6 +228,8 @@ To contribute, first read [How to Contribute][Contributing].
 
 [Docker]: https://docs.docker.com/get-docker/
 [Docker Compose]: https://docs.docker.com/compose/install/
+[uv]: https://docs.astral.sh/uv/getting-started/installation/
+[pnpm]: https://pnpm.io/installation
 
 [Django]: https://www.djangoproject.com/
 [Django CMS]: https://www.django-cms.org/
