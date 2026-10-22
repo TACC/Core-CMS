@@ -329,6 +329,13 @@ PORTAL_BLOG_CATEGORY_ORDER = []
 
 PORTAL_BLOG_TAG_FOR_EXTERNAL_ARTICLES = 'external'
 
+PORTAL_BLOG_LIST_LAYOUT = 'list'
+# PORTAL_BLOG_LIST_LAYOUT = {
+#     'Blog Instance 1 Name': 'list',
+#     'Blog Instance 2 Name': 'grid',
+#     'default': 'list',
+# }
+
 ########################
 # DJANGO & DJANGO_CMS & TACC
 ########################
@@ -347,6 +354,16 @@ STATICFILES_DIRS = (
 ) + tuple(glob(
     os.path.join(BASE_DIR, 'taccsite_custom', '*', 'static')
 ))
+
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+    },
+}
+DEFAULT_FILE_STORAGE = STORAGES["default"]["BACKEND"]
 
 # User Uploaded Files Location.
 MEDIA_URL = '/media/'
@@ -764,6 +781,7 @@ SETTINGS_EXPORT = deprecated_SETTINGS_EXPORT + [
     'PORTAL_BLOG_SHOW_BACK_LINK',
     'PORTAL_BLOG_CATEGORY_ORDER',
     'PORTAL_BLOG_TAG_FOR_EXTERNAL_ARTICLES',
+    'PORTAL_BLOG_LIST_LAYOUT',
     'PORTAL_SOCIAL_SHARE_PLATFORMS',
     'PORTAL_SOCIAL_MEDIA_PLATFORMS',
     'PORTAL_SEARCH_PATH',

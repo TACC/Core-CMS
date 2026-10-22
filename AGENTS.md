@@ -49,7 +49,7 @@ _Note: Stale containers errors (e.g. `core_cms_elasticsearch already in use`) co
 
 ### Dependencies
 
-- When updating dependencies, use `npm` commands (e.g. `uninstall`/`install`); do not hand-edit lockfile entries.
+- When updating dependencies, use `pnpm` commands (e.g. `uninstall`/`install`); do not hand-edit lockfile entries.
 - When installing `@tacc/core-styles`, use a published version from the registry, or a `git+https://github.com/...` spec so install does not require SSH.
 
 ### Workflows
@@ -96,7 +96,7 @@ As necessary for given task:
 
 - **Lint:** `docker exec core_cms flake8 taccsite_cms/ --max-line-length=120` (pre-existing warnings expected)
 - **Tests:** `docker exec core_cms python manage.py test __ANYTHING_YOU_CHANGE_THAT_HAS_TESTS__ --no-input`
-- **CSS build:** `docker run --rm -v "$(pwd):/code" -w /code node:20 sh -c "npm ci && npm run build"`
+- **CSS build:** `docker run --rm -v "$(pwd):/code" -w /code ghcr.io/pnpm/pnpm:12 sh -c "pnpm ci && pnpm run build"`
 - **Collect static:** `docker exec core_cms python manage.py collectstatic --no-input`
 
 See `README.md` for full setup instructions.
