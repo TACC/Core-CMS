@@ -1,0 +1,6 @@
+{% if caption_text or child_plugin_instances or image.default_caption %}
+        {% include "includes/filer_image/figcaption.html" %}
+    </figure>
+{% elif wrapper_class %}
+</div>
+{% endif %}

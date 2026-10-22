@@ -23,21 +23,13 @@
 {# /TACC #}
 
 {# start render figure/figcaption #}
-{# TACC (support children as caption content): #}
-{# {% if instance.caption_text %} #}
-{# TACC (fall back to image default caption): #}
-{# {% if instance.caption_text or instance.child_plugin_instances %} #}
-{% if instance.caption_text or instance.child_plugin_instances or instance.picture.default_caption %}
-{# /TACC #}
-    <figure>
-{% endif %}
-{# /TACC #}
+{% include "includes/filer_image/figure_open.html" with image=instance.picture caption_text=instance.caption_text child_plugin_instances=instance.child_plugin_instances %}
 {# end render figure/figcaption #}
 
 
 {% localize off %}
 <img src="{{ instance.img_src }}"
-    alt="{% if instance.attributes.alt %}{{ instance.attributes.alt }}{% elif instance.picture.default_alt_text %}{{ instance.picture.default_alt_text }}{% endif %}"
+    alt="{% include "includes/filer_image/img_alt.html" with image=instance.picture alt_override=instance.attributes.alt %}"
     {% if instance.width %} width="{{ instance.width }}"{% endif %}
     {% if instance.height %} height="{{ instance.height }}"{% endif %}
     {% if img_srcset_data %}
@@ -66,25 +58,7 @@
 {% endlocalize %}
 
 {# start render figure/figcaption #}
-{# {% if instance.caption_text %} #}
-{# TACC (fall back to image default caption): #}
-{# {% if instance.caption_text or instance.child_plugin_instances %} #}
-{% if instance.caption_text or instance.child_plugin_instances or instance.picture.default_caption %}
-{# /TACC #}
-        {# TACC (support children as caption content): #}
-        {# <figcaption>{{ instance.caption_text }}</figcaption> #}
-        <figcaption>
-        {# TACC (fall back to image default caption): #}
-        {# {{ instance.caption_text }} #}
-        {% if instance.caption_text %}{{ instance.caption_text }}{% elif instance.picture.default_caption and not instance.child_plugin_instances %}{{ instance.picture.default_caption }}{% endif %}
-        {# /TACC #}
-        {% for plugin in instance.child_plugin_instances %}
-            {% render_plugin plugin %}
-        {% endfor %}
-        </figcaption>
-        {# /TACC #}
-    </figure>
-{% endif %}
+{% include "includes/filer_image/figure_close.html" with image=instance.picture caption_text=instance.caption_text child_plugin_instances=instance.child_plugin_instances %}
 {# end render figure/figcaption #}
 
 {# TACC (allow link to be conditional): #}

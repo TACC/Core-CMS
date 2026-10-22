@@ -1,0 +1,7 @@
+{% load cms_tags %}
+<figcaption>
+{% if caption_text %}{{ caption_text }}{% elif image.default_caption and not child_plugin_instances %}{{ image.default_caption }}{% endif %}
+{% for plugin in child_plugin_instances %}
+    {% render_plugin plugin %}
+{% endfor %}
+</figcaption>

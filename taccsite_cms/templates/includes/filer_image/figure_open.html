@@ -1,0 +1,5 @@
+{% if caption_text or child_plugin_instances or image.default_caption %}
+{% if figure_class %}<figure class="{{ figure_class }}">{% else %}<figure>{% endif %}
+{% elif wrapper_class %}
+<div class="{{ wrapper_class }}">
+{% endif %}

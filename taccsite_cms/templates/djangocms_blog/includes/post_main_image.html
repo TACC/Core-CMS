@@ -1,0 +1,7 @@
+{% load easy_thumbnails_tags %}
+{% include "includes/filer_image/figure_open.html" with image=image wrapper_class="blog-visual" figure_class="blog-visual" %}
+{% thumbnail image thumbnail_options.size crop=thumbnail_options.crop upscale=thumbnail_options.upscale subject_location=image.subject_location as thumb %}
+{# TACC: data-width/data-height carry the *configured* ThumbnailOption size (0 means "automatic"/full-width), #}
+{# not the rendered thumbnail's pixel size — CSS keys off literal `0` to pick centered vs. floated layout. #}
+<img src="{{ thumb.url }}" alt="{% include "includes/filer_image/img_alt.html" with image=image %}" width="{{ thumb.width }}" height="{{ thumb.height }}" data-width="{{ thumbnail_options.width }}" data-height="{{ thumbnail_options.height }}" />
+{% include "includes/filer_image/figure_close.html" with image=image %}
