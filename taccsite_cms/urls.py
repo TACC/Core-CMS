@@ -15,7 +15,6 @@ from django.views.generic.base import TemplateView
 from taccsite_cms import remote_cms_auth as remote_cms_auth
 
 
-from django.apps import apps
 from django.http import request
 from django.views.generic.base import RedirectView
 admin.autodiscover()
@@ -49,11 +48,6 @@ try:
     urlpatterns += custom_urls
 except ModuleNotFoundError:
     pass
-
-if apps.is_installed('taggit_autosuggest'):
-    urlpatterns += [
-        url(r'^taggit_autosuggest/', include('taggit_autosuggest.urls')),
-    ]
 
 if getattr(settings, 'PORTAL_IS_TACC_CORE_PORTAL', True):
     urlpatterns += [
