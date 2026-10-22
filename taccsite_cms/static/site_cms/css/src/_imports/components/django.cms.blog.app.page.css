@@ -79,11 +79,6 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 }
 
 /* To support vertical layouts at narrow viewports */
-/* To undo default margin on a figure element (same as news list items) */
-:--news-article-page figure.blog-visual {
-  margin-block: unset;
-}
-
 :--news-article-page .blog-visual {
   @mixin news-article-page__media;
 
