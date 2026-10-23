@@ -149,7 +149,7 @@ Styleguide Components.DjangoCMS.Blog.App.Page
   img:not(:is(figure *, a *)),
   a:has(> img):not(:has(> figure))
 ) {
-  margin-bottom: 2rem;
+  margin-bottom: 2rem; /* mimic `<p>` `margin-bottom` (from Core-Styles) */
 }
 
 /* Remove Drop Cap when tag is added */
