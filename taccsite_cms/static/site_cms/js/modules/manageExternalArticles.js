@@ -3,20 +3,65 @@
  * @param {HTMLElement} article - The article within which to find external URL
  * @return {string|null} - The URL of the external article
  */
+function resolveHttpRedirectUrl(href) {
+  if (!href) {
+    return null;
+  }
+  try {
+    const resolved = new URL(href, window.location.href);
+    const isHttp = resolved.protocol === 'http:' || resolved.protocol === 'https:';
+    return isHttp ? resolved.href : null;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Resolve redirect target from `.blog-lead` anchors (hidden canonical first).
+ * `new URL(href, window.location.href)` also resolves protocol-relative `//host/path`
+ * using the page scheme.
+ */
+function resolveRedirectUrlFromLeadAnchor(article) {
+  const lead = article.querySelector('.blog-lead');
+  if (!lead) {
+    return null;
+  }
+
+  const hiddenCanonical = lead.querySelector('p[hidden] a[href], p[hidden="hidden"] a[href]');
+  if (hiddenCanonical) {
+    const hiddenHref = hiddenCanonical.getAttribute('href');
+    const hiddenUrl = resolveHttpRedirectUrl(hiddenHref);
+    if (hiddenUrl) {
+      return hiddenUrl;
+    }
+  }
+
+  for (const anchor of lead.querySelectorAll('a[href]')) {
+    const href = anchor.getAttribute('href');
+    const isMailto = href && href.startsWith('mailto:');
+    const isTel = href && href.startsWith('tel:');
+    if (isMailto || isTel) {
+      continue;
+    }
+    const resolvedUrl = resolveHttpRedirectUrl(href);
+    if (resolvedUrl) {
+      return resolvedUrl;
+    }
+  }
+
+  return null;
+}
+
 export function getArticleExternalURL(article) {
   if (!article) {
     console.warn('No article given');
     return;
   }
 
-  // The admin of news promises leads/abstracts will only have 1 external link
-  const externalLink = article.querySelector('.blog-lead a[href^="http"]');
-  if (!externalLink) {
-    console.warn('No external link found for article', article);
-    return;
+  const URL = resolveRedirectUrlFromLeadAnchor(article);
+  if (!URL) {
+    console.warn('No redirect URL found for article', article);
   }
-  const isExternalLink = externalLink.hostname !== window.location.hostname;
-  const URL = isExternalLink ? externalLink.href : null;
 
   return URL;
 }
