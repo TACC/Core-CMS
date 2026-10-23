@@ -145,9 +145,9 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 
 /* Consistent space under Picture output in article body (margin on outermost wrapper only) */
 :--news-article-page .blog-content :is(
-  a:has(> :is(img, figure)),
+  a:has(> img, > figure),
   figure:not(a > figure),
-  img:not(:is(figure *, a *))
+  img:not(figure img, a img)
 ) {
   margin-bottom: 2rem; /* mimic `<p>` (from Core-Styles) */
 }
