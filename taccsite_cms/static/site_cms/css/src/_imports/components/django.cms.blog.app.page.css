@@ -143,7 +143,7 @@ Styleguide Components.DjangoCMS.Blog.App.Page
   margin-top: 0.5em;
 }
 
-/* Space under Picture output in article body (match :--main-content p margin in core-styles) */
+/* Consistent space under Picture output in article body */
 :--news-article-page .blog-content :is(
   figure,
   img:not(:is(figure *, a *)),
