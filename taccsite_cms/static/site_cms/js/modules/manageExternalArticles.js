@@ -7,17 +7,18 @@ function resolveHttpRedirectUrl(href) {
   if (!href) {
     return null;
   }
-  const trimmed = href.trim();
+  const trimmedHref = href.trim();
   try {
-    const resolved = new URL(trimmed, window.location.href);
+    const resolved = new URL(trimmedHref, window.location.href);
+    const isProtocolRelative = trimmedHref.startsWith('//');
     const isHttp = resolved.protocol === 'http:' || resolved.protocol === 'https:';
     if (!isHttp) {
       return null;
+    } else if (isProtocolRelative) {
+      return trimmedHref;
+    } else {
+      return resolved.href;
     }
-    if (trimmed.startsWith('//')) {
-      return trimmed;
-    }
-    return resolved.href;
   } catch {
     return null;
   }
