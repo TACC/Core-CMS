@@ -1,0 +1,4 @@
+/* Adjacent Bootstrap .btn links in Text/HTML (no whitespace between tags). */
+main p .btn + .btn {
+  margin-inline-start: 0.5rem; /* matches Bootstrap .btn-toolbar spacing */
+}

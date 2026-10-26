@@ -8,6 +8,7 @@
 @import url("./_imports/generics/pseudo-elements.css");
 @import url("./_imports/elements/figure-caption-blockquote.css");
 
+@import url("./_imports/components/adjacent-bootstrap-btn.css");
 @import url("./_imports/components/django.cms.css");
 @import url("./_imports/components/django-cms-forms.css");
 @import url("./_imports/components/django-cms-icon.css");
