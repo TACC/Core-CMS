@@ -3,20 +3,74 @@
  * @param {HTMLElement} article - The article within which to find external URL
  * @return {string|null} - The URL of the external article
  */
+function resolveHttpRedirectUrl(href) {
+  if (!href) {
+    return null;
+  }
+  const trimmedHref = href.trim();
+  try {
+    const resolved = new URL(trimmedHref, window.location.href);
+    const isProtocolRelative = trimmedHref.startsWith('//');
+    const isHttp = resolved.protocol === 'http:' || resolved.protocol === 'https:';
+    if (!isHttp) {
+      return null;
+    } else if (isProtocolRelative) {
+      return trimmedHref;
+    } else {
+      return resolved.href;
+    }
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Resolve redirect target from `.blog-lead` anchors (hidden canonical first).
+ * Validates with `new URL(href, window.location.href)` (including `//host/path`);
+ * returns the lead anchor's `href` string when it is protocol-relative.
+ */
+function resolveRedirectUrlFromLeadAnchor(article) {
+  const lead = article.querySelector('.blog-lead');
+  if (!lead) {
+    return null;
+  }
+
+  const hiddenCanonical = lead.querySelector('p[hidden] a[href]');
+  if (hiddenCanonical) {
+    const hiddenHref = hiddenCanonical.getAttribute('href');
+    const hiddenUrl = resolveHttpRedirectUrl(hiddenHref);
+    if (hiddenUrl) {
+      return hiddenUrl;
+    }
+  }
+
+  const anchors = lead.querySelectorAll('a[href]');
+  for (const anchor of anchors) {
+    const href = anchor.getAttribute('href');
+    const isMailto = href && href.startsWith('mailto:');
+    const isTel = href && href.startsWith('tel:');
+    if (isMailto || isTel) {
+      continue;
+    }
+    const resolvedUrl = resolveHttpRedirectUrl(href);
+    if (resolvedUrl) {
+      return resolvedUrl;
+    }
+  }
+
+  return null;
+}
+
 export function getArticleExternalURL(article) {
   if (!article) {
     console.warn('No article given');
     return;
   }
 
-  // The admin of news promises leads/abstracts will only have 1 external link
-  const externalLink = article.querySelector('.blog-lead a[href^="http"]');
-  if (!externalLink) {
-    console.warn('No external link found for article', article);
-    return;
+  const URL = resolveRedirectUrlFromLeadAnchor(article);
+  if (!URL) {
+    console.warn('No redirect URL found for article', article);
   }
-  const isExternalLink = externalLink.hostname !== window.location.hostname;
-  const URL = isExternalLink ? externalLink.href : null;
 
   return URL;
 }
