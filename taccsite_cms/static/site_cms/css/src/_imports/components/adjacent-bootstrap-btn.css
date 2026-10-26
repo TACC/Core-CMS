@@ -1,4 +1,5 @@
-/* Adjacent Bootstrap .btn links in Text/HTML (no whitespace between tags). */
+/* To add whitespace between adjacent Bootstrap `.btn` links */
+/* FAQ: CMS WYSIWYG editor fails to retain whitespace between <cms-plugin>s */
 main p .btn + .btn {
-  margin-inline-start: 0.5rem; /* matches Bootstrap .btn-toolbar spacing */
+  margin-inline-start: 1ch;
 }
