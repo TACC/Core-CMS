@@ -7,10 +7,17 @@ function resolveHttpRedirectUrl(href) {
   if (!href) {
     return null;
   }
+  const trimmed = href.trim();
   try {
-    const resolved = new URL(href, window.location.href);
+    const resolved = new URL(trimmed, window.location.href);
     const isHttp = resolved.protocol === 'http:' || resolved.protocol === 'https:';
-    return isHttp ? resolved.href : null;
+    if (!isHttp) {
+      return null;
+    }
+    if (trimmed.startsWith('//')) {
+      return trimmed;
+    }
+    return resolved.href;
   } catch {
     return null;
   }
@@ -18,8 +25,8 @@ function resolveHttpRedirectUrl(href) {
 
 /**
  * Resolve redirect target from `.blog-lead` anchors (hidden canonical first).
- * `new URL(href, window.location.href)` also resolves protocol-relative `//host/path`
- * using the page scheme.
+ * Validates with `new URL(href, window.location.href)` (including `//host/path`);
+ * returns the lead anchor's `href` string when it is protocol-relative.
  */
 function resolveRedirectUrlFromLeadAnchor(article) {
   const lead = article.querySelector('.blog-lead');
@@ -27,7 +34,7 @@ function resolveRedirectUrlFromLeadAnchor(article) {
     return null;
   }
 
-  const hiddenCanonical = lead.querySelector('p[hidden] a[href], p[hidden="hidden"] a[href]');
+  const hiddenCanonical = lead.querySelector('p[hidden] a[href]');
   if (hiddenCanonical) {
     const hiddenHref = hiddenCanonical.getAttribute('href');
     const hiddenUrl = resolveHttpRedirectUrl(hiddenHref);
@@ -36,7 +43,8 @@ function resolveRedirectUrlFromLeadAnchor(article) {
     }
   }
 
-  for (const anchor of lead.querySelectorAll('a[href]')) {
+  const anchors = lead.querySelectorAll('a[href]');
+  for (const anchor of anchors) {
     const href = anchor.getAttribute('href');
     const isMailto = href && href.startsWith('mailto:');
     const isTel = href && href.startsWith('tel:');
