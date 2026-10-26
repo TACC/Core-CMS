@@ -20,14 +20,14 @@
 /* Details */
 
 @define-mixin news-details {
+  font-size: var(--global-font-size--medium);
+
   margin-bottom: 1rem; /* to not rely on <ul> + core-styles.base.css for this */
 
   &:is(ul) {
     list-style: none;
 
     padding-left: 0; /* overwrite html-elements.css */
-
-    font-size: var(--global-font-size--medium);
   }
 }
 
@@ -371,8 +371,6 @@
 @define-mixin news-article-page__body {
   font-size: var(--global-font-size--medium);
   line-height: 2;
-
-  margin-block: 45px;
 }
 
 /* Media */

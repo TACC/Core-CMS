@@ -5,7 +5,6 @@ from django.db.models.signals import post_migrate
 from .djangocms_bootstrap4.contrib.bootstrap4_alerts.extend import extendBootstrap4AlertsPlugin
 from .djangocms_bootstrap4.contrib.bootstrap4_link.extend import extendBootstrap4LinkPlugin
 from .djangocms_blog.extend import extendBlogFeaturedPostsPlugin, extendBlogFeaturedPostsPluginCached
-from .djangocms_blog.patch import patchBlog
 
 logger = logging.getLogger(f"portal.{__name__}")
 
@@ -19,7 +18,6 @@ class TaccsiteCmsConfig(AppConfig):
         extendBootstrap4LinkPlugin()
         extendBlogFeaturedPostsPlugin()
         extendBlogFeaturedPostsPluginCached()
-        patchBlog()
 
     def create_groups(self, sender, **kwargs):
         from django.contrib.auth.models import Group
