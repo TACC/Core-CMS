@@ -14,7 +14,7 @@ function resolveHttpRedirectUrl(href) {
     const isHttp = resolved.protocol === 'http:' || resolved.protocol === 'https:';
     const isSameOrigin = resolved.origin === window.location.origin;
     const isSameHostname = resolved.hostname === window.location.hostname;
-    const sameOriginPath = `${resolved.pathname}${resolved.search}${resolved.hash}`;
+    const sameOriginPath = resolved.pathname + resolved.search + resolved.hash;
     if (!isHttp) {
       return null;
     } else if (isProtocolRelative) {
