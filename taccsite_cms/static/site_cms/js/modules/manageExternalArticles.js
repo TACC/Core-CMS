@@ -3,6 +3,10 @@
  * @param {HTMLElement} article - The article within which to find external URL
  * @return {string|null} - The URL of the external article
  */
+function sameOriginPath(resolved) {
+  return `${resolved.pathname}${resolved.search}${resolved.hash}`;
+}
+
 function resolveHttpRedirectUrl(href) {
   if (!href) {
     return null;
@@ -15,7 +19,12 @@ function resolveHttpRedirectUrl(href) {
     if (!isHttp) {
       return null;
     } else if (isProtocolRelative) {
+      if (resolved.hostname === window.location.hostname) {
+        return sameOriginPath(resolved);
+      }
       return trimmedHref;
+    } else if (resolved.origin === window.location.origin) {
+      return sameOriginPath(resolved);
     } else {
       return resolved.href;
     }
@@ -24,10 +33,30 @@ function resolveHttpRedirectUrl(href) {
   }
 }
 
+function opensInNewWindow(redirectUrl) {
+  if (!redirectUrl || redirectUrl.startsWith('/')) {
+    return false;
+  }
+  if (redirectUrl.startsWith('//')) {
+    try {
+      const resolved = new URL(redirectUrl, window.location.href);
+      return resolved.hostname !== window.location.hostname;
+    } catch {
+      return true;
+    }
+  }
+  try {
+    const resolved = new URL(redirectUrl, window.location.href);
+    return resolved.origin !== window.location.origin;
+  } catch {
+    return false;
+  }
+}
+
 /**
  * Resolve redirect target from `.blog-lead` anchors (hidden canonical first).
  * Validates with `new URL(href, window.location.href)` (including `//host/path`);
- * returns the lead anchor's `href` string when it is protocol-relative.
+ * returns path-only URLs for same-origin targets (matching lead markup).
  */
 function resolveRedirectUrlFromLeadAnchor(article) {
   const lead = article.querySelector('.blog-lead');
@@ -97,7 +126,11 @@ export function changeHowExternalArticleOpens(extTagName = 'external') {
         console.debug(`Changed article link to "${externalLinkUrl}"`, link );
 
         link.href = externalLinkUrl;
-        link.setAttribute('target', '_blank');
+        if (opensInNewWindow(externalLinkUrl)) {
+          link.setAttribute('target', '_blank');
+        } else {
+          link.removeAttribute('target');
+        }
       });
     }
   });
