@@ -12,15 +12,19 @@ function resolveHttpRedirectUrl(href) {
     const resolved = new URL(trimmedHref, window.location.href);
     const isProtocolRelative = trimmedHref.startsWith('//');
     const isHttp = resolved.protocol === 'http:' || resolved.protocol === 'https:';
+    const isSameOrigin = resolved.origin === window.location.origin;
+    const isSameHostname = resolved.hostname === window.location.hostname;
+    const sameOriginPath = `${resolved.pathname}${resolved.search}${resolved.hash}`;
     if (!isHttp) {
       return null;
     } else if (isProtocolRelative) {
-      if (resolved.hostname === window.location.hostname) {
-        return `${resolved.pathname}${resolved.search}${resolved.hash}`;
+      if (isSameHostname) {
+        return sameOriginPath;
+      } else {
+        return trimmedHref;
       }
-      return trimmedHref;
-    } else if (resolved.origin === window.location.origin) {
-      return `${resolved.pathname}${resolved.search}${resolved.hash}`;
+    } else if (isSameOrigin) {
+      return sameOriginPath;
     } else {
       return resolved.href;
     }
