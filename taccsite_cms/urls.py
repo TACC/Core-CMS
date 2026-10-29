@@ -13,6 +13,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.views.static import serve
 from django.views.generic.base import TemplateView
 from taccsite_cms import remote_cms_auth as remote_cms_auth
+from taccsite_cms.views import favicon
 
 
 from django.http import request
@@ -25,6 +26,7 @@ urlpatterns = [
 
     url(r'^admin/', admin.site.urls),  # NOQA
     url(r'^cms/logout/', views.LogoutView.as_view(), name='logout'),
+    url(r'^favicon\.ico$', favicon, name='favicon'),
 
     url(r'^', include('djangocms_forms.urls')),
 ]
