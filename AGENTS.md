@@ -72,7 +72,8 @@ Per-instance files `docker-compose.agent-<port>.yml` (gitignored) live in the **
 - Use only that worktree bind mount for `/code`. Do **not** add anonymous volumes on `/code/static` or `/code/taccsite_cms/static` (they hide built CSS from the worktree).
 - Recreate the container after editing: `docker compose -f docker-compose.agent-<port>.yml -p cms<port> up -d --build`.
 - Keep the same file name and `-p cms<port>` when repointing paths, so the named volumes stay attached.
-- In that worktree, `taccsite_cms/settings/settings_custom.py` (from `settings_custom.example.py`) with `PORTAL_SEARCH_INDEX_IS_AUTOMATIC = False` so saving a page does not index.
+- In that worktree, `taccsite_cms/settings/settings_custom.py` (from `settings_custom.example.py`) with `PORTAL_SEARCH_INDEX_IS_AUTOMATIC = False` so saving a page does not index. No extra bind mount is needed for this, since the whole worktree is already mounted at `/code`.
+- Also create `taccsite_cms/settings/settings_local.py` (from `settings_local.example.py`) in that worktree. Core-CMS clients (Core-CMS-Port, Texascale-CMS, APCD-CMS, etc.) that bind-mount individual settings files instead of the whole worktree need both files present on the host at those paths, or edits land only in the `core_cms_*_settings_data` volume and are lost on restart.
 - Omit the `elasticsearch` service. Postgres hostname in `secrets.py` can stay `core_cms_postgres` when the compose file adds that **network alias** on the agent Postgres service.
 - Before deleting a worktree, repoint that instance’s paths to another checkout (or `docker compose … down` if retiring the instance).
 
