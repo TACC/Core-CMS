@@ -84,6 +84,7 @@ Per-instance files `docker-compose.agent-<port>.yml` (gitignored) live in the **
 #### Settings & Secrets
 
 - **Settings files** are gitignored. Created from `*.example.py` by `bin/setup-cms.sh` or manually.
+- **Live `settings_local.py` in an agent instance:** `docker-merge-settings.sh` copies it only if missing (`cp -n`). To sync host edits, bind-mount the host file onto the settings volume path in `docker-compose.agent-<port>.yml`: `<worktree>/cms/src/taccsite_cms/settings/settings_local.py:/code/taccsite_cms/settings/settings_local.py`. Editors or `sed -i` that replace the file break the mount; restart the container to fix it.
 - **Postgres secret files:** `docker-compose.dev.yml` mounts `./conf/postgres/*.secret` files. These are not required for development and can be ignored.
 
 #### Elasticsearch
