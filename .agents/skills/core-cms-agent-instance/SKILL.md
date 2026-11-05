@@ -82,6 +82,12 @@ Required before calling setup done:
 
 3. **Branch** — in the worktree: `git branch --show-current` matches the PR head or task branch.
 
+4. **Settings** — For each settings file the client repo documents as mounted, the container's copy matches its host source (empty diff):
+
+   ```bash
+   docker exec core_cms_<port> cat /code/taccsite_cms/settings/<file>.py | diff - <host source path>
+   ```
+
 ## Retire Or Move
 
 Before deleting a worktree, ask whether to: (A) repoint that port’s compose paths to another checkout, (B) take down the instance (`docker compose -f docker-compose.agent-<port>.yml -p cms<port> down`), or (C) something else.
