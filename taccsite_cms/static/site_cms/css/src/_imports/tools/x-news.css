@@ -320,34 +320,34 @@
   display: grid;
   column-gap: 1em;
   grid-template-areas:
-    'cats     dates   '
-    'title    title   '
-    'subtitle subtitle'
-    'attr    socials '
-    'tags     tags    ';
+    'cats     dates    dates'
+    'title    title    title'
+    'subtitle subtitle subtitle'
+    'attr     attr     socials'
+    'tags     tags     tags';
   grid-template-columns: minmax(0, max-content) 1fr;
 }
 @define-mixin news-article-page__header--show-cats-hide-tags {
   grid-template-areas:
-    'cats     dates   '
-    'title    title   '
-    'subtitle subtitle'
-    'attr    socials ';
+    'cats     dates    dates'
+    'title    title    title'
+    'subtitle subtitle subtitle'
+    'attr     attr     socials';
 }
 @define-mixin news-article-page__header--hide-cats-show-tags {
   grid-template-areas:
-    'dates    dates   '
-    'title    title   '
-    'subtitle subtitle'
-    'attr    socials '
-    'tags     tags    ';
+    'dates    dates    dates'
+    'title    title    title'
+    'subtitle subtitle subtitle'
+    'attr     attr     socials'
+    'tags     tags     tags';
 }
 @define-mixin news-article-page__header--hide-cats-hide-tags {
   grid-template-areas:
-    'dates    dates   '
-    'title    title   '
-    'subtitle subtitle'
-    'attr    socials ';
+    'dates    dates    dates'
+    'title    title    title'
+    'subtitle subtitle subtitle'
+    'attr     attr     socials';
 }
 
 /* Titles */
