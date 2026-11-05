@@ -53,7 +53,7 @@ Open the **port worktree** as the agent workspace when doing instance work.
 
 - If `docker-compose.agent-<port>.yml` is missing in the **main checkout**, copy [`docker-compose.agent.example.yml`](../../../docker-compose.agent.example.yml) (or an existing `docker-compose.agent-*.yml` next to this repo’s `docker-compose.dev.yml`) and replace **every** absolute path: `build.context`, bind mounts under the active worktree, and `127.0.0.1:<port>:8000`.
 - Keep the compose file in the **main checkout** in the same directory as `docker-compose.dev.yml`, even when the worktree path is elsewhere.
-- Some client repos bind `settings_custom.py` or other settings from shared deploy repos (for example NAIRR via [Core-Portal-Deployments](https://github.com/TACC/Core-Portal-Deployments)). Read that client’s AGENTS.md and site docs when present; follow those mounts so agent instances match production when instructions exist.
+- Some client repos, e.g. NAIRR (from [Core-CMS-Port](https://github.com/TACC/Core-CMS-Port)), bind `settings_custom.py` from [TACC/Core-Portal-Deployments](https://github.com/TACC/Core-Portal-Deployments) — the client repo might define whether and how to do this.
 
 ## Start Or Repoint Instance
 
