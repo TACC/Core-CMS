@@ -67,6 +67,7 @@ A container runs whichever checkout its Compose file points at, not the worktree
 
 Per-instance files `docker-compose.agent-<port>.yml` (gitignored) live in the **main checkout**, so you can see which worktree each instance uses and delete worktrees without losing them. Copy [`docker-compose.agent.example.yml`](./docker-compose.agent.example.yml) to start one.
 
+- For a dedicated agent stack, name the worktree directory after the instance **port** (basename `8002` ↔ `docker-compose.agent-8002.yml` and `-p cms8002`) so checkout, compose file, and Compose project stay aligned across repos, IDEs, and agents.
 - Set `build.context` **and** the CMS bind mount to the active worktree, as **absolute paths**. If a gitignored compose file still points at another checkout (including a removed worktree), repoint those paths and recreate the container—do not ask the user unless blocked. (`build: .` builds from the main checkout.)
 - Use only that worktree bind mount for `/code`. Do **not** add anonymous volumes on `/code/static` or `/code/taccsite_cms/static` (they hide built CSS from the worktree).
 - Recreate the container after editing: `docker compose -f docker-compose.agent-<port>.yml -p cms<port> up -d --build`.

@@ -14,6 +14,7 @@
 @import url("./_imports/components/django.cms.picture.css");
 @import url("./_imports/components/lightgallery.css");
 @import url("./_imports/components/logos.css");
+@import url("./_imports/bootstrap4/components/btn.css");
 
 @import url("@tacc/core-styles/src/lib/_imports/components/admonition.css");
 @import url("./_imports/components/admonition.cortal-icons.css");
