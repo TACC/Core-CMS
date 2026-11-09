@@ -41,7 +41,7 @@ RUN poetry install --no-root
 
 
 # NODE DEPENDENCIES & BUILD & OUTPUT
-FROM node:18 AS node_build
+FROM node:20 AS node_build
 
 # Install dependencies
 COPY package.json package-lock.json /code/
