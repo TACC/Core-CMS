@@ -33,7 +33,7 @@ RUN poetry install --only main --no-root
 
 
 # POETRY DEPENDENCIES
-FROM python-base as development
+FROM python-base AS development
 COPY . /code/
 # quicker install because poetry runtime deps are already installed
 RUN poetry install --no-root
@@ -41,7 +41,7 @@ RUN poetry install --no-root
 
 
 # NODE DEPENDENCIES & BUILD & OUTPUT
-FROM node:18 as node_build
+FROM node:18 AS node_build
 
 # Install dependencies
 COPY package.json package-lock.json /code/
@@ -56,7 +56,7 @@ RUN npm run build --build-id="$BUILD_ID"
 
 
 # FINAL LAYER
-FROM python-base as production
+FROM python-base AS production
 
 # Support CMS logs
 RUN mkdir -p /var/log/cms
