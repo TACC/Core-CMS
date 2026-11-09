@@ -14,6 +14,10 @@ ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost', '*']   # Local
 SESSION_COOKIE_SECURE = False
 CSRF_COOKIE_SECURE = False
 
+# To allow login to multiple local instances on same url different ports
+# SESSION_COOKIE_NAME = 'sessionid_cms8006'
+# CSRF_COOKIE_NAME = 'csrfcookie_cms8006'
+
 # To manage remote CMS authentication
 CEP_AUTH_VERIFICATION_ENDPOINT = 'http://django:6000'
 LOGIN_REDIRECT_URL = '/'
