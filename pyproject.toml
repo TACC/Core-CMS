@@ -79,11 +79,20 @@ dependencies = [
     "pymemcache>=4.0.0,<5.0.0",
 ]
 
+[tool.uv]
+package = false
+required-environments = [
+    "sys_platform == 'darwin' and platform_machine == 'x86_64'",
+    "sys_platform == 'darwin' and platform_machine == 'arm64'",
+    "sys_platform == 'linux' and platform_machine == 'x86_64'",
+    "sys_platform == 'win32' and platform_machine == 'AMD64'"
+]
+
 [tool.uv.sources]
 # Commit fixing the Container error:
 # https://github.com/django-cms/djangocms-bootstrap4/pull/164
 djangocms-bootstrap4 = { git = "https://github.com/django-cms/djangocms-bootstrap4.git", rev = "49983f4" }
-djangocms-forms-maintained = { git = "https://github.com/TACC/djangocms-forms", rev = "fce019099b7542bfe2b449cff8ca4e5d0a03e92e" }
+djangocms-forms-maintained = { git = "https://github.com/TACC/djangocms-forms", rev = "af06256fd1c70b6c1d71925a2aca4e0080d2a2cf" }
 djangocms-tacc-image-gallery = { git = "https://github.com/TACC/Core-CMS-Plugin-Image-Gallery.git", tag = "v0.1.5" }
 djangocms-tacc-export-page = { git = "https://github.com/TACC/Core-CMS-Plugin-Export-Page.git", tag = "v0.2.0" }
 djangocms-tacc-remote-content = { git = "https://github.com/TACC/Core-CMS-Plugin-Remote-Content.git", tag = "v0.5.0" }
