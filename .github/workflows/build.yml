@@ -39,4 +39,4 @@ jobs:
           tags: |
             taccwma/core-cms:${{ steps.vars.outputs.SHORT_SHA }}
             taccwma/core-cms:${{ steps.vars.outputs.BRANCH_NAME }}
-            taccwma/core-cms:latest
+            ${{ github.ref_name == 'main' && 'taccwma/core-cms:latest' || '' }}
