@@ -135,10 +135,8 @@ Styleguide Components.DjangoCMS.Blog.App.Item
     @mixin news-feed-article__media--above-text;
   }
 }
-@media (--medium-and-above) {
-  :--news-article-item--in-grid .blog-visual {
-    @mixin news-feed-article__media--above-text;
-  }
+:--news-article-item--in-grid .blog-visual {
+  @mixin news-feed-article__media--above-text;
 }
 /* To undo default margin on a figure element */
 :--news-article-item figure.blog-visual {

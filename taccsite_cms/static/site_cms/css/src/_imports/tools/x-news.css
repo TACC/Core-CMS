@@ -263,9 +263,6 @@
 /* Article - Lead */
 
 @define-mixin news-feed-article__lead {
-  @mixin truncate--many-lines;
-  --lines: 4;
-
   line-height: 1.5;
 
   & p:last-child {
