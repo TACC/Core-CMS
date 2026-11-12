@@ -174,7 +174,7 @@ importers:
         specifier: ^2.59.2
         version: 2.59.2(@csstools/postcss-design-tokens@4.0.5(postcss@8.5.29))(commander@9.5.0)(cssnano@5.1.15(postcss@8.5.29))(js-yaml@4.3.2)(merge-lite@1.0.2)(node-cmd@5.0.0)(postcss-banner@4.0.1)(postcss-cli@12.0.0(postcss@8.5.29)(yaml@2.9.1))(postcss-import@15.1.0(postcss@8.5.29))(postcss-mixins@10.0.1(postcss@8.5.29))(postcss-preset-env@10.6.1(postcss@8.5.29))(postcss-replace@2.0.1(postcss@8.5.29))(postcss@8.5.29)
       node:
-        specifier: 'runtime:>=24.21.0 <26'
+        specifier: runtime:>=24.21.0 <26
         version: runtime:24.21.0
       postcss-cli:
         specifier: ^12.0.0
