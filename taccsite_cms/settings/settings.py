@@ -589,6 +589,14 @@ CMS_PLACEHOLDER_CONF = {
 }
 
 THUMBNAIL_HIGH_RESOLUTION = True
+# djangocms-blog BLOG_IMAGE_FULL_SIZE uses size alias name ``640`` (not ``640x480``).
+THUMBNAIL_ALIASES = {
+    '': {
+        '640': {
+            'size': (640, 480),
+        },
+    },
+}
 THUMBNAIL_PROCESSORS = (
     'easy_thumbnails.processors.colorspace',
     'easy_thumbnails.processors.autocrop',
