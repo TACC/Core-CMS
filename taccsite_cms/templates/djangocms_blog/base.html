@@ -1,11 +1,15 @@
 {# https://github.com/nephila/djangocms-blog/blob/1.2.3/djangocms_blog/templates/djangocms_blog/base.html #}
 {% extends CMS_TEMPLATE %}
 {# TACC (to add blog styles): #}
-{% load static sekizai_tags %}
+{% load static sekizai_tags cms_tags blog_tags %}
 {# /TACC #}
 
-{# TACC (to not let editor add content to every blog page): #}
-{% block cms_content %}{% endblock cms_content %}
+{# TACC (to let editor add content only to the blog listing page): #}
+{% block cms_content %}
+{% if not post and not author and not archive_date and not tagged_entries and not category %}
+{% placeholder "content" %}
+{% endif %}
+{% endblock cms_content %}
 {# /TACC #}
 
 {# TACC (to not let blog usurp `{% block "content" %}`): #}
