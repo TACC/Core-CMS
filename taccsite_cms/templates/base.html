@@ -83,6 +83,8 @@
         {% placeholder "content" %}
       {% endblock cms_content %}
 
+      {% block fixed_content %}{% endblock fixed_content %}
+
       {# To isolate content editor cannot change layout of (e.g. Blog) #}
       {% block app_content %}{% endblock app_content %}
     </div>
