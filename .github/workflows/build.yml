@@ -2,7 +2,7 @@ name: Build
 on:
   workflow_dispatch:
   push:
-    branches: [main]
+    branches: [main, release/v4.42.X]
 
 jobs:
   build_commit:

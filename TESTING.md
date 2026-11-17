@@ -5,15 +5,15 @@
 - [Major Changes to CSS](https://github.com/TACC/Core-CMS/wiki/How-to-Test-Major-Changes-to-CSS)
 - [CSS Build Output](https://github.com/TACC/Core-CMS/wiki/Test-CSS-Build-Output)
 - [Core Styles Version Change](https://github.com/TACC/Core-CMS/wiki/How-to-Test-Core-Styles-Version-Change)
-- [Local Poetry Dependencies in Docker](#local-poetry-dependencies-in-docker)
+- [Local uv Dependencies in Docker](#local-uv-dependencies-in-docker)
 
 ## Releases
 
 Follow specific release's smoke test doc in [`docs/test-releases/`](docs/test-releases/).
 
-## Local Poetry Dependencies in Docker
+## Local uv Dependencies in Docker
 
-When developing a Poetry-managed Python dependency that exists in another local repository, you can test changes locally in the CMS Docker environment without needing to commit and push to the remote repository first.
+When developing a Python dependency that exists in another local repository, you can test changes locally in the CMS Docker environment without needing to commit and push to the remote repository first.
 
 ### Prerequisites
 
@@ -45,7 +45,7 @@ When developing a Poetry-managed Python dependency that exists in another local 
    ```yaml
    command: >
      sh -c "
-       poetry add ../Core-CMS-Plugin-Remote-Content --editable &&
+       uv add ../Core-CMS-Plugin-Remote-Content --editable &&
        python3 manage.py runserver 0.0.0.0:8000
      "
    ```
@@ -63,7 +63,7 @@ When developing a Poetry-managed Python dependency that exists in another local 
 6. **After testing, revert the changes** to `docker-compose.dev.yml` to restore the normal configuration.
 
 > [!TIP]
-> To test multiple local dependencies, add additional volume mounts and `poetry add` commands in the same pattern.
+> To test multiple local dependencies, add additional volume mounts and `uv add` commands in the same pattern.
 
 ### Troubleshooting
 
@@ -81,4 +81,4 @@ Check that the volume mount path is correct and that the dependency was installe
 
 ### Build Fails with Path Dependency Error
 
-Ensure `pyproject.toml` uses a git dependency, not a path dependency. Path dependencies are only used at runtime via `poetry add`.
+Ensure `pyproject.toml` uses a git dependency, not a path dependency. Path dependencies are only used at runtime via `uv add`.

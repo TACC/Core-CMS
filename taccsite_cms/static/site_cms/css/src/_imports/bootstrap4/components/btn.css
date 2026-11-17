@@ -1,0 +1,5 @@
+/* To add whitespace between adjacent Bootstrap `.btn` links */
+/* FAQ: CMS WYSIWYG editor fails to retain whitespace between <cms-plugin>s */
+main p .btn + .btn {
+  margin-inline-start: 1ch;
+}
