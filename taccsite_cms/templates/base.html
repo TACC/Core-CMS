@@ -83,9 +83,10 @@
         {% placeholder "content" %}
       {% endblock cms_content %}
 
+      {# So we can let editor add content above an app (e.g. Blog) #}
       {% block fixed_content %}{% endblock fixed_content %}
 
-      {# To isolate content editor cannot change layout of (e.g. Blog) #}
+      {# To separate app-rendered content from editor-managed content #}
       {% block app_content %}{% endblock app_content %}
     </div>
 
