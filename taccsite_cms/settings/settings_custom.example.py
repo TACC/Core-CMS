@@ -29,7 +29,7 @@ CMS_TEMPLATES = (
     ('fullwidth.html', 'Full Width'),
     ('content.html', 'Content Only'),
 
-    # WARNING: Unintuitive, so only enable as needed
+    # WARNING: Only enable as needed
     # ('plain.html', 'Plain'),          # TACC/Core-CMS#868
 )
 
@@ -119,6 +119,9 @@ EXTRA_INSTALLED_APPS = [
     'taggit_autosuggest',
     'sortedm2m',
     'djangocms_blog',
+    # WARNING: Only enable as needed
+    # TACC: REMOTE_CONTENT
+    # 'djangocms_tacc_remote_content',  # TACC/Core-CMS#868
 ]
 
 BLOG_AUTO_SETUP = True # Set to False after setup (minimize overhead)
