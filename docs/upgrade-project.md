@@ -1,5 +1,6 @@
 # Upgrade Project
 
+- [from v4.41 to v4.42](#from-v441-to-v442)
 - [from v4.39 to v4.40](#from-v439-to-v440)
 - [from v4.28 to v4.29](#from-v428-to-v429)
 - [from v4.N to v4.14](#from-v4n-to-v414)
@@ -44,6 +45,21 @@ Optional:
     - [Core Portal Deployments]:`/project_dir/camino/cms.settings_custom.py` [^1]
 
 [^1]: The `cms.settings_custom.py` is committed in [Core Portal Deployments]. A `settings_custom.py` in [Core CMS Custom] is `.gitignore`'d.
+
+## from v4.41 to v4.42
+
+- [Set `DEFAULT_FILE_STORAGE` for `djangocms-forms-maintained`](#set-default_file_storage-for-djangocms-forms-maintained)
+
+### Set `DEFAULT_FILE_STORAGE` for `djangocms-forms-maintained`
+
+Add this setting to your project's `settings_*.py`:
+
+```py
+# Compatibility bandaid for djangocms-forms-maintained
+# SEE: https://github.com/TACC/Core-CMS/issues/1105
+# TODO: Remove after we use a TACC/djangocms-forms release compatible with Django 5.1+
+DEFAULT_FILE_STORAGE = "django.core.files.storage.FileSystemStorage"
+```
 
 ## from v4.39 to v4.40
 
