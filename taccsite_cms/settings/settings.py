@@ -265,6 +265,15 @@ PORTAL_FAVICON = {
     "is_remote": False,
     "img_file_src": "site_cms/img/favicons/favicon.ico",
 }
+favicon_path = f"/static/site_cms/favicon/"
+PORTAL_FAVICON_HTML = f'''
+    <link rel="icon" type="image/png" href="{favicon_path}favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="{favicon_path}favicon.svg" />
+    <link rel="shortcut icon" href="{favicon_path}favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{favicon_path}apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="TACC" />
+    <link rel="manifest" href="{favicon_path}site.webmanifest" />
+'''
 
 
 ########################
@@ -329,6 +338,13 @@ PORTAL_BLOG_CATEGORY_ORDER = []
 
 PORTAL_BLOG_TAG_FOR_EXTERNAL_ARTICLES = 'external'
 
+PORTAL_BLOG_LIST_LAYOUT = 'list'
+# PORTAL_BLOG_LIST_LAYOUT = {
+#     'Blog Instance 1 Name': 'list',
+#     'Blog Instance 2 Name': 'grid',
+#     'default': 'list',
+# }
+
 ########################
 # DJANGO & DJANGO_CMS & TACC
 ########################
@@ -347,6 +363,16 @@ STATICFILES_DIRS = (
 ) + tuple(glob(
     os.path.join(BASE_DIR, 'taccsite_custom', '*', 'static')
 ))
+
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+    },
+}
+DEFAULT_FILE_STORAGE = STORAGES["default"]["BACKEND"]
 
 # User Uploaded Files Location.
 MEDIA_URL = '/media/'
@@ -751,6 +777,7 @@ SETTINGS_EXPORT = deprecated_SETTINGS_EXPORT + [
     'PORTAL_BRANDING',
     'PORTAL_LOGO',
     'PORTAL_FAVICON',
+    'PORTAL_FAVICON_HTML',
     'PORTAL_IS_TACC_CORE_PORTAL',
     'PORTAL_HAS_LOGIN',
     'PORTAL_LOGIN_PATH',
@@ -764,6 +791,7 @@ SETTINGS_EXPORT = deprecated_SETTINGS_EXPORT + [
     'PORTAL_BLOG_SHOW_BACK_LINK',
     'PORTAL_BLOG_CATEGORY_ORDER',
     'PORTAL_BLOG_TAG_FOR_EXTERNAL_ARTICLES',
+    'PORTAL_BLOG_LIST_LAYOUT',
     'PORTAL_SOCIAL_SHARE_PLATFORMS',
     'PORTAL_SOCIAL_MEDIA_PLATFORMS',
     'PORTAL_SEARCH_PATH',

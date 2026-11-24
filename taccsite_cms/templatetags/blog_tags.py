@@ -1,7 +1,14 @@
 from django import template
 from django.apps import apps
 
+from taccsite_cms.djangocms_blog.list_layout import portal_blog_list_layout
+
 register = template.Library()
+
+
+@register.simple_tag
+def blog_list_layout(namespace=None):
+    return portal_blog_list_layout(namespace)
 
 @register.simple_tag
 def blog_is_installed():

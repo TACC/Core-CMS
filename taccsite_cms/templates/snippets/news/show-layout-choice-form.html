@@ -1,0 +1,9 @@
+{# Dev: unhide blog list/grid layout toggle on pages that include layout-choice-form #}
+<script id="show-layout-choice-form">
+(function () {
+  const form = document.getElementById('layout-choice-form');
+  if (form) {
+    form.removeAttribute('hidden');
+  }
+})();
+</script>

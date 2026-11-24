@@ -51,7 +51,7 @@ Styleguide Components.DjangoCMS.Blog.App
 
 /* Details */
 
-.app-blog .post-detail {
+.app-blog header .post-detail {
   @mixin news-details;
 }
 

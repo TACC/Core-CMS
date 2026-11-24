@@ -21,6 +21,8 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 
 :--news-article-page {
   @mixin news-article-page;
+
+  margin-bottom: 45px;
 }
 
 
@@ -48,6 +50,8 @@ Styleguide Components.DjangoCMS.Blog.App.Page
   .app-blog.no-categories:not(.no-tags) & {
     @mixin news-article-page__header--hide-cats-show-tags;
   }
+
+  margin-bottom: 45px;
 }
 :--news-article-page header h1 {
   @mixin news-article-page__title;
@@ -62,7 +66,6 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 /* Body */
 
 :--news-article-page .blog-lead,
-:--news-article-page .blog-visual,
 :--news-article-page .blog-content {
   @mixin news-article-page__body;
 }
@@ -138,6 +141,15 @@ Styleguide Components.DjangoCMS.Blog.App.Page
 :--news-article-page .blog-lead li + li,
 :--news-article-page .blog-content li + li {
   margin-top: 0.5em;
+}
+
+/* Consistent space under Picture output in article body (margin on outermost wrapper only) */
+:--news-article-page .blog-content :is(
+  a:has(> img, > figure),
+  figure:not(a > figure),
+  img:not(figure img, a img)
+) {
+  margin-bottom: 2rem; /* mimic `<p>` (from Core-Styles) */
 }
 
 /* Remove Drop Cap when tag is added */

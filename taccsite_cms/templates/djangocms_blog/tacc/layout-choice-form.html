@@ -8,13 +8,13 @@
     <menu id="layout-choice">
       <li>
         <label for="layout-choice-list">
-          <input type="radio" value="list" name="layout" id="layout-choice-list" checked>
+          <input type="radio" value="list" name="layout" id="layout-choice-list"{% if initial_layout != 'grid' %} checked{% endif %}>
           <i class="icon icon-burger" role="none">☰</i> List
         </label>
       </li>
       <li>
         <label for="layout-choice-grid">
-          <input type="radio" value="grid" name="layout" id="layout-choice-grid">
+          <input type="radio" value="grid" name="layout" id="layout-choice-grid"{% if initial_layout == 'grid' %} checked{% endif %}>
           <i class="icon icon-applications" role="none">⸬</i> Grid
         </label>
       </li>
