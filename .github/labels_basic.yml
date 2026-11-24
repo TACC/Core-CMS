@@ -4,7 +4,7 @@
 # − "help wanted"
 # − "question"
 # − "wontfix"
-# + "ai"
+# + "ai_assisted"
 # + "alternative"
 # + "blocked"
 # + "epic"
@@ -13,9 +13,9 @@
 # + "paused"
 # + "proposal"
 
-- name: ai
+- name: ai_assisted
   color: 'D13205'
-  description: AI contributed
+  description: AI assisted with this
 
 - name: accessibility
   color: 'FA8122'
