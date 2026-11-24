@@ -2,6 +2,7 @@
 FROM python:3.11-bookworm AS python-base
 LABEL maintainer="TACC-ACI-WMA <wma_prtl@tacc.utexas.edu>"
 ARG DEBIAN_FRONTEND=noninteractive
+# Do not install python3-dev: it conflicts with the official image's /usr/local Python in multi-platform builds and is already absent from release/v4.42.X.
 RUN apt-get update && apt-get install -y \
     build-essential \
     libldap2-dev libsasl2-dev ldap-utils tox \
