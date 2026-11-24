@@ -3,7 +3,7 @@ FROM python:3.11-bookworm AS python-base
 LABEL maintainer="TACC-ACI-WMA <wma_prtl@tacc.utexas.edu>"
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y \
-    build-essential python3-dev \
+    build-essential \
     libldap2-dev libsasl2-dev ldap-utils tox \
     lcov valgrind vim \
     && pip3 install uwsgi
