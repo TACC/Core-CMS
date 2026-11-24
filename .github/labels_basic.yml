@@ -4,6 +4,7 @@
 # − "help wanted"
 # − "question"
 # − "wontfix"
+# + "ai"
 # + "alternative"
 # + "blocked"
 # + "epic"
@@ -11,6 +12,10 @@
 # + "investigate"
 # + "paused"
 # + "proposal"
+
+- name: ai
+  color: 'D13205'
+  description: AI wrote code
 
 - name: accessibility
   color: 'FA8122'
