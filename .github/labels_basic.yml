@@ -15,7 +15,7 @@
 
 - name: ai
   color: 'D13205'
-  description: AI wrote code
+  description: AI contributed
 
 - name: accessibility
   color: 'FA8122'
